@@ -1,0 +1,41 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  File that exports the files belonging to 
+:                Converged Call Engine API
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+../inc/mccecall.h     MW_LAYER_PLATFORM_EXPORT_PATH(mccecall.h)
+../inc/cccecallparameters.h     MW_LAYER_PLATFORM_EXPORT_PATH(cccecallparameters.h)
+../inc/ccce.h     MW_LAYER_PLATFORM_EXPORT_PATH(ccce.h)
+../inc/mccecallobserver.h     MW_LAYER_PLATFORM_EXPORT_PATH(mccecallobserver.h)
+../inc/mcceextensionobserver.h     MW_LAYER_PLATFORM_EXPORT_PATH(mcceextensionobserver.h)
+../inc/mccessobserver.h     MW_LAYER_PLATFORM_EXPORT_PATH(mccessobserver.h)
+../inc/mcceconferencecall.h     MW_LAYER_PLATFORM_EXPORT_PATH(mcceconferencecall.h)
+../inc/mcceobserver.h     MW_LAYER_PLATFORM_EXPORT_PATH(mcceobserver.h)
+../inc/mcceextensioninterface.h     MW_LAYER_PLATFORM_EXPORT_PATH(mcceextensioninterface.h)
+../inc/mccecscall.h     MW_LAYER_PLATFORM_EXPORT_PATH(mccecscall.h)
+../inc/mcceforwardinterface.h     MW_LAYER_PLATFORM_EXPORT_PATH(mcceforwardinterface.h)
+../inc/mccedtmfinterface.h     MW_LAYER_PLATFORM_EXPORT_PATH(mccedtmfinterface.h)
+../inc/mccetransferinterface.h     MW_LAYER_PLATFORM_EXPORT_PATH(mccetransferinterface.h)
+../inc/mcceconferencecallobserver.h     MW_LAYER_PLATFORM_EXPORT_PATH(mcceconferencecallobserver.h)
+../inc/mccedtmfobserver.h     MW_LAYER_PLATFORM_EXPORT_PATH(mccedtmfobserver.h)

@@ -1,0 +1,48 @@
+/*
+* Copyright (c) 1028 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  CCP API reference design resolver registration file
+*
+*/
+
+
+//  INCLUDES
+#include <ecom/registryinfo.rh>
+
+//  RESOURCE DEFINITIONS 
+RESOURCE REGISTRY_INFO theInfo
+    {
+    dll_uid = 0x01282F0D;
+    interfaces = 
+        {
+        INTERFACE_INFO
+            {
+            interface_uid = 0x10282588;
+            implementations = 
+                 {
+                 IMPLEMENTATION_INFO
+                    {
+                    // Implementation UID, used by svp (decimal 271066505)
+                    implementation_uid = 0x10282589;
+                                       
+                    version_no = 1;
+                    display_name = "CCP API Test Plug-In";
+                    default_data = "CCPTestPlugin";
+                    opaque_data = "";
+                    }
+                };
+            }
+        };
+    }
+
+// End of File

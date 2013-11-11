@@ -1,0 +1,102 @@
+/*
+* Copyright (c) 2005, 2008 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  
+*       Project file for MsgCommonUtils
+*
+*/
+
+
+
+#include <data_caging_paths.hrh>
+#include <bldvariant.hrh>
+#include <platform_paths.hrh>
+
+TARGET          msgcommonutils.dll
+TARGETTYPE      dll
+UID             0x1000008D 0x102072E6
+VENDORID        VID_DEFAULT
+CAPABILITY      CAP_GENERAL_DLL
+VERSION 	10.0
+PAGED
+
+//START RESOURCE          msgcommonutils.rss  //depending on vpbk
+//TARGETPATH              RESOURCE_FILES_DIR
+//HEADER
+//LANGUAGE_IDS
+//END
+
+
+SOURCEPATH      ../src
+//SOURCE          contactmatcher.cpp
+SOURCE          msgtextutils.cpp
+SOURCE          MsgSvgUtils.cpp
+
+#ifdef __VOIP
+SOURCE          MsgVoIPExtension.cpp
+#else
+SOURCE          MsgVoIPExtensionStub.cpp
+#endif //VOIP
+
+source          fileprotectionresolver.cpp
+//#ifdef __JAVA_MIDP20
+//source          javaprotectionresolver.cpp
+//#else
+source          javaprotectionresolverstub.cpp
+//#endif
+
+USERINCLUDE     ../inc
+USERINCLUDE     ../../../msgfw_plat/msg_common_utils_api/inc
+
+SYSTEMINCLUDE   ../../../inc
+APP_LAYER_SYSTEMINCLUDE
+
+LIBRARY         euser.lib
+LIBRARY         apgrfx.lib
+LIBRARY         efsrv.lib
+LIBRARY         apmime.lib
+LIBRARY         bafl.lib
+LIBRARY         cone.lib
+LIBRARY         featmgr.lib
+LIBRARY         estor.lib
+LIBRARY         charconv.lib
+LIBRARY         msgs.lib
+LIBRARY         centralrepository.lib       // VOIP
+LIBRARY         cenrepnotifhandler.lib      // VOIP
+
+
+#ifdef RD_SVGT_IN_MESSAGING
+LIBRARY         svgengine.lib
+#endif
+
+
+LIBRARY         gdi.lib
+#if defined(__VOIP) 
+LIBRARY         serviceprovidersettings.lib
+#endif // __VOIP
+LIBRARY         commonengine.lib
+LIBRARY         caf.lib
+#ifdef __JAVA_MIDP20
+//LIBRARY         javadrmutils.lib
+#endif
+//LIBRARY         VPbkEng.lib
+//LIBRARY         Pbk2Presentation.lib
+
+
+#if defined( ARMCC )
+deffile         ./eabi.def
+#else
+deffile         ./wins.def
+#endif
+
+/* End of File */

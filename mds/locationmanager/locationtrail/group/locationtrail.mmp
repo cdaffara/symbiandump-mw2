@@ -1,0 +1,95 @@
+/*
+* Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file
+*
+*/
+
+#include <platform_paths.hrh>
+#include <data_caging_paths.hrh>
+#include "../../inc/locplatsupport.mmh"
+
+VERSION         10.0
+TARGET          LocationTrail.dll
+TARGETTYPE      DLL
+UID             0x1000008d 0x200071BD 
+
+VENDORID 	    VID_DEFAULT
+CAPABILITY 	    CAP_GENERAL_DLL
+
+#if defined(WINSCW)
+deffile ../bwincw/locationtrailwinscw.def
+#elif defined(EABI)
+deffile ../eabi/locationtrailarm.def
+#endif
+nostrictdef
+
+USERINCLUDE     ../inc
+USERINCLUDE     ../../inc
+USERINCLUDE     ../../../inc
+
+#ifdef _LOC_REVERSEGEOCODE
+MACRO LOC_REVERSEGEOCODE
+USERINCLUDE     ../../tagcreator/inc
+#endif
+
+#ifdef     _LOC_GEOTAGGING_CELLID
+MACRO LOC_GEOTAGGING_CELLID
+USERINCLUDE     ../../geoconverter/inc
+#endif
+
+SYSTEMINCLUDE     /epoc32/include/stdapis
+SYSTEMINCLUDE     /epoc32/include/ecom
+SYSTEMINCLUDE     /epoc32/include/platform/lbs
+
+MW_LAYER_SYSTEMINCLUDE
+
+SOURCEPATH      ../src
+SOURCE          clocationrecord.cpp
+SOURCE          cnetworkinfo.cpp
+SOURCE          cpositioninfo.cpp
+SOURCE          ctracklog.cpp
+SOURCE          cgpxconverterao.cpp
+SOURCE          locationremappingao.cpp
+
+LIBRARY         euser.lib 
+LIBRARY         efsrv.lib
+LIBRARY         lbs.lib
+LIBRARY         etel3rdparty.lib
+LIBRARY         etel.lib
+LIBRARY         etelmm.lib
+LIBRARY	        mdeclient.lib
+LIBRARY         estor.lib
+LIBRARY	        PlatformEnv.lib
+LIBRARY 	centralrepository.lib 
+LIBRARY         ecom.lib
+LIBRARY         commsdat.lib
+LIBRARY         profileeng.lib 
+
+LIBRARY        geotagger.lib
+
+#ifdef _LOC_REVERSEGEOCODE
+LIBRARY        tagcreator.lib 
+#endif
+
+#ifdef     _LOC_GEOTAGGING_CELLID
+LIBRARY       geoconverter.lib
+#endif
+
+
+PAGED
+BYTEPAIRCOMPRESSTARGET
+OPTION ARMCC -O3 -OTime
+
+// End of file
+ 

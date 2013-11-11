@@ -1,0 +1,45 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  
+*    This file provides the information required for building the Protocol Handler
+*
+*/
+
+
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+/*
+../inc/epos_csuplprotocolmanagerbase.h     	/s60/mw/locationservices/supl/inc/epos_csuplprotocolmanagerbase.h
+../inc/epos_csuplsessionbase.h             	/s60/mw/locationservices/supl/inc/epos_csuplsessionbase.h
+../inc/epos_csuplcommunicationmanager.h		/s60/mw/locationservices/supl/inc/epos_csuplcommunicationmanager.h
+../inc/epos_csuplconnection.h			/s60/mw/locationservices/supl/inc/epos_csuplconnection.h
+../inc/epos_msuplpacketreceiver.h		/s60/mw/locationservices/supl/inc/epos_msuplpacketreceiver.h
+../inc/epos_msuplpacketnotifier.h     		/s60/mw/locationservices/supl/inc/epos_msuplpacketnotifier.h
+*/
+
+../inc/epos_csuplprotocolmanagerbase.h     	|../../../inc/epos_csuplprotocolmanagerbase.h
+../inc/epos_csuplsessionbase.h             	|../../../inc/epos_csuplsessionbase.h
+../inc/epos_csuplcommunicationmanager.h	|../../../inc/epos_csuplcommunicationmanager.h
+../inc/epos_csuplconnection.h		|../../../inc/epos_csuplconnection.h
+../inc/epos_msuplpacketreceiver.h		|../../../inc/epos_msuplpacketreceiver.h
+../inc/epos_msuplpacketnotifier.h     		|../../../inc/epos_msuplpacketnotifier.h
+
+PRJ_MMPFILES
+epos_suplprotocolhandlerplugin.mmp
+
+
+

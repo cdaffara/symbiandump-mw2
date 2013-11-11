@@ -1,0 +1,67 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+//! @file
+//! @SYMTestCaseID 		CM-SENDAS-CIT-0017-HP
+//! @SYMTestCaseDesc 		Add Recipient Address of type "To", "Cc" and "Bcc" to SMTP message
+//! @SYMFssID 
+//! @SYMTestStatus 		Defined
+//! @SYMTestPriority 		High
+//! @SYMTestActions 
+//! @SYMTestExpectedResults 	The Recipient Address is added to the SMTP message
+//! @SYMTestType 		CIT
+
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+GetBaseConstants		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	GetBaseConstants
+CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	CreateSession
+ResetMessageStore		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	ResetMessageStore
+CreatePopAccount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	CreatePopAccount
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	ChkChildrenCountDraft0
+CreateSmtpService		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	CreateSmtpService
+CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	CreateRegistry
+CreateSmtpMtm			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	CreateSmtpMtm
+SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	SetDefaultConfig0
+SetSmtpServiceParameters	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	SetSmtpServiceParams
+ChangeDefaultSmtpService 	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	ChangeDfltSmtpService
+EXECUTE_TEST_CASE
+GetSMTPMTMUId  			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	GetSmtpMtmUId
+ConnectSendAsServer		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	ConnectSendAsServer
+SendAsCreateMessageofType	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	CreateMessageofType
+SendAsAddRecipient		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	SendAsAddRecipientTo0
+SendAsAddRecipient		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	SendAsAddRecipientCc0
+SendAsAddRecipient		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	SendAsAddRecipientBcc0
+SendAsAddRecipient		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	SendAsAddRecipientTo1
+SendAsAddRecipient		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	SendAsAddRecipientCc1
+SendAsAddRecipient		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	SendAsAddRecipientBcc1
+SendAsAddRecipient		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	SendAsAddRecipientBcc2
+SendAsSaveMessageAndClose	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	CloseMessage
+CloseSendAsServerConnection	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	CloseSvrConnection
+CHECK_POSTCONDITIONS
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	ChkChildrenCountDraft1
+CreateChildrenSelection  	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	CreateChildrenSelDraft
+GetMessageAtIndex	 	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	GetMessageAtIndex
+GetEntry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	GetEntry
+VerifyRecipients  		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	VerifyRecipientsTo
+VerifyRecipients  		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	VerifyRecipientsCc
+VerifyRecipients  		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0017-Add_ToCcBcc_RecipientAddr.ini	VerifyRecipientsBcc
+END_TEST_CASE

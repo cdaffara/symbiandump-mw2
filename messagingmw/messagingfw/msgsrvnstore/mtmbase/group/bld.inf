@@ -1,0 +1,40 @@
+// Copyright (c) 1999-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// Build information file for Messaging MTUR component
+// 
+//
+
+PRJ_PLATFORMS
+
+PRJ_EXPORTS
+../inc/MTMUIBAS.H SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(mtmuibas.h)
+../inc/MTMUIDEF.HRH /epoc32/include/mtmuidef.hrh
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+../inc/MTUIPAN.H /epoc32/include/mtuipan.h
+#endif
+../inc/MTUIREG.H SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(mtuireg.h)
+../inc/MTUDCBAS.H SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(mtudcbas.h)
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+../inc/MTUDPAN.H /epoc32/include/mtudpan.h
+#endif
+../inc/MTUDREG.H SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(mtudreg.h)
+../inc/MTUD.RH SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(mtud.rh)
+../inc/MTUD.HRH /epoc32/include/mtud.hrh
+../inc/mturutils.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(mturutils.h)
+
+gtmtur.iby /epoc32/rom/include/gtmtur.iby
+
+PRJ_MMPFILES
+
+MTUR.mmp

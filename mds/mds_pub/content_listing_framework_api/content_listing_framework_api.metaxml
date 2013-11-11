@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<api id="3e9e9c540b26fcdd30bf3d686a37a9c9" dataversion="2.0">
+  <name>Content Listing Framework API</name>
+  <description>An interface for acquiring lists of media items</description>
+  <type>c++</type>
+  <collection>clfwrapper</collection>
+  <libs>
+    <lib name="ContentListingFramework.lib" />
+  </libs>
+  <release category="public" sinceversion="3.1"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>no</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

@@ -1,0 +1,39 @@
+EXPORTS
+	??1CSIPushMsgEntry@@UAE@XZ @ 1 NONAME ; public: virtual __thiscall CSIPushMsgEntry::~CSIPushMsgEntry(void)
+	??1CSISLPushMsgUtils@@UAE@XZ @ 2 NONAME ; public: virtual __thiscall CSISLPushMsgUtils::~CSISLPushMsgUtils(void)
+	??1CSLPushMsgEntry@@UAE@XZ @ 3 NONAME ; public: virtual __thiscall CSLPushMsgEntry::~CSLPushMsgEntry(void)
+	?Action@CSIPushMsgEntry@@QBEHXZ @ 4 NONAME ; public: int __thiscall CSIPushMsgEntry::Action(void)const 
+	?Action@CSLPushMsgEntry@@QBEHXZ @ 5 NONAME ; public: int __thiscall CSLPushMsgEntry::Action(void)const 
+	?DeleteEntryL@CSISLPushMsgUtils@@QAEXJ@Z @ 6 NONAME ; public: void __thiscall CSISLPushMsgUtils::DeleteEntryL(long)
+	?FindSiIdLC@CSISLPushMsgUtils@@QAEPAVCMsvEntrySelection@@ABVTDesC16@@@Z @ 7 NONAME ; public: class CMsvEntrySelection * __thiscall CSISLPushMsgUtils::FindSiIdLC(class TDesC16 const &)
+	?FindUrlL@CSISLPushMsgUtils@@QAEJABVTDesC16@@VTUid@@@Z @ 8 NONAME ; public: long __thiscall CSISLPushMsgUtils::FindUrlL(class TDesC16 const &,class TUid)
+	?GetActionL@CSISLPushMsgUtils@@QAEHJ@Z @ 9 NONAME ; public: int __thiscall CSISLPushMsgUtils::GetActionL(long)
+	?GetExpiryL@CSISLPushMsgUtils@@QAE?BVTTime@@J@Z @ 10 NONAME ; public: class TTime const  __thiscall CSISLPushMsgUtils::GetExpiryL(long)
+	?GetHighestActionL@CSISLPushMsgUtils@@QAEJVTUid@@@Z @ 11 NONAME ; public: long __thiscall CSISLPushMsgUtils::GetHighestActionL(class TUid)
+	?GetNextExpiryL@CSISLPushMsgUtils@@QAEJXZ @ 12 NONAME ; public: long __thiscall CSISLPushMsgUtils::GetNextExpiryL(void)
+	?GetPushMsgFolderIdL@CSISLPushMsgUtils@@QAEXAAJ@Z @ 13 NONAME ; public: void __thiscall CSISLPushMsgUtils::GetPushMsgFolderIdL(long &)
+	?NewL@CSIPushMsgEntry@@SAPAV1@AAH@Z @ 14 NONAME ; public: static class CSIPushMsgEntry * __cdecl CSIPushMsgEntry::NewL(int &)
+	?NewL@CSIPushMsgEntry@@SAPAV1@ABVTPtrC8@@@Z @ 15 NONAME ; public: static class CSIPushMsgEntry * __cdecl CSIPushMsgEntry::NewL(class TPtrC8 const &)
+	?NewL@CSIPushMsgEntry@@SAPAV1@XZ @ 16 NONAME ; public: static class CSIPushMsgEntry * __cdecl CSIPushMsgEntry::NewL(void)
+	?NewL@CSISLPushMsgUtils@@SAPAV1@XZ @ 17 NONAME ; public: static class CSISLPushMsgUtils * __cdecl CSISLPushMsgUtils::NewL(void)
+	?NewL@CSLPushMsgEntry@@SAPAV1@AAH@Z @ 18 NONAME ; public: static class CSLPushMsgEntry * __cdecl CSLPushMsgEntry::NewL(int &)
+	?NewL@CSLPushMsgEntry@@SAPAV1@ABVTPtrC8@@@Z @ 19 NONAME ; public: static class CSLPushMsgEntry * __cdecl CSLPushMsgEntry::NewL(class TPtrC8 const &)
+	?NewL@CSLPushMsgEntry@@SAPAV1@XZ @ 20 NONAME ; public: static class CSLPushMsgEntry * __cdecl CSLPushMsgEntry::NewL(void)
+	?PushMsgType@CSIPushMsgEntry@@UBEJXZ @ 21 NONAME ; public: virtual long __thiscall CSIPushMsgEntry::PushMsgType(void)const 
+	?SetAction@CSIPushMsgEntry@@QAEXH@Z @ 22 NONAME ; public: void __thiscall CSIPushMsgEntry::SetAction(int)
+	?SetAction@CSLPushMsgEntry@@QAEXH@Z @ 23 NONAME ; public: void __thiscall CSLPushMsgEntry::SetAction(int)
+	?SetIdL@CSIPushMsgEntry@@QAEXABVTDesC16@@@Z @ 24 NONAME ; public: void __thiscall CSIPushMsgEntry::SetIdL(class TDesC16 const &)
+	?SetTextL@CSIPushMsgEntry@@QAEXABVTDesC16@@@Z @ 25 NONAME ; public: void __thiscall CSIPushMsgEntry::SetTextL(class TDesC16 const &)
+	?SetUrlL@CSIPushMsgEntry@@QAEXABVTDesC16@@@Z @ 26 NONAME ; public: void __thiscall CSIPushMsgEntry::SetUrlL(class TDesC16 const &)
+	?SetUrlL@CSLPushMsgEntry@@QAEXABVTDesC16@@@Z @ 27 NONAME ; public: void __thiscall CSLPushMsgEntry::SetUrlL(class TDesC16 const &)
+	?Text@CSIPushMsgEntry@@QBEABVTDesC16@@XZ @ 28 NONAME ; public: class TDesC16 const & __thiscall CSIPushMsgEntry::Text(void)const 
+	?DeleteEntryNowL@CSISLPushMsgUtils@@QAEXJ@Z @ 29 NONAME ; void CSISLPushMsgUtils::DeleteEntryNowL(long)
+	?MsgOriginUri@CSIPushMsgEntry@@QBEABVTDesC8@@XZ @ 30 NONAME ; class TDesC8 const & CSIPushMsgEntry::MsgOriginUri(void) const
+	?MsgOriginUri@CSLPushMsgEntry@@QBEABVTDesC8@@XZ @ 31 NONAME ; class TDesC8 const & CSLPushMsgEntry::MsgOriginUri(void) const
+	?SetMsgOriginUriL@CSIPushMsgEntry@@QAEXABVTDesC8@@@Z @ 32 NONAME ; void CSIPushMsgEntry::SetMsgOriginUriL(class TDesC8 const &)
+	?SetMsgOriginUriL@CSLPushMsgEntry@@QAEXABVTDesC8@@@Z @ 33 NONAME ; void CSLPushMsgEntry::SetMsgOriginUriL(class TDesC8 const &)
+	?SetTrusted@CSIPushMsgEntry@@QAEXH@Z @ 34 NONAME ; void CSIPushMsgEntry::SetTrusted(int)
+	?SetTrusted@CSLPushMsgEntry@@QAEXH@Z @ 35 NONAME ; void CSLPushMsgEntry::SetTrusted(int)
+	?Trusted@CSIPushMsgEntry@@QBEHXZ @ 36 NONAME ; int CSIPushMsgEntry::Trusted(void) const
+	?Trusted@CSLPushMsgEntry@@QBEHXZ @ 37 NONAME ; int CSLPushMsgEntry::Trusted(void) const
+

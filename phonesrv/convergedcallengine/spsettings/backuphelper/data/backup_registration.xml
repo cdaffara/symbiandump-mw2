@@ -1,0 +1,7 @@
+<?xml version="1.0" standalone="yes" ?> 
+<backup_registration version="1.0" >
+    <active_backup process_name = "spsbackuphelper.exe"
+        active_type = "activeonly" />
+
+    <restore requires_reboot="yes" />
+</backup_registration>

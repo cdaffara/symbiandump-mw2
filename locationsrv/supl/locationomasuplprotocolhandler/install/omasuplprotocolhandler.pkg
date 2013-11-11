@@ -1,0 +1,54 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: Installation file for omasuplprotocolhandler
+;
+
+; Installation file for for OMA SUPL Protocol Handler
+
+; Languages, (English only)
+&EN
+
+; UID is the app's UID
+#{"OMASUPL ProtocolHandler"},(0x102073D0),1,0,0
+
+;Series 60 v3.0
+(0x101f7961), 0, 0, 0, {"Series60ProductID"}
+
+; Localised Vendor name
+%{"Nokia"}
+
+; Unique Vendor name
+:"Nokia"
+
+;
+; Files to install
+;
+"\Epoc32\release\armv5\urel\epos_comasuplasnplugin.dll"-"!:\sys\bin\epos_comasuplasnplugin.dll"
+"\Epoc32\release\armv5\urel\eposomasuplposmessageplugin.dll"-"!:\sys\bin\eposomasuplposmessageplugin.dll"
+"\Epoc32\release\armv5\urel\eposomasuplprotocolhandler.dll"-"!:\sys\bin\eposomasuplprotocolhandler.dll"
+"\Epoc32\data\Z\Resource\Plugins\eposomasuplprotocolhandler.rsc"-"!:\resource\plugins\eposomasuplprotocolhandler.rsc"
+"\Epoc32\release\armv5\urel\epos_omasuplwaplistener.dll"-"!:\sys\bin\epos_omasuplwaplistener.dll"
+"\Epoc32\data\Z\Resource\Plugins\epos_omasuplwaplistener.rsc"-"!:\resource\plugins\epos_omasuplwaplistener.rsc"
+"\Epoc32\release\armv5\urel\epos_omasupllistener.exe"-"!:\sys\bin\epos_omasupllistener.exe"
+"\Epoc32\release\armv5\urel\epos_omasuplprovhandler.dll"-"!:\sys\bin\epos_omasuplprovhandler.dll"
+"\Epoc32\data\Z\Resource\Plugins\epos_omasuplprovhandler.rsc"-"!:\resource\plugins\epos_omasuplprovhandler.rsc"
+"\Epoc32\data\Z\Resource\epos_omasuplprotocolhandler.rsc"-"!:\resource\epos_omasuplprotocolhandler.rsc"
+"\Epoc32\release\armv5\urel\epos_omasuplsyncmldm.dll"-"!:\sys\bin\epos_omasuplsyncmldm.dll"
+"\Epoc32\data\Z\Resource\Plugins\epos_omasuplsyncmldm.rsc"-"!:\resource\plugins\epos_omasuplsyncmldm.rsc"
+"\Epoc32\release\armv5\urel\epos_omasuplnotifierplugin.dll"-"!:\sys\bin\epos_omasuplnotifierplugin.dll"
+"\Epoc32\data\Z\Resource\Plugins\epos_omasuplnotifierplugin.rsc"-"!:\resource\plugins\epos_omasuplnotifierplugin.rsc"
+"\Epoc32\release\armv5\urel\epos_omasuplnotifier.dll"-"!:\sys\bin\epos_omasuplnotifier.dll"
+"\Epoc32\data\Z\Resource\epos_omasuplnotifier.rsc"-"!:\resource\epos_omasuplnotifier.rsc"
+
+; End of File

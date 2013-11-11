@@ -1,0 +1,290 @@
+EXPORTS
+	??0CMPXCollectionType@@QAE@ABVTUid@@PAVCDesC16Array@@1@Z @ 1 NONAME ; CMPXCollectionType::CMPXCollectionType(class TUid const &, class CDesC16Array *, class CDesC16Array *)
+	??0CMPXCollectionType@@QAE@XZ @ 2 NONAME ; CMPXCollectionType::CMPXCollectionType(void)
+	??0CMPXParameter@@QAE@XZ @ 3 NONAME ; CMPXParameter::CMPXParameter(void)
+	??0CMPXPluginHandlerBase@@QAE@VTUid@@W4TPluginSelection@0@HAAVMMPXPluginHandlerObserver@@PAVCMPXPluginMonitor@@@Z @ 4 NONAME ; CMPXPluginHandlerBase::CMPXPluginHandlerBase(class TUid, enum CMPXPluginHandlerBase::TPluginSelection, int, class MMPXPluginHandlerObserver &, CMPXPluginMonitor*)
+	??0TMPXAttribute@@QAE@ABV0@@Z @ 5 NONAME ; TMPXAttribute::TMPXAttribute(class TMPXAttribute const &)
+	??0TMPXAttribute@@QAE@ABVTMPXAttributeData@@@Z @ 6 NONAME ; TMPXAttribute::TMPXAttribute(class TMPXAttributeData const &)
+	??0TMPXAttribute@@QAE@HI@Z @ 7 NONAME ; TMPXAttribute::TMPXAttribute(int, unsigned int)
+	??0TMPXAttribute@@QAE@XZ @ 8 NONAME ; TMPXAttribute::TMPXAttribute(void)
+	??0TMPXMessage@@QAE@ABV0@@Z @ 9 NONAME ; TMPXMessage::TMPXMessage(class TMPXMessage const &)
+	??0TMPXMessage@@QAE@HHH@Z @ 10 NONAME ; TMPXMessage::TMPXMessage(int, int, int)
+	??0TMPXMessage@@QAE@XZ @ 11 NONAME ; TMPXMessage::TMPXMessage(void)
+	??1CMPXActiveTaskQueue@@UAE@XZ @ 12 NONAME ; CMPXActiveTaskQueue::~CMPXActiveTaskQueue(void)
+	??1CMPXCenRepWatcher@@UAE@XZ @ 13 NONAME ; CMPXCenRepWatcher::~CMPXCenRepWatcher(void)
+	??1CMPXClientList@@UAE@XZ @ 14 NONAME ; CMPXClientList::~CMPXClientList(void)
+	??1CMPXCollectionPath@@UAE@XZ @ 15 NONAME ; CMPXCollectionPath::~CMPXCollectionPath(void)
+	??1CMPXDrmMediaUtility@@UAE@XZ @ 16 NONAME ; CMPXDrmMediaUtility::~CMPXDrmMediaUtility(void)
+	??1CMPXMedia@@UAE@XZ @ 17 NONAME ; CMPXMedia::~CMPXMedia(void)
+	??1CMPXMediaArray@@UAE@XZ @ 18 NONAME ; CMPXMediaArray::~CMPXMediaArray(void)
+	??1CMPXMessageMonitor@@UAE@XZ @ 19 NONAME ; CMPXMessageMonitor::~CMPXMessageMonitor(void)
+	??1CMPXMessageQueue@@UAE@XZ @ 20 NONAME ; CMPXMessageQueue::~CMPXMessageQueue(void)
+	??1CMPXPSKeyWatcher@@UAE@XZ @ 21 NONAME ; CMPXPSKeyWatcher::~CMPXPSKeyWatcher(void)
+	??1CMPXParameter@@UAE@XZ @ 22 NONAME ; CMPXParameter::~CMPXParameter(void)
+	??1CMPXPluginHandlerBase@@UAE@XZ @ 23 NONAME ; CMPXPluginHandlerBase::~CMPXPluginHandlerBase(void)
+	??1CMPXPluginMonitor@@UAE@XZ @ 24 NONAME ; CMPXPluginMonitor::~CMPXPluginMonitor(void)
+	??1CMPXTaskQueue@@UAE@XZ @ 25 NONAME ; CMPXTaskQueue::~CMPXTaskQueue(void)
+	??4CMPXMedia@@QAEAAV0@ABV0@@Z @ 26 NONAME ; class CMPXMedia & CMPXMedia::operator=(class CMPXMedia const &)
+	??4TMPXAttribute@@QAEAAV0@ABV0@@Z @ 27 NONAME ; class TMPXAttribute & TMPXAttribute::operator=(class TMPXAttribute const &)
+	??4TMPXMessage@@QAEAAV0@ABV0@@Z @ 28 NONAME ; class TMPXMessage & TMPXMessage::operator=(class TMPXMessage const &)
+	??8TMPXAttribute@@QBEHABV0@@Z @ 29 NONAME ; int TMPXAttribute::operator==(class TMPXAttribute const &) const
+	??ACMPXMediaArray@@QBEPAVCMPXMedia@@H@Z @ 30 NONAME ; class CMPXMedia * CMPXMediaArray::operator[](int) const
+	??ECMPXCollectionPath@@QAEHXZ @ 31 NONAME ; int CMPXCollectionPath::operator++(void)
+	??FCMPXCollectionPath@@QAEHXZ @ 32 NONAME ; int CMPXCollectionPath::operator--(void)
+	??ITMPXAttributeData@@QBEHAAI@Z @ 33 NONAME ; int TMPXAttributeData::operator&(unsigned int &) const
+	??ITMPXAttributeData@@QBEHABV0@@Z @ 34 NONAME ; int TMPXAttributeData::operator&(class TMPXAttributeData const &) const
+	??UTMPXAttributeData@@QBE?AV0@ABV0@@Z @ 35 NONAME ; class TMPXAttributeData TMPXAttributeData::operator|(class TMPXAttributeData const &) const
+	?Add@CMPXMessageQueue@@QAEXPBVCMPXMedia@@H@Z @ 36 NONAME ; void CMPXMessageQueue::Add(class CMPXMedia const *, int)
+	?AddClientL@CMPXClientList@@QAEXVTThreadId@@HPAVCMPXMessageQueue@@@Z @ 37 NONAME ; void CMPXClientList::AddClientL(class TThreadId, int, class CMPXMessageQueue *)
+	?AddClientL@CMPXClientList@@QAEXVTThreadId@@PAVCMPXMessageQueue@@@Z @ 38 NONAME ; void CMPXClientList::AddClientL(class TThreadId, class CMPXMessageQueue *)
+	?AddTaskL@CMPXActiveTaskQueue@@QAEXHPAXPAVMMPXTaskQueueObserver@@HPAVCBufBase@@0PAVCBase@@3@Z @ 39 NONAME ; void CMPXActiveTaskQueue::AddTaskL(int, void *, class MMPXTaskQueueObserver *, int, class CBufBase *, void *, class CBase *, class CBase *)
+	?AddTaskL@CMPXTaskQueue@@QAEXHPAXHPAVCBufBase@@0PAVCBase@@2@Z @ 40 NONAME ; void CMPXTaskQueue::AddTaskL(int, void *, int, class CBufBase *, void *, class CBase *, class CBase *)
+	?Alloc8L@MPXUser@@SAPAVHBufC8@@ABVTDesC16@@@Z @ 41 NONAME ; class HBufC8 * MPXUser::Alloc8L(class TDesC16 const &)
+	?AllocL@MPXUser@@SAPAVHBufC16@@ABVTDesC8@@@Z @ 42 NONAME ; class HBufC16 * MPXUser::AllocL(class TDesC8 const &)
+	?AppendL@CMPXCollectionPath@@QAEXABV?$TArray@VTMPXItemId@@@@@Z @ 43 NONAME ; void CMPXCollectionPath::AppendL(class TArray<class TMPXItemId> const &)
+	?AppendL@CMPXCollectionPath@@QAEXABVTMPXItemId@@@Z @ 44 NONAME ; void CMPXCollectionPath::AppendL(class TMPXItemId const &)
+	?AppendL@CMPXMediaArray@@QAEXABVCMPXMedia@@@Z @ 45 NONAME ; void CMPXMediaArray::AppendL(class CMPXMedia const &)
+	?AppendL@CMPXMediaArray@@QAEXPBVCMPXMedia@@@Z @ 46 NONAME ; void CMPXMediaArray::AppendL(class CMPXMedia const *)
+	?Attribute@CMPXMedia@@QBEABVTMPXAttribute@@H@Z @ 47 NONAME ; class TMPXAttribute const & CMPXMedia::Attribute(int) const
+	?AttributeId@TMPXAttribute@@QBEIXZ @ 48 NONAME ; unsigned int TMPXAttribute::AttributeId(void) const
+	?Attributes@CMPXMedia@@QBE?BV?$TArray@VTMPXAttribute@@@@XZ @ 49 NONAME ; class TArray<class TMPXAttribute> const CMPXMedia::Attributes(void) const
+	?AttributesSet@CMPXMedia@@QBEIH@Z @ 50 NONAME ; unsigned int CMPXMedia::AttributesSet(int) const
+	?Back@CMPXCollectionPath@@QAEXXZ @ 51 NONAME ; void CMPXCollectionPath::Back(void)
+	?BaseConstructL@CMPXPluginHandlerBase@@IAEXXZ @ 52 NONAME ; void CMPXPluginHandlerBase::BaseConstructL(void)
+	?BufData@CMPXTaskQueue@@QAEABVTDesC8@@XZ @ 53 NONAME ; class TDesC8 const & CMPXTaskQueue::BufData(void)
+	?Callback@CMPXTaskQueue@@QAEPAXXZ @ 54 NONAME ; void * CMPXTaskQueue::Callback(void)
+	?CancelRequests@CMPXActiveTaskQueue@@QAEXXZ @ 55 NONAME ; void CMPXActiveTaskQueue::CancelRequests(void)
+	?ClearSelection@CMPXCollectionPath@@QAEXXZ @ 56 NONAME ; void CMPXCollectionPath::ClearSelection(void)
+	?ClearSelectionCriteria@CMPXPluginHandlerBase@@UAEXXZ @ 57 NONAME ; void CMPXPluginHandlerBase::ClearSelectionCriteria(void)
+	?ClientCount@CMPXClientList@@QBEHXZ @ 58 NONAME ; int CMPXClientList::ClientCount(void) const
+	?ClientMode@CMPXClientList@@QBEHH@Z @ 59 NONAME ; int CMPXClientList::ClientMode(int) const
+	?ClientProcessList@CMPXClientList@@QBE?AV?$TArray@VTProcessId@@@@XZ @ 60 NONAME ; class TArray<class TProcessId> CMPXClientList::ClientProcessList(void) const
+	?Close@CMPXDrmMediaUtility@@QAEXXZ @ 61 NONAME ; void CMPXDrmMediaUtility::Close(void)
+	?CompareOrderedUidArrays@MPXUser@@SAHABV?$TArray@VTUid@@@@0@Z @ 62 NONAME ; int MPXUser::CompareOrderedUidArrays(class TArray<class TUid> const &, class TArray<class TUid> const &)
+	?CompareUids@MPXUser@@SAHABVTUid@@0@Z @ 63 NONAME ; int MPXUser::CompareUids(class TUid const &, class TUid const &)
+	?CompleteTask@CMPXActiveTaskQueue@@QAEXXZ @ 64 NONAME ; void CMPXActiveTaskQueue::CompleteTask(void)
+	?CompleteWithDllPath@MPXUser@@SAHABVTDesC16@@AAVTDes16@@@Z @ 65 NONAME ; int MPXUser::CompleteWithDllPath(class TDesC16 const &, class TDes16 &)
+	?Connect@RMPXSession@@QAEHABVTDesC16@@0ABVTVersion@@@Z @ 66 NONAME ; int RMPXSession::Connect(class TDesC16 const &, class TDesC16 const &, class TVersion const &)
+	?ConsumeL@CMPXDrmMediaUtility@@QAEXW4TDrmConsumeType@@@Z @ 67 NONAME ; void CMPXDrmMediaUtility::ConsumeL(enum TDrmConsumeType)
+	?ContentId@TMPXAttribute@@QBEHXZ @ 68 NONAME ; int TMPXAttribute::ContentId(void) const
+	?CopyArrayL@MPXUser@@SAXABVMDesC16Array@@AAVCDesC16Array@@@Z @ 69 NONAME ; void MPXUser::CopyArrayL(class MDesC16Array const &, class CDesC16Array &)
+	?Count@CMPXCollectionPath@@QBEHXZ @ 70 NONAME ; int CMPXCollectionPath::Count(void) const
+	?Count@CMPXMedia@@QBEHXZ @ 71 NONAME ; int CMPXMedia::Count(void) const
+	?Count@CMPXMediaArray@@QBEHXZ @ 72 NONAME ; int CMPXMediaArray::Count(void) const
+	?CreateBufferL@MPXUser@@SAXABVRMessage2@@HAAPAVCBufBase@@@Z @ 73 NONAME ; void MPXUser::CreateBufferL(class RMessage2 const &, int, class CBufBase * &)
+	?CreateBufferL@MPXUser@@SAXABVTDesC16@@AAPAVCBufBase@@@Z @ 74 NONAME ; void MPXUser::CreateBufferL(class TDesC16 const &, class CBufBase * &)
+	?CreateBufferL@MPXUser@@SAXPBVMDesC16Array@@AAPAVCBufBase@@@Z @ 75 NONAME ; void MPXUser::CreateBufferL(class MDesC16Array const *, class CBufBase * &)
+	?CreateBufferLC@MPXUser@@SAPAVCBufBase@@H@Z @ 76 NONAME ; class CBufBase * MPXUser::CreateBufferLC(int)
+	?CreateFromBufferL@MPXUser@@SAXABVCBufBase@@AAPAVCDesC16Array@@@Z @ 77 NONAME ; void MPXUser::CreateFromBufferL(class CBufBase const &, class CDesC16Array * &)
+	?CreatePluginListL@CMPXPluginHandlerBase@@QAEXXZ @ 78 NONAME ; void CMPXPluginHandlerBase::CreatePluginListL(void)
+	?CurrentValueL@CMPXCenRepWatcher@@QAEHXZ @ 79 NONAME ; int CMPXCenRepWatcher::CurrentValueL(void)
+	?Data@TMPXMessage@@QBEHXZ @ 80 NONAME ; int TMPXMessage::Data(void) const
+	?Delete@CMPXMedia@@QAEXABVTMPXAttribute@@@Z @ 81 NONAME ; void CMPXMedia::Delete(class TMPXAttribute const &)
+	?Delete@CMPXMedia@@QAEXH@Z @ 82 NONAME ; void CMPXMedia::Delete(int)
+	?Deselect@CMPXCollectionPath@@QAEXABVTMPXItemId@@@Z @ 83 NONAME ; void CMPXCollectionPath::Deselect(class TMPXItemId const &)
+	?Deselect@CMPXCollectionPath@@QAEXH@Z @ 84 NONAME ; void CMPXCollectionPath::Deselect(int)
+	?DeselectAll@CMPXCollectionPath@@QAEXXZ @ 85 NONAME ; void CMPXCollectionPath::DeselectAll(void)
+	?DoCancel@CMPXMessageMonitor@@MAEXXZ @ 86 NONAME ; void CMPXMessageMonitor::DoCancel(void)
+	?DoResolvePluginL@CMPXPluginHandlerBase@@MAEXAAVTUid@@AAHAAVTPtrC16@@1@Z @ 87 NONAME ; void CMPXPluginHandlerBase::DoResolvePluginL(class TUid &, int &, class TPtrC16 &, int &)
+	?Event@TMPXMessage@@QBEHXZ @ 88 NONAME ; int TMPXMessage::Event(void) const
+	?ExternalizeL@CMPXCollectionPath@@QBEXAAVRWriteStream@@@Z @ 89 NONAME ; void CMPXCollectionPath::ExternalizeL(class RWriteStream &) const
+	?ExternalizeL@CMPXCollectionType@@QBEXAAVRWriteStream@@@Z @ 90 NONAME ; void CMPXCollectionType::ExternalizeL(class RWriteStream &) const
+	?ExternalizeL@CMPXMedia@@QBEXAAVRWriteStream@@@Z @ 91 NONAME ; void CMPXMedia::ExternalizeL(class RWriteStream &) const
+	?ExternalizeL@CMPXMediaArray@@QBEXAAVRWriteStream@@@Z @ 92 NONAME ; void CMPXMediaArray::ExternalizeL(class RWriteStream &) const
+	?ExternalizeL@CMPXParameter@@QBEXAAVRWriteStream@@@Z @ 93 NONAME ; void CMPXParameter::ExternalizeL(class RWriteStream &) const
+	?ExternalizeL@MPXUser@@SAXABV?$TArray@VTMPXItemId@@@@AAVRWriteStream@@@Z @ 94 NONAME ; void MPXUser::ExternalizeL(class TArray<class TMPXItemId> const &, class RWriteStream &)
+	?ExternalizeL@MPXUser@@SAXPBVMDesC16Array@@AAVRWriteStream@@@Z @ 95 NONAME ; void MPXUser::ExternalizeL(class MDesC16Array const *, class RWriteStream &)
+	?ExternalizeL@TMPXAttribute@@QBEXAAVRWriteStream@@@Z @ 96 NONAME ; void TMPXAttribute::ExternalizeL(class RWriteStream &) const
+	?Find@CMPXClientList@@QBEHABVCMPXMessageQueue@@@Z @ 97 NONAME ; int CMPXClientList::Find(class CMPXMessageQueue const &) const
+	?Find@CMPXClientList@@QBEHVTThreadId@@@Z @ 98 NONAME ; int CMPXClientList::Find(class TThreadId) const
+	?FindPlugin@CMPXPluginHandlerBase@@QBE?AVTUid@@ABV?$TArray@VTUid@@@@@Z @ 99 NONAME ; class TUid CMPXPluginHandlerBase::FindPlugin(class TArray<class TUid> const &) const
+	?FindWindowGroupIdL@MPXUser@@SAHVTProcessId@@AAVRWsSession@@@Z @ 100 NONAME ; int MPXUser::FindWindowGroupIdL(class TProcessId, class RWsSession &)
+	?GetMediaL@CMPXDrmMediaUtility@@QAEPBVCMPXMedia@@I@Z @ 101 NONAME ; class CMPXMedia const * CMPXDrmMediaUtility::GetMediaL(unsigned int)
+	?GetNextMessage@CMPXMessageMonitor@@QAEXXZ @ 102 NONAME ; void CMPXMessageMonitor::GetNextMessage(void)
+	?GetPluginTypes@CMPXPluginHandlerBase@@QBEXAAV?$RArray@H@@@Z @ 103 NONAME ; void CMPXPluginHandlerBase::GetPluginTypes(class RArray<int> &) const
+	?GetPluginUids@CMPXPluginHandlerBase@@QBEXAAV?$RArray@VTUid@@@@@Z @ 104 NONAME ; void CMPXPluginHandlerBase::GetPluginUids(class RArray<class TUid> &) const
+	?GetPluginUidsL@CMPXPluginHandlerBase@@QBEXAAV?$RArray@VTUid@@@@H@Z @ 105 NONAME ; void CMPXPluginHandlerBase::GetPluginUidsL(class RArray<class TUid> &, int) const
+	?GetSelectionCriteria@CMPXPluginHandlerBase@@UAEXAAW4TPluginSelection@1@AAHAAVTUid@@AAVTPtrC8@@33@Z @ 106 NONAME ; void CMPXPluginHandlerBase::GetSelectionCriteria(enum CMPXPluginHandlerBase::TPluginSelection &, int &, class TUid &, class TPtrC8 &, class TPtrC8 &, class TPtrC8 &)
+	?GetValue@CMPXPSKeyWatcher@@QAEHAAH@Z @ 107 NONAME ; int CMPXPSKeyWatcher::GetValue(int &)
+	?GetValue@CMPXPSKeyWatcher@@QAEHAAVTDes16@@@Z @ 108 NONAME ; int CMPXPSKeyWatcher::GetValue(class TDes16 &)
+	?GetValue@CMPXPSKeyWatcher@@QAEHAAVTDes8@@@Z @ 109 NONAME ; int CMPXPSKeyWatcher::GetValue(class TDes8 &)
+	?HandleChange@CMPXCollectionPath@@QAEHABVTUid@@ABVTMPXItemId@@1W4TMPXCollectionPathChange@1@AAH@Z @ 110 NONAME ; int CMPXCollectionPath::HandleChange(class TUid const &, class TMPXItemId const &, class TMPXItemId const &, enum CMPXCollectionPath::TMPXCollectionPathChange, int &)
+	?Id@CMPXCollectionPath@@QBEABVTMPXItemId@@H@Z @ 111 NONAME ; class TMPXItemId const & CMPXCollectionPath::Id(int) const
+	?Id@CMPXCollectionPath@@QBEABVTMPXItemId@@XZ @ 112 NONAME ; class TMPXItemId const & CMPXCollectionPath::Id(void) const
+	?IdOfIndex@CMPXCollectionPath@@QBEABVTMPXItemId@@H@Z @ 113 NONAME ; class TMPXItemId const & CMPXCollectionPath::IdOfIndex(int) const
+	?Index@CMPXCollectionPath@@QBEHH@Z @ 114 NONAME ; int CMPXCollectionPath::Index(int) const
+	?Index@CMPXCollectionPath@@QBEHXZ @ 115 NONAME ; int CMPXCollectionPath::Index(void) const
+	?Index@CMPXMedia@@QBEHABVTMPXAttribute@@@Z @ 116 NONAME ; int CMPXMedia::Index(class TMPXAttribute const &) const
+	?IndexOf@CMPXPluginHandlerBase@@QBEHABVTUid@@@Z @ 117 NONAME ; int CMPXPluginHandlerBase::IndexOf(class TUid const &) const
+	?IndexOfId@CMPXCollectionPath@@QBEHABVTMPXItemId@@@Z @ 118 NONAME ; int CMPXCollectionPath::IndexOfId(class TMPXItemId const &) const
+	?InitL@CMPXDrmMediaUtility@@QAEXAAVRFile@@@Z @ 119 NONAME ; void CMPXDrmMediaUtility::InitL(class RFile &)
+	?InitL@CMPXDrmMediaUtility@@QAEXABVTDesC16@@@Z @ 120 NONAME ; void CMPXDrmMediaUtility::InitL(class TDesC16 const &)
+	?Insert@CMPXMediaArray@@QAEHABVCMPXMedia@@H@Z @ 121 NONAME ; int CMPXMediaArray::Insert(class CMPXMedia const &, int)
+	?Insert@CMPXMediaArray@@QAEHPBVCMPXMedia@@H@Z @ 122 NONAME ; int CMPXMediaArray::Insert(class CMPXMedia const *, int)
+	?InsertL@CMPXMediaArray@@QAEXABVCMPXMedia@@H@Z @ 123 NONAME ; void CMPXMediaArray::InsertL(class CMPXMedia const &, int)
+	?InsertL@CMPXMediaArray@@QAEXPBVCMPXMedia@@H@Z @ 124 NONAME ; void CMPXMediaArray::InsertL(class CMPXMedia const *, int)
+	?InternalizeL@CMPXCollectionPath@@QAEXAAVRReadStream@@@Z @ 125 NONAME ; void CMPXCollectionPath::InternalizeL(class RReadStream &)
+	?InternalizeL@CMPXCollectionType@@QAEXAAVRReadStream@@@Z @ 126 NONAME ; void CMPXCollectionType::InternalizeL(class RReadStream &)
+	?InternalizeL@CMPXMedia@@QAEXAAVRReadStream@@@Z @ 127 NONAME ; void CMPXMedia::InternalizeL(class RReadStream &)
+	?InternalizeL@CMPXMediaArray@@QAEXAAVRReadStream@@@Z @ 128 NONAME ; void CMPXMediaArray::InternalizeL(class RReadStream &)
+	?InternalizeL@CMPXParameter@@QAEXAAVRReadStream@@@Z @ 129 NONAME ; void CMPXParameter::InternalizeL(class RReadStream &)
+	?InternalizeL@MPXUser@@SAXAAPAVCDesC16Array@@AAVRReadStream@@@Z @ 130 NONAME ; void MPXUser::InternalizeL(class CDesC16Array * &, class RReadStream &)
+	?InternalizeL@MPXUser@@SAXAAV?$RArray@VTMPXItemId@@@@AAVRReadStream@@@Z @ 131 NONAME ; void MPXUser::InternalizeL(class RArray<class TMPXItemId> &, class RReadStream &)
+	?InternalizeL@TMPXAttribute@@QAEXAAVRReadStream@@@Z @ 132 NONAME ; void TMPXAttribute::InternalizeL(class RReadStream &)
+	?IsCallOngoing@MPXUser@@SAHH@Z @ 133 NONAME ; int MPXUser::IsCallOngoing(int)
+	?IsClient@CMPXClientList@@QBEHVTThreadId@@@Z @ 134 NONAME ; int CMPXClientList::IsClient(class TThreadId) const
+	?IsEmpty@CMPXTaskQueue@@QAEHXZ @ 135 NONAME ; int CMPXTaskQueue::IsEmpty(void)
+	?IsSelected@CMPXCollectionPath@@QBEHABVTMPXItemId@@@Z @ 136 NONAME ; int CMPXCollectionPath::IsSelected(class TMPXItemId const &) const
+	?IsSelected@CMPXCollectionPath@@QBEHH@Z @ 137 NONAME ; int CMPXCollectionPath::IsSelected(int) const
+	?IsSupported@CMPXMedia@@QBEHABVTMPXAttribute@@@Z @ 138 NONAME ; int CMPXMedia::IsSupported(class TMPXAttribute const &) const
+	?Levels@CMPXCollectionPath@@QBEHXZ @ 139 NONAME ; int CMPXCollectionPath::Levels(void) const
+	?Match@TMPXAttribute@@SAHABV1@0@Z @ 140 NONAME ; int TMPXAttribute::Match(class TMPXAttribute const &, class TMPXAttribute const &)
+	?MatchContentId@TMPXAttribute@@SAHABV1@0@Z @ 141 NONAME ; int TMPXAttribute::MatchContentId(class TMPXAttribute const &, class TMPXAttribute const &)
+	?MergeArray@MPXUser@@SAXABVMDesC16Array@@AAVCDesC16Array@@@Z @ 142 NONAME ; void MPXUser::MergeArray(class MDesC16Array const &, class CDesC16Array &)
+	?MergeAttributeL@MPXUser@@SAXABV?$TArray@VTMPXAttribute@@@@AAV?$RArray@VTMPXAttribute@@@@@Z @ 143 NONAME ; void MPXUser::MergeAttributeL(class TArray<class TMPXAttribute> const &, class RArray<class TMPXAttribute> &)
+	?NewL@CMPXActiveTaskQueue@@SAPAV1@XZ @ 144 NONAME ; class CMPXActiveTaskQueue * CMPXActiveTaskQueue::NewL(void)
+	?NewL@CMPXCenRepWatcher@@SAPAV1@ABVTUid@@KPAVMMPXCenRepObserver@@@Z @ 145 NONAME ; class CMPXCenRepWatcher * CMPXCenRepWatcher::NewL(class TUid const &, unsigned long, class MMPXCenRepObserver *)
+	?NewL@CMPXClientList@@SAPAV1@PAVMMPXClientlistObserver@@@Z @ 146 NONAME ; class CMPXClientList * CMPXClientList::NewL(class MMPXClientlistObserver *)
+	?NewL@CMPXCollectionPath@@SAPAV1@AAVRReadStream@@@Z @ 147 NONAME ; class CMPXCollectionPath * CMPXCollectionPath::NewL(class RReadStream &)
+	?NewL@CMPXCollectionPath@@SAPAV1@ABV1@@Z @ 148 NONAME ; class CMPXCollectionPath * CMPXCollectionPath::NewL(class CMPXCollectionPath const &)
+	?NewL@CMPXCollectionPath@@SAPAV1@XZ @ 149 NONAME ; class CMPXCollectionPath * CMPXCollectionPath::NewL(void)
+	?NewL@CMPXDrmMediaUtility@@SAPAV1@XZ @ 150 NONAME ; class CMPXDrmMediaUtility * CMPXDrmMediaUtility::NewL(void)
+	?NewL@CMPXMedia@@SAPAV1@AAVRReadStream@@@Z @ 151 NONAME ; class CMPXMedia * CMPXMedia::NewL(class RReadStream &)
+	?NewL@CMPXMedia@@SAPAV1@ABV1@@Z @ 152 NONAME ; class CMPXMedia * CMPXMedia::NewL(class CMPXMedia const &)
+	?NewL@CMPXMedia@@SAPAV1@ABV?$TArray@H@@@Z @ 153 NONAME ; class CMPXMedia * CMPXMedia::NewL(class TArray<int> const &)
+	?NewL@CMPXMedia@@SAPAV1@H@Z @ 154 NONAME ; class CMPXMedia * CMPXMedia::NewL(int)
+	?NewL@CMPXMedia@@SAPAV1@XZ @ 155 NONAME ; class CMPXMedia * CMPXMedia::NewL(void)
+	?NewL@CMPXMediaArray@@SAPAV1@ABV1@@Z @ 156 NONAME ; class CMPXMediaArray * CMPXMediaArray::NewL(class CMPXMediaArray const &)
+	?NewL@CMPXMediaArray@@SAPAV1@XZ @ 157 NONAME ; class CMPXMediaArray * CMPXMediaArray::NewL(void)
+	?NewL@CMPXMessageMonitor@@SAPAV1@ABVRMPXSession@@AAVMMPXMessageObserver@@@Z @ 158 NONAME ; class CMPXMessageMonitor * CMPXMessageMonitor::NewL(class RMPXSession const &, class MMPXMessageObserver &)
+	?NewL@CMPXMessageQueue@@SAPAV1@XZ @ 159 NONAME ; class CMPXMessageQueue * CMPXMessageQueue::NewL(void)
+	?NewL@CMPXPSKeyWatcher@@SAPAV1@VTUid@@HPAVMMPXPSKeyObserver@@@Z @ 160 NONAME ; class CMPXPSKeyWatcher * CMPXPSKeyWatcher::NewL(class TUid, int, class MMPXPSKeyObserver *)
+	?NewL@CMPXPluginMonitor@@SAPAV1@ABVTUid@@@Z @ 161 NONAME ; class CMPXPluginMonitor * CMPXPluginMonitor::NewL(class TUid const &)
+	?NewL@CMPXTaskQueue@@SAPAV1@XZ @ 162 NONAME ; class CMPXTaskQueue * CMPXTaskQueue::NewL(void)
+	?NewLC@CMPXDrmMediaUtility@@SAPAV1@XZ @ 163 NONAME ; class CMPXDrmMediaUtility * CMPXDrmMediaUtility::NewLC(void)
+	?OpenAttributes@CMPXCollectionPath@@QBE?BV?$TArray@VTMPXAttribute@@@@XZ @ 164 NONAME ; class TArray<class TMPXAttribute> const CMPXCollectionPath::OpenAttributes(void) const
+	?OpenNextMode@CMPXCollectionPath@@QBE?AW4TMPXOpenMode@@XZ @ 165 NONAME ; enum TMPXOpenMode CMPXCollectionPath::OpenNextMode(void) const
+	?OpenPreviousMode@CMPXCollectionPath@@QBE?AW4TMPXOpenMode@@XZ @ 166 NONAME ; enum TMPXOpenMode CMPXCollectionPath::OpenPreviousMode(void) const
+	?Param@CMPXTaskQueue@@QAEHXZ @ 167 NONAME ; int CMPXTaskQueue::Param(void)
+	?PluginName@CMPXPluginHandlerBase@@QBEABVTDesC16@@ABVTUid@@@Z @ 168 NONAME ; class TDesC16 const & CMPXPluginHandlerBase::PluginName(class TUid const &) const
+	?PluginName@CMPXPluginHandlerBase@@QBEABVTDesC16@@H@Z @ 169 NONAME ; class TDesC16 const & CMPXPluginHandlerBase::PluginName(int) const
+	?PluginNamesL@CMPXPluginHandlerBase@@QAEPAVCDesC16Array@@XZ @ 170 NONAME ; class CDesC16Array * CMPXPluginHandlerBase::PluginNamesL(void)
+	?PluginUid@CMPXPluginHandlerBase@@QBE?AVTUid@@ABVTDesC16@@@Z @ 171 NONAME ; class TUid CMPXPluginHandlerBase::PluginUid(class TDesC16 const &) const
+	?PluginsChangedL@CMPXPluginHandlerBase@@MAEXXZ @ 172 NONAME ; void CMPXPluginHandlerBase::PluginsChangedL(void)
+	?ProcessIdL@MPXUser@@SA?AVTProcessId@@VTThreadId@@@Z @ 173 NONAME ; class TProcessId MPXUser::ProcessIdL(class TThreadId)
+	?Ptr@MPXUser@@SA?AVTPtrC16@@ABVTDesC8@@@Z @ 174 NONAME ; class TPtrC16 MPXUser::Ptr(class TDesC8 const &)
+	?Ptr@MPXUser@@SA?AVTPtrC8@@ABVTDesC16@@@Z @ 175 NONAME ; class TPtrC8 MPXUser::Ptr(class TDesC16 const &)
+	?PtrData@CMPXTaskQueue@@QAEPAXXZ @ 176 NONAME ; void * CMPXTaskQueue::PtrData(void)
+	?RecreateBufferL@MPXUser@@SAXHAAPAVCBufBase@@@Z @ 177 NONAME ; void MPXUser::RecreateBufferL(int, class CBufBase * &)
+	?Remove@CMPXCollectionPath@@QAEXABVTMPXItemId@@@Z @ 178 NONAME ; void CMPXCollectionPath::Remove(class TMPXItemId const &)
+	?Remove@CMPXCollectionPath@@QAEXH@Z @ 179 NONAME ; void CMPXCollectionPath::Remove(int)
+	?Remove@CMPXMediaArray@@QAEXH@Z @ 180 NONAME ; void CMPXMediaArray::Remove(int)
+	?RemoveClient@CMPXClientList@@QAEXH@Z @ 181 NONAME ; void CMPXClientList::RemoveClient(int)
+	?RemoveTask@CMPXTaskQueue@@QAEPAXXZ @ 182 NONAME ; void * CMPXTaskQueue::RemoveTask(void)
+	?RemoveTask@CMPXTaskQueue@@QAEXPAX@Z @ 183 NONAME ; void CMPXTaskQueue::RemoveTask(void *)
+	?Reset@CMPXMedia@@QAEXXZ @ 184 NONAME ; void CMPXMedia::Reset(void)
+	?Reset@CMPXMediaArray@@QAEXXZ @ 185 NONAME ; void CMPXMediaArray::Reset(void)
+	?Reset@CMPXMessageQueue@@QAEXXZ @ 186 NONAME ; void CMPXMessageQueue::Reset(void)
+	?Reset@CMPXTaskQueue@@QAEXXZ @ 187 NONAME ; void CMPXTaskQueue::Reset(void)
+	?RunError@CMPXMessageMonitor@@MAEHH@Z @ 188 NONAME ; int CMPXMessageMonitor::RunError(int)
+	?RunL@CMPXMessageMonitor@@MAEXXZ @ 189 NONAME ; void CMPXMessageMonitor::RunL(void)
+	?ScheduleNextTask@CMPXActiveTaskQueue@@QAEXXZ @ 190 NONAME ; void CMPXActiveTaskQueue::ScheduleNextTask(void)
+	?SelectAllL@CMPXCollectionPath@@QAEXXZ @ 191 NONAME ; void CMPXCollectionPath::SelectAllL(void)
+	?SelectL@CMPXCollectionPath@@QAEXABVTMPXItemId@@@Z @ 192 NONAME ; void CMPXCollectionPath::SelectL(class TMPXItemId const &)
+	?SelectL@CMPXCollectionPath@@QAEXH@Z @ 193 NONAME ; void CMPXCollectionPath::SelectL(int)
+	?SelectPluginL@CMPXPluginHandlerBase@@QAEXABVTDesC16@@@Z @ 194 NONAME ; void CMPXPluginHandlerBase::SelectPluginL(class TDesC16 const &)
+	?SelectPluginL@CMPXPluginHandlerBase@@QAEXABVTUid@@@Z @ 195 NONAME ; void CMPXPluginHandlerBase::SelectPluginL(class TUid const &)
+	?SelectPluginL@CMPXPluginHandlerBase@@UAEXABVRFile@@@Z @ 196 NONAME ; void CMPXPluginHandlerBase::SelectPluginL(class RFile const &)
+	?SelectPluginL@CMPXPluginHandlerBase@@UAEXABVTDesC16@@ABVTDesC8@@@Z @ 197 NONAME ; void CMPXPluginHandlerBase::SelectPluginL(class TDesC16 const &, class TDesC8 const &)
+	?SelectPluginL@CMPXPluginHandlerBase@@UAEXH@Z @ 198 NONAME ; void CMPXPluginHandlerBase::SelectPluginL(int)
+	?Selection@CMPXCollectionPath@@QBE?AV?$TArray@H@@XZ @ 199 NONAME ; class TArray<int> CMPXCollectionPath::Selection(void) const
+	?SelectionL@CMPXCollectionPath@@QBEXAAV?$RArray@VTMPXItemId@@@@@Z @ 200 NONAME ; void CMPXCollectionPath::SelectionL(class RArray<class TMPXItemId> &) const
+	?SendMsg@CMPXClientList@@QAEXHPBVCMPXMedia@@H@Z @ 201 NONAME ; void CMPXClientList::SendMsg(int, class CMPXMedia const *, int)
+	?SendMsg@CMPXClientList@@QAEXPBVCMPXMedia@@H@Z @ 202 NONAME ; void CMPXClientList::SendMsg(class CMPXMedia const *, int)
+	?SendNext@CMPXMessageQueue@@QAEXABVRMessage2@@@Z @ 203 NONAME ; void CMPXMessageQueue::SendNext(class RMessage2 const &)
+	?SendReceive@RMPXSession@@QBEXHAAVTRequestStatus@@@Z @ 204 NONAME ; void RMPXSession::SendReceive(int, class TRequestStatus &) const
+	?SendReceive@RMPXSession@@QBEXHABVTIpcArgs@@AAVTRequestStatus@@@Z @ 205 NONAME ; void RMPXSession::SendReceive(int, class TIpcArgs const &, class TRequestStatus &) const
+	?SendReceiveL@RMPXSession@@QBEHH@Z @ 206 NONAME ; int RMPXSession::SendReceiveL(int) const
+	?SendReceiveL@RMPXSession@@QBEHHABVTIpcArgs@@@Z @ 207 NONAME ; int RMPXSession::SendReceiveL(int, class TIpcArgs const &) const
+	?Set@CMPXCollectionPath@@QAEXABV?$TArray@VTMPXAttribute@@@@@Z @ 208 NONAME ; void CMPXCollectionPath::Set(class TArray<class TMPXAttribute> const &)
+	?Set@CMPXCollectionPath@@QAEXABVTMPXItemId@@@Z @ 209 NONAME ; void CMPXCollectionPath::Set(class TMPXItemId const &)
+	?Set@CMPXCollectionPath@@QAEXH@Z @ 210 NONAME ; void CMPXCollectionPath::Set(int)
+	?Set@CMPXCollectionPath@@QAEXW4TMPXOpenMode@@@Z @ 211 NONAME ; void CMPXCollectionPath::Set(enum TMPXOpenMode)
+	?SetTextValueL@CMPXMedia@@QAEXABVTMPXAttribute@@ABVTDesC16@@@Z @ 212 NONAME ; void CMPXMedia::SetTextValueL(class TMPXAttribute const &, class TDesC16 const &)
+	?SetToFirst@CMPXCollectionPath@@QAEXXZ @ 213 NONAME ; void CMPXCollectionPath::SetToFirst(void)
+	?SetToLast@CMPXCollectionPath@@QAEXXZ @ 214 NONAME ; void CMPXCollectionPath::SetToLast(void)
+	?SetValue@CMPXPSKeyWatcher@@QAEHABVTDesC16@@@Z @ 215 NONAME ; int CMPXPSKeyWatcher::SetValue(class TDesC16 const &)
+	?SetValue@CMPXPSKeyWatcher@@QAEHABVTDesC8@@@Z @ 216 NONAME ; int CMPXPSKeyWatcher::SetValue(class TDesC8 const &)
+	?SetValue@CMPXPSKeyWatcher@@QAEHH@Z @ 217 NONAME ; int CMPXPSKeyWatcher::SetValue(int)
+	?SetValueL@CMPXCenRepWatcher@@QAEXH@Z @ 218 NONAME ; void CMPXCenRepWatcher::SetValueL(int)
+	?SetValueL@CMPXMedia@@AAEXABVTMPXAttribute@@ABVTDesC8@@W4TMPXAttributeType@@@Z @ 219 NONAME ; void CMPXMedia::SetValueL(class TMPXAttribute const &, class TDesC8 const &, enum TMPXAttributeType)
+	?SupportUids@CMPXPluginHandlerBase@@QBEHABVTUid@@ABV?$TArray@VTUid@@@@@Z @ 220 NONAME ; int CMPXPluginHandlerBase::SupportUids(class TUid const &, class TArray<class TUid> const &) const
+	?SupportedExtensionsL@CMPXPluginHandlerBase@@QAEPAVCDesC16Array@@ABVTUid@@@Z @ 221 NONAME ; class CDesC16Array * CMPXPluginHandlerBase::SupportedExtensionsL(class TUid const &)
+	?SupportedExtensionsL@CMPXPluginHandlerBase@@QAEPAVCDesC16Array@@XZ @ 222 NONAME ; class CDesC16Array * CMPXPluginHandlerBase::SupportedExtensionsL(void)
+	?SupportedIds@CMPXMedia@@QBE?BV?$TArray@H@@XZ @ 223 NONAME ; class TArray<int> const CMPXMedia::SupportedIds(void) const
+	?SupportedMimeTypesL@CMPXPluginHandlerBase@@QAEPAVCDesC16Array@@ABVTUid@@@Z @ 224 NONAME ; class CDesC16Array * CMPXPluginHandlerBase::SupportedMimeTypesL(class TUid const &)
+	?SupportedMimeTypesL@CMPXPluginHandlerBase@@QAEPAVCDesC16Array@@XZ @ 225 NONAME ; class CDesC16Array * CMPXPluginHandlerBase::SupportedMimeTypesL(void)
+	?SupportedSchemasL@CMPXPluginHandlerBase@@QAEPAVCDesC16Array@@XZ @ 226 NONAME ; class CDesC16Array * CMPXPluginHandlerBase::SupportedSchemasL(void)
+	?Task@CMPXTaskQueue@@QAEHXZ @ 227 NONAME ; int CMPXTaskQueue::Task(void)
+	?Type@CMPXMedia@@QBE?AW4TMPXAttributeType@@ABVTMPXAttribute@@@Z @ 228 NONAME ; enum TMPXAttributeType CMPXMedia::Type(class TMPXAttribute const &) const
+	?Type@CMPXMedia@@QBE?AW4TMPXAttributeType@@H@Z @ 229 NONAME ; enum TMPXAttributeType CMPXMedia::Type(int) const
+	?Type@TMPXMessage@@QBEHXZ @ 230 NONAME ; int TMPXMessage::Type(void) const
+	?ValuePtr@CMPXMedia@@ABEPAXABVTMPXAttribute@@@Z @ 231 NONAME ; void * CMPXMedia::ValuePtr(class TMPXAttribute const &) const
+	?ValueText@CMPXMedia@@QBEABVTDesC16@@ABVTMPXAttribute@@@Z @ 232 NONAME ; class TDesC16 const & CMPXMedia::ValueText(class TMPXAttribute const &) const
+	?Version@RMPXSession@@QBE?AVTVersion@@XZ @ 233 NONAME ; class TVersion RMPXSession::Version(void) const
+	?Reset@CMPXCollectionPath@@QAEXXZ @ 234 NONAME ; void CMPXCollectionPath::Reset(void)
+	?Set@CMPXMediaArray@@QAEXABVCMPXMedia@@H@Z @ 235 NONAME ; void CMPXMediaArray::Set(class CMPXMedia const &, int)
+	?SetL@CMPXCollectionPath@@QAEXABV?$TArray@VTMPXAttribute@@@@@Z @ 236 NONAME ; void CMPXCollectionPath::SetL(class TArray<class TMPXAttribute> const &)
+	?CopyL@CMPXMedia@@SAPAV1@ABV1@@Z @ 237 NONAME ; class CMPXMedia * CMPXMedia::CopyL(class CMPXMedia const &)
+	?MergeMediaL@CMPXMedia@@QAEXABV1@@Z @ 238 NONAME ; void CMPXMedia::MergeMediaL(class CMPXMedia const &)
+	?HeapMemoryInfoL@CMPXMedia@@SAXAAH0@Z @ 239 NONAME ; void CMPXMedia::HeapMemoryInfoL(int &, int &)
+	?Items@CMPXCollectionPath@@QBE?BV?$TArray@VTMPXItemId@@@@XZ @ 240 NONAME ; class TArray<class TMPXItemId> const CMPXCollectionPath::Items(void) const
+	?Update@CMPXCollectionPath@@QAEXHAAVTMPXItemId@@@Z @ 241 NONAME ; void CMPXCollectionPath::Update(int, class TMPXItemId &)
+	?InsertL@CMPXCollectionPath@@QAEXABVTMPXItemId@@H@Z @ 242 NONAME ; void CMPXCollectionPath::InsertL(class TMPXItemId const &, int)
+	?Alloc8ZL@MPXUser@@SAPAVHBufC8@@ABVTDesC16@@@Z @ 243 NONAME ; class HBufC8 * MPXUser::Alloc8ZL(class TDesC16 const &)
+	??8CMPXSubscription@@QBEHABV0@@Z @ 244 NONAME ; int CMPXSubscription::operator==(class CMPXSubscription const &) const
+	?AddItemL@CMPXSubscription@@QAEXABVCMPXMedia@@@Z @ 245 NONAME ; void CMPXSubscription::AddItemL(class CMPXMedia const &)
+	?AddSubscriptionL@CMPXClientList@@QAEXHPAVCMPXSubscription@@@Z @ 246 NONAME ; void CMPXClientList::AddSubscriptionL(int, class CMPXSubscription *)
+	?ItemsL@CMPXSubscription@@QBEPBVCMPXMediaArray@@XZ @ 247 NONAME ; class CMPXMediaArray const * CMPXSubscription::ItemsL(void) const
+	?Match@CMPXMedia@@QAEHABV1@ABVTMPXAttribute@@@Z @ 248 NONAME ; int CMPXMedia::Match(class CMPXMedia const &, class TMPXAttribute const &)
+	?NewL@CMPXSubscription@@SAPAV1@AAVCMPXMediaArray@@@Z @ 249 NONAME ; class CMPXSubscription * CMPXSubscription::NewL(class CMPXMediaArray &)
+	?NewL@CMPXSubscription@@SAPAV1@XZ @ 250 NONAME ; class CMPXSubscription * CMPXSubscription::NewL(void)
+	?RemoveAllSubscriptionsL@CMPXClientList@@QAEXH@Z @ 251 NONAME ; void CMPXClientList::RemoveAllSubscriptionsL(int)
+	?RemoveSubscriptionL@CMPXClientList@@QAEXHABVCMPXSubscription@@@Z @ 252 NONAME ; void CMPXClientList::RemoveSubscriptionL(int, class CMPXSubscription const &)
+	?ReleasePlugin@CMPXPluginHandlerBase@@QAEHABVTUid@@@Z @ 253 NONAME ; int CMPXPluginHandlerBase::ReleasePlugin(class TUid const &)
+	?ResolvePluginL@CMPXPluginHandlerBase@@MAEXXZ @ 254 NONAME ; void CMPXPluginHandlerBase::ResolvePluginL(void)
+	?UnloadPlugin@CMPXPluginHandlerBase@@MAEXABVTUid@@@Z @ 255 NONAME ; void CMPXPluginHandlerBase::UnloadPlugin(class TUid const &)
+	?UsePlugin@CMPXPluginHandlerBase@@QAEXABVTUid@@@Z @ 256 NONAME ; void CMPXPluginHandlerBase::UsePlugin(class TUid const &)
+	?PluginFlagsL@CMPXPluginHandlerBase@@QBEIABVTUid@@@Z @ 257 NONAME ; unsigned int CMPXPluginHandlerBase::PluginFlagsL(class TUid const &) const
+	?PluginType@CMPXPluginHandlerBase@@QBE?AVTUid@@ABV2@@Z @ 258 NONAME ; class TUid CMPXPluginHandlerBase::PluginType(class TUid const &) const
+	?ContainerPathL@CMPXCollectionPath@@QBEPAV1@XZ @ 259 NONAME ; class CMPXCollectionPath * CMPXCollectionPath::ContainerPathL(void) const
+	??0CMPXPluginInfo@@IAE@XZ @ 260 NONAME ; CMPXPluginInfo::CMPXPluginInfo(void)
+	??1CMPXPluginInfo@@UAE@XZ @ 261 NONAME ; CMPXPluginInfo::~CMPXPluginInfo(void)
+	?ConstructL@CMPXPluginInfo@@IAEXABVCImplementationInformation@@@Z @ 262 NONAME ; void CMPXPluginInfo::ConstructL(class CImplementationInformation const &)
+	?ConstructPluginInfoLC@CMPXPluginHandlerBase@@MAEPAVCMPXPluginInfo@@ABVCImplementationInformation@@@Z @ 263 NONAME ; class CMPXPluginInfo * CMPXPluginHandlerBase::ConstructPluginInfoLC(class CImplementationInformation const &)
+	?ExtractUidsFromTextL@CMPXPluginInfo@@IAEXABVTDesC8@@AAV?$RArray@VTUid@@@@@Z @ 264 NONAME ; void CMPXPluginInfo::ExtractUidsFromTextL(class TDesC8 const &, class RArray<class TUid> &)
+	?ImplementationUid@CMPXPluginInfo@@QBEABVTUid@@XZ @ 265 NONAME ; class TUid const & CMPXPluginInfo::ImplementationUid(void) const
+	?ProcessTaggedDataExL@CMPXPluginInfo@@MAEXABVTDesC8@@0@Z @ 266 NONAME ; void CMPXPluginInfo::ProcessTaggedDataExL(class TDesC8 const &, class TDesC8 const &)
+	?ProcessTaggedDataL@CMPXPluginInfo@@MAEXABVTDesC8@@0@Z @ 267 NONAME ; void CMPXPluginInfo::ProcessTaggedDataL(class TDesC8 const &, class TDesC8 const &)
+	?Flags@CMPXPluginInfo@@QBEIXZ @ 268 NONAME ; unsigned int CMPXPluginInfo::Flags(void) const
+	?Error@CMPXMedia@@QBEHABVTMPXAttribute@@@Z @ 269 NONAME ; int CMPXMedia::Error(class TMPXAttribute const &) const
+	?SetErrorL@CMPXMedia@@QAEXABVTMPXAttribute@@H@Z @ 270 NONAME ; void CMPXMedia::SetErrorL(class TMPXAttribute const &, int)
+	?AtL@CMPXMediaArray@@QBEPAVCMPXMedia@@H@Z @ 271 NONAME ; class CMPXMedia * CMPXMediaArray::AtL(int) const
+	?CompleteAllTasks@CMPXActiveTaskQueue@@QAEXH@Z @ 272 NONAME ; void CMPXActiveTaskQueue::CompleteAllTasks(int)
+	?IsPluginLoaded@CMPXPluginHandlerBase@@MAEHABVTUid@@@Z @ 273 NONAME ; int CMPXPluginHandlerBase::IsPluginLoaded(class TUid const &)
+	?LoadPluginL@CMPXPluginHandlerBase@@MAEXABVTUid@@@Z @ 274 NONAME ; void CMPXPluginHandlerBase::LoadPluginL(class TUid const &)
+	?HandlePluginUnload@CMPXPluginHandlerBase@@MAEXABVTUid@@@Z @ 275 NONAME ; void CMPXPluginHandlerBase::HandlePluginUnload(class TUid const &)
+	?GetValue@CMPXMedia@@ABE?AW4TMPXAttributeType@@ABVTMPXAttribute@@AAVTDes8@@@Z @ 276 NONAME ; enum TMPXAttributeType CMPXMedia::GetValue(class TMPXAttribute const &, class TDes8 &) const
+	?ExtractIntoArrayL@CMPXPluginInfo@@IAEXABVTDesC8@@AAPAVCDesC16Array@@@Z @ 277 NONAME ; void CMPXPluginInfo::ExtractIntoArrayL(class TDesC8 const &, class CDesC16Array * &)
+	??1RMPXSession@@QAE@XZ @ 278 NONAME ; RMPXSession::~RMPXSession(void)
+	?Reconnect@RMPXSession@@QBEHXZ @ 279 NONAME ; int RMPXSession::Reconnect(void) const
+	??0RMPXSession@@QAE@XZ @ 280 NONAME ; RMPXSession::RMPXSession(void)
+	?Close@RMPXSession@@QAEXXZ @ 281 NONAME ; void RMPXSession::Close(void)
+	?SupportedAppUid@CMPXPluginHandlerBase@@QBE?AVTUid@@ABV2@@Z @ 282 NONAME ; class TUid CMPXPluginHandlerBase::SupportedAppUid(class TUid const &) const
+	?AddClientL@CMPXClientList@@QAEXVTThreadId@@HPAVCMPXMessageQueue@@H@Z @ 283 NONAME ; void CMPXClientList::AddClientL(class TThreadId, int, class CMPXMessageQueue *, int)
+	?ClientCategory@CMPXClientList@@QBEHH@Z @ 284 NONAME ; int CMPXClientList::ClientCategory(int) const
+	?SelectPlugin64L@CMPXPluginHandlerBase@@UAEXABVRFile64@@@Z @ 285 NONAME ; void CMPXPluginHandlerBase::SelectPlugin64L(class RFile64 const &)
+	?SendSyncMsg@CMPXClientList@@QAEHPBVCMPXMedia@@@Z @ 286 NONAME ; int CMPXClientList::SendSyncMsg(class CMPXMedia const *)
+	?AddFirst@CMPXMessageQueue@@QAEHPBVCMPXMedia@@H@Z @ 287 NONAME ; int CMPXMessageQueue::AddFirst(class CMPXMedia const *, int)
+	?SetPrimaryClient@CMPXClientList@@QAEHAAVCMPXMessageQueue@@@Z @ 288 NONAME ; int CMPXClientList::SetPrimaryClient(class CMPXMessageQueue &)
+

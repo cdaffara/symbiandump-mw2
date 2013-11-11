@@ -1,0 +1,41 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project build file for RadioPresetUtility
+*
+*/
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+// Generic configuration interface for component cenrep settings
+// presetutility_10207B87 implementation specifics for cenrep data
+../conf/presetutility.confml                  MW_LAYER_CONFML(presetutility.confml)
+../conf/presetutility_10207B87.crml           MW_LAYER_CRML(presetutility_10207B87.crml)
+
+
+backup_registration.xml z:/private/10207B87/backup_registration.xml
+
+
+// iby files
+../rom/fmpresetutility.iby			CORE_MW_LAYER_IBY_EXPORT_PATH(fmpresetutility.iby)
+../rom/presetutility.iby			  CORE_MW_LAYER_IBY_EXPORT_PATH(presetutility.iby)
+
+
+PRJ_MMPFILES
+presetutility.mmp
+fmpresetutility.mmp

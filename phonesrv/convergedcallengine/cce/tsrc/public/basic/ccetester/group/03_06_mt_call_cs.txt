@@ -1,0 +1,45 @@
+/**************************************
+	1. Create MT call (Ringing)
+	2. Answer call (Connected)
+	3. Disconnect call
+**************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 3.6 MT call, CS
+timeout 20000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+// CS plugin is always loaded
+// Send plugin command, MT call with CallID 1 is created
+test SendPluginRequest 2 CreateCall 1
+test WaitEvent 0 IncomingCall
+test WaitEvent 1 Ringing
+
+// Step 2
+print Step_2
+
+// Answer call
+test Answer 1 0
+test WaitEvent 1 Answering
+test WaitEvent 1 Connected
+
+// Step 3
+print Step_3
+
+// Hangup call
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+test VerifyTest
+delete test
+[Endtest] 

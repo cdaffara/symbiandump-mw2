@@ -1,0 +1,145 @@
+/*
+* Copyright (c) 2002-2007 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: Resource file for converter plugin
+*
+*
+*/
+
+
+//  INCLUDES
+#include <ecom/registryinfo.rh>
+#include <EPos_LandmarksUids.hrh>
+#include "EPos_LmConverterUids.hrh"
+
+// RESOURCE DEFINITIONS
+// -----------------------------------------------------------------------------
+//
+// r_lmcontentformatconverter
+// ECOM registry information for Landmarks Content Format Converter
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE REGISTRY_INFO r_lmcontentformatconverter
+    {
+    dll_uid = 0x101fdf85;
+    interfaces =
+        {
+        INTERFACE_INFO
+            {
+            interface_uid = KPosLmEncoderIfUid;
+            implementations =
+                {
+                IMPLEMENTATION_INFO
+                    {
+                    implementation_uid = KPosLmConverterEncoderImplUid;
+                    version_no = 1;
+                    display_name = "Landmarks Content Format Encoder";
+                    default_data =
+                        "application/vnd.nokia.landmarkcollection+xml";
+                    }
+                };
+            },
+        INTERFACE_INFO
+            {
+            interface_uid = KPosLmEncoderIfUid;
+            implementations =
+                {
+                IMPLEMENTATION_INFO
+                    {
+                    implementation_uid = KPosLmUrlEncoderImplUid;
+                    version_no = 1;
+                    display_name = "Landmarks URL Encoder";
+                    default_data = "maps.ovi.com";
+                    }
+                };
+            },                   
+        INTERFACE_INFO
+            {
+            interface_uid = KPosLmParserIfUid;
+            implementations =
+                {
+                IMPLEMENTATION_INFO
+                    {
+                    implementation_uid = KPosLmConverterParserImplUid;
+                    version_no = 1;
+                    display_name = "Landmarks Content Format Parser";
+                    default_data =
+                        "application/vnd.nokia.landmarkcollection+xml";
+                    }
+                };
+            },
+        INTERFACE_INFO
+            {
+            interface_uid = KPosLmParserIfUid;
+            implementations =
+                {
+                IMPLEMENTATION_INFO
+                    {
+                    implementation_uid = KPosLmGpxParserImplUid;
+                    version_no = 1;
+                    display_name = "GPX Format Parser";
+                    default_data =
+                        "application/gps+xml";
+                    }
+                };
+            },
+          INTERFACE_INFO
+            {
+            interface_uid = KPosLmParserIfUid;
+            implementations =
+                {
+                IMPLEMENTATION_INFO
+                    {
+                    implementation_uid = KPosLmKmlParserImplUid;
+                    version_no = 1;
+                    display_name = "KML Format Parser";
+                    default_data =
+                        "application/vnd.google-earth.kml+xml";
+                    }
+                };
+            },
+            INTERFACE_INFO
+            {
+            interface_uid = KPosLmParserIfUid;
+            implementations =
+                {
+                IMPLEMENTATION_INFO
+                    {
+                    implementation_uid = KPosLmKmzParserImplUid;
+                    version_no = 1;
+                    display_name = "KMZ Format Parser";
+                    default_data =
+                        "application/vnd.google-earth.kmz";
+                    }
+                };
+            },
+            INTERFACE_INFO
+            {
+            interface_uid = KPosLmParserIfUid;
+            implementations =
+                {
+                IMPLEMENTATION_INFO
+                    {
+                    implementation_uid = KPosLmUrlParserImplUid;
+                    version_no = 1;
+                    display_name = "Landmarks URL Parser";
+                    default_data ="maps.ovi.com";
+                    }
+                };
+            }
+            
+        };
+    }
+
+// End of File

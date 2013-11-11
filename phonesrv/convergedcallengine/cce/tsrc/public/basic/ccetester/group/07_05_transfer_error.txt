@@ -1,0 +1,129 @@
+/*****************************************************
+  1. Create MO PS call [1]
+  2. Hangup call [1] (Call is not Released)
+  3. Try Transferring call
+     Expected: KErrNotReady
+  4. Create MO PS call [2] that is being forwarded
+  5. Try Transferring call
+     Expected: KErrNotReady
+  6. Hang up call
+  7. Create MT call (Ringing)
+  8. Try Transferring call
+     Expected: KErrNotReady
+  9. Answer call
+ 10. Create MT call (Queued)
+ 11. Try Transferring call
+     Expected: KErrNotReady
+ 12. Disconnect calls
+*****************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 7.5 Transfer, Error
+timeout 20000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test OpenNewCall 1 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+// Step 2
+print Step_2
+
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+
+// Step 3
+print Step_3
+
+test UnattendedTransfer 1 -18
+test AttendedTransfer 1 -18
+
+test Release 1 0
+
+// Step 4
+print Step_4
+
+test OpenNewCall 2 0 "plugincmd forwardchoices 0" 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 2 0 SubAddress Bearer
+test WaitEvents 2 Dialling, 2 Connecting, 2 Forwarding, 2 VoipMultipleChoices
+
+// Step 5
+print Step_5
+
+test UnattendedTransfer 2 -18
+test AttendedTransfer 2 -18
+
+// Step 6
+print Step_6
+
+test HangUp 2 0
+test WaitEvent 2 Disconnecting //event 10
+test WaitEvent 2 Idle
+test Release 2 0
+
+// Step 7
+print Step_7
+
+// Send plugin command for PS plugin, MT call with CallID 3 is created
+test SendPluginRequest CreateCall 2
+test WaitEvent 0 IncomingCall
+test WaitEvent 3 Ringing
+
+// Step 8
+print Step_8
+
+test UnattendedTransfer 3 -18
+test AttendedTransfer 3 -18
+
+// Step 9
+print Step_9
+
+test Answer 3 0
+test WaitEvent 3 Answering
+test WaitEvent 3 Connected
+
+// Step 10
+print Step_10
+
+// Send plugin command for PS plugin, MT call with CallID 4 is created
+test SendPluginRequest CreateCall 2
+test WaitEvent 0 IncomingCall
+test WaitEvent 4 Queued
+
+// Step 11
+print Step_11
+
+// Unattended transfer is possible, call 3 is connected
+//test UnattendedTransfer 3 -18
+
+test AttendedTransfer 3 -18
+test UnattendedTransfer 4 -18
+test AttendedTransfer 4 -18
+
+// Step 12
+print Step_12
+
+test HangUp 4 0
+test WaitEvent 4 Disconnecting
+test WaitEvent 4 Idle
+test Release 4 0
+
+test HangUp 3 0
+test WaitEvent 3 Disconnecting
+test WaitEvent 3 Idle
+test Release 3 0
+
+test VerifyTest
+delete test
+[Endtest]

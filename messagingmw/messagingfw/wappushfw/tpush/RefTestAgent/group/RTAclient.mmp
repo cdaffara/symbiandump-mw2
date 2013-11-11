@@ -1,0 +1,53 @@
+// Copyright (c) 2004-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// RTAclient.dll Implementation of software registry client
+// 
+//
+
+/**
+ @file
+*/
+
+MACRO __SECURE_API__
+MACRO __DATA_CAGING__
+CAPABILITY	All -Tcb
+
+TARGET		rtaclient.dll
+TARGETTYPE	dll
+
+UID		0x1000008d 0x10205EA4
+VENDORID	0x70000001
+
+USERINCLUDE	../inc
+USERINCLUDE	../RTAServer/Common
+USERINCLUDE	../RTAServer/Client
+
+SOURCEPATH	../RTAServer/Client
+
+SOURCE		rtaclient.cpp
+SOURCE		rtarights.cpp
+SOURCE		rtadata.cpp
+SOURCE		rtamanager.cpp
+SOURCE		rtacontent.cpp
+
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+LIBRARY	    euser.lib 
+LIBRARY     estor.lib 
+LIBRARY     efsrv.lib 
+LIBRARY	     rtaparser.lib
+LIBRARY		cafutils.lib
+LIBRARY     cinidata.lib
+
+SMPSAFE

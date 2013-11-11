@@ -1,0 +1,43 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRINT Running  EMsvChangeDrive
+
+PRINT Running  IMPORTANT
+
+PRINT Running  For ChangeDriveFail
+PRINT Running  Note we swap to the D: drive to simulate failure.
+PRINT Running  Ensure that no d: drive exists in either the emulator or the hardware.
+PRINT Running  Check epoc.ini in the emulator, for something like _EPOC_DRIVE_D s:\drive_d
+PRINT Running  On the hardware start up a shell and do cd d: it should not exist.
+
+PRINT Running  For ChangeDriveFail
+PRINT Running  Note we swap to the E: drive 
+PRINT Running  Ensure that the e: drive exists in either the emulator or the hardware.
+PRINT Running  on the emulator this can be done with the line 
+PRINT Running  _EPOC_DRIVE_E s:\drive_e
+PRINT Running  in epoc.ini and you must set up the s:\drive_e directory.
+PRINT Running  On the hardware e: is often setup, although on some setups this will have to be checked.
+
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvChangeDrive_001.script
+
+
+
+
+
+
+

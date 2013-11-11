@@ -1,0 +1,11 @@
+PopServerAddress = msexchange2k.closedtest.intra
+
+PopIapList = POP001 POP002
+
+POP001_PopIAP = 1
+POP001_PopCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+POP001_PopIAPIndex = 0
+
+POP002_PopIAP = 1
+POP002_PopCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+POP002_PopIAPIndex = 0

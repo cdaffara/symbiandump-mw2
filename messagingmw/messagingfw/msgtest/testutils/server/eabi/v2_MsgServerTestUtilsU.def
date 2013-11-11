@@ -1,0 +1,36 @@
+EXPORTS
+	_ZN14CTestSchedulerC1Ev @ 1 NONAME
+	_ZN14CTestSchedulerC2Ev @ 2 NONAME
+	_ZN19CMsgServerTestUtils10FileExistsERK7TDesC16 @ 3 NONAME
+	_ZN19CMsgServerTestUtils10GetConfigLER10TMsvConfig @ 4 NONAME
+	_ZN19CMsgServerTestUtils10IndexSizeLEiRK7TDesC16 @ 5 NONAME
+	_ZN19CMsgServerTestUtils10SetConfigLER10TMsvConfig @ 6 NONAME
+	_ZN19CMsgServerTestUtils11FileMissingERK7TDesC16 @ 7 NONAME
+	_ZN19CMsgServerTestUtils11InstallMtmLERK7TDesC16S2_4TUid @ 8 NONAME ABSENT
+	_ZN19CMsgServerTestUtils11ReadIntegerERK7TDesC16Ri @ 9 NONAME
+	_ZN19CMsgServerTestUtils11WaitForKeyLE27TTimeIntervalMicroSeconds32P8TKeyCode @ 10 NONAME
+	_ZN19CMsgServerTestUtils12ChooseDriveLER10TDriveUnit @ 11 NONAME
+	_ZN19CMsgServerTestUtils13CreateServerLERK7TDesC16 @ 12 NONAME
+	_ZN19CMsgServerTestUtils15RemoveIndexFileEi @ 13 NONAME
+	_ZN19CMsgServerTestUtils16CreateDataFilesLERK7TDesC16S2_4TUid @ 14 NONAME ABSENT
+	_ZN19CMsgServerTestUtils17CorruptIndexFileLEiRK7TDesC16 @ 15 NONAME
+	_ZN19CMsgServerTestUtils17RemoveMailFolderLEi @ 16 NONAME
+	_ZN19CMsgServerTestUtils18WaitForServerCloseEv @ 17 NONAME
+	_ZN19CMsgServerTestUtils19CleanMessageFolderLERK7TDesC16 @ 18 NONAME
+	_ZN19CMsgServerTestUtils3EndEv @ 19 NONAME
+	_ZN19CMsgServerTestUtils4NewLER5RTest @ 20 NONAME
+	_ZN19CMsgServerTestUtils4NextERK7TDesC16 @ 21 NONAME
+	_ZN19CMsgServerTestUtils5CloseEi @ 22 NONAME
+	_ZN19CMsgServerTestUtils5NewLCER5RTest @ 23 NONAME
+	_ZN19CMsgServerTestUtils5StartERK7TDesC16 @ 24 NONAME
+	_ZN19CMsgServerTestUtils6SetupLEv @ 25 NONAME
+	_ZN19CMsgServerTestUtils8CompleteEv @ 26 NONAME
+	_ZN19CMsgServerTestUtils9SetDebugLEi @ 27 NONAME
+	_ZN19CMsgServerTestUtils9SetDriveLEii @ 28 NONAME
+	_ZNK14CTestScheduler5ErrorEi @ 29 NONAME
+	_ZTI14CTestScheduler @ 30 NONAME ; #<TI>#
+	_ZTV14CTestScheduler @ 31 NONAME ; #<VT>#
+	_ZTI19CMsgServerTestUtils @ 32 NONAME ; #<TI>#
+	_ZTV19CMsgServerTestUtils @ 33 NONAME ; #<VT>#
+	_ZN19CMsgServerTestUtils11InstallMtmLERK7TDesC16S2_4TUidS2_S2_ @ 34 NONAME
+	_ZN19CMsgServerTestUtils16CreateDataFilesLERK7TDesC16S2_4TUidS2_S2_ @ 35 NONAME

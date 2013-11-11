@@ -1,0 +1,26 @@
+EXPORTS	?trUtf8@PosSettingsAdvOp@@SA?AVQString@@PBD0@Z @ 1 NONAME ; class QString PosSettingsAdvOp::trUtf8(char const *, char const *)
+	?staticMetaObject@PosSettingsAdvOp@@2UQMetaObject@@B @ 2 NONAME ; struct QMetaObject const PosSettingsAdvOp::staticMetaObject
+	?setExpanded@PosSettingsAdvOp@@QAEXABVQModelIndex@@_N@Z @ 3 NONAME ; void PosSettingsAdvOp::setExpanded(class QModelIndex const &, bool)
+	?addAction@PosSettingsAdvOp@@QAEXPAVHbAction@@W4ActionContainer@HbView@@@Z @ 4 NONAME ; void PosSettingsAdvOp::addAction(class HbAction *, enum HbView::ActionContainer)
+	?qt_metacast@PosSettingsAdvOp@@UAEPAXPBD@Z @ 5 NONAME ; void * PosSettingsAdvOp::qt_metacast(char const *)
+	??_EPosSettingsView@@UAE@I@Z @ 6 NONAME ; PosSettingsView::~PosSettingsView(unsigned int)
+	?isExpanded@PosSettingsAdvOp@@QBE_NABVQModelIndex@@@Z @ 7 NONAME ; bool PosSettingsAdvOp::isExpanded(class QModelIndex const &) const
+	?addConnection@PosSettingsAdvOp@@QAEXPAVHbDataFormModelItem@@PBDPAVQObject@@1@Z @ 8 NONAME ; void PosSettingsAdvOp::addConnection(class HbDataFormModelItem *, char const *, class QObject *, char const *)
+	?tr@PosSettingsAdvOp@@SA?AVQString@@PBD0H@Z @ 9 NONAME ; class QString PosSettingsAdvOp::tr(char const *, char const *, int)
+	?appendDataFormItem@PosSettingsAdvOp@@QAEXPAVHbDataFormModelItem@@0@Z @ 10 NONAME ; void PosSettingsAdvOp::appendDataFormItem(class HbDataFormModelItem *, class HbDataFormModelItem *)
+	??1PosSettingsAdvOp@@UAE@XZ @ 11 NONAME ; PosSettingsAdvOp::~PosSettingsAdvOp(void)
+	?qt_metacall@PosSettingsAdvOp@@UAEHW4Call@QMetaObject@@HPAPAX@Z @ 12 NONAME ; int PosSettingsAdvOp::qt_metacall(enum QMetaObject::Call, int, void * *)
+	??0PosSettingsAdvOp@@QAE@PAVHbView@@@Z @ 13 NONAME ; PosSettingsAdvOp::PosSettingsAdvOp(class HbView *)
+	??_EPosSettingsAdvOp@@UAE@I@Z @ 14 NONAME ; PosSettingsAdvOp::~PosSettingsAdvOp(unsigned int)
+	??1PosSettingsView@@UAE@XZ @ 15 NONAME ; PosSettingsView::~PosSettingsView(void)
+	?itemPrototypes@PosSettingsAdvOp@@QAEXAAV?$QList@PAVHbAbstractViewItem@@@@@Z @ 16 NONAME ; void PosSettingsAdvOp::itemPrototypes(class QList<class HbAbstractViewItem *> &)
+	?removeConnection@PosSettingsAdvOp@@QAEXPAVHbDataFormModelItem@@PBDPAVQObject@@1@Z @ 17 NONAME ; void PosSettingsAdvOp::removeConnection(class HbDataFormModelItem *, char const *, class QObject *, char const *)
+	?indexFromItem@PosSettingsAdvOp@@QAE?AVQModelIndex@@PBVHbDataFormModelItem@@@Z @ 18 NONAME ; class QModelIndex PosSettingsAdvOp::indexFromItem(class HbDataFormModelItem const *)
+	?setItemPrototypes@PosSettingsAdvOp@@QAEXAAV?$QList@PAVHbAbstractViewItem@@@@@Z @ 19 NONAME ; void PosSettingsAdvOp::setItemPrototypes(class QList<class HbAbstractViewItem *> &)
+	??0PosSettingsView@@QAE@PAVQGraphicsItem@@@Z @ 20 NONAME ; PosSettingsView::PosSettingsView(class QGraphicsItem *)
+	?removeItem@PosSettingsAdvOp@@QAE_NPAVHbDataFormModelItem@@@Z @ 21 NONAME ; bool PosSettingsAdvOp::removeItem(class HbDataFormModelItem *)
+	?trUtf8@PosSettingsAdvOp@@SA?AVQString@@PBD0H@Z @ 22 NONAME ; class QString PosSettingsAdvOp::trUtf8(char const *, char const *, int)
+	?tr@PosSettingsAdvOp@@SA?AVQString@@PBD0@Z @ 23 NONAME ; class QString PosSettingsAdvOp::tr(char const *, char const *)
+	?getStaticMetaObject@PosSettingsAdvOp@@SAABUQMetaObject@@XZ @ 24 NONAME ; struct QMetaObject const & PosSettingsAdvOp::getStaticMetaObject(void)
+	?metaObject@PosSettingsAdvOp@@UBEPBUQMetaObject@@XZ @ 25 NONAME ; struct QMetaObject const * PosSettingsAdvOp::metaObject(void) const
+

@@ -1,0 +1,3 @@
+EXPORTS
+	?CreateCollectionManagerL@MediaCollectionManagerFactory@@SAPAVMMediaCollectionManager@@XZ @ 1 NONAME ; class MMediaCollectionManager * MediaCollectionManagerFactory::CreateCollectionManagerL(void)
+

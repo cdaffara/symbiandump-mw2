@@ -1,0 +1,106 @@
+/************************************************
+	1. Create 1st (MO) call
+	2. Create 2nd (MT) call (goes to Queued state)
+	3. TerminateAllButRingingAndQueuedCalls
+	   Expected: Call [1] is terminated
+	4. Answer call [2]
+	5. TerminateCall
+	   Expected: KErrNotSupported
+	6. Hold call [2]
+	7. Create new MO call
+	8. Create new MT call
+	9. TerminateAllCalls
+		 Expected: All calls are terminated
+*************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 11.3 Misc, Disconnect tests
+timeout 10000
+create ccetester test
+
+// Step 1
+print Step_1
+
+test OpenNewCall 1 0 Address 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+// Step 2
+print Step_2
+
+// Send plugin command, MT call with CallID 2 is created
+test SendPluginRequest CreateCall 2
+test WaitEvent 0 IncomingCall
+test WaitEvent 2 Queued
+
+// ********************
+// 1: connected
+// 2: queued
+// ********************
+
+// Step 3
+print Step_3
+
+test TerminateAllButRingingAndQueuedCalls
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+// ********************
+// 2: queued
+// ********************
+
+// Step 4
+print Step_4
+
+test Answer 2 0
+test WaitEvent 2 Answering
+test WaitEvent 2 Connected
+
+// Step 5
+print Step_5
+
+// Not implemented (KErrNotSupported)
+test TerminateCall -5
+
+// Step 6
+print Step_6
+
+test Hold 2 0
+test WaitEvents 2 Hold, 2 LocalHold
+
+// Step 7
+print Step_7
+
+test OpenNewCall 3 0 CallThree 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 3 0 SubAddress Bearer
+test WaitEvent 3 Dialling
+test WaitEvent 3 Connecting
+test WaitEvent 3 Connected
+
+test SendPluginRequest CreateCall 2
+test WaitEvent 0 IncomingCall
+test WaitEvent 4 Queued
+
+// ********************
+// 2: hold
+// 3: connected
+// 4: queued
+// ********************
+
+test TerminateAllCalls
+test WaitEvents 3 Disconnecting, 3 Idle, 2 Disconnecting, 2 Idle, 4 Idle, 4 Disconnecting
+
+test Release 3 0
+test Release 2 0
+test Release 4 0
+
+test VerifyTest
+delete test
+[Endtest] 

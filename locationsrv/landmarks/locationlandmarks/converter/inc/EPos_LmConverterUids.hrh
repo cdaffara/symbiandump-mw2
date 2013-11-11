@@ -1,0 +1,35 @@
+/*
+* Copyright (c) 2002-2007 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: Landmarks Content Format Converter implementation UID
+*
+*
+*/
+
+
+#ifndef LMCONVERTER_HRH
+#define LMCONVERTER_HRH
+
+// Landmarks Content Format Converter implementation UID
+#define KPosLmConverterEncoderImplUid        0x101FE992
+// Landmarks URL encoder implementation UID
+#define KPosLmUrlEncoderImplUid              0x20022FF7
+// Landmarks URL parser implementation UID
+#define KPosLmUrlParserImplUid               0x20022FF8
+#define KPosLmConverterParserImplUid         0x101FE993
+
+#define KPosLmGpxParserImplUid               0x10009C04
+#define KPosLmKmlParserImplUid               0x2001B2CA
+#define KPosLmKmzParserImplUid               0x2001E260
+
+#endif // LMCONVERTER_HRH

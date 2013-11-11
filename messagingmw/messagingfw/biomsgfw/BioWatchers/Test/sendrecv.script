@@ -1,0 +1,208 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+[All]
+SC= +447785016005
+Recipients= +447747065436
+Encoding= 7
+
+[WAP:vCalendar]
+Encoding= 8
+Bearer= WAP
+BioUid= 268457267
+Message=
+BEGIN:VCALENDAR
+VERSION:1.0
+BEGIN:VEVENT
+END:VEVENT
+END:VCALENDAR
+
+endscript
+
+[WAP:vCard]
+Encoding= 8
+Bearer= WAP
+BioUid= 268457268
+Message=
+begin:vcard 
+n:;Julia
+adr:;;;;;;
+version:2.1
+fn:Julia Blumin
+end:vcard
+
+[NBS:MboxCnfg]
+Bearer= NBS
+BioUid= 268457263
+Message= 
+password
+Mname:Demon
+Madr:Brahim@yashar.Demon.co.uk
+Mrcv:pop3.demon.co.uk
+Msnd:post.demon.co.uk
+Mpro:PO
+
+[NBS:InternetCnfg]
+Bearer= NBS
+BioUid= 268457263
+Message= 
+password
+Iname:Demon
+Itel:+44 845 2121666
+Idns1:158.152.1.58
+Idns2:158.152.1.43
+
+[PlainOldMessage]
+Message= Hello, this is a plain SMS message.
+
+[BigHonkingMsg]
+Message= A big message to ya!
+Ya' know.  Lots of text makes
+a message big.
+More text blah, blah, blah!
+Blah blah blah.
+And a bit more to make sure
+that this is a big honking
+howling messages.
+Yup.  A very big message!
+Okay - and then some more.
+
+
+[NBS:ComBizCard]
+Bearer= NBS
+BioUid= 268457265
+Message= 
+Business Card
+Da Card
+Biz Cards Lmtd
+Biz Whiz
+tel 411
+tel (home) 411
+fax 411
+me@here.com
+1122 Boogie Woogie Avenue
+Big Town
+WC1 000
+United Kingdom
+
+[NBS:ComBizCardBigger]
+Bearer= NBS
+BioUid= 268457265
+Message= 
+Business Card
+Da Card
+Biz Cards Lmtd
+Biz Whiz
+tel 411
+tel (home) 411
+fax 411
+me@here.com
+1122 Boogie Woogie Avenue
+Big Town
+WC1 000
+United Kingdom
+Gubbins
+More Gubbins
+Huge heaps of Gubbins
+Mountain of Gubbins, higher than is possibly feasible.
+
+
+[NBS:EmailNotify]
+Bearer= NBS
+BioUid= 268457264
+Message= 
+10
+From: 411
+Subject: A Message Notification
+
+[NBS:InternetConfig]
+Bearer= NBS
+BioUid= 268457263
+Message= 
+password
+Mname:Demon
+Muid:yashar
+Mpwd:dig23ler
+Madr:Brahim@yashar.Demon.co.uk
+Mrcv:pop3.demon.co.uk
+Mpro:PO
+Msnd:post.demon.co.uk
+Iname:Demon
+Iuid:yashar
+Ipwd:dig23ler
+Itel:+44 845 2121666
+Idns1:158.152.1.58
+Idns2:158.152.1.43
+
+[NBS:MailboxConfig]
+Bearer= NBS
+BioUid= 268457263
+Message= 
+password
+Mname:Demon
+Madr:Brahim@yashar.Demon.co.uk
+Mrcv:pop3.demon.co.uk
+Msnd:post.demon.co.uk
+Mpro:PO
+
+
+[WAP:vCard]
+Bearer= WAP
+BioUid= 268457268
+Message=
+begin:vcard 
+n:;Julia
+adr:;;;;;;
+version:2.1
+email;internet:julia.blumin@symbian.com
+fn:Julia Blumin
+end:vcard
+
+[WAP:vCalendar]
+Bearer= WAP
+BioUid= 268457267
+Message=
+BEGIN:VCALENDAR
+VERSION:1.0
+BEGIN:VEVENT
+X-EPOCAGENDAENTRYTYPE:APPOINTMENT
+DESCRIPTION:ModifiedAppointment
+UID:2
+CLASS:PUBLIC
+DCREATED:19991020T000000Z
+LAST-MODIFIED:19991020T165400Z
+DTSTART:19991020T090000Z
+DTEND:19991020T100000Z
+END:VEVENT
+END:VCALENDAR
+
+[WAP:RingTone]
+Bearer= WAP
+BioUid= 268457269
+Message=
+File Not Found
+
+[WAP:OperatorLogo]
+Bearer= WAP
+BioUid= 268457270
+Message=
+File Not Found
+
+[WAP:WAPAccessPoint]
+Bearer= WAP
+BioUid= 268457266
+Message=
+File Not Found

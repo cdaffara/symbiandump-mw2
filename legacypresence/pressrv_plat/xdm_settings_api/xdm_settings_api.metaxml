@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<api id="8503a59b7d1168096d466b6127d21284" dataversion="1.0">
+  <name>XDM Settings API</name>
+  <description>API for accessing and creating XDM settings.</description>
+  <type>c++</type>
+  <subsystem>XDMEngine</subsystem>
+  <libs>
+    <lib name="XdmSettingsApi.lib" />
+  </libs>
+  <release category="domain"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>yes</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

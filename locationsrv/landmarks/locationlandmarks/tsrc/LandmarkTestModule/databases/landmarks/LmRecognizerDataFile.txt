@@ -1,0 +1,39 @@
+#Note that when saving from Excel additional " charachters may be added, thus causing the test to fail
+#Buffer	Result	Mime Comment
+<?xml *?><lm:lmx xmlns="http://www.nokia.com/schemas/location/landmarks/"									#	ECertain	lmx		OK
+<?xml *?><gpx xmlns="http://www.topografix.com/GPX/"															#	ECertain	gpx		OK
+<?xml *?><lala:lmx xmlns:n="http://www.nokia.com/schemas/location/landmarks/"								#	ECertain	lmx		OK
+<?xml *?><gps:gpx xmlns="http://www.topografix.com/GPX/" 													#	ECertain	gpx		OK
+<?xml *?><!-- Comment -->  <lm:lmxsdfsdf xmlns="http://www.nokia.com/schemas/location/landmarks/""<*lmx>"	#	ECertain	lmx		OK
+<?xml *?><!-- Comment2 -->  <lm:gpxsdfsdf xmlns="http://www.topografix.com/GPX/""<*gpx>"						#	ECertain	gpx		OK
+<?xml k?> <lm:lmx*> 																						#	EProbable	lmx		OK
+<?xml k?> <lm:gpx*> 																						#	EProbable	gpx		OK
+<?xml *?> <lala:lmx>																						#	EProbable	lmx		OK
+<?xml *?> <lala:gpx>																						#	EProbable	gpx		OK
+<?xml *?><lala:lmx>< xmlns:n="http://www.nokia.com/schemas/location/landmarks/"								#	EProbable	lmx		link not in same tag as lmx
+<?xml *?><lala:gpx>< xmlns:n="http://www.topografix.com/GPX/"												#	EProbable	gpx		link not in same tag as lmx
+<?xml ?><xmlns="http://www.nokia.com/schemas/location/landmarks/"											#	None		none	missing lmx
+<?xml ?><xmlns="http://www.topografix.com/GPX/"										   						#	None		none	missing lmx
+<?xml *?>,<lm:lmx xmlns:n="http://www.nokia.com/schemas/location/landmarks/"									#	None		none	Comma between tags
+<?xml dsf><lm:lmx xmlns="http://www.nokia.com/schemas/location/landmarks/"									#	None		none	No ?> at end of tag
+<?xml?> < *lm:lMx*> 																						#	None		none	Capitals
+<? xml ?> < *lm:lmx*> 																					    #	None		none	space in tag
+<?XML ?> < *lmx*> 																							#	None		none	wrong prolog
+<?XML ?> < *gpx*> 																							#	None		none	wrong prolog
+Thomas<?xml k?>, < *lmx*> 																					#	None		none	wrong start
+Thomas<?xml k?>, < *gpx*> 																					#	None		none	wrong start
+  <?xml k?>       < *lm:lmx*> 																				#	None		none	white spaces
+  <?xml k?>       < *gps:gpx*> 																				#	None		none	white spaces
+<*lmx><?xml ?>																								#	None		none	wrong prolog
+<*gpx><?xml ?>																								#	None		none	wrong prolog
+<*lmx><xmlns="http://www.nokia.com/schemas/location/landmarks/"<?xml ?>"										#	None		none	wrong prolog
+<*gpx><xmlns="http://www.topografix.com/GPX/"<?xml ?>"														#	None		none	wrong prolog
+<kalllmxdd><xmlns="http://www.nokia.com/schemas/location/landmarks/"										    #	None		none	wrong start
+<kalllmxdd><xmlns="http://www.topografix.com/GPX/"															#	None		none	wrong start
+kjsadflkj																									#	None		none	bullshit
+Pell xml*?><?^¨~|QWERTYhttp://www.nokia.com/schemas/location/landmarks/+?!"#¤%&/()=							#	None		none	not correct
+Sell xml*?><?^¨~|QWERTYhttp://www.topografix.com/GPX/+?!"#¤%&/()=											#	None		none	not correct
+Pell xml*?><?^¨~|QWERTY<xmlns:n="http://www.nokia.com/schemas/location/landmarks/"+?!"#¤%&/()=				#	None		none	Should be certain
+Sell xml*?><?^¨~|QWERTY<xmlns:n="http://www.topografix.com/GPX/"+?!"#¤%&/()=									#	None		none	Should be certain
+     <?xml *?><!-- Comment QWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQ--><!--QWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTY--><lala:lmx xmlns:n="http://www.nokia.com/schemas/location/landmarks/"	#	None	none	white spaces
+     <?xml *?><!-- Comment QWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQ--><!--QWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTYQWERTY--><lala:gpx xmlns:n="http://www.topografix.com/GPX/"					#	None	none	white spaces

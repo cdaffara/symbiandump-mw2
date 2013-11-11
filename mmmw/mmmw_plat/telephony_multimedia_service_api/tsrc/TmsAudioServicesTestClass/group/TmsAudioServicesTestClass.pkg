@@ -1,0 +1,40 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: Telephony Multimedia Service - STIF TEST
+;
+
+;languages
+&EN
+
+;Header
+#{"TmsAudioServicesTestClass"},(0x10207C72),1,0,0
+
+;Localised Vendor name
+%{"TmsAudioServicesTestClass"}
+
+;Unique Vendor name
+:"Nokia"
+
+;Files to install
+
+"/epoc32/release/armv5/urel/TmsAudioServicesTestClass.dll" - "c:/Sys/Bin/TmsAudioServicesTestClass.dll"
+
+; Including testframework.ini in the package may cause installation failure if another
+; copy of this file is already found in the destination folder. If this happens, remove
+; this file from the package and copy it manually.
+;"../../init/TestFramework.ini"-"c:/Testframework/TestFramework.ini"
+"../../init/TmsAudioServicesTestClass.ini"-"c:/Testframework/TmsAudioServicesTestClass.ini"
+"../../Conf/TMSAudioServicesTestClass.cfg"-"c:/Testframework/TMSAudioServicesTestClass.cfg"
+"../../data/NokiaTest.aac"-"C:/Data/Sounds/Digital/NokiaTest.aac"
+

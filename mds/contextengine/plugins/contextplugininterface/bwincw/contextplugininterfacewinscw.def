@@ -1,0 +1,5 @@
+EXPORTS
+	??1CContextPlugin@@UAE@XZ @ 1 NONAME ; CContextPlugin::~CContextPlugin(void)
+	?ListImplementationsL@CContextPlugin@@SAXAAV?$RPointerArray@VCImplementationInformation@@@@@Z @ 2 NONAME ; void CContextPlugin::ListImplementationsL(class RPointerArray<class CImplementationInformation> &)
+	?NewL@CContextPlugin@@SAPAV1@ABVTUid@@@Z @ 3 NONAME ; class CContextPlugin * CContextPlugin::NewL(class TUid const &)
+

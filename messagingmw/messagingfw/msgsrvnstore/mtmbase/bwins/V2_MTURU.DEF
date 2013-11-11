@@ -1,0 +1,44 @@
+EXPORTS
+	??0CBaseMtmUi@@IAE@AAVCBaseMtm@@AAVCRegisteredMtmDll@@@Z @ 1 NONAME ; protected: __thiscall CBaseMtmUi::CBaseMtmUi(class CBaseMtm &,class CRegisteredMtmDll &)
+	??0CBaseMtmUiData@@IAE@AAVCRegisteredMtmDll@@@Z @ 2 NONAME ; protected: __thiscall CBaseMtmUiData::CBaseMtmUiData(class CRegisteredMtmDll &)
+	??0TMtmUiFunction@CBaseMtmUiData@@QAE@AAVTResourceReader@@@Z @ 3 NONAME ; public: __thiscall CBaseMtmUiData::TMtmUiFunction::TMtmUiFunction(class TResourceReader &)
+	??0TMtmUiFunction@CBaseMtmUiData@@QAE@ABV01@@Z @ 4 NONAME ; public: __thiscall CBaseMtmUiData::TMtmUiFunction::TMtmUiFunction(class TMtmUiFunction::TMtmUiFunction const &)
+	??1CBaseMtmUi@@UAE@XZ @ 5 NONAME ; public: virtual __thiscall CBaseMtmUi::~CBaseMtmUi(void)
+	??1CBaseMtmUiData@@UAE@XZ @ 6 NONAME ; public: virtual __thiscall CBaseMtmUiData::~CBaseMtmUiData(void)
+	?CanUnDeleteFromEntryL@CBaseMtmUiData@@UBEHABVTMsvEntry@@AAH@Z @ 7 NONAME ; public: virtual int __thiscall CBaseMtmUiData::CanUnDeleteFromEntryL(class TMsvEntry const &,int &)const 
+	?ConstructL@CBaseMtmUi@@MAEXXZ @ 8 NONAME ; protected: virtual void __thiscall CBaseMtmUi::ConstructL(void)
+	?ConstructL@CBaseMtmUiData@@IAEXXZ @ 9 NONAME ; protected: void __thiscall CBaseMtmUiData::ConstructL(void)
+	?CopyFromL@CBaseMtmUi@@UAEPAVCMsvOperation@@ABVCMsvEntrySelection@@JAAVTRequestStatus@@@Z @ 10 NONAME ; public: virtual class CMsvOperation * __thiscall CBaseMtmUi::CopyFromL(class CMsvEntrySelection const &,long,class TRequestStatus &)
+	?CopyToL@CBaseMtmUi@@UAEPAVCMsvOperation@@ABVCMsvEntrySelection@@AAVTRequestStatus@@@Z @ 11 NONAME ; public: virtual class CMsvOperation * __thiscall CBaseMtmUi::CopyToL(class CMsvEntrySelection const &,class TRequestStatus &)
+	?CreateBitmapsL@CBaseMtmUiData@@IAEXHABVTDesC16@@HH@Z @ 12 NONAME ; protected: void __thiscall CBaseMtmUiData::CreateBitmapsL(int,class TDesC16 const &,int,int)
+	?CreateL@CBaseMtmUi@@UAEPAVCMsvOperation@@ABVTMsvEntry@@AAVCMsvEntry@@AAVTRequestStatus@@@Z @ 13 NONAME ; public: virtual class CMsvOperation * __thiscall CBaseMtmUi::CreateL(class TMsvEntry const &,class CMsvEntry &,class TRequestStatus &)
+	?DeleteFromL@CBaseMtmUi@@UAEPAVCMsvOperation@@ABVCMsvEntrySelection@@AAVTRequestStatus@@@Z @ 14 NONAME ; public: virtual class CMsvOperation * __thiscall CBaseMtmUi::DeleteFromL(class CMsvEntrySelection const &,class TRequestStatus &)
+	?DeleteServiceL@CBaseMtmUi@@UAEPAVCMsvOperation@@ABVTMsvEntry@@AAVTRequestStatus@@@Z @ 15 NONAME ; public: virtual class CMsvOperation * __thiscall CBaseMtmUi::DeleteServiceL(class TMsvEntry const &,class TRequestStatus &)
+	?DisplayProgressSummary@CBaseMtmUi@@UBEHABVTDesC8@@@Z @ 16 NONAME ; public: virtual int __thiscall CBaseMtmUi::DisplayProgressSummary(class TDesC8 const &)const 
+	?FunctionRecognised@CBaseMtmUiData@@QBEHH@Z @ 17 NONAME ; public: int __thiscall CBaseMtmUiData::FunctionRecognised(int)const 
+	?GetProgress@CBaseMtmUi@@UBEHABVTDesC8@@AAV?$TBuf@$0PP@@@AAH222@Z @ 18 NONAME ; public: virtual int __thiscall CBaseMtmUi::GetProgress(class TDesC8 const &,class TBuf<255> &,int &,int &,int &,int &)const 
+	?InvokeAsyncFunctionL@CBaseMtmUi@@UAEPAVCMsvOperation@@HABVCMsvEntrySelection@@AAVTRequestStatus@@AAVTDes8@@@Z @ 19 NONAME ; public: virtual class CMsvOperation * __thiscall CBaseMtmUi::InvokeAsyncFunctionL(int,class CMsvEntrySelection const &,class TRequestStatus &,class TDes8 &)
+	?InvokeSyncFunctionL@CBaseMtmUi@@UAEXHABVCMsvEntrySelection@@AAVTDes8@@@Z @ 20 NONAME ; public: virtual void __thiscall CBaseMtmUi::InvokeSyncFunctionL(int,class CMsvEntrySelection const &,class TDes8 &)
+	?MoveFromL@CBaseMtmUi@@UAEPAVCMsvOperation@@ABVCMsvEntrySelection@@JAAVTRequestStatus@@@Z @ 21 NONAME ; public: virtual class CMsvOperation * __thiscall CBaseMtmUi::MoveFromL(class CMsvEntrySelection const &,long,class TRequestStatus &)
+	?MoveToL@CBaseMtmUi@@UAEPAVCMsvOperation@@ABVCMsvEntrySelection@@AAVTRequestStatus@@@Z @ 22 NONAME ; public: virtual class CMsvOperation * __thiscall CBaseMtmUi::MoveToL(class CMsvEntrySelection const &,class TRequestStatus &)
+	?NewL@CMtmUiDataRegistry@@SAPAV1@AAVCMsvSession@@VTTimeIntervalMicroSeconds32@@@Z @ 23 NONAME ; public: static class CMtmUiDataRegistry * __cdecl CMtmUiDataRegistry::NewL(class CMsvSession &,class TTimeIntervalMicroSeconds32)
+	?NewL@CMtmUiRegistry@@SAPAV1@AAVCMsvSession@@VTTimeIntervalMicroSeconds32@@@Z @ 24 NONAME ; public: static class CMtmUiRegistry * __cdecl CMtmUiRegistry::NewL(class CMsvSession &,class TTimeIntervalMicroSeconds32)
+	?NewMtmUiDataLayerL@CMtmUiDataRegistry@@QAEPAVCBaseMtmUiData@@ABVTUid@@@Z @ 25 NONAME ; public: class CBaseMtmUiData * __thiscall CMtmUiDataRegistry::NewMtmUiDataLayerL(class TUid const &)
+	?NewMtmUiL@CMtmUiRegistry@@QAEPAVCBaseMtmUi@@AAVCBaseMtm@@@Z @ 26 NONAME ; public: class CBaseMtmUi * __thiscall CMtmUiRegistry::NewMtmUiL(class CBaseMtm &)
+	?Preferences@CBaseMtmUi@@QBEIXZ @ 27 NONAME ; public: unsigned int __thiscall CBaseMtmUi::Preferences(void)const 
+	?QueryCapability@CBaseMtmUi@@UAEHVTUid@@AAH@Z @ 28 NONAME ; public: virtual int __thiscall CBaseMtmUi::QueryCapability(class TUid,int &)
+	?ReadFunctionsFromResourceFileL@CBaseMtmUiData@@IAEXH@Z @ 29 NONAME ; protected: void __thiscall CBaseMtmUiData::ReadFunctionsFromResourceFileL(int)
+	?Session@CBaseMtmUi@@IBEAAVCMsvSession@@XZ @ 30 NONAME ; protected: class CMsvSession & __thiscall CBaseMtmUi::Session(void)const 
+	?SetPreferences@CBaseMtmUi@@QAEXI@Z @ 31 NONAME ; public: void __thiscall CBaseMtmUi::SetPreferences(unsigned int)
+	?UnDeleteFromL@CBaseMtmUi@@UAEPAVCMsvOperation@@ABVCMsvEntrySelection@@AAVTRequestStatus@@@Z @ 32 NONAME ; public: virtual class CMsvOperation * __thiscall CBaseMtmUi::UnDeleteFromL(class CMsvEntrySelection const &,class TRequestStatus &)
+	?LaunchEditorL@MturUtils@@SAXJ@Z @ 33 NONAME ; public: static void __cdecl MturUtils::LaunchEditorL(long)
+	?LaunchEditorAndWaitL@MturUtils@@SAXJ@Z @ 34 NONAME ; public: static void __cdecl MturUtils::LaunchEditorAndWaitL(long)
+	?ConfirmSendL@CBaseMtmUi@@UAEPAVCMsvOperation@@AAVTRequestStatus@@ABVCMsvEntrySelection@@ABVTSecurityInfo@@@Z @ 35 NONAME ABSENT ; class CMsvOperation * CBaseMtmUi::ConfirmSendL(class TRequestStatus &, class CMsvEntrySelection const &, class TSecurityInfo const &)
+	?LaunchEditorL@MturUtils@@SAXJAAVRThread@@AAVTRequestStatus@@@Z @ 36 NONAME ; void MturUtils::LaunchEditorL(long, class RThread &, class TRequestStatus &)
+	?BaseMtm@CBaseMtmUi@@QBEAAVCBaseMtm@@XZ @ 37 NONAME ; class CBaseMtm & CBaseMtmUi::BaseMtm(void) const
+	?GetInterface@CBaseMtmUi@@MAEPAXVTUid@@@Z @ 38 NONAME ; void * CBaseMtmUi::GetInterface(class TUid)
+	?GetInterface@CBaseMtmUiData@@MAEPAXVTUid@@@Z @ 39 NONAME ; void * CBaseMtmUiData::GetInterface(class TUid)
+	?MtmSpecificFunctions@CBaseMtmUiData@@QBEABV?$CArrayFix@VTMtmUiFunction@CBaseMtmUiData@@@@XZ @ 40 NONAME ; class CArrayFix<class CBaseMtmUiData::TMtmUiFunction> const & CBaseMtmUiData::MtmSpecificFunctions(void) const
+	?Type@CBaseMtmUi@@QBE?AVTUid@@XZ @ 41 NONAME ; class TUid CBaseMtmUi::Type(void) const
+	?Type@CBaseMtmUiData@@QBE?AVTUid@@XZ @ 42 NONAME ; class TUid CBaseMtmUiData::Type(void) const
+

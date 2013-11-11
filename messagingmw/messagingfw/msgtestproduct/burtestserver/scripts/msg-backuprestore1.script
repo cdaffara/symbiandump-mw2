@@ -1,0 +1,263 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description: 
+//
+//! @file
+
+RUN_UTILS DeleteDirectory c:\backuparchive\
+
+LOAD_SUITE burtestserver
+
+START_TESTCASE MSG-PARTIAL-BACKUPRESTORE-0001
+//! @SYMTestCaseID MSG-PARTIAL-BACKUPRESTORE-0001
+//! @SYMTestCaseDesc 		Backup with partial and base
+//! @SYMPREQ 			PREQ2073
+//! @SYMREQ 			REQ11159
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		High
+//! @SYMTestActions   		Specify ini file for base and partial backup
+//! @SYMTestExpectedResults 	no error
+//! @SYMTestType 		CIT
+
+RUN_TEST_STEP -1 burtestserver TestBackup c:\msgtest\backup\msg-backuprestore1.ini msg_partial_base
+
+END_TESTCASE MSG-PARTIAL-BACKUPRESTORE-0001
+
+START_TESTCASE MSG-PARTIAL-BACKUPRESTORE-0002
+//! @SYMTestCaseID MSG-PARTIAL-BACKUPRESTORE-0002
+//! @SYMTestCaseDesc 		Restore with partial and base
+//! @SYMPREQ 			PREQ2073
+//! @SYMREQ 			REQ11159
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		High
+//! @SYMTestActions   		Specify ini file for base and partial restore
+//! @SYMTestExpectedResults 	no error
+//! @SYMTestType 		CIT
+
+RUN_TEST_STEP -1 burtestserver TestRestore c:\msgtest\backup\msg-backuprestore1.ini msg_partial_base
+
+END_TESTCASE MSG-PARTIAL-BACKUPRESTORE-0002
+
+START_TESTCASE MSG-PARTIAL-BACKUPRESTORE-0003
+//! @SYMTestCaseID MSG-PARTIAL-BACKUPRESTORE-0003
+//! @SYMTestCaseDesc 		Backup with partial and base in asyncronous mode
+//! @SYMPREQ 			PREQ2073
+//! @SYMREQ 			REQ11159
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		High
+//! @SYMTestActions   		Specify ini file for base and partial backup
+//! @SYMTestExpectedResults 	no error
+//! @SYMTestType 		CIT
+
+RUN_TEST_STEP -1 burtestserver TestBackupAsync c:\msgtest\backup\msg-backuprestore1.ini msg_partial_base
+
+END_TESTCASE MSG-PARTIAL-BACKUPRESTORE-0003
+
+START_TESTCASE MSG-PARTIAL-BACKUPRESTORE-0004
+//! @SYMTestCaseID MSG-PARTIAL-BACKUPRESTORE-0004
+//! @SYMTestCaseDesc 		Restore with partial and base in asyncronous mode
+//! @SYMPREQ 			PREQ2073
+//! @SYMREQ 			REQ11159
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		High
+//! @SYMTestActions   		Specify ini file for base and partial restore
+//! @SYMTestExpectedResults 	no error
+//! @SYMTestType 		CIT
+
+RUN_TEST_STEP -1 burtestserver TestRestoreAsync c:\msgtest\backup\msg-backuprestore1.ini msg_partial_base
+
+END_TESTCASE MSG-PARTIAL-BACKUPRESTORE-0004
+
+START_TESTCASE MSG-PARTIAL-BACKUPRESTORE-0005
+//! @SYMTestCaseID MSG-PARTIAL-BACKUPRESTORE-0005
+//! @SYMTestCaseDesc 		Backup with partial and incremental
+//! @SYMPREQ 			PREQ2073
+//! @SYMREQ 			REQ11159
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		High
+//! @SYMTestActions   		Specify ini file for incremental and partial backup
+//! @SYMTestExpectedResults 	no error
+//! @SYMTestType 		CIT
+
+RUN_TEST_STEP -1 burtestserver TestBackup c:\msgtest\backup\msg-backuprestore1.ini msg_partial_incremental
+
+END_TESTCASE MSG-PARTIAL-BACKUPRESTORE-0005
+
+START_TESTCASE MSG-PARTIAL-BACKUPRESTORE-0006
+//! @SYMTestCaseID MSG-PARTIAL-BACKUPRESTORE-0006
+//! @SYMTestCaseDesc 		Restore with partial and incremental
+//! @SYMPREQ 			PREQ2073
+//! @SYMREQ 			REQ11159
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		High
+//! @SYMTestActions   		Specify ini file for incremental and partial restore
+//! @SYMTestExpectedResults 	no error
+//! @SYMTestType 		CIT
+
+RUN_TEST_STEP -1 burtestserver TestRestore c:\msgtest\backup\msg-backuprestore1.ini msg_partial_incremental
+
+END_TESTCASE MSG-PARTIAL-BACKUPRESTORE-0006
+
+START_TESTCASE MSG-PARTIAL-BACKUPRESTORE-0007
+//! @SYMTestCaseID MSG-PARTIAL-BACKUPRESTORE-0007
+//! @SYMTestCaseDesc 		Backup with partial and incremental in asyncronous mode
+//! @SYMPREQ 			PREQ2073
+//! @SYMREQ 			REQ11159
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		High
+//! @SYMTestActions   		Specify ini file for incremental and partial backup
+//! @SYMTestExpectedResults 	no error
+//! @SYMTestType 		CIT
+
+RUN_TEST_STEP -1 burtestserver TestBackupAsync c:\msgtest\backup\msg-backuprestore1.ini msg_partial_incremental
+
+END_TESTCASE MSG-PARTIAL-BACKUPRESTORE-0007
+
+START_TESTCASE MSG-PARTIAL-BACKUPRESTORE-0008
+//! @SYMTestCaseID MSG-PARTIAL-BACKUPRESTORE-0008
+//! @SYMTestCaseDesc 		Restore with partial and incremental in asyncronous mode
+//! @SYMPREQ 			PREQ2073
+//! @SYMREQ 			REQ11159
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		High
+//! @SYMTestActions   		Specify ini file for incremental and partial restore
+//! @SYMTestExpectedResults 	no error
+//! @SYMTestType 		CIT
+
+RUN_TEST_STEP -1 burtestserver TestRestoreAsync c:\msgtest\backup\msg-backuprestore1.ini msg_partial_incremental
+
+END_TESTCASE MSG-PARTIAL-BACKUPRESTORE-0008
+
+
+START_TESTCASE MSG-FULL-BACKUPRESTORE-0001
+//! @SYMTestCaseID MSG-FULL-BACKUPRESTORE-0001
+//! @SYMTestCaseDesc 		Backup with full and base
+//! @SYMPREQ 			PREQ2073
+//! @SYMREQ 			REQ11159
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		High
+//! @SYMTestActions   		Specify ini file for base and full backup
+//! @SYMTestExpectedResults 	no error
+//! @SYMTestType 		CIT
+
+RUN_TEST_STEP -1 burtestserver TestBackup c:\msgtest\backup\msg-backuprestore1.ini msg_full_base
+
+END_TESTCASE MSG-FULL-BACKUPRESTORE-0001
+
+START_TESTCASE MSG-FULL-BACKUPRESTORE-0002
+//! @SYMTestCaseID MSG-FULL-BACKUPRESTORE-0002
+//! @SYMTestCaseDesc 		Restore with full and base
+//! @SYMPREQ 			PREQ2073
+//! @SYMREQ 			REQ11159
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		High
+//! @SYMTestActions   		Specify ini file for base and full restore
+//! @SYMTestExpectedResults 	no error
+//! @SYMTestType 		CIT
+
+RUN_TEST_STEP -1 burtestserver TestRestore c:\msgtest\backup\msg-backuprestore1.ini msg_full_base
+
+END_TESTCASE MSG-FULL-BACKUPRESTORE-0002
+
+START_TESTCASE MSG-FULL-BACKUPRESTORE-0003
+//! @SYMTestCaseID MSG-FULL-BACKUPRESTORE-0003
+//! @SYMTestCaseDesc 		Backup with full and base in asyncronous mode
+//! @SYMPREQ 			PREQ2073
+//! @SYMREQ 			REQ11159
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		High
+//! @SYMTestActions   		Specify ini file for base and full backup
+//! @SYMTestExpectedResults 	no error
+//! @SYMTestType 		CIT
+
+RUN_TEST_STEP -1 burtestserver TestBackupAsync c:\msgtest\backup\msg-backuprestore1.ini msg_full_base
+
+END_TESTCASE MSG-FULL-BACKUPRESTORE-0003
+
+START_TESTCASE MSG-FULL-BACKUPRESTORE-0004
+//! @SYMTestCaseID MSG-FULL-BACKUPRESTORE-0004
+//! @SYMTestCaseDesc 		Restore with full and base in asyncronous mode
+//! @SYMPREQ 			PREQ2073
+//! @SYMREQ 			REQ11159
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		High
+//! @SYMTestActions   		Specify ini file for base and full restore
+//! @SYMTestExpectedResults 	no error
+//! @SYMTestType 		CIT
+
+RUN_TEST_STEP -1 burtestserver TestRestoreAsync c:\msgtest\backup\msg-backuprestore1.ini msg_full_base
+
+END_TESTCASE MSG-FULL-BACKUPRESTORE-0004
+
+START_TESTCASE MSG-FULL-BACKUPRESTORE-0005
+//! @SYMTestCaseID MSG-FULL-BACKUPRESTORE-0005
+//! @SYMTestCaseDesc 		Backup with full and incremental
+//! @SYMPREQ 			PREQ2073
+//! @SYMREQ 			REQ11159
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		High
+//! @SYMTestActions   		Specify ini file for incremental and full backup
+//! @SYMTestExpectedResults 	no error
+//! @SYMTestType 		CIT
+
+RUN_TEST_STEP -1 burtestserver TestBackup c:\msgtest\backup\msg-backuprestore1.ini msg_full_incremental
+
+END_TESTCASE MSG-FULL-BACKUPRESTORE-0005
+
+START_TESTCASE MSG-FULL-BACKUPRESTORE-0006
+//! @SYMTestCaseID MSG-FULL-BACKUPRESTORE-0006
+//! @SYMTestCaseDesc 		Restore with full and incremental
+//! @SYMPREQ 			PREQ2073
+//! @SYMREQ 			REQ11159
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		High
+//! @SYMTestActions   		Specify ini file for incremental and full restore
+//! @SYMTestExpectedResults 	no error
+//! @SYMTestType 		CIT
+
+RUN_TEST_STEP -1 burtestserver TestRestore c:\msgtest\backup\msg-backuprestore1.ini msg_full_incremental
+
+END_TESTCASE MSG-FULL-BACKUPRESTORE-0006
+
+START_TESTCASE MSG-FULL-BACKUPRESTORE-0007
+//! @SYMTestCaseID MSG-FULL-BACKUPRESTORE-0007
+//! @SYMTestCaseDesc 		Backup with full and incremental in asyncronous mode
+//! @SYMPREQ 			PREQ2073
+//! @SYMREQ 			REQ11159
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		High
+//! @SYMTestActions   		Specify ini file for incremental and full backup
+//! @SYMTestExpectedResults 	no error
+//! @SYMTestType 		CIT
+
+RUN_TEST_STEP -1 burtestserver TestBackupAsync c:\msgtest\backup\msg-backuprestore1.ini msg_full_incremental
+
+END_TESTCASE MSG-FULL-BACKUPRESTORE-0007
+
+START_TESTCASE MSG-FULL-BACKUPRESTORE-0008
+//! @SYMTestCaseID MSG-FULL-BACKUPRESTORE-0008
+//! @SYMTestCaseDesc 		Restore with full and incremental in asyncronous mode
+//! @SYMPREQ 			PREQ2073
+//! @SYMREQ 			REQ11159
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		High
+//! @SYMTestActions   		Specify ini file for incremental and full restore
+//! @SYMTestExpectedResults 	no error
+//! @SYMTestType 		CIT
+
+RUN_TEST_STEP -1 burtestserver TestRestoreAsync c:\msgtest\backup\msg-backuprestore1.ini msg_full_incremental
+
+END_TESTCASE MSG-FULL-BACKUPRESTORE-0008
+
+

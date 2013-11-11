@@ -1,0 +1,33 @@
+;
+; Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description:  Package file for project Radio Utility Central Repository
+;
+
+;Languages
+&EN
+
+;packet-header (name, uid, major, minor, build, type)
+#{"RadioUtility Cenrep File"},(0x10202BE9),1,0,1,TYPE=SP
+
+; Localised vendor name
+%{"Nokia"}
+
+; Unique Vendor name
+:"Nokia"
+
+; Radio Utility Central Repository Files
+"10207B87.cre" - "c:\private\10202be9\10207B87.cre"
+
+; NOTE: 10207B87.cre is the binary version of 10207B87.txt
+; For more info, see link: http://s60wiki.nokia.com/S60Wiki/How_to_guide_for_installing_Central_Repository_ini_files#Installing_Central_Repository_ini_file_that_is_already_in_ROM

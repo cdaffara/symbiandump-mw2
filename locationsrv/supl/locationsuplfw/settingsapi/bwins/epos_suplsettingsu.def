@@ -1,0 +1,102 @@
+EXPORTS
+	??1CSuplSettingsInternal@@UAE@XZ @ 1 NONAME ; CSuplSettingsInternal::~CSuplSettingsInternal(void)
+	??1CTriggerParams@@UAE@XZ @ 2 NONAME ; CTriggerParams::~CTriggerParams(void)
+	?NewLC@CSuplSettingsInternal@@SAPAV1@XZ @ 3 NONAME ; class CSuplSettingsInternal * CSuplSettingsInternal::NewLC(void)
+	?SetOutstandingTriggers@CSuplSettingsInternal@@QAEH_J_K@Z @ 4 NONAME ; int CSuplSettingsInternal::SetOutstandingTriggers(long long, unsigned long long)
+	?Get@CServerParams@@QBEHAA_JVTPtr16@@1AAH222@Z @ 5 NONAME ; int CServerParams::Get(long long &, class TPtr16, class TPtr16, int &, int &, int &, int &) const
+	?GetSuplUsage@CSuplSettings@@QBEHAAW4TSuplSettingsUsage@1@@Z @ 6 NONAME ; int CSuplSettings::GetSuplUsage(enum CSuplSettings::TSuplSettingsUsage &) const
+	?GetAllSlp@CSuplSettings@@QBEHAAV?$RPointerArray@VCServerParams@@@@@Z @ 7 NONAME ; int CSuplSettings::GetAllSlp(class RPointerArray<class CServerParams> &) const
+	?GetFallBackTimerValue@CSuplSettingsInternal@@QAEHAAH@Z @ 8 NONAME ; int CSuplSettingsInternal::GetFallBackTimerValue(int &)
+	?Set@CTriggerParams@@QAEH_JABVTDesC16@@HHW4TTriggerType@1@W4TRequestType@1@_K4@Z @ 9 NONAME ; int CTriggerParams::Set(long long, class TDesC16 const &, int, int, enum CTriggerParams::TTriggerType, enum CTriggerParams::TRequestType, unsigned long long, unsigned long long)
+	?GetImsi@CSuplSettings@@QAEHAAVTDes16@@@Z @ 10 NONAME ; int CSuplSettings::GetImsi(class TDes16 &)
+	?SetLastTriedTime@CSuplSettingsInternal@@QAEH_JVTTime@@@Z @ 11 NONAME ; int CSuplSettingsInternal::SetLastTriedTime(long long, class TTime)
+	?SetTlsSupportFlag@CSuplSettingsInternal@@QAEH_JH@Z @ 12 NONAME ; int CSuplSettingsInternal::SetTlsSupportFlag(long long, int)
+	?Set@CServerParams@@QAEHABVTDesC16@@0HHHH_J@Z @ 13 NONAME ; int CServerParams::Set(class TDesC16 const &, class TDesC16 const &, int, int, int, int, long long)
+	?GetNetInfoLastUse@CSuplSettingsInternal@@QBEH_JAAW4TSuplSettingsNetworkType@1@AAH222@Z @ 14 NONAME ; int CSuplSettingsInternal::GetNetInfoLastUse(long long, enum CSuplSettingsInternal::TSuplSettingsNetworkType &, int &, int &, int &, int &) const
+	?RemoveServer@CSuplSettings@@QAEH_J@Z @ 15 NONAME ; int CSuplSettings::RemoveServer(long long)
+	?GetSimChangeRemoveFlag@CSuplSettings@@QBEH_JAAH@Z @ 16 NONAME ; int CSuplSettings::GetSimChangeRemoveFlag(long long, int &) const
+	??1CServerParams@@UAE@XZ @ 17 NONAME ; CServerParams::~CServerParams(void)
+	?GetLastUseTime@CSuplSettingsInternal@@QBEH_JAAVTTime@@@Z @ 18 NONAME ; int CSuplSettingsInternal::GetLastUseTime(long long, class TTime &) const
+	?CancelTriggerSession@CSuplSettings@@QAEH_J@Z @ 19 NONAME ; int CSuplSettings::CancelTriggerSession(long long)
+	?Initialize@CSuplSettings@@QAEXAAVTRequestStatus@@@Z @ 20 NONAME ; void CSuplSettings::Initialize(class TRequestStatus &)
+	?IsSlpExists@CSuplSettings@@QAEHABVTDesC16@@@Z @ 21 NONAME ; int CSuplSettings::IsSlpExists(class TDesC16 const &)
+	?GetVersion@CSuplSettingsInternal@@QBEH_JAAH1@Z @ 22 NONAME ; int CSuplSettingsInternal::GetVersion(long long, int &, int &) const
+	?SetNotificationStatus@CSuplSettings@@QAEH_JH@Z @ 23 NONAME ; int CSuplSettings::SetNotificationStatus(long long, int)
+	?RemoveSessionObserver@CSuplSettings@@QAEXXZ @ 24 NONAME ; void CSuplSettings::RemoveSessionObserver(void)
+	?SetSessionObserverL@CSuplSettings@@QAEHAAVMSuplSessionObserver@@@Z @ 25 NONAME ; int CSuplSettings::SetSessionObserverL(class MSuplSessionObserver &)
+	?SetIapName@CSuplSettings@@QAEH_JABVTDesC16@@@Z @ 26 NONAME ; int CSuplSettings::SetIapName(long long, class TDesC16 const &)
+	?GetSlpInfoFromId@CSuplSettings@@QBEH_JPAVCServerParams@@@Z @ 27 NONAME ; int CSuplSettings::GetSlpInfoFromId(long long, class CServerParams *) const
+	?CancelInitialize@CSuplSettings@@QAEXXZ @ 28 NONAME ; void CSuplSettings::CancelInitialize(void)
+	?NewL@CServerParams@@SAPAV1@XZ @ 29 NONAME ; class CServerParams * CServerParams::NewL(void)
+	?GetIapName@CSuplSettings@@QBEH_JAAVTDes16@@@Z @ 30 NONAME ; int CSuplSettings::GetIapName(long long, class TDes16 &) const
+	?SetSimChangeRemoveFlag@CSuplSettings@@QAEH_JH@Z @ 31 NONAME ; int CSuplSettings::SetSimChangeRemoveFlag(long long, int)
+	?NewL@CSuplSettings@@SAPAV1@XZ @ 32 NONAME ; class CSuplSettings * CSuplSettings::NewL(void)
+	?NewLC@CServerParams@@SAPAV1@XZ @ 33 NONAME ; class CServerParams * CServerParams::NewLC(void)
+	??1CSuplSettings@@UAE@XZ @ 34 NONAME ; CSuplSettings::~CSuplSettings(void)
+	?GetEmergencySupportFlag@CSuplSettingsInternal@@QBEH_JAAH@Z @ 35 NONAME ; int CSuplSettingsInternal::GetEmergencySupportFlag(long long, int &) const
+	?SetPskTlsSupportFlag@CSuplSettingsInternal@@QAEH_JH@Z @ 36 NONAME ; int CSuplSettingsInternal::SetPskTlsSupportFlag(long long, int)
+	?IsImsiChanged@CSuplSettings@@QAEHAAH@Z @ 37 NONAME ; int CSuplSettings::IsImsiChanged(int &)
+	?GetTriggerParams@CSuplSettings@@QBEH_JAAPAVCTriggerParams@@@Z @ 38 NONAME ; int CSuplSettings::GetTriggerParams(long long, class CTriggerParams * &) const
+	?NewLC@CSuplSettings@@SAPAV1@XZ @ 39 NONAME ; class CSuplSettings * CSuplSettings::NewLC(void)
+	?ChangePriority@CSuplSettingsEngine@@QAEH_JHH@Z @ 40 NONAME ; int CSuplSettingsEngine::ChangePriority(long long, int, int)
+	?SetDefaultServer@CSuplSettings@@QAEHPBVCServerParams@@@Z @ 41 NONAME ; int CSuplSettings::SetDefaultServer(class CServerParams const *)
+	?IsSlpExists@CSuplSettings@@QAEH_J@Z @ 42 NONAME ; int CSuplSettings::IsSlpExists(long long)
+	?SetNetInfoLastSucess@CSuplSettingsInternal@@QAEH_JW4TSuplSettingsNetworkType@1@HHHH@Z @ 43 NONAME ; int CSuplSettingsInternal::SetNetInfoLastSucess(long long, enum CSuplSettingsInternal::TSuplSettingsNetworkType, int, int, int, int)
+	?Get@CTriggerParams@@QBEHAA_JVTPtr16@@AAH2AAW4TTriggerType@1@AAW4TRequestType@1@AA_K5@Z @ 44 NONAME ; int CTriggerParams::Get(long long &, class TPtr16, int &, int &, enum CTriggerParams::TTriggerType &, enum CTriggerParams::TRequestType &, unsigned long long &, unsigned long long &) const
+	?SlpCount@CSuplSettings@@QAEHAAH@Z @ 45 NONAME ; int CSuplSettings::SlpCount(int &)
+	?SetVersion@CSuplSettingsInternal@@QAEH_JHH@Z @ 46 NONAME ; int CSuplSettingsInternal::SetVersion(long long, int, int)
+	?GetManufacturerName@CSuplSettingsInternal@@QBEH_JAAVTDes16@@@Z @ 47 NONAME ; int CSuplSettingsInternal::GetManufacturerName(long long, class TDes16 &) const
+	?GetPskTlsFlag@CSuplSettingsInternal@@QBEH_JAAH@Z @ 48 NONAME ; int CSuplSettingsInternal::GetPskTlsFlag(long long, int &) const
+	?SetTopPriority@CSuplSettingsInternal@@QAEH_J@Z @ 49 NONAME ; int CSuplSettingsInternal::SetTopPriority(long long)
+	?GetDefaultSlpId@CSuplSettingsInternal@@QBEHAA_J@Z @ 50 NONAME ; int CSuplSettingsInternal::GetDefaultSlpId(long long &) const
+	?RemoveObserver@CSuplSettings@@QAEXXZ @ 51 NONAME ; void CSuplSettings::RemoveObserver(void)
+	?SetSuplUsage@CSuplSettings@@QAEHW4TSuplSettingsUsage@1@@Z @ 52 NONAME ; int CSuplSettings::SetSuplUsage(enum CSuplSettings::TSuplSettingsUsage)
+	?GetAllSlp@CSuplSettings@@QBEHAAV?$RPointerArray@VCServerParams@@@@AAVTRequestStatus@@@Z @ 53 NONAME ; int CSuplSettings::GetAllSlp(class RPointerArray<class CServerParams> &, class TRequestStatus &) const
+	?SetEditableFlag@CSuplSettings@@QBEH_JH@Z @ 54 NONAME ; int CSuplSettings::SetEditableFlag(long long, int) const
+	?GetServerAddress@CSuplSettings@@QBEH_JAAVTDes16@@@Z @ 55 NONAME ; int CSuplSettings::GetServerAddress(long long, class TDes16 &) const
+	?GetSlpInfoAddress@CSuplSettings@@QBEHABVTDesC16@@PAVCServerParams@@@Z @ 56 NONAME ; int CSuplSettings::GetSlpInfoAddress(class TDesC16 const &, class CServerParams *) const
+	?GetNetInfoLastSucess@CSuplSettingsInternal@@QBEH_JAAW4TSuplSettingsNetworkType@1@AAH222@Z @ 57 NONAME ; int CSuplSettingsInternal::GetNetInfoLastSucess(long long, enum CSuplSettingsInternal::TSuplSettingsNetworkType &, int &, int &, int &, int &) const
+	?SetNetInfoLastUse@CSuplSettingsInternal@@QAEH_JW4TSuplSettingsNetworkType@1@HHHH@Z @ 58 NONAME ; int CSuplSettingsInternal::SetNetInfoLastUse(long long, enum CSuplSettingsInternal::TSuplSettingsNetworkType, int, int, int, int)
+	?DeleteSessionRecord@CSuplSettingsInternal@@QAEH_J@Z @ 59 NONAME ; int CSuplSettingsInternal::DeleteSessionRecord(long long)
+	?GenerateHslpAddressFromImsi@CSuplSettings@@QAEHAAVTDes16@@@Z @ 60 NONAME ; int CSuplSettings::GenerateHslpAddressFromImsi(class TDes16 &)
+	?GetLastTriedTime@CSuplSettingsInternal@@QBEH_JAAVTTime@@@Z @ 61 NONAME ; int CSuplSettingsInternal::GetLastTriedTime(long long, class TTime &) const
+	?SetFallBackTimerValue@CSuplSettingsInternal@@QAEHH@Z @ 62 NONAME ; int CSuplSettingsInternal::SetFallBackTimerValue(int)
+	?SetAllParameter@CSuplSettings@@QAEHPBVCServerParams@@@Z @ 63 NONAME ; int CSuplSettings::SetAllParameter(class CServerParams const *)
+	?SetManufacturerName@CSuplSettingsInternal@@QAEH_JABVTDesC16@@@Z @ 64 NONAME ; int CSuplSettingsInternal::SetManufacturerName(long long, class TDesC16 const &)
+	?NewL@CTriggerParams@@SAPAV1@XZ @ 65 NONAME ; class CTriggerParams * CTriggerParams::NewL(void)
+	?GetEditableFlag@CSuplSettings@@QBEH_JAAH@Z @ 66 NONAME ; int CSuplSettings::GetEditableFlag(long long, int &) const
+	?GetDefaultServer@CSuplSettings@@QBEHPAVCServerParams@@@Z @ 67 NONAME ; int CSuplSettings::GetDefaultServer(class CServerParams *) const
+	?SetObserverL@CSuplSettings@@QAEHAAVMSuplSettingsObserver@@@Z @ 68 NONAME ; int CSuplSettings::SetObserverL(class MSuplSettingsObserver &)
+	?GetServerEnabledFlag@CSuplSettings@@QBEH_JAAH@Z @ 69 NONAME ; int CSuplSettings::GetServerEnabledFlag(long long, int &) const
+	?DeleteAllSessionRecords@CSuplSettingsInternal@@QAEHXZ @ 70 NONAME ; int CSuplSettingsInternal::DeleteAllSessionRecords(void)
+	?InsertSessionRecord@CSuplSettingsInternal@@QAEHPBVCTriggerParams@@@Z @ 71 NONAME ; int CSuplSettingsInternal::InsertSessionRecord(class CTriggerParams const *)
+	?ChangePriority@CSuplSettings@@QAEH_JHH@Z @ 72 NONAME ; int CSuplSettings::ChangePriority(long long, int, int)
+	?GetTlsFlag@CSuplSettingsInternal@@QBEH_JAAH@Z @ 73 NONAME ; int CSuplSettingsInternal::GetTlsFlag(long long, int &) const
+	?NewL@CSuplSettingsInternal@@SAPAV1@XZ @ 74 NONAME ; class CSuplSettingsInternal * CSuplSettingsInternal::NewL(void)
+	?SetUsageInHomwNwFlag@CSuplSettings@@QAEH_JH@Z @ 75 NONAME ; int CSuplSettings::SetUsageInHomwNwFlag(long long, int)
+	?SetServerAddress@CSuplSettings@@QAEH_JABVTDesC16@@@Z @ 76 NONAME ; int CSuplSettings::SetServerAddress(long long, class TDesC16 const &)
+	?SetServerEnabledFlag@CSuplSettings@@QAEH_JH@Z @ 77 NONAME ; int CSuplSettings::SetServerEnabledFlag(long long, int)
+	?AddNewServer@CSuplSettings@@QAEHPBVCServerParams@@AA_J@Z @ 78 NONAME ; int CSuplSettings::AddNewServer(class CServerParams const *, long long &)
+	?GetUsageInHomwNwFlag@CSuplSettings@@QBEH_JAAH@Z @ 79 NONAME ; int CSuplSettings::GetUsageInHomwNwFlag(long long, int &) const
+	?GetTriggerParams@CSuplSettings@@QBEHAAV?$RPointerArray@VCTriggerParams@@@@@Z @ 80 NONAME ; int CSuplSettings::GetTriggerParams(class RPointerArray<class CTriggerParams> &) const
+	?SetEmergencySupportFlag@CSuplSettingsInternal@@QAEH_JH@Z @ 81 NONAME ; int CSuplSettingsInternal::SetEmergencySupportFlag(long long, int)
+	?SetFallBack@CSuplSettings@@QAEHH@Z @ 82 NONAME ; int CSuplSettings::SetFallBack(int)
+	?NewLC@CTriggerParams@@SAPAV1@XZ @ 83 NONAME ; class CTriggerParams * CTriggerParams::NewLC(void)
+	?SetLastUseTime@CSuplSettingsInternal@@QAEH_JVTTime@@@Z @ 84 NONAME ; int CSuplSettingsInternal::SetLastUseTime(long long, class TTime)
+	?RemoveOnSimChange@CSuplSettingsInternal@@QAEHXZ @ 85 NONAME ; int CSuplSettingsInternal::RemoveOnSimChange(void)
+	?GetFallBack@CSuplSettings@@QBEHAAH@Z @ 86 NONAME ; int CSuplSettings::GetFallBack(int &) const
+	?Get@CServerExtensionParams@@QBEHVTPtr16@@0000@Z @ 87 NONAME ; int CServerExtensionParams::Get(class TPtr16, class TPtr16, class TPtr16, class TPtr16, class TPtr16) const
+	?Set@CServerExtensionParams@@QAEHABVTDesC16@@0000@Z @ 88 NONAME ; int CServerExtensionParams::Set(class TDesC16 const &, class TDesC16 const &, class TDesC16 const &, class TDesC16 const &, class TDesC16 const &)
+	?NewL@CServerExtensionParams@@SAPAV1@XZ @ 89 NONAME ; class CServerExtensionParams * CServerExtensionParams::NewL(void)
+	?GetServerExtensionParams@CSuplSettingsInternal@@QBEH_JPAVCServerExtensionParams@@@Z @ 90 NONAME ; int CSuplSettingsInternal::GetServerExtensionParams(long long, class CServerExtensionParams *) const
+	??1CServerExtensionParams@@UAE@XZ @ 91 NONAME ; CServerExtensionParams::~CServerExtensionParams(void)
+	?SetServerExtensionParams@CSuplSettingsInternal@@QAEH_JPAVCServerExtensionParams@@@Z @ 92 NONAME ; int CSuplSettingsInternal::SetServerExtensionParams(long long, class CServerExtensionParams *)
+	?NewLC@CServerExtensionParams@@SAPAV1@XZ @ 93 NONAME ; class CServerExtensionParams * CServerExtensionParams::NewLC(void)
+	?GetDefaultIAPName@CSuplSettings@@QAEHAAVTDes16@@@Z @ 94 NONAME ; int CSuplSettings::GetDefaultIAPName(class TDes16 &)
+	?SetServerConfigurationType@CServerParams@@QAEXH@Z @ 95 NONAME ; void CServerParams::SetServerConfigurationType(int)
+	?GetServerConfigurationType@CServerParams@@QBEHAAH@Z @ 96 NONAME ; int CServerParams::GetServerConfigurationType(int &) const
+	?GetTriggerEndTime@CTriggerParams@@QBEHAAVTTime@@@Z @ 97 NONAME ; int CTriggerParams::GetTriggerEndTime(class TTime &) const
+	?SetSuplTriggeredServiceStatus@CSuplSettings@@QAEHABW4TSuplTriggerStatus@1@@Z @ 98 NONAME ; int CSuplSettings::SetSuplTriggeredServiceStatus(enum CSuplSettings::TSuplTriggerStatus const &)
+	?SetTriggerEndTime@CTriggerParams@@QAEXVTTime@@@Z @ 99 NONAME ; void CTriggerParams::SetTriggerEndTime(class TTime)
+	?GetSuplTriggeredServiceStatus@CSuplSettings@@QAEHAAW4TSuplTriggerStatus@1@@Z @ 100 NONAME ; int CSuplSettings::GetSuplTriggeredServiceStatus(enum CSuplSettings::TSuplTriggerStatus &)
+

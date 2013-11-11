@@ -1,0 +1,34 @@
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 11.1 Misc, PS tests
+timeout 10000
+create ccetester test
+
+test OpenNewCall 1 0 "plugincmd forwardother 0" 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+// forward events
+test WaitEvents 1 Dialling, 1 Connecting, 1 RemoteForwarding, 1 VoipMovedPermanently
+
+test GetAirTimeDuration
+
+test SendPluginRequest SendTestEvents 1 2
+test WaitEvent 1 LocalBarred
+test WaitEvent 1 RemoteBarred
+test WaitEvent 1 RemoteWaiting
+test WaitEvent 1 RemoteWaiting
+test WaitEvent 1 VoipEarlyMediaStarted
+test WaitEvent 1 NotSecureSession
+test WaitEvent 1 RemoteConferenceCreate
+test WaitEvent 1 CSDataPortLoaned
+test WaitEvent 1 CSDataPortRecovered
+
+test MiscTests 1
+
+test WaitEvent 1 Idle InBand
+
+test VerifyTest
+delete test
+[Endtest] 

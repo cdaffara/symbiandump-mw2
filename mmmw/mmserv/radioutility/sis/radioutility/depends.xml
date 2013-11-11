@@ -1,0 +1,11 @@
+<depends>
+	<s60release>
+		<from>
+			<major>5</major><minor>0</minor>
+			<date><year>2008</year><week>32</week></date>
+		</from>
+	</s60release>
+	<product>
+		<type_designator>RM-356</type_designator>
+	</product>
+</depends>

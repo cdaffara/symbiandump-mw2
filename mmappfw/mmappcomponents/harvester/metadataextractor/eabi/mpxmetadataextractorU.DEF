@@ -1,0 +1,11 @@
+EXPORTS
+	_ZN21CMPXMetadataExtractor12CreateMediaLERK7TDesC16RP9CMPXMediai @ 1 NONAME
+	_ZN21CMPXMetadataExtractor4NewLER3RFsR13RApaLsSessionR13RPointerArrayI18CMPXCollectionTypeE @ 2 NONAME
+	_ZTI19CMPXFileInfoUtility @ 3 NONAME ; #<TI>#
+	_ZTI21CMPXMetadataExtractor @ 4 NONAME ; #<TI>#
+	_ZTV19CMPXFileInfoUtility @ 5 NONAME ; #<VT>#
+	_ZTV21CMPXMetadataExtractor @ 6 NONAME ; #<VT>#
+	_ZN21CMPXMetadataExtractor16ExtractAlbumArtLEP9CMPXMedia @ 7 NONAME
+	_ZN21CMPXMetadataExtractor13CancelRequestEv @ 8 NONAME
+	_ZN21CMPXMetadataExtractor17CreateMediaAsyncLERK7TDesC16P29MMPXMetadataExtractorObserveri @ 9 NONAME
+

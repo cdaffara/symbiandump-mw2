@@ -1,0 +1,57 @@
+/*****************************************************
+  1. Call is created
+  2. Call is put on Hold
+  3. 2nd call is created
+  4. Calls are transferred (Attended). Transfer is called
+     for the call on Hold.
+  	 Expected: Active call is disconnected via transfer states,
+  	           Hold call is disconnected normally
+*****************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 7.2 Transfer, Attended
+timeout 15000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test OpenNewCall 1 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+// Step 2
+print Step_2
+
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+// Step 3
+print Step_3
+
+test OpenNewCall 2 0 AddressTransfer 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 2 0 SubAddress Bearer
+test WaitEvent 2 Dialling
+test WaitEvent 2 Connecting
+test WaitEvent 2 Connected
+
+// Step 4
+print Step_4
+
+test AttendedTransfer 1 0
+
+test WaitEvents 1 Transferring, 1 RemoteTransferring, 1 RemoteTransferAlerting, 1 LocalTransfer, 1 Disconnecting, 1 Idle, 2 Disconnecting, 2 Idle
+
+test Release 1 0
+test Release 2 0
+
+test VerifyTest
+delete test
+[Endtest]

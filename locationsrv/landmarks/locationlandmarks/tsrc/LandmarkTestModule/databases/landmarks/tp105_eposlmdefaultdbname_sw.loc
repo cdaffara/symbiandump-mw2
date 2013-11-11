@@ -1,0 +1,39 @@
+/*
+* Copyright (c) 2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*   ?description_line
+*
+*/
+
+
+//r:
+//v:
+//i:LOCALISATION_TARGET = s60,s90
+//i:Default Landmark database name, that can be displayed on UI.
+
+// LOCALISATION STRINGS
+//b:-1
+//e:-1
+//f:EDialogLabelFont
+//s:
+//w:
+//d:Display name of the default landmark database.
+//l:list_single_pane_1
+//
+
+// Used for creating a localised swedish default name resource file, used 
+// in landmarktest TP105
+#define qtn_poslm_default_database_display_name "Mina små landmarks"
+
+// End of File

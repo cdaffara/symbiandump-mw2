@@ -1,0 +1,30 @@
+// Copyright (c) 1999-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// BITS.INF
+// 
+//
+
+PRJ_PLATFORMS
+
+PRJ_TESTMMPFILES
+BITS.MMP
+../BITSTSRC/TSBIOGEN.MMP
+../BITSTSRC/TCBIOGEN.MMP
+
+PRJ_TESTEXPORTS
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+../BITSINC/BioTestUtils.h		/epoc32/include/biotestutils.h
+#endif
+../BITSINC/BioTestUtils.INL	SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(biotestutils.inl)
+../BITSINC/bitsids.h		SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(bitsids.h)

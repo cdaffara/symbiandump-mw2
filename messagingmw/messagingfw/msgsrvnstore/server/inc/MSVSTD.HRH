@@ -1,0 +1,189 @@
+// Copyright (c) 1998-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+/**
+ @file
+ @publishedAll
+ @released
+*/
+#if !defined(__MSVSTD_HRH__)
+#define __MSVSTD_HRH__
+
+// predefined entry ids (can go upto 0x100000)
+/**
+* @publishedPartner
+* @released
+*/
+#define KMsvNullIndexEntryIdValue			0
+/**
+* @publishedPartner
+* @released
+*/
+#define KMsvTempIndexEntryIdValue			1
+/**
+* @publishedPartner
+* @released
+*/
+#define KMsvRootIndexEntryIdValue			0x1000
+/**
+* @publishedPartner
+* @released
+*/
+#define KMsvLocalServiceIndexEntryIdValue	0x1001
+/**
+* @publishedPartner
+* @released
+*/
+#define KMsvGlobalInBoxIndexEntryIdValue	0x1002
+/**
+* @publishedPartner
+* @released
+*/
+#define KMsvGlobalOutBoxIndexEntryIdValue	0x1003
+/**
+* @publishedPartner
+* @released
+*/
+#define KMsvDraftEntryIdValue				0x1004
+/**
+* @publishedPartner
+* @released
+*/
+#define KMsvSentEntryIdValue				0x1005
+/**
+* @publishedPartner
+* @released
+*/
+#define KMsvDeletedEntryFolderEntryIdValue	0x1006
+/**
+* @publishedPartner
+* @released
+*/
+#define KMsvUnkownServiceIndexEntryIdValue	0x1007
+/**
+* @publishedPartner
+* @released
+*/
+// Entry type values
+/**
+* @publishedPartner
+* @released
+*/
+#define KUidMsvRootEntryValue				0x10000F67
+/**
+* @publishedPartner
+* @released
+*/
+#define KUidMsvServiceEntryValue			0x10000F68
+/**
+* @publishedPartner
+* @released
+*/
+#define KUidMsvFolderEntryValue				0x10000F69
+/**
+* @publishedPartner
+* @released
+*/
+#define KUidMsvMessageEntryValue			0x10000F6A
+/**
+* @publishedPartner
+* @released
+*/
+#define KUidMsvAttachmentEntryValue			0x10000F6B
+
+// local service mtm
+/**
+* @publishedPartner
+* @released
+*/
+#define KUidMsvLocalServiceMtmValue			0x10000F71
+/**
+* @publishedPartner
+* @released
+*/
+#define KUidMsvServerMtmValue				0x1000589A
+
+// function ids
+/**
+* @publishedPartner
+* @released
+*/
+#define KMtmFirstFreeMtmFunctionId 			0x100000 // MTM can use any value above this
+/**
+* @publishedPartner
+* @released
+*/
+#define KMtmFirstFreeStandardMtmFunctionId	0xFC000	 // 16K function IDs available below free MTM function IDs
+/**
+* @publishedPartner
+* @released
+*/
+#define KMtmFirstFreeInternalFunctionId		0x10000  // INTERNAL to message server
+
+// Mtm component Uid's
+/**
+* @publishedPartner
+* @released
+*/
+#define KUidMtmServerComponentVal	0x10003C5E
+/**
+* @publishedPartner
+* @released
+*/
+#define KUidMtmClientComponentVal	0x10003C5F
+/**
+* @publishedPartner
+* @released
+*/
+#define KUidMtmUiComponentVal		0x10003C60
+/**
+* @publishedPartner
+* @released
+*/
+#define KUidMtmUiDataComponentVal	0x10003C61
+/**
+* @publishedPartner
+* @released
+*/
+#define KUidMtmDefaultSpecificVal	0x10202D51
+/**
+* Should be the same as KMaxFilename in e32const.h
+* @publishedPartner
+* @released
+*/
+#define KMsvMaxFilenameLength		0x100 
+/**
+* @publishedPartner
+* @released
+*/
+#define KMtmComponentCurrentMajorVersionNumber	2
+/**
+* @publishedPartner
+* @released
+*/
+#define KMtmComponentCurrentMinorVersionNumber	0
+/**
+* @publishedPartner
+* @released
+*/
+#define KMtmComponentCurrentBuildVersionNumber	0
+/**
+* @publishedPartner
+* @released
+*/
+#define KMsvCurrentSecurityCapabilitySetVersion		1
+
+
+#endif

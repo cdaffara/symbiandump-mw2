@@ -1,0 +1,21 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRINT Run t_msgs_sql_server Tests 
+LOAD_SUITE tmsgsqlunitserver
+//RUN_TEST_STEP 90000 tmsgsqlunitserver TEFUnit.CTestPerformanceCU.*
+RUN_TEST_STEP 90000 tmsgsqlunitserver TEFUnit.CTestPerformanceCU.TestCopyAndUpdateEntry
+

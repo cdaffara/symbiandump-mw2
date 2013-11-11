@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api id="05ffa7fd35eea873eb1484a4a7fb2b80" dataversion="2.0">
+  <name>Radio Utilities API</name>
+  <description>API for applications to access common radio functionality</description>
+  <type>c++</type>
+  <collection>mmserv</collection>
+  <libs>
+    <lib name="Radio_Utility.lib"/>
+  </libs>
+  <release category="platform" sinceversion=""/>
+  <attributes>
+    <!-- This indicates wether the api provedes separate html documentation -->
+    <!-- or is the additional documentation generated from headers. -->
+    <!-- If you are unsuere then the value is "no" -->
+    <htmldocprovided>no</htmldocprovided>
+    <adaptation>no</adaptation>
+  </attributes>
+</api>

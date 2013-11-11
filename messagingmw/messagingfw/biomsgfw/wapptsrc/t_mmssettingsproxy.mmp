@@ -1,0 +1,49 @@
+// Copyright (c) 2002-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// mmssettingsproxy.dll MMS settings proxy Ecom plug-in
+// 101F941F.rsc Registry file for MMS Settings Proxy mmssettingsproxy.dll
+// 
+//
+
+/**
+ @file
+*/
+
+
+TARGET		t_mmssettingsproxy.dll
+TARGETTYPE	PLUGIN
+
+CAPABILITY All -TCB
+UID		0x10009D8D 0x10202D54
+VENDORID 	0x70000001
+
+USERINCLUDE     .
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+SOURCEPATH  	../wapptsrc
+SOURCE		T_MMSSettingsProxy.cpp
+
+SOURCEPATH  	../wapptsrc
+
+start resource 10202D54.rss
+target t_mmssettingsproxy.rsc
+end
+	
+LIBRARY         euser.lib
+LIBRARY		ecom.lib
+LIBRARY		msgs.lib
+LIBRARY		efsrv.lib
+
+
+
+SMPSAFE

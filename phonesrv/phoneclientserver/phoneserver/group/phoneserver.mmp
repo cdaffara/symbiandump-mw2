@@ -1,0 +1,147 @@
+/*
+* Copyright (c) 2002-2010 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Phone Server project specification file.
+*
+*/
+
+#include <platform_paths.hrh>
+#include <data_caging_paths.hrh>
+#include <bldvariant.hrh>
+
+// Capability assignment.
+CAPABILITY CAP_SERVER NetworkControl
+// Assign Vendor ID.
+VENDORID VID_DEFAULT
+VERSION 10.0
+
+TARGET          phoneserver.exe
+EPOCSTACKSIZE   0x5000
+
+TARGETPATH      /system/programs
+TARGETTYPE      EXE
+
+UID             0x1000008d 0x10000850
+
+SOURCEPATH     .
+START RESOURCE ../src/resources/phoneserver.rss 
+HEADER
+TARGETPATH   RESOURCE_FILES_DIR
+LANGUAGE_IDS
+END  // RESOURCE
+
+SOURCEPATH      ../src/standard 
+SOURCE          phsrvstartup.cpp 
+SOURCE          phsrvsubsessionfactory.cpp 
+SOURCE          phsrvutils.cpp 
+
+SOURCE          cphsrvscheduler.cpp 
+SOURCE          cphsrvserver.cpp 
+SOURCE          cphsrvsession.cpp 
+SOURCE          cphsrvresourcemanager.cpp 
+SOURCE          cphsrvphonecontroller.cpp 
+SOURCE          cphsrvemergencynumbermanager.cpp 
+
+SOURCE          cphsrvsubsessionbase.cpp 
+SOURCE          cphsrvsubsessionussd.cpp 
+
+SOURCE          phsrvdebuginfo.cpp 
+
+SOURCEPATH  ../src/standard/standard_aiw 
+SOURCE          cphcltextphonedialdata.cpp 
+SOURCE          cphcltdialdata.cpp
+SOURCE          cphsrvemergencyrequestmanager.cpp 
+SOURCE          cphsrvcallrequest.cpp 
+SOURCE          cphsrvcallrequestmanager.cpp 
+SOURCE          cphsrvsubsessionnotifier.cpp 
+SOURCE          cphsrvsubsessionextcall.cpp 
+SOURCE          cphsrvsubsessionemergencynum.cpp 
+
+SOURCEPATH  ../src/imagehandler 
+SOURCE      cphsrvsubsessionimagehandler.cpp 
+SOURCE      cphsrvimagesaver.cpp
+
+SOURCEPATH      ../src/ussd 
+SOURCE          cphsrvussdreplytimer.cpp 
+SOURCE          cphsrvussdsendhandler.cpp 
+SOURCE          cphsrvussdreceivehandler.cpp 
+SOURCE          cphsrvussdmanager.cpp 
+SOURCE      cphsrvussdnotifynwrelease.cpp 
+
+SOURCEPATH      ../src/commandhandler 
+#if defined( __AT_HANDLER )
+SOURCE          cphsrvsubsessioncommandhandler.cpp 
+SOURCE          cphsrvcomhandrequest.cpp 
+#else  // No __AT_HANDLER defined, so stub version is used.
+SOURCE          cphsrvsubsessioncommandhandlerstub.cpp 
+SOURCE          cphsrvsubsessioncommandhandlernotifystub.cpp 
+#endif // __AT_HANDLER
+
+SOURCEPATH      ../src/commandhandler/commandhandler_aiw 
+
+#if defined( __AT_HANDLER )
+SOURCE          cphsrvcomhandrequestmanager.cpp 
+#else  // No __AT_HANDLER defined, so stub version is used.
+SOURCE          cphsrvcomhandrequestmanagerstub.cpp 
+#endif // __AT_HANDLER
+
+SOURCEPATH      ../src/messenger 
+#if defined( __CS_VIDEO_TELEPHONY )
+SOURCE          cphsrvmessengerobject.cpp 
+SOURCE          cphsrvmessengerrequestmanager.cpp 
+SOURCE          cphsrvsubsessionmessenger.cpp 
+#else  // No __CS_VIDEO_TELEPHONY defined, so stub version is used.
+SOURCE          cphsrvmessengerrequestmanagerstub.cpp 
+SOURCE          cphsrvsubsessionmessengerstub.cpp 
+#endif // __CS_VIDEO_TELEPHONY
+
+USERINCLUDE     ../inc/standard 
+USERINCLUDE     ../inc/standard/standard_aiw 
+USERINCLUDE     ../inc/ussd 
+USERINCLUDE     ../inc/commandhandler 
+USERINCLUDE     ../inc/messenger 
+USERINCLUDE     ../inc/imagehandler 
+
+USERINCLUDE     ../../phoneclient/inc/sharedclientserver 
+
+MW_LAYER_SYSTEMINCLUDE
+
+SYSTEMINCLUDE   ../../../inc
+SYSTEMINCLUDE    ../../inc // for RPhCltEmergencyCall.h, CPhCltExtPhoneDialData.h
+
+// TEMPORARY DEFINITION FOR Orbit Device Dialog
+SYSTEMINCLUDE /epoc32/include/mw/hb/hbwidgets
+SYSTEMINCLUDE /epoc32/include/mw/hb/hbcore
+
+LIBRARY        efsrv.lib
+LIBRARY        apgrfx.lib
+LIBRARY        charconv.lib
+LIBRARY        euser.lib
+LIBRARY        ws32.lib
+LIBRARY        etel.lib
+LIBRARY        bafl.lib
+LIBRARY        gsmu.lib
+LIBRARY        apparc.lib
+LIBRARY        customapi.lib
+LIBRARY        etelmm.lib 
+LIBRARY        commonengine.lib
+LIBRARY        featmgr.lib
+LIBRARY        fbscli.lib 
+LIBRARY        estor.lib    
+LIBRARY        centralrepository.lib
+LIBRARY        imageconversion.lib  
+LIBRARY        bitmaptransforms.lib 
+LIBRARY        hbwidgets.lib
+LIBRARY        hbcore.lib
+
+//  End of File  

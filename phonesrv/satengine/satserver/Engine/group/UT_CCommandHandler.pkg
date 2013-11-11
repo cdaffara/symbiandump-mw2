@@ -1,0 +1,37 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: For packing UT_CCommandhandler.
+;
+
+; Supported languages
+&en
+
+; Package header (one name for each supported language)
+#{"UT_CCommandHandler"},(0x01700000),0,10,0
+
+; Package signature
+
+
+; Options line not supported currently
+
+; Conditions blocks not supported currently
+
+; Language independent files that are always installed
+"UT_CCommandHandler.dll"-"!:\DigiaEUnit\Tests\UT_CCommandHandler.dll"
+
+; Language dependent files 
+
+
+; Requisites (of type: (UID),Major,Minor,Build-Number,{"Requisite Name1", "Requisite Name2"})
+(0x101F6F88), 0, 0, 0, {"Series60ProductID"}

@@ -1,0 +1,6 @@
+EXPORTS
+	_ZN21ContentListingFactory17NewSortingStyleLCER15TResourceReader @ 1 NONAME
+	_ZN21ContentListingFactory17NewSortingStyleLCEv @ 2 NONAME
+	_ZN21ContentListingFactory19NewModifiableItemLCEv @ 3 NONAME
+	_ZN21ContentListingFactory25NewContentListingEngineLCEv @ 4 NONAME
+

@@ -1,0 +1,66 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+//CED c:\msgtest\TestFramework\Configurations\CommDbSettings\NtRasLongIdleTimeout.cfg
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+GetBaseConstants				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini	     GetBaseConstants
+InitNtRas					c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini	     InitNtRas
+CreateSession				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini	     CreateSession
+ResetMessageStore				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini	     ResetMessageStore
+CreateImap4Service			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini	     CreateImap4Service
+CreateSmtpService				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini	     CreateSmtpService
+SetDefaultConfiguration			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini	     SetDefaultConfiguration0
+SetDefaultConfiguration			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      SetDefaultConfiguration1
+SetDefaultConfiguration			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      SetDefaultConfiguration2
+CreateRegistry				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      CreateRegistry
+CreateImap4Mtm				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      CreateImap4Mtm
+CreateSmtpMtm				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      CreateSmtpMtm
+GetDefaultSmtpService			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini	GetDefaultSmtpService
+SetImap4ServiceParameters		c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      SetImap4ServiceParameters
+SetSmtpServiceParameters		c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      SetSmtpServiceParameters
+ConnectImap4Server   			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      ConnectImap4Server0
+DoFullImap4Synchronisation		c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      DoFullImap4Synchronisation0
+FindEntryByName				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      FindEntryByName0
+DeleteChildren				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      DeleteChildren
+CheckChildrenCount			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      CheckChildrenCount0
+DisconnectImap4Server			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      DisconnectImap4Server0
+EXECUTE_TEST_CASE	
+CreateSmtpMessageFromEmailFile	c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      CreateSmtpMessageFromEmailFile0
+CopyEntry         			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      CopyEntry0
+SetImap4PartialDownloadLimits		c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      SetImap4PartialDownloadLimits
+ConnectImap4Server   			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      ConnectImap4Server1
+DoFullImap4Synchronisation		c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      DoFullImap4Synchronisation1
+CreateChildrenSelection			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      CreateChildrenSelection0
+DoImap4Populate                     c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      Populate
+DisconnectImap4Server			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      DisconnectImap4Server1
+MoveSelection					c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      MoveSelectionToInbox
+DeleteChildren				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      DeleteSentChildren
+ConnectImap4Server   			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      ConnectImap4Server0
+DoFullImap4Synchronisation		c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      DoFullImap4Synchronisation0
+FindEntryByName				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      FindEntryByName0
+DeleteChildren				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      DeleteChildren
+CheckChildrenCount			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      CheckChildrenCount0
+DisconnectImap4Server			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini      DisconnectImap4Server0
+CHECK_POSTCONDITIONS
+CreateChildrenSelection			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini	     CreateChildrenInboxItems
+CheckAttachmentPathFromEntrySelection	c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\MoveEntryToDifferentService.ini	     CheckAttachmentPath
+END_TEST_CASE

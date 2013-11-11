@@ -1,0 +1,55 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+LOAD_SUITE 	T_MsgCommonServer 	-SharedData
+LOAD_SUITE 	T_MsgImapServer 	-SharedData
+LOAD_SUITE  	T_MsgSmtpServer 	-SharedData
+LOAD_SUITE	T_MsgPopServer		-SharedData
+LOAD_SUITE	EventLogServer		-SharedData
+
+//! @SYMTestCaseID		MSG-PERF-SEARCH-USING-1667QO
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	Functional Test: Search-sort for recipients address  in the "TO" field of email messages.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//! 	1.	Create search-sort query for searching "test002" recipient address in "To" field of local inbox folder and sort by "To" field in ascending order.
+//! 	2.	Perform search-sort operation.
+//! 	3.	Verify that "To" field contains "test002" recipient address and sorted by "To" field in ascending order.
+//! 	
+//! @SYMTestExpectedResults
+//!	Index entries of only "test002"  recipient address messages should be returned and in ascending sorted order.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-PERF-SEARCH-USING-1667QO5
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreatePerfSearchSortQuery		c:\msgtest\common\search\msg-perf-search-using-1667qo.ini    0005-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	PerfSearchUsing1667QO		c:\msgtest\common\search\msg-perf-search-using-1667qo.ini    0005-SearchSortQuery
+//RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-perf-search-using-1667qo.ini    0005-SearchSortQuery
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+END_TESTCASE MSG-PERF-SEARCH-USING-1667QO5

@@ -1,0 +1,8 @@
+EXPORTS
+	_ZN18CSystemToneService6CreateEv @ 1 NONAME
+	_ZN18CSystemToneService6DeleteEPS_ @ 2 NONAME
+	_ZN18CSystemToneService8PlayToneENS_9TToneTypeE @ 3 NONAME
+	_ZN18CSystemToneService9PlayAlarmENS_10TAlarmTypeERjR21MStsPlayAlarmObserver @ 4 NONAME
+	_ZN18CSystemToneService9StopAlarmEj @ 5 NONAME
+	_ZN18CSystemToneService9PlayAlarmENS_9TToneTypeERjR21MStsPlayAlarmObserver @ 6 NONAME
+

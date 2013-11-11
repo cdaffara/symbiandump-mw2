@@ -1,0 +1,38 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:    Resource definitions of texts visible to user.
+*
+*/
+
+
+
+
+//  INCLUDES
+#include <badef.rh>
+#include <xdmprovisioningadapter.loc>
+
+//  RESOURCE DEFINITIONS 
+RESOURCE LBUF r_qtn_sm_head_connection
+    {
+    txt = qtn_sm_head_connection;
+    }
+
+RESOURCE LBUF r_qtn_xdm_provisioning_name
+    {
+    txt = qtn_xdm_provisioning_name;
+    }
+
+// End of File
+
+

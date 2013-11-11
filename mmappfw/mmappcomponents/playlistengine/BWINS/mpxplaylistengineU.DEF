@@ -1,0 +1,17 @@
+EXPORTS
+	??1CMPXPlaylistEngine@@UAE@XZ @ 1 NONAME ; CMPXPlaylistEngine::~CMPXPlaylistEngine(void)
+	??1CMPXPlaylistPluginHandler@@UAE@XZ @ 2 NONAME ; CMPXPlaylistPluginHandler::~CMPXPlaylistPluginHandler(void)
+	?CancelRequests@CMPXPlaylistEngine@@QAEXXZ @ 3 NONAME ; void CMPXPlaylistEngine::CancelRequests(void)
+	?ExternalizePlaylistL@CMPXPlaylistEngine@@QAEXABVCMPXMedia@@ABVTDesC16@@@Z @ 4 NONAME ; void CMPXPlaylistEngine::ExternalizePlaylistL(class CMPXMedia const &, class TDesC16 const &)
+	?InternalizePlaylistL@CMPXPlaylistEngine@@QAEXABVRFile@@@Z @ 5 NONAME ; void CMPXPlaylistEngine::InternalizePlaylistL(class RFile const &)
+	?InternalizePlaylistL@CMPXPlaylistEngine@@QAEXABVTDesC16@@@Z @ 6 NONAME ; void CMPXPlaylistEngine::InternalizePlaylistL(class TDesC16 const &)
+	?IsPlaylistL@CMPXPlaylistEngine@@QAEHABVTDesC16@@@Z @ 7 NONAME ; int CMPXPlaylistEngine::IsPlaylistL(class TDesC16 const &)
+	?NewL@CMPXPlaylistEngine@@SAPAV1@AAVMMPXPlaylistEngineObserver@@@Z @ 8 NONAME ; class CMPXPlaylistEngine * CMPXPlaylistEngine::NewL(class MMPXPlaylistEngineObserver &)
+	?NewL@CMPXPlaylistPluginHandler@@SAPAV1@AAVMMPXPlaylistPluginObserver@@AAVMMPXPluginHandlerObserver@@AAVRFs@@ABV?$CArrayFix@USCharacterSet@CCnvCharacterSetConverter@@@@3@Z @ 9 NONAME ; class CMPXPlaylistPluginHandler * CMPXPlaylistPluginHandler::NewL(class MMPXPlaylistPluginObserver &, class MMPXPluginHandlerObserver &, class RFs &, class CArrayFix<struct CCnvCharacterSetConverter::SCharacterSet> const &, class CArrayFix<struct CCnvCharacterSetConverter::SCharacterSet> const &)
+	?PlaylistPluginHandler@CMPXPlaylistEngine@@QAEAAVCMPXPlaylistPluginHandler@@XZ @ 10 NONAME ; class CMPXPlaylistPluginHandler & CMPXPlaylistEngine::PlaylistPluginHandler(void)
+	?SelectPlaylistPluginL@CMPXPlaylistPluginHandler@@QAEXABVRFile@@@Z @ 11 NONAME ; void CMPXPlaylistPluginHandler::SelectPlaylistPluginL(class RFile const &)
+	?SelectPlaylistPluginL@CMPXPlaylistPluginHandler@@QAEXABVTDesC16@@@Z @ 12 NONAME ; void CMPXPlaylistPluginHandler::SelectPlaylistPluginL(class TDesC16 const &)
+	?SelectPlaylistPluginL@CMPXPlaylistPluginHandler@@QAEXABVTDesC16@@ABVTDesC8@@@Z @ 13 NONAME ; void CMPXPlaylistPluginHandler::SelectPlaylistPluginL(class TDesC16 const &, class TDesC8 const &)
+	?SelectPlaylistPluginL@CMPXPlaylistPluginHandler@@QAEXABVTUid@@@Z @ 14 NONAME ; void CMPXPlaylistPluginHandler::SelectPlaylistPluginL(class TUid const &)
+	?SelectPlaylistPluginL@CMPXPlaylistPluginHandler@@QAEXK@Z @ 15 NONAME ; void CMPXPlaylistPluginHandler::SelectPlaylistPluginL(unsigned long)
+

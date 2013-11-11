@@ -1,0 +1,439 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE 	T_MsgCommonServer 	-SharedData
+LOAD_SUITE 	T_MsgPopServer 		-SharedData
+LOAD_SUITE  	T_MsgSmtpServer 	-SharedData
+
+
+START_TESTCASE MSG-POP3-HUGEBODYTEXT-0001
+//! 	@SYMTestCaseID		MSG-POP3-HUGEBODYTEXT-0001
+//! 	@SYMTestCaseDesc	Measurement of RAM usage for email operations with huge body text size.
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ1432
+//!	@SYMREQ			REQ6673,REQ6675,REQ6676,& REQ 6678
+//!				
+//! 	@SYMTestActions		1.	Start RAM usage tracking for Create Message.
+//!				2.	Create a Message with Body Text Size of 1MB.
+//!				3.	Stop RAM usage tracking and log the data along with event code.
+//!				4.	Start RAM usage tracking for Send Message
+//!				5.	Send the Message.
+//!				6.	Stop RAM usage tracking and log the data along with event code.
+//!				7.	Start RAM usage tracking for downloading the message
+//!				8.	Download the Message using POP3 client MTM populate command 
+//!				9.	Stop RAM usage tracking and log the data along with event code.
+//!				10.	Analysis  for any improvement would be on done by the PC side analysis tool.
+//!				
+//! 	@SYMTestExpectedResults The Body part of sent & received messages should be identical. 
+//!	@SYMAuthor		Rajat Bal
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0001-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0001-ResetMessageStore
+
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0001-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0001-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0001-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0001-DisConnectPop3Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	StartRamUsageTimer	 	c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0001-StartRamUsageTimer_Create
+//RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0001-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 600 T_MsgSmtpServer	SmtpCreateNewMessageWithPlainBodyText	c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0001-SmtpCreateNewMessageWithPlainBodyText
+RUN_TEST_STEP 300 T_MsgSmtpServer 	StopRamUsageTimer		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0001-StopRamUsageTimer_Create
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0001-CheckChildrenCountOutbox1
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	StartRamUsageTimer		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0001-StartRamUsageTimer_Send
+RUN_TEST_STEP 3000 T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0001-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgSmtpServer 	StopRamUsageTimer		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0001-StopRamUsageTimer_Send
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0001-CheckChildrenCountOutbox0
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0001-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	StartRamUsageTimer		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0001-StartRamUsageTimer_POP
+RUN_TEST_STEP 3000 T_MsgPopServer 	PopInvokeAsyncFunction		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0001-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgPopServer 	StopRamUsageTimer		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0001-StopRamUsageTimer_POP
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0001-DisConnectPop3Server
+
+RUN_TEST_STEP 300 T_MsgPopServer 	CheckChildrenCountPop		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0001-CheckChildrenCountRemote
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-HUGEBODYTEXT-0001
+
+
+START_TESTCASE MSG-POP3-POPULATE100KBBODY-0001
+//! 	@SYMTestCaseID		MSG-POP3-POPULATE100KBBODY-0001
+//! 	@SYMTestCaseDesc	Measurement of RAM usage for email operations.
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ1432
+//!	@SYMREQ			REQ6673,REQ6675,REQ6676,& REQ 6678
+//!				
+//! 	@SYMTestActions		1.	Start RAM usage tracking for Create Message.
+//!				2.	Create a Message with Body Text Size of 100KB.
+//!				3.	Stop RAM usage tracking and log the data along with event code.
+//!				4.	Start RAM usage tracking for Send Message
+//!				5.	Send the Message.
+//!				6.	Stop RAM usage tracking and log the data along with event code.
+//!				7.	Start RAM usage tracking for downloading the message
+//!				8.	Download the Message using POP3 client MTM populate command 
+//!				9.	Stop RAM usage tracking and log the data along with event code.
+//!				10.	Analysis  for any improvement would be on done by the PC side analysis tool.
+//!				
+//! 	@SYMTestExpectedResults The Body part of sent & received messages should be identical. 
+//!	@SYMAuthor		Rajat Bal
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0002-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0002-ResetMessageStore
+
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0002-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0002-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0002-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0002-DisConnectPop3Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	StartRamUsageTimer	 	c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0002-StartRamUsageTimer_Create
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0002-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgSmtpServer 	StopRamUsageTimer		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0002-StopRamUsageTimer_Create
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0002-CheckChildrenCountOutbox1
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	StartRamUsageTimer		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0002-StartRamUsageTimer_Send
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0002-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgSmtpServer 	StopRamUsageTimer		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0002-StopRamUsageTimer_Send
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0002-CheckChildrenCountOutbox0
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0002-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	StartRamUsageTimer		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0002-StartRamUsageTimer_POP
+RUN_TEST_STEP 300 T_MsgPopServer 	PopInvokeAsyncFunction		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0002-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgPopServer 	StopRamUsageTimer		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0002-StopRamUsageTimer_POP
+
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0002-DisConnectPop3Server
+
+RUN_TEST_STEP 300 T_MsgPopServer 	CheckChildrenCountPop		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0002-CheckChildrenCountRemote
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-POPULATE100KBBODY-0001
+
+
+START_TESTCASE MSG-POP3-POPULATE10KBBODY-0001
+//! 	@SYMTestCaseID		MSG-POP3-POPULATE10KBBODY-0001
+//! 	@SYMTestCaseDesc	Measurement of RAM usage for email operations.
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ1432
+//!	@SYMREQ			REQ6673,REQ6675,REQ6676,& REQ 6678
+//!				
+//! 	@SYMTestActions		1.	Start RAM usage tracking for Create Message.
+//!				2.	Create a Message with Body Text Size of 10KB.
+//!				3.	Stop RAM usage tracking and log the data along with event code.
+//!				4.	Start RAM usage tracking for Send Message
+//!				5.	Send the Message.
+//!				6.	Stop RAM usage tracking and log the data along with event code.
+//!				7.	Start RAM usage tracking for downloading the message
+//!				8.	Download the Message using POP3 client MTM populate command 
+//!				9.	Stop RAM usage tracking and log the data along with event code.
+//!				10.	Analysis  for any improvement would be on done by the PC side analysis tool.
+//!				
+//! 	@SYMTestExpectedResults The Body part of sent & received messages should be identical. 
+//!	@SYMAuthor		Rajat Bal
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0003-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0003-ResetMessageStore
+
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0003-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0003-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0003-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0003-DisConnectPop3Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	StartRamUsageTimer	 	c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0003-StartRamUsageTimer_Create
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0003-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgSmtpServer 	StopRamUsageTimer		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0003-StopRamUsageTimer_Create
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0003-CheckChildrenCountOutbox1
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	StartRamUsageTimer		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0003-StartRamUsageTimer_Send
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0003-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgSmtpServer 	StopRamUsageTimer		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0003-StopRamUsageTimer_Send
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0003-CheckChildrenCountOutbox0
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0003-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	StartRamUsageTimer		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0003-StartRamUsageTimer_POP
+RUN_TEST_STEP 300 T_MsgPopServer 	PopInvokeAsyncFunction		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0003-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgPopServer 	StopRamUsageTimer		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0003-StopRamUsageTimer_POP
+
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0003-DisConnectPop3Server
+
+RUN_TEST_STEP 300 T_MsgPopServer 	CheckChildrenCountPop		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0003-CheckChildrenCountRemote
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-POPULATE10KBBODY-0001
+
+
+START_TESTCASE MSG-POP3-POPULATE1KBBODY-0001
+//! 	@SYMTestCaseID		MSG-POP3-POPULATE1KBBODY-0001
+//! 	@SYMTestCaseDesc	Measurement of RAM usage for email operations.
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ1432
+//!	@SYMREQ			REQ6673,REQ6675,REQ6676,& REQ 6678
+//!				
+//! 	@SYMTestActions		1.	Start RAM usage tracking for Create Message.
+//!				2.	Create a Message with Body Text Size of 1KB.
+//!				3.	Stop RAM usage tracking and log the data along with event code.
+//!				4.	Start RAM usage tracking for Send Message
+//!				5.	Send the Message.
+//!				6.	Stop RAM usage tracking and log the data along with event code.
+//!				7.	Start RAM usage tracking for downloading the message
+//!				8.	Download the Message using POP3 client MTM populate command 
+//!				9.	Stop RAM usage tracking and log the data along with event code.
+//!				10.	Analysis  for any improvement would be on done by the PC side analysis tool.
+//!				
+//! 	@SYMTestExpectedResults The Body part of sent & received messages should be identical. 
+//!	@SYMAuthor		Rajat Bal
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0004-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0004-ResetMessageStore
+
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0004-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0004-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0004-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0004-DisConnectPop3Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	StartRamUsageTimer	 	c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0004-StartRamUsageTimer_Create
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0004-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgSmtpServer 	StopRamUsageTimer		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0004-StopRamUsageTimer_Create
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0004-CheckChildrenCountOutbox1
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	StartRamUsageTimer		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0004-StartRamUsageTimer_Send
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0004-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgSmtpServer 	StopRamUsageTimer		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0004-StopRamUsageTimer_Send
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0004-CheckChildrenCountOutbox0
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0004-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	StartRamUsageTimer		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0004-StartRamUsageTimer_POP
+RUN_TEST_STEP 300 T_MsgPopServer 	PopInvokeAsyncFunction		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0004-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgPopServer 	StopRamUsageTimer		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0004-StopRamUsageTimer_POP
+
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0004-DisConnectPop3Server
+
+RUN_TEST_STEP 300 T_MsgPopServer 	CheckChildrenCountPop		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0004-CheckChildrenCountRemote
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-POPULATE1KBBODY-0001
+
+
+START_TESTCASE MSG-POP3-POPULATE512KBBODY-0001
+//! 	@SYMTestCaseID		MSG-POP3-POPULATE512KBBODY-0001
+//! 	@SYMTestCaseDesc	Measurement of RAM usage for email operations.
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ1432
+//!	@SYMREQ			REQ6673,REQ6675,REQ6676,& REQ 6678
+//!				
+//! 	@SYMTestActions		1.	Start RAM usage tracking for Create Message.
+//!				2.	Create a Message with Body Text Size of 512KB.
+//!				3.	Stop RAM usage tracking and log the data along with event code.
+//!				4.	Start RAM usage tracking for Send Message
+//!				5.	Send the Message.
+//!				6.	Stop RAM usage tracking and log the data along with event code.
+//!				7.	Start RAM usage tracking for downloading the message
+//!				8.	Download the Message using POP3 client MTM populate command 
+//!				9.	Stop RAM usage tracking and log the data along with event code.
+//!				10.	Analysis  for any improvement would be on done by the PC side analysis tool.
+//!				
+//! 	@SYMTestExpectedResults The Body part of sent & received messages should be identical. 
+//!	@SYMAuthor		Rajat Bal
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0005-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0005-ResetMessageStore
+
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0005-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0005-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0005-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0005-DisConnectPop3Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	StartRamUsageTimer	 	c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0005-StartRamUsageTimer_Create
+//RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0005-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgSmtpServer	SmtpCreateNewMessageWithPlainBodyText	c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0005-SmtpCreateNewMessageWithPlainBodyText
+RUN_TEST_STEP 300 T_MsgSmtpServer 	StopRamUsageTimer		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0005-StopRamUsageTimer_Create
+
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0005-CheckChildrenCountOutbox1
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	StartRamUsageTimer		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0005-StartRamUsageTimer_Send
+RUN_TEST_STEP 3000 T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0005-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgSmtpServer 	StopRamUsageTimer		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0005-StopRamUsageTimer_Send
+
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0005-CheckChildrenCountOutbox0
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0005-ConnectPop3Server
+
+RUN_TEST_STEP 300 T_MsgPopServer 	StartRamUsageTimer		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0005-StartRamUsageTimer_POP
+RUN_TEST_STEP 3000 T_MsgPopServer 	PopInvokeAsyncFunction		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0005-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgPopServer 	StopRamUsageTimer		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0005-StopRamUsageTimer_POP
+
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0005-DisConnectPop3Server
+
+RUN_TEST_STEP 300 T_MsgPopServer 	CheckChildrenCountPop		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0005-CheckChildrenCountRemote
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-POPULATE512KBBODY-0001
+
+
+LOAD_SUITE	EventLogServer		-SharedData
+
+
+START_TESTCASE MSG-POP3-SpeedTest-0001
+//! 	@SYMTestCaseID		MSG-POP3-SpeedTest-0001
+//! 	@SYMTestCaseDesc	Measure the Regression speed test for processing of 100 messages that 
+//! 				contain small (1k) message body text.
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ1432
+//!	@SYMREQ			REQ6673,REQ6675,REQ6676,& REQ 6678
+//!				
+//! 	@SYMTestActions		1.	Record the time before message creation operation performed.
+//!				2.	Create 100 Messages with Body Text Size of 1KB
+//!				3.	Record the time after message creation operation performed.
+//!				4.	Record the time before sending the messages
+//!				5.	Send the Message
+//!				6.	Record the time after sending the messages
+//!				7.	Record the time before downloading the message
+//!				8.	Download the Message using IMAP client POP3 populate command 
+//!				9.	Record the time after downloading Message
+//!				10.	Analysis  for any speed degradation would be done by the PC side analysis tool.
+//!				
+//! 	@SYMTestExpectedResults The Body part of sent & received messages should be identical. 
+//!	@SYMAuthor		Rajat Bal
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0006-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0006-ResetMessageStore
+
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0006-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0006-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0006-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0006-DisConnectPop3Server
+RUN_TEST_STEP 300 EventLogServer	Clear				c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		
+RUN_TEST_STEP 300 EventLogServer 	Start				c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0006-EventLog
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0006-StartEventCode_Create
+PRINT ############ Create 100 Messages ######################
+START_REPEAT								c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0006-SectionOne	RepeatParam
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0006-CreateSmtpMessageFromEmailFile
+END_REPEAT
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0006-StopEventCode_Create
+
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0006-CheckChildrenCountOutbox
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0006-StartEventCode_Send
+RUN_TEST_STEP 3000 T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0006-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0006-StopEventCode_Send
+
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0006-CheckChildrenCountSentItem
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0006-ConnectPop3Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0006-StartEventCode_Download
+RUN_TEST_STEP 3000 T_MsgPopServer 	PopInvokeAsyncFunction		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0006-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0006-StopEventCode_Download
+
+RUN_TEST_STEP 300 EventLogServer 	Stop				c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0006-EventLog
+RUN_TEST_STEP 300 EventLogServer 	GetRecordCount			c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0006-EventLog
+RUN_TEST_STEP 300 EventLogServer 	PrintEventLog			c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0006-EventLog
+
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0006-DisConnectPop3Server
+
+RUN_TEST_STEP 300 T_MsgPopServer 	CheckChildrenCountPop		c:\msgtest\email\pop\ram\msg-pop-ram1.ini 		0006-CheckChildrenCountRemote
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-SpeedTest-0001

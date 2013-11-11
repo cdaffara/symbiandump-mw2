@@ -1,0 +1,149 @@
+/*******************************************************************
+   1. Create MO PS call
+   2. Send DTMF tone string including pause
+      Expected: DTMF tone events are received until pause character
+   3. Hangup call
+   4. Try to continue DTMF string
+      Expected: KErrNotSupported
+   5. Create MO CS call
+   6. Try to continue DTMF string
+      Expected: KErrNotFound
+   7. Send DTMF tone string including pause
+      Expected: DTMF tone events are received until pause character
+   8. Hang up call   
+   9. Try to continue DTMF string
+      Expected: KErrNotSupported
+  10. Create MT CS call
+  11. Try to continue DTMF string
+      Expected: KErrNotFound (string deleted from plugin when all calls are released...)
+  12. Disconnnect call
+*******************************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 5.7 DTMF, Continue String, Error
+timeout 10000
+create ccetester test
+
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test OpenNewCall 1 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+// Step 2
+print Step_2
+
+// Send DTMF tone string
+test SendDtmfToneString 0 1234w9876
+test WaitEvent DtmfSequenceStart 0 1
+test WaitEvent DtmfSequenceStop 0 1
+test WaitEvent DtmfSequenceStart 0 2
+test WaitEvent DtmfSequenceStop 0 2
+test WaitEvent DtmfSequenceStart 0 3
+test WaitEvent DtmfSequenceStop 0 3
+test WaitEvent DtmfSequenceStart 0 4	// event 10
+test WaitEvent DtmfSequenceStop 0 4
+
+// Wait for pause
+test WaitEvent DtmfStopInDtmfString 0 0
+
+// Step 3
+print Step_3
+
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+// Step 4
+print Step_4
+
+// Parameters: expected return value, Cancel=0 / Continue=1
+test ContinueStringSending -5 1
+
+// Step 5
+print Step_5
+
+// ----------------------------------------------------------------------------
+// continue string with different plugin
+
+test OpenNewCall 2 0 Recipient@172.23.123.29 1 ECCECallTypeCSVoice ECCELineTypePrimary
+
+test Dial 2 0 SubAddress Bearer
+test WaitEvent 2 Dialling
+test WaitEvent 2 Connecting
+test WaitEvent 2 Connected
+
+// Step 6
+print Step_6
+
+test ContinueStringSending -1 1
+
+// Step 7
+print Step_7
+
+// Send DTMF tone string
+test SendDtmfToneString 0 12w456
+
+test WaitEvent DtmfSequenceStart 0 1
+test WaitEvent DtmfSequenceStop 0 1
+test WaitEvent DtmfSequenceStart 0 2
+test WaitEvent DtmfSequenceStop 0 2
+// Wait for pause
+test WaitEvent DtmfStopInDtmfString 0 0
+
+// Step 8
+print Step_8
+
+test HangUp 2 0
+test WaitEvent 2 Disconnecting
+test WaitEvent 2 Idle
+test Release 2 0
+
+// Wait release to execute, DTMF string is cleared
+test Delay 500
+
+// Step 9
+print Step_9
+
+test ContinueStringSending -5 1
+
+// Step 10
+print Step_10
+
+// Send plugin command (CS), MT call with CallID 3 is created
+test SendPluginRequest 2 CreateCall 1
+test WaitEvent 0 IncomingCall
+test WaitEvent 3 Ringing
+
+test Answer 3 0
+test WaitEvent 3 Answering
+test WaitEvent 3 Connected
+
+// Step 11
+print Step_11
+
+//Result of this depends on how the string is handled in the plugin
+test ContinueStringSending -1 1
+
+// Step 12
+print Step_12
+
+test HangUp 3 0
+test WaitEvent 3 Disconnecting
+test WaitEvent 3 Idle
+test Release 3 0
+
+test VerifyTest
+delete test
+[Endtest] 

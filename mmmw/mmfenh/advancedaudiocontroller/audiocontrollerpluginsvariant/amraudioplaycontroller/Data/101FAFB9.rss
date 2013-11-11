@@ -1,0 +1,73 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  RSS file for amr audio play controller
+*
+*/
+
+
+// INCLUDES
+#include <registryinfov2.rh>
+#include <mmfplugininterfaceuids.hrh>
+#include "AMRAudioPlayControllerPlugin.hrh"
+
+
+//  RESOURCE DEFINITIONS 
+// -----------------------------------------------------------------------------
+//   
+// theInfo
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE REGISTRY_INFO theInfo
+	{
+        resource_format_version = RESOURCE_FORMAT_VERSION_2;
+	dll_uid = KUIDAMRPlayControllerPluginDll;	// 0x101FAFB9
+	interfaces = 
+		{
+		INTERFACE_INFO
+			{
+			interface_uid = KMmfUidPluginInterfaceController;
+			implementations = 
+				{
+				IMPLEMENTATION_INFO
+					{
+					implementation_uid = KUIDAMRPlayControllerPluginImplementation;	// 0x101FAFBA
+					version_no = 1;
+					display_name = "AMR Audio Play Controller Plugin";
+					default_data = "?";
+					opaque_data = "<s>Nokia<i>0x101F5D07<p>0x101FAFBB<a>0x200000<d>";
+                                        rom_only = 0;					
+					}
+				};
+			},
+		INTERFACE_INFO
+			{
+			interface_uid = KUIDAMRPlayControllerPluginFormatInterface;	// 0x101FAFBB
+			implementations = 
+				{
+				IMPLEMENTATION_INFO
+					{
+					implementation_uid = 0x10207B57;   // Dummy uid needed for place holder
+					version_no = 1;
+					display_name = "AMR Read Format";
+					default_data = "0x101FAFBA";
+					opaque_data = "<s>Nokia<i>0x101F5D07<e>.amr<h>#!AMR\n<h>?audio/amr<m>audio/amr";
+                                        rom_only = 0;	
+					}
+				};
+			}
+		};
+	}
+
+// End of file

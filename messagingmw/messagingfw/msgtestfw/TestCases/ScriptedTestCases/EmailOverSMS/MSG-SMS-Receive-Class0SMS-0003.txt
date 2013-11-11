@@ -1,0 +1,4 @@
+BodyText=test message, 8bits, length 30
+SentToAddress=+358408415528
+
+// Note extra E in BodyText ensures message is even number of bytes.

@@ -1,0 +1,108 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description:
+;
+;   Installation file for STIF
+;
+
+; Languages
+&EN
+
+; Provide value for uid
+#{"OpenMAXALTestModule"},(0x10207CA4),1,1,0,TYPE=SA, RU
+
+; Series60 product id for S60 3.0
+[0x101F7961], 0, 0, 0, {"Series60ProductID"}
+
+; Localised Vendor name
+%{"Nokia"}
+
+; Unique Vendor name
+:"Nokia"
+
+; Logo
+; None
+
+; Package signature - Optional
+; None
+
+; Start of Package body
+
+; Condition blocks
+; None
+
+; Options list
+; None
+
+; Install files
+"\epoc32\release\armv5\udeb\openmaxaltestmodule.dll"                -   "!:\sys\bin\openmaxaltestmodule.dll"
+"..\conf\openmaxaltestmodule_global.cfg"                            -   "!:\testframework\openmaxaltestmodule_global.cfg"
+"..\conf\openmaxaltestmodule_common.cfg"                            -   "!:\testframework\openmaxaltestmodule_common.cfg"
+"..\conf\openmaxaltestmodule_common_noklinvolitf.cfg"               -   "!:\testframework\openmaxaltestmodule_common_noklinvolitf.cfg"
+"..\conf\openmaxaltestmodule_common_nokvolextitf.cfg"               -   "!:\testframework\openmaxaltestmodule_common_nokvolextitf.cfg"
+"..\conf\openmaxaltestmodule_common_volumeitf.cfg"                  -   "!:\testframework\openmaxaltestmodule_common_volumeitf.cfg"
+"..\conf\openmaxaltestmodule_common_videoppitf.cfg"                 -   "!:\testframework\openmaxaltestmodule_common_videoppitf.cfg"
+"..\conf\xa_mp_videoppitf_cc.cfg"                                   -   "!:\testframework\xa_mp_videoppitf_cc.cfg"
+"..\conf\openmaxaltestmodule_objectitf.cfg"                         -   "!:\testframework\openmaxaltestmodule_objectitf.cfg"
+"..\conf\openmaxaltestmodule_engine_engineitf.cfg"                  -   "!:\testframework\openmaxaltestmodule_engine_engineitf.cfg"
+"..\conf\openmaxaltestmodule_engine_audenccapitf.cfg"               -   "!:\testframework\openmaxaltestmodule_engine_audenccapitf.cfg"
+"..\conf\openmaxaltestmodule_engine_aiodcitf.cfg"                   -   "!:\testframework\openmaxaltestmodule_engine_aiodcitf.cfg"
+"..\conf\openmaxaltestmodule_mr.cfg"                                -   "!:\testframework\openmaxaltestmodule_mr.cfg"
+"..\conf\openmaxaltestmodule_mr_mdinsertionitf.cfg"                 -   "!:\testframework\openmaxaltestmodule_mr_mdinsertionitf.cfg"
+"..\conf\openmaxaltestmodule_mr_audioencoderitf.cfg"                -   "!:\testframework\openmaxaltestmodule_mr_audioencoderitf.cfg"
+"..\conf\openmaxaltestmodule_mp.cfg"                                -   "!:\testframework\openmaxaltestmodule_mp.cfg"
+"..\conf\openmaxaltestmodule_mo.cfg"                                -   "!:\testframework\openmaxaltestmodule_mo.cfg"
+"..\conf\openmaxaltestmodule_mp_objectitf.cfg"                      -   "!:\testframework\openmaxaltestmodule_mp_objectitf.cfg"
+"..\conf\openmaxaltestmodule_mp_playitf.cfg"                        -   "!:\testframework\openmaxaltestmodule_mp_playitf.cfg"
+"..\conf\openmaxaltestmodule_mp_seekitf.cfg"                        -   "!:\testframework\openmaxaltestmodule_mp_seekitf.cfg"
+"..\conf\openmaxaltestmodule_common_dynsrcitf.cfg"                  -   "!:\testframework\openmaxaltestmodule_common_dynsrcitf.cfg"
+"..\conf\openmaxaltestmodule_mp_strminfoitf.cfg"                    -   "!:\testframework\openmaxaltestmodule_mp_strminfoitf.cfg"
+"..\conf\openmaxaltestmodule_mp_preemption.cfg"                     -   "!:\testframework\openmaxaltestmodule_mp_preemption.cfg"
+"..\conf\openmaxaltestmodule_mo_mdextractionitf.cfg"                -   "!:\testframework\openmaxaltestmodule_mo_mdextractionitf.cfg"
+"..\conf\openmaxaltestmodule_mp_mdextractionitf.cfg"                -   "!:\testframework\openmaxaltestmodule_mp_mdextractionitf.cfg"
+"..\conf\openmaxaltestmodule_mp_variousformats.cfg"                 -   "!:\testframework\openmaxaltestmodule_mp_variousformats.cfg"
+"..\conf\openmaxaltestmodule_radioitf.cfg"                          -   "!:\testframework\openmaxaltestmodule_radioitf.cfg"
+"..\conf\openmaxaltestmodule_mp_streaming.cfg"                      -   "!:\testframework\openmaxaltestmodule_mp_streaming.cfg"
+"..\conf\openmaxaltestmodule_mp_playbackrateitf.cfg"                -   "!:\testframework\openmaxaltestmodule_mp_playbackrateitf.cfg"
+"..\conf\openmaxaltestmodule_mr_recorditf.cfg"                      -   "!:\testframework\openmaxaltestmodule_mr_recorditf.cfg"
+"..\conf\openmaxaltestmodule_mr_recorditf_part2.cfg"                -   "!:\testframework\openmaxaltestmodule_mr_recorditf_part2.cfg"
+"..\conf\openmaxaltestmodule_mr_recorditf_part3.cfg"                -   "!:\testframework\openmaxaltestmodule_mr_recorditf_part3.cfg"
+"..\conf\openmaxaltestmodule_mr_recorditf_aac_auto.cfg"             -   "!:\testframework\openmaxaltestmodule_mr_recorditf_aac_auto.cfg"
+"..\conf\openmaxaltestmodule_mr_recorditf_aac_he.cfg"               -   "!:\testframework\openmaxaltestmodule_mr_recorditf_aac_he.cfg"
+"..\conf\openmaxaltestmodule_mp_prefetchstatusitf.cfg"              -   "!:\testframework\openmaxaltestmodule_mp_prefetchstatusitf.cfg"
+"..\conf\openmaxaltestmodule_mr_recorditf_incall.cfg"               -   "!:\testframework\openmaxaltestmodule_mr_recorditf_incall.cfg"
+"..\conf\openmaxaltestmodule_mr_recorditf_fmrx.cfg"                 -   "!:\testframework\openmaxaltestmodule_mr_recorditf_fmrx.cfg"
+
+"..\conf\openmaxaltestmodule_mr_cc.cfg"                             -   "!:\testframework\openmaxaltestmodule_mr_cc.cfg"
+"..\conf\openmaxaltestmodule_mr_recorditf_cc.cfg"                   -   "!:\testframework\openmaxaltestmodule_mr_recorditf_cc.cfg"
+"..\conf\openmaxaltestmodule_mr_mdinsertionitf_cc.cfg"              -   "!:\testframework\openmaxaltestmodule_mr_mdinsertionitf_cc.cfg"
+"..\conf\openmaxaltestmodule_mr_audioencoderitf_cc.cfg"             -   "!:\testframework\openmaxaltestmodule_mr_audioencoderitf_cc.cfg"
+
+;data files
+"..\data\c\omxaltestdata\test.wav"                                  -   "!:\testing\data\omxaltestdata\test.wav"
+"..\data\c\omxaltestdata\test.mp3"                                  -  "!:\testing\data\omxaltestdata\test.mp3"
+"..\data\c\omxaltestdata\test.3gp"                                  -  "!:\testing\data\omxaltestdata\test.3gp"
+"..\data\c\omxaltestdata\JapJap.mp3"                                -   "!:\testing\data\omxaltestdata\JapJap.mp3"
+"..\data\c\omxaltestdata\testmp4.mp4"                               -   "!:\testing\data\omxaltestdata\testmp4.mp4"
+"..\data\c\omxaltestdata\test_video.3gp"                                                        -   "!:\testing\data\omxaltestdata\test_video.3gp"
+; Embedded SIS
+; None
+
+; End of Package body
+
+; PKG dependencies
+; None
+
+; PKG capabilities
+; None

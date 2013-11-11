@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>msg-media-ops</name>
+	<timeout>6000</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-media-ops.script</hostPath>
+			<devicePath>c:\msgtest\media\msg-media-ops.script</devicePath>
+		</script>
+		
+	</testScripts>
+
+	<testServers>
+		<server>t_media</server>
+	</testServers>
+
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-media-ops.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-media-ops.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-media-0001.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-media-0001.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-media-0002.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-media-0002.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-media-0003.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-media-0003.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-media-0004.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-media-0004.ini</devicePath>
+		</data>
+	</dependencies>	
+</testExecuteTest>

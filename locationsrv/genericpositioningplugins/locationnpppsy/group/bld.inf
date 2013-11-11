@@ -1,0 +1,42 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project inf file
+*
+*/
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT GCCE
+
+PRJ_EXPORTS
+../rom/nla_npppsy.iby     	          	CORE_MW_LAYER_IBY_EXPORT_PATH(nla_npppsy.iby)
+../rom/nla_npppsy_resources.iby     	  LANGUAGE_MW_LAYER_IBY_EXPORT_PATH(nla_npppsy_resources.iby)
+../rom/nla_npppsystub.iby               CORE_MW_LAYER_IBY_EXPORT_PATH(nla_npppsystub.iby)	
+../loc/nla_npppsy.loc	         					MW_LAYER_LOC_EXPORT_PATH(nla_npppsy.loc)	
+../loc/nla_gpspositioner.loc	          MW_LAYER_LOC_EXPORT_PATH(nla_gpspositioner.loc)	
+../loc/nla_agpspositioner.loc	          MW_LAYER_LOC_EXPORT_PATH(nla_agpspositioner.loc)	
+../loc/nla_nbppositioner.loc	          MW_LAYER_LOC_EXPORT_PATH(nla_nbppositioner.loc)	
+
+
+../data/npppsystub.sis 	          /epoc32/data/z/system/install/npppsystub.sis
+
+// conf files
+../conf/npppsy.confml                     MW_LAYER_CONFML(npppsy.confml) 
+../conf/npppsy_10206915.crml 	          MW_LAYER_CRML(npppsy_10206915.crml)
+
+PRJ_MMPFILES
+nla_npppsy.mmp
+
+//  End of File  

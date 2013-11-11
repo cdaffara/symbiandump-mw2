@@ -1,0 +1,217 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE 	T_MsgCommonServer 	-SharedData
+LOAD_SUITE 	T_MsgImapServer 	-SharedData
+LOAD_SUITE  	T_MsgSmtpServer 	-SharedData
+
+START_TESTCASE MSG-SMTP-Mobility-0001
+
+//! @SYMTestCaseID		MSG-SMTP-MOB-SEND-REC-0001
+//! @SYMTestCaseDesc		Positive: Check can send emails using SMTP mobility account
+//! @SYMTestPriority		Critical
+//! @SYMTestType		CIT
+//! @SYMREQ			6986
+//! @SYMPREQ			1307
+//! @SYMTestStatus		Implemented
+//! @SYMTestActions		1.	Reset Message Store and Central Repository to default state.
+//!				2.	Create IMAP account in Central Repository using standard settings from a configuration file.
+//!				3.	Connect and sync to IMAP service using account settings and initialise account on remote IMAP server to default clean state.
+//!				4.	Disconnect from IMAP service.
+//!				5.	Create single message with 1K body text in outbox
+//!				6.	Add SMTP mobility account with a 'From' address which is different from parent account, and set its IAP list to NT RAS
+//!				7.	Send email to SMTP server
+//!				8.	Connect and sync to IMAP service
+//!				9.	Check 1 email header is fetched with the 'From' address of the mobility account
+//!				10.	Disconnect from IMAP service.
+//!
+//! @SYMTestExpectedResults	See step 9
+//! @SYMAuthor			Robert Heal
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0001-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0001-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0001-CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0001-ChangeImap4SubAndSyncSettings
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectAndSyncImapServer	c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0001-ConnectAndSyncImapServer
+RUN_TEST_STEP 300 T_MsgImapServer	InitialiseImap4Account		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0001-InitialiseImap4Account
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0001-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0001-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0001-DisConnectImapServer
+
+PRINT Setup Completed ##################################################
+
+PRINT Sending Email ####################################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0001-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0001-CheckChildrenCountOutbox
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMobilityAccount	c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0001-CreateSmtpMobilityAccount
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0001-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0001-CheckChildrenCountSentItems
+
+PRINT Fetching Email ###################################################
+
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0001-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0001-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0001-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0001-CheckChildrenCountRemoteInboxFrom1
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0001-DisConnectImapServer
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer	ShutDown
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+
+END_TESTCASE MSG-SMTP-Mobility-0001
+
+START_TESTCASE MSG-SMTP-Mobility-0002
+
+//! @SYMTestCaseID		MSG-SMTP-MOB-REC-SEND-0002
+//! @SYMTestCaseDesc		Positive: Check can send emails using SMTP account which has a SMTP mobility account with an IAP list that does not contain the IAP used for the connection.
+//! @SYMTestPriority		Critical
+//! @SYMTestType		CIT
+//! @SYMREQ			6986
+//! @SYMPREQ			1307
+//! @SYMTestStatus		Implemented
+//! @SYMTestActions		1.	Reset Message Store and Central Repository to default state.
+//!				2.	Create IMAP account in Central Repository using standard settings from a configuration file.
+//!				3.	Connect and sync to IMAP service using account settings and initialise account on remote IMAP server to default clean state.
+//!				4.	Disconnect from IMAP service.
+//!				5.	Create single message with 1K body text in outbox
+//!				6.	Add SMTP mobility account with a 'From' address which is different from parent account, and set its IAP list to an unused IAP
+//!				7.	Send email to SMTP server
+//!				8.	Connect and sync to IMAP service
+//!				9.	Check 1 email header is fetched but that it does not have the 'From' address of the mobility account
+//!				10.	Disconnect from IMAP service.
+//!
+//! @SYMTestExpectedResults	See step 9
+//! @SYMAuthor			Robert Heal
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0002-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0002-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0002-CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0002-ChangeImap4SubAndSyncSettings
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectAndSyncImapServer	c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0002-ConnectAndSyncImapServer
+RUN_TEST_STEP 300 T_MsgImapServer	InitialiseImap4Account		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0002-InitialiseImap4Account
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0002-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0002-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0002-DisConnectImapServer
+
+PRINT Setup Completed ##################################################
+
+PRINT Sending Email ####################################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0002-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0002-CheckChildrenCountOutbox
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMobilityAccount	c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0002-CreateSmtpMobilityAccount
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0002-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0002-CheckChildrenCountSentItems
+
+PRINT Fetching Email ###################################################
+
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0002-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0002-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0002-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0002-CheckChildrenCountRemoteInboxFrom0
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0002-DisConnectImapServer
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer	ShutDown
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+
+END_TESTCASE MSG-SMTP-Mobility-0002
+
+START_TESTCASE MSG-SMTP-Mobility-0003
+
+//! @SYMTestCaseID		MSG-SMTP-MOB-REC-SEND-0003
+//! @SYMTestCaseDesc		Positive: Check can send/receive emails using an SMTP mobility account that uses a linked SMTP account.
+//! @SYMTestPriority		Critical
+//! @SYMTestType		CIT
+//! @SYMREQ			6986
+//! @SYMPREQ			1307
+//! @SYMTestStatus		Implemented
+//! @SYMTestActions		1.	Reset Message Store and Central Repository to default state.
+//!				2.	Create IMAP account in Central Repository using standard settings from a configuration file.
+//!				3.	Connect and sync to IMAP service using account settings and initialise account on remote IMAP server to default clean state.
+//!				4.	Disconnect from IMAP service.
+//!				5.	Create single message with 1K body text in outbox
+//!				6.	Add SMTP mobility account linked to SMTP account that has a 'From' address which is different from parent account, and set its IAP list to NT RAS
+//!				7.	Send email to SMTP server
+//!				8.	Connect and sync to IMAP service
+//!				9.	Check 1 email header is fetched with the 'From' address of the linked SMTP account
+//!				10.	Disconnect from IMAP service.
+//!
+//! @SYMTestExpectedResults	See step 9
+//! @SYMAuthor			Robert Heal
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0003-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0003-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0003-CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0003-ChangeImap4SubAndSyncSettings
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectAndSyncImapServer	c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0003-ConnectAndSyncImapServer
+RUN_TEST_STEP 300 T_MsgImapServer	InitialiseImap4Account		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0003-InitialiseImap4Account
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0003-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0003-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0003-DisConnectImapServer
+
+PRINT Setup Completed ##################################################
+
+PRINT Sending Email ####################################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0003-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0003-CheckChildrenCountOutbox
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMobilityAccount	c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0003-CreateSmtpMobilityAccount
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0003-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0003-CheckChildrenCountSentItems
+
+PRINT Fetching Email ###################################################
+
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0003-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0003-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0003-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0003-CheckChildrenCountRemoteInboxFrom1
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\smtp\mobility\msg-smtp-mobility1.ini 0003-DisConnectImapServer
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer	ShutDown
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+
+END_TESTCASE MSG-SMTP-Mobility-0003

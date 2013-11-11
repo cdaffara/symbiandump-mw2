@@ -1,0 +1,5 @@
+EXPORTS
+	?CreatePluginManagerL@@YAPAVCPluginManager@@AAVRFs@@AAVRLibrary@@@Z @ 1 NONAME ; class CPluginManager * __cdecl CreatePluginManagerL(class RFs &,class RLibrary &)
+	?CreatePluginL@@YAPAVCPluginBase@@AAVRFs@@ABVRLibrary@@H@Z @ 2 NONAME ; class CPluginBase * __cdecl CreatePluginL(class RFs &,class RLibrary const &,int)
+	?CreateActivePluginL@@YAPAVCPluginActiveBase@@AAVRFs@@ABVRLibrary@@H@Z @ 3 NONAME ; class CPluginActiveBase * __cdecl CreateActivePluginL(class RFs &,class RLibrary const &,int)	
+

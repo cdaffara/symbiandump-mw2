@@ -1,0 +1,53 @@
+EXPORTS
+	?CreateTestSuiteL@@YAPAVMEUnitTest@@XZ @ 1 NONAME ; class MEUnitTest * CreateTestSuiteL(void)
+	?BeginTransactionL@CCenRepDatabaseUtil@@QAEXXZ @ 2 NONAME ; void CCenRepDatabaseUtil::BeginTransactionL(void)
+	?FindEntryIdsFromPropertiesL@CCenRepDatabaseUtil@@QAEHABV?$RPointerArray@VCCenRepDatabaseProperty@@@@AAV?$RArray@H@@@Z @ 3 NONAME ; int CCenRepDatabaseUtil::FindEntryIdsFromPropertiesL(class RPointerArray<class CCenRepDatabaseProperty> const &, class RArray<int> &)
+	?GetValue@CSPProperty@@QBEHAAW4TOnOff@@@Z @ 4 NONAME ; int CSPProperty::GetValue(enum TOnOff &) const
+	?UpdateProperty@CSPEntry@@QAEHW4TServicePropertyName@@ABVTDesC16@@@Z @ 5 NONAME ; int CSPEntry::UpdateProperty(enum TServicePropertyName, class TDesC16 const &)
+	?NewLC@CSPProperty@@SAPAV1@XZ @ 6 NONAME ; class CSPProperty * CSPProperty::NewLC(void)
+	?NewL@CCenRepDatabaseUtil@@SAPAV1@VTUid@@KKKKH@Z @ 7 NONAME ; class CCenRepDatabaseUtil * CCenRepDatabaseUtil::NewL(class TUid, unsigned long, unsigned long, unsigned long, unsigned long, int)
+	?PropertyType@CSPProperty@@SA?AW4TSPItemType@@W4TServicePropertyName@@@Z @ 8 NONAME ; enum TSPItemType CSPProperty::PropertyType(enum TServicePropertyName)
+	?GetAllProperties@CSPEntry@@QBEABV?$RPointerArray@VCSPProperty@@@@XZ @ 9 NONAME ; class RPointerArray<class CSPProperty> const & CSPEntry::GetAllProperties(void) const
+	?SetServiceName@CSPEntry@@QAEHABVTDesC16@@@Z @ 10 NONAME ; int CSPEntry::SetServiceName(class TDesC16 const &)
+	?GetPropertyType@CSPProperty@@QBE?AW4TSPItemType@@XZ @ 11 NONAME ; enum TSPItemType CSPProperty::GetPropertyType(void) const
+	?GetServiceName@CSPEntry@@QBEABVTDesC16@@XZ @ 12 NONAME ; class TDesC16 const & CSPEntry::GetServiceName(void) const
+	?DeletePropertiesL@CCenRepDatabaseUtil@@QAEHHABV?$RArray@K@@@Z @ 13 NONAME ; int CCenRepDatabaseUtil::DeletePropertiesL(int, class RArray<unsigned long> const &)
+	?CommitTransaction@CCenRepDatabaseUtil@@QAEHXZ @ 14 NONAME ; int CCenRepDatabaseUtil::CommitTransaction(void)
+	?UpdateProperty@CSPEntry@@QAEHW4TServicePropertyName@@W4TOnOff@@@Z @ 15 NONAME ; int CSPEntry::UpdateProperty(enum TServicePropertyName, enum TOnOff)
+	?SetValue@CSPProperty@@QAEHH@Z @ 16 NONAME ; int CSPProperty::SetValue(int)
+	?GetProperty@CSPEntry@@QBEHAAPBVCSPProperty@@H@Z @ 17 NONAME ; int CSPEntry::GetProperty(class CSPProperty const * &, int) const
+	?AddEntryL@CCenRepDatabaseUtil@@QAEXAAHABV?$RPointerArray@VCCenRepDatabaseProperty@@@@@Z @ 18 NONAME ; void CCenRepDatabaseUtil::AddEntryL(int &, class RPointerArray<class CCenRepDatabaseProperty> const &)
+	?AddPropertyL@CSPEntry@@QAEHABVCSPProperty@@@Z @ 19 NONAME ; int CSPEntry::AddPropertyL(class CSPProperty const &)
+	?PropertyCount@CSPEntry@@QBEHXZ @ 20 NONAME ; int CSPEntry::PropertyCount(void) const
+	?DeleteProperty@CSPEntry@@QAEHH@Z @ 21 NONAME ; int CSPEntry::DeleteProperty(int)
+	?GetValue@CSPProperty@@QBEHAAH@Z @ 22 NONAME ; int CSPProperty::GetValue(int &) const
+	??1CSPProperty@@UAE@XZ @ 23 NONAME ; CSPProperty::~CSPProperty(void)
+	?SetValue@CSPProperty@@QAEHABVTDesC16@@@Z @ 24 NONAME ; int CSPProperty::SetValue(class TDesC16 const &)
+	?FindPropertyL@CCenRepDatabaseUtil@@QAEHHKAAVCCenRepDatabaseProperty@@@Z @ 25 NONAME ; int CCenRepDatabaseUtil::FindPropertyL(int, unsigned long, class CCenRepDatabaseProperty &)
+	?NewLC@CCenRepDatabaseUtil@@SAPAV1@VTUid@@KKKKH@Z @ 26 NONAME ; class CCenRepDatabaseUtil * CCenRepDatabaseUtil::NewLC(class TUid, unsigned long, unsigned long, unsigned long, unsigned long, int)
+	?UpdateEntryL@CCenRepDatabaseUtil@@QAEHHABV?$RPointerArray@VCCenRepDatabaseProperty@@@@@Z @ 27 NONAME ; int CCenRepDatabaseUtil::UpdateEntryL(int, class RPointerArray<class CCenRepDatabaseProperty> const &)
+	?SetName@CSPProperty@@QAEHW4TServicePropertyName@@@Z @ 28 NONAME ; int CSPProperty::SetName(enum TServicePropertyName)
+	?DeleteEntryL@CCenRepDatabaseUtil@@QAEHH@Z @ 29 NONAME ; int CCenRepDatabaseUtil::DeleteEntryL(int)
+	?UpdateProperty@CSPEntry@@QAEHW4TServicePropertyName@@H@Z @ 30 NONAME ; int CSPEntry::UpdateProperty(enum TServicePropertyName, int)
+	?NewL@CSPProperty@@SAPAV1@XZ @ 31 NONAME ; class CSPProperty * CSPProperty::NewL(void)
+	?DataType@CSPProperty@@SA?AW4TPropertyDataType@@W4TServicePropertyName@@@Z @ 32 NONAME ; enum TPropertyDataType CSPProperty::DataType(enum TServicePropertyName)
+	?GetServiceId@CSPEntry@@QBEIXZ @ 33 NONAME ; unsigned int CSPEntry::GetServiceId(void) const
+	?NewLC@CSPEntry@@SAPAV1@XZ @ 34 NONAME ; class CSPEntry * CSPEntry::NewLC(void)
+	?FindEntryIdsL@CCenRepDatabaseUtil@@QAEHAAV?$RArray@H@@@Z @ 35 NONAME ; int CCenRepDatabaseUtil::FindEntryIdsL(class RArray<int> &)
+	?RollbackTransaction@CCenRepDatabaseUtil@@QAEXXZ @ 36 NONAME ; void CCenRepDatabaseUtil::RollbackTransaction(void)
+	?GetDataType@CSPProperty@@QBE?AW4TPropertyDataType@@XZ @ 37 NONAME ; enum TPropertyDataType CSPProperty::GetDataType(void) const
+	??8CSPProperty@@QBEHABV0@@Z @ 38 NONAME ; int CSPProperty::operator==(class CSPProperty const &) const
+	??1CCenRepDatabaseUtil@@UAE@XZ @ 39 NONAME ; CCenRepDatabaseUtil::~CCenRepDatabaseUtil(void)
+	?EntryCountL@CCenRepDatabaseUtil@@QAEHAAH@Z @ 40 NONAME ; int CCenRepDatabaseUtil::EntryCountL(int &)
+	?SetValue@CSPProperty@@QAEHW4TOnOff@@@Z @ 41 NONAME ; int CSPProperty::SetValue(enum TOnOff)
+	?FindEntryL@CCenRepDatabaseUtil@@QAEHHAAV?$RPointerArray@VCCenRepDatabaseProperty@@@@@Z @ 42 NONAME ; int CCenRepDatabaseUtil::FindEntryL(int, class RPointerArray<class CCenRepDatabaseProperty> &)
+	??1CSPEntry@@UAE@XZ @ 43 NONAME ; CSPEntry::~CSPEntry(void)
+	?NewL@CSPEntry@@SAPAV1@XZ @ 44 NONAME ; class CSPEntry * CSPEntry::NewL(void)
+	?Reset@CSPEntry@@QAEXXZ @ 45 NONAME ; void CSPEntry::Reset(void)
+	?DeleteProperty@CSPEntry@@QAEHW4TServicePropertyName@@@Z @ 46 NONAME ; int CSPEntry::DeleteProperty(enum TServicePropertyName)
+	?GetProperty@CSPEntry@@QBEHAAPBVCSPProperty@@W4TServicePropertyName@@@Z @ 47 NONAME ; int CSPEntry::GetProperty(class CSPProperty const * &, enum TServicePropertyName) const
+	?CopyL@CSPProperty@@QAEXABV1@@Z @ 48 NONAME ; void CSPProperty::CopyL(class CSPProperty const &)
+	?AddOrUpdatePropertiesL@CCenRepDatabaseUtil@@QAEHHABV?$RPointerArray@VCCenRepDatabaseProperty@@@@@Z @ 49 NONAME ; int CCenRepDatabaseUtil::AddOrUpdatePropertiesL(int, class RPointerArray<class CCenRepDatabaseProperty> const &)
+	?GetName@CSPProperty@@QBE?AW4TServicePropertyName@@XZ @ 50 NONAME ; enum TServicePropertyName CSPProperty::GetName(void) const
+	?GetValue@CSPProperty@@QBEHAAVTDes16@@@Z @ 51 NONAME ; int CSPProperty::GetValue(class TDes16 &) const
+

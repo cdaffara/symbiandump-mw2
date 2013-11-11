@@ -1,0 +1,57 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+//! @file
+//! @SYMTestCaseID MSG-SENDAS-CIT-0035-HP
+//! @SYMTestCaseDesc Un Confirmed Send, user rejects the request
+//! @SYMFssID 
+//! @SYMTestStatus Defined
+//! @SYMTestPriority High
+//! @SYMTestActions xxxxxxxx
+//! @SYMTestExpectedResults yyyyyyyyy
+//! @SYMTestType CIT
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+GetBaseConstants		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0035-UnConfirmedSendReject.ini	GetBaseConstants
+GetSMTPMTMUId			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0035-UnConfirmedSendReject.ini	SMTPMTMUId
+CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0035-UnConfirmedSendReject.ini	CreateSession
+ResetMessageStore		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0035-UnConfirmedSendReject.ini	ResetMessageStore
+DeletePopAccounts		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0035-UnConfirmedSendReject.ini	DeletePopAccounts
+DeleteImapAccounts		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0035-UnConfirmedSendReject.ini	DeleteImapAccounts
+CreatePop3Service		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0035-UnConfirmedSendReject.ini	CreatePop3Service
+CreateSmtpService		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0035-UnConfirmedSendReject.ini	CreateSmtpService
+CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0035-UnConfirmedSendReject.ini	CreateRegistry
+CreateSmtpMtm			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0035-UnConfirmedSendReject.ini	CreateSmtpMtm
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0035-UnConfirmedSendReject.ini	ChkChildrenCountDraft0
+EXECUTE_TEST_CASE
+ConnectSendAsServer		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0035-UnConfirmedSendReject.ini	ConnectSendAsServer
+SendAsCreateMessageofType	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0035-UnConfirmedSendReject.ini	CreateMessageofType
+SendAsSetSubject		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0035-UnConfirmedSendReject.ini	SendAsSetSubject
+SendAsAddRecipient		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0035-UnConfirmedSendReject.ini	SendAsAddRecipient
+SetUserResponse			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0035-UnConfirmedSendReject.ini	SetUserResponse
+SendAsSendMessage		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0035-UnConfirmedSendReject.ini	SendAsSendMessage
+SendAsCloseMessage		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0035-UnConfirmedSendReject.ini	SendAsCloseMessage
+CloseSendAsServerConnection	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0035-UnConfirmedSendReject.ini	CloseSvrConnection
+CHECK_POSTCONDITIONS
+CheckErrorCode			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0035-UnConfirmedSendReject.ini	CheckErrorCode
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0035-UnConfirmedSendReject.ini	ChkChildrenCountDraft1
+END_TEST_CASE

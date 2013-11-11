@@ -1,0 +1,65 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file
+*
+*/
+
+
+#include <data_caging_paths.hrh>
+#include <platform_paths.hrh>
+
+TARGET          mmmtpdataprovidertester.dll
+TARGETTYPE      dll
+UID             0x1000008D 0x102827AD
+
+CAPABILITY      ALL -TCB
+
+VENDORID        0x70000001
+
+SOURCEPATH      ../src
+SOURCE          cmmmtpdataprovidertestmodule.cpp
+SOURCE          cmmmtpdataprovidertestmoduleblocks.cpp
+SOURCE          ctestconnectionchannel.cpp
+SOURCE          ctestobjectmanager.cpp 
+SOURCE          cteststoragemgr.cpp
+SOURCE          ctestobserver.cpp
+SOURCE          cmmmtpdataprovidertester.cpp
+SOURCE          cmediamtpdataprovidertester.cpp
+SOURCE          cabstractmediamtpdataprovidertester.cpp
+
+USERINCLUDE     ../inc
+
+// Data provider configuration resource file. 
+// The target filename corresponds to the implementation UID.
+SOURCEPATH      ../data
+START RESOURCE  mmmtpdataprovidertester.rss  
+TARGETPATH      /resource
+TARGET          mmmtpdataprovidertester.rsc
+END
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY         euser.lib        
+LIBRARY         efsrv.lib
+LIBRARY         bafl.lib
+LIBRARY         ecom.lib
+LIBRARY         mdeclient.lib 
+LIBRARY         mtpdatatypes.lib
+LIBRARY         mtpdataproviderapi.lib
+LIBRARY         stiftestinterface.lib
+LIBRARY         stiftestengine.lib 
+LIBRARY         mpxharvesterutility.lib
+
+NOEXPORTLIBRARY
+EPOCALLOWDLLDATA

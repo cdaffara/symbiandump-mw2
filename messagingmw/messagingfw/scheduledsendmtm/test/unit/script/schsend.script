@@ -1,0 +1,117 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file SchSend.script
+//! @brief Run unit tests on the schsend component resulted from PREQ694 
+//!
+
+PRINT schsend test suite
+LOAD_SUITE Test_SchSend_Server
+
+// --- CMsvSysAgentActions
+
+//! @TestCaseId T_CMsvSysAgentActions_StoreRestore
+//! @TestCaseDesc test CMsvSysAgentActions store and restoration
+//! @FssId 
+//! @TestActions create a CMsvSysAgentActions object, store it, and restore it,
+//! @TestExpectedResults the stored and restored objects are identical.
+//! @TestPriority Medium
+//! @TestStatus Implemented
+RUN_TEST_STEP 100 Test_SchSend_Server MsvSysAgentActionsStep z:\testdata\scripts\schsend.ini MsvSysAgentActions1
+
+//! @TestCaseId T_CMsvSysAgentActions_ConditionMetL
+//! @TestCaseDesc test CMsvSysAgentActions ConditionMetL method
+//! @FssId 
+//! @TestActions create a CMsvSysAgentActions object, simulate a condition not met in the RSystemAgent,
+//! @TestExpectedResults the method ConitionMetL returns EFalse, and the returned error action should match.
+//! @TestPriority Medium
+//! @TestStatus Implemented
+RUN_TEST_STEP 100 Test_SchSend_Server MsvSysAgentActionsStep z:\testdata\scripts\schsend.ini MsvSysAgentActions2
+
+//! @TestCaseId T_CMsvScheduledEntry_PendingConditions
+//! @TestCaseDesc test CMsvScheduledEntry PendingConditions/SetPendingConditions methods
+//! @FssId 
+//! @TestActions create a TMsvEntry, Set the pending condition, and create a CMsvScheduledEntry object passing
+//! in the TMsvEntry, get the pending conditions flag using the CMsvScheduledEntry and TMsvEntry API respectively,
+//! @TestExpectedResults the values returned from the two APIs are the same
+//! @TestPriority Medium
+//! @TestStatus Implemented
+RUN_TEST_STEP 100 Test_SchSend_Server MsvScheduledEntryStep 
+
+//! @TestCaseId T_CMsvScheduleSettings
+//! @TestCaseDesc test CMsvScheduleSettings
+//! @FssId 
+//! @TestActions Create a CMsvScheduleSettings object, test if the default values are correct;
+//! use the setters to set the member variables, and get the values back, to see if the returned 
+//! values are the same; store and restore the object, and check if the restored object is the same as
+//! the previous stored one; call the reset method, and check if the values are reset to the defaults
+//! @TestExpectedResults The object's default values are correctly set after constructing; the values from getters match
+//! the values used to set; the restored object is identical to the previous stored one; and the values of the object are
+//! set to defaults after resetting.
+//! @TestPriority Medium
+//! @TestStatus Implemented
+RUN_TEST_STEP 100 Test_SchSend_Server MsvScheduleSettingsStep 
+
+//! @TestCaseId T_TMsvSchedulePackage
+//! @TestCaseDesc test TMsvSchedulePackage
+//! @FssId 
+//! @TestActions Create a TMsvSchedulePackage object, test if the default values are correct;
+//! pack the package object and unpack it, test if the unpacked object is the same as the previous one.
+//! @TestExpectedResults The object's default values are correctly set after constructing; the unpacked object is identical
+//! to the previous packed one.
+//! @TestPriority Medium
+//! @TestStatus Implemented
+RUN_TEST_STEP 100 Test_SchSend_Server MsvSchedulePackageStep 
+
+//! @TestCaseId T_TMsvOffPeakTime
+//! @TestCaseDesc test TMsvOffPeakTime
+//! @FssId 
+//! @TestActions Create a TMsvOffPeakTime object, test if the default values are correct;
+//! use the setters to set the member variables, and get the values back, to see if the returned values are
+//! the same; internalize and externalize the object, and check if the internalized object is the same as
+//! the previous externalized object; test the NextTimeInclusive method, If FromTime is within the validity 
+//! period of this off-peak time, then the next time will be less than or equal to FromTime. 
+//! @TestExpectedResults the default values are correctly set after constructing; the values from getters match
+//! the values used to set; the internalized object is identical to the previous externalized one; the next time get
+//! from NextTimeInclusive is less than or equal to FromTim
+//! @TestPriority Medium
+//! @TestStatus Implemented
+RUN_TEST_STEP 100 Test_SchSend_Server MsvOffPeakTimeStep
+
+
+//! @TestCaseId T_CMsvOffPeakTimes
+//! @TestCaseDesc create a CMsvOffPeakTimes object, store and restore it; given a current time and get the next off peak time;
+//! @FssId 
+//! @TestExpectedResults The restored object is identical to the previous stored one; the next off peak time matches.
+//! @TestPriority Medium
+//! @TestStatus Implemented
+RUN_TEST_STEP 100 Test_SchSend_Server MsvOffPeakTimeArrayStep
+
+//! @TestCaseId T_CMsvSendErrorActions
+//! @TestCaseDesc test CMsvSendErrorActions
+//! @FssId 
+//! @TestActions Create a CMsvSendErrorActions object, initialize it, store and restore the object, to see if the 
+//! restored object is the same as the previous stored one; manipulate the object using Add, remove, and get methods;
+//! restored the object from resource file; get errors from the object, create a new CMsvSendErrorAction object and use
+//! SetErrorsL to set the errors, test if the error actions in the new object is the same as the old one; set and get the 
+//! default error action to see if it matches.
+//! @TestExpectedResults The restored object is identical to the previous stored one; after adding a new Send error action
+//! the object contains the newly added error action; after removing, the object does not contain the removed error action;
+//! the restored object from the resource file is properly set;  the error actions in the new object are the same as the one
+//! used in set.
+//! @TestPriority Medium
+//! @TestStatus Implemented
+RUN_TEST_STEP 100 Test_SchSend_Server MsvSendErrorActionsStep z:\testdata\scripts\schsend.ini MsvErrorActions
+

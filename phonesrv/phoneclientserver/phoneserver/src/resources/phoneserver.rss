@@ -1,0 +1,115 @@
+/*
+* Copyright (c) 2002 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  This file contains all the resources for the Phone Server.
+*
+*/
+
+
+//  RESOURCE IDENTIFIER
+NAME PHSV
+
+//  INCLUDES
+#include <eikon.rh>
+#include <avkon.rh>
+#include <avkon.hrh>
+#include <avkon.rsg>
+#include <avkon.loc>
+
+#include <phoneserver.loc>
+
+
+//  RESOURCE DEFINITIONS 
+
+// ---------------------------------------------------------
+//
+//    RSS_SIGNATURE
+//    Signature.
+//
+// ---------------------------------------------------------
+//
+RESOURCE RSS_SIGNATURE { }
+
+
+// ---------------------------------------------------------
+//
+//    TBUF
+//    Name of the buffer.
+//
+// ---------------------------------------------------------
+//
+RESOURCE TBUF { buf="ussdserver"; }
+
+
+// ---------------------------------------------------------
+//
+//    r_phsrv_ussd_mesquery_message
+//    Contains USSD message query text.
+//
+// ---------------------------------------------------------
+//
+RESOURCE LBUF r_phsrv_ussd_mesquery_message
+    {
+    txt = qtn_ussd_mesquery_message;
+    }
+
+// ---------------------------------------------------------
+//
+//    r_phsrv_text_done
+//    Contains done text.
+//
+// ---------------------------------------------------------
+//
+RESOURCE LBUF r_phsrv_text_done
+    {
+    txt = text_done;
+    }
+
+
+// ---------------------------------------------------------
+//
+//    r_phsrv_ihf_activated_confirmation_note_text
+//    IHF activation note text.
+//
+// ---------------------------------------------------------
+//
+RESOURCE LBUF r_phsrv_ihf_activated_confirmation_note_text
+    {
+    txt = qtn_hf_conf_activate;
+    }
+
+// ---------------------------------------------------------
+//
+//    r_phone_ihf_deactivated_confirmation_note_text
+//    IHF deactivation note text.
+//
+// ---------------------------------------------------------
+//
+RESOURCE LBUF r_phsrv_ihf_deactivated_confirmation_note_text
+    {
+    txt = qtn_hf_conf_earpiece;
+    }
+
+// ---------------------------------------------------------
+//
+//    r_phsrv_text_unread
+//    Contains notify unread text.
+//
+// ---------------------------------------------------------
+//
+RESOURCE LBUF r_phsrv_text_unread
+    {
+    txt = qtn_ss_unread_ussd_msgs_query;
+    }
+           
+// End of File

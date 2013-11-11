@@ -1,0 +1,68 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//!	@SYMTestCaseID			MSG_SCH_SEND_0005
+//!	@SYMTestCaseDesc		The test aims to verify the first message is sent when two messages are set to 
+//!					different schedule time & current time surpasses schedule Time for 1st Message.
+//!	@SYMTestPriority		High
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5563
+//!	@SYMTestActions			1.GetBaseConstants IDs.
+//!					2.Get the pigeon MTM constant.
+//!					3.Set the default SMS settings.
+//!					4.Set the schedule send settings.
+//!					5.Create a pigeon message, setting the schedule send time to 1 mins.
+//!					6.Create a pigeon message, setting the schedule send time to 2 mins.
+//!					7.Schedule Messages in Outbox for Sending
+//!					8.Sleep for 65 secs.
+//!					9.Check if the schedule time is expired.
+//!					10.Check of the message is Sent or present in Outbox folder.
+//!	@SYMTestExpectedResults		EPass, The message is sent.
+//!	@SYMAuthor			Kavyashree.D
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_TEST_STEP 400 MessagingTestServer	BEGIN_TEST_CASE
+RUN_TEST_STEP 400 MessagingTestServer	SETUP_TEST_CASE
+RUN_TEST_STEP 400 MessagingTestServer	GetBaseConstants 			c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\MSG_SCH_SEND_0005.ini		GetBaseConstants
+RUN_TEST_STEP 400 MessagingTestServer	GetPigeonMtmConstant			c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\MSG_SCH_SEND_0005.ini		GetPigeonMtmConstant
+RUN_TEST_STEP 400 MessagingTestServer	SetDefaultSmsSettings 			c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\MSG_SCH_SEND_0005.ini		SetSettingsFile
+RUN_TEST_STEP 400 MessagingTestServer	CreateSession 				c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\MSG_SCH_SEND_0005.ini		CreateSession
+RUN_TEST_STEP 400 MessagingTestServer	ResetMessageStore			c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\MSG_SCH_SEND_0005.ini		ResetMessageStore
+RUN_TEST_STEP 400 MessagingTestServer	DeleteExistingService 			c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\MSG_SCH_SEND_0005.ini		DeleteExistingService
+RUN_TEST_STEP 400 MessagingTestServer	CreateService				c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\MSG_SCH_SEND_0005.ini		CreateService
+RUN_TEST_STEP 400 MessagingTestServer	SetSchSendSettings 			c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\MSG_SCH_SEND_0005.ini		SetSchSendSettings
+RUN_TEST_STEP 400 MessagingTestServer	DeleteChildren 				c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\MSG_SCH_SEND_0005.ini		EmptyOutbox
+RUN_TEST_STEP 400 MessagingTestServer	DeleteChildren 				c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\MSG_SCH_SEND_0005.ini		EmptySent
+RUN_TEST_STEP 400 MessagingTestServer	EXECUTE_TEST_CASE
+//Create and Set Schedule Time for 1mins
+RUN_TEST_STEP 400 MessagingTestServer	CreatePigeonMessage			c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\MSG_SCH_SEND_0005.ini		CreatePigeonMessage
+//Create and Set Schedule time for 2mins
+RUN_TEST_STEP 400 MessagingTestServer	CreatePigeonMessage			c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\MSG_SCH_SEND_0005.ini		CreatePigeonMessage1
+//Schedule Message by Calling Command 1(Schedule)
+RUN_TEST_STEP 400 MessagingTestServer	SchedulePigeonMessage			c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\MSG_SCH_SEND_0001.ini 		SchedulePigeonMessage
+//Sleep for 65secs
+RUN_TEST_STEP 400 MessagingTestServer	Sleep 					c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\MSG_SCH_SEND_0005.ini		Sleep
+RUN_TEST_STEP 400 MessagingTestServer	CHECK_POSTCONDITIONS
+
+RUN_TEST_STEP 400 MessagingTestServer	CheckIfMessageScheduleDateExpired 	c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\MSG_SCH_SEND_0005.ini		ScheduleDateExpired
+RUN_TEST_STEP 400 MessagingTestServer	CheckIfMessageScheduleDateExpired 	c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\MSG_SCH_SEND_0005.ini		ScheduleDateExpired1
+RUN_TEST_STEP 400 MessagingTestServer	CheckChildrenCount			c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\MSG_SCH_SEND_0005.ini		CheckOutboxChildrenCount
+RUN_TEST_STEP 400 MessagingTestServer	CheckChildrenCount			c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\MSG_SCH_SEND_0005.ini		CheckSentItemsChildrenCount
+
+RUN_TEST_STEP 400 MessagingTestServer	END_TEST_CASE

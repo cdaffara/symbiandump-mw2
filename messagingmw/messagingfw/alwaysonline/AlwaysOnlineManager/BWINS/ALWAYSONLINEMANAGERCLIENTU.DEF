@@ -1,0 +1,11 @@
+EXPORTS
+	??0RAlwaysOnlineClientSession@@QAE@XZ @ 1 NONAME ; public: __thiscall RAlwaysOnlineClientSession::RAlwaysOnlineClientSession(void)
+	?Connect@RAlwaysOnlineClientSession@@QAEHXZ @ 2 NONAME ; public: int __thiscall RAlwaysOnlineClientSession::Connect(void)
+	?RelayCommandL@RAlwaysOnlineClientSession@@QAEXW4TAlwaysOnlineServerAPICommands@@AAVTDes8@@@Z @ 3 NONAME ; public: void __thiscall RAlwaysOnlineClientSession::RelayCommandL(enum TAlwaysOnlineServerAPICommands,class TDes8 &)
+	?RunServerL@@YAXXZ @ 4 NONAME ; void __cdecl RunServerL(void)
+	?Version@RAlwaysOnlineClientSession@@QBE?AVTVersion@@XZ @ 5 NONAME ; public: class TVersion  __thiscall RAlwaysOnlineClientSession::Version(void)const 
+	?SendSinglePacketL@RAlwaysOnlineClientSession@@QAEXW4TAlwaysOnlineServerAPICommands@@AAVTDes8@@@Z @ 6 NONAME ; public: void __thiscall RAlwaysOnlineClientSession::SendSinglePacketL(enum TAlwaysOnlineServerAPICommands,class TDes8 &)
+	??1RAlwaysOnlineClientSession@@QAE@XZ @ 7 NONAME ; RAlwaysOnlineClientSession::~RAlwaysOnlineClientSession(void)
+	?SendCommandAsync@RAlwaysOnlineClientSession@@QAEXW4TAlwaysOnlineServerAPICommands@@AAVTDes8@@AAVTRequestStatus@@@Z @ 8 NONAME ; void RAlwaysOnlineClientSession::SendCommandAsync(enum TAlwaysOnlineServerAPICommands, class TDes8 &, class TRequestStatus &)
+	?SendReceiveSync@RAlwaysOnlineClientSession@@QAEHW4TAlwaysOnlineServerAPICommands@@AAVTDes8@@1@Z @ 9 NONAME ; int RAlwaysOnlineClientSession::SendReceiveSync(enum TAlwaysOnlineServerAPICommands, class TDes8 &, class TDes8 &)
+

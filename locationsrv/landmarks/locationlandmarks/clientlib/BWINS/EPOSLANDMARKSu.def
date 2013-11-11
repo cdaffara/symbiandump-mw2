@@ -1,0 +1,87 @@
+EXPORTS
+	??0CPosLandmarkDatabase@@IAE@XZ @ 1 NONAME ; CPosLandmarkDatabase::CPosLandmarkDatabase(void)
+	??0CPosLandmarkEncoder@@IAE@XZ @ 2 NONAME ; CPosLandmarkEncoder::CPosLandmarkEncoder(void)
+	??0CPosLandmarkParser@@IAE@XZ @ 3 NONAME ; CPosLandmarkParser::CPosLandmarkParser(void)
+	??0CPosLmCategoryManager@@IAE@XZ @ 4 NONAME ; CPosLmCategoryManager::CPosLmCategoryManager(void)
+	??0CPosLmItemIterator@@IAE@XZ @ 5 NONAME ; CPosLmItemIterator::CPosLmItemIterator(void)
+	??0CPosLmOperation@@IAE@XZ @ 6 NONAME ; CPosLmOperation::CPosLmOperation(void)
+	??0TPosLmSortPref@@QAE@KW4TSortOrder@0@@Z @ 7 NONAME ; TPosLmSortPref::TPosLmSortPref(unsigned long, enum TPosLmSortPref::TSortOrder)
+	??1CPosLandmarkDatabase@@UAE@XZ @ 8 NONAME ; CPosLandmarkDatabase::~CPosLandmarkDatabase(void)
+	??1CPosLandmarkEncoder@@UAE@XZ @ 9 NONAME ; CPosLandmarkEncoder::~CPosLandmarkEncoder(void)
+	??1CPosLandmarkParser@@UAE@XZ @ 10 NONAME ; CPosLandmarkParser::~CPosLandmarkParser(void)
+	??1CPosLmCategoryManager@@UAE@XZ @ 11 NONAME ; CPosLmCategoryManager::~CPosLmCategoryManager(void)
+	??1CPosLmItemIterator@@UAE@XZ @ 12 NONAME ; CPosLmItemIterator::~CPosLmItemIterator(void)
+	??1CPosLmOperation@@UAE@XZ @ 13 NONAME ; CPosLmOperation::~CPosLmOperation(void)
+	?AddCategoryL@CPosLandmark@@QAEXK@Z @ 14 NONAME ; void CPosLandmark::AddCategoryL(unsigned long)
+	?CategoryId@CPosLandmarkCategory@@QBEKXZ @ 15 NONAME ; unsigned long CPosLandmarkCategory::CategoryId(void) const
+	?FirstPositionFieldId@CPosLandmark@@QBEGXZ @ 16 NONAME ; unsigned short CPosLandmark::FirstPositionFieldId(void) const
+	?GetCategoriesL@CPosLandmark@@QBEXAAV?$RArray@K@@@Z @ 17 NONAME ; void CPosLandmark::GetCategoriesL(class RArray<unsigned long> &) const
+	?GetCategoryName@CPosLandmarkCategory@@QBEHAAVTPtrC16@@@Z @ 18 NONAME ; int CPosLandmarkCategory::GetCategoryName(class TPtrC16 &) const
+	?GetCoverageRadius@CPosLandmark@@QBEHAAM@Z @ 19 NONAME ; int CPosLandmark::GetCoverageRadius(float &) const
+	?GetIcon@CPosLandmark@@QBEHAAVTPtrC16@@AAH1@Z @ 20 NONAME ; int CPosLandmark::GetIcon(class TPtrC16 &, int &, int &) const
+	?GetIcon@CPosLandmarkCategory@@QBEHAAVTPtrC16@@AAH1@Z @ 21 NONAME ; int CPosLandmarkCategory::GetIcon(class TPtrC16 &, int &, int &) const
+	?GetLandmarkDescription@CPosLandmark@@QBEHAAVTPtrC16@@@Z @ 22 NONAME ; int CPosLandmark::GetLandmarkDescription(class TPtrC16 &) const
+	?GetLandmarkName@CPosLandmark@@QBEHAAVTPtrC16@@@Z @ 23 NONAME ; int CPosLandmark::GetLandmarkName(class TPtrC16 &) const
+	?GetPosition@CPosLandmark@@QBEHAAVTLocality@@@Z @ 24 NONAME ; int CPosLandmark::GetPosition(class TLocality &) const
+	?GetPositionField@CPosLandmark@@QBEHGAAVTPtrC16@@@Z @ 25 NONAME ; int CPosLandmark::GetPositionField(unsigned short, class TPtrC16 &) const
+	?GetRequestedPositionFields@CPosLmPartialReadParameters@@QBEHAAV?$RArray@I@@@Z @ 26 NONAME ; int CPosLmPartialReadParameters::GetRequestedPositionFields(class RArray<unsigned int> &) const
+	?GlobalCategory@CPosLandmarkCategory@@QBEGXZ @ 27 NONAME ; unsigned short CPosLandmarkCategory::GlobalCategory(void) const
+	?ImplementationId@PosLmImplExtension@@SA?AVTUid@@ABVCPosLandmarkDatabase@@@Z @ 28 NONAME ; class TUid PosLmImplExtension::ImplementationId(class CPosLandmarkDatabase const &)
+	?IsPartial@CPosLandmark@@QBEHXZ @ 29 NONAME ; int CPosLandmark::IsPartial(void) const
+	?IsPositionFieldAvailable@CPosLandmark@@QBEHG@Z @ 30 NONAME ; int CPosLandmark::IsPositionFieldAvailable(unsigned short) const
+	?LandmarkAttributeToSortBy@TPosLmSortPref@@QBEKXZ @ 31 NONAME ; unsigned long TPosLmSortPref::LandmarkAttributeToSortBy(void) const
+	?LandmarkId@CPosLandmark@@QBEKXZ @ 32 NONAME ; unsigned long CPosLandmark::LandmarkId(void) const
+	?NewL@CPosLandmark@@SAPAV1@ABV1@@Z @ 33 NONAME ; class CPosLandmark * CPosLandmark::NewL(class CPosLandmark const &)
+	?NewL@CPosLandmark@@SAPAV1@XZ @ 34 NONAME ; class CPosLandmark * CPosLandmark::NewL(void)
+	?NewL@CPosLandmarkCategory@@SAPAV1@ABV1@@Z @ 35 NONAME ; class CPosLandmarkCategory * CPosLandmarkCategory::NewL(class CPosLandmarkCategory const &)
+	?NewL@CPosLandmarkCategory@@SAPAV1@XZ @ 36 NONAME ; class CPosLandmarkCategory * CPosLandmarkCategory::NewL(void)
+	?NewL@CPosLandmarkEncoder@@SAPAV1@ABVTDesC8@@@Z @ 37 NONAME ; class CPosLandmarkEncoder * CPosLandmarkEncoder::NewL(class TDesC8 const &)
+	?NewL@CPosLandmarkParser@@SAPAV1@ABVTDesC8@@@Z @ 38 NONAME ; class CPosLandmarkParser * CPosLandmarkParser::NewL(class TDesC8 const &)
+	?NewL@CPosLmCategoryManager@@SAPAV1@AAVCPosLandmarkDatabase@@@Z @ 39 NONAME ; class CPosLmCategoryManager * CPosLmCategoryManager::NewL(class CPosLandmarkDatabase &)
+	?NewLC@CPosLandmark@@SAPAV1@ABV1@@Z @ 40 NONAME ; class CPosLandmark * CPosLandmark::NewLC(class CPosLandmark const &)
+	?NewLC@CPosLandmark@@SAPAV1@XZ @ 41 NONAME ; class CPosLandmark * CPosLandmark::NewLC(void)
+	?NewLC@CPosLandmarkCategory@@SAPAV1@ABV1@@Z @ 42 NONAME ; class CPosLandmarkCategory * CPosLandmarkCategory::NewLC(class CPosLandmarkCategory const &)
+	?NewLC@CPosLandmarkCategory@@SAPAV1@XZ @ 43 NONAME ; class CPosLandmarkCategory * CPosLandmarkCategory::NewLC(void)
+	?NewLC@CPosLmPartialReadParameters@@SAPAV1@XZ @ 44 NONAME ; class CPosLmPartialReadParameters * CPosLmPartialReadParameters::NewLC(void)
+	?NextPositionFieldId@CPosLandmark@@QBEGG@Z @ 45 NONAME ; unsigned short CPosLandmark::NextPositionFieldId(unsigned short) const
+	?NumOfAvailablePositionFields@CPosLandmark@@QBEIXZ @ 46 NONAME ; unsigned int CPosLandmark::NumOfAvailablePositionFields(void) const
+	?OpenL@CPosLandmarkDatabase@@SAPAV1@ABVTDesC16@@@Z @ 47 NONAME ; class CPosLandmarkDatabase * CPosLandmarkDatabase::OpenL(class TDesC16 const &)
+	?OpenL@CPosLandmarkDatabase@@SAPAV1@XZ @ 48 NONAME ; class CPosLandmarkDatabase * CPosLandmarkDatabase::OpenL(void)
+	?Panic@@YAXABVTDesC16@@H@Z @ 49 NONAME ; void Panic(class TDesC16 const &, int)
+	?ReleaseLandmarkResources@@YAXPAX@Z @ 50 NONAME ; void ReleaseLandmarkResources(void *)
+	?RemoveCategory@CPosLandmark@@QAEXK@Z @ 51 NONAME ; void CPosLandmark::RemoveCategory(unsigned long)
+	?RemoveCategoryAttributes@CPosLandmarkCategory@@QAEXK@Z @ 52 NONAME ; void CPosLandmarkCategory::RemoveCategoryAttributes(unsigned long)
+	?RemoveLandmarkAttributes@CPosLandmark@@QAEXK@Z @ 53 NONAME ; void CPosLandmark::RemoveLandmarkAttributes(unsigned long)
+	?RemovePositionField@CPosLandmark@@QAEXG@Z @ 54 NONAME ; void CPosLandmark::RemovePositionField(unsigned short)
+	?RequestedAttributes@CPosLmPartialReadParameters@@QBEKXZ @ 55 NONAME ; unsigned long CPosLmPartialReadParameters::RequestedAttributes(void) const
+	?SetCategoryIdL@PosLmImplExtension@@SAXAAVCPosLandmarkCategory@@K@Z @ 56 NONAME ; void PosLmImplExtension::SetCategoryIdL(class CPosLandmarkCategory &, unsigned long)
+	?SetCategoryNameL@CPosLandmarkCategory@@QAEXABVTDesC16@@@Z @ 57 NONAME ; void CPosLandmarkCategory::SetCategoryNameL(class TDesC16 const &)
+	?SetCoverageRadius@CPosLandmark@@QAEXM@Z @ 58 NONAME ; void CPosLandmark::SetCoverageRadius(float)
+	?SetGlobalCategory@PosLmImplExtension@@SAXAAVCPosLandmarkCategory@@G@Z @ 59 NONAME ; void PosLmImplExtension::SetGlobalCategory(class CPosLandmarkCategory &, unsigned short)
+	?SetIconL@CPosLandmark@@QAEXABVTDesC16@@HH@Z @ 60 NONAME ; void CPosLandmark::SetIconL(class TDesC16 const &, int, int)
+	?SetIconL@CPosLandmarkCategory@@QAEXABVTDesC16@@HH@Z @ 61 NONAME ; void CPosLandmarkCategory::SetIconL(class TDesC16 const &, int, int)
+	?SetLandmarkDescriptionL@CPosLandmark@@QAEXABVTDesC16@@@Z @ 62 NONAME ; void CPosLandmark::SetLandmarkDescriptionL(class TDesC16 const &)
+	?SetLandmarkIdL@PosLmImplExtension@@SAXAAVCPosLandmark@@K@Z @ 63 NONAME ; void PosLmImplExtension::SetLandmarkIdL(class CPosLandmark &, unsigned long)
+	?SetLandmarkNameL@CPosLandmark@@QAEXABVTDesC16@@@Z @ 64 NONAME ; void CPosLandmark::SetLandmarkNameL(class TDesC16 const &)
+	?SetPartialL@PosLmImplExtension@@SAXAAVCPosLandmark@@H@Z @ 65 NONAME ; void PosLmImplExtension::SetPartialL(class CPosLandmark &, int)
+	?SetPositionFieldL@CPosLandmark@@QAEXGABVTDesC16@@@Z @ 66 NONAME ; void CPosLandmark::SetPositionFieldL(unsigned short, class TDesC16 const &)
+	?SetPositionL@CPosLandmark@@QAEXABVTLocality@@@Z @ 67 NONAME ; void CPosLandmark::SetPositionL(class TLocality const &)
+	?SetRequestedAttributes@CPosLmPartialReadParameters@@QAEXK@Z @ 68 NONAME ; void CPosLmPartialReadParameters::SetRequestedAttributes(unsigned long)
+	?SetRequestedPositionFields@CPosLmPartialReadParameters@@QAEHABV?$RArray@I@@@Z @ 69 NONAME ; int CPosLmPartialReadParameters::SetRequestedPositionFields(class RArray<unsigned int> const &)
+	?SetSortByLandmarkAttribute@TPosLmSortPref@@QAEXKW4TSortOrder@1@@Z @ 70 NONAME ; void TPosLmSortPref::SetSortByLandmarkAttribute(unsigned long, enum TPosLmSortPref::TSortOrder)
+	?SortOrder@TPosLmSortPref@@QBE?AW4TSortOrder@1@XZ @ 71 NONAME ; enum TPosLmSortPref::TSortOrder TPosLmSortPref::SortOrder(void) const
+	?PackL@PosLandmarkSerialization@@SAPAVHBufC8@@ABVCPosLandmark@@@Z @ 72 NONAME ; class HBufC8 * PosLandmarkSerialization::PackL(class CPosLandmark const &)
+	?PackL@PosLmCategorySerialization@@SAPAVHBufC8@@ABVCPosLandmarkCategory@@@Z @ 73 NONAME ; class HBufC8 * PosLmCategorySerialization::PackL(class CPosLandmarkCategory const &)
+	?UnpackL@PosLandmarkSerialization@@SAPAVCPosLandmark@@ABVTDesC8@@@Z @ 74 NONAME ; class CPosLandmark * PosLandmarkSerialization::UnpackL(class TDesC8 const &)
+	?UnpackL@PosLmCategorySerialization@@SAPAVCPosLandmarkCategory@@ABVTDesC8@@@Z @ 75 NONAME ; class CPosLandmarkCategory * PosLmCategorySerialization::UnpackL(class TDesC8 const &)
+	??0CPosLandmarkDatabaseExtended@@IAE@XZ @ 76 NONAME ; CPosLandmarkDatabaseExtended::CPosLandmarkDatabaseExtended(void)
+	??1CPosLandmarkDatabaseExtended@@UAE@XZ @ 77 NONAME ; CPosLandmarkDatabaseExtended::~CPosLandmarkDatabaseExtended(void)
+	?CategoriesCount@CPosLandmarkDatabaseExtended@@QAEHXZ @ 78 NONAME ; int CPosLandmarkDatabaseExtended::CategoriesCount(void)
+	?LandmarksCount@CPosLandmarkDatabaseExtended@@QAEHXZ @ 79 NONAME ; int CPosLandmarkDatabaseExtended::LandmarksCount(void)
+	?OpenL@CPosLandmarkDatabaseExtended@@SAPAV1@ABVTDesC16@@@Z @ 80 NONAME ; class CPosLandmarkDatabaseExtended * CPosLandmarkDatabaseExtended::OpenL(class TDesC16 const &)
+	?OpenL@CPosLandmarkDatabaseExtended@@SAPAV1@XZ @ 81 NONAME ; class CPosLandmarkDatabaseExtended * CPosLandmarkDatabaseExtended::OpenL(void)
+	?SetPlaceIdL@CPosLandmark@@QAEXABVTDesC16@@@Z @ 82 NONAME ; void CPosLandmark::SetPlaceIdL(class TDesC16 const &)
+	?SetTimeStampL@CPosLandmark@@QAEXVTTime@@@Z @ 83 NONAME ; void CPosLandmark::SetTimeStampL(class TTime)
+	?GetTimeStamp@CPosLandmark@@QBEHAAVTTime@@@Z @ 84 NONAME ; int CPosLandmark::GetTimeStamp(class TTime &) const
+	?GetPlaceId@CPosLandmark@@QBEHAAVTPtrC16@@@Z @ 85 NONAME ; int CPosLandmark::GetPlaceId(class TPtrC16 &) const
+

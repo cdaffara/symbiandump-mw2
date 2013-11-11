@@ -1,0 +1,3 @@
+EXPORTS
+	NewL__14CTestServerMtmR17CRegisteredMtmDllP15CMsvServerEntry @ 1 NONAME ; CTestServerMtm::NewL(CRegisteredMtmDll &, CMsvServerEntry *)
+

@@ -1,0 +1,40 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+// Test script: 3_TestInboxSync.script
+
+//!@file
+//! @SYMTestCaseID MSG-IMAP-712-3-CP
+//! @SYMTestType UT
+//! @SYMTestPriority Critical
+//! @SYMPREQ 712
+//! @SYMTestCaseDesc Retrieves first all messages, then retrieves messages that match the specified search string on the IMAP account.
+//! @SYMTestActions First clean out the remote inbox and local message store, send the test emails, get all messages and check, then get messages matching the search string and check they were the only ones retrieved
+//! @SYMTestExpectedResults On the first retrieval the inbox should contain 10 messages, after the second retrieval the inbox should contain only 5 messages
+
+
+PRINT Running Test 3, verify that local inbox matches fetch operation
+
+// First clean out the remote inbox and local message store
+RUN_SCRIPT c:\msgtest\testframework\scriptedtestcases\imapsearchtests\clean_all.script
+
+// Send the test emails
+RUN_SCRIPT c:\msgtest\testframework\scriptedtestcases\imapsearchtests\send_emails.script
+
+// get all messages, should have 10 messages after this step
+RUN_SCRIPT c:\msgtest\testframework\scriptedtestcases\imapsearchtests\imap_sync.script
+
+// get only messages matching search string, should have only 5 messages after this step
+RUN_SCRIPT c:\msgtest\testframework\scriptedtestcases\imapsearchtests\imap_sync_search_enabled.script

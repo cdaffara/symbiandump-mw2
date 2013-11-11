@@ -1,0 +1,6 @@
+EmailToAddress=UserName<testE@test.com>
+Subject=SubjectEmailTest_2_2
+BodyText=TestText
+SentToAddress=+44111111111
+
+// Note extra E in EmailToAddress ensures message is even number of bytes when concatinated.

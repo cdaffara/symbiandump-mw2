@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<api id="72e34b08ec598d2f1e397bae40d6ea24" dataversion="1.0">
+  <name>AIW Dial Data Consumer API</name>
+  <description>Extended AIW Criteria API for creating a CS, Video or VoIP call</description>
+  <type>c++</type>
+  <subsystem>phoneclientserver</subsystem>
+  <libs>
+    <lib name="aiwdialdata.lib" />
+  </libs>
+  <release category="domain"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>yes</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

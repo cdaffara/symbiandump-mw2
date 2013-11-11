@@ -1,0 +1,22 @@
+EXPORTS
+	?GetCallsL@CCallInformation@@QAEAAVCCallInfoIter@@XZ @ 1 NONAME ; class CCallInfoIter & CCallInformation::GetCallsL(void)
+	?IsCallInState@CCallInformation@@QBEHW4TCallState@CCPCall@@@Z @ 2 NONAME ; int CallInformation::IsCallInState(enum CCPCall::TCallState) const
+	?CancelNotification@CCallInformation@@QAEXXZ @ 3 NONAME ; void CCallInformation::CancelNotification(void)
+	?NewL@CCallInformation@@SAPAV1@XZ @ 4 NONAME ; class CCallInformation * CCallInformation::NewL(void)
+	?NotifyCallInformationChanges@CCallInformation@@QAEXAAVMCallInformationObserver@@@Z @ 5 NONAME ; void CCallInformation::NotifyCallInformationChanges(class MCallInformationObserver &)
+	?Next@CCallInfoIter@@QAEXXZ @ 6 NONAME ; void CCallInfoIter::Next(void)
+	?First@CCallInfoIter@@QAEXXZ @ 7 NONAME ; void CCallInfoIter::First(void)
+	?Count@CCallInfoIter@@QBEHXZ @ 8 NONAME ; int CCallInfoIter::Count(void) const
+	?IsDone@CCallInfoIter@@QBEHXZ @ 9 NONAME ; int CCallInfoIter::IsDone(void) const
+	?Current@CCallInfoIter@@QBEABVMCall@@XZ @ 10 NONAME ; class MCall const & CCallInfoIter::Current(void) const
+	?GetRemotePartyInformationL@CCallRemotePartyInformation@@QAEPBVMCallRemotePartyInfo@@H@Z @ 11 NONAME ; class MCallRemotePartyInfo const * CCallRemotePartyInformation::GetRemotePartyInformationL(int)
+	?Current@CCallRemotePartyInfoIter@@QBEABVMCallRemotePartyInfo@@XZ @ 12 NONAME ; class MCallRemotePartyInfo const & CCallRemotePartyInfoIter::Current(void) const
+	?GetRemotePartyInformationL@CCallRemotePartyInformation@@QAEAAVCCallRemotePartyInfoIter@@XZ @ 13 NONAME ; class CCallRemotePartyInfoIter & CCallRemotePartyInformation::GetRemotePartyInformationL(void)
+	?NotifyChanges@CCallRemotePartyInformation@@QAEXAAVMCallRemotePartyInformationObserver@@@Z @ 14 NONAME ; void CCallRemotePartyInformation::NotifyChanges(class MCallRemotePartyInformationObserver &)
+	?CancelNotification@CCallRemotePartyInformation@@QAEXXZ @ 15 NONAME ; void CCallRemotePartyInformation::CancelNotification(void)
+	?Next@CCallRemotePartyInfoIter@@QAEXXZ @ 16 NONAME ; void CCallRemotePartyInfoIter::Next(void)
+	?Count@CCallRemotePartyInfoIter@@QBEHXZ @ 17 NONAME ; int CCallRemotePartyInfoIter::Count(void) const
+	?NewL@CCallRemotePartyInformation@@SAPAV1@XZ @ 18 NONAME ; class CCallRemotePartyInformation * CCallRemotePartyInformation::NewL(void)
+	?IsDone@CCallRemotePartyInfoIter@@QBEHXZ @ 19 NONAME ; int CCallRemotePartyInfoIter::IsDone(void) const
+	?First@CCallRemotePartyInfoIter@@QAEXXZ @ 20 NONAME ; void CCallRemotePartyInfoIter::First(void)
+

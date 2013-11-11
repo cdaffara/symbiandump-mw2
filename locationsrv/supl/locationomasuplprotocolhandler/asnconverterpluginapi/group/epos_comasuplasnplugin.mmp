@@ -1,0 +1,70 @@
+/*
+* Copyright (c) 2002-2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project file for protocol handler plugin
+*
+*/
+
+#include <platform_paths.hrh>
+
+TARGET 		 epos_comasuplasnplugin.dll
+TARGETTYPE  	 dll
+
+UID 			0x1000008d 0x200255BB
+
+CAPABILITY       CAP_GENERAL_DLL
+VENDORID         VID_DEFAULT
+
+SOURCEPATH   	 ../src
+SOURCE      	 epos_comasuplasnbase.cpp
+SOURCE      	 epos_comasuplasnmessagebase.cpp
+SOURCE      	 epos_comasuplsessionid.cpp
+SOURCE      	 epos_comasupllocationid.cpp 
+SOURCE      	 epos_tomasuplecellinfo.cpp 
+SOURCE      	 epos_tomasuplqop.cpp 
+SOURCE      	 epos_comasuplstart.cpp 
+SOURCE      	 epos_comasuplposinit.cpp 
+SOURCE      	 epos_comasuplpos.cpp 
+SOURCE      	 epos_comasuplend.cpp 
+SOURCE      	 epos_comasuplinit.cpp 
+SOURCE      	 epos_comasuplnotification.cpp 
+SOURCE      	 epos_comasuplauthrequest.cpp 
+SOURCE      	 epos_comasuplauthresponse.cpp 
+SOURCE      	 epos_comasuplresponse.cpp
+
+SOURCE      	 epos_comasupllocationidver2.cpp 
+SOURCE 			 epos_comasuplinitver2.cpp 
+SOURCE      	 epos_comasuplendver2.cpp
+SOURCE      	 epos_comasupltriggeredstart.cpp 
+SOURCE      	 epos_comasupltriggeredresponse.cpp 
+SOURCE      	 epos_comasuplreport.cpp 
+SOURCE      	 epos_comasupltriggeredstop.cpp 
+
+
+SOURCE 			epos_comasuplnotificationver2.cpp 
+SOURCE 			epos_comasuplposinitver2.cpp
+SOURCE 			epos_comasuplresponsever2.cpp
+SOURCE 			epos_comasuplsetcapabilitiesver2.cpp
+SOURCE 			epos_comasuplstartver2.cpp
+
+MW_LAYER_SYSTEMINCLUDE
+
+USERINCLUDE      ../inc
+USERINCLUDE      ../../../inc
+
+
+LIBRARY 	 euser.lib 
+LIBRARY 	 ecom.lib
+LIBRARY 	 epos_csuplutils.lib
+LIBRARY 	 eposomasuplposmessageplugin.lib
+

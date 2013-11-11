@@ -1,0 +1,5 @@
+__type__   = Pop3Settings
+
+ServerName   = 10.22.64.6
+LoginName    = carlha2
+Password     = carlha2

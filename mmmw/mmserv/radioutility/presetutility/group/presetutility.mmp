@@ -1,0 +1,49 @@
+/*
+* Copyright (c) 2002-2004 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+* Project definition file for RadioPresetUtility.
+*
+*/
+
+
+//#include <data_caging_paths.hrh>
+//#include <domain/osextensions/platform_paths.hrh>
+#include <platform_paths.hrh>
+
+TARGET          presetutility.dll // Temporarily renamed to not clash with the existing utility
+TARGETTYPE      DLL
+CAPABILITY      CAP_GENERAL_DLL ReadUserData
+VENDORID        VID_DEFAULT
+UID             0x1000008D 0x2002C307
+VERSION 10.3
+
+SOURCEPATH      ../src
+SOURCE          presetutility.cpp
+SOURCE          presetutilitybody.cpp
+SOURCE          preset.cpp
+SOURCE          cenrephandler.cpp
+SOURCE			cenrepbookkeeping.cpp
+USERINCLUDE     ../cenrep
+USERINCLUDE     ../src
+USERINCLUDE     ../inc
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY         cenrepnotifhandler.lib
+LIBRARY         centralrepository.lib
+LIBRARY         euser.lib
+LIBRARY         estor.lib
+//LIBRARY         dsclient.lib
+
+

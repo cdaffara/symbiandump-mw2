@@ -1,0 +1,47 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+#include <ups/policies.rh>
+
+UID2 KUidUpsPolicyResourceFile
+UID3 0x10204286
+
+// Test Policy file for SendAS
+RESOURCE POLICIES testpolicies
+	{
+	header = POLICY_HEADER
+		{
+		// use default client config 
+		policyevaluator = 0x10283698;
+		dialogcreator = 0x10283694;
+		};
+	policies = 
+		{
+		POLICY
+			{
+			// Always Allow client to send message to any destination.
+			sid_classes = 10274061;
+			destination = "*";
+			options = KYes|KNo|KAlways|KNever|KSession;
+			},
+		POLICY
+			{
+			// for client B
+			sid_classes = KUnprotectedSids;
+			destination = "*";
+			options = KYes|KNo|KAlways|KNever|KSession;
+			}
+		};
+	}

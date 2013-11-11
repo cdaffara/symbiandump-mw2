@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<api id="f0e0c0cacd0e7b05f6ed13a40012a6b0" dataversion="2.0">
+  <name>SUPL Terminal Initiation API</name>
+  <description>API for initiating SUPL session between terminal and network. Initiation is originated by some service in terminal utilize SUPL services like fetching terminals current location or requesting assistance data for GPS.</description>
+  <type>c++</type>
+  <collection>supl</collection>
+  <libs>
+  </libs>
+  <release category="platform"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>no</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

@@ -1,0 +1,5 @@
+EXPORTS
+	_ZN24CEmailNotificationParser4NewLER20CRegisteredParserDllR9CMsvEntryR3RFs @ 1 NONAME
+	_ZTI24CEmailNotificationParser @ 2 NONAME ; #<TI>#
+	_ZTV24CEmailNotificationParser @ 3 NONAME ; #<VT>#
+

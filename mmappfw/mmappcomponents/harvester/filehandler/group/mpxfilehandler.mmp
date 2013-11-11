@@ -1,0 +1,81 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition for the harvester file handler
+*
+*/
+
+
+
+#include <bldvariant.hrh>
+#include <data_caging_paths.hrh>
+#include <platform_paths.hrh>
+
+TARGET                  mpxfilehandler.dll
+TARGETTYPE              dll
+UID                     0x1000006C 0x10282939
+
+CAPABILITY              CAP_GENERAL_DLL
+VENDORID                VID_DEFAULT
+
+MACRO __RAMDISK_PERF_ENABLE
+#define __RAMDISK_PERF_ENABLE
+
+MACRO ABSTRACTAUDIOALBUM_INCLUDED
+#define ABSTRACTAUDIOALBUM_INCLUDED
+SOURCEPATH              ../src
+SOURCE                  mpxharvesterfilehandler.cpp
+SOURCE                  mpxharvesterfilehandlerimp.cpp
+SOURCE                  mpxharvesterdbmanager.cpp
+SOURCE                  mpxharvesterdb.cpp
+SOURCE                  mpxharvesterdbtable.cpp
+SOURCE                  mpxfolderscanner.cpp
+SOURCE                  mpxdbsynchronizer.cpp
+SOURCE                  mpxfoldermonitor.cpp
+SOURCE                  mpxmetadatascanner.cpp
+SOURCE                  mpxplaylistscanner.cpp
+SOURCE                  mpxdiskspacewatcher.cpp
+SOURCE                  mpxbrokenlinkcleanup.cpp
+
+USERINCLUDE             ../inc
+USERINCLUDE             ../../inc
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY                 euser.lib
+LIBRARY                 efsrv.lib
+LIBRARY                 bafl.lib
+LIBRARY                 edbms.lib
+LIBRARY                 estor.lib
+LIBRARY                 hash.lib
+LIBRARY                 ecom.lib
+LIBRARY                 apgrfx.lib 
+LIBRARY                 apmime.lib 
+LIBRARY                 centralrepository.lib
+LIBRARY                 mpxcollectionutility.lib
+LIBRARY                 mpxcommon.lib
+LIBRARY                 mpxcollectionmediator.lib
+LIBRARY                 mpxplaylistengine.lib
+LIBRARY                 mpxmetadataextractor.lib
+LIBRARY	                caf.lib
+LIBRARY                 DrmServerInterfaces.lib
+LIBRARY                 PlatformEnv.lib
+
+#if defined(ARMCC)
+deffile ../eabi/ 
+#elif defined(WINSCW)
+deffile ../bwinscw/ 
+#endif
+
+SMPSAFE
+

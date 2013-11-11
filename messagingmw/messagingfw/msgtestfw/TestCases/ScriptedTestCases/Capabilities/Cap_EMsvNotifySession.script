@@ -1,0 +1,12 @@
+
+PRINT Running  EMsvNotifySession
+
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvNotifySession_001.script
+	// Try to send an EMsvNotifySession. Try a few variations of caps just to see if we can break it but should always pass.
+
+
+
+
+
+

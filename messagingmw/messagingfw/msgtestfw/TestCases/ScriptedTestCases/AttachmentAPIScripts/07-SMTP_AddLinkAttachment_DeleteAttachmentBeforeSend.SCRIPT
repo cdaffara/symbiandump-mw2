@@ -1,0 +1,110 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+// Test Case Name:
+//	Sending message with link attachment from public area and file to be attached is 
+//	deleted before sending
+//	Note : Data files are to be restored as the script modifies/deletes the data file(s)
+//	RestoreDataFile.Bat can be used to do that. In the execution of scripts batch, please
+//	use this file to restore data file(s)
+// ------------------------------------------
+// Component Under Test:
+//	Attachment API
+// ------------------------------------------
+// API function under test:
+//	MMsvAttachmentManager::AddLinkedAttachmentL 
+// ------------------------------------------
+// Requirement/Use Case/Functional Spec:
+//	SGL.GT0216.051 (2.3.1)
+// ------------------------------------------
+// Polarity:
+//	Negative
+// ------------------------------------------
+// Test Type (unit, integration, panic, performance, conformance, stress, or interoperability):
+//	Integration
+// ------------------------------------------
+// Expected Panic ID (if a panic test, only for non-scripted test cases):
+//	N/A
+// ------------------------------------------
+// Interface Dependencies (does it require connection, which subsystems does it require):
+// 	Requires connection to Messaging Server
+// ------------------------------------------
+// Importance (critical, high, or low):
+//	High
+// ------------------------------------------
+// Execution Time (fast, medium, or slow):
+//	Medium
+// ------------------------------------------
+// Pre-condition description:
+//	1. New SMTP message in drafts folder
+//	2. Read/Write access to message store
+//	3. Delete the file used for adding linked attachment
+// ------------------------------------------
+// Action Description:
+// 	1. The attachment count should be 1
+//	2. Send the message
+// ------------------------------------------
+// Post-condition description (i.e., expected outcome):
+//	Appropriate error code should be returned while sending the message
+// ------------------------------------------
+// Reference to a review document:
+//	AttachmentAPI_TestSpecificationDocument_Ver1.0.doc
+// ------------------------------------------
+// Full pathname of an epoc.ini (if there are special epoc.ini requirements)
+// 	For emulator, an epoc.ini that creates an emulated external drive (drive letter 
+//	between D: and Y:) is required. Optionally, an environment variable can be defined.
+// ------------------------------------------
+// Any CommDb restrictions:
+//	NTRAS CommDb
+// ------------------------------------------
+// Build Requirements (e.g., no watchers):
+//	N/A
+// ------------------------------------------
+// Hardware Requirements
+//	H2 Board
+// ------------------------------------------
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer GetBaseConstants				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\07-SMTP_AddLinkAttachment_DeleteAttachmentBeforeSend.INI GetConstants
+RUN_TEST_STEP 100 MessagingTestServer GetSMTPMTMUId				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\07-SMTP_AddLinkAttachment_DeleteAttachmentBeforeSend.INI SmtpMTMUId
+RUN_TEST_STEP 100 MessagingTestServer InitNtRas					c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\07-SMTP_AddLinkAttachment_DeleteAttachmentBeforeSend.INI InitNtRas
+RUN_TEST_STEP 100 MessagingTestServer CreateSession				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\07-SMTP_AddLinkAttachment_DeleteAttachmentBeforeSend.INI SessionId
+RUN_TEST_STEP 100 MessagingTestServer ResetMessageStore				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\07-SMTP_AddLinkAttachment_DeleteAttachmentBeforeSend.INI ResetMessageStore
+RUN_TEST_STEP 100 MessagingTestServer CreateRegistry				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\07-SMTP_AddLinkAttachment_DeleteAttachmentBeforeSend.INI CreateRegistry
+RUN_TEST_STEP 100 MessagingTestServer CreatePop3Service				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\07-SMTP_AddLinkAttachment_DeleteAttachmentBeforeSend.INI CreatePop3Service
+RUN_TEST_STEP 100 MessagingTestServer CreateService				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\07-SMTP_AddLinkAttachment_DeleteAttachmentBeforeSend.INI CreateSmtpService
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpMtm				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\07-SMTP_AddLinkAttachment_DeleteAttachmentBeforeSend.INI CreateSmtpMtm
+RUN_TEST_STEP 100 MessagingTestServer SetSmtpServiceParameters			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\07-SMTP_AddLinkAttachment_DeleteAttachmentBeforeSend.INI SetSmtpServiceParameters
+RUN_TEST_STEP 100 MessagingTestServer GetDefaultSmtpService			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\07-SMTP_AddLinkAttachment_DeleteAttachmentBeforeSend.INI GetDefaultSmtpService
+RUN_TEST_STEP 100 MessagingTestServer SetDefaultConfiguration			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\07-SMTP_AddLinkAttachment_DeleteAttachmentBeforeSend.INI SetDefaultConfigurationSMTP
+RUN_TEST_STEP 100 MessagingTestServer SetDefaultConfiguration			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\07-SMTP_AddLinkAttachment_DeleteAttachmentBeforeSend.INI SetDefaultConfigurationEMailFile
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpMessageFromEmailFile		c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\07-SMTP_AddLinkAttachment_DeleteAttachmentBeforeSend.INI CreateSmtpMessageFromEmailFile
+
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer SmtpAddLinkedAttachment			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\07-SMTP_AddLinkAttachment_DeleteAttachmentBeforeSend.INI SmtpAddLinkedAttachment
+RUN_TEST_STEP 100 MessagingTestServer DeletePath				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\07-SMTP_AddLinkAttachment_DeleteAttachmentBeforeSend.INI DeletePath
+RUN_TEST_STEP 100 MessagingTestServer SmtpCountAttachments			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\07-SMTP_AddLinkAttachment_DeleteAttachmentBeforeSend.INI SmtpCountAttachments
+RUN_TEST_STEP 100 MessagingTestServer CopyEntry					c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\07-SMTP_AddLinkAttachment_DeleteAttachmentBeforeSend.INI CopyEntry
+
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+
+RUN_TEST_STEP 100 MessagingTestServer END_TEST_CASE

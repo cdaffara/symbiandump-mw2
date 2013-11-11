@@ -1,0 +1,40 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// The script for the SUPL SMS Trigger Unit Test Suite
+// 
+//
+
+PRINT Run all Te_LbsSuplSmsTriggerSuite Tests
+
+RUN_UTILS DeleteFile c:\config.txt
+RUN_UTILS CopyFile c:\testdata\configs\lbssuplsmstriggerconfig.txt c:\config.txt
+
+
+LOAD_SUITE Te_LbsSuplSmsTriggerSuite
+
+
+START_TESTCASE                LBS-UT-SuplSmsTrigger-0001
+//! @SYMTestCaseID              LBS-UT-SuplSmsTrigger-0001
+//! @SYMTestType                UT
+//! @SYMCreationDate            1/8/2008
+//! @SYMAuthor                  Brajendras
+RUN_TEST_STEP 1000 Te_LbsSuplSmsTriggerSuite LbsSuplSmsTriggerIntegStep
+END_TESTCASE                  LBS-UT-SuplSmsTrigger-0001
+
+
+
+RUN_UTILS DeleteFile c:\config.txt
+
+PRINT Complete all Te_LbsSuplSmsTriggerSuite Tests
+

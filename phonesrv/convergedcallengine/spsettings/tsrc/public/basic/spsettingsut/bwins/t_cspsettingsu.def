@@ -1,0 +1,55 @@
+EXPORTS
+	?CreateTestSuiteL@@YAPAVMEUnitTest@@XZ @ 1 NONAME ; class MEUnitTest * CreateTestSuiteL(void)
+	?FindSubServicePropertiesL@CSPSettings@@QAEHIW4TSPItemType@@AAV?$RPointerArray@VCSPProperty@@@@@Z @ 2 NONAME ; int CSPSettings::FindSubServicePropertiesL(unsigned int, enum TSPItemType, class RPointerArray<class CSPProperty> &)
+	?SettingsCountL@CSPSettings@@QAEHXZ @ 3 NONAME ; int CSPSettings::SettingsCountL(void)
+	?GetValue@CSPProperty@@QBEHAAW4TOnOff@@@Z @ 4 NONAME ; int CSPProperty::GetValue(enum TOnOff &) const
+	?FindServiceIdsL@CSPSettings@@QAEHAAV?$RArray@I@@@Z @ 5 NONAME ; int CSPSettings::FindServiceIdsL(class RArray<unsigned int> &)
+	?AddOrUpdatePropertiesL@CSPSettings@@QAEHIABV?$RPointerArray@VCSPProperty@@@@@Z @ 6 NONAME ; int CSPSettings::AddOrUpdatePropertiesL(unsigned int, class RPointerArray<class CSPProperty> const &)
+	?UpdateProperty@CSPEntry@@QAEHW4TServicePropertyName@@ABVTDesC16@@@Z @ 7 NONAME ; int CSPEntry::UpdateProperty(enum TServicePropertyName, class TDesC16 const &)
+	?NewLC@CSPProperty@@SAPAV1@XZ @ 8 NONAME ; class CSPProperty * CSPProperty::NewLC(void)
+	?PropertyType@CSPProperty@@SA?AW4TSPItemType@@W4TServicePropertyName@@@Z @ 9 NONAME ; enum TSPItemType CSPProperty::PropertyType(enum TServicePropertyName)
+	?GetAllProperties@CSPEntry@@QBEABV?$RPointerArray@VCSPProperty@@@@XZ @ 10 NONAME ; class RPointerArray<class CSPProperty> const & CSPEntry::GetAllProperties(void) const
+	?SetServiceName@CSPEntry@@QAEHABVTDesC16@@@Z @ 11 NONAME ; int CSPEntry::SetServiceName(class TDesC16 const &)
+	?FindEntryL@CSPSettings@@QAEHIAAVCSPEntry@@@Z @ 12 NONAME ; int CSPSettings::FindEntryL(unsigned int, class CSPEntry &)
+	?GetPropertyType@CSPProperty@@QBE?AW4TSPItemType@@XZ @ 13 NONAME ; enum TSPItemType CSPProperty::GetPropertyType(void) const
+	?GetServiceName@CSPEntry@@QBEABVTDesC16@@XZ @ 14 NONAME ; class TDesC16 const & CSPEntry::GetServiceName(void) const
+	?IsFeatureSupported@CSPSettings@@QAEHW4TSPServiceFeature@@@Z @ 15 NONAME ; int CSPSettings::IsFeatureSupported(enum TSPServiceFeature)
+	?FindServiceNamesL@CSPSettings@@QAEHAAV?$RArray@I@@AAVCDesC16Array@@@Z @ 16 NONAME ; int CSPSettings::FindServiceNamesL(class RArray<unsigned int> &, class CDesC16Array &)
+	?UpdateProperty@CSPEntry@@QAEHW4TServicePropertyName@@W4TOnOff@@@Z @ 17 NONAME ; int CSPEntry::UpdateProperty(enum TServicePropertyName, enum TOnOff)
+	?SetValue@CSPProperty@@QAEHH@Z @ 18 NONAME ; int CSPProperty::SetValue(int)
+	?DeleteServicePropertiesL@CSPSettings@@QAEHIABV?$RArray@W4TServicePropertyName@@@@@Z @ 19 NONAME ; int CSPSettings::DeleteServicePropertiesL(unsigned int, class RArray<enum TServicePropertyName> const &)
+	?GetProperty@CSPEntry@@QBEHAAPBVCSPProperty@@H@Z @ 20 NONAME ; int CSPEntry::GetProperty(class CSPProperty const * &, int) const
+	?AddPropertyL@CSPEntry@@QAEHABVCSPProperty@@@Z @ 21 NONAME ; int CSPEntry::AddPropertyL(class CSPProperty const &)
+	?PropertyCount@CSPEntry@@QBEHXZ @ 22 NONAME ; int CSPEntry::PropertyCount(void) const
+	?FindServiceIdsFromPropertiesL@CSPSettings@@QAEHABV?$RPointerArray@VCSPProperty@@@@AAV?$RArray@I@@@Z @ 23 NONAME ; int CSPSettings::FindServiceIdsFromPropertiesL(class RPointerArray<class CSPProperty> const &, class RArray<unsigned int> &)
+	?DeleteProperty@CSPEntry@@QAEHH@Z @ 24 NONAME ; int CSPEntry::DeleteProperty(int)
+	?GetValue@CSPProperty@@QBEHAAH@Z @ 25 NONAME ; int CSPProperty::GetValue(int &) const
+	?FindPropertyL@CSPSettings@@QAEHIW4TServicePropertyName@@AAVCSPProperty@@@Z @ 26 NONAME ; int CSPSettings::FindPropertyL(unsigned int, enum TServicePropertyName, class CSPProperty &)
+	??1CSPProperty@@UAE@XZ @ 27 NONAME ; CSPProperty::~CSPProperty(void)
+	?SetValue@CSPProperty@@QAEHABVTDesC16@@@Z @ 28 NONAME ; int CSPProperty::SetValue(class TDesC16 const &)
+	?NewL@CSPSettings@@SAPAV1@XZ @ 29 NONAME ; class CSPSettings * CSPSettings::NewL(void)
+	?GetSIPVoIPSWVersion@CSPSettings@@SAABVTDesC16@@XZ @ 30 NONAME ; class TDesC16 const & CSPSettings::GetSIPVoIPSWVersion(void)
+	?UpdateEntryL@CSPSettings@@QAEHABVCSPEntry@@@Z @ 31 NONAME ; int CSPSettings::UpdateEntryL(class CSPEntry const &)
+	?SetName@CSPProperty@@QAEHW4TServicePropertyName@@@Z @ 32 NONAME ; int CSPProperty::SetName(enum TServicePropertyName)
+	?DeleteEntryL@CSPSettings@@QAEHI@Z @ 33 NONAME ; int CSPSettings::DeleteEntryL(unsigned int)
+	?UpdateProperty@CSPEntry@@QAEHW4TServicePropertyName@@H@Z @ 34 NONAME ; int CSPEntry::UpdateProperty(enum TServicePropertyName, int)
+	?NewL@CSPProperty@@SAPAV1@XZ @ 35 NONAME ; class CSPProperty * CSPProperty::NewL(void)
+	?DataType@CSPProperty@@SA?AW4TPropertyDataType@@W4TServicePropertyName@@@Z @ 36 NONAME ; enum TPropertyDataType CSPProperty::DataType(enum TServicePropertyName)
+	?GetServiceId@CSPEntry@@QBEIXZ @ 37 NONAME ; unsigned int CSPEntry::GetServiceId(void) const
+	?NewLC@CSPEntry@@SAPAV1@XZ @ 38 NONAME ; class CSPEntry * CSPEntry::NewLC(void)
+	?GetDataType@CSPProperty@@QBE?AW4TPropertyDataType@@XZ @ 39 NONAME ; enum TPropertyDataType CSPProperty::GetDataType(void) const
+	??8CSPProperty@@QBEHABV0@@Z @ 40 NONAME ; int CSPProperty::operator==(class CSPProperty const &) const
+	??1CSPSettings@@UAE@XZ @ 41 NONAME ; CSPSettings::~CSPSettings(void)
+	?SetValue@CSPProperty@@QAEHW4TOnOff@@@Z @ 42 NONAME ; int CSPProperty::SetValue(enum TOnOff)
+	??1CSPEntry@@UAE@XZ @ 43 NONAME ; CSPEntry::~CSPEntry(void)
+	?NewL@CSPEntry@@SAPAV1@XZ @ 44 NONAME ; class CSPEntry * CSPEntry::NewL(void)
+	?AddOrUpdatePropertyL@CSPSettings@@QAEHIABVCSPProperty@@@Z @ 45 NONAME ; int CSPSettings::AddOrUpdatePropertyL(unsigned int, class CSPProperty const &)
+	?Reset@CSPEntry@@QAEXXZ @ 46 NONAME ; void CSPEntry::Reset(void)
+	?DeleteProperty@CSPEntry@@QAEHW4TServicePropertyName@@@Z @ 47 NONAME ; int CSPEntry::DeleteProperty(enum TServicePropertyName)
+	?AddEntryL@CSPSettings@@QAEHAAVCSPEntry@@@Z @ 48 NONAME ; int CSPSettings::AddEntryL(class CSPEntry &)
+	?GetProperty@CSPEntry@@QBEHAAPBVCSPProperty@@W4TServicePropertyName@@@Z @ 49 NONAME ; int CSPEntry::GetProperty(class CSPProperty const * &, enum TServicePropertyName) const
+	?CopyL@CSPProperty@@QAEXABV1@@Z @ 50 NONAME ; void CSPProperty::CopyL(class CSPProperty const &)
+	?GetName@CSPProperty@@QBE?AW4TServicePropertyName@@XZ @ 51 NONAME ; enum TServicePropertyName CSPProperty::GetName(void) const
+	?GetValue@CSPProperty@@QBEHAAVTDes16@@@Z @ 52 NONAME ; int CSPProperty::GetValue(class TDes16 &) const
+	?NewLC@CSPSettings@@SAPAV1@XZ @ 53 NONAME ; class CSPSettings * CSPSettings::NewLC(void)
+

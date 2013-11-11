@@ -1,0 +1,54 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+//! @file
+//! @SYMTestCaseID		CM-SENDAS-CIT-0019-HP
+//! @SYMTestCaseDesc		Add Attachment to message with no Mime type information
+//! @SYMFssID 
+//! @SYMTestStatus		Defined
+//! @SYMTestPriority		High
+//! @SYMTestActions 
+//! @SYMTestExpectedResults	The Attachment to message should be added with no Mime Type Information
+//! @SYMTestType		CIT
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+GetBaseConstants		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0019-AddAttachmentWithoutMime.ini	GetBaseConstants
+CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0019-AddAttachmentWithoutMime.ini	CreateSession
+ResetMessageStore		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0019-AddAttachmentWithoutMime.ini	ResetMessageStore
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0019-AddAttachmentWithoutMime.ini	ChkChildrenCountDraft0
+CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0019-AddAttachmentWithoutMime.ini	CreateRegistry
+GetIRMTMUId			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0019-AddAttachmentWithoutMime.ini	GetIRMtmUid
+CreateService			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0019-AddAttachmentWithoutMime.ini	CreateIRService
+EXECUTE_TEST_CASE
+ConnectSendAsServer		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0019-AddAttachmentWithoutMime.ini	ConnectSendAsServer
+SendAsCreateMessageofType	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0019-AddAttachmentWithoutMime.ini	CreateMessageofType
+SendAsAddRecipient		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0019-AddAttachmentWithoutMime.ini	SendAsAddRecipient
+SendAsAddAttachment		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0019-AddAttachmentWithoutMime.ini	SendAsAddAttachment
+SendAsSaveMessageAndClose	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0019-AddAttachmentWithoutMime.ini	CloseMessage
+CloseSendAsServerConnection	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0019-AddAttachmentWithoutMime.ini	CloseSvrConnection
+CHECK_POSTCONDITIONS
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0019-AddAttachmentWithoutMime.ini	ChkChildrenCountDraft1
+CreateChildrenSelection		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0019-AddAttachmentWithoutMime.ini	CreateChildrenSelDraft
+GetMessageAtIndex		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0019-AddAttachmentWithoutMime.ini	GetMessageAtIndex
+GetEntry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0019-AddAttachmentWithoutMime.ini	GetEntry
+GetAttachmentInfoByIndex	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0019-AddAttachmentWithoutMime.ini	GetAttachmentInfoByIndex
+END_TEST_CASE

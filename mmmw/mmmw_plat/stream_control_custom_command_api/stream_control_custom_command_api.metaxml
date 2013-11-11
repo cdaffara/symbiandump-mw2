@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api id="5e8fa668e3a6f487ae28d8d0a8726089" dataversion="2.0">
+  <name>Stream Control Custom Command API</name>
+  <description>This API defines custom commands need to be implemented by components to be able to work with Enhanced Media Client API.</description>
+  <type>c++</type>
+  <collection>mmfenh</collection>
+  <libs>
+    <lib name="StreamControlCustomCommands.lib"/>
+  </libs>
+  <release category="platform" sinceversion="3.2"/>
+  <attributes>
+    <!-- This indicates wether the api provedes separate html documentation -->
+    <!-- or is the additional documentation generated from headers. -->
+    <!-- If you are unsuere then the value is "no" -->
+    <htmldocprovided>no</htmldocprovided>
+    <adaptation>no</adaptation>
+  </attributes>
+</api>

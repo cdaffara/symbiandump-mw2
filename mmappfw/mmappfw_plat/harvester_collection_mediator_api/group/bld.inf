@@ -1,0 +1,29 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  File that exports the files belonging to 
+:                harvester collection mediator API
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS          
+          
+../inc/mpxcollectionmediator.h                   MW_LAYER_PLATFORM_EXPORT_PATH(mpxcollectionmediator.h)                            
+../inc/mpxmediatorobserver.h                     MW_LAYER_PLATFORM_EXPORT_PATH(mpxmediatorobserver.h)                      
+../inc/mpxmoveobserver.h                         MW_LAYER_PLATFORM_EXPORT_PATH(mpxmoveobserver.h)                        

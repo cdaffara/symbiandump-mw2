@@ -1,0 +1,3 @@
+EXPORTS
+	?NewL@CMsvSysProgressTestMtm@@SAPAV1@AAVCRegisteredMtmDll@@AAVCMsvServerEntry@@@Z @ 1 NONAME ; class CMsvSysProgressTestMtm * CMsvSysProgressTestMtm::NewL(class CRegisteredMtmDll &, class CMsvServerEntry &)
+	?Extension_@CMsvSysProgressTestMtm@@MAEHIAAPAXPAX@Z @ 2 NONAME ; int CMsvSysProgressTestMtm::Extension_(unsigned int, void * &, void *)

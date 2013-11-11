@@ -1,0 +1,7 @@
+EXPORTS
+	_Z9LibEntryLR13CTestModuleIf @ 1 NONAME
+	_ZTI14CSatRefreshAPI @ 2 NONAME ; #<TI>#
+	_ZTV14CSatRefreshAPI @ 3 NONAME ; #<VT>#
+	_ZTI19CSatRefreshObserver @ 4 NONAME ; #<TI>#
+	_ZTV19CSatRefreshObserver @ 5 NONAME ; #<VT>#
+

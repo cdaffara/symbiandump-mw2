@@ -1,0 +1,12 @@
+EXPORTS
+	?DelayDown@CVoIPJitterBuffer@@QAEXXZ @ 1 NONAME ; void CVoIPJitterBuffer::DelayDown(void)
+	?DelayUp@CVoIPJitterBuffer@@QAEXXZ @ 2 NONAME ; void CVoIPJitterBuffer::DelayUp(void)
+	?EmptyBuffer@CVoIPJitterBuffer@@QAEHPAVCMMFBuffer@@@Z @ 3 NONAME ; int CVoIPJitterBuffer::EmptyBuffer(class CMMFBuffer *)
+	?FillBuffer@CVoIPJitterBuffer@@QAEHPAVCMMFBuffer@@@Z @ 4 NONAME ; int CVoIPJitterBuffer::FillBuffer(class CMMFBuffer *)
+	?NewL@CVoIPJitterBuffer@@SAPAV1@PAVMJitterBufferObserver@@@Z @ 5 NONAME ; class CVoIPJitterBuffer * CVoIPJitterBuffer::NewL(class MJitterBufferObserver *)
+	?Pause@CVoIPJitterBuffer@@QAEXXZ @ 6 NONAME ; void CVoIPJitterBuffer::Pause(void)
+	?Play@CVoIPJitterBuffer@@QAEXXZ @ 7 NONAME ; void CVoIPJitterBuffer::Play(void)
+	?ResetBuffer@CVoIPJitterBuffer@@QAEXH@Z @ 8 NONAME ; void CVoIPJitterBuffer::ResetBuffer(int)
+	?SetupL@CVoIPJitterBuffer@@QAEXVTFourCC@@ABVTVoIPJBConfig@@@Z @ 9 NONAME ; void CVoIPJitterBuffer::SetupL(class TFourCC, class TVoIPJBConfig const &)
+	?Stop@CVoIPJitterBuffer@@QAEXXZ @ 10 NONAME ; void CVoIPJitterBuffer::Stop(void)
+

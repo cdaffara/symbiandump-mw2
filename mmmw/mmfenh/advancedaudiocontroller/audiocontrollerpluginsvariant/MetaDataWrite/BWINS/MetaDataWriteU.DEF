@@ -1,0 +1,6 @@
+EXPORTS
+	?CommitMetaData@CMetaDataWrite@@QAEHXZ @ 1 NONAME ; int CMetaDataWrite::CommitMetaData(void)
+	?EnableDelayWrite@CMetaDataWrite@@QAEHXZ @ 2 NONAME ; int CMetaDataWrite::EnableDelayWrite(void)
+	?NewL@CMetaDataWrite@@SAPAV1@AAVCMdaAudioRecorderUtility@@@Z @ 3 NONAME ; class CMetaDataWrite * CMetaDataWrite::NewL(class CMdaAudioRecorderUtility &)
+	?NewL@CMetaDataWriteCustomCommandParser@@SAPAV1@AAVMMetaDataWriteCustomCommandImplementor@@@Z @ 4 NONAME ; class CMetaDataWriteCustomCommandParser * CMetaDataWriteCustomCommandParser::NewL(class MMetaDataWriteCustomCommandImplementor &)
+

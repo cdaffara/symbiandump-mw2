@@ -1,0 +1,32 @@
+/*
+* Copyright (c) 2005 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  IBY file for the Radio Utility
+*
+*/
+
+
+#ifndef RADIO_UTILITY_IBY
+#define RADIO_UTILITY_IBY
+
+#ifdef __FM_RADIO
+
+file=ABI_DIR\BUILD_DIR\Radio_Utility_Stub.dll	SHARED_LIB_DIR\Radio_Utility_Stub.dll
+
+// Stub sis
+data = ZSYSTEM\install\Radio_Utility_Stub.sis	system\install\Radio_Utility_Stub.sis
+
+#endif //__FM_RADIO
+#endif // RADIO_UTILITY_IBY
+
+//  End of File  

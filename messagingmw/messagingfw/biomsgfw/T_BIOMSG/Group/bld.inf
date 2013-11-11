@@ -1,0 +1,845 @@
+// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRJ_PLATFORMS
+    DEFAULT
+
+PRJ_EXPORTS
+
+PRJ_TESTEXPORTS
+
+
+//
+// WINS
+// ====
+//
+
+
+//
+// Main script file
+// ================
+../Scripts/script.txt			/epoc32/wins/c/msgtest/biomsg/scripts/script.txt
+
+
+//
+// CBCP test files
+// ===============
+
+// CBCP test data
+// --------------
+../Data/cbcp/cbcp1.txt					/epoc32/wins/c/msgtest/biomsg/data/cbcp/cbcp1.txt
+../Data/cbcp/cbcp2.txt					/epoc32/wins/c/msgtest/biomsg/data/cbcp/cbcp2.txt
+../Data/cbcp/cbcp3.txt					/epoc32/wins/c/msgtest/biomsg/data/cbcp/cbcp3.txt
+../Data/cbcp/cbcp4.txt					/epoc32/wins/c/msgtest/biomsg/data/cbcp/cbcp4.txt
+../Data/cbcp/cbcp5.txt					/epoc32/wins/c/msgtest/biomsg/data/cbcp/cbcp5.txt
+../Data/cbcp/cbcp6.txt					/epoc32/wins/c/msgtest/biomsg/data/cbcp/cbcp6.txt
+
+// CBCP test scripts
+// -----------------
+../Scripts/cbcp/cbcp_test_script.txt	/epoc32/wins/c/msgtest/biomsg/scripts/cbcp/cbcp_test_script.txt
+
+
+//
+// ENP test files
+// ==============
+
+// ENP test data
+// -------------
+../Data/enp/enp1.txt				/epoc32/wins/c/msgtest/biomsg/data/enp/enp1.txt
+../Data/enp/enp2.txt				/epoc32/wins/c/msgtest/biomsg/data/enp/enp2.txt
+../Data/enp/enp3.txt				/epoc32/wins/c/msgtest/biomsg/data/enp/enp3.txt
+../Data/enp/enp4.txt				/epoc32/wins/c/msgtest/biomsg/data/enp/enp4.txt
+../Data/enp/enp5.txt				/epoc32/wins/c/msgtest/biomsg/data/enp/enp5.txt
+../Data/enp/enp6.txt				/epoc32/wins/c/msgtest/biomsg/data/enp/enp6.txt
+../Data/enp/enp7.txt				/epoc32/wins/c/msgtest/biomsg/data/enp/enp7.txt
+
+
+// ENP test scripts
+// ----------------
+../Scripts/enp/enp_test_script.txt	/epoc32/wins/c/msgtest/biomsg/scripts/enp/enp_test_script.txt
+
+
+//
+// GFP test files
+// ==============
+
+// GFP test data
+// -------------
+../Data/gfp/oplogo1.txt				/epoc32/wins/c/msgtest/biomsg/data/gfp/oplogo1.txt
+../Data/gfp/oplogo2.txt				/epoc32/wins/c/msgtest/biomsg/data/gfp/oplogo2.txt
+../Data/gfp/oplogo3.txt				/epoc32/wins/c/msgtest/biomsg/data/gfp/oplogo3.txt
+../Data/gfp/oplogo4.txt				/epoc32/wins/c/msgtest/biomsg/data/gfp/oplogo4.txt
+../Data/gfp/oplogo5.txt				/epoc32/wins/c/msgtest/biomsg/data/gfp/oplogo5.txt
+../Data/gfp/oplogo6.txt				/epoc32/wins/c/msgtest/biomsg/data/gfp/oplogo6.txt
+../Data/gfp/rtone1.txt				/epoc32/wins/c/msgtest/biomsg/data/gfp/rtone1.txt
+../Data/gfp/rtone2.txt				/epoc32/wins/c/msgtest/biomsg/data/gfp/rtone2.txt
+../Data/gfp/rtone3.txt				/epoc32/wins/c/msgtest/biomsg/data/gfp/rtone3.txt
+../Data/gfp/rtone4.txt				/epoc32/wins/c/msgtest/biomsg/data/gfp/rtone4.txt
+../Data/gfp/rtone5.txt				/epoc32/wins/c/msgtest/biomsg/data/gfp/rtone5.txt
+../Data/gfp/rtone6.txt				/epoc32/wins/c/msgtest/biomsg/data/gfp/rtone6.txt
+../Data/gfp/rtone7.txt				/epoc32/wins/c/msgtest/biomsg/data/gfp/rtone7.txt
+../Data/gfp/vcal1.txt				/epoc32/wins/c/msgtest/biomsg/data/gfp/vcal1.txt
+../Data/gfp/vcard1.txt				/epoc32/wins/c/msgtest/biomsg/data/gfp/vcard1.txt
+
+// GFP test scripts
+// ----------------
+../Scripts/gfp/gfp_test_script.txt	/epoc32/wins/c/msgtest/biomsg/scripts/gfp/gfp_test_script.txt
+
+
+//
+// IACP test files
+// ===============
+
+// IACP test data
+// --------------
+../Data/iacp/iacp_all_01.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_all_01.txt
+../Data/iacp/iacp_all_02.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_all_02.txt
+../Data/iacp/iacp_all_03.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_all_03.txt
+../Data/iacp/iacp_all_04.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_all_04.txt
+../Data/iacp/iacp_all_05.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_all_05.txt
+../Data/iacp/iacp_hotlist_01.txt	/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_hotlist_01.txt
+../Data/iacp/iacp_hotlist_02.txt	/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_hotlist_02.txt
+../Data/iacp/iacp_hotlist_03.txt	/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_hotlist_03.txt
+../Data/iacp/iacp_hotlist_04.txt	/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_hotlist_04.txt
+../Data/iacp/iacp_hotlist_05.txt	/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_hotlist_05.txt
+../Data/iacp/iacp_hotlist_06.txt	/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_hotlist_06.txt
+../Data/iacp/iacp_hotlist_07.txt	/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_hotlist_07.txt
+../Data/iacp/iacp_hotlist_08.txt	/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_hotlist_08.txt
+../Data/iacp/iacp_hotlist_09.txt	/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_hotlist_09.txt
+../Data/iacp/iacp_hotlist_10.txt	/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_hotlist_10.txt
+../Data/iacp/iacp_hotlist_11.txt	/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_hotlist_11.txt
+../Data/iacp/iacp_iap_01.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_iap_01.txt
+../Data/iacp/iacp_iap_02.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_iap_02.txt
+../Data/iacp/iacp_iap_03.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_iap_03.txt
+../Data/iacp/iacp_iap_04.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_iap_04.txt
+../Data/iacp/iacp_iap_05.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_iap_05.txt
+../Data/iacp/iacp_iap_06.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_iap_06.txt
+../Data/iacp/iacp_iap_07.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_iap_07.txt
+../Data/iacp/iacp_iap_08.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_iap_08.txt
+../Data/iacp/iacp_iap_09.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_iap_09.txt
+../Data/iacp/iacp_mail_01.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_mail_01.txt
+../Data/iacp/iacp_mail_02.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_mail_02.txt
+../Data/iacp/iacp_mail_03.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_mail_03.txt
+../Data/iacp/iacp_mail_04.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_mail_04.txt
+../Data/iacp/iacp_mail_05.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_mail_05.txt
+../Data/iacp/iacp_mail_06.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_mail_06.txt
+../Data/iacp/iacp_mail_07.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_mail_07.txt
+../Data/iacp/iacp_script_01.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_script_01.txt
+../Data/iacp/iacp_script_02.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_script_02.txt
+../Data/iacp/iacp_script_03.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_script_03.txt
+../Data/iacp/iacp_script_04.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_script_04.txt
+../Data/iacp/iacp_script_05.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_script_05.txt
+../Data/iacp/iacp_script_06.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_script_06.txt
+../Data/iacp/iacp_sms_01.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_sms_01.txt
+../Data/iacp/iacp_sms_02.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_sms_02.txt
+../Data/iacp/iacp_sms_03.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_sms_03.txt
+../Data/iacp/iacp_sms_04.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_sms_04.txt
+../Data/iacp/iacp_sms_05.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_sms_05.txt
+../Data/iacp/iacp_gprs_01.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_gprs_01.txt
+../Data/iacp/iacp_gprs_02.txt		/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_gprs_02.txt
+../Data/iacp/iacp_telephone_01.txt	/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_telephone_01.txt
+../Data/iacp/iacp_telephone_02.txt	/epoc32/wins/c/msgtest/biomsg/data/iacp/iacp_telephone_02.txt
+
+// IACP test scripts
+// -----------------
+../Scripts/iacp/iacp_script_all_01.txt		/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_all_01.txt
+../Scripts/iacp/iacp_script_all_02.txt		/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_all_02.txt
+../Scripts/iacp/iacp_script_all_03.txt		/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_all_03.txt
+../Scripts/iacp/iacp_script_all_04.txt		/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_all_04.txt
+../Scripts/iacp/iacp_script_all_05.txt		/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_all_05.txt
+../Scripts/iacp/iacp_script_hotlist_01.txt	/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_hotlist_01.txt
+../Scripts/iacp/iacp_script_hotlist_02.txt	/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_hotlist_02.txt
+../Scripts/iacp/iacp_script_hotlist_03.txt	/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_hotlist_03.txt
+../Scripts/iacp/iacp_script_hotlist_04.txt	/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_hotlist_04.txt
+../Scripts/iacp/iacp_script_hotlist_05.txt	/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_hotlist_05.txt
+../Scripts/iacp/iacp_script_hotlist_06.txt	/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_hotlist_06.txt
+../Scripts/iacp/iacp_script_hotlist_07.txt	/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_hotlist_07.txt
+../Scripts/iacp/iacp_script_hotlist_08.txt	/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_hotlist_08.txt
+../Scripts/iacp/iacp_script_hotlist_09.txt	/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_hotlist_09.txt
+../Scripts/iacp/iacp_script_hotlist_10.txt	/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_hotlist_10.txt
+../Scripts/iacp/iacp_script_hotlist_11.txt	/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_hotlist_11.txt
+../Scripts/iacp/iacp_script_iap_01.txt		/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_iap_01.txt
+../Scripts/iacp/iacp_script_iap_02.txt		/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_iap_02.txt
+../Scripts/iacp/iacp_script_iap_03.txt		/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_iap_03.txt
+../Scripts/iacp/iacp_script_iap_04.txt		/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_iap_04.txt
+../Scripts/iacp/iacp_script_iap_05.txt		/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_iap_05.txt
+../Scripts/iacp/iacp_script_iap_06.txt		/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_iap_06.txt
+../Scripts/iacp/iacp_script_iap_07.txt		/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_iap_07.txt
+../Scripts/iacp/iacp_script_iap_08.txt		/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_iap_08.txt
+../Scripts/iacp/iacp_script_iap_09.txt		/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_iap_09.txt
+../Scripts/iacp/iacp_script_mail_01.txt		/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_mail_01.txt
+../Scripts/iacp/iacp_script_mail_02.txt		/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_mail_02.txt
+../Scripts/iacp/iacp_script_mail_03.txt		/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_mail_03.txt
+../Scripts/iacp/iacp_script_mail_04.txt		/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_mail_04.txt
+../Scripts/iacp/iacp_script_mail_05.txt		/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_mail_05.txt
+../Scripts/iacp/iacp_script_mail_06.txt		/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_mail_06.txt
+../Scripts/iacp/iacp_script_mail_07.txt		/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_mail_07.txt
+../Scripts/iacp/iacp_script_script_01.txt	/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_script_01.txt
+../Scripts/iacp/iacp_script_script_02.txt	/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_script_02.txt
+../Scripts/iacp/iacp_script_script_03.txt	/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_script_03.txt
+../Scripts/iacp/iacp_script_script_04.txt	/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_script_04.txt
+../Scripts/iacp/iacp_script_script_05.txt	/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_script_05.txt
+../Scripts/iacp/iacp_script_script_06.txt	/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_script_06.txt
+../Scripts/iacp/iacp_script_sms_01.txt		/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_sms_01.txt
+../Scripts/iacp/iacp_script_sms_02.txt		/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_sms_02.txt
+../Scripts/iacp/iacp_script_sms_03.txt		/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_sms_03.txt
+../Scripts/iacp/iacp_script_sms_04.txt		/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_sms_04.txt
+../Scripts/iacp/iacp_script_sms_05.txt		/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_sms_05.txt
+../Scripts/iacp/iacp_script_gprs_01.txt		/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_gprs_01.txt
+../Scripts/iacp/iacp_script_gprs_02.txt		/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_gprs_02.txt
+../Scripts/iacp/iacp_script_telephone_01.txt	/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_telephone_01.txt
+../Scripts/iacp/iacp_script_telephone_02.txt	/epoc32/wins/c/msgtest/biomsg/scripts/iacp/iacp_script_telephone_02.txt
+
+
+//
+// WAPP test files
+// ===============
+
+// WAPP test data
+// --------------
+../Data/Wapp/wapp0001.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0001.bin
+../Data/Wapp/wapp0002.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0002.bin
+../Data/Wapp/wapp0003.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0003.bin
+../Data/Wapp/wapp0004.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0004.bin
+../Data/Wapp/wapp0005.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0005.bin
+../Data/Wapp/wapp0006.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0006.bin
+../Data/Wapp/wapp0007.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0007.bin
+../Data/Wapp/wapp0008.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0008.bin
+../Data/Wapp/wapp0009.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0009.bin
+../Data/Wapp/wapp0010.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0010.bin
+../Data/Wapp/wapp0011.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0011.bin
+../Data/Wapp/wapp0012.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0012.bin
+../Data/Wapp/wapp0013.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0013.bin
+../Data/Wapp/wapp0014.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0014.bin
+../Data/Wapp/wapp0015.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0015.bin
+../Data/Wapp/wapp0016.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0016.bin
+../Data/Wapp/wapp0017.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0017.bin
+../Data/Wapp/wapp0018.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0018.bin
+../Data/Wapp/wapp0019.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0019.bin
+../Data/Wapp/wapp0020.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0020.bin
+../Data/Wapp/wapp0021.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0021.bin
+../Data/Wapp/wapp0022.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0022.bin
+../Data/Wapp/wapp0023.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0023.bin
+../Data/Wapp/wapp0024.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0024.bin
+../Data/Wapp/wapp0025.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0025.bin
+../Data/Wapp/wapp0026.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0026.bin
+../Data/Wapp/wapp0027.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0027.bin
+../Data/Wapp/wapp0028.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0028.bin
+../Data/Wapp/wapp0029.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0029.bin
+../Data/Wapp/wapp0030.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0030.bin
+../Data/Wapp/wapp0031.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0031.bin
+../Data/Wapp/wapp0032.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0032.bin
+../Data/Wapp/wapp0033.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0033.bin
+../Data/Wapp/wapp0034.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0034.bin
+../Data/Wapp/wapp0035.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0035.bin
+../Data/Wapp/wapp0036.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0036.bin
+../Data/Wapp/wapp0037.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0037.bin
+../Data/Wapp/wapp0038.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0038.bin
+../Data/Wapp/wapp0039.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0039.bin
+../Data/Wapp/wapp0040.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0040.bin
+../Data/Wapp/wapp0041.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0041.bin
+../Data/Wapp/wapp0042.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0042.bin
+../Data/Wapp/wapp0043.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0043.bin
+../Data/Wapp/wapp0044.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0044.bin
+../Data/Wapp/wapp0045.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0045.bin
+../Data/Wapp/wapp0046.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0046.bin
+../Data/Wapp/wapp0047.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0047.bin
+../Data/Wapp/wapp0048.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0048.bin
+../Data/Wapp/wapp0049.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0049.bin
+../Data/Wapp/wapp0050.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0050.bin
+../Data/Wapp/wapp0051.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0051.bin
+../Data/Wapp/wapp0052.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0052.bin
+../Data/Wapp/wapp0053.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0053.bin
+../Data/Wapp/wapp0054.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0054.bin
+../Data/Wapp/wapp0055.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0055.bin
+../Data/Wapp/wapp0056.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0056.bin
+../Data/Wapp/wapp0057.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0057.bin
+../Data/Wapp/wapp0058.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0058.bin
+../Data/Wapp/wapp0059.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0059.bin
+../Data/Wapp/wapp0060.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0060.bin
+../Data/Wapp/wapp0061.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0061.bin
+../Data/Wapp/wapp0062.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0062.bin
+../Data/Wapp/wapp0063.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0063.bin
+../Data/Wapp/wapp0064.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0064.bin
+../Data/Wapp/wapp0065.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0065.bin
+../Data/Wapp/wapp0066.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0066.bin
+../Data/Wapp/wapp0067.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0067.bin
+../Data/Wapp/wapp0068.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0068.bin
+../Data/Wapp/wapp0069.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0069.bin
+../Data/Wapp/wapp0070.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0070.bin
+../Data/Wapp/wapp0071.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0071.bin
+../Data/Wapp/wapp0072.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0072.bin
+../Data/Wapp/wapp0073.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0073.bin
+../Data/Wapp/wapp0074.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0074.bin
+../Data/Wapp/wapp0075.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0075.bin
+../Data/Wapp/wapp0076.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0076.bin
+../Data/Wapp/wapp0077.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0077.bin
+../Data/Wapp/wapp0078.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0078.bin
+../Data/Wapp/wapp0079.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0079.bin
+../Data/Wapp/wapp0080.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0080.bin
+../Data/Wapp/wapp0081.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0081.bin
+../Data/Wapp/wapp0082.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0082.bin
+../Data/Wapp/wapp0083.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0083.bin
+../Data/Wapp/wapp0084.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0084.bin
+../Data/Wapp/wapp0085.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0085.bin
+../Data/Wapp/wapp0086.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0086.bin
+../Data/Wapp/wapp0087.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0087.bin
+../Data/Wapp/wapp0088.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0088.bin
+../Data/Wapp/wapp0089.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0089.bin
+../Data/Wapp/wapp0090.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0090.bin
+../Data/Wapp/wapp0091.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0091.bin
+../Data/Wapp/wapp0092.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0092.bin
+../Data/Wapp/wapp0093.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0093.bin
+../Data/Wapp/wapp0094.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0094.bin
+../Data/Wapp/wapp0095.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0095.bin
+../Data/Wapp/wapp0096.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0096.bin
+../Data/Wapp/wapp0097.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0097.bin
+../Data/Wapp/wapp0098.bin		/epoc32/wins/c/msgtest/biomsg/data/wapp/wapp0098.bin
+../Data/Wapp/DEF036479_charset_tests/wapp_unicode.bin					/epoc32/wins/c/msgtest/biomsg/data/wapp/def036479_charset_tests/wapp_unicode.bin
+../Data/Wapp/DEF036479_charset_tests/wapp_utf8_1byte.bin				/epoc32/wins/c/msgtest/biomsg/data/wapp/def036479_charset_tests/wapp_utf8_1byte.bin
+../Data/Wapp/DEF036479_charset_tests/wapp_utf8_2byte.bin				/epoc32/wins/c/msgtest/biomsg/data/wapp/def036479_charset_tests/wapp_utf8_2byte.bin
+../Data/Wapp/DEF036479_charset_tests/wapp_utf8_3byte.bin				/epoc32/wins/c/msgtest/biomsg/data/wapp/def036479_charset_tests/wapp_utf8_3byte.bin
+../Data/Wapp/DEF036479_charset_tests/wapp_utf8_4byte.bin				/epoc32/wins/c/msgtest/biomsg/data/wapp/def036479_charset_tests/wapp_utf8_4byte.bin
+../Data/Wapp/DEF036479_charset_tests/wapp_utf8_5byte.bin				/epoc32/wins/c/msgtest/biomsg/data/wapp/def036479_charset_tests/wapp_utf8_5byte.bin
+../Data/Wapp/DEF036479_charset_tests/wapp_utf8_6byte.bin				/epoc32/wins/c/msgtest/biomsg/data/wapp/def036479_charset_tests/wapp_utf8_6byte.bin
+../Data/Wapp/DEF036479_charset_tests/wapp_utf8_3byte_begin.bin			/epoc32/wins/c/msgtest/biomsg/data/wapp/def036479_charset_tests/wapp_utf8_3byte_begin.bin
+../Data/Wapp/DEF036479_charset_tests/wapp_utf8_3byte_end.bin			/epoc32/wins/c/msgtest/biomsg/data/wapp/def036479_charset_tests/wapp_utf8_3byte_end.bin
+../Data/Wapp/DEF036479_charset_tests/wapp_utf8_varibyte_all.bin			/epoc32/wins/c/msgtest/biomsg/data/wapp/def036479_charset_tests/wapp_utf8_varibyte_all.bin
+
+// WAPP test scripts
+// -----------------
+../Scripts/Wapp/wapp0001.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0001.txt
+../Scripts/Wapp/wapp0002.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0002.txt
+../Scripts/Wapp/wapp0003.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0003.txt
+../Scripts/Wapp/wapp0004.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0004.txt
+../Scripts/Wapp/wapp0005.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0005.txt
+../Scripts/Wapp/wapp0006.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0006.txt
+../Scripts/Wapp/wapp0007.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0007.txt
+../Scripts/Wapp/wapp0008.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0008.txt
+../Scripts/Wapp/wapp0009.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0009.txt
+../Scripts/Wapp/wapp0010.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0010.txt
+../Scripts/Wapp/wapp0011.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0011.txt
+../Scripts/Wapp/wapp0012.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0012.txt
+../Scripts/Wapp/wapp0013.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0013.txt
+../Scripts/Wapp/wapp0014.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0014.txt
+../Scripts/Wapp/wapp0015.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0015.txt
+../Scripts/Wapp/wapp0016.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0016.txt
+../Scripts/Wapp/wapp0017.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0017.txt
+../Scripts/Wapp/wapp0018.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0018.txt
+../Scripts/Wapp/wapp0019.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0019.txt
+../Scripts/Wapp/wapp0020.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0020.txt
+../Scripts/Wapp/wapp0021.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0021.txt
+../Scripts/Wapp/wapp0022.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0022.txt
+../Scripts/Wapp/wapp0023.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0023.txt
+../Scripts/Wapp/wapp0024.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0024.txt
+../Scripts/Wapp/wapp0025.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0025.txt
+../Scripts/Wapp/wapp0026.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0026.txt
+../Scripts/Wapp/wapp0027.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0027.txt
+../Scripts/Wapp/wapp0028.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0028.txt
+../Scripts/Wapp/wapp0029.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0029.txt
+../Scripts/Wapp/wapp0030.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0030.txt
+../Scripts/Wapp/wapp0031.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0031.txt
+../Scripts/Wapp/wapp0032.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0032.txt
+../Scripts/Wapp/wapp0033.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0033.txt
+../Scripts/Wapp/wapp0034.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0034.txt
+../Scripts/Wapp/wapp0035.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0035.txt
+../Scripts/Wapp/wapp0036.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0036.txt
+../Scripts/Wapp/wapp0037.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0037.txt
+../Scripts/Wapp/wapp0038.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0038.txt
+../Scripts/Wapp/wapp0039.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0039.txt
+../Scripts/Wapp/wapp0040.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0040.txt
+../Scripts/Wapp/wapp0041.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0041.txt
+../Scripts/Wapp/wapp0042.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0042.txt
+../Scripts/Wapp/wapp0043.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0043.txt
+../Scripts/Wapp/wapp0044.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0044.txt
+../Scripts/Wapp/wapp0045.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0045.txt
+../Scripts/Wapp/wapp0046.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0046.txt
+../Scripts/Wapp/wapp0047.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0047.txt
+../Scripts/Wapp/wapp0048.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0048.txt
+../Scripts/Wapp/wapp0049.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0049.txt
+../Scripts/Wapp/wapp0050.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0050.txt
+../Scripts/Wapp/wapp0051.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0051.txt
+../Scripts/Wapp/wapp0052.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0052.txt
+../Scripts/Wapp/wapp0053.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0053.txt
+../Scripts/Wapp/wapp0054.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0054.txt
+../Scripts/Wapp/wapp0055.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0055.txt
+../Scripts/Wapp/wapp0056.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0056.txt
+../Scripts/Wapp/wapp0057.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0057.txt
+../Scripts/Wapp/wapp0058.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0058.txt
+../Scripts/Wapp/wapp0059.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0059.txt
+../Scripts/Wapp/wapp0060.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0060.txt
+../Scripts/Wapp/wapp0061.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0061.txt
+../Scripts/Wapp/wapp0062.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0062.txt
+../Scripts/Wapp/wapp0063.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0063.txt
+../Scripts/Wapp/wapp0064.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0064.txt
+../Scripts/Wapp/wapp0065.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0065.txt
+../Scripts/Wapp/wapp0066.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0066.txt
+../Scripts/Wapp/wapp0067.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0067.txt
+../Scripts/Wapp/wapp0068.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0068.txt
+../Scripts/Wapp/wapp0069.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0069.txt
+../Scripts/Wapp/wapp0070.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0070.txt
+../Scripts/Wapp/wapp0071.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0071.txt
+../Scripts/Wapp/wapp0072.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0072.txt
+../Scripts/Wapp/wapp0073.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0073.txt
+../Scripts/Wapp/wapp0074.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0074.txt
+../Scripts/Wapp/wapp0075.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0075.txt
+../Scripts/Wapp/wapp0076.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0076.txt
+../Scripts/Wapp/wapp0077.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0077.txt
+../Scripts/Wapp/wapp0078.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0078.txt
+../Scripts/Wapp/wapp0079.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0079.txt
+../Scripts/Wapp/wapp0080.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0080.txt
+../Scripts/Wapp/wapp0081.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0081.txt
+../Scripts/Wapp/wapp0082.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0082.txt
+../Scripts/Wapp/wapp0083.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0083.txt
+../Scripts/Wapp/wapp0084.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0084.txt
+../Scripts/Wapp/wapp0085.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0085.txt
+../Scripts/Wapp/wapp0086.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0086.txt
+../Scripts/Wapp/wapp0087.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0087.txt
+../Scripts/Wapp/wapp0088.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0088.txt
+../Scripts/Wapp/wapp0089.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0089.txt
+../Scripts/Wapp/wapp0090.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0090.txt
+../Scripts/Wapp/wapp0091.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0091.txt
+../Scripts/Wapp/wapp0092.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0092.txt
+../Scripts/Wapp/wapp0093.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0093.txt
+../Scripts/Wapp/wapp0094.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0094.txt
+../Scripts/Wapp/wapp0095.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0095.txt
+../Scripts/Wapp/wapp0096.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0096.txt
+../Scripts/Wapp/wapp0097.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0097.txt
+../Scripts/Wapp/wapp0098.txt	/epoc32/wins/c/msgtest/biomsg/scripts/wapp/wapp0098.txt
+../Scripts/Wapp/DEF036479_charset_tests/wapp_unicode.txt				/epoc32/wins/c/msgtest/biomsg/scripts/wapp/def036479_charset_tests/wapp_unicode.txt
+../Scripts/Wapp/DEF036479_charset_tests/wapp_utf8_1byte.txt				/epoc32/wins/c/msgtest/biomsg/scripts/wapp/def036479_charset_tests/wapp_utf8_1byte.txt
+../Scripts/Wapp/DEF036479_charset_tests/wapp_utf8_2byte.txt				/epoc32/wins/c/msgtest/biomsg/scripts/wapp/def036479_charset_tests/wapp_utf8_2byte.txt
+../Scripts/Wapp/DEF036479_charset_tests/wapp_utf8_3byte.txt				/epoc32/wins/c/msgtest/biomsg/scripts/wapp/def036479_charset_tests/wapp_utf8_3byte.txt
+../Scripts/Wapp/DEF036479_charset_tests/wapp_utf8_4byte.txt				/epoc32/wins/c/msgtest/biomsg/scripts/wapp/def036479_charset_tests/wapp_utf8_4byte.txt
+../Scripts/Wapp/DEF036479_charset_tests/wapp_utf8_5byte.txt				/epoc32/wins/c/msgtest/biomsg/scripts/wapp/def036479_charset_tests/wapp_utf8_5byte.txt
+../Scripts/Wapp/DEF036479_charset_tests/wapp_utf8_6byte.txt				/epoc32/wins/c/msgtest/biomsg/scripts/wapp/def036479_charset_tests/wapp_utf8_6byte.txt
+../Scripts/Wapp/DEF036479_charset_tests/wapp_utf8_3byte_begin.txt		/epoc32/wins/c/msgtest/biomsg/scripts/wapp/def036479_charset_tests/wapp_utf8_3byte_begin.txt
+../Scripts/Wapp/DEF036479_charset_tests/wapp_utf8_3byte_end.txt			/epoc32/wins/c/msgtest/biomsg/scripts/wapp/def036479_charset_tests/wapp_utf8_3byte_end.txt
+../Scripts/Wapp/DEF036479_charset_tests/wapp_utf8_varibyte_all.txt		/epoc32/wins/c/msgtest/biomsg/scripts/wapp/def036479_charset_tests/wapp_utf8_varibyte_all.txt
+
+
+
+//
+// WINSCW
+// ======
+//
+
+
+//
+// Main script file
+// ================
+../Scripts/script.txt			/epoc32/winscw/c/msgtest/biomsg/scripts/script.txt
+
+
+//
+// CBCP test files
+// ===============
+
+// CBCP test data
+// --------------
+../Data/cbcp/cbcp1.txt					/epoc32/winscw/c/msgtest/biomsg/data/cbcp/cbcp1.txt
+../Data/cbcp/cbcp2.txt					/epoc32/winscw/c/msgtest/biomsg/data/cbcp/cbcp2.txt
+../Data/cbcp/cbcp3.txt					/epoc32/winscw/c/msgtest/biomsg/data/cbcp/cbcp3.txt
+../Data/cbcp/cbcp4.txt					/epoc32/winscw/c/msgtest/biomsg/data/cbcp/cbcp4.txt
+../Data/cbcp/cbcp5.txt					/epoc32/winscw/c/msgtest/biomsg/data/cbcp/cbcp5.txt
+../Data/cbcp/cbcp6.txt					/epoc32/winscw/c/msgtest/biomsg/data/cbcp/cbcp6.txt
+
+
+// CBCP test scripts
+// -----------------
+../Scripts/cbcp/cbcp_test_script.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/cbcp/cbcp_test_script.txt
+
+//
+// ENP test files
+// ==============
+
+// ENP test data
+// -------------
+../Data/enp/enp1.txt				/epoc32/winscw/c/msgtest/biomsg/data/enp/enp1.txt
+../Data/enp/enp2.txt				/epoc32/winscw/c/msgtest/biomsg/data/enp/enp2.txt
+../Data/enp/enp3.txt				/epoc32/winscw/c/msgtest/biomsg/data/enp/enp3.txt
+../Data/enp/enp4.txt				/epoc32/winscw/c/msgtest/biomsg/data/enp/enp4.txt
+../Data/enp/enp5.txt				/epoc32/winscw/c/msgtest/biomsg/data/enp/enp5.txt
+../Data/enp/enp6.txt				/epoc32/winscw/c/msgtest/biomsg/data/enp/enp6.txt
+../Data/enp/enp7.txt				/epoc32/winscw/c/msgtest/biomsg/data/enp/enp7.txt
+
+// ENP test scripts
+// ----------------
+../Scripts/enp/enp_test_script.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/enp/enp_test_script.txt
+
+
+//
+// GFP test files
+// ==============
+
+// GFP test data
+// -------------
+../Data/gfp/oplogo1.txt				/epoc32/winscw/c/msgtest/biomsg/data/gfp/oplogo1.txt
+../Data/gfp/oplogo2.txt				/epoc32/winscw/c/msgtest/biomsg/data/gfp/oplogo2.txt
+../Data/gfp/oplogo3.txt				/epoc32/winscw/c/msgtest/biomsg/data/gfp/oplogo3.txt
+../Data/gfp/oplogo4.txt				/epoc32/winscw/c/msgtest/biomsg/data/gfp/oplogo4.txt
+../Data/gfp/oplogo5.txt				/epoc32/winscw/c/msgtest/biomsg/data/gfp/oplogo5.txt
+../Data/gfp/oplogo6.txt				/epoc32/winscw/c/msgtest/biomsg/data/gfp/oplogo6.txt
+../Data/gfp/rtone1.txt				/epoc32/winscw/c/msgtest/biomsg/data/gfp/rtone1.txt
+../Data/gfp/rtone2.txt				/epoc32/winscw/c/msgtest/biomsg/data/gfp/rtone2.txt
+../Data/gfp/rtone3.txt				/epoc32/winscw/c/msgtest/biomsg/data/gfp/rtone3.txt
+../Data/gfp/rtone4.txt				/epoc32/winscw/c/msgtest/biomsg/data/gfp/rtone4.txt
+../Data/gfp/rtone5.txt				/epoc32/winscw/c/msgtest/biomsg/data/gfp/rtone5.txt
+../Data/gfp/rtone6.txt				/epoc32/winscw/c/msgtest/biomsg/data/gfp/rtone6.txt
+../Data/gfp/rtone7.txt				/epoc32/winscw/c/msgtest/biomsg/data/gfp/rtone7.txt
+../Data/gfp/vcal1.txt				/epoc32/winscw/c/msgtest/biomsg/data/gfp/vcal1.txt
+../Data/gfp/vcard1.txt				/epoc32/winscw/c/msgtest/biomsg/data/gfp/vcard1.txt
+
+// GFP test scripts
+// ----------------
+../Scripts/gfp/gfp_test_script.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/gfp/gfp_test_script.txt
+
+
+//
+// IACP test files
+// ===============
+
+// IACP test data
+// --------------
+../Data/iacp/iacp_all_01.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_all_01.txt
+../Data/iacp/iacp_all_02.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_all_02.txt
+../Data/iacp/iacp_all_03.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_all_03.txt
+../Data/iacp/iacp_all_04.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_all_04.txt
+../Data/iacp/iacp_all_05.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_all_05.txt
+../Data/iacp/iacp_hotlist_01.txt	/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_hotlist_01.txt
+../Data/iacp/iacp_hotlist_02.txt	/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_hotlist_02.txt
+../Data/iacp/iacp_hotlist_03.txt	/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_hotlist_03.txt
+../Data/iacp/iacp_hotlist_04.txt	/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_hotlist_04.txt
+../Data/iacp/iacp_hotlist_05.txt	/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_hotlist_05.txt
+../Data/iacp/iacp_hotlist_06.txt	/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_hotlist_06.txt
+../Data/iacp/iacp_hotlist_07.txt	/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_hotlist_07.txt
+../Data/iacp/iacp_hotlist_08.txt	/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_hotlist_08.txt
+../Data/iacp/iacp_hotlist_09.txt	/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_hotlist_09.txt
+../Data/iacp/iacp_hotlist_10.txt	/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_hotlist_10.txt
+../Data/iacp/iacp_hotlist_11.txt	/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_hotlist_11.txt
+../Data/iacp/iacp_iap_01.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_iap_01.txt
+../Data/iacp/iacp_iap_02.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_iap_02.txt
+../Data/iacp/iacp_iap_03.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_iap_03.txt
+../Data/iacp/iacp_iap_04.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_iap_04.txt
+../Data/iacp/iacp_iap_05.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_iap_05.txt
+../Data/iacp/iacp_iap_06.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_iap_06.txt
+../Data/iacp/iacp_iap_07.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_iap_07.txt
+../Data/iacp/iacp_iap_08.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_iap_08.txt
+../Data/iacp/iacp_iap_09.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_iap_09.txt
+../Data/iacp/iacp_mail_01.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_mail_01.txt
+../Data/iacp/iacp_mail_02.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_mail_02.txt
+../Data/iacp/iacp_mail_03.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_mail_03.txt
+../Data/iacp/iacp_mail_04.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_mail_04.txt
+../Data/iacp/iacp_mail_05.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_mail_05.txt
+../Data/iacp/iacp_mail_06.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_mail_06.txt
+../Data/iacp/iacp_mail_07.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_mail_07.txt
+../Data/iacp/iacp_script_01.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_script_01.txt
+../Data/iacp/iacp_script_02.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_script_02.txt
+../Data/iacp/iacp_script_03.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_script_03.txt
+../Data/iacp/iacp_script_04.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_script_04.txt
+../Data/iacp/iacp_script_05.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_script_05.txt
+../Data/iacp/iacp_script_06.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_script_06.txt
+../Data/iacp/iacp_sms_01.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_sms_01.txt
+../Data/iacp/iacp_sms_02.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_sms_02.txt
+../Data/iacp/iacp_sms_03.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_sms_03.txt
+../Data/iacp/iacp_sms_04.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_sms_04.txt
+../Data/iacp/iacp_sms_05.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_sms_05.txt
+../Data/iacp/iacp_gprs_01.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_gprs_01.txt
+../Data/iacp/iacp_gprs_02.txt		/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_gprs_02.txt
+../Data/iacp/iacp_telephone_01.txt	/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_telephone_01.txt
+../Data/iacp/iacp_telephone_02.txt	/epoc32/winscw/c/msgtest/biomsg/data/iacp/iacp_telephone_02.txt
+
+// IACP test scripts
+// -----------------
+../Scripts/iacp/iacp_script_all_01.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_all_01.txt
+../Scripts/iacp/iacp_script_all_02.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_all_02.txt
+../Scripts/iacp/iacp_script_all_03.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_all_03.txt
+../Scripts/iacp/iacp_script_all_04.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_all_04.txt
+../Scripts/iacp/iacp_script_all_05.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_all_05.txt
+../Scripts/iacp/iacp_script_hotlist_01.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_hotlist_01.txt
+../Scripts/iacp/iacp_script_hotlist_02.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_hotlist_02.txt
+../Scripts/iacp/iacp_script_hotlist_03.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_hotlist_03.txt
+../Scripts/iacp/iacp_script_hotlist_04.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_hotlist_04.txt
+../Scripts/iacp/iacp_script_hotlist_05.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_hotlist_05.txt
+../Scripts/iacp/iacp_script_hotlist_06.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_hotlist_06.txt
+../Scripts/iacp/iacp_script_hotlist_07.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_hotlist_07.txt
+../Scripts/iacp/iacp_script_hotlist_08.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_hotlist_08.txt
+../Scripts/iacp/iacp_script_hotlist_09.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_hotlist_09.txt
+../Scripts/iacp/iacp_script_hotlist_10.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_hotlist_10.txt
+../Scripts/iacp/iacp_script_hotlist_11.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_hotlist_11.txt
+../Scripts/iacp/iacp_script_iap_01.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_iap_01.txt
+../Scripts/iacp/iacp_script_iap_02.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_iap_02.txt
+../Scripts/iacp/iacp_script_iap_03.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_iap_03.txt
+../Scripts/iacp/iacp_script_iap_04.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_iap_04.txt
+../Scripts/iacp/iacp_script_iap_05.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_iap_05.txt
+../Scripts/iacp/iacp_script_iap_06.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_iap_06.txt
+../Scripts/iacp/iacp_script_iap_07.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_iap_07.txt
+../Scripts/iacp/iacp_script_iap_08.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_iap_08.txt
+../Scripts/iacp/iacp_script_iap_09.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_iap_09.txt
+../Scripts/iacp/iacp_script_mail_01.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_mail_01.txt
+../Scripts/iacp/iacp_script_mail_02.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_mail_02.txt
+../Scripts/iacp/iacp_script_mail_03.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_mail_03.txt
+../Scripts/iacp/iacp_script_mail_04.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_mail_04.txt
+../Scripts/iacp/iacp_script_mail_05.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_mail_05.txt
+../Scripts/iacp/iacp_script_mail_06.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_mail_06.txt
+../Scripts/iacp/iacp_script_mail_07.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_mail_07.txt
+../Scripts/iacp/iacp_script_script_01.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_script_01.txt
+../Scripts/iacp/iacp_script_script_02.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_script_02.txt
+../Scripts/iacp/iacp_script_script_03.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_script_03.txt
+../Scripts/iacp/iacp_script_script_04.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_script_04.txt
+../Scripts/iacp/iacp_script_script_05.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_script_05.txt
+../Scripts/iacp/iacp_script_script_06.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_script_06.txt
+../Scripts/iacp/iacp_script_sms_01.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_sms_01.txt
+../Scripts/iacp/iacp_script_sms_02.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_sms_02.txt
+../Scripts/iacp/iacp_script_sms_03.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_sms_03.txt
+../Scripts/iacp/iacp_script_sms_04.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_sms_04.txt
+../Scripts/iacp/iacp_script_sms_05.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_sms_05.txt
+../Scripts/iacp/iacp_script_gprs_01.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_gprs_01.txt
+../Scripts/iacp/iacp_script_gprs_02.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_gprs_02.txt
+../Scripts/iacp/iacp_script_telephone_01.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_telephone_01.txt
+../Scripts/iacp/iacp_script_telephone_02.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/iacp/iacp_script_telephone_02.txt
+
+
+//
+// WAPP test files
+// ===============
+
+// WAPP test data
+// --------------
+../Data/Wapp/wapp0001.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0001.bin
+../Data/Wapp/wapp0002.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0002.bin
+../Data/Wapp/wapp0003.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0003.bin
+../Data/Wapp/wapp0004.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0004.bin
+../Data/Wapp/wapp0005.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0005.bin
+../Data/Wapp/wapp0006.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0006.bin
+../Data/Wapp/wapp0007.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0007.bin
+../Data/Wapp/wapp0008.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0008.bin
+../Data/Wapp/wapp0009.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0009.bin
+../Data/Wapp/wapp0010.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0010.bin
+../Data/Wapp/wapp0011.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0011.bin
+../Data/Wapp/wapp0012.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0012.bin
+../Data/Wapp/wapp0013.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0013.bin
+../Data/Wapp/wapp0014.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0014.bin
+../Data/Wapp/wapp0015.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0015.bin
+../Data/Wapp/wapp0016.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0016.bin
+../Data/Wapp/wapp0017.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0017.bin
+../Data/Wapp/wapp0018.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0018.bin
+../Data/Wapp/wapp0019.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0019.bin
+../Data/Wapp/wapp0020.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0020.bin
+../Data/Wapp/wapp0021.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0021.bin
+../Data/Wapp/wapp0022.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0022.bin
+../Data/Wapp/wapp0023.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0023.bin
+../Data/Wapp/wapp0024.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0024.bin
+../Data/Wapp/wapp0025.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0025.bin
+../Data/Wapp/wapp0026.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0026.bin
+../Data/Wapp/wapp0027.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0027.bin
+../Data/Wapp/wapp0028.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0028.bin
+../Data/Wapp/wapp0029.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0029.bin
+../Data/Wapp/wapp0030.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0030.bin
+../Data/Wapp/wapp0031.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0031.bin
+../Data/Wapp/wapp0032.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0032.bin
+../Data/Wapp/wapp0033.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0033.bin
+../Data/Wapp/wapp0034.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0034.bin
+../Data/Wapp/wapp0035.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0035.bin
+../Data/Wapp/wapp0036.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0036.bin
+../Data/Wapp/wapp0037.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0037.bin
+../Data/Wapp/wapp0038.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0038.bin
+../Data/Wapp/wapp0039.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0039.bin
+../Data/Wapp/wapp0040.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0040.bin
+../Data/Wapp/wapp0041.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0041.bin
+../Data/Wapp/wapp0042.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0042.bin
+../Data/Wapp/wapp0043.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0043.bin
+../Data/Wapp/wapp0044.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0044.bin
+../Data/Wapp/wapp0045.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0045.bin
+../Data/Wapp/wapp0046.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0046.bin
+../Data/Wapp/wapp0047.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0047.bin
+../Data/Wapp/wapp0048.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0048.bin
+../Data/Wapp/wapp0049.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0049.bin
+../Data/Wapp/wapp0050.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0050.bin
+../Data/Wapp/wapp0051.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0051.bin
+../Data/Wapp/wapp0052.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0052.bin
+../Data/Wapp/wapp0053.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0053.bin
+../Data/Wapp/wapp0054.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0054.bin
+../Data/Wapp/wapp0055.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0055.bin
+../Data/Wapp/wapp0056.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0056.bin
+../Data/Wapp/wapp0057.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0057.bin
+../Data/Wapp/wapp0058.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0058.bin
+../Data/Wapp/wapp0059.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0059.bin
+../Data/Wapp/wapp0060.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0060.bin
+../Data/Wapp/wapp0061.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0061.bin
+../Data/Wapp/wapp0062.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0062.bin
+../Data/Wapp/wapp0063.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0063.bin
+../Data/Wapp/wapp0064.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0064.bin
+../Data/Wapp/wapp0065.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0065.bin
+../Data/Wapp/wapp0066.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0066.bin
+../Data/Wapp/wapp0067.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0067.bin
+../Data/Wapp/wapp0068.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0068.bin
+../Data/Wapp/wapp0069.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0069.bin
+../Data/Wapp/wapp0070.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0070.bin
+../Data/Wapp/wapp0071.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0071.bin
+../Data/Wapp/wapp0072.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0072.bin
+../Data/Wapp/wapp0073.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0073.bin
+../Data/Wapp/wapp0074.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0074.bin
+../Data/Wapp/wapp0075.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0075.bin
+../Data/Wapp/wapp0076.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0076.bin
+../Data/Wapp/wapp0077.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0077.bin
+../Data/Wapp/wapp0078.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0078.bin
+../Data/Wapp/wapp0079.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0079.bin
+../Data/Wapp/wapp0080.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0080.bin
+../Data/Wapp/wapp0081.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0081.bin
+../Data/Wapp/wapp0082.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0082.bin
+../Data/Wapp/wapp0083.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0083.bin
+../Data/Wapp/wapp0084.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0084.bin
+../Data/Wapp/wapp0085.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0085.bin
+../Data/Wapp/wapp0086.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0086.bin
+../Data/Wapp/wapp0087.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0087.bin
+../Data/Wapp/wapp0088.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0088.bin
+../Data/Wapp/wapp0089.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0089.bin
+../Data/Wapp/wapp0090.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0090.bin
+../Data/Wapp/wapp0091.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0091.bin
+../Data/Wapp/wapp0092.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0092.bin
+../Data/Wapp/wapp0093.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0093.bin
+../Data/Wapp/wapp0094.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0094.bin
+../Data/Wapp/wapp0095.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0095.bin
+../Data/Wapp/wapp0096.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0096.bin
+../Data/Wapp/wapp0097.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0097.bin
+../Data/Wapp/wapp0098.bin		/epoc32/winscw/c/msgtest/biomsg/data/wapp/wapp0098.bin
+../Data/Wapp/DEF036479_charset_tests/wapp_unicode.bin					/epoc32/winscw/c/msgtest/biomsg/data/wapp/def036479_charset_tests/wapp_unicode.bin
+../Data/Wapp/DEF036479_charset_tests/wapp_utf8_1byte.bin				/epoc32/winscw/c/msgtest/biomsg/data/wapp/def036479_charset_tests/wapp_utf8_1byte.bin
+../Data/Wapp/DEF036479_charset_tests/wapp_utf8_2byte.bin				/epoc32/winscw/c/msgtest/biomsg/data/wapp/def036479_charset_tests/wapp_utf8_2byte.bin
+../Data/Wapp/DEF036479_charset_tests/wapp_utf8_3byte.bin				/epoc32/winscw/c/msgtest/biomsg/data/wapp/def036479_charset_tests/wapp_utf8_3byte.bin
+../Data/Wapp/DEF036479_charset_tests/wapp_utf8_4byte.bin				/epoc32/winscw/c/msgtest/biomsg/data/wapp/def036479_charset_tests/wapp_utf8_4byte.bin
+../Data/Wapp/DEF036479_charset_tests/wapp_utf8_5byte.bin				/epoc32/winscw/c/msgtest/biomsg/data/wapp/def036479_charset_tests/wapp_utf8_5byte.bin
+../Data/Wapp/DEF036479_charset_tests/wapp_utf8_6byte.bin				/epoc32/winscw/c/msgtest/biomsg/data/wapp/def036479_charset_tests/wapp_utf8_6byte.bin
+../Data/Wapp/DEF036479_charset_tests/wapp_utf8_3byte_begin.bin			/epoc32/winscw/c/msgtest/biomsg/data/wapp/def036479_charset_tests/wapp_utf8_3byte_begin.bin
+../Data/Wapp/DEF036479_charset_tests/wapp_utf8_3byte_end.bin			/epoc32/winscw/c/msgtest/biomsg/data/wapp/def036479_charset_tests/wapp_utf8_3byte_end.bin
+../Data/Wapp/DEF036479_charset_tests/wapp_utf8_varibyte_all.bin			/epoc32/winscw/c/msgtest/biomsg/data/wapp/def036479_charset_tests/wapp_utf8_varibyte_all.bin
+
+// WAPP test scripts
+// -----------------
+../Scripts/Wapp/wapp0001.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0001.txt
+../Scripts/Wapp/wapp0002.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0002.txt
+../Scripts/Wapp/wapp0003.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0003.txt
+../Scripts/Wapp/wapp0004.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0004.txt
+../Scripts/Wapp/wapp0005.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0005.txt
+../Scripts/Wapp/wapp0006.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0006.txt
+../Scripts/Wapp/wapp0007.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0007.txt
+../Scripts/Wapp/wapp0008.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0008.txt
+../Scripts/Wapp/wapp0009.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0009.txt
+../Scripts/Wapp/wapp0010.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0010.txt
+../Scripts/Wapp/wapp0011.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0011.txt
+../Scripts/Wapp/wapp0012.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0012.txt
+../Scripts/Wapp/wapp0013.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0013.txt
+../Scripts/Wapp/wapp0014.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0014.txt
+../Scripts/Wapp/wapp0015.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0015.txt
+../Scripts/Wapp/wapp0016.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0016.txt
+../Scripts/Wapp/wapp0017.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0017.txt
+../Scripts/Wapp/wapp0018.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0018.txt
+../Scripts/Wapp/wapp0019.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0019.txt
+../Scripts/Wapp/wapp0020.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0020.txt
+../Scripts/Wapp/wapp0021.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0021.txt
+../Scripts/Wapp/wapp0022.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0022.txt
+../Scripts/Wapp/wapp0023.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0023.txt
+../Scripts/Wapp/wapp0024.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0024.txt
+../Scripts/Wapp/wapp0025.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0025.txt
+../Scripts/Wapp/wapp0026.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0026.txt
+../Scripts/Wapp/wapp0027.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0027.txt
+../Scripts/Wapp/wapp0028.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0028.txt
+../Scripts/Wapp/wapp0029.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0029.txt
+../Scripts/Wapp/wapp0030.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0030.txt
+../Scripts/Wapp/wapp0031.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0031.txt
+../Scripts/Wapp/wapp0032.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0032.txt
+../Scripts/Wapp/wapp0033.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0033.txt
+../Scripts/Wapp/wapp0034.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0034.txt
+../Scripts/Wapp/wapp0035.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0035.txt
+../Scripts/Wapp/wapp0036.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0036.txt
+../Scripts/Wapp/wapp0037.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0037.txt
+../Scripts/Wapp/wapp0038.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0038.txt
+../Scripts/Wapp/wapp0039.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0039.txt
+../Scripts/Wapp/wapp0040.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0040.txt
+../Scripts/Wapp/wapp0041.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0041.txt
+../Scripts/Wapp/wapp0042.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0042.txt
+../Scripts/Wapp/wapp0043.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0043.txt
+../Scripts/Wapp/wapp0044.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0044.txt
+../Scripts/Wapp/wapp0045.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0045.txt
+../Scripts/Wapp/wapp0046.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0046.txt
+../Scripts/Wapp/wapp0047.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0047.txt
+../Scripts/Wapp/wapp0048.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0048.txt
+../Scripts/Wapp/wapp0049.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0049.txt
+../Scripts/Wapp/wapp0050.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0050.txt
+../Scripts/Wapp/wapp0051.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0051.txt
+../Scripts/Wapp/wapp0052.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0052.txt
+../Scripts/Wapp/wapp0053.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0053.txt
+../Scripts/Wapp/wapp0054.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0054.txt
+../Scripts/Wapp/wapp0055.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0055.txt
+../Scripts/Wapp/wapp0056.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0056.txt
+../Scripts/Wapp/wapp0057.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0057.txt
+../Scripts/Wapp/wapp0058.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0058.txt
+../Scripts/Wapp/wapp0059.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0059.txt
+../Scripts/Wapp/wapp0060.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0060.txt
+../Scripts/Wapp/wapp0061.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0061.txt
+../Scripts/Wapp/wapp0062.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0062.txt
+../Scripts/Wapp/wapp0063.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0063.txt
+../Scripts/Wapp/wapp0064.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0064.txt
+../Scripts/Wapp/wapp0065.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0065.txt
+../Scripts/Wapp/wapp0066.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0066.txt
+../Scripts/Wapp/wapp0067.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0067.txt
+../Scripts/Wapp/wapp0068.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0068.txt
+../Scripts/Wapp/wapp0069.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0069.txt
+../Scripts/Wapp/wapp0070.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0070.txt
+../Scripts/Wapp/wapp0071.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0071.txt
+../Scripts/Wapp/wapp0072.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0072.txt
+../Scripts/Wapp/wapp0073.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0073.txt
+../Scripts/Wapp/wapp0074.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0074.txt
+../Scripts/Wapp/wapp0075.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0075.txt
+../Scripts/Wapp/wapp0076.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0076.txt
+../Scripts/Wapp/wapp0077.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0077.txt
+../Scripts/Wapp/wapp0078.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0078.txt
+../Scripts/Wapp/wapp0079.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0079.txt
+../Scripts/Wapp/wapp0080.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0080.txt
+../Scripts/Wapp/wapp0081.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0081.txt
+../Scripts/Wapp/wapp0082.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0082.txt
+../Scripts/Wapp/wapp0083.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0083.txt
+../Scripts/Wapp/wapp0084.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0084.txt
+../Scripts/Wapp/wapp0085.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0085.txt
+../Scripts/Wapp/wapp0086.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0086.txt
+../Scripts/Wapp/wapp0087.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0087.txt
+../Scripts/Wapp/wapp0088.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0088.txt
+../Scripts/Wapp/wapp0089.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0089.txt
+../Scripts/Wapp/wapp0090.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0090.txt
+../Scripts/Wapp/wapp0091.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0091.txt
+../Scripts/Wapp/wapp0092.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0092.txt
+../Scripts/Wapp/wapp0093.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0093.txt
+../Scripts/Wapp/wapp0094.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0094.txt
+../Scripts/Wapp/wapp0095.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0095.txt
+../Scripts/Wapp/wapp0096.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0096.txt
+../Scripts/Wapp/wapp0097.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0097.txt
+../Scripts/Wapp/wapp0098.txt	/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/wapp0098.txt
+../Scripts/Wapp/DEF036479_charset_tests/wapp_unicode.txt				/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/def036479_charset_tests/wapp_unicode.txt
+../Scripts/Wapp/DEF036479_charset_tests/wapp_utf8_1byte.txt				/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/def036479_charset_tests/wapp_utf8_1byte.txt
+../Scripts/Wapp/DEF036479_charset_tests/wapp_utf8_2byte.txt				/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/def036479_charset_tests/wapp_utf8_2byte.txt
+../Scripts/Wapp/DEF036479_charset_tests/wapp_utf8_3byte.txt				/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/def036479_charset_tests/wapp_utf8_3byte.txt
+../Scripts/Wapp/DEF036479_charset_tests/wapp_utf8_4byte.txt				/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/def036479_charset_tests/wapp_utf8_4byte.txt
+../Scripts/Wapp/DEF036479_charset_tests/wapp_utf8_5byte.txt				/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/def036479_charset_tests/wapp_utf8_5byte.txt
+../Scripts/Wapp/DEF036479_charset_tests/wapp_utf8_6byte.txt				/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/def036479_charset_tests/wapp_utf8_6byte.txt
+../Scripts/Wapp/DEF036479_charset_tests/wapp_utf8_3byte_begin.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/def036479_charset_tests/wapp_utf8_3byte_begin.txt
+../Scripts/Wapp/DEF036479_charset_tests/wapp_utf8_3byte_end.txt			/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/def036479_charset_tests/wapp_utf8_3byte_end.txt
+../Scripts/Wapp/DEF036479_charset_tests/wapp_utf8_varibyte_all.txt		/epoc32/winscw/c/msgtest/biomsg/scripts/wapp/def036479_charset_tests/wapp_utf8_varibyte_all.txt
+
+
+PRJ_MMPFILES
+
+PRJ_TESTMMPFILES
+t_biomsg.mmp

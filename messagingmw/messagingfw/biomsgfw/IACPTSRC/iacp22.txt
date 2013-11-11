@@ -1,0 +1,49 @@
+//SIAP11
+password
+Pname:Lemon
+Ptype:PPPS
+Pdata:! Generic script for dial up connections
+! Consult your service provider if
+! modifications are required
+start:
+LOOP 3
+   {
+   WAIT 10
+      {
+      "name" login
+      "ogin" login
+      }
+   SEND <0x0d>
+   }
+login:
+    SEND login_name$+<0x0d>
+    WAIT 10
+       {
+       "assword:" password
+       "nvalid" failure
+       "rror" failure
+       "ncorrect" failure
+       }
+    EXIT KErrTimeOut$
+password:
+   SEND login_pass$+<0x0d>
+   WAIT 10
+      {
+      "OK" success
+      "HELLO" success
+      "GO" success
+      "IP" success
+      "ddress" success
+      "ocol" protocol
+      "nvalid" failure
+      "rror" failure
+      "ncorrect" failure
+      }
+      EXIT KErrTimeOut$
+protocol:
+    SEND "PPP"+<0x0d>
+    EXIT
+success:
+   EXIT
+failure:
+  EXIT KErrLoginFail$

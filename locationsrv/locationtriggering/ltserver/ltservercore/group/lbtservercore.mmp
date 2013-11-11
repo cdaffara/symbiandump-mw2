@@ -1,0 +1,70 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file for LBT Server core
+*
+*/
+
+
+#include <data_caging_paths.hrh>
+#include <platform_paths.hrh>
+#include <variant/Symbian_OS.hrh>
+
+TARGET 			lbtserver.exe
+TARGETTYPE  	exe
+EPOCSTACKSIZE   0x5000
+// UID of server core exe
+UID 			0x00000000 0x1028312B
+
+CAPABILITY      CAP_SERVER -ProtServ
+VENDORID        VID_DEFAULT
+
+SOURCEPATH 		../src
+
+SOURCE          lbtserverstartup.cpp
+SOURCE          lbtservercore.cpp
+SOURCE          lbtsystemstatelistener.cpp
+SOURCE          lbtsession.cpp
+SOURCE          lbtsubsessionregistry.cpp
+SOURCE          lbtsubsession.cpp
+SOURCE          lbtserverlogiccontainer.cpp
+SOURCE          lbtdiskspacelistner.cpp
+
+START RESOURCE ../../../data/1028312B.rss
+END
+
+SYSTEMINCLUDE   /epoc32/include/ecom
+SYSTEMINCLUDE   /epoc32/include/variant
+
+
+// system includes
+MW_LAYER_SYSTEMINCLUDE
+
+USERINCLUDE     ../inc ../../inc ../../../inc
+
+LIBRARY         euser.lib
+LIBRARY         ecom.lib
+LIBRARY         lbtserverlogicbase.lib
+LIBRARY         centralrepository.lib
+LIBRARY    		lbtlogger.lib
+LIBRARY         efsrv.lib
+#ifdef SYMBIAN_SYSTEM_STATE_MANAGEMENT
+	LIBRARY         ssmcmn.lib 
+#endif
+LIBRARY         flogger.lib
+
+PAGED
+SMPSAFE
+
+// END OF FILE
+

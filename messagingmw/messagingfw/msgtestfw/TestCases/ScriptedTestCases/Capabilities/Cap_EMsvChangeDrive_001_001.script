@@ -1,0 +1,45 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//********************************
+// Cap_EMsvChangeDrive_001_001.script
+//********************************
+
+
+PRINT Running  Cap_EMsvChangeDrive_001_001.script : SendProxyServer with WriteDeviceData . 
+PRINT Running  Cap_EMsvChangeDrive_001_001.script : This should allow the drive of the message store to be changed.
+PRINT Running  Note we swap to the E: drive 
+PRINT Running  Ensure that the e: drive exists in either the emulator or the hardware.
+PRINT Running  on the emulator this can be done with the line 
+PRINT Running  _EPOC_DRIVE_E s:\drive_e
+PRINT Running  in epoc.ini and you must set up the s:\drive_e directory.
+PRINT Running  On the hardware e: is often setup, although on some setups this will have to be checked.
+
+
+//********************************
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_Caps.exe 0003fffe -SID 101F7760 C:\sys\bin\MessagingTestServer.exe
+	// Note test server caps and SID should make no difference.  But make different caps/SID just to be sure.
+RUN_PROGRAM -1 setcap c:\sys\bin\SendProxyServer_Caps.exe  000000020 -SID 101F7760 C:\sys\bin\SendProxyServer.exe
+	// WriteDeviceData
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_ChangeDrivePass.script
+	// Do the specific test.
+
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+//********************************
+

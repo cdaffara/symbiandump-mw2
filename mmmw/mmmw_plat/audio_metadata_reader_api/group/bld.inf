@@ -1,0 +1,30 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  File that exports the files belonging to 
+:                Audio MetaData Reader API
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+../inc/MetaDataUtility.h            MW_LAYER_PLATFORM_EXPORT_PATH(MetaDataUtility.h)
+../inc/MetaDataField.hrh            MW_LAYER_PLATFORM_EXPORT_PATH(MetaDataField.hrh)
+../inc/MetaDataFieldContainer.h     MW_LAYER_PLATFORM_EXPORT_PATH(MetaDataFieldContainer.h)
+../inc/MDUChunkDataObserver.h       MW_LAYER_PLATFORM_EXPORT_PATH(MDUChunkDataObserver.h)

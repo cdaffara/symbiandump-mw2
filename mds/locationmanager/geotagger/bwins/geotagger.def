@@ -1,0 +1,5 @@
+EXPORTS
+	?NewL@CInternalGeoTagger@@SAPAV1@PAVCMdESession@@PAVMGeoTaggerObserver@@@Z @ 1 NONAME ; class CInternalGeoTagger * CInternalGeoTagger::NewL(class CMdESession *, class MGeoTaggerObserver *)
+	?NewL@CGeoTagger@@SAPAV1@PAVMGeoTaggerObserver@@PAVCMdESession@@@Z @ 2 NONAME ; class CGeoTagger * CGeoTagger::NewL(class MGeoTaggerObserver *, class CMdESession *)
+	??1CInternalGeoTagger@@UAE@XZ @ 3 NONAME ; CInternalGeoTagger::~CInternalGeoTagger(void)
+

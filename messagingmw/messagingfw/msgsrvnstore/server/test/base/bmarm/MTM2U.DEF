@@ -1,0 +1,3 @@
+EXPORTS
+	NewL__6CMyMtmG4TUidR17CRegisteredMtmDll @ 1 NONAME R3UNUSED ; CMyMtm::NewL(TUid, CRegisteredMtmDll &)
+

@@ -1,0 +1,48 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Makefile for Media Settings Engine
+*
+*/
+
+// Version : %version: 4.1.6 %
+
+
+#include <platform_paths.hrh>
+
+TARGET          mpsettengine.dll
+TARGETTYPE      dll
+UID             0x1000006C 0x101F853D
+VENDORID        VID_DEFAULT
+
+SOURCEPATH      ../src
+SOURCE          MPSettingsModel.cpp
+
+MW_LAYER_SYSTEMINCLUDE
+
+CAPABILITY      CAP_GENERAL_DLL
+
+LIBRARY         euser.lib
+LIBRARY         ecom.lib
+
+#if defined(ARMCC)
+deffile ../eabi/
+#elif defined(WINSCW)
+deffile ../bwinscw/
+#elif defined(WINS)
+deffile ../bwins/
+#else
+deffile ../bmarm/
+#endif
+
+//end of file

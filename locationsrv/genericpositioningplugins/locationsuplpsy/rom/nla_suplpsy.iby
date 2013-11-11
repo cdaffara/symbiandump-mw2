@@ -1,0 +1,36 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: Image description file for project nla supl psy
+*
+*/
+#ifndef __NLA_SUPLPSY_IBY__
+#define __NLA_SUPLPSY_IBY__
+
+#include <bldvariant.hrh>
+
+// Feature flags
+
+#ifdef __SUPL_FRAMEWORK
+#ifdef __LOCATIONFRAMEWORKCORE
+#ifdef __NP_PROXY
+#ifndef FF_LOCATION_MW_APE_CENTRIC_ARCH_SUPPORT
+// SUPL PSY
+ECOM_PLUGIN(nlasuplpsy.dll, nlasuplpsy.rsc)
+
+#endif	
+#endif // __NP_PROXY
+#endif // __LOCATIONFRAMEWORKCORE
+#endif // __SUPL_FRAMEWORK
+
+#endif // __NLASUPLPSY_IBY__

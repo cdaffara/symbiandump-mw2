@@ -1,0 +1,68 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: Package file for mpx albumart utility STIF component
+;
+;
+; Installation file for STIF
+;
+
+; Languages
+&EN
+
+
+; Package header
+#{"STIF mpx albumart utility Test Application"},(0x10005942),1,1,0,TYPE=SA
+
+; Localised Vendor name
+%{"Nokia"}
+
+; Unique Vendor name
+:"Nokia"
+
+; Logo
+; None
+
+; Package signature - Optional
+; None
+
+; Start of Package body
+
+; Condition blocks
+; None
+
+; Options list
+; None
+
+; Install files
+
+"..\..\data\mmc\qgn_graf_mup2_visualizer_bg_image2.bmp"   -   "e:\testing\data\qgn_graf_mup2_visualizer_bg_image2.bmp"
+"..\..\data\mmc\test.bmp"   -   "e:\testing\data\test.bmp"
+"..\..\data\mmc\test.mbm"   -   "e:\testing\data\test.mbm"
+"..\..\data\mmc\Waterlilies.jpg"   -   "e:\testing\data\Waterlilies.jpg"
+
+"..\..\init\TestFramework.ini"   -   "c:\testframework\TestFramework.ini" 
+"..\..\conf\mpxalbumartutilitytest.cfg"   -   "c:\testframework\mpxalbumartutilitytest.cfg"
+
+"\epoc32\release\armv5\urel\mpxalbumartutilitytest.dll"   -   "c:\Sys\Bin\mpxalbumartutilitytest.dll"
+  
+; Embedded SIS 
+; None
+
+; End of Package body
+
+; PKG dependencies
+; None
+
+; PKG capabilities
+; None

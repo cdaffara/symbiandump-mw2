@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE SystemDefinition SYSTEM "sysdef_1_4_0.dtd" [
+  <!ENTITY layer_real_source_path "sf/mw/mmmw" >
+]> 
+
+<SystemDefinition name="mmmw" schema="1.4.0">
+	<systemModel>
+  <!-- Common file for prebuild layers-->
+  	<layer name="mw_layer">
+			<module name="mmmw">
+				<unit unitID="mmmw" mrp="" bldFile="&layer_real_source_path;/group" name="mmmw" />
+			</module>
+    </layer>
+    
+  	<layer name="api_test_layer">
+			<module name="mmmw_tsrc">
+				<unit unitID="mmmw_tsrc" name="mmmw_tsrc" bldFile="&layer_real_source_path;/tsrc/group" mrp="" />
+			</module>
+    </layer>
+
+  	<layer name="module_test_layer">
+			<module name="advancedaudiocontroller_tsrc">
+				<unit unitID="advancedaudiocontroller_tsrc" name="advancedaudiocontroller_tsrc" bldFile="&layer_real_source_path;/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/group" mrp="" />
+			</module>
+    </layer>
+
+  	<layer name="pref_test_layer">
+			<module name="mmmw_tsrc_group">
+				<unit unitID="mmmw_tsrc_group" name="mmmw_tsrc_group" bldFile="&layer_real_source_path;/tsrc/group" mrp="" filter="TA_MMMW" />
+			</module>
+			<module name="mmmw_tms_tsrc_group">
+				<unit unitID="mmmw_tms_tsrc_group" name="mmmw_tms_tsrc_group" bldFile="&layer_real_source_path;/mmmw_plat/telephony_multimedia_service_api/tsrc/group" mrp="" filter="TA_TMS" />
+			</module>
+			<module name="advancedaudiocontroller_tsrc_group">
+				<unit unitID="advancedaudiocontroller_tsrc_group" name="advancedaudiocontroller_tsrc_group" bldFile="&layer_real_source_path;/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/group" mrp="" filter="TA_ADVANCEDAUDIOCONTROLLER" />
+			</module>
+    </layer>
+
+  	<layer name="mw_mmmw_layer">
+			<module name="mmmw_group">
+				<unit unitID="mmmw_group" mrp="" bldFile="&layer_real_source_path;/group" name="mmmw_group" />
+			</module>
+    </layer>
+
+  	<layer name="mw_mmmw_tms_layer">
+			<module name="mmmw_tms_api_group">
+				<unit unitID="mmmw_tms_api_group" mrp="" bldFile="&layer_real_source_path;/mmmw_plat/telephony_multimedia_service_api/group" name="mmmw_tms_api_group" />
+				<unit unitID="mmmw_tms_group" mrp="" bldFile="&layer_real_source_path;/mmserv/tms/group" name="mmmw_tms_group" />
+			</module>
+    </layer>
+    
+  </systemModel>
+  
+</SystemDefinition>

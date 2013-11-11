@@ -1,0 +1,33 @@
+// Copyright (c) 1997-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+#ifndef __MSGTESTUTILS_IBY__
+#define __MSGTESTUTILS_IBY__
+
+// Test utility libraries for messaging test
+
+file=ABI_DIR\BUILD_DIR\msvtestutils.dll		System\Libs\MsvTestUtils.dll
+file=ABI_DIR\BUILD_DIR\emailtestutils.dll	System\Libs\EmailTestUtils.dll
+file=ABI_DIR\BUILD_DIR\smstestutils.dll		System\Libs\SmsTestUtils.dll
+file=ABI_DIR\BUILD_DIR\msgservertestutils.dll	System\Libs\MsgServerTestUtils.dll
+
+// Automated test utilities for messaging test
+
+file=ABI_DIR\BUILD_DIR\t_delay.exe		System\MsgTest\T_Delay.exe
+file=ABI_DIR\BUILD_DIR\t_seriallog.exe		System\MsgTest\T_SerialLog.exe
+file=ABI_DIR\BUILD_DIR\StayAwake.exe		System\MsgTest\StayAwake.exe
+
+
+#endif

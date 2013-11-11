@@ -1,0 +1,161 @@
+From: test908@msexchange2k.closedtest.intra
+To: test908@msexchange2k.closedtest.intra
+Subject: test21_2
+Date: Sun, 23 May 2004 19:04:55 +0530
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+	boundary="----=_NextPart_000_0093_01C440F8.D5F5A850"
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 5.50.4922.1500
+X-MimeOLE: Produced By Microsoft MimeOLE V5.50.4925.2800
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0093_01C440F8.D5F5A850
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: 7bit
+
+Internet access on the Nokia 9200 Series Communicator is necessarily limited
+by the speed of the phone's GSM connection. As a consequence, testing and
+debugging Internet-based applications on hardware can be both expensive and
+tedious. The RAS IAP application alleviates this problem by enabling you to
+connect to the Internet over a much faster serial connection, via your PCThe
+application demonstrates how the Symbian OS Communications database (CommDb)
+API may be used to configure an Internet Access Point (IAP). To some extent
+it also shows the common paradigm for using most DBMS derived APIs.An
+Internet Access Point defines ISP, modem, charge card and location records
+that can be used together to make an Internet connection. The IAP for the
+RAS connection specifies an ISP and modem record (charge card and location
+records are required for this type of IAP). The CommDb is a standard DBMS
+database. Modems, ISPs, charge cards, locations, IAPs etc are all stored in
+their own tables within the database. There may be a number of records
+within each table (e.g., there may be a number of IAPs, modems, ISPs, etc.).
+As described in the preceding section, each IAP record defines the set of
+ISP, modem, charge card, and location that can be used together. In other
+words, an IAP record defines a set of records the other tables.The
+implication of the above statement is that sets of CommDb records are
+accessed through their associated table. The other implication is that you
+cannot create an IAP record until you have already created the other
+records. Finally, the fact that there may be many records in a table implies
+that each record must be uniquely identified.2. Copy an existing CommDb that
+has a correctly configured IAP. This method "works", but has several
+problems. Firstly, Symbian does not guarantee that the CommDb will be binary
+compatible between releases. In practice this has not been an issue, but it
+is something to keep in mind. Secondly, while you are using your RAS IAP,
+you don't have access to IAPs you configured in the "real" CommDb. Finally,
+and most importantly, CommDb configuration should be targeted to the
+platform; The CommDb that you use for RAS connections may well disable some
+of your other phone services.. Add an IAP to your existing (proven) CommDb
+using RAS IAP. The advantage of this method is that you get to retain the
+CommDb that your manufacturer put onto the phone, and therefore can expect
+the device to continue to work with the new IAP! Also, the CommDb API is
+binary compatible between releases, so you can rely on this method as you
+change phone. It is also by far the simplest method! Rather than coding the
+application from first principles, I used the standard Minimal Eikon
+Application Developer (MEAD) and Menu Builder tools to create an application
+that I could easily customize. I then modified the engine to write to the
+CommDb, and the UI to call the engine as appropriate. Each of these exports
+calls non-exported functions to actually implement the creation and deletion
+of the components of the IAP. The purpose of each function is documented in
+source, and the code itself is fairly self-documenting. Therefore rather
+than exhaustively re-describing the code, the following description
+discusses the main paradigms that you will see.First of all, there are two
+sequence diagrams present. The first one captures the course of events that
+takesplace when a digit button is pressed. The second captures what happens
+when the user pushes the 'send'button in order to make a call. At the top of
+each diagram we see the rectangles that represent objects. Asin
+collaboration diagrams, the names of the objects are underlined to
+distinguish them from classes. Alsothe object name is separated from the
+class name by a colon. Some objects, like the Dialer, have noparticular
+object name, so the colon precedes the class name without an object name in
+front of it.objects that they are connected to are in existence. In Figure
+2, we cannot see the full extent of thelifelines; they extend from the very
+top of the diagram to the very bottom. This implies that the
+objectsportrayed in this diagram are in existence before the start of time
+in the diagram and remain in existencebeyond the end of the diagram.The
+arrows between the lifelines represent messages being sent between the
+objects. Sequence umbers, algorithm.Here again we see two sequence diagrams.
+In these diagrams the activation ectangles have been omittedfor clarity4.
+The top diagram shows the normal course of events hen the cellular phone
+receives a call.The CellularRadio object detects the incoming call and
+sounds the ringer. It also tells the Dialler objectthat a call is coming in.
+This puts the Dialler in a special state. When the Send button is pushed
+while theDialler is in this special state, the Dialler sends the Answer
+message to the CellularRadio; thus connectingthe call.
+
+------=_NextPart_000_0093_01C440F8.D5F5A850
+Content-Type: image/jpeg;
+	name="mw_logo.jpg"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+	filename="mw_logo.jpg"
+
+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
+
+------=_NextPart_000_0093_01C440F8.D5F5A850--

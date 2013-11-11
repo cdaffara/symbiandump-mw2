@@ -1,0 +1,26 @@
+EXPORTS
+	"_._25CPhoneGsmHandlerContainer" @ 1 NONAME R3UNUSED ; CPhoneGsmHandlerContainer::~CPhoneGsmHandlerContainer(void)
+	CreateOptionContainerL__14PhoneGsmParser @ 2 NONAME R3UNUSED ; PhoneGsmParser::CreateOptionContainerL(void)
+	CreateParserL__14PhoneGsmParser @ 3 NONAME R3UNUSED ; PhoneGsmParser::CreateParserL(void)
+	CreateResultL__14PhoneGsmParser @ 4 NONAME R3UNUSED ; PhoneGsmParser::CreateResultL(void)
+	DefineOptionL__24CPhoneGsmOptionContainerii @ 5 NONAME R3UNUSED ; CPhoneGsmOptionContainer::DefineOptionL(int, int)
+	DetermineContentType__14PhoneGsmParserRC21CPhoneGsmParserResult @ 6 NONAME R3UNUSED ; PhoneGsmParser::DetermineContentType(CPhoneGsmParserResult const &)
+	FindOptionStatus__C24CPhoneGsmOptionContaineri @ 7 NONAME R3UNUSED ; CPhoneGsmOptionContainer::FindOptionStatus(int) const
+	InitialiseOptionsToDefaultValues__14PhoneGsmParserR24CPhoneGsmOptionContainer @ 8 NONAME R3UNUSED ; PhoneGsmParser::InitialiseOptionsToDefaultValues(CPhoneGsmOptionContainer &)
+	IsAllowedForArriving__14PhoneGsmParserRC21CPhoneGsmParserResult @ 9 NONAME R3UNUSED ; PhoneGsmParser::IsAllowedForArriving(CPhoneGsmParserResult const &)
+	IsAllowedForBadSim__14PhoneGsmParserRC21CPhoneGsmParserResult @ 10 NONAME R3UNUSED ; PhoneGsmParser::IsAllowedForBadSim(CPhoneGsmParserResult const &)
+	IsOptionDefined__C24CPhoneGsmOptionContaineri @ 11 NONAME R3UNUSED ; CPhoneGsmOptionContainer::IsOptionDefined(int) const
+	NewL__24CPhoneGsmOptionContainer @ 12 NONAME R3UNUSED ; CPhoneGsmOptionContainer::NewL(void)
+	NewL__25CPhoneGsmHandlerContainer @ 13 NONAME R3UNUSED ; CPhoneGsmHandlerContainer::NewL(void)
+	ProcessL__18CPhoneGsmSsHandlerR21CPhoneGsmParserResult @ 14 NONAME R3UNUSED ; CPhoneGsmSsHandler::ProcessL(CPhoneGsmParserResult &)
+	ProcessL__20CPhoneGsmMiscHandlerR21CPhoneGsmParserResult @ 15 NONAME R3UNUSED ; CPhoneGsmMiscHandler::ProcessL(CPhoneGsmParserResult &)
+	ProcessL__22CPhoneGsmSsCallHandlerR21CPhoneGsmParserResult @ 16 NONAME R3UNUSED ; CPhoneGsmSsCallHandler::ProcessL(CPhoneGsmParserResult &)
+	ProcessL__26CPhoneGsmSimControlHandlerR21CPhoneGsmParserResult @ 17 NONAME R3UNUSED ; CPhoneGsmSimControlHandler::ProcessL(CPhoneGsmParserResult &)
+	ProcessL__27CPhoneGsmPhoneNumberHandlerR21CPhoneGsmParserResult @ 18 NONAME R3UNUSED ; CPhoneGsmPhoneNumberHandler::ProcessL(CPhoneGsmParserResult &)
+	ProcessL__28CPhoneGsmManufacturerHandlerR21CPhoneGsmParserResult @ 19 NONAME R3UNUSED ; CPhoneGsmManufacturerHandler::ProcessL(CPhoneGsmParserResult &)
+	ProcessL__28CPhoneGsmPcnProcedureHandlerR21CPhoneGsmParserResult @ 20 NONAME R3UNUSED ; CPhoneGsmPcnProcedureHandler::ProcessL(CPhoneGsmParserResult &)
+	SetOptionStatus__24CPhoneGsmOptionContainerii @ 21 NONAME R3UNUSED ; CPhoneGsmOptionContainer::SetOptionStatus(int, int)
+	"_._24CPhoneGsmOptionContainer" @ 22 NONAME R3UNUSED ; CPhoneGsmOptionContainer::~CPhoneGsmOptionContainer(void)
+	AddHandlerL__25CPhoneGsmHandlerContainerR20CPhoneGsmHandlerBase @ 23 NONAME R3UNUSED ; CPhoneGsmHandlerContainer::AddHandlerL(CPhoneGsmHandlerBase &)
+	ProcessL__22CPhoneGsmSsCcbsHandlerR21CPhoneGsmParserResult @ 24 NONAME R3UNUSED ; CPhoneGsmSsCcbsHandler::ProcessL(CPhoneGsmParserResult &)
+

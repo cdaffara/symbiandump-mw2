@@ -1,0 +1,37 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+// Test script: 4_TestEmptyResult.script
+
+//!@file
+//! @SYMTestCaseID MSG-IMAP-712-4-CP
+//! @SYMTestType UT
+//! @SYMTestPriority Critical
+//! @SYMPREQ 712
+//! @SYMTestCaseDesc Retrieves messages matching the specified search string. No email matches the search string.
+//! @SYMTestActions First clean out the remote inbox and local message store, send the test emails, get messages matching the search string and check.
+//! @SYMTestExpectedResults The account should contain NO messages.
+
+
+PRINT Running Test 4, non-matching search string is defined
+
+// First clean out the remote inbox and local message store
+RUN_SCRIPT c:\msgtest\testframework\scriptedtestcases\imapsearchtests\clean_all.script
+
+// Send the test emails
+RUN_SCRIPT c:\msgtest\testframework\scriptedtestcases\imapsearchtests\send_emails.script
+
+// get messages matching search string and check they we're the only ones retreived
+RUN_SCRIPT c:\msgtest\testframework\scriptedtestcases\imapsearchtests\imap_sync_empty_search.script

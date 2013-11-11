@@ -1,0 +1,12 @@
+<?xml version="1.0" ?> 
+<!DOCTYPE testSuite SYSTEM "file:///c:/program files/common files/symbian/testSuite.dtd" [ ]>
+
+<testSuite>
+	<name>sizefilter</name> 
+
+	<testItems>
+		<test>msg-imap-sizefilter1</test>
+		<test>msg-imap-sizefilter2</test>
+	</testItems>
+
+</testSuite>

@@ -1,0 +1,60 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Image description file for project Location Triggering
+*
+*/
+
+
+#ifndef LOCATION_TRIGGERING_IBY
+#define LOCATION_TRIGGERING_IBY
+
+#include <data_caging_paths_for_iby.hrh>
+#include <bldvariant.hrh>
+
+// Location Triggering Client Library
+file=ABI_DIR\BUILD_DIR\lbt.dll                  SHARED_LIB_DIR\lbt.dll
+
+#ifdef FF_LBT_ENGINE
+
+// Location Triggering Server Core
+file=ABI_DIR\BUILD_DIR\lbtlogger.dll   			SHARED_LIB_DIR\lbtlogger.dll
+file=ABI_DIR\BUILD_DIR\lbtserverlogicbase.dll   SHARED_LIB_DIR\lbtserverlogicbase.dll
+file=ABI_DIR\BUILD_DIR\lbtserver.exe            SHARED_LIB_DIR\lbtserver.exe
+
+// Location Triggering Server Logic
+ECOM_PLUGIN( lbtserverlogic.dll, lbtserverlogic.rsc )
+file=ABI_DIR\BUILD_DIR\lbtstrategypluginapi.dll SHARED_LIB_DIR\lbtstrategypluginapi.dll
+
+// Location Triggering Container
+file=ABI_DIR\BUILD_DIR\lbtcontainer.dll         SHARED_LIB_DIR\lbtcontainer.dll
+
+// Location Acquisition Strategy
+ECOM_PLUGIN( lbtstrategy.dll, lbtstrategy.rsc )
+
+// Movement Detector API
+file=ABI_DIR\BUILD_DIR\ltmvmtdetapi.dll SHARED_LIB_DIR\ltmvmtdetapi.dll
+
+// Movement Detector Plugin
+ECOM_PLUGIN( ltcellidmovdet.dll, ltcellidmovdet.rsc )
+
+// Backup and restore registeration file
+data=DATAZ_\private\1028312B\backup_registration.xml			\private\1028312B\backup_registration.xml
+
+
+// Location Triggering Management Library
+file=ABI_DIR\BUILD_DIR\lbtmanager.dll                  SHARED_LIB_DIR\lbtmanager.dll
+
+#endif // FF_LBT_ENGINE
+
+#endif // LOCATION_TRIGGERING_IBY

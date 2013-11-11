@@ -1,0 +1,7 @@
+EXPORTS
+	_ZN19CS60AudioBaseSourceD0Ev @ 1 NONAME
+	_ZN19CS60AudioBaseSourceD1Ev @ 2 NONAME
+	_ZN19CS60AudioBaseSourceD2Ev @ 3 NONAME
+	_ZTI19CS60AudioBaseSource @ 4 NONAME ; #<TI>#
+	_ZTV19CS60AudioBaseSource @ 5 NONAME ; #<VT>#
+

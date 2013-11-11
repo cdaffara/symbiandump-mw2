@@ -1,0 +1,68 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description:  Pkg file for cancellation testcases
+;
+
+; Languages
+&EN
+
+; Package header
+#{"lbtcancellationtest"},(0x2001FDC8),0,1,0,TYPE=SA
+
+; Series60 product id for S60 3.0
+[0x101F7961], 0, 0, 0, {"Series60ProductID"}
+
+; Localised Vendor name
+%{"Nokia EN"}
+
+; Unique Vendor name
+:"Nokia"
+
+; Logo
+; None
+
+; Package signature - Optional
+; None
+
+; Start of Package body
+
+; Condition blocks
+; None
+
+; Options list
+; None
+
+; Install files
+
+ "\epoc32\release\armv5\urel\testlbtcancellation.dll"-"C:\sys\bin\testlbtcancellation.dll"
+ "\epoc32\release\armv5\urel\CancelCreateIteratorTest.exe"-"!:\sys\bin\CancelCreateIteratorTest.exe"
+ "\epoc32\release\armv5\urel\CancelCreateTest.exe"-"C:\sys\bin\CancelCreateTest.exe" 
+ "\epoc32\release\armv5\urel\CancelDeleteTest.exe"-"C:\sys\bin\CancelDeleteTest.exe" 
+ "\epoc32\release\armv5\urel\CancelGetTriggersTest.exe"-"C:\sys\bin\CancelGetTriggersTest.exe" 
+ "\epoc32\release\armv5\urel\CancelListTriggersTest.exe"-"C:\sys\bin\CancelListTriggersTest.exe"   
+  "\epoc32\release\armv5\urel\CancelSetTriggersTest.exe"-"C:\sys\bin\CancelSetTriggersTest.exe"   
+ "..\conf\testlbtcancellation.cfg"-"C:\TestFramework\testlbtcancellation.cfg" 
+ "..\init\TestFramework.ini"-"C:\TestFramework\TestFramework.ini" 
+
+;@"lbtplatsec_exe1.sisx",(0x06B77530)
+; Embedded SIS 
+; None
+
+; End of Package body
+
+; PKG dependencies
+; None
+
+; PKG capabilities
+; None

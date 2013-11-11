@@ -1,0 +1,181 @@
+#CategoryName	Category Id	LmSearchResult (Id's)	Redefined seach	Comment
+Pizzeria	1	1-2,7,51		
+Hamburgerbar	2	3-4,7		
+Kinarestaurang	3	5-13,16		
+Garaget	4			
+Bilverkstad	5	14-15		
+Pasta Restaurang	6			
+Bilia	7			
+VolksWagen	8			
+Taxi Göteborg	9			
+Taxi	10	79-83		
+Stadsbibliotek	11	27-28		
+Systembolag	12	27,101-105		
+Nokia Kontor	13	27,62-71		
+TietoEnator kontor	14	7,27,54-61		
+Thai Restaurang	15	7,27		
+McDonalds	16	7,27		
+BurgerKing	17	7,17,27		
+Frisör	18	18,97-100		
+Hunddagis	19	19,21,52		
+Veterinär	20	78		
+Kyrkogård	21	20,53		
+Museum	22	22,84-89		
+Dagis	23	23,90-96		
+StadsPark	24	24		
+Sjukhus	25	25		
+Läkare	26	26,29-50,72-77		
+TietoEnator kontor	14	7,27,54-61		
+TietoEnator kontor	14	7,27,54-61	1	
+Thai Restaurang	15	7	1	
+TietoEnator kontor	14	7,27,54-61		
+Thai Restaurang	15	7,27	1	
+TietoEnator kontor	14	7,27,54-61		
+BurgerKing	17	7,27	1	
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			

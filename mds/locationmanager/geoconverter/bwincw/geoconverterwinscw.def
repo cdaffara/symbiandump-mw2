@@ -1,0 +1,5 @@
+EXPORTS
+	?ConvertL@CGeoConverter@@QAEXABVTNetworkInfoV1@CTelephony@@@Z @ 1 NONAME ; void CGeoConverter::ConvertL(class CTelephony::TNetworkInfoV1 const &)
+	??1CGeoConverter@@UAE@XZ @ 2 NONAME ; CGeoConverter::~CGeoConverter(void)
+	?NewL@CGeoConverter@@SAPAV1@AAVMGeoConverterObserver@@@Z @ 3 NONAME ; class CGeoConverter * CGeoConverter::NewL(class MGeoConverterObserver &)
+

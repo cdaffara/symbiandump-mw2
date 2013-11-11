@@ -1,0 +1,34 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project build file Audio Output custom interface
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+//WINS THUMB ARMI ARM4 WINSCW
+
+PRJ_EXPORTS
+../Data/AudioOutputControlUtility_Stub.SIS   /epoc32/data/z/system/install/AudioOutputControlUtility_Stub.SIS
+../rom/AudioOutputControlUtility.iby         CORE_OS_LAYER_IBY_EXPORT_PATH(AudioOutputControlUtility.iby)
+
+PRJ_MMPFILES
+#include "../AudioOutputControlUtilityBase/group/bld.inf"
+#include "../AudioOutputControlUtilityProxy/Group/bld.inf"
+
+
+//  End of File  

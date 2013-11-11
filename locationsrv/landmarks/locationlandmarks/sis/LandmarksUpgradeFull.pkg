@@ -1,0 +1,74 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: upgrade package file project locationlandmarks
+;
+
+; Languages
+&EN
+
+; Header
+#{"Landmarks Upgrade Full"}, (0x101FDF8A), 1, 2, 0, TYPE=SA,RU
+
+;Supports Series 60 v 3.0
+[0x101F7961], 0, 0, 0, {"Series60ProductID"}
+
+;Supports Series 60 v 3.1
+[0x102032BE], 0, 0, 0, {"Series60ProductID"}
+
+;Supports Series 60 v 3.2
+[0x102752AE], 0, 0, 0, {"Series60ProductID"}
+
+;Supports Series 60 v 5.0
+[0x1028315F], 0, 0, 0, {"Series60ProductID"}
+
+; Localised Vendor name
+%{"Nokia"}
+
+; Unique Vendor name
+:"Nokia"
+
+;Files
+"\epoc32\release\armv5\urel\eposlandmarks.dll"              -"!:\sys\bin\eposlandmarks.dll"
+"\epoc32\release\armv5\urel\eposlmsearchlib.dll"            -"!:\sys\bin\eposlmsearchlib.dll"
+"\epoc32\release\armv5\urel\eposlmmultidbsearch.dll"        -"!:\sys\bin\eposlmmultidbsearch.dll"
+"\epoc32\release\armv5\urel\eposlmdbmanlib.dll"             -"!:\sys\bin\eposlmdbmanlib.dll"
+
+"\epoc32\release\armv5\urel\eposlmlocalaccess.dll"          -"!:\sys\bin\eposlmlocalaccess.dll"
+"\epoc32\data\z\resource\eposlmasyncops.rsc"                -"!:\resource\eposlmasyncops.rsc"
+
+"\epoc32\release\armv5\urel\eposlmserver.exe"               -"!:\sys\bin\eposlmserver.exe"
+"\epoc32\data\z\private\101FDF81\eposlmserver.rsc"          -"!:\private\101FDF81\eposlmserver.rsc"
+;"\epoc32\data\z\private\101FDF81\backup_registration.xml"   -"!:\private\101FDF81\backup_registration.xml"
+
+"\epoc32\release\armv5\urel\eposlmintservices.dll"          -"!:\sys\bin\eposlmintservices.dll"
+"\epoc32\data\z\resource\eposlmcompactdblevel.rsc"          -"!:\resource\eposlmcompactdblevel.rsc"
+"\epoc32\data\z\resource\apps\eposlmglcategories.mif"            -"!:\resource\eposlmglcategories.mif"
+
+"\epoc32\release\armv5\urel\eposlmdbreg.dll"                -"!:\sys\bin\eposlmdbreg.dll"
+"\epoc32\release\armv5\urel\eposlmservlib.dll"              -"!:\sys\bin\eposlmservlib.dll"
+
+"\epoc32\release\armv5\urel\eposlmlocalaccessprovider.dll"          -"!:\sys\bin\eposlmlocalaccessprovider.dll"
+"\epoc32\data\z\resource\plugins\eposlmlocalaccessprovider.rsc"     -"!:\resource\plugins\eposlmlocalaccessprovider.rsc"
+"\epoc32\release\armv5\urel\eposlmlocalsearchprovider.dll"          -"!:\sys\bin\eposlmlocalsearchprovider.dll"
+"\epoc32\data\z\resource\plugins\eposlmlocalsearchprovider.rsc"     -"!:\resource\plugins\eposlmlocalsearchprovider.rsc"
+"\epoc32\release\armv5\urel\eposlmlocaldbmanprovider.dll"           -"!:\sys\bin\eposlmlocaldbmanprovider.dll"
+"\epoc32\data\z\resource\plugins\eposlmlocaldbmanprovider.rsc"      -"!:\resource\plugins\eposlmlocaldbmanprovider.rsc"
+"\epoc32\release\armv5\urel\eposlmdbmanprov.dll"                    -"!:\sys\bin\eposlmdbmanprov.dll"
+"\epoc32\data\z\resource\plugins\eposlmdbmanprov.rsc"               -"!:\resource\plugins\eposlmdbmanprov.rsc"
+"\epoc32\release\armv5\urel\eposlmrecognizer.dll"                   -"!:\sys\bin\eposlmrecognizer.dll"
+"\epoc32\data\z\resource\plugins\eposlmrecognizer.rsc"              -"!:\resource\plugins\eposlmrecognizer.rsc"
+"\epoc32\release\armv5\urel\eposlmconverter.dll"                    -"!:\sys\bin\eposlmconverter.dll"
+"\epoc32\data\z\resource\plugins\eposlmconverter.rsc"               -"!:\resource\plugins\eposlmconverter.rsc"
+
+

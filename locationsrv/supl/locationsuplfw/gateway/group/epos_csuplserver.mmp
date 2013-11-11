@@ -1,0 +1,71 @@
+/*
+* Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  
+*     This is project specification file for Location Server
+*
+*/
+
+
+
+#include <platform_paths.hrh>
+
+TARGET              epossuplgateway.exe
+TARGETTYPE          exe
+EPOCSTACKSIZE       0x5000
+UID                 0x00000000 0x102073CA
+
+CAPABILITY          Location NetworkServices ReadDeviceData WriteDeviceData CommDD ProtServ NetworkControl ReadUserData WriteUserData
+			          
+VENDORID            VID_DEFAULT
+
+SOURCEPATH          ../src
+
+SOURCE              epos_csuplserverdeinitrequestor.cpp
+SOURCE              epos_suplserverstartup.cpp
+SOURCE              epos_csuplglobal.cpp
+SOURCE              epos_csuplserver.cpp
+SOURCE	            epos_csuplserverdelayedshutdown.cpp
+SOURCE              epos_csuplipcsession.cpp 
+SOURCE              epos_csuplipcsubsession.cpp 
+SOURCE              epos_csuplsubsessionregistry.cpp
+SOURCE              epos_csuplserverpanic.cpp
+SOURCE              epos_csuplsessionmanager.cpp
+SOURCE              epos_csuplsessionrequest.cpp
+SOURCE				epos_csuplnetinitiatedregistry.cpp
+SOURCE				epos_csuplnetinitiatedsession.cpp
+SOURCE				epos_csuplserverstartuprequest.cpp
+SOURCE				epos_csuplconnecttimer.cpp
+SOURCE              epos_csuplecomeventwatcher.cpp
+SOURCE		    epos_csuplsessionretryq.cpp
+
+MW_LAYER_SYSTEMINCLUDE
+
+USERINCLUDE         ../inc
+USERINCLUDE         ../../terminalinitiationapi/inc 
+USERINCLUDE         ../../nwinitiationapi/inc 
+USERINCLUDE         ../../settingsapi/inc 
+
+USERINCLUDE         ../../../inc 
+
+LIBRARY             euser.lib
+LIBRARY             estor.lib
+LIBRARY             bafl.lib
+LIBRARY				lbs.lib 
+LIBRARY             efsrv.lib
+LIBRARY             ecom.lib
+LIBRARY             epos_csuplutils.lib
+LIBRARY             centralrepository.lib
+LIBRARY             epossuplprotocolhandlerplugin.lib
+LIBRARY             epos_suplterminitiation.lib
+LIBRARY				featmgr.lib flogger.lib epos_suplsettings.lib

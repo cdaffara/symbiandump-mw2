@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<relnotes name="Send As">
+  <purpose>
+  </purpose>
+
+  <deliverystep number="1462" name="Splitting mixed header files for Messaging" osproject="SymTB92" revision="011">
+   <preq number="2510" title=" Splitting mixed header files for Messaging">
+    Mixed header files will now contain only published All or published Partner or internal
+   </preq>
+    <milestone project="GT0465" number="3.5"/>
+  </deliverystep>
+
+  <defect number="INC132239" title="SendAs API results in crash on target " revision="010">
+	Passed the TDesC8 descriptor instead of pointer.
+  </defect>
+
+  <defect number="PDEF124476" title="leaked handles in msvserver" revision="009">
+   Closed RThread handle to avoid leak
+  </defect>
+
+  <defect number="PDEF125292" title="Filename Case Check errors most of them from PREQ1881" revision="008">
+    Changed according to the filename case check policy.
+  </defect>
+
+  <defect number="DEF122502" title="Unexpected SendAsSession 6 when close a RSendAsMessage" revision="007">
+   When CSendAsSender::SendMessageL leaves, the state is properly set and the message entry is deleted.
+  </defect>
+  
+  <deliverystep number="808" name="Messaging: Unicode / Binary encoding for SMS in SendAs" osproject="Sphinx" revision="006">
+    <preq number="1881" title="UNICODE/Binary for SMS SendAs">
+    UNICODE/Binary for SMS SendAs
+  </preq>
+    <milestone project="GT0358" number="3.1"/>
+  </deliverystep>
+
+  <defect number="PDEF112240" title="VV MA MAE Elena TE070507-47926 Problem when sending an MMS in Restricted mode" revision="005">
+    Defined the maximum heap size for send as.
+  </defect>
+
+  <deliverystep number="601" name="Implemented user prompting while sending/recieving the messages" osproject="Oghma" revision="004">
+    <preq number="1678" title="Messaging User Prompting">
+    Messaging User Prompting
+  </preq>
+    <milestone project="GT0342" number="3.4"/>
+  </deliverystep>
+
+  <defect number="DEF105400" title="Add missing IM tags to Messaging public header files" revision="003">
+    Added IM tag for all given header files.
+  </defect>
+
+  <defect number="DEF106936" title="9.1 nandimage issues not loading on H2 due to EikAppUiServerThread exception" revision="002">
+    Ensure error is generated when trying to pass a non shared file handle to the SendAs server
+  </defect>
+
+  <defect number="PDEF104082" title="RSendAs::FilteredMessageTypesL leaves with KErrOverflow when language is chinese" revision="001">
+    Ensure creating list of supported message types works for Chinese character sets.
+  </defect>
+</relnotes>

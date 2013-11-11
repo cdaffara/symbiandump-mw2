@@ -1,0 +1,18 @@
+//
+// Cap_EMsvNotifySessionEvent.script
+//
+
+
+LOAD_SUITE MessagingTestServer -SharedData
+
+
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer SendEMsvNotifySessionEvent c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_NotifySessionPass.ini EMsvNotifySessionEventParams
+
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+
+RUN_TEST_STEP 100 MessagingTestServer END_TEST_CASE
+

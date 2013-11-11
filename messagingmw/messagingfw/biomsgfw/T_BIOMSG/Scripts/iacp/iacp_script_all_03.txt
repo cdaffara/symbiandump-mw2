@@ -1,0 +1,61 @@
+[main]
+bio_test doatstart
+bio_test all_03
+bio_test doattheend
+
+
+// Startup section.
+[doatstart]
+clean_all_bio_msgs
+
+
+// Shutdown section.
+[doattheend]
+
+
+// wapp tests.
+[all_03]
+gen_msg_from_file iacp\iacp_all_03.txt
+check_used_bif 1000552f
+bio_client_parse
+bio_client_process
+dump_parsed_message
+//
+// check mail settings in msg store
+check_pop3_named all_03_pop3 Lemon
+check_smtp_named all_03_smtp Lemon
+//
+// check commdb tables for correct entries
+bio_commdb DialOutIsp all_03_commdb_dialoutisp_table
+bio_commdb IAP all_03_commdb_iap_table
+
+
+[all_03_pop3]
+chk_pop3_loginname yashar
+chk_pop3_password dig23ler
+chk_pop3_serveraddress pop3.lemon.co.uk
+chk_pop3_useraddress fruity@yashar.Lemon.co.uk
+
+
+[all_03_smtp]
+chk_smtp_serveraddress post.lemon.co.uk
+chk_smtp_emailaddress fruity@yashar.Lemon.co.uk
+
+
+[all_03_commdb_dialoutisp_table]
+commdb_check text Name "Lemon"
+commdb_check text LoginName "yashar"
+//commdb_check text IfAuthName "yashar"
+commdb_check text LoginPass "dig23ler"
+//commdb_check text IfAuthPass "dig23ler"
+commdb_check text DefaultTelNum "+44 845 2121666"
+commdb_read_text last IpNameServer1
+commdb_read_text last IpNameServer2
+commdb_check text IpNameServer1 "C04F:12:0:205:E512:10:0:1E2A:1023"
+commdb_check text IpNameServer2 "::::AE:7B10:158.152.1.43"
+
+
+[all_03_commdb_iap_table]
+commdb_check text Name "Lemon"
+commdb_check text IAPServiceType "DialOutISP"
+commdb_check text IAPBearerType "ModemBearer"

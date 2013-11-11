@@ -1,0 +1,40 @@
+// Copyright (c) 2004-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+#ifndef __SCHEDULESENDUNITTEST_IBY__
+#define __SCHEDULESENDUNITTEST_IBY__
+
+REM dependencies
+#include <base.iby>
+#include <store.iby>
+#include <testexecute.iby>
+#include <bafl.iby>
+#include <scheduledsending.iby>
+
+data=EPOCROOT##Epoc32\release\winscw\udeb\z\testdata\scripts\schsend.script	testdata\scripts\schsend.script
+data=EPOCROOT##Epoc32\release\winscw\udeb\z\testdata\scripts\schsend.ini	testdata\scripts\schsend.ini
+
+//file=ABI_DIR\BUILD_DIR\msvtestutils.dll					System\libs\msvtestutils.dll
+
+//file=ABI_DIR\BUILD_DIR\test_SchSend_server.exe			System\libs\test_SchSend_server.exe
+file=ABI_DIR\BUILD_DIR\t_schedulesend.exe				System\libs\t_schedulesend.exe
+
+data=EPOCROOT##EPOC32\data\Z\resource\messaging\mtm\pigeon.rsc	resource\messaging\mtm\pigeon.rsc
+
+file=ABI_DIR\BUILD_DIR\pigeonmtm.dll	sys\bin\pigeonmtm.dll
+
+data=EPOCROOT##epoc32\data\Z\private\10202BE9\1000127E.txt	private\10202BE9\1000127E.txt
+
+#endif //__SCHEDULESENDUNITTEST_IBY__

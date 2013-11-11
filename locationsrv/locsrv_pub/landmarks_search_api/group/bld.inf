@@ -1,0 +1,38 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  File that exports the files belonging to 
+:                Landmarks Search API
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+../inc/EPos_CPosLmAreaCriteria.h     MW_LAYER_PUBLIC_EXPORT_PATH(EPos_CPosLmAreaCriteria.h)
+../inc/EPos_CPosLmMultiDbSearch.h     MW_LAYER_PUBLIC_EXPORT_PATH(EPos_CPosLmMultiDbSearch.h)
+../inc/EPos_CPosLmCatNameCriteria.h     MW_LAYER_PUBLIC_EXPORT_PATH(EPos_CPosLmCatNameCriteria.h)
+../inc/EPos_CPosLmSearchCriteria.h     MW_LAYER_PUBLIC_EXPORT_PATH(EPos_CPosLmSearchCriteria.h)
+../inc/EPos_CPosLmDisplayItem.h     MW_LAYER_PUBLIC_EXPORT_PATH(EPos_CPosLmDisplayItem.h)
+../inc/EPos_CPosLmCategoryCriteria.h     MW_LAYER_PUBLIC_EXPORT_PATH(EPos_CPosLmCategoryCriteria.h)
+../inc/EPos_CPosLmNearestCriteria.h     MW_LAYER_PUBLIC_EXPORT_PATH(EPos_CPosLmNearestCriteria.h)
+../inc/EPos_CPosLandmarkSearch.h     MW_LAYER_PUBLIC_EXPORT_PATH(EPos_CPosLandmarkSearch.h)
+../inc/EPos_CPosLmCompositeCriteria.h     MW_LAYER_PUBLIC_EXPORT_PATH(EPos_CPosLmCompositeCriteria.h)
+../inc/EPos_CPosLmTextCriteria.h     MW_LAYER_PUBLIC_EXPORT_PATH(EPos_CPosLmTextCriteria.h)
+../inc/EPos_CPosLmIdListCriteria.h     MW_LAYER_PUBLIC_EXPORT_PATH(EPos_CPosLmIdListCriteria.h)
+../inc/EPos_CPosLmDisplayData.h     MW_LAYER_PUBLIC_EXPORT_PATH(EPos_CPosLmDisplayData.h)

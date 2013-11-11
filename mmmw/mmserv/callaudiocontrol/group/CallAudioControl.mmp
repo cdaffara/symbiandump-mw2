@@ -1,0 +1,63 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file for project CallAudioControl
+*
+*/
+
+
+#include <data_caging_paths.hrh>
+
+#ifdef __SERIES60_31__
+#include <domain/osextensions/platform_paths.hrh>
+#else
+#include <platform_paths.hrh>
+#endif
+
+TARGET          callaudiocontrol.dll
+TARGETTYPE      DLL
+UID             0x1000008D 0x10207BD2
+
+
+CAPABILITY 	ALL -TCB
+VENDORID        VID_DEFAULT
+
+
+SOURCEPATH      ../src
+SOURCE          CallAudioControl.cpp 
+SOURCE		CallAudioControlImpl.cpp
+SOURCE		CallAudioControlRepository.cpp
+SOURCE		CallAudioControlProperty.cpp
+
+
+USERINCLUDE     ../inc
+
+MW_LAYER_SYSTEMINCLUDE
+//SYSTEMINCLUDE	/epoc32/include/CallAudioControl
+
+LIBRARY         euser.lib
+LIBRARY		TelephonyAudioRouting.lib
+LIBRARY		centralrepository.lib
+
+#ifdef __SERIES60_31__
+LIBRARY         MediatorClient.lib
+LIBRARY     	featmgr.lib
+LIBRARY		PhoneClient.lib
+LIBRARY		PhoneClientExt.lib
+#endif
+
+#ifndef __SERIES60_31__
+LIBRARY		phoneclient.lib   // For setting mute
+#endif
+
+// End of file

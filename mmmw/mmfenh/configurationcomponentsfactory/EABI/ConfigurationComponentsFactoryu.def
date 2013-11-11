@@ -1,0 +1,12 @@
+EXPORTS
+	_ZN31CConfigurationComponentsFactory14CreateFactoryLERPS_ @ 1 NONAME
+	_ZN31CConfigurationComponentsFactory27CreateRestrictedAudioOutputER12CMMFDevSoundRP22CRestrictedAudioOutput @ 2 NONAME
+	_ZN31CConfigurationComponentsFactory31CreateAudioOutputControlUtilityERP26CAudioOutputControlUtility @ 3 NONAME
+	_ZN31CConfigurationComponentsFactoryD0Ev @ 4 NONAME
+	_ZN31CConfigurationComponentsFactoryD1Ev @ 5 NONAME
+	_ZN31CConfigurationComponentsFactoryD2Ev @ 6 NONAME
+	_ZTI31CConfigurationComponentsFactory @ 7 NONAME ; #<TI>#
+	_ZTIN31CConfigurationComponentsFactory5CBodyE @ 8 NONAME ; #<TI>#
+	_ZTV31CConfigurationComponentsFactory @ 9 NONAME ; #<VT>#
+	_ZTVN31CConfigurationComponentsFactory5CBodyE @ 10 NONAME ; #<VT>#
+

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE testSuite SYSTEM "file:///c:/program files/common files/symbian/testSuite.dtd" [ ]>
+
+<testSuite>
+
+  <name>Performance</name>
+
+  <testItems>	
+	<test>T_Performance421_test</test>
+	<test>T_Performance422_test</test>
+	<test>T_Performance423_test</test>
+	<test>T_Performance424_test</test>
+	<test>T_Performance425_test</test>
+	<test>T_Performance426_test</test>
+	<test>T_Performance427_test</test>
+	<test>T_Performance428_test</test>
+  </testItems>
+
+  <testExecuteServers>
+    <server>T_Performance421</server>
+    <server>T_Performance422</server>
+    <server>T_Performance423</server>
+    <server>T_Performance424</server>
+    <server>T_Performance425</server>
+    <server>T_Performance426</server>
+    <server>T_Performance427</server>
+    <server>T_Performance428</server>
+  </testExecuteServers>
+
+</testSuite>
+

@@ -1,0 +1,71 @@
+/*
+* Copyright (c) 2002 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  bld.inf for mmftsplay test component
+* Info : This bld.inf is created to run the BAT test cases for playback module * on the CI in Bangalore , so that the results are known within ten mins of a * check in for CI. For internal testing purpose only
+*
+*/
+
+
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_TESTEXPORTS
+../AudioPlaybackBAT.cfg  /epoc32/winscw/c/TestFramework/AudioPlaybackBAT.cfg
+../AudioPlaybackTestModule.ini   /epoc32/winscw/c/TestFramework/AudioPlaybackTestModule.ini
+../TestFramework.ini   /epoc32/winscw/c/TestFramework/TestFramework.ini
+
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/3gpp/3GP_AAC+_8kbps_16khz_mono.3gp /epoc32/winscw/c/testing/data/3gpp/3GP_AAC+_8kbps_16khz_mono.3gp
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/aac/10s_AAC_LC_320kbps_48khz_stereo.aac /epoc32/winscw/c/testing/data/aac/10s_AAC_LC_320kbps_48khz_stereo.aac
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/amr/10s_AMR_NB_mode_0.amr /epoc32/winscw/c/testing/data/amr/10s_AMR_NB_mode_0.amr
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/awb/10s_AMR_WB_15.85kbps.awb  /epoc32/winscw/c/testing/data/awb/10s_AMR_WB_15.85kbps.awb
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/awb/10s_AMR_WB_23.85kbps_Generic.awb  /epoc32/winscw/c/testing/data/awb/10s_AMR_WB_23.85kbps_Generic.awb
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/awb/AMR-WB-23kb.awb  /epoc32/winscw/c/testing/data/awb/AMR-WB-23kb.awb
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/awb/AMR_WB_6.6kbps.awb  /epoc32/winscw/c/testing/data/awb/AMR_WB_6.6kbps.awb
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/mid/10s_MID_Generic.mid  /epoc32/winscw/c/testing/data/mid/10s_MID_Generic.mid
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/mid/10s_RMF_MID.rmf  /epoc32/winscw/c/testing/data/mid/10s_RMF_MID.rmf
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/mid/30s_MID_Generic.mid  /epoc32/winscw/c/testing/data/mid/30s_MID_Generic.mid
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/mp3/10s_smooth.mp3  /epoc32/winscw/c/testing/data/mp3/10s_smooth.mp3
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/mp3/30s_batendo_a_porta.mp3  /epoc32/winscw/c/testing/data/mp3/30s_batendo_a_porta.mp3
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/mp4/MP4_24kbps_16khz_mono.mp4  /epoc32/winscw/c/testing/data/mp4/MP4_24kbps_16khz_mono.mp4
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/AudioStream/PCM_11Khz_16Bit_Mono.wav  /epoc32/winscw/c/testing/data/AudioStream/PCM_11Khz_16Bit_Mono.wav
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/AudioStream/PCM_11Khz_16Bit_Stereo.wav  /epoc32/winscw/c/testing/data/AudioStream/PCM_11Khz_16Bit_Stereo.wav
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/AudioStream/PCM_8Khz_16Bit_Mono.wav  /epoc32/winscw/c/testing/data/AudioStream/PCM_8Khz_16Bit_Mono.wav
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/AudioStream/PCM_8Khz_16Bit_Stereo.wav  /epoc32/winscw/c/testing/data/AudioStream/PCM_8Khz_16Bit_Stereo.wav
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/metadata/11entriesID3v2.aac  /epoc32/winscw/c/testing/data/metadata/11entriesID3v2.aac
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/metadata/AAC_MD2.aac  /epoc32/winscw/c/testing/data/metadata/AAC_MD2.aac
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/metadata/DownUnder_remix.aac  /epoc32/winscw/c/testing/data/metadata/Do4wnUnder_remix.aac
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/metadata/DRM_NRTmeta.dcf  /epoc32/winscw/c/testing/data/metadata/DRM_NRTmeta.dcf
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/metadata/JapJap.mp3  /epoc32/winscw/c/testing/data/metadata/JapJap.mp3
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/metadata/JepJep.mp3  /epoc32/winscw/c/testing/data/metadata/JepJep.mp3
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/metadata/JipJip.mp3  /epoc32/winscw/c/testing/data/metadata/JipJip.mp3
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/metadata/MP3_MD.mp3  /epoc32/winscw/c/testing/data/metadata/MP3_MD.mp3
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/metadata/rtng_gnre_perf_dscp.m4a  /epoc32/winscw/c/testing/data/metadata/rtng_gnre_perf_dscp.m4a
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/metadata/rtng_gnre_perf_dscp.mp4  /epoc32/winscw/c/testing/data/metadata/rtng_gnre_perf_dscp.mp4
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/metadata/test3gp.3gp  /epoc32/winscw/c/testing/data/metadata/test3gp.3gp
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/metadata/testm4a.m4a  /epoc32/winscw/c/testing/data/metadata/testm4a.m4a
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/metadata/testmp4.mp4  /epoc32/winscw/c/testing/data/metadata/testmp4.mp4
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/metadata/Titl_Auth_Desc_Cprt.3gp  /epoc32/winscw/c/testing/data/metadata/Titl_Auth_Desc_Cprt.3gp
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/metadata/Titl_Auth_Perf_Gnre.3gp  /epoc32/winscw/c/testing/data/metadata/Titl_Auth_Perf_Gnre.3gp
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/metadata/titl_cprt_auth_dscp.m4a  /epoc32/winscw/c/testing/data/metadata/titl_cprt_auth_dscp.m4a
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/metadata/titl_cprt_auth_dscp.mp4  /epoc32/winscw/c/testing/data/metadata/titl_cprt_auth_dscp.mp4 
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioPlaybackTestModule/data/mmc/metadata/Titl_Perf_Rtng_Gnre.3gp  /epoc32/winscw/c/testing/data/metadata/Titl_Perf_Rtng_Gnre.3gp
+
+// dummy file to create folder epoc32/c/testing/log
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioRecorderTestModule/data/mmc/record/test.txt /epoc32/winscw/c/testing/log/test.txt
+
+PRJ_TESTMMPFILES
+
+
+//  End of File

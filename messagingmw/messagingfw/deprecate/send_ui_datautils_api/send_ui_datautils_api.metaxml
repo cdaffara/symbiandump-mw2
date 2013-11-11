@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<api id="6dc4e2482190d8249c9cfb8b55e4a195" dataversion="1.0">
+<name>send_ui_datautils_api</name>
+<description>send_ui_datautils_api exported as part of msgfw_plat.
+Interface for using senduidatautils functionality.</description>
+<type>c++</type>
+<subsystem>messagingmw</subsystem>
+<libs><lib name="senduidatautils.lib"/>
+</libs>
+<release category="domain" sinceversion=""/>
+<attributes>
+<htmldocprovided>no</htmldocprovided>
+<adaptation>no</adaptation>
+</attributes>
+</api>

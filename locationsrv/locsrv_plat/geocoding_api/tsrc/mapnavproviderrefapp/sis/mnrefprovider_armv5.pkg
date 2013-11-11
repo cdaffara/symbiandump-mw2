@@ -1,0 +1,85 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: Installation file for MN ref provider
+;
+
+ÿþ;   I n s t a l l a t i o n   f i l e   f o r   M & N   R e f e r e n c e   P r o v i d e r   A p p 
+ 
+ 
+ 
+ ;   L a n g u a g e s 
+ 
+ & E N , R U 
+ 
+ 
+ 
+ ;   s t a n d a r d   S I S   f i l e   h e a d e r 
+ 
+ # { " M n R e f P r o v i d e r E N " , " M n R e f P r o v i d e r R U " } , ( 0 x 0 3 1 3 2 0 1 3 ) , 1 , 2 , 4 
+ 
+ 
+ 
+ ;   L o c a l i s e d   V e n d o r   n a m e 
+ 
+ % { " V e n d o r - E N " , " V e n d o r - R U " } 
+ 
+ 
+ 
+ ;   U n i q u e   V e n d o r   n a m e 
+ 
+ : " V e n d o r " 
+ 
+ 
+ 
+ ;   S u p p o r t s   S 6 0   v   3 . 0 
+ 
+ [ 0 x 1 0 1 F 7 9 6 1 ] ,   0 ,   0 ,   0 ,   { " S 6 0 P r o d u c t I D " , " S 6 0 P r o d u c t I D " } 
+ 
+ 
+ 
+ ;   F i l e s   t o   i n s t a l l 
+ 
+ " \ e p o c 3 2 \ r e l e a s e \ a r m v 5 \ u r e l \ m n r e f p r o v i d e r . e x e " - " ! : \ s y s \ b i n \ m n r e f p r o v i d e r . e x e " 
+ 
+ " \ e p o c 3 2 \ d a t a \ z \ r e s o u r c e \ a p p s \ m n r e f p r o v i d e r . r s c " - " ! : \ r e s o u r c e \ a p p s \ m n r e f p r o v i d e r . r s c " 
+ 
+ " \ e p o c 3 2 \ d a t a \ z \ r e s o u r c e \ a p p s \ m n r e f p r o v i d e r . m b m " - " ! : \ r e s o u r c e \ a p p s \ m n r e f p r o v i d e r . m b m " 
+ 
+ " \ e p o c 3 2 \ d a t a \ z \ r e s o u r c e \ a p p s \ m n r e f p r o v i d e r . m i f " - " ! : \ r e s o u r c e \ a p p s \ m n r e f p r o v i d e r . m i f " 
+ 
+ " \ e p o c 3 2 \ d a t a \ z \ p r i v a t e \ 1 0 0 0 3 a 3 f \ a p p s \ m n r e f p r o v i d e r _ r e g . r s c " - " ! : \ p r i v a t e \ 1 0 0 0 3 a 3 f \ i m p o r t \ a p p s \ m n r e f p r o v i d e r _ r e g . r s c " 
+ 
+ 
+ 
+ " \ e p o c 3 2 \ r e l e a s e \ a r m v 5 \ u r e l \ m n r e f p r o v i d e r b a c k . e x e " - " ! : \ s y s \ b i n \ m n r e f p r o v i d e r b a c k . e x e " 
+ 
+ " \ e p o c 3 2 \ d a t a \ z \ r e s o u r c e \ a p p s \ m n r e f p r o v i d e r b a c k . r s c " - " ! : \ r e s o u r c e \ a p p s \ m n r e f p r o v i d e r b a c k . r s c " 
+ 
+ " \ e p o c 3 2 \ d a t a \ z \ p r i v a t e \ 1 0 0 0 3 a 3 f \ a p p s \ m n r e f p r o v i d e r b a c k _ r e g . r s c " - " ! : \ p r i v a t e \ 1 0 0 0 3 a 3 f \ i m p o r t \ a p p s \ m n r e f p r o v i d e r b a c k _ r e g . r s c " 
+ 
+ 
+ 
+ " \ e p o c 3 2 \ r e l e a s e \ a r m v 5 \ u r e l \ m n r e f p r o v i d e r e n g i n e . d l l " - " ! : \ s y s \ b i n \ m n r e f p r o v i d e r e n g i n e . d l l " 
+ 
+ " \ e p o c 3 2 \ d a t a \ z \ r e s o u r c e \ m n r e f p r o v i d e r e n g i n e . r s c " - " ! : \ r e s o u r c e \ m n r e f p r o v i d e r e n g i n e . r s c " 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

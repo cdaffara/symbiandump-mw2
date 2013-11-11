@@ -1,0 +1,18 @@
+__type__   = Imap4Settings
+
+# Server msexchange2k.closedtest.intra is IP 10.22.64.6
+ServerName =  msexchange2k.closedtest.intra
+ImapSearchString =
+
+ImapFolderPath = 
+ImapPathSeperator = /
+
+ImapServerAddress =  msexchange2k.closedtest.intra
+
+ImapBearerMobility = 1
+ImapSNAPId = 1
+
+SmtpServerAddress =  msexchange2k.closedtest.intra
+SmtpBearerMobility = 1
+SmtpSNAPId = 1
+

@@ -1,0 +1,7 @@
+//SIAP11
+password
+Pname:Demon
+Pdummy:
+Ptype:PPPS
+dummy1
+Pdata:! Not much script

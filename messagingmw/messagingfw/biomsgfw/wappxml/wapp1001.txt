@@ -1,0 +1,1 @@
+This is the test file wapp1001.txt for the wapp parser. It should be rejected, as it is pure text not WBXML.

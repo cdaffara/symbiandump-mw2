@@ -1,0 +1,309 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+LOAD_SERVER t_media  -SharedData
+
+//! @file			
+//! @SYMTestSuiteName		MSG-MEDIA-OPS
+//! @SYMScriptTestEnvironment   Details as in below:-
+//!				1. nt-ras connection or winpcap
+//!				2. email servers ( communigatePro or ms exchange)
+//!				3. test driver
+//!				4. testexecute framework(TEF3.0)
+//!				
+//! @SYMScriptPurpose		Integration testing of PREQ557-"Improved support in Messaging for removable media"
+//! @SYMScriptCreationDate	04/04/2008
+
+
+START_TESTCASE	MSG-MEDIA-OPS-0001
+//! 	@SYMTestCaseID		MSG-MEDIA-OPS-0001
+//! 	@SYMTestCaseDesc	Remove the media from current drive and insert it again
+//!				
+//!	@SYMREQ			REQ9166 
+//!	@SYMPREQ 		PREQ557
+//!	@SYMAPI			void CMsvSession::CurrentDriveInfo (TDriveNumber& aDrive, Tint& aPriority)
+//!				void CMsvSession::DriveListL(RArray<TDriveNumber>& aDriveList)
+//!				void CMsvSession::AvailableDriveListL(RArray<TDriveNumber>& aDriveList)
+//!				CMsvEntrySelection* CMsvEntry::ChildrenOfAvailableDrivesL()
+//!				TBool MessageServer::IsMessageStoreSupported(TDriveNumber aDrive)
+//!				
+//!	@SYMTestCaseDependencies ms-presetup-0001.script
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1. Intialize the preferred drives with accounts and messages (run the ms-presetup-0001.script)
+//!				2. Get the current drive(C: drive)
+//!				3. Update the drive(E: drive) with highest priority
+//!				4. Get the current drive(E: drive)
+//!				5. Unmount the drive(E: drive)
+//!				6. Check the drive(E: drive) is present in preferred drive list
+//!				7. Check the drive(E: drive) is unavailable
+//!				8. Get the current drive(C: drive)
+//!				Note: next higher priority drive is C: drive
+//!				
+//!				9. Mount the higher priority drive(E: drive)
+//!				10. Get the current drive(E: drive)
+//!				11. Check the drive(E: drive) is available
+//!				12. Check message store in the drive(E: drive) is readable
+//!				
+//! 	@SYMTestExpectedResults 1. Accounts and messages should be created in all drives
+//!				2. C: drive should be the current drive
+//!				3. Should be updated with the high priority
+//!				4. Notify with EMsvCurrentDriveChanged 
+//!				5. E: drive should be the current drive
+//!				6. E: drive should be present in preferred drive list
+//!				7. E: drive should be unavailable
+//!				8. C: drive should be the current drive
+//!				9. Notify with EMsvCurrentDriveChanged
+//!				10. E: drive should be the current drive
+//!				11. E: drive should be available
+//!				12. E: drive should be readable
+//!				
+//!	@SYMAuthor		Rajat Bal
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-media-ops.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-media-0001.ini	c:\private\1000484b\msgprioritydrivelist.ini
+
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-media-ops.ini
+		CREATE_OBJECT	MediaTestWrapper	0001_obj_1
+		COMMAND		0001_obj_1		New		0001_obj_1
+		COMMAND		0001_obj_1		GetCurrentDrive	0001_GetCurrentDrive_1
+		COMMAND		0001_obj_1		UpdateDrive	0001_UpdateDrive_1
+		COMMAND		0001_obj_1		GetCurrentDrive	0001_GetCurrentDrive_2
+		COMMAND		0001_obj_1		DisMountDrive	0001_DisMountDrive_1
+		COMMAND		0001_obj_1		GetDrivelist	0001_GetDrivelist_1
+		COMMAND		0001_obj_1		GetAvailableDriveList	0001_GetAvailableDriveList_1
+		COMMAND		0001_obj_1		GetCurrentDrive	0001_GetCurrentDrive_3
+		COMMAND		0001_obj_1		MountDrive	0001_MountDrive_1
+		COMMAND		0001_obj_1		GetAvailableDriveList	0001_GetAvailableDriveList_2
+		COMMAND		0001_obj_1		MessageStoreSupported	0001_MessageStoreSupported_1
+	END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+
+END_TESTCASE	MSG-MEDIA-OPS-0001
+
+
+START_TESTCASE	MSG-MEDIA-OPS-0002
+//! 	@SYMTestCaseID		MSG-MEDIA-OPS-0002
+//! 	@SYMTestCaseDesc	Remove a lesser priority media and insert it again
+//!				
+//!	@SYMREQ			REQ9166 
+//!	@SYMPREQ 		PREQ557
+//!	@SYMAPI			void CMsvSession::CurrentDriveInfo (TDriveNumber& aDrive, Tint& aPriority)
+//!				void CMsvSession::DriveListL(RArray<TDriveNumber>& aDriveList)
+//!				void CMsvSession::AvailableDriveListL(RArray<TDriveNumber>& aDriveList)
+//!				CMsvEntrySelection* CMsvEntry::ChildrenOfAvailableDrivesL()
+//!				TBool MessageServer::IsMessageStoreSupported(TDriveNumber aDrive)
+//!				
+//!	@SYMTestCaseDependencies ms-presetup-0001.script
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1. Intialize the preferred drives with accounts and messages (run the ms-presetup-0001.script)
+//!				2. Get the current drive(C: drive)
+//!				3. Get the lesser priority drive (let D: drive is the lesser priority drive)
+//!				4. Unmount the drive(D: drive)
+//!				5. Check the drive(D: drive) is present in preferred drive list
+//!				6. Check the drive(D: drive) is unavilable
+//!				7. Get the current drive(C: drive)
+//!				8. Mount the drive(D: drive)
+//!				9. Check the drive(D: drive) is available
+//!				10. Check message store in the drive(D: drive) is readable
+//!				
+//! 	@SYMTestExpectedResults 1. Accounts and messages should be created in all drives
+//!				2. E: drive should be the current drive
+//!				3. Returned D: drive
+//!				4. Notify with EMsvRefreshMessageView
+//!				5. D: drive should present in preferred drive list
+//!				6. D: drive should be available
+//!				7. E: drive should be remain as current drive
+//!				8. Notify with EMsvRefreshMessageView
+//!				9. D: drive should be available
+//!				10. D: drive should be readable
+//!				
+//!	@SYMAuthor		Rajat Bal
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-media-ops.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-media-0002.ini	c:\private\1000484b\msgprioritydrivelist.ini
+
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-media-ops.ini
+		CREATE_OBJECT	MediaTestWrapper	0002_obj_1
+		COMMAND		0002_obj_1		New		0002_obj_1
+		COMMAND		0002_obj_1		GetCurrentDrive	0002_GetCurrentDrive_1
+		COMMAND		0002_obj_1		DisMountDrive	0002_DisMountDrive_1
+		COMMAND		0002_obj_1		GetDrivelist	0002_GetDrivelist_1
+		COMMAND		0002_obj_1		GetAvailableDriveList	0002_GetAvailableDriveList_1
+		COMMAND		0002_obj_1		GetCurrentDrive	0002_GetCurrentDrive_3
+		COMMAND		0002_obj_1		MountDrive	0002_MountDrive_1
+		COMMAND		0002_obj_1		GetAvailableDriveList	0002_GetAvailableDriveList_2
+		COMMAND		0002_obj_1		MessageStoreSupported	0002_MessageStoreSupported_1
+	END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+
+END_TESTCASE	MSG-MEDIA-OPS-0002
+
+START_TESTCASE	MSG-MEDIA-OPS-0003
+//! 	@SYMTestCaseID		MSG-MEDIA-OPS-0003
+//! 	@SYMTestCaseDesc	Remove media while downloading the message
+//!				
+//!	@SYMREQ			REQ9166 
+//!	@SYMPREQ 		PREQ557
+//!	@SYMAPI			void CMsvSession::CurrentDriveInfo (TDriveNumber& aDrive, Tint& aPriority)
+//!				void CMsvSession::DriveListL(RArray<TDriveNumber>& aDriveList)
+//!				void CMsvSession::AvailableDriveListL(RArray<TDriveNumber>& aDriveList)
+//!				CMsvEntrySelection* CMsvEntry::ChildrenOfAvailableDrivesL()
+//!				TBool MessageServer::IsMessageStoreSupported(TDriveNumber aDrive)
+//!				
+//!	@SYMTestCaseDependencies ms-presetup-0001.script
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1. Intialize the preferred drives with accounts and messages (run the ms-presetup-0001.script)
+//!				2. Get the current drive(C: drive)
+//!				3. Update the drive(E: drive)with high priority
+//!				4. Get the current drive(E: drive)
+//!				5. Unmount the drive(E: drive) while downloading ten messages
+//!				6. Check the drive(E: drive) is present in preferred drive list
+//!				7. Check the drive(E: drive) is unavailable
+//!				8. Get the current drive
+//!				
+//!				9. Mount the drive(E: drive)
+//!				10. Check the drive(E: drive) is available
+//!				11. Check message store in the drive(E: drive) is readable
+//!				12. Change the drive(E: drive) is the current drive
+//!				
+//! 	@SYMTestExpectedResults 1. Accounts and messages should be created in all drives
+//!				2. C: drive should be the current drive
+//!				3. Should updated with high priority
+//!				4. E: drive should be the current drive
+//!				5. Should capture EMsvCurrentDriveChanged notification
+//!				6. E: drive should be present in preferred drive list
+//!				7. E: drive should be unavailable
+//!				8. D: drive should be the current drive(which is next higer priority drive)
+//!				9. Captured EMsvCurrentDriveChanged  notification
+//!				10. E: drive should be available
+//!				11. E: drive should be readable
+//!				12. E: drive should be the current drive
+//!				
+//!	@SYMAuthor		Rajat Bal
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-media-ops.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-media-0003.ini	c:\private\1000484b\msgprioritydrivelist.ini
+
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-media-ops.ini
+		CREATE_OBJECT	MediaTestWrapper	0003_obj_1
+		COMMAND		0003_obj_1		New		0003_obj_1
+		COMMAND		0003_obj_1		GetCurrentDrive	0003_GetCurrentDrive_1
+		COMMAND		0003_obj_1		UpdateDrive	0003_UpdateDrive_1
+		COMMAND		0003_obj_1		GetCurrentDrive	0003_GetCurrentDrive_2
+		COMMAND		0003_obj_1		DisMountDrive	0003_DisMountDrive_1
+		COMMAND		0003_obj_1		GetDrivelist	0003_GetDrivelist_1
+		COMMAND		0003_obj_1		GetAvailableDriveList	0003_GetAvailableDriveList_1
+		COMMAND		0003_obj_1		GetCurrentDrive	0003_GetCurrentDrive_3
+		COMMAND		0003_obj_1		MountDrive	0003_MountDrive_1
+		COMMAND		0003_obj_1		GetAvailableDriveList	0003_GetAvailableDriveList_2
+		COMMAND		0003_obj_1		MessageStoreSupported	0003_MessageStoreSupported_1
+	END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+
+END_TESTCASE	MSG-MEDIA-OPS-0003
+
+
+START_TESTCASE	MSG-MEDIA-OPS-0004
+//! 	@SYMTestCaseID		MSG-MEDIA-OPS-0004
+//! 	@SYMTestCaseDesc	Remove a media which is not in the preferred drive list and insert it again
+//!				
+//!	@SYMREQ			REQ9166 
+//!	@SYMPREQ 		PREQ557
+//!	@SYMAPI			void CMsvSession::DriveListL(RArray<TDriveNumber>& aDriveList)
+//!				
+//!	@SYMTestCaseDependencies Ensure a drive(K:) is present in epoc.ini but not in preferred drive list
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1. Unmount the drive(K: drive)
+//!				2. Check the drive(K: drive) is not present in preferred drive list
+//!				
+//!				3. Mount the drive(K: drive)
+//!				4. Check the drive(K: drive) is not present in preferred drive list
+//!				
+//! 	@SYMTestExpectedResults 1. No notification
+//!				2. K: drive is not present in preferred drive list
+//!				3. No notification
+//!				4. K: drive is not present in preferred drive list
+//!				
+//!	@SYMAuthor		Rajat Bal
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-media-ops.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-media-0004.ini	c:\private\1000484b\msgprioritydrivelist.ini
+
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-media-ops.ini
+		CREATE_OBJECT	MediaTestWrapper	0004_obj_1
+		COMMAND		0004_obj_1		New		0004_obj_1
+		COMMAND		0004_obj_1		DisMountDrive	0004_DisMountDrive_1
+		COMMAND		0004_obj_1		GetDrivelist	0004_GetDrivelist_1
+		COMMAND		0004_obj_1		MountDrive	0004_MountDrive_1
+		COMMAND		0004_obj_1		GetDrivelist	0004_GetDrivelist_2
+	END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+
+END_TESTCASE	MSG-MEDIA-OPS-0004
+

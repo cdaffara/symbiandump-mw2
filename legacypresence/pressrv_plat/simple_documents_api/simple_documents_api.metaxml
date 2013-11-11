@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<api id="835fdb2c66a4e4765cf209fad8720e2a" dataversion="1.0">
+  <name>SIMPLE Documents API</name>
+  <description>This API is used for creating and receiving documents used in SIP/SIMPLE transactions such as:
+- Presence document for presence publishing and presence notifications, 
+- Filter document for filtering the presence subsriptions, 
+- Watcher info document for receving wathcer list and 
+- RLS document for receving RLS notifications.</description>
+  <type>c++</type>
+  <subsystem>simpleengine</subsystem>
+  <libs>
+    <lib name="simpleengine.lib" />
+  </libs>
+  <release category="domain"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>yes</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

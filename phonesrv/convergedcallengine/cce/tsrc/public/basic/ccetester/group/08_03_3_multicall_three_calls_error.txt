@@ -1,0 +1,152 @@
+/*******************************************************
+   1. Create a call and put it on Hold
+   2. Create 2nd call
+   3. Create incoming call (call goes to Queued state)
+   4. Try to Answer call (KErrInUse)
+   5. Disconnect call on Hold
+   6. Create incoming call (call goes to Queued state)
+   7. Try to Answer call (KErrInUse)
+   8. Disconnect remaining call
+*******************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 8.3.3 Three Calls, Error 2
+timeout 15000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test OpenNewCall 1 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+// *******************
+// 1: hold
+// *******************
+
+// Step 2
+print Step_2
+
+test OpenNewCall 2 0 RecipientTwo 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 2 0 SubAddress Bearer
+test WaitEvent 2 Dialling
+test WaitEvent 2 Connecting
+test WaitEvent 2 Connected
+
+// *******************
+// 1: hold
+// 2: connected
+// *******************
+
+// Step 3
+print Step_3
+
+// Trigger ICM
+test InitIncomingCall
+
+// Wait plugin to initialize
+test Delay 1000
+
+// Send plugin command, MT call with CallID 3 is created
+// call goes to Queued state
+test SendPluginRequest CreateCall 2
+test WaitEvent 0 IncomingCall
+test WaitEvent 3 Queued		// event 10
+
+// *******************
+// 1: hold
+// 2: connected
+// 3: queued
+// *******************
+
+// Step 4
+print Step_4
+
+// Answer cannot be executed because there is a connected call
+test Answer 3 -14
+
+// Reject call with HangUp
+test HangUp 3 0
+
+test WaitEvent 3 Disconnecting
+test WaitEvent 3 Idle
+test Release 3 0
+
+// *******************
+// 1: hold
+// 2: connected
+// *******************
+
+// Step 5
+print Step_5
+
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+// *******************
+// 2: connected
+// *******************
+
+// Step 6
+print Step_6
+
+// Request MT call from CS plugin
+test SendPluginRequest 2 CreateCall 1
+
+test WaitEvent 0 IncomingCall
+test WaitEvent 4 Queued
+
+// *******************
+// 2: connected
+// 4: queued
+// *******************
+
+// Step 7
+print Step_7
+
+// Answer autoholds call 2
+test Answer 4 0
+
+test WaitEvents 2 Hold, 4 Answering, 4 Connected, 2 LocalHold
+
+// *******************
+// 2: hold
+// 4: connected
+// *******************
+
+// Step 8
+print Step_8
+
+test HangUp 2 0
+test WaitEvent 2 Disconnecting
+test WaitEvent 2 Idle
+test Release 2 0
+
+// *******************
+// 4: connected
+// *******************
+
+// Step 9
+print Step_9
+
+test HangUp 4 0
+test WaitEvent 4 Disconnecting
+test WaitEvent 4 Idle
+test Release 4 0
+
+test VerifyTest
+delete test
+[Endtest]

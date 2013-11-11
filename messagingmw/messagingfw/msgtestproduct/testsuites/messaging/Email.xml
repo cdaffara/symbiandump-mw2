@@ -1,0 +1,20 @@
+<?xml version="1.0" ?> 
+<!DOCTYPE testSuite SYSTEM "file:///c:/program files/common files/symbian/testSuite.dtd" [ ]>
+
+<testSuite>
+	<name>Email</name> 
+
+	<testItems>
+		<suite>Pop</suite>
+		<suite>Smtp</suite>
+		<suite>Imap</suite>
+	</testItems>
+
+	<testExecuteServers>
+		<server>T_MsgCommonServer</server>
+		<server>T_MsgImapServer</server>
+		<server>T_MsgPopServer</server>
+		<server>T_MsgSmtpServer</server>
+	</testExecuteServers>
+
+</testSuite>

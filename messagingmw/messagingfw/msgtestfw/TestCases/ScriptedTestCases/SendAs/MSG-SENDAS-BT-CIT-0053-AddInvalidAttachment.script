@@ -1,0 +1,60 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+//! @SYMTestCaseID		CM-SENDAS-BT-CIT-0053-HP
+//! @SYMTestCaseDesc		Negative Test - Attach an invalid file with BT message
+//! @SYMTestStatus		Implemented
+//! @SYMTestPriority		High
+//! @SYMTestActions		Get base constants & BT MTM Uid
+//!				Create a session
+//!				Reset the Message store for cleanup
+//!				Create Registry & Service
+//!				Connect to SendAs2 server
+//!				Create a BT Message
+//!				Add a recipitent
+//!				Attach a invalid text file
+//!				Save and close the server
+//!				Disconnect the server
+//!
+//! @SYMTestExpectedResults	error code: -1 (The Attachment should not be added to Message with proper information)
+//! @SYMTestType		CIT
+
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+GetBaseConstants		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0053-AddInvalidAttachment.ini	GetBaseConstants
+CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0053-AddInvalidAttachment.ini	CreateSession
+ResetMessageStore		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0053-AddInvalidAttachment.ini	ResetMessageStore
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0053-AddInvalidAttachment.ini	ChkChildrenCountDraft0
+CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0053-AddInvalidAttachment.ini	CreateRegistry
+GetBTMTMUId			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0053-AddInvalidAttachment.ini	GetBtMtmUid
+CreateService			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0053-AddInvalidAttachment.ini	CreateBtService
+EXECUTE_TEST_CASE
+ConnectSendAsServer		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0053-AddInvalidAttachment.ini	ConnectSendAsServer
+SendAsCreateMessageofType	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0053-AddInvalidAttachment.ini	CreateMessageofType
+SendAsAddRecipient		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0053-AddInvalidAttachment.ini	SendAsAddRecipient
+SendAsAddAttachment		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0053-AddInvalidAttachment.ini	SendAsAddAttachment
+SendAsSaveMessageAndClose	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0053-AddInvalidAttachment.ini	CloseMessage
+CloseSendAsServerConnection	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0053-AddInvalidAttachment.ini	CloseSvrConnection
+CHECK_POSTCONDITIONS
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0053-AddInvalidAttachment.ini	ChkChildrenCountDraft1
+CheckErrorCode			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0053-AddInvalidAttachment.ini	CheckErrorCode
+END_TEST_CASE

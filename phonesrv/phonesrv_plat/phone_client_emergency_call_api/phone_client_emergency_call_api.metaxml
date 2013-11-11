@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<api id="afd7a962c145dcb51be7a6935efb8b5b" dataversion="1.0">
+  <name>Phone Client Emergency Call API</name>
+  <description>An interface for checking emrgency number and making emrgency call</description>
+  <type>c++</type>
+  <subsystem>phoneclientserver</subsystem>
+  <libs>
+    <lib name="PhoneClient.lib" />
+  </libs>
+  <release category="domain"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>yes</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

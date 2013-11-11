@@ -1,0 +1,9 @@
+EXPORTS
+	??1CSimpleSipConnection@@UAE@XZ @ 1 NONAME ; CSimpleSipConnection::~CSimpleSipConnection(void)
+	?CurrentSIPIdentityL@CSimpleSipConnection@@QAE?AVTPtrC8@@XZ @ 2 NONAME ; class TPtrC8 CSimpleSipConnection::CurrentSIPIdentityL(void)
+	?DispatchReqL@CSimpleSipConnection@@QAEXAAVMSimpleEngineRequest@@@Z @ 3 NONAME ; void CSimpleSipConnection::DispatchReqL(class MSimpleEngineRequest &)
+	?NewL@CSimpleSipConnection@@SAPAV1@XZ @ 4 NONAME ; class CSimpleSipConnection * CSimpleSipConnection::NewL(void)
+	?SIPState@CSimpleSipConnection@@QAE?AW4TSimpleSipState@@XZ @ 5 NONAME ; enum TSimpleSipState CSimpleSipConnection::SIPState(void)
+	?SIPStatus@CSimpleSipConnection@@QAEIHAAH@Z @ 6 NONAME ; unsigned int CSimpleSipConnection::SIPStatus(int, int &)
+	?SipSubscriptionState@CSimpleSipConnection@@QAE?AW4TSimpleSipSubscriptionState@MSimpleEngineRequest@@AAV3@@Z @ 7 NONAME ; enum MSimpleEngineRequest::TSimpleSipSubscriptionState CSimpleSipConnection::SipSubscriptionState(class MSimpleEngineRequest &)
+

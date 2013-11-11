@@ -1,0 +1,79 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//!	@SYMTestCaseID		EOS_1_1_SendSingleSMS_255Subj
+//!	@SYMTestCaseDesc	Exploratory Verification Test: Sending Email, with only <EmailToAddress> field, as Sms.
+//!	@SYMTestPriority	HIGH
+//!   	@SYMTestType		CIT
+//!  	@SYMTestStatus		Implemented
+//!	@SYMTestActions		1.Reset Message Store and Central Repository to default state.
+//!				2.Initialise SimTsy
+//!				3.Set SmsService Settings
+//!				4.Create a Email over Sms with message containing following fields 
+//!					EmailToAddress=UserName<test@test.com>
+//!					SentToAddress=+44111111111
+//!				5. Send the message
+//!	@SYMTestExpectedResults		Message with <EmailToAddress> field should be sent
+//!	@SYMAuthor		Mrudul V. Pendharkar
+
+	
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_UTILS CopyFile c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSms\EOS_1_1_SendSingleSMS_WoSubBodyConfig.txt C:\config.txt
+
+RUN_TEST_STEP 300 MessagingTestServer BEGIN_TEST_CASE
+RUN_TEST_STEP 300 MessagingTestServer SETUP_TEST_CASE
+
+RUN_TEST_STEP 300 MessagingTestServer InitializeSimTsy c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini Init1
+RUN_TEST_STEP 300 MessagingTestServer StartWatchers c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini StartWatchers
+RUN_TEST_STEP 300 MessagingTestServer Sleep c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini Sleep10
+RUN_TEST_STEP 300 MessagingTestServer GetBaseConstants c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini GetBaseConstants
+RUN_TEST_STEP 300 MessagingTestServer SetDefaultSmsSettings c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini SetSettingsFile
+RUN_TEST_STEP 300 MessagingTestServer SetDefaultConfiguration c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini SetSmsMessageConfigFile
+RUN_TEST_STEP 300 MessagingTestServer CreateSession c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini CreateSession
+RUN_TEST_STEP 350 MessagingTestServer ResetMessageStore	c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini ResetMessageStore
+RUN_TEST_STEP 300 MessagingTestServer CreateRegistry c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini CreateRegistry
+RUN_TEST_STEP 300 MessagingTestServer CreateSmsService c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini CreateSmsService
+RUN_TEST_STEP 300 MessagingTestServer SetSmsServiceSettings c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini SetSmsSettings
+RUN_TEST_STEP 300 MessagingTestServer SetSchSendSettings c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini SetSchSendSettings
+RUN_TEST_STEP 300 MessagingTestServer CreateMtm c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini CreateMtm
+
+RUN_TEST_STEP 300 MessagingTestServer EXECUTE_TEST_CASE
+
+RUN_TEST_STEP 300 MessagingTestServer DeleteChildren c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini EmptyOutbox
+RUN_TEST_STEP 300 MessagingTestServer DeleteChildren c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini EmptySent
+RUN_TEST_STEP 300 MessagingTestServer DeleteChildren c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini EmptyInbox
+
+RUN_TEST_STEP 300 MessagingTestServer GetSmsConstants c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini GetSmsConstants
+RUN_TEST_STEP 300 MessagingTestServer CreateEmailOverSmsMessage c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini CreateMessage
+RUN_TEST_STEP 300 MessagingTestServer CreateSelection c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini CreateSelection
+RUN_TEST_STEP 300 MessagingTestServer GetDefaultAppendToSelection c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini AppendToSelection
+RUN_TEST_STEP 300 MessagingTestServer SetNetworkRegistrationStatus c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini NetAvailable
+RUN_TEST_STEP 300 MessagingTestServer SetSignalStrength c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini NetStrengthHigh
+RUN_TEST_STEP 300 MessagingTestServer Sleep c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini Sleep3
+RUN_TEST_STEP 300 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini CheckChildrenCountOutbox1
+
+//Send Sms
+RUN_TEST_STEP 300 MessagingTestServer ExecuteMtmCommand c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini ScheduleMessage
+RUN_TEST_STEP 300 MessagingTestServer CheckMessageSendingState c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini MsgSent
+
+RUN_TEST_STEP 300 MessagingTestServer CHECK_POSTCONDITIONS
+
+RUN_TEST_STEP 300 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini CheckChildrenCountOutbox0
+RUN_TEST_STEP 300 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini CheckChildrenCountSent1
+RUN_TEST_STEP 300 MessagingTestServer UnloadPhoneModule c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS_WoSubBody.ini UnloadPhoneModule
+
+RUN_TEST_STEP 300 MessagingTestServer END_TEST_CASE

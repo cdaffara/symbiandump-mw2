@@ -1,0 +1,194 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+LOAD_SERVER t_media  -SharedData
+
+//! @file			
+//! @SYMTestSuiteName		MSG-DYNAMICVIEW-OPS
+//! @SYMScriptTestEnvironment   Details as in below:-
+//!				1. nt-ras connection or winpcap
+//!				2. email servers ( communigatePro or ms exchange)
+//!				3. test driver
+//!				4. testexecute framework(TEF3.0)
+//!				
+//! @SYMScriptPurpose		Integration testing of PREQ557-"Improved support in Messaging for removable media"
+//! @SYMScriptCreationDate	04/04/2008
+
+
+START_TESTCASE	MSG-DYNAMICVIEW-OPS-0001
+//! 	@SYMTestCaseID		MSG-DYNAMICVIEW-OPS-0001
+//! 	@SYMTestCaseDesc	View messages across multiple drives 
+//!				
+//!	@SYMREQ			REQ9045, REQ9166 and REQ9047
+//!	@SYMPREQ 		PREQ557
+//!	@SYMAPI			void CMsvSession::DriveListL(RArray<TDriveNumber>& aDriveList)
+//!				void CMsvSession::AvailableDriveListL(RArray<TDriveNumber>& aDriveList)
+//!				void CMsvSession::CurrentDriveInfo (TDriveNumber& aDrive, Tint& aPriority)
+//!				
+//!				void CMsvSession::UpdateDrivePriorityL (TDriveNumber aDrive, TInt& aPriority)
+//!				CMsvEntrySelection* CMsvEntry::ChildrenOfAvailableDrivesL()
+//!				void GetChildIdsAllL (TMsvId aId, const CMsvEntryFilter &aFilter, CMsvEntrySelection& aSelection);
+//!				
+//!				
+//!	@SYMTestCaseDependencies msg-sms-message.script
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1. Intialize the preferred drives with accounts and messages (run the msg-sms-message.script)
+//!				2. Check standard folders and sms messages of all drive are visible
+//!				
+//! 	@SYMTestExpectedResults 1. Accounts and messages should be created in all drives
+//!				2. All standard folders should be visible
+//!				
+//!	@SYMAuthor		Rajat Bal
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-dynamicview-ops.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-dynamicview-0001.ini	c:\private\1000484b\msgprioritydrivelist.ini
+
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-dynamicview-ops.ini
+		CREATE_OBJECT	MediaTestWrapper	0001_obj_1
+		COMMAND		0001_obj_1		New		0001_obj_1
+		COMMAND		0001_obj_1		GetDrivelist	0001_GetDrivelist_1
+		COMMAND		0001_obj_1		GetAvailableDriveList	0001_GetAvailableDriveList_1
+		STORE		0001_obj_1		
+		COMMAND		0001_obj_1		GetCurrentDrive	0001_GetCurrentDrive_1
+	END_TEST_BLOCK	
+
+RUN_UTILS DeleteFile c:\messaging.db
+RUN_SCRIPT c:\msgtest\media\msg-sms-message.script
+
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-dynamicview-ops.ini
+		RESTORE_OBJECT	MediaTestWrapper	0001_obj_1
+		COMMAND		0001_obj_1		UpdateDrive	0001_UpdateDrive_high
+		STORE		0001_obj_1		
+		COMMAND		0001_obj_1		GetCurrentDrive	0001_GetCurrentDrive_2
+	END_TEST_BLOCK
+
+RUN_UTILS DeleteFile d:\messaging.db
+RUN_SCRIPT c:\msgtest\media\msg-sms-message.script
+	
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-dynamicview-ops.ini
+		RESTORE_OBJECT	MediaTestWrapper	0001_obj_1
+		COMMAND		0001_obj_1		ChildrenOfAvailableDrives	0001_ChildrenOfAvailableDrives_1
+		COMMAND		0001_obj_1		GetChildIdsAll		0001_GetChildIdsAll_1
+	END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+
+END_TESTCASE	MSG-DYNAMICVIEW-OPS-0001
+
+
+START_TESTCASE	MSG-DYNAMICVIEW-OPS-0002
+//! 	@SYMTestCaseID		MSG-DYNAMICVIEW-OPS-0002
+//! 	@SYMTestCaseDesc	View messages when there is no drive in the preferred drive list
+//!				
+//!	@SYMREQ			REQ9045 and REQ9047
+//!	@SYMPREQ 		PREQ557
+//!	@SYMAPI			void CMsvSession::DriveListL(RArray<TDriveNumber>& aDriveList)
+//!				void CMsvSession::AvailableDriveListL(RArray<TDriveNumber>& aDriveList)
+//!				void CMsvSession::CurrentDriveInfo (TDriveNumber& aDrive, Tint& aPriority)
+//!				
+//!				void CMsvSession::UpdateDrivePriorityL (TDriveNumber aDrive, TInt& aPriority)
+//!				CMsvEntrySelection* CMsvEntry::ChildrenOfAvailableDrivesL()
+//!				void GetChildIdsAllL (TMsvId aId, const CMsvEntryFilter &aFilter, CMsvEntrySelection& aSelection);
+//!				
+//!	@SYMTestCaseDependencies Set preferred drive configuration file(msgprioritydrivelist.ini) is empty
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1. Copy the existing preferred drive configuration file 
+//!				   Z:\private\1000484b\msgPriorityDriveList.ini to Z:\private\1000484b\msgPriorityDriveList.bak
+//!				2. Copy an empty configuration file 
+//!				   C:\msgtest\media\msgPriorityDriveList_empty.ini to Z:\private\1000484b\msgPriorityDriveList.ini
+//!				3. Start message server
+//!				4. Check the drive list
+//!				5. Check the available drive list
+//!				6. Get the current drive
+//!				Note: which will return the system drive(C:) as the current drive
+//!				7. Cleanup all messages(C: drive)
+//!				8. Create a sms account
+//!				9. Create and send an sms message of body text size of 10kb
+//!				10. Download the sms message to current drive
+//!				11. Check there is a sms message in inbox of sms account(standard folder)
+//!				
+//!				12. Copy the backup preferred drive configuration file 
+//!				    Z:\private\1000484b\msgPriorityDriveList.bak to Z:\private\1000484b\msgPriorityDriveList.ini
+//!				
+//! 	@SYMTestExpectedResults 1. Backup the existing configuration file 
+//!				2. Replaced the existing file with a empty one
+//!				3. Message server should start
+//!				4. Only system drive is present
+//!				5. Only system drive is present
+//!				6. Current drive should be the C: drive
+//!				7. Deleted all messages
+//!				8. Created a sms account
+//!				9. Created and sent a sms 
+//!				10. Download completed
+//!				11. One sms is there
+//!				12. Rollback to old configuration file
+//!				
+//!	@SYMAuthor		Rajat Bal
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-dynamicview-ops.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-dynamicview-0002.ini	c:\private\1000484b\msgprioritydrivelist.ini
+
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-dynamicview-ops.ini
+		CREATE_OBJECT	MediaTestWrapper	0002_obj_1
+		COMMAND		0002_obj_1		New		0002_obj_1
+		COMMAND		0002_obj_1		GetDrivelist	0002_GetDrivelist_1
+		COMMAND		0002_obj_1		GetAvailableDriveList	0002_GetAvailableDriveList_1
+		STORE		0002_obj_1		
+		COMMAND		0002_obj_1		GetCurrentDrive	0002_GetCurrentDrive_1
+	END_TEST_BLOCK	
+
+RUN_UTILS DeleteFile c:\messaging.db
+RUN_SCRIPT c:\msgtest\media\msg-sms-message.script
+	
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-dynamicview-ops.ini
+		RESTORE_OBJECT	MediaTestWrapper	0002_obj_1
+		COMMAND		0002_obj_1		ChildrenOfAvailableDrives	0002_ChildrenOfAvailableDrives_Sent
+		COMMAND !Error=-6 0002_obj_1		GetChildIdsAll			0002_GetChildIdsAll_Root
+		COMMAND !Error=-6 0002_obj_1		GetChildIdsAll			0002_GetChildIdsAll_LocalService
+		COMMAND		0002_obj_1		GetChildIdsAll			0002_GetChildIdsAll_Sent
+	END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+
+END_TESTCASE	MSG-DYNAMICVIEW-OPS-0002
+

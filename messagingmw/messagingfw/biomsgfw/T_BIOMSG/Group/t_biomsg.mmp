@@ -1,0 +1,38 @@
+// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// t_biomsg.mmp
+//
+
+EPOCSTACKSIZE		0x4000
+TARGET			t_biomsg.exe
+TARGETTYPE		exe
+
+CAPABILITY All -TCB
+UID				0x1000007A 0x102732EA
+VENDORID 0x70000001
+SOURCEPATH		../SRC
+SOURCE 			t_biomsg.cpp testframeutils.cpp harness.cpp parsers.cpp testframeparse.cpp commands.cpp
+USERINCLUDE		../INC ../../../../../../app/messaging/email/pop3andsmtpmtm/clientmtms/inc
+USERINCLUDE		../../BITSINC ../../BIUTINC
+USERINCLUDE   ../../BIOSINC
+USERINCLUDE	../../../msgtest/testutils/base/inc
+USERINCLUDE	../../../msgtest/testutils/email/inc
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+LIBRARY			euser.lib efsrv.lib msvtestutils.lib msgs.lib estor.lib imcm.lib bits.lib
+LIBRARY       	biodb.lib bifu.lib biut.lib bafl.lib commsdat.lib smcm.lib charconv.lib
+#ifdef SYMBIAN_BOOKMARK_DATABASE
+LIBRARY			bookmarkdb.lib
+#endif // SYMBIAN_BOOKMARK_DATABASE
+
+SMPSAFE

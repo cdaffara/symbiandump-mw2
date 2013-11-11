@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qtg_large_tb_dialler.svg</file>
+        <file>qgn_prop_pb_comm_call_large.svg</file>
+    </qresource>
+</RCC>

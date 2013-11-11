@@ -1,0 +1,50 @@
+EXPORTS
+	_Z8StartsAtRK15TMsvOffPeakTimeRK5TTime @ 1 NONAME
+	_ZN17CSchSendTestTimer4NewLEi @ 2 NONAME
+	_ZN17CSchSendTestUtils10ConstructLEv @ 3 NONAME
+	_ZN17CSchSendTestUtils10DiffInMinsE5TTimeS0_ @ 4 NONAME
+	_ZN17CSchSendTestUtils10DiffInSecsE5TTimeS0_ @ 5 NONAME
+	_ZN17CSchSendTestUtils15CreateMessageLCER9TMsvEntryl5TTimei @ 6 NONAME
+	_ZN17CSchSendTestUtils17InstallMtmGroupsLEv @ 7 NONAME
+	_ZN17CSchSendTestUtils18ChangeMessageTimeLEl5TTime @ 8 NONAME
+	_ZN17CSchSendTestUtils20CleanScheduleFolderLEv @ 9 NONAME
+	_ZN17CSchSendTestUtils20CreateServerMtmRegsLEv @ 10 NONAME
+	_ZN17CSchSendTestUtils20DisplayAllSchedulesLERiS0_ @ 11 NONAME
+	_ZN17CSchSendTestUtils5PanicEi @ 12 NONAME
+	_ZN17CSchSendTestUtils6StartLEv @ 13 NONAME
+	_ZN17CSchSendTestUtils7AssertLEi @ 14 NONAME
+	_ZN17CSchSendTestUtilsC2ER5RTest @ 15 NONAME
+	_ZN17CSchSendTestUtilsD0Ev @ 16 NONAME
+	_ZN17CSchSendTestUtilsD1Ev @ 17 NONAME
+	_ZN17CSchSendTestUtilsD2Ev @ 18 NONAME
+	_ZN19CScheduleTestActive20TransferCommandSyncLE21TSchSendTestOperationRK18CMsvEntrySelectionRK6TDesC8i @ 19 NONAME
+	_ZN19CScheduleTestActive20TransferCommandSyncLE21TSchSendTestOperationRK18CMsvEntrySelectioni @ 20 NONAME
+	_ZN19CScheduleTestActive4NewLER17CSchSendTestUtilsi @ 21 NONAME
+	_ZN19CScheduleTestActiveD0Ev @ 22 NONAME
+	_ZN19CScheduleTestActiveD1Ev @ 23 NONAME
+	_ZN19CScheduleTestActiveD2Ev @ 24 NONAME
+	_ZN24CSchSendTestWaitForState4NewLER17CSchSendTestUtils @ 25 NONAME
+	_ZN24CSchSendTestWaitForState5ResetEv @ 26 NONAME
+	_ZN24CSchSendTestWaitForState6StartLERK18CMsvEntrySelection @ 27 NONAME
+	_ZN24CSchSendTestWaitForState6StartLERK18CMsvEntrySelection27TTimeIntervalMicroSeconds32 @ 28 NONAME
+	_ZN24CSchSendTestWaitForStateD0Ev @ 29 NONAME
+	_ZN24CSchSendTestWaitForStateD1Ev @ 30 NONAME
+	_ZN24CSchSendTestWaitForStateD2Ev @ 31 NONAME
+	_ZNK17CSchSendTestUtils15RoundUpToMinuteERK5TTime @ 32 NONAME
+	_ZNK17CSchSendTestUtils17RoundDownToMinuteERK5TTime @ 33 NONAME
+	_ZNK17CSchSendTestUtils19CompareRoundedTimesERK5TTimeS2_ @ 34 NONAME
+	_ZTI17CSchSendTestUtils @ 35 NONAME ; #<TI>#
+	_ZTV17CSchSendTestUtils @ 36 NONAME ; #<VT>#
+	_ZeqRK15TMsvOffPeakTimeS1_ @ 37 NONAME
+	_ZeqRK19TMsvSchedulePackageS1_ @ 38 NONAME
+	_ZeqRK19TMsvSendErrorActionS1_ @ 39 NONAME
+	_ZeqRK20CMsvScheduleSettingsS1_ @ 40 NONAME
+	_ZeqRK20CMsvSendErrorActionsS1_ @ 41 NONAME
+	_ZlsR5RTest5TTime @ 42 NONAME
+	_ZTI17CSchSendTestTimer @ 43 NONAME ; #<TI>#
+	_ZTI19CScheduleTestActive @ 44 NONAME ; #<TI>#
+	_ZTI24CSchSendTestWaitForState @ 45 NONAME ; #<TI>#
+	_ZTV17CSchSendTestTimer @ 46 NONAME ; #<VT>#
+	_ZTV19CScheduleTestActive @ 47 NONAME ; #<VT>#
+	_ZTV24CSchSendTestWaitForState @ 48 NONAME ; #<VT>#
+

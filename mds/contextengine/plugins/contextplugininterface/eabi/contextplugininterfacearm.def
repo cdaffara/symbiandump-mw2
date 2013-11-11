@@ -1,0 +1,9 @@
+EXPORTS
+	_ZN14CContextPlugin20ListImplementationsLER13RPointerArrayI26CImplementationInformationE @ 1 NONAME
+	_ZN14CContextPlugin4NewLERK4TUid @ 2 NONAME
+	_ZN14CContextPluginD0Ev @ 3 NONAME
+	_ZN14CContextPluginD1Ev @ 4 NONAME
+	_ZN14CContextPluginD2Ev @ 5 NONAME
+	_ZTI14CContextPlugin @ 6 NONAME ; #<TI>#
+	_ZTV14CContextPlugin @ 7 NONAME ; #<VT>#
+

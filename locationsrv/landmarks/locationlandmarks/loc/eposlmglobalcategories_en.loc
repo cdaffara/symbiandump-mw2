@@ -1,0 +1,177 @@
+/*
+* Copyright (c) 2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: Localization strings for global categories
+*
+*
+*/
+
+
+//r:
+//v:
+//i:LOCALISATION_TARGET = s60,s90
+//i:Default Landmark category names, that can be displayed on UI.
+
+// LOCALISATION STRINGS
+
+//b:-1
+//e:-1
+//f:EDialogLabelFont
+//s:
+//w:
+//d:Global category level 1 number 1 name.
+//l:list_single_pane_t1_cp2
+//
+#define qtn_poslm_category_lvl1_1 "Accommodation"
+
+//b:-1
+//e:-1
+//f:EDialogLabelFont
+//s:
+//w:
+//d:Global category level 1 number 2 name.
+//l:list_single_pane_t1_cp2
+//
+#define qtn_poslm_category_lvl1_2 "Business"
+
+//b:-1
+//e:-1
+//f:EDialogLabelFont
+//s:
+//w:
+//d:Global category level 1 number 3 name.
+//l:list_single_pane_t1_cp2
+//
+#define qtn_poslm_category_lvl1_3 "Communication"
+
+//b:-1
+//e:-1
+//f:EDialogLabelFont
+//s:
+//w:
+//d:Global category level 1 number 4 name.
+//l:list_single_pane_t1_cp2
+//
+#define qtn_poslm_category_lvl1_4 "Educational institute"
+
+//b:-1
+//e:-1
+//f:EDialogLabelFont
+//s:
+//w:
+//d:Global category level 1 number 5 name.
+//l:list_single_pane_t1_cp2
+//
+#define qtn_poslm_category_lvl1_5 "Entertainment"
+
+//b:-1
+//e:-1
+//f:EDialogLabelFont
+//s:
+//w:
+//d:Global category level 1 number 6 name.
+//l:list_single_pane_t1_cp2
+//
+#define qtn_poslm_category_lvl1_6 "Food & Beverage"
+
+//b:-1
+//e:-1
+//f:EDialogLabelFont
+//s:
+//w:
+//d:Global category level 1 number 7 name.
+//l:list_single_pane_t1_cp2
+//
+#define qtn_poslm_category_lvl1_7 "Geographical Area"
+
+//b:-1
+//e:-1
+//f:EDialogLabelFont
+//s:
+//w:
+//d:Global category level 1 number 8 name.
+//l:list_single_pane_t1_cp2
+//
+#define qtn_poslm_category_lvl1_8 "Outdoor activities"
+
+//b:-1
+//e:-1
+//f:EDialogLabelFont
+//s:
+//w:
+//d:Global category level 1 number 9 name.
+//l:list_single_pane_t1_cp2
+//
+#define qtn_poslm_category_lvl1_9 "People"
+
+//b:-1
+//e:-1
+//f:EDialogLabelFont
+//s:
+//w:
+//d:Global category level 1 number 10 name.
+//l:list_single_pane_t1_cp2
+//
+#define qtn_poslm_category_lvl1_10 "Public service"
+
+//b:-1
+//e:-1
+//f:EDialogLabelFont
+//s:
+//w:
+//d:Global category level 1 number 11 name.
+//l:list_single_pane_t1_cp2
+//
+#define qtn_poslm_category_lvl1_11 "Religious places"
+
+//b:-1
+//e:-1
+//f:EDialogLabelFont
+//s:
+//w:
+//d:Global category level 1 number 12 name.
+//l:list_single_pane_t1_cp2
+//
+#define qtn_poslm_category_lvl1_12 "Shopping"
+
+//b:-1
+//e:-1
+//f:EDialogLabelFont
+//s:
+//w:
+//d:Global category level 1 number 13 name.
+//l:list_single_pane_t1_cp2
+//
+#define qtn_poslm_category_lvl1_13 "Sightseeing"
+
+//b:-1
+//e:-1
+//f:EDialogLabelFont
+//s:
+//w:
+//d:Global category level 1 number 14 name.
+//l:list_single_pane_t1_cp2
+//
+#define qtn_poslm_category_lvl1_14 "Sports"
+
+//b:-1
+//e:-1
+//f:EDialogLabelFont
+//s:
+//w:
+//d:Global category level 1 number 15 name.
+//l:list_single_pane_t1_cp2
+//
+#define qtn_poslm_category_lvl1_15 "Transport"
+
+// End of File

@@ -1,0 +1,25 @@
+<ASX version = "3.0">   
+        <ABSTRACT>Unknown Abstract Info</ABSTRACT>
+        <TITLE>Unknown Title</TITLE>   
+        <AUTHOR>Unknown Author</AUTHOR>   
+        <COPYRIGHT>2008 by Nokia</COPYRIGHT>   
+        <MOREINFO HREF = "rtsp://195.134.224.240:554/t3.3gp" />   
+        <ENTRY>      
+                <TITLE>Link 1</TITLE>     
+                <COPYRIGHT>2008 Nokia</COPYRIGHT>      
+                <MOREINFO HREF = "http://www.microsoft.com/windows/windowsmedia"></MOREINFO>      
+                <REF HREF = "http://10.48.2.56:443/WMTest/256k_WMV9_QCIF_WMA9_30fps.wmv" />   
+        </ENTRY>
+        <ENTRY>      
+                <TITLE>Link 2</TITLE>     
+                <COPYRIGHT>2008 Nokia</COPYRIGHT>      
+                <MOREINFO HREF = "http://www.microsoft.com/windows/windowsmedia"></MOREINFO>      
+                <REF HREF = "http://10.48.2.56:443/WMTest/KennyRogers-LoveLiftedMe.wma" />   
+        </ENTRY>
+        <ENTRY>      
+                <TITLE>Link 3</TITLE>     
+                <COPYRIGHT>2008 Nokia</COPYRIGHT>      
+                <MOREINFO HREF = "http://www.microsoft.com/windows/windowsmedia"></MOREINFO>      
+                <REF HREF = "http://10.48.2.56:443/WMTest/Kill_Kevin_01_US_s.wmv" />   
+        </ENTRY>
+</ASX>

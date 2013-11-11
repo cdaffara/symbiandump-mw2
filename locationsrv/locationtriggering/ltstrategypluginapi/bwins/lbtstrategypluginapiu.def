@@ -1,0 +1,11 @@
+EXPORTS
+	??0CLbtStrategyBase@@IAE@XZ @ 1 NONAME ; CLbtStrategyBase::CLbtStrategyBase(void)
+	??1CLbtStrategyBase@@UAE@XZ @ 2 NONAME ; CLbtStrategyBase::~CLbtStrategyBase(void)
+	?BaseConstructL@CLbtStrategyBase@@IAEXPAX@Z @ 3 NONAME ; void CLbtStrategyBase::BaseConstructL(void *)
+	?CLbtStrategy_Reserved1@CLbtStrategyBase@@EAEXXZ @ 4 NONAME ; void CLbtStrategyBase::CLbtStrategy_Reserved1(void)
+	?CLbtStrategy_Reserved2@CLbtStrategyBase@@EAEXXZ @ 5 NONAME ; void CLbtStrategyBase::CLbtStrategy_Reserved2(void)
+	?GetTriggeringSupervisionSettings@CLbtStrategyBase@@QAEXAAUTLbtStrategyTriggeringSupervisionSettings@@@Z @ 6 NONAME ; void CLbtStrategyBase::GetTriggeringSupervisionSettings(struct TLbtStrategyTriggeringSupervisionSettings &)
+	?NewL@CLbtStrategyBase@@SAPAV1@PAX@Z @ 7 NONAME ; class CLbtStrategyBase * CLbtStrategyBase::NewL(void *)
+	?SetTriggeringSupervisionDynamicInfo@CLbtStrategyBase@@QAEXABUTLbtStrategySupervisionDynamicInfo@@@Z @ 8 NONAME ; void CLbtStrategyBase::SetTriggeringSupervisionDynamicInfo(struct TLbtStrategySupervisionDynamicInfo const &)
+	?TriggerFiredL@CLbtStrategyBase@@QAEXW4TGeoAreaType@CLbtGeoAreaBase@@KABVTPositionInfo@@@Z @ 9 NONAME ; void CLbtStrategyBase::TriggerFiredL(enum CLbtGeoAreaBase::TGeoAreaType, unsigned long, class TPositionInfo const &)
+

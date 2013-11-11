@@ -1,0 +1,46 @@
+/*
+* Copyright (c) 1028 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:    Ecom resources for Provisioning Adapter to provision Presence Settings
+*
+*/
+
+
+
+
+#include <registryinfo.rh>
+#include "../inc/presenceprovuid.h"
+
+//Declares the interface implementations provided
+RESOURCE REGISTRY_INFO thePresProvRegistryInfo
+    {
+    dll_uid = KPresProvAdapterDll;
+    interfaces = 
+        {
+        INTERFACE_INFO
+            {
+            interface_uid = KPresProvAdapterInterface;
+            implementations = 
+                {
+                IMPLEMENTATION_INFO
+                    {
+                    implementation_uid = KPresProvAdapterImplementation;
+                    version_no = 1;
+                    display_name = "Presence Provisioning Plugin||Copyright © 2006 Nokia Corporation. All rights reserved.";
+                    default_data = "";
+                    opaque_data = "";
+                    }
+                };
+            }
+        };
+    }

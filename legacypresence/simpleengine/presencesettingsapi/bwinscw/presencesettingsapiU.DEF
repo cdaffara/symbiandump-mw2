@@ -1,0 +1,13 @@
+EXPORTS
+	??0TPresSettingsSet@@QAE@XZ @ 1 NONAME ; TPresSettingsSet::TPresSettingsSet(void)
+	?CreateSetL@PresSettingsApi@@SAHVTPresSettingsSet@@@Z @ 2 NONAME ; int PresSettingsApi::CreateSetL(class TPresSettingsSet)
+	?DecodePropertyStatus@PresSettingsApi@@SA?AW4TPresPropStatus@@HW4TPresSettingsProperty@@@Z @ 3 NONAME ; enum TPresPropStatus PresSettingsApi::DecodePropertyStatus(int, enum TPresSettingsProperty)
+	?EncodePropertyStatus@PresSettingsApi@@SAXAAHW4TPresPropStatus@@W4TPresSettingsProperty@@@Z @ 4 NONAME ; void PresSettingsApi::EncodePropertyStatus(int &, enum TPresPropStatus, enum TPresSettingsProperty)
+	?GetAllSetsNamesLC@PresSettingsApi@@SAPAVCDesC16Array@@AAV?$RArray@H@@@Z @ 5 NONAME ; class CDesC16Array * PresSettingsApi::GetAllSetsNamesLC(class RArray<int> &)
+	?IsStr@PresSettingsApi@@SAHW4TPresSettingsProperty@@@Z @ 6 NONAME ; int PresSettingsApi::IsStr(enum TPresSettingsProperty)
+	?RemoveSetL@PresSettingsApi@@SAHH@Z @ 7 NONAME ; int PresSettingsApi::RemoveSetL(int)
+	?SettingsSetL@PresSettingsApi@@SAHHAAVTPresSettingsSet@@@Z @ 8 NONAME ; int PresSettingsApi::SettingsSetL(int, class TPresSettingsSet &)
+	?UpdatePropertyL@PresSettingsApi@@SAHHW4TPresSettingsProperty@@ABVTDesC16@@@Z @ 9 NONAME ; int PresSettingsApi::UpdatePropertyL(int, enum TPresSettingsProperty, class TDesC16 const &)
+	?UpdatePropertyL@PresSettingsApi@@SAHHW4TPresSettingsProperty@@H@Z @ 10 NONAME ; int PresSettingsApi::UpdatePropertyL(int, enum TPresSettingsProperty, int)
+	?UpdateSetL@PresSettingsApi@@SAHVTPresSettingsSet@@H@Z @ 11 NONAME ; int PresSettingsApi::UpdateSetL(class TPresSettingsSet, int)
+

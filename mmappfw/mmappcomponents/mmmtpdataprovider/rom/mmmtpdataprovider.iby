@@ -1,0 +1,47 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Image description file for project ?myapp
+*
+*/
+
+#ifndef MMMTPDATAPROVIDER_IBY
+#define MMMTPDATAPROVIDER_IBY
+
+#include <data_caging_paths_for_iby.hrh>
+
+// stub file for MTP upgrade with SISX (required by Platform security)
+data=ZSYSTEM\install\mmmtpdpstub.sis          System\install\mmmtpdpstub.sis
+
+/* 
+* Media Data Provider
+*/
+// MTP Data Provider API
+ECOM_PLUGIN(mediamtpdataprovider.dll, mediamtpdataprovider.rsc)
+
+// MTP plugin registration resource file
+data=\epoc32\data\Z\resource\mtp\10207C4B.rsc  resource\mtp\10207C4B.rsc 
+
+/*
+* Abstract Media Data Provider
+*/
+// MTP Data Provider API
+ECOM_PLUGIN(abstractmediamtpdataprovider.dll, abstractmediamtpdataprovider.rsc)
+
+// MTP plugin registration resource file
+data=\epoc32\data\Z\resource\mtp\10207C53.rsc  resource\mtp\10207C53.rsc 
+
+// MTP multimedia request processor
+file=ABI_DIR\BUILD_DIR\mmmtpdprequestprocessor.dll    SHARED_LIB_DIR\mmmtpdprequestprocessor.dll
+
+#endif // MMMTPDATAPROVIDER_IBY

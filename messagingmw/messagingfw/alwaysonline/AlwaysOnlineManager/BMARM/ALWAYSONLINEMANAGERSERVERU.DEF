@@ -1,0 +1,5 @@
+EXPORTS
+	NewL__26CAlwaysOnlineManagerServer @ 1 NONAME R3UNUSED ; CAlwaysOnlineManagerServer::NewL(void)
+	ThreadFunction__26CAlwaysOnlineManagerServerPv @ 2 NONAME R3UNUSED ; CAlwaysOnlineManagerServer::ThreadFunction(void *)
+	WinsMain__Fv @ 3 NONAME R3UNUSED ; WinsMain(void)
+

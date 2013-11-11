@@ -1,0 +1,29 @@
+// Copyright (c) 2002-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+#ifndef __RTA_IBY__
+#define __RTA_IBY__
+
+file=ABI_DIR\BUILD_DIR\rtaclient.dll		System\Libs\rtaclient.dll
+file=ABI_DIR\BUILD_DIR\rtaserver.exe		System\Libs\rtaserver.exe
+file=ABI_DIR\BUILD_DIR\rtaparser.dll		System\Libs\rtaparser.dll
+file=ABI_DIR\BUILD_DIR\rtaarchive.dll		System\Libs\rtaarchive.dll
+file=ABI_DIR\BUILD_DIR\rtavirtualfile.dll	System\Libs\rtavirtualfile.dll
+
+ECOM_PLUGIN(reftestagent.dll,10205ea0.rsc)
+
+data=DATAZ_\rta\settings.ini			rta\settings.ini
+
+#endif

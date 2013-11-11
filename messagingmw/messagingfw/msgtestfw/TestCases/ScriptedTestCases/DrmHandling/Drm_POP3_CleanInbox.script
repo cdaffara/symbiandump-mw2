@@ -1,0 +1,63 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+// Support script for DRM Handling Tests
+//
+// Name: 
+// Drm_POP3_CleanInbox.script
+//
+// Purpose:
+// This scripts will connect to the POP account, synchronise
+// and delete all content in the inbox.
+// It will also delete all entries in the local message store.
+//
+// Constraints:
+// Needs WinTap or similar connection (NOT NT RAS) and a 
+// functioning POP3 account
+//
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+//CED c:\msgtest\TestFramework\Configurations\CommDbSettings\NtRasLongIdleTimeout.cfg
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer GetBaseConstants					c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_POP3_CleanInbox.ini GetBaseConstants
+RUN_TEST_STEP 100 MessagingTestServer InitNtRas							c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_POP3_CleanInbox.ini InitNtRas
+RUN_TEST_STEP 100 MessagingTestServer CreateSession						c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_POP3_CleanInbox.ini CreateSession
+
+RUN_TEST_STEP 100 MessagingTestServer CreatePop3Service					c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_POP3_CleanInbox.ini CreatePop3Service
+RUN_TEST_STEP 100 MessagingTestServer CreateRegistry					c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_POP3_CleanInbox.ini CreateRegistry
+RUN_TEST_STEP 100 MessagingTestServer SetDefaultConfiguration			c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_POP3_CleanInbox.ini SetDefaultConfigurationPOP3
+
+RUN_TEST_STEP 100 MessagingTestServer SetPop3ServiceParameters			c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_POP3_CleanInbox.ini SetPop3ServiceParameters
+RUN_TEST_STEP 100 MessagingTestServer CreatePop3Mtm						c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_POP3_CleanInbox.ini CreatePop3Mtm
+
+
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer ConnectPop3Server   				c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_POP3_CleanInbox.ini ConnectPop3Server
+RUN_TEST_STEP 100 MessagingTestServer DeleteChildren					c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_POP3_CleanInbox.ini DeleteChildren
+RUN_TEST_STEP 100 MessagingTestServer DisconnectPop3Server				c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_POP3_CleanInbox.ini DisconnectPop3Server
+
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount				c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_POP3_CleanInbox.ini CheckChildrenCount
+RUN_TEST_STEP 100 MessagingTestServer ResetMessageStore					c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_POP3_CleanInbox.ini ResetMessageStore
+
+RUN_TEST_STEP 100 MessagingTestServer END_TEST_CASE

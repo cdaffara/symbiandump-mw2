@@ -1,0 +1,23 @@
+// Copyright (c) 2004-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+#include "../sendastestmtm/group/bld.inf"
+#include "../sendastesteditutils/group/bld.inf"
+#include "../sendastextnotifier/group/bld.inf"
+#include "../unit/group/bld.inf"
+
+
+PRJ_TESTEXPORTS
+sendas2test.iby /epoc32/rom/include/sendas2test.iby

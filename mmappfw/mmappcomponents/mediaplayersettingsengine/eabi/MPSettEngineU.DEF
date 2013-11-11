@@ -1,0 +1,9 @@
+EXPORTS
+	_ZN16CMPSettingsModel20ListImplementationsLER13RPointerArrayI26CImplementationInformationE @ 1 NONAME
+	_ZN16CMPSettingsModel4NewLE4TUid @ 2 NONAME
+	_ZN16CMPSettingsModelD0Ev @ 3 NONAME
+	_ZN16CMPSettingsModelD1Ev @ 4 NONAME
+	_ZN16CMPSettingsModelD2Ev @ 5 NONAME
+	_ZTI16CMPSettingsModel @ 6 NONAME ; #<TI>#
+	_ZTV16CMPSettingsModel @ 7 NONAME ; #<VT>#
+

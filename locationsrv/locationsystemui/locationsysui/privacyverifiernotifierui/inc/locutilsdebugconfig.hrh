@@ -1,0 +1,33 @@
+/*
+* Copyright (c) 2010 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  This is the main build-time configuration file of Loc Utils
+*
+*/
+
+
+#ifndef LOCUTILSDEBUGCONFIG_HRH_
+#define LOCUTILSDEBUGCONFIG_HRH_
+
+//  INCLUDES
+
+// Flags for development:
+
+
+// Defined LOC_ENABLE_DEBUG_PRINT flag enables debug prints to a file.
+
+//#define LOC_ENABLE_DEBUG_PRINT
+
+#endif // LOCUTILSDEBUGCONFIG_HRH_
+
+// End of File

@@ -1,0 +1,61 @@
+/*
+* Copyright (c) 2000 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  
+*     This file contains the localised strings for msgs
+*
+*/
+
+
+
+//  LOCALISATION STRINGS
+
+// d: Main view list item. 
+// d: Inbox
+// l: list_single_large_graphic_pane_t1
+//
+#define qtn_mce_inbox "Inbox"
+
+// d: Main view list item. 
+// d: Documents
+// l: list_single_large_graphic_pane_t1
+//
+#define qtn_mce_documents "Documents"
+
+// d: Main view list item. 
+// d: Drafts
+// l: list_single_large_graphic_pane_t1
+//
+#define qtn_mce_drafts "Drafts"
+
+// d: Main view list item. 
+// d: Sent items
+// l: list_single_large_graphic_pane_t1
+//
+#define qtn_mce_sent_items "Sent items"
+
+// d: Main view list item. 
+// d: Outbox
+// l: list_single_large_graphic_pane_t1
+//
+#define qtn_mce_outbox "Outbox"
+
+// d: Documents view list item. First item of the list when Documents folder is opened.
+// l: list_double_graphic_pane_t1
+//
+#define qtn_mce_doc_temp_folder "Templates"
+
+
+// End of File
+
+

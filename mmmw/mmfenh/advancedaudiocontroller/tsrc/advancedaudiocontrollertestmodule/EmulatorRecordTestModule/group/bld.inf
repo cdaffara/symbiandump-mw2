@@ -1,0 +1,36 @@
+/*
+* Copyright (c) 2002 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  bld.inf file for audio reocrder test
+* Info : This bld.inf is created to run the BAT test cases for recorder on the * CI in Bangalore , so that the results are known within ten mins of a check * in for CI
+*
+*/
+
+
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_TESTEXPORTS
+../AudioRecorderBAT.cfg  /epoc32/winscw/c/TestFramework/AudioRecorderBAT.cfg
+../AudioRecorderTestModule.ini   /epoc32/winscw/c/TestFramework/AudioRecorderTestModule.ini
+../TestFrameworkRec.ini   /epoc32/winscw/c/TestFramework/TestFrameworkRec.ini
+
+
+/sf/mw/mmmw/mmfenh/advancedaudiocontroller/tsrc/advancedaudiocontrollertestmodule/AudioRecorderTestModule/data/mmc/record/test.txt /epoc32/winscw/c/testing/data/record/test.txt
+
+
+PRJ_TESTMMPFILES
+
+
+//  End of File

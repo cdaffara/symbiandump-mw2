@@ -1,0 +1,29 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+
+#ifndef __T_PERFORMANCE427__
+#define __T_PERFORMANCE427__
+
+file=ABI_DIR\BUILD_DIR\T_Performance427.exe	System\bin\T_Performance427.exe
+
+data=ABI_DIR\BUILD_DIR\z\msgtest\T_Performance427.script msgtest\T_Performance427.script
+data=ABI_DIR\BUILD_DIR\z\msgtest\T_Performance427.ini msgtest\T_Performance427.ini
+data=ABI_DIR\BUILD_DIR\z\msgtest\T_Performance100KBody427.txt msgtest\T_Performance100KBody427.txt
+data=ABI_DIR\BUILD_DIR\z\msgtest\T_Performance40KBody.txt msgtest\T_Performance40KBody.txt
+data=ABI_DIR\BUILD_DIR\z\msgtest\T_Performance1KBody427.txt msgtest\T_Performance1KBody427.txt
+
+#endif

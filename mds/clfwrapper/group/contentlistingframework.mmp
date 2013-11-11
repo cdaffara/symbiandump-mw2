@@ -1,0 +1,64 @@
+/*
+* Copyright (c) 2006-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file for project contentlistingframework
+*
+*/
+
+
+#include <platform_paths.hrh>
+#include <data_caging_paths.hrh>
+#include <../CommonInc/CLFUID.hrh>
+
+VERSION         10.0
+TARGET          ContentListingFramework.dll
+TARGETTYPE      DLL
+UID             0x1000008d CLF_FRAMEWORK_UID3
+VENDORID        VID_DEFAULT
+CAPABILITY      CAP_CLIENT_DLL
+
+SOURCEPATH      ../ClientSrc
+SOURCE          CCLFDbItemContainer.cpp
+SOURCE          CCLFDbItemProvider.cpp
+SOURCE          CCLFDefaultOperation.cpp
+SOURCE          CCLFEngineImpl.cpp
+SOURCE          CCLFItemImpl.cpp
+SOURCE          CCLFItemListModelImpl.cpp
+SOURCE          CCLFSortingStyleImpl.cpp
+SOURCE          ContentListingFactory.cpp
+SOURCE          CCLFQueryAdapter.cpp
+SOURCE          CCLFEventHandler.cpp
+SOURCE          CCLFServerProxy.cpp
+SOURCE          CLFUtils.cpp
+
+// Default system include paths for application layer modules.
+MW_LAYER_SYSTEMINCLUDE
+USERINCLUDE     ../ClientSrc
+USERINCLUDE     ../CommonInc
+USERINCLUDE     ../../inc
+
+LIBRARY         euser.lib
+LIBRARY         estor.lib
+LIBRARY         efsrv.lib
+LIBRARY         bafl.lib
+LIBRARY         platformenv.lib
+LIBRARY         mdeclient.lib
+LIBRARY         harvesterclient.lib
+
+PAGED
+BYTEPAIRCOMPRESSTARGET
+OPTION ARMCC -O3 -OTime
+OPTION GCC -w
+
+// End of File
+

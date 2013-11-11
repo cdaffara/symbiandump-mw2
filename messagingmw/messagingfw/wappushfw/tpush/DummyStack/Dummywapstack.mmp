@@ -1,0 +1,37 @@
+// Copyright (c) 2000-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+TARGET          dummywapstack.dll  
+TARGETTYPE      DLL
+CAPABILITY readdevicedata writedevicedata protserv networkcontrol networkservices localservices readuserdata WriteUserData PowerMgmt AllFiles
+UID			0x1000008D 0x10009162
+VENDORID 0x70000001
+
+SOURCEPATH	    ./.
+USERINCLUDE     ./. ../../pushwatcher/inc
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+SOURCE          Dummywapstackdll.CPP Dummywapclient.cpp dummyWapStack.cpp dummycapcodec.cpp
+LIBRARY         euser.lib
+
+#ifdef WINS
+	DEFFILE     ../../bwins/dummywapstack.def
+#elif defined(GCC32)
+	DEFFILE     ../../BMarm/DummyWapStack.def
+#else
+	DEFFILE     ../../EABI/DummyWapStack.def
+#endif  
+  
+
+SMPSAFE

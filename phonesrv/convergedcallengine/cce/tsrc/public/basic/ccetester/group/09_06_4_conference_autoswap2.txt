@@ -1,0 +1,108 @@
+/**********************************************************
+	1. Create conference of 2 calls
+	2. Create 3rd call
+	   Expected: Conference is put on Hold
+	3. Hold 3rd call
+	   Expected: Conference is resumed
+	4. Swap conference
+           Expected: Conference is held, Call [3] is 
+           automatically resumed
+	5. Hangup 3rd call
+	6. Resume conference
+	7. Hangup conference
+
+***********************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 9.6.4 Conference Call, Autoswap 2
+timeout 15000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test OpenNewCall 1 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+// Make 2nd call
+test OpenNewCall 2 0 RecipientTwo 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 2 0 SubAddress Bearer
+test WaitEvent 2 Dialling
+test WaitEvent 2 Connecting
+test WaitEvent 2 Connected
+
+test AddToConference 1 0
+test WaitEvent ConferenceCallAdded 1
+
+test AddToConference 2 0
+// Plugin sets call to match conference state (connected)
+test WaitEvents ConferenceCallAdded 2, ConferenceActive, 1 Connected
+
+// Step 2
+print Step_2
+
+test OpenNewCall 3 0 RecipientThree 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 3 0 SubAddress Bearer
+// Plugin changes call states to match conference (Hold),
+// then Conference is automatically hold
+test WaitEvents 1 Hold, 2 Hold, ConferenceHold, 3 Dialling, 3 Connecting, 3 Connected, ConferenceCallSwapped
+
+// Conference: Hold, Call 3: connected
+
+// Step 3
+print Step_3
+
+//Swap to connected call
+test Swap 2 -18
+
+// this can be done but not valid action...
+// test Swap 3 0
+
+test Hold 3 0
+test WaitEvents 3 Hold, 1 Connected, 2 Connected, ConferenceActive, ConferenceCallSwapped, 3 LocalHold
+
+// Conference: Active, Call 3 on Hold
+
+// Step 4
+print Step_4
+
+// Put conference to Hold, call 3 is autoResumed
+test SwapConference 0
+test WaitEvents 1 Hold, 2 Hold, ConferenceHold, 3 Connected, 3 LocalResume, ConferenceCallSwapped
+
+// Step 5
+print Step_5
+
+test HangUp 3 0
+test WaitEvent 3 Disconnecting
+test WaitEvent 3 Idle
+test Release 3 0
+
+// Conference is not automatically resumed
+
+// Step 6
+print Step_6
+
+test SwapConference 0
+test WaitEvents 1 Connected, 2 Connected, ConferenceActive, ConferenceCallSwapped
+
+// Step 7
+print Step_7
+
+test HangupConference 0
+test WaitEvents ConferenceCallRemoved 1, ConferenceCallRemoved 2, ConferenceIdle, 1 Disconnecting, 1 Idle, 2 Disconnecting, 2 Idle
+
+test VerifyTest
+delete test
+[Endtest]

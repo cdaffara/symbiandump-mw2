@@ -1,0 +1,95 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+// Test Case Name:
+//	Add linked attachment to the message where attachment is from public area
+// ------------------------------------------
+// Component Under Test:
+//	Attachment API
+// ------------------------------------------
+// API function under test:
+//	MMsvAttachmentManager::AddLinkedAttachmentL
+// ------------------------------------------
+// Requirement/Use Case/Functional Spec:
+//	SGL.GT0216.051 (2.1, 2.3.1, 2.3.3, 2.3.4)
+// ------------------------------------------
+// Polarity:
+//	Positive
+// ------------------------------------------
+// Test Type (unit, integration, panic, performance, conformance, stress, or interoperability):
+//	Integration
+// ------------------------------------------
+// Expected Panic ID (if a panic test, only for non-scripted test cases):
+//	N/A
+// ------------------------------------------
+// Interface Dependencies (does it require connection, which subsystems does it require):
+// 	Requires connection to Messaging Server
+// ------------------------------------------
+// Importance (critical, high, or low):
+//	High
+// ------------------------------------------
+// Execution Time (fast, medium, or slow):
+//	Medium
+// ------------------------------------------
+// Pre-condition description:
+//	1. New BT message in drafts folder
+//	2. Read/Write access to message store
+// ------------------------------------------
+// Action Description:
+// 	Add the desired file from public area as linked attachment to the message providing 
+//	valid absolute file path
+// ------------------------------------------
+// Post-condition description (i.e., expected outcome):
+//	The attachment count is 1
+// ------------------------------------------
+// Reference to a review document:
+//	AttachmentAPI_TestSpecificationDocument_Ver1.0.doc
+// ------------------------------------------
+// Full pathname of an epoc.ini (if there are special epoc.ini requirements)
+// 	For emulator, an epoc.ini that creates an emulated external drive (drive letter 
+//	between D: and Y:) is required. Optionally, an environment variable can be defined.
+// ------------------------------------------
+// Any CommDb restrictions:
+//	NTRAS CommDb
+// ------------------------------------------
+// Build Requirements (e.g., no watchers):
+//	N/A	
+// ------------------------------------------
+// Hardware Requirements
+//	H2 Board
+// ------------------------------------------
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer GetBaseConstants				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\04-BT_AddLinkedAttachment.INI GetConstants
+RUN_TEST_STEP 100 MessagingTestServer GetBTMTMUId				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\04-BT_AddLinkedAttachment.INI GetBtMTMUId
+RUN_TEST_STEP 100 MessagingTestServer CreateSession				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\04-BT_AddLinkedAttachment.INI SessionId
+RUN_TEST_STEP 100 MessagingTestServer CreateRegistry				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\04-BT_AddLinkedAttachment.INI CreateRegistry
+RUN_TEST_STEP 100 MessagingTestServer CreateService				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\04-BT_AddLinkedAttachment.INI CreateBtService
+RUN_TEST_STEP 100 MessagingTestServer CreateMessage				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\04-BT_AddLinkedAttachment.INI CreateMessage
+
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer AddLinkedAttachment			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\04-BT_AddLinkedAttachment.INI AddLinkedAttachment
+
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+RUN_TEST_STEP 100 MessagingTestServer CountAttachments				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\04-BT_AddLinkedAttachment.INI CountAttachments
+
+RUN_TEST_STEP 100 MessagingTestServer END_TEST_CASE

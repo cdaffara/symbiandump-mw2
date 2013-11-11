@@ -1,0 +1,35 @@
+// Copyright (c) 2004-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// LaunchAutoSend.exe Executable that launches AutoSend executable
+// 
+//
+
+/**
+ @file
+*/
+
+TARGET			launchautosend.exe
+TARGETTYPE		exe
+
+CAPABILITY		ALL -TCB
+UID				0x1000007a 0x10204283
+VENDORID 		0x70000001
+SOURCEPATH		../src
+SOURCE			LaunchAutoSend.cpp
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+LIBRARY			euser.lib msgs.lib 
+
+
+
+SMPSAFE

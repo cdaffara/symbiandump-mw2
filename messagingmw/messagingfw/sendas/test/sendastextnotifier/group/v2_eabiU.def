@@ -1,0 +1,6 @@
+EXPORTS
+	_Z24ImplementationGroupProxyRi @ 1 NONAME
+	_Z13NotifierArrayv @ 2 NONAME
+	_ZTI17CSendAsUINotifier @ 3 NONAME ; #<TI>#
+	_ZTV17CSendAsUINotifier @ 4 NONAME ; #<VT>#
+

@@ -1,0 +1,103 @@
+/*
+* Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file
+*
+*/
+
+#include <platform_paths.hrh>
+#include <data_caging_paths.hrh>
+
+VERSION           10.0
+TARGET            !mdsserver.exe
+TARGETTYPE        exe
+UID               0x0 0x200009F3
+TARGETPATH	      SHARED_LIB_DIR
+
+EPOCSTACKSIZE     0x5000
+#ifdef WINS
+EPOCHEAPSIZE      0x4000 0x200000 
+#else
+EPOCHEAPSIZE      0x8000 0x400000 
+#endif
+
+CAPABILITY        CAP_SERVER ProtServ
+VENDORID        	VID_DEFAULT
+
+MACRO             LOG_MASTER_FLAG
+//MACRO             LOG_QUERY
+//MACRO             LOG_DB
+//MACRO             LOG_MUTEX
+MACRO             LOG_SERVER
+
+SYSTEMINCLUDE     /epoc32/include/ecom
+SYSTEMINCLUDE	  /epoc32/include/connect
+USERINCLUDE       ../../../inc
+USERINCLUDE       ../inc
+
+SOURCEPATH        ../src
+SOURCE            mdsserver.cpp
+SOURCE            mdsserversession.cpp
+SOURCE            mdsmanipulationengine.cpp
+SOURCE            mdsfindengine.cpp
+SOURCE            mdsfindsequence.cpp
+SOURCE            mdssqliteconnection.cpp
+SOURCE            mdssqlobjectmanipulate.cpp
+SOURCE            mdssqldbmaintenance.cpp
+SOURCE            mdsmaintenanceengine.cpp
+SOURCE            mdsdbconnectionpool.cpp
+SOURCE            mdssqlfindoperation.cpp
+SOURCE            mdsclausebuffer.cpp
+SOURCE            mdsobjectlocklist.cpp
+SOURCE            mdsnotifier.cpp
+SOURCE            mdsnotifycomparator.cpp
+SOURCE            mdslogger.cpp
+SOURCE            mdsindexer.cpp
+SOURCE            mdsgarbagecollector.cpp
+SOURCE            mdsfindsqlclause.cpp
+SOURCE            mdsschema.cpp
+SOURCE            mdsimportexport.cpp
+SOURCE            mdsnamespacedef.cpp
+SOURCE            mdsitemdef.cpp
+SOURCE            mdsobjectdef.cpp
+SOURCE            mdspropertydef.cpp
+SOURCE            mdseventdef.cpp
+SOURCE            mdsrelationdef.cpp
+SOURCE            mdsdiskspacenotifier.cpp
+SOURCE            mdspreferences.cpp
+SOURCE            mdsgetimeiao.cpp
+SOURCE            mdsquerycriteriadeserialization.cpp
+SOURCE            mdebackuprestorewatcher.cpp
+SOURCE            mdsshutdownobserver.cpp
+SOURCE            mdsdatabaseupdater.cpp
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY           euser.lib 
+LIBRARY           mdccommon.lib
+LIBRARY           sqldb.lib
+LIBRARY           efsrv.lib 
+LIBRARY           estor.lib
+LIBRARY           charconv.lib
+LIBRARY           bafl.lib
+LIBRARY		etel3rdparty.lib
+LIBRARY           flogger.lib
+LIBRARY           hash.lib
+LIBRARY			  inetprotutil.lib
+
+UNPAGED
+
+OPTION ARMCC -O3 -OTime
+
+EPOCPROCESSPRIORITY background
+

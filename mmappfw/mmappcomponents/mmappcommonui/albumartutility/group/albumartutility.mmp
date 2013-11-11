@@ -1,0 +1,54 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file for project albumartutility
+*
+*/
+
+
+
+#include <data_caging_paths.hrh>
+#include <platform_paths.hrh>
+
+TARGET          mpxalbumartutility.dll
+CAPABILITY      CAP_GENERAL_DLL
+TARGETTYPE      DLL
+UID             0x1000008D  0x101FFC15
+VENDORID        VID_DEFAULT
+
+USERINCLUDE     ../inc
+USERINCLUDE     ../../../../inc
+
+MW_LAYER_SYSTEMINCLUDE
+
+
+SOURCEPATH      ../src
+SOURCE          mpxalbumartutility.cpp
+SOURCE          mpximageutil.cpp
+SOURCE          mpximageutilsync.cpp
+
+LIBRARY         euser.lib
+LIBRARY         efsrv.lib
+LIBRARY         estor.lib
+LIBRARY         fbscli.lib // CFbsBitmap
+LIBRARY         bitmaptransforms.lib // CBitmapScaler
+LIBRARY         metadatautility.lib // CMetadataUtility
+LIBRARY         imageconversion.lib // CImageDecoder
+LIBRARY         mpxcommon.lib
+
+#if defined(ARMCC)
+deffile ../eabi/ 
+#elif defined(WINSCW)
+deffile ../bwinscw/ 
+#endif
+

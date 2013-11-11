@@ -1,0 +1,61 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:    Project definition file for simpleengine
+*
+*/
+
+
+
+
+// To get the APP_LAYER_SYSTEMINCLUDE-definition
+#include <platform_paths.hrh>
+
+TARGET                          simpleengine.dll
+TARGETTYPE                      dll
+UID                             0x1000008d 0x10281EEB
+CAPABILITY                      CAP_GENERAL_DLL
+VENDORID                        VID_DEFAULT
+
+SOURCEPATH                      ../src
+SOURCE                          simpleenginerequest.cpp
+SOURCE                          simplefactory.cpp
+SOURCE                          simpleutils.cpp
+SOURCE                          simpleconnection.cpp
+SOURCE                          simpleclient.cpp
+SOURCE                          simplepublisher.cpp
+SOURCE                          simplewatcher.cpp
+SOURCE                          simplewinfowatcher.cpp
+SOURCE                          simpleengineutils.cpp
+SOURCE                          simpleengineimhandler.cpp
+
+SOURCEPATH                      ../../siputils/src
+SOURCE                          simpledebugutils.cpp
+
+USERINCLUDE                     ../inc
+USERINCLUDE                     ../../api
+USERINCLUDE                     ../../inc
+USERINCLUDE                     ../../siputils/inc
+USERINCLUDE                     ../../xmlutils/inc
+
+// default system include paths for middleware layer modules
+MW_LAYER_SYSTEMINCLUDE
+
+DEBUGLIBRARY                    flogger.lib
+DEBUGLIBRARY                    efsrv.lib   // file server
+DEBUGLIBRARY                    apparc.lib
+LIBRARY                         euser.lib
+LIBRARY                         estor.lib
+LIBRARY                         bafl.lib  // string pool
+LIBRARY                         simplesiputils.lib
+LIBRARY                         simplexmlutils.lib

@@ -1,0 +1,21 @@
+EXPORTS
+	_ZN9CBaseTest10ConstructLEv @ 1 NONAME
+	_ZN9CBaseTest10SetTimeoutER15CStifItemParser @ 2 NONAME
+	_ZN9CBaseTest12ProcessEventENS_14TExpectedEventEi @ 3 NONAME
+	_ZN9CBaseTest13HandleTimeoutEi @ 4 NONAME
+	_ZN9CBaseTest15SetAllowedPanicER15CStifItemParser @ 5 NONAME
+	_ZN9CBaseTest16AddExpectedEventENS_14TExpectedEventEi @ 6 NONAME
+	_ZN9CBaseTest17SetExpectedEventsER15CStifItemParser @ 7 NONAME
+	_ZN9CBaseTest19RemoveExpectedEventENS_14TExpectedEventE @ 8 NONAME
+	_ZN9CBaseTest23RemoveAllExpectedEventsEv @ 9 NONAME
+	_ZN9CBaseTest9EventNameEi @ 10 NONAME
+	_ZN9CBaseTestC2ER13CTestModuleIf @ 11 NONAME
+	_ZN9CBaseTestD0Ev @ 12 NONAME
+	_ZN9CBaseTestD1Ev @ 13 NONAME
+	_ZN9CBaseTestD2Ev @ 14 NONAME
+	_ZTI14CSimpleTimeout @ 15 NONAME ; #<TI>#
+	_ZTI9CBaseTest @ 16 NONAME ; #<TI>#
+	_ZTV14CSimpleTimeout @ 17 NONAME ; #<VT>#
+	_ZTV9CBaseTest @ 18 NONAME ; #<VT>#
+	_ZThn48_N9CBaseTest13HandleTimeoutEi @ 19 NONAME ; #<thunk>#
+

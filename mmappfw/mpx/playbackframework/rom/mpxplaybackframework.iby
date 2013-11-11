@@ -1,0 +1,29 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Image description file for project MPX Playback Framework.
+*
+*/
+
+
+#ifndef MPXPLAYBACKFRAMEWORK_IBY
+#define MPXPLAYBACKFRAMEWORK_IBY
+
+#include <data_caging_paths_for_iby.hrh>
+
+
+file=ABI_DIR\BUILD_DIR\mpxplaybackengine.dll        SHARED_LIB_DIR\mpxplaybackengine.dll
+file=ABI_DIR\BUILD_DIR\mpxplaybackserver.exe        PROGRAMS_DIR\mpxplaybackserver.exe
+file=ABI_DIR\BUILD_DIR\mpxplaybackutility.dll       SHARED_LIB_DIR\mpxplaybackutility.dll
+
+#endif  // MPXPLAYBACKFRAMEWORK_IBY

@@ -1,0 +1,88 @@
+/*
+* Copyright (c) 2006-2007 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  CCP API based test plug-in implementation.
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET          ccptestplugin2.dll
+
+TARGETTYPE  PLUGIN
+
+UID 0x10009D8D  0x01282E3F
+
+SECUREID        0x01282E3F
+
+EPOCSTACKSIZE   0x5000
+
+// Capability and vendor ID assignment.
+CAPABILITY      CAP_ECOM_PLUGIN
+
+SOURCEPATH      ../src
+
+//<group="CCPAPIConcretes">
+SOURCE          ccprefcall.cpp
+SOURCE          ccprefconferencecall.cpp
+SOURCE          ccprefdtmfprovider.cpp
+SOURCE          ccprefemergencycall.cpp
+SOURCE          ccprefextensionprovider.cpp
+SOURCE          ccprefforwardprovider.cpp
+SOURCE          ccpreftransferprovider.cpp
+SOURCE          ccprefconvergedcallprovider.cpp
+SOURCE	        ccprefcscall.cpp
+//</group>
+
+//<group="general">
+SOURCE          ccprefecom.cpp
+SOURCE          ccprefcontroller.cpp
+SOURCE          cdelay.cpp
+SOURCE          configurationhandler.cpp
+//</group>
+
+START RESOURCE  ../data/01282E3F.rss
+TARGET ccptestplugin2.rsc
+END
+
+// be sure ccp headers are exported
+USERINCLUDE     ../inc
+USERINCLUDE     ../../ccetester/inc
+
+#ifdef __SERIES60_32__
+
+APP_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   /epoc32/include/ecom
+
+#else // __SERIES60_32__
+
+MW_LAYER_SYSTEMINCLUDE
+
+//This needs to be defined explicitly
+SYSTEMINCLUDE   /epoc32/include/ecom
+
+#endif // __SERIES60_32__
+
+LIBRARY     euser.lib
+LIBRARY     bafl.lib
+LIBRARY     ecom.lib
+LIBRARY     inetprotutil.lib
+LIBRARY     flogger.lib   // For logging
+LIBRARY     callprovider.lib
+
+EXPORTUNFROZEN
+
+#ifndef WINS
+EPOCALLOWDLLDATA
+#endif

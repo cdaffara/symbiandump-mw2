@@ -1,0 +1,35 @@
+/*
+* Copyright (c) 2002-2004 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Contains all DLLs that must be included in image
+*
+*/
+
+
+#ifndef METADATAUTILITY_IBY
+#define METADATAUTILITY_IBY
+
+file=ABI_DIR\BUILD_DIR\MetaDataUtility.dll      SHARED_LIB_DIR\MetaDataUtility.dll
+
+file=ABI_DIR\BUILD_DIR\3GPExtParser.dll         SHARED_LIB_DIR\3GPExtParser.dll
+
+
+data=ZRESOURCE\TopCharacterSet.rsc              RESOURCE_FILES_DIR\TopCharacterSet.rsc
+
+
+// stub file for Metadata Utility upgrade with SISX 
+data=ZSYSTEM\install\metadata_stub.sis     System\Install\metadata_stub.sis
+
+#endif // METADATAUTILITY_IBY
+
+//  End of File  

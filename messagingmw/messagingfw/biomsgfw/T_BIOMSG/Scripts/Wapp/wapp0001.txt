@@ -1,0 +1,56 @@
+[main]
+bio_test doatstart
+bio_test wapp0001
+bio_test doattheend
+
+
+// Startup section.
+[doatstart]
+clean_all_bio_msgs
+
+
+// Shutdown section.
+[doattheend]
+
+
+// wapp tests.
+[wapp0001]
+gen_msg_from_file wapp\wapp0001.bin
+check_used_bif 10005532
+bio_client_parse
+bio_client_process
+dump_parsed_message
+//
+// check commdb tables for correct entries
+bio_commdb DialOutIsp wapp0001_commdb_dialoutisp_table
+bio_commdb IAP wapp0001_commdb_iap_table
+bio_commdb WAPAccessPoint wapp0001_commdb_wapap_table
+bio_commdb WAPIPBearer wapp0001_commdb_wapip_table
+bio_commdb WAPSMSBearer wapp0001_commdb_wapsms_table
+
+
+[wapp0001_commdb_dialoutisp_table]
+commdb_check text IpGateway "192.122.10.1"
+commdb_check text DefaultTelNum "+358508124002"
+commdb_check text LoginName "wapuser"
+commdb_check text IfAuthName "wapuser"
+commdb_check uint BearerProtocol "3"
+commdb_check uint BearerSpeed "1"
+commdb_check text Name "WAP 0001-GsmCsd"
+
+
+[wapp0001_commdb_iap_table]
+commdb_check text Name "WAP 0001-GsmCsd"
+
+
+[wapp0001_commdb_wapap_table]
+commdb_check text Name "WAP 0001"
+
+
+[wapp0001_commdb_wapip_table]
+commdb_check text GatewayAddress "192.122.10.1"
+
+
+[wapp0001_commdb_wapsms_table]
+commdb_check text GatewayAddress "9400401"
+commdb_check text ServiceCentreAddress "+36209400400"

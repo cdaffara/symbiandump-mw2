@@ -1,0 +1,59 @@
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 1.5 OpenNewCall, Different call parameters
+timeout 10000
+create ccetester test
+test Delay 1000
+
+// PS test plugin
+
+test OpenNewCall 1 0 Recipient1 2 ECCECallTypePS ECCELineTypePrimary
+test Release 1 0
+test OpenNewCall 2 0 Recipient2 2 ECCECallTypeCSVoice ECCELineTypePrimary
+test Release 2 0
+test OpenNewCall 3 0 Recipient3 2 ECCECallTypeVideo ECCELineTypePrimary
+test Release 3 0
+test OpenNewCall 4 0 Recipient4 2 ECCECallTypeFax ECCELineTypePrimary
+test Release 4 0
+test OpenNewCall 5 0 Recipient5 2 ECCECallTypeData ECCELineTypePrimary
+test Release 5 0
+test OpenNewCall 6 0 Recipient6 2 ECCECallTypePS ECCELineTypeAux
+test Release 6 0
+test OpenNewCall 7 0 Recipient7 2 ECCECallTypeCSVoice ECCELineTypeAux
+test Release 7 0
+test OpenNewCall 8 0 Recipient8 2 ECCECallTypeVideo ECCELineTypeAux
+test Release 8 0
+test OpenNewCall 9 0 Recipient9 2 ECCECallTypeFax ECCELineTypeAux
+test Release 9 0
+test OpenNewCall 10 0 Recipient10 2 ECCECallTypeData ECCELineTypeAux
+test Release 10 0
+
+// CS test plugin
+
+test OpenNewCall 11 0 Recipient1 1 ECCECallTypePS ECCELineTypePrimary
+test Release 11 0
+test OpenNewCall 12 0 Recipient2 1 ECCECallTypeCSVoice ECCELineTypePrimary
+test Release 12 0
+test OpenNewCall 13 0 Recipient3 1 ECCECallTypeVideo ECCELineTypePrimary
+test Release 13 0
+test OpenNewCall 14 0 Recipient4 1 ECCECallTypeFax ECCELineTypePrimary
+test Release 14 0
+test OpenNewCall 15 0 Recipient5 1 ECCECallTypeData ECCELineTypePrimary
+test Release 15 0
+test OpenNewCall 16 0 Recipient6 1 ECCECallTypePS ECCELineTypeAux
+test Release 16 0
+test OpenNewCall 17 0 Recipient7 1 ECCECallTypeCSVoice ECCELineTypeAux
+test Release 17 0
+test OpenNewCall 18 0 Recipient8 1 ECCECallTypeVideo ECCELineTypeAux
+test Release 18 0
+test OpenNewCall 19 0 Recipient9 1 ECCECallTypeFax ECCELineTypeAux
+test Release 19 0
+test OpenNewCall 20 0 Recipient10 1 ECCECallTypeData ECCELineTypeAux
+test Release 20 0
+
+test VerifyTest
+delete test
+[Endtest] 

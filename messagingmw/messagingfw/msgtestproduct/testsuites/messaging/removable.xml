@@ -1,0 +1,14 @@
+<?xml version="1.0" ?> 
+<!DOCTYPE testSuite SYSTEM "file:///c:/program files/common files/symbian/testSuite.dtd" [ ]>
+
+<testSuite>
+	<name>removable</name> 
+
+	<testItems>
+		<suite>media</suite>
+	</testItems>
+
+	<testExecuteServers>
+		<server>t_media</server>
+	</testExecuteServers>
+</testSuite>

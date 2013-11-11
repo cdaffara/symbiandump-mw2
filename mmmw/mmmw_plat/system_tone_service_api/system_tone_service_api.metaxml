@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api id="80ba9722d6ed1f7c0d543739e4709a6a" dataversion="2.0">
+  <name>System Tone Service API</name>
+  <description>Native API for applications and middleware to easily play system tones and alarms.</description>
+  <type>c++</type>
+  <collection>mmserv</collection>
+  <libs>
+    <lib name="systemtoneservice.lib"/>
+  </libs>
+  <release category="platform" sinceversion="^4"/>
+  <attributes>
+    <htmldocprovided>no</htmldocprovided>
+    <adaptation>no</adaptation>
+  </attributes>
+</api>

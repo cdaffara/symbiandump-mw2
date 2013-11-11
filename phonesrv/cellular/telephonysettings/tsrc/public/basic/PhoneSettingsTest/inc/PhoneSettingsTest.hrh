@@ -1,0 +1,332 @@
+/*
+* Copyright (c) 2002-2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: Definitions for phonesettings testing.
+*
+*/
+
+
+
+#ifndef PHONESETTINGSTEST_HRH
+#define PHONESETTINGSTEST_HRH
+
+//  INCLUDES
+#include <e32base.h>
+
+// CONSTANTS
+_LIT( KInitPhoneSettingsTestSectionStart, "[PhoneSettingsTest]" );
+_LIT( KInitSectionEnd, "[EndSection]" );
+_LIT( KStartingTestCase, "Starting test case:");
+_LIT( KExitingTestCase, "Exiting test case");
+_LIT( KResultPASS, "Result: PASS" );
+_LIT( KResultFAIL, "Result: FAIL" );
+_LIT( KErrorUnknownEnumeration, "Error! Unknown enumeration!"); 
+_LIT( KErrorDetected, "Error!" );
+_LIT( KErrorCode, "error code: " );
+_LIT( KSetCancelAsyncs, "SetCancelAsyncs" );
+_LIT( KClearCancelAsyncs, "ClearCancelAsyncs" );
+
+// Call Barring test cases 
+_LIT( KCallBarringChangePassword, "CPsetCallBarring::ChangePaswordL" );
+_LIT( KCallBarringConstructAndDestruct, "CPsetCallBarring construct and destruct" );
+_LIT( KCallBarringSetBarringL, "CPsetCallBarring::SetBarringL" ); 
+_LIT( KCallBarringGetBarringStatusL, "CPsetCallBarring::GetBarringStatusL" );
+_LIT( KCallBarringSetRequestObserver, "CPsetCallBarring::SetRequestObserver" ); 
+_LIT( KCallBarringCancelCurrentRequest, "CPsetCallBarring::CancelCurrentRequest" );  
+_LIT( KCallBarringCPsetCallBarringNewL, "CPsetCallBarring::NewL" ); 
+_LIT( KCallBarringPhoneSettingChanged, "CPsetCallBarring::PhoneSettingChanged" ); 
+
+// Call Diverting test cases 
+_LIT( KCallDivertingConstructAndDestruct, "CPsetCallDiverting construct and destruct" );  
+_LIT( KCallDivertingGetUsedDataNumberLC, "CPsetCallDiverting::GetUsedDataNumberLC" );
+_LIT( KCallDivertingGetUsedFaxNumberLC, "CPsetCallDiverting::GetUsedFaxNumberLC" );
+_LIT( KCallDivertingSetUsedDataNumberL, "CPsetCallDiverting::SetUsedDataNumberL" );
+_LIT( KCallDivertingSetUsedFaxNumberL, "CPsetCallDiverting::SetUsedFaxNumberL" );
+_LIT( KCallDivertingSetTimerValueL, "CPsetCallDiverting::SetTimerValueL" ); 
+_LIT( KCallDivertingGetTimerValueL, "CPsetCallDiverting::GetTimerValueL" ); 
+_LIT( KCallDivertingSetNewDefaultNumberL, "CPsetCallDiverting::SetNewDefaultNumberL" ); 
+_LIT( KCallDivertingGetDefaultNumbersL, "CPsetCallDiverting::GetDefaultNumbersL" ); 
+_LIT( KCallDivertingCancelCurrentRequest, "CPsetCallDiverting::CancelCurrentRequest" ); 
+_LIT( KCallDivertingSetDivertingL, "CPsetCallDiverting::SetDivertingL" ); 
+_LIT( KCallDivertingGetDivertingStatusL, "CPsetCallDiverting::GetDivertingStatusL" ); 
+_LIT( KCallDivertingSetRequestObserver, "CPsetCallDiverting::SetRequestObserver" ); 
+_LIT( KCallDivertingSwapDefaultNumberL, "CPsetCallDiverting::SwapDefaultNumberL" ); 
+_LIT( KCallDivertingVoiceMailQueryL, "CPsetCallDiverting::VoiceMailQueryL" ); 
+_LIT( KCallDivertingVideoMailQueryL, "CPsetCallDiverting::VideoMailQueryL" ); 
+_LIT( KCallDivertingPhoneSettingChanged, "CPsetCallDiverting::PhoneSettingChanged" ); 
+
+// Call Waiting test cases 
+_LIT( KCallWaitingConstructAndDestruct, "CPsetCallWaiting construct and destruct" );  
+_LIT( KCallWaitingSetCallWaitingL, "CPsetCallWaiting::SetCallWaitingL" );  
+_LIT( KCallWaitingGetCallWaitingStatusL, "CPsetCallWaiting::GetCallWaitingStatusL" );  
+_LIT( KCallWaitingCancelProcess, "CPsetCallWaiting::CancelProcess" );  
+_LIT( KCallWaitingSetRequestObserver, "CPsetCallWaiting::SetRequestObserver" );  
+_LIT( KCallWaitingPhoneSettingChanged, "CPsetCallWaiting::PhoneSettingChanged" );  
+
+// Cli test cases 
+_LIT( KCliConstructAndDestruct , "CPsetCli construct and destruct" );  
+_LIT( KCliCancelAll, "CPsetCli::CancelAll" ); 
+_LIT( KCliGetClipModeL, "CPsetCli::GetClipModeL" ); 
+_LIT( KCliGetClirModeL, "CPsetCli::GetClirModeL" ); 
+_LIT( KCliGetCnapL, "CPsetCli::GetCnapL" ); 
+_LIT( KCliGetColpModeL, "CPsetCli::GetColpModeL" ); 
+_LIT( KCliGetColrModeL, "CPsetCli::GetColrModeL" ); 
+_LIT( KCliSetRequestObserver, "CPsetCli::SetRequestObserver" ); 
+
+// Network test cases
+_LIT( KNetworkConstructAndDestruct, "CPsetNetwork construct and destruct" ); 
+_LIT( KNetworkConstructAndDestructUsingNetworkInfoObserver, 
+    "CPsetNetwork construct with Network Info observer" ); 
+_LIT( KNetworkConstructAndDestructUsingNetworkModeObserver, 
+    "CPsetNetwork construct with Network Mode observer" ); 
+_LIT( KNetworkGetCurrentNetworkInfo, "CPsetNetwork::GetCurrentNetworkInfo" ); 
+_LIT( KNetworkGetNetworkSelectMode, "CPsetNetwork::GetNetworkSelectMode" ); 
+_LIT( KNetworkIsCallActive, "CPsetNetwork::IsCallActive" ); 
+_LIT( KNetworkIsGPRSConnected, "CPsetNetwork::IsGPRSConnected" ); 
+_LIT( KNetworkResetNetworkSearch, "CPsetNetwork::ResetNetworkSearch" ); 
+_LIT( KNetworkCancelProcess, "CPsetNetwork::CancelProcess" ); 
+_LIT( KNetworkGetAvailableNetworksL, "CPsetNetwork::GetAvailableNetworksL" ); 
+_LIT( KNetworkGetCurrentNetworkModeSelectionL, "CPsetNetwork::GetCurrentNetworkModeSelectionL" ); 
+_LIT( KNetworkSelectNetworkL, "CPsetNetwork::SelectNetworkL" ); 
+_LIT( KNetworkSetNetSAObserver, "CPsetNetwork::SetNetSAObserver" ); 
+_LIT( KNetworkSetNetworkModeObserver, "CPsetNetwork::SetNetworkModeObserver" ); 
+_LIT( KNetworkSetNetworkModeSelectionL, "CPsetNetwork::SetNetworkModeSelectionL" ); 
+
+// CSP test cases 
+_LIT( KCSPConstructAndDestruct, "CPsetCustomerServiceProfile construct and destruct" ); 
+_LIT( KCSPIsALSSupported, "IsALSSupported" ); 
+_LIT( KCSPIsCBSupported, "IsCBSupported" ); 
+_LIT( KCSPIsCFSupported, "IsCFSupported" ); 
+_LIT( KCSPIsCWSupported, "IsCWSupported" ); 
+_LIT( KCSPIsNetworkSelectionSupported, "IsNetworkSelectionSupported" ); 
+_LIT( KCSPOpenCSProfileL, "OpenCSProfileL" ); 
+_LIT( KCSPCheckIfCWSupported, "CheckIfCWSupported" ); 
+_LIT( KCSPCheckIfCBSupported, "CheckIfCBSupported" ); 
+_LIT( KCSPCheckIfCFSupported, "CheckIfCFSupported" ); 
+_LIT( KCSPCheckIfAlsSupported, "CheckIfAlsSupported" ); 
+_LIT( KCSPCheckIfNetworkSelectionSupported, "CheckIfNetworkSelectionSupported" ); 
+
+// SA Observer test cases 
+_LIT( KSAOSAObserverConstructAndDestruct, "CPsetSAObserver construct and destruct" ); 
+_LIT( KSAOGetCurrentDivertStatus, "CPsetSAObserver::GetCurrentDivertStatus" ); 
+_LIT( KSAOIsCallActive, "CPsetSAObserver::IsCallActive" ); 
+
+_LIT( KSAOIsGPRSConnected, "CPsetSAObserver::IsGPRSConnected" ); 
+_LIT( KSAONotifyDivertChange, "CPsetSAObserver::NotifyDivertChange" ); 
+_LIT( KSAOSetNetObserver, "CPsetSAObserver::SetNetObserver" ); 
+_LIT( KSAOInitialize, "CPsetSAObserver::Initialize" ); 
+
+// Container test cases 
+_LIT( KContainerConstructAndDestruct, "CPsetContainer construct and destruct" ); 
+_LIT( KContainerCreateCBObjectL, "CPsetContainer::CreateCBObjectL" ); 
+_LIT( KContainerCreateCFObjectL, "CPsetContainer::CreateCFObjectL" ); 
+_LIT( KContainerCreateCWObjectL, "CPsetContainer::CreateCWObjectL" ); 
+_LIT( KContainerCreateCliObjectL, "CPsetContainer::CreateCliObjectL" ); 
+_LIT( KContainerCreateNetworkObjectL, "CPsetContainer::CreateNetworkObjectL" ); 
+_LIT( KContainerCreateNetworkModeObjectL, "CPsetContainer::CreateNetworkModeObjectL" ); 
+_LIT( KContainerCreateRefreshHandlerL, "CPsetContainer::CreateRefreshHandlerL" ); 
+
+// NWDefs test cases 
+_LIT( KCallDivertingTCallDivertSettingInitialize, "TCallDivertSetting::Initialize" ); 
+
+// Refresh handler test cases 
+_LIT( KCPSetRefreshHandlerConstructAndDestructL, "CPSetRefreshHandler construct and destruct" );  
+
+// Data types 
+_LIT( KServiceGroup, "Service group:" );
+_LIT( KServiceGroupVoice, "Voice" );
+_LIT( KServiceGroupData, "Data" );
+_LIT( KServiceGroupFax, "Fax" );
+_LIT( KServiceGroupAllTeleservices, "All Teleservices" );
+
+_LIT( KBarringProgram, "Barring program:" );
+_LIT( KBarringProgramAllBarrings, "All Barrings" ); 
+_LIT( KBarringProgramAllOutgoing, "All outgoing" ); 
+_LIT( KBarringProgramOutgoingInternational, "Outgoing International" ); 
+_LIT( KBarringProgramInternationalExceptToHomeCountry, "International Except To Home Country" ); 
+_LIT( KBarringProgramAllIncoming, "All Incoming" ); 
+_LIT( KBarringProgramIncomingWhenRoaming, "Incoming When Roaming" ); 
+_LIT( KBarringProgramAllServices, "All Services" ); 
+_LIT( KBarringProgramAllOutgoingServices, "All Outgoing Services" ); 
+_LIT( KBarringProgramAllIncomingServices, "All Incoming Services" ); 
+
+_LIT( KTBasicServiceGroups, "TBasicServiceGroups:" );      
+_LIT( KBasicServiceGroupsAllTeleAndBearer, "All Tele and Bearer" );
+_LIT( KBasicServiceGroupsAllTele, "All Tele" );
+_LIT( KBasicServiceGroupsTelephony, "Telephony" );
+_LIT( KBasicServiceGroupsAllDataTele, "All Data Tele" );
+
+_LIT( KBasicServiceGroupsFax, "Fax" );
+_LIT( KBasicServiceGroupsSms, "Sms" );
+
+_LIT( KBasicServiceGroupsAllDataExSms, "All Data Ex Sms" );
+_LIT( KBasicServiceGroupsAllTeleExcSms, "All Tele Exc Sms" );
+_LIT( KBasicServiceGroupsAllPlmnTele, "All Plmn Tele" );
+_LIT( KBasicServiceGroupsPlmnTele, "Plmn Tele" );
+_LIT( KBasicServiceGroupsAllBearer, "All Bearer" );
+
+_LIT( KBasicServiceGroupsAllAsync, "All Async" );
+_LIT( KBasicServiceGroupsAllSync, "All Sync" );
+
+_LIT( KBasicServiceGroupsSyncData, "Sync Data" );
+_LIT( KBasicServiceGroupsAsyncData, "Async Data" );
+_LIT( KBasicServiceGroupsPacketData, "Packet Data" );
+_LIT( KBasicServiceGroupsPadAccess, "Pad Access" );
+_LIT( KBasicServiceGroupsPlmnBearerServ, "Plmn Bearer Serv" );
+_LIT( KBasicServiceGroupsAltTele, "Alt Tele" );
+_LIT( KBasicServiceGroupsAllPlmnBearer, "All Plmn Bearer" );             
+
+_LIT( KTMobilePhonePasswordChangeV2, "TMobilePhonePasswordChangeV2:" ); 
+_LIT( KTSSSettingsSetting, "TSSSettingsSetting:" ); 
+_LIT( KTSSSettingsSettingCug, "ESSSettingsCug" ); 
+_LIT( KTSSSettingsSettingClir, "ESSSettingsClir" ); 
+_LIT( KTSSSettingsSettingAls, "ESSSettingsAls" ); 
+_LIT( KTSSSettingsSettingAlsBlocking, "ESSSettingsAlsBlocking" ); 
+_LIT( KTSSSettingsSettingDefaultCug, "ESSSettingsDefaultCug" ); 
+
+_LIT( KUsedDataNumber, "Used data number:" ); 
+_LIT( KUsedFaxNumber, "Used fax number:" );
+_LIT( KVoiceMailNumber, "Voice mail number:" );
+_LIT( KVideoMailNumber, "Video mail number:" );
+_LIT( KTimerValue, "Timer value:" );
+_LIT( KNewDefaultNumber, "New default number:" ); 
+_LIT( KDefaultNumbers, "Default numbers:" ); 
+
+_LIT( KTCallDivertSetting, "TCallDivertSetting:" ); 
+_LIT( KTCallDivertingCondition, "TCallDivertingCondition:" ); 
+_LIT( KDivertConditionUnconditional, "EDivertConditionUnconditional" ); 
+_LIT( KDivertConditionBusy, "EDivertConditionBusy" ); 
+_LIT( KDivertConditionNoReply, "EDivertConditionNoReply" ); 
+_LIT( KDivertConditionNotReachable, "EDivertConditionNotReachable" ); 
+_LIT( KDivertConditionAllCalls, "EDivertConditionAllCalls" ); 
+_LIT( KDivertConditionAllConditionalCases, "EDivertConditionAllConditionalCases" ); 
+
+_LIT( KTDivertingSetting, "TDivertingSetting:" ); 
+_LIT( KActivateDiverting, "EActivateDiverting" ); 
+_LIT( KCancelDiverting, "ECancelDiverting" ); 
+_LIT( KRegisterDiverting, "ERegisterDiverting" ); 
+_LIT( KEraseDiverting, "EEraseDiverting" ); 
+_LIT( KCheckStatus, "ECheckStatus" ); 
+            
+_LIT( KTDivertingStatus, "TDivertingStatus:" );             
+_LIT( KDivertingStatusActive, "EDivertingStatusActive" ); 
+_LIT( KDivertingStatusInactive, "EDivertingStatusInactive" ); 
+_LIT( KDivertingStatusNotRegistered, "EDivertingStatusNotRegistered" ); 
+_LIT( KDivertingStatusNotProvisioned, "EDivertingStatusNotProvisioned" ); 
+_LIT( KDivertingStatusUnknown, "EDivertingStatusUnknown" ); 
+
+_LIT( KTCallDivertingSettingiNoReplyTimer, "TCallDivertingSetting.iNoReplyTimer:" ); 
+_LIT( KTCallDivertSettingiNumber, "TCallDivertSetting.iNumber:"); 
+
+_LIT( KTSetCallWaiting, "TSetCallWaiting:" ); 
+_LIT( KDeactivateCallWaiting, "EDeactivateCallWaiting" ); 
+_LIT( KActivateCallWaiting, "EActivateCallWaiting" ); 
+
+_LIT( KTCurrentNetworkInfo, "TCurrentNetworkInfo:" ); 
+_LIT( KTCurrentNetworkStatus, "TCurrentNetworkStatus:" ); 
+
+_LIT( KENotRegisteredNotSearching, "ENotRegisteredNotSearching" );  
+_LIT( KERegisteredOnHomeNetwork, "ERegisteredOnHomeNetwork" ); 
+_LIT( KENotRegisteredSearching, "ENotRegisteredSearching" ); 
+_LIT( KERegistrationDenied, "ERegistrationDenied" ); 
+_LIT( KERegisteredRoaming, "ERegisteredRoaming" ); 
+
+_LIT( KLocationAreaCode, "Location area code:" ); 
+_LIT( KCellId, "Cell id:" ); 
+
+_LIT( KTSelectMode, "TSelectMode:" ); 
+_LIT( KENetSelectModeAutomatic, "ENetSelectModeAutomatic" ); 
+_LIT( KENetSelectModeManual, "ENetSelectModeManual" ); 
+
+_LIT( KCallIsActive, "Call is active" ); 
+_LIT( KCallIsNotActive, "Call is not active" ); 
+
+_LIT( KEPSetGPRSConnectionActive, "EPSetGPRSConnectionActive" ); 
+_LIT( KEPSetGPRSNotConnected, "EPSetGPRSNotConnected" ); 
+
+_LIT( KTNetworkId, "TNetworkId:" ); 
+_LIT( KTNetworkStatus, "TNetworkStatus:" ); 
+_LIT( KTNetworkInfo, "TNetworkInfo:" ); 
+_LIT( KENetStatUnknown, "ENetStatUnknown" ); 
+_LIT( KENetStatAvailable, "ENetStatAvailable" ); 
+_LIT( KENetStatCurrent, "ENetStatCurrent" ); 
+_LIT( KENetStatForbidden, "ENetStatForbidden" ); 
+
+_LIT( KCountryCode, "Country code:" ); 
+_LIT( KNetworkCode, "Network code:" ); 
+
+_LIT( KShortName, "Short name:" ); 
+_LIT( KLongName, "Long name:" ); 
+
+_LIT( KTNetworkAccess, "TNetworkAccess:" ); 
+_LIT( KENetNetworkGSM, "ENetNetworkGSM" ); 
+_LIT( KENetNetworkWCDMA, "ENetNetworkWCDMA" ); 
+
+_LIT( KTNetworkModeCaps, "TNetworkModeCaps:" ); 
+_LIT( KKCapsNetworkModeGsm, "KCapsNetworkModeGsm" ); 
+_LIT( KKCapsNetworkModeUmts, "KCapsNetworkModeUmts" ); 
+_LIT( KKCapsNetworkModeDual, "KCapsNetworkModeDual" ); 
+
+_LIT( KKCspCCBS, "KCspCCBS" ); 
+_LIT( KKCspCW, "KCspCW" ); 
+_LIT( KKCspHOLD, "KCspHOLD" ); 
+_LIT( KKCspBICRoam, "KCspBICRoam" ); 
+_LIT( KKCspBAIC, "KCspBAIC" ); 
+_LIT( KKCspBOICexHC, "KCspBOICexHC" ); 
+_LIT( KKCspBOIC, "KCspBOIC" ); 
+_LIT( KKCspBOAC, "KCspBOAC" ); 
+
+_LIT( KKCspCFU, "KCspCFU" ); 
+_LIT( KKCspCFB, "KCspCFB" ); 
+_LIT( KKCspCFNRc, "KCspCFNRc" ); 
+_LIT( KKCspCFNRy, "KCspCFNRy" ); 
+_LIT( KKCspALS, "KCspALS" ); 
+_LIT( KKCspPLMNMode, "KCspPLMNMode" ); 
+
+_LIT( KTUnconditionalCFStatus, "TUnconditionalCFStatus:" ); 
+_LIT( KKCFIndicatorUnknown, "KCFIndicatorUnknown" ); 
+_LIT( KKCFNoCallsForwarded, "KCFNoCallsForwarded" ); 
+_LIT( KKCFVoiceForwarded, "KCFVoiceForwarded" ); 
+_LIT( KKCFVideoForwarded, "KCFVideoForwarded" ); 
+_LIT( KKCFForwardedToVoiceMailbox, "KCFForwardedToVoiceMailbox" ); 
+_LIT( KKCFVoiceForwardedToVoiceMailbox, "KCFVoiceForwardedToVoiceMailbox" ); 
+_LIT( KKCFVideoForwardedToVoiceMailbox, "KCFVideoForwardedToVoiceMailbox" ); 
+_LIT( KKCFForwardedOnLine1, "KCFForwardedOnLine1" ); 
+_LIT( KKCFForwardedOnLine2, "KCFForwardedOnLine2" ); 
+
+_LIT( KEPSetNoCallsActive, "EPSetNoCallsActive" ); 
+_LIT( KEPSetCallActive, "EPSetCallActive" ); 
+
+_LIT( KActivatorUncertain, "Activator uncertain:" ); 
+
+_LIT( KTSelectedLine, "TSelectedLine:" ); 
+_LIT( KEPrimaryLine, "EPrimaryLine" ); 
+_LIT( KEAuxiliaryLine, "EAuxiliaryLine" ); 
+_LIT( KEUnknownLine, "EUnknownLine" ); 
+_LIT( KENotSupportedLine, "ENotSupportedLine" ); 
+
+_LIT( KCfActivated, "Cf activated:" ); 
+_LIT( KTCallDivertNotifySetting, "TCallDivertNotifySetting:" ); 
+_LIT( KVmbxDivert, "Vmbx divert:" ); 
+_LIT( KBasicServiceCode, "Basic service code:" ); 
+
+_LIT( KTBoolValue, "TBool value:" );
+_LIT( KTrue, "True" ); 
+_LIT( KFalse, "False" ); 
+
+#endif // PHONESETTINGSTEST_HRH
+            
+// End of File
+	
+	
+	

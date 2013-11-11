@@ -1,0 +1,8 @@
+EXPORTS
+	??0RStreamControlCustomCommands@@QAE@AAVRMMFController@@@Z @ 1 NONAME ; RStreamControlCustomCommands::RStreamControlCustomCommands(class RMMFController &)
+	??1CStreamControlCustomCommandParser@@UAE@XZ @ 2 NONAME ; CStreamControlCustomCommandParser::~CStreamControlCustomCommandParser(void)
+	?EnableEvents@RStreamControlCustomCommands@@QAEHH@Z @ 3 NONAME ; int RStreamControlCustomCommands::EnableEvents(int)
+	?GetRandomSeekingSupported@RStreamControlCustomCommands@@QAEHAAH@Z @ 4 NONAME ; int RStreamControlCustomCommands::GetRandomSeekingSupported(int &)
+	?GetSeekingSupported@RStreamControlCustomCommands@@QAEHAAH@Z @ 5 NONAME ; int RStreamControlCustomCommands::GetSeekingSupported(int &)
+	?NewL@CStreamControlCustomCommandParser@@SAPAV1@AAVMStreamControlCustomCommandImplementor@@@Z @ 6 NONAME ; class CStreamControlCustomCommandParser * CStreamControlCustomCommandParser::NewL(class MStreamControlCustomCommandImplementor &)
+

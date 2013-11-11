@@ -1,0 +1,38 @@
+// Copyright (c) 1998-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// msexe.exe Executable used to launch message server on ARM platform
+// 
+//
+
+/**
+ @file
+*/
+
+
+TARGET        msexe.exe
+TARGETTYPE    exe
+
+CAPABILITY ReadDeviceData WriteDevicedata ProtServ NetworkControl NetworkServices LocalServices ReaduserData WriteUserData
+UID    0x1000008c 0x1000484B
+VENDORID 0x70000001
+SOURCEPATH	../src
+SOURCE        MSVEXE.CPP
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+EPOCSTACKSIZE 0x4000
+EPOCHEAPSIZE 0x1000 0x400000
+
+LIBRARY       euser.lib msgs.lib
+
+
+SMPSAFE

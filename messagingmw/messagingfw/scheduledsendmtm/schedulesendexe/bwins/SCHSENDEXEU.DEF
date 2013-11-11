@@ -1,0 +1,3 @@
+EXPORTS
+	?ThreadFunction@@YAP6AHPAX@ZXZ @ 1 NONAME ; int (__cdecl*__cdecl ThreadFunction(void))(void *)
+

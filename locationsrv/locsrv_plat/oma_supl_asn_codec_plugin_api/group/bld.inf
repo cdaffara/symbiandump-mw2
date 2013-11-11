@@ -1,0 +1,57 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:   File that exports the files belonging to OMA SUPL ASN Codec API
+:                
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+../inc/epos_comasuplasnbase.h     				MW_LAYER_PLATFORM_EXPORT_PATH(epos_comasuplasnbase.h)
+../inc/epos_comasuplasnmessagebase.h    	MW_LAYER_PLATFORM_EXPORT_PATH(epos_comasuplasnmessagebase.h)
+../inc/epos_comasuplend.h     						MW_LAYER_PLATFORM_EXPORT_PATH(epos_comasuplend.h)
+../inc/epos_comasuplinit.h      					MW_LAYER_PLATFORM_EXPORT_PATH(epos_comasuplinit.h)
+../inc/epos_comasupllocationid.h     			MW_LAYER_PLATFORM_EXPORT_PATH(epos_comasupllocationid.h)
+../inc/epos_comasuplnotification.h      	MW_LAYER_PLATFORM_EXPORT_PATH(epos_comasuplnotification.h)
+../inc/epos_comasuplpos.h     						MW_LAYER_PLATFORM_EXPORT_PATH(epos_comasuplpos.h)
+../inc/epos_comasuplposinit.h      				MW_LAYER_PLATFORM_EXPORT_PATH(epos_comasuplposinit.h)
+../inc/epos_comasuplresponse.h      			MW_LAYER_PLATFORM_EXPORT_PATH(epos_comasuplresponse.h)
+../inc/epos_comasuplauthresponse.h      	MW_LAYER_PLATFORM_EXPORT_PATH(epos_comasuplauthresponse.h)
+../inc/epos_comasuplauthrequest.h       	MW_LAYER_PLATFORM_EXPORT_PATH(epos_comasuplauthrequest.h)
+../inc/epos_comasuplsessionid.h     			MW_LAYER_PLATFORM_EXPORT_PATH(epos_comasuplsessionid.h)
+../inc/epos_comasuplstart.h      					MW_LAYER_PLATFORM_EXPORT_PATH(epos_comasuplstart.h)
+../inc/epos_suplconstants.h     					MW_LAYER_PLATFORM_EXPORT_PATH(epos_suplconstants.h)
+../inc/epos_tomasuplposmethod.h       		MW_LAYER_PLATFORM_EXPORT_PATH(epos_tomasuplposmethod.h)
+../inc/epos_tomasuplqop.h		        			MW_LAYER_PLATFORM_EXPORT_PATH(epos_tomasuplqop.h)
+../inc/epos_tomasuplecellinfo.h          	MW_LAYER_PLATFORM_EXPORT_PATH(epos_tomasuplecellinfo.h)
+../inc/epos_comasuplinitver2.h 			MW_LAYER_PLATFORM_EXPORT_PATH(epos_comasuplinitver2.h)
+../inc/epos_comasuplnotificationver2.h      	MW_LAYER_PLATFORM_EXPORT_PATH(epos_comasuplnotificationver2.h)
+../inc/epos_comasuplstartver2.h      		MW_LAYER_PLATFORM_EXPORT_PATH(epos_comasuplstartver2.h)
+../inc/epos_comasupllocationidver2.h     	MW_LAYER_PLATFORM_EXPORT_PATH(epos_comasupllocationidver2.h)
+../inc/epos_comasupltriggeredstart.h      	MW_LAYER_PLATFORM_EXPORT_PATH(epos_comasupltriggeredstart.h)
+../inc/epos_comasupltriggeredstop.h      	MW_LAYER_PLATFORM_EXPORT_PATH(epos_comasupltriggeredstop.h)
+../inc/epos_comasupltriggeredresponse.h     	MW_LAYER_PLATFORM_EXPORT_PATH(epos_comasupltriggeredresponse.h)
+../inc/epos_comasuplsetcapabilitiesver2.h 	MW_LAYER_PLATFORM_EXPORT_PATH(epos_comasuplsetcapabilitiesver2.h)
+../inc/epos_comasuplreport.h 			MW_LAYER_PLATFORM_EXPORT_PATH(epos_comasuplreport.h)
+../inc/epos_comasuplresponsever2.h 		MW_LAYER_PLATFORM_EXPORT_PATH(epos_comasuplresponsever2.h)
+../inc/epos_comasuplendver2.h 			MW_LAYER_PLATFORM_EXPORT_PATH(epos_comasuplendver2.h)
+../inc/epos_comasuplposinitver2.h 		MW_LAYER_PLATFORM_EXPORT_PATH(epos_comasuplposinitver2.h)
+
+
+

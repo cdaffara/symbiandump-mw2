@@ -1,0 +1,54 @@
+/*
+* Copyright (c) 2002-2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*    This file provides the information required for building the
+*    Landmarks subsystem.
+*
+*/
+
+
+
+PRJ_PLATFORMS
+WINSCW ARMV5
+
+#include "../clientlib/group/bld.inf"
+#include "../searchclientlib/group/bld.inf"
+#include "../multidbsearch/group/bld.inf"
+#include "../dbmanclientlib/group/bld.inf"
+#include "../dbmanprov/group/bld.inf"
+#include "../dbreg/group/bld.inf"
+#include "../serverclientlib/group/bld.inf"
+#include "../recognizer/group/bld.inf"
+#include "../converter/group/bld.inf"
+#include "../internalservices/group/bld.inf"
+#include "../server/group/bld.inf"
+#include "../localaccess/group/bld.inf"
+#include "../localaccessprov/group/bld.inf"
+#include "../localsearchprov/group/bld.inf"
+#include "../localdbmanprov/group/bld.inf"
+
+PRJ_EXPORTS
+../data/LocationLandmarksStub.SIS       /epoc32/data/z/system/install/locationlandmarksstub.sis
+
+../Rom/LocationLandmarks.iby            CORE_MW_LAYER_IBY_EXPORT_PATH(LocationLandmarks.iby)
+../Rom/locationlandmarks_resources.iby  LANGUAGE_MW_LAYER_IBY_EXPORT_PATH(locationlandmarks_resources.iby)
+../Rom/LocationLandmarksStub.iby        CORE_MW_LAYER_IBY_EXPORT_PATH(LocationLandmarksStub.iby)
+
+PRJ_EXPORTS
+../Conf/landmarks.confml                     MW_LAYER_CONFML(landmarks.confml) 
+../Conf/landmarks_101fe99b.crml 	        MW_LAYER_CRML(landmarks_101fe99b.crml)
+
+
+
+// End of File

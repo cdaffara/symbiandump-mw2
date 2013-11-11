@@ -1,0 +1,14 @@
+EXPORTS
+	_ZN26CAudioOutputControlUtility10ConstructLEP30CAudioOutputControlUtilityImpl @ 1 NONAME
+	_ZN26CAudioOutputControlUtility17SetDRMConfigIntfcERP15CDRMConfigIntfc @ 2 NONAME
+	_ZN26CAudioOutputControlUtility9ConfigureER12CMMFDevSound @ 3 NONAME
+	_ZN26CAudioOutputControlUtilityC1Ev @ 4 NONAME
+	_ZN26CAudioOutputControlUtilityC2Ev @ 5 NONAME
+	_ZN26CAudioOutputControlUtilityD0Ev @ 6 NONAME
+	_ZN26CAudioOutputControlUtilityD1Ev @ 7 NONAME
+	_ZN26CAudioOutputControlUtilityD2Ev @ 8 NONAME
+	_ZTI26CAudioOutputControlUtility @ 9 NONAME ; #<TI>#
+	_ZTV26CAudioOutputControlUtility @ 10 NONAME ; #<VT>#
+	_ZN26CAudioOutputControlUtility13SetDataSourceEP11MDataSource @ 11 NONAME
+	_ZN26CAudioOutputControlUtility13SetDataSourceEP21CMultimediaDataSource @ 12 NONAME
+

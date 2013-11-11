@@ -1,0 +1,53 @@
+/*
+* Copyright (c) 2002-2005 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Location Triggering Client Library
+*
+*/
+
+#include <platform_paths.hrh>
+
+
+PRJ_EXPORTS
+../inc/lbt.h          		            MW_LAYER_PUBLIC_EXPORT_PATH(lbt.h)
+../inc/lbtgeoareabase.h               MW_LAYER_PUBLIC_EXPORT_PATH(lbtgeoareabase.h)
+../inc/lbtgeocircle.h                 MW_LAYER_PUBLIC_EXPORT_PATH(lbtgeocircle.h)
+../inc/lbtgeorect.h 			            MW_LAYER_PUBLIC_EXPORT_PATH(lbtgeorect.h)
+../inc/lbtgeocell.h     			        MW_LAYER_PUBLIC_EXPORT_PATH(lbtgeocell.h)
+../inc/lbtgeohybrid.h    			        MW_LAYER_PUBLIC_EXPORT_PATH(lbtgeohybrid.h)
+../inc/lbterrors.h										MW_LAYER_PUBLIC_EXPORT_PATH(lbterrors.h)
+../inc/lbtserver.h										MW_LAYER_PUBLIC_EXPORT_PATH(lbtserver.h)
+../inc/lbttriggerentry.h   						MW_LAYER_PUBLIC_EXPORT_PATH(lbttriggerentry.h)
+../inc/lbtcommon.h   									MW_LAYER_PUBLIC_EXPORT_PATH(lbtcommon.h)
+../inc/lbttriggerchangeevent.h   			MW_LAYER_PUBLIC_EXPORT_PATH(lbttriggerchangeevent.h)
+../inc/lbttriggerinfo.h  							MW_LAYER_PUBLIC_EXPORT_PATH(lbttriggerinfo.h)
+../inc/lbttriggerfilterbase.h 				MW_LAYER_PUBLIC_EXPORT_PATH(lbttriggerfilterbase.h)
+../inc/lbttriggerfilterbyattribute.h 	MW_LAYER_PUBLIC_EXPORT_PATH(lbttriggerfilterbyattribute.h)
+../inc/lbttriggerfilterbyarea.h 			MW_LAYER_PUBLIC_EXPORT_PATH(lbttriggerfilterbyarea.h)
+../inc/lbttriggerfiltercomposite.h 		MW_LAYER_PUBLIC_EXPORT_PATH(lbttriggerfiltercomposite.h)
+../inc/lbttriggerdynamicinfo.h  			MW_LAYER_PUBLIC_EXPORT_PATH(lbttriggerdynamicinfo.h)
+../inc/lbttriggerconditionbase.h  		MW_LAYER_PUBLIC_EXPORT_PATH(lbttriggerconditionbase.h)
+../inc/lbtsessiontrigger.h						MW_LAYER_PUBLIC_EXPORT_PATH(lbtsessiontrigger.h)
+../inc/lbtstartuptrigger.h						MW_LAYER_PUBLIC_EXPORT_PATH(lbtstartuptrigger.h)
+../inc/lbttriggeringsystemsettingschangeeventobserver.h 	MW_LAYER_PUBLIC_EXPORT_PATH(lbttriggeringsystemsettingschangeeventobserver.h)
+../inc/lbttriggeringsystemsettingschangeeventnotifier.h 	MW_LAYER_PUBLIC_EXPORT_PATH(lbttriggeringsystemsettingschangeeventnotifier.h)
+../inc/lbttriggerfiringeventobserver.h MW_LAYER_PUBLIC_EXPORT_PATH(lbttriggerfiringeventobserver.h)
+../inc/lbttriggerfiringeventnotifier.h MW_LAYER_PUBLIC_EXPORT_PATH(lbttriggerfiringeventnotifier.h)
+../inc/lbttriggerchangeeventobserver.h MW_LAYER_PUBLIC_EXPORT_PATH(lbttriggerchangeeventobserver.h)
+../inc/lbttriggerchangeeventnotifier.h MW_LAYER_PUBLIC_EXPORT_PATH(lbttriggerchangeeventnotifier.h)
+../inc/lbttriggerconditionarea.h 			 MW_LAYER_PUBLIC_EXPORT_PATH(lbttriggerconditionarea.h)
+../inc/lbttriggeringsystemsettings.h 	 MW_LAYER_PUBLIC_EXPORT_PATH(lbttriggeringsystemsettings.h)
+../inc/lbtlisttriggeroptions.h         MW_LAYER_PUBLIC_EXPORT_PATH(lbtlisttriggeroptions.h)
+
+
+

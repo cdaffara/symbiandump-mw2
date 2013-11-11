@@ -1,0 +1,56 @@
+/*
+* Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Build information file
+*
+*/
+
+
+PRJ_PLATFORMS
+    DEFAULT
+
+PRJ_EXPORTS
+
+PRJ_MMPFILES
+
+PRJ_TESTMMPFILES
+HarvesterPluginTest.mmp
+
+PRJ_TESTEXPORTS
+
+../conf/HarvesterPluginTest.cfg /epoc32/winscw/c/TestFramework/HarvesterPluginTest.cfg
+../init/HarvesterPluginTest.ini /epoc32/winscw/c/TestFramework/HarvesterPluginTest.ini
+
+../../data/mmc/HarvesterTest/bmp_burst.bmp /epoc32/winscw/c/Data/bmp_burst.bmp
+../../data/mmc/HarvesterTest/G31D.TIF /epoc32/winscw/c/Data/G31D.TIF
+../../data/mmc/HarvesterTest/G4.TIF /epoc32/winscw/c/Data/G4.TIF
+../../data/mmc/HarvesterTest/GIF87testimage.gif /epoc32/winscw/c/Data/GIF87testimage.gif
+../../data/mmc/HarvesterTest/gif89a_onemeg.gif /epoc32/winscw/c/Data/gif89a_onemeg.gif
+../../data/mmc/HarvesterTest/Liverpool.jpg /epoc32/winscw/c/Data/Liverpool.jpg
+../../data/mmc/HarvesterTest/MBMtestimage.mbm /epoc32/winscw/c/Data/MBMtestimage.mbm
+../../data/mmc/HarvesterTest/ota_bmpiso.ota /epoc32/winscw/c/Data/ota_bmpiso.ota
+../../data/mmc/HarvesterTest/PNGtestimage.png /epoc32/winscw/c/Data/PNGtestimage.png
+../../data/mmc/HarvesterTest/PSRETRO.WMF /epoc32/winscw/c/Data/PSRETRO.WMF
+../../data/mmc/HarvesterTest/wbmp_skull.wbmp /epoc32/winscw/c/Data/wbmp_skull.wbmp
+../../data/mmc/HarvesterTest/Jpg.jpg /epoc32/winscw/c/Data/Jpg.jpg
+../../data/mmc/HarvesterTest/Animated.gif /epoc32/winscw/c/Data/Animated.gif
+../../data/mmc/HarvesterTest/Mbm.mbm /epoc32/winscw/c/Data/Mbm.mbm
+../../data/mmc/HarvesterTest/H263.3gp /epoc32/winscw/c/Data/H263.3gp
+../../data/mmc/HarvesterTest/MPEG4.mp4 /epoc32/winscw/c/Data/MPEG4.mp4
+../../data/mmc/HarvesterTest/MPEG4.3gp /epoc32/winscw/c/Data/MPEG4.3gp
+../../data/mmc/HarvesterTest/Temp1.jpg /epoc32/winscw/c/Data/Temp1.jpg
+../../data/mmc/HarvesterTest/Temp2.jpg /epoc32/winscw/c/Data/Temp2.jpg
+../../data/mmc/HarvesterTest/Temp3.jpg /epoc32/winscw/c/Data/Temp3.jpg
+../../data/mmc/HarvesterTest/00001.mp3 /epoc32/winscw/c/Data/00001.mp3
+
+

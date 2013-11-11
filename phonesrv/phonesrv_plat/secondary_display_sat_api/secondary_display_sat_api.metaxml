@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<api id="f144f1168e1d63c449ee6d36da82473f" dataversion="1.0">
+  <name>Secondary Display SAT API</name>
+  <description>This message interface provides SAT command information for Cover UI clients through Mediator subsystem.</description>
+  <type>c++</type>
+  <subsystem>satengine</subsystem>
+  <libs>
+    <lib name="SatEngine.lib"/>
+  </libs>
+  <release category="domain" sinceversion="3.2"/>
+  <attributes>
+    <!-- This indicates wether the api provedes separate html documentation -->
+    <!-- or is the additional documentation generated from headers. -->
+    <!-- If you are unsure then the value is "no" -->
+    <htmldocprovided>no</htmldocprovided>
+    <adaptation>no</adaptation>
+  </attributes>
+</api>

@@ -1,0 +1,34 @@
+/*
+* Copyright (c) 2002-2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  IBY file of CbsServer
+*
+*/
+
+
+#ifndef CBSSERVER_IBY
+#define CBSSERVER_IBY
+
+file=ABI_DIR\BUILD_DIR\CBSSERVER.EXE        PROGRAMS_DIR\CBSSERVER.EXE
+file=ABI_DIR\BUILD_DIR\CBSCLIENT.DLL        SHARED_LIB_DIR\CBSCLIENT.DLL
+file=ABI_DIR\BUILD_DIR\CBSMCNCLIENT.DLL     SHARED_LIB_DIR\CBSMCNCLIENT.DLL
+
+data=DATAZ_\private\1000A859\backup_registration.xml	private\1000A859\backup_registration.xml
+
+data=ZSYSTEM\install\cbsserver_stub.sis         System\Install\cbsserver_stub.sis
+data=ZSYSTEM\install\cbsclient_stub.sis         System\Install\cbsclient_stub.sis
+data=ZSYSTEM\install\cbsmcnclient_stub.sis      System\Install\cbsmcnclient_stub.sis
+
+#endif // CBSSERVER_IBY
+
+//  End of File  

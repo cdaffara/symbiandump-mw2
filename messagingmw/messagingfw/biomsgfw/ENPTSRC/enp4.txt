@@ -1,0 +1,16 @@
+123 lots of messages
+From: 01514876655
+Subject: Los huevos del perro
+size: some size
+iuid: some id
+sid: server id
+cc: address to cc
+att: attachment file
+to: lobel.crnogorac@symbian.com
+date: 1/2/2002
+fldr: inbox
+sender: sender's address
+reply-to: lobel.crnogorac@symbian.com
+uidv: validity
+extension: value
+

@@ -1,0 +1,16 @@
+BEGIN:VCARD
+VERSION:2.1
+N:Wibble;Barney
+FN:Barney Wibble
+ORG:WibCo
+TITLE:Wib Monitor
+TEL;WORK;VOICE:+44 012345345
+TEL;HOME;VOICE:+44 12143234
+ADR;WORK;ENCODING=QUOTED-PRINTABLE:;;23 The Wibble=0D=0AWibble Street;WibbleHampton;Wibbleshire;;United Kingdom
+LABEL;WORK;ENCODING=QUOTED-PRINTABLE:23 The Wibble=0D=0AWibble Street=0D=0AWibbleHampton, Wibbleshire=0D=0AUnited=
+ Kingdom
+URL:
+URL:http://www.wibbleweb.wib
+EMAIL;PREF;INTERNET:barney.wibble@wibco.co.uk
+REV:20000322T104543Z
+END:VCARD

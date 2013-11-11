@@ -1,0 +1,74 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+LOAD_SERVER t_media  -SharedData
+
+//! @file			
+//! @SYMTestSuiteName		MSG-OOMTEST-DRIVE-OPS
+//! @SYMScriptTestEnvironment   Details as in below:-
+//!				1. nt-ras connection or winpcap
+//!				2. email servers ( communigatePro or ms exchange)
+//!				3. test driver
+//!				4. testexecute framework(TEF3.0)
+//!				
+//! @SYMScriptPurpose		Integration testing of PREQ557-"Improved support in Messaging for removable media"
+//! @SYMScriptCreationDate	04/04/2008
+
+
+START_TESTCASE	MSG-OOMTEST-DRIVE-OPS-0001
+//! 	@SYMTestCaseID		MSG-OOMTEST-DRIVE-OPS-0001
+//! 	@SYMTestCaseDesc	Remove the drive from preferred drive list and add it again
+//!				
+//!	@SYMREQ			REQ9046 
+//!	@SYMPREQ 		PREQ557
+//!	@SYMAPI			void CMsvSession::AddDriveL (TDriveNumber aDrive, Tint& aPriority)
+//!				void CMsvSession::RemoveDriveL (TDriveNumber aDrive)
+//!				
+//!				
+//!	@SYMTestCaseDependencies OOM condition
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1. Add and Remove the drive(L: drive) in the preferred drive list
+//!				2. Update the drive(E: drive) from preferred drive list
+//!				
+//! 	@SYMTestExpectedResults 1. expecting KErrOutOfMemory
+//!				2. expecting KErrOutOfMemory
+//!				
+//!	@SYMAuthor		Rajat Bal
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-oomtest-drive-ops.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-oom-0001.ini		c:\private\1000484b\msgprioritydrivelist.ini
+						
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-oomtest-drive-ops.ini
+		CREATE_OBJECT	OomTestWrapper	0001_obj_1
+		COMMAND		0001_obj_1		OOMAddRemoveDrive	0001_OOMAddRemoveDrive
+		COMMAND		0001_obj_1		OOMUpdateDrive		0001_OOMUpdateDrive
+	END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+	
+END_TESTCASE	MSG-OOMTEST-DRIVE-OPS-0001

@@ -1,0 +1,37 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRINT Running  EMsvChangeEntry
+
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvChangeEntry_001.script
+	// Create an entry in a folder(draft not protected). Then attempt to modify the contents with
+	// various combination of ownership and capabilities.
+	
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvChangeEntry_002.script
+	// Create an entry in a folder(outbox protected). 
+	// Then attempt to modify the contents with various combination of capabilities.
+
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvChangeEntry_003.script
+	// Create an entry in a service entry. 
+	// Then attempt to modify the contents with various combination of capabilities.
+
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvChangeEntry_004.script
+	// Create an entry in a remote folder (outbox, but using a remote service). 
+	// Then attempt to modify the contents with various combination of capabilities.

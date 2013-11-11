@@ -1,0 +1,62 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Build information file for project audiofetcher.dll
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+../rom/audiofetcher.iby					CORE_MW_LAYER_IBY_EXPORT_PATH(audiofetcher.iby)
+../rom/audiofetcher_resources.iby			LANGUAGE_MW_LAYER_IBY_EXPORT_PATH(audiofetcher_resources.iby)
+
+// export localised loc file
+../loc/audiofetcher.loc					MW_LAYER_LOC_EXPORT_PATH(audiofetcher.loc)
+
+
+PRJ_EXTENSIONS
+START EXTENSION s60/mifconv
+  OPTION TARGETFILE audiofetcher.mif
+  OPTION HEADERFILE audiofetcher.mbg
+  OPTION SOURCES \
+		-c8,8 qgn_indi_ai_nt_music.svg \
+		-c8,8 qgn_prop_mup_audio.svg \
+		-c8,8 qgn_prop_fmgr_file_video.svg \
+		-c8,8 qgn_prop_fmgr_file_voicerec.svg \
+		-c8,8 qgn_prop_mup_artist.svg \
+		-c8,8 qgn_prop_mup_album.svg \
+		-c8,8 qgn_prop_mup_genre.svg \
+		-c8,8 qgn_prop_mup_composer.svg \
+		-c8,8 qgn_prop_link_embd_small.svg \
+		-c8,8 qgn_prop_folder_small.svg \
+		-c8,8 qgn_prop_sml_sync_off.svg \
+		-c8,8 qgn_indi_fmgr_ms_add.svg \
+		-c8,8 qgn_indi_mmc_add.svg \
+		-c8,8 qgn_prop_mce_unknown_read \
+		-c8,8 qgn_prop_fmgr_file_image.svg
+END
+
+PRJ_MMPFILES
+
+audiofetcher.mmp
+
+// End of File
+
+
+

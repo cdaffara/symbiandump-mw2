@@ -1,0 +1,14 @@
+<?xml version="1.0" ?> 
+<!DOCTYPE testSuite SYSTEM "file:///c:/program files/common files/symbian/testSuite.dtd" [ ]>
+
+<testSuite>
+  <name>Messaging</name> 
+ 
+ <testItems>
+  <suite>Email</suite> 
+  <suite>common</suite>
+  <suite>removable</suite> 
+  <suite>backup</suite> 
+ </testItems>
+
+</testSuite>

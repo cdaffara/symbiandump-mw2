@@ -1,0 +1,82 @@
+From: "test001" <test001@msexchange2k.closedtest.intra>
+To: <test004@msexchange2k.closedtest.intra>
+Subject: Message3
+Date: Mon, 3 Mar 2008 21:15:39 +0530
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+	boundary="----=_NextPart_000_007E_01C87F93.A9D1FB10"
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2800.1914
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1914
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_007E_01C87F93.A9D1FB10
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: 8bit
+
+Symbian OS - the mobile operating systemSoftware licensing company that
+kilomilestone2 develops and licenses Symbian OS, an open industry standard operating system
+for data enabled mobile phones.
+www.symbian.com/ - Similar pages
+Phones - www.symbian.com/phones/index.html
+Developer tools & downloads - www.symbian.com/developer/downloads/index.html
+More results from www.symbian.com »
+Symbian OS - the mobile operating systemSoftware licensing company that
+develops and licenses Symbian OS, an open industry standard operating system
+for data enabled mobile phones.
+www.symbian.com/ - Similar pages
+Phones - www.symbian.com/phones/index.html
+OS - www.symbian.com/symbianos/index.html
+Fast facts - www.symbian.com/about/fastfacts/fastfacts.html
+Developer tools & downloads - www.symbian.com/developer/downloads/index.html
+More results from www.symbian.com »
+Symbian OS - the mobile operating systemSoftware licensing company that
+develops and licenses Symbian OS, an open industry standard operating system
+for data enabled mobile phones.
+www.symbian.com/ - Similar pages
+Phones - www.symbian.com/phones/index.html
+OS - www.symbian.com/symbianos/index.html
+Fast facts - www.symbian.com/about/fastfacts/fastfacts.html
+www.symbianone.com/ - 93k - Cached - Similar pages
+Symbian Themes: WelcomeThe premier site for sharing and customzing themes,
+wallpapers, ringtones and more for a wide variety of mobile devices such as
+mobile phones, ...
+symbian.mobilethemes.com/ - 92k - Cached - Similar pages
+
+Body part to be added
+
+------=_NextPart_000_007E_01C87F93.A9D1FB10
+Content-Type: text/x-vcard;
+	name="Pramod Kumar Das.vcf"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+	filename="Pramod Kumar Das.vcf"
+
+BEGIN:VCARD
+VERSION:2.1
+N:Das;Pramod;Kumar
+FN:Pramod Kumar Das
+TEL;CELL;VOICE:+919343748314
+ADR;HOME:;;;Bangalore;Karnataka;560016;India
+LABEL;HOME;ENCODING=QUOTED-PRINTABLE:Bangalore, Karnataka 560016=0D=0AIndia
+EMAIL;PREF;INTERNET:pramodkumar.das@mphasis.com
+REV:20080306T083916Z
+END:VCARD
+
+------=_NextPart_000_007E_01C87F93.A9D1FB10
+Content-Type: application/octet-stream;
+	name="epoc.ini"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+	filename="epoc.ini"
+
+PlatSecDiagnostics ON
+PlatSecEnforcement ON 
+PlatSecProcessIsolation ON 
+PlatSecEnforceSysBin ON
+startupmode 1
+------=_NextPart_000_007E_01C87F93.A9D1FB10--
+

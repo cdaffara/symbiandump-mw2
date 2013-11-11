@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<api id="4d70161d1fa4a704f11df267a152325f" dataversion="1.0">
+  <name>SS Settings API</name>
+  <description>SS (Supplementary Service) Settings API provides an interface to query, change and receive change indications of the SIM or the network settings that are stored in the mobile device. The settings are CUG, CLIR, ALS and ALS blocking.</description>
+  <type>c++</type>
+  <subsystem>phonesettings</subsystem>
+  <libs>
+    <lib name="SsSettings.lib" />
+  </libs>
+  <release category="domain"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>yes</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

@@ -1,0 +1,58 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:    Project definition file for simplesiputils
+*
+*/
+
+
+
+
+// To get the APP_LAYER_SYSTEMINCLUDE-definition
+#include <platform_paths.hrh>
+
+TARGET                          simplesiputils.dll
+TARGETTYPE                      dll
+UID                             0x1000008d 0x10281EEC
+CAPABILITY                      CAP_GENERAL_DLL
+VENDORID                        VID_DEFAULT
+
+SOURCEPATH                      ../src
+
+SOURCE                          simplesipconnection.cpp
+SOURCE                        	simplesipconnectionobserver.cpp
+SOURCE                          simplesipprofileobserver.cpp
+SOURCE                          simplerequest.cpp
+SOURCE                          simplerefreshtimer.cpp
+SOURCE                          simplesettings.cpp
+SOURCE                          simpledebugutils.cpp
+
+USERINCLUDE                     ../inc
+USERINCLUDE                     ../../api
+USERINCLUDE                     ../../inc
+
+// default system include paths for middleware layer modules
+MW_LAYER_SYSTEMINCLUDE
+
+DEBUGLIBRARY                    flogger.lib
+DEBUGLIBRARY                    efsrv.lib   // file server
+DEBUGLIBRARY                    apparc.lib
+LIBRARY                         estor.lib   // RReadStream
+LIBRARY                         euser.lib
+LIBRARY                         sipclient.lib
+LIBRARY                         sipprofilecli.lib
+LIBRARY                         inetprotutil.lib
+LIBRARY                         sipcodec.lib
+LIBRARY                         bafl.lib  // string pool
+LIBRARY                         centralrepository.lib
+LIBRARY                         presencesettingsapi.lib

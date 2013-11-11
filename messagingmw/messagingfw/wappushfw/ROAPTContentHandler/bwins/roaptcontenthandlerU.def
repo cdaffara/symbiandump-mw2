@@ -1,0 +1,16 @@
+EXPORTS
+	?ImplementationGroupProxy@@YAPBUTImplementationProxy@@AAH@Z @ 1 NONAME ; struct TImplementationProxy const * ImplementationGroupProxy(int &)
+	??0CROCHCAFInterface@@QAE@AAVRFs@@@Z @ 2 NONAME ; CROCHCAFInterface::CROCHCAFInterface(class RFs &)
+	??1CROCHCAFInterface@@UAE@XZ @ 3 NONAME ; CROCHCAFInterface::~CROCHCAFInterface(void)
+	?AddToMetaDataL@CROCHCAFInterface@@QAEXABVTDesC8@@0@Z @ 4 NONAME ; void CROCHCAFInterface::AddToMetaDataL(class TDesC8 const &, class TDesC8 const &)
+	?AddToMetaDataL@CROCHCAFInterface@@QAEXABVTDesC8@@@Z @ 5 NONAME ; void CROCHCAFInterface::AddToMetaDataL(class TDesC8 const &)
+	?Deregister@CROCHCAFInterface@@QAEXXZ @ 6 NONAME ; void CROCHCAFInterface::Deregister(void)
+	?EndProcessingL@CROCHCAFInterface@@QAEXXZ @ 7 NONAME ; void CROCHCAFInterface::EndProcessingL(void)
+	?GetSuggestedAttachmentFileName@CROCHCAFInterface@@QBEHAAVTDes16@@@Z @ 8 NONAME ; int CROCHCAFInterface::GetSuggestedAttachmentFileName(class TDes16 &) const
+	?PrepareProcessingL@CROCHCAFInterface@@QAEXXZ @ 9 NONAME ; void CROCHCAFInterface::PrepareProcessingL(void)
+	?Processing@CROCHCAFInterface@@QBEHXZ @ 10 NONAME ; int CROCHCAFInterface::Processing(void) const
+	?RegisterL@CROCHCAFInterface@@QAEXABVTDesC8@@@Z @ 11 NONAME ; void CROCHCAFInterface::RegisterL(class TDesC8 const &)
+	?Registered@CROCHCAFInterface@@QBEHXZ @ 12 NONAME ; int CROCHCAFInterface::Registered(void) const
+	?StartProcessing@CROCHCAFInterface@@QAEXABVTDesC16@@0AAVRFile@@@Z @ 13 NONAME ; void CROCHCAFInterface::StartProcessing(class TDesC16 const &, class TDesC16 const &, class RFile &)
+	?WriteDataL@CROCHCAFInterface@@QAEXABVTDesC8@@@Z @ 14 NONAME ; void CROCHCAFInterface::WriteDataL(class TDesC8 const &)
+

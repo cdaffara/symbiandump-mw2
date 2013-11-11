@@ -1,0 +1,38 @@
+[main]
+bio_test doatstart
+bio_test mail_06
+bio_test doattheend
+
+
+// Startup section.
+[doatstart]
+clean_all_bio_msgs
+
+
+// Shutdown section.
+[doattheend]
+
+
+// wapp tests.
+[mail_06]
+gen_msg_from_file iacp\iacp_mail_06.txt
+check_used_bif 1000552f
+bio_client_parse
+bio_client_process
+dump_parsed_message
+//
+// check mail settings in msg store
+check_imap_named mail_06_imap mail_06
+check_smtp_named mail_06_smtp mail_06
+
+
+[mail_06_imap]
+chk_imap_loginname user_06
+chk_imap_password pass_06
+chk_imap_serveraddress imap.mail_06.net
+chk_imap_folderpath "mail_06_folder"
+
+
+[mail_06_smtp]
+chk_smtp_emailaddress email@mail_06.com
+chk_smtp_serveraddress smtp.mail_06.net

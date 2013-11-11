@@ -1,0 +1,36 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: 50_msg_sendui.pkg;
+&EN
+
+; Installation header
+; Only one component name as we only support English
+; UID is the main app's UID
+
+#{"msg_sendui"},(0x200184B4),1,0,0,TYPE=SA
+[0x101F7961],3,*,*,{"Series60ProductID"}
+
+; Non-localised vendor name
+:"Nokia Corporation"
+
+; Localised vendor names
+%{"Nokia Corporation"}
+
+;Files to install
+;
+"\epoc32\release\armv5\urel\SendUIAPITest.dll"-"C:\sys\bin\SendUIAPITest.dll"
+"\Epoc32\winscw\c\testframework\ui_SendUIAPITest.cfg"-"C:\TestFramework\ui_SendUIAPITest.cfg"
+"\Epoc32\winscw\c\testframework\TestFramework_sendui.ini"-"C:\TestFramework\TestFramework_sendui.ini"
+"..\Data\MMC\SendUIAPITest\Attachment.txt"-"e:\testing\data\SendUIAPITest\Attachment.txt"
+"..\group\sendui_c.bat"-"!:\sendui.bat"

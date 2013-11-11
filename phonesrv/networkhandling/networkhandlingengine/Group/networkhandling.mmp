@@ -1,0 +1,84 @@
+/*
+* Copyright (c) 2010 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project specification file for Network Handling dll
+*
+*/
+
+#include <platform_paths.hrh>
+
+//Define to use bigger timer values e.g. in WINS
+//MACRO TESTINGVIAG
+//MACRO TESTINGMCN
+
+TARGET          networkhandling.dll
+TARGETTYPE      dll
+UID             0x1000008D 0x1000A837
+
+CAPABILITY      CAP_GENERAL_DLL
+VENDORID        VID_DEFAULT
+
+SOURCEPATH      ../NetworkHandlingSrc
+
+SOURCE          CNWNetworkCurrentNetworkMonitor.cpp
+SOURCE          CNWSession.cpp
+SOURCE          CNWNetworkModeMonitor.cpp
+SOURCE          CNWNetworkMonitorBase.cpp
+SOURCE          CNWNetworkRegistrationStatusMonitor.cpp
+SOURCE          NWPanic.cpp
+SOURCE          CNWProgrammableOperatorNameCommand.cpp
+SOURCE          CNWServiceProviderNameCommand.cpp
+SOURCE          CNWMessageHandler.cpp
+SOURCE          CNWSubscriberIdCommand.cpp
+SOURCE          CNWNetworkProviderNameCommand.cpp
+SOURCE          CNWNetworkRegistrationStatusReceiver.cpp
+SOURCE          CNWNetworkCurrentNetworkReceiver.cpp
+#ifdef RD_PHONE_NG
+SOURCE          cnwnetworkselectionsettingmonitor.cpp
+#endif
+SOURCE          CNWDynamicCapsMonitor.cpp  
+
+#ifdef __PROTOCOL_GSM
+#include "Networkhandlinggsm.mmp"
+#endif
+
+USERINCLUDE     ../NetworkHandlingInc
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   ../../../inc
+
+LIBRARY         customapi.lib
+LIBRARY         etel.lib
+LIBRARY         etelmm.lib
+LIBRARY         euser.lib
+LIBRARY         flogger.lib
+LIBRARY         efsrv.lib
+LIBRARY         charconv.lib
+
+LIBRARY         centralrepository.lib
+LIBRARY         etelpckt.lib
+LIBRARY         FeatMgr.lib
+
+#ifdef WINSCW
+    DEFFILE ../Bwins/NETWORKHANDLING.DEF
+#else
+    #ifdef RD_PHONE_NG
+        DEFFILE ../EABI/networkhandlingNG.DEF
+    #else
+        DEFFILE ../EABI/networkhandling.DEF
+    #endif // RD_PHONE_NG
+#endif // WINSCW
+LANG            SC
+
+
+

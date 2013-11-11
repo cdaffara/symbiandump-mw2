@@ -1,0 +1,43 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Observer class for Metadata Utility
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_TESTEXPORTS
+
+PRJ_EXPORTS
+
+PRJ_TESTMMPFILES
+#include "../../mmmw_plat/enhanced_media_client_api/tsrc/Group/bld.inf"
+#include "../../mmmw_plat/audio_metadata_reader_api/tsrc/Group/bld.inf"
+#include "../../mmmw_plat/voip_audio_services_api/tsrc/Group/bld.inf"
+#include "../../mmmw_plat/audio_output_control_utility_api/tsrc/Group/bld.inf"
+#include "../../mmmw_plat/call_audio_control_api/tsrc/Group/bld.inf"
+#include "../../mmmw_plat/radio_utilities_api/tsrc/Group/bld.inf"
+#include "../../mmmw_plat/thumbnail_engine_api/tsrc/group/bld.inf"
+#include "../../mmmw_plat/telephony_multimedia_service_api/tsrc/Group/Bld.inf"
+#include "../../mmmw_plat/openmax_al_api/tsrc/openmaxaltestmodule/group/bld.inf"
+#include "../../mmmw_plat/system_tone_service_api/tsrc/group/bld.inf"
+
+
+PRJ_MMPFILES
+
+//  End of File

@@ -1,0 +1,56 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+//! @file
+//! @SYMTestCaseID 		CM-SENDAS-CIT-0002-HP
+//! @SYMTestCaseDesc 		Create a SMS Message using SendAs API, by specifying the account
+//! @SYMFssID 			
+//! @SYMTestStatus 		Defined
+//! @SYMTestPriority 		High
+//! @SYMTestActions 		
+//! @SYMTestExpectedResults 	A SMS message is creted in the Drafts folder
+//! @SYMTestType 		CIT
+
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+GetBaseConstants		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0002-CreateMessageSpecifyingAccount.ini	GetBaseConstants
+CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0002-CreateMessageSpecifyingAccount.ini	CreateSession
+ResetMessageStore		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0002-CreateMessageSpecifyingAccount.ini	ResetMessageStore
+CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0002-CreateMessageSpecifyingAccount.ini	CreateRegistry
+CreateSmsService  		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0002-CreateMessageSpecifyingAccount.ini	CreateSmsService
+CreateMtm 			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0002-CreateMessageSpecifyingAccount.ini	CreateMtm
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0002-CreateMessageSpecifyingAccount.ini	ChkChildrenCountDraft0
+InitialiseSmsDefaultSettings	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0002-CreateMessageSpecifyingAccount.ini	InitSmsDefaultSettings
+EXECUTE_TEST_CASE
+ChangeDefaultSmsService		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0002-CreateMessageSpecifyingAccount.ini	ChangeDefaultSmsService
+GetSmsConstants			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0002-CreateMessageSpecifyingAccount.ini	GetSmsConstants
+ConnectSendAsServer		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0002-CreateMessageSpecifyingAccount.ini	ConnectSendAsServer
+SendAsGetAvailableAccounts	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0002-CreateMessageSpecifyingAccount.ini	GetAvailableAccounts
+SendAsGetAccountNames		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0002-CreateMessageSpecifyingAccount.ini	GetAccountNames
+CountAvailableAccounts		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0002-CreateMessageSpecifyingAccount.ini	CountAvailableAccounts
+SendAsGetAccount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0002-CreateMessageSpecifyingAccount.ini	GetAccount
+SendAsCreateMessageWithAccount 	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0002-CreateMessageSpecifyingAccount.ini	CreateMessageWithAccount
+SendAsSaveMessageAndClose	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0002-CreateMessageSpecifyingAccount.ini	SendAsSaveMessageAndClose
+CloseSendAsServerConnection	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0002-CreateMessageSpecifyingAccount.ini	CloseSvrConnection
+CHECK_POSTCONDITIONS
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0002-CreateMessageSpecifyingAccount.ini	ChkChildrenCountDraft1
+END_TEST_CASE

@@ -1,0 +1,68 @@
+// Copyright (c) 2004-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// gfp.dll BIO Generic File parser; supports VCard, VCalendar, Caller Line Identify (CLI) bitmaps and Operator Logo (OLP) bitmaps and Ring Tones (RTP)
+// rtp.rsc BIO Ring tone parser resource file
+// vclp.mbm BIO VCalendar parser bitmap for UI
+// vcdp.mbm BIO VCard parser bitmap for UI
+// olp.mbm BIO operator logo picture bitmap for UI
+// rtp.mbm BIO Ring tone parser bitmap for UI
+// vcdp.rsc BIO VCard parser resource file
+// vclp.rsc BIO VCalendar parser resource file
+// olp.rsc BIO operator logo picture resource file
+// 
+//
+
+/**
+ @file
+*/
+
+TARGET          gfp.dll
+
+
+TARGETTYPE      dll
+
+CAPABILITY All -TCB
+UID		0x10001251 0x10001255
+VENDORID 0x70000001
+SOURCEPATH      ../../gfpsrc
+USERINCLUDE     ../../gfpinc ../../BIUTINC
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+SOURCE          gfpdll.cpp gfp.cpp
+LIBRARY         euser.lib msgs.lib biut.lib biodb.lib
+
+#if (defined SYMBIAN_MESSAGING_TESTCODE)  //Exporting Only for Test.
+START RESOURCE	../olpbif/olp.rss
+TARGETPATH      resource/messaging/bif
+LANG		SC
+END
+START BITMAP	olp.mbm
+TARGETPATH      resource/messaging/bif
+SOURCEPATH	../../olpbif
+SOURCE		2 olp0.bmp 
+END
+#endif //End of (defined SYMBIAN_MESSAGING_TESTCODE)
+
+START RESOURCE	../rtpbif/rtp.rss
+TARGETPATH      resource/messaging/bif
+LANG		SC
+END
+START BITMAP	rtp.mbm
+TARGETPATH      resource/messaging/bif
+SOURCEPATH	../../rtpbif
+SOURCE		2 rtp0.bmp 
+END
+
+DEFFILE		gfp.def
+
+SMPSAFE

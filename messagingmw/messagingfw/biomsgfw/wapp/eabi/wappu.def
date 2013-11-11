@@ -1,0 +1,19 @@
+EXPORTS
+	_ZN22CMsvBIOWapAccessParser4NewLER20CRegisteredParserDllR9CMsvEntryR3RFs @ 1 NONAME
+	_ZTI13CIspTableData @ 2 NONAME ; #<TI>#
+	_ZTI13CWappBookmark @ 3 NONAME ; #<TI>#
+	_ZTI16CWapIpBearerData @ 4 NONAME ; #<TI>#
+	_ZTI18CWapGprsBearerData @ 5 NONAME ; #<TI>#
+	_ZTI20CWapCharsetConverter @ 6 NONAME ; #<TI>#
+	_ZTI21CMMSSettingsProxyBase @ 7 NONAME ; #<TI>#
+	_ZTI22CMsvBIOWapAccessParser @ 8 NONAME ; #<TI>#
+	_ZTI9CSafeFile @ 9 NONAME ABSENT ; #<TI>#
+	_ZTV13CIspTableData @ 10 NONAME ; #<VT>#
+	_ZTV13CWappBookmark @ 11 NONAME ; #<VT>#
+	_ZTV16CWapIpBearerData @ 12 NONAME ; #<VT>#
+	_ZTV18CWapGprsBearerData @ 13 NONAME ; #<VT>#
+	_ZTV20CWapCharsetConverter @ 14 NONAME ; #<VT>#
+	_ZTV21CMMSSettingsProxyBase @ 15 NONAME ; #<VT>#
+	_ZTV22CMsvBIOWapAccessParser @ 16 NONAME ; #<VT>#
+	_ZTV9CSafeFile @ 17 NONAME ABSENT ; #<VT>#
+

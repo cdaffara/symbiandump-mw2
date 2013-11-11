@@ -1,0 +1,50 @@
+// Copyright (c) 2000-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// WAP 1.2 Push - GT
+// Wap push
+// 
+//
+
+/**
+ @file
+*/
+
+
+
+PRJ_EXPORTS
+// specify the source file followed by its destination here
+// copy will be used to copy the source file to its destination
+// If there's no destination then the source file will be copied
+// to the same name in /epoc32/include
+
+PRJ_PLATFORMS
+DEFAULT
+
+// Subproject builds
+#include "../pushutils/group/bld.inf"
+#include "../PushMsgEntry/group/bld.inf"
+#include "../SISLPushMsgUtils/group/bld.inf"
+#include "../MiscPushMsgUtils/group/bld.inf"
+#include "../plugins/group/bld.inf"
+#include "../plugins/WapUriLookup/group/bld.inf"
+#include "../SISLContentHandlers/group/bld.inf"
+#include "../pushwatcher/group/bld.inf"
+#include "../pushmtm/group/bld.inf"
+#include "../tpush/bld.inf"
+#include "../rom/bld.inf"
+#include "../ROContentHandler/group/bld.inf"
+#include "../ROAPTContentHandler/group/bld.inf"
+#include "../tpushscriptbased/bld.inf"
+
+PRJ_MMPFILES

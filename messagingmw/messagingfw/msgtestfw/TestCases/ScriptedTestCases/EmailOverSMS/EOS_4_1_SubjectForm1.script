@@ -1,0 +1,124 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+// EOS_4_1_SubjectForm1.script
+// Check  that the subject is broken out correcty from 
+// "User Name<user@domain1.domain2> (Subject)message"
+
+	
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_UTILS CopyFile c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSms\EOS_4_1_SubjectForm1Config.txt C:\config.txt
+RUN_UTILS MakeReadWrite C:\config.txt
+
+RUN_TEST_STEP 300 MessagingTestServer BEGIN_TEST_CASE_ASYNC
+RUN_TEST_STEP 300 MessagingTestServer SETUP_TEST_CASE
+
+RUN_TEST_STEP 300 MessagingTestServer InitializeSimTsy c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini Init1
+WaitForAll
+RUN_TEST_STEP 300 MessagingTestServer StartWatchers c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini StartWatchers
+WaitForAll
+RUN_TEST_STEP 300 MessagingTestServer Sleep c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini Sleep10
+WaitForAll
+
+RUN_TEST_STEP 300 MessagingTestServer GetBaseConstants c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini GetBaseConstants
+WaitForAll
+RUN_TEST_STEP 300 MessagingTestServer SetDefaultSmsSettings c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini SetSettingsFile
+WaitForAll
+RUN_TEST_STEP 300 MessagingTestServer SetDefaultConfiguration c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini SetSmsMessageConfigFile
+WaitForAll
+RUN_TEST_STEP 300 MessagingTestServer CreateSession c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini CreateSession
+WaitForAll
+RUN_TEST_STEP 300 MessagingTestServer CreateRegistry c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini CreateRegistry
+WaitForAll
+RUN_TEST_STEP 300 MessagingTestServer CreateSmsService c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini CreateSmsService
+WaitForAll
+RUN_TEST_STEP 300 MessagingTestServer SetSmsServiceSettings c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini SetSmsSettings
+RUN_TEST_STEP 300 MessagingTestServer WaitForAll
+RUN_TEST_STEP 300 MessagingTestServer SetSchSendSettings c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini SetSchSendSettings
+WaitForAll
+RUN_TEST_STEP 300 MessagingTestServer CreateMtm c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini CreateMtm
+WaitForAll
+
+RUN_TEST_STEP 300 MessagingTestServer DeleteChildren c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini EmptyOutbox
+RUN_TEST_STEP 300 MessagingTestServer DeleteChildren c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini EmptySent
+RUN_TEST_STEP 300 MessagingTestServer DeleteChildren c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini EmptyInbox
+WaitForAll
+
+RUN_TEST_STEP 300 MessagingTestServer EXECUTE_TEST_CASE
+
+RUN_TEST_STEP 300 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini CheckChildrenCountOutbox0
+RUN_TEST_STEP 300 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini CheckChildrenCountSent0
+RUN_TEST_STEP 300 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini CheckChildrenCountInbox0
+WaitForAll
+	// just check everthing has gone.
+
+RUN_TEST_STEP 300 MessagingTestServer GetSmsConstants c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini GetSmsConstants
+WaitForAll
+RUN_TEST_STEP 300 MessagingTestServer CreateEmailOverSmsMessage c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini CreateMessage
+WaitForAll
+RUN_TEST_STEP 300 MessagingTestServer CreateSelection c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini CreateSelection
+WaitForAll
+RUN_TEST_STEP 300 MessagingTestServer GetDefaultAppendToSelection c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini AppendToSelection
+WaitForAll
+
+RUN_TEST_STEP 300 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini CheckChildrenCountOutbox1
+RUN_TEST_STEP 300 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini CheckChildrenCountSent0
+RUN_TEST_STEP 300 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini CheckChildrenCountInbox0
+WaitForAll
+	// Check that we ghave only one message in the outbox. It is the send that will trigger the recive. The sim.tsy waits for the send, and then sends back a message.
+
+
+RUN_TEST_STEP 300 MessagingTestServer SetNetworkRegistrationStatus c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini NetAvailable
+WaitForAll
+RUN_TEST_STEP 300 MessagingTestServer SetSignalStrength c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini NetStrengthHigh
+WaitForAll
+RUN_TEST_STEP 300 MessagingTestServer Sleep c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini Sleep3
+WaitForAll
+
+
+RUN_TEST_STEP 300 MessagingTestServer ReceiveSmsMessages2 c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini ReceiveSmsMessages
+	// Get ready for the message to be sent here from the sim.tsy but after we send out a message as trigger.
+RUN_TEST_STEP 300 MessagingTestServer ExecuteMtmCommand c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini ScheduleMessage
+WaitForAll
+	// Trigger the actions.
+RUN_TEST_STEP 300 MessagingTestServer CheckMessageSendingState c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini MsgSent
+WaitForAll
+	// We have to go through the various states to ensure that the message gets out otherwise we could have the messaging outstanding when the test finishes. 
+	// this would cause the test to fail.
+
+RUN_TEST_STEP 300 MessagingTestServer Sleep c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini Sleep10
+	// Let message get there.
+WaitForAll
+
+RUN_TEST_STEP 300 MessagingTestServer CHECK_POSTCONDITIONS
+RUN_TEST_STEP 300 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini CheckChildrenCountOutbox0
+RUN_TEST_STEP 300 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini CheckChildrenCountSent1
+RUN_TEST_STEP 300 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini CheckChildrenCountInbox1
+WaitForAll
+	// Check that we have one message in the sent (and removed from the outbox), and that we have one message (which we sent from the sim.tsy) in the inbox. 
+
+RUN_TEST_STEP 300 MessagingTestServer FindEntryByName c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini FindEntryByName1
+WaitForAll
+
+RUN_TEST_STEP 300 MessagingTestServer CompareEntryWithFile c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini CompareEntryWithFile1
+WaitForAll
+	// Check that the message was decoded as expected ie message and description correct.
+
+RUN_TEST_STEP 300 MessagingTestServer UnloadPhoneModule c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.ini UnloadPhoneModule 
+
+RUN_TEST_STEP 300 MessagingTestServer END_TEST_CASE
+

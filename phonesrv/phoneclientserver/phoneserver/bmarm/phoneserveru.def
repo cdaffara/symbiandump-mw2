@@ -1,0 +1,4 @@
+EXPORTS
+	New__12CPhSrvServer @ 1 NONAME ; CPhSrvServer::New(void)
+	StartThread__Fv @ 2 NONAME ; StartThread(void)
+

@@ -1,0 +1,35 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:   File that exports the files belonging to 
+:                Send UI API
+*
+*/
+
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+../inc/CMessageData.h     MW_LAYER_PUBLIC_EXPORT_PATH(CMessageData.h)
+../inc/TSendingCapabilities.inl     MW_LAYER_PUBLIC_EXPORT_PATH(TSendingCapabilities.inl)
+../inc/SendUiConsts.h     MW_LAYER_PUBLIC_EXPORT_PATH(SendUiConsts.h)
+../inc/SendUi.h     MW_LAYER_PUBLIC_EXPORT_PATH(sendui.h)
+../inc/TSendingCapabilities.h     MW_LAYER_PUBLIC_EXPORT_PATH(TSendingCapabilities.h)
+../inc/CSendingServiceInfo.h     MW_LAYER_PUBLIC_EXPORT_PATH(CSendingServiceInfo.h)
+../inc/CMessageAddress.h     MW_LAYER_PUBLIC_EXPORT_PATH(CMessageAddress.h)
+../inc/SenduiMtmUids.h     MW_LAYER_PUBLIC_EXPORT_PATH(SenduiMtmUids.h)

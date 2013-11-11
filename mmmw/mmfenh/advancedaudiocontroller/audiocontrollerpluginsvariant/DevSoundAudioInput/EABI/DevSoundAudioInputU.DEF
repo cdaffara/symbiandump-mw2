@@ -1,0 +1,26 @@
+EXPORTS
+	_ZN19CDevSoundAudioInput10ConfigureLEjj7TFourCCRK6RArrayIiE @ 1 NONAME
+	_ZN19CDevSoundAudioInput10SetEncoderEP21CAdvancedAudioEncoder @ 2 NONAME
+	_ZN19CDevSoundAudioInput11SetBitRateLEjRK6RArrayIiE @ 3 NONAME
+	_ZN19CDevSoundAudioInput12ConfigRatesLER6RArrayIjE @ 4 NONAME
+	_ZN19CDevSoundAudioInput15ConfigChannelsLER6RArrayIjE @ 5 NONAME
+	_ZN19CDevSoundAudioInput16ConfigDataTypesLER6RArrayI7TFourCCE @ 6 NONAME
+	_ZN19CDevSoundAudioInput18CapabilitiesRatesLER6RArrayIjE @ 7 NONAME
+	_ZN19CDevSoundAudioInput20SetPrioritySettingsLERK20TMMFPrioritySettings @ 8 NONAME
+	_ZN19CDevSoundAudioInput21CapabilitiesChannelsLER6RArrayIjE @ 9 NONAME
+	_ZN19CDevSoundAudioInput22CapabilitiesDataTypesLER6RArrayI7TFourCCE @ 10 NONAME
+	_ZN19CDevSoundAudioInput4NewLERK20TMMFPrioritySettingsR27MAdvancedAudioInputObserverR12CMMFDevSound @ 11 NONAME
+	_ZN19CDevSoundAudioInput5GainLEv @ 12 NONAME
+	_ZN19CDevSoundAudioInput5StopLEv @ 13 NONAME
+	_ZN19CDevSoundAudioInput6PauseLEv @ 14 NONAME
+	_ZN19CDevSoundAudioInput6PrimeLEv @ 15 NONAME
+	_ZN19CDevSoundAudioInput7RecordLEPv @ 16 NONAME
+	_ZN19CDevSoundAudioInput8MaxGainLEv @ 17 NONAME
+	_ZN19CDevSoundAudioInput8SetGainLEi @ 18 NONAME
+	_ZN19CDevSoundAudioInputD0Ev @ 19 NONAME
+	_ZN19CDevSoundAudioInputD1Ev @ 20 NONAME
+	_ZN19CDevSoundAudioInputD2Ev @ 21 NONAME
+	_ZNK19CDevSoundAudioInput28CalculateAudioInputPositionLEv @ 22 NONAME
+	_ZTI19CDevSoundAudioInput @ 23 NONAME ; #<TI>#
+	_ZTV19CDevSoundAudioInput @ 24 NONAME ; #<VT>#
+

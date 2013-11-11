@@ -1,0 +1,95 @@
+// Copyright (c) 2000-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// MTMTOOL.RH
+// 
+//
+
+/**
+ @file
+ @publishedPartner
+ @released
+*/
+
+#ifndef __MTMTOOL_RH__
+#define __MTMTOOL_RH__
+
+#include <badef.rh>
+#include <msvstd.hrh>
+#include <e32capability.h> // this special header can be included in resource files
+
+
+/**
+* @publishedPartner
+* @released
+*/
+STRUCT VERSION_V2
+	{
+	// Default version values are always provided
+	WORD major = KMtmComponentCurrentMajorVersionNumber;
+	WORD minor = KMtmComponentCurrentMinorVersionNumber;
+	WORD build = KMtmComponentCurrentBuildVersionNumber;
+	}
+/**
+* @publishedPartner
+* @released
+*/
+
+STRUCT MTM_COMPONENT_V2
+	{
+	LTEXT human_readable_name = "";
+	LONG component_uid;
+	LONG specific_uid_v2 = KUidMtmDefaultSpecificVal; // label name change forces clients to update
+	WORD entry_point;
+	STRUCT version;
+	LTEXT filename(KMsvMaxFilenameLength);
+	}
+/**
+* @publishedPartner
+* @released
+*/
+STRUCT MTM_INFO_FILE
+	{
+	LONG mtm_type_uid;
+	LONG technology_type_uid;
+	STRUCT components[];
+	}
+/**
+* @publishedPartner
+* @released
+*/
+
+STRUCT MTM_CAPABILITIES
+	{
+	BYTE send_capability;
+	BYTE body_capability;
+	}
+
+
+// Note that once __REMOVE_MESSAGING_API_V1__ is defined, a resource of this 
+// type *must* be in the MTM resource file (at position 3), even if that MTM
+// requires no additional capabilities to be defined.
+
+/**
+* @publishedPartner
+* @released
+*/
+
+STRUCT MTM_SECURITY_CAPABILITY_SET
+	{
+	LONG version = KMsvCurrentSecurityCapabilitySetVersion;
+	LONG capabilities[];
+	}
+
+
+#endif

@@ -1,0 +1,23 @@
+EXPORTS
+	?NewL@CSendAsTestClientMtm@@SAPAV1@AAVCRegisteredMtmDll@@AAVCMsvSession@@@Z @ 1 NONAME ; class CSendAsTestClientMtm * CSendAsTestClientMtm::NewL(class CRegisteredMtmDll &, class CMsvSession &)
+	?NewL@CSendAsTestServerMtm@@QAEPAV1@AAVCRegisteredMtmDll@@PAVCMsvServerEntry@@@Z @ 2 NONAME ; class CSendAsTestServerMtm * CSendAsTestServerMtm::NewL(class CRegisteredMtmDll &, class CMsvServerEntry *)
+	?NewL@CSendAsTestUiMtm@@SAPAV1@AAVCBaseMtm@@AAVCRegisteredMtmDll@@@Z @ 3 NONAME ; class CSendAsTestUiMtm * CSendAsTestUiMtm::NewL(class CBaseMtm &, class CRegisteredMtmDll &)
+	??1CSendAsTestAddress@@UAE@XZ @ 4 NONAME ; CSendAsTestAddress::~CSendAsTestAddress(void)
+	??1CSendAsTestMessage@@UAE@XZ @ 5 NONAME ; CSendAsTestMessage::~CSendAsTestMessage(void)
+	?Address@CSendAsTestAddress@@QBEABVTDesC16@@XZ @ 6 NONAME ; class TDesC16 const & CSendAsTestAddress::Address(void) const
+	?AddressType@CSendAsTestAddress@@QBE?AW4TSendAsTestAddressType@CSendAsTestMessage@@XZ @ 7 NONAME ; enum CSendAsTestMessage::TSendAsTestAddressType CSendAsTestAddress::AddressType(void) const
+	?Addresses@CSendAsTestMessage@@QAEAAV?$RPointerArray@VCSendAsTestAddress@@@@XZ @ 8 NONAME ; class RPointerArray<class CSendAsTestAddress> & CSendAsTestMessage::Addresses(void)
+	?Addresses@CSendAsTestMessage@@QBEABV?$RPointerArray@VCSendAsTestAddress@@@@XZ @ 9 NONAME ; class RPointerArray<class CSendAsTestAddress> const & CSendAsTestMessage::Addresses(void) const
+	?Alias@CSendAsTestAddress@@QBEABVTDesC16@@XZ @ 10 NONAME ; class TDesC16 const & CSendAsTestAddress::Alias(void) const
+	?BioType@CSendAsTestMessage@@QBE?AVTUid@@XZ @ 11 NONAME ; class TUid CSendAsTestMessage::BioType(void) const
+	?NewL@CSendAsTestAddress@@SAPAV1@XZ @ 12 NONAME ; class CSendAsTestAddress * CSendAsTestAddress::NewL(void)
+	?NewL@CSendAsTestMessage@@SAPAV1@XZ @ 13 NONAME ; class CSendAsTestMessage * CSendAsTestMessage::NewL(void)
+	?RestoreL@CSendAsTestMessage@@QAEXAAVCMsvStore@@@Z @ 14 NONAME ; void CSendAsTestMessage::RestoreL(class CMsvStore &)
+	?SetAddressL@CSendAsTestAddress@@QAEXABVTDesC16@@@Z @ 15 NONAME ; void CSendAsTestAddress::SetAddressL(class TDesC16 const &)
+	?SetAddressType@CSendAsTestAddress@@QAEXW4TSendAsTestAddressType@CSendAsTestMessage@@@Z @ 16 NONAME ; void CSendAsTestAddress::SetAddressType(enum CSendAsTestMessage::TSendAsTestAddressType)
+	?SetAliasL@CSendAsTestAddress@@QAEXABVTDesC16@@@Z @ 17 NONAME ; void CSendAsTestAddress::SetAliasL(class TDesC16 const &)
+	?SetBioTypeL@CSendAsTestMessage@@QAEXVTUid@@@Z @ 18 NONAME ; void CSendAsTestMessage::SetBioTypeL(class TUid)
+	?SetSubjectL@CSendAsTestMessage@@QAEXABVTDesC16@@@Z @ 19 NONAME ; void CSendAsTestMessage::SetSubjectL(class TDesC16 const &)
+	?StoreL@CSendAsTestMessage@@QBEXAAVCMsvStore@@@Z @ 20 NONAME ; void CSendAsTestMessage::StoreL(class CMsvStore &) const
+	?Subject@CSendAsTestMessage@@QBEABVTDesC16@@XZ @ 21 NONAME ; class TDesC16 const & CSendAsTestMessage::Subject(void) const
+

@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>msg-imap-binary-cache1</name>
+	<timeout>1200</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-cache1.script</hostPath>
+			<devicePath>c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-cache1.script</devicePath>
+		</script>
+	</testScripts>
+
+	<testServers>
+		<server>T_MsgCommonServer</server>
+		<server>T_MsgImapServer</server>
+		<server>T_MsgSmtpServer</server>
+	</testServers>
+
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-cache1.ini</hostPath>
+			<devicePath>c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-cache1.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\imap_settings_binary_test2.txt </hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\imap_settings_binary_test2.txt </devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\imap_settings_binary_test1.txt </hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\imap_settings_binary_test1.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\nobody.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\nobody.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\10kbase64body.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\10kbase64body.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\10kbase7bitbody.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\10kbase7bitbody.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\10kbase8bitbody.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\10kbase8bitbody.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\100KBody.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\100KBody.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\RELEASE\ARMV5\UREL\EventLogServer.exe</hostPath>
+			<devicePath>c:\sys\bin\EventLogServer.exe</devicePath>
+		</data>
+		</dependencies>	
+</testExecuteTest>

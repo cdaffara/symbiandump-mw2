@@ -1,0 +1,55 @@
+/*
+* Copyright (c) 2005-2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:   Project file for SUPL TI API implementation plugin
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET 				lbssupltiapiimplementation.dll
+TARGETTYPE  	PLUGIN
+
+UID 			0x10009d8d 0x20026FB5
+
+CAPABILITY      CAP_ECOM_PLUGIN
+VENDORID        VID_DEFAULT
+
+START RESOURCE ../data/20026FB5.rss
+	TARGET lbssupltiapiimplementation.rsc
+END
+
+OS_LAYER_SYSTEMINCLUDE
+MW_LAYER_SYSTEMINCLUDE
+
+USERINCLUDE ../inc
+USERINCLUDE ../../inc
+
+
+LIBRARY euser.lib
+LIBRARY ecom.lib
+LIBRARY epos_csuplutils.lib
+LIBRARY estlib.lib lbssupltiapi.lib epos_suplterminitiation.lib lbsnetprotocol.lib lbs.lib
+
+#if defined(WINS)
+deffile ../bwins/lbssupltiapiimplementationu.def
+#else
+deffile ../eabi/lbssupltiapiimplementationu.def
+#endif
+SOURCEPATH ../src
+SOURCE lbssupltiapiimplentationmain.cpp 
+SOURCE lbssupltiapiimplementation.cpp 
+SOURCE lbssupltiapirequestor.cpp 
+SOURCE lbssupltirequestmanager.cpp 
+SOURCE epos_tiapiimpltrace.cpp

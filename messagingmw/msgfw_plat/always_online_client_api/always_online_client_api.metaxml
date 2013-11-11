@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<api id="c2df0a3e3e0a33060924e3e0dc7294f1" dataversion="2.0">
+  <name>Always Online Client API</name>
+  <description>The client interface of the Always Online server for managing the Always Online services</description>
+  <type>c++</type>
+  <collection>messagingfw</collection>
+  <libs>
+    <lib name="AlwaysOnlineManagerClient.lib" />
+  </libs>
+  <release category="platform"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>no</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

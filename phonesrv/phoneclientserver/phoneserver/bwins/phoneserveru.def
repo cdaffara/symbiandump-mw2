@@ -1,0 +1,5 @@
+EXPORTS
+	?New@CPhSrvServer@@SAXXZ @ 1 NONAME ; public: static void __cdecl CPhSrvServer::New(void)
+	?StartThread@@YAHXZ @ 2 NONAME ; int __cdecl StartThread(void)
+	?ThreadFunction@CPhSrvServer@@SAHPAX@Z @ 3 NONAME ; public: static int __cdecl CPhSrvServer::ThreadFunction(void *)
+

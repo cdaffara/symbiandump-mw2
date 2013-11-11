@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>msg-searchsort2</name>
+	<timeout>4000</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\common\search\msg-searchsort2.script</hostPath>
+			<devicePath>c:\msgtest\common\search\msg-searchsort2.script</devicePath>
+		</script>
+	</testScripts>
+
+	<testServers>
+		<server>T_MsgCommonServer</server>
+		<server>T_MsgImapServer</server>
+		<server>T_MsgSmtpServer</server>
+		<server>T_MsgPopServer</server>
+	</testServers>
+
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\common\search\msg-searchsort2.ini</hostPath>
+			<devicePath>c:\msgtest\common\search\msg-searchsort2.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\emailmessage\Message11.txt</hostPath>
+			<devicePath>c:\msgtest\config\emailmessage\Message11.txt</devicePath>
+		</data>
+
+	</dependencies>	
+</testExecuteTest>

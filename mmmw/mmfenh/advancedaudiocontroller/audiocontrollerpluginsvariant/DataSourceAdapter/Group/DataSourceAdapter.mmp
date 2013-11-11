@@ -1,0 +1,43 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project file for DataSourceAdapter
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET 		DataSourceAdapter.dll
+TARGETTYPE 	DLL
+UID 		0x1000008D 0x10207BD5
+VENDORID	VID_DEFAULT
+
+CAPABILITY CAP_GENERAL_DLL
+
+SOURCEPATH	../Src
+SOURCE		DataSourceAdapter.cpp 
+
+USERINCLUDE	../Inc ../Src ../../../../inc
+
+MW_LAYER_SYSTEMINCLUDE
+
+SYSTEMINCLUDE	/epoc32/include/mmf/server
+SYSTEMINCLUDE	/epoc32/include/mmf/common
+
+LIBRARY			euser.lib
+LIBRARY			MMDataSourceFactory.lib
+LIBRARY         mmfserverbaseclasses.lib
+LIBRARY			mmfcontrollerframework.lib
+LIBRARY         ecom.lib // mmffile.h > mmfclip > mmfdatasink.h > ecom.h 
+LIBRARY			AudioOutputControlUtility.lib

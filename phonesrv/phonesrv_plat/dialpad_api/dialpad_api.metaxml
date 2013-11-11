@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api id="b3eae6e0e74d869121a934cb8b48c101" dataversion="2.0">
+  <name>dialpad_api</name>
+  <description>Dialpad widget used by phone and dialer applications.</description>
+  <type>c++</type>
+  <collection>telutils</collection>
+  <libs>
+    <lib name="dialpad.lib"/>
+  </libs>
+  <release category="platform" sinceversion="5.2"/>
+  <attributes>
+    <htmldocprovided>no</htmldocprovided>
+    <adaptation>no</adaptation>
+  </attributes>
+</api>

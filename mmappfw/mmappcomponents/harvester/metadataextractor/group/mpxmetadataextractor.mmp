@@ -1,0 +1,66 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Metadata extractor subcomponent
+*
+*/
+
+
+#include <bldvariant.hrh>
+#include <data_caging_paths.hrh>
+#include <platform_paths.hrh>
+
+TARGET                  mpxmetadataextractor.dll
+TARGETTYPE              dll
+UID                     0x1000006C 0x10282958
+
+CAPABILITY              CAP_GENERAL_DLL
+VENDORID                VID_DEFAULT
+
+MACRO RD_MPX_TNM_INTEGRATION
+#define RD_MPX_TNM_INTEGRATION
+
+MACRO ABSTRACTAUDIOALBUM_INCLUDED
+#define ABSTRACTAUDIOALBUM_INCLUDED
+SOURCEPATH              ../src
+SOURCE                  mpxmetadataextractor.cpp
+SOURCE                  mpxfileinfoutility.cpp
+
+USERINCLUDE             ../inc
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY                 apgrfx.lib 
+LIBRARY                 apmime.lib 
+LIBRARY                 bafl.lib
+LIBRARY                 euser.lib
+LIBRARY                 efsrv.lib
+LIBRARY                 ecom.lib
+LIBRARY                 estor.lib
+LIBRARY                 metadatautility.lib
+
+LIBRARY                 mmfcontrollerframework.lib
+LIBRARY                 mmfstandardcustomcommands.lib 
+LIBRARY                 mpxcommon.lib
+
+LIBRARY                 sysutil.lib
+LIBRARY                 thumbnailmanager.lib
+
+#if defined(ARMCC)
+deffile ../eabi/ 
+#elif defined(WINSCW)
+deffile ../bwinscw/ 
+#endif
+
+SMPSAFE
+

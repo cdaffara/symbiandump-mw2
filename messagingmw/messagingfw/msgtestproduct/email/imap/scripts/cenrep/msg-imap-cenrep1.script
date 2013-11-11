@@ -1,0 +1,206 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE 	T_MsgImapServer	-SharedData 
+
+
+START_TESTCASE MSG-IMAP-CENREP-0001
+//! @SYMTestCaseID 			MSG-IMAP-CENREP-0001
+//! @SYMTestType			CIT
+//! @SYMTestPriority			Medium
+//! @SYMTestStatus 			Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc		Creates an IMAP account in the central repository
+//! @SYMTestActions			After deletion of the all the existing IMAP account from the cetral reposoitory
+//!						verifies if the number of IMAP accounts is zero or not. Creates a new account and
+//! 						verifies if the no. of accounts equals to one.
+//! @SYMTestExpectedResults 	Number of IMAP accounts should be one
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgImapServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgImapServer	DeleteImapAccount		c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini 	0001-DeleteImapAccount0
+RUN_TEST_STEP 300 T_MsgImapServer	VerifyImapAccountsCount		c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini 	0001-VerifyImapAccountsCount0
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini 		0001-CreateImapAccount0
+RUN_TEST_STEP 300 T_MsgImapServer	VerifyImapAccountsCount		c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini 	0001-VerifyImapAccountsCount1
+
+RUN_TEST_STEP 300 T_MsgImapServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-CENREP-0001
+
+
+START_TESTCASE MSG-IMAP-CENREP-0002
+//! @SYMTestCaseID				MSG-IMAP-CENREP-0002
+//! @SYMTestType 				CIT
+//! @SYMTestPriority 				Medium
+//! @SYMTestStatus 				Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc 			Checks if deletion of account is happening
+//! @SYMTestActions				First of all delets all the existing IMAP accounts from the central repository and 
+//!							Checks if the number of IMAP accounts is zero. Creates some IMAP accounts, deletes some
+//!							some IMAP accounts and verifies the number of accounts.
+//! @SYMTestExpectedResults		EPAss, if No. of accounts created - No. of accounts deleted = Expected accounts
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgImapServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgImapServer	DeleteImapAccount		c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini     0002-DeleteImapAccount0
+RUN_TEST_STEP 300 T_MsgImapServer	VerifyImapAccountsCount		c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini     0002-VerifyImapAccountsCount0
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini     0002-CreateImapAccount0
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini     0002-CreateImapAccount1
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini     0002-CreateImapAccount2
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini     0002-CreateImapAccount3
+RUN_TEST_STEP 300 T_MsgImapServer	VerifyImapAccountsCount		c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini     0002-VerifyImapAccountsCount1
+RUN_TEST_STEP 300 T_MsgImapServer	DeleteImapAccount		c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini     0002-DeleteImapAccount1
+RUN_TEST_STEP 300 T_MsgImapServer	VerifyImapAccountsCount		c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini     0002-VerifyImapAccountsCount2
+
+RUN_TEST_STEP 300 T_MsgImapServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-CENREP-0002
+
+
+START_TESTCASE	MSG-IMAP-CENREP-0003
+//!	@SYMTestCaseID			MSG-IMAP-CENREP-0003
+//!	@SYMTestCaseDesc			The test modifies the settings of an Imap account 
+//!							and verifies the settings.	
+//!	@SYMTestPriority			Critical
+//!   	@SYMTestType				CIT
+//!  	@SYMTestStatus				Implemented   
+//!	@SYMTestActions			Deletes all the existing Imap accounts from the 
+//!							Central Repository
+//!							Creates an Imap account.
+//!							Modifies the settings of the created account 
+//!							by reading from a different configuration file.
+//!							Compares the settings of the modifed Imap account 
+//!							with those of the file from which the settings were modified
+//!							expecting the settings not to match   
+//!	@SYMTestExpectedResults		EPass, The account settings are not modified.
+//!	@SYMAuthor				Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 	300 	T_MsgImapServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgImapServer	DeleteImapAccount	c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini    	0003-DeleteImapAccount
+RUN_TEST_STEP	100	T_MsgImapServer	CreateImapAccount	c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini    	0003-CreateImapAccount
+RUN_TEST_STEP	100	T_MsgImapServer	ModifyImapSettings	c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini    	0003-ModifyImapSettings
+RUN_TEST_STEP	100	T_MsgImapServer	CompareImapSettings	c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini    	0003-CompareImapSettings
+
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-CENREP-0003
+
+
+START_TESTCASE MSG-IMAP-CENREP-0004
+//!	@SYMTestCaseID			MSG-IMAP-CENREP-0004
+//!	@SYMTestCaseDesc			The test verifies if the settings of an IMAP account
+//!							are laoded properly.	
+//!	@SYMTestPriority			Critical
+//!   	@SYMTestType				CIT
+//!  	@SYMTestStatus				Implemented    
+//!	@SYMTestActions			Deletes all the existing Imap accounts from the 
+//!							Central Repository
+//!							Creates an Imap account by reading the settings from
+//!							a configuration file
+//!							Compares the settings of the Imap account created
+//!							with those of the file from which the settings were loaded
+//!							expecting the settings to match   
+//!	@SYMTestExpectedResults		EPass, The account settings should match.
+//!	@SYMAuthor				Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 	300	T_MsgImapServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgImapServer	DeleteImapAccount	c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini    	0004-DeleteImapAccount
+RUN_TEST_STEP	100	T_MsgImapServer	CreateImapAccount	c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini    	0004-CreateImapAccount
+RUN_TEST_STEP	100	T_MsgImapServer	CompareImapSettings	c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini    	0004-CompareImapSettings
+
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-CENREP-0004
+
+
+START_TESTCASE MSG-IMAP-CENREP-0005
+//!	@SYMTestCaseID			MSG-IMAP-CENREP-0005
+//!	@SYMTestCaseDesc			The test verifies the default settings of an Imap account 
+//!	@SYMTestPriority			Critical
+//!   	@SYMTestType				CIT
+//!  	@SYMTestStatus				Implemented
+//!	@SYMTestActions			Deletes all the existing Imap accounts from the 
+//!							Central Repository
+//!							Creates an Imap account with the default settings i.e 
+//!							without reading from a config file
+//!							Compares the settings of the created Imap account 
+//!							with default the settings, expecting the settings not to match. 
+//!	@SYMTestExpectedResults		EPass, The account settings should match with the default settings.
+//!	@SYMAuthor				Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 	300 	T_MsgImapServer	StartUp
+
+RUN_TEST_STEP 	300 	T_MsgImapServer	DeleteImapAccount 	c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini    	0005-DeleteImapAccount
+RUN_TEST_STEP 	300 	T_MsgImapServer	CreateImapAccount 	c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini    	0005-CreateImapAccount
+RUN_TEST_STEP 	300 	T_MsgImapServer	VerifyImapSettings 	c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini    	0005-VerifyImapSettings
+
+PRINT Execute Completed ################################################
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+
+END_TESTCASE MSG-IMAP-CENREP-0005
+
+
+START_TESTCASE MSG-IMAP-CENREP-0006
+//! @SYMTestCaseID 			MSG-IMAP-CENREP-0006
+//! @SYMTestType			CIT
+//! @SYMTestPriority			Medium
+//! @SYMTestStatus 			Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc		Creates more then one IMAP account in the central repository
+//! @SYMTestActions	 		After deletion of the all the existing IMAP account from the cetral reposoitory
+//! 						verifies if the number of IMAP accounts is zero or not. Creates some new account and
+//! 						verifies if the no. of accounts equals to one.
+//! @SYMTestExpectedResults 	Number of IMAP accounts should be number of CreateImapAccount test steps in the the script.
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgImapServer	StartUp
+ 
+RUN_TEST_STEP 300 T_MsgImapServer	DeleteImapAccount		c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini     		0006-DeleteImapAccount0
+RUN_TEST_STEP 300 T_MsgImapServer	VerifyImapAccountsCount		c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini     	0006-VerifyImapAccountsCount0
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini     	0006-CreateImapAccount1
+RUN_TEST_STEP 300 T_MsgImapServer	VerifyImapAccountsCount	c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini     	0006-VerifyImapAccountsCount1
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini     	0006-CreateImapAccount2
+RUN_TEST_STEP 300 T_MsgImapServer	VerifyImapAccountsCount		c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini     	0006-VerifyImapAccountsCount2
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini     	0006-CreateImapAccount3
+RUN_TEST_STEP 300 T_MsgImapServer	VerifyImapAccountsCount	c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini     	0006-VerifyImapAccountsCount3
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini     	0006-CreateImapAccount4
+RUN_TEST_STEP 300 T_MsgImapServer	VerifyImapAccountsCount		c:\msgtest\email\imap\cenrep\msg-imap-cenrep1.ini     	0006-VerifyImapAccountsCount4
+
+RUN_TEST_STEP 300 T_MsgImapServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-CENREP-0006
+

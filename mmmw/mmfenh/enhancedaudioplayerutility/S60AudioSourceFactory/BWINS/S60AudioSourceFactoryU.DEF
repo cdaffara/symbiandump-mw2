@@ -1,0 +1,3 @@
+EXPORTS
+	?CreateStreamSource@CS60AudioSourceFactory@@SAPAVCS60AudioStreamSource@@AAVMS60AudioStreamSourceObserver@@ABVTDesC8@@@Z @ 1 NONAME ; class CS60AudioStreamSource * CS60AudioSourceFactory::CreateStreamSource(class MS60AudioStreamSourceObserver &, class TDesC8 const &)
+

@@ -1,0 +1,36 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Localization strings for Mediator
+*
+*/
+
+
+// d:The genre Podcast
+// d:This text is used to compare with item's genre to determine which library 
+// d:should be added to.
+// d:Not for UI display. No layout information is needed.
+// l:N/A
+// r:3.1
+//
+#define qtn_nmp_genre_podcast "Podcast"
+
+// d:"Unknown" Genre text
+// d:Text to be used for genre when an item is being moved from podcast 
+// d:to music library.
+// d:Not for UI display. No layout information is needed.
+// l:N/A
+// r:3.1
+//
+#define qtn_nmp_genre_unknown "Unknown"
+

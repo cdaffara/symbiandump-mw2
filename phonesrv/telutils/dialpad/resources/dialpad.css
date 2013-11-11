@@ -1,0 +1,20 @@
+
+/* icon only */
+DialpadButton[icon][!text][!additionalText]{
+    layout:icon_button;
+    min-height:6.25un; /* default min-height is too small */
+    min-width:6.25un;
+}
+
+DialpadInputField > HbLineEdit{
+    text-align: right;
+    size-policy: expanding expanding;
+}
+
+DialpadInputField > HbLineEdit::text{
+    left: -var(hb-param-margin-gene-middle-horizontal);
+    right: var(hb-param-margin-gene-middle-horizontal);
+    top: -0.3un;
+    bottom: 0.3un;
+}
+

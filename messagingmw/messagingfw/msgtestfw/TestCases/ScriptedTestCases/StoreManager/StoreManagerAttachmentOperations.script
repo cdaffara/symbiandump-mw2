@@ -1,0 +1,99 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+// Test Case Name:
+//	StoreManagerAttachmentOperations.script
+// ------------------------------------------
+// Component Under Test:
+//	Framework\server\...
+// ------------------------------------------
+// API function under test:
+//	MMSvStoreManager::CreateAttachmentForWriteL()
+//	MMSvStoreManager::OpenAttachmentL()
+//	MMSvStoreManager::DeleteAttachment()
+// ------------------------------------------
+// Requirement/Use Case/Functional Spec:
+//	
+// ------------------------------------------
+// Polarity:
+//	Positive
+// ------------------------------------------
+// Test Type (unit, integration, panic, performance, conformance, stress, or interoperability):
+//	Unit
+// ------------------------------------------
+// Expected Panic ID (if a panic test, only for non-scripted test cases):
+//	n/a
+// ------------------------------------------
+// Interface Dependencies (does it require connection, which subsystems does it require):
+// 	Requires connection to Messaging Server
+// ------------------------------------------
+// Importance (critical, high, or low):
+//	High
+// ------------------------------------------
+// Execution Time (fast, medium, or slow):
+//	medium
+// ------------------------------------------
+// Pre-condition description:
+//	1.  Create an attachment entry in the Message store.
+//
+// ------------------------------------------
+// Action Description:
+// 	1.  Creates an temporary file store to write data into it.
+//	2.  Replaces the existing file store for the entry with the temporary file store.
+//	3.  Check if the file store existed for the enrty and then reads the data from the file store.	
+//	4.  Deletes the file store and checks if the file store did not exist.		
+//
+// ------------------------------------------
+// Post-condition description (i.e., expected outcome):
+//	Should have written the test data to the temporary file store 
+//	Should have replaced the actual file store with the temporary file store.
+// 	Should have found the file store and then read the data in it successfully.
+// 	Should have then checked the file store did not exist after deleting the file store.
+//
+// ------------------------------------------
+// Reference to a review document:
+//	
+// ------------------------------------------
+// Any CommDb restrictions:
+//	NA
+// ------------------------------------------
+// Build Requirements (e.g., no watchers):
+//	NA
+// ------------------------------------------
+// Hardware Requirements
+//	NA
+// ------------------------------------------
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer GetBaseConstants		C:\msgtest\TestFramework\ScriptedTestCases\StoreManager\StoreManagerAttachmentOperations.ini	GetBaseConstants
+RUN_TEST_STEP 100 MessagingTestServer CreateSession		C:\msgtest\TestFramework\ScriptedTestCases\StoreManager\StoreManagerAttachmentOperations.ini	CreateSession
+RUN_TEST_STEP 100 MessagingTestServer ResetMessageStore		C:\msgtest\TestFramework\ScriptedTestCases\StoreManager\StoreManagerAttachmentOperations.ini	ResetMessageStore
+RUN_TEST_STEP 100 MessagingTestServer CreateImap4Service	C:\msgtest\TestFramework\ScriptedTestCases\StoreManager\StoreManagerAttachmentOperations.ini	CreateImap4Service
+RUN_TEST_STEP 100 MessagingTestServer GetEntryTypeConstants	C:\msgtest\TestFramework\ScriptedTestCases\StoreManager\StoreManagerAttachmentOperations.ini	GetEntryTypeConstants
+RUN_TEST_STEP 100 MessagingTestServer GetEmailConstants		C:\msgtest\TestFramework\ScriptedTestCases\StoreManager\StoreManagerAttachmentOperations.ini	GetEmailConstants
+RUN_TEST_STEP 100 MessagingTestServer CreateEntry		C:\msgtest\TestFramework\ScriptedTestCases\StoreManager\StoreManagerAttachmentOperations.ini	CreateEntry
+
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer CreateAttachmentForWrite	C:\msgtest\TestFramework\ScriptedTestCases\StoreManager\StoreManagerAttachmentOperations.ini	CreateAttachmentForWrite
+RUN_TEST_STEP 100 MessagingTestServer OpenAttachment		C:\msgtest\TestFramework\ScriptedTestCases\StoreManager\StoreManagerAttachmentOperations.ini	OpenAttachment
+RUN_TEST_STEP 100 MessagingTestServer DeleteAttachment		C:\msgtest\TestFramework\ScriptedTestCases\StoreManager\StoreManagerAttachmentOperations.ini	DeleteAttachment
+
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+RUN_TEST_STEP 100 MessagingTestServer END_TEST_CASE

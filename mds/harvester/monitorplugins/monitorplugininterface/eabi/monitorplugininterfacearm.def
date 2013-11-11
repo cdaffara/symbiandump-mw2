@@ -1,0 +1,9 @@
+EXPORTS
+	_ZN14CMonitorPlugin20ListImplementationsLER13RPointerArrayI26CImplementationInformationE @ 1 NONAME
+	_ZN14CMonitorPlugin4NewLERK4TUid @ 2 NONAME
+	_ZN14CMonitorPluginD0Ev @ 3 NONAME
+	_ZN14CMonitorPluginD1Ev @ 4 NONAME
+	_ZN14CMonitorPluginD2Ev @ 5 NONAME
+	_ZTI14CMonitorPlugin @ 6 NONAME ; #<TI>#
+	_ZTV14CMonitorPlugin @ 7 NONAME ; #<VT>#
+

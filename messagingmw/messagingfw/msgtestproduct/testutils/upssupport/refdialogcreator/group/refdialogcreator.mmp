@@ -1,0 +1,67 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// Reference User Prompt Service dialog creator ECOM plug-in
+// 
+//
+
+/**
+ @file
+*/
+
+target			upsrefdialogcreator_msg.dll
+capability		protserv trustedui
+targettype		plugin
+
+uid				0x0 0x10283693
+vendorid		0x70000001
+
+userinclude		../source
+userinclude		../../inc_private
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+sourcepath		../source
+source			refdialogcreator.cpp
+
+start resource	10283693.rss
+target			upsrefdialogcreator_msg.rsc
+end
+
+SOURCEPATH	.
+start resource ups_1000484B_2000BB68.rss
+TARGETPATH         /private/10283558/policies
+end
+
+SOURCEPATH	.
+start resource ups_1000484B_2000BB69.rss
+TARGETPATH         /private/10283558/policies
+end
+
+SOURCEPATH	.
+start resource ups_1000484B_2000BB6A.rss
+TARGETPATH         /private/10283558/policies
+end
+
+SOURCEPATH	.
+start resource ups_10204286_2000BB6B.rss
+TARGETPATH         /private/10283558/policies
+end
+
+SOURCEPATH	.
+start resource ups_1000484B_2000BB6C.rss
+TARGETPATH         /private/10283558/policies
+end
+
+library			apgrfx.lib apparc.lib ecom.lib euser.lib hash.lib upspolicies.lib efsrv.lib
+
+SMPSAFE

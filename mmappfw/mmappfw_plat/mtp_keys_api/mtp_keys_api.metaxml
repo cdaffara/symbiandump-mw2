@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<api id="eba779447f4b459225cbd374f504d422" dataversion="2.0">
+  <name>MTP Keys API</name>
+  <description>This API defines the Central Repository and Publish &amp; Subscribe keys defined by MTP.</description>
+  <type>c++</type>
+  <collection>mtp</collection>
+  <libs>
+  </libs>
+  <release category="platform"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>no</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

@@ -1,0 +1,26 @@
+#Index	Latitude	Longitude	UseCoverageRadius	MaxDistance	ErrorCode	Redefined	MaxSearchResult	SearchResult (Not used)	Comment					
+1	59	18			0			1-254	All lm's in db					
+2	12	13		11	0			1,2,5,4	Low max distance					
+3	0	1		3334	0				No landmarks within range					
+4	55	18	1	300	0			14,16,15	Use of coverage radius					
+#														
+5	1	-1	1	1000	0			21,22,25	Use of coverage radius > distance					
+6	32	32	1	50	0			33,35	Use of overlapping coverage radius > distance					
+7	0	0		3000	0				Lm's in all diretions within 3km					
+8	0	0		1000	0	1		6,8,41-45	Redefined with less MaxDistance					
+#														
+9	0	0		3000	0	1		6,8,41-45	Redefined with greater MaxDistance					
+10	-15	-15		1500	0									
+11	-15,1	-15	1	1500	0				Redefined with use coverage radius					
+#														
+12	52	13			0		10		Max Search result					
+13	-89	-90		5000	0		50		Max search Result > search result
+14	0	180			0				
+#									
+15	90	0			0				Nort pole
+16	-90	0			0				South pole
+17	55	18			0				
+#									
+18	-1	-1			0				
+19	-1	-1	1	500000	0		20		
+20	-1,05	-1			0	1	19		

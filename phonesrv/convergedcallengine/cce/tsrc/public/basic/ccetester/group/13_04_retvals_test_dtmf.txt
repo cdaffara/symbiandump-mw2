@@ -1,0 +1,34 @@
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 13.4 MCCPDTMFProvider leave/return value
+timeout 5000
+create ccetester test
+test Delay 1000
+
+//////////////////////////////////////////
+// MCCPDTMFProvider, dtmf provider null 
+// return tested elsewhere
+//////////////////////////////////////////
+
+// TEST 1
+// add observer leaves with KErrGeneral
+test ConfigurePlugin 2 ID=MCCPDTMFProvider::AddObserverL  LEAVE=-2 TYPE=TInt
+test OpenNewCall 1 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+
+// dial a call 
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+// TEST 2 - try to use DTMF when it is not available
+// at the moment return not supported for dtmf operation
+test StartDtmfTone -5 3
+test Release 1 0
+
+test VerifyTest
+delete test
+[Endtest]

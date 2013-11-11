@@ -1,0 +1,74 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:   Project definition file for project ?myapp
+*
+*/
+
+
+
+#include <platform_paths.hrh>
+#include <data_caging_paths.hrh>
+
+// --- LOGGING ---
+//MACRO           USE_LOGGER         // HW debugging support
+//LIBRARY         Flogger.lib        // RFileLogger, debug logging
+// --- LOGGING ---
+
+TARGET                  senduilauncher.exe
+EPOCSTACKSIZE           0x5000
+TARGETTYPE              exe
+UID                     0x100039CE 0x102823C5
+VERSION 		10.0
+CAPABILITY              NetworkServices LocalServices ReadUserData WriteUserData UserEnvironment NetworkControl ReadDeviceData WriteDeviceData
+VENDORID                VID_DEFAULT
+PAGED
+
+SOURCEPATH              ../src
+SOURCE                  senduilauncher.cpp
+SOURCE                  senduilauncherapp.cpp 
+SOURCE                  senduilauncherappui.cpp
+SOURCE                  senduilauncherdoc.cpp
+SOURCE                  senduiservice.cpp
+
+USERINCLUDE             ../inc
+USERINCLUDE             ../../inc
+APP_LAYER_SYSTEMINCLUDE
+
+
+LIBRARY                 euser.lib
+LIBRARY                 apparc.lib
+LIBRARY                 cone.lib 
+LIBRARY                 eikcore.lib  
+LIBRARY                 avkon.lib  
+LIBRARY                 gdi.lib
+LIBRARY                 sendui.lib
+LIBRARY                 estor.lib
+LIBRARY                 efsrv.lib
+LIBRARY                 apgrfx.lib
+LIBRARY                 ws32.lib
+LIBRARY                 eikcoctl.lib
+
+SOURCEPATH      ../group
+START RESOURCE  senduilauncher.rss
+HEADER
+targetpath  APP_RESOURCE_DIR
+LANGUAGE_IDS
+end
+
+SOURCEPATH      ../group
+START RESOURCE          senduilauncher_reg.rss
+// Do not change the UID 10003a3f below.
+TARGETPATH              /private/10003a3f/apps
+END
+

@@ -1,0 +1,53 @@
+/*
+ * Copyright (c) 2010 Nokia Corporation and/or its subsidiary(-ies).
+ * All rights reserved.
+ * This component and the accompanying materials are made available
+ * under the terms of "Eclipse Public License v1.0"
+ * which accompanies this distribution, and is available
+ * at the URL "http://www.eclipse.org/legal/epl-v10.html".
+ *
+ * Initial Contributors:
+ * Nokia Corporation - initial contribution.
+ *
+ * Contributors:
+ *
+ * Description:
+ * This is the project specification file for building the
+ * ststester application.
+ */
+
+#include <platform_paths.hrh>
+
+TARGET          ststester.exe
+TARGETTYPE      exe
+UID             0 0x10207C88
+CAPABILITY      SwEvent
+
+VENDORID        VID_DEFAULT
+
+EPOCSTACKSIZE 0x5000           //20KB
+EPOCHEAPSIZE  0x400 0x1000000  //1KB-16MB
+
+START RESOURCE  ../data/ststester_reg.rss
+TARGETPATH 	    /private/10003a3f/apps
+END 
+
+MW_LAYER_SYSTEMINCLUDE
+USERINCLUDE     ../inc
+
+SOURCEPATH      ../src
+
+SOURCE          ststestermain.cpp
+SOURCE          ststester.cpp
+SOURCE          testappbase.cpp
+
+LIBRARY         euser.lib
+LIBRARY         efsrv.lib
+LIBRARY         fbscli.lib
+LIBRARY         fntstr.lib
+LIBRARY         gce.lib
+LIBRARY         gdi.lib
+LIBRARY         ws32.lib
+LIBRARY         systemtoneservice.lib
+LIBRARY         remconcoreapi.lib
+LIBRARY         remconinterfacebase.lib

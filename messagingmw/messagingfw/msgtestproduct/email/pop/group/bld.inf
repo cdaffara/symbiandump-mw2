@@ -1,0 +1,168 @@
+// Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// Component description file for Pop test Server
+// 
+//
+
+PRJ_TESTMMPFILES
+T_PopServer.mmp
+
+PRJ_TESTMMPFILES
+// makefile ../../group/machinename.mak
+
+
+PRJ_TESTEXPORTS
+
+../scripts/unit/msg-email-pop-cpop3clientmtm.script			/epoc32/winscw/c/msgtest/email/pop/unit/msg-email-pop-cpop3clientmtm.script
+
+// **** Test Suite: Messaging.Email.pop.oom
+../scripts/oom/msg-pop-oomtest1.script 		/epoc32/winscw/c/msgtest/email/pop/oom/msg-pop-oomtest1.script
+../testdata/oom/msg-pop-oomtest1.ini 		/epoc32/winscw/c/msgtest/email/pop/oom/msg-pop-oomtest1.ini
+
+// **** Test Suite: Messaging.Email.pop.performance
+../scripts/performance/msg-pop-performance1.script 	/epoc32/winscw/c/msgtest/email/pop/performance/msg-pop-performance1.script
+../testdata/performance/msg-pop-performance1.ini 	/epoc32/winscw/c/msgtest/email/pop/performance/msg-pop-performance1.ini
+
+../scripts/performance/msg-pop-cache1.script 	/epoc32/winscw/c/msgtest/email/pop/performance/msg-pop-cache1.script
+../testdata/performance/msg-pop-cache1.ini 	/epoc32/winscw/c/msgtest/email/pop/performance/msg-pop-cache1.ini
+../testdata/performance/msgcache_low.ini 	/epoc32/winscw/c/msgtest/email/pop/performance/msgcache_low.ini
+../testdata/performance/msgcache_high.ini 	/epoc32/winscw/c/msgtest/email/pop/performance/msgcache_high.ini
+../testdata/performance/msgcache_default.ini 	/epoc32/winscw/c/msgtest/email/pop/performance/msgcache_default.ini
+
+// **** Test Suite: Messaging.Email.pop.cenrep
+../scripts/cenrep/msg-pop-cenrep1.script 		/epoc32/winscw/c/msgtest/email/pop/cenrep/msg-pop-cenrep1.script
+../testdata/cenrep/msg-pop-cenrep1.ini 			/epoc32/winscw/c/msgtest/email/pop/cenrep/msg-pop-cenrep1.ini
+
+// **** Test Suite: Messaging.Email.pop.general
+../scripts/general/msg-pop-general1.script 		/epoc32/winscw/c/msgtest/email/pop/general/msg-pop-general1.script
+../testdata/general/msg-pop-general1.ini 		/epoc32/winscw/c/msgtest/email/pop/general/msg-pop-general1.ini
+
+// **** Test Suite: Messaging.Email.pop.header
+../scripts/header/msg-pop-header1.script 		/epoc32/winscw/c/msgtest/email/pop/header/msg-pop-header1.script
+../testdata/header/msg-pop-header1.ini 		/epoc32/winscw/c/msgtest/email/pop/header/msg-pop-header1.ini
+
+// **** Test Suite: Messaging.Email.pop.top
+../scripts/top/msg-pop-top1.script			/epoc32/winscw/c/msgtest/email/pop/top/msg-pop-top1.script
+../testdata/top/msg-pop-top1.ini			/epoc32/winscw/c/msgtest/email/pop/top/msg-pop-top1.ini
+
+
+// **** Test Suite: Messaging.Email.pop.plainbody
+../scripts/plainbody/msg-pop-plainbody1.script		/epoc32/winscw/c/msgtest/email/pop/plainbody/msg-pop-plainbody1.script
+../testdata/plainbody/msg-pop-plainbody1.ini		/epoc32/winscw/c/msgtest/email/pop/plainbody/msg-pop-plainbody1.ini
+
+// **** Test Suite: Messaging.Email.pop.ram
+../scripts/ram/msg-pop-ram1.script			/epoc32/winscw/c/msgtest/email/pop/ram/msg-pop-ram1.script
+../testdata/ram/msg-pop-ram1.ini			/epoc32/winscw/c/msgtest/email/pop/ram/msg-pop-ram1.ini
+
+// **** Test Suite: Messaging.Email.pop.upssupport
+../scripts/upssupport/msg-email-upssupport.script	/epoc32/winscw/c/msgtest/email/pop/upssupport/msg-email-upssupport.script
+../testdata/upssupport/msg-email-upssupport.ini		/epoc32/winscw/c/msgtest/email/pop/upssupport/msg-email-upssupport.ini
+../testdata/upssupport/restore_setup.script		/epoc32/winscw/c/msgtest/email/pop/upssupport/restore_setup.script
+../testdata/upssupport/upssupport_setup.script		/epoc32/winscw/c/msgtest/email/pop/upssupport/upssupport_setup.script
+
+// **** Test Suite: messaging.email.pop.bearermobility
+../scripts/bearermobility/msg-pop-bearermobility1.script	/epoc32/winscw/c/msgtest/email/pop/bearermobility/msg-pop-bearermobility1.script
+../testdata/bearermobility/msg-pop-bearermobility1.ini		/epoc32/winscw/c/msgtest/email/pop/bearermobility/msg-pop-bearermobility1.ini
+
+// **** Test Suite: messaging.email.pop.snap
+../scripts/snap/msg-pop-snap1.script	/epoc32/winscw/c/msgtest/email/pop/snap/msg-pop-snap1.script
+../testdata/snap/msg-pop-snap1.ini		/epoc32/winscw/c/msgtest/email/pop/snap/msg-pop-snap1.ini
+
+// **** Test Suite: messaging.email.pop.migration
+../scripts/migration/msg-pop-migration1.script	/epoc32/winscw/c/msgtest/email/pop/migration/msg-pop-migration1.script
+../testdata/migration/msg-pop-migration1.ini		/epoc32/winscw/c/msgtest/email/pop/migration/msg-pop-migration1.ini
+../scripts/migration/msg-pop-migration2.script	/epoc32/winscw/c/msgtest/email/pop/migration/msg-pop-migration2.script
+../testdata/migration/msg-pop-migration2.ini		/epoc32/winscw/c/msgtest/email/pop/migration/msg-pop-migration2.ini
+../scripts/migration/msg-pop-migration3.script	/epoc32/winscw/c/msgtest/email/pop/migration/msg-pop-migration3.script
+../testdata/migration/msg-pop-migration3.ini		/epoc32/winscw/c/msgtest/email/pop/migration/msg-pop-migration3.ini
+
+// **** Test Suite: messaging.email.pop.tls
+../scripts/tls/msg-pop-connect-TlsSls.script	/epoc32/winscw/c/msgtest/email/pop/tls/msg-pop-connect-tlssls.script
+../testdata/tls/msg-pop-connect-tlssls.ini		/epoc32/winscw/c/msgtest/email/pop/tls/msg-pop-connect-tlssls.ini
+../scripts/tls/msg-pop-connect-wrongdns-TlsSls.script	/epoc32/winscw/c/msgtest/email/pop/tls/msg-pop-connect-wrongdns-tlssls.script
+../testdata/tls/msg-pop-connect-wrongdns-TlsSls.ini		/epoc32/winscw/c/msgtest/email/pop/tls/msg-pop-connect-wrongdns-tlssls.ini
+
+
+
+// Email Account Settings files
+../testdata/EmailSettings/POPSettings_msgacc1.txt    	/epoc32/winscw/c/msgtest/config/emailsettings/popsettings_msgacc1.txt
+../testdata/EmailSettings/POPSettings_msgacc2.txt    	/epoc32/winscw/c/msgtest/config/emailsettings/popsettings_msgacc2.txt
+../testdata/EmailSettings/POPSettings_msgacc3.txt    	/epoc32/winscw/c/msgtest/config/emailsettings/popsettings_msgacc3.txt
+../testdata/EmailSettings/POPSettings_msgacc4.txt    	/epoc32/winscw/c/msgtest/config/emailsettings/popsettings_msgacc4.txt
+../testdata/EmailSettings/POPSettings_test908.txt    	/epoc32/winscw/c/msgtest/config/emailsettings/popsettings_test908.txt
+../testdata/EmailSettings/popsettings_TlsSls_test908.txt    	/epoc32/winscw/c/msgtest/config/emailsettings/popsettings_tlssls_test908.txt
+../testdata/EmailSettings/popsettings_wrongdns-TlsSls_test908.txt    	/epoc32/winscw/c/msgtest/config/emailsettings/popsettings_wrongdns-tlssls_test908.txt
+
+
+
+
+../testdata/EmailSettings/POPServerIAPSettings.txt			/epoc32/winscw/c/msgtest/config/emailsettings/popserveriapsettings.txt
+../testdata/EmailSettings/POPServerSNAPSettings.txt			/epoc32/winscw/c/msgtest/config/emailsettings/popserversnapsettings.txt
+../testdata/EmailSettings/POPServerSNAPandIAPSettings.txt	/epoc32/winscw/c/msgtest/config/emailsettings/popserversnapandiapsettings.txt
+../testdata/EmailSettings/POPServerSNAPandBMSettings.txt	/epoc32/winscw/c/msgtest/config/emailsettings/popserversnapandbmsettings.txt
+../testdata/EmailSettings/POPServerSNAPandBMSettings_Disconnected.txt	/epoc32/winscw/c/msgtest/config/emailsettings/popserversnapandbmsettings_disconnected.txt
+../testdata/EmailSettings/POP_SNAPID.txt					/epoc32/winscw/c/msgtest/config/emailsettings/pop_snapid.txt
+../testdata/EmailSettings/POPServerBMSettings.txt			/epoc32/winscw/c/msgtest/config/emailsettings/popserverbmsettings.txt
+../testdata/EmailSettings/POP_BM_OFF.txt					/epoc32/winscw/c/msgtest/config/emailsettings/pop_bm_off.txt
+../testdata/EmailSettings/POP_BM_ON.txt						/epoc32/winscw/c/msgtest/config/emailsettings/pop_bm_on.txt
+
+// **** Test Suite: messaging.email.pop.SASLAUTH
+#if (defined SYMBIAN_EMAIL_CAPABILITY_SUPPORT)
+../scripts/authconnect/msg-pop-auth-connect.script			/epoc32/winscw/c/msgtest/email/pop/authconnect/msg-pop-auth-connect.script
+../testdata/authconnect/msg-pop-auth-connect.ini			/epoc32/winscw/c/msgtest/email/pop/authconnect/msg-pop-auth-connect.ini
+../testdata/EmailSettings/pop_settings_auth_test1.txt    	/epoc32/winscw/c/msgtest/config/emailsettings/pop_settings_auth_test1.txt
+../testdata/EmailSettings/pop_settings_auth_test2.txt    	/epoc32/winscw/c/msgtest/config/emailsettings/pop_settings_auth_test2.txt
+../testdata/EmailSettings/pop_settings_auth_test3.txt    	/epoc32/winscw/c/msgtest/config/emailsettings/pop_settings_auth_test3.txt
+../testdata/EmailSettings/pop_settings_auth_test4.txt    	/epoc32/winscw/c/msgtest/config/emailsettings/pop_settings_auth_test4.txt
+../testdata/EmailSettings/pop_settings_auth_test5.txt    	/epoc32/winscw/c/msgtest/config/emailsettings/pop_settings_auth_test5.txt
+../testdata/EmailSettings/pop_settings_auth_test6.txt    	/epoc32/winscw/c/msgtest/config/emailsettings/pop_settings_auth_test6.txt
+../testdata/EmailSettings/pop_settings_auth_test7.txt    	/epoc32/winscw/c/msgtest/config/emailsettings/pop_settings_auth_test7.txt
+../testdata/EmailSettings/pop_settings_auth_test8.txt    	/epoc32/winscw/c/msgtest/config/emailsettings/pop_settings_auth_test8.txt
+../testdata/EmailSettings/pop_settings_auth_test9.txt    	/epoc32/winscw/c/msgtest/config/emailsettings/pop_settings_auth_test9.txt
+
+#endif
+
+#ifndef _COMMON_EMAIL_SETTINGS_FILES_
+#define _COMMON_EMAIL_SETTINGS_FILES_
+../testdata/EmailSettings/ced_default_ras_with_SNAPs.cfg	/epoc32/winscw/c/ced_default_ras_with_snaps.cfg
+#endif //End of _COMMON_EMAIL_SETTINGS_FILES_
+
+// Email Message files
+
+#ifndef _COMMON_EMAIL_FILES_
+#define _COMMON_EMAIL_FILES_
+../testdata/EmailMessage/100KBody.txt	/epoc32/winscw/c/msgtest/Config/EmailMessage/100KBody.txt
+../testdata/EmailMessage/10KBody.txt	/epoc32/winscw/c/msgtest/Config/EmailMessage/10KBody.txt
+../testdata/EmailMessage/1KBody.txt	/epoc32/winscw/c/msgtest/Config/EmailMessage/1KBody.txt
+../testdata/EmailMessage/1MBBody.txt	/epoc32/winscw/c/msgtest/Config/EmailMessage/1MBBody.txt
+../testdata/EmailMessage/20KBody.txt	/epoc32/winscw/c/msgtest/Config/EmailMessage/20KBody.txt
+../testdata/EmailMessage/512KBody.txt	/epoc32/winscw/c/msgtest/Config/EmailMessage/512KBody.txt
+#endif //End of _COMMON_EMAIL_FILES_
+
+../testdata/EmailMessage/Email-Simple.txt  		/epoc32/winscw/c/msgtest/config/emailmessage/email-simple.txt
+../testdata/EmailMessage/test1_mail.txt  		/epoc32/winscw/c/msgtest/config/emailmessage/test1_mail.txt
+../testdata/EmailMessage/test2_mail.txt  		/epoc32/winscw/c/msgtest/config/emailmessage/test2_mail.txt
+../testdata/EmailMessage/test3_mail.txt  		/epoc32/winscw/c/msgtest/config/emailmessage/test3_mail.txt
+../testdata/EmailMessage/test4_mail.txt			/epoc32/winscw/c/msgtest/config/emailmessage/test4_mail.txt
+../testdata/EmailMessage/test5_mail.txt 		/epoc32/winscw/c/msgtest/config/emailmessage/test5_mail.txt
+
+../scripts/codenomicon/msg-pop-codenomicon.script /epoc32/winscw/c/msgtest/email/pop/codenomicon/msg-pop-codenomicon.script
+../testdata/codenomicon/msg-pop-codenomicon.ini /epoc32/winscw/c/msgtest/email/pop/codenomicon/msg-pop-codenomicon.ini
+
+../scripts/codenomicon/msg-pop-codenomicong6.script /epoc32/winscw/c/msgtest/email/pop/codenomicon/msg-pop-codenomicong6.script
+../testdata/codenomicon/msg-pop-codenomicong6.ini /epoc32/winscw/c/msgtest/email/pop/codenomicon/msg-pop-codenomicong6.ini
+
+
+// IBY file
+msg_tp_pop.iby    /epoc32/rom/include/msg_tp_pop.iby

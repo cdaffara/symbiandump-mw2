@@ -1,0 +1,71 @@
+EXPORTS
+	??0TSendAsMessageTypeFilter@@QAE@VTUid@@@Z @ 1 NONAME ; TSendAsMessageTypeFilter::TSendAsMessageTypeFilter(class TUid)
+	??0TSendAsMessageTypeFilter@@QAE@VTUid@@HW4TSendAsConditionType@RSendAs@@@Z @ 2 NONAME ; TSendAsMessageTypeFilter::TSendAsMessageTypeFilter(class TUid, int, enum RSendAs::TSendAsConditionType)
+	??0TSendAsMessageTypeFilter@@QAE@XZ @ 3 NONAME ; TSendAsMessageTypeFilter::TSendAsMessageTypeFilter(void)
+	??1CSendAsAccounts@@UAE@XZ @ 4 NONAME ; CSendAsAccounts::~CSendAsAccounts(void)
+	??1CSendAsMessageTypes@@UAE@XZ @ 5 NONAME ; CSendAsMessageTypes::~CSendAsMessageTypes(void)
+	?Account@CSendAsAccounts@@QBEJH@Z @ 6 NONAME ; long CSendAsAccounts::Account(int) const
+	?AccountFromNameL@CSendAsAccounts@@QBEJABVTDesC16@@@Z @ 7 NONAME ; long CSendAsAccounts::AccountFromNameL(class TDesC16 const &) const
+	?AccountNames@CSendAsAccounts@@QBEABVMDesC16Array@@XZ @ 8 NONAME ; class MDesC16Array const & CSendAsAccounts::AccountNames(void) const
+	?AddAttachment@RSendAsMessage@@QAEXAAVRFile@@AAVTRequestStatus@@@Z @ 9 NONAME ; void RSendAsMessage::AddAttachment(class RFile &, class TRequestStatus &)
+	?AddAttachment@RSendAsMessage@@QAEXAAVRFile@@ABVTDesC8@@AAVTRequestStatus@@@Z @ 10 NONAME ; void RSendAsMessage::AddAttachment(class RFile &, class TDesC8 const &, class TRequestStatus &)
+	?AddAttachment@RSendAsMessage@@QAEXABVTDesC16@@AAVTRequestStatus@@@Z @ 11 NONAME ; void RSendAsMessage::AddAttachment(class TDesC16 const &, class TRequestStatus &)
+	?AddAttachment@RSendAsMessage@@QAEXABVTDesC16@@ABVTDesC8@@AAVTRequestStatus@@@Z @ 12 NONAME ; void RSendAsMessage::AddAttachment(class TDesC16 const &, class TDesC8 const &, class TRequestStatus &)
+	?AddLinkedAttachment@RSendAsMessage@@QAEXABVTDesC16@@AAVTRequestStatus@@@Z @ 13 NONAME ; void RSendAsMessage::AddLinkedAttachment(class TDesC16 const &, class TRequestStatus &)
+	?AddLinkedAttachment@RSendAsMessage@@QAEXABVTDesC16@@ABVTDesC8@@AAVTRequestStatus@@@Z @ 14 NONAME ; void RSendAsMessage::AddLinkedAttachment(class TDesC16 const &, class TDesC8 const &, class TRequestStatus &)
+	?AddRecipientL@RSendAsMessage@@QAEXABVTDesC16@@0W4TSendAsRecipientType@1@@Z @ 15 NONAME ; void RSendAsMessage::AddRecipientL(class TDesC16 const &, class TDesC16 const &, enum RSendAsMessage::TSendAsRecipientType)
+	?AddRecipientL@RSendAsMessage@@QAEXABVTDesC16@@W4TSendAsRecipientType@1@@Z @ 16 NONAME ; void RSendAsMessage::AddRecipientL(class TDesC16 const &, enum RSendAsMessage::TSendAsRecipientType)
+	?AppendAccountL@CSendAsAccounts@@QAEXABVTDesC16@@J@Z @ 17 NONAME ; void CSendAsAccounts::AppendAccountL(class TDesC16 const &, long)
+	?AppendMessageTypeL@CSendAsMessageTypes@@QAEXABVTDesC16@@VTUid@@@Z @ 18 NONAME ; void CSendAsMessageTypes::AppendMessageTypeL(class TDesC16 const &, class TUid)
+	?AvailableAccountsL@RSendAs@@QAEXVTUid@@AAVCSendAsAccounts@@@Z @ 19 NONAME ; void RSendAs::AvailableAccountsL(class TUid, class CSendAsAccounts &)
+	?AvailableMessageTypes@CSendAsMessageTypes@@QBEABVMDesC16Array@@XZ @ 20 NONAME ; class MDesC16Array const & CSendAsMessageTypes::AvailableMessageTypes(void) const
+	?Cancel@RSendAsMessage@@QAEXXZ @ 21 NONAME ; void RSendAsMessage::Cancel(void)
+	?Close@RSendAsMessage@@QAEXXZ @ 22 NONAME ; void RSendAsMessage::Close(void)
+	?Connect@RSendAs@@QAEHH@Z @ 23 NONAME ; int RSendAs::Connect(int)
+	?Count@CSendAsAccounts@@QBEHXZ @ 24 NONAME ; int CSendAsAccounts::Count(void) const
+	?Count@CSendAsMessageTypes@@QBEHXZ @ 25 NONAME ; int CSendAsMessageTypes::Count(void) const
+	?CreateAttachmentL@RSendAsMessage@@QAEXABVTDesC16@@AAVRFile@@@Z @ 26 NONAME ; void RSendAsMessage::CreateAttachmentL(class TDes16 &, class RFile &)
+	?CreateAttachmentL@RSendAsMessage@@QAEXABVTDesC16@@AAVRFile@@ABVTDesC8@@@Z @ 27 NONAME ; void RSendAsMessage::CreateAttachmentL(class TDes16 &, class RFile &, class TDesC8 const &)
+	?CreateL@RSendAsMessage@@QAEXAAVRSendAs@@J@Z @ 28 NONAME ; void RSendAsMessage::CreateL(class RSendAs &, long)
+	?CreateL@RSendAsMessage@@QAEXAAVRSendAs@@VTUid@@@Z @ 29 NONAME ; void RSendAsMessage::CreateL(class RSendAs &, class TUid)
+	?ExternalizeL@CSendAsAccounts@@QBEXAAVRWriteStream@@@Z @ 30 NONAME ; void CSendAsAccounts::ExternalizeL(class RWriteStream &) const
+	?ExternalizeL@CSendAsMessageTypes@@QBEXAAVRWriteStream@@@Z @ 31 NONAME ; void CSendAsMessageTypes::ExternalizeL(class RWriteStream &) const
+	?FilterAgainstCapability@RSendAs@@QAEHVTUid@@@Z @ 32 NONAME ; int RSendAs::FilterAgainstCapability(class TUid)
+	?FilterAgainstCapability@RSendAs@@QAEHVTUid@@HW4TSendAsConditionType@1@@Z @ 33 NONAME ; int RSendAs::FilterAgainstCapability(class TUid, int, enum RSendAs::TSendAsConditionType)
+	?FilteredMessageTypesL@RSendAs@@QAEXAAVCSendAsMessageTypes@@@Z @ 34 NONAME ; void RSendAs::FilteredMessageTypesL(class CSendAsMessageTypes &)
+	?InternalizeL@CSendAsAccounts@@QAEXAAVRReadStream@@@Z @ 35 NONAME ; void CSendAsAccounts::InternalizeL(class RReadStream &)
+	?InternalizeL@CSendAsMessageTypes@@QAEXAAVRReadStream@@@Z @ 36 NONAME ; void CSendAsMessageTypes::InternalizeL(class RReadStream &)
+	?LaunchEditorAndCloseL@RSendAsMessage@@QAEXXZ @ 37 NONAME ; void RSendAsMessage::LaunchEditorAndCloseL(void)
+	?MessageType@CSendAsAccounts@@QBE?AVTUid@@XZ @ 38 NONAME ; class TUid CSendAsAccounts::MessageType(void) const
+	?MessageTypeUid@CSendAsMessageTypes@@QBE?AVTUid@@H@Z @ 39 NONAME ; class TUid CSendAsMessageTypes::MessageTypeUid(int) const
+	?NameFromAccountL@CSendAsAccounts@@QBE?AVTPtrC16@@J@Z @ 40 NONAME ; class TPtrC16 CSendAsAccounts::NameFromAccountL(long) const
+	?NameFromUidL@CSendAsMessageTypes@@QBE?AVTPtrC16@@VTUid@@@Z @ 41 NONAME ; class TPtrC16 CSendAsMessageTypes::NameFromUidL(class TUid) const
+	?NewL@CSendAsAccounts@@SAPAV1@XZ @ 42 NONAME ; class CSendAsAccounts * CSendAsAccounts::NewL(void)
+	?NewL@CSendAsMessageTypes@@SAPAV1@XZ @ 43 NONAME ; class CSendAsMessageTypes * CSendAsMessageTypes::NewL(void)
+	?ProgressL@RSendAsMessage@@QAEXAAVTSendOperationProgress@CMsvSendOperation@@@Z @ 44 NONAME ; void RSendAsMessage::ProgressL(class CMsvSendOperation::TSendOperationProgress &)
+	?RemoveAccount@CSendAsAccounts@@QAEXH@Z @ 45 NONAME ; void CSendAsAccounts::RemoveAccount(int)
+	?RemoveMessageType@CSendAsMessageTypes@@QAEXH@Z @ 46 NONAME ; void CSendAsMessageTypes::RemoveMessageType(int)
+	?Reset@CSendAsAccounts@@QAEXXZ @ 47 NONAME ; void CSendAsAccounts::Reset(void)
+	?Reset@CSendAsMessageTypes@@QAEXXZ @ 48 NONAME ; void CSendAsMessageTypes::Reset(void)
+	?Reset@TSendAsMessageTypeFilter@@QAEXXZ @ 49 NONAME ; void TSendAsMessageTypeFilter::Reset(void)
+	?ResetMessageFilter@RSendAs@@QAEHXZ @ 50 NONAME ; int RSendAs::ResetMessageFilter(void)
+	?SaveMessageAndCloseL@RSendAsMessage@@QAEXXZ @ 51 NONAME ; void RSendAsMessage::SaveMessageAndCloseL(void)
+	?SendMessage@RSendAsMessage@@QAEXAAVTRequestStatus@@@Z @ 52 NONAME ; void RSendAsMessage::SendMessage(class TRequestStatus &)
+	?SendMessageAndCloseL@RSendAsMessage@@QAEXXZ @ 53 NONAME ; void RSendAsMessage::SendMessageAndCloseL(void)
+	?SendMessageConfirmed@RSendAsMessage@@QAEXAAVTRequestStatus@@@Z @ 54 NONAME ; void RSendAsMessage::SendMessageConfirmed(class TRequestStatus &)
+	?SendMessageConfirmedAndCloseL@RSendAsMessage@@QAEXXZ @ 55 NONAME ; void RSendAsMessage::SendMessageConfirmedAndCloseL(void)
+	?SetBioTypeL@RSendAsMessage@@QAEXVTUid@@@Z @ 56 NONAME ; void RSendAsMessage::SetBioTypeL(class TUid)
+	?SetBodyTextL@RSendAsMessage@@QAEXABVCRichText@@@Z @ 57 NONAME ; void RSendAsMessage::SetBodyTextL(class CRichText const &)
+	?SetBodyTextL@RSendAsMessage@@QAEXABVTDesC16@@@Z @ 58 NONAME ; void RSendAsMessage::SetBodyTextL(class TDesC16 const &)
+	?SetMessageType@CSendAsAccounts@@QAEXVTUid@@@Z @ 59 NONAME ; void CSendAsAccounts::SetMessageType(class TUid)
+	?SetSubjectL@RSendAsMessage@@QAEXABVTDesC16@@@Z @ 60 NONAME ; void RSendAsMessage::SetSubjectL(class TDesC16 const &)
+	?Size@CSendAsAccounts@@QBEHXZ @ 61 NONAME ; int CSendAsAccounts::Size(void) const
+	?Size@CSendAsMessageTypes@@QBEHXZ @ 62 NONAME ; int CSendAsMessageTypes::Size(void) const
+	?UidFromNameL@CSendAsMessageTypes@@QBE?AVTUid@@ABVTDesC16@@@Z @ 63 NONAME ; class TUid CSendAsMessageTypes::UidFromNameL(class TDesC16 const &) const
+	?AddAttachment@RSendAsMessage@@QAEXAAVRFile@@ABVTDesC8@@IAAVTRequestStatus@@@Z @ 64 NONAME ; void RSendAsMessage::AddAttachment(class RFile &, class TDesC8 const &, unsigned int, class TRequestStatus &)
+	?AddAttachment@RSendAsMessage@@QAEXABVTDesC16@@ABVTDesC8@@IAAVTRequestStatus@@@Z @ 65 NONAME ; void RSendAsMessage::AddAttachment(class TDesC16 const &, class TDesC8 const &, unsigned int, class TRequestStatus &)
+	?AddLinkedAttachment@RSendAsMessage@@QAEXABVTDesC16@@ABVTDesC8@@IAAVTRequestStatus@@@Z @ 66 NONAME ; void RSendAsMessage::AddLinkedAttachment(class TDesC16 const &, class TDesC8 const &, unsigned int, class TRequestStatus &)
+	?CreateAttachmentL@RSendAsMessage@@QAEXABVTDesC16@@AAVRFile@@ABVTDesC8@@I@Z @ 67 NONAME ; void RSendAsMessage::CreateAttachmentL(class TDesC16 const &, class RFile &, class TDesC8 const &, unsigned int)
+	?Connect@RSendAs@@QAEHXZ @ 68 NONAME ; int RSendAs::Connect(void)
+	?SetCharacterSetL@RSendAsMessage@@QAEXI@Z @ 69 NONAME ; void RSendAsMessage::SetCharacterSetL(unsigned int)
+

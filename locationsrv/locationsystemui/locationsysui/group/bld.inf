@@ -1,0 +1,39 @@
+/*
+* Copyright (c) 2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  This file provides the information required for building
+*				 Location System UI
+*                  
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+// Export Configuration Markup language and Central Repository Mark up language files
+
+../conf/loclocalvariation.confml       	MW_LAYER_CONFML(loclocalvariation.confml)
+../conf/loclocalvariation_20022D83.crml MW_LAYER_CRML(loclocalvariation_20022D83.crml)
+
+
+// Query and Notification
+#include "../queryandnotification/group/bld.inf" 
+
+
+PRJ_TESTMMPFILES
+//  End of File  

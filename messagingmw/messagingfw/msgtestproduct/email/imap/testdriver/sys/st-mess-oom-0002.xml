@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>st-mess-oom-0002</name>
+	<timeout>75000</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\sys\st-mess-oom-0002.script</hostPath>
+			<devicePath>c:\msgtest\sys\st-mess-oom-0002.script</devicePath>
+		</script>
+		
+	</testScripts>
+
+	<testServers>
+		<server>T_MsgCommonServer</server>
+		<server>T_MsgImapServer</server>
+		<server>T_MsgSmtpServer</server>
+	</testServers>
+
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\sys\st-mess.ini</hostPath>
+			<devicePath>c:\msgtest\sys\st-mess.ini</devicePath>
+		</data>
+
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\IMAPSettings_test908.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\IMAPSettings_test908.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\1KBody.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\1KBody.txt</devicePath>
+		</data>	
+
+	</dependencies>	
+</testExecuteTest>

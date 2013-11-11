@@ -1,0 +1,43 @@
+/***************************************************
+   1. Create MO PS call
+   2. Disconnect call
+***************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 2.1.1 Dial, PS
+create ccetester test
+timeout 10000 # Mediator testing needs more time
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test ExpectMediatorEvent 1 ECCECallTypePS Dialling 2 MoCall
+test ExpectMediatorEvent 1 ECCECallTypePS Connecting 2 MoCall
+test ExpectMediatorEvent 1 ECCECallTypePS Connected 2 MoCall
+test ExpectMediatorEvent 1 ECCECallTypePS Disconnecting 2 MoCall
+
+test OpenNewCall 1 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test CallIndexForCall 1 1
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+// Step 2
+print Step_2
+
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+test VerifyTest
+test Delay 5000
+test VerifyMediatorEvents
+delete test
+[Endtest] 

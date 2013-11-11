@@ -1,0 +1,65 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Enumerations for metadata field Ids.
+*
+*/
+
+
+
+#ifndef CMETADATAFIELD_HRH
+#define CMETADATAFIELD_HRH
+
+// DATA TYPES
+enum TMetaDataFieldId		// Possible metadata fields
+    {
+    EUnknownMetaDataField = 0,
+
+    EMetaDataSongTitle = 1,
+    EMetaDataArtist,     // the artist of the song
+    EMetaDataAlbum,
+    EMetaDataYear,
+    EMetaDataComment,
+    EMetaDataAlbumTrack,
+    EMetaDataGenre,
+    EMetaDataComposer,
+    EMetaDataCopyright,
+    EMetaDataOriginalArtist,
+    EMetaDataUrl,
+    EMetaDataUserUrl,
+    EMetaDataJpeg,
+    EMetaDataVendor,
+    EMetaDataRating,
+    EMetaDataUniqueFileIdentifier,
+    EMetaDataDuration,
+    EMetaDataDate,
+    EMetaDataUnsyncLyrics,
+    EMetaDataProtected,   // get the Protected info, "0"=non protected, "1"=protected
+    EMetaDataSampleRate,  // Hz
+    EMetaDataBitRate,     // Bps		
+    EMetaDataAlbumArtist  // the artist of the album
+	
+    // More later...
+    };
+
+// ENUM for ID3 Version
+enum TID3Version
+    {
+    ENonID3,
+    EID3Version1,
+    EID3Version2
+    };
+
+#endif      // CMETADATAFIELD_HRH
+
+// End of File

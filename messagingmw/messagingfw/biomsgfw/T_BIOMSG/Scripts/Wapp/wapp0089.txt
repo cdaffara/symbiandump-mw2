@@ -1,0 +1,66 @@
+[main]
+bio_test doatstart
+bio_test wapp0089
+bio_test doattheend
+
+
+// Startup section.
+[doatstart]
+clean_all_bio_msgs
+
+
+// Shutdown section.
+[doattheend]
+
+
+// wapp tests.
+[wapp0089]
+gen_msg_from_file wapp\wapp0089.bin
+check_used_bif 10005532
+bio_client_parse
+bio_client_process
+dump_parsed_message
+chk_file_in_msg_dir_with_ext
+//
+// check commdb tables for correct entries
+bio_commdb DialOutIsp wapp0089_commdb_dialoutisp_table
+bio_commdb IAP wapp0089_commdb_iap_table
+bio_commdb WAPAccessPoint wapp0089_commdb_wapap_table
+bio_commdb WAPIPBearer wapp0089_commdb_wapip_table
+bio_commdb WAPSMSBearer wapp0089_commdb_wapsms_table
+
+
+[wapp0089_commdb_dialoutisp_table]
+commdb_check text IpGateway "111.128.129.89"
+commdb_check text DefaultTelNum "+442020202020"
+commdb_check text LoginName "username"
+commdb_check text IfAuthName "username"
+commdb_check uint BearerProtocol "3"
+commdb_check uint BearerSpeed "1"
+commdb_check text Description "Global ISP"
+commdb_check text Name "WAPP 0089-GsmCsd"
+
+
+[wapp0089_commdb_iap_table]
+commdb_check text Name "WAPP 0089-GsmCsd"
+
+
+[wapp0089_commdb_wapap_table]
+commdb_check text StartPage "/start-index.wml"
+commdb_check text Name "WAPP 0089"
+
+
+[wapp0089_commdb_wapip_table]
+commdb_check text GatewayAddress "111.128.129.89"
+commdb_check uint ProxyPortNumber "9203"
+commdb_check bool WSPOption "true"
+commdb_check bool Security "true"
+commdb_check text ProxyLogin "pxauthname"
+commdb_check text ProxyPassword "pxauthsecret"
+
+
+[wapp0089_commdb_wapsms_table]
+commdb_check text GatewayAddress "99676889"
+commdb_check bool WSPOption "false"
+commdb_check bool Security "true"
+commdb_check text ServiceCentreAddress "+4419181716"

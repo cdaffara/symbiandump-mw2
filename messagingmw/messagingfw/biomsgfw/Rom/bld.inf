@@ -1,0 +1,26 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+
+PRJ_EXPORTS
+
+gtbioutils.iby /epoc32/rom/include/gtbioutils.iby
+gtbioengmtm.iby /epoc32/rom/include/gtbioengmtm.iby
+bionbswatcher.iby /epoc32/rom/include/bionbswatcher.iby
+bioclass0smsplugin.iby /epoc32/rom/include/bioclass0smsplugin.iby
+biowapwatcher.iby /epoc32/rom/include/biowapwatcher.iby
+bioparsers.iby /epoc32/rom/include/bioparsers.iby
+GtBioMessaging.iby /epoc32/rom/include/gtbiomessaging.iby

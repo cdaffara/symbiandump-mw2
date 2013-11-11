@@ -1,0 +1,42 @@
+/***************************************************
+   1. Dial emergency call
+   2. Hangup call
+***************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 4.1 Emergency Call
+timeout 10000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test ExpectMediatorEvent 1 ECCECallTypeCSVoice Dialling 0 MoCall
+test ExpectMediatorEvent 1 ECCECallTypeCSVoice Connecting 0 MoCall
+test ExpectMediatorEvent 1 ECCECallTypeCSVoice Connected 0 MoCall
+test ExpectMediatorEvent 1 ECCECallTypeCSVoice Disconnecting 0 MoCall
+test InitializeEmergencyCall 1 0
+
+test DialEmergencyCall 1 EmergencyNumber
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+test CallIndexForCall 1 1
+
+// Step 2
+print Step_2
+
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+
+test VerifyTest
+test Delay 3000
+test VerifyMediatorEvents
+delete test
+[Endtest]

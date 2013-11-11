@@ -1,0 +1,93 @@
+// Copyright (c) 1999-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+PRJ_TESTMMPFILES
+#if (defined SYMBIAN_MESSAGESTORE_UNIT_TESTCODE)
+T_MSGS_SQL_SUITE.MMP manual
+
+//MMP for Preq 1667
+T_MSGS_SQL_SEARCH_SORT.MMP
+
+
+#if (defined SYMBIAN_MSGS_ENHANCED_REMOVABLE_MEDIA_SUPPORT)
+T_MSGS_SQL_CLIENT_SUITE.MMP manual
+#endif
+
+#if (defined SYMBIAN_MESSAGESTORE_HEADER_BODY_USING_SQLDB)
+	T_MSGS_MESSAGE_CONVERTER_SUITE.MMP
+#endif
+
+PRJ_TESTEXPORTS
+//Preq 1667
+../script/t_msgs_sql_search_sort.script			/epoc32/winscw/c/msgtest/framework/msgsqltest/t_msgs_sql_search_sort.script
+./t_msgs_sql_search_sort.iby				/epoc32/rom/include/t_msgs_sql_search_sort.iby
+./t_msgs_sql_suite.iby   				/epoc32/rom/include/t_msgs_sql_suite.iby
+
+
+msgcache1.ini   					/epoc32/winscw/c/private/1000484b/msgcache1.ini
+msgcache2.ini   					/epoc32/winscw/c/private/1000484b/msgcache2.ini
+msgcache3.ini   					/epoc32/winscw/c/private/1000484b/msgcache3.ini
+msgcache4.ini   					/epoc32/winscw/c/private/1000484b/msgcache4.ini
+msgcache5.ini   					/epoc32/winscw/c/private/1000484b/msgcache5.ini
+msgcache.ini   				     	/epoc32/winscw/c/private/1000484b/msgcache.ini
+config.ini   						/epoc32/winscw/c/private/1000484b/config.ini
+Index								/epoc32/winscw/c/private/1000484b/index
+Index1								/epoc32/winscw/c/private/1000484b/index1
+
+#if (defined SYMBIAN_MSGS_ENHANCED_REMOVABLE_MEDIA_SUPPORT)
+#if (defined SYMBIAN_MESSAGESTORE_HEADER_BODY_USING_SQLDB)
+	../script/t_msgs_sql_suite_with_2073.script			/epoc32/winscw/c/msgtest/framework/msgsqltest/t_msgs_sql_suite.script
+	../script/t_msgs_client_suite_with_2073.script		/epoc32/winscw/c/msgtest/framework/msgsqltest/t_msgs_client_suite.script
+	messaging_base_2073.db								/epoc32/winscw/c/messaging_base.db
+#else
+	../script/t_msgs_sql_suite_with_557.script	/epoc32/winscw/c/msgtest/framework/msgsqltest/t_msgs_sql_suite.script
+	../script/t_msgs_client_suite.script		/epoc32/winscw/c/msgtest/framework/msgsqltest/t_msgs_client_suite.script
+	messaging_base_557.db						/epoc32/winscw/c/messaging_base.db
+#endif	
+	./t_msgs_client_suite.iby   				/epoc32/rom/include/t_msgs_client_suite.iby
+
+	msgPriorityDriveList1.ini			/epoc32/winscw/c/private/1000484b/msgprioritydrivelist1.ini
+	msgPriorityDriveList2.ini			/epoc32/winscw/c/private/1000484b/msgprioritydrivelist2.ini
+	msgPriorityDriveList3.ini			/epoc32/winscw/c/private/1000484b/msgprioritydrivelist3.ini
+	msgPriorityDriveList4.ini			/epoc32/winscw/c/private/1000484b/msgprioritydrivelist4.ini
+	msgPriorityDriveList5.ini			/epoc32/winscw/c/private/1000484b/msgprioritydrivelist5.ini
+	msgPriorityDriveList6.ini			/epoc32/winscw/c/private/1000484b/msgprioritydrivelist6.ini
+	msgPriorityDriveList7.ini			/epoc32/winscw/c/private/1000484b/msgprioritydrivelist7.ini
+	msgPriorityDriveList8.ini			/epoc32/winscw/c/private/1000484b/msgprioritydrivelist8.ini
+	msgPriorityDriveList9.ini			/epoc32/winscw/c/private/1000484b/msgprioritydrivelist9.ini
+	msgPriorityDriveList10.ini			/epoc32/winscw/c/private/1000484b/msgprioritydrivelist10.ini
+	msgPriorityDriveList.ini			/epoc32/winscw/c/private/1000484b/msgprioritydrivelist.ini
+#else
+	../script/t_msgs_sql_suite.script		/epoc32/winscw/c/msgtest/framework/msgsqltest/t_msgs_sql_suite.script	
+#endif
+
+
+
+#if (defined SYMBIAN_MESSAGESTORE_HEADER_BODY_USING_SQLDB)
+	../script/t_msgs_message_converter_suite.script			/epoc32/winscw/c/msgtest/framework/msgsqltest/t_msgs_message_converter_suite.script
+:zip	../testdata/converter/mail2.zip                      /epoc32/winscw/c/msgtest/framework/msgsqltest/testdata/converter
+    ../testdata/converter/messaging.db						/epoc32/winscw/c/msgtest/framework/msgsqltest/testdata/converter/messaging.db
+    ../testdata/converter/imapresume/messaging.db						/epoc32/winscw/c/msgtest/framework/msgsqltest/testdata/converter/imapresume/messaging.db
+    ../testdata/converter/popresume/messaging.db						/epoc32/winscw/c/msgtest/framework/msgsqltest/testdata/converter/popresume/messaging.db
+    ../testdata/converter/smtpresume/messaging.db						/epoc32/winscw/c/msgtest/framework/msgsqltest/testdata/converter/smtpresume/messaging.db
+    ../testdata/converter/version0version1resume/messaging.db						/epoc32/winscw/c/msgtest/framework/msgsqltest/testdata/converter/version0version1resume/messaging.db
+    ../testdata/converter/version1version2resume/messaging.db						/epoc32/winscw/c/msgtest/framework/msgsqltest/testdata/converter/version1version2resume/messaging.db
+:zip	../testdata/converter/coverage/mail2.zip                      /epoc32/winscw/c/msgtest/framework/msgsqltest/testdata/converter/coverage        
+		../testdata/converter/coverage/messaging.db						/epoc32/winscw/c/msgtest/framework/msgsqltest/testdata/converter/coverage/messaging.db
+:zip	../testdata/converter/sms/mail2.zip                      /epoc32/winscw/c/msgtest/framework/msgsqltest/testdata/converter/sms        
+		../testdata/converter/sms/messaging.db						/epoc32/winscw/c/msgtest/framework/msgsqltest/testdata/converter/sms/messaging.db
+#endif
+#endif // #if (defined SYMBIAN_MESSAGESTORE_UNIT_TESTCODE)

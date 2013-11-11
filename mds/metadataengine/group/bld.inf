@@ -1,0 +1,43 @@
+/*
+* Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Build information file
+*
+*/
+
+#include "../common/group/bld.inf"
+#include "../server/group/bld.inf"
+#include "../client/group/bld.inf"
+
+PRJ_PLATFORMS
+    DEFAULT
+
+PRJ_EXPORTS
+../data/200009F3.txt /epoc32/data/z/private/10202BE9/200009F3.txt
+../data/200009F3.txt /epoc32/winscw/c/private/10202BE9/200009F3.txt
+../data/schema.mde 				/epoc32/winscw/c/private/200009F3/schema.mde
+../data/defaultimportfile.mde 	/epoc32/winscw/c/private/200009F3/defaultimportfile.mde
+mde_backup_registration.xml		/epoc32/winscw/c/private/200009F3/backup_registration.xml
+../data/schema.mde 				/epoc32/data/z/private/200009F3/schema.mde
+../data/defaultimportfile.mde 	/epoc32/data/z/private/200009F3/defaultimportfile.mde
+mde_backup_registration.xml		/epoc32/data/z/private/200009F3/backup_registration.xml
+
+../sis/metadataengine_stub.sis  /epoc32/data/z/system/install/metadataengine_stub.sis
+
+
+PRJ_MMPFILES
+
+PRJ_TESTMMPFILES
+
+PRJ_TESTEXPORTS
+

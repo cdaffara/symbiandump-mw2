@@ -1,0 +1,474 @@
+From: "test" <test908@msexchange2k.closedtest.intra>
+To: <test908@msexchange2k.closedtest.intra>
+Cc: <test908@msexchange2k.closedtest.intra>
+Subject: this is a simple email that has been cc'dwith an attachment zero length in size
+Date: Thu, 30 Mar 2006 12:16:34 +0100
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+	boundary="----=_NextPart_000_01CC_01C653F3.C9056490"
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2800.1506
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1506
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_01CC_01C653F3.C9056490
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: 8bit
+
+Hi all,
+This mail is a simple email with zero length attachment size.
+lets talk about coding  symbian style here....
+All programs should check for out-of-resource errors
+In any application, an error may occur at run time due to a lack of
+resources: for example, the machine running out of memory, or a
+communication port being unavailable. This type of error is known as an
+exception. --!! An exception should be distinguished from a
+programming error: a programming error can be addressed by fixing the
+program, +++
+but it is impossible to make a program free from the possibility of an
+exception occurring.
+Therefore, programs should be able to recover from exceptions when they
+occur. T
+his is particularly important in SYMBIAN OS, for the following reasons:
+· SYMBIAN OS applications are designed to run for long periods (months or
+even years) without interruption or system re-boot.
+· SYMBIAN OS applications are designed to run on machines that have limited
+resources, particularly memory. Therefore, an out-of-resource error is more
+likely to occur than in a desktop application.
+
+Conventional error-checking methods
+
+In a conventional C or C++ program an if statement might typically be used
+to check for an out-of-resource error.
+
+For example:
+
+    if ((myObject = new CSomeObject() == NULL)
+    PerformSomeErrorCode();
+
+Problems with conventional methods
+
+There are two problems with this conventional approach: =
+
+1. It requires many extra lines of code to put such error checking round
+every single function that might cause an out-of-resource error. This
+increases code size and reduces readability.
+
+
+2. If a constructor fails to allocate resources, there is no way to return
+an error code, because constructors have no return value. The result would
+be an incompletely allocated object, which could cause a program crash.
+C++ exception handling (try, catch and throw) provides solutions to these
+problems, but it is not used in SYMBIAN OS, because of its large overheads
+in code size. Instead, SYMBIAN OS provides its own system of exception
+handling.
+
+SYMBIAN OS solutions
+
+SYMBIAN OS applications can achieve efficient exception handling by
+following the rules below:
+
+
+Rule 1: Instead of returning an error code when an out-of-resource error
+occurs, by convention SYMBIAN OS functions should leave, and all leaves
+should be trapped by a trap harness.
+
+
+Rule 2: If you allocate memory on the heap, and the pointer to it is an
+automatic variable (i.e. not a member variable), it should be pushed to the
+cleanup stack so that it can be deleted when a leave occurs. All objects
+pushed to the cleanup stack should be popped before they are destroyed.
+
+
+Rule 3: A C++ constructor must not leave or fail. Therefore, if construction
+of an object can fail with an out-of-resource error, all the instructions
+that might fail should be taken out of the C++ constructor and put in a
+ConstructL() function, which should be called after the C++ constructor has
+completed.
+
+
+Rule 1: functions that leave, and trap harnesses
+
+Functions that leave
+
+Instead of returning an error code, functions in SYMBIAN OS should leave
+whenever an out-of-resource error occurs. A leave is a call to
+User::Leave(), and it causes program execution to return immediately to the
+trap harness within which the function was executed.
+
+All functions that can leave should have the suffix "L". This enables
+programmers to know that the function might leave and therefore to ensure
+that it is executed within a trap harness.
+
+So
+
+    error=doExample()
+    if (error!=KErrNone)
+
+    {
+
+    // Do some error code
+
+    }
+
+becomes
+
+    TRAPD(error,doExampleL());
+    if(error!=KErrNone)
+
+    {
+
+    // Do some error code
+
+    }
+
+In the above example the benefits of using a trap harness are not obvious in
+either efficiency or readability of the code. However, if the doExample()
+function were to call another function, which in turn called another, and so
+on (as is likely to be the case in a real application), the benefits would
+be considerable: there would be no need to check return values for errors at
+each level, and this would save many lines of code.
+
+new (ELeave)
+
+The possibility of new failing arises so often that in SYMBIAN OS the new
+operator has been overridden to take a parameter, ELeave. When called with
+this parameter, the overridden new operator will leave if it fails to
+allocate the required memory. This is implemented globally, so any class can
+use new (ELeave).
+
+So,
+
+    CSomeObject* myObject = new CSomeObject;
+    if (!myObject) User::Leave(KErrNoMemory);
+
+can be replaced by
+
+    CSomeObject* myObject = new (ELeave) CSomeObject;
+in SYMBIAN OS programs.
+
+The NewL() and NewLC() conventions
+
+By convention, SYMBIAN OS classes often implement the functions NewL() and
+NewLC().
+
+NewL() creates the object on the heap and leaves if an out-of-memory error
+occurs.
+
+For simple objects this simply involves a call to new (ELeave). However, for
+compound objects it can incorporate two-phase construction: see "Rule 3"
+below.
+
+NewLC() creates the object on the heap, leaving if an out-of-memory error
+occurs, and pushes the object to the cleanup stack: see "Rule 2" below.
+
+In general, when creating C-class objects, programs should use NewL() if a
+member variable will point to the object, and NewLC() if an automatic
+variable will point to it.
+
+However, it is not always advisable to implement NewL() and NewLC() for
+every class. If NewL() or NewLC() are called from only one place in the
+application, implementing them will actually use more lines of code than it
+saves. It is a good idea to assess the need for NewL() and NewLC() for each
+individual class.
+
+Note: NewL() and NewLC() must be declared as static functions in the class
+definition. This allows them to be called before an instance of the class
+exists. They are invoked using the class name. For example:
+
+    CSomeObject* myObject=CSomeObject::NewL();
+Using a trap harness: TRAP and TRAPD
+
+SYMBIAN OS provides two trap harness macros, TRAP and TRAPD, which are both
+very similar. Whenever a leave occurs within code executed inside the
+harness, program control returns immediately to the trap harness macro. The
+macro then returns an error code which can be used by the calling function.
+
+To execute a function within a trap harness, use TRAPD as follows:
+
+    TRAPD(error,doExampleL());
+    if (error !=KErrNone)
+
+    {
+
+    // Do some error code
+
+    }
+
+TRAP differs from TRAPD only in that the program code must declare the leave
+code variable. TRAPD is more convenient to use as it declares it inside the
+macro. So, using TRAP, the above example would become:
+
+    TInt error;
+    TRAP(error,doExampleL());
+
+    if (error !=KErrNone)
+
+    {
+
+    // Do some error code
+
+    }
+
+Any functions called by doExampleL() are also executed within the trap
+harness, as are any functions called by them, and so on: a leave occurring
+in any function nested within doExampleL() will return to this trap harness.
+Another trap harness can be used within the first, so that errors are
+checked at different levels within the application.
+
+Rule 2: using a cleanup stack
+
+Why a cleanup stack is needed
+
+If a function leaves, control returns immediately to the trap harness within
+which it was called. This means that any automatic variables within
+functions called inside the trap harness are destroyed. A problem arises if
+any of these automatic variables are pointers to objects allocated on the
+heap: when the leave occurs and the pointer is destroyed, the object it
+pointed to is orphaned and a memory leak occurs.
+
+Example:
+
+    TRAPD(error,doExampleL());
+    .
+
+    void doExampleL()
+
+    {
+
+    CSomeObject* myObject1=new (ELeave) CSomeObject;
+
+    CSomeObject* myObject2=new (ELeave) CSomeObject; // WRONG
+
+    }
+
+In this example, if myObject1 was new'ed successfully, but there was
+insufficient memory to allocate myObject2, myObject1 would be orphaned on
+the heap.
+
+Thus, we need some mechanism for retaining any such pointers, so that the
+memory they point to can be freed after a leave. SYMBIAN OS mechanism for
+this is the cleanup stack.
+
+Using a cleanup stack
+
+The cleanup stack is a stack containing pointers to all the objects that
+need to be freed when a leave occurs. This means all C-class objects pointed
+to by automatic variables rather than instance data.
+
+When a leave occurs, the TRAP or TRAPD macro pops and destroys everything on
+the cleanup stack that was pushed to it since the beginning of the trap.
+
+All applications have their own cleanup stack, which they must create. (In
+an EIKON application, this is done for you by the EIKON framework.)
+Typically, all programs will have at least one object to push to the cleanup
+stack.
+
+Objects are pushed to the cleanup stack using CleanupStack::PushL() and
+popped using CleanupStack::Pop(). Objects on the cleanup stack should be
+popped when there is no longer a chance that they could be orphaned by a
+leave, which is usually just before they are deleted. PopAndDestroy() is
+normally used instead of Pop(), as this ensures the object is deleted as
+soon as it is popped, avoiding the possibility that a leave might occur
+before it has been deleted, causing a memory leak.
+
+A compound object that owns pointers to other C-class objects should delete
+those objects in its destructor. Therefore any object which is pointed to by
+member data of another object (rather than by an automatic variable) does
+not need to be pushed to the cleanup stack. In fact, it must not be pushed
+to the cleanup stack, or it will be destroyed twice if a leave occurs: once
+by the destructor and once by the TRAP macro.
+
+Rule 3: Two-phase construction
+
+Sometimes, a constructor will need to allocate resources, such as memory.
+The most ubiquitous case is that of a compound C-class: if a compound class
+contains a pointer to another C-class, it will need to allocate memory for
+that class during its own construction.
+
+(Note: C-classes in SYMBIAN OS are always allocated on the heap, and always
+have CBase as their ultimate base class)
+
+In the following example, CMyCompoundClass has a data member which is a
+pointer to a CMySimpleClass.
+
+Here's the definition for CMySimpleClass:
+
+    class CMySimpleClass : public CBase
+    {
+
+    public:
+
+    CMySimpleClass();
+
+    ~CMySimpleClass();
+
+    .
+
+    private:
+
+    TInt iSomeData;
+
+    };
+
+Here's the definition for CMyCompoundClass:
+
+    class CMyCompoundClass : public CBase
+    {
+
+    public:
+
+    CMyCompoundClass();
+
+    ~CMyCompoundClass();
+
+    .
+
+    private:
+
+    CMySimpleClass * iSimpleClass; // owns another C-class
+
+    };
+
+Consider what you might be tempted to write as the constructor for
+CMyCompoundClass:
+
+    CMyCompoundClass::CMyCompoundClass()
+    {
+
+    iSimpleClass=new CMySimpleClass; // WRONG
+
+    }
+
+Now consider what happens when you new a CMyCompoundClass, e.g.:
+
+    CMyCompoundClass* myCompoundClass=new (ELeave) CMyCompoundClass;
+With the above constructor, the following sequence of events occurs:
+
+1. Memory is allocated for the CMyCompoundClass
+2. CMyCompoundClass's constructor is called
+3. The constructor news a CMySimpleClass and stores a pointer to it in
+iSimpleClass
+4. The constructor completes
+But, if stage 3 fails due to insufficient memory, what happens? There is no
+way to return an error code from the constructor to indicate that the
+construction was only half complete. new will return a pointer to the memory
+that was allocated for the CMyCompoundClass, but it will point to a
+partially-constructed object.
+
+If we make the constructor leave, we can detect when the object was not
+fully constructed, as follows:
+
+    CMyCompoundClass::CMyCompoundClass() // WRONG
+    {
+
+    iSimpleClass=new (ELeave) CMySimpleClass;
+
+    }
+
+However, this is not a viable method for indicating that an error has
+occurred, because we have already allocated memory for the CMyCompoundClass.
+A leave would destroy the pointer (this) to the allocated memory, and there
+would be no way to free it, resulting in a memory leak.
+
+The solution is to allocate all the memory for the components of the object,
+after the compound object has been initialized by the C++ constructor. By
+convention, in SYMBIAN OS this is done in a ConstructL() function.
+
+Example
+
+    void CMyCompoundClass::ConstructL() // RIGHT
+    {
+
+    iSimpleClass=new (ELeave) CMySimpleClass;
+
+    }
+
+The C++ constructor should contain only initialization that cannot leave (if
+any):
+
+    CMyCompoundClass::CMyCompoundClass() // RIGHT
+    {
+
+    . // Initialization that cannot leave
+
+    }
+
+The object is now constructed as follows:
+
+    CMyCompoundClass* myCompoundClass=new (ELeave) CMyCompoundClass;
+    CleanupStack::PushL(myCompoundClass);
+
+    myCompoundClass->ConstructL(); // RIGHT
+
+This can be encapsulated in a NewL() or NewLC() function for convenience.
+
+Implementing two-phase contruction in NewL() and NewLC()
+
+If a compound object has a NewL() function (or NewLC()), this should contain
+both stages of construction. After the first stage, the object should be
+pushed to the cleanup stack before ConstructL() is called, in case
+ConstructL() leaves.
+
+Example:
+
+    CMyCompoundClass* CMyCompoundClass::NewLC()
+    {
+
+    CMyCompoundClass* self=new (ELeave) CMyCompoundClass;
+
+    CleanupStack::PushL(self);
+
+    self->ConstructL();
+
+    return self;
+
+    }
+
+    CMyCompoundClass* CMyCompoundClass::NewL()
+
+    {
+
+    CMyCompoundClass* self=new (ELeave) CMyCompoundClass;
+
+    CleanupStack::PushL(self);
+
+    self->ConstructL();
+
+    CleanupStack::Pop(); // self
+
+    return self;
+
+    }
+
+    Extra notes
+
+There is a separate cleanup stack for each thread - if your application
+creates additional threads then you will probably need to have each new
+thread create its own cleanup stack. See the SDK documentation on
+CTrapCleanup::New(). The usual symptom of failing to create a cleanup stack
+is a panic - but this will only occur when the thread executes code which
+attempts to use a TRAP() harness, for example some of the file system APIs.
+
+
+Also note that having "C-classes always allocated on the heap" is an in
+house coding standard, but there is no absolute constraint to this effect.
+C-Classes were changed so that it is possible to have them inline within
+another C-Class. In this case they don't need to be allocated, but their
+ConstructL should be called form the ConstructL of the owning class.
+
+
+
+
+------=_NextPart_000_01CC_01C653F3.C9056490
+Content-Type: image/jpeg;
+	name="emptyattachment.jpg"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+	filename="emptyattachment.jpg"
+
+
+------=_NextPart_000_01CC_01C653F3.C9056490--

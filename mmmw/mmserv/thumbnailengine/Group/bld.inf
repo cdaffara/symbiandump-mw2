@@ -1,0 +1,48 @@
+/*
+* Copyright (c) 2003 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:   Common build information file to build video editor
+*
+*/
+
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+//
+//  Export the iby file for S60 5.0
+//
+../rom/TNEEngine.iby       CORE_MW_LAYER_IBY_EXPORT_PATH(TNEEngine.iby)
+
+//
+//  Export stub sis file to eclipse files in the rom image
+//
+../data/vtne_stub.SIS     /epoc32/data/z/system/install/vtne_stub.sis
+
+#define HELIX_TNE_ENGINE 1
+
+// ROM build files
+PRJ_MMPFILES
+#ifdef HELIX_TNE_ENGINE
+HXTNEEngine.mmp          BUILD_AS_ARM
+#else
+TNEEngine.mmp          BUILD_AS_ARM
+#endif
+
+
+PRJ_TESTMMPFILES
+// End of File

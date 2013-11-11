@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<api id="abd871d5245f5e26a0aa0e77b3f9cd71" dataversion="2.0">
+  <name>Location Local Variation API</name>
+  <description>Provides Central Repository Key used for Location Local Variation, like Hide/Unhide Coordinates, etc.</description>
+  <type>c++</type>
+  <collection>locationsystemui</collection>
+  <libs>
+  </libs>
+  <release category="platform"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>no</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

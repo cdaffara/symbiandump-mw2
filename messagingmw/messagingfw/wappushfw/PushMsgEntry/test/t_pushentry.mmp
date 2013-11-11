@@ -1,0 +1,42 @@
+// Copyright (c) 2000-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+TARGET          tpushentry.exe  
+
+TARGETTYPE      EXE
+CAPABILITY ALL -TCB
+
+USERINCLUDE		./. ../inc  ../../pushwatcher/inc ../../pushwatcher/test
+USERINCLUDE		../../SISLPushMsgUtils/inc
+USERINCLUDE		../../pushutils/inc
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+SOURCEPATH		../test
+SOURCE			t_pushentry.cpp   t_serviceutils.cpp
+
+SOURCEPATH		../../pushwatcher/test
+SOURCE			pushlog.cpp
+     
+LIBRARY         euser.lib flogger.lib  msgs.lib
+LIBRARY			wappushutils.lib miscpushmsgutils.lib sislpushmsgutils.lib
+LIBRARY			pushmsgentry.lib
+
+#ifdef EABI
+LIBRARY ecom.lib
+#endif
+
+VENDORID 0x70000001
+
+SMPSAFE

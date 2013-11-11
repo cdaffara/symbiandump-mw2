@@ -1,0 +1,31 @@
+[main]
+bio_test doatstart
+bio_test script_06
+bio_test doattheend
+
+
+// Startup section.
+[doatstart]
+clean_all_bio_msgs
+
+
+// Shutdown section.
+[doattheend]
+
+
+// wapp tests.
+[script_06]
+gen_msg_from_file iacp\iacp_script_06.txt
+check_used_bif 1000552f
+bio_client_parse
+bio_client_process
+dump_parsed_message
+//
+// check commdb tables for correct entries
+bio_commdb DialOutIsp script_06_commdb_dialoutisp_table
+
+
+[script_06_commdb_dialoutisp_table]
+commdb_check text Name "Demon"
+commdb_check bool UseLoginScript "true"
+commdb_check text LoginScript "! Not much script"

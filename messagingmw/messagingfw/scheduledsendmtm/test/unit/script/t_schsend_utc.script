@@ -1,0 +1,51 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+//! @SYMTestCaseID MSG-SCHEDULESENTMTM-0243
+//! @SYMTestType UT
+//! @SYMTestPriority High
+//! @SYMPREQ 234
+//! @SYMDEF t_schsend_utc_server.exe
+//! @SYMTestCaseDesc Tests scheduling, rescheduling and error handling within the schedulesend component.
+//! @SYMTestActions The first nine steps change set the UTC offset forward, the second nine set it backwards. 
+//! @SYMTestExpectedResults The scheduling of messages should be correctly and base on UTC time.
+
+PRINT Run all t_schsend_utc_server Tests 
+LOAD_SUITE t_schsend_utc_server -SharedData
+START_TESTCASE 1
+RUN_TEST_STEP 10000 t_schsend_utc_server ScheduledEntryStep		z:\testdata\scripts\t_schsend_utc.ini  SectionOne
+RUN_TEST_STEP 10000 t_schsend_utc_server RescheduleTime1Step		z:\testdata\scripts\t_schsend_utc.ini  SectionOne
+RUN_TEST_STEP 10000 t_schsend_utc_server RescheduleTime2Step		z:\testdata\scripts\t_schsend_utc.ini  SectionOne
+RUN_TEST_STEP 10000 t_schsend_utc_server RescheduleConditions1Step	z:\testdata\scripts\t_schsend_utc.ini  SectionOne
+RUN_TEST_STEP 10000 t_schsend_utc_server RescheduleConditions2Step	z:\testdata\scripts\t_schsend_utc.ini  SectionOne
+RUN_TEST_STEP 10000 t_schsend_utc_server RescheduleConditions3Step	z:\testdata\scripts\t_schsend_utc.ini  SectionOne
+RUN_TEST_STEP 10000 t_schsend_utc_server RescheduleMixed1Step		z:\testdata\scripts\t_schsend_utc.ini  SectionOne
+RUN_TEST_STEP 10000 t_schsend_utc_server Failed1Step			z:\testdata\scripts\t_schsend_utc.ini  SectionOne
+END_TESTCASE 1
+
+START_TESTCASE 2
+RUN_TEST_STEP 10000 t_schsend_utc_server ScheduledEntryStep		z:\testdata\scripts\t_schsend_utc.ini  SectionTwo
+RUN_TEST_STEP 10000 t_schsend_utc_server RescheduleTime1Step		z:\testdata\scripts\t_schsend_utc.ini  SectionTwo
+RUN_TEST_STEP 10000 t_schsend_utc_server RescheduleTime2Step		z:\testdata\scripts\t_schsend_utc.ini  SectionTwo
+RUN_TEST_STEP 10000 t_schsend_utc_server RescheduleConditions1Step	z:\testdata\scripts\t_schsend_utc.ini  SectionTwo
+RUN_TEST_STEP 10000 t_schsend_utc_server RescheduleConditions2Step	z:\testdata\scripts\t_schsend_utc.ini  SectionTwo
+RUN_TEST_STEP 10000 t_schsend_utc_server RescheduleConditions3Step	z:\testdata\scripts\t_schsend_utc.ini  SectionTwo
+RUN_TEST_STEP 10000 t_schsend_utc_server RescheduleMixed1Step		z:\testdata\scripts\t_schsend_utc.ini  SectionTwo
+RUN_TEST_STEP 10000 t_schsend_utc_server Failed1Step			z:\testdata\scripts\t_schsend_utc.ini  SectionTwo
+END_TESTCASE 2
+
+
+

@@ -1,0 +1,30 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRINT Running  EMsvOperationData_001
+
+
+//********************************
+PRINT Running  EMsvOperationData :  
+//********************************
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvOperationData_001_001.script
+	// Try with no caps. Should always pass.
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvOperationData_001_002.script
+	// Try with read write user data just to see if we can break it. Should always pass no matter what the caps.
+
+

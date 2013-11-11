@@ -1,0 +1,207 @@
+// ###########################################
+//  
+//  Author:	Santiago Rilova
+//  Date:	20/08/2003
+//
+//  This tests Sirocco PREQ98- Storing received mail messages.  User MUST be able to change the character set
+//                             without loosing data independently of original character set. 
+//  It downloads emails from a server, some of which have corrupted charset information. It then dumps the messages
+//  and compares the output against reference files to verify it is correct.
+//
+// Execution:
+// 1. Copy this file to c:\msgtest\emailsmoke
+//  and execute "t_email -testparams popCharsetTests"
+//
+//
+// Pre-requisites:
+// 1. The mail account specified in imap_service_MsgExchange must contain the required emails
+// 2. The PREQ98 feature must be activated in the IMCM.RSC file (edit IMCM.RSS to update flag store_8bit_body_text
+//    to value=1 and recompile the resource file)
+//   
+// ####################################################
+
+[main]
+email_client_test email
+
+// Perform the test steps.
+
+[email]
+pop3_client_test init_mail_folders
+pop3_client_test create_POP3_service
+pop3_client_test do_inbox_sync_service
+//pop3_client_test dump_mail_store
+pop3_client_test dump_body
+pop3_client_test verify_body_text
+pop3_client_test verify_attachment_names
+pop3_client_test verify_header_fields
+
+// Delete the mail folder
+[init_mail_folders]
+add_comment Clean message folder in C drive
+clean_message_folder
+add_comment Start client session
+start_client_session
+
+//
+// Create POP3 service
+// 
+[create_POP3_service]
+add_comment Create POP3 service for testing
+select_root_folder
+pop3_service pop3_service_MsgExchange
+select_folder test_pop3_service
+
+[do_inbox_sync_service]
+add_comment Do sync
+select_root_folder
+select_folder test_pop3_service
+set_sync_limits -1
+add_comment Connecting
+connect
+check_pop3_error 0
+add_comment *** Populate the Messages ***
+select_root_folder
+select_destination_folder test_pop3_service
+select_root_folder
+select_folder test_pop3_service
+select_all_messages
+copy
+check_pop3_error 0
+disconnect
+check_pop3_error 0
+
+[dump_mail_store]
+dump_mail_store dump1\
+
+[dump_body]
+add_comment Do sync
+select_root_folder
+select_folder test_pop3_service
+select_all_messages
+//
+//  Change to the correct charset
+//
+// change to gb2312, KCharacterSetIdentifierGb2312=0x10000fbe (=268439486)
+// Change to ISO 88591 KCharacterSetIdentifierIso88591=0x10003b10  (=268450576)
+//change_charset 268450576
+//
+//   Dump the bodies
+// 
+select_entry plain_text_non_mime
+dump_body_text plain_text_non_mime.txt
+change_charset 268450576
+dump_body_text plain_text_non_mime2.txt
+//
+select_entry test_plain_bodytext_no_encoding
+dump_body_text test_plain_bodytext_no_encoding.txt
+//
+select_entry corrupted_charset_test_plain_bodytext_no_encoding
+change_charset 268450576
+dump_body_text corrupted_charset_test_plain_bodytext_no_encoding.txt
+//
+select_entry test_plain_bodytext_with_attach_no_encoding
+dump_body_text test_plain_bodytext_with_attach_no_encoding.txt
+//
+select_entry corrupted_charset_test_plain_bodytext_with_attach_no_encoding
+change_charset 268450576
+dump_body_text corruptd_charset_test_plain_bodytext_with_attach_no_encoding.txt
+//
+select_entry test_plain_bodytext_qp_encoding
+dump_body_text test_plain_bodytext_qp_encoding.txt
+//
+// no need to change charset on this one because it has invalid charset info, so default charset (which is
+// the correct one, is used anyway)
+select_entry corrupted_charset_test_plain_bodytext_qp_encoding
+dump_body_text corrupted_charset_test_plain_bodytext_qp_encoding.txt
+//
+// lets try changing it anyway...should come up with the same output
+//
+select_entry corrupted_charset_test_plain_bodytext_qp_encoding
+dump_body_text corrupted_charset_test_plain_bodytext_qp_encoding2.txt
+//
+select_entry test_plain_bodytext_base64_encoding
+dump_body_text test_plain_bodytext_base64_encoding.txt
+//
+select_entry corrupted_charset_test_plain_bodytext_base64_encoding
+change_charset 268450576
+dump_body_text corrupted_charset_test_plain_bodytext_base64_encoding.txt
+//
+//
+select_entry html_no_encoding_with_attachments
+dump_body_text html_no_encoding_with_attachments.txt
+dump_attachment_names attachment_names3.txt
+//
+select_entry corrupted_charset_html_no_encoding_with_attachments
+change_charset 268450576
+dump_body_text corrupted_charset_html_no_encoding_with_attachments.txt
+dump_attachment_names attachment_names4.txt
+//
+select_entry html_base64_with_attachment
+dump_body_text html_base64_with_attachment.txt
+dump_attachment_names single_attachment_name.txt
+//
+select_entry corrupted_charset_html_base64_with_attachment
+change_charset 268450576
+dump_body_text corrupted_charset_html_base64_with_attachment.txt
+dump_attachment_names single_attachment_name2.txt
+//
+//
+select_entry html_qp_encoding_looking_french
+change_charset 268450576
+dump_body_text html_qp_encoding_bodytext.txt
+dump_header_fields html_qp_encoding_headers.txt
+//
+// Some more attachments....
+//
+select_entry test_attachment1
+dump_attachment_names attachment_names.txt
+//
+select_entry test_attachment1_corrupted
+change_charset 268450576
+dump_attachment_names attachment_names2.txt
+//
+//
+//
+
+[verify_body_text]
+compare_files plain_text_non_mime.txt plain_text_non_mime.txt
+compare_files plain_text_non_mime2.txt plain_text_non_mime.txt
+compare_files test_plain_bodytext_no_encoding.txt test_plain_bodytext_no_encoding.txt
+compare_files corrupted_charset_test_plain_bodytext_no_encoding.txt test_plain_bodytext_no_encoding.txt
+compare_files test_plain_bodytext_with_attach_no_encoding.txt tpop_bodytext_with_attachments.txt
+compare_files corruptd_charset_test_plain_bodytext_with_attach_no_encoding.txt tpop_bodytext_with_attachments.txt
+compare_files test_plain_bodytext_qp_encoding.txt test_plain_bodytext_qp_encoding.txt
+compare_files corrupted_charset_test_plain_bodytext_qp_encoding.txt test_plain_bodytext_qp_encoding.txt
+compare_files corrupted_charset_test_plain_bodytext_qp_encoding2.txt test_plain_bodytext_qp_encoding.txt
+compare_files test_plain_bodytext_base64_encoding.txt test_plain_bodytext_base64_encoding.txt
+compare_files corrupted_charset_test_plain_bodytext_base64_encoding.txt test_plain_bodytext_base64_encoding.txt
+compare_files html_no_encoding_with_attachments.txt tpop_bodytext_with_attachments.txt
+compare_files corrupted_charset_html_no_encoding_with_attachments.txt tpop_bodytext_with_attachments.txt
+compare_files html_base64_with_attachment.txt html_with_attachments_bodytext.txt
+compare_files corrupted_charset_html_base64_with_attachment.txt html_with_attachments_bodytext.txt
+compare_files html_qp_encoding_bodytext.txt pop_html_qp_encoding_bodytext.txt
+
+[verify_attachment_names]
+compare_files attachment_names.txt attachment_names.txt
+compare_files attachment_names2.txt attachment_names.txt
+compare_files attachment_names3.txt attachment_names.txt
+compare_files attachment_names4.txt attachment_names.txt
+compare_files single_attachment_name.txt single_attachment_name.txt
+compare_files single_attachment_name2.txt single_attachment_name.txt
+
+[verify_header_fields]
+compare_files html_qp_encoding_headers.txt pop_html_qp_encoding_headers.txt
+
+
+
+//
+// mail service definition
+//
+[pop3_service_MsgExchange]
+set_name test_pop3_service
+set_server lon-msgtest06.intra
+set_user santi
+set_pass password
+set_tls 0
+
+

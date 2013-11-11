@@ -1,0 +1,141 @@
+/*
+* Copyright (c) 2002-2010 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Phone Client DLL defines the API for Phone server.
+*
+*/
+
+#include <platform_paths.hrh>
+#include <data_caging_paths.hrh>
+
+// Capability assignment.
+CAPABILITY CAP_CLIENT_DLL
+
+// Assign Vendor ID.
+VENDORID VID_DEFAULT
+
+TARGET          phoneclient.dll
+TARGETTYPE      dll
+UID             0x1000008d 0x1000084F
+VERSION         10.0
+
+SOURCEPATH      ../src/notifier/notifier_aiw 
+SOURCE          cphcltcallnotify.cpp 
+SOURCE          rphcltcallnotify.cpp 
+SOURCE          cphcltdialrequestmonitor.cpp
+SOURCE          cphcltdialemergencyrequestmonitor.cpp
+SOURCE          cphcltcomhandrequestmonitor.cpp
+
+
+SOURCEPATH      ../src/extcall/extcall_aiw 
+SOURCE          rphcltextcall.cpp 
+SOURCE          cphcltextphonedialdata.cpp 
+SOURCE          cphcltdialdata.cpp
+
+SOURCEPATH      ../src/extcallwrapper/extcallwrapper_aiw 
+SOURCE          cphcltextphone.cpp 
+SOURCE          cphcltextphonebase.cpp 
+
+SOURCEPATH      ../src/ussd/ussd_ext 
+SOURCE          rphcltussd.cpp
+
+SOURCEPATH      ../src/ussdwrapper 
+SOURCE          cphcltussdrequesthandler.cpp 
+
+SOURCE          cphcltussdsatclient.cpp 
+  
+SOURCE          cphcltussdint.cpp 
+SOURCE          cphcltussdimp.cpp 
+SOURCE          cphcltussdext.cpp 
+
+SOURCE      cphcltussdnotecontroller.cpp 
+
+SOURCEPATH      ../src/emergencynumber/emergencynumber_aiw 
+SOURCE          cphcltemergencycall.cpp 
+SOURCE          rphcltemergencycall.cpp 
+SOURCE          cphcltemergencycallimpl.cpp 
+
+SOURCEPATH      ../src/session 
+SOURCE          rphcltserver.cpp 
+
+SOURCEPATH      ../src 
+SOURCE          phcltutils.cpp 
+SOURCE          rphcltresourcefile.cpp 
+
+SOURCEPATH      ../src/commandhandler 
+SOURCE          cphcltcommandhandler.cpp 
+SOURCE          cphcltcomhandimplementation.cpp 
+SOURCE          rphcltcommandhandler.cpp 
+SOURCEPATH      ../src/imagehandler 
+SOURCE          cphcltimagehandler.cpp 
+SOURCE          cphcltbaseimageparams.cpp 
+SOURCE          cphcltoperatorlogocontainer.cpp 
+SOURCE          cphcltimagehandlerimplementation.cpp 
+SOURCE          rphcltimagehandler.cpp 
+SOURCEPATH      ../src/messenger 
+SOURCE          cphcltmessenger.cpp 
+SOURCE          rphcltmessenger.cpp 
+SOURCE          cphcltmessengerimplementation.cpp 
+
+
+
+SOURCEPATH      ../src 
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   ../../../inc
+SYSTEMINCLUDE        /epoc32/include/mw/hb/hbwidgets
+SYSTEMINCLUDE        /epoc32/include/mw/hb/hbcore
+SYSTEMINCLUDE        /epoc32/include/platform/mw/loc
+SYSTEMINCLUDE        /epoc32/include/platform/mw/loc/sc
+
+USERINCLUDE     ../inc/extcall/extcall_aiw 
+USERINCLUDE     ../inc/notifier/notifier_aiw 
+USERINCLUDE     ../inc/extcallwrapper/extcallwrapper_aiw 
+USERINCLUDE     ../inc/emergencynumber/emergencynumber_aiw 
+
+USERINCLUDE     ../inc/session 
+USERINCLUDE     ../inc/sharedclientserver 
+
+USERINCLUDE     ../inc/ussdwrapper/ussd_ext 
+USERINCLUDE     ../inc/ussd/ussd_ext 
+USERINCLUDE     ../inc/commandhandler 
+USERINCLUDE     ../inc/imagehandler 
+USERINCLUDE     ../inc/messenger 
+USERINCLUDE     ../inc/ussdwrapper 
+USERINCLUDE     ../inc 
+
+
+LIBRARY         euser.lib
+LIBRARY         aknnotify.lib
+LIBRARY         cone.lib
+LIBRARY         estor.lib
+LIBRARY         commonengine.lib 
+LIBRARY         eikdlg.lib
+LIBRARY         eikcoctl.lib
+LIBRARY         etelmm.lib
+LIBRARY         gsmu.lib
+LIBRARY         efsrv.lib
+LIBRARY         charconv.lib
+LIBRARY         fbscli.lib
+LIBRARY         hbwidgets.lib
+LIBRARY         flogger.lib
+LIBRARY         hbcore.lib
+
+
+#ifdef WINSCW
+    DEFFILE ../bwins/phoneclient_aiwext.def
+#else
+    DEFFILE ../eabi/phoneclient_aiwext.def
+#endif
+
+// End of File

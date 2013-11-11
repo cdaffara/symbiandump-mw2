@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<api id="d0cc4e5af144072086a681cfae0debc3" dataversion="1.0">
+  <name>Incoming Call Monitor API</name>
+  <description></description>
+  <type>c++</type>
+  <subsystem>convergedcallengine</subsystem>
+  <libs>
+  </libs>
+  <release category="domain" sinceversion="5.0"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>yes</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

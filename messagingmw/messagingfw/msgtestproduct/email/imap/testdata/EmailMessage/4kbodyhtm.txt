@@ -1,0 +1,112 @@
+Return-Path: test908@msexchange2k.closedtest.intra
+Received: from [10.112.54.182] (HELO BANsudhay01)
+  by BAN-sudhay01.intra (CommuniGate Pro SMTP 4.0.5)
+  with SMTP id 80032 for test@ban-build18; Tue, 11 May 2004 20:07:20 +0530
+Message-ID: <007401c43765$77460a80$7cc5700a@intra>
+From: "test" test908@msexchange2k.closedtest.intra
+To: test908@msexchange2k.closedtest.intra
+Subject: 4kbodyhtm
+Date: Tue, 11 May 2004 20:07:20 +0530
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_000_0071_01C43793.90F6A560"
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 5.50.4922.1500
+X-MimeOLE: Produced By Microsoft MimeOLE V5.50.4925.2800
+
+*This message was transferred with a trial version of CommuniGate(tm) Pro*
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0071_01C43793.90F6A560
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+This is a simple email3 message. This is a simple email message. This is =
+a simple email message. This is a simple email message. This is a simple =
+email message. This is a simple email message. This is a simple email =
+message. This is a simple email message. This is a simple email message. =
+This is a simple email message. This is a simple email message. This is =
+a simple email message. This is a simple email message. This is a simple =
+email message. This is a simple email message. This is a simple email =
+message. This is a simple email=20
+This is a simple email3 message. This is a simple email message. This is =
+a simple email message. This is a simple email message. This is a simple =
+email message. This is a simple email message. This is a simple email =
+message. This is a simple email message. This is a simple email message. =
+This is a simple email message. This is a simple email message. This is =
+a simple email message. This is a simple email message. This is a simple =
+email message. This is a simple email message. This is a simple email =
+message. This is a simple email=20
+This is a simple email3 message. This is a simple email message. This is =
+a simple email message. This is a simple email message. This is a simple =
+email message. This is a simple email message. This is a simple email =
+message. This is a simple email message. This is a simple email message. =
+This is a simple email message. This is a simple email message. This is =
+a simple email message. This is a simple email message. This is a simple =
+email message.=20
+This is a simple email3 message. This is a simple email message. This is =
+a simple email message. This is a simple email message. This is a simple =
+email message. This is a simple 
+------=_NextPart_000_0071_01C43793.90F6A560
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Diso-8859-1">
+<META content=3D"MSHTML 5.50.4926.2500" name=3DGENERATOR>
+<STYLE></STYLE>
+</HEAD>
+<BODY bgColor=3D#ffffff>
+<DIV><FONT face=3DArial size=3D2>This is a simple email3 message. This =
+is a simple=20
+email message. This is a simple email message. This is a simple email =
+message.=20
+This is a simple email message. This is a simple email message. This is =
+a simple=20
+email message. This is a simple email message. This is a simple email =
+message.=20
+This is a simple email message. This is a simple email message. This is =
+a simple=20
+email message. This is a simple email message. This is a simple email =
+message.=20
+This is a simple email message. This is a simple email message. This is =
+a simple=20
+email <BR>This is a simple email3 message. This is a simple email =
+message. This=20
+is a simple email message. This is a simple email message. This is a =
+simple=20
+email message. This is a simple email message. This is a simple email =
+message.=20
+This is a simple email message. This is a simple email message. This is =
+a simple=20
+email message. This is a simple email message. This is a simple email =
+message.=20
+This is a simple email message. This is a simple email message. This is =
+a simple=20
+email message. This is a simple email message. This is a simple email =
+<BR>This=20
+is a simple email3 message. This is a simple email message. This is a =
+simple=20
+email message. This is a simple email message. This is a simple email =
+message.=20
+This is a simple email message. This is a simple email message. This is =
+a simple=20
+email message. This is a simple email message. This is a simple email =
+message.=20
+This is a simple email message. This is a simple email message. This is =
+a simple=20
+email message. This is a simple email message. <BR>This is a simple =
+email3=20
+message. This is a simple email message. This is a simple email message. =
+This is=20
+a simple email message. This is a simple email message. This is a simple =
+
+</FONT></DIV></BODY></HTML>
+
+------=_NextPart_000_0071_01C43793.90F6A560--
+

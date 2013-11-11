@@ -1,0 +1,41 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//********************************
+// Cap_EMsvChangeDrive_001_002.script
+//********************************
+
+
+PRINT Running  Cap_EMsvChangeDrive_001_002.script : SendProxyServer with no capabilities. 
+PRINT Running  Cap_EMsvChangeDrive_001_002.script : This should not allow the drive of the message store to be changed.
+PRINT Running  Note we swap to the D: drive to simulate failure.
+PRINT Running  Ensure that no d: drive exists in either the emulator or the hardware.
+PRINT Running  Check epoc.ini in the emulator, for something like _EPOC_DRIVE_D s:\drive_d
+PRINT Running  On the hardware start up a shell and do cd d: it should not exist.
+
+//********************************
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_Caps.exe 0003fffe -SID 101F7780 C:\sys\bin\MessagingTestServer.exe
+	// Note test server caps and SID should make no difference.  But make different caps/SID just to be sure.
+RUN_PROGRAM -1 setcap c:\sys\bin\SendProxyServer_Caps.exe  00000000 -SID 101F7760 C:\sys\bin\SendProxyServer.exe
+	// no caps
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_ChangeDriveFail.script
+	// Run the specific test.
+
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+//********************************

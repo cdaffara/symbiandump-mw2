@@ -1,0 +1,578 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE 	T_MsgCommonServer	-SharedData
+LOAD_SUITE 	T_MsgPopServer		-SharedData
+LOAD_SUITE  	T_MsgSmtpServer 	-SharedData
+
+
+START_TESTCASE MSG-POP3-CREATENEWMESSAGE-0001
+//!	@file
+//!	@SYMTestCaseID		MSG-POP3-CREATENEWMESSAGE-0001
+//!	@SYMTestCaseDesc	Verification Test: Creation of new email message with 20KB plain body text
+//!
+//!	@SYMTestPriority	Critical
+//!   	@SYMTestType		CIT
+//!  	@SYMTestStatus		Implemented 
+//!
+//!	@SYMPREQ 		PREQ1432
+//!	@SYMREQ			REQ7213
+//!
+//!	@SYMAPI 		CImEmailOperation::CreateNewL()
+//!					
+//!	@SYMComponent 		Email ClientMTM 
+//!				
+//!	@SYMTestActions		1. 	Initialise the RAS connection.
+//!				2. 	Reset Message Store and Central Repository to default state.
+//!				3.	Create a POP3 account for the remote mailbox and clean the contents.
+//!				4. 	Ensure remote mailbox is empty.
+//!				5. 	Create an SMTP message in the local folder specified. 
+//!					Body text must be of type plain text and size must be 20KB.
+//!					Recipient address should be of the form <Test Machine Name>@<SMTP server name> if not supplied.
+//!				6.	Confirm that the message has been created in the desired folder.
+//!				7.	Do the send and receive operation and check if the reply message is existing.
+//!
+//!	@SYMTestExpectedResults	Message entry should created under the desired folder.
+//!	@SYMAuthor		Pramod Das
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0001-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0001-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0001-CheckChildrenCountOutbox1
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0001-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer	ConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0001-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0001-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0001-CheckChildrenCountRemote0
+RUN_TEST_STEP 300 T_MsgPopServer	DisConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0001-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer	SmtpCreateNewMessageWithPlainBodyText c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0001-SmtpCreateNewMessageWithPlainBodyText
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0001-CheckChildrenCountOutbox2
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0001-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0001-CheckChildrenCountSentItems
+RUN_TEST_STEP 300 T_MsgPopServer	ConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0001-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	PopInvokeAsyncFunction		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0001-PopInvokeAsyncFunction1
+RUN_TEST_STEP 300 T_MsgPopServer	DisConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0001-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0001-CheckChildrenCountRemote1
+RUN_TEST_STEP 300 T_MsgPopServer 	ComparePopEmailMsgs		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0001-ComparePopEmailMsgs
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-CREATENEWMESSAGE-0001
+
+
+START_TESTCASE MSG-POP3-CREATENEWMESSAGE-0002
+//!	@file
+//!	@SYMTestCaseID		MSG-POP3-CREATENEWMESSAGE-0002
+//!	@SYMTestCaseDesc	Verification Test: Creation of new email message with plainbodytext
+//!
+//!	@SYMTestPriority	Critical
+//!   	@SYMTestType		CIT
+//!  	@SYMTestStatus		Implemented 
+//!
+//!	@SYMPREQ 		PREQ1432
+//!	@SYMREQ			REQ7213
+//!
+//!	@SYMAPI 		CImEmailOperation::CreateNewL()
+//!					
+//!	@SYMComponent 		Email ClientMTM 
+//!				
+//!	@SYMTestActions		1. 	Initialise the RAS connection.
+//!				2. 	Reset Message Store and Central Repository to default state.
+//!				3.	Create a POP3 account for the remote mailbox and clean the contents.
+//!				4. 	Ensure remote mailbox is empty.
+//!				5. 	Create an SMTP message in the local folder specified. 
+//!					Body text must be of type plain text and size must be 100KB.
+//!					Recipient address should be of the form <Test Machine Name>@<SMTP server name> if not supplied.
+//!				6.	Confirm that the message has been created in the desired folder.
+//!				7.	Do the send and receive operation and check if the reply message is existing.
+//!
+//!	@SYMTestExpectedResults	Message entry should created under the desired folder.
+//!	@SYMAuthor		Pramod Das
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0002-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0002-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0002-CheckChildrenCountOutbox1
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0002-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer	ConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0002-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0002-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0002-CheckChildrenCountRemote0
+RUN_TEST_STEP 300 T_MsgPopServer	DisConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0002-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer	SmtpCreateNewMessageWithPlainBodyText		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0002-SmtpCreateNewMessageWithPlainBodyText
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0002-CheckChildrenCountOutbox2
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0002-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0002-CheckChildrenCountSentItems
+RUN_TEST_STEP 300 T_MsgPopServer	ConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0002-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	PopInvokeAsyncFunction		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0002-PopInvokeAsyncFunction1
+RUN_TEST_STEP 300 T_MsgPopServer	DisConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0002-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0002-CheckChildrenCountRemote1
+
+// Comapring of Email message dropped as comparing method uses CRichtext and cann't handle messages with large body part
+// Contents are identical has been confirmed by manual comparison
+//RUN_TEST_STEP 300 T_MsgPopServer 	ComparePopEmailMsgs		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0002-ComparePopEmailMsgs
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-CREATENEWMESSAGE-0002
+
+
+START_TESTCASE MSG-POP3-CREATEFORWARDMESSAGE-0001
+//!	@file
+//!	@SYMTestCaseID		MSG-POP3-CREATEFORWARDMESSAGE-0001
+//!	@SYMTestCaseDesc	Verification Test: Creation of froward message with 20KB plain body text
+//!
+//!	@SYMTestPriority	Critical
+//!   	@SYMTestType		CIT
+//!  	@SYMTestStatus		Implemented 
+//!
+//!	@SYMPREQ 		PREQ1432
+//!	@SYMREQ			REQ7213
+//!
+//!	@SYMAPI 		CImEmailOperation::CreateForwardL()
+//!					
+//!	@SYMComponent 		Email ClientMTM 
+//!				
+//!	@SYMTestActions		1. 	Initialise the RAS connection.
+//!				2. 	Reset Message Store and Central Repository to default state.
+//!				3.	Create an POP3 account for the remote mailbox and clean the contents of remote inbox. 
+//!				4.	Ensure remote inbox is empty.
+//!				5. 	Create an SMTP message in the local folder specified. 
+//!					Body text must be of type plain text and size must be 10KB.
+//!					Recipient address should be of the form <Test Machine Name>@<SMTP server name> if not supplied.
+//!				6.	Confirm that the message has been created in the desired folder.
+//!				7.	Send the newly created message.
+//!				8.	Dowload the message from the remote mailbox to local store.
+//!				9.	Creat a reply message for the message present in local store.
+//!				10.	Do the send and receive operation and check if the reply message is existing.
+//!
+//!	@SYMTestExpectedResults	Message entry should created under the desired folder.
+//!	@SYMAuthor		Pramod Das
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0003-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0003-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0003-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer	ConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0003-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0003-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0003-CheckChildrenCountRemote0
+RUN_TEST_STEP 300 T_MsgPopServer	DisConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0003-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer	SmtpCreateNewMessageWithPlainBodyText 		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0003-SmtpCreateNewMessageWithPlainBodyText
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0003-CheckChildrenCountOutbox
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0003-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0003-CheckChildrenCountSentItems
+RUN_TEST_STEP 300 T_MsgPopServer	ConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0003-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	PopInvokeAsyncFunction		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0003-PopInvokeAsyncFunction1
+RUN_TEST_STEP 300 T_MsgPopServer	DisConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0003-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0003-CheckChildrenCountRemote1
+RUN_TEST_STEP 300 T_MsgSmtpServer	SmtpCreateForwadMessage		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0003-CreateForwardMessage
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0003-SendSmtpMessage2
+RUN_TEST_STEP 300 T_MsgPopServer	ConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0003-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	PopInvokeAsyncFunction		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0003-PopInvokeAsyncFunction2
+RUN_TEST_STEP 300 T_MsgPopServer	DisConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0003-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0003-CheckChildrenCountRemote2
+
+// Comapring of Email message dropped as comparing method uses CRichtext and cann't handle messages with large body part
+// Contents are identical has been confirmed by manual comparison
+//RUN_TEST_STEP 300 T_MsgPopServer 	ComparePopEmailMsgs		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0003-ComparePopEmailMsgs
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-CREATEFORWARDMESSAGE-0001
+
+
+START_TESTCASE MSG-POP3-CREATEFORWARDMESSAGE-0002
+//!	@file
+//!	@SYMTestCaseID		MSG-POP3-CREATEFORWARDMESSAGE-0002
+//!	@SYMTestCaseDesc	Verification Test: Creation of froward message with 100KB plain body text
+//!
+//!	@SYMTestPriority	Critical
+//!   	@SYMTestType		CIT
+//!  	@SYMTestStatus		Implemented 
+//!
+//!	@SYMPREQ 		PREQ1432
+//!	@SYMREQ			REQ7213
+//!
+//!	@SYMAPI 		CImEmailOperation::CreateForwardL()
+//!					
+//!	@SYMComponent 		Email ClientMTM 
+//!				
+//!	@SYMTestActions		1. 	Initialise the RAS connection.
+//!				2. 	Reset Message Store and Central Repository to default state.
+//!				3.	Create an POP3 account for the remote mailbox and clean the contents of remote inbox. 
+//!				4.	Ensure remote inbox is empty.
+//!				5. 	Create an SMTP message in the local folder specified. 
+//!					Body text must be of type plain text and size must be 100KB.
+//!					Recipient address should be of the form <Test Machine Name>@<SMTP server name> if not supplied.
+//!				6.	Confirm that the message has been created in the desired folder.
+//!				7.	Send the newly created message.
+//!				8.	Dowload the message from the remote mailbox to local store.
+//!				9.	Creat a reply message for the message present in local store.
+//!				10.	Do the send and receive operation and check if the reply message is existing.
+//!
+//!	@SYMTestExpectedResults	Message entry should created under the desired folder.
+//!	@SYMAuthor		Pramod Das
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0004-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0004-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0004-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer	ConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0004-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0004-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0004-CheckChildrenCountRemote0
+RUN_TEST_STEP 300 T_MsgPopServer	DisConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0004-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer	SmtpCreateNewMessageWithPlainBodyText		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0004-SmtpCreateNewMessageWithPlainBodyText
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0004-CheckChildrenCountOutbox
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0004-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0004-CheckChildrenCountSentItems
+RUN_TEST_STEP 300 T_MsgPopServer	ConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0004-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	PopInvokeAsyncFunction		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0004-PopInvokeAsyncFunction1
+RUN_TEST_STEP 300 T_MsgPopServer	DisConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0004-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0004-CheckChildrenCountRemote1
+RUN_TEST_STEP 300 T_MsgSmtpServer	SmtpCreateForwadMessage		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0004-CreateForwardMessage
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0004-SendSmtpMessage2
+RUN_TEST_STEP 300 T_MsgPopServer	ConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0004-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	PopInvokeAsyncFunction		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0004-PopInvokeAsyncFunction2
+RUN_TEST_STEP 300 T_MsgPopServer	DisConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0004-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0004-CheckChildrenCountRemote2
+
+// Comapring of Email message dropped as comparing method uses CRichtext and cann't handle messages with large body part
+// Contents are identical has been confirmed by manual comparison
+//RUN_TEST_STEP 300 T_MsgPopServer 	ComparePopEmailMsgs		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0004-ComparePopEmailMsgs
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-CREATEFORWARDMESSAGE-0002
+
+
+START_TESTCASE MSG-POP3-CREATEFORWARDMESSAGE-0003
+//!	@file
+//!	@SYMTestCaseID		MSG-POP3-CREATEFORWARDMESSAGE-0003
+//!	@SYMTestCaseDesc	Verification Test: Creation of froward message with 512KB plain body text
+//!
+//!	@SYMTestPriority	Critical
+//!   	@SYMTestType		CIT
+//!  	@SYMTestStatus		Implemented 
+//!
+//!	@SYMPREQ 		PREQ1432
+//!	@SYMREQ			REQ7213
+//!
+//!	@SYMAPI 		CImEmailOperation::CreateForwardL()
+//!					
+//!	@SYMComponent 		Email ClientMTM 
+//!				
+//!	@SYMTestActions		1. 	Initialise the RAS connection.
+//!				2. 	Reset Message Store and Central Repository to default state.
+//!				3.	Create an POP3 account for the remote mailbox and clean the contents of remote inbox. 
+//!				4.	Ensure remote inbox is empty.
+//!				5. 	Create an SMTP message in the local folder specified. 
+//!					Body text must be of type plain text and size must be 512KB.
+//!					Recipient address should be of the form <Test Machine Name>@<SMTP server name> if not supplied.
+//!				6.	Confirm that the message has been created in the desired folder.
+//!				7.	Send the newly created message.
+//!				8.	Dowload the message from the remote mailbox to local store.
+//!				9.	Creat a reply message for the message present in local store.
+//!				10.	Do the send and receive operation and check if the reply message is existing.
+//!
+//!	@SYMTestExpectedResults	Message entry should created under the desired folder.
+//!	@SYMAuthor		Pramod Das
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0005-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0005-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0005-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer	ConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0005-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0005-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0005-CheckChildrenCountRemote0
+RUN_TEST_STEP 300 T_MsgPopServer	DisConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0005-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer	SmtpCreateNewMessageWithPlainBodyText		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0005-SmtpCreateNewMessageWithPlainBodyText
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0005-CheckChildrenCountOutbox
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0005-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0005-CheckChildrenCountSentItems
+RUN_TEST_STEP 300 T_MsgPopServer	ConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0005-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	PopInvokeAsyncFunction		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0005-PopInvokeAsyncFunction1
+RUN_TEST_STEP 300 T_MsgPopServer	DisConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0005-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0005-CheckChildrenCountRemote1
+RUN_TEST_STEP 600 T_MsgSmtpServer	SmtpCreateForwadMessage		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0005-CreateForwardMessage
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0005-SendSmtpMessage2
+RUN_TEST_STEP 300 T_MsgPopServer	ConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0005-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	PopInvokeAsyncFunction		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0005-PopInvokeAsyncFunction2
+
+RUN_TEST_STEP 300 T_MsgPopServer	DisConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0005-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0005-CheckChildrenCountRemote2
+
+// Comapring of Email message dropped as comparing method uses CRichtext and cann't handle messages with large body part
+// Contents are identical has been confirmed by manual comparison
+//RUN_TEST_STEP 300 T_MsgPopServer 	ComparePopEmailMsgs		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0005-ComparePopEmailMsgs
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-CREATEFORWARDMESSAGE-0003
+
+
+START_TESTCASE MSG-POP3-CREATEREPLYMESSAGE-0001
+//!	@file
+//!	@SYMTestCaseID		MSG-POP3-CREATEREPLYMESSAGE-0001
+//!	@SYMTestCaseDesc	Verification Test: Creation of new email message with 20KB plain body text
+//!
+//!	@SYMTestPriority	Critical
+//!   	@SYMTestType		CIT
+//!  	@SYMTestStatus		Implemented 
+//!
+//!	@SYMPREQ 		PREQ1432
+//!	@SYMREQ			REQ7213
+//!
+//!	@SYMAPI 		CImEmailOperation::CreateReplyL()
+//!					
+//!	@SYMComponent 		Email ClientMTM 
+//!				
+//!	@SYMTestActions		1. 	Initialise the RAS connection.
+//!				2. 	Reset Message Store and Central Repository to default state.
+//!				3.	Create an POP3 account for the remote mailbox and clean the contents of remote inbox. 
+//!				4.	Ensure remote inbox is empty.
+//!				5. 	Create an SMTP message in the local folder specified. 
+//!					Body text must be of type plain text and size must be 10KB.
+//!					Recipient address should be of the form <Test Machine Name>@<SMTP server name> if not supplied.
+//!				6.	Confirm that the message has been created in the desired folder.
+//!				7.	Send the newly created message.
+//!				8.	Dowload the message from the remote mailbox to local store.
+//!				9.	Creat a reply message for the message present in local store.
+//!				10.	Do the send and receive operation and check if the reply message is existing.
+//!
+//!	@SYMTestExpectedResults	Message entry should created under the desired folder.
+//!	@SYMAuthor		Pramod Das
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0006-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0006-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0006-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer	ConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0006-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0006-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0006-CheckChildrenCountRemote0
+RUN_TEST_STEP 300 T_MsgPopServer	DisConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0006-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer	SmtpCreateNewMessageWithPlainBodyText		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0006-SmtpCreateNewMessageWithPlainBodyText
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0006-CheckChildrenCountOutbox
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0006-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0006-CheckChildrenCountSentItems
+RUN_TEST_STEP 300 T_MsgPopServer	ConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0006-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	PopInvokeAsyncFunction		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0006-PopInvokeAsyncFunction1
+RUN_TEST_STEP 300 T_MsgPopServer	DisConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0006-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0006-CheckChildrenCountRemote1
+RUN_TEST_STEP 300 T_MsgSmtpServer	SmtpCreateReplyMessage		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0006-CreateReplyMessage
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0006-SendSmtpMessage2
+RUN_TEST_STEP 300 T_MsgPopServer	ConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0006-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	PopInvokeAsyncFunction		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0006-PopInvokeAsyncFunction2
+RUN_TEST_STEP 300 T_MsgPopServer	DisConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0006-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0006-CheckChildrenCountRemote2
+
+// Comapring of Email message dropped as comparing method uses CRichtext and cann't handle messages with large body part
+// Contents are identical has been confirmed by manual comparison
+//RUN_TEST_STEP 300 T_MsgPopServer 	ComparePopEmailMsgs		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0006-ComparePopEmailMsgs
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-CREATEREPLYMESSAGE-0001
+
+
+START_TESTCASE MSG-POP3-CREATEREPLYMESSAGE-0002
+//!	@file
+//!	@SYMTestCaseID		MSG-POP3-CREATEREPLYMESSAGE-0002
+//!	@SYMTestCaseDesc	Verification Test: Creation of new email message with 100KB plain body text
+//!
+//!	@SYMTestPriority	Critical
+//!   	@SYMTestType		CIT
+//!  	@SYMTestStatus		Implemented 
+//!
+//!	@SYMPREQ 		PREQ1432
+//!	@SYMREQ			REQ7213
+//!
+//!	@SYMAPI 		CImEmailOperation::CreateReplyL()
+//!					
+//!	@SYMComponent 		Email ClientMTM 
+//!				
+//!	@SYMTestActions		1. 	Initialise the RAS connection.
+//!				2. 	Reset Message Store and Central Repository to default state.
+//!				3.	Create an POP3 account for the remote mailbox and clean the contents of remote inbox. 
+//!				4.	Ensure remote inbox is empty.
+//!				5. 	Create an SMTP message in the local folder specified. 
+//!					Body text must be of type plain text and size must be 100KB.
+//!					Recipient address should be of the form <Test Machine Name>@<SMTP server name> if not supplied.
+//!				6.	Confirm that the message has been created in the desired folder.
+//!				7.	Send the newly created message.
+//!				8.	Dowload the message from the remote mailbox to local store.
+//!				9.	Creat a reply message for the message present in local store.
+//!				10.	Do the send and receive operation and check if the reply message is existing.
+//!
+//!	@SYMTestExpectedResults	Message entry should created under the desired folder.
+//!	@SYMAuthor		Pramod Das
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0007-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0007-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0007-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer	ConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0007-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0007-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0007-CheckChildrenCountRemote0
+RUN_TEST_STEP 300 T_MsgPopServer	DisConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0007-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer	SmtpCreateNewMessageWithPlainBodyText		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0007-SmtpCreateNewMessageWithPlainBodyText
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0007-CheckChildrenCountOutbox
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0007-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0007-CheckChildrenCountSentItems
+RUN_TEST_STEP 300 T_MsgPopServer	ConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0007-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	PopInvokeAsyncFunction		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0007-PopInvokeAsyncFunction1
+RUN_TEST_STEP 300 T_MsgPopServer	DisConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0007-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0007-CheckChildrenCountRemote1
+RUN_TEST_STEP 300 T_MsgSmtpServer	SmtpCreateReplyMessage		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0007-CreateReplyMessage
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0007-SendSmtpMessage2
+RUN_TEST_STEP 300 T_MsgPopServer	ConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0007-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	PopInvokeAsyncFunction		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0007-PopInvokeAsyncFunction2
+RUN_TEST_STEP 300 T_MsgPopServer	DisConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0007-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0007-CheckChildrenCountRemote2
+
+// Comapring of Email message dropped as comparing method uses CRichtext and cann't handle messages with large body part
+// Contents are identical has been confirmed by manual comparison
+//RUN_TEST_STEP 300 T_MsgPopServer 	ComparePopEmailMsgs		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0007-ComparePopEmailMsgs
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-CREATEREPLYMESSAGE-0002
+
+
+START_TESTCASE MSG-POP3-CREATEREPLYMESSAGE-0003
+//!	@file
+//!	@SYMTestCaseID		MSG-POP3-CREATEREPLYMESSAGE-0003
+//!	@SYMTestCaseDesc	Verification Test: Creation of new email message with 20KB plain body text
+//!
+//!	@SYMTestPriority	Critical
+//!   	@SYMTestType		CIT
+//!  	@SYMTestStatus		Implemented 
+//!
+//!	@SYMPREQ 		PREQ1432
+//!	@SYMREQ			REQ7213
+//!
+//!	@SYMAPI 		CImEmailOperation::CreateReplyL()
+//!					
+//!	@SYMComponent 		Email ClientMTM 
+//!				
+//!	@SYMTestActions		1. 	Initialise the RAS connection.
+//!				2. 	Reset Message Store and Central Repository to default state.
+//!				3.	Create an POP3 account for the remote mailbox and clean the contents of remote inbox. 
+//!				4.	Ensure remote inbox is empty.
+//!				5. 	Create an SMTP message in the local folder specified. 
+//!					Body text must be of type plain text and size must be 1MB.
+//!					Recipient address should be of the form <Test Machine Name>@<SMTP server name> if not supplied.
+//!				6.	Confirm that the message has been created in the desired folder.
+//!				7.	Send the newly created message.
+//!				8.	Dowload the message from the remote mailbox to local store.
+//!				9.	Creat a reply message for the message present in local store.
+//!				10.	Do the send and receive operation and check if the reply message is existing.
+//!
+//!	@SYMTestExpectedResults	Message entry should created under the desired folder.
+//!	@SYMAuthor		Pramod Das
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0008-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0008-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0008-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer	ConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0008-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0008-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0008-CheckChildrenCountRemote0
+RUN_TEST_STEP 300 T_MsgPopServer	DisConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0008-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer	SmtpCreateNewMessageWithPlainBodyText		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0008-SmtpCreateNewMessageWithPlainBodyText
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0008-CheckChildrenCountOutbox
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0008-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0008-CheckChildrenCountSentItems
+RUN_TEST_STEP 300 T_MsgPopServer	ConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0008-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	PopInvokeAsyncFunction		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0008-PopInvokeAsyncFunction1
+RUN_TEST_STEP 300 T_MsgPopServer	DisConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0008-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0008-CheckChildrenCountRemote1
+RUN_TEST_STEP 600 T_MsgSmtpServer	SmtpCreateReplyMessage		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0008-CreateReplyMessage
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0008-SendSmtpMessage2
+RUN_TEST_STEP 300 T_MsgPopServer	ConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0008-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	PopInvokeAsyncFunction		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0008-PopInvokeAsyncFunction2
+RUN_TEST_STEP 300 T_MsgPopServer	DisConnectPop3Server		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0008-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0008-CheckChildrenCountRemote2
+
+// Comapring of Email message dropped as comparing method uses CRichtext and cann't handle messages with large body part
+// Contents are identical has been confirmed by manual comparison
+//RUN_TEST_STEP 300 T_MsgPopServer 	ComparePopEmailMsgs		c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini 		0008-ComparePopEmailMsgs
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-CREATEREPLYMESSAGE-0003
+

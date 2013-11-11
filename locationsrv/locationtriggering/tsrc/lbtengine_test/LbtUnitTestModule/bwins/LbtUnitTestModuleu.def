@@ -1,0 +1,43 @@
+EXPORTS
+	?NewL@CLbtGeoWcdmaCell@@SAPAV1@W4TMobilePhoneNetworkMode@RMobilePhone@@V?$TBuf@$03@@V?$TBuf@$07@@II@Z @ 1 NONAME ; class CLbtGeoWcdmaCell * CLbtGeoWcdmaCell::NewL(enum RMobilePhone::TMobilePhoneNetworkMode, class TBuf<4>, class TBuf<8>, unsigned int, unsigned int)
+	?LocationAreaCode@CLbtGeoCell@@QBEIXZ @ 2 NONAME ; unsigned int CLbtGeoCell::LocationAreaCode(void) const
+	?SetCellId@CLbtGeoCell@@QAEXI@Z @ 3 NONAME ; void CLbtGeoCell::SetCellId(unsigned int)
+	?InternalizeL@CLbtGeoAreaBase@@QAEXAAVRReadStream@@@Z @ 4 NONAME ; void CLbtGeoAreaBase::InternalizeL(class RReadStream &)
+	?WcdmaCellInfo@CLbtGeoWcdmaCell@@QAEABVTLbtWcdmaCellInfo@@XZ @ 5 NONAME ; class TLbtWcdmaCellInfo const & CLbtGeoWcdmaCell::WcdmaCellInfo(void)
+	?NewLC@CLbtGeoGsmCell@@SAPAV1@W4TMobilePhoneNetworkMode@RMobilePhone@@V?$TBuf@$03@@V?$TBuf@$07@@II@Z @ 6 NONAME ; class CLbtGeoGsmCell * CLbtGeoGsmCell::NewLC(enum RMobilePhone::TMobilePhoneNetworkMode, class TBuf<4>, class TBuf<8>, unsigned int, unsigned int)
+	?NewLC@CLbtGeoCell@@SAPAV1@W4TMobilePhoneNetworkMode@RMobilePhone@@V?$TBuf@$03@@V?$TBuf@$07@@II@Z @ 7 NONAME ; class CLbtGeoCell * CLbtGeoCell::NewLC(enum RMobilePhone::TMobilePhoneNetworkMode, class TBuf<4>, class TBuf<8>, unsigned int, unsigned int)
+	?NewL@CLbtGeoGsmCell@@SAPAV1@XZ @ 8 NONAME ; class CLbtGeoGsmCell * CLbtGeoGsmCell::NewL(void)
+	?CreateLogger@CLbtLoggerImpl@@SAPAV1@XZ @ 9 NONAME ; class CLbtLoggerImpl * CLbtLoggerImpl::CreateLogger(void)
+	?SetBsic@CLbtGeoGsmCell@@QAEXAAV?$RArray@H@@@Z @ 10 NONAME ; void CLbtGeoGsmCell::SetBsic(class RArray<int> &)
+	?SetLocationAreaCode@CLbtGeoCell@@QAEXI@Z @ 11 NONAME ; void CLbtGeoCell::SetLocationAreaCode(unsigned int)
+	?ExternalizeL@CLbtGeoAreaBase@@QBEXAAVRWriteStream@@@Z @ 12 NONAME ; void CLbtGeoAreaBase::ExternalizeL(class RWriteStream &) const
+	?NewLC@CLbtGeoCell@@SAPAV1@XZ @ 13 NONAME ; class CLbtGeoCell * CLbtGeoCell::NewLC(void)
+	?LibEntryL@@YAPAVCScriptBase@@AAVCTestModuleIf@@@Z @ 14 NONAME ; class CScriptBase * LibEntryL(class CTestModuleIf &)
+	?Destroy@CLbtLoggerImpl@@SAXXZ @ 15 NONAME ; void CLbtLoggerImpl::Destroy(void)
+	?CellId@CLbtGeoCell@@QBEIXZ @ 16 NONAME ; unsigned int CLbtGeoCell::CellId(void) const
+	?NewL@CLbtGeoGsmCell@@SAPAV1@W4TMobilePhoneNetworkMode@RMobilePhone@@V?$TBuf@$03@@V?$TBuf@$07@@II@Z @ 17 NONAME ; class CLbtGeoGsmCell * CLbtGeoGsmCell::NewL(enum RMobilePhone::TMobilePhoneNetworkMode, class TBuf<4>, class TBuf<8>, unsigned int, unsigned int)
+	?Bsic@CLbtGeoGsmCell@@QAEAAV?$RArray@H@@XZ @ 18 NONAME ; class RArray<int> & CLbtGeoGsmCell::Bsic(void)
+	??1CLbtGeoGsmCell@@UAE@XZ @ 19 NONAME ; CLbtGeoGsmCell::~CLbtGeoGsmCell(void)
+	?NewLC@CLbtGeoWcdmaCell@@SAPAV1@W4TMobilePhoneNetworkMode@RMobilePhone@@V?$TBuf@$03@@V?$TBuf@$07@@II@Z @ 20 NONAME ; class CLbtGeoWcdmaCell * CLbtGeoWcdmaCell::NewLC(enum RMobilePhone::TMobilePhoneNetworkMode, class TBuf<4>, class TBuf<8>, unsigned int, unsigned int)
+	?SetNetworkCountryCode@CLbtGeoCell@@QAEXV?$TBuf@$03@@@Z @ 21 NONAME ; void CLbtGeoCell::SetNetworkCountryCode(class TBuf<4>)
+	?NetworkType@CLbtGeoCell@@QBE?AW4TMobilePhoneNetworkMode@RMobilePhone@@XZ @ 22 NONAME ; enum RMobilePhone::TMobilePhoneNetworkMode CLbtGeoCell::NetworkType(void) const
+	?NetworkIdentityCode@CLbtGeoCell@@QBE?AV?$TBuf@$07@@XZ @ 23 NONAME ; class TBuf<8> CLbtGeoCell::NetworkIdentityCode(void) const
+	??1CLBTOperation@@UAE@XZ @ 24 NONAME ; CLBTOperation::~CLBTOperation(void)
+	?NewL@CLbtGeoCell@@SAPAV1@W4TMobilePhoneNetworkMode@RMobilePhone@@V?$TBuf@$03@@V?$TBuf@$07@@II@Z @ 25 NONAME ; class CLbtGeoCell * CLbtGeoCell::NewL(enum RMobilePhone::TMobilePhoneNetworkMode, class TBuf<4>, class TBuf<8>, unsigned int, unsigned int)
+	?CGISpecifiedDuringCreation@CLbtGeoGsmCell@@UBEHXZ @ 26 NONAME ; int CLbtGeoGsmCell::CGISpecifiedDuringCreation(void) const
+	?SetNetworkIdentityCode@CLbtGeoCell@@QAEXV?$TBuf@$07@@@Z @ 27 NONAME ; void CLbtGeoCell::SetNetworkIdentityCode(class TBuf<8>)
+	?NewL@CLbtGeoWcdmaCell@@SAPAV1@XZ @ 28 NONAME ; class CLbtGeoWcdmaCell * CLbtGeoWcdmaCell::NewL(void)
+	??1CLbtGeoCell@@UAE@XZ @ 29 NONAME ; CLbtGeoCell::~CLbtGeoCell(void)
+	?GetFileLogger@CLbtLoggerImpl@@QAEAAVRFileLogger@@XZ @ 30 NONAME ; class RFileLogger & CLbtLoggerImpl::GetFileLogger(void)
+	??1CLbtGeoAreaBase@@UAE@XZ @ 31 NONAME ; CLbtGeoAreaBase::~CLbtGeoAreaBase(void)
+	?NetworkCountryCode@CLbtGeoCell@@QBE?AV?$TBuf@$03@@XZ @ 32 NONAME ; class TBuf<4> CLbtGeoCell::NetworkCountryCode(void) const
+	?NewL@CLbtGeoCell@@SAPAV1@XZ @ 33 NONAME ; class CLbtGeoCell * CLbtGeoCell::NewL(void)
+	?NewLC@CLbtGeoWcdmaCell@@SAPAV1@XZ @ 34 NONAME ; class CLbtGeoWcdmaCell * CLbtGeoWcdmaCell::NewLC(void)
+	?CreateGeoAreaForCurrentLocationL@CLBTOperation@@SAPAV1@AAVTRequestStatus@@W4TGeoAreaType@CLbtGeoAreaBase@@PAPAV4@@Z @ 35 NONAME ; class CLBTOperation * CLBTOperation::CreateGeoAreaForCurrentLocationL(class TRequestStatus &, enum CLbtGeoAreaBase::TGeoAreaType, class CLbtGeoAreaBase * *)
+	?NewLC@CLbtGeoGsmCell@@SAPAV1@XZ @ 36 NONAME ; class CLbtGeoGsmCell * CLbtGeoGsmCell::NewLC(void)
+	?SetNetworkType@CLbtGeoCell@@QAEXW4TMobilePhoneNetworkMode@RMobilePhone@@@Z @ 37 NONAME ; void CLbtGeoCell::SetNetworkType(enum RMobilePhone::TMobilePhoneNetworkMode)
+	??1CLbtGeoWcdmaCell@@UAE@XZ @ 38 NONAME ; CLbtGeoWcdmaCell::~CLbtGeoWcdmaCell(void)
+	?SetWcdmaCellInfo@CLbtGeoWcdmaCell@@QAEXABVTLbtWcdmaCellInfo@@@Z @ 39 NONAME ; void CLbtGeoWcdmaCell::SetWcdmaCellInfo(class TLbtWcdmaCellInfo const &)
+	?CGISpecifiedDuringCreation@CLbtGeoWcdmaCell@@UBEHXZ @ 40 NONAME ; int CLbtGeoWcdmaCell::CGISpecifiedDuringCreation(void) const
+	??1TLbtWcdmaCellInfo@@QAE@XZ @ 41 NONAME ; TLbtWcdmaCellInfo::~TLbtWcdmaCellInfo(void)
+

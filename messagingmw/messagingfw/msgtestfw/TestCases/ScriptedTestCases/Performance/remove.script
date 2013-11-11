@@ -1,0 +1,47 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//
+//	This script downloads n-1 emails
+//	It then simulates the removal of the MMC
+//	'n' will typically equal 16
+//
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+//CED c:\msgtest\TestFramework\Configurations\CommDbSettings\NtRasLongIdleTimeout.cfg
+RUN_TEST_STEP -1 MessagingTestServer BEGIN_TEST_CASE
+RUN_TEST_STEP -1 MessagingTestServer SETUP_TEST_CASE
+//	download a bunch of emails
+RUN_TEST_STEP -1 MessagingTestServer GetBaseConstants			c:\perf\remove.ini GetBaseConstants
+RUN_TEST_STEP -1 MessagingTestServer InitNtRas					c:\perf\remove.ini InitNtRas
+RUN_TEST_STEP -1 MessagingTestServer CreateSession				c:\perf\remove.ini CreateSession
+RUN_TEST_STEP -1 MessagingTestServer ChangeToExternalDrive		c:\perf\remove.ini externalDriveID
+RUN_TEST_STEP -1 MessagingTestServer InsertMedia 				c:\perf\remove.ini MmcDrive
+RUN_TEST_STEP -1 MessagingTestServer ResetMessageStore			c:\perf\remove.ini ResetMessageStore
+RUN_TEST_STEP -1 MessagingTestServer CreateRegistry				c:\perf\remove.ini CreateRegistry
+RUN_TEST_STEP -1 MessagingTestServer SetDefaultConfiguration	c:\perf\remove.ini SetDefaultConfigurationPOP3
+RUN_TEST_STEP -1 MessagingTestServer CreatePop3Service			c:\perf\remove.ini CreatePop3Service
+RUN_TEST_STEP -1 MessagingTestServer CreatePop3Mtm				c:\perf\remove.ini CreatePop3Mtm
+RUN_TEST_STEP -1 MessagingTestServer SetPop3ServiceParameters	c:\perf\remove.ini SetPop3ServiceParameters
+RUN_TEST_STEP -1 MessagingTestServer EXECUTE_TEST_CASE
+RUN_TEST_STEP -1 MessagingTestServer ConnectPop3Server 			c:\perf\remove.ini ConnectPop3Server
+RUN_TEST_STEP -1 MessagingTestServer CreateChildrenSelection	c:\perf\remove.ini CreateChildrenSelection
+RUN_TEST_STEP -1 MessagingTestServer CopySelection				c:\perf\remove.ini CopySelection
+RUN_TEST_STEP -1 MessagingTestServer DisconnectPop3Server		c:\perf\remove.ini DisconnectPop3Server
+// terminate connection to mail server
+RUN_TEST_STEP -1 MessagingTestServer RemoveMedia 				c:\perf\remove.ini MmcDrive
+RUN_TEST_STEP -1 MessagingTestServer CHECK_POSTCONDITIONS
+RUN_TEST_STEP -1 MessagingTestServer CheckChildrenCount			c:\perf\remove.ini CheckChildrenCount_15
+RUN_TEST_STEP -1 MessagingTestServer END_TEST_CASE

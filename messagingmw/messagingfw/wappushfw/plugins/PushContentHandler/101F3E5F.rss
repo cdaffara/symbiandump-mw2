@@ -1,0 +1,64 @@
+// Copyright (c) 1997-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// Registry file for Push App Handler interface dll
+// Interfaces : CContentHandlerBase
+// 
+//
+
+#include <ecom/registryinfo.rh>
+
+RESOURCE REGISTRY_INFO theInfo
+	{
+	// KUidPushContentHandlerPlugin
+	dll_uid = 0x101F3E5F;
+	interfaces = 
+		{
+		INTERFACE_INFO
+			{
+			// KUidPushContentHandlerBase - CContentHandlerBase UID
+			interface_uid = 0x101F3E5E;
+			implementations = 
+				{
+				IMPLEMENTATION_INFO
+					{
+					// KUidPushUnknownContentHandler - CUnknownContentHandler UID
+					implementation_uid = 0x101F3E60;
+					version_no = 1;
+					display_name = "CUnknownContentHandler||WAP Push Content Handler Plug-in";
+					default_data = "*";
+					opaque_data = "";
+					},
+				IMPLEMENTATION_INFO
+					{
+					// KUidPushMultiPartMixedContentHandler - CMultiPartMixedContentHandler UID
+					implementation_uid = 0x101F3E64;
+					version_no = 1;
+					display_name = "CMultiPartMixedContentHandler||WAP Push Content Handler Plug-in";
+					default_data = "application/vnd.wap.multipart.mixed||multipart/mixed";
+					opaque_data = "";
+					},
+				IMPLEMENTATION_INFO
+					{
+					// KUidPushMultiPartRelAndAltContentHandler - CMultiPartRelAndAltContentHandler UID
+					implementation_uid = 0x101F3E65;
+					version_no = 1;
+					display_name = "CMultiPartRelAndAltContentHandler||WAP Push Content Handler Plug-in";
+					default_data = "application/vnd.wap.multipart.related||application/vnd.wap.multipart.alternative||multipart/related||multipart/alternative";
+					opaque_data = "";
+					}
+				};
+			}
+		};
+	}
+

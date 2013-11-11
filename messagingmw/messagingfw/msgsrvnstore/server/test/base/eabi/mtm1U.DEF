@@ -1,0 +1,5 @@
+EXPORTS
+	_ZN6CMyMtm4NewLE4TUidR17CRegisteredMtmDll @ 1 NONAME
+	_ZTI6CMyMtm @ 2 NONAME ; #<TI>#
+	_ZTV6CMyMtm @ 3 NONAME ; #<VT>#
+

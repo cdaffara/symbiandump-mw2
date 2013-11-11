@@ -1,0 +1,60 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+//! @file
+//! @SYMTestCaseID		CM-SENDAS-CIT-0022-HP
+//! @SYMTestCaseDesc		CreateAttachment without Mime Information
+//! @SYMFssID
+//! @SYMTestStatus		Defined
+//! @SYMTestPriority		High
+//! @SYMTestActions
+//! @SYMTestExpectedResults	Attachment is created without Mime Information
+//! @SYMTestType		CIT
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+GetBaseConstants		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0022-CreateAttachmentWithoutMime.ini	GetBaseConstants
+CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0022-CreateAttachmentWithoutMime.ini	CreateSession
+ResetMessageStore		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0022-CreateAttachmentWithoutMime.ini	ResetMessageStore
+CreatePopAccount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0022-CreateAttachmentWithoutMime.ini	CreatePopAccount
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0022-CreateAttachmentWithoutMime.ini	ChkChildrenCountDraft0
+CreateSmtpService		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0022-CreateAttachmentWithoutMime.ini	CreateSmtpService
+CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0022-CreateAttachmentWithoutMime.ini	CreateRegistry
+CreateSmtpMtm			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0022-CreateAttachmentWithoutMime.ini	CreateSmtpMtm
+SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0022-CreateAttachmentWithoutMime.ini	SetDefaultConfig0
+SetSmtpServiceParameters	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0022-CreateAttachmentWithoutMime.ini	SetSmtpServiceParams
+ChangeDefaultSmtpService 	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0022-CreateAttachmentWithoutMime.ini	ChangeDfltSmtpService
+EXECUTE_TEST_CASE
+ConnectSendAsServer		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0022-CreateAttachmentWithoutMime.ini	ConnectSendAsServer
+GetSMTPMTMUId  			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0022-CreateAttachmentWithoutMime.ini	GetSmtpMtmUId
+SendAsCreateMessageofType	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0022-CreateAttachmentWithoutMime.ini	CreateMessageofType
+SendAsAddRecipient		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0022-CreateAttachmentWithoutMime.ini	SendAsAddRecipient
+SendAsCreateAttachment		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0022-CreateAttachmentWithoutMime.ini	CreateAttachment
+SendAsSaveMessageAndClose	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0022-CreateAttachmentWithoutMime.ini	CloseMessage
+CloseSendAsServerConnection	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0022-CreateAttachmentWithoutMime.ini	CloseSvrConnection
+CHECK_POSTCONDITIONS
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0022-CreateAttachmentWithoutMime.ini	ChkChildrenCountDraft1
+CreateChildrenSelection		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0022-CreateAttachmentWithoutMime.ini	CreateChildrenSelDraft
+GetMessageAtIndex		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0022-CreateAttachmentWithoutMime.ini	GetMessageAtIndex
+GetEntry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0022-CreateAttachmentWithoutMime.ini	GetEntry
+VerifyRecipients  		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0022-CreateAttachmentWithoutMime.ini	VerifyRecipients
+SmtpGetAttachmentInfoByIndex	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0022-CreateAttachmentWithoutMime.ini	SmtpGetAttachmentInfoByIndex
+END_TEST_CASE

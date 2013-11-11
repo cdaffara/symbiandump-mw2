@@ -1,0 +1,57 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Structure definition for AMR RecordControllerPlugin resource file.
+*
+*/
+
+
+//  INCLUDES
+#include "AdvancedAudioResource.rh"
+
+//  STRUCTURE DEFINITIONS
+
+// -----------------------------------------------------------------------------
+// MODE
+// Structure definition for the AMR encoder supported bit rates.
+// -----------------------------------------------------------------------------
+//
+STRUCT MODE
+    {
+    LONG	bit_rate;
+    }
+	
+// -----------------------------------------------------------------------------
+// SAMPLERATE
+// Structure definition for the AMR encoder supported sample rates.
+// -----------------------------------------------------------------------------
+//
+STRUCT SAMPLERATE
+    {
+    LONG	sample_rate;
+    }
+
+// -----------------------------------------------------------------------------
+// AMR_ENCODER_CONFIG_PARAMS
+// Structure definition for the AMR encoder configuration parameters.
+// -----------------------------------------------------------------------------
+//
+STRUCT AMR_ENCODER_CONFIG_PARAMS
+    {
+    LONG	encoding_mode;
+    LONG	dtx_flag;
+    STRUCT	supported_bit_rates[];
+    STRUCT	supported_sample_rates[];
+    }
+
+// End of File

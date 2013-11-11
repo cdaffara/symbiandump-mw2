@@ -1,0 +1,62 @@
+/**************************************
+	1. Create PS MT call
+		 Expected: Call goes to Ringing state
+	2. Answer call
+	3. Disconnect call
+***************************************/
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 3.1 MT call, Hangup by Receiver
+timeout 15000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test ExpectMediatorEvent 1 ECCECallTypePS Ringing 2 MtCall
+test ExpectMediatorEvent 1 ECCECallTypePS Answering 2 MtCall
+test ExpectMediatorEvent 1 ECCECallTypePS Connected 2 MtCall
+test ExpectMediatorEvent 1 ECCECallTypePS Disconnecting 2 MtCall
+
+// Trigger ICM
+test InitIncomingCall
+
+// Wait plugin to initialize
+test Delay 1000
+
+
+
+// Send plugin command, PS MT call with CallID 1 is created
+// SendPluginRequest [pluginID] CreateCall (serviceID)
+// pluginID 1 => cpptestplugin (PS plugin), this is default value and is optional
+// pluginID 2 => cpptestplugin2 (CS plugin)
+test SendPluginRequest CreateCall 2
+test WaitEvent 0 IncomingCall
+test WaitEvent 1 Ringing
+
+// Step 2
+print Step_2
+
+// Answer call
+test Answer 1 0
+test WaitEvent 1 Answering
+test WaitEvent 1 Connected
+
+// Step 3
+print Step_3
+
+// Hangup call
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+test VerifyTest
+test Delay 3000
+test VerifyMediatorEvents
+delete test
+[Endtest] 

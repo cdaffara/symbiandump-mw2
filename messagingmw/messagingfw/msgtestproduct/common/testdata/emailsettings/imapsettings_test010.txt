@@ -1,0 +1,42 @@
+# ban-sudhay01.intra server
+__type__   = Imap4Settings
+
+# Server msexchange2k.closedtest.intra is IP msexchange2k.closedtest.intra
+ServerName =  msexchange2k.closedtest.intra
+ImapSearchString =
+
+# FolderPath = 
+ImapPathSeperator = /
+
+
+# lon-darrenm01.intra server
+__type__   = Imap4Settings
+
+# ban-kavyad01 =  msexchange2k.closedtest.intra
+ImapServerAddress =  msexchange2k.closedtest.intra
+ImapFolderPath = 
+ImapLoginName = test010
+ImapPassword = test010
+
+ImapIapList = IMAP001 IMAP002 
+
+IMAP001_ImapIAP = 1
+IMAP001_ImapCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+IMAP001_ImapIAPIndex = 0
+
+IMAP002_ImapIAP = 1
+IMAP002_ImapCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+IMAP002_ImapIAPIndex = 0
+
+SmtpServerAddress =  msexchange2k.closedtest.intra
+SmtpEmailAddress = test010@msexchange2k.closedtest.intra
+SmtpIapList = SMTP001 SMTP002 
+
+SMTP001_SmtpIAP = 1
+SMTP001_SmtpCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+SMTP001_SmtpIAPIndex = 0
+
+
+SMTP001_SmtpIAP = 1
+SMTP001_SmtpCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+SMTP001_SmtpIAPIndex = 0

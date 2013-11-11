@@ -1,0 +1,55 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//********************************
+// Cap_EMsvCopyEntries_001_003.script
+//********************************
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCopyEntries_001_003_001.script
+	// Note : proxy, FolderTo have the same SID, and FolderFrom is different.
+	// Create an entry in a folder( the folder is created under drafts which is unprotected). 
+	// Create a folder to copy the entry to.
+	// The proxy has no capabilities.
+	// The message is then Copied from FolderFrom to FolderTo
+	// Because the SID of FolderFrom is not tested the test should PASS and the entry is copied.
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCopyEntries_001_003_002.script
+	// Note : proxy, FolderTo have the same SID, and FolderFrom is different.
+	// Create an entry in a folder( the folder is created under drafts which is unprotected). 
+	// Create a folder to copy the entry to.
+	// The proxy has write user data.
+	// The message is then copied from FolderFrom to FolderTo
+	// Because the SID of FolderFrom is not tested the test should PASS and the entry is copied.
+	// capabilities should have no effect and the writes are currently insuffient.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCopyEntries_001_003_003.script
+	// Note : proxy, FolderTo have the same SID, and FolderFrom is different.
+	// Create an entry in a folder( the folder is created under drafts which is unprotected). 
+	// Create a folder to copy the entry to.
+	// The proxy has read user data.
+	// The message is then Copied from FolderFrom to FolderTo
+	// Because the SID of FolderFrom is not tested the test should PASS and the entry is copied.
+	// capabilities should have no effect and the writes are currently insuffient.
+
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCopyEntries_001_003_004.script
+	// Note : proxy, FolderTo have the same SID, and FolderFrom is different.
+	// Create an entry in a folder( the folder is created under drafts which is unprotected). 
+	// Create a folder to copy the entry to.
+	// The proxy has read and write user data.
+	// The message is then Copied from FolderFrom to FolderTo
+	// Because the SID of FolderFrom is not tested the test should PASS and the entry is copied.
+
+//********************************

@@ -1,0 +1,64 @@
+[main]
+bio_test doatstart
+bio_test all_01
+bio_test doattheend
+
+
+// Startup section.
+[doatstart]
+clean_all_bio_msgs
+
+
+// Shutdown section.
+[doattheend]
+
+
+// wapp tests.
+[all_01]
+gen_msg_from_file iacp\iacp_pwd_01.txt
+check_used_bif 1000552f
+bio_client_parse
+bio_client_process
+dump_parsed_message
+//
+// check mail settings in msg store
+check_pop3_named all_01_pop3 Demon
+check_smtp_named all_01_smtp Demon
+//
+// check commdb tables for correct entries
+bio_commdb DialOutIsp all_01_commdb_dialoutisp_table
+bio_commdb IAP all_01_commdb_iap_table
+
+
+[all_01_pop3]
+chk_pop3_loginname yashar
+chk_pop3_password ""
+chk_pop3_serveraddress pop3.demon.co.uk
+chk_pop3_useraddress Brahim@yashar.Demon.co.uk
+
+
+[all_01_smtp]
+chk_smtp_serveraddress post.demon.co.uk
+chk_smtp_emailaddress Brahim@yashar.Demon.co.uk
+
+
+[all_01_commdb_dialoutisp_table]
+commdb_check text Name "Demon"
+commdb_check text LoginName "yashar"
+commdb_check text IfAuthName "yashar"
+//commdb_check text LoginPass "dig23ler"
+//commdb_check text IfAuthPass "dig23ler"
+commdb_check text DefaultTelNum "+44 845 2121666"
+commdb_check text IpNameServer1 "::158.152.1.58"
+commdb_check text IpNameServer2 "::158.152.1.43"
+
+
+[all_01_commdb_iap_table]
+commdb_check text Name "Demon"
+commdb_check text IAPServiceType "DialOutISP"
+commdb_check text IAPBearerType "ModemBearer"
+
+
+
+
+

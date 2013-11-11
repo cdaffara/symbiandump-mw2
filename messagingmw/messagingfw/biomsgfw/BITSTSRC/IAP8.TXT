@@ -1,0 +1,71 @@
+//SIAP11
+password
+//----- Test_3
+//----- Using Logging Script .
+
+//Name
+Iname:Demon
+Iuid:yashar
+Ipwd:dig23ler
+
+//Default Telephone Number
+Itel:+44 845 2121666
+
+Idns1:158.152.1.58
+Idns2:158.152.1.43
+
+//--- start logging script----------------- 
+ILs:! Generic script for dial up connections
+ILs:! Consult your service provider if
+ILs:! modifications are required
+ILs:
+ILs:start:
+ILs:LOOP 3
+ILs:   {
+ILs:   WAIT 10
+ILs:      {
+ILs:      "name" login
+ILs:      "ogin" login
+ILs:      }
+ILs:   SEND <0x0d>
+ILs:   }
+ILs:
+ILs:login:
+ILs:    SEND login_name$+<0x0d>
+ILs:    WAIT 10
+ILs:       {
+ILs:       "assword:" password
+ILs:       "nvalid" failure
+ILs:       "rror" failure
+ILs:       "ncorrect" failure
+ILs:       }
+ILs:    EXIT KErrTimeOut$
+ILs:
+ILs:password:
+ILs:   SEND login_pass$+<0x0d>
+ILs:   WAIT 10
+ILs:      {
+ILs:      "OK" success
+ILs:      "HELLO" success
+ILs:      "GO" success
+ILs:      "IP" success
+ILs:      "ddress" success
+ILs:      "ocol" protocol
+ILs:      "nvalid" failure
+ILs:      "rror" failure
+ILs:      "ncorrect" failure
+ILs:      }
+ILs:      EXIT KErrTimeOut$
+ILs:
+ILs:protocol:
+ILs:    SEND "PPP"+<0x0d>
+ILs:    EXIT
+ILs:
+ILs:success:
+ILs:   EXIT
+ILs:
+ILs:failure:
+ILs:  EXIT KErrLoginFail$	
+//----- end of logging script-----------------
+
+----------------------end of sms --------------------------------------------

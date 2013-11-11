@@ -1,0 +1,7 @@
+21,22,ImapDownLoadMessage
+23,24,PopDownLoadMessage
+27,28,CreateMessage
+29,30,SendMessage
+31,32,CreateMessageSpeedTest
+33,34,SendMessageSpeedTest
+35,36,DownloadMessageSpeedTest

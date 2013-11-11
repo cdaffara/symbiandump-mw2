@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<relnotes name="MESSAGINGCONFIGURATION">
+  <purpose>
+	This component holds the common messaging subsystem settings intended to be customised by the licensee.
+  </purpose>
+
+</relnotes>
+
+ 

@@ -1,0 +1,59 @@
+/*
+* Copyright (c) 2002-2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:   Project file for protocol handler plugin
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET 			epossuplprotocolhandlerplugin.dll
+TARGETTYPE  	dll
+
+UID 			0x1000008d 0x102073CC 
+CAPABILITY      NetworkControl ReadUserData WriteUserData CAP_GENERAL_DLL
+
+
+VENDORID        VID_DEFAULT
+
+SOURCEPATH   	../src
+SOURCE      	 epos_csuplprotocolmanagerbase.cpp
+SOURCE			 epos_csuplcommunicationmanager.cpp
+SOURCE			 epos_csuplconnection.cpp
+SOURCE			 epos_csuplsocketreader.cpp
+SOURCE			 epos_csuplsockettimer.cpp
+SOURCE           epos_csuplconntrace.cpp
+SOURCE           epos_csuplpacketinfo.cpp
+SOURCE           epos_suplkey.cpp
+
+USERINCLUDE     ../inc
+USERINCLUDE     ../../../inc
+SYSTEMINCLUDE   /epoc32/include/libc
+
+MW_LAYER_SYSTEMINCLUDE
+
+
+LIBRARY 		euser.lib 
+LIBRARY 		ecom.lib
+LIBRARY         epos_csuplutils.lib
+LIBRARY			esock.lib
+LIBRARY			insock.lib 
+LIBRARY			securesocket.lib
+LIBRARY			commdb.lib
+LIBRARY         centralrepository.lib extendedconnpref.lib netmeta.lib /*extendedconnpref.lib netmeta.lib Related to custom preference Api's(OCC).*/
+LIBRARY flogger.lib
+
+
+//exportunfrozen 
+epocallowdlldata

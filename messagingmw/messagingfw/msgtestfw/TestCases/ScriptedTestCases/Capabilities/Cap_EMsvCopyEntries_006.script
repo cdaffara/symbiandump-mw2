@@ -1,0 +1,45 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRINT Running  EMsvCopyEntries_006
+
+
+//********************************
+PRINT Running  EMsvCopyEntries : Entry is copied to an entry in a remote folder (Outbox which is protected). 
+PRINT Running  EMsvCopyEntries : Proxy needs Read/Write user data + MTM specified caps.
+PRINT Running  EMsvCopyEntries : Various combinations of Caps.
+//********************************
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCopyEntries_006_001.script
+	// Copy an entry to an entry in a remote folder(Outbox which is protected). Proxy has Read/Write user data.
+	// Proxy does not own entry.
+	// Should PASS.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCopyEntries_006_002.script
+	// Copy an entry to an entry in a remote folder(Outbox which is protected). Proxy has Read user data.
+	// Proxy does not own entry.
+	// Should FAIL.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCopyEntries_006_003.script
+	// Copy an entry to an entry in a remote folder(Outbox which is protected). Proxy has Write user data.
+	// Proxy does not own entry.
+	// Should FAIL.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCopyEntries_006_004.script
+	// Copy an entry to an entry in a remote folder(Outbox which is protected). Proxy has no caps.
+	// Proxy does not own entry.
+	// Should FAIL.
+

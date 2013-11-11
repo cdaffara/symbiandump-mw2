@@ -1,0 +1,5 @@
+EXPORTS
+	??1CPhoneHandler@@UAE@XZ @ 1 NONAME ; CPhoneHandler::~CPhoneHandler(void)
+	?NewL@CPhoneHandler@@SAPAV1@XZ @ 2 NONAME ; class CPhoneHandler * CPhoneHandler::NewL(void)
+	?NewL@CPhoneHandler@@SAPAV1@AAVCRemConInterfaceSelector@@@Z @ 3 NONAME ; class CPhoneHandler * CPhoneHandler::NewL(class CRemConInterfaceSelector &)
+

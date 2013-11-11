@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<test>
+    <id>1874</id>
+    <buildid>null</buildid>
+    <name>SPS API Test Automation - jingzhe</name>
+    <target>
+        <device rank="none" alias="DEFAULT">
+            <property name="HARNESS" value="EUNIT" />
+            <property name="TYPE" value="Ariane" />
+        </device>
+    </target>
+    <plan id="1874.1739" name="plan" harness="EUNIT" enabled="true" passrate="100">
+        <session id="1874.1739.1" name="session" harness="EUNIT" enabled="true" passrate="100">
+            <set id="1874.1739.1.1" name="set" harness="EUNIT" enabled="true" passrate="100">
+                <target>
+                    <device rank="master" alias="DEFAULT"/>
+                </target>
+                <case id="1874.1739.1.1.1" name="Test Case 1" harness="EUNIT" enabled="true" passrate="100">
+                    <flash target-alias="DEFAULT" images="FlashFiles/ariane_y10yu.fpsx" />
+                    <flash target-alias="DEFAULT" images="FlashFiles/ariane_y10yu_udaerase.fpsx" />
+                    <step id="1874.1739.1.1.1.1" name="Create CTC log dir" harness="EUNIT" enabled="true" passrate="100" significant="false">
+                        <command>makedir</command>
+                        <params>
+                            <param dir="c:\data\ctc\"/>
+                        </params>
+                    </step>
+                    <step id="1874.1739.1.1.1.2" name="CTC start" harness="EUNIT" enabled="true" passrate="100" significant="false">
+                        <command>execute</command>
+                        <params>
+                            <param file="z:\sys\bin\ctcman.exe"/>
+                        </params>
+                    </step>
+                    <step id="1874.1739.1.1.1.3" name="Create EUnit log dir" harness="EUNIT" enabled="true" passrate="100" significant="false">
+                        <command>makedir</command>
+                        <params>
+                            <param dir="c:\shared\EUnit\logs\"/>
+                        </params>
+                    </step>
+                    <step id="1874.1739.1.1.1.4" name="Execute tests" harness="EUNIT" enabled="true" passrate="100" significant="true">
+                        <command>execute</command>
+                        <params>
+                            <param parameters="/l xml /e S60AppEnv /w 20 T_xSPSettingsAPIModuleTests.dll"/>
+                            <param timeout="360"/>
+                            <param result-file="c:\shared\EUnit\logs\EUnit_log.xml"/>
+                            <param file="z:\sys\bin\EUNITEXERUNNER.EXE"/>
+                        </params>
+                    </step>                    
+                    <step id="1874.1739.1.1.1.5" name="Save CTC data" harness="EUNIT" enabled="true" passrate="100" significant="false">
+                        <command>execute</command>
+                        <params>
+                            <param parameters="writefile"/>
+                            <param file="z:\sys\bin\ctcman.exe"/>
+                        </params>
+                    </step>
+                    <step id="1874.1739.1.1.1.6" name="Fetch and clean CTC data" harness="EUNIT" enabled="true" passrate="100" significant="false">
+                        <command>fetch-log</command>
+                        <params>
+                            <param delete="true"/>
+                            <param path="c:\data\ctc\ctcdata.txt"/>
+                        </params>
+                    </step>
+                </case>
+            </set>
+        </session>
+    </plan>
+    <files>
+        <file>FlashFiles/ariane_y10yu.fpsx</file>
+        <file>FlashFiles/ariane_y10yu_udaerase.fpsx</file>
+    </files>
+    <report media="email">
+        <type>ATS3_REPORT</type>
+        <to>jingzhe.yu@nokia.com</to>
+    </report>
+</test>

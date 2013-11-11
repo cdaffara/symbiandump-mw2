@@ -1,0 +1,44 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// LbsSuplConnStarter.mmp 
+// A mmp file for the SUPL Ethernet Connection Starter
+// 
+//
+
+TARGET		Te_LbsSuplConnStarter.dll
+TARGETTYPE	PLUGIN
+
+// UIDs - 2nd UID specifies an ECom dll, 3rd UID is unique identifier
+UID		0x10009D8D 0x10283762
+
+CAPABILITY ReadDeviceData WriteDeviceData NetworkServices LocalServices ReadUserData WriteUserData
+VENDORID 0x70000001
+
+
+USERINCLUDE     ../inc
+
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+SOURCEPATH      ../src
+SOURCE          Te_LbsSuplConnStarter.cpp
+
+START RESOURCE 10283762.rss
+#ifdef SYMBIAN_SECURE_ECOM
+TARGET Te_LbsSuplConnStarter.rsc
+#endif
+END
+
+LIBRARY     euser.lib ecom.lib insock.lib esock.lib
+
+SMPSAFE

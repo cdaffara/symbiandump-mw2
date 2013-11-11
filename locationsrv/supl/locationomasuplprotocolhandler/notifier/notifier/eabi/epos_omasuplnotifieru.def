@@ -1,0 +1,11 @@
+EXPORTS
+	_Z13NotifierArrayv @ 1 NONAME
+	_ZTI13CSuplNotifier @ 2 NONAME ; #<TI>#
+	_ZTI17CSuplHomeNotifier @ 3 NONAME ; #<TI>#
+	_ZTI20CSuplRoamingNotifier @ 4 NONAME ; #<TI>#
+	_ZTI20CSuplTimeOutNotifier @ 5 NONAME ; #<TI>#
+	_ZTV13CSuplNotifier @ 6 NONAME ; #<VT>#
+	_ZTV17CSuplHomeNotifier @ 7 NONAME ; #<VT>#
+	_ZTV20CSuplRoamingNotifier @ 8 NONAME ; #<VT>#
+	_ZTV20CSuplTimeOutNotifier @ 9 NONAME ; #<VT>#
+

@@ -1,0 +1,46 @@
+/*
+* Copyright (c) 2010 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Image description file for project position indicator
+*
+*/
+
+
+#ifndef POSITIONINDICATOR_IBY
+#define POSITIONINDICATOR_IBY
+
+#include <data_caging_paths_for_iby.hrh>
+#include <bldvariant.hrh>
+
+// Position indicator 
+file=ABI_DIR\BUILD_DIR\posindicator.dll                   SHARED_LIB_DIR\posindicator.dll
+
+// Position indicator helper client library
+file=ABI_DIR\BUILD_DIR\posindicatorhelper.dll    					SHARED_LIB_DIR\posindicatorhelper.dll
+
+// Position indicator helper server
+file=ABI_DIR\BUILD_DIR\posindicatorhelperserver.exe   	  SHARED_LIB_DIR\posindicatorhelperserver.exe
+
+// Position reverse geo-code interface
+file=ABI_DIR\BUILD_DIR\posreversegeocodeinterface.dll     SHARED_LIB_DIR\posreversegeocodeinterface.dll
+
+// Position reverse geo-code plugin
+ECOM_PLUGIN( posrevgeocodeplugin.dll,posrevgeocodeplugin.rsc )
+
+// Position indicator plugin
+data=\epoc32\data\z\resource\plugins\indicators\posindicator.qtplugin                  \resource\plugins\indicators\posindicator.qtplugin
+
+// stub sis will be added from posindicatorstub.iby
+//data=DATAZ_\system\install\posindicator_stub.sis					system\install\posindicator_stub.sis
+
+#endif // POSITIONINDICATOR_IBY

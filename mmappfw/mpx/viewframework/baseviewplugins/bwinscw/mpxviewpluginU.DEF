@@ -1,0 +1,17 @@
+EXPORTS
+	??1CMPXAknDialogPlugin@@UAE@XZ @ 1 NONAME ; CMPXAknDialogPlugin::~CMPXAknDialogPlugin(void)
+	??1CMPXAknViewPlugin@@UAE@XZ @ 2 NONAME ; CMPXAknViewPlugin::~CMPXAknViewPlugin(void)
+	??1CMPXViewPlugin@@UAE@XZ @ 3 NONAME ; CMPXViewPlugin::~CMPXViewPlugin(void)
+	?ActivateViewL@CMPXAknDialogPlugin@@MAEXPBVTDesC16@@@Z @ 4 NONAME ; void CMPXAknDialogPlugin::ActivateViewL(class TDesC16 const *)
+	?ActivateViewL@CMPXAknViewPlugin@@MAEXPBVTDesC16@@@Z @ 5 NONAME ; void CMPXAknViewPlugin::ActivateViewL(class TDesC16 const *)
+	?CreateViewL@CMPXAknDialogPlugin@@MAEXXZ @ 6 NONAME ; void CMPXAknDialogPlugin::CreateViewL(void)
+	?CreateViewL@CMPXAknViewPlugin@@MAEXXZ @ 7 NONAME ; void CMPXAknViewPlugin::CreateViewL(void)
+	?DeactivateView@CMPXAknDialogPlugin@@MAEXXZ @ 8 NONAME ; void CMPXAknDialogPlugin::DeactivateView(void)
+	?DeactivateView@CMPXAknViewPlugin@@MAEXXZ @ 9 NONAME ; void CMPXAknViewPlugin::DeactivateView(void)
+	?DestroyView@CMPXAknDialogPlugin@@MAEXXZ @ 10 NONAME ; void CMPXAknDialogPlugin::DestroyView(void)
+	?DestroyView@CMPXAknViewPlugin@@MAEXXZ @ 11 NONAME ; void CMPXAknViewPlugin::DestroyView(void)
+	?NewL@CMPXViewPlugin@@SAPAV1@ABVTUid@@PAVMMPXCustomCommandObserver@@@Z @ 12 NONAME ; class CMPXViewPlugin * CMPXViewPlugin::NewL(class TUid const &, class MMPXCustomCommandObserver *)
+	?SetAsDefaultViewL@CMPXAknDialogPlugin@@MAEXXZ @ 13 NONAME ; void CMPXAknDialogPlugin::SetAsDefaultViewL(void)
+	?SetAsDefaultViewL@CMPXAknViewPlugin@@MAEXXZ @ 14 NONAME ; void CMPXAknViewPlugin::SetAsDefaultViewL(void)
+	?SetObserver@CMPXViewPlugin@@MAEXPAVMMPXCustomCommandObserver@@@Z @ 15 NONAME ; void CMPXViewPlugin::SetObserver(class MMPXCustomCommandObserver *)
+

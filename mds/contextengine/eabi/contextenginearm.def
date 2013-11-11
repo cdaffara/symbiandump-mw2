@@ -1,0 +1,11 @@
+EXPORTS
+	_ZN14CContextEngine11PluginCountEv @ 1 NONAME
+	_ZN14CContextEngine12GetInstanceLEP30MContextInitializationObserver @ 2 NONAME
+	_ZN14CContextEngine13SetMdeSessionEP11CMdESession @ 3 NONAME
+	_ZN14CContextEngine15ContextSnapshotER24MContextSnapshotObserverR13RPointerArrayI14CHarvesterDataE @ 4 NONAME
+	_ZN14CContextEngine15ContextSnapshotER24MContextSnapshotObserverR14CHarvesterData @ 5 NONAME
+	_ZN14CContextEngine15ReleaseInstanceEv @ 6 NONAME
+	_ZN14CContextEngine7DestroyEv @ 7 NONAME
+	_ZTI14CContextEngine @ 8 NONAME ABSENT; #<TI>#
+	_ZTV14CContextEngine @ 9 NONAME ABSENT; #<VT>#
+

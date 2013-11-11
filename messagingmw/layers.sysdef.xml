@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE SystemDefinition SYSTEM "sysdef_1_4_0.dtd" [
+  <!ENTITY layer_real_source_path "sf/mw/messagingmw" >
+]>
+
+<SystemDefinition name="messagingmw" schema="1.4.0">
+  <systemModel>
+    <layer name="mw_layer">
+      <module name="messagingmw">
+        <unit unitID="MeCo.messagingmw" mrp="" bldFile="&layer_real_source_path;/group" name="messagingmw" />
+        <unit unitID="MeCo.biomsgfw" mrp="" bldFile="&layer_real_source_path;/messagingfw/biomsgfw/group" name="biomsgfw" />
+        <unit unitID="MeCo.msgconf" mrp="" bldFile="&layer_real_source_path;/messagingfw/msgconf/group" name="msgconf" />
+        <unit unitID="MeCo.msgsrvnstore" mrp="" bldFile="&layer_real_source_path;/messagingfw/msgsrvnstore/group" name="msgsrvnstore" />
+        <unit unitID="MeCo.msgurlhandler" mrp="" bldFile="&layer_real_source_path;/messagingfw/msgurlhandler/group" name="msgurlhandler" />
+        <unit unitID="MeCo.scheduledsendmtm" mrp="" bldFile="&layer_real_source_path;/messagingfw/scheduledsendmtm/group" name="scheduledsendmtm" />
+        <unit unitID="MeCo.sendas" mrp="" bldFile="&layer_real_source_path;/messagingfw/sendas/group" name="sendas" />
+        <unit unitID="MeCo.suplsmshandler" mrp="" bldFile="&layer_real_source_path;/messagingfw/suplsmshandler/group" name="suplsmshandler" />
+        <unit unitID="MeCo.suplwappushhandler" mrp="" bldFile="&layer_real_source_path;/messagingfw/suplwappushhandler/group" name="suplwappushhandler" />
+        <unit unitID="MeCo.wappushfw" mrp="" bldFile="&layer_real_source_path;/messagingfw/wappushfw/group" name="wappushfw" />
+        <unit unitID="MeCo.watcherfw" mrp="" bldFile="&layer_real_source_path;/messagingfw/watcherfw/group" name="watcherfw" />
+      </module>
+    </layer>
+  </systemModel>
+</SystemDefinition>

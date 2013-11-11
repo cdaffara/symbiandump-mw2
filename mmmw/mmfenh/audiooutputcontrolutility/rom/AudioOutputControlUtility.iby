@@ -1,0 +1,32 @@
+/*
+* Copyright (c) 2002-2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Contains all DLLs that must be included in image
+*
+*/
+
+
+#ifndef AUDIOOUTPUTCONTROLUTILITY_IBY
+#define AUDIOOUTPUTCONTROLUTILITY_IBY
+
+#include <bldvariant.hrh>
+
+file=ABI_DIR\BUILD_DIR\AudioOutputControlUtility.dll			SHARED_LIB_DIR\AudioOutputControlUtility.dll
+file=ABI_DIR\BUILD_DIR\AudioOutputControlUtilityProxy.dll		SHARED_LIB_DIR\AudioOutputControlUtilityProxy.dll
+
+// AudioOutputControlUtility STUB
+data=ZSYSTEM\install\AudioOutputControlUtility_Stub.SIS    System\Install\AudioOutputControlUtility_Stub.SIS
+
+#endif // AUDIOOUTPUTCONTROLUTILITY_IBY
+
+//  End of File  

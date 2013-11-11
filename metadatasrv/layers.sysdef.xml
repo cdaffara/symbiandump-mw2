@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE SystemDefinition SYSTEM "sysdef_1_4_0.dtd" [
+  <!ENTITY layer_real_source_path "sf/mw/metadatasrv" >
+]>
+
+<SystemDefinition name="metadatasrv" schema="1.4.0">
+  <systemModel>
+    <layer name="mw_layer">
+      <module name="metadatasrv">
+        <unit unitID="imm.metadatasrv" mrp="" bldFile="&layer_real_source_path;/group" name="metadatasrv" />
+      </module>
+    </layer>
+    
+    <layer name="unit_test_layer">
+      <module name="metadatasrv_unit_tests">
+      </module>
+    </layer>
+    
+  </systemModel>
+</SystemDefinition>

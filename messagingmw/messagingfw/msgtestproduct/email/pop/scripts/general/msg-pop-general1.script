@@ -1,0 +1,103 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file	
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE 	T_MsgCommonServer -SharedData
+LOAD_SUITE 	T_MsgPopServer 	-SharedData
+LOAD_SUITE 	T_MsgSmtpServer 	-SharedData
+
+
+START_TESTCASE MSG-POP3-GEN-0001
+//! @SYMTestCaseID		MSG-POP3-GEN-0001
+//! @SYMTestType		CIT
+//! @SYMTestPriority		Medium
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc		
+//! @SYMTestActions		CreateSmtpMessageFromEmailFile
+//! 					SendSmtpMessage
+//! 					PopInvokeAsyncFunction
+//! 					ComparePopEmailMsgs
+//! 					Verify header parts
+//! @SYMTestExpectedResults 	
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer		StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer		StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\general\msg-pop-general1.ini    	0001-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\general\msg-pop-general1.ini    	0001-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer		CreatePopAccount		c:\msgtest\email\pop\general\msg-pop-general1.ini    	0001-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 		ConnectPop3Server		c:\msgtest\email\pop\general\msg-pop-general1.ini    	0001-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer		DeleteAllPopChildren		c:\msgtest\email\pop\general\msg-pop-general1.ini    	0001-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 		DisConnectPop3Server 		c:\msgtest\email\pop\general\msg-pop-general1.ini    	0001-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer 		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\general\msg-pop-general1.ini    	0001-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\general\msg-pop-general1.ini    	0001-CheckChildrenCountOutbox1
+RUN_TEST_STEP 300 T_MsgSmtpServer 		SendSmtpMessage 		c:\msgtest\email\pop\general\msg-pop-general1.ini    	0001-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\general\msg-pop-general1.ini    	0001-CheckChildrenCountOutbox0
+RUN_TEST_STEP 300 T_MsgPopServer 		ConnectPop3Server		c:\msgtest\email\pop\general\msg-pop-general1.ini    	0001-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 		PopInvokeAsyncFunction		c:\msgtest\email\pop\general\msg-pop-general1.ini    	0001-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgPopServer 		DisConnectPop3Server 		c:\msgtest\email\pop\general\msg-pop-general1.ini    	0001-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 		ComparePopEmailMsgs		c:\msgtest\email\pop\general\msg-pop-general1.ini    	0001-ComparePopEmailMsgs
+RUN_TEST_STEP 300 T_MsgPopServer 		VerifyHeaders		c:\msgtest\email\pop\general\msg-pop-general1.ini    	0001-VerifyHeaders
+
+RUN_TEST_STEP 300 T_MsgSmtpServer		ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer		ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-GEN-0001
+
+START_TESTCASE MSG-POP-AccessPointApi-0001
+
+//! @SYMTestCaseID		MSG-POP-AccessPointApi-0001
+//! @SYMTestCaseDesc		Positive: Check we can get the access point ID for a POP connection
+//! @SYMTestPriority		Critical
+//! @SYMTestType		CIT
+//! @SYMREQ			6994
+//! @SYMPREQ			1307
+//! @SYMTestStatus		Implemented
+//! @SYMTestActions		1.	Reset Message Store and Central Repository to default state.
+//!				2.	Create POP account in Central Repository using standard settings from a configuration file.
+//!				3.	Connect to POP service using account settings
+//!				4.	Check access point is same as listed in config file
+//!				5.	Disconnect from POP service.
+//!
+//! @SYMTestExpectedResults	See step 4
+//! @SYMAuthor			Robert Heal
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas		c:\msgtest\email\pop\general\msg-pop-general1.ini 0002-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\general\msg-pop-general1.ini 0002-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount 	c:\msgtest\email\pop\general\msg-pop-general1.ini 0002-CreatePopAccount 
+RUN_TEST_STEP 300 T_MsgPopServer	ConnectPop3Server	c:\msgtest\email\pop\general\msg-pop-general1.ini 0002-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	CheckPop3AccessPoint	c:\msgtest\email\pop\general\msg-pop-general1.ini 0002-CheckPop3AccessPoint
+RUN_TEST_STEP 300 T_MsgPopServer	DisConnectPop3Server	c:\msgtest\email\pop\general\msg-pop-general1.ini 0002-DisConnectPop3Server
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+
+PRINT Execute Completed ################################################
+
+END_TESTCASE MSG-POP-AccessPointApi-0001

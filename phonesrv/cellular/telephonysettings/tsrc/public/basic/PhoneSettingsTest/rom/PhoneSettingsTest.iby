@@ -1,0 +1,42 @@
+/*
+* Copyright (c) 2002 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: IBY file for phonesettings test component.
+*
+*
+*/
+
+
+
+
+/*
+-----------------------------------------------------------------------------
+
+    DESCRIPTION
+
+    PhoneSettingsTest.iby file specifies needed components for ROM image
+
+-----------------------------------------------------------------------------
+*/
+
+#ifndef __PHONESETTINGSTEST_IBY__
+#define __PHONESETTINGSTEST_IBY__
+
+file=ABI_DIR\BUILD_DIR\PhoneSettingsTest.dll      	                Sys\Bin\PhoneSettingsTest.dll
+file=ABI_DIR\BUILD_DIR\PhoneSettingsTest.exe      	                Sys\Bin\PhoneSettingsTest.exe
+
+data=\epoc32\data\z\system\data\phonesettingstest.ini                   testframework\phonesettingstest.ini
+
+
+#endif
+// End of File

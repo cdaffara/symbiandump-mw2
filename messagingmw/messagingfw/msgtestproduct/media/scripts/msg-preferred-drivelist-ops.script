@@ -1,0 +1,541 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+LOAD_SERVER t_media  -SharedData
+
+//! @file			
+//! @SYMTestSuiteName		MSG-PREFERRED-DRIVELIST-OPS
+//! @SYMScriptTestEnvironment   Details as in below:-
+//!				1. nt-ras connection or winpcap
+//!				2. email servers ( communigatePro or ms exchange)
+//!				3. test driver
+//!				4. testexecute framework(TEF3.0)
+//!				
+//! @SYMScriptPurpose		Integration testing of PREQ557-"Improved support in Messaging for removable media"
+//! @SYMScriptCreationDate	04/04/2008
+
+
+START_TESTCASE	MSG-PREFERRED-DRIVELIST-OPS-0001
+//! 	@SYMTestCaseID		MSG-PREFERRED-DRIVELIST-OPS-0001
+//! 	@SYMTestCaseDesc	Remove the drive from preferred drive list and add it again
+//!				
+//!	@SYMREQ			REQ9046 
+//!	@SYMPREQ 		PREQ557
+//!	@SYMAPI			void CMsvSession::CurrentDriveInfo (TDriveNumber& aDrive, Tint& aPriority)
+//!				void CMsvSession::AddDriveL (TDriveNumber aDrive, Tint& aPriority)
+//!				void CMsvSession::RemoveDriveL (TDriveNumber aDrive)
+//!				void CMsvSession::DriveListL(RArray<TDriveNumber>& aDriveList)
+//!				
+//!	@SYMTestCaseDependencies ms-presetup-0001.script
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1. Intialize the preferred drives with accounts and messages(run the ms-presetup-0001.script)
+//!				2. Get the current drive(C: drive)
+//!				3. Remove a lesser priority drive(I: drive) from preferred drive list
+//!				4. Check the drive(I: drive) is not present in preferred drive list
+//!				5. Add the drive(I: drive) in the preferred drive list
+//!				6. Check the drive(I: drive) is present in preferred drive list
+//!				7. Remove the system drive(C: drive) from preferred drive list
+//!				8. Update the drive (E: Drive) with high priority
+//!				9. Get the current drive(E: drive)
+//!				10. Remove current drive(E: drive) from preferred drive list
+//!				11. Check the drive(E: drive) is not present in preferred drive list
+//!				12. Get current drive (C: drive which is next higher priority drive)
+//!				13. Add higher priority drive(E: drive) in the preferred drive list
+//!				14. Check the drive(E: drive) is present in preferred drive list
+//!				15. Get the current drive(E: drive)
+//!				
+//! 	@SYMTestExpectedResults 1. Accounts and messages should be created in all drives
+//!				2. C: drive should be the current drive
+//!				3. I: drive should be removed and capture EMsvRefeshMessageView notification
+//!				4. I: drive should not be present in preferred drive list
+//!				5. I: drive should be added and capture EMsvRefeshMessageView notification
+//!				6. I: drive should be present in preferred drive list
+//!				7. System drive(C: drive) should not be removed from preferred drive list and will though KErrArgument error
+//!				8. E: drive should updated with high priority
+//!				9. E: drive should be the current drive
+//!				10. E: drive should be removed and capture EMsvCurrentDriveChanged notification
+//!				11. E: drive should not be present in preferred drive list
+//!				12. D: drive should be the current drive
+//!				13. E: drive should be added and capture EMsvCurrentDriveChanged notification
+//!				14. E: drive should be present in preferred drive list
+//!				15. E: drive is the current drive
+//!				
+//!	@SYMAuthor		Rajat Bal
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-preferred-drivelist-ops.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-preferred-0001.ini		c:\private\1000484b\msgprioritydrivelist.ini
+						
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-preferred-drivelist-ops.ini
+		CREATE_OBJECT	MediaTestWrapper	0001_obj_1
+		COMMAND		0001_obj_1		GetCurrentDrive	0001_GetCurrentDrive_1
+		COMMAND		0001_obj_1		RemoveDrive	0001_RemoveDrive_lesser		
+		COMMAND		0001_obj_1		GetDrivelist	0001_GetDrivelist_1
+		COMMAND		0001_obj_1		AddDrive	0001_AddDrive_same
+		COMMAND		0001_obj_1		GetDrivelist	0001_GetDrivelist_2
+		COMMAND	!Error=-6 0001_obj_1		RemoveDrive	0001_RemoveDrive_sys	
+		COMMAND		0001_obj_1		UpdateDrive	0001_UpdateDrive_high
+		COMMAND		0001_obj_1		GetCurrentDrive	0001_GetCurrentDrive_2
+		COMMAND		0001_obj_1		RemoveDrive	0001_RemoveDrive_current
+		COMMAND		0001_obj_1		GetDrivelist	0001_GetDrivelist_3
+		COMMAND		0001_obj_1		GetCurrentDrive	0001_GetCurrentDrive_3
+		COMMAND		0001_obj_1		AddDrive	0001_AddDrive_high
+		COMMAND		0001_obj_1		GetDrivelist	0001_GetDrivelist_4
+		COMMAND		0001_obj_1		GetCurrentDrive	0001_GetCurrentDrive_4	
+	END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+	
+END_TESTCASE	MSG-PREFERRED-DRIVELIST-OPS-0001
+
+START_TESTCASE	MSG-PREFERRED-DRIVELIST-OPS-0002
+//! 	@SYMTestCaseID		MSG-PREFERRED-DRIVELIST-OPS-0002
+//! 	@SYMTestCaseDesc	Negative Test - Removed a drive which is already removed from preferred drive list
+//!				
+//!	@SYMREQ			REQ9046 
+//!	@SYMPREQ 		PREQ557
+//!	@SYMAPI			void CMsvSession::DriveListL(RArray<TDriveNumber>& aDriveList)
+//!				void CMsvSession::DriveListL(RArray<TDriveNumber>& aDriveList)
+//!				void CMsvSession::RemoveDriveL (TDriveNumber aDrive)
+//!				
+//!	@SYMTestCaseDependencies ms-presetup-0001.script
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1. Intialize the preferred drives with accounts and messages(run the ms-presetup-0001.script)
+//!				2. Get an available drive(G: drive) from preferred drive list
+//!				3. Remove the drive(G: drive) from preferred drive list
+//!				4. Check the drive(G: drive) is not present in preferred drive list
+//!				5. Remove agian the same drive(G: drive) from preferred drive list
+//!				
+//! 	@SYMTestExpectedResults 1. Accounts and messages should be created in all drives
+//!				2. G: drive should be the available drive
+//!				3. G: drive should be removed
+//!				4. G: drive should not be present in preferred drive list
+//!				5. Should return KErrNotFound error
+//!				
+//!	@SYMAuthor		Rajat Bal
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-preferred-drivelist-ops.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-preferred-0002.ini		c:\private\1000484b\msgprioritydrivelist.ini
+
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-preferred-drivelist-ops.ini
+		CREATE_OBJECT	MediaTestWrapper	0002_obj_1
+		COMMAND		0002_obj_1		GetDrivelist	0002_GetDrivelist_1
+		COMMAND		0002_obj_1		RemoveDrive	0002_RemoveDrive_1
+		COMMAND		0002_obj_1		GetDrivelist	0002_GetDrivelist_2
+		COMMAND	!Error=-1 0002_obj_1		RemoveDrive	0002_RemoveDrive_2		
+	END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+
+END_TESTCASE	MSG-PREFERRED-DRIVELIST-OPS-0002
+
+
+START_TESTCASE	MSG-PREFERRED-DRIVELIST-OPS-0003
+//! 	@SYMTestCaseID		MSG-PREFERRED-DRIVELIST-OPS-0003
+//! 	@SYMTestCaseDesc	Negative Test - Insert a drive which is already present in preferred drive list
+//!				
+//!	@SYMREQ			REQ9046 
+//!	@SYMPREQ 		PREQ557
+//!	@SYMAPI			void CMsvSession::DriveListL(RArray<TDriveNumber>& aDriveList)
+//!				void CMsvSession::AddDriveL (TDriveNumber aDrive, Tint& aPriority)
+//!				
+//!	@SYMTestCaseDependencies ms-presetup-0001.script
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1. Intialize the preferred drives with accounts and messages(run the ms-presetup-0001.script)
+//!				2. Get an available drive(G: drive) 
+//!				3. Add the same drive(G: drive) to preferred drive list
+//!				
+//! 	@SYMTestExpectedResults 1. Accounts and messages should be created in all drives
+//!				2. G: drive should be the available drive
+//!				3. Should return KErrAlreadyExists error
+//!				
+//!	@SYMAuthor		Rajat Bal
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-preferred-drivelist-ops.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-preferred-0003.ini		c:\private\1000484b\msgprioritydrivelist.ini
+
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-preferred-drivelist-ops.ini
+		CREATE_OBJECT	MediaTestWrapper	0003_obj_1
+		COMMAND		0003_obj_1		GetDrivelist	0003_GetDrivelist_1
+		COMMAND !Error=-11 0003_obj_1		AddDrive	0003_AddDrive_1
+	END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+
+END_TESTCASE	MSG-PREFERRED-DRIVELIST-OPS-0003
+
+
+START_TESTCASE	MSG-PREFERRED-DRIVELIST-OPS-0004
+//! 	@SYMTestCaseID		MSG-PREFERRED-DRIVELIST-OPS-0004
+//! 	@SYMTestCaseDesc	Change the current drive to non current drive
+//!				
+//!	@SYMREQ			REQ9046 
+//!	@SYMPREQ 		PREQ557
+//!	@SYMAPI			void CMsvSession::CurrentDriveInfo (TDriveNumber& aDrive, Tint& aPriority)
+//!				void CMsvSession::UpdateDrivePriorityL (TDriveNumber aDrive, TInt& aPriority)
+//!				
+//!	@SYMTestCaseDependencies ms-presetup-0001.script
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1. Get the current drive(G: drive)
+//!				2. Update the prority of current drive with lesser value
+//!				3. Get the current drive(H: drive)
+//!				
+//! 	@SYMTestExpectedResults 1. G: drive should be the current drive
+//!				2. Should changed to non current drive and capture EMsvCurrentDriveChanged notification
+//!				3. Should returned the H: drive
+//!				
+//!	@SYMAuthor		Rajat Bal
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-preferred-drivelist-ops.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-preferred-0004.ini		c:\private\1000484b\msgprioritydrivelist.ini
+
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-preferred-drivelist-ops.ini
+		CREATE_OBJECT	MediaTestWrapper	0004_obj_1
+		COMMAND		0004_obj_1		GetCurrentDrive	0004_GetCurrentDrive_1
+		COMMAND		0004_obj_1		UpdateDrive	0004_UpdateDrive_1
+		COMMAND		0004_obj_1		GetCurrentDrive	0004_GetCurrentDrive_2
+	END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+
+END_TESTCASE	MSG-PREFERRED-DRIVELIST-OPS-0004
+
+
+START_TESTCASE	MSG-PREFERRED-DRIVELIST-OPS-0005
+//! 	@SYMTestCaseID		MSG-PREFERRED-DRIVELIST-OPS-0005
+//! 	@SYMTestCaseDesc	Change the non current drive to current drive
+//!				
+//!	@SYMREQ			REQ9046 
+//!	@SYMPREQ 		PREQ557
+//!	@SYMAPI			void CMsvSession::DriveListL(RArray<TDriveNumber>& aDriveList)
+//!				void CMsvSession::UpdateDrivePriorityL (TDriveNumber aDrive, TInt& aPriority)
+//!				void CMsvSession::CurrentDriveInfo (TDriveNumber& aDrive, Tint& aPriority)
+//!				
+//!	@SYMTestCaseDependencies ms-presetup-0001.script
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1. Get a non current drive( D: drive)from preferred drive list
+//!				2. Update the prority of non current drive with current drive's priority value
+//!				3. Get the current drive (D: drive)
+//!				
+//! 	@SYMTestExpectedResults 1. D: drive should be the non current drive
+//!				2. Should changed to current drive and capture EMsvCurrentDriveChanged notification
+//!				3. Should returned the D: drive
+//!				
+//!	@SYMAuthor		Rajat Bal
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-preferred-drivelist-ops.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-preferred-0005.ini		c:\private\1000484b\msgprioritydrivelist.ini
+
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-preferred-drivelist-ops.ini
+		CREATE_OBJECT	MediaTestWrapper	0005_obj_1
+		COMMAND		0005_obj_1		UpdateDrive	0005_UpdateDrive_1
+		COMMAND		0005_obj_1		GetCurrentDrive	0005_GetCurrentDrive_1	
+	END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+
+END_TESTCASE	MSG-PREFERRED-DRIVELIST-OPS-0005
+
+
+START_TESTCASE	MSG-PREFERRED-DRIVELIST-OPS-0006
+//! 	@SYMTestCaseID		MSG-PREFERRED-DRIVELIST-OPS-0006
+//! 	@SYMTestCaseDesc	Negative Test - Update a drive with some prority which is not in preferred drive list
+//!				
+//!	@SYMREQ			REQ9046 
+//!	@SYMPREQ 		PREQ557
+//!	@SYMAPI			void CMsvSession::UpdateDrivePriorityL (TDriveNumber aDrive, TInt& aPriority)
+//!				
+//!	@SYMTestCaseDependencies ms-presetup-0001.script
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1. Update the prority of a drive which is not in preferred drive list
+//!				
+//! 	@SYMTestExpectedResults 1. Should return the KErrNotFound error
+//!				
+//!	@SYMAuthor		Rajat Bal
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-preferred-drivelist-ops.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-preferred-0006.ini		c:\private\1000484b\msgprioritydrivelist.ini
+
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-preferred-drivelist-ops.ini
+		CREATE_OBJECT	MediaTestWrapper	0006_obj_1
+		COMMAND		0006_obj_1		New		0006_obj_1
+		COMMAND	!Error=-1	0006_obj_1		UpdateDrive	0006_UpdateDrive
+	END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+
+END_TESTCASE	MSG-PREFERRED-DRIVELIST-OPS-0006
+
+
+START_TESTCASE	MSG-PREFERRED-DRIVELIST-OPS-0007
+//! 	@SYMTestCaseID		MSG-PREFERRED-DRIVELIST-OPS-0007
+//! 	@SYMTestCaseDesc	Update(increase/decrease) the priority of the current drive so that it remains current drive
+//!				
+//!	@SYMREQ			REQ9046 
+//!	@SYMPREQ 		PREQ557
+//!	@SYMAPI			void CMsvSession::UpdateDrivePriorityL (TDriveNumber aDrive, TInt& aPriority)
+//!				
+//!	@SYMTestCaseDependencies  NA
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1. Increase the priority of current drive so that it remains current drive
+//!				Note: Ensure the higher priority drive has incomaptible message store
+//!				2. Decrease the priority of current drive so that it remains current drive
+//!				Note: Ensure the next lower priority drive has incompatible message store
+//!				
+//! 	@SYMTestExpectedResults 1. Should return the same current drive as current drive
+//!				2. Should return the same current drive as current drive
+//!				
+//!	@SYMAuthor		Rajat Bal
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-preferred-drivelist-ops.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-preferred-0007.ini		c:\private\1000484b\msgprioritydrivelist.ini
+
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-preferred-drivelist-ops.ini
+		CREATE_OBJECT	MediaTestWrapper	0007_obj_1
+		COMMAND		0007_obj_1		GetCurrentDrive	0007_GetCurrentDrive_1
+		COMMAND		0007_obj_1		UpdateDrive	0007_UpdateDrive_1
+		COMMAND		0007_obj_1		GetCurrentDrive	0007_GetCurrentDrive_2
+		COMMAND		0007_obj_1		UpdateDrive	0007_UpdateDrive_2
+		COMMAND		0007_obj_1		GetCurrentDrive	0007_GetCurrentDrive_3
+	END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+	
+END_TESTCASE	MSG-PREFERRED-DRIVELIST-OPS-0007
+
+START_TESTCASE	MSG-PREFERRED-DRIVELIST-OPS-0008
+//! 	@SYMTestCaseID		MSG-PREFERRED-DRIVELIST-OPS-0008
+//! 	@SYMTestCaseDesc	Update(increase/decrease) the priority of a non current drive so that it remains non current drive
+//!				
+//!	@SYMREQ			REQ9046 
+//!	@SYMPREQ 		PREQ557
+//!	@SYMAPI			void CMsvSession::UpdateDrivePriorityL (TDriveNumber aDrive, TInt& aPriority)
+//!				
+//!	@SYMTestCaseDependencies 
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1. Increase the priority of a non current drive so that it remains non current drive
+//!				Note: Ensure the incremental priority number is not equal to current drive priority
+//!				2. Decrease the priority of a non current drive so that it remains non current drive
+//!				
+//! 	@SYMTestExpectedResults 1. Should return the non current dirve
+//!				2. Should return the non current dirve
+//!				
+//!	@SYMAuthor		Rajat Bal
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-preferred-drivelist-ops.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-preferred-0008.ini		c:\private\1000484b\msgprioritydrivelist.ini
+
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-preferred-drivelist-ops.ini
+		CREATE_OBJECT	MediaTestWrapper	0008_obj_1
+		COMMAND		0008_obj_1		GetCurrentDrive	0008_GetCurrentDrive_1
+		COMMAND		0008_obj_1		UpdateDrive	0008_UpdateDrive_1
+		COMMAND		0008_obj_1		GetCurrentDrive	0008_GetCurrentDrive_2
+		COMMAND		0008_obj_1		UpdateDrive	0008_UpdateDrive_2
+		COMMAND		0008_obj_1		GetCurrentDrive	0008_GetCurrentDrive_3
+	END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+
+END_TESTCASE	MSG-PREFERRED-DRIVELIST-OPS-0008
+
+START_TESTCASE	MSG-PREFERRED-DRIVELIST-OPS-0009
+//! 	@SYMTestCaseID		MSG-PREFERRED-DRIVELIST-OPS-0009
+//! 	@SYMTestCaseDesc	Add and Remove a high priority drive which is empty
+//!				
+//!	@SYMREQ			REQ9046 
+//!	@SYMPREQ 		PREQ557
+//!	@SYMAPI			
+//!				void CMsvSession::AddDriveL (TDriveNumber aDrive, Tint& aPriority)
+//!				void CMsvSession::RemoveDriveL (TDriveNumber aDrive)
+//!				
+//!	@SYMTestCaseDependencies 
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1. Add a high priority drive which is empty
+//!				2. Remove a high priority drive which is empty
+//!				
+//! 	@SYMTestExpectedResults 1. Should return the EMsvCurrentDriveChanged notification
+//!				2. No notification (  this scenario would not come)
+//!				
+//!	@SYMAuthor		Rajat Bal
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-preferred-drivelist-ops.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-preferred-0009.ini		c:\private\1000484b\msgprioritydrivelist.ini
+
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-preferred-drivelist-ops.ini
+		CREATE_OBJECT	MediaTestWrapper	0009_obj_1
+		COMMAND		0009_obj_1		AddDrive	0009_AddDrive_empty
+		COMMAND		0009_obj_1		RemoveDrive	0009_RemoveDrive_empty
+		COMMAND		0009_obj_1		GetDrivelist	0009_GetDrivelist_1
+	END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+
+END_TESTCASE	MSG-PREFERRED-DRIVELIST-OPS-0009
+
+START_TESTCASE	MSG-PREFERRED-DRIVELIST-OPS-0010
+//! 	@SYMTestCaseID		MSG-PREFERRED-DRIVELIST-OPS-0010
+//! 	@SYMTestCaseDesc	Add and Remove a low priority drive which is empty
+//!				
+//!	@SYMREQ			REQ9046 
+//!	@SYMPREQ 		PREQ557
+//!	@SYMAPI			
+//!				void CMsvSession::AddDriveL (TDriveNumber aDrive, Tint& aPriority)
+//!				void CMsvSession::RemoveDriveL (TDriveNumber aDrive)
+//!				
+//!				
+//!	@SYMTestCaseDependencies 
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1. Add a low priority drive which is empty
+//!				2. Remove a low priority drive which is empty
+//!				
+//! 	@SYMTestExpectedResults 1. Should not return any notification
+//!				2. Should not return any notification
+//!				
+//!	@SYMAuthor		Rajat Bal
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-preferred-drivelist-ops.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-preferred-0010.ini		c:\private\1000484b\msgprioritydrivelist.ini
+
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-preferred-drivelist-ops.ini
+		CREATE_OBJECT	MediaTestWrapper	0010_obj_1
+		COMMAND		0010_obj_1		AddDrive	0010_AddDrive_empty
+		COMMAND		0010_obj_1		RemoveDrive	0010_RemoveDrive_empty
+		COMMAND		0010_obj_1		GetDrivelist	0010_GetDrivelist_1
+	END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+
+END_TESTCASE	MSG-PREFERRED-DRIVELIST-OPS-0010

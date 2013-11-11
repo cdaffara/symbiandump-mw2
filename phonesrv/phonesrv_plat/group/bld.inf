@@ -1,0 +1,57 @@
+/*
+* Copyright (c) 2006-2008 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Includes all the Domain API specific bld.inf files, which 
+*                export files.
+*
+*/
+
+
+#include "../string_parser_api/group/bld.inf"
+#include "../cbs_mcn_client_api/group/bld.inf"
+#include "../converged_call_engine_api/group/bld.inf"
+#include "../aiw_dial_data_consumer_api/group/bld.inf"
+#include "../phone_client_ussd_api/group/bld.inf"
+#include "../sat_refresh_api/group/bld.inf"
+#include "../network_handling_engine_api/group/bld.inf"
+#include "../phone_client_emergency_call_api/group/bld.inf"
+#include "../sat_configuration_api/group/bld.inf"
+#include "../phone_client_image_handler_api/group/bld.inf"
+#include "../phone_client_messenger_api/group/bld.inf"
+#include "../sat_client_api/group/bld.inf"
+#include "../phone_client_api/group/bld.inf"
+#include "../sat_service_api/group/bld.inf"
+#include "../cbs_message_api/group/bld.inf"
+#include "../phone_client_server_information_api/group/bld.inf"
+#include "../phone_client_ussd_internal_api/group/bld.inf"
+#include "../phone_client_command_handler_api/group/bld.inf"
+#include "../phone_client_notify_api/group/bld.inf"
+#include "../phone_client_utility_api/group/bld.inf"
+#include "../telephony_network_information_api/group/bld.inf"
+#include "../secondary_display_sat_api/group/bld.inf"
+#include "../service_provider_settings_api/group/bld.inf"
+#include "../converged_call_provider_api/group/bld.inf"
+#include "../incoming_call_monitor_api/group/bld.inf"
+#include "../default_emergency_numbers_api/group/bld.inf"
+#include "../cenrep_database_api/group/bld.inf"
+#include "../ss_settings_api/group/bld.inf"
+#include "../phone_settings_observer_api/group/bld.inf"
+#include "../phone_settings_api/group/bld.inf"
+#include "../voice_mailbox_number_api/group/bld.inf"
+#include "../voice_mailbox_settings_api/group/bld.inf"
+#include "../call_information_api/group/bld.inf"
+#include "../call_remote_party_information_api/group/bld.inf"
+#include "../telephony_mediator_api/group/bld.inf"
+#include "../dialpad_api/group/bld.inf"
+#include "../phone_settings_ui_notes_api/group/bld.inf"
+// End of file

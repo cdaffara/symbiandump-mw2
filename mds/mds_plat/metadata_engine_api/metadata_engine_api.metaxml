@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<api id="6e6285c8b5a7d8b751d443b84aa1973a" dataversion="2.0">
+<name>metadata_engine_api</name>
+<description>metadata engine api</description>
+<type>c++</type>
+<collection>metadataengine</collection>
+<libs><lib name="mdccommon.lib"/>
+<lib name="mdeclient.lib"/>
+</libs>
+<release category="platform" sinceversion=""/>
+<attributes>
+<htmldocprovided>no</htmldocprovided>
+<adaptation>no</adaptation>
+</attributes>
+</api>

@@ -1,0 +1,43 @@
+REM DEFAULT_CLEANUP_FROM_TEST.BAT
+REM
+REM Copyright © 2002 Symbian Ltd. All rights reserved.
+REM
+
+REMc:
+REMcd \
+
+REMattrib \system\libs\*.* -r
+REMdel \system\libs\*.*
+
+REMattrib \system\programs\*.* -r
+REMdel \system\programs\*.*
+
+REMattrib \msgtest\*.* -r
+REMdel \msgtest\*.*
+
+REMattrib \msgtest\sms\*.* -r
+REMdel \msgtest\sms\*.*
+
+REMattrib \msgtest\msgs\*.* -r
+REMdel \msgtest\msgs\*.*
+
+REMattrib \msgtest\fax\*.* -r
+REMdel \msgtest\fax\*.*
+
+REMattrib \msgtest\imcm\*.* -r
+REMdel \msgtest\imcm\*.*
+
+REMattrib \mailtest\*.* -r
+REMdel \mailtest\*.*
+
+REMattrib \mailtest\rfc822\*.* -r
+REMdel \mailtest\rfc822\*.*
+
+REMattrib \mailtest\imcm\*.* -r
+REMdel \mailtest\imcm\*.*
+
+REMattrib \mailtest\rfct_imcm06\*.* -r
+REMdel \mailtest\rfct_imcm06\*.*
+
+REMattrib \mailtest\rfct_imcm07\*.* -r
+REMdel \mailtest\rfct_imcm07\*.*

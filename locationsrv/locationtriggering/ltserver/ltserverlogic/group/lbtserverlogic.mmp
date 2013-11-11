@@ -1,0 +1,87 @@
+/*
+* Copyright (c) 2006,2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file for LBT Server Logic
+*
+*/
+
+
+#include <data_caging_paths.hrh>
+#include <platform_paths.hrh>
+
+TARGET 			lbtserverlogic.dll
+TARGETTYPE  	PLUGIN
+// ECom Dll recognition UID followed by the unique UID of this dll
+UID				0x10009D8D 0x1028312C
+
+CAPABILITY      CAP_ECOM_PLUGIN
+VENDORID        VID_DEFAULT
+
+SOURCEPATH		../src
+SOURCE			lbtserverlogic.cpp
+SOURCE			lbttriggerfirehandler.cpp
+SOURCE			lbtbackuprestorelistener.cpp
+SOURCE			lbtglobal.cpp
+SOURCE			lbtstratergycontainer.cpp
+SOURCE			lbtaooperationbase.cpp
+SOURCE			lbtcreatetriggeraooperation.cpp
+SOURCE			lbtsettingsmanager.cpp
+SOURCE			lbtlistaooperation.cpp
+SOURCE			lbttriggermodifyaooperation.cpp
+SOURCE 			lbtnotificationmap.cpp
+SOURCE			lbtdeletesessiontriggers.cpp
+SOURCE			lbtappchangehandler.cpp
+SOURCE			lbtcleanuphandler.cpp
+SOURCE      lbtsimchangehandler.cpp
+
+SYSTEMINCLUDE   /epoc32/include/ecom
+SYSTEMINCLUDE 	/epoc32/include/connect
+
+// system includes
+MW_LAYER_SYSTEMINCLUDE
+
+USERINCLUDE		../inc ../../inc ../../../inc
+
+START RESOURCE	../data/1028312C.rss
+TARGET	lbtserverlogic.rsc
+END
+
+LIBRARY			ecom.lib
+LIBRARY			euser.lib
+LIBRARY			lbtserverlogicbase.lib
+LIBRARY			lbt.lib
+LIBRARY     	lbtmanager.lib
+LIBRARY			lbtstrategypluginapi.lib
+LIBRARY			lbtcontainer.lib
+LIBRARY			Lbs.lib
+LIBRARY			estor.lib
+LIBRARY			centralrepository.lib
+LIBRARY			apgrfx.lib
+LIBRARY			apparc.lib
+LIBRARY     	PlatformEnv.lib
+LIBRARY 		efsrv.lib
+LIBRARY     	etel.lib
+LIBRARY     	etelmm.lib 
+LIBRARY     	commdb.lib
+LIBRARY    		lbtlogger.lib
+LIBRARY         flogger.lib
+
+PAGED
+
+SMPSAFE
+
+// end of file
+
+
+
+

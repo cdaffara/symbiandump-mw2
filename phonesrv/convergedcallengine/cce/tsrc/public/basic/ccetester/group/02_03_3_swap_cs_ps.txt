@@ -1,0 +1,91 @@
+/***************************************************
+   1. Create MO PS call
+   2. Put call on Hold
+   3. Create 2nd call, MT CS
+   4. Swap (connected call)
+   		Result: 2nd call is put on Hold, 1st is resumed
+   5. Swap (connected call)
+   		Result: 1st call is put on Hold, 2nd is resumed
+   6. Disconnect calls
+/***************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 2.3.3 Swap, CS and PS
+timeout 10000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test OpenNewCall 1 0 PS_Call 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+// Step 2
+print Step_2
+
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+// Step 3
+print Step_3
+
+// Send plugin command, CS MT call with CallID 2 is created
+// SendPluginRequest [pluginID] CreateCall (serviceID)
+// pluginID 1 => cpptestplugin (PS plugin), this is default value and is optional
+// pluginID 2 => cpptestplugin2 (CS plugin)
+test SendPluginRequest 2 CreateCall 1
+test WaitEvent 0 IncomingCall
+test WaitEvent 2 Queued
+
+// Answer call
+test Answer 2 0
+test WaitEvent 2 Answering
+test WaitEvent 2 Connected
+
+// Step 4
+print Step_4
+
+// Swap is called but there is only one CS call, when CCE handles Swap like in PS
+test Swap 2 0
+test WaitEvents 2 Hold, 1 Connected, 1 LocalResume, 2 LocalHold
+
+// Step 5
+print Step_5
+
+test Swap 1 0
+test WaitEvents 1 Hold, 2 Connected, 2 LocalResume, 1 LocalHold
+
+// Step 6
+print Step_6
+
+// Hangup and release calls
+test HangUp 1 0
+
+// CS Swap not completed, so it is cancelled
+test WaitEvent 1 ErrorOccurred -3
+
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+
+test Release 1 0
+
+test HangUp 2 0
+
+// CS Swap not completed, so it is cancelled
+test WaitEvent 2 ErrorOccurred -3
+
+test WaitEvent 2 Disconnecting
+test WaitEvent 2 Idle
+test Release 2 0
+
+test VerifyTest
+delete test
+[Endtest]

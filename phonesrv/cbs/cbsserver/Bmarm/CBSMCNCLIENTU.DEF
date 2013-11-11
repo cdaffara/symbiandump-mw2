@@ -1,0 +1,11 @@
+EXPORTS
+	NewL__4CMcn @ 1 NONAME R3UNUSED ; CMcn::NewL(void)
+	GetCellInfo__C4CMcnR6TDes16 @ 2 NONAME R3UNUSED ; CMcn::GetCellInfo(TDes16 &) const
+	NewL__14CMcnTopicArray @ 3 NONAME R3UNUSED ; CMcnTopicArray::NewL(void)
+	AddCbTopicL__14CMcnTopicArrayUs @ 4 NONAME R3UNUSED ; CMcnTopicArray::AddCbTopicL(unsigned short)
+	RegisterL__4CMcnP15MCbsMcnObserverRC14CMcnTopicArray @ 5 NONAME R3UNUSED ; CMcn::RegisterL(MCbsMcnObserver *, CMcnTopicArray const &)
+	Unregister__4CMcnP15MCbsMcnObserver @ 6 NONAME R3UNUSED ; CMcn::Unregister(MCbsMcnObserver *)
+	"_._4CMcn" @ 7 NONAME R3UNUSED ; CMcn::~CMcn(void)
+	GetInfoMessage__C4CMcnR6TDes16i @ 8 NONAME R3UNUSED ; CMcn::GetInfoMessage(TDes16 &, int) const
+	GetTopicNumber__C14CMcnTopicArrayRCUiRUi @ 9 NONAME R3UNUSED ; CMcnTopicArray::GetTopicNumber(unsigned int const &, unsigned int &) const
+

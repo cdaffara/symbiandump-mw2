@@ -1,0 +1,142 @@
+// Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// Project definition file for Imap test Server
+// 
+//
+
+CAPABILITY 		ALL -TCB
+TARGET			t_msgimapserver.exe
+TARGETTYPE		exe
+	UID			0x1000007A  0x1027406E
+	VENDORID 		0x70000001
+	EPOCHEAPSIZE 0x4000 0x1200000
+
+// Include the Framework 
+#include "../../../framework/group/T_MsgFramework.mph"
+
+
+
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+USERINCLUDE 	../inc 
+USERINCLUDE     ../../../../../../../app/messaging/email/pop3andsmtpmtm/clientmtms/inc
+SOURCEPATH	../src
+SOURCE		T_ImapServer.cpp
+SOURCE		T_MsgSharedDataImap.cpp
+SOURCE		T_MsgAsyncStepIMAP.cpp
+SOURCE		T_MsgSyncStepIMAP.cpp
+SOURCE		T_ModifyImapSettings.cpp
+SOURCE		T_CompareImapSettings.cpp
+SOURCE		T_VerifyImapSettings.cpp
+SOURCE		T_DeleteImapAccount.cpp
+SOURCE		T_VerifyImapAccountsCount.cpp
+SOURCE		T_CreateImapAccount.cpp
+SOURCE		T_DisConnectImap4Server.cpp	
+SOURCE		T_ConnectImap4Server.cpp
+SOURCE		T_ConnectAndSyncImap4Server.cpp
+SOURCE		T_CheckChildrenCountFlagBase.cpp
+SOURCE		T_DeleteAllImapChildren.cpp
+SOURCE		T_DoFullImap4Synchronisation.cpp
+SOURCE		T_Imap4Synchronisation.cpp
+SOURCE		T_InboxNewEmailsSync.cpp
+SOURCE		T_UtilsCompareEmailMessages.cpp
+SOURCE		T_UtilsEmailMessage.cpp
+SOURCE		T_SetImap4FullDownloadLimits.cpp
+SOURCE		T_SetImap4PartialDownloadLimits.cpp
+SOURCE		T_SetImap4ServiceIdleParameters.cpp
+SOURCE		T_ImapInvokeAsyncFunction.cpp
+SOURCE		T_CopyImapSelection.cpp
+SOURCE		T_FindEntryByName.cpp
+SOURCE		T_CompareEmailMessages.cpp
+SOURCE		T_CheckChildrenCountImap.cpp
+SOURCE		T_DeleteMessage.cpp
+SOURCE		T_CopyMessage.cpp
+SOURCE		T_RenameImapFolder.cpp
+SOURCE		T_SelectImapFolder.cpp
+SOURCE		T_CancelOfflineOperations.cpp
+SOURCE		T_CreateImap4Folder.cpp
+SOURCE		T_DeleteImap4Folder.cpp
+SOURCE		T_CopyImapSelectionRemote.cpp
+SOURCE		T_ChangeImap4SubAndSyncSettings.cpp
+SOURCE		T_CheckImap4Subscription.cpp
+SOURCE		T_SubscribeImap4Folder.cpp
+SOURCE		T_UnsubscribeImap4Folder.cpp
+SOURCE		T_IMAP4CheckIfConnected.cpp
+SOURCE		T_MoveMessage.cpp
+SOURCE		T_UnDeleteAll.cpp
+SOURCE		T_InitialiseImap4Account.cpp
+SOURCE		T_SetImap4EmailPriority.cpp
+SOURCE		T_CheckImap4EmailPriority.cpp
+SOURCE		T_IMAP4MsgEventObserver.cpp
+SOURCE		T_IMAP4MsgEventStore.cpp
+SOURCE		T_IMAP4SetEventObserver.cpp
+SOURCE		T_IMAP4RemoveEventObserver.cpp   
+SOURCE		T_IMAP4ObserverCkEventNCount.cpp
+SOURCE		T_IMAP4MoveAsyncFunction.cpp
+SOURCE		T_IMAP4CopyAsyncFunction.cpp
+SOURCE		T_FolderFullSync.cpp
+SOURCE 		T_DeleteAllMessage.cpp
+SOURCE		T_IsImap4Connected.cpp
+SOURCE		T_SetUnReadFlag.cpp
+SOURCE		T_StartRamUsageTimer.cpp
+SOURCE		T_StopRamUsageTimer.cpp
+SOURCE		T_ChangeImap4FolderSyncSettings.cpp
+SOURCE		T_CreateImapAccountWithoutSmtp.cpp
+SOURCE		T_CheckImapSNAPSetting.cpp
+SOURCE		T_RemoveImapSNAPSetting.cpp
+SOURCE		T_CheckImapBMSetting.cpp
+SOURCE		T_CreateImapAccountWithDLRules.cpp
+SOURCE		T_CheckImapSyncDLRules.cpp
+SOURCE		T_ModifyImapSyncDLRules.cpp
+SOURCE		T_DeleteImapSyncDLRules.cpp
+SOURCE		T_CheckImapDLRulesSetting.cpp
+SOURCE		T_AddImapSyncDLRules.cpp
+SOURCE		T_AddImap4TransportBufferSizes.cpp
+SOURCE		T_CheckImap4AccessPoint.cpp
+SOURCE		T_IsImapMessageHeaderOnly.cpp
+
+SOURCE		T_ChangeToExternalDrive.cpp
+SOURCE		T_ChangeToInternalDrive.cpp
+SOURCE		T_InsertMedia.cpp
+SOURCE		T_RemoveMedia.cpp
+SOURCE		T_CopyMsgsToExternalDrive.cpp
+SOURCE		t_cimap4clientmtm.cpp 
+SOURCE		t_verifyheaders.cpp
+
+#ifdef SYMBIAN_MSGS_ENHANCED_REMOVABLE_MEDIA_SUPPORT
+SOURCE		T_UpdateToExternalDrive.cpp
+SOURCE		T_CopyStoreImapToRemoteDrive.cpp
+SOURCE		T_DeleteStoreOfRemoteDrive.cpp
+#endif
+
+
+
+LIBRARY 		testexecuteutils.lib
+LIBRARY			testexecutelogclient.lib
+LIBRARY			imut.lib 
+LIBRARY			bafl.lib
+LIBRARY			etext.lib
+LIBRARY			estor.lib 
+LIBRARY			msgs.lib
+LIBRARY			euser.lib
+LIBRARY			imcm.lib
+LIBRARY			efsrv.lib
+LIBRARY			charconv.lib
+LIBRARY			t_msgutilityserver.lib
+LIBRARY			hal.lib
+LIBRARY			instrumentationhandler.lib
+LIBRARY			netmeta.lib
+
+EPOCHEAPSIZE 0x1000 0x800000
+SMPSAFE

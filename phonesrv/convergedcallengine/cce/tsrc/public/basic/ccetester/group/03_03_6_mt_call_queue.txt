@@ -1,0 +1,70 @@
+/***************************************************
+	 Description: Incoming call when there is another
+	              call on Hold
+
+   1. Create MO PS call
+   2. Put call on Hold
+   3. Incoming MT PS call
+      Expected: Call goes to Queued state
+   4. Answer MT call
+   5. Disconnect calls
+***************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 3.3.6 MT call, Queue when other call on Hold
+timeout 15000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test OpenNewCall 1 0 "Test call Create MT call" 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+// Step 2
+print Step_2
+
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+// Step 3
+print Step_3
+
+// Send plugin command, MT call with CallID 1 is created
+test SendPluginRequest CreateCall 2
+test WaitEvent 0 IncomingCall
+test WaitEvent 2 Queued		//Call is queued even the other call is on hold
+
+// Step 4
+print Step_4
+
+// Answer incoming call
+test Answer 2 0
+test WaitEvent 2 Answering
+test WaitEvent 2 Connected
+
+// Step 5
+print Step_5
+
+// Hangup and release calls
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+test HangUp 2 0
+test WaitEvent 2 Disconnecting
+test WaitEvent 2 Idle
+test Release 2 0
+
+test VerifyTest
+delete test
+[Endtest] 

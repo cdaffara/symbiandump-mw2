@@ -1,0 +1,38 @@
+/*
+* Copyright (c) 2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:   Localisation file for SUPL Provisioning
+*
+*/
+
+
+
+
+// LOCALISATION STRINGS
+
+//****************************************************************
+//SUPL Adapter
+
+//d: Summary text for supl settings
+//l: popup_info_list_pane_t2/opt1 
+//
+#define qtn_sm_suplsetting "SUPL settings:"
+
+
+//d:This is the default name for SUPL settings.
+//d: Maximum lenght is 30 characters.
+//l: query_popup_data_pane_t1/opt4
+//
+#define qtn_sm_remote_settings_name "New SUPL Settings"
+
+// End of File

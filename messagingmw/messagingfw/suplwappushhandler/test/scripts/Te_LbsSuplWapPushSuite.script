@@ -1,0 +1,34 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// The TEF script file for the SUPL WAP Push unit test suite.
+// 
+//
+
+PRINT Run all Te_LbsSuplWapPushSuite Tests
+
+LOAD_SUITE Te_LbsSuplWapPushSuite
+
+
+
+START_TESTCASE                LBS-UT-SupWapPush-0001
+//! @SYMTestCaseID              LBS-UT-SupWapPush-0001
+//! @SYMTestType                UT
+//! @SYMCreationDate            1/8/2008
+//! @SYMAuthor                  Brajendras
+RUN_TEST_STEP 1000 Te_LbsSuplWapPushSuite LbsSuplWapPushStep
+END_TESTCASE                  LBS-UT-SupWapPush-0001
+
+
+
+PRINT Complete all Te_LbsSuplWapPushSuite Tests

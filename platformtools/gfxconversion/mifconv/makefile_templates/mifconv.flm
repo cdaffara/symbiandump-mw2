@@ -1,0 +1,84 @@
+#
+# Copyright (c) 2010 Nokia Corporation and/or its subsidiary(-ies). 
+# All rights reserved.
+# This component and the accompanying materials are made available
+# under the terms of "Eclipse Public License v1.0"
+# which accompanies this distribution, and is available
+# at the URL "http://www.eclipse.org/legal/epl-v10.html".
+#
+# Initial Contributors:
+# Nokia Corporation - initial contribution.
+#
+# Contributors:
+# 
+# Description:
+# 
+#
+
+# run a script to call mifconv and svgtbinencode
+
+# only run once per TARGETFILE, but gather up all the requested PLATFORM + CFG
+# pairs so that the script can copy the target files to the other locations
+# required for different platforms.
+
+# note that TARGET_PLATFORMS is escaped in the macro so that it is not
+# expanded until the command runs, ensuring that it contains all the values.
+
+TARGET_PLATFORMS:=$(call sanitise,$(TARGETFILE)_mif)
+
+ifeq ($($(TARGET_PLATFORMS)),)
+$(TARGET_PLATFORMS):=$(PLATFORM) $(CFG)
+
+SCRIPT:=$(PYTHON) $(EPOCROOT)/epoc32/tools/mifconv_wrapper.py
+MANIFEST:=$(EPOCBLD)/$(TARGET_PLATFORMS)
+
+# macro to define rules for different phony targets
+#
+# run the script as a recipe, producing a manifest file as output.
+# then use the manifest file to generate the whatlog tags.
+#
+# $1 is BITMAP or CLEAN
+#
+define mifconvwrapper
+$1::
+	$(call startrule,mifconvwrapper,FORCESUCCESS) \
+	$(SCRIPT) \
+	  $(if $(FLMDEBUG),--debug="on") \
+	  --epocroot="$(EPOCROOT)" \
+	  --extroot="$(EXTENSION_ROOT)" \
+	  --make="$1" \
+	  --manifest="$(MANIFEST)" \
+	  --platforms="$$($(TARGET_PLATFORMS))" \
+	  $(if $(TARGETFILE),--target="$(TARGETFILE)") \
+	  $(if $(HEADERFILE),--header="$(HEADERFILE)") \
+	  $(if $(SOURCES),--sources="$(SOURCES)") \
+	  $(if $(SOURCEFILE),--sourcefile="$(SOURCEFILE)") \
+	  $(if $(SOURCEDIR),--sourcedir="$(SOURCEDIR)") \
+	  $(if $(SVGENCODINGVERSION),--svgversion="$(SVGENCODINGVERSION)") \
+	$(call endrule,mifconvwrapper)
+	$(call startrawoutput) \
+	echo "$(call whatLogOpen)" ; \
+	$(GNUCAT) $(MANIFEST) | \
+	(read -r LINE; while [ $$$$? -eq 0 ]; do \
+	echo "$(call whatLogItem,BITMAP,$$$$LINE)"; \
+	read -r LINE; done; ); \
+	echo "$(call whatLogClose)" \
+	$(call endrawoutput)
+	$(GNURM) $(MANIFEST)
+endef
+
+# if we are doing CLEAN or REALLYCLEAN then just include the CLEAN target,
+# otherwise just include the BITMAP target
+#
+ifeq ($(filter %CLEAN,$(call uppercase,$(MAKECMDGOALS))),)
+$(eval $(call mifconvwrapper,BITMAP))
+else
+$(eval $(call mifconvwrapper,CLEAN))
+endif
+
+else
+# this is an additional platform so append to the list
+
+$(TARGET_PLATFORMS)+=$(PLATFORM) $(CFG)
+
+endif # TARGET_PLATFORMS

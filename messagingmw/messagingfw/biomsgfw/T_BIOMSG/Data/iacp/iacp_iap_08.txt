@@ -1,0 +1,13 @@
+//SIAP11
+password
+Iname:iap_08
+Itel:
+Iuid:user_iap_08
+Ipwp:
+IPwd:pass_iap_08
+Iini:modem init iap_08
+Iip:
+Idns1:
+Idns2:
+Imsk:
+Idgw:

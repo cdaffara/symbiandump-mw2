@@ -1,0 +1,18 @@
+EXPORTS
+	??1CPosLmDatabaseIterator@@UAE@XZ @ 1 NONAME ; CPosLmDatabaseIterator::~CPosLmDatabaseIterator(void)
+	??1CPosLmDbRegistry@@UAE@XZ @ 2 NONAME ; CPosLmDbRegistry::~CPosLmDbRegistry(void)
+	?Compact@CPosLmDbRegistry@@QAEHXZ @ 3 NONAME ; int CPosLmDbRegistry::Compact(void)
+	?CreateL@CPosLmDbRegistry@@QAEXAAVRFs@@ABVTDesC16@@@Z @ 4 NONAME ; void CPosLmDbRegistry::CreateL(class RFs &, class TDesC16 const &)
+	?GetSettingsL@CPosLmDatabaseIterator@@QAEXAAVTPosLmDatabaseSettings@@@Z @ 5 NONAME ; void CPosLmDatabaseIterator::GetSettingsL(class TPosLmDatabaseSettings &)
+	?ListDatabasesL@CPosLmDbRegistry@@QAEPAVCPosLmDatabaseIterator@@ABVTDesC16@@@Z @ 6 NONAME ; class CPosLmDatabaseIterator * CPosLmDbRegistry::ListDatabasesL(class TDesC16 const &)
+	?ModifyDatabaseSettingsL@CPosLmDbRegistry@@QAEXABVTDesC16@@ABVTPosLmDatabaseSettings@@@Z @ 7 NONAME ; void CPosLmDbRegistry::ModifyDatabaseSettingsL(class TDesC16 const &, class TPosLmDatabaseSettings const &)
+	?NewL@CPosLmDatabaseIterator@@SAPAV1@AAVRDbView@@@Z @ 8 NONAME ; class CPosLmDatabaseIterator * CPosLmDatabaseIterator::NewL(class RDbView &)
+	?NewL@CPosLmDbRegistry@@SAPAV1@XZ @ 9 NONAME ; class CPosLmDbRegistry * CPosLmDbRegistry::NewL(void)
+	?NextItemL@CPosLmDatabaseIterator@@QAEHXZ @ 10 NONAME ; int CPosLmDatabaseIterator::NextItemL(void)
+	?Open@CPosLmDbRegistry@@QAEHAAVRFs@@ABVTDesC16@@@Z @ 11 NONAME ; int CPosLmDbRegistry::Open(class RFs &, class TDesC16 const &)
+	?ReadDatabaseSettingsL@CPosLmDbRegistry@@QAEXABVTDesC16@@AAVTPosLmDatabaseSettings@@@Z @ 12 NONAME ; void CPosLmDbRegistry::ReadDatabaseSettingsL(class TDesC16 const &, class TPosLmDatabaseSettings &)
+	?RegisterDatabaseL@CPosLmDbRegistry@@QAEXABVTDesC16@@ABVTPosLmDatabaseSettings@@@Z @ 13 NONAME ; void CPosLmDbRegistry::RegisterDatabaseL(class TDesC16 const &, class TPosLmDatabaseSettings const &)
+	?UnregisterAllL@CPosLmDbRegistry@@QAEXABVTDesC16@@@Z @ 14 NONAME ; void CPosLmDbRegistry::UnregisterAllL(class TDesC16 const &)
+	?UnregisterDatabaseL@CPosLmDbRegistry@@QAEXABVTDesC16@@@Z @ 15 NONAME ; void CPosLmDbRegistry::UnregisterDatabaseL(class TDesC16 const &)
+	?UriL@CPosLmDatabaseIterator@@QAE?AVTPtrC16@@XZ @ 16 NONAME ; class TPtrC16 CPosLmDatabaseIterator::UriL(void)
+

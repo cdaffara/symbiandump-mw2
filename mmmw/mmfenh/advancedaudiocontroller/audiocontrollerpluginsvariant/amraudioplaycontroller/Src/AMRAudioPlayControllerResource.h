@@ -1,0 +1,77 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  This class implements resource file handling for AMR PlayControllerPlugin.
+*
+*/
+
+
+
+#ifndef CAMRAUDIOPLAYCONTROLLERRESOURCE_H
+#define CAMRAUDIOPLAYCONTROLLERRESOURCE_H
+
+// INCLUDES
+#include "AdvancedAudioResource.h"
+
+// CLASS DECLARATION
+
+/**
+*  This class implements resource file handling functions.
+*
+*  @lib AMRAudioPlayControllerPlugin.lib
+*  @since 3.0
+*/
+class CAMRAudioPlayControllerResource : public CAdvancedAudioResource
+	{
+    public:  // Constructors and destructor
+
+        /**
+        * Two-phased constructor.
+        */
+        static CAMRAudioPlayControllerResource* NewL();
+
+        /**
+        * Destructor.
+        */
+        virtual ~CAMRAudioPlayControllerResource();
+
+    private: // Functions from base classes
+
+		/**
+        * From CAdvancedAudioResource
+        * Reads the configuration parameters for the AMR codec.
+        * @since 3.0
+        * @param	none
+        * @return	void
+        */
+		void ReadCodecConfigParametersL();
+
+    private:
+
+        /**
+        * C++ default constructor.
+        */
+        CAMRAudioPlayControllerResource();
+
+        /**
+        * By default Symbian 2nd phase constructor is private.
+        */
+        void ConstructL();
+
+    private:	// Data
+
+	};
+
+#endif      // CAMRAUDIOPLAYCONTROLLERRESOURCE_H
+
+// End of File

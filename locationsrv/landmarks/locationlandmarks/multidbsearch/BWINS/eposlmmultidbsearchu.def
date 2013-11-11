@@ -1,0 +1,20 @@
+EXPORTS
+	??1CPosLmMultiDbSearch@@UAE@XZ @ 1 NONAME ; CPosLmMultiDbSearch::~CPosLmMultiDbSearch(void)
+	?DatabaseUriPtr@CPosLmMultiDbSearch@@QBE?AVTPtrC16@@I@Z @ 2 NONAME ; class TPtrC16 CPosLmMultiDbSearch::DatabaseUriPtr(unsigned int) const
+	?DatabasesToSearchL@CPosLmMultiDbSearch@@QAEPAVCDesC16Array@@XZ @ 3 NONAME ; class CDesC16Array * CPosLmMultiDbSearch::DatabasesToSearchL(void)
+	?GetSearchError@CPosLmMultiDbSearch@@QBEXIAAUTSearchError@1@@Z @ 4 NONAME ; void CPosLmMultiDbSearch::GetSearchError(unsigned int, struct CPosLmMultiDbSearch::TSearchError &) const
+	?MatchIteratorL@CPosLmMultiDbSearch@@QAEPAVCPosLmItemIterator@@I@Z @ 5 NONAME ; class CPosLmItemIterator * CPosLmMultiDbSearch::MatchIteratorL(unsigned int)
+	?MaxNumOfMatches@CPosLmMultiDbSearch@@QBEHXZ @ 6 NONAME ; int CPosLmMultiDbSearch::MaxNumOfMatches(void) const
+	?NewL@CPosLmMultiDbSearch@@SAPAV1@ABVCDesC16Array@@@Z @ 7 NONAME ; class CPosLmMultiDbSearch * CPosLmMultiDbSearch::NewL(class CDesC16Array const &)
+	?NumOfDatabasesToSearch@CPosLmMultiDbSearch@@QBEIXZ @ 8 NONAME ; unsigned int CPosLmMultiDbSearch::NumOfDatabasesToSearch(void) const
+	?NumOfMatches@CPosLmMultiDbSearch@@QBEII@Z @ 9 NONAME ; unsigned int CPosLmMultiDbSearch::NumOfMatches(unsigned int) const
+	?NumOfSearchErrors@CPosLmMultiDbSearch@@QBEIXZ @ 10 NONAME ; unsigned int CPosLmMultiDbSearch::NumOfSearchErrors(void) const
+	?SetDatabasesToSearchL@CPosLmMultiDbSearch@@QAEXABVCDesC16Array@@@Z @ 11 NONAME ; void CPosLmMultiDbSearch::SetDatabasesToSearchL(class CDesC16Array const &)
+	?SetDisplayData@CPosLmMultiDbSearch@@QAEXAAVCPosLmDisplayData@@@Z @ 12 NONAME ; void CPosLmMultiDbSearch::SetDisplayData(class CPosLmDisplayData &)
+	?SetMaxNumOfMatches@CPosLmMultiDbSearch@@QAEXH@Z @ 13 NONAME ; void CPosLmMultiDbSearch::SetMaxNumOfMatches(int)
+	?StartCategorySearchL@CPosLmMultiDbSearch@@QAEPAVCPosLmOperation@@ABVCPosLmSearchCriteria@@W4TCategorySortPref@CPosLmCategoryManager@@H@Z @ 14 NONAME ; class CPosLmOperation * CPosLmMultiDbSearch::StartCategorySearchL(class CPosLmSearchCriteria const &, enum CPosLmCategoryManager::TCategorySortPref, int)
+	?StartLandmarkSearchL@CPosLmMultiDbSearch@@QAEPAVCPosLmOperation@@ABVCPosLmSearchCriteria@@ABVTPosLmSortPref@@H@Z @ 15 NONAME ; class CPosLmOperation * CPosLmMultiDbSearch::StartLandmarkSearchL(class CPosLmSearchCriteria const &, class TPosLmSortPref const &, int)
+	?StartLandmarkSearchL@CPosLmMultiDbSearch@@QAEPAVCPosLmOperation@@ABVCPosLmSearchCriteria@@H@Z @ 16 NONAME ; class CPosLmOperation * CPosLmMultiDbSearch::StartLandmarkSearchL(class CPosLmSearchCriteria const &, int)
+	?TotalNumOfMatches@CPosLmMultiDbSearch@@QBEIXZ @ 17 NONAME ; unsigned int CPosLmMultiDbSearch::TotalNumOfMatches(void) const
+	?UnsetDisplayData@CPosLmMultiDbSearch@@QAEXXZ @ 18 NONAME ; void CPosLmMultiDbSearch::UnsetDisplayData(void)
+

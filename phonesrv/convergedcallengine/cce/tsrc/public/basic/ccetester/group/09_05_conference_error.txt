@@ -1,0 +1,70 @@
+/******************************************
+  1. Create conference of 2 calls
+  2. Hangup the 2nd call
+     Expected: - Both calls are removed from conference
+               - Conference is ended
+               - 2nd call is disconnected
+  3. Try to hangup conference (KErrNotReady)
+  4. Hangup 1st call
+*******************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 9.5 Conference Call, Error
+timeout 15000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test OpenNewCall 1 0 Conf_A@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+test OpenNewCall 2 0 RecipientTwo 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 2 0 SubAddress Bearer
+test WaitEvent 2 Dialling
+test WaitEvent 2 Connecting
+test WaitEvent 2 Connected
+
+test AddToConference 1 0
+test WaitEvent ConferenceCallAdded 1
+
+test AddToConference 2 0
+// Plugin sets call to match conference state (connected)
+test WaitEvents ConferenceCallAdded 2, ConferenceActive, 1 Connected
+
+// Step 2
+print Step_2
+
+test HangUp 2 0
+test WaitEvents 2 Disconnecting, ConferenceCallRemoved 2, 2 Idle, ConferenceCallRemoved 1, ConferenceIdle
+test Release 2 0
+
+// Call 1 is still Connected
+
+// Step 3
+print Step_3
+
+test HangupConference -18
+
+// Step 4
+print Step_4
+
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+test VerifyTest
+delete test
+[Endtest]

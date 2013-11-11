@@ -1,0 +1,117 @@
+// Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+PRJ_TESTMMPFILES
+
+T_Performance421.mmp manual
+T_Performance422.mmp manual
+T_Performance423.mmp manual
+T_Performance424.mmp manual
+T_Performance425.mmp manual
+T_Performance426.mmp manual
+T_Performance427.mmp manual
+T_Performance428.mmp manual
+
+PRJ_TESTEXPORTS
+
+//armv5
+../testdata/T_Performance1KBody.txt				+/release/armv5/urel/z/msgtest/t_performance1kbody.txt	
+../testdata/T_Performance2KBody.txt				+/release/armv5/urel/z/msgtest/t_performance2kbody.txt	
+../testdata/T_Performance43KImage.jpg			+/release/armv5/urel/z/msgtest/t_performance43kimage.jpg
+
+//T_Performance421
+//armv5
+../scripts/T_Performance421.script			+/release/armv5/urel/z/msgtest/t_performance421.script
+../testdata/T_Performance421.ini				+/release/armv5/urel/z/msgtest/t_performance421.ini
+
+../group/T_Performance421.iby   			/epoc32/rom/include/t_performance421.iby
+
+//T_Performance422
+//armv5
+../scripts/T_Performance422.script			+/release/armv5/urel/z/msgtest/t_performance422.script
+../testdata/T_Performance422.ini				+/release/armv5/urel/z/msgtest/t_performance422.ini
+
+../group/T_Performance422.iby   			/epoc32/rom/include/t_performance422.iby
+
+//T_Performance423
+//armv5
+../testdata/T_Performance423Body.txt			+/release/armv5/urel/z/msgtest/t_performance423body.txt
+../scripts/T_Performance423.script			+/release/armv5/urel/z/msgtest/t_performance423.script
+../testdata/T_Performance423.ini				+/release/armv5/urel/z/msgtest/t_performance423.ini
+
+../group/T_Performance423.iby   			/epoc32/rom/include/t_performance423.iby
+
+//T_Performance424
+//armv5
+../scripts/T_Performance424.script			+/release/armv5/urel/z/msgtest/t_performance424.script
+../testdata/T_Performance424.ini				+/release/armv5/urel/z/msgtest/t_performance424.ini
+../testdata/T_Performance302KImage.jpg			+/release/armv5/urel/z/msgtest/t_performance302kimage.jpg
+
+../group/T_Performance424.iby  				/epoc32/rom/include/t_performance424.iby
+
+//T_Performance425
+//armv5
+../scripts/T_Performance425.script			+/release/armv5/urel/z/msgtest/t_performance425.script
+../testdata/T_Performance425.ini				+/release/armv5/urel/z/msgtest/t_performance425.ini
+
+../group/T_Performance425.iby   			/epoc32/rom/include/t_performance425.iby
+
+//T_Performance426
+//armv5
+../scripts/T_Performance426.script			+/release/armv5/urel/z/msgtest/t_performance426.script
+../testdata/T_Performance426.ini				+/release/armv5/urel/z/msgtest/t_performance426.ini
+
+
+../group/T_Performance426.iby   			/epoc32/rom/include/t_performance426.iby
+
+//T_Performance427
+//armv5
+../scripts/T_Performance427.script			+/release/armv5/urel/z/msgtest/t_performance427.script
+../testdata/T_Performance427.ini				+/release/armv5/urel/z/msgtest/t_performance427.ini
+
+../group/T_Performance427.iby   			/epoc32/rom/include/t_performance427.iby
+
+//T_Performance428
+
+//armv5
+../scripts/T_Performance428.script			+/release/armv5/urel/z/msgtest/t_performance428.script
+../testdata/T_Performance428.ini				+/release/armv5/urel/z/msgtest/t_performance428.ini
+
+../group/T_Performance428.iby   			/epoc32/rom/include/t_performance428.iby
+
+//XML
+
+../testdriver/Performance.XML				/epoc32/testdriver/testproduct/messaging/email/performance.xml
+../testdriver/Performance/T_Performance421_test.xml	/epoc32/testdriver/testproduct/messaging/email/performance/t_performance421_test.xml
+../testdriver/Performance/T_Performance422_test.xml	/epoc32/testdriver/testproduct/messaging/email/performance/t_performance422_test.xml
+../testdriver/Performance/T_Performance423_test.xml	/epoc32/testdriver/testproduct/messaging/email/performance/t_performance423_test.xml
+../testdriver/Performance/T_Performance424_test.xml	/epoc32/testdriver/testproduct/messaging/email/performance/t_performance424_test.xml
+../testdriver/Performance/T_Performance425_test.xml	/epoc32/testdriver/testproduct/messaging/email/performance/t_performance425_test.xml
+../testdriver/Performance/T_Performance426_test.xml	/epoc32/testdriver/testproduct/messaging/email/performance/t_performance426_test.xml
+../testdriver/Performance/T_Performance427_test.xml	/epoc32/testdriver/testproduct/messaging/email/performance/t_performance427_test.xml
+../testdriver/Performance/T_Performance428_test.xml	/epoc32/testdriver/testproduct/messaging/email/performance/t_performance428_test.xml
+
+../testdriver/Performance/testExecuteServers/T_Performance421.xml	/epoc32/testdriver/testproduct/messaging/email/performance/testexecuteservers/t_performance421.xml
+../testdriver/Performance/testExecuteServers/T_Performance422.xml	/epoc32/testdriver/testproduct/messaging/email/performance/testexecuteservers/t_performance422.xml
+../testdriver/Performance/testExecuteServers/T_Performance423.xml	/epoc32/testdriver/testproduct/messaging/email/performance/testexecuteservers/t_performance423.xml
+../testdriver/Performance/testExecuteServers/T_Performance424.xml	/epoc32/testdriver/testproduct/messaging/email/performance/testexecuteservers/t_performance424.xml
+../testdriver/Performance/testExecuteServers/T_Performance425.xml	/epoc32/testdriver/testproduct/messaging/email/performance/testexecuteservers/t_performance425.xml
+../testdriver/Performance/testExecuteServers/T_Performance426.xml	/epoc32/testdriver/testproduct/messaging/email/performance/testexecuteservers/t_performance426.xml
+../testdriver/Performance/testExecuteServers/T_Performance427.xml	/epoc32/testdriver/testproduct/messaging/email/performance/testexecuteservers/t_performance427.xml
+../testdriver/Performance/testExecuteServers/T_Performance428.xml	/epoc32/testdriver/testproduct/messaging/email/performance/testexecuteservers/t_performance428.xml
+
+
+

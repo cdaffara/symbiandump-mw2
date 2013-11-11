@@ -1,0 +1,142 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRINT Running  EMsvRemoveEntry
+
+//******************************************
+// We should have ReadData capability to Read the Entry. 
+// The SID when attempting to read the entry should be the same as that process which tried to add the entry.
+//******************************************
+
+PRINT Running  EMsvRemoveEntry : Caps = ReadWriteUserdata/WriteUserData. Same SID. Should Pass.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_caps.exe 0003fffe -SID 101F7776 C:\sys\bin\MessagingTestServer.exe
+
+RUN_PROGRAM -1 setcap c:\sys\bin\SendProxyServer_caps.exe 00018000 -SID 101F7776 C:\sys\bin\SendProxyServer.exe
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateSingleEntryInbox.script
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvRemoveEntry_Pass.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+//******************************************
+// We do not have any ability to read from the inbox.
+// Since we own the entry, ie same SID, we should succeed. 
+//******************************************
+
+PRINT Running  EMsvRemoveEntry : Read Caps = 0. Same SID. Should Pass.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_caps.exe 0003fffe -SID 101F7776 C:\sys\bin\MessagingTestServer.exe
+RUN_PROGRAM -1 setcap c:\sys\bin\SendProxyServer_caps.exe 00000000 -SID 101F7776 C:\sys\bin\SendProxyServer.exe
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateSingleEntryInbox.script
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvRemoveEntry_Pass.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+
+
+//******************************************
+// We do not have any ability to read from the inbox.
+// Since we have  ReadUserData/WriteUserData it should pass.
+//******************************************
+
+PRINT Running  EMsvRemoveEntry : Read Caps = WriteUserData. Different SID. Should Pass.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_caps.exe 0003fffe -SID 101F7776 C:\sys\bin\MessagingTestServer.exe
+
+RUN_PROGRAM -1 setcap c:\sys\bin\SendProxyServer_caps.exe 00018000 -SID 101F7777 C:\sys\bin\SendProxyServer.exe
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateSingleEntryInbox.script
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvRemoveEntry_Pass.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+
+
+//******************************************
+// We do not have any ability to read from the inbox.
+// Since we have only WriteUserData it should fail.
+//******************************************
+
+PRINT Running  EMsvRemoveEntry : Read Caps = WriteUserData. Different SID. Should Fail.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_caps.exe 0003fffe -SID 101F7776 C:\sys\bin\MessagingTestServer.exe
+
+RUN_PROGRAM -1 setcap c:\sys\bin\SendProxyServer_caps.exe 00010000 -SID 101F7777 C:\sys\bin\SendProxyServer.exe
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateSingleEntryInbox.script
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvRemoveEntry_Fail.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+
+//******************************************
+// We do not have any ability to read from the inbox.
+// Since we have only ReadUserData it should fail.
+//******************************************
+
+PRINT Running  EMsvRemoveEntry : Read Caps = ReadUserData. Different SID. Should Fail.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_caps.exe 0003fffe -SID 101F7776 C:\sys\bin\MessagingTestServer.exe
+
+RUN_PROGRAM -1 setcap c:\sys\bin\SendProxyServer_caps.exe 00008000 -SID 101F7777 C:\sys\bin\SendProxyServer.exe
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateSingleEntryInbox.script
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvRemoveEntry_Fail.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+
+//******************************************
+// We do not have any ability to read from the inbox.
+// Since we have ReadUserData it should succeed.
+//******************************************
+
+PRINT Running  EMsvRemoveEntry : Read Caps = 0. Different SID. Should Fail
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_caps.exe 0003fffe -SID 101F7776 C:\sys\bin\MessagingTestServer.exe
+
+RUN_PROGRAM -1 setcap c:\sys\bin\SendProxyServer_caps.exe 00000000 -SID 101F7777 C:\sys\bin\SendProxyServer.exe
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateSingleEntryInbox.script
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvRemoveEntry_Fail.script
+
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script

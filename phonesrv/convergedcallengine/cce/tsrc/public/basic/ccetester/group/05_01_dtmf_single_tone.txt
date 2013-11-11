@@ -1,0 +1,81 @@
+/*******************************************************************
+   1. Create MO call
+   2. Send a serie of DTMF tone
+   3. Disconnect call
+*******************************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 5.1 DTMF, Single Tone
+timeout 10000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test OpenNewCall 1 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+// Step 2
+print Step_2
+
+test StartDtmfTone 0 3
+test WaitEvent 0 DtmfManualStart 0 3
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+test StartDtmfTone 0 1
+test WaitEvent DtmfManualStart 0 1
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+test StartDtmfTone 0 2
+test WaitEvent DtmfManualStart 0 2
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+test StartDtmfTone 0 4
+test WaitEvent DtmfManualStart 0 4
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+test StartDtmfTone 0 0
+test WaitEvent DtmfManualStart 0 0
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+test StartDtmfTone 0 5
+test WaitEvent DtmfManualStart 0 5
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+test StartDtmfTone 0 6
+test WaitEvent DtmfManualStart 0 6
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+test StartDtmfTone 0 7
+test WaitEvent DtmfManualStart 0 7
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+test StartDtmfTone 0 8
+test WaitEvent DtmfManualStart 0 8
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+test StartDtmfTone 0 9
+test WaitEvent DtmfManualStart 0 9
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+
+// Step 3
+print Step_3
+
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+test VerifyTest
+delete test
+[Endtest] 

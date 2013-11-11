@@ -1,0 +1,35 @@
+/*
+* Copyright (c) 2006-2008 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  File that exports the files belonging to 
+*               CBS MCN Client API
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+../inc/ccbsmcnlistener.h    MW_LAYER_PLATFORM_EXPORT_PATH(ccbsmcnlistener.h)
+../inc/cbsmcnpanic.h        MW_LAYER_PLATFORM_EXPORT_PATH(cbsmcnpanic.h)
+../inc/cbsmcncommon.h       MW_LAYER_PLATFORM_EXPORT_PATH(cbsmcncommon.h)
+../inc/cmcntopicarray.h     MW_LAYER_PLATFORM_EXPORT_PATH(cmcntopicarray.h)
+../inc/rcbsmcnsession.h     MW_LAYER_PLATFORM_EXPORT_PATH(rcbsmcnsession.h)
+../inc/cmcn.h               MW_LAYER_PLATFORM_EXPORT_PATH(cmcn.h)
+../inc/rmcnsubsession.h     MW_LAYER_PLATFORM_EXPORT_PATH(rmcnsubsession.h)
+../inc/mcbsmcnobserver.h    MW_LAYER_PLATFORM_EXPORT_PATH(mcbsmcnobserver.h)
+

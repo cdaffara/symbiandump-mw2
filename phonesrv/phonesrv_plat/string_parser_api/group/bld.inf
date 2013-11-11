@@ -1,0 +1,42 @@
+/*
+* Copyright (c) 2006-2008 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  File that exports the files belonging to 
+:                String Parser API
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+../inc/phonegsmparser.h     MW_LAYER_PLATFORM_EXPORT_PATH(phonegsmparser.h)
+../inc/cphonegsmphonenumberhandler.h     MW_LAYER_PLATFORM_EXPORT_PATH(cphonegsmphonenumberhandler.h)
+../inc/cphonegsmparserresult.inl     MW_LAYER_PLATFORM_EXPORT_PATH(cphonegsmparserresult.inl)
+../inc/cphonegsmhandlercontainer.h     MW_LAYER_PLATFORM_EXPORT_PATH(cphonegsmhandlercontainer.h)
+../inc/cphonegsmparserresult.h     MW_LAYER_PLATFORM_EXPORT_PATH(cphonegsmparserresult.h)
+../inc/cphonegsmhandlerbase.h     MW_LAYER_PLATFORM_EXPORT_PATH(cphonegsmhandlerbase.h)
+../inc/cphonegsmsscallhandler.h     MW_LAYER_PLATFORM_EXPORT_PATH(cphonegsmsscallhandler.h)
+../inc/cphonegsmmischandler.h     MW_LAYER_PLATFORM_EXPORT_PATH(cphonegsmmischandler.h)
+../inc/cphonegsmparserbase.h     MW_LAYER_PLATFORM_EXPORT_PATH(cphonegsmparserbase.h)
+../inc/cphonegsmmanufacturerhandler.h     MW_LAYER_PLATFORM_EXPORT_PATH(cphonegsmmanufacturerhandler.h)
+../inc/cphonegsmsimcontrolhandler.h     MW_LAYER_PLATFORM_EXPORT_PATH(cphonegsmsimcontrolhandler.h)
+../inc/cphonegsmpcnprocedurehandler.h     MW_LAYER_PLATFORM_EXPORT_PATH(cphonegsmpcnprocedurehandler.h)
+../inc/cphonegsmsshandler.h     MW_LAYER_PLATFORM_EXPORT_PATH(cphonegsmsshandler.h)
+../inc/cphonegsmoptioncontainerbase.h     MW_LAYER_PLATFORM_EXPORT_PATH(cphonegsmoptioncontainerbase.h)
+../inc/cphonegsmemergencynumberhandler.h MW_LAYER_PLATFORM_EXPORT_PATH(cphonegsmemergencynumberhandler.h)
+../inc/cphonevoipnumberhandler.h MW_LAYER_PLATFORM_EXPORT_PATH(cphonevoipnumberhandler.h)

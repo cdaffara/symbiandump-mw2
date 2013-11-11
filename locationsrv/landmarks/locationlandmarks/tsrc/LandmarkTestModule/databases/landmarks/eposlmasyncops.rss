@@ -1,0 +1,144 @@
+/*
+* Copyright (c) 2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*   transaction for an aysynchronous operation.
+*
+*/
+
+
+//  INCLUDES
+#include <uikon.rh>
+
+//  RESOURCE SIGNATURE
+RESOURCE RSS_SIGNATURE { }
+
+//  RESOURCE DEFINITIONS
+
+// -----------------------------------------------------------------------------
+//
+// R_POS_LM_LOCAL_ADD_CAT_TO_LMS_OP
+// Number of landmarks to change with addition of new category within each 
+// transaction for the CPosLmLocalCategoryManager::AddCategoryToLandmarksL 
+// operation.
+// Limits: value > 0
+//
+// -----------------------------------------------------------------------------
+
+RESOURCE NUMBER_INT32 r_pos_lm_local_add_cat_to_lms_op 
+    { 
+    value="5"; 
+    }
+
+// -----------------------------------------------------------------------------
+//
+// R_POS_LM_LOCAL_REMOVE_LMS_OP
+// Number of landmarks to remove within each transaction for the 
+// CPosLmLocalDatabase::RemoveLandmarksL operation.
+// Limits: value > 0
+//
+// -----------------------------------------------------------------------------
+
+RESOURCE NUMBER_INT32 r_pos_lm_local_remove_lms_op 
+    { 
+    value="5"; 
+    }
+
+// -----------------------------------------------------------------------------
+//
+// R_POS_LM_LOCAL_REMOVE_ALL_LMS_OP
+// Number of landmarks to remove within each transaction for the 
+// CPosLmLocalDatabase::RemoveAllLandmarksL operation.
+// Limits: value > 0
+//
+// -----------------------------------------------------------------------------
+
+RESOURCE NUMBER_INT32 r_pos_lm_local_remove_all_lms_op 
+    { 
+    value="5"; 
+    }
+
+// -----------------------------------------------------------------------------
+//
+// R_POS_LM_LOCAL_REMOVE_CAT_OP
+// Deletes a category from all landmarks in one transaction (one SQL query). 
+// Because of this there is no need for setting a value of removing a single 
+// category (reserved for future changes).
+// Limits: value = 0
+//
+// -----------------------------------------------------------------------------
+
+RESOURCE NUMBER_INT32 r_pos_lm_local_remove_cat_op 
+    { 
+    value="0";
+    }
+
+// -----------------------------------------------------------------------------
+//
+// R_POS_LM_LOCAL_REMOVE_CATS_OP
+// Number of categories to remove within each transaction for the 
+// CPosLmLocalCategoryManager::RemoveCategoriesL operation.
+// Limits: value > 0
+//
+// -----------------------------------------------------------------------------
+
+RESOURCE NUMBER_INT32 r_pos_lm_local_remove_cats_op 
+    { 
+    value="-2"; 
+    }
+
+// -----------------------------------------------------------------------------
+//
+// R_POS_LM_LOCAL_REMOVE_CAT_FROM_LMS_OP
+// Number of landmarks to change with removal of category within each 
+// transaction for the CPosLmLocalCategoryManager::RemoveCategoryFromLandmarksL 
+// operation.
+// Limits: value > 0
+//
+// -----------------------------------------------------------------------------
+
+RESOURCE NUMBER_INT32 r_pos_lm_local_remove_cat_from_lms_op 
+    { 
+    value="5"; 
+    }
+
+// -----------------------------------------------------------------------------
+//
+// R_POS_LM_LOCAL_READ_PARTIAL_LMS_OP
+// Number of partial landmarks to read before notifying the observer.
+// Limits: value > 0
+//
+// -----------------------------------------------------------------------------
+
+RESOURCE NUMBER_INT32 r_pos_lm_local_read_partial_lms_op
+    { 
+    value="5"; 
+    }
+
+// -----------------------------------------------------------------------------
+//
+// R_POS_LM_LOCAL_RESET_GLOBAL_CATEGORIES_OP
+// Number of global categories to reset within each transaction for the 
+// CPosLmLocalCategoryManager::ResetGlobalCategoriesL operation.
+// Limits: value > 0
+//
+// -----------------------------------------------------------------------------
+
+RESOURCE NUMBER_INT32 r_pos_lm_local_reset_global_categories_op
+    { 
+    value="3"; 
+    }
+
+// End of File
+
+

@@ -1,0 +1,40 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+//********************************
+// Cap_EMsvCreateEntry_002_006.script
+//********************************
+
+PRINT Running  Cap_EMsvCreateEntry_002_006.script: SendProxyServer needs Read/WriteUserData + MTM specified capability to create a message and store it in the outbox folder 
+PRINT Running  Cap_EMsvCreateEntry_002_006.script: The outbox folder is protected.
+PRINT Running  Cap_EMsvCreateEntry_002_006.script: Message is owned by the proxy server. 
+
+//********************************
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_Caps.exe 0003fffe -SID 101F7778 C:\sys\bin\MessagingTestServer.exe
+	// Ensure suffiect caps to delete everything in the folders.
+	
+RUN_PROGRAM -1 setcap c:\sys\bin\SendProxyServer_Caps.exe  0000a000 -SID 101F7770 C:\sys\bin\SendProxyServer.exe
+	// Using ECapabilityReadUserData ECapabilityNetworkServices  for the proxy server.
+
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CleanMessageStore.script
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateSingleEntryInOutboxFail.script
+
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+//********************************

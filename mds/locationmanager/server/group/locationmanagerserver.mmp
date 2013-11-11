@@ -1,0 +1,91 @@
+/*
+* Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file
+*
+*/
+
+
+#include <platform_paths.hrh>
+#include <data_caging_paths.hrh>
+#include "../../inc/locplatsupport.mmh"
+
+VERSION         10.0
+TARGETTYPE      exe
+TARGET          locationmanagerserver.exe
+UID             0 0x200071BE
+
+EPOCSTACKSIZE 0x5000
+
+#ifdef WINS
+EPOCHEAPSIZE    1000 2500000
+#else
+EPOCHEAPSIZE    1000 5000000
+#endif
+
+CAPABILITY 	    CAP_SERVER Location
+VENDORID 	    VID_DEFAULT
+
+USERINCLUDE     ../inc
+USERINCLUDE     ../../inc
+USERINCLUDE     ../../../inc
+USERINCLUDE     ../../locationtrail/inc
+
+#ifdef _LOC_REVERSEGEOCODE
+MACRO LOC_REVERSEGEOCODE
+USERINCLUDE     ../../tagcreator/inc
+#endif
+
+#ifdef     _LOC_GEOTAGGING_CELLID
+MACRO LOC_GEOTAGGING_CELLID
+USERINCLUDE     ../../geoconverter/inc
+#endif
+
+
+SYSTEMINCLUDE     /epoc32/include/platform/lbs
+SYSTEMINCLUDE     /epoc32/include/stdapis
+SYSTEMINCLUDE     /epoc32/include/ecom
+MW_LAYER_SYSTEMINCLUDE
+
+SOURCEPATH      ../src
+SOURCE	    clocationmanagerserver.cpp
+SOURCE	    clocationmanagersession.cpp
+SOURCE	    clocationgeotagtimerao.cpp 
+SOURCE	    clocationservertimerhandler.cpp
+SOURCE      nwregistrationstatushandler.cpp
+
+
+LIBRARY 	    euser.lib 
+LIBRARY         efsrv.lib 
+LIBRARY         locationtrail.lib
+LIBRARY         lbs.lib 
+LIBRARY 	    etel3rdparty.lib 
+LIBRARY 	    centralrepository.lib 
+LIBRARY 	    mdeclient.lib 
+LIBRARY	    	mdccommon.lib
+LIBRARY         libc.lib
+LIBRARY         ecom.lib
+LIBRARY         etel.lib
+LIBRARY         etelmm.lib
+LIBRARY         commsdat.lib
+
+LIBRARY         geotagger.lib
+
+PAGED
+BYTEPAIRCOMPRESSTARGET
+OPTION ARMCC -O3 -OTime
+
+EPOCPROCESSPRIORITY background
+
+// End of file
+

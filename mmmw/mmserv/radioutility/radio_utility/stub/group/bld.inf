@@ -1,0 +1,33 @@
+/*
+* Copyright (c) 2002-2004 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project build file for Radio_Utility_Stub
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+// Platforms the component needs to be built on
+//
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+// iby file
+../rom/Radio_Utility_Stub.iby		CORE_MW_LAYER_IBY_EXPORT_PATH(Radio_Utility_Stub.iby)
+
+PRJ_MMPFILES
+Radio_Utility_Stub.mmp
+
+// End of file

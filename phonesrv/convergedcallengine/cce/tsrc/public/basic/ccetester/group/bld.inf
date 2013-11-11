@@ -1,0 +1,187 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Build file for cce tester.
+*
+*/
+
+
+
+PRJ_PLATFORMS
+// specify the platforms your component needs to be built for here
+// defaults to WINS MARM so you can ignore this if you just build these
+DEFAULT
+
+PRJ_TESTEXPORTS
+// NOTE: If using ARS requirements all export operations should be done under this.
+// 'abld test export'
+
+PRJ_EXPORTS
+// Specify the source file followed by its destination here
+// copy will be used to copy the source file to its destination
+// If there's no destination then the source file will be copied
+// to the same name in /epoc32/include
+
+// test module configuration file
+cce.ini /epoc32/winscw/c/testframework/cce.ini
+cce_run_at_once_tests.ini /epoc32/winscw/c/testframework/cce_run_at_once_tests.ini
+ccetests.bat /epoc32/winscw/c/ccetests.bat
+run_cce_tests.bat /epoc32/winscw/c/run_cce_tests.bat
+
+
+// test cases
+01_01_doafterboot.txt /epoc32/winscw/c/testframework/01_01_doafterboot.txt
+01_02_create_cce.txt /epoc32/winscw/c/testframework/01_02_create_cce.txt
+01_03_opennewcall_cs.txt /epoc32/winscw/c/testframework/01_03_opennewcall_cs.txt
+01_04_opennewcall_ps.txt /epoc32/winscw/c/testframework/01_04_opennewcall_ps.txt
+01_05_opennewcall_params.txt /epoc32/winscw/c/testframework/01_05_opennewcall_params.txt
+01_06_opennewcall_error.txt /epoc32/winscw/c/testframework/01_06_opennewcall_error.txt
+02_01_1_dial_ps.txt /epoc32/winscw/c/testframework/02_01_1_dial_ps.txt
+02_01_2_dial_cs.txt /epoc32/winscw/c/testframework/02_01_2_dial_cs.txt
+02_01_3_dial_error.txt /epoc32/winscw/c/testframework/02_01_3_dial_error.txt
+02_02_1_hold.txt /epoc32/winscw/c/testframework/02_02_1_hold.txt
+02_02_2_resume.txt /epoc32/winscw/c/testframework/02_02_2_resume.txt
+02_02_3_remote_hold_resume.txt /epoc32/winscw/c/testframework/02_02_3_remote_hold_resume.txt
+02_02_4_hold_resume_error.txt /epoc32/winscw/c/testframework/02_02_4_hold_resume_error.txt
+02_03_1_swap_ps.txt /epoc32/winscw/c/testframework/02_03_1_swap_ps.txt
+02_03_2_swap_cs.txt /epoc32/winscw/c/testframework/02_03_2_swap_cs.txt
+02_03_3_swap_cs_ps.txt /epoc32/winscw/c/testframework/02_03_3_swap_cs_ps.txt
+02_03_4_swap_ps_cs.txt /epoc32/winscw/c/testframework/02_03_4_swap_ps_cs.txt
+02_03_5_swap_error.txt /epoc32/winscw/c/testframework/02_03_5_swap_error.txt
+02_03_6_replace_active.txt /epoc32/winscw/c/testframework/02_03_6_replace_active.txt
+03_01_mt_call.txt /epoc32/winscw/c/testframework/03_01_mt_call.txt
+03_02_mt_call.txt /epoc32/winscw/c/testframework/03_02_mt_call.txt
+03_03_1_mt_call_queue.txt /epoc32/winscw/c/testframework/03_03_1_mt_call_queue.txt
+03_03_2_mt_call_queue.txt /epoc32/winscw/c/testframework/03_03_2_mt_call_queue.txt
+03_03_3_mt_call_queue.txt /epoc32/winscw/c/testframework/03_03_3_mt_call_queue.txt
+03_03_4_mt_call_queue.txt /epoc32/winscw/c/testframework/03_03_4_mt_call_queue.txt
+03_03_5_mt_call_queue.txt /epoc32/winscw/c/testframework/03_03_5_mt_call_queue.txt
+03_03_6_mt_call_queue.txt /epoc32/winscw/c/testframework/03_03_6_mt_call_queue.txt
+03_03_7_mt_call_icm.txt /epoc32/winscw/c/testframework/03_03_7_mt_call_icm.txt
+03_03_8_mt_call.txt /epoc32/winscw/c/testframework/03_03_8_mt_call.txt
+03_04_mt_call_reject.txt /epoc32/winscw/c/testframework/03_04_mt_call_reject.txt
+03_05_1_mt_call_two_incoming.txt /epoc32/winscw/c/testframework/03_05_1_mt_call_two_incoming.txt
+03_05_2_mt_call_two_incoming.txt /epoc32/winscw/c/testframework/03_05_2_mt_call_two_incoming.txt
+03_05_3_mt_call_two_incoming.txt /epoc32/winscw/c/testframework/03_05_3_mt_call_two_incoming.txt
+03_05_4_mt_call_two_incoming.txt /epoc32/winscw/c/testframework/03_05_4_mt_call_two_incoming.txt
+03_06_mt_call_cs.txt /epoc32/winscw/c/testframework/03_06_mt_call_cs.txt
+03_07_mt_call_cs_combined.txt /epoc32/winscw/c/testframework/03_07_mt_call_cs_combined.txt
+04_01_emergency_call.txt /epoc32/winscw/c/testframework/04_01_emergency_call.txt
+04_02_emergency_call.txt /epoc32/winscw/c/testframework/04_02_emergency_call.txt
+04_03_emergency_call.txt /epoc32/winscw/c/testframework/04_03_emergency_call.txt
+04_04_emergency_call.txt /epoc32/winscw/c/testframework/04_04_emergency_call.txt
+05_01_dtmf_single_tone.txt /epoc32/winscw/c/testframework/05_01_dtmf_single_tone.txt
+05_02_dtmf_string.txt /epoc32/winscw/c/testframework/05_02_dtmf_string.txt
+05_03_dtmf_abort_string.txt /epoc32/winscw/c/testframework/05_03_dtmf_abort_string.txt
+05_04_dtmf_continue_string.txt /epoc32/winscw/c/testframework/05_04_dtmf_continue_string.txt
+//05_05_dtmf_multiple_providers.txt /epoc32/winscw/c/testframework/05_05_dtmf_multiple_providers.txt
+05_06_dtmf_error.txt /epoc32/winscw/c/testframework/05_06_dtmf_error.txt
+05_07_dtmf.txt /epoc32/winscw/c/testframework/05_07_dtmf.txt
+06_01_forward_basic.txt /epoc32/winscw/c/testframework/06_01_forward_basic.txt
+06_02_forward_remote.txt /epoc32/winscw/c/testframework/06_02_forward_remote.txt
+06_03_forward_getchoices.txt /epoc32/winscw/c/testframework/06_03_forward_getchoices.txt
+07_01_transfer_unattended.txt /epoc32/winscw/c/testframework/07_01_transfer_unattended.txt
+07_02_transfer_attended.txt /epoc32/winscw/c/testframework/07_02_transfer_attended.txt
+07_03_transfer_incoming_unattended.txt /epoc32/winscw/c/testframework/07_03_transfer_incoming_unattended.txt
+07_04_transfer_incoming_attended.txt /epoc32/winscw/c/testframework/07_04_transfer_incoming_attended.txt
+07_05_transfer_error.txt /epoc32/winscw/c/testframework/07_05_transfer_error.txt
+08_01_1_multicall_two_calls.txt /epoc32/winscw/c/testframework/08_01_1_multicall_two_calls.txt
+08_01_2_multicall_two_calls.txt /epoc32/winscw/c/testframework/08_01_2_multicall_two_calls.txt
+08_01_3_multicall_two_calls.txt /epoc32/winscw/c/testframework/08_01_3_multicall_two_calls.txt
+08_01_4_multicall_two_calls.txt /epoc32/winscw/c/testframework/08_01_4_multicall_two_calls.txt
+08_01_5_multicall_two_calls.txt /epoc32/winscw/c/testframework/08_01_5_multicall_two_calls.txt
+08_01_6_multicall_two_calls.txt /epoc32/winscw/c/testframework/08_01_6_multicall_two_calls.txt
+08_01_7_multicall_two_calls.txt /epoc32/winscw/c/testframework/08_01_7_multicall_two_calls.txt
+08_01_8_multicall_two_calls.txt /epoc32/winscw/c/testframework/08_01_8_multicall_two_calls.txt
+08_01_9_multicall_two_calls.txt /epoc32/winscw/c/testframework/08_01_9_multicall_two_calls.txt
+08_02_multicall_autoresume.txt /epoc32/winscw/c/testframework/08_02_multicall_autoresume.txt
+08_03_1_multicall_three_calls.txt /epoc32/winscw/c/testframework/08_03_1_multicall_three_calls.txt
+08_03_2_multicall_three_calls_error.txt /epoc32/winscw/c/testframework/08_03_2_multicall_three_calls_error.txt
+08_03_3_multicall_three_calls_error.txt /epoc32/winscw/c/testframework/08_03_3_multicall_three_calls_error.txt
+08_04_multicalll_combined.txt /epoc32/winscw/c/testframework/08_04_multicalll_combined.txt
+09_01_1_conference.txt /epoc32/winscw/c/testframework/09_01_1_conference.txt
+09_01_2_conference.txt /epoc32/winscw/c/testframework/09_01_2_conference.txt
+09_01_3_conference.txt /epoc32/winscw/c/testframework/09_01_3_conference.txt
+09_01_4_conference.txt /epoc32/winscw/c/testframework/09_01_4_conference.txt
+09_02_conference.txt /epoc32/winscw/c/testframework/09_02_conference.txt
+09_03_1_conference_hold.txt /epoc32/winscw/c/testframework/09_03_1_conference_hold.txt
+09_03_2_conference_resume.txt /epoc32/winscw/c/testframework/09_03_2_conference_resume.txt
+09_04_conference_hangup.txt /epoc32/winscw/c/testframework/09_04_conference_hangup.txt
+09_05_conference_error.txt /epoc32/winscw/c/testframework/09_05_conference_error.txt
+09_06_1_conference_autohold.txt /epoc32/winscw/c/testframework/09_06_1_conference_autohold.txt
+09_06_2_conference_autoresume.txt /epoc32/winscw/c/testframework/09_06_2_conference_autoresume.txt
+09_06_3_conference_autoswap.txt /epoc32/winscw/c/testframework/09_06_3_conference_autoswap.txt
+09_06_4_conference_autoswap2.txt /epoc32/winscw/c/testframework/09_06_4_conference_autoswap2.txt
+09_06_5_conference_cs.txt /epoc32/winscw/c/testframework/09_06_5_conference_cs.txt
+09_07_conference_of_4.txt /epoc32/winscw/c/testframework/09_07_conference_of_4.txt
+09_08_1_conference_of_5_ps.txt /epoc32/winscw/c/testframework/09_08_1_conference_of_5_ps.txt
+09_08_2_conference_of_5_cs.txt /epoc32/winscw/c/testframework/09_08_2_conference_of_5_cs.txt
+09_09_1_conf_of_5_and_1_normal.txt /epoc32/winscw/c/testframework/09_09_1_conf_of_5_and_1_normal.txt
+09_09_2_conf_of_5_and_1_normal.txt /epoc32/winscw/c/testframework/09_09_2_conf_of_5_and_1_normal.txt
+09_09_3_conf_of_5_and_1_normal.txt /epoc32/winscw/c/testframework/09_09_3_conf_of_5_and_1_normal.txt
+09_09_4_conf_of_5_and_1_normal.txt /epoc32/winscw/c/testframework/09_09_4_conf_of_5_and_1_normal.txt
+09_09_5_conf_of_5_and_1_normal.txt /epoc32/winscw/c/testframework/09_09_5_conf_of_5_and_1_normal.txt
+09_09_6_conf_of_5_and_1_normal.txt /epoc32/winscw/c/testframework/09_09_6_conf_of_5_and_1_normal.txt
+09_09_7_conf_of_5_and_1_normal.txt /epoc32/winscw/c/testframework/09_09_7_conf_of_5_and_1_normal.txt
+09_09_8_conf_of_5_and_1_normal.txt /epoc32/winscw/c/testframework/09_09_8_conf_of_5_and_1_normal.txt
+09_10_1_conference_goprivate.txt /epoc32/winscw/c/testframework/09_10_1_conference_goprivate.txt
+09_10_2_conference_goprivate.txt /epoc32/winscw/c/testframework/09_10_2_conference_goprivate.txt
+09_10_3_conference_goprivate.txt /epoc32/winscw/c/testframework/09_10_3_conference_goprivate.txt
+09_10_4_conference_goprivate.txt /epoc32/winscw/c/testframework/09_10_4_conference_goprivate.txt
+09_10_5_conference_goprivate.txt /epoc32/winscw/c/testframework/09_10_5_conference_goprivate.txt
+09_11_conference.txt /epoc32/winscw/c/testframework/09_11_conference.txt
+09_12_conference.txt /epoc32/winscw/c/testframework/09_12_conference.txt
+09_13_1_conference_plugin.txt /epoc32/winscw/c/testframework/09_13_1_conference_plugin.txt
+09_13_2_conference_plugin.txt /epoc32/winscw/c/testframework/09_13_2_conference_plugin.txt
+09_13_3_conference_plugin.txt /epoc32/winscw/c/testframework/09_13_3_conference_plugin.txt
+09_13_4_conference_plugin.txt /epoc32/winscw/c/testframework/09_13_4_conference_plugin.txt
+09_13_5_conference_plugin.txt /epoc32/winscw/c/testframework/09_13_5_conference_plugin.txt
+10_01_noplugin_opennewcall.txt /epoc32/winscw/c/testframework/10_01_noplugin_opennewcall.txt
+10_02_noplugin_ps_emergency_call.txt /epoc32/winscw/c/testframework/10_02_noplugin_ps_emergency_call.txt
+11_01_misc_ps.txt /epoc32/winscw/c/testframework/11_01_misc_ps.txt
+11_02_misc_cs.txt /epoc32/winscw/c/testframework/11_02_misc_cs.txt
+11_03_misc_disconnect_calls.txt /epoc32/winscw/c/testframework/11_03_misc_disconnect_calls.txt
+11_04_1_misc_getmobilecallinfo.txt /epoc32/winscw/c/testframework/11_04_1_misc_getmobilecallinfo.txt
+11_04_2_misc_getmobilecallinfo.txt /epoc32/winscw/c/testframework/11_04_2_misc_getmobilecallinfo.txt
+11_06_misc_basic_operations.txt /epoc32/winscw/c/testframework/11_06_misc_basic_operations.txt
+11_07_misc_basic_operations.txt /epoc32/winscw/c/testframework/11_07_misc_basic_operations.txt
+12_01_extif_serviceid_cs.txt /epoc32/winscw/c/testframework/12_01_extif_serviceid_cs.txt
+12_02_extif_serviceid_ps.txt /epoc32/winscw/c/testframework/12_02_extif_serviceid_ps.txt
+12_03_extif_wrong_serviceid.txt /epoc32/winscw/c/testframework/12_03_extif_wrong_serviceid.txt
+12_04_extif_not_supported.txt /epoc32/winscw/c/testframework/12_04_extif_not_supported.txt
+12_05_extif_leave.txt /epoc32/winscw/c/testframework/12_05_extif_leave.txt
+13_01_retvals_test.txt /epoc32/winscw/c/testframework/13_01_retvals_test.txt
+13_02_retvals_test_provider.txt /epoc32/winscw/c/testframework/13_02_retvals_test_provider.txt
+13_03_retvals_test_call.txt /epoc32/winscw/c/testframework/13_03_retvals_test_call.txt
+13_04_retvals_test_dtmf.txt /epoc32/winscw/c/testframework/13_04_retvals_test_dtmf.txt
+13_05_retvals_test_forward.txt /epoc32/winscw/c/testframework/13_05_retvals_test_forward.txt
+13_06_retvals_test_transfer.txt /epoc32/winscw/c/testframework/13_06_retvals_test_transfer.txt
+13_07_retvals_test_conference.txt /epoc32/winscw/c/testframework/13_07_retvals_test_conference.txt
+14_01_oom.txt /epoc32/winscw/c/testframework/14_01_oom.txt
+
+PRJ_TESTMMPFILES
+// NOTE: If using ARS requirements .mmp file operation should be done under this.
+// 'abld test build'
+
+PRJ_MMPFILES
+// Specify the .mmp files required for building the important component
+// releasables.
+//
+// Specify "tidy" if the component you need to build doesn't need to be
+// released. Specify "ignore" if the MMP file exists but should be
+// ignored.
+// Example:
+
+ccetester.mmp
+
+//  End of File

@@ -1,0 +1,81 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+
+REM T_MSGS.IBY
+REM
+
+REM support
+
+data=ABI_DIR\BUILD_DIR\clientmtm.dll		System\MsgTest\System\Libs\clientmtm.dll
+data=ABI_DIR\BUILD_DIR\findmtm.dll		System\MsgTest\System\Libs\findmtm.dll
+data=ABI_DIR\BUILD_DIR\brokenfindmtm.dll	System\MsgTest\System\Libs\brokenfindmtm.dll
+data=ABI_DIR\BUILD_DIR\mtm1.dll			System\MsgTest\System\Libs\mtm1.dll
+data=ABI_DIR\BUILD_DIR\mtm2.dll			System\MsgTest\System\Libs\mtm2.dll
+data=ABI_DIR\BUILD_DIR\regmtm1.dll		System\MsgTest\System\Libs\regmtm1.dll
+data=ABI_DIR\BUILD_DIR\regmtm2.dll		System\MsgTest\System\Libs\regmtm2.dll
+data=ABI_DIR\BUILD_DIR\servermtm.dll		System\MsgTest\System\Libs\servermtm.dll
+data=ABI_DIR\BUILD_DIR\testservermtm.dll	System\MsgTest\System\Libs\testservermtm.dll
+data=ABI_DIR\BUILD_DIR\mailinit.exe		System\MsgTest\System\Programs\mailinit.exe
+data=EPOCROOT##epoc32\wins\C\msgtest\msgs\mtm.rsc	\MsgTest\msgs\mtm.rsc
+
+REM harnesses
+
+file=ABI_DIR\BUILD_DIR\T_MSGS_FINDENTRY.exe		System\MsgTest\T_MSGS_FINDENTRY.exe
+file=ABI_DIR\BUILD_DIR\T_MSGS_BASIC.exe			System\MsgTest\T_MSGS_BASIC.exe	
+file=ABI_DIR\BUILD_DIR\T_MSGS_STORE.exe			System\MsgTest\T_MSGS_STORE.exe		
+data=EPOCROOT##epoc32\winscw\C\msgtest\msgs\t_msgs_registry.rsc	\MsgTest\msgs\t_msgs_registry.rsc
+file=ABI_DIR\BUILD_DIR\T_MSGS_REGISTRY.exe		System\MsgTest\T_MSGS_REGISTRY.exe
+file=ABI_DIR\BUILD_DIR\T_MSGS_SORT.exe			System\MsgTest\T_MSGS_SORT.exe
+file=ABI_DIR\BUILD_DIR\T_MSGS_INDEX.exe			System\MsgTest\T_MSGS_INDEX.exe	
+file=ABI_DIR\BUILD_DIR\T_MSGS_INDEX_HEAP.exe	System\MsgTest\T_MSGS_INDEX_HEAP.exe
+file=ABI_DIR\BUILD_DIR\T_MSGS_INDEX_FILE.exe	System\MsgTest\T_MSGS_INDEX_FILE.exe
+file=ABI_DIR\BUILD_DIR\T_MSGS_SERVER_ENTRY.exe	System\MsgTest\T_MSGS_SERVER_ENTRY.exe
+file=ABI_DIR\BUILD_DIR\T_MSGS_SERVER_FAIL.exe 	System\MsgTest\T_MSGS_SERVER_FAIL.exe
+file=ABI_DIR\BUILD_DIR\T_MSGS_LOCAL.exe			System\MsgTest\T_MSGS_LOCAL.exe
+file=ABI_DIR\BUILD_DIR\T_MSGS_REBUILD.exe		System\MsgTest\T_MSGS_REBUILD.exe
+file=ABI_DIR\BUILD_DIR\T_MSGS_NOTIFY.exe		System\MsgTest\T_MSGS_NOTIFY.exe
+file=ABI_DIR\BUILD_DIR\T_MSGS_SERVER_REGISTRY.exe	System\MsgTest\T_MSGS_SERVER_REGISTRY.exe	
+file=ABI_DIR\BUILD_DIR\T_MSGS_SERVER.exe		System\MsgTest\T_MSGS_SERVER.exe
+file=ABI_DIR\BUILD_DIR\T_MSGS_CLIENT4.exe		System\MsgTest\T_MSGS_CLIENT4.exe
+file=ABI_DIR\BUILD_DIR\T_MSGS_CLOSE.exe			System\MsgTest\T_MSGS_CLOSE.exe
+file=ABI_DIR\BUILD_DIR\T_MSGS_CLIENT0.exe		System\MsgTest\T_MSGS_CLIENT0.exe
+file=ABI_DIR\BUILD_DIR\T_MSGS_CLIENT1.exe		System\MsgTest\T_MSGS_CLIENT1.exe
+file=ABI_DIR\BUILD_DIR\T_MSGS_CLIENT2.exe		System\MsgTest\T_MSGS_CLIENT2.exe
+file=ABI_DIR\BUILD_DIR\T_MSGS_CLIENT_REGISTRY.exe	System\MsgTest\T_MSGS_CLIENT_REGISTRY.exe
+file=ABI_DIR\BUILD_DIR\T_MSGS_CLIENT3.exe		System\MsgTest\T_MSGS_CLIENT3.exe
+file=ABI_DIR\BUILD_DIR\T_MSGS_GLOBAL_FIND.exe		System\MsgTest\T_MSGS_GLOBAL_FIND.exe
+file=ABI_DIR\BUILD_DIR\T_MSGS_FIND_TEXT.exe		System\MsgTest\T_MSGS_FIND_TEXT.exe
+file=ABI_DIR\BUILD_DIR\T_MSGS_DEFECT.exe		System\MsgTest\T_MSGS_DEFECT.exe
+file=ABI_DIR\BUILD_DIR\T_MSGS_BENCHMARK.exe		System\MsgTest\T_MSGS_BENCHMARK.exe
+file=ABI_DIR\BUILD_DIR\T_msgs_start.exe			System\MsgTest\T_msgs_start.exe
+file=ABI_DIR\BUILD_DIR\MTM1.dll				System\Libs\MTM1.dll
+file=ABI_DIR\BUILD_DIR\MTM2.dll				System\Libs\MTM2.dll
+data=ABI_DIR\BUILD_DIR\clientmtm.dll			System\Libs\clientmtm.dll
+data=ABI_DIR\BUILD_DIR\findmtm.dll			System\Libs\findmtm.dll
+data=ABI_DIR\BUILD_DIR\brokenfindmtm.dll		System\Libs\brokenfindmtm.dll
+data=ABI_DIR\BUILD_DIR\mtm1.dll				System\Libs\mtm1.dll
+data=ABI_DIR\BUILD_DIR\mtm2.dll				System\Libs\mtm2.dll
+data=ABI_DIR\BUILD_DIR\regmtm1.dll			System\Libs\regmtm1.dll
+data=ABI_DIR\BUILD_DIR\regmtm2.dll			System\Libs\regmtm2.dll
+data=ABI_DIR\BUILD_DIR\servermtm.dll			System\Libs\servermtm.dll
+data=ABI_DIR\BUILD_DIR\testservermtm.dll		System\Libs\testservermtm.dll
+file=ABI_DIR\BUILD_DIR\T_msgs_mailstore.exe		System\MsgTest\T_msgs_mailstore.exe
+
+
+// test harness support library
+file=ABI_DIR\BUILD_DIR\msvtestutils.dll			System\libs\msvtestutils.dll 
+file=ABI_DIR\BUILD_DIR\msgservertestutils.dll	System\libs\msgservertestutils.dll

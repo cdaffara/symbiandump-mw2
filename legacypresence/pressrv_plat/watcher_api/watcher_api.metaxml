@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<api id="2c7cef96c089c53501b75e7acd652582" dataversion="1.0">
+  <name>Watcher API</name>
+  <description>API for presence subscription handling. It supports the following functions:
+- subscribing for individual contacts and presence lists
+- terminating subscriptions 
+- subscription filter creation
+- notifications functions for arriving presence updates</description>
+  <type>c++</type>
+  <subsystem>simpleengine</subsystem>
+  <libs>
+    <lib name="simpleengine.lib" />
+  </libs>
+  <release category="domain"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>yes</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

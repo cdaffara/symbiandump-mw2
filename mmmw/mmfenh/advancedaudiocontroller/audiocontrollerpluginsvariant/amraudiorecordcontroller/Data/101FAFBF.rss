@@ -1,0 +1,73 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  RSS file for advanced audio controller
+*
+*/
+
+
+// INCLUDES
+#include <registryinfov2.rh>
+#include <mmfplugininterfaceuids.hrh>
+#include "AMRAudioRecordControllerPlugin.hrh"
+
+
+//  RESOURCE DEFINITIONS 
+// -----------------------------------------------------------------------------
+//   
+// theInfo
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE REGISTRY_INFO theInfo
+	{
+        resource_format_version = RESOURCE_FORMAT_VERSION_2;
+	dll_uid = KUIDAMRRecordControllerPluginDll;	// 0x101FAFBF
+	interfaces = 
+		{
+		INTERFACE_INFO
+			{
+			interface_uid = KMmfUidPluginInterfaceController;
+			implementations = 
+				{
+				IMPLEMENTATION_INFO
+					{
+					implementation_uid = KUIDAMRRecordControllerPluginImplementation;	// 0x101FAFC0
+					version_no = 1;
+					display_name = "AMR Audio Record Controller Plugin";
+					default_data = "?";
+					opaque_data = "<s>Nokia<i>0x101F5D07<r>0x101FAFC1";
+                                        rom_only = 0;					
+					}
+				};
+			},
+		INTERFACE_INFO
+			{
+			interface_uid = KUIDAMRRecordControllerPluginFormatInterface;	// 0x101FAFC1
+			implementations = 
+				{
+				IMPLEMENTATION_INFO
+					{
+					implementation_uid = 0x10207B58;   // Dummy uid needed for place holder
+					version_no = 1;
+					display_name = "AMR Write Format";
+					default_data = "0x101FAFC0";
+					opaque_data = "<s>Nokia<i>0x101F5D07<e>.amr<h>#!AMR\n<m>audio/amr";
+                                        rom_only = 0;	
+					}
+				};
+			}
+		};
+	}
+
+// End of file

@@ -1,0 +1,96 @@
+// Copyright (c) 1999-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// IACP.INF
+// 
+//
+
+PRJ_PLATFORMS
+
+
+PRJ_EXPORTS
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+../IACPINC/IACP.H /epoc32/include/iacp.h
+#endif
+../iacpbif/iacp.loc SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(iacp.loc)
+
+PRJ_MMPFILES
+group/IACP.MMP
+
+PRJ_TESTEXPORTS
+../IACPTSRC/iacp1.txt /epoc32/winscw/c/test/bio/iacp/iacp1.txt
+../IACPTSRC/iacp2.txt /epoc32/winscw/c/test/bio/iacp/iacp2.txt
+../IACPTSRC/iacp3.txt /epoc32/winscw/c/test/bio/iacp/iacp3.txt
+../IACPTSRC/iacp4.txt /epoc32/winscw/c/test/bio/iacp/iacp4.txt
+../IACPTSRC/iacp5.txt /epoc32/winscw/c/test/bio/iacp/iacp5.txt
+../IACPTSRC/iacp6.txt /epoc32/winscw/c/test/bio/iacp/iacp6.txt
+../IACPTSRC/iacp7.txt /epoc32/winscw/c/test/bio/iacp/iacp7.txt
+../IACPTSRC/iacp8.txt /epoc32/winscw/c/test/bio/iacp/iacp8.txt
+../IACPTSRC/iacp9.txt /epoc32/winscw/c/test/bio/iacp/iacp9.txt
+../IACPTSRC/iacp01.txt /epoc32/winscw/c/test/bio/iacp/iacp01.txt
+../IACPTSRC/iacp02.txt /epoc32/winscw/c/test/bio/iacp/iacp02.txt
+../IACPTSRC/iacp03.txt /epoc32/winscw/c/test/bio/iacp/iacp03.txt
+../IACPTSRC/iacp04.txt /epoc32/winscw/c/test/bio/iacp/iacp04.txt
+../IACPTSRC/iacp05.txt /epoc32/winscw/c/test/bio/iacp/iacp05.txt
+../IACPTSRC/iacp06.txt /epoc32/winscw/c/test/bio/iacp/iacp06.txt
+../IACPTSRC/iacp07.txt /epoc32/winscw/c/test/bio/iacp/iacp07.txt
+../IACPTSRC/iacp08.txt /epoc32/winscw/c/test/bio/iacp/iacp08.txt
+../IACPTSRC/iacp09.txt /epoc32/winscw/c/test/bio/iacp/iacp09.txt
+../IACPTSRC/iacp10.txt /epoc32/winscw/c/test/bio/iacp/iacp10.txt
+../IACPTSRC/iacp11.txt /epoc32/winscw/c/test/bio/iacp/iacp11.txt
+../IACPTSRC/iacp12.txt /epoc32/winscw/c/test/bio/iacp/iacp12.txt
+../IACPTSRC/iacp13.txt /epoc32/winscw/c/test/bio/iacp/iacp13.txt
+../IACPTSRC/iacp14.txt /epoc32/winscw/c/test/bio/iacp/iacp14.txt
+../IACPTSRC/iacp15.txt /epoc32/winscw/c/test/bio/iacp/iacp15.txt
+../IACPTSRC/iacp16.txt /epoc32/winscw/c/test/bio/iacp/iacp16.txt
+../IACPTSRC/iacp17.txt /epoc32/winscw/c/test/bio/iacp/iacp17.txt
+../IACPTSRC/iacp18.txt /epoc32/winscw/c/test/bio/iacp/iacp18.txt
+../IACPTSRC/iacp19.txt /epoc32/winscw/c/test/bio/iacp/iacp19.txt
+../IACPTSRC/iacp20.txt /epoc32/winscw/c/test/bio/iacp/iacp20.txt
+../IACPTSRC/iacp21.txt /epoc32/winscw/c/test/bio/iacp/iacp21.txt
+../IACPTSRC/iacp22.txt /epoc32/winscw/c/test/bio/iacp/iacp22.txt
+../IACPTSRC/iacp23.txt /epoc32/winscw/c/test/bio/iacp/iacp23.txt
+../IACPTSRC/iacp24.txt /epoc32/winscw/c/test/bio/iacp/iacp24.txt
+../IACPTSRC/iacp25.txt /epoc32/winscw/c/test/bio/iacp/iacp25.txt
+../IACPTSRC/iacp26.txt /epoc32/winscw/c/test/bio/iacp/iacp26.txt
+../IACPTSRC/iacp27.txt /epoc32/winscw/c/test/bio/iacp/iacp27.txt
+../IACPTSRC/iacp28.txt /epoc32/winscw/c/test/bio/iacp/iacp28.txt
+../IACPTSRC/iacp29.txt /epoc32/winscw/c/test/bio/iacp/iacp29.txt
+../IACPTSRC/iacp30.txt /epoc32/winscw/c/test/bio/iacp/iacp30.txt
+../IACPTSRC/iacp31.txt /epoc32/winscw/c/test/bio/iacp/iacp31.txt
+../IACPTSRC/iacp32.txt /epoc32/winscw/c/test/bio/iacp/iacp32.txt
+../IACPTSRC/iacp33.txt /epoc32/winscw/c/test/bio/iacp/iacp33.txt
+../IACPTSRC/iacp34.txt /epoc32/winscw/c/test/bio/iacp/iacp34.txt
+../IACPTSRC/iacp35.txt /epoc32/winscw/c/test/bio/iacp/iacp35.txt
+../IACPTSRC/iacp36.txt /epoc32/winscw/c/test/bio/iacp/iacp36.txt
+
+../IACPTSRC/sms_isp.txt /epoc32/winscw/c/test/bio/iacp/sms_isp.txt
+../IACPTSRC/SMS_MAIL.TXT /epoc32/winscw/c/test/bio/iacp/sms_mail.txt
+../IACPTSRC/sms_script_1.txt /epoc32/winscw/c/test/bio/iacp/sms_script_1.txt
+../IACPTSRC/sms_script_2.txt /epoc32/winscw/c/test/bio/iacp/sms_script_2.txt
+../IACPTSRC/SMS_SMS.TXT /epoc32/winscw/c/test/bio/iacp/sms_sms.txt
+../IACPTSRC/sms_Tel_Voice_mailBox.txt /epoc32/winscw/c/test/bio/iacp/sms_tel_voice_mailbox.txt
+
+../IACPTSRC/ISP_DEM1.TXT /epoc32/winscw/c/test/bio/iacp/isp_dem1.txt
+../IACPTSRC/ISP_DEM2.TXT /epoc32/winscw/c/test/bio/iacp/isp_dem2.txt
+
+../IACPTSRC/mail_dem1.txt /epoc32/winscw/c/test/bio/iacp/mail_dem1.txt
+../IACPTSRC/mail_dem2.txt /epoc32/winscw/c/test/bio/iacp/mail_dem2.txt
+
+../IACPTSRC/commiacp.txt /epoc32/winscw/c/test/bio/iacpcomm/iacp1.txt
+
+
+PRJ_TESTMMPFILES
+../IACPTSRC/T_MAIL.MMP	manual
+../IACPTSRC/t_iacp.mmp	manual
+../IACPTSRC/t_iacpcomm.mmp	manual

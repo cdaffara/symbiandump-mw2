@@ -1,0 +1,117 @@
+/***************************************************************
+  Description: Conference of 5 CS calls and MO PS call
+
+    1. Make a conference of 2 CS calls
+    2. Create new CS call and add it to the conference
+       Expected: Conference is automatically put on Hold
+    3. Repeat step 2 until there are 5 calls in conference
+    4. Create new MO PS call
+       Expected: Conference is put automatically on Hold
+    5. Hangup call
+    6. Disconnect conference
+***************************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 9.9.5 Conference Call, CS Conference and MO PS call
+timeout 20000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+// Calls [1] and [2]
+test OpenNewCall 1 0 ConfcallOne 1 ECCECallTypeCSVoice ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+test OpenNewCall 2 0 ConfcallTwo 1 ECCECallTypeCSVoice ECCELineTypePrimary
+test Dial 2 0 SubAddress Bearer
+test WaitEvent 2 Dialling
+test WaitEvent 2 Connecting
+test WaitEvent 2 Connected
+
+// Add calls to conference
+test AddToConference 1 0
+test WaitEvent ConferenceCallAdded 1
+
+test AddToConference 2 0
+// Plugin sets call to match conference state (connected)
+test WaitEvents ConferenceCallAdded 2, ConferenceActive, 1 Connected
+
+// Step 2
+print Step_2
+
+// Call [3]
+test OpenNewCall 3 0 ConfcallThree 1 ECCECallTypeCSVoice ECCELineTypePrimary
+test Dial 3 0 SubAddress Bearer
+// Conference autohold, plugin changes states to match conference
+test WaitEvents 1 Hold, 2 Hold, ConferenceHold, 3 Dialling, 3 Connecting, 3 Connected, ConferenceCallSwapped
+
+test AddToConference 3 0
+// Plugin changes added call's state to match conference
+test WaitEvents ConferenceCallAdded 3, 3 Hold
+
+// Step 3
+print Step_3
+
+// Call [4]
+test OpenNewCall 4 0 ConfcallFour 1 ECCECallTypeCSVoice ECCELineTypePrimary
+test Dial 4 0 SubAddress Bearer
+test WaitEvent 4 Dialling
+test WaitEvent 4 Connecting
+test WaitEvent 4 Connected
+
+test AddToConference 4 0
+// Plugin changes added call's state to match conference
+test WaitEvents ConferenceCallAdded 4, 4 Hold
+
+// Call [5]
+test OpenNewCall 5 0 ConfCallFive 1 ECCECallTypeCSVoice ECCELineTypePrimary
+test Dial 5 0 SubAddress Bearer
+test WaitEvent 5 Dialling
+test WaitEvent 5 Connecting
+test WaitEvent 5 Connected
+
+test AddToConference 5 0
+// Plugin changes added call's state to match conference
+test WaitEvents ConferenceCallAdded 5, 5 Hold
+
+// Step 4
+print Step_4
+
+test OpenNewCall 6 0 MO_Call 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 6 0 SubAddress Bearer
+test WaitEvent 6 Dialling
+test WaitEvent 6 Connecting
+test WaitEvent 6 Connected
+
+// Step 5
+print Step_5
+
+test HangUp 6 0
+test WaitEvent 6 Disconnecting
+test WaitEvent 6 Idle
+
+test Release 6 0
+
+// Step 6
+print Step_6
+
+test HangupConference 0
+
+test WaitEvents ConferenceCallRemoved 1, ConferenceCallRemoved 2, ConferenceCallRemoved 3, ConferenceCallRemoved 4, ConferenceCallRemoved 5, ConferenceIdle, 1 Disconnecting, 1 Idle, 2 Disconnecting, 2 Idle, 3 Disconnecting, 3 Idle, 4 Disconnecting, 4 Idle, 5 Disconnecting, 5 Idle
+
+test ReleaseConference 0
+
+test VerifyTest
+delete test
+[Endtest]

@@ -1,0 +1,5 @@
+EXPORTS
+	_Z9LibEntryLR13CTestModuleIf @ 1 NONAME
+	_ZTI13CSATClientAPI @ 2 NONAME ; #<TI>#
+	_ZTV13CSATClientAPI @ 3 NONAME ; #<VT>#
+

@@ -1,0 +1,4 @@
+EXPORTS
+	NewL__26CAWBAudioControllerUtility @ 1 NONAME R3UNUSED ; CAWBAudioControllerUtility::NewL(void)
+	"_._26CAWBAudioControllerUtility" @ 2 NONAME R3UNUSED ; CAWBAudioControllerUtility::~CAWBAudioControllerUtility(void)
+

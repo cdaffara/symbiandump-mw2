@@ -1,0 +1,3 @@
+EXPORTS
+	NewL__11CNbsWatcherR3RFsR11CWatcherLog @ 1 NONAME R3UNUSED ; CNbsWatcher::NewL(RFs &, CWatcherLog &)
+

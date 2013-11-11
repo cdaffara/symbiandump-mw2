@@ -1,0 +1,38 @@
+;
+; Copyright (c) 2010 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: System Tone Service Tester - UDEB build
+;
+;File: ststester.pkg
+
+;Languages
+&EN
+
+;Header
+#{"ststester EXE"},(0x10207C88),1,0,0, TYPE=SA, RU
+
+;Series 60 v5.0
+[0x1028315F], 0,0,0, {"Series60ProductID"}
+
+;Localised Vendor name
+%{"Nokia"}
+
+;Unique Vendor name
+:"Nokia"
+
+;Add System Tone Service package
+;@"../../../sis/systemtoneservice.sisx",(0x10207C90)
+
+;Files To Copy...<src> <destination>
+"/epoc32/release/armv5/udeb/ststester.exe"		         -"!:/sys/bin/ststester.exe"
+"/epoc32/data/z/private/10003a3f/apps/ststester_reg.rsc" -"!:/private/10003a3f/import/apps/ststester_reg.rsc"

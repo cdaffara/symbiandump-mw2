@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api id="2e973d1422b06fd4fc780bc219404dca" dataversion="2.0">
+  <name>EMC Balance Effect API</name>
+  <description>This API defines an how to control audio balance from EMC</description>
+  <type>c++</type>
+  <collection>mmfenh</collection>
+  <libs>
+    <lib name="EnhancedMediaClient.lib"/>
+  </libs>
+  <release category="platform" sinceversion="3.2"/>
+  <attributes>
+    <htmldocprovided>no</htmldocprovided>
+    <adaptation>no</adaptation>
+  </attributes>
+</api>

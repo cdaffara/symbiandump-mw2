@@ -1,0 +1,75 @@
+/*
+* Copyright (c) 2005-2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:   Image description file for project locationomasuplprotocolhandler
+*
+*/
+
+
+
+#ifndef OMASUPLPROTOCOLHANDLER_IBY
+#define OMASUPLPROTOCOLHANDLER_IBY
+
+#include <bldvariant.hrh>
+
+////////////////////////////////////////
+// *** OMA SUPL Protocol Handler *** //
+//////////////////////////////////////
+
+#ifdef __OMA_SUPL_PLUGINS   
+
+//ASN Plugin
+file=ABI_DIR\BUILD_DIR\epos_comasuplasnplugin.dll     SHARED_LIB_DIR\epos_comasuplasnplugin.dll
+
+
+//OMA SUPL POS message plugin dll
+//file=ABI_DIR\BUILD_DIR\eposomasuplposmessageplugin.dll   SHARED_LIB_DIR\eposomasuplposmessageplugin.dll
+
+//SUPL Listener
+file=ABI_DIR\BUILD_DIR\epos_omasupllistener.exe   SHARED_LIB_DIR\epos_omasupllistener.exe
+
+
+//OMA Protocol Handler Plugin & resource file
+ECOM_PLUGIN(eposomasuplprotocolhandler.dll,eposomasuplprotocolhandler.rsc)
+
+//OMA Protocol Handler Plugin & resource file
+ECOM_PLUGIN(eposomasuplprotocolhandler1.dll,eposomasuplprotocolhandler1.rsc)
+
+#ifndef FF_DISABLE_OMA_SUPL_V2
+//OMA Protocol Handler Plugin & resource file
+ECOM_PLUGIN(eposomasuplprotocolhandler2.dll,eposomasuplprotocolhandler2.rsc)
+#endif // FF_DISABLE_OMA_SUPL_V2
+
+//OMA Provisioning
+ECOM_PLUGIN(epos_omasuplprovhandler.dll,1027509B.rsc)
+
+data=DATAZ_\resource\epos_omasuplprovhandlerres.rsc      	    resource\epos_omasuplprovhandlerres.rsc
+
+
+//WAP Plugin
+ECOM_PLUGIN(epos_omasuplwaplistener.dll,epos_omasuplwaplistener.rsc)
+
+#ifdef __SYNCML_DM
+//SynML DM Adapter
+ECOM_PLUGIN(epos_omasuplsyncmldm.dll,epos_omasuplsyncmldm.rsc)
+#endif	// __SYNCML_DM
+
+// Notifier
+//ECOM_PLUGIN(epos_omasuplnotifierplugin.dll,epos_omasuplnotifierplugin.rsc)
+//file=ABI_DIR\BUILD_DIR\epos_omasuplnotifier.dll   SHARED_LIB_DIR\epos_omasuplnotifier.dll
+// Storage Db Backup Registration File
+data=DATAZ_\private\1027509E\backup_registration.xml    \private\1027509E\backup_registration.xml
+#endif //__OMA_SUPL_PLUGINS   
+
+#endif // OMASUPLPROTOCOLHANDLER_IBY
+

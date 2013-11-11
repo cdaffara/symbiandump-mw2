@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<api id="70ee140b8c306914dc90a63ba2637442" dataversion="2.0">
+<name>Harvester Collection Mediator API</name>
+<description>Handles Music Player specific requirements such as adding or updating media properties for items in the collection</description>
+<type>c++</type>
+<collection>mmappcomponents</collection>
+<libs>
+<lib name="mpxcollectionmediator.lib"/>
+</libs>
+<release category="platform" sinceversion=""/>
+<attributes>
+<htmldocprovided>no</htmldocprovided>
+<adaptation>no</adaptation>
+</attributes>
+</api>

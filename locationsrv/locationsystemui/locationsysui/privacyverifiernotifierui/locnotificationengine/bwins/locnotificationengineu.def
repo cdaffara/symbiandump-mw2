@@ -1,0 +1,4 @@
+EXPORTS
+	?ResolveRequestorsL@CLocRequestorUtilsResolver@@QAEXAAV?$RPointerArray@VCPosRequestor@@@@@Z @ 1 NONAME ; void CLocRequestorUtilsResolver::ResolveRequestorsL(class RPointerArray<class CPosRequestor> &)
+	?NewL@CLocRequestorUtilsResolver@@SAPAV1@XZ @ 2 NONAME ; class CLocRequestorUtilsResolver * CLocRequestorUtilsResolver::NewL(void)
+

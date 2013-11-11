@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<api id="ef440fe7d2238e9f0c0913215395bb6f" dataversion="1.0">
+  <name>SAT Client API</name>
+  <description>SAT Server provides a simple interface for notifications about SIM-originated SIM Application Toolkit events. Due to the nature of SIM Application Toolkit, SAT Server can accept so-called UI clients. The client is responsible for handling the commands it receives from SAT Server.</description>
+  <type>c++</type>
+  <subsystem>satengine</subsystem>
+  <libs>
+    <lib name="SatClient.lib" />
+  </libs>
+  <release category="domain" sinceversion="3.2"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>no</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

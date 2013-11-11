@@ -1,0 +1,14 @@
+EXPORTS
+	?WinsMain@@YAHXZ @ 1 NONAME ; int __cdecl WinsMain(void)
+	?NewL@CWatcher@@SAPAV1@H@Z @ 2 NONAME ; public: static class CWatcher * __cdecl CWatcher::NewL(int)
+	?NewLC@CWatcherWait@@SAPAV1@H@Z @ 3 NONAME ; public: static class CWatcherWait * __cdecl CWatcherWait::NewLC(int)
+	?Printf@CWatcherLog@@QAAXV?$TRefByValue@$$CBVTDesC16@@@@ZZ @ 4 NONAME ; public: void __cdecl CWatcherLog::Printf(class TRefByValue<class TDesC16 const >,...)
+	?Start@CWatcher@@QAEXAAVTRequestStatus@@@Z @ 5 NONAME ; public: void __thiscall CWatcher::Start(class TRequestStatus &)
+	?Start@CWatcherWait@@QAEXXZ @ 6 NONAME ; public: void __thiscall CWatcherWait::Start(void)
+	??1CWatcher@@UAE@XZ @ 7 NONAME ; public: virtual __thiscall CWatcher::~CWatcher(void)
+	??1CWatcherArray@@UAE@XZ @ 8 NONAME ; public: virtual __thiscall CWatcherArray::~CWatcherArray(void)
+	??1CWatcherWait@@UAE@XZ @ 9 NONAME ; public: virtual __thiscall CWatcherWait::~CWatcherWait(void)
+	?NewL@CWatcherArray@@SAPAV1@XZ @ 10 NONAME ; public: static class CWatcherArray * __cdecl CWatcherArray::NewL(void)
+	?IsLogging@CWatcherLog@@QBEHXZ @ 11 NONAME ; public: int __thiscall CWatcherLog::IsLogging(void)const 
+	?Printf@CWatcherLog@@QAAXV?$TRefByValue@$$CBVTDesC8@@@@ZZ @ 12 NONAME ; public: void __cdecl CWatcherLog::Printf(class TRefByValue<class TDesC8 const >,...)
+

@@ -1,0 +1,43 @@
+/**********************************************************
+   1. Create MO PS call, forward with choices is requested
+   2. Get the list of address choices and select index 0
+   2. Disconnect call
+**********************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 6.3 Forward, Get Choices
+timeout 10000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test OpenNewCall 1 0 "plugincmd forwardchoices 0" 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvents 1 Dialling, 1 Connecting, 1 Forwarding, 1 VoipMultipleChoices
+
+// Step 2
+print Step_2
+
+test GetForwardAddressChoices 1 0
+// parameter 1: call ID, parameter 2: rel val, parameter 3: forward index
+test ForwardToAddress 1 0 0
+
+test WaitEvent 1 Connected
+
+// Step 3
+print Step_3
+
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+test VerifyTest
+delete test
+[Endtest] 

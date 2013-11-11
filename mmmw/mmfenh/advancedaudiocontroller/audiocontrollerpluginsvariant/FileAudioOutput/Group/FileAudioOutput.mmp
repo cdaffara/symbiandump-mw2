@@ -1,0 +1,48 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project file for FileAudioOutput
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET 		FileAudioOutput.dll
+TARGETTYPE 	DLL
+UID 		0x1000008D 0x101FAF89
+VENDORID	VID_DEFAULT
+
+CAPABILITY CAP_GENERAL_DLL
+
+SOURCEPATH	../Src
+SOURCE		FileAudioOutput.cpp
+SOURCE		FileOutputAO.cpp
+
+USERINCLUDE	../Inc ../Src
+USERINCLUDE	../../../../inc
+USERINCLUDE	../../AdvancedAudioController/Inc
+USERINCLUDE     ../../DataSourceAdapter/Inc
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   /epoc32/include/ecom
+SYSTEMINCLUDE	/epoc32/include/mmf/server
+SYSTEMINCLUDE	/epoc32/include/mmf/common
+SYSTEMINCLUDE	/epoc32/include/mmf/plugin
+
+LIBRARY 	euser.lib
+LIBRARY 	mmfcontrollerframework.lib
+LIBRARY 	mmfserverbaseclasses.lib
+#ifdef EABI
+LIBRARY     ecom.lib
+#endif

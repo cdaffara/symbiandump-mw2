@@ -1,0 +1,9 @@
+//SIAP11
+password
+Hname:BBC
+Hurl:http://news.bbc.co.uk
+Hname:Nme
+Hurl:http://www.nme.com
+Hname:Dilbert
+Hurl:http://www.dilbert.com
+

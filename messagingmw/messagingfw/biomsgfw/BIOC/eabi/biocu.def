@@ -1,0 +1,7 @@
+EXPORTS
+	_ZN13CBIOClientMtm4NewLER17CRegisteredMtmDllR11CMsvSession @ 1 NONAME
+	_ZTI13CBIOClientMtm @ 2 NONAME ; #<TI>#
+	_ZTV13CBIOClientMtm @ 3 NONAME ; #<VT>#
+	_ZTI13CBIOOperation @ 4 NONAME ; #<TI>#
+	_ZTV13CBIOOperation @ 5 NONAME ; #<VT>#
+

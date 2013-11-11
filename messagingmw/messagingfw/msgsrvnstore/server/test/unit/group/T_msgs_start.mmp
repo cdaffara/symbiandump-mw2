@@ -1,0 +1,32 @@
+// Copyright (c) 2000-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+TARGET			t_msgs_start.exe
+TARGETTYPE		exe
+
+CAPABILITY All -TCB
+
+SOURCEPATH		../src
+USERINCLUDE		../inc
+SOURCE			T_START.CPP
+USERINCLUDE		../../../inc
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+LIBRARY			euser.lib msgs.lib estor.lib efsrv.lib msvtestutils.lib sqldb.lib 
+EPOCSTACKSIZE	0x4000
+
+UID    0x1000007a 0x10274021
+VENDORID 0x70000001
+
+SMPSAFE

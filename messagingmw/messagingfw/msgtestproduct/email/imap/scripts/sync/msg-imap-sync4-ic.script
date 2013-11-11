@@ -1,0 +1,1491 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE	T_MsgCommonServer  	-SharedData
+LOAD_SUITE	T_MsgImapServer		-SharedData
+LOAD_SUITE	T_MsgSmtpServer		-SharedData
+
+//#####Script MSG-IMAP-IdleBkSyncComplete-0001 has been commented out. ##########################
+//#####As functionality is covered in other MSG-IMAP-IdleBkSyncComplete tests ########
+//START_TESTCASE	MSG-IMAP-IdleBkSyncComplete-0001
+//!	@SYMTestCaseID			MSG-IMAP-IdleBkSyncComplete-0001
+//!
+//!	@SYMTestCaseDesc		Verification test: 
+//!					This test shall confirm the basic functionality of background synchronisation, 
+//!					and the idle command using an account that is completely empty.
+//!					In this test case idle will be re-issued every 29 mins, and we test its re-issue against
+//!					an account that is completely empty, using a boundary inactivity value of 28 mins 
+//!					(N.B testing the upper limit of inactivity).We also test if we receive updates,
+//!			                while in idle, and that we go into idle once background sync has completed.
+//!					In this test the server supports IDLE capability.
+//!					
+//!					
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!     @SYMREQ                         5557 Going Idle once background sync has completed 
+//!     @SYMPREQ                        1160
+//!  	@SYMTestStatus			Implemented 
+//!	@SYMTestCaseDependencies	requires ced -i c:\ImapIdle.cfg to set comms.
+//!	@SYMTestActions			Start of set up actions: 
+//!                                     In this test the server supports IDLE capability.
+//!					We Initialise the RAS connection
+//!					We reset the message store to clean up the central repository
+//!					We create an IMAP account by reading the settings from the file mentioned
+//!					Thus setting the IMAP and SMTP service settings.
+//!					We connect to the IMAP server and delete all mails in the Inbox on the server.
+//!					We create mutiple smtp messages within the outbox.
+//!					and disconnect form the service. 
+//!					We set the IMAP service parameters.
+//!					The IMAP service parameters are set as follows: IsImapIdleSelected is set as ETRUE,
+//!					ImapIdleTimeout is set to 1680 seconds ( 28 minutes), and ImapSyncRate is set to 60.
+//!					End of set up actions:
+//!					
+//!					We connect to the IMAP server and perform a background synchronisation with it. Using 
+//!					KIMAP4MTMConnectAndSynchronise.We also wait for this background synchronisation to complete 
+//!					using KIMAP4MTMWaitForBackground.
+//!                                     We Remain idle for a period of 28 mins.
+//!					We send the messages created in set up. 
+//!					We confirm if client has been notified of new mail and count them.
+//!					We disconnect from the IMAP service. 													
+//!					
+//! 
+//!
+//!	@SYMTestExpectedResults		EPass- seven new mail messages should be recieved in this account.
+//!					
+//!	@SYMAuthor			Rehana Anwar
+
+//PRINT Setup begins ##############################################
+
+//RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+//RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+//RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+//RUN_TEST_STEP	300	T_MsgCommonServer  InitNtRas c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0009-InitNtRas
+//RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0009-ResetMessageStore
+//RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0009-CreateImapAccount 
+//RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini    	0009-ChangeImapSettings1
+//RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0009-ConnectImap4Server
+//RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0009-DoFullImap4Synchronisation
+//RUN_TEST_STEP  	300 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini 	0009-InitialiseImap4Account
+//RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0009-DoFullImap4Synchronisation
+//PRINT Create mutiple emails#########################################
+//PRINT CREATE 7 SMTP EMAILS 
+//PRINT EMAIL 1: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0009-CreateSmtpMessageFromEmailFile1 
+//PRINT EMAIL 2: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0009-CreateSmtpMessageFromEmailFile2 
+//PRINT EMAIL 3: CREATING
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0009-CreateSmtpMessageFromEmailFile3 
+//PRINT EMAIL 4: CREATING
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0009-CreateSmtpMessageFromEmailFile4 
+//PRINT EMAIL 5: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0009-CreateSmtpMessageFromEmailFile5
+//PRINT EMAIL 6: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0009-CreateSmtpMessageFromEmailFile6  
+//PRINT EMAIL 7: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0009-CreateSmtpMessageFromEmailFile7 
+//DELAY  12000
+//RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0009-DoFullImap4Synchronisation
+//PRINT Disconnecting from imap service
+//RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0009-DisConnectImap4Server
+//set idle settings
+//RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0009-SetImap4ServiceIdleParamters 
+//PRINT Setup Completed #############################################
+//PRINT Execute begin ###############################################
+//PRINT Connect & sync and wait for bkground sync to complete
+//RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0009-ConnectAndSyncImapServer
+//PRINT REMAIN IDLE FOR 28 MINS
+//DELAY 1680000 
+//PRINT Send mutiple emails to account.###########################
+//PRINT Send 7 emails to account
+//Send emails created
+//RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0009-SendSmtpMessage1 
+//PRINT EMAIL: SENT
+//Two minute wdelay to allow for updates
+//DELAY  120000 
+//RUN_TEST_STEP 	300 	T_MsgImapServer		CheckChildrenCountFlagBase		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0009-CheckChildrenCountFlagBase
+//PRINT DISCONNECT FROM IMAP SERVICE
+//RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0009-DisConnectImap4Server
+
+//RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+//RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+//RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+//PRINT Execute Completed ###################################################
+//END_TESTCASE	MSG-IMAP-IdleBkSyncComplete-0001
+
+
+START_TESTCASE	MSG-IMAP-IdleBkSyncComplete-0002
+//!	@SYMTestCaseID			MSG-IMAP-IdleBkSyncComplete-0002
+//!
+//!	@SYMTestCaseDesc		Verification test:
+//!					This test shall confirm the basic functionality of background synchronisation, 
+//!					and the idle command, using an account that not empty. 
+//!					In this test case idle will be re-issued every 29 mins, and we test its re-issue against
+//!					an account that is not empty, using a boundary inactivity value of 28 mins 
+//!					(N.B testing the upper limit of inactivity).We also test if we recieve updates,
+//!			                while in idle.
+//!					In this test the server supports IDLE capability.
+//!					
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!     @SYMREQ                         5557 Going Idle once background sync has completed 
+//!     @SYMPREQ                        1160
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ImapIdle.cfg to set comms.
+//!	@SYMTestActions			Start of set up actions: 
+//!                                     In this test the server supports IDLE capability.
+//!					We Initialise the RAS connection
+//!					We reset the message store to clean up the central repository
+//!					We create an IMAP account by reading the settings from the file mentioned
+//!					Thus setting the IMAP and SMTP service settings.
+//!					We connect to the IMAP server and delete all mails in the Inbox on the server.
+//!					We create mutiple smtp messages within the outbox (7 in total).
+//!                                     We send these messages created.
+//!					and disconnect form the service.
+//!					We set the IMAP service parameters.
+//!					The IMAP service parameters are set as follows: IsImapIdleSelected is set as ETRUE,
+//!					ImapIdleTimeout is set to 1680 seconds ( 28 minutes), and ImapSyncRate is set to 60 
+//!					End of set up actions:
+//!					
+//!					We connect to the IMAP server and perform a background synchronisation with it. Using 
+//!					KIMAP4MTMConnectAndSynchronise.We also wait for this background synchronisation to complete 
+//!					using KIMAP4MTMWaitForBackground.
+//!                                     We Remain idle for a period of 28 mins.
+//!					We create mutiple smtp messages within the outbox (7 in total).
+//!					We send the messages created. 
+//!					We confirm if client has been notified of new mail and count them.
+//!					We confirm the total number of messages in the inbox and
+//!					disconnect from the IMAP service. 	
+//! 
+//!
+//!	@SYMTestExpectedResults		EPass- 14 messages should be within the inbox.
+//!					
+//!	@SYMAuthor			Rehana Anwar
+
+PRINT Setup begins ##########################################################################
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  InitNtRas c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0010-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0010-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0010-CreateImapAccount 
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0010-ChangeImapSettings1
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0010-ConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0010-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0010-InitialiseImap4Account
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0010-DoFullImap4Synchronisation
+PRINT Create mutiple emails
+PRINT CREATE 7 SMTP EMAILS 
+PRINT EMAIL 1: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0010-CreateSmtpMessageFromEmailFile1 
+PRINT EMAIL 2: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0010-CreateSmtpMessageFromEmailFile2 
+PRINT EMAIL 3: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0010-CreateSmtpMessageFromEmailFile3 
+PRINT EMAIL 4: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0010-CreateSmtpMessageFromEmailFile4 
+PRINT EMAIL 5: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0010-CreateSmtpMessageFromEmailFile5
+PRINT EMAIL 6: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0010-CreateSmtpMessageFromEmailFile6  
+PRINT EMAIL 7: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0010-CreateSmtpMessageFromEmailFile7 
+PRINT Send mutiple emails to account.
+PRINT Send 7 emails to account
+//Send emails created
+RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0010-SendSmtpMessage1 
+PRINT EMAIL : SENT
+DELAY  12000
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0010-DoFullImap4Synchronisation
+PRINT Count total number of messages in inbox.
+RUN_TEST_STEP 	300 	T_MsgImapServer	CheckChildrenCountImap c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0010-CheckChildrenCountImap0
+PRINT Disconnecting from IMAP service
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0010-DisConnectImap4Server
+//set idle
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0010-SetImap4ServiceIdleParamters 
+PRINT Setup Completed ##############################################################
+PRINT Execute begin ################################################################
+PRINT Connect & sync and wait for bkground sync to complete
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0010-ConnectAndSyncImapServer
+PRINT Count total number of messages in inbox.
+RUN_TEST_STEP 	300 	T_MsgImapServer	CheckChildrenCountImap c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0010-CheckChildrenCountImap0
+PRINT REMAIN IDLE FOR 28 MINS
+DELAY 16800
+PRINT Create mutiple emails
+PRINT CREATE 7 SMTP EMAILS 
+PRINT EMAIL 1: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0010-CreateSmtpMessageFromEmailFile1 
+PRINT EMAIL 2: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0010-CreateSmtpMessageFromEmailFile2 
+PRINT EMAIL 3: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0010-CreateSmtpMessageFromEmailFile3 
+PRINT EMAIL 4: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0010-CreateSmtpMessageFromEmailFile4 
+PRINT EMAIL 5: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0010-CreateSmtpMessageFromEmailFile5
+PRINT EMAIL 6: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0010-CreateSmtpMessageFromEmailFile6  
+PRINT EMAIL 7: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0010-CreateSmtpMessageFromEmailFile7 
+PRINT Send 7 emails to account
+//Send emails created
+RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0010-SendSmtpMessage1 
+PRINT EMAIL : SENT
+DELAY  12000
+RUN_TEST_STEP 	300 	T_MsgImapServer		CheckChildrenCountFlagBase		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0010-CheckChildrenCountFlagBase
+PRINT Count total number of messages in inbox.
+RUN_TEST_STEP 	300 	T_MsgImapServer	CheckChildrenCountImap c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0010-CheckChildrenCountImap1
+PRINT Disconnecting from IMAP service
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0010-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-IdleBkSyncComplete-0002
+
+
+//#####Script MSG-IMAP-IdleBkSyncComplete-0003 has been commented out. ##########################
+//#####As functionality is covered in other MSG-IMAP-IdleBkSyncComplete tests ########
+//START_TESTCASE	MSG-IMAP-IdleBkSyncComplete-0003
+//!	@SYMTestCaseID			MSG-IMAP-IdleBkSyncComplete-0003
+//!
+//!	@SYMTestCaseDesc		Verification test:
+//!					This test case shall confirm the basic functionality of the idle command, using an 
+//!					account that is not empty. In this test the server support idle cabability.
+//!					This test shall test the use of idle mode, using a specified time interval.
+//!					In this test case idle will be re-issued every 29 mins, and we test its re-issue against
+//!					an account that is Not empty, using a  inactivity value of 29 mins. 
+//!					We also test if we receive updates,while in idle,
+//!					and that we go into idle once background sync has completed.
+//!					
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!     @SYMREQ                         5557 Going Idle once background sync has completed 
+//!     @SYMPREQ                        1160
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ImapIdle.cfg to set comms.
+//!	@SYMTestActions			Start of set up actions: 
+//!                                     In this test the server supports IDLE capability.
+//!					We Initialise the RAS connection
+//!					We reset the message store to clean up the central repository
+//!					We create an IMAP account by reading the settings from the file mentioned
+//!					Thus setting the IMAP and SMTP service settings.We set the IMAP service parameters.
+//!					The IMAP service parameters are set as follows: IsImapIdleSelected is set as ETRUE,
+//!					ImapIdleTimeout is set to 1740 seconds ( 29 minutes), and ImapSyncRate is set to 60.
+//!					We connect to the IMAP server and delete all mails in the Inbox on the server.
+//!					We create mutiple smtp messages within the outbox.
+//!					and disconnect form the service. 
+//!					End of set up actions:
+//!					
+//!					We connect to the IMAP server and perform a background synchronisation with it. Using 
+//!					KIMAP4MTMConnectAndSynchronise.We also wait for this background synchronisation to complete 
+//!					using KIMAP4MTMWaitForBackground.
+//!                                     We Remain idle for a period of 29 mins.
+//!					We send the messages created in set up. 
+//!					We confirm if client has been notified of new mail and count them.
+//!					We disconnect from the IMAP service. 		
+//!
+//!	@SYMTestExpectedResults		EPass- seven new mail messages should be recieved in this account.
+//!					
+//!	@SYMAuthor			Rehana Anwar
+
+//PRINT Setup begins #################################################
+
+//RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+//RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+//RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+//RUN_TEST_STEP	300	T_MsgCommonServer  InitNtRas c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0011-InitNtRas
+//RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0011-ResetMessageStore
+//RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0011-CreateImapAccount 
+//RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini    	0011-ChangeImapSettings1
+//RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0011-ConnectImap4Server
+//RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0011-DoFullImap4Synchronisation
+//RUN_TEST_STEP  	300 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0011-InitialiseImap4Account
+//RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0011-DoFullImap4Synchronisation
+//PRINT Create mutiple emails
+//PRINT CREATE 7 SMTP EMAILS 
+//PRINT EMAIL 1: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0011-CreateSmtpMessageFromEmailFile1 
+//PRINT EMAIL 2: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0011-CreateSmtpMessageFromEmailFile2 
+//PRINT EMAIL 3: CREATING
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0011-CreateSmtpMessageFromEmailFile3 
+//PRINT EMAIL 4: CREATING
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0011-CreateSmtpMessageFromEmailFile4 
+//PRINT EMAIL 5: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0011-CreateSmtpMessageFromEmailFile5
+//PRINT EMAIL 6: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0011-CreateSmtpMessageFromEmailFile6  
+//PRINT EMAIL 7: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0011-CreateSmtpMessageFromEmailFile7 
+//DELAY 12000
+//RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0011-DoFullImap4Synchronisation
+//PRINT Disconnecting from imap service
+//RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0011-DisConnectImap4Server
+//RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0011-SetImap4ServiceIdleParamters 
+//PRINT Setup Completed #################################################
+//PRINT Execute begin #################################################
+//PRINT Connect & sync and wait for bkground sync to complete
+//RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0011-ConnectAndSyncImapServer
+//PRINT REMAIN IDLE FOR 29 MINS
+//DELAY 1740000
+//PRINT Send mutiple emails to account.
+//Send emails created
+//RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0011-SendSmtpMessage1 
+//PRINT EMAIL : SENT
+//DELAY 12000
+//RUN_TEST_STEP 	300 	T_MsgImapServer		CheckChildrenCountFlagBase		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0011-CheckChildrenCountFlagBase
+//PRINT DISCONNECONECT FROM IMAP SERVICE
+//RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0011-DisConnectImap4Server
+
+//RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+//RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+//RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+//PRINT Execute Completed ################################################
+//END_TESTCASE	MSG-IMAP-IdleBkSyncComplete-0003
+
+
+//#####Script MSG-IMAP-IdleBkSyncComplete-0004 has been commented out. ##########################
+//#####As functionality is covered in other MSG-IMAP-IdleBkSyncComplete tests ########
+//START_TESTCASE	MSG-IMAP-IdleBkSyncComplete-0004
+//!	@SYMTestCaseID			MSG-IMAP-IdleBkSyncComplete-0004
+//!
+//!	@SYMTestCaseDesc		Verification test: 
+//!					This test case shall confirm the basic functionality of the idle command.
+//!					In this test the server support idle cabability, using an account that is completely empty. 
+//!					This test shall test the use of idle mode, using a specified time interval.
+//!					In this test case idle will be re-issued every 19 mins, and we test its re-issue against
+//!					an account that is completely empty, using a  inactivity value of 19 mins. 
+//!					We also test if we receive updates,while in idle,
+//!					and that we go into idle once background sync has completed.
+//!					
+//!					
+//!					
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!     @SYMREQ                         5557 Going Idle once background sync has completed 
+//!     @SYMPREQ                        1160
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ImapIdle.cfg to set comms.
+//!	@SYMTestActions			In this test the server supports idle capability.
+//!					Start of set up actions: 
+//!					We Initialise the RAS connection
+//!					We reset the message store to clean up the central repository
+//!					We create an IMAP account by reading the settings from the file mentioned
+//!					Thus setting the IMAP and SMTP service settings.
+//!					We create mutiple smtp messages within the outbox.
+//!					and disconnect form the service.
+//!					We set the IMAP service parameters.
+//!					The IMAP service parameters are set as follows: IsImapIdleSelected is set as ETRUE,
+//!					ImapIdleTimeout is set to 1140 seconds ( 19 minutes), and ImapSyncRate is set to 60.
+//!					We connect to the IMAP server and delete all mails in the Inbox on the server. 
+//!					End of set up actions:
+//!					
+//!					We connect to the IMAP server and perform a background synchronisation with it. Using 
+//!					KIMAP4MTMConnectAndSynchronise.We also wait for this background synchronisation to complete 
+//!					using KIMAP4MTMWaitForBackground.
+//!                                     We Remain idle for a period of 19 mins.
+//!					We ssend the messages created in set up. 
+//!					We confirm if client has been notified of new mail and count them.
+//!					We disconnect from the IMAP service. 	
+//! 
+//!
+//!	@SYMTestExpectedResults		EPass- seven new mail messages should be recieved in this account.
+//!					
+//!	@SYMAuthor			Rehana Anwar
+
+
+//PRINT Setup begins ##################################################################
+
+//RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+//RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+//RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+//RUN_TEST_STEP	300	T_MsgCommonServer  InitNtRas c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0012-InitNtRas
+//RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0012-ResetMessageStore
+//RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0012-CreateImapAccount 
+//RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini    	0012-ChangeImapSettings1
+//RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0012-ConnectImap4Server
+//RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0012-DoFullImap4Synchronisation
+//RUN_TEST_STEP  	300 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0012-InitialiseImap4Account
+//PRINT Create mutiple emails
+//PRINT CREATE 7 SMTP EMAILS 
+//PRINT EMAIL 1: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0012-CreateSmtpMessageFromEmailFile1 
+//PRINT EMAIL 2: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0012-CreateSmtpMessageFromEmailFile2 
+//PRINT EMAIL 3: CREATING
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0012-CreateSmtpMessageFromEmailFile3 
+//PRINT EMAIL 4: CREATING
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0012-CreateSmtpMessageFromEmailFile4 
+//PRINT EMAIL 5: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0012-CreateSmtpMessageFromEmailFile5
+//PRINT EMAIL 6: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0012-CreateSmtpMessageFromEmailFile6  
+//PRINT EMAIL 7: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0012-CreateSmtpMessageFromEmailFile7 
+//DELAY  12000
+//RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0012-DoFullImap4Synchronisation
+//PRINT Disconnecting from imap service
+//RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0012-DisConnectImap4Server
+//RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0012-SetImap4ServiceIdleParamters 
+//PRINT Setup Completed ###################################################
+//PRINT Execute begin #####################################################
+//PRINT Connect & sync and wait for bkground sync to complete
+//RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0012-ConnectAndSyncImapServer
+//PRINT REMAIN IDLE FOR 19 MINS
+//DELAY 1140000
+//PRINT Send mutiple emails to account.
+//PRINT Send 7 emails to account
+//Send emails created
+//RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0012-SendSmtpMessage1 
+//PRINT EMAIL : SENT
+//DELAY  12000
+//RUN_TEST_STEP 	300 	T_MsgImapServer	CheckChildrenCountImap c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0012-CheckChildrenCountImap
+//RUN_TEST_STEP 	300 	T_MsgImapServer		CheckChildrenCountFlagBase		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0012-CheckChildrenCountFlagBase
+//PRINT Disconnecting from imap service
+//RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0012-DisConnectImap4Server
+//RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+//RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+//RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+//PRINT Execute Completed ################################################
+//END_TESTCASE	MSG-IMAP-IdleBkSyncComplete-0004
+
+
+START_TESTCASE	MSG-IMAP-IdleBkSyncComplete-0005
+//!	@SYMTestCaseID			MSG-IMAP-IdleBkSyncComplete-0005
+//!
+//!	@SYMTestCaseDesc		Verification test: 
+//!					This test case shall confirm the basic functionality of the idle command.
+//!					In this test the server support idle cabability, using an account that is completely empty. 
+//!					This test shall test the use of idle mode, using a specified time interval.
+//!					In this test case idle will be re-issued every 4 mins, and we test its re-issue against
+//!					an account that is completely empty, using a  inactivity value of 4 mins. 
+//!					We also test if we receive updates,while in idle, 
+//!					and that we go into idle once background sync has completed.
+//!					
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!     @SYMREQ                         5557 Going Idle once background sync has completed 
+//!     @SYMPREQ                        1160
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ImapIdle.cfg to set comms.
+//!	@SYMTestActions		        In this test the server supports idle capability.
+//!					Start of set up actions: 
+//!					We Initialise the RAS connection
+//!					We reset the message store to clean up the central repository
+//!					We create an IMAP account by reading the settings from the file mentioned
+//!					Thus setting the IMAP and SMTP service settings.
+//!					We connect to the IMAP server and delete all mails in the Inbox on the server.
+//!					We create mutiple smtp messages within the outbox.
+//!					and disconnect form the service. 
+//!                                     We set the IMAP service parameters.
+//!					The IMAP service parameters are set as follows: IsImapIdleSelected is set as ETRUE,
+//!					ImapIdleTimeout is set to 240 seconds ( 4 minutes), and ImapSyncRate is set to 60.
+//!					End of set up actions:
+//!					
+//!					We connect to the IMAP server and perform a background synchronisation with it. Using 
+//!					KIMAP4MTMConnectAndSynchronise.We also wait for this background synchronisation to complete 
+//!					using KIMAP4MTMWaitForBackground.
+//!                                     We Remain idle for a period of 4 mins.
+//!					We send the messages created in set up. 
+//!					We confirm if client has been notified of new mail and count them.
+//!					We disconnect from the IMAP service. 	
+//! 
+//!
+//!	@SYMTestExpectedResults		EPass- seven new mail messages should be recieved in this account.
+//!					
+//!	@SYMAuthor			Rehana Anwar
+
+PRINT Setup begins ################################################
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  InitNtRas c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0013-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0013-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0013-CreateImapAccount 
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini    	0013-ChangeImapSettings1
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0013-ConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0013-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0013-InitialiseImap4Account
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0013-DoFullImap4Synchronisation
+PRINT Create mutiple emails
+PRINT EMAIL 1: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0013-CreateSmtpMessageFromEmailFile1 
+PRINT EMAIL 2: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0013-CreateSmtpMessageFromEmailFile2 
+PRINT EMAIL 3: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0013-CreateSmtpMessageFromEmailFile3 
+PRINT EMAIL 4: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0013-CreateSmtpMessageFromEmailFile4 
+PRINT EMAIL 5: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0013-CreateSmtpMessageFromEmailFile5
+PRINT EMAIL 6: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0013-CreateSmtpMessageFromEmailFile6  
+PRINT EMAIL 7: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0013-CreateSmtpMessageFromEmailFile7 
+DELAY  12000
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0013-DoFullImap4Synchronisation
+PRINT Disconnecting from imap service
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0013-DisConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0013-SetImap4ServiceIdleParamters 
+PRINT Setup Completed ################################################
+PRINT Execute begin ##################################################
+PRINT Connect & sync and wait for bkground sync to complete
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0013-ConnectAndSyncImapServer
+PRINT REMAIN IDLE FOR 4 MINS
+DELAY 24000
+PRINT Send mutiple emails to account.
+PRINT Send 7 emails to account
+//Send emails created
+RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0013-SendSmtpMessage1 
+PRINT EMAIL : SENT
+DELAY  5000
+RUN_TEST_STEP 	300 	T_MsgImapServer		CheckChildrenCountFlagBase		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0013-CheckChildrenCountFlagBase
+PRINT Disconnecting from imap service
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0013-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-IdleBkSyncComplete-0005
+
+
+//#####Script MSG-IMAP-IdleBkSyncComplete-0006 has been commented out. ##########################
+//#####As functionality is covered in other MSG-IMAP-IdleBkSyncComplete tests ########
+//START_TESTCASE	MSG-IMAP-IdleBkSyncComplete-0006
+//!	@SYMTestCaseID			MSG-IMAP-IdleBkSyncComplete-0006
+//!
+//!	@SYMTestCaseDesc		Verification test: 
+//!					This test case shall confirm the basic functionality of the idle command.
+//!					In this test the server support idle cabability, using an account that is completely empty. 
+//!					This test shall test the use of idle mode, using a specified time interval.
+//!					In this test case idle will be re-issued every 29 mins, and we test its re-issue against
+//!					an account that is completely empty, using  mutiple inactivity values, 
+//!					and mutiple mailbox updates. 
+//!					We also test if we receive updates,while in idle, 
+//!					and that we go into idle once background sync has completed.
+//!					
+//!					
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!     @SYMREQ                         5557 Going Idle once background sync has completed 
+//!     @SYMPREQ                        1160
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ImapIdle.cfg to set comms.
+//!	@SYMTestActions			In this test the server suppoorts idle capability.
+//!				
+//!					Start of set up actions: 
+//!					We Initialise the RAS connection
+//!					We reset the message store to clean up the central repository
+//!					We create an IMAP account by reading the settings from the file mentioned
+//!					Thus setting the IMAP and SMTP service settings.
+//!					We connect to the IMAP server and delete all mails in the Inbox on the server.
+//!					We create mutiple smtp messages within the outbox (7 in Total).
+//!					and disconnect form the service.
+//!					We set the IMAP service parameters.
+//!					The IMAP service parameters are set as follows: IsImapIdleSelected is set as ETRUE,
+//!					ImapIdleTimeout is set to 1740 seconds ( 29 minutes), and ImapSyncRate is set to 60.
+//!					End of set up actions:
+//!					We connect to the IMAP server and perform a background synchronisation with it. Using 
+//!					KIMAP4MTMConnectAndSynchronise.We also wait for this background synchronisation to complete 
+//!					using KIMAP4MTMWaitForBackground.
+//!                                     We Remain idle for a period of 29 mins.
+//!					We send the messages created in set up. 
+//!					We confirm if client has been notified of new mail and count .
+//!				        We create mutiple smtp messages within the outbox (7 in Total).
+//!					We Remain idle for a period of 10 mins.
+//!					We send these messages.
+//!					We confirm if client has been notified of new mail and count.
+//!				        We create mutiple smtp messages within the outbox (7 in Total).
+//!					We Remain idle for a period of 2 mins.
+//!					We send these messages.
+//!					We confirm if client has been notified of new mail and count them.
+//!					We count all mail in mailbox.
+//!					We disconnect from the IMAP service. 	
+//! 
+//!
+//!	@SYMTestExpectedResults		EPass- 21 new mail messages should be recieved in this account.
+//!					
+//!	@SYMAuthor			Rehana Anwar
+
+//PRINT Setup begins ######################################################
+
+//RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+//RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+//RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+//RUN_TEST_STEP	300	T_MsgCommonServer  InitNtRas c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0014-InitNtRas
+//RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0014-ResetMessageStore
+//RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0014-CreateImapAccount 
+//RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini    	0014-ChangeImapSettings1
+//RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0014-ConnectImap4Server
+//RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-DoFullImap4Synchronisation
+//RUN_TEST_STEP  	300 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-InitialiseImap4Account
+//RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-DoFullImap4Synchronisation
+//PRINT Create mutiple emails
+//PRINT CREATE 7 SMTP EMAILS 
+//PRINT EMAIL 1: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-CreateSmtpMessageFromEmailFile1 
+//PRINT EMAIL 2: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-CreateSmtpMessageFromEmailFile2 
+//PRINT EMAIL 3: CREATING
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-CreateSmtpMessageFromEmailFile3 
+//PRINT EMAIL 4: CREATING
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-CreateSmtpMessageFromEmailFile4 
+//PRINT EMAIL 5: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-CreateSmtpMessageFromEmailFile5
+//PRINT EMAIL 6: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-CreateSmtpMessageFromEmailFile6  
+//PRINT EMAIL 7: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-CreateSmtpMessageFromEmailFile7 
+//DELAY  12000
+//RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-DoFullImap4Synchronisation
+//PRINT Disconnecting from imap service
+//RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0014-DisConnectImap4Server
+//RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-SetImap4ServiceIdleParamters 
+//PRINT Setup Completed ######################################################
+//PRINT Execute begin ######################################################
+//PRINT Connect & sync and wait for bkground sync to complete
+//RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-ConnectAndSyncImapServer
+//PRINT REMAIN IDLE FOR 29 MINS
+//DELAY 1740000
+//PRINT Send mutiple emails to account part1.######################################################
+//Send emails created
+//RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-SendSmtpMessage1 
+//PRINT EMAIL : SENT
+//PRINT Check if Client has recieved correct number of new headers in inbox, and that client has been notified of new mail
+//DELAY  5000
+//RUN_TEST_STEP 	300 	T_MsgImapServer		CheckChildrenCountFlagBase		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-CheckChildrenCountFlagBase1
+//PRINT Create mutiple emails
+//PRINT CREATE 7 SMTP EMAILS 
+//PRINT EMAIL 1: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-CreateSmtpMessageFromEmailFile1 
+//PRINT EMAIL 2: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-CreateSmtpMessageFromEmailFile2 
+//PRINT EMAIL 3: CREATING
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-CreateSmtpMessageFromEmailFile3 
+//PRINT EMAIL 4: CREATING
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-CreateSmtpMessageFromEmailFile4 
+//PRINT EMAIL 5: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-CreateSmtpMessageFromEmailFile5
+//PRINT EMAIL 6: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-CreateSmtpMessageFromEmailFile6  
+//PRINT EMAIL 7: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-CreateSmtpMessageFromEmailFile7 
+//PRINT REMAIN IDLE FOR 10 MINS
+//DELAY 600000
+//PRINT Send mutiple emails to account part2.######################################################
+//Send emails created
+//RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-SendSmtpMessage1 
+//PRINT EMAIL : SENT
+//PRINT Check if Client has recieved correct number of new headers in inbox, and that client has been notified of new mail
+//DELAY  5000
+//RUN_TEST_STEP 	300 	T_MsgImapServer		CheckChildrenCountFlagBase		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-CheckChildrenCountFlagBase2
+//PRINT Create mutiple emails
+//PRINT CREATE 7 SMTP EMAILS 
+//PRINT EMAIL 1: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-CreateSmtpMessageFromEmailFile1 
+//PRINT EMAIL 2: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-CreateSmtpMessageFromEmailFile2 
+//PRINT EMAIL 3: CREATING
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-CreateSmtpMessageFromEmailFile3 
+//PRINT EMAIL 4: CREATING
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-CreateSmtpMessageFromEmailFile4 
+//PRINT EMAIL 5: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-CreateSmtpMessageFromEmailFile5
+//PRINT EMAIL 6: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-CreateSmtpMessageFromEmailFile6  
+//PRINT EMAIL 7: CREATING 
+//RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-CreateSmtpMessageFromEmailFile7 
+//PRINT REMAIN IDLE FOR 2 MINS
+//DELAY 120000
+//PRINT Send mutiple emails to account part3.######################################################
+//Send emails created
+//RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-SendSmtpMessage1 
+//PRINT EMAIL : SENT
+//PRINT Check if Client has recieved correct number of new headers in inbox, and that client has been notified of new mail
+//DELAY  12000
+//RUN_TEST_STEP 	300 	T_MsgImapServer		CheckChildrenCountFlagBase		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0014-CheckChildrenCountFlagBase3
+//PRINT count all mail in inbox
+//RUN_TEST_STEP 	300 	T_MsgImapServer	CheckChildrenCountImap c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini    	0014-CheckChildrenCountImap
+//PRINT Disconnecting from imap service
+//RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0014-DisConnectImap4Server
+
+//RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+//RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+//RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+//PRINT Execute Completed ################################################
+//END_TESTCASE	MSG-IMAP-IdleBkSyncComplete-0006
+
+
+START_TESTCASE	MSG-IMAP-IdleBkSyncComplete-0007 
+//!	@SYMTestCaseID			MSG-IMAP-IdleBkSyncComplete-0007
+//!
+//!	@SYMTestCaseDesc		Verification test: 
+//!					This test shall confirm the basic functionality of the use of idle command
+//!					once background synchronisation completes.This test shall test the use of
+//!					idle through multiple connections, disconnections and updates on the account.
+//!					
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!     @SYMREQ                         5557 Going Idle once background sync has completed 
+//!     @SYMPREQ                        1160
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ImapIdle.cfg to set comms.
+//!	@SYMTestActions			In this test the server supports IDLE capability.
+//!					Start of set up actions: 
+//!					We initialise the RAS connection
+//!					We reset the message store to clean up the central repository
+//!					We create an IMAP account by reading the settings from the file mentioned
+//!					Thus setting the IMAP and SMTP service settings.
+//!					We connect to the IMAP server and delete all mails in the Inbox on the server.
+//!					We create mutiple smtp messages within the outbox (7 in total).
+//!					and disconnect form the service. 
+//!					We set the IMAP service parameters.
+//!					The IMAP service parameters are set as follows: IsImapIdleSelected is set as ETRUE,
+//!					ImapIdleTimeout is set to 1680 seconds ( 28 minutes), and ImapSyncRate is set to 60.
+//!					End of set up actions:
+//!                                     
+//!					We connect to the IMAP server and perform a background synchronisation with it. Using 
+//!					KIMAP4MTMConnectAndSynchronise.We also wait for this background synchronisation to complete 
+//!					using KIMAP4MTMWaitForBackground.
+//!					We send the messages created in set up. 
+//!					We confirm if client has been notified of new mail and count them.
+//!				        We create mutiple smtp messages within the outbox (7 in Total).	
+//!					We disconnect from the IMAP service.
+//!					We connect to the IMAP server and perform a background synchronisation with it. Using 
+//!					KIMAP4MTMConnectAndSynchronise.We also wait for this background synchronisation to complete 
+//!					using KIMAP4MTMWaitForBackground.
+//!					We send the messages previously created. 
+//!					We confirm if client has been notified of new mail and count them.
+//!				        We create mutiple smtp messages within the outbox (7 in Total).	
+//!					We disconnect from the IMAP service 
+//!                                     We connect to the IMAP server and perform a background synchronisation with it. Using 
+//!					KIMAP4MTMConnectAndSynchronise.We also wait for this background synchronisation to complete 
+//!					using KIMAP4MTMWaitForBackground.
+//!					We send the messages previously created. 
+//!					We confirm if client has been notified of new mail and count them.
+//!					We count all mail in mailbox (21 in total).
+//!					We disconnect from the IMAP service 
+//!					
+//! 
+//!
+//!	@SYMTestExpectedResults		EPass- 21 new mail messages should be recieved in this account.
+//!					                Client should be notified of all new mail recieved. 
+//!					
+//!	@SYMAuthor			Rehana Anwar
+
+PRINT Setup begins ######################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  InitNtRas c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0015-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0015-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0015-CreateImapAccount 
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini    	0015-ChangeImapSettings1
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0015-ConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-InitialiseImap4Account
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-DoFullImap4Synchronisation
+PRINT CREATE 7 SMTP EMAILS 
+PRINT EMAIL 1: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-CreateSmtpMessageFromEmailFile1 
+PRINT EMAIL 2: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-CreateSmtpMessageFromEmailFile2 
+PRINT EMAIL 3: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-CreateSmtpMessageFromEmailFile3 
+PRINT EMAIL 4: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-CreateSmtpMessageFromEmailFile4 
+PRINT EMAIL 5: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-CreateSmtpMessageFromEmailFile5
+PRINT EMAIL 6: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-CreateSmtpMessageFromEmailFile6  
+PRINT EMAIL 7: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-CreateSmtpMessageFromEmailFile7 
+DELAY  12000
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-DoFullImap4Synchronisation
+PRINT Disconnecting from imap service
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0015-DisConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-SetImap4ServiceIdleParamters 
+PRINT Setup Completed ######################################################
+PRINT Execute begin ######################################################
+PRINT Connect & sync and wait for bkground sync to complete
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-ConnectAndSyncImapServer
+PRINT Send mutiple emails to account.
+PRINT Send 7 emails to account
+//Send emails created
+RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-SendSmtpMessage1 
+PRINT EMAIL : SENT
+PRINT Check if Client has recieved correct number of new headers in inbox, and that client has been notified of new mail
+DELAY  5000
+RUN_TEST_STEP 	300 	T_MsgImapServer		CheckChildrenCountFlagBase		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-CheckChildrenCountFlagBase1
+PRINT CREATE 7 SMTP EMAILS 
+PRINT EMAIL 1: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-CreateSmtpMessageFromEmailFile1 
+PRINT EMAIL 2: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-CreateSmtpMessageFromEmailFile2 
+PRINT EMAIL 3: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-CreateSmtpMessageFromEmailFile3 
+PRINT EMAIL 4: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-CreateSmtpMessageFromEmailFile4 
+PRINT EMAIL 5: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-CreateSmtpMessageFromEmailFile5
+PRINT EMAIL 6: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-CreateSmtpMessageFromEmailFile6  
+PRINT EMAIL 7: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-CreateSmtpMessageFromEmailFile7 
+PRINT Disconnecting from imap service
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0015-DisConnectImap4Server
+PRINT Connect & sync and wait for bkground sync to complete
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-ConnectAndSyncImapServer
+PRINT Send mutiple emails to account.
+PRINT Send 7 emails to account
+//Send emails created
+RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-SendSmtpMessage1 
+PRINT EMAIL : SENT
+PRINT Check if Client has recieved correct number of new headers in inbox, and that client has been notified of new mail
+DELAY  5000
+RUN_TEST_STEP 	300 	T_MsgImapServer		CheckChildrenCountFlagBase		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-CheckChildrenCountFlagBase1
+PRINT CREATE 7 SMTP EMAILS 
+PRINT EMAIL 1: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-CreateSmtpMessageFromEmailFile1 
+PRINT EMAIL 2: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-CreateSmtpMessageFromEmailFile2 
+PRINT EMAIL 3: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-CreateSmtpMessageFromEmailFile3 
+PRINT EMAIL 4: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-CreateSmtpMessageFromEmailFile4 
+PRINT EMAIL 5: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-CreateSmtpMessageFromEmailFile5
+PRINT EMAIL 6: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-CreateSmtpMessageFromEmailFile6  
+PRINT EMAIL 7: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-CreateSmtpMessageFromEmailFile7 
+PRINT Disconnecting from imap service
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0015-DisConnectImap4Server
+PRINT Connect & sync and wait for bkground sync to complete
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-ConnectAndSyncImapServer
+PRINT Send mutiple emails to account.
+PRINT Send 7 emails to account
+//Send emails created
+RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-SendSmtpMessage1 
+PRINT EMAIL: SENT
+PRINT Check if Client has recieved correct number of new headers in inbox, and that client has been notified of new mail
+DELAY  5000
+RUN_TEST_STEP 	300 	T_MsgImapServer		CheckChildrenCountFlagBase		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0015-CheckChildrenCountFlagBase1
+PRINT count all mail in inbox
+RUN_TEST_STEP 	300 	T_MsgImapServer	CheckChildrenCountImap c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini    	0015-CheckChildrenCountImap
+PRINT Disconnecting from imap service
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0015-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-IdleBkSyncComplete-0007
+
+
+START_TESTCASE	MSG-IMAP-IdleBkSyncComplete-0008
+//!	@SYMTestCaseID			MSG-IMAP-IdleBkSyncComplete-0008
+//!
+//!	@SYMTestCaseDesc		This test shall confirm the basic functionality 
+//!					of the idle command. In this test cases the server supports idle cababilty. 
+//!					This test shall test the scenario of mutiple inbox updates on an empty account,
+//!					while in idle mode.
+//!					
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!     @SYMREQ                         5557 Going Idle once background sync has completed 
+//!     @SYMPREQ                        1160
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ImapIdle.cfg to set comms.
+//!	@SYMTestActions			In this test the server supports idle cabability.
+//!					This test shall test the scenario of mutiple inbox updates
+//!		
+//!					Start of set up actions: 
+//!                                     In this test the server supports IDLE cabability.
+//!					We Initialise the RAS connection
+//!					We reset the message store to clean up the central repository
+//!					We create an IMAP account by reading the settings from the file mentioned
+//!					Thus setting the IMAP and SMTP service settings.We set the IMAP service parameters.
+//!					The IMAP service parameters are set as follows: IsImapIdleSelected is set as ETRUE,
+//!					ImapIdleTimeout is set to 1680 seconds ( 28 minutes), and ImapSyncRate is set to 60.
+//!					We connect to the IMAP server and delete all mails in the Inbox on the server.
+
+//!					and disconnect form the service. 
+//!					End of set up actions:
+//!					
+//!					We connect to the IMAP server and perform a background synchronisation with it. Using 
+//!					KIMAP4MTMConnectAndSynchronise.We also wait for this background synchronisation to complete 
+//!					using KIMAP4MTMWaitForBackground.
+//!					We create Bulk smtp messages within the outbox ( In total 140), and send these msgs
+//!					We confirm if client has been notified of new mail and count them.
+//!					We create mutiple smtp msgs ( 7 in total).
+//!					We send these msgs.
+//!					We confirm if client has been notified of new mail and count them.
+//!					We disconnect from the IMAP service. 	
+//! 
+//!
+//!	@SYMTestExpectedResults		EPass-client should be notified of all mail reiceved. 
+//!					In total inbox should contain 147 mails 
+//!					
+//!	@SYMAuthor			Rehana Anwar
+
+PRINT Setup begins  ######################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  InitNtRas c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0016-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0016-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0016-CreateImapAccount 
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini    	0016-ChangeImapSettings1
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-SetImap4ServiceIdleParamters 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0016-ConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-InitialiseImap4Account
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-DoFullImap4Synchronisation
+PRINT Disconnecting from imap service
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0016-DisConnectImap4Server
+PRINT Setup Completed  ######################################################
+PRINT Execute begin  ######################################################
+PRINT Connect & sync and wait for bkground sync to complete
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-ConnectAndSyncImapServer
+PRINT Create and send bulk emails (Total 70)
+START_REPEAT c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini     0016-bulk repeat
+PRINT EMAIL 1: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-CreateSmtpMessageFromEmailFile1 
+PRINT EMAIL 2: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-CreateSmtpMessageFromEmailFile2 
+PRINT EMAIL 3: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-CreateSmtpMessageFromEmailFile3 
+PRINT EMAIL 4: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-CreateSmtpMessageFromEmailFile4 
+PRINT EMAIL 5: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-CreateSmtpMessageFromEmailFile5
+PRINT EMAIL 6: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-CreateSmtpMessageFromEmailFile6  
+PRINT EMAIL 7: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-CreateSmtpMessageFromEmailFile7 
+//Send emails created
+RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-SendSmtpMessage1 
+END_REPEAT
+PRINT Create and send bulk emails (Total 70)
+START_REPEAT c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini     0016-bulk repeat
+PRINT EMAIL 1: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-CreateSmtpMessageFromEmailFile1 
+PRINT EMAIL 2: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-CreateSmtpMessageFromEmailFile2 
+PRINT EMAIL 3: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-CreateSmtpMessageFromEmailFile3 
+PRINT EMAIL 4: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-CreateSmtpMessageFromEmailFile4 
+PRINT EMAIL 5: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-CreateSmtpMessageFromEmailFile5
+PRINT EMAIL 6: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-CreateSmtpMessageFromEmailFile6  
+PRINT EMAIL 7: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-CreateSmtpMessageFromEmailFile7 
+//Send emails created
+RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-SendSmtpMessage1 
+END_REPEAT
+PRINT Check if Client has recieved correct number of new headers in inbox, and that client has been notified of new mail
+DELAY  5000
+RUN_TEST_STEP 	300 	T_MsgImapServer		CheckChildrenCountFlagBase		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-CheckChildrenCountFlagBase1
+PRINT Create mutiple emails
+PRINT CREATE 7 SMTP EMAILS 
+PRINT EMAIL 1: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-CreateSmtpMessageFromEmailFile1 
+PRINT EMAIL 2: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-CreateSmtpMessageFromEmailFile2 
+PRINT EMAIL 3: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-CreateSmtpMessageFromEmailFile3 
+PRINT EMAIL 4: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-CreateSmtpMessageFromEmailFile4 
+PRINT EMAIL 5: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-CreateSmtpMessageFromEmailFile5
+PRINT EMAIL 6: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-CreateSmtpMessageFromEmailFile6  
+PRINT EMAIL 7: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-CreateSmtpMessageFromEmailFile7 
+PRINT Send mutiple emails to account.
+PRINT Send 7 emails to account
+//Send emails created
+RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-SendSmtpMessage1 
+PRINT EMAILS SENT
+PRINT Check if Client has recieved correct number of new headers in inbox, and that client has been notified of new mail
+DELAY  12000
+RUN_TEST_STEP 	300 	T_MsgImapServer		CheckChildrenCountFlagBase		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0016-CheckChildrenCountFlagBase2
+PRINT Count total number of messages in inbox.
+RUN_TEST_STEP 	300 	T_MsgImapServer	CheckChildrenCountImap c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini    	0016-CheckChildrenCountImap
+PRINT Disconnecting from imap service
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer	c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0016-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+PRINT Execute Completed  ######################################################
+
+END_TESTCASE	MSG-IMAP-IdleBkSyncComplete-0008
+
+
+START_TESTCASE	MSG-IMAP-IdleBkSyncComplete-0009
+//!	@SYMTestCaseID			MSG-IMAP-IdleBkSyncComplete-0009
+//!
+//!	@SYMTestCaseDesc		Verification test: 
+//!					This test shall confirm the basic functionality 
+//!					of the idle command. In this test cases the server supports idle cababilty. 
+//!					This test shall test the use of idle mode using specified time intervals,
+//!					With a stressed background sync operation,using  mutiple inactivity values, 
+//!					and mutiple mailbox updates. Here idle is re-issued every 29 mins.
+//!					
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!     @SYMREQ                         5557 Going Idle once background sync has completed 
+//!     @SYMPREQ                        1160
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ImapIdle.cfg to set comms.
+//!	@SYMTestActions			In this test the server suppoorts idle capability.
+//!      
+//!					Start of set up actions: 
+//!					We Initialise the RAS connection
+//!					We reset the message store to clean up the central repository
+//!					We create an IMAP account by reading the settings from the file mentioned
+//!					Thus setting the IMAP and SMTP service settings.We set the IMAP service parameters.
+//!					The IMAP service parameters are set as follows: IsImapIdleSelected is set as ETRUE,
+//!					ImapIdleTimeout is set to 1740 seconds ( 29 minutes), and ImapSyncRate is set to 60.
+//!					We connect to the IMAP server and delete all mails in the Inbox on the server.
+//!					and disconnect form the service. 
+//!					We create Bulk smtp messages within the outbox ( In total 140).
+//!                                     We send these mails to the account,
+//!					
+//!					End of set up actions:
+//!					
+//!					We connect to the IMAP server and perform a background synchronisation with it. Using 
+//!					KIMAP4MTMConnectAndSynchronise.We also wait for this background synchronisation to complete 
+//!					using KIMAP4MTMWaitForBackground.
+//!					We confirm if client has been notified of new mail and count them.
+//! 					We remain idle for a period of 29 minutes.
+//!					We create mutiple smtp msgs ( 7 in total).
+//!					We send these msgs.
+//!					We confirm if client has been notified of new mail and count them.
+//!					We remain idle for a period of 10 minutes.
+//!					We create mutiple smtp msgs ( 7 in total).
+//!					We send these msgs.
+//!					We remain idle for a period of 2 minutes.
+//!					We confirm if client has been notified of new mail and count them.
+//!					We create mutiple smtp msgs ( 7 in total).
+//!					We send these msgs.
+//!					We confirm if client has been notified of new mail and count them.
+//!					We disconnect from the IMAP service. 	
+//! 
+//!
+//!	@SYMTestExpectedResults		EPass-client should be notified of all mail reiceved. Inbox should contain 161 mails
+//!					
+//!	@SYMAuthor			Rehana Anwar
+
+PRINT Setup begins ##########################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  InitNtRas c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0017-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0017-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0017-CreateImapAccount 
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini    	0017-ChangeImapSettings1
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-SetImap4ServiceIdleParamters 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0017-ConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-InitialiseImap4Account
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-DoFullImap4Synchronisation
+PRINT Disconnecting from imap service
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0017-DisConnectImap4Server
+PRINT Create and send bulk emails (Total 70)
+START_REPEAT c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini     0017-bulk repeat
+PRINT EMAIL 1: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile1 
+PRINT EMAIL 2: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile2 
+PRINT EMAIL 3: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile3 
+PRINT EMAIL 4: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile4 
+PRINT EMAIL 5: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile5
+PRINT EMAIL 6: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile6  
+PRINT EMAIL 7: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile7 
+//Send emails created
+RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-SendSmtpMessage1
+END_REPEAT
+PRINT Create and send bulk emails (Total 70)
+START_REPEAT c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini     0017-bulk repeat
+PRINT EMAIL 1: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile1 
+PRINT EMAIL 2: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile2 
+PRINT EMAIL 3: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile3 
+PRINT EMAIL 4: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile4 
+PRINT EMAIL 5: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile5
+PRINT EMAIL 6: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile6  
+PRINT EMAIL 7: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile7 
+//Send emails created
+RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-SendSmtpMessage1
+END_REPEAT
+PRINT Setup Completed ######################################################
+PRINT Execute begin ######################################################
+PRINT Connect & sync and wait for bkground sync to complete
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 	T_MsgImapServer		CheckChildrenCountFlagBase		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CheckChildrenCountFlagBase0
+PRINT REMAIN IDLE FOR 29 MINS
+DELAY 17400
+PRINT Create mutiple emails
+PRINT EMAIL 1: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile1 
+PRINT EMAIL 2: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile2 
+PRINT EMAIL 3: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile3 
+PRINT EMAIL 4: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile4 
+PRINT EMAIL 5: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile5
+PRINT EMAIL 6: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile6  
+PRINT EMAIL 7: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile7 
+PRINT Send mutiple emails to account.
+//Send emails created
+RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-SendSmtpMessage1 
+PRINT EMAILS SENT
+PRINT Check if Client has recieved correct number of new headers in inbox, and that client has been notified of new mail
+DELAY  5000
+RUN_TEST_STEP 	300 	T_MsgImapServer		CheckChildrenCountFlagBase		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CheckChildrenCountFlagBase1
+PRINT REMAIN IDLE FOR 10 MINS
+DELAY 6000
+PRINT Create mutiple emails
+PRINT EMAIL 1: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile1 
+PRINT EMAIL 2: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile2 
+PRINT EMAIL 3: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile3 
+PRINT EMAIL 4: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile4 
+PRINT EMAIL 5: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile5
+PRINT EMAIL 6: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile6  
+PRINT EMAIL 7: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile7 
+PRINT Send mutiple emails to account.
+//Send emails created
+RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-SendSmtpMessage1 
+PRINT EMAILS SENT
+PRINT Check if Client has recieved correct number of new headers in inbox, and that client has been notified of new mail
+DELAY  5000
+RUN_TEST_STEP 	300 	T_MsgImapServer		CheckChildrenCountFlagBase		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CheckChildrenCountFlagBase2
+PRINT REMAIN IDLE FOR 2 MINS
+DELAY 12000 
+PRINT Create mutiple emails
+PRINT EMAIL 1: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile1 
+PRINT EMAIL 2: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile2 
+PRINT EMAIL 3: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile3 
+PRINT EMAIL 4: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile4 
+PRINT EMAIL 5: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile5
+PRINT EMAIL 6: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile6  
+PRINT EMAIL 7: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CreateSmtpMessageFromEmailFile7 
+PRINT Send mutiple emails to account.
+//Send emails created
+RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-SendSmtpMessage1 
+PRINT EMAILS SENT
+PRINT Check if Client has recieved correct number of new headers in inbox, and that client has been notified of new mail
+DELAY  5000
+RUN_TEST_STEP 	300 	T_MsgImapServer		CheckChildrenCountFlagBase		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0017-CheckChildrenCountFlagBase3
+PRINT Count total number of messages in inbox.
+RUN_TEST_STEP 	300 	T_MsgImapServer	CheckChildrenCountImap c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini    	0017-CheckChildrenCountImap
+PRINT Disconnecting from imap service
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0017-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed  ######################################################
+END_TESTCASE	MSG-IMAP-IdleBkSyncComplete-0009
+
+
+START_TESTCASE	MSG-IMAP-IdleBkSyncComplete-0010
+//!	@SYMTestCaseID			MSG-IMAP-IdleBkSyncComplete-0010
+//!
+//!	@SYMTestCaseDesc		Verification test: 
+//!					This test shall confirm the basic functionality of the ILDE command. 
+//!                                     In this test case the server supports idle capability.
+//!                                     This test shall test the scenario of deleting inbox entires, while in idle mode
+//!					
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!     @SYMREQ                         5557 Going Idle once background sync has completed 
+//!     @SYMPREQ                        1160
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ImapIdle.cfg to set comms.
+//!	@SYMTestActions			
+//!					Start of set up actions: 
+//!                                     In this test the server supports IDLE cabability.
+//!					We Initialise the RAS connection
+//!					We reset the message store to clean up the central repository
+//!					We create an IMAP account by reading the settings from the file mentioned
+//!					Thus setting the IMAP and SMTP service settings.We set the IMAP service parameters.
+//!					The IMAP service parameters are set as follows: IsImapIdleSelected is set as ETRUE,
+//!					ImapIdleTimeout is set to 1680 seconds ( 28 minutes), and ImapSyncRate is set to 60.
+//!					We connect to the IMAP server and delete all mails in the Inbox on the server,
+//!					and disconnect form the service.
+//!					We create mutiple smtp msgs ( 7 in total), and send the messages to the account.
+//!					End of set up actions: 
+//!					
+//!					
+//!					We connect to the IMAP server and perform a background synchronisation with it. Using 
+//!					KIMAP4MTMConnectAndSynchronise.We also wait for this background synchronisation to complete 
+//!					using KIMAP4MTMWaitForBackground.
+//!                                     We delete all mail in the inbox on the device side but do not synchronise the account.
+//!					We confirm if client has been notified of all deleted mail and count them.
+//!					We disconnect from the IMAP service.
+//!					We reset the IMAP service parameters to false. 
+//!					We connect to the IMAP server
+//!					we synchronise the account, and confirm that the inbox is empty.
+//!					We disconnect from the IMAP service.
+//!
+//!	@SYMTestExpectedResults		EPass-client should contain no mail in the inbox .
+//!					
+//!	@SYMAuthor			Rehana Anwar
+
+PRINT Setup begins ###########################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  InitNtRas c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0018-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0018-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0018-CreateImapAccount
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini    	0018-ChangeImapSettings1 
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0018-SetImap4ServiceIdleParamters 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0018-ConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0018-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0018-InitialiseImap4Account
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0018-DoFullImap4Synchronisation
+PRINT disconnecting
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0018-DisConnectImap4Server
+PRINT Create mutiple emails
+PRINT EMAIL 1: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0018-CreateSmtpMessageFromEmailFile1 
+PRINT EMAIL 2: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0018-CreateSmtpMessageFromEmailFile2 
+PRINT EMAIL 3: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0018-CreateSmtpMessageFromEmailFile3 
+PRINT EMAIL 4: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0018-CreateSmtpMessageFromEmailFile4 
+PRINT EMAIL 5: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0018-CreateSmtpMessageFromEmailFile5
+PRINT EMAIL 6: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0018-CreateSmtpMessageFromEmailFile6  
+PRINT EMAIL 7: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0018-CreateSmtpMessageFromEmailFile7 
+PRINT Send mutiple emails to account.
+PRINT Send 7 emails to account
+//Send emails created
+RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0018-SendSmtpMessage1 
+PRINT EMAIL : SENT
+PRINT Setup Completed ###########################################
+PRINT Execute begin ###########################################
+PRINT Connect & sync and wait for bkground sync to complete
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0018-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 	T_MsgImapServer	        CheckChildrenCountImap         c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini    	0018-CheckChildrenCountImap1
+PRINT Delete all mails in inbox.
+RUN_TEST_STEP 	100 	T_MsgImapServer		DeleteAllMessage			c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0018-DeleteAllMessage
+PRINT Count total number of messages in inbox.
+RUN_TEST_STEP 	300 	T_MsgImapServer	        CheckChildrenCountImap         c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini    	0018-CheckChildrenCountImap2
+PRINT Disconnecting from imap service
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0018-DisConnectImap4Server
+//confirmation
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0018-SetImap4ServiceIdleParamters01 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0018-ConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation      c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0018-DoFullImap4Synchronisation
+RUN_TEST_STEP 	300 	T_MsgImapServer	        CheckChildrenCountImap          c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini    	0018-CheckChildrenCountImap2
+PRINT Execute Completed ###########################################
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+END_TESTCASE	MSG-IMAP-IdleBkSyncComplete-0010
+
+
+START_TESTCASE	MSG-IMAP-IdleBkSyncComplete-0012
+//!	@SYMTestCaseID			MSG-IMAP-IdleBkSyncComplete-0012
+//!
+//!	@SYMTestCaseDesc		Exploratory test:  boundary value analysis 
+//!					This test case shall confirm the basic functionality of the idle command.
+//!					In this test the server supports idle cabability, using an account that is not empty. 
+//!					This test shall test the use of idle mode, using a specified time interval.
+//!					In this test case idle will be re-issued every 4 mins, and we test its re-issue against
+//!					an account that is not empty, using a  inactivity value of 4 mins, 
+//!					and a sync rate of 4 min.
+//!					We also test if we receive updates,and if we can perform fetches on attachments
+//!					while in idle, using an email with a large mp3 attachment.					
+//!					(size of actual attachment used is 281k,and the limit for attachment fetches are 300k).		
+//!					We also test that we go into idle once background sync has completed.
+//!					Please note file type used for the attachment is an .mp3		
+//!					
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!     @SYMREQ                         5557 Going Idle once background sync has completed 
+//!     @SYMPREQ                        1160
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ImapIdle.cfg to set comms.
+//!	@SYMTestActions		        pls note test description is incomplete
+//!					In this test the server supports idle capability.
+//!					Start of set up actions: 
+//!					We Initialise the RAS connection
+//!					We reset the message store and clean up the central repository
+//!					We create an IMAP account by reading the settings from the file mentioned
+//!					Thus setting the IMAP and SMTP service settings.
+//!					We connect to the IMAP server and delete all mails in the Inbox on the server.
+//!					and  synchronise the account and disconnect from the service. 
+//!					We create mutiple smtp messages within the outbox, and send these messages.				
+//!                                     We set the IMAP service parameters.
+//!					The IMAP service parameters are set as follows: IsImapIdleSelected is set as ETRUE,
+//!					ImapIdleTimeout is set to 240 seconds ( 4 minutes), and ImapSyncRate is set to 4 minutes.
+//!					End of set up actions:
+//!					
+//!					We connect to the IMAP server and perform a background synchronisation with it. Using 
+//!					KIMAP4MTMConnectAndSynchronise.We also wait for this background synchronisation to complete 
+//!					using KIMAP4MTMWaitForBackground.
+//!					We count all mail in the inbox.
+//!                                     We Remain idle for a period of 4 mins.
+//!					We create the email with a large mp3 attachment we send it to the account
+//!					We confirm if client has been notified of all new mail. 
+//!					We then perform an attachment fetch on all emails, using KIMAP4MTMPopulate 
+//!					defining the TImap4GetMailOptions as EGetImap4EmailAttachments.
+//!					We count all mail in the inbox.
+//!					We disconnect from the IMAP service. 	
+//! 
+//!
+//!	@SYMTestExpectedResults		EPass- All new mail messages should be recieved in this account. 
+//!					All attachments should successfully download.
+//!					The account should contain 8 emails in total.
+//!					
+//!	@SYMAuthor			Rehana Anwar
+
+PRINT Setup begins ################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  InitNtRas c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0019-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0019-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0019-CreateImapAccount 
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini    	0019-ChangeImapSettings1
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0019-ConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0019-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0019-InitialiseImap4Account
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0019-DoFullImap4Synchronisation
+PRINT Disconnecting from imap service
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0019-DisConnectImap4Server
+PRINT Create mutiple emails
+PRINT EMAIL 1: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0019-CreateSmtpMessageFromEmailFile1 
+PRINT EMAIL 2: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0019-CreateSmtpMessageFromEmailFile2 
+PRINT EMAIL 3: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0019-CreateSmtpMessageFromEmailFile3 
+PRINT EMAIL 4: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0019-CreateSmtpMessageFromEmailFile4 
+PRINT EMAIL 5: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0019-CreateSmtpMessageFromEmailFile5
+PRINT EMAIL 6: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0019-CreateSmtpMessageFromEmailFile6  
+PRINT EMAIL 7: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0019-CreateSmtpMessageFromEmailFile7
+PRINT Send mutiple emails to account.
+PRINT Send 7 emails to account
+//Send emails created
+RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0019-SendSmtpMessage1 
+PRINT EMAIL : SENT
+//Delay to allow emails to be recieved on remote server
+DELAY  12000
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0019-SetImap4ServiceIdleParamters
+PRINT Setup Completed ################################################
+PRINT Execute begin ##################################################
+PRINT Connect & sync and wait for bkground sync to complete
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4FullDownloadLimits		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0019-SetImap4FullDownloadLimits
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0019-ConnectAndSyncImapServer
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0019-CheckChildrenCountImap1
+RUN_TEST_STEP 	300 	T_MsgImapServer		CheckChildrenCountFlagBase		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0019-CheckChildrenCountFlagBase1
+PRINT REMAIN IDLE FOR 4 MINS
+DELAY 24000
+//Create  an email with a large mp3 attachment.	
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0019-CreateSmtpMessageFromEmailFile8 
+//Send email created
+RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0019-SendSmtpMessage2 
+//delay to allow email to be recieved		
+DELAY  12000
+RUN_TEST_STEP 	300 	T_MsgImapServer		CheckChildrenCountFlagBase		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0019-CheckChildrenCountFlagBase2
+RUN_TEST_STEP	400	T_MsgImapServer		ImapInvokeAsyncFunction		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0019-ImapInvokeAsyncFunction
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   	0019-CheckChildrenCountImap2
+PRINT Disconnecting from imap service
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync4-ic.ini   		0019-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ###################################################
+END_TESTCASE	MSG-IMAP-IdleBkSyncComplete-0012
+
+

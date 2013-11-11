@@ -1,0 +1,72 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file for MnRefGeocoder
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET              mnrefproviderback.exe
+TARGETTYPE          exe
+EPOCSTACKSIZE       0x5000
+UID                 0x100039CE 0x03132014
+
+VENDORID            VID_DEFAULT
+CAPABILITY          ReadUserData WriteUserData Location
+
+SOURCEPATH          ../src
+
+SOURCE              mnrefproviderback.cpp
+SOURCE              mnrpapplicationback.cpp
+SOURCE              mnrpappuiback.cpp
+SOURCE              mnrpdocumentback.cpp
+SOURCE              mnrpappserverback.cpp
+
+SOURCE              mnrpgeocodingservice.cpp
+#ifdef RD_MAPNAV_BITMAP_ACCESS
+SOURCE              mnrpmapimageservice.cpp
+#endif
+
+USERINCLUDE         ../inc
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY             euser.lib efsrv.lib estor.lib bafl.lib
+LIBRARY             cone.lib apparc.lib eikcore.lib eikcoctl.lib
+LIBRARY             ws32.lib gdi.lib
+
+LIBRARY             avkon.lib aknskins.lib
+
+LIBRARY             eposlandmarks.lib
+LIBRARY             lbs.lib
+LIBRARY             mnservicelib.lib
+
+LIBRARY             mnrefproviderengine.lib
+
+DEBUGLIBRARY        flogger.lib
+
+START RESOURCE      ../data/mnrefproviderback.rss
+HEADER
+TARGETPATH          /resource/apps
+END
+
+START RESOURCE      ../data/mnrefproviderback_reg.rss
+DEPENDS mnrefproviderback.rsg
+TARGETPATH          /private/10003a3f/apps
+END
+
+SMPSAFE
+
+// END OF FILE
+

@@ -1,0 +1,34 @@
+EXPORTS
+	_ZN13MpxViewPlugin11qt_metacallEN11QMetaObject4CallEiPPv @ 1 NONAME
+	_ZN13MpxViewPlugin11qt_metacastEPKc @ 2 NONAME
+	_ZN13MpxViewPlugin16staticMetaObjectE @ 3 NONAME DATA 16
+	_ZN13MpxViewPlugin19getStaticMetaObjectEv @ 4 NONAME
+	_ZN13MpxViewPlugin7commandEi @ 5 NONAME
+	_ZN16MpxViewFramework11qt_metacallEN11QMetaObject4CallEiPPv @ 6 NONAME
+	_ZN16MpxViewFramework11qt_metacastEPKc @ 7 NONAME
+	_ZN16MpxViewFramework13resolvePluginERK5QListIiE @ 8 NONAME
+	_ZN16MpxViewFramework16staticMetaObjectE @ 9 NONAME DATA 16
+	_ZN16MpxViewFramework19getStaticMetaObjectEv @ 10 NONAME
+	_ZN16MpxViewFrameworkC1EP7QWidget6QFlagsIN2Hb10WindowFlagEE @ 11 NONAME
+	_ZN16MpxViewFrameworkC2EP7QWidget6QFlagsIN2Hb10WindowFlagEE @ 12 NONAME
+	_ZN16MpxViewFrameworkD0Ev @ 13 NONAME
+	_ZN16MpxViewFrameworkD1Ev @ 14 NONAME
+	_ZN16MpxViewFrameworkD2Ev @ 15 NONAME
+	_ZN21MpxViewPluginResolver13resolvePluginEv @ 16 NONAME
+	_ZN21MpxViewPluginResolverC1ERK5QListIiE @ 17 NONAME
+	_ZN21MpxViewPluginResolverC2ERK5QListIiE @ 18 NONAME
+	_ZN21MpxViewPluginResolverD0Ev @ 19 NONAME
+	_ZN21MpxViewPluginResolverD1Ev @ 20 NONAME
+	_ZN21MpxViewPluginResolverD2Ev @ 21 NONAME
+	_ZNK13MpxViewPlugin10metaObjectEv @ 22 NONAME
+	_ZNK16MpxViewFramework10metaObjectEv @ 23 NONAME
+	_ZTI13MpxViewPlugin @ 24 NONAME
+	_ZTI16MpxViewFramework @ 25 NONAME
+	_ZTI21MpxViewPluginResolver @ 26 NONAME
+	_ZTI22MpxPluginViewInterface @ 27 NONAME
+	_ZTV13MpxViewPlugin @ 28 NONAME
+	_ZTV16MpxViewFramework @ 29 NONAME
+	_ZTV21MpxViewPluginResolver @ 30 NONAME
+	_ZThn8_N16MpxViewFrameworkD0Ev @ 31 NONAME
+	_ZThn8_N16MpxViewFrameworkD1Ev @ 32 NONAME
+

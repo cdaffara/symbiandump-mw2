@@ -1,0 +1,14 @@
+<?xml version="1.0" ?> 
+<!DOCTYPE testSuite SYSTEM "file:///c:/program files/common files/symbian/testSuite.dtd" [ ]>
+
+<testSuite>
+	<name>binarydownloadsupport</name> 
+
+	<testItems>
+		<test>msg-imap-auth-connect</test>
+		<test>msg-imap-binary-cache1</test>
+		<test>msg-imap-binary-performance</test>
+		<test>msg-imap-binary-plainbody</test>
+	</testItems>
+
+</testSuite>

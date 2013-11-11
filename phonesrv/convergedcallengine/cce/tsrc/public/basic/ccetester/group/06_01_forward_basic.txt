@@ -1,0 +1,41 @@
+/***************************************************
+   1. Create MO PS call, which is forwarded
+   2. Disconnect call
+***************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 6.1 Forward, Basic
+timeout 10000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test OpenNewCall 1 0 "plugincmd forwardbasic 0" 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Forwarding
+
+//test WaitEvents 1 Dialling, 1 Connecting, 1 Forwarding
+
+//test WaitEvent 1 Forwarded
+test WaitEvent 1 Connected
+
+// Step 2
+print Step_2
+
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+test VerifyTest
+delete test
+[Endtest] 

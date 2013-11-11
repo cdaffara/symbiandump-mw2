@@ -1,0 +1,121 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+// CM-SMS-UTC-I-0005-ReceiveSMS.script
+//
+//! @file
+//! @SYMTestCaseID CM-SMS-UTC-I-0005
+//! @SYMTestType CIT
+//! @SYMTestPriority Medium
+//! @SYMPREQ 234, 999
+//! @SYMTestCaseDesc Receive SMSs with UTC change and check chronological ordering.
+//! @SYMTestActions
+//! Send and receive 1st SMS using SIMTSY.
+//! Set UTC offset -1 hour.
+//! Send and receive 2nd SMS using SIMTSY.
+//! Check that received SMSs are ordered correctly by UTC timestamp.
+//! @SYMTestExpectedResults The 1st SMS is timestamped before the 2nd SMS.
+
+	
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_UTILS CopyFile c:\msgtest\TestFramework\Configurations\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMSConfig.txt C:\config.txt
+RUN_UTILS MakeReadWrite C:\config.txt
+
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE_ASYNC
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer InitializeSimTsy c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini Init1
+RUN_TEST_STEP 100 MessagingTestServer StartWatchers c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini StartWatchers
+RUN_TEST_STEP 100 MessagingTestServer Sleep c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini Sleep10
+
+RUN_TEST_STEP 100 MessagingTestServer GetBaseConstants c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini GetBaseConstants
+RUN_TEST_STEP 100 MessagingTestServer SetDefaultSmsSettings c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini SetSettingsFile
+RUN_TEST_STEP 100 MessagingTestServer SetDefaultConfiguration c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini SetSmsMessageConfigFile
+RUN_TEST_STEP 100 MessagingTestServer CreateSession c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini CreateSession
+RUN_TEST_STEP 100 MessagingTestServer CreateRegistry c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini CreateRegistry
+RUN_TEST_STEP 100 MessagingTestServer CreateSmsService c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini CreateSmsService
+RUN_TEST_STEP 100 MessagingTestServer WaitForAll
+RUN_TEST_STEP 100 MessagingTestServer SetSmsServiceSettings c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini SetSmsSettings
+RUN_TEST_STEP 100 MessagingTestServer CreateMtm c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini CreateMtm
+
+RUN_TEST_STEP 100 MessagingTestServer DeleteChildren c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini EmptyOutbox
+RUN_TEST_STEP 100 MessagingTestServer DeleteChildren c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini EmptySent
+RUN_TEST_STEP 100 MessagingTestServer DeleteChildren c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini EmptyInbox
+
+
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini CheckChildrenCountOutbox0
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini CheckChildrenCountSent0
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini CheckChildrenCountInbox0
+
+RUN_TEST_STEP 100 MessagingTestServer GetSmsConstants c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini GetSmsConstants
+RUN_TEST_STEP 100 MessagingTestServer CreateSmsMessage c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini CreateMessage
+
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini CheckChildrenCountOutbox1
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini CheckChildrenCountSent0
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini CheckChildrenCountInbox0
+
+RUN_TEST_STEP 100 MessagingTestServer SetNetworkRegistrationStatus c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini NetAvailable
+RUN_TEST_STEP 100 MessagingTestServer SetSignalStrength c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini NetStrengthHigh
+RUN_TEST_STEP 100 MessagingTestServer Sleep c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini Sleep3
+
+RUN_TEST_STEP 100 MessagingTestServer CopyEntry	c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini CopyEntry
+RUN_TEST_STEP 100 MessagingTestServer Sleep c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini Sleep10
+RUN_TEST_STEP 100 MessagingTestServer WaitForAll
+
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini CheckChildrenCountOutbox0
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini CheckChildrenCountSent1
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini CheckChildrenCountInbox1
+
+RUN_TEST_STEP 100 MessagingTestServer SetUTCOffset c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini SetUTCOffset1
+
+RUN_TEST_STEP 100 MessagingTestServer Sleep c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini Sleep60
+RUN_TEST_STEP 100 MessagingTestServer WaitForAll
+
+RUN_TEST_STEP 100 MessagingTestServer CreateSmsMessage c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini CreateMessage
+
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini CheckChildrenCountOutbox1
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini CheckChildrenCountSent1
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini CheckChildrenCountInbox1
+
+RUN_TEST_STEP 100 MessagingTestServer CopyEntry	c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini CopyEntry
+RUN_TEST_STEP 100 MessagingTestServer Sleep c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini Sleep10
+RUN_TEST_STEP 100 MessagingTestServer WaitForAll
+
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini CheckChildrenCountOutbox0
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini CheckChildrenCountSent2
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini CheckChildrenCountInbox2
+
+RUN_TEST_STEP 100 MessagingTestServer FindEntryByName c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini FindEntryByName1
+RUN_TEST_STEP 100 MessagingTestServer FindEntryByName c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini FindEntryByName2
+
+RUN_TEST_STEP 100 MessagingTestServer CreateSelection c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini CreateSelection
+RUN_TEST_STEP 100 MessagingTestServer GetDefaultAppendToSelection c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini AppendToSelection1
+RUN_TEST_STEP 100 MessagingTestServer GetDefaultAppendToSelection c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini AppendToSelection2
+
+RUN_TEST_STEP 100 MessagingTestServer CreateOrderedChildrenSelection c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini OrderedSelection
+RUN_TEST_STEP 100 MessagingTestServer CompareSelections c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini CompareSelections
+
+RUN_TEST_STEP 100 MessagingTestServer SetUTCOffset c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini SetUTCOffset2
+
+RUN_TEST_STEP 100 MessagingTestServer UnloadPhoneModule c:\msgtest\TestFramework\ScriptedTestCases\UTCSupport\CM-SMS-UTC-I-0005-ReceiveSMS.ini UnloadPhoneModule
+
+RUN_TEST_STEP 100 MessagingTestServer END_TEST_CASE
+

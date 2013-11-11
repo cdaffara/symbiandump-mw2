@@ -1,0 +1,89 @@
+// *****************************************
+//  
+//  Author:	Kashif Nadeem
+//  Date:	8/3/02
+//
+// Performence Test Script for Case 1 and Case 2
+// TO run t_email for Case 1 and 2 performance testing
+// rename this file to script.txt and copy it 
+// to c:\msgtest\emailsmoke
+// *****************************************
+
+[main]
+email_client_test email
+
+// *****************************************
+
+[email]
+imap_client_test imap_testing_Case1
+
+// *****************************************
+
+//
+// Prepare remote inbox for testing
+//
+[imap_testing_Case1]
+clean_message_folder
+start_client_session
+select_root_folder
+imap_service imap_service_fastmail
+select_folder test_imap_service
+connect
+check_imap_error 0
+sync_tree
+check_imap_error 0
+select_root_folder
+select_folder test_imap_service
+//
+// Use case Case1_sync: Sync to folder (Linda1) with 8 emails
+//
+select_folder linda1
+add_comment
+add_comment <Time: Start> Sync folder with 8 emails (test case 1)
+sync_folder
+add_comment <Time: Stop>  Sync folder with 8 emails 
+add_comment
+select_all_messages
+check_selection_count 8
+select_root_folder
+select_folder test_imap_service
+//
+// Use case temp1_get: download 1 email from temp1 folder
+//
+select_folder temp1
+sync_folder
+select_all_messages
+check_selection_count 1
+add_comment
+add_comment <Time: Start> Download 1 Email form temp1 (test case 2)
+populate_folder
+add_comment <Time: Stop>  Download 1 Email form temp1
+add_comment
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+//
+// defining email server:
+//
+[imap_service_fastmail]
+set_name test_imap_service
+set_server trmai02.it.cellulardata.com
+set_user mendonca
+set_pass keiSym
+set_tls 0
+//set_folder_path Inbox
+
+
+
+// Stalker trmai02.it.cellulardata.com
+// alternate username: mendonca
+// alternate password: keiSym
+//
+// Any of the following No can be used to access this server
+// +358 3 3617 770
+// +358 3 31520 444
+// +358 3 31520 111
+// +358 3 31520 999
+// *****************************************

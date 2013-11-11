@@ -1,0 +1,47 @@
+[main]
+bio_test doatstart
+bio_test wapp0030
+bio_test doattheend
+
+
+// Startup section.
+[doatstart]
+clean_all_bio_msgs
+
+
+// Shutdown section.
+[doattheend]
+
+
+// wapp tests.
+[wapp0030]
+gen_msg_from_file wapp\wapp0030.bin
+check_used_bif 10005532
+bio_client_parse
+bio_client_process
+dump_parsed_message
+//
+// check commdb tables for correct entries
+bio_commdb DialOutIsp wapp0030_commdb_dialoutisp_table
+bio_commdb IAP wapp0030_commdb_iap_table
+bio_commdb WAPAccessPoint wapp0030_commdb_wapap_table
+bio_commdb WAPIPBearer wapp0030_commdb_wapip_table
+
+
+[wapp0030_commdb_dialoutisp_table]
+commdb_check text IpGateway "195.134.200.30"
+commdb_check text DefaultTelNum "+35833151001"
+commdb_check text Name "WAPP 0030-GsmCsd"
+
+
+[wapp0030_commdb_iap_table]
+commdb_check text Name "WAPP 0030-GsmCsd"
+
+
+[wapp0030_commdb_wapap_table]
+commdb_check text StartPage "http://mmm.wirelessfuture.com/extindex11.wml"
+commdb_check text Name "WAPP 0030"
+
+
+[wapp0030_commdb_wapip_table]
+commdb_check text GatewayAddress "195.134.200.30"

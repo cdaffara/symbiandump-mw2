@@ -1,0 +1,622 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+PRINT Deleting all messaging.db for fresh start.
+RUN_UTILS  DeleteFile		c:\messaging.db
+RUN_UTILS  DeleteFile		d:\messaging.db
+RUN_UTILS  DeleteFile		e:\messaging.db
+RUN_UTILS  DeleteFile		f:\messaging.db
+RUN_UTILS  DeleteFile		g:\messaging.db
+RUN_UTILS  DeleteFile		h:\messaging.db
+RUN_UTILS  DeleteFile		i:\messaging.db
+RUN_UTILS  DeleteFile		j:\messaging.db
+RUN_UTILS  DeleteFile		k:\messaging.db
+RUN_UTILS  DeleteFile		l:\messaging.db
+RUN_UTILS  DeleteFile		m:\messaging.db
+RUN_UTILS  DeleteFile		n:\messaging.db
+RUN_UTILS  DeleteFile		o:\messaging.db
+
+LOAD_SERVER t_media  -SharedData
+
+//! @file			
+//! @SYMTestSuiteName		MSG-MEDIA-COMPATIBLE-OPS
+//! @SYMScriptTestEnvironment   Details as in below:-
+//!				1. nt-ras connection or winpcap
+//!				2. email servers ( communigatePro or ms exchange)
+//!				3. test driver
+//!				4. testexecute framework(TEF3.0)
+//!				
+//! @SYMScriptPurpose		Integration testing of PREQ557-"Improved support in Messaging for removable media"
+//! @SYMScriptCreationDate	04/04/2008
+
+
+START_TESTCASE	MSG-MEDIA-COMPATIBLE-OPS-0001
+//! 	@SYMTestCaseID		MSG-MEDIA-COMPATIBLE-OPS-0001
+//! 	@SYMTestCaseDesc	Messages on a higher priority drive are corrupt
+//!				
+//!	@SYMREQ			REQ9050 
+//!	@SYMPREQ 		PREQ557
+//!	@SYMAPI			void CMsvSession::CurrentDriveInfo (TDriveNumber& aDrive, Tint& aPriority)
+//!				void CMsvSession::AddDriveL (TDriveNumber aDrive, Tint& aPriority)
+//!				void CMsvSession::DriveListL(RArray<TDriveNumber>& aDriveList)
+//!				TBool MessageServer::IsMessageStoreSupported(TDriveNumber aDrive)
+//!				void CMsvSession::AvailableDriveListL(RArray<TDriveNumber>& aDriveList)
+//!				
+//!	@SYMTestCaseDependencies Copy some currupted email and sms messages from a sample testdata_mail2 folder to a higher priority I: drive 
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1. Get the current drive(C: drive)
+//!				2. Add high priority drive(I: drive)
+//!				3. Get the current drive(I: drive)
+//!				4. Check the drive(I: drive) is present in preferred drive list
+//!				5. Check message store in the drive(I: drive) is supported
+//!				6. Check the drive(I: drive) is available
+//!				7. Check the drive (I: drive) have proper version of DB file
+//!				8. Download the corrupted sms message from I: drive 
+//!				9. Download the corrupted email message from I: drive
+//!				
+//! 	@SYMTestExpectedResults 1. C: drive should be the current drive
+//!				2. Should capture EMsvCurrentDriveChanged notification
+//!				3. I: drive should be the current drive
+//!				4. I: drive should be present in preferred drive list
+//!				5. I: drive should contains valid message store
+//!				6. I: drive should be available
+//!				7. I: drivce should have proper version of DB file
+//!				8. Should return a corruption error
+//!				9. Should return a corruption error
+//!				
+//!	@SYMAuthor		Rajat Bal
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-media-compatible-ops.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-compatible-0001.ini	c:\private\1000484b\msgprioritydrivelist.ini
+
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-media-compatible-ops.ini
+		CREATE_OBJECT	MediaTestWrapper	0001_obj_1
+		COMMAND		0001_obj_1		New		0001_obj_1
+		COMMAND		0001_obj_1		GetCurrentDrive	0001_GetCurrentDrive_1
+		COMMAND		0001_obj_1		AddDrive	0001_AddDrive_high
+		COMMAND		0001_obj_1		GetCurrentDrive	0001_GetCurrentDrive_2
+		COMMAND		0001_obj_1		GetDrivelist	0001_GetDrivelist_1
+		COMMAND		0001_obj_1		MessageStoreSupported	0001_MessageStoreSupported_1
+		COMMAND		0001_obj_1		GetAvailableDriveList	0001_GetAvailableDriveList_1
+	END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+
+END_TESTCASE	MSG-MEDIA-COMPATIBLE-OPS-0001
+
+
+START_TESTCASE	MSG-MEDIA-COMPATIBLE-OPS-0002
+//! 	@SYMTestCaseID		MSG-MEDIA-COMPATIBLE-OPS-0002
+//! 	@SYMTestCaseDesc	Messages on a lesser priority drive are corrupt
+//!				
+//!	@SYMREQ			REQ9050 
+//!	@SYMPREQ 		PREQ557
+//!	@SYMAPI			void CMsvSession::CurrentDriveInfo (TDriveNumber& aDrive, Tint& aPriority)
+//!				void CMsvSession::AddDriveL (TDriveNumber aDrive, Tint& aPriority)
+//!				void CMsvSession::DriveListL(RArray<TDriveNumber>& aDriveList)
+//!				TBool MessageServer::IsMessageStoreSupported(TDriveNumber aDrive)
+//!				void CMsvSession::AvailableDriveListL(RArray<TDriveNumber>& aDriveList)
+//!				
+//!	@SYMTestCaseDependencies Copy some corrupted email and sms messages from a sample testdata_mail2 folder to a lesser priority G: drive
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1. Get the current drive(I: drive)
+//!				2. Add a drive with less priority(G: drive)
+//!				3. Get the current drive(I: drive)
+//!				4. Check the drive(G: drive) is present in preferred drive list
+//!				5. Check message store in the drive(G: drive) is supported
+//!				6. Check the drive(G: drive) is available
+//!				7. Check the drive(G: drive) have proper version of DB file
+//!				8. Download the corrupted sms message from G: drive
+//!				
+//! 	@SYMTestExpectedResults 1. E: drive should be the current drive
+//!				2. Should capture EMsvCurrentDriveChanged notification
+//!				3. G: drive should be the current drive
+//!				4. G: drive should be present in preferred drive list
+//!				5. G: drive should contains valid message store
+//!				6. G: drive should be available
+//!				7. G: drive should have proper version of DB file
+//!				8. Should retun a corruption error
+//!				
+//!	@SYMAuthor		Rajat Bal
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-media-compatible-ops.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-compatible-0002.ini	c:\private\1000484b\msgprioritydrivelist.ini
+
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-media-compatible-ops.ini
+		CREATE_OBJECT	MediaTestWrapper	0002_obj_1
+		COMMAND		0002_obj_1		New		0002_obj_1
+		COMMAND		0002_obj_1		GetCurrentDrive	0002_GetCurrentDrive_1
+		COMMAND		0002_obj_1		AddDrive	0002_AddDrive_less
+		COMMAND		0002_obj_1		GetCurrentDrive	0002_GetCurrentDrive_2
+		COMMAND		0002_obj_1		GetDrivelist	0002_GetDrivelist_1
+		COMMAND		0002_obj_1		MessageStoreSupported	0002_MessageStoreSupported_1
+		COMMAND		0002_obj_1		GetAvailableDriveList	0002_GetAvailableDriveList_1
+	END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+
+END_TESTCASE	MSG-MEDIA-COMPATIBLE-OPS-0002
+
+START_TESTCASE	MSG-MEDIA-COMPATIBLE-OPS-0003
+//! 	@SYMTestCaseID		MSG-MEDIA-COMPATIBLE-OPS-0003
+//! 	@SYMTestCaseDesc	Corrupted message store db in a high priority drive 
+//!				
+//!	@SYMREQ			REQ9050 
+//!	@SYMPREQ 		PREQ557
+//!	@SYMAPI			void CMsvSession::CurrentDriveInfo (TDriveNumber& aDrive, Tint& aPriority)
+//!				void CMsvSession::AddDriveL (TDriveNumber aDrive, Tint& aPriority)
+//!				void CMsvSession::DriveListL(RArray<TDriveNumber>& aDriveList)
+//!				void CMsvSession::AvailableDriveListL(RArray<TDriveNumber>& aDriveList)
+//!				
+//!	@SYMTestCaseDependencies Copy a currupted message db from a sample testdata_db folder to a higher priority G: drive 
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1. Get the current drive(I: drive)
+//!				2. Add high priority drive(G: drive)
+//!				3. Get the current drive(G: drive)
+//!				4. Check the drive(G: drive) is present in preferred drive list
+//!				5. Check the drive(G: drive) is available
+//!				
+//! 	@SYMTestExpectedResults 1. I: drive should be the current drive
+//!				2. Should returned a corrupt notification(EMsvMessageStoreCorrupt) and change drive notification(EMsvCurrentDriveChanged)
+//!				3. G: drive is the current drive
+//!				4. G: drive is present in preferred drive list
+//!				5. G: drive is available
+//!				
+//!	@SYMAuthor		Rajat Bal
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+
+RUN_UTILS  CopyFile   		g:\messaging.db g:\messaging.db.bak
+RUN_UTILS  MakeReadWrite  	g:\messaging.db
+RUN_UTILS  CopyFile   		c:\msgtest\media\corrupt.db g:\messaging.db
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-media-compatible-ops.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-compatible-0003.ini	c:\private\1000484b\msgprioritydrivelist.ini
+
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-media-compatible-ops.ini
+		CREATE_OBJECT	MediaTestWrapper	0003_obj_1
+		COMMAND		0003_obj_1		New		0003_obj_1
+		COMMAND		0003_obj_1		GetCurrentDrive	0003_GetCurrentDrive_1
+		COMMAND		0003_obj_1		AddDrive	0003_AddDrive_high
+		COMMAND		0003_obj_1		GetCurrentDrive	0003_GetCurrentDrive_2
+		COMMAND		0003_obj_1		GetDrivelist	0003_GetDrivelist_1
+		COMMAND		0003_obj_1		GetAvailableDriveList	0003_GetAvailableDriveList_1
+	END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+
+RUN_UTILS  MakeReadWrite  	g:\messaging.db
+RUN_UTILS  CopyFile   		g:\messaging.db.bak g:\messaging.db
+RUN_UTILS  DeleteFile		g:\messaging.db.bak
+
+END_TESTCASE	MSG-MEDIA-COMPATIBLE-OPS-0003
+
+START_TESTCASE	MSG-MEDIA-COMPATIBLE-OPS-0004
+//! 	@SYMTestCaseID		MSG-MEDIA-COMPATIBLE-OPS-0004
+//! 	@SYMTestCaseDesc	Corrupted message db in a lesser priority drive 
+//!				
+//!	@SYMREQ			REQ9050 
+//!	@SYMPREQ 		PREQ557
+//!	@SYMAPI			void CMsvSession::CurrentDriveInfo (TDriveNumber& aDrive, Tint& aPriority)
+//!				void CMsvSession::AddDriveL (TDriveNumber aDrive, Tint& aPriority)
+//!				void CMsvSession::DriveListL(RArray<TDriveNumber>& aDriveList)
+//!				void CMsvSession::AvailableDriveListL(RArray<TDriveNumber>& aDriveList)
+//!				
+//!	@SYMTestCaseDependencies Copy a currupted message db from a sample testdata_db folder to a lesser priority E: drive 
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1. Get the current drive(G: drive)
+//!				2. Add a lesser priority drive(E: drive)
+//!				3. Get the current drive(G: drive)
+//!				4. Check the drive(E: drive) is present in preferred drive list
+//!				5. Check the drive(E: drive) is not available
+//!				
+//! 	@SYMTestExpectedResults 1. G: drive should be the current drive
+//!				2. Should returned a corrupt notification(EMsvMessageStoreCorrupt) 
+//!				3. G: drive is the current drive
+//!				4. E: drive is present in preferred drive list
+//!				5. E: drive is not available
+//!				
+//!	@SYMAuthor		Rajat Bal
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+RUN_UTILS  CopyFile   		e:\messaging.db	e:\messaging.db.bak
+RUN_UTILS  MakeReadWrite  	e:\messaging.db
+RUN_UTILS  CopyFile   		c:\msgtest\media\corrupt.db e:\messaging.db
+
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-media-compatible-ops.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-compatible-0004.ini	c:\private\1000484b\msgprioritydrivelist.ini
+
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-media-compatible-ops.ini
+		CREATE_OBJECT	MediaTestWrapper	0004_obj_1
+		COMMAND		0004_obj_1		New		0004_obj_1
+		COMMAND		0004_obj_1		GetCurrentDrive	0004_GetCurrentDrive_1
+		COMMAND		0004_obj_1		AddDrive	0004_AddDrive_lesser
+		COMMAND		0004_obj_1		GetCurrentDrive	0004_GetCurrentDrive_2
+		COMMAND		0004_obj_1		GetDrivelist	0004_GetDrivelist_1
+		COMMAND		0004_obj_1		GetAvailableDriveList	0004_GetAvailableDriveList_1
+	END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+
+RUN_UTILS  MakeReadWrite  	e:\messaging.db
+RUN_UTILS  CopyFile   		e:\messaging.db.bak e:\messaging.db
+RUN_UTILS  DeleteFile		e:\messaging.db.bak
+
+END_TESTCASE	MSG-MEDIA-COMPATIBLE-OPS-0004
+
+
+START_TESTCASE	MSG-MEDIA-COMPATIBLE-OPS-0005
+//! 	@SYMTestCaseID		MSG-MEDIA-COMPATIBLE-OPS-0005
+//! 	@SYMTestCaseDesc	Add a high priority drive which contains compatible message store and remove it again
+//!				
+//!	@SYMREQ			REQ9050 
+//!	@SYMPREQ 		PREQ557
+//!	@SYMAPI			void CMsvSession::CurrentDriveInfo (TDriveNumber& aDrive, Tint& aPriority)
+//!				void CMsvSession::AddDriveL (TDriveNumber aDrive, Tint& aPriority)
+//!				void CMsvSession::DriveListL(RArray<TDriveNumber>& aDriveList)
+//!				TBool MessageServer::IsMessageStoreSupported(TDriveNumber aDrive)
+//!				void CMsvSession::AvailableDriveListL(RArray<TDriveNumber>& aDriveList)
+//!				void CMsvSession::RemoveDriveL (TDriveNumber aDrive, Tint& aPriority)
+//!				
+//!	@SYMTestCaseDependencies Copy some messages(OS 95 or above) from a sample testdata_95_mail2 folder to I: drive
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1. Get the current drive(G: drive)
+//!				2. Add a high priority drive(I:drive)
+//!				3. Get the current drive(I: drive)
+//!				4. Check the drive(I: drive) is present in preferred drive list
+//!				5. Check message store in the drive(I: drive) is supported
+//!				6. Check the drive(I: drive) is available
+//!				8. Dowload the sms message from I: drive 
+//!				9. Download the email message from I: drive 
+//!				10. Remove the same drive(I: drive)
+//!				
+//! 	@SYMTestExpectedResults 1. G: drive is the current drive
+//!				2. Should capture EMsvCurrentDriveChanged notification
+//!				3. I: drive should be the current drive
+//!				4. I: drive should be present in preferred drive list
+//!				5. I: drive should contains valid message store
+//!				6. I: drive should be available
+//!				8. Download should be completed
+//!				9. Download should be completed
+//!				10. Should capture EMsvCurrentDriveChanged
+//!				
+//!	@SYMAuthor		Rajat Bal
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+RUN_UTILS  CopyFile   		i:\messaging.db	i:\messaging.db.bak
+RUN_UTILS  MakeReadWrite  	i:\messaging.db
+RUN_UTILS  CopyFile   		c:\msgtest\media\compatible.db i:\messaging.db
+
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-media-compatible-ops.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-compatible-0005.ini	c:\private\1000484b\msgprioritydrivelist.ini
+
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-media-compatible-ops.ini
+		CREATE_OBJECT	MediaTestWrapper	0005_obj_1
+		COMMAND		0005_obj_1		New		0005_obj_1
+		COMMAND		0005_obj_1		GetCurrentDrive	0005_GetCurrentDrive_1
+		COMMAND		0005_obj_1		AddDrive	0005_AddDrive_high
+		COMMAND		0005_obj_1		GetCurrentDrive	0005_GetCurrentDrive_2
+		COMMAND		0005_obj_1		GetDrivelist	0005_GetDrivelist_1
+		COMMAND		0005_obj_1		MessageStoreSupported	0005_MessageStoreSupported_1
+		STORE		0005_obj_1		
+		COMMAND		0005_obj_1		GetAvailableDriveList	0005_GetAvailableDriveList_1
+	END_TEST_BLOCK
+	
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-media-compatible-ops.ini
+		RESTORE_OBJECT	MediaTestWrapper	0005_obj_1
+		COMMAND		0005_obj_1		RemoveDrive	0005_RemoveDrive_1
+	END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+
+RUN_UTILS  MakeReadWrite  	i:\messaging.db
+RUN_UTILS  CopyFile   		i:\messaging.db.bak i:\messaging.db
+RUN_UTILS  DeleteFile		i:\messaging.db.bak
+
+END_TESTCASE	MSG-MEDIA-COMPATIBLE-OPS-0005
+
+START_TESTCASE	MSG-MEDIA-COMPATIBLE-OPS-0006
+//! 	@SYMTestCaseID		MSG-MEDIA-COMPATIBLE-OPS-0006
+//! 	@SYMTestCaseDesc	Add a lower priority drive which contains compatible message store and remove it again
+//!				
+//!	@SYMREQ			REQ9050 
+//!	@SYMPREQ 		PREQ557
+//!	@SYMAPI			void CMsvSession::CurrentDriveInfo (TDriveNumber& aDrive, Tint& aPriority)
+//!				void CMsvSession::AddDriveL (TDriveNumber aDrive, Tint& aPriority)
+//!				void CMsvSession::DriveListL(RArray<TDriveNumber>& aDriveList)
+//!				TBool MessageServer::IsMessageStoreSupported(TDriveNumber aDrive)
+//!				void CMsvSession::AvailableDriveListL(RArray<TDriveNumber>& aDriveList)
+//!				void CMsvSession::RemoveDriveL (TDriveNumber aDrive, Tint& aPriority)
+//!				
+//!	@SYMTestCaseDependencies Copy some messages(OS 95 or above) from a sample testdata_95_mail2 folder to I: drive
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1. Get the current drive(G: drive)
+//!				2. Add a lower priority drive(I:drive)
+//!				3. Get the current drive(G: drive)
+//!				4. Check the drive(I: drive) is present in preferred drive list
+//!				5. Check message store in the drive(I: drive) is supported
+//!				6. Check the drive(I: drive) is available
+//!				8. Dowload the sms message from I: drive 
+//!				9. Remove the same drive(I:drive)
+//!				
+//! 	@SYMTestExpectedResults 1. G: drive is the current drive
+//!				2. Should capture EMsvRefreshMessageView notification
+//!				3. G: drive should be the current drive
+//!				4. I: drive should be present in preferred drive list
+//!				5. I: drive should contains valid message store
+//!				6. I: drive should be available
+//!				8. Download should be completed
+//!				9. Should capture EMsvRefreshMessageView notification
+//!				
+//!	@SYMAuthor		Rajat Bal
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+RUN_UTILS  CopyFile   		i:\messaging.db	i:\messaging.db.bak
+RUN_UTILS  MakeReadWrite  	i:\messaging.db
+RUN_UTILS  CopyFile   		c:\msgtest\media\compatible.db i:\messaging.db
+
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-media-compatible-ops.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-compatible-0006.ini	c:\private\1000484b\msgprioritydrivelist.ini
+
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-media-compatible-ops.ini
+		CREATE_OBJECT	MediaTestWrapper	0006_obj_1
+		COMMAND		0006_obj_1		New		0006_obj_1
+		COMMAND		0006_obj_1		GetCurrentDrive	0006_GetCurrentDrive_1
+		COMMAND		0006_obj_1		AddDrive	0006_AddDrive_lower
+		COMMAND		0006_obj_1		GetCurrentDrive	0006_GetCurrentDrive_2
+		COMMAND		0006_obj_1		GetDrivelist	0006_GetDrivelist_1
+		COMMAND		0006_obj_1		MessageStoreSupported	0006_MessageStoreSupported_1
+		STORE		0006_obj_1		
+		COMMAND		0006_obj_1		GetAvailableDriveList	0006_GetAvailableDriveList_1
+	END_TEST_BLOCK
+	
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-media-compatible-ops.ini
+		RESTORE_OBJECT	MediaTestWrapper	0006_obj_1
+		COMMAND		0006_obj_1		RemoveDrive	0006_RemoveDrive_1
+	END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+
+RUN_UTILS  MakeReadWrite  	i:\messaging.db
+RUN_UTILS  CopyFile   		i:\messaging.db.bak i:\messaging.db
+RUN_UTILS  DeleteFile		i:\messaging.db.bak
+
+END_TESTCASE	MSG-MEDIA-COMPATIBLE-OPS-0006
+
+
+START_TESTCASE	MSG-MEDIA-COMPATIBLE-OPS-0007
+//! 	@SYMTestCaseID		MSG-MEDIA-COMPATIBLE-OPS-0007
+//! 	@SYMTestCaseDesc	Add a high priority drive which contains some incompatible message store and remove it again
+//!				
+//!	@SYMREQ			REQ9050 
+//!	@SYMPREQ 		PREQ557
+//!	@SYMAPI			void CMsvSession::CurrentDriveInfo (TDriveNumber& aDrive, Tint& aPriority)
+//!				void CMsvSession::AddDriveL (TDriveNumber aDrive, Tint& aPriority)
+//!				void CMsvSession::DriveListL(RArray<TDriveNumber>& aDriveList)
+//!				TBool MessageServer::IsMessageStoreSupported(TDriveNumber aDrive)
+//!				void CMsvSession::AvailableDriveListL(RArray<TDriveNumber>& aDriveList)
+//!				void CMsvSession::RemoveDriveL (TDriveNumber aDrive, Tint& aPriority)
+//!				
+//!	@SYMTestCaseDependencies Copy pre SQLite message store(OS 94 or below) from a sample testdata_95_mail3 folder to G: drive
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1. Get the current drive(I: drive)
+//!				2. Add a high priority drive(G:drive)
+//!				3. Get the current drive(I: drive)
+//!				4. Check the drive(G: drive) is present in preferred drive list
+//!				5. Check message store supported is not supported
+//!				6. Check the drive(G: drive) is not available
+//!				7. Remove the same drive(G: drive)
+//!				8. Get the current drive(I: drive)
+//!				
+//! 	@SYMTestExpectedResults 1. I: drive should be the current drive
+//!				2. Should capure EMsvMessageStoreNotSupported notification 
+//!				3. I: drive should be the current drive
+//!				4. G: drive should be present in preferred drive list
+//!				5. G: drive should not have sql message store
+//!				6. G: drive should not be available
+//!				7. No Notification
+//!				8. I: drive should be the current drive
+//!				
+//!	@SYMAuthor		Rajat Bal
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-media-compatible-ops.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-compatible-0007.ini	c:\private\1000484b\msgprioritydrivelist.ini
+
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-media-compatible-ops.ini
+		CREATE_OBJECT	MediaTestWrapper	0007_obj_1
+		COMMAND		0007_obj_1		New		0007_obj_1
+		COMMAND		0007_obj_1		GetCurrentDrive	0007_GetCurrentDrive_1
+		COMMAND		0007_obj_1		AddDrive	0007_AddDrive_high
+		COMMAND		0007_obj_1		GetCurrentDrive	0007_GetCurrentDrive_2
+		COMMAND		0007_obj_1		GetDrivelist	0007_GetDrivelist_1
+		COMMAND		0007_obj_1		MessageStoreSupported	0007_MessageStoreSupported_1
+		STORE		0007_obj_1		
+		COMMAND		0007_obj_1		GetAvailableDriveList	0007_GetAvailableDriveList_1
+	END_TEST_BLOCK
+	
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-media-compatible-ops.ini
+		RESTORE_OBJECT	MediaTestWrapper	0007_obj_1
+		COMMAND		0007_obj_1		RemoveDrive	0007_RemoveDrive_1
+		COMMAND		0007_obj_1		GetCurrentDrive	0007_GetCurrentDrive_3
+	END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+
+END_TESTCASE	MSG-MEDIA-COMPATIBLE-OPS-0007
+
+START_TESTCASE	MSG-MEDIA-COMPATIBLE-OPS-0008
+//! 	@SYMTestCaseID		MSG-MEDIA-COMPATIBLE-OPS-0008
+//! 	@SYMTestCaseDesc	Add a lower priority drive which contains some incompatible message store and remove it again
+//!				
+//!	@SYMREQ			REQ9050 
+//!	@SYMPREQ 		PREQ557
+//!	@SYMAPI			void CMsvSession::CurrentDriveInfo (TDriveNumber& aDrive, Tint& aPriority)
+//!				void CMsvSession::AddDriveL (TDriveNumber aDrive, Tint& aPriority)
+//!				void CMsvSession::DriveListL(RArray<TDriveNumber>& aDriveList)
+//!				TBool MessageServer::IsMessageStoreSupported(TDriveNumber aDrive)
+//!				void CMsvSession::AvailableDriveListL(RArray<TDriveNumber>& aDriveList)
+//!				void CMsvSession::RemoveDriveL (TDriveNumber aDrive, Tint& aPriority)
+//!				
+//!	@SYMTestCaseDependencies Copy pre SQLite message store(OS 94 or below) from a sample testdata_95_mail3 folder to D: drive
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1. Get the current drive(I: drive)
+//!				2. Add a lower priority drive(D:drive)
+//!				3. Get the current drive(I: drive)
+//!				4. Check the drive(D: drive) is present in preferred drive list
+//!				5. Check message store supported is not supported
+//!				6. Check the drive(D: drive) is not available
+//!				7. Remove the same drive(D: drive)
+//!				8. Get the current drive(I: drive)
+//!				
+//! 	@SYMTestExpectedResults 1. I: drive should be the current drive
+//!				2. Should capure EMsvMessageStoreNotSupported notification 
+//!				3. I: drive should be the current drive
+//!				4. D: drive should be present in preferred drive list
+//!				5. D: drive should not have sql message store
+//!				6. D: drive should not be available
+//!				7. No Notification
+//!				8. I: drive should be the current drive
+//!				
+//!	@SYMAuthor		Rajat Bal
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-media-compatible-ops.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-compatible-0008.ini	c:\private\1000484b\msgprioritydrivelist.ini
+
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-media-compatible-ops.ini
+		CREATE_OBJECT	MediaTestWrapper	0008_obj_1
+		COMMAND		0008_obj_1		New		0008_obj_1
+		COMMAND		0008_obj_1		GetCurrentDrive	0008_GetCurrentDrive_1
+		COMMAND		0008_obj_1		AddDrive	0008_AddDrive_lower
+		COMMAND		0008_obj_1		GetCurrentDrive	0008_GetCurrentDrive_2
+		COMMAND		0008_obj_1		GetDrivelist	0008_GetDrivelist_1
+		COMMAND		0008_obj_1		MessageStoreSupported	0008_MessageStoreSupported_1
+		STORE		0008_obj_1		
+		COMMAND		0008_obj_1		GetAvailableDriveList	0008_GetAvailableDriveList_1
+	END_TEST_BLOCK
+	
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-media-compatible-ops.ini
+		RESTORE_OBJECT	MediaTestWrapper	0008_obj_1
+		COMMAND		0008_obj_1		RemoveDrive	0008_RemoveDrive_1
+		COMMAND		0008_obj_1		GetCurrentDrive	0008_GetCurrentDrive_3
+	END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+
+END_TESTCASE	MSG-MEDIA-COMPATIBLE-OPS-0008

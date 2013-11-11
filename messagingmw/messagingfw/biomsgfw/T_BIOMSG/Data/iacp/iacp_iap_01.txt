@@ -1,0 +1,9 @@
+//SIAP11
+passwork
+Iname:Demon
+Iuid:yashar
+Ipwd:dig23ler
+Itel:+44 845 2121666
+Idns1:0:0:0:0:0:0:158.152.1.58
+Idns2:158.152.1.43
+Iini: modem initialisation string.

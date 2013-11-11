@@ -1,0 +1,53 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project file for DevSoundAudioOutput
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET 		DevSoundAudioOutput.dll
+TARGETTYPE 	DLL
+UID 		0x1000008D 0x101FAFAF
+VENDORID	VID_DEFAULT
+
+CAPABILITY CAP_GENERAL_DLL
+
+SOURCEPATH	../Src
+SOURCE		DevSoundAudioOutput.cpp
+
+USERINCLUDE	../Inc ../Src
+USERINCLUDE	../../../../inc
+USERINCLUDE	../../AdvancedAudioController/Inc
+USERINCLUDE	../../DevSoundAudioInput/Inc
+USERINCLUDE	../../AdvancedAudioControllerUtility/Inc
+USERINCLUDE ../../DataSourceAdapter/Inc
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   /epoc32/include/ecom
+SYSTEMINCLUDE	/epoc32/include/mmf/server
+SYSTEMINCLUDE	/epoc32/include/mmf/common
+SYSTEMINCLUDE	/epoc32/include/mmf/plugin
+
+LIBRARY 	euser.lib
+LIBRARY 	mmfcontrollerframework.lib
+LIBRARY 	mmfdevsound.lib
+LIBRARY	    ConfigurationComponentsFactory.lib
+LIBRARY		AudioOutputControlUtility.lib
+LIBRARY		DataSourceAdapter.lib
+#ifdef EABI
+// modified by BuildTeam
+LIBRARY     ecom.lib
+#endif

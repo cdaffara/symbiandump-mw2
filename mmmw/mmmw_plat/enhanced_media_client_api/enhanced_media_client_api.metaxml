@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api id="0d622a168fdb30d5960fba6bb551b47d" dataversion="2.0">
+  <name>Enhanced Media Client API</name>
+  <description>This API defines an enhanced API for playing audio on the S60 platform.</description>
+  <type>c++</type>
+  <collection>audioenhancements</collection>
+  <libs>
+    <lib name="EnhancedMediaClient.lib"/>
+  </libs>
+  <release category="platform" sinceversion="3.2"/>
+  <attributes>
+    <!-- This indicates wether the api provedes separate html documentation -->
+    <!-- or is the additional documentation generated from headers. -->
+    <!-- If you are unsuere then the value is "no" -->
+    <htmldocprovided>no</htmldocprovided>
+    <adaptation>no</adaptation>
+  </attributes>
+</api>

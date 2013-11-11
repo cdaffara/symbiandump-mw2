@@ -1,0 +1,55 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description: 
+//
+
+LOAD_SERVER t_converter  -SharedData
+LOAD_SERVER	T_MsgImapServer		-SharedData
+ LOAD_SERVER T_MsgPopServer -SharedData
+
+RUN_UTILS  DeleteFile	d:\messaging.db
+RUN_UTILS  DeleteFile	e:\messaging.db
+RUN_UTILS  DeleteFile	c:\private\10202be9\persists\10286a26.cre
+RUN_UTILS  DeleteFile	d:\messaging.db
+RUN_UTILS  DeleteFile	e:\messaging.db
+RUN_UTILS  DeleteFile	c:\private\10202be9\persists\10286a26.cre
+START_TESTCASE	MSG-Converter-0012
+//! 	@SYMTestCaseID		MSG-Converter-012
+//! 	@SYMTestCaseDesc	Test the OOM condition
+//!				
+//!	@SYMREQ			REQ 
+//!	@SYMPREQ 		PREQ2073
+//!	@SYMAPI			void CMsvSession::ConvertMessageStoreL(TInt aDrive,TRequestStatus& aStatus)
+//!				
+//!	
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1. Place an incompatible message store in E:
+//! 						2.Call the ConvertMessageStoreL
+
+//! 	@SYMTestExpectedResults 1. OOM
+//!								condition should be properly handled
+//!	@SYMAuthor		Chaitanya T L
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+RUN_UTILS  DeleteFile	d:\messaging.db
+RUN_UTILS  DeleteFile	e:\messaging.db
+RUN_UTILS  CopyFile   		d:\private\1000484b\mail2\Index_backup	d:\private\1000484b\mail2\Index
+START_TEST_BLOCK	1000	t_converter		c:\msgtest\converter\msg-converter.ini
+	CREATE_OBJECT	ConverterWrapper	0001_obj	
+	COMMAND		0001_obj		OutofMemory  0001-VerifyHeaders
+END_TEST_BLOCK
+

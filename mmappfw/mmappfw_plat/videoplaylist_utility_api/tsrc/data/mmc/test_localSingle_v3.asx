@@ -1,0 +1,14 @@
+<ASX version = "3.0">   
+	<ABSTRACT>Unknown Abstract Info</ABSTRACT>
+	<TITLE>Unknown Title</TITLE>   
+	<AUTHOR>Unknown Author</AUTHOR>   
+	<COPYRIGHT>2008 by NokiaTest</COPYRIGHT>   
+	<MOREINFO HREF = "http://www.microsoft.com/windows/windowsmedia" />   
+	<ENTRY>      
+		<TITLE>Link 1</TITLE>     
+		<COPYRIGHT>2008 NokiaTest Conten</COPYRIGHT>      
+		<MOREINFO HREF = "http://www.microsoft.com/windows/windowsmedia"></MOREINFO>      
+		<REF HREF = "file://c:/data/videos/local.3gp" />   
+	</ENTRY>
+</ASX>
+

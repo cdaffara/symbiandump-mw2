@@ -1,0 +1,8 @@
+EXPORTS
+	Connect__26RAlwaysOnlineClientSession @ 1 NONAME R3UNUSED ; RAlwaysOnlineClientSession::Connect(void)
+	RelayCommandL__26RAlwaysOnlineClientSession30TAlwaysOnlineServerAPICommandsR5TDes8 @ 2 NONAME R3UNUSED ; RAlwaysOnlineClientSession::RelayCommandL(TAlwaysOnlineServerAPICommands, TDes8 &)
+	RunServerL__Fv @ 3 NONAME R3UNUSED ; RunServerL(void)
+	Version__C26RAlwaysOnlineClientSession @ 4 NONAME R3UNUSED ; RAlwaysOnlineClientSession::Version(void) const
+	__26RAlwaysOnlineClientSession @ 5 NONAME R3UNUSED ; RAlwaysOnlineClientSession::RAlwaysOnlineClientSession(void)
+	SendSinglePacketL__26RAlwaysOnlineClientSession30TAlwaysOnlineServerAPICommandsR5TDes8 @ 6 NONAME R3UNUSED ; RAlwaysOnlineClientSession::SendSinglePacketL(TAlwaysOnlineServerAPICommands, TDes8 &)
+

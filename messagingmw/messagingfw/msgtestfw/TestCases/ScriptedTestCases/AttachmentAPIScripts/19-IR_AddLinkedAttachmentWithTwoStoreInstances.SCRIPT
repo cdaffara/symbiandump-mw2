@@ -1,0 +1,102 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+// Test Case Name:
+//	Get two stores, get attachment manager using both stores, then perform attachment operation on locked store
+// ------------------------------------------
+// Component Under Test:
+//	Attachment API
+// ------------------------------------------
+// API function under test:
+//	CMsvEntry::OpenForReadL
+//	MMsvAttachmentManager::AddLinkedAttachmentL
+// ------------------------------------------
+// Requirement/Use Case/Functional Spec:
+//	SGL.GT0216.051 (2.1, 2.3.4)
+// ------------------------------------------
+// Polarity:
+//	Negative
+// ------------------------------------------
+// Test Type (unit, integration, panic, performance, conformance, stress, or interoperability):
+//	Integration
+// ------------------------------------------
+// Expected Panic ID (if a panic test, only for non-scripted test cases):
+//	N/A
+// ------------------------------------------
+// Interface Dependencies (does it require connection, which subsystems does it require):
+// 	Requires connection to Messaging Server
+// ------------------------------------------
+// Importance (critical, high, or low):
+//	High
+// ------------------------------------------
+// Execution Time (fast, medium, or slow):
+//	Medium
+// ------------------------------------------
+// Pre-condition description:
+//	1. New IR message
+//	2. Get 2 references of the same message entry
+//	3. Get 2 references of message store with Read/Write access
+//	4. Get attachment manager interface using both references of store
+// ------------------------------------------
+// Action Description:
+// 	Add linked attachment using first reference of attachment manager
+// ------------------------------------------
+// Post-condition description (i.e., expected outcome):
+//	Appropriate error code should be returned while adding attachment using first reference 
+//	of MMsvAttachmentManager
+// ------------------------------------------
+// Reference to a review document:
+//	AttachmentAPI_TestSpecificationDocument_Ver1.0.doc
+// ------------------------------------------
+// Full pathname of an epoc.ini (if there are special epoc.ini requirements)
+// 	For emulator, an epoc.ini that creates an emulated external drive (drive letter 
+//	between D: and Y:) is required. Optionally, an environment variable can be defined.
+// ------------------------------------------
+// Any CommDb restrictions:
+//	NTRAS CommDb
+// ------------------------------------------
+// Build Requirements (e.g., no watchers):
+//	N/A
+// ------------------------------------------
+// Hardware Requirements
+//	H2 Board
+// ------------------------------------------
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer GetBaseConstants				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\19-IR_AddLinkedAttachmentWithTwoStoreInstances.INI GetConstants
+RUN_TEST_STEP 100 MessagingTestServer GetIRMTMUId				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\19-IR_AddLinkedAttachmentWithTwoStoreInstances.INI GetIrMTMUId
+RUN_TEST_STEP 100 MessagingTestServer CreateSession				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\19-IR_AddLinkedAttachmentWithTwoStoreInstances.INI SessionId
+RUN_TEST_STEP 100 MessagingTestServer CreateRegistry				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\19-IR_AddLinkedAttachmentWithTwoStoreInstances.INI CreateRegistry
+RUN_TEST_STEP 100 MessagingTestServer CreateService				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\19-IR_AddLinkedAttachmentWithTwoStoreInstances.INI CreateIrService
+RUN_TEST_STEP 100 MessagingTestServer CreateMessage				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\19-IR_AddLinkedAttachmentWithTwoStoreInstances.INI CreateMessage
+
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer GetEntry					c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\19-IR_AddLinkedAttachmentWithTwoStoreInstances.INI GetEntry0
+RUN_TEST_STEP 100 MessagingTestServer GetEntry					c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\19-IR_AddLinkedAttachmentWithTwoStoreInstances.INI GetEntry1
+RUN_TEST_STEP 100 MessagingTestServer GetStore					c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\19-IR_AddLinkedAttachmentWithTwoStoreInstances.INI GetStore0
+RUN_TEST_STEP 100 MessagingTestServer GetStore					c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\19-IR_AddLinkedAttachmentWithTwoStoreInstances.INI GetStore1
+RUN_TEST_STEP 100 MessagingTestServer AddAttachmentAsLink			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\19-IR_AddLinkedAttachmentWithTwoStoreInstances.INI AddAttachmentAsLink
+
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+RUN_TEST_STEP 100 MessagingTestServer CheckErrorCode				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\19-IR_AddLinkedAttachmentWithTwoStoreInstances.INI CheckErrorCode
+
+RUN_TEST_STEP 100 MessagingTestServer END_TEST_CASE

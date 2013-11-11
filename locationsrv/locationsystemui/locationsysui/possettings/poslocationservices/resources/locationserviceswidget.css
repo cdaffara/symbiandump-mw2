@@ -1,0 +1,36 @@
+LocationServicesWidget {
+	layout: default
+}
+
+LocationServicesWidget::text_box1 {
+	left:  -var(hb-param-margin-gene-left);
+  right: var(hb-param-margin-gene-right);
+	top: -var(hb-param-margin-gene-top);
+	bottom: var(hb-param-margin-gene-bottom);
+	pref-width: 36un;
+	pref-height: var(hb-param-text-height-secondary);
+	font-variant: primary;
+	text-height: var(hb-param-text-height-secondary);	
+}
+
+LocationServicesWidget::text_box2 {
+	left:  -var(hb-param-margin-gene-left);
+  right: var(hb-param-margin-gene-right);
+	top: -var(hb-param-margin-gene-top);
+	bottom: var(hb-param-margin-gene-bottom);
+	pref-width: 36un;
+	pref-height: var(hb-param-text-height-secondary);
+	font-variant: secondary;
+	text-height: var(hb-param-text-height-secondary);	
+}
+
+LocationServicesWidget::text_box3 {
+	left:  -var(hb-param-margin-gene-left);
+  right: var(hb-param-margin-gene-right);
+	top: -var(hb-param-margin-gene-top);
+	bottom: var(hb-param-margin-gene-bottom);
+	pref-width: 36un;
+	pref-height: var(hb-param-text-height-secondary);
+	font-variant: secondary;
+	text-height: var(hb-param-text-height-secondary);	
+}

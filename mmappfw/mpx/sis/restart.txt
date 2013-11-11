@@ -1,0 +1,2 @@
+To complete the installation process, the phone must be restarted.
+Until then, some applications may not function properly.

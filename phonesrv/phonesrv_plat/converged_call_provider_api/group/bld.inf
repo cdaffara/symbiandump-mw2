@@ -1,0 +1,47 @@
+/*
+* Copyright (c) 2006-2008 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  File that exports the files belonging to 
+:                Converged Call Provider API
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+../inc/mccpforwardobserver.h     MW_LAYER_PLATFORM_EXPORT_PATH(mccpforwardobserver.h)
+../inc/mccpcall.h     MW_LAYER_PLATFORM_EXPORT_PATH(mccpcall.h)
+../inc/cccpcallparameters.h     MW_LAYER_PLATFORM_EXPORT_PATH(cccpcallparameters.h)
+../inc/mccpdtmfprovider.h     MW_LAYER_PLATFORM_EXPORT_PATH(mccpdtmfprovider.h)
+../inc/mccpemergencycall.h     MW_LAYER_PLATFORM_EXPORT_PATH(mccpemergencycall.h)
+../inc/mccpconferencecall.h     MW_LAYER_PLATFORM_EXPORT_PATH(mccpconferencecall.h)
+../inc/mccpssobserver.h     MW_LAYER_PLATFORM_EXPORT_PATH(mccpssobserver.h)
+../inc/mccpforwardprovider.h     MW_LAYER_PLATFORM_EXPORT_PATH(mccpforwardprovider.h)
+../inc/mccpconferencecallobserver.h     MW_LAYER_PLATFORM_EXPORT_PATH(mccpconferencecallobserver.h)
+../inc/mccpcallobserver.h     MW_LAYER_PLATFORM_EXPORT_PATH(mccpcallobserver.h)
+../inc/mccpcsobserver.h     MW_LAYER_PLATFORM_EXPORT_PATH(mccpcsobserver.h)
+../inc/mccptransferobserver.h     MW_LAYER_PLATFORM_EXPORT_PATH(mccptransferobserver.h)
+../inc/mccpextensionobserver.h     MW_LAYER_PLATFORM_EXPORT_PATH(mccpextensionobserver.h)
+../inc/mccpcscall.h     MW_LAYER_PLATFORM_EXPORT_PATH(mccpcscall.h)
+../inc/mccpobserver.h     MW_LAYER_PLATFORM_EXPORT_PATH(mccpobserver.h)
+../inc/cconvergedcallprovider.h     MW_LAYER_PLATFORM_EXPORT_PATH(cconvergedcallprovider.h)
+../inc/ccpdefs.h     MW_LAYER_PLATFORM_EXPORT_PATH(ccpdefs.h)
+../inc/cconvergedcallprovider.inl     MW_LAYER_PLATFORM_EXPORT_PATH(cconvergedcallprovider.inl)
+../inc/mccptransferprovider.h     MW_LAYER_PLATFORM_EXPORT_PATH(mccptransferprovider.h)
+../inc/mccpextensionprovider.h     MW_LAYER_PLATFORM_EXPORT_PATH(mccpextensionprovider.h)
+../inc/mccpdtmfobserver.h     MW_LAYER_PLATFORM_EXPORT_PATH(mccpdtmfobserver.h)

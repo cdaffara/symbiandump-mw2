@@ -1,0 +1,27 @@
+EXPORTS
+	?Connect@CSuplConnection@@QAEXAAVTRequestStatus@@HH@Z @ 1 NONAME ; void CSuplConnection::Connect(class TRequestStatus &, int, int)
+	?ConstructL@CSUPLProtocolManagerBase@@UAEXABVTUid@@@Z @ 2 NONAME ; void CSUPLProtocolManagerBase::ConstructL(class TUid const &)
+	??0CSUPLProtocolManagerBase@@QAE@XZ @ 3 NONAME ; CSUPLProtocolManagerBase::CSUPLProtocolManagerBase(void)
+	?CancelListenToMessages@CSuplConnection@@QAEXXZ @ 4 NONAME ; void CSuplConnection::CancelListenToMessages(void)
+	?ImplementationUid@CSUPLProtocolManagerBase@@QBE?AVTUid@@XZ @ 5 NONAME ; class TUid CSUPLProtocolManagerBase::ImplementationUid(void) const
+	?CancelSend@CSuplConnection@@QAEXAAVTRequestStatus@@@Z @ 6 NONAME ; void CSuplConnection::CancelSend(class TRequestStatus &)
+	?ListenToMessages@CSuplConnection@@QAEHXZ @ 7 NONAME ; int CSuplConnection::ListenToMessages(void)
+	?GetSUPLMessageVersionL@CSUPLProtocolManagerBase@@UAEHAAHABVTDesC8@@@Z @ 8 NONAME ; int CSUPLProtocolManagerBase::GetSUPLMessageVersionL(int &, class TDesC8 const &)
+	?Version@CSUPLProtocolManagerBase@@QBEHXZ @ 9 NONAME ; int CSUPLProtocolManagerBase::Version(void) const
+	??1CSuplCommunicationManager@@UAE@XZ @ 10 NONAME ; CSuplCommunicationManager::~CSuplCommunicationManager(void)
+	?Connect@CSuplConnection@@QAEXAAVTRequestStatus@@@Z @ 11 NONAME ; void CSuplConnection::Connect(class TRequestStatus &)
+	?GetPortNumberUsed@CSuplConnection@@QAEHXZ @ 12 NONAME ; int CSuplConnection::GetPortNumberUsed(void)
+	?Initialize@CSuplCommunicationManager@@QAEHXZ @ 13 NONAME ; int CSuplCommunicationManager::Initialize(void)
+	?GetLocalIPAddress@CSuplConnection@@QAEHAAVTInetAddr@@@Z @ 14 NONAME ; int CSuplConnection::GetLocalIPAddress(class TInetAddr &)
+	?NewL@CSUPLProtocolManagerBase@@SAPAV1@ABVTDesC8@@@Z @ 15 NONAME ; class CSUPLProtocolManagerBase * CSUPLProtocolManagerBase::NewL(class TDesC8 const &)
+	?Send@CSuplConnection@@QAEXABVTDesC8@@AAVTRequestStatus@@@Z @ 16 NONAME ; void CSuplConnection::Send(class TDesC8 const &, class TRequestStatus &)
+	?CreateConnectionL@CSuplCommunicationManager@@QAEPAVCSuplConnection@@ABVTDesC16@@HHIH@Z @ 17 NONAME ; class CSuplConnection * CSuplCommunicationManager::CreateConnectionL(class TDesC16 const &, int, int, unsigned int, int)
+	?NewL@CSuplCommunicationManager@@SAPAV1@AAVMSuplConnectionMonitor@@@Z @ 18 NONAME ; class CSuplCommunicationManager * CSuplCommunicationManager::NewL(class MSuplConnectionMonitor &)
+	?CloseConnection@CSuplConnection@@QAEXXZ @ 19 NONAME ; void CSuplConnection::CloseConnection(void)
+	?CancelConnect@CSuplConnection@@QAEXAAVTRequestStatus@@@Z @ 20 NONAME ; void CSuplConnection::CancelConnect(class TRequestStatus &)
+	?DestroyConnection@CSuplCommunicationManager@@QAEHPAVCSuplConnection@@@Z @ 21 NONAME ; int CSuplCommunicationManager::DestroyConnection(class CSuplConnection *)
+	?NewL@CSUPLProtocolManagerBase@@SAPAV1@ABVTUid@@@Z @ 22 NONAME ; class CSUPLProtocolManagerBase * CSUPLProtocolManagerBase::NewL(class TUid const &)
+	?SetPacketReceiver@CSuplCommunicationManager@@QAEXPAVMSuplPacketReceiver@@@Z @ 23 NONAME ; void CSuplCommunicationManager::SetPacketReceiver(class MSuplPacketReceiver *)
+	??1CSUPLProtocolManagerBase@@UAE@XZ @ 24 NONAME ; CSUPLProtocolManagerBase::~CSUPLProtocolManagerBase(void)
+	?CreateConnectionL@CSuplCommunicationManager@@QAEPAVCSuplConnection@@ABVTDesC16@@IH@Z @ 25 NONAME ; class CSuplConnection * CSuplCommunicationManager::CreateConnectionL(class TDesC16 const &, unsigned int, int)
+

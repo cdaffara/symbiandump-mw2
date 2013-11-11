@@ -1,0 +1,21 @@
+EXPORTS
+	?ImplementationGroupProxy@@YAPBUTImplementationProxy@@AAH@Z @ 1 NONAME ; struct TImplementationProxy const * ImplementationGroupProxy(int &)
+	?InitializeL@COMASUPLProtocolManager1@@UAEXPAVCSuplCommunicationManager@@AAVTRequestStatus@@@Z @ 2 NONAME ; void COMASUPLProtocolManager1::InitializeL(class CSuplCommunicationManager *, class TRequestStatus &)
+	?RunSessionL@COMASUPLProtocolManager1@@UAEXPAVCSuplSessionBase@@AAVTRequestStatus@@ABVTDesC16@@HHHAAVTSuplTerminalQop@@H@Z @ 3 NONAME ; void COMASUPLProtocolManager1::RunSessionL(class CSuplSessionBase *, class TRequestStatus &, class TDesC16 const &, int, int, int, class TSuplTerminalQop &, int)
+	?NewL@COMASUPLProtocolManager1@@SAPAV1@XZ @ 4 NONAME ; class COMASUPLProtocolManager1 * COMASUPLProtocolManager1::NewL(void)
+	??1COMASUPLProtocolManager1@@UAE@XZ @ 5 NONAME ; COMASUPLProtocolManager1::~COMASUPLProtocolManager1(void)
+	?RunSessionL@COMASUPLProtocolManager1@@UAEXPAVCSuplSessionBase@@AAVTRequestStatus@@ABVTDesC16@@HHHH@Z @ 6 NONAME ; void COMASUPLProtocolManager1::RunSessionL(class CSuplSessionBase *, class TRequestStatus &, class TDesC16 const &, int, int, int, int)
+	?HandlePacketError@COMASUPLProtocolManager1@@UAEXH@Z @ 7 NONAME ; void COMASUPLProtocolManager1::HandlePacketError(int)
+	?CreateNewSessionL@COMASUPLProtocolManager1@@UAEPAVCSuplSessionBase@@W4TSuplReqType@CSUPLProtocolManagerBase@@HW4TSuplServiceType@RSuplTerminalSubSession@@@Z @ 8 NONAME ; class CSuplSessionBase * COMASUPLProtocolManager1::CreateNewSessionL(enum CSUPLProtocolManagerBase::TSuplReqType, int, enum RSuplTerminalSubSession::TSuplServiceType)
+	?DeInitialize@COMASUPLProtocolManager1@@UAEXAAVTRequestStatus@@@Z @ 9 NONAME ; void COMASUPLProtocolManager1::DeInitialize(class TRequestStatus &)
+	?FindSessionOnPortNum@COMASUPLProtocolManager1@@QBEPAVCOMASuplSession@@I@Z @ 10 NONAME ; class COMASuplSession * COMASUPLProtocolManager1::FindSessionOnPortNum(unsigned int) const
+	?GetPosition@COMASuplSession@@UAEHAAVHPositionGenericInfo@@@Z @ 11 NONAME ; int COMASuplSession::GetPosition(class HPositionGenericInfo &)
+	?CancelDeInitialize@COMASUPLProtocolManager1@@UAEXXZ @ 12 NONAME ; void COMASUPLProtocolManager1::CancelDeInitialize(void)
+	?CancelInitialize@COMASUPLProtocolManager1@@UAEXXZ @ 13 NONAME ; void COMASUPLProtocolManager1::CancelInitialize(void)
+	?DestroySession@COMASUPLProtocolManager1@@UAEHPAVCSuplSessionBase@@@Z @ 14 NONAME ; int COMASUPLProtocolManager1::DestroySession(class CSuplSessionBase *)
+	?HandlePacket@COMASUPLProtocolManager1@@UAEXABVTDesC8@@I@Z @ 15 NONAME ; void COMASUPLProtocolManager1::HandlePacket(class TDesC8 const &, unsigned int)
+	?CancelRunSession@COMASUPLProtocolManager1@@UAEXPAVCSuplSessionBase@@@Z @ 16 NONAME ; void COMASUPLProtocolManager1::CancelRunSession(class CSuplSessionBase *)
+	?GetPosition@COMASuplSession@@UAEHAAVTPositionInfo@@@Z @ 17 NONAME ; int COMASuplSession::GetPosition(class TPositionInfo &)
+	?HandleSuplMessageL@COMASUPLProtocolManager1@@UAEXPAVCSuplSessionBase@@AAVTRequestStatus@@PAVHBufC8@@@Z @ 18 NONAME ; void COMASUPLProtocolManager1::HandleSuplMessageL(class CSuplSessionBase *, class TRequestStatus &, class HBufC8 *)
+	?GetServerAddressL@COMASuplSession@@UAEHAAVTDes16@@@Z @ 19 NONAME ; int COMASuplSession::GetServerAddressL(class TDes16 &)
+

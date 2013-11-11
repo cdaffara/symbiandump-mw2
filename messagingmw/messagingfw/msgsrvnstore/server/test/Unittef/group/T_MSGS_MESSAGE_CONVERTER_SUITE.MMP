@@ -1,0 +1,115 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors: Ashok Kumar
+//
+// Description:
+//
+
+
+TARGET		t_msgs_message_converter_suite.exe
+TARGETTYPE	exe
+UID             0x1000007A 0x1000476b
+
+CAPABILITY ALL -TCB 
+secureid 0x1000484B
+
+SOURCEPATH		../src
+SOURCE			t_msv_convertermanager.cpp
+SOURCE          t_msv_message_converter.cpp
+SOURCE			t_msv_converterwaiter.cpp
+SOURCE          t_msv_version0version1converter.cpp
+SOURCE          t_msv_version1version2converter.cpp
+SOURCE          t_msv_converterdbadapter.cpp
+SOURCE 			t_msv_smsmessage_v1v2_converter_step.cpp
+SOURCE 			cactivewaiter.cpp
+
+SOURCEPATH  ../../../src
+
+#if (defined SYMBIAN_MSGS_ENHANCED_REMOVABLE_MEDIA_SUPPORT)
+SOURCE				cmsvdiskchangenotifier.cpp
+SOURCE				msvpreferreddrivelist.cpp
+#else
+SOURCE				diskchange.cpp
+#endif
+
+SOURCE		msvsearchsortcacheentry.cpp
+SOURCE		msvsearchsortquery.cpp
+SOURCE		msvsearchsortoponheaderbody.cpp
+SOURCE		msvsearchsortoperation.cpp
+SOURCE 		msvsearchsortcachemanager.cpp
+SOURCE 		msvsearchsortdeltacache.cpp
+SOURCE		msvsearchsortdbwrapper.cpp
+SOURCE		msvenhancesearchsortutil.cpp
+
+// Additionals ******************************************
+SOURCE		msvcacheentry.cpp msventryfreepool.cpp
+SOURCE		msvdbadapter.cpp msvindexadapter.cpp
+SOURCE		MSVSTD.CPP MSVTIME.CPP msvcacheindextableentry.Cpp 
+SOURCE      msvcachevisiblefolder.Cpp msvinifile.cpp MSVSERV.CPP
+SOURCE        MSVIPC.CPP MSVSTORE.CPP MSVREG.CPP MSVREGIP.CPP 
+SOURCE        MENTACT.CPP MSVARRAY.CPP
+SOURCE        MSVSESS.CPP MSVLOCAL.CPP MSVOPERT.CPP 
+SOURCE        MSVENTRY.CPP MSVSTART.CPP MSVRBLD.CPP
+SOURCE        MSVCMBSE.CPP MSVMOVE.CPP MSVCOPY.CPP MTSR.CPP MTSRUT.CPP MSVDELET.CPP
+SOURCE        MCLIENT.CPP MCLENTRY.CPP MCLSESS.CPP MCLOPERT.CPP
+SOURCE        MTCLBASE.CPP MTCLREG.CPP OBSVREG.CPP MSVUTILS.CPP
+SOURCE        MSVFIND.CPP MSVFTEXT.CPP indexcontext.cpp
+SOURCE        CCopyFiles.cpp CCopyOneFile.cpp
+SOURCE        CMsvCachedStore.cpp CMsvBackupHandler.cpp 
+SOURCE        CMsvChangeBuffer.cpp
+SOURCE        CMsvBodyText.cpp
+SOURCE        MsvSecurityCapabilitySet.cpp
+SOURCE		  CMsvAttachment.cpp
+SOURCE		  CMsvAttachmentManager.cpp
+SOURCE		  CMsvAttachmentRename.cpp
+SOURCE		  CMsvAttributeManager.cpp
+SOURCE		  CMsvAttachmentWaiter.cpp
+SOURCE		  CMsvMimeHeaders.cpp
+SOURCE		  TMsvServerStoreManager.cpp
+SOURCE		  cmsvmailinitwaiter.cpp
+SOURCE        CMsvCopyStoreOperation.cpp
+SOURCE        CMsvDeleteStoreOperation.cpp
+SOURCE		  cmsvrecipientlist.cpp
+SOURCE        TMsvPackedNotifierRequest.cpp
+SOURCE		  cmsvtechnologytypedefaultmtmsettings.cpp
+SOURCE		  tmsvsystemprogress.cpp
+SOURCE		  CMsvPlainBodyText.cpp
+
+
+#if (defined SYMBIAN_MESSAGESTORE_HEADER_BODY_USING_SQLDB)
+	SOURCE		msvmessagedbadapter.cpp
+	SOURCE 		msvheaderfields.cpp
+	
+	SOURCE		cmessageconvertermanager.CPP
+	SOURCE		cmsvconverterwaiter.cpp
+	SOURCE      cmsvversion0version1converter.cpp
+	SOURCE      cmsvversion1version2converter.cpp
+#endif
+
+
+
+USERINCLUDE		../inc
+USERINCLUDE		../../../inc
+
+USERINCLUDE		../../../../../msgtest/testutils/base/inc
+USERINCLUDE		../../../../../msgtest/testutils/server/inc
+USERINCLUDE		../../../../../msgtest/testutils/sms/inc
+USERINCLUDE		../../../../../msgtest/testutils/email/inc
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+STATICLIBRARY		tefunit.lib 
+
+LIBRARY			euser.lib msgs.lib efsrv.lib estor.lib  sqldb.lib smstestutils.lib
+LIBRARY			testexecuteutils.lib testexecutelogclient.lib rfileloggerclient.lib 
+LIBRARY			bafl.lib etext.lib charconv.lib centralrepository.lib flogger.lib 
+LIBRARY         commsdat.lib  msvtestutils.lib smcm.lib 
+LIBRARY			esock.lib smsu.lib c32.lib gsmu.lib  etel.lib etelmm.lib
+
+SMPSAFE

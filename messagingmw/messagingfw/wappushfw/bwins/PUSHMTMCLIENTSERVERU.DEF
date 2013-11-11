@@ -1,0 +1,4 @@
+EXPORTS
+	?NewL@CWapPushClientMtm@@SAPAV1@AAVCRegisteredMtmDll@@AAVCMsvSession@@@Z @ 1 NONAME ; public: static class CWapPushClientMtm * __cdecl CWapPushClientMtm::NewL(class CRegisteredMtmDll &,class CMsvSession &)
+	?NewL@CWapPushServerMtm@@SAPAV1@AAVCRegisteredMtmDll@@PAVCMsvServerEntry@@@Z @ 2 NONAME ; public: static class CWapPushServerMtm * __cdecl CWapPushServerMtm::NewL(class CRegisteredMtmDll &,class CMsvServerEntry *)
+

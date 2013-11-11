@@ -1,0 +1,50 @@
+/*
+* Copyright (c) 2000-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Resource file for Location Context Plug-in*
+*/
+
+
+#include "registryinfov2.rh"
+
+// Declares info for one plugin implementation
+RESOURCE REGISTRY_INFO theInfo
+	{
+	// resource_format_version must always be set as follows
+	resource_format_version = RESOURCE_FORMAT_VERSION_2;
+	
+	// UID for the DLL
+	dll_uid = 0x200071cf;
+	// Declare array of interface info
+	interfaces = 
+		{
+		INTERFACE_INFO
+			{
+			// UID of interface that is implemented
+			interface_uid = 0x200009F7;
+			implementations = 
+				{
+				// Info for CLocationContextPlugin
+				IMPLEMENTATION_INFO
+					{
+					implementation_uid = 0x200071D0;
+					version_no = 1;
+					display_name = "Location Context Plugin";
+					default_data = "Location";
+					opaque_data = "";
+					rom_only = 0;
+					}
+				};
+			}
+		};
+	}

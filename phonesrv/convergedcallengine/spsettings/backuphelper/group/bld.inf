@@ -1,0 +1,29 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Service provider settings backup helper bld.inf file
+*
+*/
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+../data/backup_registration.xml     z:/private/200286d2/backup_registration.xml
+
+// Stub files
+../rom/spsbackuphelper_stub.sis   /epoc32/data/z/system/install/spsbackuphelper_stub.sis
+
+PRJ_MMPFILES
+spsbackuphelper.mmp
+

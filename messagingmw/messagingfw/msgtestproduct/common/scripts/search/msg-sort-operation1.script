@@ -1,0 +1,300 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+LOAD_SUITE 	T_MsgCommonServer 	-SharedData
+LOAD_SUITE 	T_MsgImapServer 	-SharedData
+LOAD_SUITE  	T_MsgSmtpServer 	-SharedData
+
+//! @SYMTestCaseID		MSG-ALL-SORT-0001
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	Functional Test: Sort all the email messages by To field of messages.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//! 	1. Create a sort query on "To" field in descending order.
+//! 	2. Perform sort operation.
+//! 	3. Verify that result is in descending sorted order.
+//! 	
+//! @SYMTestExpectedResults
+//!	Index entries are sorted in descending order.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SORT-0001
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer  	StartUp
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-sort-operation1.ini    0001-EmailSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-sort-operation1.ini    0001-EmailSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-sort-operation1.ini    0001-EmailSortQuery
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SORT-0001
+
+//! @SYMTestCaseID		MSG-ALL-SORT-0002
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	Functional Test: Sort all the email messages by CC field of messages.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//! 	1. Create a sort query on "CC" field in ascending order.
+//! 	2. Perform sort operation.
+//! 	3. Verify that result is in ascending sorted order.
+//! 	
+//! @SYMTestExpectedResults
+//!	Index entries are sorted in ascending order.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SORT-0002
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer  	StartUp
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-sort-operation1.ini    0002-EmailSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-sort-operation1.ini    0002-EmailSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-sort-operation1.ini    0002-EmailSortQuery
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SORT-0002
+
+//! @SYMTestCaseID		MSG-ALL-SORT-0003
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	Functional Test: Sort all the email messages by BCC field of messages.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//! 	1. Create a sort query on "BCC" field in ascending order.
+//! 	2. Perform sort operation.
+//! 	3. Verify that result is in ascending sorted order.
+//! 	
+//! @SYMTestExpectedResults
+//!	Index entries are sorted in ascending order.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SORT-0003
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer  	StartUp
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-sort-operation1.ini    0003-EmailSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-sort-operation1.ini    0003-EmailSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-sort-operation1.ini    0003-EmailSortQuery
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SORT-0003
+
+//! @SYMTestCaseID		MSG-ALL-SORT-0004
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	Functional Test: Sort all the email messages by Size field of messages.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//! 	1. Create a sort query on "SIZE" field in ascending order.
+//! 	2. Perform sort operation.
+//! 	3. Verify that result is in ascending sorted order.
+//! 	
+//! @SYMTestExpectedResults
+//!	Index entries are sorted in ascending order.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SORT-0004
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer  	StartUp
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-sort-operation1.ini    0004-EmailSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-sort-operation1.ini    0004-EmailSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-sort-operation1.ini    0004-EmailSortQuery
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SORT-0004
+
+//! @SYMTestCaseID		MSG-ALL-SORT-0005
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	Functional Test: Sort all the email messages by read/unread flag field of messages.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//! 	1. Create a sort query on "UnReadFlag" field in ascending order.
+//! 	2. Perform sort operation.
+//! 	3. Verify that result is in ascending sorted order.
+//! 	
+//! @SYMTestExpectedResults
+//!	Index entries are sorted in ascending order.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SORT-0005
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer  	StartUp
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-sort-operation1.ini    0005-AllSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-sort-operation1.ini    0005-AllSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-sort-operation1.ini    0005-AllSortQuery
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SORT-0005
+
+//! @SYMTestCaseID		MSG-ALL-SORT-0006
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	Functional Test: Sort all the email messages by priority field of messages.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//! 	1.	Create a sort query on "Priority" field in ascending order.
+//! 	2.	Perform sort operation.
+//! 	3.	Verify that result is in ascending sorted order.
+//! 	
+//! @SYMTestExpectedResults
+//!	Index entries are sorted in ascending order.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SORT-0006
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer  	StartUp
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-sort-operation1.ini    0006-AllSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-sort-operation1.ini    0006-AllSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-sort-operation1.ini    0006-AllSortQuery
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SORT-0006
+
+//! @SYMTestCaseID		MSG-ALL-SORT-0007
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	Functional Test: Sort all the email messages by attachment field of messages.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//! 	1.	Create a sort query on "Attachment" field in ascending order.
+//! 	2.	Perform sort operation.
+//! 	3.	Verify that result is in ascending sorted order.
+//! 	
+//! @SYMTestExpectedResults
+//!	Index entries are sorted in ascending order.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SORT-0007
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer  	StartUp
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-sort-operation1.ini    0007-AllSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-sort-operation1.ini    0007-AllSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-sort-operation1.ini    0007-AllSortQuery
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SORT-0007
+
+//! @SYMTestCaseID		MSG-ALL-SORT-0008
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	Functional Test: Sort all the email messages by date field of messages.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//! 	1.	Create a sort query on "date" field in ascending order.
+//! 	2.	Perform sort operation.
+//! 	3.	Verify that result is in ascending sorted order.
+//! 	
+//! @SYMTestExpectedResults
+//!	Index entries are sorted in ascending order.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SORT-0008
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer  	StartUp
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-sort-operation1.ini    0008-AllSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-sort-operation1.ini    0008-AllSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-sort-operation1.ini    0008-AllSortQuery
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SORT-0008
+

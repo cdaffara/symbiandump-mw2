@@ -1,0 +1,11 @@
+//MLAP11
+1
+From: 01514876655
+Subject: Los huevos del perro
+size: some size
+cc: address to cc
+att: attachment
+to: lobel.crnogorac@symbian.com
+date: 1/2/2002
+mobile: 07779238123
+home: 0161 225 4999

@@ -1,0 +1,7 @@
+EXPORTS
+	_Z24ImplementationGroupProxyRi @ 1 NONAME
+	_ZTI12CXdmProvItem @ 2 NONAME ; #<TI>#
+	_ZTI15CXdmProvAdapter @ 3 NONAME ; #<TI>#
+	_ZTV12CXdmProvItem @ 4 NONAME ; #<VT>#
+	_ZTV15CXdmProvAdapter @ 5 NONAME ; #<VT>#
+

@@ -1,0 +1,9 @@
+//SIAP11
+password
+Hname:XYZ
+Hurl:http://news.xyz.co.uk
+Hname:MNE
+Hurl:http://www.mne.com
+Hname:Frobisher
+Hurl:http://www.explorer.com
+

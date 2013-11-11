@@ -1,0 +1,19 @@
+<?xml version="1.0" ?> 
+<!DOCTYPE testSuite SYSTEM "file:///c:/program files/common files/symbian/testSuite.dtd" [ ]>
+
+<testSuite>
+	<name>Pop</name> 
+
+	<testItems>
+		<suite>performance</suite>
+		<suite>cenrep</suite>
+		<suite>top</suite>
+		<suite>general</suite>
+		<suite>plainbody</suite>
+		<suite>ram</suite>
+		<suite>bearermobility</suite>
+	<!-- 	<suite>snap</suite> -->
+		<suite>tls</suite>
+	<!-- 	<suite>unit</suite> -->
+	</testItems>
+</testSuite>

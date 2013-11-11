@@ -1,0 +1,37 @@
+// Copyright (c) 2001-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// t_schsendutils.mmp
+//
+
+target          t_schsendutils.dll
+targettype      dll
+
+CAPABILITY All -TCB
+UID      0x10F03C5E 0x10F03C90
+VENDORID 0x70000001
+SOURCEPATH	../src
+userinclude     ../inc
+
+USERINCLUDE		../../../../msgtest/testutils/base/inc
+USERINCLUDE		../../../../msgtest/testutils/server/inc
+USERINCLUDE		../../../../msgtest/testutils/sms/inc
+USERINCLUDE		../../../../msgtest/testutils/email/inc
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+source          t_schsendutils.cpp
+library         euser.lib 
+library		schsend.lib
+library		msgs.lib efsrv.lib msvtestutils.lib schsvr.lib
+
+
+SMPSAFE

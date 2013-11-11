@@ -1,0 +1,57 @@
+// Copyright (c) 2000-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// watcher.exe Executable to start watchers
+// 
+//
+
+/**
+ @file
+*/
+
+#include "../../msgtests/group/msgopt.mph"
+TARGET			watcher.exe
+TARGETTYPE		exexp
+
+CAPABILITY ReadDeviceData WriteDeviceData NetworkServices LocalServices ReadUserData WriteUserData 
+UID		0x1000008c 0x1020D684
+TARGETPATH		system/libs
+SOURCEPATH		../src
+SOURCE			watcher.cpp watcherlog.cpp  watcherwait.cpp
+USERINCLUDE		../inc
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+LIBRARY			euser.lib efsrv.lib bafl.lib msgs.lib
+
+SOURCEPATH		../src
+SOURCE			cwatcherlauncher.cpp cwatcherssastartupmgr.cpp
+
+LIBRARY			ecom.lib domaincli.lib
+
+#ifdef WINS
+START WINS
+	WIN32_LIBRARY	kernel32.lib
+	WIN32_LIBRARY	user32.lib
+END
+#endif
+
+#ifdef _MSG_NO_LOGGING_DEFINE
+DEBUGLIBRARY flogger.lib
+#else
+LIBRARY flogger.lib
+#endif
+
+DEFFILE		v2_watcher.DEF
+
+VENDORID 0x70000001
+
+SMPSAFE

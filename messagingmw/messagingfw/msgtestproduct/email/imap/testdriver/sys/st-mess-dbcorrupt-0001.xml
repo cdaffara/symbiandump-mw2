@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>st-mess-dbcorrupt-0001</name>
+	<timeout>3000</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\sys\st-mess-dbcorrupt-0001.script</hostPath>
+			<devicePath>c:\msgtest\sys\st-mess-dbcorrupt-0001.script</devicePath>
+		</script>
+		
+	</testScripts>
+
+	<testServers>
+		<server>T_MsgImapServer</server>
+	</testServers>
+
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\sys\st-mess.ini</hostPath>
+			<devicePath>c:\msgtest\sys\st-mess.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\sys\CorruptDb.db</hostPath>
+			<devicePath>c:\msgtest\sys\CorruptDb.db</devicePath>
+		</data>
+
+	</dependencies>	
+</testExecuteTest>

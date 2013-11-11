@@ -1,0 +1,812 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE	T_MsgCommonServer	-SharedData
+LOAD_SUITE	T_MsgImapServer		-SharedData
+LOAD_SUITE	T_MsgSmtpServer		-SharedData
+
+
+START_TESTCASE	MSG-IMAP-GEN-0001
+//!	@SYMTestCaseID			MSG-IMAP-GEN-0001
+//!	@SYMTestCaseDesc		This test script creates an IMAP account and a message
+//!					from the RFC822 file and sends the message to the same account.
+//!					Downloads the mails with IMAP4 KIMAP4MTMConnectAndPopulateAllMailAndStayOnline 
+//!					command and Compares the received messages with sent messages based on the 
+//!					Download limits set.It then checks the count of the messages based on the various flags set.
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			Initialises the RAS connection
+//!					Resets the message store to clean up the central repository
+//!					Creates an IMAP account by reading the settings from the file mentioned
+//!					thus setting the IMAP and SMTP service settings
+//!					Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					Connects to the IMAP server and deletes all mails in the Inbox on the server.
+//!					Creates messages from RFC822 file and sends the messages to the same IMAP account.
+//!					Sets the full download limits.
+//!					Download the mails with IMAP4 KIMAP4MTMConnectAndPopulateAllMailAndStayOnline command
+//!					and compares the received messages with sent messages based on the Download limits set.
+//!	@SYMTestExpectedResults		EPass,The messages are sent and received with the respective flags set.					
+//!	@SYMAuthor			Kavyashree.D
+
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		DeleteAllImapChildren 		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-DeleteAllImapChildren
+RUN_TEST_STEP  	300 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-DisConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-SendSmtpMessage
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-CheckChildrenCountOutbox1
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-SendSmtpMessage1
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-CheckChildrenCountSentItems1
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-DoFullImap4Synchronisation
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-DisConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-SendSmtpMessage
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-CheckChildrenCountOutbox1
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-SendSmtpMessage1
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-CheckChildrenCountSentItems2
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-DoFullImap4Synchronisation
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-DisConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4FullDownloadLimits 	c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-SetImap4FullDownloadLimits
+RUN_TEST_STEP 	300 	T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-ImapInvokeAsyncFunction
+RUN_TEST_STEP  	300 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-CheckChildrenCountRemoteInbox4
+RUN_TEST_STEP  	300 	T_MsgImapServer		CheckChildrenCountFlagBase	c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-CheckChildrenCountFlagBase1
+RUN_TEST_STEP  	300 	T_MsgImapServer		CheckChildrenCountFlagBase	c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-CheckChildrenCountFlagBase2
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0001-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-GEN-0001
+
+
+START_TESTCASE	MSG-IMAP-GEN-0002
+//!	@SYMTestCaseID			MSG-IMAP-GEN-0002
+//!	@SYMTestCaseDesc		This test script creates an IMAP account and a message
+//!					from the RFC822 file and sends the message to the same account.
+//!					Downloads the mails with IMAP4 KIMAP4MTMConnectAndPopulateNewMailAndDisConnect
+//!					command and Compares the received messages with sent messages based on the 
+//!					Download limits set.It then checks the count of the messages based on the various flags set.
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			Initialises the RAS connection
+//!					Resets the message store to clean up the central repository
+//!					Creates an IMAP account by reading the settings from the file mentioned
+//!					thus setting the IMAP and SMTP service settings
+//!					Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					Connects to the IMAP server and deletes all mails in the Inbox on the server.
+//!					Creates messages from RFC822 file and sends the messages to the same IMAP account.
+//!					Sets the full download limits.
+//!					Download the mails with IMAP4 KIMAP4MTMConnectAndPopulateNewMailAndDisConnect command
+//!					and compares the received messages with sent messages based on the Download limits set.
+//!	@SYMTestExpectedResults		EPass,The messages are sent and received with the respective flags set.	
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		DeleteAllImapChildren 		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-DeleteAllImapChildren
+RUN_TEST_STEP  	300 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-DisConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-SendSmtpMessage
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-CheckChildrenCountOutbox1
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-SendSmtpMessage1
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-CheckChildrenCountSentItems1
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-DoFullImap4Synchronisation
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-DisConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-SendSmtpMessage
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-CheckChildrenCountOutbox1
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-SendSmtpMessage1
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-CheckChildrenCountSentItems2
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-DoFullImap4Synchronisation
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-DisConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4FullDownloadLimits 	c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-SetImap4FullDownloadLimits
+RUN_TEST_STEP 	300 	T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-ImapInvokeAsyncFunction
+RUN_TEST_STEP  	300 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-CheckChildrenCountRemoteInbox4
+RUN_TEST_STEP  	300 	T_MsgImapServer		CheckChildrenCountFlagBase	c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-CheckChildrenCountFlagBase1
+RUN_TEST_STEP  	300 	T_MsgImapServer		CheckChildrenCountFlagBase	c:\msgtest\email\imap\general\msg-imap-general1.ini        	0002-CheckChildrenCountFlagBase2
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-GEN-0002
+
+
+START_TESTCASE	MSG-IMAP-GEN-0003
+//!	@SYMTestCaseID			MSG-IMAP-GEN-0003
+//!	@SYMTestCaseDesc		This test script creates an IMAP account and a message
+//!					from the RFC822 file and sends the message to the same account.
+//!					Downloads the mails with IMAP4 KIMAP4MTMConnectAndPopulateNewMailAndDisConnect
+//!					command and Compares the received messages with sent messages based on the 
+//!					Download limits set.It then checks the count of the messages based on the various flags set.
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			Initialises the RAS connection
+//!					Resets the message store to clean up the central repository
+//!					Creates an IMAP account by reading the settings from the file mentioned
+//!					thus setting the IMAP and SMTP service settings
+//!					Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					Connects to the IMAP server and deletes all mails in the Inbox on the server.
+//!					Creates messages from RFC822 file and sends the messages to the same IMAP account.
+//!					Sets the full download limits.Performs a full synchronisation.
+//!					Download the mails with IMAP4 KIMAP4MTMConnectAndPopulateNewMailAndDisConnect command
+//!					and compares the received messages with sent messages based on the Download limits set.
+//!	@SYMTestExpectedResults		EPass,The messages are sent and received with the respective flags set.	
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		DeleteAllImapChildren 		c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-DeleteAllImapChildren
+RUN_TEST_STEP  	300 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-DisConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-SendSmtpMessage
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-CheckChildrenCountOutbox1
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-SendSmtpMessage1
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-CheckChildrenCountSentItems1
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-DoFullImap4Synchronisation
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-DisConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-SendSmtpMessage
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-CheckChildrenCountOutbox1
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-SendSmtpMessage1
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-CheckChildrenCountSentItems2
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-ConnectImap4Server
+RUN_TEST_STEP	500	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-DoFullImap4Synchronisation1
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-DisConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4FullDownloadLimits 	c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-SetImap4FullDownloadLimits
+RUN_TEST_STEP 	300 	T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-ImapInvokeAsyncFunction
+RUN_TEST_STEP  	300 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-CheckChildrenCountRemoteInbox4
+RUN_TEST_STEP  	300 	T_MsgImapServer		CheckChildrenCountFlagBase	c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-CheckChildrenCountFlagBase1
+RUN_TEST_STEP  	300 	T_MsgImapServer		CheckChildrenCountFlagBase	c:\msgtest\email\imap\general\msg-imap-general1.ini        0003-CheckChildrenCountFlagBase2
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-GEN-0003
+
+
+START_TESTCASE	MSG-IMAP-QueryConnection-0001 
+//!	@SYMTestCaseID			MSG-IMAP-QueryConnection-0001
+//!	@SYMTestCaseDesc		Verification test:
+//!					This test script is to test the basic functionality of query connection status.
+//!					This test script creates an IMAP account using settings from a txt file, 
+//!                        		connects to the imap service. Tests if the service is connected, using the IMAP command 		
+//!					KIMAP4MTMIsConnected. It then disconnects from the IMAP4 service. 	
+//!					
+//!					
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!     @SYMREQ                         5554 Query Connection status 
+//!     @SYMPREQ                        1160
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			Initialises the RAS connection
+//!					Resets the message store to clean up the central repository
+//!					Creates an IMAP account by reading the settings from the file mentioned
+//!					thus setting the IMAP and SMTP service settings
+//!					Connects to the IMAP server and checks if connected, then disconnects from the 		
+//!			                imap service and checks if connected.
+//!
+//!	@SYMTestExpectedResults		EPass-The connection query should return true when connected to the IMAP Service.     
+//!                                    
+//!					
+//!					
+//!	@SYMAuthor			Rehana Anwar
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas c:\msgtest\email\imap\general\msg-imap-general1.ini        		0004-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\general\msg-imap-general1.ini        		0004-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\general\msg-imap-general1.ini        		0004-CreateImapAccount 
+PRINT Setup Completed ##########################################
+PRINT Execute begins ##########################################
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\general\msg-imap-general1.ini        		0004-ConnectImap4Server
+PRINT check if connection exsists
+RUN_TEST_STEP 	300 	T_MsgImapServer		CheckIfConnected c:\msgtest\email\imap\general\msg-imap-general1.ini         0004-CheckIfConnected
+PRINT disconnecting
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\general\msg-imap-general1.ini        		0004-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-QueryConnection-0001 
+
+
+START_TESTCASE	MSG-IMAP-QueryConnection-0002 
+//!	@SYMTestCaseID			MSG-IMAP-QueryConnection-0002
+//!	@SYMTestCaseDesc		Negative test:
+//!					This test script is to test the basic functionality of query connection status.
+//!					This test script creates an IMAP account using settings from a txt file, 
+//!                        		connects to the imap service.  It then disconnects from the IMAP4 service, and  issues a 	
+//!					connection query. 
+//!					
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!     @SYMREQ                         5554 Query Connection status 
+//!     @SYMPREQ                        1160
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			Initialises the RAS connection
+//!					Resets the message store to clean up the central repository
+//!					Creates an IMAP account by reading the settings from the file mentioned
+//!					thus setting the IMAP and SMTP service settings
+//!					Connects to the IMAP server and  disconnects from the 		
+//!			                imap service and checks if connected.
+//!
+//!	@SYMTestExpectedResults		  
+//!                                     EFAIL-The connection query should return false when disconnected from the IMAP 
+//!					service
+//!					
+//!	@SYMAuthor			Rehana Anwar
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas c:\msgtest\email\imap\general\msg-imap-general1.ini 		0005-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\general\msg-imap-general1.ini 		0005-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\general\msg-imap-general1.ini 		0005-CreateImapAccount 
+PRINT Setup Completed ##########################################
+PRINT Execute begins ##########################################
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\general\msg-imap-general1.ini 		0005-ConnectImap4Server
+PRINT disconnecting
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\general\msg-imap-general1.ini 		0005-DisConnectImap4Server
+PRINT check if connection exsists
+RUN_TEST_STEP 	!Result=Fail 300 	T_MsgImapServer		CheckIfConnected c:\msgtest\email\imap\general\msg-imap-general1.ini  0005-CheckIfConnected
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-QueryConnection-0002 
+
+
+START_TESTCASE	MSG-IMAP-NotifyMailboxUpdate-0001
+//!	@SYMTestCaseID			MSG-IMAP-NotifyMailboxUpdate-0001
+//!	@SYMTestCaseDesc		Verification test:
+//!					This test script is to test the basic functionality of notification of mailbox updates
+//!					Here idle cabability is not selected.
+//!					This test checks for any unexpected behaviour in regards to mailbox updates 
+//!					by sending a small number of emails to an account that is clean.
+//!					
+//!					
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!     @SYMREQ                         5566 Notification of mailbox updates
+//!     @SYMPREQ                        1160
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			Initialises the RAS connection
+//!					We reset the message store to clean up the central repository
+//!					We create an IMAP account by reading the settings from the file mentioned
+//!					Thus setting the IMAP and SMTP service settings.We set the IMAP service parameters.
+//!					The IMAP service parameters are set as follows: IsImapIdleSelected is set as EFALSE,
+//!					ImapIdleTimeout is NOT SET, and ImapSyncRate is NOT SET.
+//!					We connect to the IMAP server and initialise the account deleting all
+//!				        user created mailboxes and emails.
+//!					We create mutiple smtp messages within the outbox.
+//!					and disconnect form the service. 
+//!					End of set up actions:
+//!					
+//!					We connect to the IMAP server and perform a full imap synchronisation with it. Using 
+//!					KIMAP4MTMConnect and KIMAP4MTMFullSync.
+//!					We set up the observer on the inbox, and send the messages created in set up. 
+//!					We confirm if client has been notified of new mail and count them via the observer,
+//!				        We remove this observer.
+//!					We disconnect from the IMAP service. 		
+//!
+//!	@SYMTestExpectedResults		EPass-we should be notified of seven new emails     
+//!                                    
+//!					
+//!					
+//!	@SYMAuthor			Rehana Anwar
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas c:\msgtest\email\imap\general\msg-imap-general1.ini 		0006-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\general\msg-imap-general1.ini 		0006-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\general\msg-imap-general1.ini 		0006-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\general\msg-imap-general1.ini      0006-SetImap4ServiceIdleParamters 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\general\msg-imap-general1.ini 		0006-ConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\general\msg-imap-general1.ini 	0006-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\general\msg-imap-general1.ini 	0006-InitialiseImap4Account
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\general\msg-imap-general1.ini 	0006-DoFullImap4Synchronisation
+PRINT CREATE 7 SMTP EMAILS 
+PRINT START EXECUTION
+PRINT EMAIL 1: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini 	0006-CreateSmtpMessageFromEmailFile1 
+PRINT EMAIL 2: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini 	0006-CreateSmtpMessageFromEmailFile2 
+PRINT EMAIL 3: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini 	0006-CreateSmtpMessageFromEmailFile3 
+PRINT EMAIL 4: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini 	0006-CreateSmtpMessageFromEmailFile4 
+PRINT EMAIL 5: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini 	0006-CreateSmtpMessageFromEmailFile5
+PRINT EMAIL 6: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini 	0006-CreateSmtpMessageFromEmailFile6  
+PRINT EMAIL 7: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini 	0006-CreateSmtpMessageFromEmailFile7 
+PRINT disconnecting
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\general\msg-imap-general1.ini 		0006-DisConnectImap4Server
+PRINT Setup Completed ####################################################
+PRINT Execute begins ####################################################
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\general\msg-imap-general1.ini 		0006-ConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\general\msg-imap-general1.ini 	   0006-DoFullImap4Synchronisation
+PRINT Set an observer on the inbox on the imap service
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetEventObserver 	c:\msgtest\email\imap\general\msg-imap-general1.ini 	 0006-SetInboxObserver
+PRINT Send 7 emails to account
+//Send emails created
+RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\general\msg-imap-general1.ini 	0006-SendSmtpMessage1 
+PRINT EMAIL : SENT
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\general\msg-imap-general1.ini 	   0006-DoFullImap4Synchronisation
+PRINT Check if Client has recieved correct number of new headers in inbox, and that client has been notified of new mail
+RUN_TEST_STEP 	300 	T_MsgImapServer		CheckEventNCount		c:\msgtest\email\imap\general\msg-imap-general1.ini 	0006-CheckEventNCount
+PRINT Remove Inbox Observer from the IMAP service
+RUN_TEST_STEP 	300 	T_MsgImapServer		RemoveEventObserver 	c:\msgtest\email\imap\general\msg-imap-general1.ini    0006-RemoveInboxObserver
+PRINT disconnecting
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\general\msg-imap-general1.ini 		0006-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-NotifyMailboxUpdate-0001
+
+
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***START_TESTCASE	MSG-IMAP-NotifyMailboxUpdate-0002
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!	@SYMTestCaseID			MSG-IMAP-NotifyMailboxUpdate-0002
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!	@SYMTestCaseDesc		Verification test:
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!					This test script is to test the basic functionality of notification of mailbox updates
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!					Here idle cabability is not selected.
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!					This test checks for any unexpected behaviour in regards to mailbox updates 
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!					by sending a LARGE number of emails to an account that is clean.
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!					
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!					
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!	@SYMTestPriority		Critical
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!   	@SYMTestType			CIT
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!     @SYMREQ                         5566 Notification of mailbox updates
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!     @SYMPREQ                        1160
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!  	@SYMTestStatus			Implemented   
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!  	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!	@SYMTestActions			Initialises the RAS connection
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!					We reset the message store to clean up the central repository
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!					We create an IMAP account by reading the settings from the file mentioned
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!					Thus setting the IMAP and SMTP service settings.We set the IMAP service parameters.
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!					The IMAP service parameters are set as follows: IsImapIdleSelected is set as EFALSE,
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!					ImapIdleTimeout is NOT SET, and ImapSyncRate is NOT SET.
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!					We connect to the IMAP server and initialise the account deleting all
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!				        user created mailboxes and emails.
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!					We create BULK smtp messages within the outbox (70 IN TOTAL).
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!					and disconnect form the service. 
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!					End of set up actions:
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!					
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!					We connect to the IMAP server and perform a full imap synchronisation with it. Using 
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!					KIMAP4MTMConnect and KIMAP4MTMFullSync.
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!					We set up the observer on the inbox, and send the messages created in set up. 
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!					We confirm if client has been notified of new mail and count them via the observer,
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!				        We remove this observer.
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!					We disconnect from the IMAP service. 		
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!	@SYMTestExpectedResults		EPass-we should be notified of 70 new emails     
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!                                    
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!					
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!					
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//!	@SYMAuthor			Rehana Anwar
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***PRINT Setup begins ########################################################
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas c:\msgtest\email\imap\general\msg-imap-general1.ini 		0007-InitNtRas
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\general\msg-imap-general1.ini 		0007-ResetMessageStore
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\general\msg-imap-general1.ini 		0007-CreateImapAccount 
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\general\msg-imap-general1.ini      0007-SetImap4ServiceIdleParamters 
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\general\msg-imap-general1.ini 		0007-ConnectImap4Server
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\general\msg-imap-general1.ini 	0007-DoFullImap4Synchronisation
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP  	300 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\general\msg-imap-general1.ini 	0007-InitialiseImap4Account
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\general\msg-imap-general1.ini 	0007-DoFullImap4Synchronisation
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***PRINT START EXECUTION
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***START_REPEAT c:\msgtest\email\imap\general\msg-imap-general1.ini  0007-bulk repeat
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***PRINT EMAIL 1: 
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini 	0007-CreateSmtpMessageFromEmailFile1 
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***PRINT EMAIL 2:
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini 	0007-CreateSmtpMessageFromEmailFile2 
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***PRINT EMAIL 3:
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini 	0007-CreateSmtpMessageFromEmailFile3 
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***PRINT EMAIL 4: 
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini 	0007-CreateSmtpMessageFromEmailFile4 
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***PRINT EMAIL 5: 
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini 	0007-CreateSmtpMessageFromEmailFile5
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***PRINT EMAIL 6:
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini 	0007-CreateSmtpMessageFromEmailFile6  
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***PRINT EMAIL 7: 
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini 	0007-CreateSmtpMessageFromEmailFile7 
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***END_REPEAT
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\general\msg-imap-general1.ini 		0007-DisConnectImap4Server
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***PRINT Setup Completed ########################################################
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***PRINT Execute begins ########################################################
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\general\msg-imap-general1.ini 		0007-ConnectImap4Server
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\general\msg-imap-general1.ini 	   0007-DoFullImap4Synchronisation
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***PRINT Set an observer on the inbox on the imap service
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP 	300 	T_MsgImapServer		SetEventObserver 	c:\msgtest\email\imap\general\msg-imap-general1.ini 	 0007-SetInboxObserver
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***PRINT Send  emails to account
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***//Send emails created
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\general\msg-imap-general1.ini 	0007-SendSmtpMessage1 
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***PRINT EMAIL : SENT
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\general\msg-imap-general1.ini 	   0007-DoFullImap4Synchronisation
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***PRINT Check if Client has recieved correct number of new headers in inbox, and that client has been notified of new mail
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP 	300 	T_MsgImapServer		CheckEventNCount		c:\msgtest\email\imap\general\msg-imap-general1.ini 	0007-CheckEventNCount
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***PRINT Remove Inbox Observer from the IMAP service
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP 	300 	T_MsgImapServer		RemoveEventObserver 	c:\msgtest\email\imap\general\msg-imap-general1.ini    0007-RemoveInboxObserver
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***PRINT disconnecting
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\general\msg-imap-general1.ini 		0007-DisConnectImap4Server
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***PRINT Execute Completed  ########################################################
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+// ***- commented out - NotifyMailboxUpdate-0002 - Passes in Nightly - Fails in Integ!***END_TESTCASE	MSG-IMAP-NotifyMailboxUpdate-0002  ####################################################
+
+
+START_TESTCASE	MSG-IMAP-NotifyMailboxUpdate-0003 
+//!	@SYMTestCaseID			MSG-IMAP-NotifyMailboxUpdate-0003
+//!	@SYMTestCaseDesc		Verification test:
+//!					This test script is to test the basic functionality of notification of mailbox updates
+//!					Here idle cabability is not selected.
+//!					This test checks for any unexpected behaviour in regards to mailbox updates 
+//!					by sending a small number of emails to an account that is NOT clean 
+//!					(the inbox already contains a small number ofemails).
+//!					
+//!					
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!     @SYMREQ                         5566 Notification of mailbox updates
+//!     @SYMPREQ                        1160
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			Initialises the RAS connection
+//!					We reset the message store to clean up the central repository
+//!					We create an IMAP account by reading the settings from the file mentioned
+//!					Thus setting the IMAP and SMTP service settings.We set the IMAP service parameters.
+//!					The IMAP service parameters are set as follows: IsImapIdleSelected is set as EFALSE,
+//!					ImapIdleTimeout is NOT SET, and ImapSyncRate is NOT SET.
+//!					We connect to the IMAP server and initialise the account deleting all
+//!				        user created mailboxes and emails.
+//!					We create mutiple smtp messages within the outbox (7 IN TOTAL).
+//!					We send these messages created.
+//!					and disconnect form the service. 
+//!					End of set up actions:
+//!					
+//!					We connect to the IMAP server and perform a full imap synchronisation with it. Using 
+//!					KIMAP4MTMConnect and KIMAP4MTMFullSync.
+//!					We set up the observer on the inbox. 
+//!					we confirm that the inbox contains 7 emails, sent during setup.
+//!					We create mutiple smtp messages within the outbox (7 IN TOTAL).
+//!					We send these messages created.
+//!					we synchronise the account.
+//!					We confirm if client has been notified of new mail and count them via the observer,
+//!				        We remove this observer.We count all mail in the inbox.
+//!					We disconnect from the IMAP service. 		
+//!
+//!	@SYMTestExpectedResults		EPass-inbox should contain 14 new emails in total.      
+//!                                    
+//!					
+//!					
+//!	@SYMAuthor			Rehana Anwar
+
+PRINT Setup begins #############################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas c:\msgtest\email\imap\general\msg-imap-general1.ini    		0008-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\general\msg-imap-general1.ini    		0008-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\general\msg-imap-general1.ini    		0008-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\general\msg-imap-general1.ini         0008-SetImap4ServiceIdleParamters 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\general\msg-imap-general1.ini    		0008-ConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\general\msg-imap-general1.ini    	0008-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\general\msg-imap-general1.ini    	0008-InitialiseImap4Account
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\general\msg-imap-general1.ini    	0008-DoFullImap4Synchronisation
+PRINT CREATE 7 SMTP EMAILS 
+PRINT EMAIL 1: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini    	0008-CreateSmtpMessageFromEmailFile1 
+PRINT EMAIL 2: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini    	0008-CreateSmtpMessageFromEmailFile2 
+PRINT EMAIL 3: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini    	0008-CreateSmtpMessageFromEmailFile3 
+PRINT EMAIL 4: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini    	0008-CreateSmtpMessageFromEmailFile4 
+PRINT EMAIL 5: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini    	0008-CreateSmtpMessageFromEmailFile5
+PRINT EMAIL 6: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini    	0008-CreateSmtpMessageFromEmailFile6  
+PRINT EMAIL 7: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini    	0008-CreateSmtpMessageFromEmailFile7 
+PRINT End of creating smtp emails
+PRINT Send 7 emails to account
+//Send emails created
+RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\general\msg-imap-general1.ini    	0008-SendSmtpMessage1 
+PRINT EMAIL : SENT
+PRINT disconnecting
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\general\msg-imap-general1.ini    		0008-DisConnectImap4Server
+PRINT Setup Completed #############################################
+PRINT Execute begins  #############################################
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\general\msg-imap-general1.ini    		0008-ConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\general\msg-imap-general1.ini    	   0008-DoFullImap4Synchronisation
+PRINT Set an observer on the inbox on the imap service
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetEventObserver 	c:\msgtest\email\imap\general\msg-imap-general1.ini    	 0008-SetInboxObserver
+PRINT Confirm inbox contains 7 emails
+PRINT EMAIL 1: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini    	0008-CreateSmtpMessageFromEmailFile1 
+PRINT EMAIL 2: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini    	0008-CreateSmtpMessageFromEmailFile2 
+PRINT EMAIL 3: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini    	0008-CreateSmtpMessageFromEmailFile3 
+PRINT EMAIL 4: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini    	0008-CreateSmtpMessageFromEmailFile4 
+PRINT EMAIL 5: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini    	0008-CreateSmtpMessageFromEmailFile5
+PRINT EMAIL 6: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini    	0008-CreateSmtpMessageFromEmailFile6  
+PRINT EMAIL 7: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini    	0008-CreateSmtpMessageFromEmailFile7 
+PRINT End of creating smtp emails
+PRINT Send 7 emails to account
+//Send emails created
+RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\general\msg-imap-general1.ini    	0008-SendSmtpMessage1 
+PRINT EMAIL : SENT
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\general\msg-imap-general1.ini    	   0008-DoFullImap4Synchronisation
+PRINT Check if Client has recieved correct number of new headers in inbox, and that client has been notified of new mail
+RUN_TEST_STEP 	300 	T_MsgImapServer		CheckEventNCount		c:\msgtest\email\imap\general\msg-imap-general1.ini    	0008-CheckEventNCount
+PRINT count all mail in inbox
+RUN_TEST_STEP 	300 	T_MsgImapServer	CheckChildrenCountImap c:\msgtest\email\imap\general\msg-imap-general1.ini     	0008-CheckChildrenCountImap
+PRINT Remove Inbox Observer from the IMAP service
+RUN_TEST_STEP 	300 	T_MsgImapServer		RemoveEventObserver 	c:\msgtest\email\imap\general\msg-imap-general1.ini       0008-RemoveInboxObserver
+PRINT disconnecting
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\general\msg-imap-general1.ini    		0008-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+//RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-NotifyMailboxUpdate-0003  
+
+
+START_TESTCASE	MSG-IMAP-NotifyMailboxUpdate-0004 
+//!	@SYMTestCaseID			MSG-IMAP-NotifyMailboxUpdate-0004
+//!	@SYMTestCaseDesc		Verification test:
+//!					This test script is to test the basic functionality of notification of mailbox updates
+//!					Here idle cabability is not selected.
+//!					This test checks for any unexpected behaviour in regards to mailbox updates 
+//!					by sending a small number of emails (at varied times), and via mutiple 
+//!					disconnects and connects.
+//!					
+//!					
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!     @SYMREQ                         5566 Notification of mailbox updates
+//!     @SYMPREQ                        1160
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			Initialises the RAS connection
+//!					We reset the message store to clean up the central repository
+//!					We create an IMAP account by reading the settings from the file mentioned
+//!					Thus setting the IMAP and SMTP service settings.We set the IMAP service parameters.
+//!					The IMAP service parameters are set as follows: IsImapIdleSelected is set as EFALSE,
+//!					ImapIdleTimeout is NOT SET, and ImapSyncRate is NOT SET.
+//!					We connect to the IMAP server and initialise the account deleting all
+//!				        user created mailboxes and emails.
+//!					We create mutiple smtp messages within the outbox (7 IN TOTAL).
+//!					We send these messages created.
+//!					and disconnect form the service. 
+//!					End of set up actions:
+//!					
+//!					We connect to the IMAP server and perform a background synchronisation with it. Using 
+//!					KIMAP4MTMConnectAndSynchronise.We also wait for this background synchronisation to complete 
+//!					using KIMAP4MTMWaitForBackground.
+//!					we count the number of messages within the inbox
+//!					we disconnect from the IMAP service.
+//!					We connect to the IMAP server and perform a background synchronisation with it. Using 
+//!					KIMAP4MTMConnectAndSynchronise.We also wait for this background synchronisation to complete 
+//!					using KIMAP4MTMWaitForBackground.
+//!					we count the number of messages within the inbox
+//!					We set up the observer on the inbox. 
+//!					we confirm that the inbox contains 7 emails, sent during setup.
+//!					We create mutiple smtp messages within the outbox (7 IN TOTAL).
+//!					We send these messages created.
+//!					we synchronise the account.
+//!					We confirm if client has been notified of new mail and count them via the observer,
+//!				        We remove this observer.We count all mail in the inbox.
+//!					We disconnect from the IMAP service. 		
+//!
+//!	@SYMTestExpectedResults		EPass-inbox should contain 14 new emails in total.      
+//!                                    
+//!					
+//!					
+//!	@SYMAuthor			Rehana Anwar
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas c:\msgtest\email\imap\general\msg-imap-general1.ini    		0009-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\general\msg-imap-general1.ini    		0009-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\general\msg-imap-general1.ini    		0009-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\general\msg-imap-general1.ini         0009-SetImap4ServiceIdleParamters 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\general\msg-imap-general1.ini    		0009-ConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\general\msg-imap-general1.ini    	0009-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\general\msg-imap-general1.ini    	0009-InitialiseImap4Account
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\general\msg-imap-general1.ini    	0009-DoFullImap4Synchronisation
+PRINT CREATE 7 SMTP EMAILS 
+PRINT EMAIL 1: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini    	0009-CreateSmtpMessageFromEmailFile1 
+PRINT EMAIL 2: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini    	0009-CreateSmtpMessageFromEmailFile2 
+PRINT EMAIL 3: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini    	0009-CreateSmtpMessageFromEmailFile3 
+PRINT EMAIL 4: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini    	0009-CreateSmtpMessageFromEmailFile4 
+PRINT EMAIL 5: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini    	0009-CreateSmtpMessageFromEmailFile5
+PRINT EMAIL 6: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini    	0009-CreateSmtpMessageFromEmailFile6  
+PRINT EMAIL 7: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini    	0009-CreateSmtpMessageFromEmailFile7 
+PRINT End of creating smtp emails
+PRINT Send 7 emails to account
+//Send emails created
+RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\general\msg-imap-general1.ini    	0009-SendSmtpMessage1 
+PRINT EMAIL: SENT
+PRINT disconnecting 
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\general\msg-imap-general1.ini    		0009-DisConnectImap4Server
+PRINT Setup Completed ##########################################
+PRINT Execute begins ###########################################
+PRINT Connect & sync and wait for bkground sync to complete
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\general\msg-imap-general1.ini       0009-ConnectAndSyncImapServer
+PRINT count all mail in inbox
+RUN_TEST_STEP 	300 	T_MsgImapServer	CheckChildrenCountImap c:\msgtest\email\imap\general\msg-imap-general1.ini     	0009-CheckChildrenCountImap0
+PRINT disconnecting 
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\general\msg-imap-general1.ini    		0009-DisConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\general\msg-imap-general1.ini       0009-ConnectAndSyncImapServer
+PRINT disconnecting 
+PRINT count all mail in inbox
+RUN_TEST_STEP 	300 	T_MsgImapServer	CheckChildrenCountImap c:\msgtest\email\imap\general\msg-imap-general1.ini     	0009-CheckChildrenCountImap0
+PRINT Set an observer on the inbox on the imap service
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetEventObserver 	c:\msgtest\email\imap\general\msg-imap-general1.ini    	 0009-SetInboxObserver
+PRINT Confirm inbox contains 7 emails
+PRINT EMAIL 1: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini    	0009-CreateSmtpMessageFromEmailFile1 
+PRINT EMAIL 2: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini    	0009-CreateSmtpMessageFromEmailFile2 
+PRINT EMAIL 3: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini    	0009-CreateSmtpMessageFromEmailFile3 
+PRINT EMAIL 4: CREATING
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini    	0009-CreateSmtpMessageFromEmailFile4 
+PRINT EMAIL 5: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini    	0009-CreateSmtpMessageFromEmailFile5
+PRINT EMAIL 6: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini    	0009-CreateSmtpMessageFromEmailFile6  
+PRINT EMAIL 7: CREATING 
+RUN_TEST_STEP 300 T_MsgSmtpServer CreateSmtpMessageFromEmailFile c:\msgtest\email\imap\general\msg-imap-general1.ini    	0009-CreateSmtpMessageFromEmailFile7 
+PRINT End of creating smtp emails
+PRINT Send 7 emails to account
+//Send emails created
+RUN_TEST_STEP 300 T_MsgSmtpServer SendSmtpMessage c:\msgtest\email\imap\general\msg-imap-general1.ini    	0009-SendSmtpMessage1 
+PRINT EMAIL : SENT
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\general\msg-imap-general1.ini    	   0009-DoFullImap4Synchronisation
+PRINT Check if Client has recieved correct number of new headers in inbox, and that client has been notified of new mail
+RUN_TEST_STEP 	300 	T_MsgImapServer		CheckEventNCount		c:\msgtest\email\imap\general\msg-imap-general1.ini    	0009-CheckEventNCount
+PRINT count all mail in inbox
+RUN_TEST_STEP 	300 	T_MsgImapServer	CheckChildrenCountImap c:\msgtest\email\imap\general\msg-imap-general1.ini     	0009-CheckChildrenCountImap1
+PRINT Remove Inbox Observer from the IMAP service
+RUN_TEST_STEP 	300 	T_MsgImapServer		RemoveEventObserver 	c:\msgtest\email\imap\general\msg-imap-general1.ini       0009-RemoveInboxObserver
+PRINT disconnecting
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\general\msg-imap-general1.ini    		0009-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-NotifyMailboxUpdate-0004 
+
+

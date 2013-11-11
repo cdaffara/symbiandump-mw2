@@ -1,0 +1,34 @@
+/*
+ * Copyright (c) 2010 Nokia Corporation and/or its subsidiary(-ies).
+ * All rights reserved.
+ * This component and the accompanying materials are made available
+ * under the terms of "Eclipse Public License v1.0"
+ * which accompanies this distribution, and is available
+ * at the URL "http://www.eclipse.org/legal/epl-v10.html".
+ *
+ * Initial Contributors:
+ * Nokia Corporation - initial contribution.
+ *
+ * Contributors:
+ *
+ * Description:
+ * This is the project specification file for building the
+ * sts client side proxy static library.
+ */
+
+#include <platform_paths.hrh>
+
+TARGET          stsproxy.lib
+TARGETTYPE      lib
+
+MW_LAYER_SYSTEMINCLUDE
+OS_LAYER_LIBC_SYSTEMINCLUDE
+OS_LAYER_STDCPP_SYSTEMINCLUDE
+
+USERINCLUDE     ../inc
+USERINCLUDE     ../../stsserver/inc
+
+SOURCEPATH      ../src
+
+SOURCE          rstssession.cpp
+SOURCE          stsimplementation.cpp

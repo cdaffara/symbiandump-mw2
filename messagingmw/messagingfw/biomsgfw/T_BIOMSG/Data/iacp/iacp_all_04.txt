@@ -1,0 +1,21 @@
+//SIAP11
+password
+Mname:Peach
+Muid:diskono
+Mpwd:sprocket
+Madr:mal@sprocket.co.uk
+Mrcv:pop3.peach.co.uk
+Mpro:PO
+Msnd:post.peach.co.uk
+Iname:Peach
+Iuid:diskono
+Ipwd:sprattler
+Itel:+44 845 2121666
+Idns1:BABA:12:0:205:E512:158.152.1.58
+Idns2:BABA:12:0:205:E512:158.152.1.43
+//Inop:BABA:12:0:205:E512:10.11.12.13; BABA:12:0:205:E512:100.101.102.103
+//Isrx:BABA:12:0:205:E512:111.222.333.444
+//Ispo:54321
+//Ilgn:1
+//Icmp:N
+

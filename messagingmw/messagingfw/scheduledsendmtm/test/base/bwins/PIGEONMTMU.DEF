@@ -1,0 +1,5 @@
+EXPORTS
+	?NewL@CPigeonScheduledEntry@@SAPAV1@ABVTMsvEntry@@@Z @ 1 NONAME ; public: static class CPigeonScheduledEntry * __cdecl CPigeonScheduledEntry::NewL(class TMsvEntry const &)
+	?NewL@CPigeonScheduledSend@@SAPAV1@AAVCMsvServerEntry@@@Z @ 2 NONAME ; public: static class CPigeonScheduledSend * __cdecl CPigeonScheduledSend::NewL(class CMsvServerEntry &)
+	?NewL@CPigeonServerMtm@@SAPAV1@AAVCRegisteredMtmDll@@AAVCMsvServerEntry@@@Z @ 3 NONAME ; public: static class CPigeonServerMtm * __cdecl CPigeonServerMtm::NewL(class CRegisteredMtmDll &,class CMsvServerEntry &)
+

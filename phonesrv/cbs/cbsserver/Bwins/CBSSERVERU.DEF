@@ -1,0 +1,6 @@
+EXPORTS
+	?WinsMain@@YAHPAX@Z @ 1 NONAME ; int __cdecl WinsMain(void *)
+	?__DbgTestInvariant@CCbsDbImpSettings@@QBEXXZ @ 2 NONAME ; public: void __thiscall CCbsDbImpSettings::__DbgTestInvariant(void)const 
+	?__DbgTestInvariant@CCbsDbImpTopicList@@QBEXXZ @ 3 NONAME ; public: void __thiscall CCbsDbImpTopicList::__DbgTestInvariant(void)const 
+	?__DbgTestInvariant@CCbsRecEtel@@QBEXXZ @ 4 NONAME ; public: void __thiscall CCbsRecEtel::__DbgTestInvariant(void)const 
+

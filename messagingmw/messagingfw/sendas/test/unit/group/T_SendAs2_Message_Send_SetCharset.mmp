@@ -1,0 +1,39 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// t_sendas2_message_send_setcharset.mmp
+//
+
+TARGET   t_sendas2_message_send_setcharset.exe
+TARGETTYPE   exe
+
+UID    0x1000007A 0x2000FAEF
+CAPABILITY All -TCB
+
+SOURCEPATH              ../src
+SOURCE                  T_SendAs2_Message_Send_SetCharset.cpp
+SOURCEPATH              ../../../client/src
+USERINCLUDE             ../inc ../../../client/inc
+USERINCLUDE				../../../../msgsrvnstore/server/inc
+USERINCLUDE	  ../../../../msgtest/testutils/base/inc
+USERINCLUDE	  ../../../../msgtest/testutils/server/inc
+USERINCLUDE	  ../../../../msgtest/testutils/email/inc
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+LIBRARY   		euser.lib sendas2.lib efsrv.lib msgs.lib estor.lib
+LIBRARY   		etext.lib msvtestutils.lib imcm.lib
+LIBRARY			sendastestmtm.lib
+
+VENDORID 0x70000001
+
+SMPSAFE

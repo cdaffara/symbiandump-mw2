@@ -1,0 +1,33 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+LOAD_SERVER t_media  -SharedData
+
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-deletedrive.ini
+	CREATE_OBJECT	SetSubstTestWrapper	0001_obj
+	COMMAND		0001_obj		DeleteDrive	0001_DeleteDrive1
+	COMMAND		0001_obj		DeleteDrive	0001_DeleteDrive2
+	COMMAND		0001_obj		DeleteDrive	0001_DeleteDrive3
+	COMMAND		0001_obj		DeleteDrive	0001_DeleteDrive4
+	COMMAND		0001_obj		DeleteDrive	0001_DeleteDrive5
+	COMMAND		0001_obj		DeleteDrive	0001_DeleteDrive6
+	COMMAND		0001_obj		DeleteDrive	0001_DeleteDrive7
+	COMMAND		0001_obj		DeleteDrive	0001_DeleteDrive8
+	COMMAND		0001_obj		DeleteDrive	0001_DeleteDrive9
+	COMMAND		0001_obj		DeleteDrive	0001_DeleteDrive10	
+END_TEST_BLOCK
+

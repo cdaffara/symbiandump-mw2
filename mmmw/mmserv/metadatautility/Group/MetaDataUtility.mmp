@@ -1,0 +1,105 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project file for MetaDataUtility
+*
+*/
+
+
+
+#include <data_caging_paths.hrh>
+#include <platform_paths.hrh>
+
+
+TARGET		MetaDataUtility.dll
+TARGETTYPE	DLL
+UID		0x1000008D 0x10200011
+VENDORID	VID_DEFAULT
+
+VERSION 10.0
+
+CAPABILITY ALL -Tcb
+
+EPOCSTACKSIZE   0x10000          // 64kb
+EPOCHEAPSIZE    0x1000 0x1000000 // Min 4kb, max 16Mb
+
+//Internal flags - For disabling RA support (need both flags) 
+//MACRO    __METADATA_UTILITY_DISABLE_RA_SUPPORT  // turn flag on for .h/.cpp file
+//#define  __METADATA_UTILITY_DISABLE_RA_SUPPORT  // turn flag on for .mmp file
+
+SOURCEPATH		../Src 
+SOURCE			MetaDataUtility.cpp
+SOURCE			MetaDataUtilityBody.cpp
+SOURCE			MetaDataField.cpp
+SOURCE			MetaDataFieldContainer.cpp
+SOURCE			MetaDataSource.cpp
+SOURCE			MetaDataSourceFile.cpp
+SOURCE			MetaDataSourceDescriptor.cpp
+SOURCE			MetaDataParserFactory.cpp
+SOURCE			MetaDataParser.cpp
+SOURCE			MetaDataParserID3v1.cpp		// ID3v1 and ID3v1.1
+SOURCE			MetaDataParserID3v2.cpp		// ID3v2 base
+SOURCE			MetaDataParserID3v22.cpp	// ID3v2.2
+SOURCE			MetaDataParserID3v23.cpp	// ID3v2.3
+SOURCE			MetaDataParserID3v24.cpp	// ID3v2.4
+SOURCE			MetaDataParser3gp.cpp		// 3GPP
+SOURCE			MetaDataParserWMA.cpp		// WMA parser
+SOURCE			MetaDataParserDcf.cpp		// DCF1 Header Parser
+SOURCE			MetaDataParserDcf2.cpp		// DCF2 Header Parser
+SOURCE			MetaDataParserMP4.cpp
+SOURCE			MetaDataBufferAgg.cpp
+
+#ifndef __METADATA_UTILITY_DISABLE_RA_SUPPORT	// NOT define
+SOURCE			MetaDataParserRA.cpp	
+#else
+SOURCE			MetaDataParserRADummy.cpp
+#endif // __METADATA_UTILITY_DISABLE_RA_SUPPORT
+
+SOURCE			MetaDataParser3GPExt.cpp
+
+
+SOURCEPATH	../Data
+START RESOURCE TopCharacterSet.rss
+HEADER
+TARGET TopCharacterSet.rsc   
+TARGETPATH    RESOURCE_FILES_DIR 
+END
+
+USERINCLUDE     ../Inc ../Src
+USERINCLUDE		../../inc
+
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE		/epoc32/include/libc
+
+LIBRARY                 euser.lib
+LIBRARY                 efsrv.lib	// File handling
+LIBRARY                 charconv.lib
+LIBRARY                 3gpmp4lib.lib
+LIBRARY                 caf.lib
+LIBRARY                 estlib.lib
+LIBRARY                 centralrepository.lib
+LIBRARY                 bafl.lib 
+LIBRARY                 syslangutil.lib 
+LIBRARY                 DrmRightsInfo.lib
+
+LIBRARY			        3GPExtParser.lib
+
+
+#ifndef __METADATA_UTILITY_DISABLE_RA_SUPPORT	// NOT define
+STATICLIBRARY     hxmetadatautil.lib
+#endif //__METADATA_UTILITY_DISABLE_RA_SUPPORT
+
+SMPSAFE
+
+// End of file

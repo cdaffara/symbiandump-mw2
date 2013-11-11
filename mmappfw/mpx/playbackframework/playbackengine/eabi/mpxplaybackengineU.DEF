@@ -1,0 +1,37 @@
+EXPORTS
+	_ZN18CMPXPlaybackEngine14CancelRequestsEv @ 1 NONAME
+	_ZN18CMPXPlaybackEngine15SubPlayerNamesLE4TUidR26MMPXPlaybackEngineObserver @ 2 NONAME
+	_ZN18CMPXPlaybackEngine4NewLER17CMPXPluginMonitorR32MMPXPlaybackActiveEngineObserverP22MMPXClientlistObserverRK4TUid @3 NONAME
+	_ZN18CMPXPlaybackEngine4SetLE20TMPXPlaybackPropertyi @ 4 NONAME
+	_ZN18CMPXPlaybackEngine5InitLERK22CMPXCollectionPlaylisti @ 5 NONAME
+	_ZN18CMPXPlaybackEngine5InitLERK5RFile @ 6 NONAME
+	_ZN18CMPXPlaybackEngine5InitLERK7TDesC16RK6TDesC8 @ 7 NONAME
+	_ZN18CMPXPlaybackEngine6MediaLER26MMPXPlaybackEngineObserverP8CBufBase @ 8 NONAME
+	_ZN18CMPXPlaybackEngine8CommandLE19TMPXPlaybackCommandi @ 9 NONAME
+	_ZN18CMPXPlaybackEngine8CommandLER9CMPXMediaRK16CMPXMessageQueue @ 10 NONAME
+	_ZN18CMPXPlaybackEngine9PropertyLE20TMPXPlaybackPropertyR26MMPXPlaybackEngineObserver @ 11 NONAME
+	_ZN18CMPXPlaybackEngineD0Ev @ 12 NONAME
+	_ZN18CMPXPlaybackEngineD1Ev @ 13 NONAME
+	_ZN18CMPXPlaybackEngineD2Ev @ 14 NONAME
+	_ZN25CMPXPlaybackPluginHandler12GetSelectionER22TMPXPlaybackPlayerTypeR4TUidRiR7TPtrC16 @ 15 NONAME
+	_ZN25CMPXPlaybackPluginHandler13SelectPlayerLE4TUid @ 16 NONAME
+	_ZN25CMPXPlaybackPluginHandler14GetPlayerListLER6RArrayI4TUidE22TMPXPlaybackPlayerType @ 17 NONAME
+	_ZN25CMPXPlaybackPluginHandler14SelectPlayersLE22TMPXPlaybackPlayerType @ 18 NONAME
+	_ZN25CMPXPlaybackPluginHandler16SelectSubPlayerLE4TUidi @ 19 NONAME
+	_ZN25CMPXPlaybackPluginHandler19ClearSelectPlayersLEv @ 20 NONAME
+	_ZNK25CMPXPlaybackPluginHandler10PlayerNameE22TMPXPlaybackPlayerType @ 21 NONAME
+	_ZTI18CMPXPlaybackEngine @ 22 NONAME ; #<TI>#
+	_ZTI23CMPXPlaybackInitializer @ 23 NONAME ; #<TI>#
+	_ZTI25CMPXPlaybackPluginHandler @ 24 NONAME ; #<TI>#
+	_ZTV18CMPXPlaybackEngine @ 25 NONAME ; #<VT>#
+	_ZTV23CMPXPlaybackInitializer @ 26 NONAME ; #<VT>#
+	_ZTV25CMPXPlaybackPluginHandler @ 27 NONAME ; #<VT>#
+	_ZN18CMPXPlaybackEngine6MediaLER26MMPXPlaybackEngineObserverRK9CMPXMedia @ 28 NONAME
+	_ZN18CMPXPlaybackEngine14InitStreamingLERK5RFilei @ 29 NONAME
+	_ZN18CMPXPlaybackEngine14InitStreamingLERK7TDesC16RK6TDesC8i @ 30 NONAME
+	_ZN25CMPXPlaybackPluginHandler20SupportedInterfacesLERK4TUid @ 31 NONAME
+	_ZN25CMPXPlaybackPluginHandler20SupportedInterfacesLEv @ 32 NONAME
+	_ZN18CMPXPlaybackEngine4NewLER17CMPXPluginMonitorR32MMPXPlaybackActiveEngineObserverP22MMPXClientlistObserverRK4TUidi @ 33 NONAME
+	_ZN18CMPXPlaybackEngine16InitStreaming64LERK7RFile64i @ 34 NONAME
+	_ZN18CMPXPlaybackEngine7Init64LERK7RFile64 @ 35 NONAME
+

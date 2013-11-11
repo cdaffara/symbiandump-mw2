@@ -1,0 +1,40 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE
+
+
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer CreateSession C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\17_ModifyDefaultSMSService.ini CreateSession
+
+RUN_TEST_STEP 100 MessagingTestServer CreateSmsService C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\17_ModifyDefaultSMSService.ini CreateSmsService
+
+RUN_TEST_STEP 100 MessagingTestServer CreateRegistry C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\17_ModifyDefaultSMSService.ini CreateRegistry
+
+RUN_TEST_STEP 100 MessagingTestServer CreateMtm C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\17_ModifyDefaultSMSService.ini CreateMtm
+
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer GetDefaultSmsService C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\17_ModifyDefaultSMSService.ini GetDefaultSmsService1
+
+RUN_TEST_STEP 100 MessagingTestServer CompareNumbers C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\17_ModifyDefaultSMSService.ini CompareNumbers
+
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+
+RUN_TEST_STEP 100 MessagingTestServer END_TEST_CASE

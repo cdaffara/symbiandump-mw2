@@ -1,0 +1,11 @@
+EXPORTS
+	_ZN20CPigeonScheduledSend4NewLER15CMsvServerEntry @ 1 NONAME
+	_ZN21CPigeonScheduledEntry4NewLERK9TMsvEntry @ 2 NONAME
+	_ZN16CPigeonServerMtm4NewLER17CRegisteredMtmDllR15CMsvServerEntry @ 3 NONAME
+	_ZTI16CPigeonServerMtm @ 4 NONAME ; #<TI>#
+	_ZTI20CPigeonScheduledSend @ 5 NONAME ; #<TI>#
+	_ZTI21CPigeonScheduledEntry @ 6 NONAME ; #<TI>#
+	_ZTV16CPigeonServerMtm @ 7 NONAME ; #<VT>#
+	_ZTV20CPigeonScheduledSend @ 8 NONAME ; #<VT>#
+	_ZTV21CPigeonScheduledEntry @ 9 NONAME ; #<VT>#
+

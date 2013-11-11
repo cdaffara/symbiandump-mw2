@@ -1,0 +1,216 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE 	T_MsgPopServer -SharedData
+
+
+START_TESTCASE MSG-POP-CENREP-0001
+			
+//! @SYMTestCaseID		MSG-POP-CENREP-0001
+//! @SYMTestType		CIT
+//! @SYMTestPriority		Medium
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc		Creates an POP account in the central repository
+//! @SYMTestActions		DeletePopAccount
+//! 				VerifyPopAccountsCount
+//! @SYMTestExpectedResults 	One Pop Account should be created
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgPopServer	DeletePopAccount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0001-DeletePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer	VerifyPopAccountsCount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0001-VerifyPopAccountsCount0
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0001-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer	VerifyPopAccountsCount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0001-VerifyPopAccountsCount1
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP-CENREP-0001
+
+
+START_TESTCASE MSG-POP-CENREP-0002
+
+//! @SYMTestCaseID		MSG-POP-CENREP-0002
+//! @SYMTestType		CIT
+//! @SYMTestPriority		Medium
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc		Creates multiple POP accounts and Deletes one of them
+//! @SYMTestActions		DeletePopAccount
+//! 				VerifyPopAccountsCount
+//! 				CreatePopAccount
+//! @SYMTestExpectedResults 	One Pop Account should be deleted
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgPopServer	DeletePopAccount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0002-DeletePopAccounts
+RUN_TEST_STEP 300 T_MsgPopServer	VerifyPopAccountsCount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0002-VerifyPopAccountsCount0
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0002-CreatePopAccount1
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0002-CreatePopAccount2
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0002-CreatePopAccount3
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0002-CreatePopAccount4
+RUN_TEST_STEP 300 T_MsgPopServer	VerifyPopAccountsCount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0002-VerifyPopAccountsCount4
+RUN_TEST_STEP 300 T_MsgPopServer	DeletePopAccount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0002-DeletePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer	VerifyPopAccountsCount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0002-VerifyPopAccountsCount3
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP-CENREP-0002
+
+
+START_TESTCASE MSG-POP-CENREP-0003
+
+//! @SYMTestCaseID		MSG-POP-CENREP-0003
+//! @SYMTestType		CIT
+//! @SYMTestPriority		Medium
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc		Modifies and saves the PopSettings
+//! @SYMTestActions		DeletePopAccount
+//! 				VerifyPopAccountsCount
+//! 				CreatePopAccount
+//!				ModifyPopSettings
+//!				ComparePopSettings
+//! @SYMTestExpectedResults 	The Settings should be modified
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgPopServer	DeletePopAccount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0003-DeletePopAccounts
+RUN_TEST_STEP 300 T_MsgPopServer	VerifyPopAccountsCount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0003-VerifyPopAccountsCount0
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0003-CreatePopAccount1
+RUN_TEST_STEP 300 T_MsgPopServer	VerifyPopAccountsCount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0003-VerifyPopAccountsCount1
+RUN_TEST_STEP 300 T_MsgPopServer	ComparePopSettings		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0003-ComparePopSettings1
+//! Check initially set up correctly.
+RUN_TEST_STEP 300 T_MsgPopServer	ModifyPopSettings		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0003-ModifyPopSettings2
+//! Now modify the account.
+RUN_TEST_STEP 300 T_MsgPopServer	ComparePopSettings		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0003-ComparePopSettings2
+//! Now check modified.
+RUN_TEST_STEP 300 T_MsgPopServer	ModifyPopSettings		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0003-ModifyPopSettings3
+//! Now modfy back to our initial state, but in 2 steps via a different route, just to quickly check subsystems.
+RUN_TEST_STEP 300 T_MsgPopServer	ComparePopSettings		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0003-ComparePopSettings3
+//!Check intemidates.
+RUN_TEST_STEP 300 T_MsgPopServer	ModifyPopSettings		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0003-ModifyPopSettings4
+//! Finally back to start.
+RUN_TEST_STEP 300 T_MsgPopServer	ComparePopSettings		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0003-ComparePopSettings4
+//! Now should be back to Initial Account settings.
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP-CENREP-0003
+
+
+START_TESTCASE MSG-POP-CENREP-0004
+			
+//! @SYMTestCaseID		MSG-POP-CENREP-0004
+//! @SYMTestType		CIT
+//! @SYMTestPriority		Medium
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc		Loads the PopAccount after creation
+//! @SYMTestActions		DeletePopAccount
+//! 				VerifyPopAccountsCount
+//! 				CreatePopAccount
+//!				ComparePopSettings
+//! @SYMTestExpectedResults 	The Settings should be loaded when the account 
+//!				is created and should fail when account is 
+//!				not created but request to load is sent
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgPopServer	DeletePopAccount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0004-DeletePopAccounts
+RUN_TEST_STEP 300 T_MsgPopServer	VerifyPopAccountsCount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0004-VerifyPopAccountsCount0
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0004-CreatePopAccount1
+RUN_TEST_STEP 300 T_MsgPopServer	VerifyPopAccountsCount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0004-VerifyPopAccountsCount1
+RUN_TEST_STEP 300 T_MsgPopServer	ComparePopSettings		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0004-ComparePopSettingsPass
+RUN_TEST_STEP 300 T_MsgPopServer	DeletePopAccount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0004-DeletePopAccounts
+RUN_TEST_STEP 300 T_MsgPopServer	ComparePopSettings		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0004-ComparePopSettingsFail
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP-CENREP-0004
+
+
+START_TESTCASE MSG-POP-CENREP-0005
+
+//! @SYMTestCaseID		MSG-POP-CENREP-0005
+//! @SYMTestType		CIT
+//! @SYMTestPriority		Medium
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc		Populates Default PopSettings
+//! @SYMTestActions		DeletePopAccount
+//! 				VerifyPopAccountsCount
+//! 				CreatePopAccount
+//!				ComparePopSettings
+//! @SYMTestExpectedResults 	Default PopSettings should be populated
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgPopServer	DeletePopAccount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0005-DeletePopAccounts
+RUN_TEST_STEP 300 T_MsgPopServer	VerifyPopAccountsCount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini  0005-VerifyPopAccountsCount0
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0005-CreatePopAccount1
+RUN_TEST_STEP 300 T_MsgPopServer	VerifyPopAccountsCount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0005-VerifyPopAccountsCount1
+RUN_TEST_STEP 300 T_MsgPopServer	ComparePopSettings		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0005-ComparePopSettings
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP-CENREP-0005
+
+
+START_TESTCASE MSG-POP-CENREP-0006
+
+//! @SYMTestCaseID		MSG-POP-CENREP-0006
+//! @SYMTestType		CIT
+//! @SYMTestPriority		Medium
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc		Creates multiple POP accounts
+//! @SYMTestActions		DeletePopAccount
+//! 				VerifyPopAccountsCount
+//! 				CreatePopAccount
+//! @SYMTestExpectedResults 	Multiple Pop Accounts should be created
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgPopServer	DeletePopAccount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0006-DeletePopAccounts
+RUN_TEST_STEP 300 T_MsgPopServer	VerifyPopAccountsCount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0006-VerifyPopAccountsCount0
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0006-CreatePopAccount1
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0006-CreatePopAccount2
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0006-CreatePopAccount3
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0006-CreatePopAccount4
+RUN_TEST_STEP 300 T_MsgPopServer	VerifyPopAccountsCount		c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini 0006-VerifyPopAccountsCount4
+
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP-CENREP-0006
+
+

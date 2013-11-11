@@ -1,0 +1,32 @@
+/*
+* Copyright (c) 2002-2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Emergency number policy
+*
+*/
+
+
+#ifndef __ENPOLICY_IBY__
+#define __ENPOLICY_IBY__
+
+#ifdef __EN_POLICY_DOS
+file = ABI_DIR\BUILD_DIR\dosenpolicy.dll                SHARED_LIB_DIR\dosenpolicy.dll
+data=ZSYSTEM\install\dosenpolicy_stub.sis               system\install\dosenpolicy_stub.sis
+#else
+file = ABI_DIR\BUILD_DIR\sosenpolicy.dll                SHARED_LIB_DIR\sosenpolicy.dll
+data=ZSYSTEM\install\sosenpolicy_stub.sis               system\install\sosenpolicy_stub.sis
+#endif
+
+#endif // __ENPOLICY_IBY__
+
+//  End of File

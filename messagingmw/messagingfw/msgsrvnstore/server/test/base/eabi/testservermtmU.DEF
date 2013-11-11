@@ -1,0 +1,7 @@
+EXPORTS
+	_ZN14CTestServerMtm4NewLER17CRegisteredMtmDllP15CMsvServerEntry @ 1 NONAME
+	_ZTI14CTestServerMtm @ 2 NONAME ; #<TI>#
+	_ZTI8CMsvWait @ 3 NONAME ABSENT
+	_ZTV14CTestServerMtm @ 4 NONAME ; #<VT>#
+	_ZTV8CMsvWait @ 5 NONAME ; #<VT>#
+

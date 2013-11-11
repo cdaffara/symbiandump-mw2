@@ -1,0 +1,12 @@
+EXPORTS
+	??0RSatUiSession@@QAE@XZ @ 1 NONAME ; RSatUiSession::RSatUiSession(void)
+	?Adapter@RSatUiSession@@QBEPAVMSatUiAdapter@@XZ @ 2 NONAME ; class MSatUiAdapter * RSatUiSession::Adapter(void) const
+	?Close@RSatUiSession@@QAEXXZ @ 3 NONAME ; void RSatUiSession::Close(void)
+	?CreateRequest@RSatUiSession@@QBEXHABVTIpcArgs@@@Z @ 4 NONAME ; void RSatUiSession::CreateRequest(int, class TIpcArgs const &) const
+	?CreateRequest@RSatUiSession@@QBEXHABVTIpcArgs@@AAVTRequestStatus@@@Z @ 5 NONAME ; void RSatUiSession::CreateRequest(int, class TIpcArgs const &, class TRequestStatus &) const
+	?KillServer@RSatUiSession@@QBEXXZ @ 6 NONAME ; void RSatUiSession::KillServer(void) const
+	?Panic@RSatUiSession@@QBEXW4TSatClientPanic@@@Z @ 7 NONAME ; void RSatUiSession::Panic(enum TSatClientPanic) const
+	?RegisterL@RSatUiSession@@QAEXABVRSatSession@@PAVMSatUiObserver@@@Z @ 8 NONAME ; void RSatUiSession::RegisterL(class RSatSession const &, class MSatUiObserver *)
+	?SatUiObserver@RSatUiSession@@QAEPAVMSatUiObserver@@XZ @ 9 NONAME ; class MSatUiObserver * RSatUiSession::SatUiObserver(void)
+	?Version@RSatUiSession@@QBE?AVTVersion@@XZ @ 10 NONAME ; class TVersion RSatUiSession::Version(void) const
+

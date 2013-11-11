@@ -1,0 +1,34 @@
+// Copyright (c) 2000-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+#include <errors/generic/msgerr.rls>
+
+RESOURCE ARRAY r_error_res_msg_server_errors
+	{
+	items=
+		{
+		SINGLE_ERROR
+			{
+			text=r_error_res_msg_no_disk;			// -7000
+			},
+		SINGLE_ERROR
+			{
+			text=r_error_res_msg_wrong_disk;		// -7001
+			}
+		};
+	}
+
+RESOURCE TBUF r_error_res_msg_no_disk			{ buf=STRING_r_error_res_msg_no_disk		; }
+RESOURCE TBUF r_error_res_msg_wrong_disk		{ buf=STRING_r_error_res_msg_wrong_disk	; }

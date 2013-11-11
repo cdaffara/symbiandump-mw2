@@ -1,0 +1,75 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+//! @SYMTestCaseID		CM-SENDAS-SMTP-CIT-0051-HP
+//! @SYMTestCaseDesc		Load Test - Attach a huge text file with SMTP message
+//! @SYMTestStatus		Implemented
+//! @SYMTestPriority		High
+//! @SYMTestActions		Get base constants
+//!				Create a session
+//!				Reset the Message store for cleanup
+//!				Create a POP3 account
+//!				Create a SMTP service
+//!				Create a client MTM Registry
+//!				Create a SMTP MTM object
+//!				Set default configuration and service parameters.
+//!				Connect to SendAs2 server
+//!				Get a SMTP MTM Uid
+//!				Create a SMTP Message
+//!				Add Recipitent
+//!				Attach a huge size text file
+//!				Save and close the server
+//!				Disconnect the server
+//!
+//!
+//! @SYMTestExpectedResults	The Attachment should be added to Message with proper information
+//! @SYMTestType		CIT
+
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+GetBaseConstants		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0051-AddAHugeAttachment.ini	GetBaseConstants
+CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0051-AddAHugeAttachment.ini	CreateSession
+ResetMessageStore		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0051-AddAHugeAttachment.ini	ResetMessageStore
+CreatePopAccount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0051-AddAHugeAttachment.ini	CreatePopAccount
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0051-AddAHugeAttachment.ini	ChkChildrenCountDraft0
+CreateSmtpService		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0051-AddAHugeAttachment.ini	CreateSmtpService
+CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0051-AddAHugeAttachment.ini	CreateRegistry
+CreateSmtpMtm			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0051-AddAHugeAttachment.ini	CreateSmtpMtm
+SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0051-AddAHugeAttachment.ini	SetDefaultConfig0
+SetSmtpServiceParameters	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0051-AddAHugeAttachment.ini	SetSmtpServiceParams
+ChangeDefaultSmtpService 	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0051-AddAHugeAttachment.ini	ChangeDfltSmtpService
+EXECUTE_TEST_CASE
+ConnectSendAsServer		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0051-AddAHugeAttachment.ini	ConnectSendAsServer
+GetSMTPMTMUId  			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0051-AddAHugeAttachment.ini	GetSmtpMtmUId
+SendAsCreateMessageofType	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0051-AddAHugeAttachment.ini	CreateMessageofType
+SendAsAddRecipient		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0051-AddAHugeAttachment.ini	SendAsAddRecipient
+SendAsAddAttachment		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0051-AddAHugeAttachment.ini	SendAsAddAttachment
+SendAsSaveMessageAndClose	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0051-AddAHugeAttachment.ini	CloseMessage
+CloseSendAsServerConnection	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0051-AddAHugeAttachment.ini	CloseSvrConnection
+CHECK_POSTCONDITIONS
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0051-AddAHugeAttachment.ini	ChkChildrenCountDraft1
+CreateChildrenSelection		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0051-AddAHugeAttachment.ini	CreateChildrenSelDraft
+GetMessageAtIndex		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0051-AddAHugeAttachment.ini	GetMessageAtIndex
+GetEntry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0051-AddAHugeAttachment.ini	GetEntry
+VerifyRecipients  		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0051-AddAHugeAttachment.ini	VerifyRecipients
+SmtpGetAttachmentInfoByIndex	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0051-AddAHugeAttachment.ini	SmtpGetAttachmentInfoByIndex
+END_TEST_CASE

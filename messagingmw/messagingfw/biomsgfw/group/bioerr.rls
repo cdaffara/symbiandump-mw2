@@ -1,0 +1,37 @@
+// Copyright (c) 1999-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+rls_string STRING_r_error_res_bio_unknown_type			 "Unknown message type cannot be read." 
+rls_string STRING_r_error_res_bio_corrupt_message		 "Corrupt message cannot be read." 
+rls_string STRING_r_error_res_bio_unknown_protocol		 "Mailbox configuration message refers to an unknown protocol." 
+rls_string STRING_r_error_res_bio_unknown_iap			 "Configuration message specifies an unknown Internet Access Point." 
+rls_string STRING_r_error_res_bio_bad_script			 "Message script error." 
+rls_string STRING_r_error_res_wapp_base					 "KWappBaseError" 
+rls_string STRING_r_error_res_wapp_xmlver				 "Wrong XML version" 
+rls_string STRING_r_error_res_wapp_outbound				 "Index in exceeds boundaries" 
+rls_string STRING_r_error_res_wapp_str_tab				 "Bad string table reference" 
+rls_string STRING_r_error_res_wapp_eos					 "Reached the end of a key descriptor" 
+rls_string STRING_r_error_res_wapp_unexp_val			 "Expected a different tag or content/attribute" 
+rls_string STRING_r_error_res_wapp_no_att				 "Expecting attributes - missing" 
+rls_string STRING_r_error_res_wapp_tag_miss				 "Search for a mandatory tag failed" 
+rls_string STRING_r_error_res_wapp_store_notf			 "No store attached to this entry" 
+rls_string STRING_r_error_res_wapp_msg_unparsed			 "Trying to process a message which is unparsed" 
+rls_string STRING_r_error_res_wapp_unrecog				 "Token or string is not a recognised value" 
+rls_string STRING_r_error_res_wapp_null_val				 "Variable is null or has not been initialised" 
+rls_string STRING_r_error_res_wapp_content				 "Empty element, particularly empty characteristic - has no Params" 
+rls_string STRING_r_error_res_wapp_no_dbr				 "Could not find the first record in the comm db" 
+rls_string STRING_r_error_res_wapp_not_sup				 "Not Supported - WAPP specific" 
+rls_string STRING_r_error_res_wapp_bad_mess				 "Data content/format of message is invalid" 
+rls_string STRING_r_error_res_wapp_no_term				 "Terminating byte missing from string or data element" 

@@ -1,0 +1,15 @@
+header
+Business Card
+surname firstname
+company
+title
+TEL 01
+FAX 01234 56788
+email@server.com
+address1
+
+
+
+
+
+

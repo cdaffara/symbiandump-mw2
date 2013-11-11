@@ -1,0 +1,34 @@
+// Copyright (c) 2000-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// T_MSGS_BACKUP.MMP
+// 
+//
+
+TARGET        t_msgs_backupfail.exe
+TARGETTYPE    exe
+
+CAPABILITY All -TCB
+SOURCEPATH    ../src
+USERINCLUDE   ../inc ../../../inc
+SOURCE        T_MSGS_BACKUPFAIL.cpp
+USERINCLUDE		../../../../../msgtest/testutils/base/inc
+USERINCLUDE		../../../../../msgtest/testutils/server/inc
+USERINCLUDE		../../../../../msgtest/testutils/sms/inc
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+LIBRARY       euser.lib efsrv.lib msgs.lib gsmu.lib
+LIBRARY       etext.lib msvtestutils.lib bafl.lib smstestutils.lib smcm.lib sqldb.lib 
+
+VENDORID 0x70000001
+
+SMPSAFE

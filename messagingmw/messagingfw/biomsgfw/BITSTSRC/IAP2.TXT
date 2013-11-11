@@ -1,0 +1,7 @@
+//SIAP11
+password
+Mname:Demon
+Madr:Brahim@yashar.Demon.co.uk
+Mrcv:pop3.demon.co.uk
+Msnd:post.demon.co.uk
+Mpro:PO

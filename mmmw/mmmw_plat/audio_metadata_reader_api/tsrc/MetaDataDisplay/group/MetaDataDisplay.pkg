@@ -1,0 +1,81 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: Package file for project MetaDataDisplayTest.
+;
+;
+; Installation file for STIF
+;
+
+; Languages
+&EN
+
+; Package header
+#{"STIF MetaDataDisplayTest Application"},(0x10207CBB),1,0,0,TYPE=SA, RU
+
+; Localised Vendor name
+%{"Nokia EN"}
+
+; Unique Vendor name
+:"Nokia"
+
+; Logo
+; None
+
+; Package signature - Optional
+; None
+
+; Start of Package body
+
+; Condition blocks
+; None
+
+; Options list
+; None
+
+; Install files
+"..\..\data\mmc\DownUnder_remix.aac"   -   "c:\testing\data\DownUnder_remix.aac"
+"..\..\data\mmc\DRM_NRTmeta.dcf"   -   "c:\testing\data\DRM_NRTmeta.dcf"
+"..\..\data\mmc\JapJap.mp3"   -   "c:\testing\data\JapJap.mp3"
+"..\..\data\mmc\JepJep.mp3"   -   "c:\testing\data\JepJep.mp3"
+"..\..\data\mmc\JipJip.mp3"   -   "c:\testing\data\JipJip.mp3"
+"..\..\data\mmc\MP3_MD.mp3"   -   "c:\testing\data\MP3_MD.mp3"
+"..\..\data\mmc\test3gp.3gp"   -   "c:\testing\data\test3gp.3gp"
+"..\..\data\mmc\testm4a.m4a"   -   "c:\testing\data\testm4a.m4a"
+"..\..\data\mmc\testmp4.mp4"   -   "c:\testing\data\testmp4.mp4"
+"..\..\data\mmc\320kbps_44khz_cbr_stereo.wma"   -   "c:\testing\data\320kbps_44khz_cbr_stereo.wma"
+"..\..\data\mmc\wma_no_data.wma"   -   "c:\testing\data\wma_no_data.wma"
+"..\..\data\mmc\IDV22.mp3"   -   "c:\testing\data\IDV22.mp3"
+"..\..\data\mmc\IDV22_no_data.mp3"   -   "c:\testing\data\IDV22_no_data.mp3"
+"..\..\data\mmc\IDV23.mp3"   -   "c:\testing\data\IDV23.mp3"
+"..\..\data\mmc\IDV23_no_data.mp3"   -   "c:\testing\data\IDV23_no_data.mp3"
+"..\..\data\mmc\IDV24.mp3"   -   "c:\testing\data\IDV24.mp3"
+"..\..\data\mmc\IDV24_no_data.mp3"   -   "c:\testing\data\IDV24_no_data.mp3"
+"..\..\data\mmc\122-24KHz-31b-MP4-LC.odf"   -   "c:\testing\data\122-24KHz-31b-MP4-LC.odf"
+"..\..\data\mmc\Madona_Papa_Dont_Preach.ra"   -   "c:\testing\data\Madona_Papa_Dont_Preach.ra"
+"..\..\data\mmc\04_Imma_Be.m4a"   -   "c:\testing\data\04_Imma_Be.m4a"
+;"..\..\init\TestFramework.ini"   -   "c:\TestFramework\TestFramework.ini" 
+;"..\..\conf\MetaDataDisplay.cfg"   -   "c:\TestFramework\MetaDataDisplay.cfg"
+;"..\..\conf\MetaDataDisplay_Add.cfg"   -   "c:\TestFramework\MetaDataDisplay_Add.cfg"
+"\epoc32\release\armv5\urel\MetaDataDisplay.dll"   -   "!:\Sys\Bin\MetaDataDisplay.dll"
+  
+; Embedded SIS 
+; None
+
+; End of Package body
+
+; PKG dependencies
+; None
+
+; PKG capabilities
+; None

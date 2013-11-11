@@ -1,0 +1,67 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+//! @SYMTestCaseID MSG-SENDAS-CIT-0030-HP
+//! @SYMTestCaseDesc Confirmed Send
+//! @SYMFssID 
+//! @SYMTestStatus Defined
+//! @SYMTestPriority High
+//! @SYMTestActions xxxxxxxx
+//! @SYMTestExpectedResults yyyyyyyyy
+//! @SYMTestType CIT
+
+
+// Set the user response for UPS prompt service
+RUN_PROGRAM SetUserPromptResponse Yes
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+GetBaseConstants		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	GetBaseConstants
+InitNtRas			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	InitNtRas
+GetSMTPMTMUId			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	SMTPMTMUId
+CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	CreateSession
+ResetMessageStore		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	ResetMessageStore
+CreateImap4Service		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	CreateImap4Service
+CreateSmtpService		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	CreateSmtpService
+CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	CreateRegistry
+CreateSmtpMtm			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	CreateSmtpMtm
+SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	SetDefaultConfiguration0
+SetSmtpServiceParameters	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	SetSmtpServiceParams
+CreateImap4Mtm			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	CreateImap4Mtm
+SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	SetDefaultConfigurationIMAP
+SetImap4ServiceParameters	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	SetImap4ServiceParameters
+ConnectImap4Server		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	ConnectImap4Server
+DoFullImap4Synchronisation	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	DoFullImap4Synchronisation
+DisconnectImap4Server		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	DisconnectImap4Server
+EXECUTE_TEST_CASE
+ChangeDefaultSmtpService	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	ChangeDefaultSmtpService
+ConnectSendAsServer		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	ConnectSendAsServer
+SendAsCreateMessageofType	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	CreateMessageofType
+SendAsSetSubject		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	SendAsSetSubject
+SendAsAddRecipient		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	SendAsAddRecipient
+SetUserResponse			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	SetUserResponse
+SendAsSendMessageNew		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	SendAsSendMessageNew
+SendAsCloseMessage		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	CloseMessage
+ConnectImap4Server		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	ConnectImap4Server
+DoFullImap4Synchronisation	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	DoFullImap4Synchronisation
+DisconnectImap4Server		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	DisconnectImap4Server
+CloseSendAsServerConnection	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMTP-CIT-08-Confirmed_IMAP_SetCharacterSet.ini	CloseSvrConnection
+CHECK_POSTCONDITIONS
+END_TEST_CASE

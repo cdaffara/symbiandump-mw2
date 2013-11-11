@@ -1,0 +1,49 @@
+// Copyright (c) 2004-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// biowatcher.dll Shared watcher utility code
+// 
+//
+
+/**
+ @file
+*/
+
+#include	"../group/biomsgopt.mph"
+
+TARGET          biowatcher.dll
+TARGETTYPE      dll
+
+CAPABILITY ReadDeviceData WriteDeviceData NetworkServices LocalServices ReadUserData WriteUserData
+UID      0x1000008d 0x10006552
+VENDORID 0x70000001
+SOURCEPATH	Src
+USERINCLUDE     Inc ../BIUTINC 
+USERINCLUDE		../../watcherfw/inc
+//MW_LAYER_SYSTEMINCLUDE_SYMBIAN -- should be this but has dependency on APP layer
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+SOURCE          SmsSocketWatcher.cpp SmsWatcher.cpp
+LIBRARY         euser.lib etext.lib biodb.lib msgs.lib smcm.lib bifu.lib c32.lib watcher.lib gsmu.lib
+LIBRARY			ecom.lib efsrv.lib
+
+
+#ifdef WINSCW
+DEFFILE       bwins/v2_BASE.DEF
+#elif defined X86GCC
+DEFFILE       bx86gcc/v2_BASE.DEF
+#else 
+DEFFILE       EABI/v2_BASE.def
+#endif // WINSCW
+
+
+SMPSAFE

@@ -1,0 +1,63 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+//! @SYMTestCaseID		CM-SENDAS-IR-CIT-0051-HP
+//! @SYMTestCaseDesc		Load Test - Attach a huge text file with IR message
+//! @SYMTestStatus		Implemented
+//! @SYMTestPriority		High
+//! @SYMTestActions		Get base constants & IR MTM Uid
+//!				Create a session
+//!				Reset the Message store for cleanup
+//!				Create Registry & Service
+//!				Connect to SendAs2 server
+//!				Create a IR Message
+//!				Add a recipitent
+//!				Attach a huge size text file
+//!				Save and close the server
+//!				Disconnect the server
+//!
+//! @SYMTestExpectedResults	The Attachment should be added to Message with proper information
+//! @SYMTestType		CIT
+
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+GetBaseConstants		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0051-AddAHugeAttachment.ini	GetBaseConstants
+CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0051-AddAHugeAttachment.ini	CreateSession
+ResetMessageStore		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0051-AddAHugeAttachment.ini	ResetMessageStore
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0051-AddAHugeAttachment.ini	ChkChildrenCountDraft0
+CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0051-AddAHugeAttachment.ini	CreateRegistry
+GetIRMTMUId			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0051-AddAHugeAttachment.ini	GetIRMtmUid
+CreateService			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0051-AddAHugeAttachment.ini	CreateIRService
+EXECUTE_TEST_CASE
+ConnectSendAsServer		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0051-AddAHugeAttachment.ini	ConnectSendAsServer
+SendAsCreateMessageofType	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0051-AddAHugeAttachment.ini	CreateMessageofType
+SendAsAddRecipient		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0051-AddAHugeAttachment.ini	SendAsAddRecipient
+SendAsAddAttachment		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0051-AddAHugeAttachment.ini	SendAsAddAttachment
+SendAsSaveMessageAndClose	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0051-AddAHugeAttachment.ini	CloseMessage
+CloseSendAsServerConnection	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0051-AddAHugeAttachment.ini	CloseSvrConnection
+CHECK_POSTCONDITIONS
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0051-AddAHugeAttachment.ini	ChkChildrenCountDraft1
+CreateChildrenSelection		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0051-AddAHugeAttachment.ini	CreateChildrenSelDraft
+GetMessageAtIndex		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0051-AddAHugeAttachment.ini	GetMessageAtIndex
+GetEntry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0051-AddAHugeAttachment.ini	GetEntry
+GetAttachmentInfoByIndex	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0051-AddAHugeAttachment.ini	GetAttachmentInfoByIndex
+END_TEST_CASE

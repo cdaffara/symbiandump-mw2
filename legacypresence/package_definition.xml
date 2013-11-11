@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SystemDefinition schema="3.0.0">
+ <package id="legacypresence" name="Legacy Presence Services" levels="engine fw ui">
+  <collection id="pressrv_plat" name="Legacy Presence Services Platform Interfaces" level="ui">
+   <component id="presence_list_api" name="Presence List API" class="api" filter="s60">
+    <meta rel="Api" href="pressrv_plat/presence_list_api/presence_list_api.metaxml"/>
+    <unit bldFile="pressrv_plat/presence_list_api/group"/>
+   </component>
+   <component id="watcher_info_api" name="Watcher Info API" class="api" filter="s60">
+    <meta rel="Api" href="pressrv_plat/watcher_info_api/watcher_info_api.metaxml"/>
+    <unit bldFile="pressrv_plat/watcher_info_api/group"/>
+   </component>
+   <component id="simple_documents_api" name="SIMPLE Documents API" class="api" filter="s60">
+    <meta rel="Api" href="pressrv_plat/simple_documents_api/simple_documents_api.metaxml"/>
+    <unit bldFile="pressrv_plat/simple_documents_api/group"/>
+   </component>
+   <component id="authorization_api" name="Authorization API" class="api" filter="s60">
+    <meta rel="Api" href="pressrv_plat/authorization_api/authorization_api.metaxml"/>
+    <unit bldFile="pressrv_plat/authorization_api/group"/>
+   </component>
+   <component id="xdm_protocol_plugin_api" name="XDM Protocol Plug-in API" class="api" filter="s60">
+    <meta rel="Api" href="pressrv_plat/xdm_protocol_plugin_api/xdm_protocol_plugin_api.metaxml"/>
+    <unit bldFile="pressrv_plat/xdm_protocol_plugin_api/group"/>
+   </component>
+   <component id="watcher_api" name="Watcher API" class="api" filter="s60">
+    <meta rel="Api" href="pressrv_plat/watcher_api/watcher_api.metaxml"/>
+    <unit bldFile="pressrv_plat/watcher_api/group"/>
+   </component>
+   <component id="xdm_api" name="XDM API" class="api" filter="s60">
+    <meta rel="Api" href="pressrv_plat/xdm_api/xdm_api.metaxml"/>
+    <unit bldFile="pressrv_plat/xdm_api/group"/>
+   </component>
+   <component id="registration_api" name="Registration API" class="api" filter="s60">
+    <meta rel="Api" href="pressrv_plat/registration_api/registration_api.metaxml"/>
+    <unit bldFile="pressrv_plat/registration_api/group"/>
+   </component>
+   <component id="publisher_api" name="Publisher API" class="api" filter="s60">
+    <meta rel="Api" href="pressrv_plat/publisher_api/publisher_api.metaxml"/>
+    <unit bldFile="pressrv_plat/publisher_api/group"/>
+   </component>
+   <component id="messaging_connection_manager_api" name="Messaging Connection Manager API" class="api" filter="s60">
+    <meta rel="Api" href="pressrv_plat/messaging_connection_manager_api/messaging_connection_manager_api.metaxml"/>
+    <unit bldFile="pressrv_plat/messaging_connection_manager_api/group"/>
+   </component>
+   <component id="xdm_settings_api" name="XDM Settings API" class="api" filter="s60">
+    <meta rel="Api" href="pressrv_plat/xdm_settings_api/xdm_settings_api.metaxml"/>
+    <unit bldFile="pressrv_plat/xdm_settings_api/group"/>
+   </component>
+   <component id="simple_settings_api" name="SIMPLE Settings API" class="api" filter="s60">
+    <meta rel="Api" href="pressrv_plat/simple_settings_api/simple_settings_api.metaxml"/>
+    <unit bldFile="pressrv_plat/simple_settings_api/group"/>
+   </component>
+   <component id="simple_instant_msg_api" name="Simple Instant Msg API" class="api" filter="s60">
+    <unit bldFile="pressrv_plat/simple_instant_msg_api/group"/>
+   </component>
+  </collection>
+  <collection id="xdmengine" name="XDM Engine" level="engine">
+   <!-- collection is really a component. Need to move down a directory (eg xdm/xdmengine)-->
+   <component id="xdmengine_build" filter="s60" name="XDM Engine Build">
+    <unit bldFile="xdmengine/group"/>
+   </component>
+  </collection>
+  <collection id="simpleengine" name="SIMPLE Engine" level="engine">
+   <!-- collection is really a component. Need to move down a directory-->
+   <component id="simpleengine_build" filter="s60" name="SIMPLE Engine Build">
+    <!-- <unit bldFile="simpleengine/group"/> not built -->
+   </component>
+  </collection>
+ </package>
+</SystemDefinition>

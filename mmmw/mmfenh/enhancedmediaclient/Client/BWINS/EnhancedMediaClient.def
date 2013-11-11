@@ -1,0 +1,14 @@
+EXPORTS
+	??1CMultimediaFactory@multimedia@@QAE@XZ @ 1 NONAME ; multimedia::CMultimediaFactory::~CMultimediaFactory(void)
+	?CreateDataBuffer@CMultimediaFactory@multimedia@@QAEHVTUid@@IAAPAVMDataBuffer@2@@Z @ 2 NONAME ; int multimedia::CMultimediaFactory::CreateDataBuffer(class TUid, unsigned int, class multimedia::MDataBuffer * &)
+	?CreateEffectControl@CMultimediaFactory@multimedia@@QAEHVTUid@@AAPAVMEffectControl@2@@Z @ 3 NONAME ; int multimedia::CMultimediaFactory::CreateEffectControl(class TUid, class multimedia::MEffectControl * &)
+	?CreateFactory@CMultimediaFactory@multimedia@@SAHAAPAV12@@Z @ 4 NONAME ; int multimedia::CMultimediaFactory::CreateFactory(class multimedia::CMultimediaFactory * &)
+	?CreateSinkControl@CMultimediaFactory@multimedia@@QAEHVTUid@@AAPAVMSinkControl@2@@Z @ 5 NONAME ; int multimedia::CMultimediaFactory::CreateSinkControl(class TUid, class multimedia::MSinkControl * &)
+	?CreateSourceControl@CMultimediaFactory@multimedia@@QAEHVTUid@@AAPAVMSourceControl@2@@Z @ 6 NONAME ; int multimedia::CMultimediaFactory::CreateSourceControl(class TUid, class multimedia::MSourceControl * &)
+	?CreateStreamControl@CMultimediaFactory@multimedia@@QAEHVTUid@@AAPAVMStreamControl@2@@Z @ 7 NONAME ; int multimedia::CMultimediaFactory::CreateStreamControl(class TUid, class multimedia::MStreamControl * &)
+	?DeleteDataBuffer@CMultimediaFactory@multimedia@@QAEHAAPAVMDataBuffer@2@@Z @ 8 NONAME ; int multimedia::CMultimediaFactory::DeleteDataBuffer(class multimedia::MDataBuffer * &)
+	?DeleteEffectControl@CMultimediaFactory@multimedia@@QAEHAAPAVMEffectControl@2@@Z @ 9 NONAME ; int multimedia::CMultimediaFactory::DeleteEffectControl(class multimedia::MEffectControl * &)
+	?DeleteSinkControl@CMultimediaFactory@multimedia@@QAEHAAPAVMSinkControl@2@@Z @ 10 NONAME ; int multimedia::CMultimediaFactory::DeleteSinkControl(class multimedia::MSinkControl * &)
+	?DeleteSourceControl@CMultimediaFactory@multimedia@@QAEHAAPAVMSourceControl@2@@Z @ 11 NONAME ; int multimedia::CMultimediaFactory::DeleteSourceControl(class multimedia::MSourceControl * &)
+	?DeleteStreamControl@CMultimediaFactory@multimedia@@QAEHAAPAVMStreamControl@2@@Z @ 12 NONAME ; int multimedia::CMultimediaFactory::DeleteStreamControl(class multimedia::MStreamControl * &)
+

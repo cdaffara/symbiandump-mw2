@@ -1,0 +1,2050 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE 	T_MsgCommonServer 	-SharedData
+LOAD_SUITE 	T_MsgImapServer 	-SharedData
+LOAD_SUITE  	T_MsgSmtpServer 	-SharedData
+
+START_TESTCASE MSG-IMAP-SIZEFILTER-0001
+//! @SYMTestCaseID		MSG-IMAP-SIZEFILTER-0001
+//! @SYMTestType		CIT
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	The Local Inbox and Sent Item folders and the remote Inbox folder of IMAP4 
+//!	account are cleaned up before starting the test.
+//! ------------------------------------------
+//!	1.  Create emails from RFC822 file and send emails to the same account
+//!	2.  Set the download limits
+//!	3.  Download the mails with IMAP4 KIMAP4MTMPopulate command and Partial download limits set
+//!	4.  Compare the populated messages with sent messages based on the Download limits set
+//! 	Implementation and execution:
+//!		The emails are sent to the sender's address only.
+//!		New messages are created, sent and received.  The received messages are compared with 
+//!     	the sent messages, based on the download limits set, for size and contents.
+//!	Download limits set: Parital Download limits is set
+//!		TImImap4GetPartialMailInfo::iTotalSizeLimit = 35000 bytes
+//!		TImImap4PartialMailOptions::ECumulative option is set
+//!		Destination Folder : Remote Inbox folder
+//! ------------------------------------------
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//!	If the email size is lesser than the TImImap4GetPartialMailInfo::iTotalSizeLimit
+//!	the email should be completely downloaded. If the email size is greater than 
+//!	the TImImap4GetPartialMailInfo::iTotalSizeLimit, the email should downloaded
+//!     based on the cumulative size of the message parts.
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0001-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer 	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0001-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer 	CreateImapAccount		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0001-CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0001-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0001-DoFullImap4Synchronisation0
+RUN_TEST_STEP 300 T_MsgImapServer 	DeleteAllImapChildren		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0001-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0001-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0001-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0001-CheckChildrenCountOutbox
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0001-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0001-CheckChildrenCountSentItems
+RUN_TEST_STEP 300 T_MsgImapServer 	SetImap4PartialDownloadLimits	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0001-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0001-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0001-DoFullImap4Synchronisation1
+RUN_TEST_STEP 300 T_MsgImapServer 	ImapInvokeAsyncFunction		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0001-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0001-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer 	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0001-CheckChildrenCountRemoteInbox
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-SIZEFILTER-0001
+
+
+
+START_TESTCASE MSG-IMAP-SIZEFILTER-0002
+//! @SYMTestCaseID		MSG-IMAP-SIZEFILTER-0002
+//! @SYMTestType		CIT
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	The Local Inbox and Sent Item folders and the remote Inbox folder of IMAP4 
+//!	account are cleaned up before starting the test.
+//! ------------------------------------------
+//!	1.  Create emails from RFC822 file and send emails to the same account
+//!	2.  Set the download limits
+//!	3.  Download the mails with IMAP4 KIMAP4MTMPopulate command
+//!	4.  Compare the received messages with sent messages based on the Download limits set
+//!	Implementation and execution:
+//!	The emails are sent to the sender's address only.
+//!	New messages are created, sent and received.  The received messages are compared with 
+//!  	the sent messages, based on the download limits set, for size and contents.
+//!    	Download Limits set: Partial Download limits is set
+//!		TImImap4GetPartialMailInfo::iTotalSizeLimit = 3000
+//!		TImImap4GetPartialMailInfo::iBodyTextSizeLimit = Default Value
+//!		TImImap4GetPartialMailInfo::iAttachmentSizeLimit = Default Value
+//!		TImImap4PartialMailOptions::ECumulative
+//! ------------------------------------------
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//!	Body text size is greater than the TImImap4PartialMailInfo::iBodyTextSizeLimit,
+//!	Body text should be partially downloaded. Footer string should indicate the
+//!	remaining size of the body text (body text and html part)in the server.  
+//!	And attachements should not be downloaded.
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0002-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0002-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0002-CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0002-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0002-DoFullImap4Synchronisation0
+RUN_TEST_STEP 300 T_MsgImapServer	DeleteAllImapChildren		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0002-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0002-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0002-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0002-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0002-CheckChildrenCountOutbox
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0002-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0002-CheckChildrenCountSentItems
+RUN_TEST_STEP 300 T_MsgImapServer	SetImap4PartialDownloadLimits	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0002-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0002-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0002-DoFullImap4Synchronisation1
+RUN_TEST_STEP 300 T_MsgImapServer	ImapInvokeAsyncFunction		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0002-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0002-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0002-CheckChildrenCountRemoteInbox1
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-SIZEFILTER-0002
+
+
+START_TESTCASE MSG-IMAP-SIZEFILTER-0003
+//! @SYMTestCaseID		MSG-IMAP-SIZEFILTER-0003
+//! @SYMTestType		CIT
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	The Local Inbox and Sent Item folders and the remote Inbox folder of IMAP4 
+//!	account are cleaned up before starting the test.
+//! ------------------------------------------
+//!	1.  Create emails from RFC822 file and send emails to the same account
+//!	2.  Set the download limits
+//!	3.  Download the mails with IMAP4 KIMAP4MTMPopulate command
+//!	4.  Compare the received messages with sent messages based on the Download limits set
+//!	Implementation and execution:
+//!	The emails are sent to the sender's address only.
+//!	New messages are created, sent and received.  The received messages are compared with 
+//!   	the sent messages, based on the download limits set, for size and contents.
+//!	Download limits set: Complete Download limits is set
+//!		TImImap4GetPartialMailInfo::iTotalSizeLimit = 14000 Bytes
+//!		TImImap4GetPartialMailInfo::iBodyTextSizeLimit = Default Value
+//!		TImImap4GetPartialMailInfo::iAttachmentSizeLimit = Default Value
+//!		TImImap4PartialMailOptions::ECumulative
+//! ------------------------------------------
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//!	The email contains body text, html and attachements. Body text size is lesser than 
+//!	the TImImap4GetPartialMailInfo::iTotalSizeLimit, Body text should be completely downloaded.  
+//!	and one of the attachement but html part should not be downloaded. Body text should not 
+//!	contain any footer string.
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0003-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0003-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0003-CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0003-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0003-DoFullImap4Synchronisation0
+RUN_TEST_STEP 300 T_MsgImapServer	DeleteAllImapChildren		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0003-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0003-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0003-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0003-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0003-CheckChildrenCountOutbox
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0003-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0003-CheckChildrenCountSentItems
+RUN_TEST_STEP 300 T_MsgImapServer	SetImap4PartialDownloadLimits	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0003-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0003-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0003-DoFullImap4Synchronisation1
+RUN_TEST_STEP 300 T_MsgImapServer	ImapInvokeAsyncFunction		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0003-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0003-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0003-CheckChildrenCountRemoteInbox1
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-SIZEFILTER-0003
+
+
+
+START_TESTCASE MSG-IMAP-SIZEFILTER-0004
+//! @SYMTestCaseID		MSG-IMAP-SIZEFILTER-0004
+//! @SYMTestType		CIT
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	The Local Inbox and Sent Item folders and the remote Inbox folder of IMAP4 
+//!	account are cleaned up before starting the test.
+//! ------------------------------------------
+//!	1.  Create emails from RFC822 file and send emails to the same account
+//!	2.  Set the download limits
+//!	3.  Download the mails with IMAP4 KIMAP4MTMPopulate command
+//!	4.  Copy the mails from IMAP4 Inbox folder to Local inbox folder	
+//!	5.  Compare the received messages with sent messages based on the Download limits set
+//! 	Implementation and execution:
+//!	The emails are sent to the sender's address only.
+//!	New messages are created, sent and received.  The received messages are compared with 
+//!    	the sent messages, based on the download limits set, for size and contents.
+//!    	Download Limits set: Partial Download limits is set
+//!		TImImap4GetPartialMailInfo::iTotalSizeLimit = 16000
+//!		TImImap4GetPartialMailInfo::iBodyTextSizeLimit = Default
+//!		TImImap4GetPartialMailInfo::iAttachmentSizeLimit = Default
+//!		TImImap4PartialMailOptions::ECumulative
+//! ------------------------------------------
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//!		If the email size is greater than the TImImap4GetPartialMailInfo::iTotalSizeLimit,
+//!		whatever fit in the total size limit should be downloaded in order of body text 
+//!		first then attachments and then html part of the email. Footer string should indicate the
+//!		remaining size of the body text (body text and html part)in the server.  
+//!		If the email size is lesser than the total size limit then the complete mail 
+//!		should be downloaded.
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0004-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0004-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0004-CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0004-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0004-DoFullImap4Synchronisation0
+RUN_TEST_STEP 300 T_MsgImapServer	DeleteAllImapChildren		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0004-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0004-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0004-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0004-CreateSmtpMessageFromEmailFile0
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0004-SendSmtpMessage0
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0004-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0004-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgImapServer	SetImap4PartialDownloadLimits	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0004-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0004-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0004-DoFullImap4Synchronisation1
+RUN_TEST_STEP 300 T_MsgImapServer	ImapInvokeAsyncFunction		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0004-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0004-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     0004-CheckChildrenCountRemoteInbox1
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-SIZEFILTER-0004
+
+
+
+START_TESTCASE	MSG-IMAP-SIZEFILTER-0005
+//!	@SYMTestCaseID			MSG-IMAP-SIZEFILTER-0005
+//!	@SYMTestCaseDesc		This test script creates an IMAP account and a message
+//!					from the RFC822 file and sends the message to the same account.
+//!					Downloads the mails with IMAP4 KIMAP4MTMPopulate command and
+//!					Compares the received messages with sent messages based on the Download limits set.
+//!					Copies the mails from the remote IMAP4 Inbox folder to Local inbox folder
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			Initialises the RAS connection
+//!					Resets the message store to clean up the central repository
+//!					Creates an IMAP account by reading the settings from the file mentioned
+//!					thus setting the IMAP and SMTP service settings
+//!					Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					Connects to the IMAP server and deletes all mails in the Inbox on the server.
+//!					Creates a message from RFC822 file and send the message to the same IMAP account.
+//!					Set the partial download limits.
+//!					Download the mails with IMAP4 KIMAP4MTMPopulate command and 
+//!					compares the received messages with sent messages based on the Download limits set.
+//!					Copies the mails from IMAP4 Inbox folder to Local inbox folder.
+//!	@SYMTestExpectedResults		EPass, The message is sent and received and also present in the local inbox folder.
+//!					If the email size is greater than the TImImap4GetPartialMailInfo::iTotalSizeLimit,
+//!					body text size is lesser than iBodyTextSizeLimit and any attachment size is fit 
+//!					within the iAttachmentSizeLimit then complete body text and attachment should be downloaded. No Footer 
+//!					string should appear. 
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0005-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0005-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0005-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0005-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0005-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		DeleteAllImapChildren 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0005-DeleteAllImapChildren
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0005-DisConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0005-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     	0005-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0005-SendSmtpMessage
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     	0005-CheckChildrenCountSentItems
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4PartialDownloadLimits 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0005-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0005-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0005-DoFullImap4Synchronisation
+RUN_TEST_STEP 	300 	T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0005-ImapInvokeAsyncFunction
+RUN_TEST_STEP 	300 	T_MsgImapServer		CopyImapSelection		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0005-CopyImapSelection
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     	0005-CheckChildrenCountInbox
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0005-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-SIZEFILTER-0005
+
+
+
+START_TESTCASE	MSG-IMAP-SIZEFILTER-0006
+//!	@SYMTestCaseID			MSG-IMAP-SIZEFILTER-0006
+//!	@SYMTestCaseDesc		This test step creates an IMAP account and a message
+//!					from the RFC822 file and send the message to the same account.
+//!					Download the mails with IMAP4 KIMAP4MTMPopulate command and
+//!					Compare the received messages with sent messages based on the Download limits set.
+//!					Copy the mails from IMAP4 Inbox folder to Local inbox folder
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			Initialises the RAS connection
+//!					Resets the message store to clean up the central repository
+//!					Creates an IMAP account by reading the settings from the file mentioned
+//!					thus setting the IMAP and SMTP service settings
+//!					Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					Connects to the IMAP server and deletes all mails in the Inbox on the server.
+//!					Creates a message from RFC822 file and send the message to the same IMAP account.
+//!					Set the partial download limits.
+//!					Download the mails with IMAP4 KIMAP4MTMPopulate command and 
+//!					compares the received messages with sent messages based on the Download limits set.
+//!					Copies the mails from IMAP4 Inbox folder to Local inbox folder.
+//!	@SYMTestExpectedResults		EPass, The message is sent ,received and also present in the local inbox folder.
+//!					Body text and HTML part should be completely downloaded and If attachment size 
+//!					is fit within the iAttachmentSizeLimit, attachment should be downloaded. 
+//!					No Footer string should appear. 
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0006-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0006-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0006-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0006-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0006-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		DeleteAllImapChildren 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0006-DeleteAllImapChildren
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0006-DisConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0006-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0006-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0006-SendSmtpMessage
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     	0006-CheckChildrenCountSentItems
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4PartialDownloadLimits 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0006-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0006-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0006-DoFullImap4Synchronisation
+RUN_TEST_STEP 	300 	T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0006-ImapInvokeAsyncFunction
+RUN_TEST_STEP 	300 	T_MsgImapServer		CopyImapSelection		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0006-CopyImapSelection
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     	0006-CheckChildrenCountInbox
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0006-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-SIZEFILTER-0006
+
+
+
+START_TESTCASE	MSG-IMAP-SIZEFILTER-0007
+//!	@SYMTestCaseID			MSG-IMAP-SIZEFILTER-0007
+//!	@SYMTestCaseDesc		This test step creates an IMAP account and a message
+//!					from the RFC822 file and send the message to the same account.
+//!					Download the mails with IMAP4 KIMAP4MTMPopulate command and
+//!					Compare the received messages with sent messages based on the Download limits set.
+//!					Copy the mails from IMAP4 Inbox folder to Local inbox folder
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			Initialises the RAS connection
+//!					Resets the message store to clean up the central repository
+//!					Creates an IMAP account by reading the settings from the file mentioned
+//!					thus setting the IMAP and SMTP service settings
+//!					Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					Connects to the IMAP server and deletes all mails in the Inbox on the server.
+//!					Creates a message from RFC822 file and send the message to the same IMAP account.
+//!					Set the partial download limits.
+//!					Download the mails with IMAP4 KIMAP4MTMPopulate command and 
+//!					compares the received messages with sent messages based on the Download limits set.
+//!					Copies the mails from IMAP4 Inbox folder to Local inbox folder.
+//!	@SYMTestExpectedResults		EPass, The message is sent and received and also present in the local inbox folder.
+//!					If the email size is greater than the TImImap4GetPartialMailInfo::iTotalSizeLimit,
+//!					only those attachments should be downloded, which are within the iAttachmentSizeLimit 
+//!					and within the remaining part of iTotalSizeLimit.
+//!					If the email size is lesser than the TImImap4GetPartialMailInfo::iTotalSizeLimit,
+//!					all attachments should be downloded, which are within the iAttachmentSizeLimit. 
+//!					No Footer string should appear in the body part. 
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0007-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0007-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0007-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0007-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0007-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		DeleteAllImapChildren 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0007-DeleteAllImapChildren
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0007-DisConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0007-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0007-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0007-SendSmtpMessage
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     	0007-CheckChildrenCountSentItems
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4PartialDownloadLimits 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0007-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0007-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0007-DoFullImap4Synchronisation
+RUN_TEST_STEP 	300 	T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0007-ImapInvokeAsyncFunction
+RUN_TEST_STEP 	300 	T_MsgImapServer		CopyImapSelection		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0007-CopyImapSelection
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini     	0007-CheckChildrenCountInbox
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0007-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-SIZEFILTER-0007
+
+
+
+START_TESTCASE	MSG-IMAP-SIZEFILTER-0008
+//!	@SYMTestCaseID			MSG-IMAP-SIZEFILTER-0008
+//!	@SYMTestCaseDesc		This test step creates an IMAP account and messages
+//!					from the RFC822 file and sends the messages to the same account.
+//!					Download the mails with IMAP4 KIMAP4MTMPopulate command and
+//!					Compare the received messages with sent messages based on the Download limits set.
+//!					Copy the mails from IMAP4 Inbox folder to Local inbox folder
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			Initialises the RAS connection
+//!					Resets the message store to clean up the central repository
+//!					Creates an IMAP account by reading the settings from the file mentioned
+//!					thus setting the IMAP and SMTP service settings
+//!					Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					Connects to the IMAP server and deletes all mails in the Inbox on the server.
+//!					Creates a message from RFC822 file and send the message to the same IMAP account.
+//!					Set the partial download limits.
+//!					Download the mails with IMAP4 KIMAP4MTMPopulate command and 
+//!					compares the received messages with sent messages based on the Download limits set.
+//!					Copies the mails from IMAP4 Inbox folder to Local inbox folder.
+//!	@SYMTestExpectedResults		EPass, The message is sent and received and also present in the local inbox folder.
+//!					If the email size is greater than the TImImap4GetPartialMailInfo::iTotalSizeLimit,
+//!					only those attachments should be downloded, which are within the iAttachmentSizeLimit 
+//!					and within the remaining part of iTotalSizeLimit.
+//!					If the email size is lesser than the TImImap4GetPartialMailInfo::iTotalSizeLimit,
+//!					all attachments should be downloded, which are within the iAttachmentSizeLimit. 
+//!					No Footer string should appear in the body part. 
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0008-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0008-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0008-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0008-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0008-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		DeleteAllImapChildren 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0008-DeleteAllImapChildren
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0008-DisConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0008-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0008-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0008-SendSmtpMessage
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0008-CheckChildrenCountSentItems
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0008-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0008-CheckChildrenCountOutbox1
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0008-SendSmtpMessage1
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0008-CheckChildrenCountSentItems1
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4PartialDownloadLimits 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0008-SetImapPartialDownloadLimits
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0008-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0008-DoFullImap4Synchronisation
+RUN_TEST_STEP 	300 	T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0008-ImapInvokeAsyncFunction
+RUN_TEST_STEP 	300 	T_MsgImapServer		CopyImapSelection		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0008-CopyImapSelection
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0008-CheckChildrenCountInbox
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0008-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-SIZEFILTER-0008
+
+
+
+START_TESTCASE MSG-IMAP-SIZEFILTER-0009
+//! @SYMTestCaseID		MSG-IMAP-SIZEFILTER-0009
+//! @SYMTestType		CIT
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	The Local Inbox and Sent Item folders and the remote Inbox folder of IMAP4 
+//!	account are cleaned up before starting the test.
+//! ------------------------------------------
+//!	1.  Create emails from RFC822 file and send emails to the same account
+//!	2.  Set the download limits
+//!	3.  Download the mails with IMAP4 KIMAP4MTMPopulate command and Partial download limits set
+//!	4.  Compare the populated messages with sent messages based on the Download limits set
+//! 	Implementation and execution:
+//!		The emails are sent to the sender's address only.
+//!		New messages are created, sent and received.  The received messages are compared with 
+//!     	the sent messages, based on the download limits set, for size and contents.
+//!	Download limits set: Parital Download limits is set
+//!		TImImap4GetPartialMailInfo::iTotalSizeLimit = Default Value
+//!		TImImap4GetPartialMailInfo::iBodyTextSizeLimit = 4000
+//!		TImImap4GetPartialMailInfo::iAttachmentSizeLimit = 6000
+//!		TImImap4PartialMailOptions::EBodyTextAndAttachments
+//! ------------------------------------------
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//!	If Body text part is greater than iBodyTextSizeLimit then the body part should 
+//!	be partially downloaded and footer string should appear in the body part. only 
+//!	those attachments should be downloded, which are within the iAttachmentSizeLimit
+//!	and within the remaining part of iTotalSizeLimit. Body part should be 
+//!	completely downloaded if it is lesser than iBodyTextSizeLimit and all attachments 
+//!	should be downloded, which are within the iAttachmentSizeLimit limit.
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0009-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0009-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0009-CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0009-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0009-DoFullImap4Synchronisation0
+RUN_TEST_STEP 300 T_MsgImapServer	DeleteAllImapChildren		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0009-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0009-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0009-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0009-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0009-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgImapServer	SetImap4PartialDownloadLimits	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0009-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0009-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0009-DoFullImap4Synchronisation1
+RUN_TEST_STEP 300 T_MsgImapServer	ImapInvokeAsyncFunction		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0009-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0009-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0009-CheckChildrenCountRemoteInbox1
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-SIZEFILTER-0009
+
+
+START_TESTCASE MSG-IMAP-SIZEFILTER-0010
+//! @SYMTestCaseID		MSG-IMAP-SIZEFILTER-0010
+//! @SYMTestType		CIT
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	The Local Inbox and Sent Item folders and the remote Inbox folder of IMAP4 
+//!	account are cleaned up before starting the test.
+//! ------------------------------------------
+//!	1.  Create emails from RFC822 file and send emails to the same account
+//!	2.  Set the download limits
+//!	3.  Download the mails with IMAP4 KIMAP4MTMPopulate command
+//!	4.  Compare the received messages with sent messages based on the Download limits set
+//! 	Implementation and execution:
+//!	The emails are sent to the sender's address only.
+//!	New messages are created, sent and received.  The received messages are compared with 
+//!    	the sent messages, based on the download limits set, for size and contents.
+//! 	Download Limits set: Partial Download limits is set
+//!		TImImap4GetPartialMailInfo::iTotalSizeLimit = Default Value
+//!		TImImap4GetPartialMailInfo::iBodyTextSizeLimit = 6000
+//!		TImImap4GetPartialMailInfo::iAttachmentSizeLimit = 5000
+//!		TImImap4PartialMailOptions::EBodyTextAndAttachments
+//! ------------------------------------------
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//!	Body text completely donwloaded, HTML not downloaded.  Attachment downloaded based 
+//!	on the attachment limit set. If body text part is greater than iBodyTextSizeLimit 
+//!	then the body part should be partially downloaded, html part should  not be 
+//!	downloded. And footer string should appear in the body part. only those 
+//!	attachments should be downloded, which are within the iAttachmentSizeLimit.
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0010-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0010-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0010-CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0010-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0010-DoFullImap4Synchronisation0
+RUN_TEST_STEP 300 T_MsgImapServer	DeleteAllImapChildren		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0010-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0010-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0010-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0010-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0010-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgImapServer	SetImap4PartialDownloadLimits	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0010-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0010-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0010-DoFullImap4Synchronisation1
+RUN_TEST_STEP 300 T_MsgImapServer	ImapInvokeAsyncFunction		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0010-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0010-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0010-CheckChildrenCountRemoteInbox1
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-SIZEFILTER-0010
+
+
+START_TESTCASE MSG-IMAP-SIZEFILTER-0011
+//! @SYMTestCaseID		MSG-IMAP-SIZEFILTER-0011
+//! @SYMTestType		CIT
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	The Local Inbox and Sent Item folders and the remote Inbox folder of IMAP4 
+//!	account are cleaned up before starting the test.
+//! ------------------------------------------
+//!	1.  Create emails from RFC822 file and send emails to the same account
+//!	2.  Set the download limits
+//!	3.  Download the mails with IMAP4 KIMAP4MTMPopulate command
+//!	4.  Compare the received messages with sent messages based on the Download limits set
+//! 	Implementation and execution:
+//!	The emails are sent to the sender's address only.
+//!	New messages are created, sent and received.  The received messages are compared with 
+//!	the sent messages, based on the download limits set, for size and contents.
+//!	Download Limits set:
+//!	TImImap4GetPartialMailInfo::iTotalSizeLimit = Default Value
+//!	TImImap4GetPartialMailInfo::iBodyTextSizeLimit = 8000
+//!	TImImap4GetPartialMailInfo::iAttachmentSizeLimit = 6000
+//!	TImImap4PartialMailOptions::EBodyTextAndAttachments
+//!	Destination Folder : Remote Inbox folder
+//! ------------------------------------------
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//!	If body text size of email > TImImap4GetPartialMailInfo::iBodyTextSizeLimit 
+//!	mail will be downloaded partially containing the footer string information.
+//!	All The Attachments having size <= TImImap4GetPartialMailInfo::iAttachmentSizeLimit
+//!	will be downloaded.
+//!	Body text and HTML complete donwload. Attachment downloaded based on size 
+//!	attachment size limit
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0011-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer 	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0011-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0011-CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0011-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0011-DoFullImap4Synchronisation0
+RUN_TEST_STEP 300 T_MsgImapServer	DeleteAllImapChildren		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0011-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0011-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0011-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0011-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0011-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgImapServer	SetImap4PartialDownloadLimits	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0011-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0011-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0011-DoFullImap4Synchronisation1
+RUN_TEST_STEP 300 T_MsgImapServer	ImapInvokeAsyncFunction		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0011-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0011-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0011-CheckChildrenCountRemoteInbox1
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-SIZEFILTER-0011
+
+
+START_TESTCASE MSG-IMAP-SIZEFILTER-0012
+//! @SYMTestCaseID		MSG-IMAP-SIZEFILTER-0012
+//! @SYMTestType		CIT
+//! @SYMTestPriority		medium
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	The Local Inbox and Sent Item folders and the remote Inbox folder of IMAP4 
+//!	account are cleaned up before starting the test.
+//! ------------------------------------------
+//!	1.  Create emails from data file and send emails to the same account
+//!	2.  Set the download limits
+//!	3.  Download the mails with IMAP4 KIMAP4MTMPopulate command
+//!	4.  Copy the mails from IMAP4 Inbox folder to Local inbox folder	
+//!	5.  Compare the received messages with sent messages based on the Download limits set
+//!	Implementation and execution:
+//!	The emails are sent to the sender's address only.
+//!	New messages are created, sent and received.  The received messages are compared with 
+//!	the sent messages, based on the download limits set, for size and contents.
+//!	Download Limits set:
+//!	TImImap4GetPartialMailInfo::iTotalSizeLimit = default
+//!	TImImap4GetPartialMailInfo::iBodyTextSizeLimit = 4000
+//!	TImImap4GetPartialMailInfo::iAttachmentSizeLimit = 2000
+//!	TImImap4PartialMailOptions::EBodyTextAndAttachments
+//!	Destination Folder : Remote Inbox folder
+//! ------------------------------------------
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//!	If body text size of email > TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!	Mails will be downloaded partially containing the footer string information
+//!	All The Attachments having size <= TImImap4GetPartialMailInfo::iAttachmentSizeLimit
+//!	will be downloaded.
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0012-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0012-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0012-CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0012-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0012-DoFullImap4Synchronisation0
+RUN_TEST_STEP 300 T_MsgImapServer	DeleteAllImapChildren		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0012-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0012-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0012-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0012-CreateSmtpMessageFromEmailFile0
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0012-SendSmtpMessage0
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0012-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0012-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgImapServer	SetImap4PartialDownloadLimits	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0012-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0012-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0012-DoFullImap4Synchronisation1
+RUN_TEST_STEP 300 T_MsgImapServer	ImapInvokeAsyncFunction		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0012-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0012-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0012-CheckChildrenCountRemoteInbox1
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-SIZEFILTER-0012
+
+
+
+
+START_TESTCASE MSG-IMAP-SIZEFILTER-0013
+//! @SYMTestCaseID		MSG-IMAP-SIZEFILTER-0013
+//! @SYMTestType		CIT
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	The Local Inbox and Sent Item folders and the remote Inbox folder of IMAP4 
+//!	account are cleaned up before starting the test.
+//! ------------------------------------------
+//!	1.  Create emails from data file and send emails to the same account
+//!	2.  Set the download limits
+//!	3.  Download the mails with IMAP4 KIMAP4MTMPopulate command
+//!	4.  Compare the received messages with sent messages based on the Download limits set
+//! 	Implementation and execution:
+//!	The emails are sent to the sender's address only.
+//!	New messages are created, sent and received.  The received messages are compared with 
+//!	the sent messages, based on the download limits set, for size and contents.
+//!   Download Limits set:
+//!	TImImap4GetPartialMailInfo::iTotalSizeLimit = Default Value
+//!	TImImap4GetPartialMailInfo::iBodyTextSizeLimit = Default Value
+//!	TImImap4GetPartialMailInfo::iAttachmentSizeLimit = 6000
+//!	TImImap4PartialMailOptions::EAttachmentsOnly
+//!	Destination Folder : Remote Inbox folder
+//! ------------------------------------------
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//!	All The Attachments having size <= TImImap4GetPartialMailInfo::iAttachmentSizeLimit
+//!	will be downloaded. There will be no footer string information.
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0013-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0013-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0013-CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0013-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0013-DoFullImap4Synchronisation0
+RUN_TEST_STEP 300 T_MsgImapServer	DeleteAllImapChildren		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0013-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0013-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0013-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0013-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0013-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgImapServer	SetImap4PartialDownloadLimits	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0013-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0013-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0013-DoFullImap4Synchronisation1
+RUN_TEST_STEP 300 T_MsgImapServer	ImapInvokeAsyncFunction		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0013-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0013-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0013-CheckChildrenCountRemoteInbox1
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-SIZEFILTER-0013
+
+
+START_TESTCASE MSG-IMAP-SIZEFILTER-0014
+//! @SYMTestCaseID		MSG-IMAP-SIZEFILTER-0014
+//! @SYMTestType		CIT
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	The Local Inbox and Sent Item folders and the remote Inbox folder of IMAP4 
+//!	account are cleaned up before starting the test.
+//! ------------------------------------------
+//!	1.  Create emails from data file and send emails to the same account
+//!	2.  Set the download limits
+//!	3.  Download the mails with IMAP4 KIMAP4MTMPopulate command
+//!	4.  Compare the received messages with sent messages based on the Download limits set
+//! Implementation and execution:
+//!	The emails are sent to the sender's address only.
+//!	New messages are created, sent and received.  The received messages are compared with 
+//!	the sent messages, based on the download limits set, for size and contents.
+//! Download Limits set:
+//! 	TImImap4GetPartialMailInfo::iTotalSizeLimit = Default Value
+//!	TImImap4GetPartialMailInfo::iBodyTextSizeLimit = Default value
+//!	TImImap4GetPartialMailInfo::iAttachmentSizeLimit = 8000
+//!	TImImap4PartialMailOptions::EAttachmentsOnly
+//! ------------------------------------------
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//!	All The Attachments having size <= TImImap4GetPartialMailInfo::iAttachmentSizeLimit
+//!	will be downloaded. There will be no footer string information.
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0014-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0014-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0014-CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0014-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0014-DoFullImap4Synchronisation0
+RUN_TEST_STEP 300 T_MsgImapServer	DeleteAllImapChildren		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0014-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0014-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0014-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0014-CreateSmtpMessageFromEmailFile0
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0014-SendSmtpMessage0
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0014-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0014-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgImapServer	SetImap4PartialDownloadLimits	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0014-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0014-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0014-DoFullImap4Synchronisation1
+RUN_TEST_STEP 300 T_MsgImapServer	ImapInvokeAsyncFunction		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0014-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0014-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0014-CheckChildrenCountRemoteInbox1
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-SIZEFILTER-0014
+
+
+
+
+START_TESTCASE MSG-IMAP-SIZEFILTER-0015
+//! @SYMTestCaseID		MSG-IMAP-SIZEFILTER-0015
+//! @SYMTestType		CIT
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	The Local Inbox and Sent Item folders and the remote Inbox folder of IMAP4 
+//!	account are cleaned up before starting the test.
+//! ------------------------------------------
+//!	1.  Create emails from data file and send emails to the same account
+//!	2.  Set the download limits
+//!	3.  Download the mails with IMAP4 KIMAP4MTMPopulate command
+//!	4.  Compare the received messages with sent messages based on the Download limits set
+//! Implementation and execution:
+//!	The emails are sent to the sender's address only.
+//!	New messages are created, sent and received.  The received messages are compared with 
+//!	the sent messages, based on the download limits set, for size and contents.
+//! Download Limits set:
+//!	TImImap4GetPartialMailInfo::iTotalSizeLimit = Default Value
+//!	TImImap4GetPartialMailInfo::iBodyTextSizeLimit = 20000
+//!	TImImap4GetPartialMailInfo::iAttachmentSizeLimit = Default Value
+//!	TImImap4PartialMailOptions::EBodyTextAndAttachments  
+//!	Destination Folder : Remote Inbox folder
+//! ------------------------------------------
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//!	If body text size of email <= TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!	The email should be completely downloaded with no footer string Information.
+//!	If body text size of email > TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!	mail will be downloaded partially containing the footer string information
+//!	All The Attachments will be downloaded.
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0015-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer 	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0015-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0015-CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0015-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0015-DoFullImap4Synchronisation0
+RUN_TEST_STEP 300 T_MsgImapServer	DeleteAllImapChildren		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0015-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0015-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0015-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0015-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0015-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgImapServer	SetImap4PartialDownloadLimits	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0015-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0015-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0015-DoFullImap4Synchronisation1
+RUN_TEST_STEP 300 T_MsgImapServer	ImapInvokeAsyncFunction		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0015-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0015-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0015-CheckChildrenCountRemoteInbox1
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-SIZEFILTER-0015
+
+
+
+START_TESTCASE MSG-IMAP-SIZEFILTER-0016
+//! @SYMTestCaseID		MSG-IMAP-SIZEFILTER-0016
+//! @SYMTestType		CIT
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	The Local Inbox and Sent Item folders and the remote Inbox folder of IMAP4 
+//!	account are cleaned up before starting the test.
+//! ------------------------------------------
+//!	1.  Create emails from data file and send emails to the same account
+//!	2.  Set the download limits
+//!	3.  Download the mails with IMAP4 KIMAP4MTMPopulate command
+//!	4.  Copy the mails from IMAP4 Inbox folder to Local inbox folder	
+//!	5.  Compare the received messages with sent messages based on the Download limits set
+//! Implementation and execution:
+//!	The emails are sent to the sender's address only.
+//!	New messages are created, sent and received.  The received messages are compared with 
+//!	the sent messages, based on the download limits set, for size and contents.
+//! Download Limits set:
+//!	TImImap4GetPartialMailInfo::iTotalSizeLimit = Default Value
+//!	TImImap4GetPartialMailInfo::iBodyTextSizeLimit = 10000
+//!	TImImap4GetPartialMailInfo::iAttachmentSizeLimit = Default Value
+//!	TImImap4PartialMailOptions::EBodyTextAndAttachments  
+//!	Destination Folder : Remote Inbox folder
+//! ------------------------------------------
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//!	If body text size of email <= TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!	The email should be completely downloaded with no footer string Information.
+//!	If body text size of email > TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!	mail will be downloaded partially containing the footer string information
+//!	All The Attachments will be downloaded.
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0016-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer 	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0016-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0016-CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0016-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0016-DoFullImap4Synchronisation0
+RUN_TEST_STEP 300 T_MsgImapServer	DeleteAllImapChildren		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0016-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0016-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0016-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0016-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0016-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgImapServer	SetImap4PartialDownloadLimits	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0016-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0016-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0016-DoFullImap4Synchronisation1
+RUN_TEST_STEP 300 T_MsgImapServer	ImapInvokeAsyncFunction		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0016-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0016-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0016-CheckChildrenCountRemoteInbox1
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-SIZEFILTER-0016
+
+
+
+
+START_TESTCASE	MSG-IMAP-SIZEFILTER-0017
+//!	@SYMTestCaseID			MSG-IMAP-SIZEFILTER-0017
+//!	@SYMTestCaseDesc		This test step creates an IMAP account and a message
+//!					from the RFC822 file and send the message to the same account.
+//!					Download the mails with IMAP4 KIMAP4MTMPopulate command and
+//!					Compare the received messages with sent messages based on the Download limits set.
+//!					Copy the mails from IMAP4 Inbox folder to Local inbox folder
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			Initialises the RAS connection
+//!					Resets the message store to clean up the central repository
+//!					Creates an IMAP account by reading the settings from the file mentioned
+//!					thus setting the IMAP and SMTP service settings
+//!					Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					Connects to the IMAP server and deletes all mails in the Inbox on the server.
+//!					Creates a message from RFC822 file and send the message to the same IMAP account.
+//!					Set the partial download limits.
+//!					Download the mails with IMAP4 KIMAP4MTMPopulate command and 
+//!					compares the received messages with sent messages based on the Download limits set.
+//!					Copies the mails from IMAP4 Inbox folder to Local inbox folder.
+//!	@SYMTestExpectedResults		EPass, The message is sent and received and also present in the local inbox folder.
+//!					If body text size of email <= TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!					The email should be completely downloaded with no footer string Information.
+//!					If body text size of email > TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!					mail will be downloaded partially containing the footer string information	
+//!         				No Attachments will be downloaded.
+//!	@SYMAuthor			Kavyashree.D
+
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0017-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0017-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0017-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0017-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0017-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		DeleteAllImapChildren 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0017-DeleteAllImapChildren
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0017-DisConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0017-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 	300 	T_MsgCommonServer  	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0017-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0017-SendSmtpMessage
+RUN_TEST_STEP 	300 	T_MsgCommonServer  	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0017-CheckChildrenCountSentItems
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4PartialDownloadLimits 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0017-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0017-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0017-DoFullImap4Synchronisation
+RUN_TEST_STEP 	300 	T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0017-ImapInvokeAsyncFunction
+RUN_TEST_STEP 	300 	T_MsgImapServer		CopyImapSelection		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0017-CopyImapSelection
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0017-CheckChildrenCountInbox
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0017-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-SIZEFILTER-0017
+
+
+
+START_TESTCASE	MSG-IMAP-SIZEFILTER-0018
+//!	@SYMTestCaseID			MSG-IMAP-SIZEFILTER-0018
+//!	@SYMTestCaseDesc		This test step creates an IMAP account and a message
+//!					from the RFC822 file and send the message to the same account.
+//!					Download the mails with IMAP4 KIMAP4MTMPopulate command and
+//!					Compare the received messages with sent messages based on the Download limits set.
+//!					Copy the mails from IMAP4 Inbox folder to Local inbox folder
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			Initialises the RAS connection
+//!					Resets the message store to clean up the central repository
+//!					Creates an IMAP account by reading the settings from the file mentioned
+//!					thus setting the IMAP and SMTP service settings
+//!					Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					Connects to the IMAP server and deletes all mails in the Inbox on the server.
+//!					Creates a message from RFC822 file and send the message to the same IMAP account.
+//!					Set the partial download limits.
+//!					Download the mails with IMAP4 KIMAP4MTMPopulate command and 
+//!					compares the received messages with sent messages based on the Download limits set.
+//!					Copies the mails from IMAP4 Inbox folder to Local inbox folder.
+//!	@SYMTestExpectedResults		EPass, The message is sent and received and also present in the local inbox folder.
+//!					If body text size of email <= TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!					The email should be completely downloaded with no footer string Information.
+//!					If body text size of email > TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!					mail will be downloaded partially containing the footer string information
+//!					No Attachments will be downloaded.
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0018-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0018-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0018-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0018-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0018-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		DeleteAllImapChildren 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0018-DeleteAllImapChildren
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0018-DisConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0018-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0018-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0018-SendSmtpMessage
+RUN_TEST_STEP 	300 	T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0018-CheckChildrenCountSentItems
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4PartialDownloadLimits 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0018-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0018-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0018-DoFullImap4Synchronisation
+RUN_TEST_STEP 	300 	T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0018-ImapInvokeAsyncFunction
+RUN_TEST_STEP 	300 	T_MsgImapServer		CopyImapSelection		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0018-CopyImapSelection
+RUN_TEST_STEP 	300 	T_MsgCommonServer  	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0018-CheckChildrenCountInbox
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0018-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-SIZEFILTER-0018
+
+
+
+START_TESTCASE	MSG-IMAP-SIZEFILTER-0019
+//!	@SYMTestCaseID			MSG-IMAP-SIZEFILTER-0019
+//!	@SYMTestCaseDesc		This test step creates an IMAP account and a message
+//!					from the RFC822 file and send the message to the same account.
+//!					Download the mails with IMAP4 KIMAP4MTMPopulate command and
+//!					Compare the received messages with sent messages based on the Download limits set.
+//!					Copy the mails from IMAP4 Inbox folder to Local inbox folder
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			Initialises the RAS connection
+//!					Resets the message store to clean up the central repository
+//!					Creates an IMAP account by reading the settings from the file mentioned
+//!					thus setting the IMAP and SMTP service settings
+//!					Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					Connects to the IMAP server and deletes all mails in the Inbox on the server.
+//!					Creates a message from RFC822 file and send the message to the same IMAP account.
+//!					Set the partial download limits.
+//!					Download the mails with IMAP4 KIMAP4MTMPopulate command and 
+//!					compares the received messages with sent messages based on the Download limits set.
+//!					Copies the mails from IMAP4 Inbox folder to Local inbox folder.
+//!	@SYMTestExpectedResults		EPass, The message is sent ,received and also present in the local inbox folder.
+//!					If body text size of email <= TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!					The email should be completely downloaded with no footer string Information.
+//!					If body text size of email > TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!					mail will be downloaded partially containing the footer string information
+//!					No Attachments will be downloaded.
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0019-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0019-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0019-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0019-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0019-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		DeleteAllImapChildren 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0019-DeleteAllImapChildren
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0019-DisConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0019-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0019-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0019-SendSmtpMessage
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0019-CheckChildrenCountSentItems
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4PartialDownloadLimits 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0019-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0019-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0019-DoFullImap4Synchronisation
+RUN_TEST_STEP 	300 	T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0019-ImapInvokeAsyncFunction
+RUN_TEST_STEP 	300 	T_MsgImapServer		CopyImapSelection		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0019-CopyImapSelection
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    	0019-CheckChildrenCountInbox
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0019-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-SIZEFILTER-0019
+
+
+
+START_TESTCASE	MSG-IMAP-SIZEFILTER-0020
+//!	@SYMTestCaseID			MSG-IMAP-SIZEFILTER-0020
+//!	@SYMTestCaseDesc		This test step creates an IMAP account and messages
+//!					from the RFC822 file and sends the messages to the same account.
+//!					Download the mails with IMAP4 KIMAP4MTMPopulate command and
+//!					Compare the received messages with sent messages based on the Download limits set.
+//!					Copy the mails from IMAP4 Inbox folder to Local inbox folder
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			Initialises the RAS connection
+//!					Resets the message store to clean up the central repository
+//!					Creates an IMAP account by reading the settings from the file mentioned
+//!					thus setting the IMAP and SMTP service settings
+//!					Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					Connects to the IMAP server and deletes all mails in the Inbox on the server.
+//!					Creates a message from RFC822 file and send the message to the same IMAP account.
+//!					Set the partial download limits.
+//!					Download the mails with IMAP4 KIMAP4MTMPopulate command and 
+//!					compares the received messages with sent messages based on the Download limits set.
+//!					Copies the mails from IMAP4 Inbox folder to Local inbox folder.
+//!	@SYMTestExpectedResults		EPass, The message is sent and received and also present in the local inbox folder.
+//!					If body text size of email <= TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!					All the email should be completely downloaded with no footer string Information.
+//!					If body text size of email > TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!					mail will be downloaded partially containing the footer string information
+//!          				No Attachments will be downloaded.
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0020-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0020-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0020-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0020-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0020-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		DeleteAllImapChildren 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0020-DeleteAllImapChildren
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0020-DisConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0020-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0020-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0020-SendSmtpMessage
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0020-CheckChildrenCountSentItems
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0020-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0020-CheckChildrenCountOutbox1
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0020-SendSmtpMessage1
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0020-CheckChildrenCountSentItems1
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4PartialDownloadLimits 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0020-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0020-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0020-DoFullImap4Synchronisation
+RUN_TEST_STEP 	300 	T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0020-ImapInvokeAsyncFunction
+RUN_TEST_STEP 	300 	T_MsgImapServer		CopyImapSelection		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0020-CopyImapSelection
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0020-CheckChildrenCountInbox
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0020-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-SIZEFILTER-0020
+
+
+
+START_TESTCASE MSG-IMAP-SIZEFILTER-0021
+//! @SYMTestCaseID		MSG-IMAP-SIZEFILTER-0021
+//! @SYMTestType		CIT
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	The Local Inbox and Sent Item folders and the remote Inbox folder of IMAP4 
+//!	account are cleaned up before starting the test.
+//! ------------------------------------------
+//!	1.  Create emails from data file and send emails to the same account
+//!	2.  Set the download limits
+//!	3.  Download the mails with IMAP4 KIMAP4MTMPopulateNewMailWhenAlreadyConnected command
+//!	4.  Compare the received messages with sent messages based on the Download limits set
+//! Implementation and execution:
+//!	The emails are sent to the sender's address only.
+//!	New messages are created, sent and received.  The received messages are compared with 
+//!	the sent messages, based on the download limits set, for size and contents.
+//! Download Limits set: Partial Download limits is set
+//!	TImImap4GetPartialMailInfo::iTotalSizeLimit = 10000
+//!	TImImap4GetPartialMailInfo::iBodyTextSizeLimit = 5555
+//!	TImImap4GetPartialMailInfo::iAttachmentSizeLimit = 2323
+//!	TImImap4PartialMailOptions::EBodyTextAndAttachments  
+//!	Destination Folder : Remote Inbox folder
+//! ------------------------------------------
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//!	If body text size of email <= TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!	All the email should be completely downloaded with no footer string Information.
+//!	If body text size of email > TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!	mail will be downloaded partially containing the footer string information		
+//!	Attachments will be downloaded as per the limit set and iTotalSizeLimit.
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0021-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer 	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0021-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0021-CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0021-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0021-DoFullImap4Synchronisation0
+RUN_TEST_STEP 300 T_MsgImapServer	DeleteAllImapChildren		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0021-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0021-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0021-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0021-CreateSmtpMessageFromEmailFile0
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0021-SendSmtpMessage0
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0021-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0021-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgImapServer	SetImap4PartialDownloadLimits	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0021-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0021-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0021-DoFullImap4Synchronisation1
+RUN_TEST_STEP 300 T_MsgImapServer	ImapInvokeAsyncFunction		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0021-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0021-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0021-CheckChildrenCountRemoteInbox1
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-SIZEFILTER-0021
+
+
+START_TESTCASE MSG-IMAP-SIZEFILTER-0022
+//! @SYMTestCaseID		MSG-IMAP-SIZEFILTER-0022
+//! @SYMTestType		CIT
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	The Local Inbox and Sent Item folders and the remote Inbox folder of IMAP4 
+//!	account are cleaned up before starting the test.
+//! ------------------------------------------
+//!	1.  Create emails from data file and send emails to the same account
+//!	2.  Set the download limits
+//!	3.  Download the mails with IMAP4 KIMAP4MTMPopulateMailSelectionWhenAlreadyConnected command
+//!	4.  Compare the received messages with sent messages based on the Download limits set		
+//! Implementation and execution:
+//!	The emails are sent to the sender's address only.
+//!	New messages are created, sent and received.  The received messages are compared with 
+//!	the sent messages, based on the download limits set, for size and contents. 
+//! Download Limits set: Partial Download limits is set
+//!	TImImap4GetPartialMailInfo::iTotalSizeLimit = Default Value
+//!	TImImap4GetPartialMailInfo::iBodyTextSizeLimit = 15000
+//!	TImImap4GetPartialMailInfo::iAttachmentSizeLimit = 10000
+//!	TImImap4PartialMailOptions::EBodyTextAndAttachments  
+//!	Destination Folder : Remote Inbox folder
+//! ------------------------------------------
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//!	If body text size of email <= TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!	All the email should be completely downloaded with no footer string Information.
+//!	If body text size of email > TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!	mail will be downloaded partially containing the footer string information
+//!	Attachments will be downloaded as per the limit set and iTotalSizeLimit.
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0022-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0022-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0022-CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0022-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0022-DoFullImap4Synchronisation0
+RUN_TEST_STEP 300 T_MsgImapServer	DeleteAllImapChildren		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0022-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0022-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0022-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0022-CreateSmtpMessageFromEmailFile0
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0022-SendSmtpMessage0
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0022-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0022-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgImapServer	SetImap4PartialDownloadLimits	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0022-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0022-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0022-DoFullImap4Synchronisation1
+RUN_TEST_STEP 300 T_MsgImapServer	ImapInvokeAsyncFunction		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0022-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0022-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0022-CheckChildrenCountRemoteInbox1
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-SIZEFILTER-0022
+
+
+START_TESTCASE MSG-IMAP-SIZEFILTER-0023
+//! @SYMTestCaseID		MSG-IMAP-SIZEFILTER-0023
+//! @SYMTestType		CIT
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	The Local Inbox and Sent Item folders and the remote Inbox folder of IMAP4 
+//!	account are cleaned up before starting the test.
+//! ------------------------------------------
+//!	1.  Create emails from data file and send emails to the same account
+//!	2.  Set the download limits
+//!	3.  Download the mails with IMAP4 KIMAP4MTMConnectAndPopulateNewMailAndStayOnline command
+//!	4.  Compare the received messages with sent messages based on the Download limits set
+//! Implementation and execution:
+//!	The emails are sent to the sender's address only.
+//!	New messages are created, sent and received.  The received messages are compared with 
+//!	the sent messages, based on the download limits set, for size and contents.
+//! Download Limits set: Partial Download limits is set
+//!	TImImap4GetPartialMailInfo::iTotalSizeLimit = Default Value
+//!	TImImap4GetPartialMailInfo::iBodyTextSizeLimit = Default Value
+//!	TImImap4GetPartialMailInfo::iAttachmentSizeLimit = Default Value
+//!	TImImap4PartialMailOptions::EBodyTextAndAttachments  
+//!	Destination Folder : Remote Inbox folder
+//! ------------------------------------------
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0023-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer 	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini  0023-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0023-CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0023-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0023-DoFullImap4Synchronisation0
+RUN_TEST_STEP 300 T_MsgImapServer	DeleteAllImapChildren		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0023-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0023-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0023-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0023-CreateSmtpMessageFromEmailFile0
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0023-SendSmtpMessage0
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0023-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0023-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgImapServer	SetImap4PartialDownloadLimits	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0023-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0023-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0023-DoFullImap4Synchronisation1
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0023-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	ImapInvokeAsyncFunction		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0023-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0023-CheckChildrenCountRemoteInbox1
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-SIZEFILTER-0023
+
+
+START_TESTCASE MSG-IMAP-SIZEFILTER-0024
+//! @SYMTestCaseID		MSG-IMAP-SIZEFILTER-0024
+//! @SYMTestType		CIT
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	The Local Inbox and Sent Item folders and the remote Inbox folder of IMAP4 
+//!	account are cleaned up before starting the test.
+//! ------------------------------------------
+//!	1.  Create emails from data file and send emails to the same account
+//!	2.  Set the download limits
+//!	3.  Download the mails with IMAP4 KIMAP4MTMConnectAndPopulateNewMailAndDisconnect command
+//!	4.  Compare the received messages with sent messages based on the Download limits set
+//! Implementation and execution:
+//!	The emails are sent to the sender's address only.
+//!	New messages are created, sent and received.  The received messages are compared with 
+//!	the sent messages, based on the download limits set, for size and contents.
+//! Download Limits set: Partial Download limits is set
+//!	TImImap4GetPartialMailInfo::iTotalSizeLimit = Default Value
+//!	TImImap4GetPartialMailInfo::iBodyTextSizeLimit = 20000
+//!	TImImap4GetPartialMailInfo::iAttachmentSizeLimit = 10000
+//!	TImImap4PartialMailOptions::EBodyTextAndAttachments  
+//!	Destination Folder : Remote Inbox folder
+//! ------------------------------------------
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//!	If body text size of email <= TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!	All the email should be completely downloaded with no footer string Information.
+//!	If body text size of email > TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!	mail will be downloaded partially containing the footer string information		
+//!	Attachments will be downloaded as per the limit set.
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0024-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer 	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0024-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0024-CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0024-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0024-DoFullImap4Synchronisation0
+RUN_TEST_STEP 300 T_MsgImapServer	DeleteAllImapChildren		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0024-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0024-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0024-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0024-CreateSmtpMessageFromEmailFile0
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0024-SendSmtpMessage0
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0024-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0024-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgImapServer	SetImap4PartialDownloadLimits	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0024-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0024-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0024-DoFullImap4Synchronisation1
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0024-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	ImapInvokeAsyncFunction		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0024-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0024-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0024-DoFullImap4Synchronisation2
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0024-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini    0024-CheckChildrenCountRemoteInbox1
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-SIZEFILTER-0024
+
+
+
+
+START_TESTCASE	MSG-IMAP-SIZEFILTER-0025
+//!	@SYMTestCaseID			MSG-IMAP-SIZEFILTER-0025
+//!	@SYMTestCaseDesc		This test step creates an IMAP account and messages
+//!					from the RFC822 file and sends the messages to the same account.
+//!					Download the mails with IMAP4 KIMAP4MTMPopulate command and
+//!					Compare the received messages with sent messages based on the Download limits set.
+//!					Copy the mails from IMAP4 Inbox folder to Local inbox folder
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			Initialises the RAS connection
+//!					Resets the message store to clean up the central repository
+//!					Creates an IMAP account by reading the settings from the file mentioned
+//!					thus setting the IMAP and SMTP service settings
+//!					Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					Connects to the IMAP server and deletes all mails in the Inbox on the server.
+//!					Creates a message from RFC822 file and send the message to the same IMAP account.
+//!					Set the partial download limits.
+//!					Download the mails with IMAP4 KIMAP4MTMPopulate command and 
+//!					compares the received messages with sent messages based on the Download limits set.
+//!					Copies the mails from IMAP4 Inbox folder to Local inbox folder.
+//!	@SYMTestExpectedResults		EPass, The message is sent and received and also present in the local inbox folder.
+//!					If body text size of email <= TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!					All the email should be completely downloaded with no footer string Information		
+//!					If body text size of email > TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!					mail will be downloaded partially containing the footer string information
+//!					All The Attachments having size <= TImImap4GetPartialMailInfo::iAttachmentSizeLimit
+//!					will be downloaded.
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer 	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0025-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer 	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0025-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer 	CreateImapAccount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0025-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0025-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0025-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer 	DeleteAllImapChildren 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0025-DeleteAllImapChildren
+RUN_TEST_STEP 	300 	T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0025-DisConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0025-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 	300 	T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0025-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 	T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0025-SendSmtpMessage
+RUN_TEST_STEP 	300 	T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0025-CheckChildrenCountSentItems
+RUN_TEST_STEP 	300 	T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0025-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 	T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0025-CheckChildrenCountOutbox1
+RUN_TEST_STEP 	300 	T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0025-SendSmtpMessage1
+RUN_TEST_STEP 	300 	T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0025-CheckChildrenCountSentItems1
+RUN_TEST_STEP 	300 	T_MsgImapServer 	SetImap4PartialDownloadLimits 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0025-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 	300 	T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0025-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0025-DoFullImap4Synchronisation
+RUN_TEST_STEP 	300 	T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0025-DisConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgImapServer 	ImapInvokeAsyncFunction      	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0025-ImapInvokeAsyncFunction
+RUN_TEST_STEP	300	T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0025-DoFullImap4Synchronisation
+RUN_TEST_STEP 	300 	T_MsgImapServer 	CopyImapSelection		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0025-CopyImapSelection
+RUN_TEST_STEP 	300 	T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0025-CheckChildrenCountInbox
+RUN_TEST_STEP 	300 	T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0025-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-SIZEFILTER-0025
+
+
+
+
+START_TESTCASE	MSG-IMAP-SIZEFILTER-0026
+//!	@SYMTestCaseID			MSG-IMAP-SIZEFILTER-0026
+//!	@SYMTestCaseDesc		This test step creates an IMAP account and messages
+//!					from the RFC822 file and sends the messages to the same account.
+//!					Download the mails with IMAP4 KIMAP4MTMPopulate command and
+//!					Compare the received messages with sent messages based on the Download limits set.
+//!					Copy the mails from IMAP4 Inbox folder to Local inbox folder
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			Initialises the RAS connection
+//!					Resets the message store to clean up the central repository
+//!					Creates an IMAP account by reading the settings from the file mentioned
+//!					thus setting the IMAP and SMTP service settings
+//!					Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					Connects to the IMAP server and deletes all mails in the Inbox on the server.
+//!					Creates a message from RFC822 file and send the message to the same IMAP account.
+//!					Set the partial download limits.
+//!					Download the mails with IMAP4 KIMAP4MTMPopulate command and 
+//!					compares the received messages with sent messages based on the Download limits set.
+//!					Copies the mails from IMAP4 Inbox folder to Local inbox folder.
+//!	@SYMTestExpectedResults		EPass, The message is sent and received and also present in the local inbox folder.
+//!					If body text size of email <= TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!					All the email should be completely downloaded with no footer string Information.
+//!					If body text size of email > TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!					mail will be downloaded partially containing the footer string information
+//!					All The Attachments having size <= TImImap4GetPartialMailInfo::iAttachmentSizeLimit
+//!					will be downloaded.
+//!	@SYMAuthor			Kavyashree.D
+
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer 	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0026-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer 	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0026-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer 	CreateImapAccount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0026-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0026-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0026-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer 	DeleteAllImapChildren 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0026-DeleteAllImapChildren
+RUN_TEST_STEP 	300 	T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0026-DisConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0026-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 	300 	T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0026-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 	T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0026-SendSmtpMessage
+RUN_TEST_STEP 	300 	T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0026-CheckChildrenCountSentItems
+RUN_TEST_STEP 	300 	T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0026-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 	T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0026-CheckChildrenCountOutbox1
+RUN_TEST_STEP 	300 	T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0026-SendSmtpMessage1
+RUN_TEST_STEP 	300 	T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0026-CheckChildrenCountSentItems1
+RUN_TEST_STEP 	300 	T_MsgImapServer 	SetImap4PartialDownloadLimits 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0026-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 	300 	T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0026-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0026-DoFullImap4Synchronisation
+RUN_TEST_STEP 	300 	T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0026-DisConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgImapServer 	ImapInvokeAsyncFunction      	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0026-ImapInvokeAsyncFunction
+RUN_TEST_STEP 	300 	T_MsgImapServer 	CopyImapSelection		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0026-CopyImapSelection
+RUN_TEST_STEP 	300 	T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0026-CheckChildrenCountInbox
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-SIZEFILTER-0026
+
+
+
+
+
+START_TESTCASE	MSG-IMAP-SIZEFILTER-0027
+//!	@SYMTestCaseDesc		This test step creates an IMAP account and messages
+//!					from the RFC822 file and sends the messages to the same account.
+//!					Download the mails with IMAP4 KIMAP4MTMPopulate command and
+//!					Compare the received messages with sent messages based on the Download limits set.
+//!					Copy the mails from IMAP4 Inbox folder to Local inbox folder
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			Initialises the RAS connection
+//!					Resets the message store to clean up the central repository
+//!					Creates an IMAP account by reading the settings from the file mentioned
+//!					thus setting the IMAP and SMTP service settings
+//!					Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					Connects to the IMAP server and deletes all mails in the Inbox on the server.
+//!					Creates a message from RFC822 file and send the message to the same IMAP account.
+//!					Set the partial download limits.
+//!					Download the mails with IMAP4 KIMAP4MTMPopulate command and 
+//!					compares the received messages with sent messages based on the Download limits set.
+//!					Copies the mails from IMAP4 Inbox folder to Local inbox folder.
+//!	@SYMTestExpectedResults		EPass, The message is sent and received and also present in the local inbox folder.
+//!					If body text size of email <= TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!					All the email should be completely downloaded with no footer string Information.
+//!					If body text size of email > TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!					mail will be downloaded partially containing the footer string information
+//!					All The Attachments having size <= TImImap4GetPartialMailInfo::iAttachmentSizeLimit
+//!					will be downloaded.
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer 	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0027-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer 	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0027-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0027-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0027-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0027-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		DeleteAllImapChildren 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0027-DeleteAllImapChildren
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0027-DisConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0027-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 	300 	T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0027-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0027-SendSmtpMessage
+RUN_TEST_STEP 	300 	T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0027-CheckChildrenCountSentItems
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0027-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 	T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0027-CheckChildrenCountOutbox1
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0027-SendSmtpMessage1
+RUN_TEST_STEP 	300 	T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0027-CheckChildrenCountSentItems1
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4PartialDownloadLimits 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0027-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0027-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0027-DoFullImap4Synchronisation
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0027-DisConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0027-ImapInvokeAsyncFunction
+RUN_TEST_STEP 	300 	T_MsgImapServer		CopyImapSelection		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0027-CopyImapSelection
+RUN_TEST_STEP 	300 	T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0027-CheckChildrenCountInbox
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0027-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-SIZEFILTER-0027
+
+
+
+
+
+START_TESTCASE	MSG-IMAP-SIZEFILTER-0028
+//!	@SYMTestCaseID			MSG-IMAP-SIZEFILTER-0028
+//!	@SYMTestCaseDesc		This test step creates an IMAP account and messages
+//!					from the RFC822 file and sends the messages to the same account.
+//!					Download the mails with IMAP4 KIMAP4MTMPopulate command and
+//!					Compare the received messages with sent messages based on the Download limits set.
+//!					Copy the mails from IMAP4 Inbox folder to Local inbox folder
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			Initialises the RAS connection
+//!					Resets the message store to clean up the central repository
+//!					Creates an IMAP account by reading the settings from the file mentioned
+//!					thus setting the IMAP and SMTP service settings
+//!					Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					Connects to the IMAP server and deletes all mails in the Inbox on the server.
+//!					Creates a message from RFC822 file and send the message to the same IMAP account.
+//!					Set the partial download limits.
+//!					Download the mails with IMAP4 KIMAP4MTMPopulate command and 
+//!					compares the received messages with sent messages based on the Download limits set.
+//!					Copies the mails from IMAP4 Inbox folder to Local inbox folder.
+//!	@SYMTestExpectedResults		EPass, The message is sent and received and also present in the local inbox folder.
+//!					If the email size is greater than the TImImap4GetPartialMailInfo::iTotalSizeLimit,
+//!					only those attachments should be downloded, which are within the iAttachmentSizeLimit 
+//!					and within the remaining part of iTotalSizeLimit.
+//!					If the email size is lesser than the TImImap4GetPartialMailInfo::iTotalSizeLimit,
+//!					all attachments should be downloded, which are within the iAttachmentSizeLimit. 
+//!					No Footer string should appear in the body part. 
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0028-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0028-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0028-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0028-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0028-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		DeleteAllImapChildren 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0028-DeleteAllImapChildren
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0028-DisConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0028-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 	300 	T_MsgCommonServer  	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0028-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0028-SendSmtpMessage
+RUN_TEST_STEP 	300 	T_MsgCommonServer  	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0028-CheckChildrenCountSentItems
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0028-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 	T_MsgCommonServer  	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0028-CheckChildrenCountOutbox1
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0028-SendSmtpMessage1
+RUN_TEST_STEP 	300 	T_MsgCommonServer  	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0028-CheckChildrenCountSentItems1
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4PartialDownloadLimits 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0028-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0028-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0028-DoFullImap4Synchronisation
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0028-DisConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0028-ImapInvokeAsyncFunction
+RUN_TEST_STEP 	300 	T_MsgImapServer		CopyImapSelection		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0028-CopyImapSelection
+RUN_TEST_STEP 	300 	T_MsgCommonServer  	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   	0028-CheckChildrenCountInbox
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-SIZEFILTER-0028
+
+
+
+START_TESTCASE	MSG-IMAP-SIZEFILTER-0029
+//!	@SYMTestCaseID			MSG-IMAP-SIZEFILTER-0029
+//!	@SYMTestCaseDesc		This test step creates an IMAP account and messages
+//!					from the RFC822 file and sends the messages to the same account.
+//!					Download the mails with IMAP4 KIMAP4MTMPopulate command and
+//!					Compare the received messages with sent messages based on the Download limits set.
+//!					Copy the mails from IMAP4 Inbox folder to Local inbox folder
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			Initialises the RAS connection
+//!					Resets the message store to clean up the central repository
+//!					Creates an IMAP account by reading the settings from the file mentioned
+//!					thus setting the IMAP and SMTP service settings
+//!					Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					Connects to the IMAP server and deletes all mails in the Inbox on the server.
+//!					Creates a message from RFC822 file and send the message to the same IMAP account.
+//!					Set the partial download limits.
+//!					Download the mails with IMAP4 KIMAP4MTMPopulate command and 
+//!					compares the received messages with sent messages based on the Download limits set.
+//!					Copies the mails from IMAP4 Inbox folder to Local inbox folder.
+//!	@SYMTestExpectedResults		EPass, The message is sent and received and also present in the local inbox folder.
+//!					All The Mails along all the attachments 
+//!					will be downloaded without any footer string information.
+//!	@SYMAuthor			Kavyashree.D
+
+
+
+START_TESTCASE MSG-IMAP-SIZEFILTER-0030
+//! @SYMTestCaseID		MSG-IMAP-SIZEFILTER-0030
+//! @SYMTestType		CIT
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	The Local Inbox and Sent Item folders and the remote Inbox folder of IMAP4 
+//!	account are cleaned up before starting the test.
+//! ------------------------------------------
+//! 	1.  Create emails from data file and send emails to the same account
+//!	2.  Set the download limits
+//!	3.  Download the mails by calling asynchronous function KIMAP4MTMPopulate
+//!	    and KIMAP4MTMPopulateMailSelectionWhenAlreadyConnected command
+//!	4.  Copy the mails from IMAP4 Inbox folder to Local inbox folder.
+//!	5.  Disconnect from the IMAP4 server
+//!	6.  Compare the received messages with sent messages based on the Download limits set
+//! Implementation and execution:
+//!	The emails are sent to the sender's address only.
+//!	New messages are created, sent and received.  The received messages are compared with 
+//!	the sent messages, based on the download limits set, for size and contents.
+//! Download Limits set:
+//!	TImImap4GetPartialMailInfo::iTotalSizeLimit = Default
+//!	TImImap4GetPartialMailInfo::iBodyTextSizeLimit = Default
+//!	TImImap4GetPartialMailInfo::iAttachmentSizeLimit = Default
+//!	TImImap4PartialMailOptions::EBodyTextAndAttachments
+//!	TImap4GetMailOptions::EGetImap4EmailBodyTextAndAttachments
+//!	Destination Folder : Remote Inbox folder
+//! ------------------------------------------
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//! @SYMTestActions
+//! @SYMTestExpectedResults
+//!	If body text size of email <= TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!	All the email should be completely downloaded with no footer string Information.
+//!	If body text size of email > TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!	mail will be downloaded partially containing the footer string information
+//!	All The Attachments having size <= TImImap4GetPartialMailInfo::iAttachmentSizeLimit
+//!	will be downloaded.
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0030-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer 	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0030-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0030-CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0030-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0030-DoFullImap4Synchronisation0
+RUN_TEST_STEP 300 T_MsgImapServer	DeleteAllImapChildren		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0030-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0030-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0030-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgSmtpServer    	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0030-CreateSmtpMessageFromEmailFile0
+RUN_TEST_STEP 300 T_MsgSmtpServer    	SendSmtpMessage			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0030-SendSmtpMessage0
+RUN_TEST_STEP 300 T_MsgSmtpServer    	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0030-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgSmtpServer    	SendSmtpMessage			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0030-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgImapServer	SetImap4PartialDownloadLimits	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0030-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0030-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0030-DoFullImap4Synchronisation1
+RUN_TEST_STEP 300 T_MsgImapServer	ImapInvokeAsyncFunction		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0030-ImapInvokeAsyncFunction0
+RUN_TEST_STEP 300 T_MsgImapServer	SetImap4FullDownloadLimits	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0030-SetImap4FullDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer	ImapInvokeAsyncFunction		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0030-ImapInvokeAsyncFunction1
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0030-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   0030-CheckChildrenCountRemoteInbox1
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-SIZEFILTER-0030
+
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0029-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0029-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0029-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0029-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0029-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		DeleteAllImapChildren 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0029-DeleteAllImapChildren
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0029-DisConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgSmtpServer    	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0029-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 	300 	T_MsgCommonServer  	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0029-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 	T_MsgSmtpServer    	SendSmtpMessage 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0029-SendSmtpMessage
+RUN_TEST_STEP 	300 	T_MsgCommonServer  	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0029-CheckChildrenCountSentItems
+RUN_TEST_STEP 	300 	T_MsgSmtpServer    	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0029-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 	T_MsgCommonServer  	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0029-CheckChildrenCountOutbox1
+RUN_TEST_STEP 	300 	T_MsgSmtpServer    	SendSmtpMessage 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0029-SendSmtpMessage1
+RUN_TEST_STEP 	300 	T_MsgCommonServer  	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0029-CheckChildrenCountSentItems1
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4PartialDownloadLimits 	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0029-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0029-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0029-DoFullImap4Synchronisation
+RUN_TEST_STEP 	300 	T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0029-ImapInvokeAsyncFunction
+RUN_TEST_STEP 	300 	T_MsgImapServer		CopyImapSelection		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0029-CopyImapSelection
+RUN_TEST_STEP 	300 	T_MsgCommonServer  	CheckChildrenCount 		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0029-CheckChildrenCountInbox
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sizefilter\msg-imap-sizefilter1.ini   		0029-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-SIZEFILTER-0029
+
+
+

@@ -1,0 +1,6 @@
+EXPORTS
+	?ImplementationGroupProxy@@YAPBUTImplementationProxy@@AAH@Z @ 1 NONAME ; struct TImplementationProxy const * ImplementationGroupProxy(int &)
+	??0CLbsSuplTiApiImplementation@@AAE@AAVMLbsSuplTiObserver@@@Z @ 2 NONAME ABSENT ; CLbsSuplTiApiImplementation::CLbsSuplTiApiImplementation(class MLbsSuplTiObserver &)
+	?NewL@CLbsSuplTiApiImplementation@@SAPAV1@AAVMLbsSuplTiObserver@@@Z @ 3 NONAME ; class CLbsSuplTiApiImplementation * CLbsSuplTiApiImplementation::NewL(class MLbsSuplTiObserver &)
+	??1CLbsSuplTiApiImplementation@@UAE@XZ @ 4 NONAME ; CLbsSuplTiApiImplementation::~CLbsSuplTiApiImplementation(void)
+

@@ -1,0 +1,163 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE 	T_MsgCommonServer 	-SharedData
+LOAD_SUITE 	T_MsgImapServer 	-SharedData
+LOAD_SUITE  	T_MsgSmtpServer 	-SharedData
+
+
+LOAD_SUITE	EventLogServer		-SharedData
+
+
+START_TESTCASE MSG-IMAP-SPEEDTEST-0001
+//! 	@SYMTestCaseID		MSG-IMAP-SPEEDTEST-0001
+//! 	@SYMTestCaseDesc	A simple speed test of a Message Creation, Move, Copy and Deletion operations
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ 1189
+//!	@SYMREQ			REQ 6749
+//!				
+//! 	@SYMTestActions		1.	Initialize the NT-RAS
+//!				2.	Reset the Message Store in a cleanup state
+//!				3.	Create a IMAP account A 
+//!				4.	Connect and Synchronize the IMAP server using IMAP account A
+//!				5.	Initialize IMAP account in a cleanup state
+//!				6.	Disconnect IMAP server
+//!				
+//!				7.	Record the time before creating the Message
+//!				8.	Create a Message with Body Text Size of 100KB with attachment
+//!				9.	Record the time after creating the Message
+//!				10.	Record the time before sending the Message
+//!				11.	Send the Message
+//!				12.	Record the time after sending the Message
+//!				
+//!				13.	Connect to the IMAP server
+//!				14.	Record the time before downloading the Message
+//!				15.	Download the Message using IMAP client MTM populate command 
+//!				16.	Record the time after downloading the Message
+//!				17.	Check that there is a Message in Inbox
+//!				
+//!				18.	Create a folder of named test folder1
+//!				19.	Record the time before copying a Message
+//!				20.	Copy a Message from Inbox to test folder1
+//!				21.	Record the time after copying a Message
+//!				22.	Check that a Message is there in Inbox and test folder1 as well
+//!				
+//!				23.	Create a folder of named test folder2
+//!				24.	Record the time before moving a Message
+//!				25.	Move a Message from inbox to test folder2
+//!				26.	Record the time after moving a Message
+//!				27.	Check that there is no Message in Inbox but a Message is there in test folder2
+//!				28.	Record the time before deleting a Message
+//!				29.	Delete a Message from test folder2
+//!				30.	Record the time after deleting a Message
+//!				31.	Check that there is no Message in test folder2
+//!				
+//!				32.	Print the time logs for creation, move, copy, and deletion operations
+//!				33.	Disconnect IMAP server
+//!				
+//!				Analysis for any speed degradation would be done by the PC side analysis tool and then will upload in to the SYMSYM database
+//!				
+//! 	@SYMTestExpectedResults Step 17, 22, 27 and 31 to pass.
+//!	@SYMAuthor		Rajat Bal
+
+PRINT Setup Begins #####################################################
+
+
+
+RUN_TEST_STEP -1 T_MsgCommonServer 	StartUp
+RUN_TEST_STEP -1 T_MsgImapServer 	StartUp
+RUN_TEST_STEP -1 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP -1 T_MsgCommonServer 	InitNtRas			c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-InitNtRas
+RUN_TEST_STEP -1 T_MsgCommonServer 	ResetMessageStore		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-ResetMessageStore
+RUN_TEST_STEP -1 T_MsgImapServer 	CreateImapAccount		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-CreateImapAccount
+
+RUN_TEST_STEP -1 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-ChangeImapSettings
+RUN_TEST_STEP -1 T_MsgImapServer	ConnectAndSyncImapServer	c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-ConnectAndSyncImapServer
+RUN_TEST_STEP -1 T_MsgImapServer	InitialiseImap4Account		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-InitialiseImap4Account
+RUN_TEST_STEP -1 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-DoFullImap4Synchronisation
+RUN_TEST_STEP -1 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP -1 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-DisConnectImap4Server
+
+RUN_TEST_STEP -1 EventLogServer	Clear				c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	
+RUN_TEST_STEP -1 EventLogServer 	Start				c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-EventLog
+
+PRINT ############ Create 1 Messages #################################
+
+RUN_TEST_STEP -1 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-StartEventCode_Create
+START_REPEAT	c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini	0001-SectionOne	RepeatParam
+RUN_TEST_STEP -1 T_MsgSmtpServer 	SmtpCreateNewMessageWithPlainBodyText	c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini	0001-CreateSmtpMessageFromEmailFile
+END_REPEAT
+RUN_TEST_STEP -1 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-StopEventCode_Create
+
+RUN_TEST_STEP -1 T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-CheckChildrenCountOutbox
+
+RUN_TEST_STEP -1 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-StartEventCode_Send
+RUN_TEST_STEP -1 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-SendSmtpMessage
+RUN_TEST_STEP -1 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-StopEventCode_Send
+
+RUN_TEST_STEP -1 T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-CheckChildrenCountSentItems
+
+RUN_TEST_STEP -1 T_MsgImapServer	SetImap4FullDownloadLimits	c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-SetImap4FullDownloadLimits
+RUN_TEST_STEP -1 T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-ConnectImap4Server
+
+RUN_TEST_STEP -1 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-StartEventCode_Download
+RUN_TEST_STEP -1 T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-DoFullImap4Synchronisation
+RUN_TEST_STEP -1 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-StopEventCode_Download
+
+RUN_TEST_STEP -1 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-StartEventCode_Download
+RUN_TEST_STEP -1 T_MsgImapServer 	ImapInvokeAsyncFunction		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-ImapInvokeAsyncFunction
+RUN_TEST_STEP -1 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-StopEventCode_Download
+
+RUN_TEST_STEP -1 T_MsgImapServer 	CreateImap4Folder		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-CreateTestFolder1
+RUN_TEST_STEP -1 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-StartEventCode_Copy
+RUN_TEST_STEP -1 T_MsgImapServer 	CopyImapSelectionRemote 	c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-CopyImapSelectionRemote
+RUN_TEST_STEP -1 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-StopEventCode_Copy
+RUN_TEST_STEP -1 T_MsgImapServer 	CheckChildrenCountImap		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-CheckChildrenCount_Copy
+
+RUN_TEST_STEP -1 T_MsgImapServer 	CreateImap4Folder		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-CreateTestFolder2
+RUN_TEST_STEP -1 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-StartEventCode_Move
+START_REPEAT	c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini	0001-SectionOne	RepeatParam
+RUN_TEST_STEP -1 T_MsgImapServer 	MoveMessage			c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-MoveMessage
+END_REPEAT
+RUN_TEST_STEP -1 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-StopEventCode_Move
+RUN_TEST_STEP -1 T_MsgImapServer 	CheckChildrenCountImap		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-CheckChildrenCount_Move
+
+
+RUN_TEST_STEP -1 T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-DisConnectImap4Server
+
+RUN_TEST_STEP -1 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-StartEventCode_Delete
+RUN_TEST_STEP -1 T_MsgCommonServer 	ResetMessageStore		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-ResetMessageStore
+RUN_TEST_STEP -1 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-StopEventCode_Delete
+
+RUN_TEST_STEP -1 EventLogServer 	Stop				c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-EventLog
+RUN_TEST_STEP -1 EventLogServer 	GetRecordCount			c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-EventLog
+RUN_TEST_STEP -1 EventLogServer 	PrintEventLog			c:\msgtest\email\imap\performance\msg-imap-performance500_200kb.ini 	0001-EventLog
+
+
+RUN_TEST_STEP -1 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP -1 T_MsgImapServer 	ShutDown
+RUN_TEST_STEP -1 T_MsgCommonServer 	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-SPEEDTEST-0001

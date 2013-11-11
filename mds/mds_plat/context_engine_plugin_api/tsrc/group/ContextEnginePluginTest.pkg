@@ -1,0 +1,38 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description:
+;
+; Installation file for API test
+
+; Languages
+&EN
+
+; Header
+#{"ContextEnginePluginTest"},(0x101FB3E3),1,0,1,TYPE=SA
+
+; Localised Vendor name
+%{"Nokia-EN"}
+
+; Unique Vendor name
+:"Nokia"
+
+; Files
+"\epoc32\release\armv5\urel\ContextEnginePluginTest.dll"      -"C:\sys\bin\ContextEnginePluginTest.dll"
+"..\init\ContextEnginePluginTest.ini"      -"C:\testframework\ContextEnginePluginTest.ini"
+"..\conf\ContextEnginePluginTest.cfg"      -"C:\testframework\ContextEnginePluginTest.cfg"
+
+"..\data\mmc\ContextEnginePluginTest\Jpg.jpg"      -"E:\testing\data\Jpg.jpg"
+"..\data\mmc\ContextEnginePluginTest\Animated.gif"      -"E:\testing\data\Animated.gif"
+"..\data\mmc\ContextEnginePluginTest\H263.3gp"      -"E:\testing\data\H263.3gp"
+

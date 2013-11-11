@@ -1,0 +1,66 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Resource headers for MPX Collection Plugins
+*
+*/
+
+
+#ifndef MPX_COLLECTION_PLUGIN_HRH
+#define MPX_COLLECTION_PLUGIN_HRH
+
+#include <mpxplugin.hrh>
+// CONSTANTS
+
+/** Collection plugin interface UID */
+#define KMPXCollectionPluginInterfaceUid  0x101FFC36
+
+/** DEPRECATED please use enum TMPXPluginFlags defined in mpxplugin.hrh
+ * Flag to indicate that this plugin needs to be preloaded, and will not be
+ *  unloaded until collection server shutdown.
+ *  It is used as a flag in the opaque data <f>flag</f> of plugin resource file
+ */
+#define KMPXCollectionPluginPreLoaded     EMPXPluginFlagPreLoad
+
+// Collection Specific flags
+// Use top 16 bits for collection specific flags, bottom 16 bits for generic flags
+//
+enum TMPXCollectionPluginFlags
+    {
+    EMPXCollectionPluginFlagCacheable = 0x10000
+    };
+
+// Collection Plugin Types.
+//
+enum TMPXCollectionPluginType
+    {
+    EMPXCollectionPluginUnknown=0, // unknown type
+    EMPXCollectionPluginMusic=0x101FFCDA,
+    EMPXCollectionPluginHidden=0x101FFCDB,
+    EMPXCollectionPluginPodCast=0x10282950,
+    EMPXCollectionPluginTemporary=0x10282961,
+    EMPXCollectionPluginGallery=0x10282966 // Media gallery plugin
+    };
+
+// DEPRECATED please use enum TMPXPluginPriorities defined in mpxplugin.hrh
+/** Collection Plugin priorities */
+enum TMPXCollectionPluginPriorities
+    {
+    EMPXCollectionPluginPriorityLowest = EMPXPluginPriorityLowest,
+    EMPXCollectionPluginPriorityLow = EMPXPluginPriorityLow,
+    EMPXCollectionPluginPriorityNormal = EMPXPluginPriorityNormal,
+    EMPXCollectionPluginPriorityHigh = EMPXPluginPriorityHigh,
+    EMPXCollectionPluginPriorityHighest = EMPXPluginPriorityHighest
+    };
+
+#endif // MPX_COLLECTION_PLUGIN_HRH

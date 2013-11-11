@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<relnotes name="MSG TEST">
+  <purpose>
+  </purpose>
+
+  <deliverystep number="1462" name="Splitting mixed header files for Messaging" osproject="SymTB92" revision="005">
+   <preq number="2510" title=" Splitting mixed header files for Messaging">
+    Mixed header files will now contain only published All or published Partner or internal
+   </preq>
+    <milestone project="GT0465" number="3.5"/>
+  </deliverystep>
+
+  <deliverystep number="1472" name="Removal of CDMA support" osproject="Sphinx" revision="004">
+    <preq number="2002" title="Removal of CDMA support">
+    Removed BiowatchersCdma and multimode component.
+    </preq>
+    <milestone project="GT0358" number="3.6"/>
+  </deliverystep>
+
+  <deliverystep number="602" name="Submit PREQ1307 to MCL" osproject="Oghma" revision="003">
+    <preq number="1307" title="Non-Seamless Network Bearer Mobility for Messaging">
+    Non-Seamless Network Bearer Mobility for Messaging
+    </preq>
+    <milestone project="GT0342" number="3.2.1"/>
+  </deliverystep>
+
+  <deliverystep number="500" name="Messaging file name changes to support GNU compiler for Linux" osproject="Oghma" revision="002">
+    <preq number="1182" title="GNU Make-based build system">
+    GNU Make-based build system
+  </preq>
+    <milestone project="GT0342" number="3.3"/>
+  </deliverystep>
+
+  <minorchange revision="001">
+    Removed test code build errors caused by CAF submission
+  </minorchange>
+</relnotes>

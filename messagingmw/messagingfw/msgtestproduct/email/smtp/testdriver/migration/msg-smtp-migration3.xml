@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>msg-smtp-migration3</name>
+	<timeout>6000</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\email\smtp\migration\msg-smtp-migration3.script</hostPath>
+			<devicePath>c:\msgtest\email\smtp\migration\msg-smtp-migration3.script</devicePath>
+		</script>
+	</testScripts>
+
+	<testServers>
+		<server>T_MsgCommonServer</server>
+		<server>T_MsgImapServer</server>
+		<server>T_MsgSmtpServer</server>
+	</testServers>
+
+	<dependencies>
+	<data>
+			<hostPath>\epoc32\winscw\c\msgtest\email\smtp\migration\msg-smtp-migration3.ini</hostPath>
+			<devicePath>c:\msgtest\email\smtp\migration\msg-smtp-migration3.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\smtp1KBody.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\smtp1KBody.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\SMTPServerSNAPandBMSettings.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\SMTPServerSNAPandBMSettings.txt</devicePath>
+		</data>
+	</dependencies>	
+</testExecuteTest>

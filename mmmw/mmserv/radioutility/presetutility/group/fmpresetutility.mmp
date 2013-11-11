@@ -1,0 +1,46 @@
+/*
+* Copyright (c) 2002-2004 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+* Project definition file for FmPresetUtility.
+*
+*/
+
+
+//#include <data_caging_paths.hrh>
+//#include <domain/osextensions/platform_paths.hrh>
+#include <platform_paths.hrh>
+
+TARGET          FmPresetUtility.dll
+TARGETTYPE      DLL
+CAPABILITY      CAP_GENERAL_DLL ReadUserData
+VENDORID        VID_DEFAULT
+UID             0x1000008D 0x10207B87
+VERSION 10.3
+
+SOURCEPATH      ../src/old_api
+SOURCE          radiofmpresetutility.cpp    // Compatibility api
+SOURCE          radiofmpresetcentralrepositoryhandler.cpp
+
+USERINCLUDE     ../inc
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY			presetutility.lib
+LIBRARY         cenrepnotifhandler.lib
+LIBRARY         centralrepository.lib
+LIBRARY         euser.lib
+LIBRARY         estor.lib
+//LIBRARY         dsclient.lib
+
+

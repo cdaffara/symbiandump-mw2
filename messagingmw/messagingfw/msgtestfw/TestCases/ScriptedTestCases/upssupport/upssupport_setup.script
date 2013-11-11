@@ -1,0 +1,38 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+//********************************
+// UPSSupport_Setup.script
+//********************************
+// Enure that we have a copy of MessagingTestServer.exe on c:
+// And that we pick up no other copies of executables from anywhere except c:.
+
+PRINT Running  UPSSupport_Setup.script:
+
+// Ensure that required executables are available on C:.
+
+RUN_PROGRAM -1 CapUtils CopyIfEmulator MessagingTestServer.exe c:\sys\bin\MessagingTestServer.exe
+
+// Ensure that we do not pick up a rogue copy MessagingTestServer.exe from z:.
+// We change the executabe name on release folder for emulator test on and want
+// to ensure that c:\..\..\MessagingTestServer.exe etc. is picked up. 
+// Note we only report an error if we have the file and can not change its name.
+	
+// IMPORTANT THIS FAILS IF THE FILE EXISTS AND CANNOT BE MOVED> THE LIKLYHOOD IS THAT SOMETHING HAS A FILE LOCK ON THE FILE
+// (i.e. CW) SO THAT IT CAN NOT BE MOVED. UNFORTUNATLY THIS WILL BE PICED UP FIRST CAUSING UPS tests TO FAIL.
+// Remove the execurables(MessagingTestServer.exe) from CW, this should free up the lock.
+
+RUN_PROGRAM -1 CapUtils RenameIfEmulator MessagingTestServer.exe z:\sys\bin\MessagingTestServer.tmp

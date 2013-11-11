@@ -1,0 +1,115 @@
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 13.1 Test return values 
+timeout 7000
+create ccetester test
+test Delay 1000
+
+// Create an incoming call
+test InitIncomingCall
+// Wait plugin to initialize
+test Delay 2000
+
+// Send plugin command, MT call with CallID 1 is created
+test SendPluginRequest CreateCall 2
+test WaitEvent 0 IncomingCall
+test WaitEvent 1 Ringing
+
+// commented out ---->
+// Test rejecting call returning an error - commented out test not ok, error not in cce
+//test ConfigurePlugin 2 ID=MCCPCall::Reject RETURN=-2 TYPE=TInt
+//test Reject 1 -2
+// <---- commented out
+
+// Answer call return an error
+test ConfigurePlugin 2 ID=MCCPCall::Answer RETURN=-2 TYPE=TInt
+test Answer 1 -2
+// this is anyhow received and call is currently left in that state
+// answering state is not anymore set in advance by CCE (10.9.07)
+//test WaitEvent 1 Answering
+
+test Answer 1 0
+/// this is skipped as already sent in above case and state not verified in CCE 
+// (changed 10.9.07, see previous step...)
+test WaitEvent 1 Answering
+test WaitEvent 1 Connected
+
+// return KErrGeneral immediately for hold request
+test ConfigurePlugin 2 ID=MCCPCall::Hold RETURN=-2 TYPE=TInt
+test Hold 1 -2
+
+// now hold call ok
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+// return KErrGeneral immediately for resume
+test ConfigurePlugin 2 ID=MCCPCall::Resume RETURN=-2 TYPE=TInt
+test Resume 1 -2
+
+// now resume ok
+test Resume 1 0
+test WaitEvents 1 Connected, 1 LocalResume
+
+
+
+// commented out ---->
+// queue retuning an error, call is internally in cce rejected and released
+/////test ConfigurePlugin 2 ID=MCCPCall::Queue RETURN=-2 TYPE=TInt
+
+// Send plugin command, MT call with CallID 2 is created
+/////test SendPluginRequest CreateCall 2
+// no further action is received here, case is commented out 
+/////test WaitEvent 0 IncomingCall
+// <---- commented out
+
+// commented out ---->
+////test ConfigurePlugin 2 ID=MCCPCall::Swap RETURN=-2 TYPE=TInt
+//// not called in ccp hold used instead 
+// test Swap 1 -2
+// <---- commented out
+
+
+// return error for hangup
+test ConfigurePlugin 2 ID=MCCPCall::HangUp RETURN=-2 TYPE=TInt
+test HangUp 1 -2
+
+// disconnecting state is not anymore set in advance by CCE (10.9.07)
+// test WaitEvent 1 Disconnecting
+
+// hang up again, call is already in disconnecting state from action above
+// at the moment return KErrAlreadyExists -11 
+//test HangUp 1 -11
+// behaviour changed (10.9.07)
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+
+test Release 1 0
+
+
+// create a MO call 
+test OpenNewCall 2 0 CallOne 2 ECCECallTypePS ECCELineTypePrimary
+
+// return KErrGeneral immediately for Dial
+test ConfigurePlugin 2 ID=MCCPCall::Dial RETURN=-2 TYPE=TInt
+test Dial 2 -2 SubAddress Bearer
+
+// behaviour changed (10.9.07)
+// test WaitEvent 2 Dialling
+// problem here: state is left to dialling, 
+
+// when trying to redial and call is not in idle state return KErrnotReady -18
+// behaviour changed (10.9.07)
+//test Dial 2 -18 SubAddress Bearer
+test Dial 2 0 SubAddress Bearer
+test WaitEvent 2 Dialling
+test WaitEvent 2 Connecting
+test WaitEvent 2 Connected
+test Release 2 0
+
+test VerifyTest
+delete test
+[Endtest]

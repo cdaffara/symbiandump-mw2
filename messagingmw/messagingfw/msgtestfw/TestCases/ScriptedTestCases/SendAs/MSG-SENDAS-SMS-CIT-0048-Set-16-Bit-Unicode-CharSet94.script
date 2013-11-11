@@ -1,0 +1,61 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+//! @SYMTestCaseID MSG-SENDAS-CIT-0030-HP
+//! @SYMTestCaseDesc UnConfirmed Send
+//! @SYMFssID 
+//! @SYMTestStatus Defined
+//! @SYMTestPriority High
+//! @SYMTestActions xxxxxxxx
+//! @SYMTestExpectedResults yyyyyyyyy
+//! @SYMTestType CIT
+
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_UTILS CopyFile c:\msgtest\TestFramework\Configurations\SmsSettings\config.txt C:\config.txt
+RUN_UTILS MakeReadWrite C:\config.txt
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+InitializeSimTsy		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0048-Set-16-Bit-Unicode-CharacterSet.ini	InitializeSimTsy
+GetBaseConstants		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0048-Set-16-Bit-Unicode-CharacterSet.ini	GetBaseConstants
+GetSmsConstants			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0048-Set-16-Bit-Unicode-CharacterSet.ini	GetSmsConstants
+CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0048-Set-16-Bit-Unicode-CharacterSet.ini	CreateSession
+ResetMessageStore		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0048-Set-16-Bit-Unicode-CharacterSet.ini	ResetMessageStore
+SetDefaultSmsSettings		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0048-Set-16-Bit-Unicode-CharacterSet.ini	SetDefaultSmsSettings
+SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0048-Set-16-Bit-Unicode-CharacterSet.ini	SetDefaultConfiguration
+SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0048-Set-16-Bit-Unicode-CharacterSet.ini	SetDefaultConfigurationBodyTxt
+CreateSmsService		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0048-Set-16-Bit-Unicode-CharacterSet.ini	CreateSmsService
+SetSmsServiceSettings		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0048-Set-16-Bit-Unicode-CharacterSet.ini	SetSmsServiceSettings
+CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0048-Set-16-Bit-Unicode-CharacterSet.ini	CreateRegistry
+CreateMtm			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0048-Set-16-Bit-Unicode-CharacterSet.ini	CreateSmsMtm
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0048-Set-16-Bit-Unicode-CharacterSet.ini	ChkChildrenCountDraft0
+EXECUTE_TEST_CASE
+ConnectSendAsServer		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0048-Set-16-Bit-Unicode-CharacterSet.ini	ConnectSendAsServer
+SendAsCreateMessageofType	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0048-Set-16-Bit-Unicode-CharacterSet.ini	SendAsCreateMessageofType
+SendAsAddRecipient		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0048-Set-16-Bit-Unicode-CharacterSet.ini	SendAsAddRecipient
+SendAsSetBodyText		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0048-Set-16-Bit-Unicode-CharacterSet.ini	SendAsSetBodyText
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0048-Set-16-Bit-Unicode-CharacterSet.ini	ChkChildrenCountDraft1
+SendAsSendMessageNew		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0048-Set-16-Bit-Unicode-CharacterSet.ini	SendAsSendMessageNew
+SendAsCloseMessage		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0048-Set-16-Bit-Unicode-CharacterSet.ini	CloseMessage
+Sleep				c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0048-Set-16-Bit-Unicode-CharacterSet.ini	Sleep
+CloseSendAsServerConnection	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0048-Set-16-Bit-Unicode-CharacterSet.ini	CloseSvrConnection
+CHECK_POSTCONDITIONS
+UnloadPhoneModule 		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0048-Set-16-Bit-Unicode-CharacterSet.ini	UnloadPhoneModule
+END_TEST_CASE

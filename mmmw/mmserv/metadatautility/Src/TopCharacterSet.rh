@@ -1,0 +1,71 @@
+/*
+* Copyright (c) 2002-2004 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Contains definitions for structures used in Top Character Set 
+*                resource files.
+*
+*/
+
+
+
+#ifndef __TOPCHARACTERSET_RH__
+#define __TOPCHARACTERSET_RH__
+
+
+// INCLUDES
+#include "CharacterSet.hrh"         // Enumerations
+
+// STRUCTURE DEFINITIONS
+
+// -----------------------------------------------------------------------------
+// TOP_CHARACTER_SET
+// Structure for defining the top character sets for a particular language variant. 
+// The top character set is used first in the auto detect function. If the characters
+// can be detected from this set, then auto detect stops; otherwise auto detect will
+// continue with the next character set. If the characters can be detected from this 
+// set, auto detect stops; otherwise auto detect will continue with the remaining 
+// character sets that is provided by the system. Note: the bigger these lists, the 
+// longer the auto detect function.
+// -----------------------------------------------------------------------------
+//
+STRUCT TOP_CHARACTER_SET
+    {
+    LONG           id_top_character_set[];        // array of the top character set IDs
+	LONG           id_next_character_set[];       // array of the next character set IDs
+    }
+
+
+// -----------------------------------------------------------------------------
+// LANGUAGE_SET
+// Structure definition for a set of languages supported on the device.
+// -----------------------------------------------------------------------------
+//
+STRUCT LANGUAGE_SET
+    {
+    LONG	language_set_id[];
+    }
+	
+// -----------------------------------------------------------------------------
+// CHARACTER_SET
+// Structure definition character encoding 
+// -----------------------------------------------------------------------------
+//
+STRUCT CHARACTER_SET_ENCODING
+    {
+    LONG	character_set_id[];
+    }
+
+#endif // __TOPCHARACTERSET_RH__
+
+
+// End of File

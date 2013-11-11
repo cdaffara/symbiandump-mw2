@@ -1,0 +1,32 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+
+#ifndef __SENDAS2_IBY__
+#define __SENDAS2_IBY__
+
+REM The SendAs2 Client/Server
+
+#ifndef SENDASHEAPMAX
+#define SENDASHEAPMAX  0x400000
+#endif
+
+file=ABI_DIR\BUILD_DIR\Sendas2.dll	sys\bin\Sendas2.dll
+file=ABI_DIR\BUILD_DIR\SendasServer.exe	sys\bin\SendasServer.exe  heapmax=SENDASHEAPMAX
+
+data=DATAZ_\resource\messaging\sendasserver.rsc         resource\messaging\sendasserver.rsc
+ECOM_PLUGIN(sendaseikeditutils.dll, 1020806C.rsc)
+#endif

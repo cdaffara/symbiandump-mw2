@@ -1,0 +1,63 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:    OMA XDM Device Management adapter
+*
+*/
+
+
+
+#include <platform_paths.hrh>
+#include <data_caging_paths.hrh>
+
+
+TARGET          xdmdevicemanagementadapter.dll
+TARGETTYPE      PLUGIN
+UID             0x10009D8D 0x10275112 
+CAPABILITY      CAP_ECOM_PLUGIN
+VENDORID        VID_DEFAULT
+
+
+SOURCEPATH      ../src
+SOURCE          xdmdmadaptergroupproxy.cpp
+SOURCE          xdmdmadapter.cpp
+
+SOURCEPATH      ../data
+START RESOURCE  10275112.rss
+TARGET          xdmdevicemanagementadapter.rsc
+END
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   /epoc32/include/ecom
+
+
+USERINCLUDE     ../inc
+
+
+LIBRARY         euser.lib 
+LIBRARY         ecom.lib 
+LIBRARY         xdmsettingsapi.lib
+LIBRARY         charconv.lib
+LIBRARY         nsmldmclientserverutils.lib
+
+DEBUGLIBRARY    flogger.lib
+
+#if defined( ARMCC )
+    DEFFILE ../eabi/ 
+#elif defined ( WINSCW )
+    deffile ../bwinscw/ 
+#elif defined (WINS )
+    deffile ../BWINS/ 
+#endif
+
+// End of File

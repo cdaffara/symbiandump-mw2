@@ -1,0 +1,47 @@
+// Copyright (c) 2006-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// 20002246.RSS
+// Registry file for Rights Object Content Handler interface dll
+// Interfaces : CContentHandlerBase
+// 
+//
+
+#include <ecom/registryinfo.rh>
+
+RESOURCE REGISTRY_INFO theInfo
+	{
+	// KUidPushContentHandlerPlugin
+	dll_uid = 0x102827F8;
+	interfaces = 
+		{
+		INTERFACE_INFO
+			{
+			// KUidPushContentHandlerBase - CContentHandlerBase UID
+			interface_uid = 0x101F3E5E;
+			implementations = 
+				{
+				IMPLEMENTATION_INFO
+					{
+					// KUidPushROAPContentHandler - ROAPTContentHandler UID
+					implementation_uid = 0x10282762;
+					version_no = 1;
+					display_name = "ROAPTContentHandler||WAP Push Content Handler Plug-in";
+					default_data = "application/vnd.oma.drm.roap-trigger+xml||application/vnd.oma.drm.roap-trigger+wbxml";
+					opaque_data = "";
+					}
+				};
+			}
+		};
+	}
+

@@ -1,0 +1,64 @@
+EXPORTS
+	_ZN12CNetworkInfo4NewLEP20MNetworkInfoObserver @ 1 NONAME
+	_ZN13CPositionInfo4NewLEP21MPositionInfoObserver @ 2 NONAME
+	_ZN15CLocationRecord11SetObserverEP22MLocationTrailObserver @ 3 NONAME
+	_ZN15CLocationRecord14GetNetworkInfoERN10CTelephony14TNetworkInfoV1E @ 4 NONAME
+	_ZN15CLocationRecord14SetAddObserverEP20MLocationAddObserver @ 5 NONAME
+	_ZN15CLocationRecord16RequestLocationLEv @ 6 NONAME
+	_E32Dll @ 7 NONAME ABSENT
+	_ZN15CLocationRecord18GetLocationByTimeLE5TTimeR13TLocationDataRN14RLocationTrail11TTrailStateE @ 8 NONAME
+	_ZN15CLocationRecord18LocationTrailStateERN14RLocationTrail11TTrailStateE @ 9 NONAME
+	_ZN15CLocationRecord21CancelLocationRequestEv @ 10 NONAME
+	_E32Dll @ 11 NONAME ABSENT
+	_ZN15CLocationRecord4NewLER18MGeoTaggerObserverR12RMobilePhone @ 12 NONAME
+	_ZN15CLocationRecord4StopEv @ 13 NONAME
+	_ZN15CLocationRecord6StartLEN14RLocationTrail20TTrailCaptureSettingE @ 14 NONAME
+	_ZN9CTrackLog11IsRecordingEv @ 15 NONAME
+	_ZN9CTrackLog14StopRecordingLEv @ 16 NONAME
+	_ZN9CTrackLog15CancelRecordingEv @ 17 NONAME
+	_ZN9CTrackLog15GetTrackLogNameER4TBufILi256EE @ 18 NONAME
+	_ZN9CTrackLog4NewLEv @ 19 NONAME
+	_ZN9CTrackLog9GetStatusERiR22TPositionSatelliteInfo @ 20 NONAME
+	_ZTI12CNetworkInfo @ 21 NONAME ; #<TI>#
+	_ZTI13CPositionInfo @ 22 NONAME ; #<TI>#
+	_ZTI15CGpxConverterAO @ 23 NONAME ; #<TI>#
+	_ZTI15CLocationRecord @ 24 NONAME ; #<TI>#
+	_ZTI9CTrackLog @ 25 NONAME ; #<TI>#
+	_ZTV12CNetworkInfo @ 26 NONAME ; #<VT>#
+	_ZTV13CPositionInfo @ 27 NONAME ; #<VT>#
+	_ZTV15CGpxConverterAO @ 28 NONAME ; #<VT>#
+	_ZTV15CLocationRecord @ 29 NONAME ; #<VT>#
+	_ZTV9CTrackLog @ 30 NONAME ; #<VT>#
+	_ZN9CTrackLog14AddGpxObserverEP22MGpxConversionObserver @ 31 NONAME
+	_ZN9CTrackLog14StartRecoveryLEv @ 32 NONAME
+	_ZN9CTrackLog8GetTagIdEv @ 33 NONAME ABSENT
+	_ZN15CLocationRecord13SetMdeSessionEP11CMdESession @ 34 NONAME
+	_ZN15CLocationRecord18CreateLocationTagLEv @ 35 NONAME ABSENT
+	_ZN15CLocationRecord21CreateLocationObjectLERK13TLocationDataRKj @ 36 NONAME
+	_ZTI20CLocationRemappingAO @ 37 NONAME ; #<TI>#
+	_ZTV20CLocationRemappingAO @ 38 NONAME ; #<VT>#
+	_ZN9CTrackLog15StartRecordingLEm @ 39 NONAME
+	_ZN15CLocationRecord18SetStateToStoppingEv @ 40 NONAME
+	_ZN15CLocationRecord17LocationSnapshotLERKj @ 41 NONAME
+	_ZN15CLocationRecord15RemappingNeededEv @ 42 NONAME
+	_ZN12CNetworkInfoD0Ev @ 43 NONAME
+	_ZN12CNetworkInfoD1Ev @ 44 NONAME
+	_ZN12CNetworkInfoD2Ev @ 45 NONAME
+	_ZN13CPositionInfoD0Ev @ 46 NONAME
+	_ZN13CPositionInfoD1Ev @ 47 NONAME
+	_ZN13CPositionInfoD2Ev @ 48 NONAME
+	_ZN15CLocationRecordD0Ev @ 49 NONAME
+	_ZN15CLocationRecordD1Ev @ 50 NONAME
+	_ZN15CLocationRecordD2Ev @ 51 NONAME
+	_ZN9CTrackLogD0Ev @ 52 NONAME
+	_ZN9CTrackLogD1Ev @ 53 NONAME
+	_ZN9CTrackLogD2Ev @ 54 NONAME
+	_ZN12CNetworkInfo24StopNwInfoChangeNotifierEv @ 55 NONAME
+	_ZN12CNetworkInfo25StartNwInfoChangeNotifierEv @ 56 NONAME
+	_ZN15CLocationRecord15StartGeoTaggingE17TConnectionOption @ 57 NONAME
+	_ZN15CLocationRecord16CancelGeoTaggingEv @ 58 NONAME
+	_ZN15CLocationRecord17TaggingInProgressEv @ 59 NONAME
+	_ZN12CNetworkInfo14MapNetworkInfoEPN10CTelephony14TNetworkInfoV1EPN12RMobilePhone25TMobilePhoneNetworkInfoV2EPNS3_26TMobilePhoneLocationAreaV1E @ 60 NONAME
+	_ZN15CLocationRecord22GetCurrentRegisteredNwEv @ 61 NONAME
+	_ZN15CLocationRecord12IsLowBatteryEv @ 62 NONAME
+

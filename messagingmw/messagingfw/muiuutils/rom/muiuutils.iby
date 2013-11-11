@@ -1,0 +1,25 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  muiuutilsutils.iby*
+*/
+
+#ifndef __MUIUUTILS_IBY__
+#define __MUIUUTILS_IBY__
+
+//
+// muiuutils
+//
+file=ABI_DIR\BUILD_DIR\muiuutils.dll     SHARED_LIB_DIR\muiuutils.dll
+
+#endif   // __MUIUUTILS_IBY__

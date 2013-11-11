@@ -1,0 +1,148 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! ===============================================================
+//! @SYMTestCaseID		MSG-SMS-Receive-Class0SMS-0002
+//! @SYMTestCaseDesc		Receive Class 0 SMS message or partial Class 0 SMS message when in an normal disk situation
+//!
+//! @SYMTestActions		
+//!				1.	Initializes SimTsy with the configuration file
+//!				2.	Start the watcher
+//!				3.	Set the default SMS setting file
+//!				4.	Create a session to the messaging server
+//!				5.	Create a SMS service and then modify the settings of the specified SMS service to match the one
+//!				6.	Create a Class 0 SMS message 
+//!				7.	Schedule a SMS message and then send the SMS message from the  sim.tsy after a trigger
+//!				8.	Check the message in the Sent Item folder and Receive Class 0 SMS message will not be there in 
+//!					Inbox, only can be logged in the log file
+//!				9.	Check received class 0 SMS is partial or not
+//!				10.	Check for partial message if it is first, middle or last part  and log into log file
+//!				11.	Check using SIMTsy that each received Class0 SMS PDU is positively acknowledged by the SMS stack 
+//!
+//! @SYMTestExpectedResults	Class 0 SMS message or partial Class 0 SMS message has been sent and will be displayed to the user by logging to the log file
+//! ===============================================================
+//!
+//! ===============================
+//! @SYMTestPriority	Critical
+//! @SYMTestType	CIT
+//! @SYMTestStatus	Implemented
+//!
+//! @SYMREQ		REQ6522, REQ6523, REQ7012, REQ7218, REQ7219, REQ7232
+//! @SYMPREQ		PREQ1736
+//!
+//! @SYMAuthor		Rajat Bal
+//! ===============================
+
+	
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_UTILS CopyFile	c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSms\MSG-SMS-Receive-Class0SMS-0002config.txt C:\config.txt
+RUN_UTILS MakeReadWrite	C:\config.txt
+RUN_UTILS DeleteFile    C:\logs\testexecute\class0sms.txt
+
+PRINT Copy esk file with MAX PDUs = 5
+PRINT ###############################################
+// RUN_UTILS  DeleteFile   	c:\private\101F7989\esock\smswap.sms.bak
+// RUN_UTILS  copyfile  		c:\private\101F7989\esock\smswap.sms.esk c:\private\101F7989\esock\smswap.sms.bak
+RUN_UTILS  MakeReadWrite  	c:\private\101F7989\esock\smswap.sms.esk
+RUN_UTILS  copyfile   		c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\smswap_MaxFivePDUsInOOD.esk c:\private\101F7989\esock\smswap.sms.esk
+PRINT ###############################################
+
+
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE_ASYNC
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+
+PRINT ###############################################
+RUN_TEST_STEP 100 MessagingTestServer InitializeSimTsy 		c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini Init1
+WaitForAll
+RUN_TEST_STEP 100 MessagingTestServer StartWatchers 		c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini StartWatchers
+WaitForAll
+RUN_TEST_STEP 100 MessagingTestServer Sleep 			c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini Sleep10
+WaitForAll
+RUN_TEST_STEP 100 MessagingTestServer GetBaseConstants 		c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini GetBaseConstants
+WaitForAll
+RUN_TEST_STEP 100 MessagingTestServer SetDefaultSmsSettings 	c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini SetSettingsFile
+WaitForAll
+RUN_TEST_STEP 100 MessagingTestServer SetDefaultConfiguration 	c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini SetSmsMessageConfigFile
+WaitForAll
+RUN_TEST_STEP 100 MessagingTestServer CreateSession 		c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini CreateSession
+WaitForAll
+RUN_TEST_STEP 100 MessagingTestServer CreateRegistry 		c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini CreateRegistry
+WaitForAll
+RUN_TEST_STEP 100 MessagingTestServer CreateSmsService 		c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini CreateSmsService
+WaitForAll
+RUN_TEST_STEP 100 MessagingTestServer SetSmsServiceSettings 	c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini SetSmsSettings
+RUN_TEST_STEP 100 MessagingTestServer WaitForAll
+RUN_TEST_STEP 100 MessagingTestServer SetSchSendSettings 	c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini SetSchSendSettings
+WaitForAll
+RUN_TEST_STEP 100 MessagingTestServer CreateMtm 		c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini CreateMtm
+WaitForAll
+RUN_TEST_STEP 100 MessagingTestServer DeleteChildren 		c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini EmptyOutbox
+RUN_TEST_STEP 100 MessagingTestServer DeleteChildren 		c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini EmptySent
+RUN_TEST_STEP 100 MessagingTestServer DeleteChildren 		c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini EmptyInbox
+WaitForAll
+
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+
+PRINT ###############################################
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount 	c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini CheckChildrenCountOutbox0
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount 	c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini CheckChildrenCountSent0
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount 	c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini CheckChildrenCountInbox0
+WaitForAll
+PRINT ######### just check everthing has gone.
+RUN_TEST_STEP 100 MessagingTestServer GetSmsConstants 		c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini GetSmsConstants
+WaitForAll
+RUN_TEST_STEP 100 MessagingTestServer CreateSmsMessage 		c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini CreateMessage
+WaitForAll
+RUN_TEST_STEP 100 MessagingTestServer CreateSelection 		c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini CreateSelection
+WaitForAll
+RUN_TEST_STEP 100 MessagingTestServer GetDefaultAppendToSelection c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini AppendToSelection
+WaitForAll
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount 	c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini CheckChildrenCountOutbox1
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount 	c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini CheckChildrenCountSent0
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount 	c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini CheckChildrenCountInbox0
+WaitForAll
+
+PRINT ###############################################
+PRINT ######### Check that we have only one message in the outbox. It is the send that will trigger the recive. 
+PRINT ######### The sim.tsy waits for the send, and then sends back a message.
+RUN_TEST_STEP 100 MessagingTestServer SetNetworkRegistrationStatus c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini NetAvailable
+WaitForAll
+RUN_TEST_STEP 100 MessagingTestServer SetSignalStrength 	c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini NetStrengthHigh
+WaitForAll
+RUN_TEST_STEP 100 MessagingTestServer Sleep 			c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini Sleep3
+WaitForAll
+
+PRINT ######### Get ready for the message to be sent here from the sim.tsy but after we send out a message as trigger.
+RUN_TEST_STEP 100 MessagingTestServer ExecuteMtmCommand 	c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini ScheduleMessage
+WaitForAll
+RUN_TEST_STEP 100 MessagingTestServer Sleep 			c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini Sleep10
+WaitForAll
+
+PRINT ######### Let message get there.
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+RUN_TEST_STEP 100 MessagingTestServer CheckClass0SMS 		c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini CheckClass0SMS
+WaitForAll
+RUN_TEST_STEP 100 MessagingTestServer UnloadPhoneModule		c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\MSG-SMS-Receive-Class0SMS-0002.ini UnloadPhoneModule
+
+// PRINT ###############################################
+// RUN_UTILS  DeleteFile  		c:\private\101F7989\sms\smsu.rsc
+// RUN_UTILS  MakeReadWrite  	c:\private\101F7989\esock\smswap.sms.esk
+// RUN_UTILS  copyfile  		c:\private\101F7989\esock\smswap.sms.bak     c:\private\101F7989\esock\smswap.sms.esk
+// PRINT ###############################################
+
+RUN_TEST_STEP 100 MessagingTestServer END_TEST_CASE
+

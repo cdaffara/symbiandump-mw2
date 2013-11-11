@@ -1,0 +1,10 @@
+EXPORTS
+	_Z24ImplementationGroupProxyRi @ 1 NONAME
+	_ZN31CDescriptorDataMultimediaSource4NewLER11MDataSource @ 2 NONAME
+	_ZTI14CSinkQueueItem @ 3 NONAME ; #<TI>#
+	_ZTI21CDescriptorDataSource @ 4 NONAME ; #<TI>#
+	_ZTI31CDescriptorDataMultimediaSource @ 5 NONAME ; #<TI>#
+	_ZTV14CSinkQueueItem @ 6 NONAME ; #<VT>#
+	_ZTV21CDescriptorDataSource @ 7 NONAME ; #<VT>#
+	_ZTV31CDescriptorDataMultimediaSource @ 8 NONAME ; #<VT>#
+

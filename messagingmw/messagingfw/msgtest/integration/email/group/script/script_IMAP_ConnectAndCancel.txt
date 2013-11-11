@@ -1,0 +1,107 @@
+// *****************************************
+//  
+//  Author:	Simon Braines
+//  Date:	15/05/03
+//
+// Used to test defect DEF018255 - HiQ: "Mail/IMAP - Cancel of download dialog, stops the mail application from working"
+// This defect refers to cancelling the connect & sync operation 
+//   before The connection operation has completed.
+// The actual point where the cancellation has to happen
+//   is while the IMAP Capabilities are being returned from the server
+// This is obviously highly dependant on timings, and currently
+//   this test has only identified the defect on WINS and WINSCW using NT-RAS.
+// If the timing of the cancellation is not exact, the test will pass even when
+//   the fix is not in place. 
+// 
+// TO run t_email 
+// rename this file to script.txt and copy it 
+// to c:\msgtest\emailsmoke
+// 
+// Requirements:  Valid server, username & password.  
+//
+// 
+// *****************************************
+
+[main]
+email_client_test email
+
+// *****************************************
+
+[email]
+imap_client_test imap_testing_Case
+
+// *****************************************
+
+//
+// Prepare remote inbox for testing
+//
+[imap_testing_Case]
+clean_message_folder
+add_comment Start client Session
+start_client_session
+add_comment Select IMAP service
+select_root_folder
+imap_service imap_service_fastmail
+select_folder test_imap_service
+add_comment Connect and CANCEL 1
+connect_and_cancel 2300
+check_imap_error 0
+add_comment Connect and CANCEL 2
+connect_and_cancel 2350
+check_imap_error 0
+add_comment Connect and CANCEL 3
+connect_and_cancel 2400
+check_imap_error 0
+add_comment Connect and CANCEL 4
+connect_and_cancel 2450
+check_imap_error 0
+add_comment Connect and CANCEL 5
+connect_and_cancel 2500
+check_imap_error 0
+add_comment Connect and CANCEL 6
+connect_and_cancel 2550
+check_imap_error 0
+add_comment Connect and CANCEL 7
+connect_and_cancel 2600
+check_imap_error 0
+add_comment Connect and CANCEL 8
+connect_and_cancel 2650
+check_imap_error 0
+add_comment Connect and CANCEL 9
+connect_and_cancel 2700
+check_imap_error 0
+add_comment Connect and CANCEL 10
+connect_and_cancel 2750
+check_imap_error 0
+//add_comment Connect and SYNC
+//connect_and_sync
+//check_imap_error 0
+//
+// defining email server:
+//
+[imap_service_fastmail]
+set_name test_imap_service
+// NOKIA
+//set_server trmai10.it.cellulardata.com
+//set_user maintst1
+//set_pass mailtest1
+// DARREN
+set_server lon-darrenm01.intra
+set_user simonb
+set_pass simonb
+// Common
+set_tls 0
+set_wrapped_tls 0
+set_port 143
+
+
+// Stalker trmai02.it.cellulardata.com now passes
+// alternate username: mendonca
+// alternate password: keiSym
+//
+// Any of the following No can be used to access this server
+// +358 3 3617 770
+// +358 3 31520 444
+// +358 3 31520 111
+// +358 3 31520 999
+// *****************************************

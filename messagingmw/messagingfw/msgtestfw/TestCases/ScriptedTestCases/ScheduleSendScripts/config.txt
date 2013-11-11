@@ -1,0 +1,40 @@
+
+[test0]
+
+IndicatorCheckPeriod= 1
+NetworkInfo= TEST, Network0, Test, Test, Test, 5
+RegStatus= 5,5
+
+NotifySignalStrengthChangeCap= 1
+
+SmsControlCaps= 34
+SmsTx= 00, 358405202000, 1, 02070100, 0
+
+
+[test1]
+
+IndicatorCheckPeriod= 1
+NetworkInfo= TEST, Network0, Test, Test, Test, 5
+RegStatus= 5,5
+
+NotifySignalStrengthChangeCap= 1
+
+SmsControlCaps= 34
+SmsTx= 00, 358405202000, 1, 02070100, -18
+SmsTx= 00, 358405202000, 1, 02070100, 0
+
+
+[test2]
+
+IndicatorCheckPeriod= 1
+NetworkInfo= TEST, Network0, Test, Test, Test, 5
+RegStatus= 5,5
+
+NotifySignalStrengthChangeCap= 1
+
+SmsControlCaps= 34
+SmsTx= 00, 358405202000, 1, 02070100, -18
+SmsTx= 00, 358405202000, 1, 02070100, -18
+SmsTx= 00, 358405202000, 1, 02070100, -18
+SmsTx= 00, 358405202000, 1, 02070100, -18
+SmsTx= 00, 358405202000, 1, 02070100, 0

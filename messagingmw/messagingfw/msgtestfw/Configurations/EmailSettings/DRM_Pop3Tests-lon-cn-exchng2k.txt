@@ -1,0 +1,67 @@
+#  lon-cn-exchng2k.msexchange2k.closedtest.intra server
+__type__   = Pop3Settings
+
+EmailAddressExtension = msexchange2k.closedtest.intra
+
+
+PopServerAddress = 10.22.64.6
+PopMaxEmailSize = 16384
+PopPort = 110
+PopInboxSynchronisationLimit = 10
+PopUserAddress = 1.1.1.1
+PopSecureSockets = 0
+PopSSLWrapper = 0
+#PopGetMailOptions = 0
+PopPopulationLimit = 999
+PopAutoSendOnConnect = 1
+PopDeleteEmailsWhenDisconnecting = 0
+PopAcknowledgeReceipts = 1
+PopDisconnectedUserMode = 0
+PopAPOPEncryption = 0
+
+PopIapList = POP001 POP002
+#PopIAP = 1
+#PopCommDbDialogPref 
+#PopIAPIndex = 0
+
+POP001_PopIAP = 1
+# Should be 1 for NT-RAS   2 for WINTAP
+POP001_PopCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+POP001_PopIAPIndex = 0
+
+POP002_PopIAP = 1
+# Should be 1 for NT-RAS   2 for WINTAP
+POP002_PopCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+POP002_PopIAPIndex = 0
+
+
+
+// SMTP settings
+SmtpServerAddress = 10.22.64.6
+SmtpBodyEncoding = TMsgOutboxBodyEncoding::EMsgOutboxMIME
+SmtpRequestReceipts = 0
+SmtpSendMessageOption = TImSMTPSendMessageOption::ESendMessageOnRequest
+SmtpSetPort = 25
+SmtpEmailAlias = Pop3Top@msexchange.closedtest.intra
+#SmtpMsgCharSet = 268450576   # This is iso-8859-1 ( 0x10003B10 ) the default
+SmtpSetAddVCardToEmail = 0
+SmtpSetAddSignatureToEmail = 1
+SmtpSetSendCopyToSelf = TImSMTPSendCopyToSelf::ESendNoCopy
+SmtpSetLoginName = Pop3Top
+SmtpSetPassword = Pop3Top
+SmtpSetSMTPAuth = 0
+SmtpSetInboxLoginDetails = 0
+SmtpSetSecureSockets = 0
+SmtpSetSSLWrapper = 0
+
+
+SmtpIapList = SMTP001 SMTP002 
+
+SMTP001_SmtpIAP = 1
+SMTP001_SmtpCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+SMTP001_SmtpIAPIndex = 0
+
+
+SMTP001_SmtpIAP = 1
+SMTP001_SmtpCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+SMTP001_SmtpIAPIndex = 0

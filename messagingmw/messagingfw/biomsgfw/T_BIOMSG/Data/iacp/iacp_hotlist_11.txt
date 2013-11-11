@@ -1,0 +1,8 @@
+//SIAP11
+password
+Hname:hotlist_11
+Hurl:http://www.hotlist_11.com
+Haap:Y
+Hiap:hotlist_iap_11
+Hdir:hotlist_dir_11
+

@@ -1,0 +1,98 @@
+/*
+* Copyright (c) 2002 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project defenition file for mmftstone
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+//TARGET          MmfTsTone.dll
+TARGET          AudioToneTestModule.dll
+TARGETTYPE      dll
+UID             0x1000008D 0x101FB3E7
+
+#if defined(EKA2)
+CAPABILITY      ALL -TCB
+/* Remove comments and replace 0x00000000 with correct vendor id */
+// VENDORID     0x00000000
+/* Remove comments and replace 0x00000000 with correct secure id */
+// SECUREID     0x00000000
+#endif
+
+DEFFILE         MmfTsTone.def
+//TARGETPATH      ?target_path
+
+SOURCEPATH      ../src
+SOURCE  MmfTsTone.cpp
+SOURCE  MmfTsTone_core.cpp
+SOURCE  TonePlayer.cpp
+
+//Uses ActiveScheduledTestModule version EntregaMMF2
+SOURCE  ../../ActiveScheduledTestModule/src/ActiveScheduledTestModuleBase.cpp
+SOURCE  ../../ActiveScheduledTestModule/src/OutputPrinter.cpp
+SOURCE  ../../ActiveScheduledTestModule/src/DTMFParameters.cpp
+SOURCE  ../../ActiveScheduledTestModule/src/ObjectCountDown.cpp
+SOURCE  ../../ActiveScheduledTestModule/src/EventTarget.cpp
+SOURCE  ../../ActiveScheduledTestModule/src/Parameters.cpp
+SOURCE  ../../ActiveScheduledTestModule/src/MediaEvent.cpp
+SOURCE  ../../ActiveScheduledTestModule/src/FileNameParameters.cpp
+SOURCE  ../../ActiveScheduledTestModule/src/Des8Parameters.cpp
+SOURCE  ../../ActiveScheduledTestModule/src/TemplateParameters.cpp
+
+//RESOURCE        resource_file
+//RESOURCE        resource_file2
+
+USERINCLUDE     ../inc
+USERINCLUDE     ../../ActiveScheduledTestModule/inc
+ 
+
+
+MW_LAYER_SYSTEMINCLUDE 
+
+
+LIBRARY         euser.lib
+LIBRARY         ecom.lib
+LIBRARY         stiftestinterface.lib
+LIBRARY		efsrv.lib
+LIBRARY		mediaclientaudio.lib
+
+
+LANG            SC
+
+/*
+START WINS      
+?wins_specific_information
+END
+
+START MARM
+?marm_specific_information
+END
+*/
+// Other possible keywords:
+ 
+// DOCUMENT     ?file, that is not compiled, but added to MSVC project workspace (i.e. release notes)
+/*
+START BITMAP ?target
+TARGETPATH   ?emulated_path_on_target_machine
+HEADER
+SOURCEPATH   ?source_path
+SOURCE       ?color_depth ?source_bitmap
+END
+*/
+// AIF ?filename
+
+
+
+// End of File

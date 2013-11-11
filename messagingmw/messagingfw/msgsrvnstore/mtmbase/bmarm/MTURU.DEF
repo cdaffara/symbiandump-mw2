@@ -1,0 +1,35 @@
+EXPORTS
+	__Q214CBaseMtmUiData14TMtmUiFunctionRCQ214CBaseMtmUiData14TMtmUiFunction @ 1 NONAME R3UNUSED ; CBaseMtmUiData::TMtmUiFunction::TMtmUiFunction(CBaseMtmUiData::TMtmUiFunction const &)
+	ConstructL__10CBaseMtmUi @ 2 NONAME R3UNUSED ; CBaseMtmUi::ConstructL(void)
+	ConstructL__14CBaseMtmUiData @ 3 NONAME R3UNUSED ; CBaseMtmUiData::ConstructL(void)
+	CopyFromL__10CBaseMtmUiRC18CMsvEntrySelectionlR14TRequestStatus @ 4 NONAME ; CBaseMtmUi::CopyFromL(CMsvEntrySelection const &, long, TRequestStatus &)
+	CopyToL__10CBaseMtmUiRC18CMsvEntrySelectionR14TRequestStatus @ 5 NONAME R3UNUSED ; CBaseMtmUi::CopyToL(CMsvEntrySelection const &, TRequestStatus &)
+	CreateBitmapsL__14CBaseMtmUiDataiRC7TDesC16ii @ 6 NONAME ; CBaseMtmUiData::CreateBitmapsL(int, TDesC16 const &, int, int)
+	CreateL__10CBaseMtmUiRC9TMsvEntryR9CMsvEntryR14TRequestStatus @ 7 NONAME ; CBaseMtmUi::CreateL(TMsvEntry const &, CMsvEntry &, TRequestStatus &)
+	DeleteFromL__10CBaseMtmUiRC18CMsvEntrySelectionR14TRequestStatus @ 8 NONAME R3UNUSED ; CBaseMtmUi::DeleteFromL(CMsvEntrySelection const &, TRequestStatus &)
+	DeleteServiceL__10CBaseMtmUiRC9TMsvEntryR14TRequestStatus @ 9 NONAME R3UNUSED ; CBaseMtmUi::DeleteServiceL(TMsvEntry const &, TRequestStatus &)
+	DisplayProgressSummary__C10CBaseMtmUiRC6TDesC8 @ 10 NONAME R3UNUSED ; CBaseMtmUi::DisplayProgressSummary(TDesC8 const &) const
+	FunctionRecognised__C14CBaseMtmUiDatai @ 11 NONAME R3UNUSED ; CBaseMtmUiData::FunctionRecognised(int) const
+	GetProgress__C10CBaseMtmUiRC6TDesC8Rt4TBuf1i255RiN33 @ 12 NONAME ; CBaseMtmUi::GetProgress(TDesC8 const &, TBuf<255> &, int &, int &, int &, int &) const
+	InvokeAsyncFunctionL__10CBaseMtmUiiRC18CMsvEntrySelectionR14TRequestStatusR5TDes8 @ 13 NONAME ; CBaseMtmUi::InvokeAsyncFunctionL(int, CMsvEntrySelection const &, TRequestStatus &, TDes8 &)
+	InvokeSyncFunctionL__10CBaseMtmUiiRC18CMsvEntrySelectionR5TDes8 @ 14 NONAME ; CBaseMtmUi::InvokeSyncFunctionL(int, CMsvEntrySelection const &, TDes8 &)
+	MoveFromL__10CBaseMtmUiRC18CMsvEntrySelectionlR14TRequestStatus @ 15 NONAME ; CBaseMtmUi::MoveFromL(CMsvEntrySelection const &, long, TRequestStatus &)
+	MoveToL__10CBaseMtmUiRC18CMsvEntrySelectionR14TRequestStatus @ 16 NONAME R3UNUSED ; CBaseMtmUi::MoveToL(CMsvEntrySelection const &, TRequestStatus &)
+	NewL__14CMtmUiRegistryR11CMsvSessionG27TTimeIntervalMicroSeconds32 @ 17 NONAME R3UNUSED ; CMtmUiRegistry::NewL(CMsvSession &, TTimeIntervalMicroSeconds32)
+	NewL__18CMtmUiDataRegistryR11CMsvSessionG27TTimeIntervalMicroSeconds32 @ 18 NONAME R3UNUSED ; CMtmUiDataRegistry::NewL(CMsvSession &, TTimeIntervalMicroSeconds32)
+	NewMtmUiDataLayerL__18CMtmUiDataRegistryRC4TUid @ 19 NONAME R3UNUSED ; CMtmUiDataRegistry::NewMtmUiDataLayerL(TUid const &)
+	NewMtmUiL__14CMtmUiRegistryR8CBaseMtm @ 20 NONAME R3UNUSED ; CMtmUiRegistry::NewMtmUiL(CBaseMtm &)
+	Preferences__C10CBaseMtmUi @ 21 NONAME R3UNUSED ; CBaseMtmUi::Preferences(void) const
+	QueryCapability__10CBaseMtmUiG4TUidRi @ 22 NONAME R3UNUSED ; CBaseMtmUi::QueryCapability(TUid, int &)
+	ReadFunctionsFromResourceFileL__14CBaseMtmUiDatai @ 23 NONAME R3UNUSED ; CBaseMtmUiData::ReadFunctionsFromResourceFileL(int)
+	Session__C10CBaseMtmUi @ 24 NONAME R3UNUSED ; CBaseMtmUi::Session(void) const
+	SetPreferences__10CBaseMtmUiUi @ 25 NONAME R3UNUSED ; CBaseMtmUi::SetPreferences(unsigned int)
+	UnDeleteFromL__10CBaseMtmUiRC18CMsvEntrySelectionR14TRequestStatus @ 26 NONAME R3UNUSED ; CBaseMtmUi::UnDeleteFromL(CMsvEntrySelection const &, TRequestStatus &)
+	"_._10CBaseMtmUi" @ 27 NONAME R3UNUSED ; CBaseMtmUi::~CBaseMtmUi(void)
+	"_._14CBaseMtmUiData" @ 28 NONAME R3UNUSED ; CBaseMtmUiData::~CBaseMtmUiData(void)
+	__10CBaseMtmUiR8CBaseMtmR17CRegisteredMtmDll @ 29 NONAME R3UNUSED ; CBaseMtmUi::CBaseMtmUi(CBaseMtm &, CRegisteredMtmDll &)
+	__14CBaseMtmUiDataR17CRegisteredMtmDll @ 30 NONAME R3UNUSED ; CBaseMtmUiData::CBaseMtmUiData(CRegisteredMtmDll &)
+	__Q214CBaseMtmUiData14TMtmUiFunctionR15TResourceReader @ 31 NONAME R3UNUSED ; CBaseMtmUiData::TMtmUiFunction::TMtmUiFunction(TResourceReader &)
+	CanUnDeleteFromEntryL__C14CBaseMtmUiDataRC9TMsvEntryRi @ 32 NONAME R3UNUSED ; CBaseMtmUiData::CanUnDeleteFromEntryL(TMsvEntry const &, int &) const
+	LaunchEditorL__9MturUtilsl @ 33 NONAME R3UNUSED ; MturUtils::LaunchEditorL(long)
+	LaunchEditorAndWaitL__9MturUtilsl @ 34 NONAME ; MturUtils::LaunchEditorAndWaitL(long)

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api id="1415c3e1b254038cedfe73cdad7ebc93" dataversion="2.0">
+  <name>default_emergency_numbers_api</name>
+  <description>Central Repository keys for default emergency numbers.</description>
+  <type>c++</type>
+  <collection>phoneclientserver</collection>
+  <libs/>
+  <release category="platform" sinceversion="5.0"/>
+  <attributes>
+    <htmldocprovided>no</htmldocprovided>
+    <adaptation>no</adaptation>
+  </attributes>
+</api>

@@ -1,0 +1,70 @@
+// Copyright (c) 2006-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// Component description file for Smtp test Server
+// 
+//
+
+PRJ_TESTMMPFILES
+T_SmtpServer.mmp
+
+PRJ_TESTEXPORTS
+// **** Test Suite: Messaging.Email.smtp.mobility
+../scripts/mobility/msg-smtp-mobility1.script 	/epoc32/winscw/c/msgtest/email/smtp/mobility/msg-smtp-mobility1.script
+../testdata/mobility/msg-smtp-mobility1.ini 	/epoc32/winscw/c/msgtest/email/smtp/mobility/msg-smtp-mobility1.ini
+
+// **** Test Suite: messaging.email.smtp.bearermobility
+../scripts/bearermobility/msg-smtp-bearermobility1.script	/epoc32/winscw/c/msgtest/email/smtp/bearermobility/msg-smtp-bearermobility1.script
+../testdata/bearermobility/msg-smtp-bearermobility1.ini		/epoc32/winscw/c/msgtest/email/smtp/bearermobility/msg-smtp-bearermobility1.ini
+
+// **** Test Suite: messaging.email.smtp.snap
+../scripts/snap/msg-smtp-snap1.script	/epoc32/winscw/c/msgtest/email/smtp/snap/msg-smtp-snap1.script
+../testdata/snap/msg-smtp-snap1.ini		/epoc32/winscw/c/msgtest/email/smtp/snap/msg-smtp-snap1.ini
+
+// **** Test Suite: messaging.email.smtp.migration
+../scripts/migration/msg-smtp-migration1.script	/epoc32/winscw/c/msgtest/email/smtp/migration/msg-smtp-migration1.script
+../testdata/migration/msg-smtp-migration1.ini		/epoc32/winscw/c/msgtest/email/smtp/migration/msg-smtp-migration1.ini
+../scripts/migration/msg-smtp-migration2.script	/epoc32/winscw/c/msgtest/email/smtp/migration/msg-smtp-migration2.script
+../testdata/migration/msg-smtp-migration2.ini		/epoc32/winscw/c/msgtest/email/smtp/migration/msg-smtp-migration2.ini
+../scripts/migration/msg-smtp-migration3.script	/epoc32/winscw/c/msgtest/email/smtp/migration/msg-smtp-migration3.script
+../testdata/migration/msg-smtp-migration3.ini		/epoc32/winscw/c/msgtest/email/smtp/migration/msg-smtp-migration3.ini
+
+// Email Account Settings files
+../testdata/EmailSettings/SMTPSettings_test908.txt /epoc32/winscw/c/msgtest/config/emailsettings/smtpsettings_test908.txt
+
+../testdata/EmailSettings/SMTPServerIAPSettings.txt			/epoc32/winscw/c/msgtest/config/emailsettings/smtpserveriapsettings.txt
+../testdata/EmailSettings/SMTPServerSNAPSettings.txt		/epoc32/winscw/c/msgtest/config/emailsettings/smtpserversnapsettings.txt
+../testdata/EmailSettings/SMTPServerSNAPandIAPSettings.txt	/epoc32/winscw/c/msgtest/config/emailsettings/smtpserversnapandiapsettings.txt
+../testdata/EmailSettings/SMTPServerSNAPandBMSettings.txt	/epoc32/winscw/c/msgtest/config/emailsettings/smtpserversnapandbmsettings.txt
+../testdata/EmailSettings/SMTP_SNAPID.txt					/epoc32/winscw/c/msgtest/config/emailsettings/smtp_snapid.txt
+../testdata/EmailSettings/SMTPServerBMSettings.txt			/epoc32/winscw/c/msgtest/config/emailsettings/smtpserverbmsettings.txt
+../testdata/EmailSettings/SMTP_BM_OFF.txt					/epoc32/winscw/c/msgtest/config/emailsettings/smtp_bm_off.txt
+../testdata/EmailSettings/SMTP_BM_ON.txt					/epoc32/winscw/c/msgtest/config/emailsettings/smtp_bm_on.txt
+
+#ifndef _COMMON_EMAIL_SETTINGS_FILES_
+#define _COMMON_EMAIL_SETTINGS_FILES_
+../testdata/EmailSettings/ced_default_ras_with_SNAPs.cfg	/epoc32/winscw/c/ced_default_ras_with_snaps.cfg
+#endif //End of _COMMON_EMAIL_SETTINGS_FILES_
+
+// Email Message files
+../testdata/EmailMessage/smtp1KBody.txt /epoc32/winscw/c/msgtest/config/emailmessage/smtp1kbody.txt
+../testdata/EmailMessage/smtp1KBody2.txt /epoc32/winscw/c/msgtest/config/emailmessage/smtp1kbody2.txt
+
+// IBY file
+msg_tp_smtp.iby    /epoc32/rom/include/msg_tp_smtp.iby
+
+//codenomicon tests
+../scripts/codenomicon/msg-smtp-codenomicon_ehlo.script	/epoc32/winscw/c/msgtest/email/smtp/codenomicon/msg-smtp-codenomicon_ehlo.script
+../scripts/codenomicon/msg-smtp-codenomicon.script	/epoc32/winscw/c/msgtest/email/smtp/codenomicon/msg-smtp-codenomicon.script
+../testdata/codenomicon/msg-smtp-codenomicon_ehlo.ini		/epoc32/winscw/c/msgtest/email/smtp/codenomicon/msg-smtp-codenomicon_ehlo.ini
+../testdata/codenomicon/msg-smtp-codenomicon.ini		/epoc32/winscw/c/msgtest/email/smtp/codenomicon/msg-smtp-codenomicon.ini

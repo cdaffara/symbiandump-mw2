@@ -1,0 +1,82 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file for MnRefProvider
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET              mnrefprovider.exe
+TARGETTYPE          exe
+EPOCSTACKSIZE       0x5000
+UID                 0x100039CE 0x03132013
+
+VENDORID            VID_DEFAULT
+CAPABILITY          ReadUserData WriteUserData Location
+
+SOURCEPATH          ../src
+
+SOURCE              mnrefprovider.cpp
+SOURCE              mnrpapplication.cpp
+SOURCE              mnrpappui.cpp
+SOURCE              mnrpdocument.cpp
+SOURCE              mnrpappserver.cpp
+
+SOURCE              mnrpappview.cpp
+SOURCE              mnrpappcontrol.cpp
+
+SOURCE              mnrpmapview.cpp
+SOURCE              mnrpmapcontrol.cpp
+
+SOURCE              mnrpnaviview.cpp
+SOURCE              mnrpnavimodel.cpp
+SOURCE              mnrpnavicontrol.cpp
+
+SOURCE              mnrpnavigationservice.cpp
+SOURCE              mnrpmapviewservice.cpp
+
+USERINCLUDE         ../inc
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY             euser.lib efsrv.lib estor.lib apparc.lib bafl.lib
+LIBRARY             cone.lib eikcore.lib eikcoctl.lib eikctl.lib eikdlg.lib
+
+LIBRARY             avkon.lib aknskins.lib aknicon.lib
+LIBRARY             egul.lib gdi.lib ws32.lib fbscli.lib
+LIBRARY             imageconversion.lib
+
+LIBRARY             eposlandmarks.lib eposlmsearchlib.lib
+LIBRARY             lbs.lib
+LIBRARY             mnservicelib.lib
+
+LIBRARY             mnrefproviderengine.lib
+
+DEBUGLIBRARY        flogger.lib
+
+START RESOURCE      ../data/MnRefProvider.rss
+HEADER
+TARGETPATH          /resource/apps
+END
+
+START RESOURCE      ../data/MnRefProvider_reg.rss
+DEPENDS mnrefprovider.rsg
+TARGETPATH          /private/10003a3f/apps
+END
+
+SMPSAFE
+
+// END OF FILE
+

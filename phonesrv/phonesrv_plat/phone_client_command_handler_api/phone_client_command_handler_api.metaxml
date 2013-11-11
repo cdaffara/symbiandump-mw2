@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<api id="176090a3366aa192df5f1fdcc471ee61" dataversion="1.0">
+  <name>Phone Client Command Handler API</name>
+  <description>API for PhoneClient Command Handler commands</description>
+  <type>c++</type>
+  <subsystem>phoneclientserver</subsystem>
+  <libs>
+     <lib name="PhoneClient.lib" />
+  </libs>
+  <release category="domain"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>yes</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

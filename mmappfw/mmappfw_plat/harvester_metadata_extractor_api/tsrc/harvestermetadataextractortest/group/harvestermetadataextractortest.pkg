@@ -1,0 +1,63 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: Package file for project StifTFW
+;
+;
+; Installation file for STIF
+;
+
+; Languages
+&EN
+
+; Package header
+#{"STIF harvestermetadataextractor Test Application"},(0x101F7961),1,1,0,TYPE=SA
+
+; Localised Vendor name
+%{"Nokia EN"}
+
+; Unique Vendor name
+:"Nokia"
+
+; Logo
+; None
+
+; Package signature - Optional
+; None
+
+; Start of Package body
+
+; Condition blocks
+; None
+
+; Options list
+; None
+
+; Install files
+
+"..\..\data\mmc\mpxtest1.mp3"   -   "e:\testing\data\mpxtest1.mp3"
+"..\..\init\TestFramework.ini"   -   "c:\testframework\TestFramework.ini" 
+"..\..\conf\harvestermetadataextractortest.cfg"   -   "c:\testframework\harvestermetadataextractortest.cfg"
+
+"\epoc32\release\armv5\urel\harvestermetadataextractortest.dll"   -   "c:\Sys\Bin\harvestermetadataextractortest.dll"
+  
+; Embedded SIS 
+; None
+
+; End of Package body
+
+; PKG dependencies
+; None
+
+; PKG capabilities
+; None

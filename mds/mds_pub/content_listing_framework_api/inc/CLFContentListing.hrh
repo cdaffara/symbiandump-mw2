@@ -1,0 +1,161 @@
+/*
+* Copyright (c) 2002-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+#ifndef CLFCONTENTLISTING_HRH
+#define CLFCONTENTLISTING_HRH
+
+// DATA TYPES
+
+/**
+*  Content Listing Framework list model media types.
+*/
+enum TCLFMediaType
+    {
+    /// Unknown media type
+    ECLFMediaTypeUnknown        = 0x0,
+    /// Music media type
+    ECLFMediaTypeMusic          = 0x1,
+    /// Sound media type
+    ECLFMediaTypeSound          = 0x2,
+    /// Image media type
+    ECLFMediaTypeImage          = 0x3,
+    /// Video media type
+    ECLFMediaTypeVideo          = 0x4,
+    /// Streaming URLs
+    ECLFMediaTypeStreamingURL   = 0x5,
+    /// Playlists
+    ECLFMediaTypePlaylist       = 0x6,
+    /// Presentations
+    ECLFMediaTypePresentations  = 0x8
+    };
+
+/**
+*  Content Listing Framework list model grouping styles.
+*/
+enum TCLFGrouping
+    {
+    /// No grouping
+    ECLFNoGrouping          = 0x0,
+    /// Model groups items to music albums
+    ECLFMusicAlbumGrouping  = 0x1
+    };
+
+/**
+*  Content Listing Framework sorting style orderings.
+*/
+enum TCLFSortingStyleOrdering
+    {
+    /// Ascending sorting order
+    ECLFOrderingAscending   = 0x0,
+    /// Descending sorting order
+    ECLFOrderingDescending  = 0x1
+    };
+
+/**
+*  Content Listing Framework undefined item position.
+*/
+enum TCLFUndefinedItemPosition
+    {
+    /// Undefined items are added to end in the list
+    ECLFSortingStyleUndefinedEnd   = 0x0,
+    /// Undefined items are added to first in the list
+    ECLFSortingStyleUndefinedFirst  = 0x1
+    };
+
+/**
+*  Content Listing Framework item fields data types.
+*/
+enum TCLFItemDataType
+    {
+    /// Undefined data type, do not use
+    ECLFItemDataTypeNull    = 0x0,
+    /// Data type is Integer
+    ECLFItemDataTypeTInt32  = 0x1,
+    /// Data type is descriptor
+    ECLFItemDataTypeDesC    = 0x2,
+    /// Data type is date/time
+    ECLFItemDataTypeTTime   = 0x3
+    };
+
+/**
+*  Content Listing Framework item field IDs.
+*/
+enum TCLFDefaultFieldId
+    {
+    /// Null field ID, do not use
+    ECLFFieldIdNull                 = 0x00000000,
+    // File data
+    /// File name field:
+    /// descriptor
+    ECLFFieldIdFileName             = 0x00000001,
+    /// File name field:
+    /// descriptor
+    ECLFFieldIdFileExtension        = 0x00000002,
+    /// File path field:
+    /// descriptor
+    ECLFFieldIdPath                 = 0x00000003,
+    /// File drive field:
+    /// descriptor
+    ECLFFieldIdDrive                = 0x00000004,
+    /// File size field:
+    /// integer
+    ECLFFieldIdFileSize             = 0x00000005,
+    /// File date field:
+    /// date/time
+    ECLFFieldIdFileDate             = 0x00000006,
+    /// Mime type field:
+    /// descriptor
+    ECLFFieldIdMimeType             = 0x00000007,
+    /// Media type field:
+    /// integer
+    ECLFFieldIdMediaType            = 0x00000008,
+    /// Full name and path of the file:
+    /// descriptor
+    ECLFFieldIdFileNameAndPath      = 0x0000000B,
+
+    /// Music file song name:
+    /// descriptor
+    ECLFFieldIdSongName             = 0x00001000,
+    /// Music file artist:
+    /// descriptor
+    ECLFFieldIdArtist               = 0x00001001,
+    /// Music file album:
+    /// descriptor
+    ECLFFieldIdAlbum                = 0x00001002,
+    /// Music file genre:
+    /// descriptor
+    ECLFFieldIdGenre                = 0x00001003,
+    /// Music file track number:
+    /// integer
+    ECLFFieldIdTrackNumber          = 0x00001004,
+    /// Music file composer:
+    /// descriptor
+    ECLFFieldIdComposer             = 0x00001104,
+
+    /// Ram link first URL:
+    /// descriptor
+    ECLFFieldIdRamLinkFirstURL      = 0x00001200,
+
+    /// Playlist song count:
+    /// integer
+    ECLFFieldIdPlaylistSongCount    = 0x00001201
+    };
+
+#endif
+
+// End of File

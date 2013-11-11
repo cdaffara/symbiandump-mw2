@@ -1,0 +1,11 @@
+EXPORTS
+	_ZN21CVideoPlaylistUtility12GetFileInfoLER5RFileN16CMediaRecognizer10TMediaTypeERiS4_ @ 1 NONAME
+	_ZN21CVideoPlaylistUtility12GetFileInfoLERK7TDesC16N16CMediaRecognizer10TMediaTypeERiS5_ @ 2 NONAME
+	_ZN21CVideoPlaylistUtility12GetPlayListLEi @ 3 NONAME
+	_ZN21CVideoPlaylistUtility4NewLEv @ 4 NONAME
+	_ZN21CVideoPlaylistUtility9GetLinkLCEv @ 5 NONAME
+	_ZN21CVideoPlaylistUtilityD0Ev @ 6 NONAME
+	_ZN21CVideoPlaylistUtilityD1Ev @ 7 NONAME
+	_ZN21CVideoPlaylistUtilityD2Ev @ 8 NONAME
+	_ZN21CVideoPlaylistUtility10IsSeekableEv @ 9 NONAME
+

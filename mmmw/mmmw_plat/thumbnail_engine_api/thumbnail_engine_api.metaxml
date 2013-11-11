@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api id="2f5bdfb86150f848ab2fceed34e8f3e6" dataversion="2.0">
+  <name>Thumbnail Engine API</name>
+  <description>Provides the means to read a frame from a video content file and return it as an RGB bitmap.</description>
+  <type>c++</type>
+  <collection>mmserv</collection>
+  <libs>
+    <lib name="TNEEngine.lib"/>
+  </libs>
+  <release category="platform" sinceversion="3.0"/>
+  <attributes>
+    <!-- This indicates wether the api provedes separate html documentation -->
+    <!-- or is the additional documentation generated from headers. -->
+    <!-- If you are unsuere then the value is "no" -->
+    <htmldocprovided>no</htmldocprovided>
+    <adaptation>no</adaptation>
+  </attributes>
+</api>

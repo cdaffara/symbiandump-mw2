@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api id="c1135c6f0792b58ac85910f8cab5db21" dataversion="2.0">
+  <name>EMC DRM Config Intfc API</name>
+  <description>Interface for configuring and querying DRM Configuration information</description>
+  <type>c++</type>
+  <collection>mmfenh</collection>
+  <libs>
+    <lib name="EnhancedMediaClient.lib"/>
+  </libs>
+  <release category="platform" sinceversion="3.2"/>
+  <attributes>
+    <htmldocprovided>no</htmldocprovided>
+    <adaptation>no</adaptation>
+  </attributes>
+</api>

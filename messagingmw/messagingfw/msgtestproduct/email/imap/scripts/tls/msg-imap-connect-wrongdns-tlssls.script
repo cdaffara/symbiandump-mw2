@@ -1,0 +1,55 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+LOAD_SUITE	T_MsgCommonServer	-SharedData
+LOAD_SUITE	T_MsgImapServer		-SharedData
+
+
+START_TESTCASE	MSG-IMAP-CONNECT-WRONGDNS-TLSSLS-0001
+
+//!	@SYMTestCaseID			MSG-IMAP-CONNECT-WRONGDNS-TLSSLS-0001
+//!	@SYMTestCaseDesc			This test checks that we can connect to an IMAP server and that
+//!                                     		a folder called "Inbox" is created.
+//!	@SYMTestPriority			Critical
+//!   	@SYMTestType				CIT
+//!  	@SYMTestStatus				Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			Initialises the RAS connection
+//!							Resets the message store to clean up the central repository
+//!							Creates an IMAP account
+//!							Connects to the IMAP server and performs a synchronisation
+//!							Checks that the Inbox exists
+//!							Disconnects from the server
+//!	@SYMTestExpectedResults		EPass - Connection made and Inbox found
+//!	@SYMAuthor				avinash
+
+PRINT Setup Begins #####################################################
+PRINT **** msg-imap-connect-wrongdns-tlssls-0001 ****
+
+RUN_TEST_STEP	300	T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer		StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\tls\msg-imap-connect-wrongdns-tlssls.ini 	0001-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\tls\msg-imap-connect-wrongdns-tlssls.ini	0001-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\tls\msg-imap-connect-wrongdns-tlssls.ini	0001-CreateImapAccount 
+RUN_TEST_STEP   !error=-39 300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\tls\msg-imap-connect-wrongdns-tlssls.ini 	0001-ConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-CONNECT-WRONGDNS-TLSSLS-0001

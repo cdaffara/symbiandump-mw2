@@ -1,0 +1,47 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRINT Running  EMsvServiceActive
+
+//******************************************
+//   
+//******************************************
+
+PRINT Running  EMsvServiceActive : Read Caps = full  Different SID. Should Always Pass.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_caps.exe 0003fffe -SID 101F7776 C:\sys\bin\MessagingTestServer.exe
+
+RUN_PROGRAM -1 setcap c:\sys\bin\SendProxyServer_caps.exe 0003fffe -SID 101F7777 C:\sys\bin\SendProxyServer.exe
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvServiceActive.script
+
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+//******************************************
+
+PRINT Running  EMsvServiceActive : Read Caps = None  Different SID. Should Always Pass.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_caps.exe 0003fffe -SID 101F7776 C:\sys\bin\MessagingTestServer.exe
+
+RUN_PROGRAM -1 setcap c:\sys\bin\SendProxyServer_caps.exe 00000000 -SID 101F7777 C:\sys\bin\SendProxyServer.exe
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvServiceActive.script
+
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script

@@ -1,0 +1,125 @@
+#TextCriteria	CategorySearchResult (Id's)	Redefined seach	Comment
+*	1-26		
+*	1-26		
+**	1-26		
+*	1-26	1	
+Frisör	18		
+?			
+Unique			
+T*	9,10,14,15		
+N*	13		
+*oki*	13		
+Noki?			
+Nokia?			
+Nok*	13		
+x			
+enat?r			
+Text'1			
+Text'''1			
+*Enator*	14		
+*estaurang	3,6,15		
+*ontor	13,14	1	
+Nokia*	13		
+*okia			
+Nokia?			
+Tax?	10		
+T???	10		
+????	10		
+#			
+#			
+			
+			
+			
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

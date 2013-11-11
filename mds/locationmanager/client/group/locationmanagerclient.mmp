@@ -1,0 +1,60 @@
+/*
+* Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file
+*
+*/
+
+#include <platform_paths.hrh>
+#include <data_caging_paths.hrh>
+
+#if defined(WINSCW)
+deffile ../bwincw/locationmanagerclientwinscw.def
+#elif defined(EABI)
+deffile ../eabi/locationmanagerclientarm.def
+#endif
+nostrictdef
+
+VERSION         10.0
+TARGET          locationmanager.dll
+TARGETTYPE      dll
+UID             0x1000008d 0x200071BF
+
+CAPABILITY 	    CAP_CLIENT_DLL
+VENDORID 	    VID_DEFAULT
+
+USERINCLUDE	    ../inc
+USERINCLUDE	    ../../inc
+USERINCLUDE	    ../../../inc
+
+SOURCEPATH      ../src
+SOURCE          rlocationmanager.cpp
+SOURCE          rlocationtrail.cpp
+SOURCE	        rlocationobjectmanipulator.cpp 
+SOURCE          CTrackLogObserverAO.cpp
+SOURCE          rtracklog.cpp
+SOURCE          rlocationgeotagger.cpp
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY	    euser.lib  
+LIBRARY	    efsrv.lib
+LIBRARY	    lbs.lib
+LIBRARY	    mdccommon.lib
+
+PAGED
+BYTEPAIRCOMPRESSTARGET
+OPTION ARMCC -O3 -OTime
+
+// End of file
+

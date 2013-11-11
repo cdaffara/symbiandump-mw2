@@ -1,0 +1,26 @@
+/************************************************************************
+	Test case: Request command to PS using ext-if.
+		
+	1. Send request.
+*************************************************************************/	
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 12.2 Request command to PS extension interface
+timeout 15000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+// Request command
+// last parameter is expected result (KErrNone)
+test RequestExtIfCommand 2 123 "Test string for PS extension IF" 0
+
+test VerifyTest
+delete test
+[Endtest]

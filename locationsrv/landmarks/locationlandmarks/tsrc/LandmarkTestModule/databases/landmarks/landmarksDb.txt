@@ -1,0 +1,110 @@
+#CategoryId	CategoryName	Icon name	Icon index	Id	In Categories	 LandmarkName	CoverageRadius	Description	Icon name	Icon index	Street	PostalCode	City	LocationName	Country	Media Link 1	Media Link 2	Lat	Long	Hor. Acc	Vert. Acc
+1	Pizzeria	z:\\system\\test\\landmarkstestsicon.mbm	1	1	1	LOG	40	jadajadjada	ikon slask	1			Halmstad	Drivhuset Plan7		 Don't forget field medialinks 	https://www.aftonbladet.s	45,5	-44,5	10	10
+2	Hamburgerbar	z:\\system\\test\\landmarkstestsicon.mbm	1	2	1	LOG11		jadajadjada	ikon snask	1	Berghemsgatan 2	531 37	Kållered	Västra Götaland	 Sverige 	will be automatically set to no. 	https://www.aftonbladet.se	46	44	14	10
+3	Kinarestaurang	z:\\system\\test\\landmarkstestsicon.mbm	1	3	2	God	40		ikon skask	1		431 31	Mölndal	Västra Götaland	 Sverige1 	 medialinks. 	https://www.aftonbladet.se	45	45	11	10
+4	Garaget	z:\\system\\test\\landmarkstestsicon.mbm	1	4	2	vegetariskt	40	jadajadjada	ikon spask	1	Berghemsgatan 10		Mölndal	Västra Götaland	 Sverige1 	 url=http://www.come.co/to.html 	https://www.aftonbladet.se	-45,5	-44,5	0	10
+5	Bilverkstad	z:\\system\\test\\landmarkstestsicon.mbm	2	5	3	Inte sa bra	40	jadajadjada			Berghemsgatan 4	431 31		Västra Götaland	 Sverige1 	 url=http://www.come.do/to.html 	https://www.aftonbladet.se	-46,105	46,105	0	10
+6	Pasta Restaurang	z:\\system\\test\\landmarkstestsicon.mbm	2	6	3	Dyrt	50	jadajadjada	ikon PelleFant	2	Berghemsgatan 7	431 31	Mölndal		 Sverige1 	 url=http://www.pelle.com/pel.html 	https://www.aftonbladet.se	70	70	180	10
+7	Bilia		2	7	1-3,14-17	Billigt	50	jadajadjada	ikon Abibblan	2	Berghemsgatan 6	431 31	Mölndal	Västra Götaland		 url=http://www.pelle.com/pel.html 	https://www.aftonbladet.se	63	23	18	10
+8	VolksWagen	sddsa	2	8	3	Medel	50	MLFW	ikon bibblan123	2	Berghemsgatan 8	431 31	Mölndal	Västra Götaland	 Sverige1 			5	37,6	37,6	10
+9	Taxi Göteborg	dasdsada	2	9	3	Medel2	50	jadajadjada	ikon bibblan123	2	Berghemsgatan 5	431 31	Mölndal	Västra Götaland	 Sverige1 	 url=http://www.bibblan.com/bibl.html 		5	37,6	37,6	10
+10	Taxi	dsa	2	10	3	MLFW2	50	MLFW	ikon PelleFant	2	Berghemsgatan 9	431 31	Mölndal	Västra Götaland	 Sverige1 	 url=http://www.bibblan.com/bibl.html 	http://www.idg.se	-1	-81	25	0
+11	Stadsbibliotek	aaa	2	11	3	MLFW	60	aaaaaa	ikon PelleFant	2	MLFW	351 25	 HalmstadA 		 BSverige1 	 url=http://www.pelle.com/pel.html 	http://www.idg.se	0	-67	48	0
+12	Systembolag	aaa	3	12	3	GatesB	60	bbbbbbb	ikon PelleFant	3	PastaGatan L	MLFW	 HalmstadB 		 BSverige2 	 url=http://www.pelle.com/pel.html 	http://www.hotmail.com	1	-81	7	0
+13	Nokia Kontor	aaa	3	13	3	Text'''1	60	ccccccc	ikon PelleFant	3	PastaGatan N	MLFW	 MLFW 		 BSverige3 	 url=http://www.pelle.com/pel.html 	http://www.idg.se	45	-45	18	0
+14	TietoEnator kontor	aaa	3	14	5	GatesF	60	dddddddd	ikon PelleFant	3	MLFW	351 29	 HalmstadJ 		 BSverige4 	 url=http://www.svt.se	http://www.idg.se	-1	-80	168	0
+15	Thai Restaurang	bbb	3	15	5	xStekt	70	MLFW	ikon PelleFant	3	Berghemsgatan 11	431 31	 Mölndal 		Västra Götaland	 url=http://www.pelle.com/pel.html 	http://www.idg.se	-5	25		
+16	McDonalds	bbb	3	16	3	Akorthus	70	fffffffffffffffff	ikon PelleFant	3	AStora biblioteksgatan 24	A123 45	 AStorGöteborg 		AÖstra Götaland	 url=http://www.pelle.com/pel.html 	http://www.idg.se	1	-81	12	50
+17	BurgerKing	bbb	3	17	17	Stadskortxhus	70	ggghhhhhh	ikon PelleFant	3	Stora biblioteksgatan 25	321 32	 StorGöteborg123 		Östra Götaland123	 url=http://www.pelle.com/pel.html 	http://www.idg.se	57	11	11	9
+18	Frisör	bbb	3	18	18	enat?r	70	iiiijjjjjj	ikon PelleFant	3	Stora biblioteksgatan 25	321 32	 StorGöteborg123 		Östra Götaland123	 url=http://www.pelle.com/pel.html 	http://www.idg.se	0	-80,5	10,2	1,5
+19	Hunddagis	bbb	4	19	19	enator	70	kkkkklll	Gårdaikonen	4	Berghemsgatan 1				Finland	 url=http://www.pelle.com/pel.html 		23	23	10,2	1,5
+20	Veterinär	bbb	4	20	21	LOG2	70	mmmm	Gårdaikonen	4	Berghemsgatan 2	431 32	Mölndal		Västra Götaland	 url=http://www.gårda.com/sb.html 	https://www.aftonbladet.se	-1	80	10,2	1,5
+21	Kyrkogård	bbb	4	21	19	LOG3	70	nnnxnnn	Gårdaikonen	4	Berghemsgatan 3	431 33	Mölndal 		Västra Götaland	 url=http://www.gårda.com/sb.html 	https://www.aftonbladet.se	1	80	25	300
+22	Museum	bbb	4	22	22	LOG4	70	ooooooo	Gårdaikonen	4	Berghemsgatan 4	431 34	Mölndal		Västra Götaland	 url=http://www.gårda.com/sb.html 	http://www.idg.se	-1	81	10,2	1,55
+23	Dagis	bbb	4	23	23	LOG5	70	ppppppx	Gårdaikonen	4	Berghemsgatan 5	431 35	Mölndal		Västra Götaland	 url=http://www.gårda.com/sb.html 	https://www.aftonbladet.se	1	81	18	120
+24	StadsPark	bbb	4	24	24	LOG6	70	asd	Gårdaikonen	4	Berghemsgxatan 6	431 36	Mölndal		Västra Götaland	 url=http://www.gårda.com/sb.html 	http://www.idg.se	0	80,5	168,9	7000
+25	Sjukhus	bbb	4	25	25	x	70	r	Gårdaikonen	4	Berghemsgatan 7	x431 37	Mölndal		Västra Götaland	 url=http://www.gårda.com/sb.html 	https://www.aftonbladet.se	-84	12,4	12,5	10
+26	Läkare	bbb	5	26	26	LOG8	70	x	Gårdaikonen	5	Berghemsgatan 8	431 38	xMölndal		Västra Götaland	 url=http://www.gårda.com/sb.html 	https://www.aftonbladet.se	5	25	59	2000
+				27	11-17	LOG9	70	ttttt	Gårdaikonen	5	Berghemsgatan 9	431 39	Mölndal	x	Västra Götaland	 url=http://www.gårda.com/sb.html 	https://www.aftonbladet.se	-84	12		
+				28	11	LOG10	70	v	Gårdaikonen	5	Berghemsgatan 10	431 40	Mölndal		Västra Götalandx	 url=http://www.gårda.com/sb.html 	https://www.aftonbladet.se	10	14	13,9	6000
+				29	26	Unique	80		Gårdaikonen	5		256 78	Mölndal		Daanmark	 url=http://www.gårda.com/xsb.html 	https://www.aftonbladet.se	45,5	-0,5	0	1200
+				30	26	Text'1	80	Unique	Gårdaikonen	5		256 78	Götet		Daanmark	 url=http://www.gårda.com/sb.html 	https://wwwx.aftonbladet.se	45,5	0	0	112
+				31	26	Text1	80		 Focus Torget1 	56	Unique	256 78	Mölndal		Daanmark	 url=http://www.gårda.com/sb.html 	https://www.aftonbladet.se	45,5	0,5	0	0
+				32	26	Text2	80		 Focus Torget1 	6		256 78	 Unique 		Daanmark	z:\gårda\ikon	https://www.aftonbladet.se	89	-15	0	0								
+				33	26	Text3	80		 Focus Torget1 	6		256 78	Götet		Daanmark	z:\gårda\ikon	https://www.aftonbladet.se	5	37,6	0	0								
+				34	26	Text4	80		 Focus Torget1 	66		256 78	Götet		Daanmark	z:\gårda\ikon	http://www.idg.se	63	23	18	0								
+				35	26	Text5	80		 Focus Torget1 	6		256 78	Götet		Daanmark	z:\gårda\ikon	https://www.aftonbladet.se	-84,2	-2,67	168,9	0								
+				36	26	Text6	80		 Focus Torget1 	6		256 78	Götet		Daanmark	z:\gårda\ikon	http://www.idg.se	5	37,6	37,6	0								
+				37	26	Text7	80		 Focus Torget1 	6		256 78	Götet		Daanmark	z:\gårda\ikon	o	5	37,6	37,6	0								
+				38	26	Text8	80					256 78	Götet		Daanmark	z:\gårda\ikon	http://www.idg.se	5	37,6	0	0								
+				39	26	Text9	80					256 78	Götet		Daanmark			5	25	59	2000								
+				40	26	Text10	80					256 78	Götet		Daanmark			0	180	168,9	4500								
+				41	26	q	80					256 78	Götet		Daanmark			-1	180	37,6	2								
+				42	26	asd	80					256 78						1	180	37,6	1								
+				43	26	asdf						256 78						0	-179										
+				44	26	dfdsf						256 78						0	179										
+				45	26	Several		Several	Several	1	Several	Several	Several	Several	Several	Several	Several	-1	-179										
+				46	26	oki		aaa	aaa									-1	179										
+				47	26	abab		oki	aaa									1	-179										
+				48	26	Nokia		aaa	aaa		oki							1	179										
+				49	26	aba		Nokia	aaa		aaa		aaa																
+				50	26	aca		aaa	aaa			Noki																	
+				51	1	PellesPizza			IconName1		Berghemsgatan1				 Sverige 														
+				52	19	Kalles Hundgård			IconName2		Berghemsgatan2				 Sverige 			-45	-1	12	50								
+				53	21	Sjömanskyrkan			IconName3		Berghemsgatan3				 Sverige 			25,05	-5,5	13	49								
+				54	14	TE, Gårda			IconName4		Berghemsgatan4				 Sverige 			-45,5	0	14	48								
+				55	14	TE, Eriksberg			IconName5		Berghemsgatan5				 Sverige 			-46	1	15	47								
+				56	14	TE, Lund			IconName6		Berghemsgatan6				 Sverige 			19,95	78	16	46								
+				57	14	TE, Karlstad			IconName7		Berghemsgatan7				 Sverige 			45	-44										
+				58	14	TE, Kista			IconName8		Berghemsgatan8				 Sverige 			25,05	19,5										
+				59	14	TE, Stockholm			IconName9		Berghemsgatan9				 Sverige 			10,05	24,5										
+				60	14	TE, Oulu			IconName10		Berghemsgatan10				Finland			89	-180										
+				61	14	TE, Tampere			IconName11		Berghemsgatan11				Finland			89	180										
+				62	13	Nokia, Köpenhamn			IconName12		Berghemsgatan12				Danmark			90	1										
+				63	13	Nokia, Stockholm			IconName13		Berghemsgatan13				 Sverige 			90	-180										
+				64	13	Oulu			IconName14		Berghemsgatan14				 Sverige 			90	0		
+				65	13	Tampere			IconName15		Berghemsgatan15				 Sverige 			89	0		
+				66	13	Helsinki			IconName16		Berghemsgatan16				 Sverige 			-19,95	59,5		
+				67	13	Bengtfors			IconName17		Berghemsgatan17				 Sverige 			89	20		
+				68	13	Karlstad			IconName18		Berghemsgatan18				 Sverige 			89	-20		
+				69	13	Mölndal			IconName19		Berghemsgatan19				 Sverige 			90	20		
+				70	13	Göteborg			IconName20		Berghemsgatan20				 Sverige 			90	0		
+				71	13	PallesPalör			IconName21		Berghemsgatan21				 Sverige 			89	0		
+				72	26	Läkare utan gränser			IconName22		Berghemsgatan22				 Sverige 			179	120,58		
+				73	26	Mölndal			IconName23		Berghemsgatan23				 Sverige 			-89	-180		
+				74	26	Läkargruppen			IconName24		Berghemsgatan24				 Sverige 			-89	180		
+				75	26	Läkarhuset			IconName25		Berghemsgatan25				 Sverige 			-90	180		
+				76	26	Sahlgrenska			IconName26		Berghemsgatan26				 Sverige 			-90	-180		
+				77	26	östra sjukhuset			IconName27		Berghemsgatan27				 Sverige 			-90	0		
+				78	20	Blå stjärnan			IconName28		Berghemsgatan28				 Sverige 			-89	0		
+				79	10	MiniTaxi			IconName29		Berghemsgatan29				 Sverige 			137	36,65		
+				80	10	GöteborgsTaxi			IconName30		Berghemsgatan30				 Sverige 			-89	20		
+				81	10	LandvetterTaxi			IconName31		Berghemsgatan31				 Sverige 			-89	-20		
+				82	10	TaxiStockholm			IconName32		Berghemsgatan32				 Sverige 			-90	20		
+				83	10	SvartTaxi			IconName33		Berghemsgatan33				 Sverige 			113	-11,31		
+				84	22	Länsmuseumet			IconName34		Berghemsgatan34				 Sverige 			107	-23,3		
+				85	22	Sjöfartsmuseumet			IconName35		Berghemsgatan35				 Sverige 			0	0		
+				86	22	KinaMuseumet			IconName36		Berghemsgatan36				 Sverige 			-0,5	0		
+				87	22	Naturhistoriska			IconName37		Berghemsgatan37				 Sverige 			0,5	0		
+				88	22	Etnogfrafiska			IconName38		Berghemsgatan38				 Sverige 			0	0,5		
+				89	22	TekniskaMuseumet			IconName39		Berghemsgatan39				 Sverige 			0	-0,5		
+				90	23	Krokslätts dagis			IconName40		Berghemsgatan40				 Sverige 			0,5	0,5		
+				91	23	Centrum dagiset			IconName41		Berghemsgatan41				 Sverige 			0,5	-0,5		
+				92	23	Dagis Majorna			IconName42		Berghemsgatan42				 Sverige 			-0,5	0,5		
+				93	23	Lackarbäcks daghem			IconName43		Berghemsgatan43				 Sverige 			-0,5	-0,5		
+				94	23	Saab dagis			IconName44		Berghemsgatan44				 Sverige 			47	-143,2		
+				95	23	TE dagis			IconName45		Berghemsgatan45				 Sverige 			41	-155,19		
+				96	23	TietoEnator Lekstugan			IconName46		Berghemsgatan46				 Sverige 			11,00005	11,00005		
+				97	18	Panache			IconName47		Berghemsgatan47				 Sverige 			29	32		
+				98	18	Börjessons herrfrisör			IconName48		Berghemsgatan48				 Sverige 			23	4		
+				99	18	Modefrisörerna			IconName49		Berghemsgatan49				 Sverige 			17	55		
+				100	18	krokslätts frisörerna			IconName50		Berghemsgatan50				 Sverige 			11	66		
+				101	12	Gårda			IconName51		Berghemsgatan51				 Sverige 			5	77		
+				102	12	Mölndal			IconName52		Berghemsgatan52				 Sverige 			-1	88		
+				103	12	Kållered			IconName53		Berghemsgatan53				 Sverige 			-7	56,56		
+				104	12	Nordstan			IconName54		Berghemsgatan54				 Sverige 			-13	54,45		
+				105	12	Munkebäck			IconName55		Berghemsgatan55				 Sverige 			17,0005	17,0005		
+#																					
+#																					
+#																					
+#																					

@@ -1,0 +1,50 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  File that exports the files belonging to 
+:                phone settings api
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+../inc/psetconstants.h     MW_LAYER_PLATFORM_EXPORT_PATH(psetconstants.h)
+../inc/psetcallwaiting.h     MW_LAYER_PLATFORM_EXPORT_PATH(psetcallwaiting.h)
+../inc/mpsetnetworkmode.h     MW_LAYER_PLATFORM_EXPORT_PATH(mpsetnetworkmode.h)
+../inc/mpsetcallwaiting.h     MW_LAYER_PLATFORM_EXPORT_PATH(mpsetcallwaiting.h)
+../inc/mpsetcli.h     MW_LAYER_PLATFORM_EXPORT_PATH(mpsetcli.h)
+../inc/psetcsp.h     MW_LAYER_PLATFORM_EXPORT_PATH(psetcsp.h)
+../inc/psetnetwork.h     MW_LAYER_PLATFORM_EXPORT_PATH(psetnetwork.h)
+../inc/mpsetcalldiverting.h     MW_LAYER_PLATFORM_EXPORT_PATH(mpsetcalldiverting.h)
+../inc/psetrefreshhandler.h     MW_LAYER_PLATFORM_EXPORT_PATH(psetrefreshhandler.h)
+../inc/nwdefs.h     MW_LAYER_PLATFORM_EXPORT_PATH(nwdefs.h)
+../inc/psetcontainer.h     MW_LAYER_PLATFORM_EXPORT_PATH(psetcontainer.h)
+../inc/psetcalldiverting.h     MW_LAYER_PLATFORM_EXPORT_PATH(psetcalldiverting.h)
+../inc/mpsetnetworkselect.h     MW_LAYER_PLATFORM_EXPORT_PATH(mpsetnetworkselect.h)
+../inc/psetcallbarring.h     MW_LAYER_PLATFORM_EXPORT_PATH(psetcallbarring.h)
+../inc/psetsaobserver.h     MW_LAYER_PLATFORM_EXPORT_PATH(psetsaobserver.h)
+../inc/mpsetcallbarring.h     MW_LAYER_PLATFORM_EXPORT_PATH(mpsetcallbarring.h)
+../inc/psetcli.h     MW_LAYER_PLATFORM_EXPORT_PATH(psetcli.h)
+../inc/psetcallbarringwrapper.h     MW_LAYER_PLATFORM_EXPORT_PATH(psetcallbarringwrapper.h)
+../inc/psetcalldivertingwrapper.h     MW_LAYER_PLATFORM_EXPORT_PATH(psetcalldivertingwrapper.h)
+../inc/psetcallwaitingwrapper.h     MW_LAYER_PLATFORM_EXPORT_PATH(psetcallwaitingwrapper.h)
+../inc/psetcliwrapper.h   MW_LAYER_PLATFORM_EXPORT_PATH(psetcliwrapper.h)
+../inc/psetnetworkwrapper.h     MW_LAYER_PLATFORM_EXPORT_PATH(psetnetworkwrapper.h)
+../inc/psetwrapper.h    MW_LAYER_PLATFORM_EXPORT_PATH(psetwrapper.h)
+../inc/psetwrappertypes.h   MW_LAYER_PLATFORM_EXPORT_PATH(psetwrappertypes.h)

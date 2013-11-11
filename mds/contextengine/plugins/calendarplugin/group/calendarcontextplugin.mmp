@@ -1,0 +1,65 @@
+/*
+* Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file
+*
+*/
+
+
+#include <platform_paths.hrh>
+#include <data_caging_paths.hrh>
+
+VERSION       10.0
+TARGET        calendarcontextplugin.dll
+TARGETTYPE    PLUGIN
+UID           0x10009D8D 0x102823CA
+
+CAPABILITY 	  CAP_ECOM_PLUGIN
+VENDORID      VID_DEFAULT
+
+SYSTEMINCLUDE /epoc32/include/ecom
+
+USERINCLUDE   ../../../../inc
+USERINCLUDE   ../inc
+
+SOURCEPATH    ../src
+SOURCE        CalendarContextPlugin.cpp
+SOURCE        proxy.cpp
+
+SOURCEPATH    ../data
+start RESOURCE 102823CA.rss
+target calendarcontextplugin.rsc
+end
+
+APP_LAYER_SYSTEMINCLUDE
+
+LIBRARY       euser.lib
+LIBRARY       ECom.lib
+LIBRARY       inetprotutil.lib
+LIBRARY       contextplugininterface.lib
+LIBRARY       mdeclient.lib
+LIBRARY       calinterimapi.lib
+LIBRARY	  estor.lib 
+LIBRARY	  harvesterdata.lib
+
+MACRO CALCON_LOGGING_ON
+#define CALCON_LOGGING_ON
+
+#ifdef CALCON_LOGGING_ON
+LIBRARY		efsrv.lib
+#endif
+
+PAGED
+BYTEPAIRCOMPRESSTARGET
+OPTION ARMCC -O2 -OTime
+

@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="dialpad.css">resources/dialpad.css</file>
+        <file alias="dialpad_color.css">resources/dialpad_color.css</file>
+        <file alias="dialpad_to_prt.fxml">resources/dialpad_to_prt.fxml</file>
+        <file alias="dialpad_to_lsc.fxml">resources/dialpad_to_lsc.fxml</file>
+    </qresource>
+</RCC>

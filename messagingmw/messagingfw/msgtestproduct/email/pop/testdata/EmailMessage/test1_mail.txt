@@ -1,0 +1,32 @@
+From: test908@msexchange2k.closedtest.intra
+To: test908@msexchange2k.closedtest.intra
+Subject: test_mail_1
+Date: Thu, 27 May 2004 14:57:46 +0100
+MIME-Version: 1.0
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: 7bit
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 5.50.4807.1700
+X-MIMEOLE: Produced By Microsoft MimeOLE V5.50.4910.0300
+Return-Path: test908@msexchange2k.closedtest.intra
+X-OriginalArrivalTime: 27 May 2004 13:56:26.0093 (UTC) FILETIME=[66E951D0:01C443F2]
+
+test 1 line 1  -
+test 1 line 2  -
+test 1 line 3  -
+test 1 line 4  -
+test 1 line 5  -
+test 1 line 6  -
+test 1 line 7  -
+test 1 line 8  -
+test 1 line 9  -
+test 1 line 10 -
+
+
+
+
+
+
+

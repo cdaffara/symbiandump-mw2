@@ -1,0 +1,6 @@
+EXPORTS
+	?NewL@CSpoofServer@@SAPAV1@AAVMImapTestEventHandler@@ABVTDesC16@@@Z @ 1 NONAME ; class CSpoofServer * CSpoofServer::NewL(class MImapTestEventHandler &, class TDesC16 const &)
+	?NewLC@CSpoofServer@@SAPAV1@AAVMImapTestEventHandler@@ABVTDesC16@@@Z @ 2 NONAME ; class CSpoofServer * CSpoofServer::NewLC(class MImapTestEventHandler &, class TDesC16 const &)
+	?RunError@CSpoofServer@@EAEHH@Z @ 3 NONAME ; int CSpoofServer::RunError(int)
+	?StartL@CSpoofServer@@QAEXH@Z @ 4 NONAME ; void CSpoofServer::StartL(int)
+

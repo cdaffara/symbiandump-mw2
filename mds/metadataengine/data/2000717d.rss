@@ -1,0 +1,53 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+// 2000717D.RSS
+
+#include "RegistryInfoV2.rh"
+
+// Declares info for one test implementation
+RESOURCE REGISTRY_INFO theInfo
+	{
+	
+  // resource_format_version must always be set as follows
+  resource_format_version = RESOURCE_FORMAT_VERSION_2;
+	
+	// UID for the DLL 0x2000717D
+	dll_uid = 0x2000717D;
+	// Declare array of interface info
+	interfaces = 
+		{
+		INTERFACE_INFO
+			{
+			// UID of interface that is implemented  0x20000A17
+			interface_uid = 0x20000A17;
+			implementations = 
+				{
+				// Info for TextSearcherPlugin 0x20000A18;
+				IMPLEMENTATION_INFO
+					{
+					implementation_uid = 0x20000A18;
+					version_no = 1;
+					display_name = "Text Searcher plugin";
+					default_data = "";
+					opaque_data = "";
+                    rom_only = 0;
+					}
+				};
+			}
+		};
+	}
+

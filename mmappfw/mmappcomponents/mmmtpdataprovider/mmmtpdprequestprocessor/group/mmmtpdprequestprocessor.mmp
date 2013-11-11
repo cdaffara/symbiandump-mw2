@@ -1,0 +1,94 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  mmp file
+*
+*/
+
+
+#include <platform_paths.hrh>
+#include "../../inc/mmmtpdp_variant.hrh"
+
+TARGET              mmmtpdprequestprocessor.dll
+TARGETTYPE          DLL
+UID 0x1000008D 0x10207C54
+
+VENDORID            0x70000001
+
+CAPABILITY          CAP_ECOM_PLUGIN  
+
+MW_LAYER_SYSTEMINCLUDE
+
+USERINCLUDE         ../inc/ 
+USERINCLUDE         ../../inc/
+
+SOURCEPATH          ../src
+SOURCE              crequestchecker.cpp
+SOURCE              crequestprocessor.cpp
+SOURCE              crequestunknown.cpp
+SOURCE              cdeleteobject.cpp
+SOURCE              cgetobject.cpp
+SOURCE              cgetobjectinfo.cpp
+SOURCE              cgetobjectpropdesc.cpp
+SOURCE              cgetobjectproplist.cpp
+SOURCE              cgetobjectpropssupported.cpp
+SOURCE              cgetobjectpropvalue.cpp
+SOURCE              cgetobjectreferences.cpp
+SOURCE              csendobject.cpp
+SOURCE              csetobjectproplist.cpp
+SOURCE              csetobjectpropvalue.cpp
+SOURCE              csetobjectreferences.cpp
+SOURCE              ttypeflatbuf.cpp
+SOURCE              cgetpartialobject.cpp
+SOURCE              ccopyobject.cpp
+SOURCE              cmoveobject.cpp
+SOURCE              crenameobject.cpp
+SOURCE              cgetformatcapabilities.cpp
+SOURCE              cgetinterdependentpropdesc.cpp
+SOURCE              cdescriptionutility.cpp 
+SOURCE              cpropertysettingutility.cpp 
+
+SOURCEPATH          ../../src
+SOURCE              cmmmtpdpmetadatampxaccess.cpp
+SOURCE              cmmmtpdpmetadataaccesswrapper.cpp
+SOURCE              mmmtpdputility.cpp
+SOURCE              cmmmtpdpmetadatavideoaccess.cpp
+SOURCE              cmmmtpdpaccesssingleton.cpp
+
+LIBRARY             euser.lib
+LIBRARY             efsrv.lib
+LIBRARY             bafl.lib
+LIBRARY             estor.lib
+LIBRARY             3gpmp4lib.lib
+
+LIBRARY             mpxcommon.lib
+LIBRARY             mpxcollectionhelper.lib
+
+LIBRARY             mtpdatatypes.lib
+LIBRARY             mtpdataproviderapi.lib
+LIBRARY             PlatformEnv.lib
+
+LIBRARY             edbms.lib
+LIBRARY             ContentListingFramework.lib 
+LIBRARY             caf.lib
+
+#if defined(__WINDOWS_MEDIA)
+STATICLIBRARY       hxmetadatautil.lib
+#endif
+
+// for nanotick perf measurement
+#if defined(MMMTPDP_PERFLOG)
+LIBRARY             hal.lib
+#else
+DEBUGLIBRARY        hal.lib
+#endif

@@ -1,0 +1,26 @@
+EXPORTS
+	_ZN16CPosLmDbRegistry14ListDatabasesLERK7TDesC16 @ 1 NONAME
+	_ZN16CPosLmDbRegistry14UnregisterAllLERK7TDesC16 @ 2 NONAME
+	_ZN16CPosLmDbRegistry17RegisterDatabaseLERK7TDesC16RK22TPosLmDatabaseSettings @ 3 NONAME
+	_ZN16CPosLmDbRegistry19UnregisterDatabaseLERK7TDesC16 @ 4 NONAME
+	_ZN16CPosLmDbRegistry21ReadDatabaseSettingsLERK7TDesC16R22TPosLmDatabaseSettings @ 5 NONAME
+	_ZN16CPosLmDbRegistry23ModifyDatabaseSettingsLERK7TDesC16RK22TPosLmDatabaseSettings @ 6 NONAME
+	_ZN16CPosLmDbRegistry4NewLEv @ 7 NONAME
+	_ZN16CPosLmDbRegistry4OpenER3RFsRK7TDesC16 @ 8 NONAME
+	_ZN16CPosLmDbRegistry7CompactEv @ 9 NONAME
+	_ZN16CPosLmDbRegistry7CreateLER3RFsRK7TDesC16 @ 10 NONAME
+	_ZN16CPosLmDbRegistryD0Ev @ 11 NONAME
+	_ZN16CPosLmDbRegistryD1Ev @ 12 NONAME
+	_ZN16CPosLmDbRegistryD2Ev @ 13 NONAME
+	_ZN22CPosLmDatabaseIterator12GetSettingsLER22TPosLmDatabaseSettings @ 14 NONAME
+	_ZN22CPosLmDatabaseIterator4NewLER7RDbView @ 15 NONAME
+	_ZN22CPosLmDatabaseIterator4UriLEv @ 16 NONAME
+	_ZN22CPosLmDatabaseIterator9NextItemLEv @ 17 NONAME
+	_ZN22CPosLmDatabaseIteratorD0Ev @ 18 NONAME
+	_ZN22CPosLmDatabaseIteratorD1Ev @ 19 NONAME
+	_ZN22CPosLmDatabaseIteratorD2Ev @ 20 NONAME
+	_ZTI16CPosLmDbRegistry @ 21 NONAME ; #<TI>#
+	_ZTI22CPosLmDatabaseIterator @ 22 NONAME ; #<TI>#
+	_ZTV16CPosLmDbRegistry @ 23 NONAME ; #<VT>#
+	_ZTV22CPosLmDatabaseIterator @ 24 NONAME ; #<VT>#
+

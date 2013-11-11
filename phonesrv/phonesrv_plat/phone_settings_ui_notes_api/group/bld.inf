@@ -1,0 +1,31 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  File that exports the files belonging to 
+				Phone Settings UI Notes API
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+../inc/psuinotes.h     MW_LAYER_PLATFORM_EXPORT_PATH(psuinotes.h)
+../inc/psuilocalisation.h     MW_LAYER_PLATFORM_EXPORT_PATH(psuilocalisation.h)
+../inc/psuiwaitingnotehandler.h     MW_LAYER_PLATFORM_EXPORT_PATH(psuiwaitingnotehandler.h)
+../inc/psuidivertnotehandler.h     MW_LAYER_PLATFORM_EXPORT_PATH(psuidivertnotehandler.h)
+../inc/psuiconstants.h     MW_LAYER_PLATFORM_EXPORT_PATH(psuiconstants.h)

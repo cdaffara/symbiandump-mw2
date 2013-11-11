@@ -1,0 +1,44 @@
+// Copyright (c) 2000-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// T_WAPMMS.MMP
+// 
+//
+
+TARGET          TWapPush.exe  
+TARGETTYPE      EXE
+CAPABILITY ReadDeviceData WriteDeviceData NetworkServices LocalServices ReadUserData WriteUserData
+
+USERINCLUDE     ./. 
+USERINCLUDE     /wap-browser/wappush/tpush/dummystack
+USERINCLUDE      /wap-browser/wappush/Plugins/inc
+USERINCLUDE      /wap-browser/wappush/pushutils/inc
+USERINCLUDE	     /wap-browser/wappush/pushwatcher/inc
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+SOURCEPATH	    ./.
+SOURCE			t_baseMessage.cpp Wappushmsggen.cpp
+SOURCE			t_WapPush.cpp 
+SOURCE			t_ScriptTest.cpp
+SOURCE			t_serviceutils.cpp
+SOURCEPATH		/wap-browser/WapPush/PushWatcher/src
+SOURCE			CLWatcher.cpp ConnMan.cpp 
+USERINCLUDE		../test/t_utils
+SOURCEPATH		../test/t_utils
+SOURCE			ScriptFile.cpp ScriptSection.cpp ScriptSectionItem.cpp
+
+LIBRARY    		euser.lib dummywapstack.lib flogger.lib wappushutils.lib ECom.lib
+LIBRARY			msgs.lib mmsutils.lib
+LIBRARY			Efsrv.lib
+VENDORID 0x70000001
+
+SMPSAFE

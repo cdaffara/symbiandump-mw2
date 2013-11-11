@@ -1,0 +1,461 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE 	T_MsgCommonServer 	-SharedData
+LOAD_SUITE 	T_MsgImapServer 	-SharedData
+LOAD_SUITE  	T_MsgSmtpServer 	-SharedData
+
+
+START_TESTCASE MSG-IMAP-HUGEBODYTEXT-0001
+//! 	@SYMTestCaseID		MSG-IMAP-HUGEBODYTEXT-0001
+//! 	@SYMTestCaseDesc	Measurement of RAM usage for email operations with huge body text.
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ1432
+//!	@SYMREQ			REQ6673,REQ6674,REQ6676,& REQ 6678
+//!				
+//! 	@SYMTestActions		1.	Start RAM usage tracking for Create Message.
+//!				2.	Create a Message with Body Text Size of 1MB.
+//!				3.	Stop RAM usage tracking and log the data along with event code.
+//!				4.	Start RAM usage tracking for Send Message
+//!				5.	Send the Message.
+//!				6.	Stop RAM usage tracking and log the data along with event code.
+//!				7.	Start RAM usage tracking for downloading the message
+//!				8.	Download the Message using IMAP client MTM populate command 
+//!				9.	Stop RAM usage tracking and log the data along with event code.
+//!				10.	Analysis  for any improvement would be on done by the PC side analysis tool.
+//!				
+//! 	@SYMTestExpectedResults The Body part of sent & received messages should be identical. 
+//!	@SYMAuthor		Rajat Bal
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer 	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	InitNtRas			c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0001-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer 	ResetMessageStore		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0001-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer 	CreateImapAccount		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0001-CreateImapAccount
+
+RUN_TEST_STEP 300 T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0001-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0001-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer 	DeleteAllImapChildren		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0001-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0001-DisConnectImap4Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0001-StartRamUsageTimer_Create
+//RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0001-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 600 T_MsgSmtpServer	SmtpCreateNewMessageWithPlainBodyText	c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0001-SmtpCreateNewMessageWithPlainBodyText
+RUN_TEST_STEP 300 T_MsgSmtpServer	StopRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0001-StopRamUsageTimer_Create
+RUN_TEST_STEP 300 T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0001-CheckChildrenCountOutbox
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0001-StartRamUsageTimer_Send
+RUN_TEST_STEP 3000 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0001-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgSmtpServer	StopRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0001-StopRamUsageTimer_Send
+RUN_TEST_STEP 300 T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0001-CheckChildrenCountSentItems
+
+RUN_TEST_STEP 300 T_MsgImapServer 	SetImap4FullDownloadLimits	c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0001-SetImap4FullDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0001-ConnectImap4Server
+RUN_TEST_STEP 3000 T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0001-DoFullImap4Synchronisation
+
+RUN_TEST_STEP 300 T_MsgImapServer 	StartRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0001-StartRamUsageTimer_IMAP
+RUN_TEST_STEP 3000 T_MsgImapServer 	ImapInvokeAsyncFunction		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0001-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer 	StopRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0001-StopRamUsageTimer_IMAP
+
+RUN_TEST_STEP 300 T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0001-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer 	CheckChildrenCountImap		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0001-CheckChildrenCountRemoteInbox
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer 	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer 	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-HUGEBODYTEXT-0001
+
+
+START_TESTCASE MSG-IMAP-POPULATE100KBBODY-0001
+//! 	@SYMTestCaseID		MSG-IMAP-POPULATE100KBBODY-0001
+//! 	@SYMTestCaseDesc	Measurement of RAM usage for email operations.
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ1432
+//!	@SYMREQ			REQ6673,REQ6674,REQ6676,& REQ 6678
+//!				
+//! 	@SYMTestActions		1.	Start RAM usage tracking for Create Message.
+//!				2.	Create a Message with Body Text Size of 100KB.
+//!				3.	Stop RAM usage tracking and log the data along with event code.
+//!				4.	Start RAM usage tracking for Send Message
+//!				5.	Send the Message.
+//!				6.	Stop RAM usage tracking and log the data along with event code.
+//!				7.	Start RAM usage tracking for downloading the message
+//!				8.	Download the Message using IMAP client MTM populate command 
+//!				9.	Stop RAM usage tracking and log the data along with event code.
+//!				10.	Analysis  for any improvement would be on done by the PC side analysis tool.
+//!				
+//! 	@SYMTestExpectedResults The Body part of sent & received messages should be identical. 
+//!	@SYMAuthor		Rajat Bal
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer 	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	InitNtRas			c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0002-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer 	ResetMessageStore		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0002-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer 	CreateImapAccount		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0002-CreateImapAccount
+
+RUN_TEST_STEP 300 T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0002-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0002-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer 	DeleteAllImapChildren		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0002-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0002-DisConnectImap4Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0002-StartRamUsageTimer_Create
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0002-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer	StopRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0002-StopRamUsageTimer_Create
+RUN_TEST_STEP 300 T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0002-CheckChildrenCountOutbox
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0002-StartRamUsageTimer_Send
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0002-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgSmtpServer	StopRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0002-StopRamUsageTimer_Send
+RUN_TEST_STEP 300 T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0002-CheckChildrenCountSentItems
+
+RUN_TEST_STEP 300 T_MsgImapServer 	SetImap4FullDownloadLimits	c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0002-SetImap4FullDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0002-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0002-DoFullImap4Synchronisation
+
+RUN_TEST_STEP 300 T_MsgImapServer 	StartRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0002-StartRamUsageTimer_IMAP
+RUN_TEST_STEP 300 T_MsgImapServer 	ImapInvokeAsyncFunction		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0002-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer 	StopRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0002-StopRamUsageTimer_IMAP
+
+RUN_TEST_STEP 300 T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0002-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer 	CheckChildrenCountImap		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0002-CheckChildrenCountRemoteInbox
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer 	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer 	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-POPULATE100KBBODY-0001
+
+
+START_TESTCASE MSG-IMAP-POPULATE10KBBODY-0001
+//! 	@SYMTestCaseID		MSG-IMAP-POPULATE10KBBODY-0001
+//! 	@SYMTestCaseDesc	Measurement of RAM usage for email operations.
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ1432
+//!	@SYMREQ			REQ6673,REQ6674,REQ6676,& REQ 6678
+//!				
+//! 	@SYMTestActions		1.	Start RAM usage tracking for Create Message.
+//!				2.	Create a Message with Body Text Size of 10KB.
+//!				3.	Stop RAM usage tracking and log the data along with event code.
+//!				4.	Start RAM usage tracking for Send Message
+//!				5.	Send the Message.
+//!				6.	Stop RAM usage tracking and log the data along with event code.
+//!				7.	Start RAM usage tracking for downloading the message
+//!				8.	Download the Message using IMAP client MTM populate command 
+//!				9.	Stop RAM usage tracking and log the data along with event code.
+//!				10.	Analysis  for any improvement would be on done by the PC side analysis tool.
+//!				
+//! 	@SYMTestExpectedResults The Body part of sent & received messages should be identical. 
+//!	@SYMAuthor		Rajat Bal
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer 	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	InitNtRas			c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0003-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer 	ResetMessageStore		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0003-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer 	CreateImapAccount		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0003-CreateImapAccount
+
+RUN_TEST_STEP 300 T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0003-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0003-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer 	DeleteAllImapChildren		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0003-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0003-DisConnectImap4Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0003-StartRamUsageTimer_Create
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0003-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer	StopRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0003-StopRamUsageTimer_Create
+RUN_TEST_STEP 300 T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0003-CheckChildrenCountOutbox
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0003-StartRamUsageTimer_Send
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0003-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgSmtpServer	StopRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0003-StopRamUsageTimer_Send
+RUN_TEST_STEP 300 T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0003-CheckChildrenCountSentItems
+
+RUN_TEST_STEP 300 T_MsgImapServer 	SetImap4FullDownloadLimits	c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0003-SetImap4FullDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0003-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0003-DoFullImap4Synchronisation
+
+RUN_TEST_STEP 300 T_MsgImapServer 	StartRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0003-StartRamUsageTimer_IMAP
+RUN_TEST_STEP 300 T_MsgImapServer 	ImapInvokeAsyncFunction		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0003-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer 	StopRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0003-StopRamUsageTimer_IMAP
+
+RUN_TEST_STEP 300 T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0003-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer 	CheckChildrenCountImap		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0003-CheckChildrenCountRemoteInbox
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer 	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer 	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-POPULATE10KBBODY-0001
+
+
+START_TESTCASE MSG-IMAP-POPULATE1KBBODY-0001
+//! 	@SYMTestCaseID		MSG-IMAP-POPULATE1KBBODY-0001
+//! 	@SYMTestCaseDesc	Measurement of RAM usage for email operations.
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ1432
+//!	@SYMREQ			REQ6673,REQ6674,REQ6676,& REQ 6678
+//!				
+//! 	@SYMTestActions		1.	Start RAM usage tracking for Create Message.
+//!				2.	Create a Message with Body Text Size of 1KB.
+//!				3.	Stop RAM usage tracking and log the data along with event code.
+//!				4.	Start RAM usage tracking for Send Message
+//!				5.	Send the Message.
+//!				6.	Stop RAM usage tracking and log the data along with event code.
+//!				7.	Start RAM usage tracking for downloading the message
+//!				8.	Download the Message using IMAP client MTM populate command 
+//!				9.	Stop RAM usage tracking and log the data along with event code.
+//!				10.	Analysis  for any improvement would be on done by the PC side analysis tool.
+//!				
+//! 	@SYMTestExpectedResults The Body part of sent & received messages should be identical. 
+//!	@SYMAuthor		Rajat Bal
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer 	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	InitNtRas			c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0004-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer 	ResetMessageStore		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0004-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer 	CreateImapAccount		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0004-CreateImapAccount
+
+RUN_TEST_STEP 300 T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0004-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0004-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer 	DeleteAllImapChildren		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0004-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0004-DisConnectImap4Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0004-StartRamUsageTimer_Create
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0004-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer	StopRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0004-StopRamUsageTimer_Create
+RUN_TEST_STEP 300 T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0004-CheckChildrenCountOutbox
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0004-StartRamUsageTimer_Send
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0004-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgSmtpServer	StopRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0004-StopRamUsageTimer_Send
+RUN_TEST_STEP 300 T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0004-CheckChildrenCountSentItems
+
+RUN_TEST_STEP 300 T_MsgImapServer 	SetImap4FullDownloadLimits	c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0004-SetImap4FullDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0004-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0004-DoFullImap4Synchronisation
+
+RUN_TEST_STEP 300 T_MsgImapServer 	StartRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0004-StartRamUsageTimer_IMAP
+RUN_TEST_STEP 300 T_MsgImapServer 	ImapInvokeAsyncFunction		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0004-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer 	StopRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0004-StopRamUsageTimer_IMAP
+
+RUN_TEST_STEP 300 T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0004-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer 	CheckChildrenCountImap		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0004-CheckChildrenCountRemoteInbox
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer 	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer 	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-POPULATE1KBBODY-0001
+
+
+START_TESTCASE MSG-IMAP-POPULATE512KBBODY-0001
+//! 	@SYMTestCaseID		MSG-IMAP-POPULATE512KBBODY-0001
+//! 	@SYMTestCaseDesc	Measurement of RAM usage for email operations.
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ1432
+//!	@SYMREQ			REQ6673,REQ6674,REQ6676,& REQ 6678
+//!				
+//! 	@SYMTestActions		1.	Start RAM usage tracking for Create Message.
+//!				2.	Create a Message with Body Text Size of 512KB.
+//!				3.	Stop RAM usage tracking and log the data along with event code.
+//!				4.	Start RAM usage tracking for Send Message
+//!				5.	Send the Message.
+//!				6.	Stop RAM usage tracking and log the data along with event code.
+//!				7.	Start RAM usage tracking for downloading the message
+//!				8.	Download the Message using IMAP client MTM populate command 
+//!				9.	Stop RAM usage tracking and log the data along with event code.
+//!				10.	Analysis  for any improvement would be on done by the PC side analysis tool.
+//!				
+//! 	@SYMTestExpectedResults The Body part of sent & received messages should be identical. 
+//!	@SYMAuthor		Rajat Bal
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer 	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	InitNtRas			c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0005-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer 	ResetMessageStore		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0005-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer 	CreateImapAccount		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0005-CreateImapAccount
+
+RUN_TEST_STEP 300 T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0005-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0005-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer 	DeleteAllImapChildren		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0005-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0005-DisConnectImap4Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0005-StartRamUsageTimer_Create
+//RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0005-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer	SmtpCreateNewMessageWithPlainBodyText	c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0005-SmtpCreateNewMessageWithPlainBodyText
+RUN_TEST_STEP 300 T_MsgSmtpServer	StopRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0005-StopRamUsageTimer_Create
+RUN_TEST_STEP 300 T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0005-CheckChildrenCountOutbox
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0005-StartRamUsageTimer_Send
+RUN_TEST_STEP 3000 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0005-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgSmtpServer	StopRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0005-StopRamUsageTimer_Send
+RUN_TEST_STEP 300 T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0005-CheckChildrenCountSentItems
+
+RUN_TEST_STEP 300 T_MsgImapServer 	SetImap4FullDownloadLimits	c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0005-SetImap4FullDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0005-ConnectImap4Server
+RUN_TEST_STEP 3000 T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0005-DoFullImap4Synchronisation
+
+RUN_TEST_STEP 300 T_MsgImapServer 	StartRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0005-StartRamUsageTimer_IMAP
+RUN_TEST_STEP 3000 T_MsgImapServer 	ImapInvokeAsyncFunction		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0005-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer 	StopRamUsageTimer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0005-StopRamUsageTimer_IMAP
+
+RUN_TEST_STEP 300 T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0005-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer 	CheckChildrenCountImap		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0005-CheckChildrenCountRemoteInbox
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer 	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer 	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-POPULATE512KBBODY-0001
+
+
+LOAD_SUITE	EventLogServer		-SharedData
+
+
+START_TESTCASE MSG-IMAP-SPEEDTEST-0001
+//! 	@SYMTestCaseID		MSG-IMAP-SPEEDTEST-0001
+//! 	@SYMTestCaseDesc	Measure the Regression speed test for processing of 100 messages that 
+//! 				contain small (1k) message body text.
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ1432
+//!	@SYMREQ			REQ6673,REQ6674,REQ6676,& REQ 6678
+//!				
+//! 	@SYMTestActions		1.	Record the time before message creation operation performed.
+//!				2.	Create 100 Messages with Body Text Size of 1KB
+//!				3.	Record the time after message creation operation performed.
+//!				4.	Record the time before sending the messages
+//!				5.	Send the Message
+//!				6.	Record the time after sending the messages
+//!				7.	Record the time before downloading the message
+//!				8.	Download the Message using IMAP client MTM populate command 
+//!				9.	Record the time after downloading Message
+//!				10.	Analysis  for any speed degradation would be done by the PC side analysis tool.
+//!				
+//! 	@SYMTestExpectedResults The Body part of sent & received messages should be identical.
+//!	@SYMAuthor		Rajat Bal
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer 	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	InitNtRas			c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer 	ResetMessageStore		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer 	CreateImapAccount		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-CreateImapAccount
+
+RUN_TEST_STEP 300 T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer 	DeleteAllImapChildren		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-DisConnectImap4Server
+RUN_TEST_STEP 300 EventLogServer	Clear				c:\msgtest\email\imap\ram\msg-imap-ram1.ini 	
+RUN_TEST_STEP 300 EventLogServer 	Start				c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-EventLog
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-StartEventCode_Create
+
+PRINT ############ Create 100 Messages ######################
+START_REPEAT	c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-SectionOne					RepeatParam
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile				c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-CreateSmtpMessageFromEmailFile
+END_REPEAT
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-StopEventCode_Create
+
+PRINT ############ Verify the Time
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-CheckChildrenCountOutbox
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-StartEventCode_Send
+RUN_TEST_STEP 3000 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-StopEventCode_Send
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-CheckChildrenCountSentItems
+
+//RUN_TEST_STEP 300 T_MsgImapServer 	SetImap4PartialDownloadLimits	c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-SetImap4PartialDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer	SetImap4FullDownloadLimits	c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-SetImap4FullDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-ConnectImap4Server
+RUN_TEST_STEP 3000 T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-DoFullImap4Synchronisation
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-StartEventCode_Download
+RUN_TEST_STEP 3000 T_MsgImapServer 	ImapInvokeAsyncFunction		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-StopEventCode_Download
+
+
+RUN_TEST_STEP 300 EventLogServer 	Stop				c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-EventLog
+RUN_TEST_STEP 300 EventLogServer 	GetRecordCount			c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-EventLog
+RUN_TEST_STEP 300 EventLogServer 	PrintEventLog			c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-EventLog
+
+RUN_TEST_STEP 300 T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer 	CheckChildrenCountImap		c:\msgtest\email\imap\ram\msg-imap-ram1.ini 		0006-CheckChildrenCountRemoteInbox
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer 	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer 	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-SPEEDTEST-0001
+
+

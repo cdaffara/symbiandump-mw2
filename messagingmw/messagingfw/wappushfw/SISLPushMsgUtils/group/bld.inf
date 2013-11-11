@@ -1,0 +1,35 @@
+// Copyright (c) 2000-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// PushUtils
+// 
+//
+
+PRJ_PLATFORMS
+
+   
+PRJ_EXPORTS
+../inc/SISLPushMsgUtils.h	SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(push/sislpushmsgutils.h)
+../inc/SISLPushMsgUtils.inl	SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(push/sislpushmsgutils.inl)
+../inc/CSIPushMsgEntry.h	SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(push/csipushmsgentry.h)
+../inc/CSIPushMsgEntry.inl	SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(push/csipushmsgentry.inl)
+../inc/CSLPushMsgEntry.h	SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(push/cslpushmsgentry.h)
+../inc/CSLPushMsgEntry.inl	SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(push/cslpushmsgentry.inl)
+
+
+PRJ_MMPFILES
+../group/SISLPushMsgUtils.mmp
+
+PRJ_TESTMMPFILES
+
+PRJ_TESTEXPORTS

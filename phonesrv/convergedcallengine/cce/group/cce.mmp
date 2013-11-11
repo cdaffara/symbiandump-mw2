@@ -1,0 +1,67 @@
+/*
+* Copyright (c) 2006-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  CCE project file
+*
+*/
+
+#include <platform_paths.hrh>
+
+CAPABILITY      CAP_GENERAL_DLL
+
+TARGET          cce.dll
+TARGETTYPE      DLL
+UID             0x1000008D 0x102828BA
+VENDORID        VID_DEFAULT
+VERSION         10.0
+
+SOURCEPATH      ../src
+
+SOURCE          ccce.cpp
+SOURCE          ccceutility.cpp
+SOURCE          cccedurationtimer.cpp
+SOURCE          ccceplugin.cpp
+SOURCE          cccepluginmanager.cpp
+SOURCE          cccecall.cpp
+SOURCE          ccceemergencycall.cpp
+SOURCE          ccceconferencecall.cpp
+SOURCE          cccecallcontainer.cpp
+SOURCE          cccedtmf.cpp
+SOURCE          cccetransfercontroller.cpp
+SOURCE          ccceextension.cpp
+SOURCE          cccecallobserverasynchroniser.cpp
+SOURCE          ccceobserverasynchroniser.cpp
+SOURCE          cccespsettingshandler.cpp
+SOURCE          cccecallparameters.cpp
+SOURCE          cccecallinfomediator.cpp
+SOURCE          cccecallinfomediatorupdater.cpp
+SOURCE          cccecallinfoconverter.cpp
+SOURCE          tccecallindex.cpp
+
+USERINCLUDE     ../inc
+USERINCLUDE     ../api
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY         euser.lib
+LIBRARY         flogger.lib             // For logging
+LIBRARY         centralrepository.lib
+LIBRARY         estor.lib
+LIBRARY         bafl.lib
+LIBRARY         ecom.lib                // For signaling IF
+LIBRARY         serviceprovidersettings.lib // For serviceid handling
+LIBRARY         mediatorclient.lib
+LIBRARY         callprovider.lib
+LIBRARY         featmgr.lib
+
+LANG            SC

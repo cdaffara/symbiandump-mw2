@@ -1,0 +1,50 @@
+// Copyright (c) 2004-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// cbcp.dll BIO Compact Business Card parser
+// cbcp.mbm BIO Compact Business Card bimap for UI
+// cbcp.rsc BIO Compact Business Card resource file
+// 
+//
+
+/**
+ @file
+*/
+
+TARGET          cbcp.dll
+
+
+TARGETTYPE      dll
+
+CAPABILITY All -TCB
+UID      	0x10001251 0x1000526B 
+VENDORID 0x70000001
+SOURCEPATH	../../CBCPSRC
+USERINCLUDE     ../../CBCPINC
+USERINCLUDE   ../../BIUTINC
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+SOURCE          CBCPDLL.CPP CBCP.CPP
+LIBRARY         euser.lib msgs.lib biut.lib
+START RESOURCE	../cbcpbif/cbcp.rss
+TARGETPATH      resource/messaging/bif
+LANG		SC
+END
+START BITMAP	cbcp.mbm
+TARGETPATH      resource/messaging/bif
+SOURCEPATH	../../cbcpbif
+SOURCE		2 cbcp0.bmp
+END
+
+DEFFILE		cbcp.def
+
+SMPSAFE

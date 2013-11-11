@@ -1,0 +1,44 @@
+/*
+* Copyright (c) 2010 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  API test automation for thumbnail engine
+*
+*/
+
+#include <platform_paths.hrh>
+
+TARGET          VThumbTest.dll
+TARGETTYPE      DLL
+CAPABILITY      CAP_GENERAL_DLL
+VENDORID        VID_DEFAULT
+
+DEFFILE         VThumbTest.def
+
+SOURCEPATH      ../src
+SOURCE          tnetest.cpp
+
+
+USERINCLUDE     ../inc
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY         euser.lib ws32.lib hal.lib ecom.lib  estlib.lib flogger.lib
+LIBRARY         stiftestinterface.lib
+LIBRARY         tneengine.lib                     //Thumbnail Engine
+LIBRARY                 efsrv.lib                         //File server client
+LANG            SC
+
+UID             0x1000008D 0x101FB3E7
+
+
+// End of File

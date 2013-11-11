@@ -1,0 +1,29 @@
+EXPORTS
+	_ZN23CSatEventMonitorHandler13CancelMonitorEv @ 1 NONAME
+	_ZN23CSatEventMonitorHandler13UpdateMonitorEj @ 2 NONAME
+	_ZN23TSatEventMonitorFactory20CreateEventMonitorsLER21MSatEventMonitorUtils @ 3 NONAME
+	_ZTI21CSatIdleScreenMonitor @ 4 NONAME ; #<TI>#
+	_ZTI21CSatSimRemovalMonitor @ 5 NONAME ; #<TI>#
+	_ZTI23CSatEventMonitorHandler @ 6 NONAME ; #<TI>#
+	_ZTI23CSatUserActivityMonitor @ 7 NONAME ; #<TI>#
+	_ZTI24CSatBrowserThreadMonitor @ 8 NONAME ; #<TI>#
+	_ZTI27CSatBIPChannelStatusMonitor @ 9 NONAME ; #<TI>#
+	_ZTI27CSatBIPDataAvailableMonitor @ 10 NONAME ; #<TI>#
+	_ZTI28CSatLanguageSelectionMonitor @ 11 NONAME ; #<TI>#
+	_ZTI29CSatBrowserTerminationMonitor @ 12 NONAME ; #<TI>#
+	_ZTV21CSatIdleScreenMonitor @ 13 NONAME ; #<VT>#
+	_ZTV21CSatSimRemovalMonitor @ 14 NONAME ; #<VT>#
+	_ZTV23CSatEventMonitorHandler @ 15 NONAME ; #<VT>#
+	_ZTV23CSatUserActivityMonitor @ 16 NONAME ; #<VT>#
+	_ZTV24CSatBrowserThreadMonitor @ 17 NONAME ; #<VT>#
+	_ZTV27CSatBIPChannelStatusMonitor @ 18 NONAME ; #<VT>#
+	_ZTV27CSatBIPDataAvailableMonitor @ 19 NONAME ; #<VT>#
+	_ZTV28CSatLanguageSelectionMonitor @ 20 NONAME ; #<VT>#
+	_ZTV29CSatBrowserTerminationMonitor @ 21 NONAME ; #<VT>#
+	_ZTI20CSatBrowserWSMonitor @ 22 NONAME ; #<TI>#
+	_ZTV20CSatBrowserWSMonitor @ 23 NONAME ; #<VT>#
+	_ZThn4_N23CSatEventMonitorHandler13CancelMonitorEv @ 24 NONAME ; #<thunk>#
+	_ZThn4_N23CSatEventMonitorHandler13UpdateMonitorEj @ 25 NONAME ; #<thunk>#
+	_ZN23CSatEventMonitorHandler17IsMonitoringEventEi @ 26 NONAME
+	_ZThn4_N23CSatEventMonitorHandler17IsMonitoringEventEi @ 27 NONAME ; #<thunk>#
+

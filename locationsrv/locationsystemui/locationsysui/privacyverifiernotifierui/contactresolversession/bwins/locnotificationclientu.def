@@ -1,0 +1,6 @@
+EXPORTS
+	?Close@RContactResolverSession@@QAEXXZ @ 1 NONAME ; void RContactResolverSession::Close(void)
+	?Connect@RContactResolverSession@@QAEHXZ @ 2 NONAME ; int RContactResolverSession::Connect(void)
+	??0RContactResolverSession@@QAE@XZ @ 3 NONAME ; RContactResolverSession::RContactResolverSession(void)
+	?ResolveRequestorsL@RContactResolverSession@@QAEXAAV?$RPointerArray@VCPosRequestor@@@@@Z @ 4 NONAME ; void RContactResolverSession::ResolveRequestorsL(class RPointerArray<class CPosRequestor> &)
+

@@ -1,0 +1,48 @@
+[test1]
+
+# Waits for a message to sent from the emulator.
+# This is the signal to begin sending a SMS message back to the emulator.
+
+IndicatorCheckPeriod= 1
+NetworkInfo= TEST, Network0, Test, Test, Test, 5
+RegStatus= 5,5
+
+NotifySignalStrengthChangeCap= 1
+
+SmsControlCaps= 34
+	#SmsControlCaps= caps in DECIMAL
+
+SmsTx= 35000B914411111111F10000AD07BFDFEFF7FBFD00, +447802000332, 1, 0x0000020C, 0
+	#      ******rec********     cc********mes**************
+	# Recipients (rec)= +44111111111
+	# Message (cc (count), mess)= TestTextE_1_2
+
+	# Note exta E in message to make the number of hex bytes even.
+	#  +447802000332 =  sca = service centre address and is not actually used by the sim.tsy for anything (at the moment).
+	# 1 = MsgRef
+	# 02070100 = SubmitReportPdu. Basically an ACK	
+	# SmsTx	<pdu>, <sca>, <MsgRef> <SubmitReportPdu> <ExpectedError>
+
+#
+# Should have recieved above message from the emulator to kick off the sending of the next message.
+# This sends a simulated SMS message to the emulator.
+#
+
+SmsControlCaps= 68
+	#SmsControlCaps= caps in DECIMAL
+
+SmsPhoneStoreCaps= 0xFC000000
+	#SmsPhoneStoreCaps= TMobilePhoneCaps in the smsStore in hexadecimal
+
+SmsStartRxDelay= 4207, 1, 1
+	# After the first sendmessage (4207 , 1) send 1 (,1) message from the sim.txy to the MT.
+
+	#Contains Fax Indication
+	#640C9153488014558200041080714173148065040102810A54686973206D6573736167652069732061207370656369616C206D6573736167652077616974696E67206D6573736167652E20596F7520686176652061207370656369616C206D6573736167652077616974696E6720666F7220796F75203A29, 358405202000
+
+SmsRx= 640C9153488014558200041080714173148065040102810454686973206D6573736167652069732061207370656369616C206D6573736167652077616974696E67206D6573736167652E20596F7520686176652061207370656369616C206D6573736167652077616974696E6720666F7220796F75203A29, 358405202000
+	#    ******rec*******                  cc********mes**************
+	# Recipients (rec)= +44111111111
+	# Message (cc (count), mess)= TestTextE_1_2
+
+	# +447802000332 = service centre address.

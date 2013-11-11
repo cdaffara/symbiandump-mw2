@@ -1,0 +1,15 @@
+EXPORTS
+	??1CClientAudioBuffer@@UAE@XZ @ 1 NONAME ; CClientAudioBuffer::~CClientAudioBuffer(void)
+	?GetBufferPtr@CClientAudioBuffer@@QAEAAVTPtr8@@XZ @ 2 NONAME ; class TPtr8 & CClientAudioBuffer::GetBufferPtr(void)
+	?GetMimeType@CS60AudioStreamSource@@UAEXAAVTDes8@@@Z @ 3 NONAME ; void CS60AudioStreamSource::GetMimeType(class TDes8 &)
+	?GetMinimumBufferSize@CS60AudioStreamSource@@UAEHXZ @ 4 NONAME ; int CS60AudioStreamSource::GetMinimumBufferSize(void)
+	?GetPosition@CS60AudioStreamSource@@UAE_JXZ @ 5 NONAME ; long long CS60AudioStreamSource::GetPosition(void)
+	?GetSize@CS60AudioStreamSource@@UAEIXZ @ 6 NONAME ; unsigned int CS60AudioStreamSource::GetSize(void)
+	?IsLastBuffer@CClientAudioBuffer@@QAEHXZ @ 7 NONAME ; int CClientAudioBuffer::IsLastBuffer(void)
+	?NewL@CClientAudioBuffer@@SAPAV1@H@Z @ 8 NONAME ; class CClientAudioBuffer * CClientAudioBuffer::NewL(int)
+	?NewL@CS60AudioStreamSource@@SAPAV1@AAVMS60AudioStreamSourceObserver@@ABVTDesC8@@@Z @ 9 NONAME ; class CS60AudioStreamSource * CS60AudioStreamSource::NewL(class MS60AudioStreamSourceObserver &, class TDesC8 const &)
+	?SetLastBuffer@CClientAudioBuffer@@QAEXH@Z @ 10 NONAME ; void CClientAudioBuffer::SetLastBuffer(int)
+	?SetPosition@CS60AudioStreamSource@@UAEH_J@Z @ 11 NONAME ; int CS60AudioStreamSource::SetPosition(long long)
+	?SetSize@CS60AudioStreamSource@@UAEHI@Z @ 12 NONAME ; int CS60AudioStreamSource::SetSize(unsigned int)
+	?WriteAudioData@CS60AudioStreamSource@@UAEHAAVCClientAudioBuffer@@@Z @ 13 NONAME ; int CS60AudioStreamSource::WriteAudioData(class CClientAudioBuffer &)
+

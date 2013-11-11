@@ -1,0 +1,34 @@
+EXPORTS
+	_Z8WinsMainv @ 1 NONAME
+	_ZN11CWatcherLog6PrintfE11TRefByValueIK6TDesC8Ez @ 2 NONAME
+	_ZN11CWatcherLog6PrintfE11TRefByValueIK7TDesC16Ez @ 3 NONAME
+	_ZN12CWatcherWait5NewLCEi @ 4 NONAME
+	_ZN12CWatcherWait5StartEv @ 5 NONAME
+	_ZN12CWatcherWaitD0Ev @ 6 NONAME
+	_ZN12CWatcherWaitD1Ev @ 7 NONAME
+	_ZN12CWatcherWaitD2Ev @ 8 NONAME
+	_ZN13CWatcherArray4NewLEv @ 9 NONAME
+	_ZN13CWatcherArrayD0Ev @ 10 NONAME
+	_ZN13CWatcherArrayD1Ev @ 11 NONAME
+	_ZN13CWatcherArrayD2Ev @ 12 NONAME
+	_ZN8CWatcher4NewLEi @ 13 NONAME
+	_ZN8CWatcher5StartER14TRequestStatus @ 14 NONAME
+	_ZN8CWatcherD0Ev @ 15 NONAME
+	_ZN8CWatcherD1Ev @ 16 NONAME
+	_ZN8CWatcherD2Ev @ 17 NONAME
+	_ZNK11CWatcherLog9IsLoggingEv @ 18 NONAME
+	_ZTI11CWatcherDll @ 19 NONAME ; #<TI>#
+	_ZTI11CWatcherLog @ 20 NONAME ; #<TI>#
+	_ZTI12CWatcherWait @ 21 NONAME ; #<TI>#
+	_ZTI13CWatcherArray @ 22 NONAME ; #<TI>#
+	_ZTI8CWatcher @ 23 NONAME ; #<TI>#
+	_ZTV11CWatcherDll @ 24 NONAME ; #<VT>#
+	_ZTV11CWatcherLog @ 25 NONAME ; #<VT>#
+	_ZTV12CWatcherWait @ 26 NONAME ; #<VT>#
+	_ZTV13CWatcherArray @ 27 NONAME ; #<VT>#
+	_ZTV8CWatcher @ 28 NONAME ; #<VT>#
+	_ZTI16CWatcherLauncher @ 29 NONAME ; #<TI>#
+	_ZTI21CWatcherLauncherArray @ 30 NONAME ; #<TI>#
+	_ZTV16CWatcherLauncher @ 31 NONAME ; #<VT>#
+	_ZTV21CWatcherLauncherArray @ 32 NONAME ; #<VT>#
+

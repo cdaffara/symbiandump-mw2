@@ -1,0 +1,56 @@
+/**************************************************************
+  Description: There is a call between A and B (tester) and 
+               also between A and C (not visible).
+               Participant A sends transfer request for B,
+               who disconnects the original call and creates
+               a new call to transfer target C.
+
+  1. Create MO call
+  2. Call transfer request is received (Attended), new call is 
+     created and the new call replaces the original call
+  3. Transferred call is hang upped
+***************************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 7.4 Transfer, Accept Attended Transfer
+timeout 15000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test OpenNewCall 1 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+// Step 2
+print Step_2
+
+// SendPluginRequest TransferRequest (originatorCallID, isAttended(false/true), serviceID)
+test SendPluginRequest TransferRequest 1 1 2
+
+// Call 1 becomes the new call, call is assumed to be held by remote party
+test WaitEvent 1 RemoteResume
+
+// Step 3
+print Step_3
+
+// Cannot hang up from tester, since call handle is not stored
+
+// Hangup 2nd (transferred) call
+// HangupCall: callID, delay 1/100 secs
+test SendPluginRequest HangupCall 2
+test WaitEvent 1 RemoteTerminated
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+
+test VerifyTest
+delete test
+[Endtest]

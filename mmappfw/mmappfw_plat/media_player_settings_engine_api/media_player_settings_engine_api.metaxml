@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<api id="4a9a994eaa1e6447d7b7518724b27129" dataversion="2.0">
+  <name>Media Player Settings Engine API</name>
+  <description>Media Player Settings Engine API</description>
+  <type>c++</type>
+  <collection>mmappcomponents</collection>
+  <libs>
+    <lib name="MPSettEngine.lib" />
+  </libs>
+  <release category="platform" deprecatedsince="0"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>no</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

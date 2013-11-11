@@ -1,0 +1,42 @@
+// Copyright (c) 2004-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+#ifndef __T_REG_HRH__
+#define __T_REG_HRH__
+
+
+#define KTestMtmTypeUid						0x07001000
+#define KTestMtmTechnologyTypeUid			0x07001001
+
+
+
+
+
+#define KTestServerMtmSpecificUid			KUidMtmDefaultSpecificVal
+#define KTestServerMtmMajorVersionNumber	KMtmComponentCurrentMajorVersionNumber
+#define KTestServerMtmMinorVersionNumber	KMtmComponentCurrentMinorVersionNumber
+#define KTestServerMtmBuildVersionNumber	KMtmComponentCurrentBuildVersionNumber
+
+
+
+
+#define KTestServerMtmHumanReadableName		"TReg Test Server MTM"
+#define KTestServerMtmOrdinalNumber			7
+
+
+#define KTestServerMtmSendCapability 	1
+#define	KTestServerMtmBodyCapability	1
+
+#endif // __T_REG_HRH__

@@ -1,0 +1,12 @@
+EXPORTS
+	_Z15SetRequirementsRP16CTestModuleParamRm @ 1 NONAME
+	_Z9LibEntryLv @ 2 NONAME
+	_ZTI15CPathOptionMenu @ 3 NONAME ; #<TI>#
+	_ZTI16CCollectionTests @ 4 NONAME ; #<TI>#
+	_ZTI18CMpxCollectionTest @ 5 NONAME ; #<TI>#
+	_ZTI19CPathOptionIsRemote @ 6 NONAME ; #<TI>#
+	_ZTV15CPathOptionMenu @ 7 NONAME ; #<VT>#
+	_ZTV16CCollectionTests @ 8 NONAME ; #<VT>#
+	_ZTV18CMpxCollectionTest @ 9 NONAME ; #<VT>#
+	_ZTV19CPathOptionIsRemote @ 10 NONAME ; #<VT>#
+

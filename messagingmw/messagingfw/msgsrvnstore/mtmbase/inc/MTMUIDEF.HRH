@@ -1,0 +1,150 @@
+// Copyright (c) 1998-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// Function ids
+// 
+//
+/**
+ * @file 
+ * @publishedPartner
+ * @released
+ */
+
+/**
+* @publishedPartner
+* @released
+*/
+#define KMtmUiFunctionPrint			 				0x200000	// KMtmFirstFreeMtmFunctionId + 0x100000
+/**
+* @publishedPartner
+* @released
+*/
+#define KMtmUiFunctionPrintPreview	 				0x200001
+/**
+* @publishedPartner
+* @released
+*/
+#define KMtmUiMessagingInitialisation	 			0x200002
+/**
+* @publishedPartner
+* @released
+*/
+#define KMtmUiFunctionGetNew						0x200003
+/**
+* @publishedPartner
+* @released
+*/
+#define KMtmUiFunctionSendAs						0x200004
+/**
+* @publishedPartner
+* @released
+*/
+#define KMtmUiFunctionFetchAll						0x200005
+/**
+* @publishedPartner
+* @released
+*/
+#define KMtmUiFunctionFetchNew						0x200006
+/**
+* @publishedPartner
+* @released
+*/
+#define KMtmUiFunctionFetchSelected					0x200007
+/**
+* @publishedPartner
+* @released
+*/
+#define KMtmFirstFreeMtmUiFunctionId 				0x201000	
+/**
+* @publishedPartner
+* @released
+*/
+
+// Capabilities 
+/**
+* @publishedPartner
+* @released
+*/
+#define KUidMsvMtmUiQueryCanPrintMsgValue			0x100017FF	
+/**
+* @publishedPartner
+* @released
+*/
+#define KUidMsvMtmUiQueryCanPrintPreviewMsgValue	0x1000182D
+/**
+* @publishedPartner
+* @released
+*/
+#define KUidMsvMtmUiQueryConnectionOrientedServices	0x100038EC
+/**
+* @publishedPartner
+* @released
+*/
+#define KUidMsvMtmUiQueryMessagingInitialisation	0x1000484E
+/**
+* @publishedPartner
+* @released
+*/
+#define KUidMsvMtmUiQueryServiceAttributes			0x10004F4D
+/**
+* @publishedPartner
+* @released
+*/
+#define KUidMsvMtmUiQueryCanGetNew					0x100055A7
+/**
+* @publishedPartner
+* @released
+*/
+#define KUidMsvMtmUiQueryCanOpenServiceOnAction		0x100055A8
+/**
+* @publishedPartner
+* @released
+*/
+#define KUidMsvMtmUiQueryExtendedOpenProgress		0x1000560E
+/**
+* @publishedPartner
+* @released
+*/
+
+// Flags for KUidMsvMtmUiQueryServiceAttributes
+/**
+* @publishedPartner
+* @released
+*/
+#define	EMtmUiAttributeLaunchingService				0x0001
+/**
+* @publishedPartner
+* @released
+*/
+#define	EMtmUiAttributeContainerService				0x0002
+/**
+* @publishedPartner
+* @released
+*/
+#define	EMtmUiAttributeConnectionOrientedService	0x0004
+/**
+* @publishedPartner
+* @released
+*/
+
+// Preferences
+/**
+* @publishedPartner
+* @released
+*/
+#define EMtmUiFlagEditorPreferEmbedded				0x0001
+/**
+* @publishedPartner
+* @released
+*/
+#define EMtmUiFlagEditorNoWaitForExit				0x0002

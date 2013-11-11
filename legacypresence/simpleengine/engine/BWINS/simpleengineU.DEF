@@ -1,0 +1,16 @@
+EXPORTS
+	?NewConnectionL@TSimpleFactory@@SAPAVMSimpleConnection@@AAVMSimpleConnectionObserver@@@Z @ 1 NONAME ; class MSimpleConnection * TSimpleFactory::NewConnectionL(class MSimpleConnectionObserver &)
+	?NewContentL@TSimpleFactory@@SAPAVMSimpleContent@@ABVTDesC8@@0@Z @ 2 NONAME ; class MSimpleContent * TSimpleFactory::NewContentL(class TDesC8 const &, class TDesC8 const &)
+	?NewDocumentL@TSimpleFactory@@SAPAVMSimpleDocument@@ABVTDesC8@@@Z @ 3 NONAME ; class MSimpleDocument * TSimpleFactory::NewDocumentL(class TDesC8 const &)
+	?NewDocumentL@TSimpleFactory@@SAPAVMSimpleDocument@@XZ @ 4 NONAME ; class MSimpleDocument * TSimpleFactory::NewDocumentL(void)
+	?NewElementL@TSimpleFactory@@SAPAVMSimpleElement@@ABVTDesC8@@0@Z @ 5 NONAME ; class MSimpleElement * TSimpleFactory::NewElementL(class TDesC8 const &, class TDesC8 const &)
+	?NewFilterDocumentL@TSimpleFactory@@SAPAVMSimpleFilterDocument@@ABVTDesC8@@@Z @ 6 NONAME ; class MSimpleFilterDocument * TSimpleFactory::NewFilterDocumentL(class TDesC8 const &)
+	?NewFilterDocumentL@TSimpleFactory@@SAPAVMSimpleFilterDocument@@XZ @ 7 NONAME ; class MSimpleFilterDocument * TSimpleFactory::NewFilterDocumentL(void)
+	?NewNamespaceL@TSimpleFactory@@SAPAVMSimpleNamespace@@ABVTDesC8@@0@Z @ 8 NONAME ; class MSimpleNamespace * TSimpleFactory::NewNamespaceL(class TDesC8 const &, class TDesC8 const &)
+	?NewPublisherL@TSimpleFactory@@SAPAVMSimplePublisher@@AAVMSimpleConnection@@AAVMSimplePublishObserver@@@Z @ 9 NONAME ; class MSimplePublisher * TSimpleFactory::NewPublisherL(class MSimpleConnection &, class MSimplePublishObserver &)
+	?NewWatcherL@TSimpleFactory@@SAPAVMSimpleWatcher@@AAVMSimpleConnection@@AAVMSimpleWatcherObserver@@@Z @ 10 NONAME ; class MSimpleWatcher * TSimpleFactory::NewWatcherL(class MSimpleConnection &, class MSimpleWatcherObserver &)
+	?NewWinfoWatcherL@TSimpleFactory@@SAPAVMSimpleWinfoWatcher@@AAVMSimpleConnection@@AAVMSimpleWinfoObserver@@@Z @ 11 NONAME ; class MSimpleWinfoWatcher * TSimpleFactory::NewWinfoWatcherL(class MSimpleConnection &, class MSimpleWinfoObserver &)
+	?NsPrefixL@TSimpleUtils@@SA?AVTPtrC8@@ABVTDesC8@@@Z @ 12 NONAME ; class TPtrC8 TSimpleUtils::NsPrefixL(class TDesC8 const &)
+	?NsUriL@TSimpleUtils@@SA?AVTPtrC8@@ABVTDesC8@@@Z @ 13 NONAME ; class TPtrC8 TSimpleUtils::NsUriL(class TDesC8 const &)
+	?NewInstantMessageL@TSimpleFactory@@SAPAVMSimpleInstantMessage@@AAVMSimpleConnection@@AAVMSimpleInstantMsgObserver@@@Z @ 14 NONAME ; class MSimpleInstantMessage * TSimpleFactory::NewInstantMessageL(class MSimpleConnection &, class MSimpleInstantMsgObserver &)
+

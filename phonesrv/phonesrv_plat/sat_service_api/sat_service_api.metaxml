@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<api id="eb3beddd4f51d70ba67d768fcfcbf2d8" dataversion="1.0">
+<name>SAT Service API</name>
+<description>Client API to Sim Application Toolkit (SAT).</description>
+<type>c++</type>
+<subsystem>satengine</subsystem>
+<libs><lib name="satclient.lib"/>
+</libs>
+<release category="domain" sinceversion="5.1"/>
+<attributes>
+<htmldocprovided>no</htmldocprovided>
+<adaptation>no</adaptation>
+</attributes>
+</api>

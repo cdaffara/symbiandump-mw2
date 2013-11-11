@@ -1,0 +1,74 @@
+/************************************************************************
+    Description: Conference of 3 CS Calls, check that no autoresume 
+    occurs in step 2.
+        
+    1. Make a conference of 2 calls
+    2. Make third call
+       Expected: Conference is put automatically on Hold
+    3. Add call to conference
+    4. Disconnect calls
+*************************************************************************/  
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 9.6.5 Conference Call, 3 CS Calls
+timeout 15000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+//Create 2 calls, one is put to hold, other is connected
+test OpenNewCall 1 0 ConfcallOne 1 ECCECallTypeCSVoice ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+test OpenNewCall 2 0 ConfcallTwo 1 ECCECallTypeCSVoice ECCELineTypePrimary
+test Dial 2 0 SubAddress Bearer
+test WaitEvent 2 Dialling
+test WaitEvent 2 Connecting
+test WaitEvent 2 Connected
+
+// Create conference
+test AddToConference 1 0
+test WaitEvent ConferenceCallAdded 1
+
+test AddToConference 2 0
+// Plugin sets call to match conference state (connected)
+test WaitEvents ConferenceCallAdded 2, ConferenceActive, 1 Connected
+
+// Step 2
+print Step_2
+
+test OpenNewCall 3 0 ConfcallThree 1 ECCECallTypeCSVoice ECCELineTypePrimary
+test Dial 3 0 SubAddress Bearer
+
+// Plugin changes call states to match conference (Hold)
+test WaitEvents 1 Hold, 2 Hold, ConferenceHold, 3 Dialling, 3 Connecting, 3 Connected, ConferenceCallSwapped
+
+// Step 3
+print Step_3
+
+test AddToConference 3 0
+// Conference is not automatically resumed
+// Plugin sets the state to match conference
+test WaitEvents ConferenceCallAdded 3, 3 Hold
+
+// Step 4
+print Step_4
+
+test HangupConference 0
+test WaitEvents ConferenceCallRemoved 1, ConferenceCallRemoved 2, ConferenceCallRemoved 3, ConferenceIdle, 1 Disconnecting, 1 Idle, 2 Disconnecting, 2 Idle, 3 Disconnecting, 3 Idle
+
+test VerifyTest
+delete test
+[Endtest]

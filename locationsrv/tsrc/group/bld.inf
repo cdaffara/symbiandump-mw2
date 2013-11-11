@@ -1,0 +1,30 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  The common build file.
+
+PRJ_TESTMMPFILES
+#include "../../locsrv_sdk/landmarks_api/tsrc/group/bld.inf"
+#include "../../locsrv_sdk/landmarks_database_management_api/tsrc/group/bld.inf"
+#include "../../locsrv_sdk/landmarks_search_api/tsrc/group/bld.inf"
+#include "../../locsrv_dom/geocoding_api/tsrc/group/bld.inf"
+#include "../../locsrv_dom/location_centre_api/tsrc/group/bld.inf"
+#include "../../locsrv_dom/location_settings_launch_api/tsrc/group/bld.inf"
+#include "../../locsrv_dom/map_and_navigation_api/tsrc/group/bld.inf"
+#include "../../locsrv_dom/map_and_navigation_provider_discovery_api/tsrc/group/bld.inf"
+#include "../../locsrv_dom/map_image_api/tsrc/group/bld.inf"
+#include "../../locsrv_dom/map_image_conversion_plugin_api/tsrc/group/bld.inf"
+#include "../../locsrv_dom/supl_network_initiation_api/tsrc/group/bld.inf"
+#include "../../locsrv_dom/supl_pos_message_plugin_api/tsrc/group/bld.inf"
+#include "../../locsrv_dom/supl_settings_api/tsrc/group/bld.inf"
+#include "../../locsrv_dom/supl_terminal_initiation_api/tsrc/group/bld.inf"

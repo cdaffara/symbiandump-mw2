@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>msg-dynamicview-ops</name>
+	<timeout>6000</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-dynamicview-ops.script</hostPath>
+			<devicePath>c:\msgtest\media\msg-dynamicview-ops.script</devicePath>
+		</script>
+		
+	</testScripts>
+
+	<testServers>
+		<server>t_media</server>
+	</testServers>
+
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-dynamicview-ops.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-dynamicview-ops.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-dynamicview-0001.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-dynamicview-0001.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-dynamicview-0002.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-dynamicview-0002.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-sms-message.script</hostPath>
+			<devicePath>c:\msgtest\media\msg-sms-message.script</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-sms-message.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-sms-message.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-sms-config.txt</hostPath>
+			<devicePath>c:\msgtest\media\msg-sms-config.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-sms-message.txt</hostPath>
+			<devicePath>c:\msgtest\media\msg-sms-message.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-sms-settings.txt</hostPath>
+			<devicePath>c:\msgtest\media\msg-sms-settings.txt</devicePath>
+		</data>
+	</dependencies>	
+</testExecuteTest>

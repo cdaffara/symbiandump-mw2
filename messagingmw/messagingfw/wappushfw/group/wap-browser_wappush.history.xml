@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<relnotes name="WAP Push Framework">
+  <purpose>
+    Framework and utilities supporting WAP Push, uses WAP message API. WAP Push embeds links to WAP addresses within SMS messages.
+  </purpose>
+
+  <defect number="DEF122092" title="wbxmllib.lib and xmllib.lib is not used " revision="031">
+     Removed both the library from ROcontenthandler.mmp and ROAPTcontenthandler.mmp.
+  </defect>
+  
+  <defect number="DEF122033" title="CleanupStack::PopAndDestroy only one element. " revision="030">
+     CleanupStack::PopAndDestroy newPath. 
+  </defect>
+
+  <defect number="PDEF120952" title="LIBpp08602 - O2_UK_IOT:UE receives SI messages created using illegal time or dat" revision="029">
+    Service indication message is received even when created using illegal time set or illegal date set. 
+  </defect>
+
+  <defect number="DEF117127" title="Several warnings are flagged while building HTTP and WAP Push Components " revision="028">
+    Resolved build warnings. 
+  </defect>
+
+  <defect number="PDEF112996" title="Test and Reference code is delivered together with platform code in the same CB" revision="027">
+    Created a new roapphandler.dll and removed the implementation of ROAppHandler plugin from the existing 101F3E5B.rss file by creating a new 2000E3C3.rss file.
+  </defect>
+
+  <defect number="DEF111692" title="Filename Policy non-conformance generates warnings in checksource build" revision="026">
+    Fixed the warnings generated with checksource build .
+  </defect>
+
+  <defect number="DEF108014" title="Warnings generated with checksource build" revision="025">
+    Fixed the warnings generated with checksource build .
+  </defect>
+
+  <defect number="DEF107660" title="Incomplete doxygen documentation in WaPush component" revision="024">
+    Fixed Doxygen errors.
+  </defect>
+
+  <defect number="DEF105591" title="PREQ1182 submission has caused build failure" revision="023">
+    Resolved build failures.
+  </defect>
+
+  <preq number="1182" title="GNU Make-based build system" revision="022">
+    Phase-I of Preq-1182 GNU Make-based build system, Filename Policy check updations.
+  </preq>
+
+  <defect number="PDEF103738" title="CROContentHandler creates an unused attachment file" revision="021">
+    RO content handler was registering wrong content type for DRM agents. RO Content handler was creating an unused file.
+  </defect>
+
+  <cr number="0929" title="Add PREQ1505 and REQ6518 to the scope of Naiad" revision="020">
+    Enabled blacklisting and whitelisting for wap-push SI and SL messages.
+  </cr>
+
+  <defect number="PDEF103513" title="Changes to &quot;ContentAccess&quot; class scope will break WapPush test" revision="019">
+    namespace ContentAccess issue is resolved by using namespace locally for all dependencies.
+  </defect>
+
+  <defect number="PDEF103198" title="DRM: Unable to receive rights for Separate delivery through WapPush" revision="018">
+    The key value of the rights object, after conversion from wbxml to xml format, is now base64 encoded to make sure that the rights object is correctly supplied to the CAF.
+  </defect>
+
+  <defect number="DEF100832" title="WapPush test code always exports binaries from udeb path while building the rom." revision="017">
+    Made changes to the TWapPush.iby to export binaries from the BUILD_DIR, which perviously exported binaries from DEBUG_DIR.
+  </defect>
+
+  <defect number="DEF100610" title="Memory leak in WapPush Tfailure test." revision="016">
+    Resolved memory leak in TFailure test harness.
+  </defect>
+
+  <defect number="DEF100680" title="TSmsUtilities implimentation changed to plugin from DLL due to CR856" revision="015">
+    TSmsUtilities implementation changed to plugin from DLL due to CR856. Hence, CUnknownContentHandler.cpp was changed to instantiate the plugin and call these API's on the plugin.
+  </defect>
+
+  <defect number="DEF100314" title="A thread should have only one Active Scheduler." revision="014">
+    There are two active scheduler running. since there should be only one active scheduler for a thread.
+    The solution is to use CActiveShedulerWait instead of CActiveSheduler.
+  </defect>
+
+  <defect number="PDEF098418" title="Misiing dll from wappush.iby file" revision="013">
+    Eliminated ROM build warnings by removing the missing dll from IBY file
+  </defect>
+
+  <defect number="PDEF097571" title="Missing implementation in DRM string table" revision="012">
+    Added missing attribute in the DRM string table.
+  </defect>
+
+  <defect number="DEF094997" title="Incorrect distribution policy files in WapPush" revision="011">
+    Corrected the bad distribution policy files in wappush.
+  </defect>
+
+  <defect number="DEF094551" title="SI content handler does not handle Date and Time properly." revision="010">
+    SI content handler was not able to handle date and time formats correctly. This issue was resolved by encoding the received date in the correct format
+  </defect>
+
+  <defect number="DEF094109" title="Regression caused by RefTestAgent" revision="009">
+    Regession caused by RefTestAgent was resolved by excluding TestExecute components from the IBY file
+  </defect>
+
+  <defect number="DEF093955" title="Leavescan and tag errors in RefTestAgent code of wap-browser" revision="008">
+    Unidentified tags were removed from wap-browser component.
+  </defect>
+
+  <defect number="DEF093684" title="TWapPush test says only 2 tests run in the test result." revision="007">
+    TWappush ONB logs showed only 2 tests executed while there are actually 18 tests. This problem was fixed by printing RTEST SUCCESS for every test that executed successfully.
+  </defect>
+
+  <defect number="DEF093413" title="Bad distribution.policy file Schedule 12 category" revision="006">
+    Modified bad distribution.policy files
+  </defect>
+
+  <defect number="DEF093045" title="Corrupt Message Test is not running in Wap-browser" revision="005">
+    Corrupt Message Test fixed
+  </defect>
+
+  <defect number="DEF092926" title="Tag Scan Report for the wap-browser Subsystem" revision="004">
+    Unidentified tags removed
+  </defect>
+
+  <defect number="DEF092066" title="UNUSED_VALUE:-Pointer returned from &quot;RStringBase::DesC() const&quot; is never used" revision="003">
+    Pointer returned from "RStringBase::DesC() const" was never used and has been removed
+  </defect>
+
+  <defect number="PDEF088249" title="DUC-SV Chinese and Eurocurrency symbol can't be displayed in WAP Push message." revision="002">
+    DUC-SV Chinese and Eurocurrency symbol can now be displayed in WAP Push message
+  </defect>
+
+  <defect number="INC077823" title="SDK/S60 3.0/C++CW/W: PushMtm ECOM plugin does not have the &quot;standard&quot; ECOM capab" revision="001">
+    Changed the capability from ReadDeviceData WriteDeviceData NetworkServices LocalServices ReadUserData WriteUserData to All -TCB .
+  </defect>
+</relnotes>

@@ -1,0 +1,14 @@
+<?xml version="1.0" ?> 
+<!DOCTYPE testSuite SYSTEM "file:///c:/program files/common files/symbian/testSuite.dtd" [ ]>
+
+<testSuite>
+	<name>burtestserver</name> 
+
+	<testItems>
+		<test>msg-backuprestore1</test>
+		<test>msg-backuprestore2</test>
+		<test>msg-backuprestore3</test>
+		<test>msg-backuprestore4</test>
+		<test>msg-backuprestore5</test>
+	</testItems>
+</testSuite>

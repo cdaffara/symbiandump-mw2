@@ -1,0 +1,10 @@
+# lon-melihe01.intra server
+__type__   = SmtpSettings
+
+#ServerName   = lon-darrenm01.intra
+#EmailAddress = cliven@lon-darrenm01.intra
+
+EmailAddressExtension = msexchange2k.closedtest.intra
+
+# lon-cn-exchange2k.msexchange2k.msexchange2k.closedtest.intra = 10.22.64.6
+ServerName = 10.22.64.6

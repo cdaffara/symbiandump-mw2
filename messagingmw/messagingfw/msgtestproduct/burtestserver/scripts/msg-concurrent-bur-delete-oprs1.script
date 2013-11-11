@@ -1,0 +1,50 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description: 
+//
+
+LOAD_SUITE burtestserver
+LOAD_SERVER t_emailtestserver
+
+START_TESTCASE	MSG-TEST-0001
+
+CONCURRENT
+RUN_TEST_STEP -1 burtestserver TestBackup c:\msgtest\backup\msg-backuprestore2.ini msg_partial_base
+START_TEST_BLOCK	300	t_emailtestserver		c:\msgtest\backup\msg-backuprestore2.ini
+	CREATE_OBJECT	ImapTestWrapper		0005_obj
+	COMMAND		0005_obj		DeleteMessage	0005-DeleteMessage1
+	COMMAND		0005_obj		DeleteMessage	0005-DeleteMessage1
+	COMMAND		0005_obj		DeleteMessage	0005-DeleteMessage1
+	COMMAND		0005_obj		DeleteMessage	0005-DeleteMessage1
+	COMMAND		0005_obj		DeleteMessage	0005-DeleteMessage1
+	COMMAND		0005_obj		DeleteMessage	0005-DeleteMessage1
+	COMMAND		0005_obj		DeleteMessage	0005-DeleteMessage1
+	COMMAND		0005_obj		DeleteMessage	0005-DeleteMessage1
+	COMMAND		0005_obj		DeleteMessage	0005-DeleteMessage1
+	COMMAND		0005_obj		DeleteMessage	0005-DeleteMessage1
+	COMMAND		0005_obj		DeleteMessage	0005-DeleteMessage1
+	COMMAND		0005_obj		DeleteMessage	0005-DeleteMessage1
+	COMMAND		0005_obj		DeleteMessage	0005-DeleteMessage1
+	COMMAND		0005_obj		DeleteMessage	0005-DeleteMessage1
+	COMMAND		0005_obj		DeleteMessage	0005-DeleteMessage1
+	COMMAND		0005_obj		DeleteMessage	0005-DeleteMessage1
+	COMMAND		0005_obj		DeleteMessage	0005-DeleteMessage1
+	COMMAND		0005_obj		DeleteMessage	0005-DeleteMessage1
+	COMMAND		0005_obj		DeleteMessage	0005-DeleteMessage1
+	COMMAND		0005_obj		DeleteMessage	0005-DeleteMessage1	
+END_TEST_BLOCK	!PanicCode=47
+CONSECUTIVE
+
+END_TESTCASE MSG-TEST-0001
+

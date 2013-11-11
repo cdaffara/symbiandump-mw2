@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<api id="db498cfd8eca84e895a3e55cf3a22003" dataversion="2.0">
+  <name>Landmarks Database Management API</name>
+  <description>Extends the Landmarks API to enable managing and accessing landmark databases. This includes listing, creating, deleting, copying and moving landmark databases. It also enables opening any landmark database.</description>
+  <type>c++</type>
+  <collection>landmarks</collection>
+  <libs>
+    <lib name="eposlmdbmanlib.lib" />
+  </libs>
+  <release category="public" sinceversion="0"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>no</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

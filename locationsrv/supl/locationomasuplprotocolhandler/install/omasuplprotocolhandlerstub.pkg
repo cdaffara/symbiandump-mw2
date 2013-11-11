@@ -1,0 +1,57 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: Installation file for omasuplprotocolhandler - stub
+;
+
+; .pkg file for OMA SUPL Protocol Handler stub sis file
+
+; Languages, (English only)
+&EN
+
+; UID is the app's UID
+#{"OMASUPL ProtocolHandler"},(0x102073D0),1,0,0,TYPE=SA
+
+;Series 60 v3.0
+(0x101f7961), 0, 0, 0, {"Series60ProductID"}
+
+; Localised Vendor name
+%{"Nokia"}
+
+; Unique Vendor name
+:"Nokia"
+
+;
+; Files to be eclipsed
+;
+""-"z:\sys\bin\epos_comasuplasnplugin.dll"
+""-"z:\sys\bin\eposomasuplposmessageplugin.dll"
+""-"z:\sys\bin\eposomasuplprotocolhandler.dll"
+""-"z:\resource\plugins\eposomasuplprotocolhandler.rsc"
+""-"z:\sys\bin\eposomasuplprotocolhandler1.dll"
+""-"z:\resource\plugins\eposomasuplprotocolhandler1.rsc"
+""-"z:\sys\bin\eposomasuplprotocolhandler2.dll"
+""-"z:\resource\plugins\eposomasuplprotocolhandler2.rsc"
+""-"z:\sys\bin\epos_omasuplwaplistener.dll"
+""-"z:\resource\plugins\epos_omasuplwaplistener.rsc"
+""-"z:\sys\bin\epos_omasupllistener.exe"
+""-"z:\sys\bin\epos_omasuplprovhandler.dll"
+""-"z:\resource\plugins\epos_omasuplprovhandler.rsc"
+""-"z:\sys\bin\epos_omasuplsyncmldm.dll"
+""-"z:\resource\plugins\epos_omasuplsyncmldm.rsc"
+""-"z:\sys\bin\epos_omasuplnotifierplugin.dll"
+""-"z:\resource\plugins\epos_omasuplnotifierplugin.rsc"
+""-"z:\sys\bin\epos_omasuplnotifier.dll"
+""-"z:\resource\epos_omasuplnotifier.rsc"
+
+; End of File

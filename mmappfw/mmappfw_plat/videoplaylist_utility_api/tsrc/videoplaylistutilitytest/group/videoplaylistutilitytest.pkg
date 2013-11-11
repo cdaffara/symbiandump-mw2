@@ -1,0 +1,58 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: Package file for videoplaylistutility STIF test
+;
+; Version : %version: 2 %
+;
+
+; Languages
+&EN
+
+; Provide value for uid
+#{"Video Playlist Utility STIF"}, (0x101FB3E3), 1, 0, 1, TYPE=SA, RU
+
+; Series60 product id for S60 3.0
+[0x101F7961], 0, 0, 0, {"Series60ProductID"}
+
+; Localised Vendor name
+%{"Nokia"}
+
+; Unique Vendor name
+:"Nokia"
+
+; Install files
+"\epoc32\release\armv5\udeb\videoplaylistutilitytest.dll"   -   "!:\sys\bin\videoplaylistutilitytest.dll"
+
+"..\..\conf\videoplaylistutilitytest.cfg" - "c:\testframework\videoplaylistutilitytest.cfg"
+"..\..\init\testframework.ini" - "c:\testframework\testframework.ini"
+
+"..\..\data\mmc\local.3gp" - "e:\testing\data\local.3gp"
+"..\..\data\mmc\test_hybridlink_hw.ram" - "e:\testing\data\test_hybridlink.ram"
+"..\..\data\mmc\test_localMultilink_hw.ram" - "e:\testing\data\test_localMultilink.ram"
+"..\..\data\mmc\test_localSingleLink_hw.ram" - "e:\testing\data\test_localSingleLink.ram"
+"..\..\data\mmc\test_multiLink.ram" - "e:\testing\data\test_multiLink.ram"
+"..\..\data\mmc\test_singleLink.ram" - "e:\testing\data\test_singleLink.ram"
+
+; Asx Files
+"..\..\data\mmc\test_hybridMultiple_hw_v2.asx" - "e:\testing\data\test_hybridMultiple_v2.asx"
+"..\..\data\mmc\test_hybridMultiple_hw_v3.asx" - "e:\testing\data\test_hybridMultiple_v3.asx"
+"..\..\data\mmc\test_localMultiple_hw_v2.asx" - "e:\testing\data\test_localMultiple_v2.asx"
+"..\..\data\mmc\test_localMultiple_hw_v3.asx" - "e:\testing\data\test_localMultiple_v3.asx"
+"..\..\data\mmc\test_localSingle_hw_v2.asx" - "e:\testing\data\test_localSingle_v2.asx"
+"..\..\data\mmc\test_localSingle_hw_v3.asx" - "e:\testing\data\test_localSingle_v3.asx"
+"..\..\data\mmc\test_streamingSingle_v2.asx" - "e:\testing\data\test_streamingSingle_v2.asx"
+"..\..\data\mmc\test_streamingSingle_v3.asx" - "e:\testing\data\test_streamingSingle_v3.asx"
+"..\..\data\mmc\test_seek_v3.asx" - "e:\testing\data\test_seek_v3.asx"
+"..\..\data\mmc\test_seekSingle_v3.asx" - "e:\testing\data\test_seekSingle_v3.asx"
+"..\..\data\mmc\test_noSeekInfoEmbedded_v3.asx" - "e:\testing\data\test_noSeekInfoEmbedded_v3.asx"

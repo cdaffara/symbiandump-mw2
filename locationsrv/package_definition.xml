@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SystemDefinition schema="3.0.0" xmlns:qt="http://www.nokia.com/qt">
+ <package id="locationsrv" name="Location Services" levels="plugin fw server if">
+  <collection id="locsrv_pub" name="Location Services Public Interfaces" level="if">
+   <component id="landmarks_search_api" name="Landmarks Search API" class="api" filter="s60">
+    <meta rel="Api" href="locsrv_pub/landmarks_search_api/landmarks_search_api.metaxml"/>
+    <unit bldFile="locsrv_pub/landmarks_search_api/group"/>
+   </component>
+   <component id="landmarks_api" name="Landmarks API" class="api" filter="s60">
+    <meta rel="Api" href="locsrv_pub/landmarks_api/landmarks_api.metaxml"/>
+    <unit bldFile="locsrv_pub/landmarks_api/group"/>
+   </component>
+   <component id="landmarks_database_management_api" name="Landmarks Database Management API" class="api" filter="s60">
+    <meta rel="Api" href="locsrv_pub/landmarks_database_management_api/landmarks_database_management_api.metaxml"/>
+    <unit bldFile="locsrv_pub/landmarks_database_management_api/group"/>
+   </component>
+   <component id="location_triggering_api" name="Location Triggering API" class="api" filter="s60">
+    <meta rel="Api" href="locsrv_pub/location_triggering_api/location_triggering_api.metaxml"/>
+    <unit bldFile="locsrv_pub/location_triggering_api/group"/>
+   </component>
+   <component id="blid_application_satellite_info_api" name="BLID Application Satellite Info API" class="api" filter="s60">
+    <meta rel="Api" href="locsrv_pub/blid_application_satellite_info_api/blid_application_satellite_info_api.metaxml"/>
+    <unit bldFile="locsrv_pub/blid_application_satellite_info_api/group"/>
+   </component>
+  </collection>
+  <collection id="locsrv_plat" name="Location Services Platform Interfaces" level="if">
+   <component id="geocoding_api" name="Geocoding API" class="api" filter="s60">
+    <meta rel="Api" href="locsrv_plat/geocoding_api/geocoding_api.metaxml"/>
+    <unit bldFile="locsrv_plat/geocoding_api/group"/>
+   </component>
+   <component id="supl_pos_message_plugin_api" name="SUPL POS Message Plugin API" class="api" filter="s60">
+	<!-- placeholder
+    <meta rel="Api" href="locsrv_plat/supl_pos_message_plugin_api/supl_pos_message_plugin_api.metaxml"/>
+    <unit bldFile="locsrv_plat/supl_pos_message_plugin_api/group"/>
+	 -->
+   </component>
+   <component id="landmarks_category_definition_api" name="Landmarks Category Definition API" class="api" filter="s60">
+    <meta rel="Api" href="locsrv_plat/landmarks_category_definition_api/landmarks_category_definition_api.metaxml"/>
+    <unit bldFile="locsrv_plat/landmarks_category_definition_api/group"/>
+   </component>
+   <component id="supl_settings_api" name="SUPL Settings API" class="api" filter="s60">
+    <meta rel="Api" href="locsrv_plat/supl_settings_api/supl_settings_api.metaxml"/>
+    <unit bldFile="locsrv_plat/supl_settings_api/group"/>
+   </component>
+   <component id="np_proxy_configuration_api" name="NP Proxy Configuration API" class="api" filter="s60">
+    <meta rel="Api" href="locsrv_plat/np_proxy_configuration_api/np_proxy_configuration_api.metaxml"/>
+    <unit bldFile="locsrv_plat/np_proxy_configuration_api/group"/>
+   </component>
+   <component id="supl_terminal_initiation_api" name="SUPL Terminal Initiation API" class="api" filter="s60">
+    <meta rel="Api" href="locsrv_plat/supl_terminal_initiation_api/supl_terminal_initiation_api.metaxml"/>
+    <unit bldFile="locsrv_plat/supl_terminal_initiation_api/group"/>
+   </component>
+   <component id="supl_network_initiation_api" name="SUPL Network Initiation API" class="api" filter="s60">
+    <meta rel="Api" href="locsrv_plat/supl_network_initiation_api/supl_network_initiation_api.metaxml"/>
+    <unit bldFile="locsrv_plat/supl_network_initiation_api/group"/>
+   </component>
+   <component id="oma_supl_configuration_parameter_api" name="OMA SUPL Configuration Parameter API" class="api" filter="s60">
+    <meta rel="Api" href="locsrv_plat/oma_supl_configuration_parameter_api/oma_supl_configuration_parameter_api.metaxml"/>
+    <unit bldFile="locsrv_plat/oma_supl_configuration_parameter_api/group"/>
+   </component>
+   <component id="location_triggering_management_api" name="Location Triggering Management API" class="api" filter="s60">
+    <meta rel="Api" href="locsrv_plat/location_triggering_management_api/location_triggering_management_api.metaxml"/>
+    <unit bldFile="locsrv_plat/location_triggering_management_api/group"/>
+   </component>
+   <component id="location_triggering_status_information_api" name="Location Triggering Status Information API" class="api" filter="s60">
+    <meta rel="Api" href="locsrv_plat/location_triggering_status_information_api/location_triggering_status_information_api.metaxml"/>
+    <unit bldFile="locsrv_plat/location_triggering_status_information_api/group"/>
+   </component>
+   <component id="oma_supl_asn_codec_plugin_api" name="OMA SUPL ASN Codec Plugin API" class="api" filter="s60">
+    <unit bldFile="locsrv_plat/oma_supl_asn_codec_plugin_api/group"/>
+   </component>
+  <component id="query_and_notification_api" name="Query and Notification API" class="api" filter="s60" introduced="^3">
+      <unit bldFile="locsrv_plat/query_and_notification_api/group"/>
+   </component>
+   <component id="location_local_variation_api" name="Location Local Variation API" class="api" filter="s60">
+    <meta rel="Api" href="locsrv_plat/location_local_variation_api/location_local_variation_api.metaxml"/>
+    <unit bldFile="locsrv_plat/location_local_variation_api/group"/>
+   </component>
+  </collection>
+  <collection id="genericpositioningplugins" name="Generic Positioning Plugins" level="plugin">
+   <component id="locationnpppsy" filter="s60" name="Location Positioning Proxy PSY" class="plugin">
+    <unit bldFile="genericpositioningplugins/locationnpppsy/group"/>
+   </component>
+   <component id="locationsuplpsy" filter="s60" name="Location SUPL PSY" class="plugin" introduced="^3">
+    <unit bldFile="genericpositioningplugins/locationsuplpsy/group"/>
+   </component>
+  </collection>
+  <collection id="landmarks" name="Landmarks" level="server">
+   <component id="locationlandmarks" filter="s60" name="Location Landmarks">
+    <unit bldFile="landmarks/locationlandmarks/group"/>
+   </component>
+  </collection>
+  <collection id="locationsystemui" name="Location System UI" level="if">
+   <component id="locationsysui" filter="s60" name="Location System UI">
+    <unit bldFile="locationsystemui/locationsysui/group"/>
+   </component>
+   <component id="qtlocationsysui" filter="s60" name="Location System Qt UI">
+    <unit bldFile="locationsystemui/locationsysui" qt:proFile="locsysui.pro"/>
+   </component>
+  </collection>
+  <collection id="supl" name="SUPL" level="fw">
+   <component id="locationsuplfw" filter="s60" name="Location SUPL Framework">
+    <unit bldFile="supl/locationsuplfw/group"/>
+   </component>
+   <component id="locationomasuplprotocolhandler" filter="s60" name="OMA SUPL Protocol Handler">
+    <unit bldFile="supl/locationomasuplprotocolhandler/group"/>
+   </component>
+   <component id="supltiapiimplementation" filter="s60" name="SUPL TI API Implementation" introduced="^3">
+    <unit bldFile="supl/supltiapiimplementation/group"/>
+   </component>
+  </collection>
+  <collection id="locationtriggering" name="Location Triggering" level="server">
+   <component id="ltlogger" filter="s60" name="LT Logger">
+    <unit bldFile="locationtriggering/ltlogger/group"/>
+   </component>
+   <component id="ltclientlib" filter="s60" name="LT Client Library">
+    <unit bldFile="locationtriggering/ltclientlib/group"/>
+   </component>
+   <component id="ltmanagementlib" filter="s60" name="LT Management Library">
+    <unit bldFile="locationtriggering/ltmanagementlib/group"/>
+   </component>
+   <component id="ltcontainer" filter="s60" name="LT Container">
+    <unit bldFile="locationtriggering/ltcontainer/group"/>
+   </component>
+   <component id="ltserver" filter="s60" name="LT Server">
+    <unit bldFile="locationtriggering/ltserver/group"/>
+   </component>
+   <component id="ltstrategypluginapi" filter="s60" name="LT Strategy Plugin API">
+    <unit bldFile="locationtriggering/ltstrategypluginapi/group"/>
+   </component>
+   <component id="ltstrategyengine" filter="s60" name="LT Strategy Engine">
+    <unit bldFile="locationtriggering/ltstrategyengine/group"/>
+   </component>
+   <component id="ltmovementdetectionpluginapi" filter="s60" name="Movement Detection Plugin API">
+    <unit bldFile="locationtriggering/ltmovementdetectionpluginapi/group"/>
+   </component>
+   <component id="ltcellidmovementdetector" filter="s60" name="Cell ID Movement Detector">
+    <unit bldFile="locationtriggering/ltcellidmovementdetector/group"/>
+   </component>
+   <component id="ltcontextsourceplugin" filter="s60" name="LT Context Source Plugin" class="plugin" introduced="^3">
+    <unit bldFile="locationtriggering/ltcontextsourceplugin/group"/>
+   </component>
+   <component id="locationtriggering_rom" filter="s60" name="Location Triggering ROM" class="config">
+    <unit bldFile="locationtriggering/rom"/>
+   </component>
+  </collection>
+ </package>
+</SystemDefinition>
+

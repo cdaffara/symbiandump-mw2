@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api id="e75020a4654d3fa30e533cf100bb65ca" dataversion="2.0">
+  <name>Radio Preset Utilities API</name>
+  <description>An API for applications to access radio preset functionality.</description>
+  <type>c++</type>
+  <collection>mmserv</collection>
+  <libs>
+    <lib name="FmPresetUtility.lib"/>
+    <lib name="presetutility.lib"/>
+  </libs>
+  <release category="platform" sinceversion="3.2"/>
+  <attributes>
+    <!-- This indicates wether the api provedes separate html documentation -->
+    <!-- or is the additional documentation generated from headers. -->
+    <!-- If you are unsuere then the value is "no" -->
+    <htmldocprovided>no</htmldocprovided>
+    <adaptation>no</adaptation>
+  </attributes>
+</api>

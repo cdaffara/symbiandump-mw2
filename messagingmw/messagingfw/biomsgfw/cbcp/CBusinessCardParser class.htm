@@ -1,0 +1,269 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>CBusinessCardParser class</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2><a name="CBusinessCardParser"><font size="4"><tt>CBusinessCardParser</tt></font><font
+face="Times New Roman"> class &#151;</font></a><font
+face="Times New Roman"> Compact Business Card Parser</h2>
+
+<p></font><b><i>Section Contents</i></b></p>
+
+<ul>
+    <li><a href="#e32.eudsccls-004-001"><b>Overview</b></a> </li>
+    <li><a
+        href="#e32.desc-concrete.HBufC.allocation-and-construction"><b>Allocation
+        and construction</b></a> <ul>
+            <li><a href="#e32.desc-concrete.new"><font size="4"><b><tt>NewL()</tt></b></font><b>
+                &#151; Create new CBusinessCardParser</b></a> </li>
+        </ul>
+    </li>
+    <li><a href="#API"><strong>API &#151; Public functions</strong></a><ul>
+            <li><a href="#ParseL"><strong>ParseL &#151; Parse a
+                Compact Business Card message.</strong></a></li>
+            <li><a href="#ProcessL"><strong>ProcessL &#151; Parse
+                a Compact Business Card message.</strong></a></li>
+        </ul>
+    </li>
+</ul>
+
+<hr size="3">
+
+<h3><a name="e32.eudsccls-004-001">Overview</a></h3>
+
+<h5><a name="e32.eudsccls-004-002"><font size="3">Derivation</font></a></h5>
+
+<table border="1" cellpadding="2">
+    <tr>
+        <td valign="top"><a href="eutype.html#e32.class.CBase"><font
+        color="#000000" size="4"><tt>CBase</tt></font></a></td>
+        <td valign="top">Abstract: <a
+        href="eutype.html#e32.class.CBase"><font color="#000000"
+        size="4"><tt>CBase</tt></font></a> behaviour</td>
+    </tr>
+    <tr>
+        <td valign="top"><a href="#e32.class.CActive"><font
+        color="#000000" size="4"><tt>CActive</tt></font></a></td>
+        <td valign="top">Abstract: active object: provides
+        facilities to encapsulate an asynchronous service, and to
+        handle its completion using <font size="4"><tt>RunL()</tt></font></td>
+    </tr>
+    <tr>
+        <td valign="top"><a href="#CBusinessCardParser"><font
+        color="#000000" size="4"><tt>CBaseScriptParser</tt></font></a></td>
+        <td valign="top">Abstract: parser implementation.</td>
+    </tr>
+</table>
+
+<h5><a name="e32.eudsccls-004-003"><font size="3">Defined in</font></a></h5>
+
+<p><code>cbcp.h</code><font size="4"><tt>&nbsp;&nbsp;&nbsp;</tt></font></p>
+
+<h5><a name="e32.eudsccls-004-004"><font size="3">Link against</font></a></h5>
+
+<p><code>cbcp.lib</code></p>
+
+<h5><a name="e32.eudsccls-004-005"><font size="3">Description</font></a></h5>
+
+<p>This class provides functions to parse a Compact Business Card
+message. The parser creates an informative message body for the
+user and generates a vCard in the store associated with the
+message.</p>
+
+<hr size="3">
+
+<h3><a name="e32.desc-concrete.HBufC.allocation-and-construction">Allocation
+and construction</a></h3>
+
+<hr size="1">
+
+<h4><a name="e32.desc-concrete.new"><font size="4"><tt>NewL()</tt></font>
+&#151; Create new <font size="4"><tt>CBusinessCardParser</tt></font></a></h4>
+
+<p><tt>static CBusinessCardParser* NewL(CRegisteredParserDll&amp;
+aRegisteredParserDll, CMsvServerEntry&amp; aEntry, RFs&amp; aFs);</tt></p>
+
+<h5><a name="e32.eudsccls-004-006"><font size="3">Description</font></a></h5>
+
+<p>Use these functions to construct a new <a
+href="#CBusinessCardParser"><font color="#000000" size="4"><tt>CBusinessCardParser</tt></font></a>
+descriptor on the heap. Code should be provided to ensure that a
+single copy of the DLL is loaded and is released when no longer
+required.</p>
+
+<p>If there is insufficient memory available to create the
+descriptor,<font size="4"><tt> NewL()</tt></font> leaves. See <a
+href="euclnp.html#e32.exception.intro"><b>Motivating E32
+exception facilities</b></a> for more information on leave
+processing.</p>
+
+<h5><font size="3">Arguments</font></h5>
+
+<table border="1">
+    <tr>
+        <td valign="top"><a href="#CBusinessCardParser"><tt>CRegisteredParserDll&amp;</tt></a><tt>
+        aRegisteredParserDll</tt></td>
+        <td valign="top">A </td>
+    </tr>
+    <tr>
+        <td><a href="#CBusinessCardParser"><tt>CMsvServerEntry&amp;</tt></a><tt>
+        aEntry</tt></td>
+        <td>A message server entry containing the CBC message.</td>
+    </tr>
+    <tr>
+        <td><a href="#CBusinessCardParser"><tt>RFs&amp;</tt></a><tt>
+        aFs</tt></td>
+        <td>Handle of a file server session.</td>
+    </tr>
+</table>
+
+<h5><font size="3">Return value</font></h5>
+
+<table border="1">
+    <tr>
+        <td valign="top"><a href="#CBusinessCardParser"><font
+        color="#000000" size="4"><tt>CBusinessCardParser*</tt></font></a></td>
+        <td valign="top">The address of the newly created <a
+        href="#CBusinessCardParser"><font color="#000000"
+        size="4"><tt>CBusinessCardParser</tt></font></a>
+        descriptor.<p><font size="4"><tt>NewL()</tt></font>
+        leaves if there is insufficient memory.</p>
+        </td>
+    </tr>
+</table>
+
+<h5><a name="e32.eudsccls-004-009"><font size="3">Example</font></a></h5>
+
+<p>This code fragment illustrates how an <a
+href="#CBusinessCardParser"><font color="#000000" size="4"><tt>CBusinessCardParser</tt></font></a>
+descriptor can be constructed:</p>
+
+<p>Use of <font size="4"><tt>NewL()</tt></font>:</p>
+
+<blockquote>
+    <p>iRegisteredParserDll =
+    CRegisteredParserDll::NewL(uidType);<br>
+    RLibrary parserlibrary;<br>
+    User::LeaveIfError(iRegisteredParserDll-&gt;GetLibrary(gFs,parserlibrary));<br>
+    typedef CBaseScriptParser*
+    (*NewParserL)(CRegisteredParserDll&amp; aRegisteredParserDll,
+    CMsvServerEntry&amp; aEntry, RFs&amp; aFs);<br>
+    TInt entrypointordinalnumber=1; // The one and only entry
+    point.<br>
+    TLibraryFunction
+    libFunc=parserlibrary.Lookup(entrypointordinalnumber);<br>
+    if (libFunc==NULL)<br>
+    User::Leave(KErrBadLibraryEntryPoint);<br>
+    NewParserL pFunc=(NewParserL) libFunc;<br>
+    CBaseScriptParser* parser=NULL;<br>
+    TInt refcount=iRegisteredParserDll-&gt;DllRefCount();<br>
+    TRAPD(ret,parser=((*pFunc)(*iRegisteredParserDll, *iEntry,
+    gFs)));<br>
+    if ((ret!=KErrNone) &amp;&amp;
+    (iRegisteredParserDll-&gt;DllRefCount()==refcount))<br>
+    iRegisteredParserDll-&gt;ReleaseLibrary();</p>
+</blockquote>
+
+<hr size="3">
+
+<h3><a name="API">API &#151; Public functions</a></h3>
+
+<p><a name="ParseL"><strong>ParseL</strong></a><strong> &#151;
+Parse a </strong><a href="#CBusinessCardParser"><strong>Compact
+Business Card</strong></a><strong> message.</strong></p>
+
+<p>void ParseL(TRequestStatus&amp; aStatus, const TDesC&amp;
+aSms);</p>
+
+<h5><a name="e32.eudsccls-004-006"><font size="3">Description</font></a></h5>
+
+<p>Use this function to parse the Compact Business Card message
+aSms, stored in the TDesC. The parser creates an informative
+message body for the user and generates a vCard in the store
+associated with the message.</p>
+
+<h5><font size="3">Arguments</font></h5>
+
+<table border="1">
+    <tr>
+        <td valign="top">TRequestStatus&amp; aStatus</td>
+        <td valign="top">The request status of the active object.</td>
+    </tr>
+    <tr>
+        <td>const TDesC&amp; aSms</td>
+        <td>An SMS message.</td>
+    </tr>
+</table>
+
+<h5><font size="3">Return value</font></h5>
+
+<table border="1">
+    <tr>
+        <td valign="top"><font color="#000000" size="4"><tt>void</tt></font></td>
+    </tr>
+</table>
+
+<h5><a name="e32.eudsccls-004-009"><font size="3">Example</font></a></h5>
+
+<p>This code fragment illustrates how the parser is called:</p>
+
+<blockquote>
+    <p>iParser-&gt;ParseL(iStatus,iSms);</p>
+</blockquote>
+
+<hr size="1">
+
+<p><a name="ProcessL"><font face="Times New Roman"><strong>ProcessL</strong></font></a><font
+face="Times New Roman"><strong> &#151; Parse a </strong></font><a
+href="#CBusinessCardParser"><font face="Times New Roman"><strong>Compact
+Business Card</strong></font></a><font face="Times New Roman"><strong>
+message.</strong></font></p>
+
+<p>void ProcessL(TRequestStatus&amp; aStatus);</p>
+
+<h5><a name="e32.eudsccls-004-006"><font size="3">Description</font></a></h5>
+
+<p>This function is not implemented in the current version of the
+parser. It may be used to implement further actions with the
+parsed message.</p>
+
+<h5><font size="3">Arguments</font></h5>
+
+<table border="1">
+    <tr>
+        <td valign="top">TRequestStatus&amp; aStatus</td>
+        <td valign="top">The request status of the active object.</td>
+    </tr>
+</table>
+
+<h5><font size="3">Return value</font></h5>
+
+<table border="1">
+    <tr>
+        <td valign="top"><font color="#000000" size="4"><tt>void</tt></font></td>
+    </tr>
+</table>
+
+<h5><a name="e32.eudsccls-004-009"><font size="3">Example</font></a></h5>
+
+<p>This code fragment illustrates how the message process stage
+of the parser is called:</p>
+
+<blockquote>
+    <p>iParser-&gt;ProcessL(iStatus)</p>
+</blockquote>
+
+<p>This interface currently returns after issuing a
+User::RequestComplete(iReport, KErrNotSupported).</p>
+
+<hr size="3">
+
+<p>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>msg-preferred-drivelist-ops</name>
+	<timeout>6000</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-preferred-drivelist-ops.script</hostPath>
+			<devicePath>c:\msgtest\media\msg-preferred-drivelist-ops.script</devicePath>
+		</script>
+		
+	</testScripts>
+
+	<testServers>
+		<server>t_media</server>
+	</testServers>
+
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-preferred-drivelist-ops.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-preferred-drivelist-ops.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-preferred-0001.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-preferred-0001.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-preferred-0002.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-preferred-0002.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-preferred-0003.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-preferred-0003.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-preferred-0004.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-preferred-0004.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-preferred-0005.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-preferred-0005.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-preferred-0006.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-preferred-0006.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-preferred-0007.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-preferred-0007.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-preferred-0008.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-preferred-0008.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-preferred-0009.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-preferred-0009.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-preferred-0010.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-preferred-0010.ini</devicePath>
+		</data>
+	</dependencies>	
+</testExecuteTest>

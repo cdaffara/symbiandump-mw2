@@ -1,0 +1,200 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE	T_MsgCommonServer	-SharedData
+LOAD_SUITE	T_MsgPopServer		-SharedData
+
+//!	@SYMTestCaseID				MSG-POP-SNAPSupport-0001
+//!	@SYMTestCaseDesc			Positive: Create a POP email account to use SNAP (+ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						6977, 6984
+//! @SYMPREQ					1307
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create POP account in Central Repository using settings from a configuration file that specify a SNAP.
+//!								3.	Check for success of step 2.
+//!								4.	Modify the settings in step 2 to specify a different SNAP.
+//!								5.	Check for success of step 4.
+//!								6.	Remove the SNAP specified in step 4 from the email account settings.
+//!								7.	Check for success of step 6.
+//!
+//!	@SYMTestExpectedResults		Steps 2, 4 and 6 to pass.
+//!	@SYMAuthor					Sandip Ahluwalia
+
+START_TESTCASE	MSG-POP-SNAPSupport-0001
+
+RUN_TEST_STEP	300	T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300	T_MsgPopServer		StartUp
+
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\pop\snap\msg-pop-snap1.ini InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\pop\snap\msg-pop-snap1.ini	0001-ResetMessageStore
+PRINT Setup Completed ##################################################
+
+RUN_TEST_STEP	300	T_MsgPopServer		CreatePopAccountWithoutSmtp		c:\msgtest\email\pop\snap\msg-pop-snap1.ini	0001-CreatePopAccountWithoutSmtp
+RUN_TEST_STEP	300	T_MsgPopServer		CheckPopSNAPSetting				c:\msgtest\email\pop\snap\msg-pop-snap1.ini	0001-CheckPopSNAPSetting0
+RUN_TEST_STEP	300	T_MsgPopServer		ModifyPopSettings2				c:\msgtest\email\pop\snap\msg-pop-snap1.ini	0001-SetDifferentSNAP
+RUN_TEST_STEP	300	T_MsgPopServer		CheckPopSNAPSetting				c:\msgtest\email\pop\snap\msg-pop-snap1.ini	0001-CheckPopSNAPSetting1
+RUN_TEST_STEP	300	T_MsgPopServer		RemovePopSNAPSetting			c:\msgtest\email\pop\snap\msg-pop-snap1.ini	0001-RemovePopSNAPSetting
+RUN_TEST_STEP	300	T_MsgPopServer		CheckPopSNAPSetting				c:\msgtest\email\pop\snap\msg-pop-snap1.ini	0001-CheckPopSNAPSetting2
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgPopServer		ShutDown
+
+END_TESTCASE	MSG-POP-SNAPSupport-0001
+
+//!	@SYMTestCaseID				MSG-POP-SNAPSupport-0002
+//!	@SYMTestCaseDesc			Negative: Check that both a SNAP and an IAP list can't be set for a POP email account (-ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						6977, 6984
+//! @SYMPREQ					1307
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create POP account in Central Repository using settings from a configuration file that specifies both a SNAP and IAP list.
+//!								3.	Check for failure in step 2.
+//!
+//!	@SYMTestExpectedResults		Step 2 to fail.
+//!	@SYMAuthor					Sandip Ahluwalia
+
+START_TESTCASE	MSG-POP-SNAPSupport-0002
+
+RUN_TEST_STEP	300	T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300	T_MsgPopServer		StartUp
+
+PRINT Setup Begins ##################################################
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas					c:\msgtest\email\pop\snap\msg-pop-snap1.ini	0002-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore			c:\msgtest\email\pop\snap\msg-pop-snap1.ini	0002-ResetMessageStore
+PRINT Setup Completed ###############################################
+
+RUN_TEST_STEP !Error=-5	300	T_MsgPopServer	CreatePopAccountWithoutSmtp	c:\msgtest\email\pop\snap\msg-pop-snap1.ini	0002-CreatePopAccountWithoutSmtp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgPopServer		ShutDown
+
+END_TESTCASE	MSG-POP-SNAPSupport-0002
+
+//!	@SYMTestCaseID				MSG-POP-SNAPSupport-0003
+//!	@SYMTestCaseDesc			Negative: Check that a SNAP can't be added if an IAP list already exists for a POP email account (-ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						6977, 6984
+//! @SYMPREQ					1307
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create POP account in Central Repository using settings from a configuration file that specifies an IAP list and not a SNAP.
+//!								3.	Load the POP IAP preferences set in step 2 and then set a SNAP.
+//!								4.	Check for failure in step 3.
+//!
+//!	@SYMTestExpectedResults		Step 3 to fail.
+//!	@SYMAuthor					Sandip Ahluwalia
+
+START_TESTCASE	MSG-POP-SNAPSupport-0003
+
+RUN_TEST_STEP	300	T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300	T_MsgPopServer		StartUp
+
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\pop\snap\msg-pop-snap1.ini	0003-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\pop\snap\msg-pop-snap1.ini	0003-ResetMessageStore
+PRINT Setup Completed ##################################################
+
+RUN_TEST_STEP	300	T_MsgPopServer		CreatePopAccountWithoutSmtp	c:\msgtest\email\pop\snap\msg-pop-snap1.ini	0003-CreatePopAccountWithoutSmtp
+RUN_TEST_STEP	300	T_MsgPopServer		CheckPopSNAPSetting			c:\msgtest\email\pop\snap\msg-pop-snap1.ini	0003-CheckPopSNAPSetting
+RUN_TEST_STEP !Error=-5	300	T_MsgPopServer		ModifyPopSettings2	c:\msgtest\email\pop\snap\msg-pop-snap1.ini	0003-SetSNAP
+RUN_TEST_STEP	300	T_MsgPopServer		CheckPopSNAPSetting			c:\msgtest\email\pop\snap\msg-pop-snap1.ini	0003-CheckPopSNAPSetting
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgPopServer		ShutDown
+
+END_TESTCASE	MSG-POP-SNAPSupport-0003
+
+//!	@SYMTestCaseID				MSG-POP-SNAPSupport-0004
+//!	@SYMTestCaseDesc			Negative: Check that an IAP list can't be added if a SNAP already exists for an POP email account (-ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						6977, 6984
+//! @SYMPREQ					1307
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create POP account in Central Repository using settings from a configuration file that specifies a SNAP and not an IAP list.
+//!								3.	Load the POP IAP preferences set in step 2 and then set an IAP list.
+//!								4.	Check for failure in step 3.
+//!
+//!	@SYMTestExpectedResults		Step 3 to fail.
+//!	@SYMAuthor					Sandip Ahluwalia
+
+START_TESTCASE	MSG-POP-SNAPSupport-0004
+
+RUN_TEST_STEP	300	T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300	T_MsgPopServer		StartUp
+
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\pop\snap\msg-pop-snap1.ini	0004-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\pop\snap\msg-pop-snap1.ini	0004-ResetMessageStore
+PRINT Setup Completed ##################################################
+
+RUN_TEST_STEP	300	T_MsgPopServer		CreatePopAccountWithoutSmtp	c:\msgtest\email\pop\snap\msg-pop-snap1.ini	0004-CreatePopAccountWithoutSmtp
+RUN_TEST_STEP	300	T_MsgPopServer		CheckPopSNAPSetting			c:\msgtest\email\pop\snap\msg-pop-snap1.ini	0004-CheckPopSNAPSetting
+RUN_TEST_STEP !Error=-5	300	T_MsgPopServer	ModifyPopSettings2		c:\msgtest\email\pop\snap\msg-pop-snap1.ini	0004-SetIAPList
+RUN_TEST_STEP	300	T_MsgPopServer		CheckPopSNAPSetting			c:\msgtest\email\pop\snap\msg-pop-snap1.ini	0004-CheckPopSNAPSetting
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgPopServer		ShutDown
+
+END_TESTCASE	MSG-POP-SNAPSupport-0004
+
+//!	@SYMTestCaseID				MSG-POP-SNAPConnect-0001
+//!	@SYMTestCaseDesc			Positive: Connect a POP email account to server using a specified SNAP (+ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						6984 ,6977
+//! @SYMPREQ					1307
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestCaseDependencies	Requires CED tool to be run over c:\ced_default_ras_with_snaps.cfg to set CommDB as required when using NTRAS for connection to Email servers.
+//!	@SYMTestActions				1.	Update Comms Database (via CED tool) with some SNAPs to use below when connecting to POP server.
+//!								2.	Reset Message Store and Central Repository to default state.
+//!								3.	Create POP account in Central Repository using settings from a configuration file that specifies support for bearer mobility and a SNAP.
+//!								4.	Connect to POP service using account settings.
+//!								5.	Check for success of step 4.
+//!								6.	Disconnect from POP service.
+//!
+//!	@SYMTestExpectedResults		Step 4 to pass.
+//!	@SYMAuthor					Sandip Ahluwalia
+
+START_TESTCASE	MSG-POP-SNAPConnect-0001
+
+RUN_TEST_STEP	300	T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300	T_MsgPopServer		StartUp
+
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\pop\snap\msg-pop-snap1.ini	0005-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\pop\snap\msg-pop-snap1.ini	0005-ResetMessageStore
+PRINT Setup Completed ##################################################
+
+RUN_TEST_STEP	300	T_MsgPopServer		CreatePopAccountWithoutSmtp		c:\msgtest\email\pop\snap\msg-pop-snap1.ini	0005-CreatePopAccountWithoutSmtp
+RUN_TEST_STEP	300	T_MsgPopServer		CheckPopSNAPSetting				c:\msgtest\email\pop\snap\msg-pop-snap1.ini	0005-CheckPopSNAPSetting0
+RUN_TEST_STEP	300	T_MsgPopServer		ConnectPop3Server				c:\msgtest\email\pop\snap\msg-pop-snap1.ini	0005-ConnectPop3Server
+RUN_TEST_STEP	300	T_MsgPopServer		DisConnectPop3Server			c:\msgtest\email\pop\snap\msg-pop-snap1.ini	0005-DisConnectPop3Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgPopServer		ShutDown
+
+END_TESTCASE	MSG-POP-SNAPConnect-0001

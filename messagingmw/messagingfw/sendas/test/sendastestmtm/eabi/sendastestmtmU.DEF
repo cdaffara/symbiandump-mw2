@@ -1,0 +1,39 @@
+EXPORTS
+	_ZN16CSendAsTestUiMtm4NewLER8CBaseMtmR17CRegisteredMtmDll @ 1 NONAME
+	_ZN20CSendAsTestClientMtm4NewLER17CRegisteredMtmDllR11CMsvSession @ 2 NONAME
+	_ZN20CSendAsTestServerMtm4NewLER17CRegisteredMtmDllP15CMsvServerEntry @ 3 NONAME
+	_ZTI16CSendAsTestUiMtm @ 4 NONAME ; #<TI>#
+	_ZTI18CSendAsTestAddress @ 5 NONAME ; #<TI>#
+	_ZTI18CSendAsTestMessage @ 6 NONAME ; #<TI>#
+	_ZTI20CSendAsTestClientMtm @ 7 NONAME ; #<TI>#
+	_ZTI20CSendAsTestServerMtm @ 8 NONAME ; #<TI>#
+	_ZTI24CSendAsTestSendOperation @ 9 NONAME ; #<TI>#
+	_ZTV16CSendAsTestUiMtm @ 10 NONAME ; #<VT>#
+	_ZTV18CSendAsTestAddress @ 11 NONAME ; #<VT>#
+	_ZTV18CSendAsTestMessage @ 12 NONAME ; #<VT>#
+	_ZTV20CSendAsTestClientMtm @ 13 NONAME ; #<VT>#
+	_ZTV20CSendAsTestServerMtm @ 14 NONAME ; #<VT>#
+	_ZTV24CSendAsTestSendOperation @ 15 NONAME ; #<VT>#
+	_ZN18CSendAsTestAddress11SetAddressLERK7TDesC16 @ 16 NONAME
+	_ZN18CSendAsTestAddress14SetAddressTypeEN18CSendAsTestMessage22TSendAsTestAddressTypeE @ 17 NONAME
+	_ZN18CSendAsTestAddress4NewLEv @ 18 NONAME
+	_ZN18CSendAsTestAddress9SetAliasLERK7TDesC16 @ 19 NONAME
+	_ZN18CSendAsTestAddressD0Ev @ 20 NONAME
+	_ZN18CSendAsTestAddressD1Ev @ 21 NONAME
+	_ZN18CSendAsTestAddressD2Ev @ 22 NONAME
+	_ZN18CSendAsTestMessage11SetBioTypeLE4TUid @ 23 NONAME
+	_ZN18CSendAsTestMessage11SetSubjectLERK7TDesC16 @ 24 NONAME
+	_ZN18CSendAsTestMessage4NewLEv @ 25 NONAME
+	_ZN18CSendAsTestMessage8RestoreLER9CMsvStore @ 26 NONAME
+	_ZN18CSendAsTestMessage9AddressesEv @ 27 NONAME
+	_ZN18CSendAsTestMessageD0Ev @ 28 NONAME
+	_ZN18CSendAsTestMessageD1Ev @ 29 NONAME
+	_ZN18CSendAsTestMessageD2Ev @ 30 NONAME
+	_ZNK18CSendAsTestAddress11AddressTypeEv @ 31 NONAME
+	_ZNK18CSendAsTestAddress5AliasEv @ 32 NONAME
+	_ZNK18CSendAsTestAddress7AddressEv @ 33 NONAME
+	_ZNK18CSendAsTestMessage6StoreLER9CMsvStore @ 34 NONAME
+	_ZNK18CSendAsTestMessage7BioTypeEv @ 35 NONAME
+	_ZNK18CSendAsTestMessage7SubjectEv @ 36 NONAME
+	_ZNK18CSendAsTestMessage9AddressesEv @ 37 NONAME
+

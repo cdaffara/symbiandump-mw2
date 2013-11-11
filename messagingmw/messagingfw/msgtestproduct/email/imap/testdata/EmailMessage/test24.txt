@@ -1,0 +1,225 @@
+From: test908@msexchange2k.closedtest.intra
+To: test908@msexchange2k.closedtest.intra
+Subject: test1
+Date: Sat, 22 May 2004 20:54:28 +0530
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_000_0489_01C4403E.F91C2DA0"
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 5.50.4922.1500
+X-MimeOLE: Produced By Microsoft MimeOLE V5.50.4925.2800
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0489_01C4403E.F91C2DA0
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: 7bit
+
+Internet access on the Nokia 9200 Series Communicator is necessarily limited
+by the speed of the phone's GSM connection. As a consequence, testing and
+debugging Internet-based applications on hardware can be both expensive and
+tedious. The RAS IAP application alleviates this problem by enabling you to
+connect to the Internet over a much faster serial connection, via your PCThe
+application demonstrates how the Symbian OS Communications database (CommDb)
+API may be used to configure an Internet Access Point (IAP). To some extent
+it also shows the common paradigm for using most DBMS derived APIs.An
+Internet Access Point defines ISP, modem, charge card and location records
+that can be used together to make an Internet connection. The IAP for the
+RAS connection specifies an ISP and modem record (charge card and location
+records are required for this type of IAP). The CommDb is a standard DBMS
+database. Modems, ISPs, charge cards, locations, IAPs etc are all stored in
+their own tables within the database. There may be a number of records
+within each table (e.g., there may be a number of IAPs, modems, ISPs, etc.).
+As described in the preceding section, each IAP record defines the set of
+ISP, modem, charge card, and location that can be used together. In other
+words, an IAP record defines a set of records the other tables.The
+implication of the above statement is that sets of CommDb records are
+accessed through their associated table. The other implication is that you
+cannot create an IAP record until you have already created the other
+records. Finally, the fact that there may be many records in a table implies
+that each record must be uniquely identified.2. Copy an existing CommDb that
+has a correctly configured IAP. This method "works", but has several
+problems. Firstly, Symbian does not guarantee that the CommDb will be binary
+compatible between releases. In practice this has not been an issue, but it
+is something to keep in mind. Secondly, while you are using your RAS IAP,
+you don't have access to IAPs you configured in the "real" CommDb. Finally,
+and most importantly, CommDb configuration should be targeted to the
+platform; The CommDb that you use for RAS connections may well disable some
+of your other phone services.. Add an IAP to your existing (proven) CommDb
+using RAS IAP. The advantage of this method is that you get to retain the
+CommDb that your manufacturer put onto the phone, and therefore can expect
+the device to continue to work with the new IAP! Also, the CommDb API is
+binary compatible between releases, so you can rely on this method as you
+change phone. It is also by far the simplest method! Rather than coding the
+application from first principles, I used the standard Minimal Eikon
+Application Developer (MEAD) and Menu Builder tools to create an application
+that I could easily customize. I then modified the engine to write to the
+CommDb, and the UI to call the engine as appropriate. Each of these exports
+calls non-exported functions to actually implement the creation and deletion
+of the components of the IAP. The purpose of each function is documented in
+source, and the code itself is fairly self-documenting. Therefore rather
+than exhaustively re-describing the code, the following description
+discusses the main paradigms that you will see.First of all, there are two
+sequence diagrams present. The first one captures the course of events that
+takesplace when a digit button is pressed. The second captures what happens
+when the user pushes the 'send'button in order to make a call. At the top of
+each diagram we see the rectangles that represent objects. Asin
+collaboration diagrams, the names of the objects are underlined to
+distinguish them from classes. Alsothe object name is separated from the
+class name by a colon. Some objects, like the Dialer, have noparticular
+object name, so the colon precedes the class name without an object name in
+front of it.objects that they are connected to are in existence. In Figure
+2, we cannot see the full extent of thelifelines; they extend from the very
+top of the diagram to the very bottom. This implies that the
+objectsportrayed in this diagram are in existence before the start of time
+in the diagram and remain in existencebeyond the end of the diagram.The
+arrows between the lifelines represent messages being sent between the
+objects. Sequence umbers, algorithm.Here again we see two sequence diagrams.
+In these diagrams the activation ectangles have been omittedfor clarity4.
+The top diagram shows the normal course of events hen the cellular phone
+receives a call.The CellularRadio object detects the incoming call and
+sounds the ringer. It also tells the Dialler objectthat a call is coming in.
+This puts the Dialler in a special state. When the Send button is pushed
+while theDialler is in this special state, the Dialler sends the Answer
+message to the CellularRadio; thus connectingthe call.
+
+------=_NextPart_000_0489_01C4403E.F91C2DA0
+Content-Type: image/bmp;
+	name="beck.bmp"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+	filename="beck.bmp"
+
+Qk24HAAAAAAAADYEAAAoAAAAwgAAACAAAAABAAgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAAEAx6
+ACEWfQAuH4YAUktuAGNdegBJMZAAQjtXACYVTQBcQpgAWjuYAIl2rQBmR5sAb06hAHxnnACgj7wA
+fmCqAJJ8sQB4V6QAg2WrAIpssACPc7MAf12pAJZ7twCbgbsArZfIAJNxuAAFAwcAHhEhADkqOQAN
+CgwAIAwYADslLQBjVFgAHwkOAFU/QwAhBQgASC4xAD0eIQBKNTcAQiQmACECAwAYBQYAIwICADsZ
+GAA5FREAQB4SAEQkGQCbiWgAjXlRAJSCXgCZh2UAmIlrAJ2OcQCBbkMAgnBHAIl2TgCQflkAk4Ni
+AJaHZgCbjG0AlYdpAIl9YgCekXYAopZ7AImAbQCVjXsAe2c3AIp0QQCEckYAfnBNAH5sPACEckEA
+hHJEAIZ1RgCAd14ApJuCAJuVhAByalEAiYZ2AKKhlgB6fXoAKjUtAERKRwABCQYAO0VCAAAEAwAG
+DAsAAQoLAAMKCwABBwgACQ8QAFFeYAADCAkAoqeoAAEKDAABCQsAAwwOADtMUAACCQsAAwoMAAQL
+DQAGDQ8AAQkMAAILDgBbaW4AAgkMAEhTWAAABAYAAQsQAAEHCgAGCgwADBIVAAcJCgCjusYAobW/
+AB5wnAAECw8AEiczAJeqtACarLYABAkMADxgdgAKDxIAISkuAGZ+jACdu80Ana23ABxAWAASGBwA
+ipunAKW1wACjsrwAHGWaAJeyxgCdsL4AprS+AKSyvACuvMYAqbfBAKu4wgAABQkAAw0VAAYXJQCG
+k54AorC7AKWzvgCotcAAsb3HAGxxdQAYZagAJDI/AG+QrQCKpb0Aq7rIAKi2wwCrucYApLG9AKay
+vQCqtsEAp7O+AKKttwCqtb8AmKGpAAEJEQACDhoAFGS0ABleoQA1Y5AABwsPADQ8RACAjJgAqLXC
+AKq3xACqtsIAr7rFAK24wwAWXq4AGF2nABxWlAAnS3EAUW+QALG9ygCst8MAnaeyAK+6xgCwusUA
+FFy0AAYcNgAcYrgAJWGqABxEdAA0aKcASXivAHmawAB5hJEAlKCuAK24xQClr7sAqbO/AKexvQAQ
+W8AAEly7ABZXrQAaXLQAIU2GAK66yQCtuMYAq7XCAK+5xgCwucUAt8DMALvE0ACyucIAE1S0ABZT
+rgAWUqUADzVrABlRnwAdWa8AEStPAEZ2vgCPl6IAqrPAALG6xwCwucYAr7jFAK63xADL0twAAAUN
+ABFVvAAWT6oAGlazAKmutgAABhAABgoRAKawwQCyusgAsbW8AAQGCgAZHSUAsrnGACc6ZACyuMUA
+sbfFAAABBAAIChEAGB0zAAwOFwACCCkAAAEIAAIKOwAjJTgAAAIfADEyUgADBFoAAAAAAPiNX/r4
+jV/6+I1fV2ZmXowdaFuogHzBwZiYl9v5jIAEaLv+AQIJBQUCAgUFCQkJBQUFAgICAgEBAAAAAAD+
+/v7+/v7+AAABAQEAAAAAAAAAAQIA/v7+AQUFBRER+2+Wlmq+2Pr6+mRkZGRkZGRkZGRkZGRkZGRk
+ZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRk
+ZGRkZGRkZGRkZGRkZGRkZGRkAABTV2lTU1dpU1NXaV5eZmZebYB7dHCWebS0tHnxpGtvUI+W+gEJ
+DAsLCwUFCQkICAkJCQkFBQUFBQUCAQEAAAAAAAAAAgEFCQIAAQEBAgAAAQUJDAUBAQAAAgEMEntv
+W2Gpf9uOVVNkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRk
+ZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZAAAZl5mZmZeZmZmXmZm
+XmZmZmaMa2Zma/RibYxadY1f9KndfNv+CREVDBEMCAsMDAwLCwsLCwgJCQkJCQUCBQsFAgUFBQUC
+CQEAAgUFBQkJAgABAgkMCwwMCQkFBQ2pe2hQW2Hb+mZZZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRk
+ZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRk
+ZGRkZGRkZGRkZGQAAGZmaWZmZmlmZmZpZl9mZl5mZmZmaWZtWYyMjGtpZ20aW12q9gcMDxUSDxUR
+Dw8VFQ8PDw8VEREMDAwMEQgMDAULCQkFBQkFCQgICwsLDBULAgIJCwwREQkJBffvamiUUGhU2/r8
+WWRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRk
+ZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkAABmZmZmZmZmZmZmZl9mZmZfZl9f
+X2ZeZmZmZmZpY15njB1olIBr/QkLERESDxMTExQUExMTExMTExISExMPCxERDAgMCwgLEhMSEhUP
+Eg8VExUFBQsMEQwJDAN7WlrvUlBQW5b6/ORkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRk
+ZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRk
+ZGRkZAAAZmlmZmZpZmZmaWZmZl9mZmZfZmZmZmZmZmlmaWlpaWeMbnqMa/cIDAsIDBUSFBQWFhYX
+FxYWFhYWFhQUExEREhERERUSExYWEBcXFxYTFBcXFw8MERERERUEUXt7lu9SUFBbf3/2ZGRkZGRk
+ZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRk
+ZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGQAAGZkaWZmZGlmZmRpZmZmZmZmZl9pZmZmZmZm
+aWZmaWNpXoyMY15r+wwVEQkLDBUPFA8SEw8TFBAQFxcXFxkUFBMUFhcXFAoDBgYGBgb9+/0DAwQE
+BAwPDREWlFtoYWHv71SUUHyYeWRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRk
+ZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkAABm
+X19fZl9fX2ZfX19fX2ZiX2ZiZmJmYl9mZmJpZmZeaVheY2lk7m/vBhkZEhUREhMMFQsRExMZFhcW
+Cg0EDQ0XGA4QBJbvbf9V/////1X////09G3v++/v/WjdlGqploBrgGjCinxkZGRkZGRkZGRkZGRk
+ZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRk
+ZGRkZGRkZGRkZGRkZGRkZGRkZGRkZAAAZmZmZmZmZmZmZmZfZldfX19fX19fX19fX2JiZmJeaWli
+aV5jbmR4//n9CBIWFxYSExkTEA0LAwMG/e/39YCABgOWgFn/U1xfXmlmZmNjYmNkXF9ZVf9VVf+A
+VJRbUlth7/SAaIfCZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRk
+ZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGQAAF9fX2ZfX19m
+X19fZmZfX19fX19fX19fX19fX19fX2lpbmRpYmJiaWSAqQYNFxAUDQ0EBvuA6nRijGtZWWRTVllV
+VVVYWh1uaWBXbWJXY19iV2RebV9kY1dcXKlbUJRbYZbv5KmTgWRkZGRkZGRkZGRkZGRkZGRkZGRk
+ZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRk
+ZGRkZGRkZGRkZGRkZGRkAABfX19fX19fX19fX2ZmZm1fX2JtX19fX21fX19fX19fYmRpZl9faVlu
+W4+qahzv++/vdPRrdG56Wm9aZF96b2VlWFpae4BuX2JYX21tbW1tbV9fZlxfWGRk9HtUcGpQaGph
+dXV5r4FkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRk
+ZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZAAAZmZfX2ZmX19mZl9eZl9m
+Zm1fZl9fZl9fX2ZfX19iX1dtX19iX19iXHrve3pTWVVcVnhkZWVlWmRkY1pXWoBlZW9aWnp4bW1i
+bmRkbV9tbWRjX19fX2NjbW1aeGtvlGhU+3WWfNOPZGRkZGRkZGRkZGRkZGRkHSkpKSkpKSkpKR1k
+ZGRkbikpKSkpKSkpKSkpKW5kZGQdKSgoKCgpKW5kZGQdKSkpKWRkZGRkHSkpKSlkZGRkZGRkZGRk
+ZGRkZGRkZGQAAGZfX21mX19tZl9fX19fX21fZl9iX19fX19tYmJfYmJmYl9iX19tX19r//RrY2Nj
+bmVvY2RlWm5kZFhkb3paZFpvZFlaZVlkelhlWmVZYmJYXF9tYm1kZG5fWVle/1JoW2FhaHxqlmRk
+ZGRkZGRkZGRkZGRkZCkqKioqKioqKioqKB1kZGQoKioqKioqKioqKiqoZGQpKiooKCgqKiopqGRk
+HSoqKilkZGRkbigqKiopZGRkZGRkZGRkZGRkZGRkZGRkAABfZl9eX2ZfXl9mX2ZXX19mbWttX19f
+X19mYmJfYlxfbV9tX19tbV9tX19iZG54ZGVab2RkZXp4ZFpaZICAWGNuZVpeenptZGVYWKhlbW1Y
+WG1tbW1ibW1aaVhYYmtvlJRofJdo//9kZGRkZGRkZGRkZGR1f9t729uW2/v2IygoKCoh29jblpaW
+29vb29uWISgo6o518b5/f3/vKCgoKhvY2Nt7KCopZGS729uWeyMobmRkZGRkZGRkZGRkZGRkZGRk
+ZAAAXl5fXl5eX15eXl9eZl9fbY2ObG1fX2ZfYmJfX19fX19fbW1fX19iX19faWNab2+AWmVgY1p6
+ZGRab2V6WmVvelp6YGVlX2NjZGlibWZfbW1kYF9XaWleZGReYl9i9KmPl5eGYfRfZGRkZGRkZGRk
+ZGRkvsqxsMnJpbq6ytnxISgoHrLKypVzc7CVlbCVlbuojduylYSxpqaVhH8jKCj7yoSVvigqKWSk
+soSEc38oHWRkZGRkZGRkZGRkZGRkZGRkZGQAAPT09PT09PT09PT09IxeZmuO2I5ZX19peGJfX19f
+X19mX19fbV9maWJra1lZX1lcWIxr9GVkjIx0ZG1ZWFyMbnpjb29t9GtZYmtrWVlra2trXFxra2tr
+a2tra2trWfR6woWadoD/a2RkZGRkZGRkZGRkZNjKyrGxsOXVyrGwyb4jKB7XsdbKsISxhKaEhIS7
+ZNumsYSmhKamhNblfygo9sqEhL4oKilk24SEsbIeKWRkZGRkZGRkZGRkZGRkZGRkZGRkAADv7+/v
+7+/v7+/v74CNa21fX3WOWV9eWmNfX19paV9XX2JXV19iYl5t94Bv94CA92+AgO97e3uWqZaWlpaW
+lpaWlpaW+3vvgICAgHpvb+rqqPX19fV6929vb/f3eqhp/6mgtmru9XpkZGRkZGRkZGRkZGTYytW6
+vvv72NfW1da6lige16bKptv7+9vb29vbpI7ZhISmzHv22KaxpoQbKvaxsYS+KCohjcyEhITxKh1k
+ZGRkZGRkZGRkZGRkZGRkZGRkZAAAgYGPgYGBj4GBgY/CeXVmXlmOjoxmWVxtZmleXmZpaV5mZmln
+XmBr792i3d3dot3d3d2iw8O3t7e3t7e3t8PDw8PDw8PDgaqPj4+qj6qqqqqPj4+Pj93d3d3d3Y+q
+wnzCosOqqqqqqqqqqqqqqqqqqqqqv8rKyP0lKwTCvbGmsL4lH6axptclJSeqqqqqqqrAysqmsh8l
+wqq/hMqwsyB5hKaEviUrJrRzhISyHySqqqqqqqqqqqqqqqqqqqqqqqqqqqoAAHJycnJycnJycnJy
+dqp5dY1mWV+N6XXbjVleXmdnYGRr9GZnY3Rn9Gjj09PT09PT09PT09PT09PT0tLS0tLS0tLS0tLS
+0tLT09PT09PT09PT09PT09PT09PT09PS0tLStaGS37WTiZycr56tkoefnJyvntzVysnxJytQrZfK
+1bDMJx+m1crXHyckna2Sh5+Gv6bKsPEnJqCcmLGxpr+fwYSxhLMnJyezhKaEsyVQn5ycr56tkoef
+nJyvnq2Sh5+cnK+eAAB2d3d2dnd3dnZ3d3aBfH+kbWyjpLvY2Ppja4yMa/T/b6n39Gl09Hvt09/f
+uN/g7PDg39/fzd/w3+Df3+Dz4N/f39/y0a7z4NDg0PDg4ODRrq/R4K7R0bm54q+u4ouenpKHkYiI
+iMWIiM/PkpKHnIiIz8/c1dXJ8SclIpS05dXlzCUG2sqwhBwnJyAgICAgA7HVyqapJSKgiIa9hL3A
+nMGEpoSzJyf9hISmhB8inJyIiM/PkpKHnIiIz8+SkoeciIjPzwAAdnd+dnZ3fnZ2d353dqp/o1ds
+jtuyp6fYdW9vgJZhaN12au9t/3qq09/QxOGurtDg4NDQ3+DQ4N/w8N/g4PDf4N/f8ODO0ODi4dHy
+0eDE0dHy0dGu0dG5rq7ir7a2npKSnYOIkIODiIO2xZ2Ch5GIg7bF3NW6yPEnJyUlzLrVpb4gj7yx
+ldcfJyclJSUlJRzK1dXZHyUioIOtmJiGkZGXpqaEpvEns4SElbMlUIeRiIO2xZ2Ch5GIg7bFnYKH
+kYiDtsUAAHd3fnZ3d352d3d+foZ8joxno9vMp8DA2HyigcOQm9LTwmh8W/aU07jEr7bEr6y2m87R
+0ODg0ODQ4ODw4ODg0NDg8ODg4M6u0OHR0dG50dGu4dC40dGu4eGurq+erZKHn5ycg4ODkIOQr52H
+h52Ig5Cvndy61cjxHxz9zOWwurAclHa81bCx8f39/f39HCepsLGV2R8lJqCQr52Hh52Il4SEhISy
+s4SEhLIfIoidiIOQr52Hh52Ig5CvnYeHnYiDkK+dAAB3d352d3d+dnd3fpB3YYyjjenbv7/bs5eY
+0tK1mZPT0lthfI/F0t+2rautra+trKzE4cTE4uHQ4d/f3+LR4NHQ0ODRrsTzxNDRruDQrtDR4PPE
+uNHEruLi4q/Pz5KSh5yIiIOIg5CDkKGhkp+dnYOQoaHc1dXl1ubmusnV1ZXxJyUEvLC61brl1bq6
+sLSqtLDVurIfJSZ+kKGhkp+dncGmsaamhISEhJWzJVCfnZ2DkKGhkp+dnYOQoaGSn52dg5ChoQAA
+d3d+dnd3fnZ3d36CgY6MjY2OvsC0+PbBp3zUk9KQwgR/tKqi0sS2tpKSra22tq+2tqzizs7O4uDf
+4ODhuODh8+Hh4cSv4eHQ0K7RruDhzvLyr66vrcTir8+vtsWdgoeRiIOQkJCQkYOf3p7ekpGRg5+S
+3OW6usnIyOW61cinJycnHOe6sLDJycnVupXBkcGwsLqyHycnooOf3p7HlJS0lbHKhISmc4SmHCdQ
+3pKRkYOf3p7ekpGRg5/ent6SkZGDn94AAHd+fnZ3fn52d35+gnyNbKRfjr6+f46Os3+ngZe0f/q7
+wH2Z4a/i4ra2nq2tnqytray2xMS40OLQzuHy4dHh0PPh4dHzxNC40K7i4eDRruHR0a6umq3h4q6L
+r6+dh4ediIOQxZCQkIeRruKLnp6Sh5Gu4tzl5eXZzMzW5eXl2v0nJxywurrVzMzM3NzcwZLBsLC6
+2R8nJVCRruKLtycr/bCxlaaVhKaVsycnJ92ekoeRruKLnp6Sh5Gu4ouenpKHka7iAAB2d352dnd+
+dnZ3foJo5GykbGm72L74u76nl7S0s/z6tH2bucSv4ra2tqytq4qaq6uttuK2rJvh4a7i4eHy4eHh
+4eLh4dDhrsTh0eHEruLh0a7h4a7R0a+vnouhoZKfnZ2DkJCQkKCdg6+2tp6Skp2Dr63c5brI8Scl
+fNzl5cjZHyccyuXlyhwnJuu2npKSwcu6pcocJyUig6/BwXwcJ/2wlZXMzJWxlbQmJyUit5Kdg6+2
+tp6Skp2Dr7a2npKSnYOvtgAAhoZyhoaGcoaGhnJxeYxXbI67u3/b6Y7Yp6eXmJfxeX21tbXNzc3f
+zc3Om6ybm87Om864zc3NzeDf383g39/s39C44N/f4NCu8t/w0N/Q39+4uK7R8N+u4cSun96e3pKR
+kYODg5CQnJyvnq2Sh5+cnK+C3OXlyPEnK8KYycnl5f0nHMvlybEcJySgkp+cnJi8uqWl/ScnJVCG
+vLCwsh/9lbCVzByElbC/lCcnJSCfnJyvnq2Sh5+cnK+erZKHn5ycr54AAFBATlBQQE5QUEBOTmqj
+YI2Odbt/u6R/29unl5iFhYVdXV1dXV1dXV1dXV2it7e3t7e3XV1dXaDo6Ojo6Ojo6MahxsfoxoLG
+tuK2z8+tq8/Pz5LHxt7Gxt6RnJCcxcWgoKB+fn63t4iIz8+SkoeciIjP69zJ5cjxJyUiBNXlyeX9
+Jwa8ycnWHCcnIiIiIiIi2cnVyMwnJycnA7ywybIl/aWVpcwn/aWwpcAgJScllIiIz8+SkoeciIjP
+z5KSh5yIiM/PAABCQkZCQkJGQkJCRkNNjqSOjo51239/s7u7eUxLT09LNDs0NDMzPDI6OTk5MT09
+PT1KPT05PDMzNDQ0Pj4+Pj5MTD8+QUxMTExBTExMTExBQUFBQUFBQU5OTk5AQEBAPT09SkpKSkpK
+SkpKSkpKSkpKSkq/5eXI8SsrLP3lyMjl+y5bvMnJyh8sLCwsLCwsLP3IycmwHCsrK8ylusnxLgOl
+sKXMLCu+pbCleS4sLCxNSkpKSkpKSkpKSkpKSkpKSkpKSgAAQkZGQkJGRkJCRkZDTXWkjqSWf395
+edvbvmg0NDs7Pj4+NDQ7OzMzOjIyOTkyLzIvLzIvMzs7OzQ0NDQ+Pz8/Pz8/Pz8/NDQ+Pj4+NDQ0
+NDsvLy8vLy8yMjExMTg4MDAwNzdJSDU1RERERERERERERERFp8jJyMz9/b7VyMnI1iZCTcvJyLq+
+8fHx8fHx/S4n18nlybH9HL7IyaXKJkJopbqlzC4uJr26uqVqLi4tLjZERERERERERERERERERERE
+REQAAEJGRkJCRkZCQkZGR0lUpI6Oln9/f3+7s3w0OzQ+NDQ0NDs7MzMzPDo6Ojo6Mzs7OzszOzs0
+NDQ+Pj4+Pz8/P0tLS0tLP0E/Pz8/Pz8+Pj40NDQ0Ozs7Ly8yOjkxODg4ODAwN0RENkRERERERERE
+RERERafI5eXIyMjIyMjIyHlERE3L5eXlyMjIyMjIyLxNNmi6yeXJyMnIusmltEREaMm6pac1NTZo
+uqWlvU01NTVEREREREREREREREREREREREREAABCQkZCQkJGQkJCRjVJRlGjjemOu46kdWg0OzM0
+NDs0Ozs7MzM6Ojo6Ojo6MzQ0ND4+OzQ0ND4+Pj4/P0tLS0tLS0tLS0w/S0s/Pz8/Pz4+PjQ0NDs7
+Oy8vMjkxMTg4ODg3Nzc2NTVEREREREREREREREWnyMnl5eXlyMjJ2rQ2RERNvMjIyMjIyMjIyMjL
+TUREaL3JpaWlycm6tERERGjJycmnRERENqelusm/NkRERERERERERERERERERERERERERAAAAAA=
+
+------=_NextPart_000_0489_01C4403E.F91C2DA0--

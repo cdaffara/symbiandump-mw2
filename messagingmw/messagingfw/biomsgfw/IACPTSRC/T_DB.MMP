@@ -1,0 +1,34 @@
+// Copyright (c) 1998-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// T_DB.EXE
+// 
+//
+
+TARGET 			t_IacpDB.exe
+TARGETTYPE  		exe
+
+CAPABILITY All -TCB
+SOURCEPATH	../iacptsrc
+SOURCE 			t_db.cpp
+
+USERINCLUDE		../iacptsrc
+USERINCLUDE		../iacpinc
+USERINCLUDE		../biutinc
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+LIBRARY                 euser.lib msgs.lib 
+LIBRARY			biut.lib  bits.lib commdb.lib MsvTestUtils.lib
+
+VENDORID 0x70000001
+
+SMPSAFE

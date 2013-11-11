@@ -1,0 +1,8 @@
+EXPORTS
+	_ZN11CTagCreator10SetSessionEP11CMdESession @ 1 NONAME
+	_ZN11CTagCreator11AttachTagsLEmmm @ 2 NONAME
+	_ZN11CTagCreator19CreateLocationTagsLERK7TPtrC16RmS2_S3_ @ 3 NONAME
+	_ZN11CTagCreator4NewLEv @ 4 NONAME
+	_ZTI11CTagCreator @ 5 NONAME
+	_ZTV11CTagCreator @ 6 NONAME
+

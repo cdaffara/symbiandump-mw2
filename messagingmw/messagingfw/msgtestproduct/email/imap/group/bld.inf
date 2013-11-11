@@ -1,0 +1,468 @@
+// Copyright (c) 2006-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// Component description file for Imap test Server
+// 
+//
+
+PRJ_TESTMMPFILES
+T_ImapServer.mmp
+
+PRJ_TESTMMPFILES
+makefile ../../group/machinename.mak
+
+
+PRJ_TESTEXPORTS
+
+../scripts/unit/msg-email-imap-cimap4clientmtm.script			/epoc32/winscw/c/msgtest/email/imap/unit/msg-email-imap-cimap4clientmtm.script
+
+// **** Test Suite: Messaging.Email.imap.oom
+../scripts/oom/msg-imap-oomtest1.script 	/epoc32/winscw/c/msgtest/email/imap/oom/msg-imap-oomtest1.script
+../testdata/oom/msg-imap-oomtest1.ini 		/epoc32/winscw/c/msgtest/email/imap/oom/msg-imap-oomtest1.ini
+
+// **** Test Suite: Messaging.Email.imap.performance
+../scripts/performance/msg-imap-performance1.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1.script
+../testdata/performance/msg-imap-performance1.ini 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1.ini
+
+../scripts/performance/msg-imap-performance10_512kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance10_512kb.script
+../testdata/performance/msg-imap-performance10_512kb.ini 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance10_512kb.ini
+
+../scripts/performance/msg-imap-performance1_1kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1_1kb.script
+../testdata/performance/msg-imap-performance1_1kb.ini 			/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1_1kb.ini
+../scripts/performance/msg-imap-performance1_5kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1_5kb.script
+../testdata/performance/msg-imap-performance1_5kb.ini 			/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1_5kb.ini
+../scripts/performance/msg-imap-performance1_10kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1_10kb.script
+../testdata/performance/msg-imap-performance1_10kb.ini 			/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1_10kb.ini
+../scripts/performance/msg-imap-performance1_100kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1_100kb.script
+../testdata/performance/msg-imap-performance1_100kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1_100kb.ini
+../scripts/performance/msg-imap-performance1_200kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1_200kb.script
+../testdata/performance/msg-imap-performance1_200kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1_200kb.ini
+../scripts/performance/msg-imap-performance1_500kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1_500kb.script
+../testdata/performance/msg-imap-performance1_500kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1_500kb.ini
+../scripts/performance/msg-imap-performance1_1000kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1_1000kb.script
+../testdata/performance/msg-imap-performance1_1000kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1_1000kb.ini
+../scripts/performance/msg-imap-performance10_1kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance10_1kb.script
+../testdata/performance/msg-imap-performance10_1kb.ini 			/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance10_1kb.ini
+../scripts/performance/msg-imap-performance10_5kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance10_5kb.script
+../testdata/performance/msg-imap-performance10_5kb.ini 			/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance10_5kb.ini
+../scripts/performance/msg-imap-performance10_10kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance10_10kb.script
+../testdata/performance/msg-imap-performance10_10kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance10_10kb.ini
+../scripts/performance/msg-imap-performance10_100kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance10_100kb.script
+../testdata/performance/msg-imap-performance10_100kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance10_100kb.ini
+../scripts/performance/msg-imap-performance10_200kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance10_200kb.script
+../testdata/performance/msg-imap-performance10_200kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance10_200kb.ini
+../scripts/performance/msg-imap-performance10_500kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance10_500kb.script
+../testdata/performance/msg-imap-performance10_500kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance10_500kb.ini
+../scripts/performance/msg-imap-performance10_1000kb.script		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance10_1000kb.script
+../testdata/performance/msg-imap-performance10_1000kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance10_1000kb.ini
+../scripts/performance/msg-imap-performance50_1kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance50_1kb.script
+../testdata/performance/msg-imap-performance50_1kb.ini 			/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance50_1kb.ini
+../scripts/performance/msg-imap-performance50_5kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance50_5kb.script
+../testdata/performance/msg-imap-performance50_5kb.ini 			/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance50_5kb.ini
+../scripts/performance/msg-imap-performance50_10kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance50_10kb.script
+../testdata/performance/msg-imap-performance50_10kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance50_10kb.ini
+../scripts/performance/msg-imap-performance50_100kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance50_100kb.script
+../testdata/performance/msg-imap-performance50_100kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance50_100kb.ini
+../scripts/performance/msg-imap-performance50_200kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance50_200kb.script
+../testdata/performance/msg-imap-performance50_200kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance50_200kb.ini
+../scripts/performance/msg-imap-performance50_500kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance50_500kb.script
+../testdata/performance/msg-imap-performance50_500kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance50_500kb.ini
+../scripts/performance/msg-imap-performance50_1000kb.script		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance50_1000kb.script
+../testdata/performance/msg-imap-performance50_1000kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance50_1000kb.ini
+../scripts/performance/msg-imap-performance100_1kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance100_1kb.script
+../testdata/performance/msg-imap-performance100_1kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance100_1kb.ini
+../scripts/performance/msg-imap-performance100_5kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance100_5kb.script
+../testdata/performance/msg-imap-performance100_5kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance100_5kb.ini
+../scripts/performance/msg-imap-performance100_10kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance100_10kb.script
+../testdata/performance/msg-imap-performance100_10kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance100_10kb.ini
+../scripts/performance/msg-imap-performance100_100kb.script		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance100_100kb.script
+../testdata/performance/msg-imap-performance100_100kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance100_100kb.ini
+../scripts/performance/msg-imap-performance100_200kb.script		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance100_200kb.script
+../testdata/performance/msg-imap-performance100_200kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance100_200kb.ini
+../scripts/performance/msg-imap-performance100_500kb.script		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance100_500kb.script
+../testdata/performance/msg-imap-performance100_500kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance100_500kb.ini
+../scripts/performance/msg-imap-performance100_1000kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance100_1000kb.script
+../testdata/performance/msg-imap-performance100_1000kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance100_1000kb.ini
+../scripts/performance/msg-imap-performance200_1kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance200_1kb.script
+../testdata/performance/msg-imap-performance200_1kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance200_1kb.ini
+../scripts/performance/msg-imap-performance200_5kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance200_5kb.script
+../testdata/performance/msg-imap-performance200_5kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance200_5kb.ini
+../scripts/performance/msg-imap-performance200_10kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance200_10kb.script
+../testdata/performance/msg-imap-performance200_10kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance200_10kb.ini
+../scripts/performance/msg-imap-performance200_100kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance200_100kb.script
+../testdata/performance/msg-imap-performance200_100kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance200_100kb.ini
+../scripts/performance/msg-imap-performance200_200kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance200_200kb.script
+../testdata/performance/msg-imap-performance200_200kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance200_200kb.ini
+../scripts/performance/msg-imap-performance200_500kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance200_500kb.script
+../testdata/performance/msg-imap-performance200_500kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance200_500kb.ini
+../scripts/performance/msg-imap-performance200_1000kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance200_1000kb.script
+../testdata/performance/msg-imap-performance200_1000kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance200_1000kb.ini
+../scripts/performance/msg-imap-performance500_1kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance500_1kb.script
+../testdata/performance/msg-imap-performance500_1kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance500_1kb.ini
+../scripts/performance/msg-imap-performance500_5kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance500_5kb.script
+../testdata/performance/msg-imap-performance500_5kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance500_5kb.ini
+../scripts/performance/msg-imap-performance500_10kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance500_10kb.script
+../testdata/performance/msg-imap-performance500_10kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance500_10kb.ini
+../scripts/performance/msg-imap-performance500_100kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance500_100kb.script
+../testdata/performance/msg-imap-performance500_100kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance500_100kb.ini
+../scripts/performance/msg-imap-performance500_200kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance500_200kb.script
+../testdata/performance/msg-imap-performance500_200kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance500_200kb.ini
+../scripts/performance/msg-imap-performance500_500kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance500_500kb.script
+../testdata/performance/msg-imap-performance500_500kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance500_500kb.ini
+../scripts/performance/msg-imap-performance500_1000kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance500_1000kb.script
+../testdata/performance/msg-imap-performance500_1000kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance500_1000kb.ini
+../scripts/performance/msg-imap-performance1000_1kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1000_1kb.script
+../testdata/performance/msg-imap-performance1000_1kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1000_1kb.ini
+../scripts/performance/msg-imap-performance1000_5kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1000_5kb.script
+../testdata/performance/msg-imap-performance1000_5kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1000_5kb.ini
+../scripts/performance/msg-imap-performance1000_10kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1000_10kb.script
+../testdata/performance/msg-imap-performance1000_10kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1000_10kb.ini
+../scripts/performance/msg-imap-performance1000_100kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1000_100kb.script
+../testdata/performance/msg-imap-performance1000_100kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1000_100kb.ini
+../scripts/performance/msg-imap-performance1000_200kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1000_200kb.script
+../testdata/performance/msg-imap-performance1000_200kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1000_200kb.ini
+../scripts/performance/msg-imap-performance1000_500kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1000_500kb.script
+../testdata/performance/msg-imap-performance1000_500kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1000_500kb.ini
+../scripts/performance/msg-imap-performance1000_1000kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1000_1000kb.script
+../testdata/performance/msg-imap-performance1000_1000kb.ini 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance1000_1000kb.ini
+../scripts/performance/msg-imap-performance2000_1kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance2000_1kb.script
+../testdata/performance/msg-imap-performance2000_1kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance2000_1kb.ini
+../scripts/performance/msg-imap-performance2000_5kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance2000_5kb.script
+../testdata/performance/msg-imap-performance2000_5kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance2000_5kb.ini
+../scripts/performance/msg-imap-performance2000_10kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance2000_10kb.script
+../testdata/performance/msg-imap-performance2000_10kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance2000_10kb.ini
+../scripts/performance/msg-imap-performance2000_100kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance2000_100kb.script
+../testdata/performance/msg-imap-performance2000_100kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance2000_100kb.ini
+../scripts/performance/msg-imap-performance2000_200kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance2000_200kb.script
+../testdata/performance/msg-imap-performance2000_200kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance2000_200kb.ini
+../scripts/performance/msg-imap-performance2000_500kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance2000_500kb.script
+../testdata/performance/msg-imap-performance2000_500kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance2000_500kb.ini
+../scripts/performance/msg-imap-performance2000_1000kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance2000_1000kb.script
+../testdata/performance/msg-imap-performance2000_1000kb.ini 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance2000_1000kb.ini
+../scripts/performance/msg-imap-performance5000_1kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance5000_1kb.script
+../testdata/performance/msg-imap-performance5000_1kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance5000_1kb.ini
+../scripts/performance/msg-imap-performance5000_5kb.script 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance5000_5kb.script
+../testdata/performance/msg-imap-performance5000_5kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance5000_5kb.ini
+../scripts/performance/msg-imap-performance5000_10kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance5000_10kb.script
+../testdata/performance/msg-imap-performance5000_10kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance5000_10kb.ini
+../scripts/performance/msg-imap-performance5000_100kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance5000_100kb.script
+../testdata/performance/msg-imap-performance5000_100kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance5000_100kb.ini
+../scripts/performance/msg-imap-performance5000_200kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance5000_200kb.script
+../testdata/performance/msg-imap-performance5000_200kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance5000_200kb.ini
+../scripts/performance/msg-imap-performance5000_500kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance5000_500kb.script
+../testdata/performance/msg-imap-performance5000_500kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance5000_500kb.ini
+../scripts/performance/msg-imap-performance5000_1000kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance5000_1000kb.script
+../testdata/performance/msg-imap-performance5000_1000kb.ini 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance5000_1000kb.ini
+../scripts/performance/msg-imap-performance15000_1kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance15000_1kb.script
+../testdata/performance/msg-imap-performance15000_1kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance15000_1kb.ini
+../scripts/performance/msg-imap-performance15000_5kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance15000_5kb.script
+../testdata/performance/msg-imap-performance15000_5kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance15000_5kb.ini
+../scripts/performance/msg-imap-performance15000_10kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance15000_10kb.script
+../testdata/performance/msg-imap-performance15000_10kb.ini 		/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance15000_10kb.ini
+../scripts/performance/msg-imap-performance15000_100kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance15000_100kb.script
+../testdata/performance/msg-imap-performance15000_100kb.ini 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance15000_100kb.ini
+../scripts/performance/msg-imap-performance15000_200kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance15000_200kb.script
+../testdata/performance/msg-imap-performance15000_200kb.ini 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance15000_200kb.ini
+../scripts/performance/msg-imap-performance15000_500kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance15000_500kb.script
+../testdata/performance/msg-imap-performance15000_500kb.ini 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance15000_500kb.ini
+../scripts/performance/msg-imap-performance15000_1000kb.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance15000_1000kb.script
+../testdata/performance/msg-imap-performance15000_1000kb.ini 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-performance15000_1000kb.ini
+
+../scripts/performance/msg-imap-cache1.script 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-cache1.script
+../testdata/performance/msg-imap-cache1.ini 	/epoc32/winscw/c/msgtest/email/imap/performance/msg-imap-cache1.ini
+../testdata/performance/msgcache_low.ini 	/epoc32/winscw/c/msgtest/email/imap/performance/msgcache_low.ini
+../testdata/performance/msgcache_high.ini 	/epoc32/winscw/c/msgtest/email/imap/performance/msgcache_high.ini
+../testdata/performance/msgcache_default.ini 	/epoc32/winscw/c/msgtest/email/imap/performance/msgcache_default.ini
+
+
+// **** Test Suite: Messaging.Email.imap.media
+../scripts/media/msg-imap-removablemedia1.script 	/epoc32/winscw/c/msgtest/email/imap/media/msg-imap-removablemedia1.script
+../scripts/media/msg-imap-removablemedia2.script 	/epoc32/winscw/c/msgtest/email/imap/media/msg-imap-removablemedia2.script
+../scripts/media/msg-imap-removablemedia3.script 	/epoc32/winscw/c/msgtest/email/imap/media/msg-imap-removablemedia3.script
+../scripts/media/msg-imap-removablemedia4.script 	/epoc32/winscw/c/msgtest/email/imap/media/msg-imap-removablemedia4.script
+../testdata/media/msg-imap-removablemedia1.ini 		/epoc32/winscw/c/msgtest/email/imap/media/msg-imap-removablemedia1.ini
+
+// **** Test Suite: Messaging.Email.imap.connect
+../scripts/connect/msg-imap-connect1.script 	/epoc32/winscw/c/msgtest/email/imap/connect/msg-imap-connect1.script
+../testdata/connect/msg-imap-connect1.ini 	/epoc32/winscw/c/msgtest/email/imap/connect/msg-imap-connect1.ini
+
+// **** Test Suite: Messaging.Email.imap.cenrep
+../scripts/cenrep/msg-imap-cenrep1.script 	/epoc32/winscw/c/msgtest/email/imap/cenrep/msg-imap-cenrep1.script
+../testdata/cenrep/msg-imap-cenrep1.ini 	/epoc32/winscw/c/msgtest/email/imap/cenrep/msg-imap-cenrep1.ini
+
+// **** Test Suite: Messaging.Email.imap.folder
+../scripts/folder/msg-imap-folder1.script 	/epoc32/winscw/c/msgtest/email/imap/folder/msg-imap-folder1.script
+../testdata/folder/msg-imap-folder1.ini 	/epoc32/winscw/c/msgtest/email/imap/folder/msg-imap-folder1.ini
+
+../scripts/folder/msg-imap-folder2.script 	/epoc32/winscw/c/msgtest/email/imap/folder/msg-imap-folder2.script
+../testdata/folder/msg-imap-folder2.ini 	/epoc32/winscw/c/msgtest/email/imap/folder/msg-imap-folder2.ini
+
+../scripts/folder/msg-imap-folder3.script 	/epoc32/winscw/c/msgtest/email/imap/folder/msg-imap-folder3.script
+../testdata/folder/msg-imap-folder3.ini 	/epoc32/winscw/c/msgtest/email/imap/folder/msg-imap-folder3.ini
+
+// **** Test Suite: Messaging.Email.imap.general
+../scripts/general/msg-imap-general1.script 	/epoc32/winscw/c/msgtest/email/imap/general/msg-imap-general1.script
+../testdata/general/msg-imap-general1.ini 	/epoc32/winscw/c/msgtest/email/imap/general/msg-imap-general1.ini
+
+// **** Test Suite: Messaging.Email.imap.header
+../scripts/header/msg-imap-header1.script 	/epoc32/winscw/c/msgtest/email/imap/header/msg-imap-header1.script
+../testdata/header/msg-imap-header1.ini 	/epoc32/winscw/c/msgtest/email/imap/header/msg-imap-header1.ini
+
+
+// **** Test Suite: Messaging.Email.imap.idle
+../scripts/idle/msg-imap-idle1-ic.script 	/epoc32/winscw/c/msgtest/email/imap/idle/msg-imap-idle1-ic.script
+../testdata/idle/msg-imap-idle1-ic.ini 	/epoc32/winscw/c/msgtest/email/imap/idle/msg-imap-idle1-ic.ini
+
+// **** Test Suite: Messaging.Email.imap.message
+../scripts/message/msg-imap-message1.script 	/epoc32/winscw/c/msgtest/email/imap/message/msg-imap-message1.script
+../testdata/message/msg-imap-message1.ini 	/epoc32/winscw/c/msgtest/email/imap/message/msg-imap-message1.ini
+../scripts/message/msg-imap-message2.script 	/epoc32/winscw/c/msgtest/email/imap/message/msg-imap-message2.script
+../testdata/message/msg-imap-message2.ini 	/epoc32/winscw/c/msgtest/email/imap/message/msg-imap-message2.ini
+../scripts/message/msg-imap-message3.script 	/epoc32/winscw/c/msgtest/email/imap/message/msg-imap-message3.script
+../testdata/message/msg-imap-message3.ini 	/epoc32/winscw/c/msgtest/email/imap/message/msg-imap-message3.ini
+
+// **** Test Suite: Messaging.Email.imap.offline
+../scripts/offline/msg-imap-offline1.script 	/epoc32/winscw/c/msgtest/email/imap/offline/msg-imap-offline1.script
+../testdata/offline/msg-imap-offline1.ini 	/epoc32/winscw/c/msgtest/email/imap/offline/msg-imap-offline1.ini
+../scripts/offline/msg-imap-offline2.script 	/epoc32/winscw/c/msgtest/email/imap/offline/msg-imap-offline2.script
+../testdata/offline/msg-imap-offline2.ini 	/epoc32/winscw/c/msgtest/email/imap/offline/msg-imap-offline2.ini
+../scripts/offline/msg-imap-offline3.script 	/epoc32/winscw/c/msgtest/email/imap/offline/msg-imap-offline3.script
+../testdata/offline/msg-imap-offline3.ini 	/epoc32/winscw/c/msgtest/email/imap/offline/msg-imap-offline3.ini
+
+// **** Test Suite: Messaging.Email.imap.search
+../scripts/search/msg-imap-search1.script 	/epoc32/winscw/c/msgtest/email/imap/search/msg-imap-search1.script
+../testdata/search/msg-imap-search1.ini 	/epoc32/winscw/c/msgtest/email/imap/search/msg-imap-search1.ini
+
+// **** Test Suite: Messaging.Email.imap.sizefilter
+../scripts/sizefilter/msg-imap-sizefilter1.script 	/epoc32/winscw/c/msgtest/email/imap/sizefilter/msg-imap-sizefilter1.script
+../testdata/sizefilter/msg-imap-sizefilter1.ini 	/epoc32/winscw/c/msgtest/email/imap/sizefilter/msg-imap-sizefilter1.ini
+../scripts/sizefilter/msg-imap-sizefilter2.script 	/epoc32/winscw/c/msgtest/email/imap/sizefilter/msg-imap-sizefilter2.script
+../testdata/sizefilter/msg-imap-sizefilter2.ini 	/epoc32/winscw/c/msgtest/email/imap/sizefilter/msg-imap-sizefilter2.ini
+
+
+
+// **** Test Suite: Messaging.Email.imap.sync
+../scripts/sync/msg-imap-sync1.script 	/epoc32/winscw/c/msgtest/email/imap/sync/msg-imap-sync1.script
+../testdata/sync/msg-imap-sync1.ini 	/epoc32/winscw/c/msgtest/email/imap/sync/msg-imap-sync1.ini
+../scripts/sync/msg-imap-sync2.script 	/epoc32/winscw/c/msgtest/email/imap/sync/msg-imap-sync2.script
+../testdata/sync/msg-imap-sync2.ini 	/epoc32/winscw/c/msgtest/email/imap/sync/msg-imap-sync2.ini
+../scripts/sync/msg-imap-sync3.script 	/epoc32/winscw/c/msgtest/email/imap/sync/msg-imap-sync3.script
+../testdata/sync/msg-imap-sync3.ini 	/epoc32/winscw/c/msgtest/email/imap/sync/msg-imap-sync3.ini
+../scripts/sync/msg-imap-sync4-ic.script 	/epoc32/winscw/c/msgtest/email/imap/sync/msg-imap-sync4-ic.script
+../testdata/sync/msg-imap-sync4-ic.ini 	/epoc32/winscw/c/msgtest/email/imap/sync/msg-imap-sync4-ic.ini
+
+
+// **** Test Suite: Messaging.Email.imap.plainbody
+../scripts/plainbody/msg-imap-plainbody1.script 	/epoc32/winscw/c/msgtest/email/imap/plainbody/msg-imap-plainbody1.script
+../testdata/plainbody/msg-imap-plainbody1.ini 	/epoc32/winscw/c/msgtest/email/imap/plainbody/msg-imap-plainbody1.ini
+
+
+// **** Test Suite: Messaging.Email.imap.ram
+../scripts/ram/msg-imap-ram1.script 	/epoc32/winscw/c/msgtest/email/imap/ram/msg-imap-ram1.script
+../testdata/ram/msg-imap-ram1.ini 	/epoc32/winscw/c/msgtest/email/imap/ram/msg-imap-ram1.ini
+
+// **** Test Suite: messaging.email.imap.bearermobility
+../scripts/bearermobility/msg-imap-bearermobility1.script	/epoc32/winscw/c/msgtest/email/imap/bearermobility/msg-imap-bearermobility1.script
+../testdata/bearermobility/msg-imap-bearermobility1.ini		/epoc32/winscw/c/msgtest/email/imap/bearermobility/msg-imap-bearermobility1.ini
+
+// **** Test Suite: messaging.email.imap.snap
+../scripts/snap/msg-imap-snap1.script	/epoc32/winscw/c/msgtest/email/imap/snap/msg-imap-snap1.script
+../testdata/snap/msg-imap-snap1.ini		/epoc32/winscw/c/msgtest/email/imap/snap/msg-imap-snap1.ini
+
+// **** Test Suite: messaging.email.imap.downloadrules
+../scripts/downloadrules/msg-imap-downloadrules1.script		/epoc32/winscw/c/msgtest/email/imap/downloadrules/msg-imap-downloadrules1.script
+../testdata/downloadrules/msg-imap-downloadrules1.ini	/epoc32/winscw/c/msgtest/email/imap/downloadrules/msg-imap-downloadrules1.ini
+../scripts/downloadrules/msg-imap-downloadrules2.script		/epoc32/winscw/c/msgtest/email/imap/downloadrules/msg-imap-downloadrules2.script
+../testdata/downloadrules/msg-imap-downloadrules2.ini	/epoc32/winscw/c/msgtest/email/imap/downloadrules/msg-imap-downloadrules2.ini
+../scripts/downloadrules/msg-imap-downloadrules3.script		/epoc32/winscw/c/msgtest/email/imap/downloadrules/msg-imap-downloadrules3.script
+../testdata/downloadrules/msg-imap-downloadrules3.ini	/epoc32/winscw/c/msgtest/email/imap/downloadrules/msg-imap-downloadrules3.ini
+
+// **** Test Suite: messaging.email.imap.transportbuffersizes
+../scripts/transportbuffersizes/msg-imap-transportbuffersizes1.script	/epoc32/winscw/c/msgtest/email/imap/transportbuffersizes/msg-imap-transportbuffersizes1.script
+../testdata/transportbuffersizes/msg-imap-transportbuffersizes1.ini	/epoc32/winscw/c/msgtest/email/imap/transportbuffersizes/msg-imap-transportbuffersizes1.ini
+
+// **** Test Suite: messaging.email.imap.migration
+../scripts/migration/msg-imap-migration1.script	/epoc32/winscw/c/msgtest/email/imap/migration/msg-imap-migration1.script
+../testdata/migration/msg-imap-migration1.ini	/epoc32/winscw/c/msgtest/email/imap/migration/msg-imap-migration1.ini
+../scripts/migration/msg-imap-migration2.script	/epoc32/winscw/c/msgtest/email/imap/migration/msg-imap-migration2.script
+../testdata/migration/msg-imap-migration2.ini	/epoc32/winscw/c/msgtest/email/imap/migration/msg-imap-migration2.ini
+
+// **** Test Suite: messaging.email.imap.tls
+../scripts/tls/msg-imap-connect-tlssls.script /epoc32/winscw/c/msgtest/email/imap/tls/msg-imap-connect-tlssls.script
+../testdata/tls/msg-imap-connect-TlsSls.ini  /epoc32/winscw/c/msgtest/email/imap/tls/msg-imap-connect-tlssls.ini 
+../scripts/tls/msg-imap-connect-wrongdns-tlssls.script /epoc32/winscw/c/msgtest/email/imap/tls/msg-imap-connect-wrongdns-tlssls.script
+../testdata/tls/msg-imap-connect-wrongdns-tlssls.ini  /epoc32/winscw/c/msgtest/email/imap/tls/msg-imap-connect-wrongdns-tlssls.ini
+// **** robustness/system level tests: messaging.email.imap.sys
+../testdata/sys/CorruptDb.db				/epoc32/winscw/c/msgtest/sys/corruptdb.db
+../testdata/sys/msgcache_full.ini			/epoc32/winscw/c/msgtest/sys/msgcache_full.ini
+../testdata/sys/st-mess.ini				/epoc32/winscw/c/msgtest/sys/st-mess.ini
+../scripts/sys/st-mess-batterydown-0001.script		/epoc32/winscw/c/msgtest/sys/st-mess-batterydown-0001.script
+../scripts/sys/st-mess-cacheempty-0001.script		/epoc32/winscw/c/msgtest/sys/st-mess-cacheempty-0001.script
+../scripts/sys/st-mess-cachefull-0001.script		/epoc32/winscw/c/msgtest/sys/st-mess-cachefull-0001.script
+../scripts/sys/st-mess-conndown-0001.script		/epoc32/winscw/c/msgtest/sys/st-mess-conndown-0001.script
+../scripts/sys/st-mess-dbcorrupt-0001.script		/epoc32/winscw/c/msgtest/sys/st-mess-dbcorrupt-0001.script
+../scripts/sys/st-mess-nospacemmc-0001.script		/epoc32/winscw/c/msgtest/sys/st-mess-nospacemmc-0001.script
+../scripts/sys/st-mess-oom-0001.script			/epoc32/winscw/c/msgtest/sys/st-mess-oom-0001.script
+../scripts/sys/st-mess-oom-0002.script			/epoc32/winscw/c/msgtest/sys/st-mess-oom-0002.script
+../scripts/sys/st-mess-soaktest-0001.script		/epoc32/winscw/c/msgtest/sys/st-mess-soaktest-0001.script
+../scripts/sys/st-mess-sqldown-0001.script		/epoc32/winscw/c/msgtest/sys/st-mess-sqldown-0001.script
+../scripts/sys/st-mess-sqldown-0002.script		/epoc32/winscw/c/msgtest/sys/st-mess-sqldown-0002.script
+#if (defined SYMBIAN_EMAIL_CAPABILITY_SUPPORT)
+// **** Test Suite: Messaging.Email.IMAP.Binary.Performance
+../scripts/binarydownloadsupport/msg-imap-binary-performance.script /epoc32/winscw/c/msgtest/email/imap/binarydownloadsupport/msg-imap-binary-performance.script
+../testdata/binarydownloadsupport/msg-imap-binary-performance.ini /epoc32/winscw/c/msgtest/email/imap/binarydownloadsupport/msg-imap-binary-performance.ini
+
+../scripts/binarydownloadsupport/msg-imap-binary-cache1.script /epoc32/winscw/c/msgtest/email/imap/binarydownloadsupport/msg-imap-binary-cache1.script
+../testdata/binarydownloadsupport/msg-imap-binary-cache1.ini /epoc32/winscw/c/msgtest/email/imap/binarydownloadsupport/msg-imap-binary-cache1.ini
+
+../scripts/binarydownloadsupport/msg-imap-binary-plainbody.script /epoc32/winscw/c/msgtest/email/imap/binarydownloadsupport/msg-imap-binary-plainbody.script
+../testdata/binarydownloadsupport/msg-imap-binary-plainbody.ini /epoc32/winscw/c/msgtest/email/imap/binarydownloadsupport/msg-imap-binary-plainbody.ini
+
+../testdata/EmailMessage/nobody.txt  /epoc32/winscw/c/msgtest/config/emailmessage/nobody.txt
+../testdata/EmailMessage/10kbase64body.txt  /epoc32/winscw/c/msgtest/config/emailmessage/10kbase64body.txt
+../testdata/EmailMessage/10kbase7bitbody.txt  /epoc32/winscw/c/msgtest/config/emailmessage/10kbase7bitbody.txt
+../testdata/EmailMessage/10kbase8bitbody.txt  /epoc32/winscw/c/msgtest/config/emailmessage/10kbase8bitbody.txt
+
+../testdata/EmailSettings/imap_settings_binary_test2.txt    		/epoc32/winscw/c/msgtest/config/emailsettings/imap_settings_binary_test2.txt
+../testdata/EmailSettings/imap_settings_binary_test1.txt    		/epoc32/winscw/c/msgtest/config/emailsettings/imap_settings_binary_test1.txt
+
+// **** Test Suite: messaging.email.imap.SASLAUTH
+../scripts/binarydownloadsupport/msg-imap-auth-connect.script 	/epoc32/winscw/c/msgtest/email/imap/binarydownloadsupport/msg-imap-auth-connect.script
+../testdata/binarydownloadsupport/msg-imap-auth-connect.ini 	/epoc32/winscw/c/msgtest/email/imap/binarydownloadsupport/msg-imap-auth-connect.ini	
+../testdata/EmailSettings/imap_settings_auth_test001.txt    		/epoc32/winscw/c/msgtest/config/emailsettings/imap_settings_auth_test001.txt
+../testdata/EmailSettings/imap_settings_auth_test002.txt    		/epoc32/winscw/c/msgtest/config/emailsettings/imap_settings_auth_test002.txt
+../testdata/EmailSettings/imap_settings_auth_test003.txt    		/epoc32/winscw/c/msgtest/config/emailsettings/imap_settings_auth_test003.txt
+../testdata/EmailSettings/imap_settings_auth_test004.txt    		/epoc32/winscw/c/msgtest/config/emailsettings/imap_settings_auth_test004.txt
+../testdata/EmailSettings/imap_settings_auth_test005.txt    		/epoc32/winscw/c/msgtest/config/emailsettings/imap_settings_auth_test005.txt
+../testdata/EmailSettings/imap_settings_auth_test006.txt    		/epoc32/winscw/c/msgtest/config/emailsettings/imap_settings_auth_test006.txt
+../testdata/EmailSettings/imap_settings_auth_test007.txt    		/epoc32/winscw/c/msgtest/config/emailsettings/imap_settings_auth_test007.txt
+../testdata/EmailSettings/imap_settings_auth_test008.txt    		/epoc32/winscw/c/msgtest/config/emailsettings/imap_settings_auth_test008.txt
+../testdata/EmailSettings/imap_settings_auth_test009.txt    		/epoc32/winscw/c/msgtest/config/emailsettings/imap_settings_auth_test009.txt
+#endif
+
+// Email Account Settings files
+../testdata/EmailSettings/DRMHandling_IMAPSettings.txt		/epoc32/winscw/c/msgtest/config/emailsettings/drmhandling_imapsettings.txt
+../testdata/EmailSettings/ImapSearch_Settings_Disabled.txt	/epoc32/winscw/c/msgtest/config/emailsettings/imapsearch_settings_disabled.txt
+../testdata/EmailSettings/ImapSearch_Settings_Enabled.txt	/epoc32/winscw/c/msgtest/config/emailsettings/imapsearch_settings_enabled.txt
+../testdata/EmailSettings/ImapSearch_Settings_NoMatch.txt   	/epoc32/winscw/c/msgtest/config/emailsettings/imapsearch_settings_nomatch.txt
+../testdata/EmailSettings/IMAPSettings_msgacc1.txt    		/epoc32/winscw/c/msgtest/config/emailsettings/imapsettings_msgacc1.txt
+../testdata/EmailSettings/IMAPSettings_test908.txt    		/epoc32/winscw/c/msgtest/config/emailsettings/imapsettings_test908.txt
+../testdata/EmailSettings/IMAPSettings_test908_Expunge.txt    		/epoc32/winscw/c/msgtest/config/emailsettings/imapsettings_test908_expunge.txt
+../testdata/EmailSettings/IMAPSettings_test908IdleSupport.txt	/epoc32/winscw/c/msgtest/config/emailsettings/imapsettings_test908idlesupport.txt
+../testdata/EmailSettings/ODCImap4Settings.txt			/epoc32/winscw/c/msgtest/config/emailsettings/odcimap4settings.txt
+../testdata/EmailSettings/IMAPSettings_TlsSls_test908.txt    		/epoc32/winscw/c/msgtest/config/emailsettings/imapsettings_tlssls_test908.txt
+../testdata/EmailSettings/imapsettings_wrongdns_tlssls_test908.txt    		/epoc32/winscw/c/msgtest/config/emailsettings/imapsettings_wrongdns_tlssls_test908.txt
+
+
+../testdata/EmailSettings/IMAPServerIAPSettings.txt			/epoc32/winscw/c/msgtest/config/emailsettings/imapserveriapsettings.txt
+../testdata/EmailSettings/IMAPServerSNAPSettings.txt		/epoc32/winscw/c/msgtest/config/emailsettings/imapserversnapsettings.txt
+../testdata/EmailSettings/IMAPServerSNAPandIAPSettings.txt	/epoc32/winscw/c/msgtest/config/emailsettings/imapserversnapandiapsettings.txt
+../testdata/EmailSettings/IMAP_SNAPID.txt					/epoc32/winscw/c/msgtest/config/emailsettings/imap_snapid.txt
+../testdata/EmailSettings/IMAPServerBMSettings.txt	/epoc32/winscw/c/msgtest/config/emailsettings/imapserverbmsettings.txt
+../testdata/EmailSettings/IMAP_BM_OFF.txt					/epoc32/winscw/c/msgtest/config/emailsettings/imap_bm_off.txt
+../testdata/EmailSettings/IMAP_BM_ON.txt					/epoc32/winscw/c/msgtest/config/emailsettings/imap_bm_on.txt
+../testdata/EmailSettings/ced_default_ras.cfg				/epoc32/winscw/c/ced_default_ras.cfg
+../testdata/EmailSettings/IMAPServerDLRulesSettings.txt		/epoc32/winscw/c/msgtest/config/emailsettings/imapserverdlrulessettings.txt
+../testdata/EmailSettings/IMAP_DLRules_OFF.txt				/epoc32/winscw/c/msgtest/config/emailsettings/imap_dlrules_off.txt
+../testdata/EmailSettings/IMAP_DLRules_ON.txt				/epoc32/winscw/c/msgtest/config/emailsettings/imap_dlrules_on.txt
+../testdata/EmailSettings/IMAP_SMTP_ServerIAPSettings.txt	/epoc32/winscw/c/msgtest/config/emailsettings/imap_smtp_serveriapsettings.txt
+../testdata/EmailSettings/IMAPSettings_migration.txt	/epoc32/winscw/c/msgtest/config/emailsettings/imapsettings_migration.txt
+
+#ifndef _COMMON_EMAIL_SETTINGS_FILES_
+#define _COMMON_EMAIL_SETTINGS_FILES_
+../testdata/EmailSettings/ced_default_ras_with_SNAPs.cfg	/epoc32/winscw/c/ced_default_ras_with_snaps.cfg
+#endif //End of _COMMON_EMAIL_SETTINGS_FILES_
+
+// Email Message files
+
+#ifndef _COMMON_EMAIL_FILES_
+#define _COMMON_EMAIL_FILES_
+../testdata/EmailMessage/100KBody.txt	/epoc32/winscw/c/msgtest/config/emailmessage/100kbody.txt
+../testdata/EmailMessage/10KBody.txt	/epoc32/winscw/c/msgtest/config/emailmessage/10kbody.txt
+../testdata/EmailMessage/1KBody.txt	/epoc32/winscw/c/msgtest/config/emailmessage/1kbody.txt
+../testdata/EmailMessage/1MBBody.txt	/epoc32/winscw/c/msgtest/config/emailmessage/1mbbody.txt
+../testdata/EmailMessage/20KBody.txt	/epoc32/winscw/c/msgtest/config/emailmessage/20kbody.txt
+../testdata/EmailMessage/512KBody.txt	/epoc32/winscw/c/msgtest/config/emailmessage/512kbody.txt
+../testdata/EmailMessage/5KBody.txt	/epoc32/winscw/c/msgtest/config/emailmessage/5kbody.txt
+../testdata/EmailMessage/200KBody.txt	/epoc32/winscw/c/msgtest/config/emailmessage/200kbody.txt
+../testdata/EmailMessage/500KBody.txt	/epoc32/winscw/c/msgtest/config/emailmessage/500kbody.txt
+../testdata/EmailMessage/1000KBody.txt	/epoc32/winscw/c/msgtest/config/emailmessage/1000kbody.txt
+#endif //End of _COMMON_EMAIL_FILES_
+
+
+
+../testdata/EmailMessage/ZeroByte_Attachment.txt  	/epoc32/winscw/c/msgtest/config/emailmessage/zerobyte_attachment.txt
+../testdata/EmailMessage/MessageWithAttchmntAndNoBody.txt  	/epoc32/winscw/c/msgtest/config/emailmessage/messagewithattchmntandnobody.txt
+../testdata/EmailMessage/MessageWith_V_Card.txt  	/epoc32/winscw/c/msgtest/config/emailmessage/messagewith_v_card.txt
+../testdata/EmailMessage/4kbodyhtm.txt	 		/epoc32/winscw/c/msgtest/config/emailmessage/4kbodyhtm.txt
+../testdata/EmailMessage/ImapSearchEmail1.txt	 	/epoc32/winscw/c/msgtest/config/emailmessage/imapsearchemail1.txt
+../testdata/EmailMessage/ImapSearchEmail2.txt	 	/epoc32/winscw/c/msgtest/config/emailmessage/imapsearchemail2.txt
+../testdata/EmailMessage/mail3.txt  			/epoc32/winscw/c/msgtest/config/emailmessage/mail3.txt
+../testdata/EmailMessage/Msg1.txt    			/epoc32/winscw/c/msgtest/config/emailmessage/msg1.txt
+../testdata/EmailMessage/Msg2.txt    			/epoc32/winscw/c/msgtest/config/emailmessage/msg2.txt
+../testdata/EmailMessage/Msg3.txt    			/epoc32/winscw/c/msgtest/config/emailmessage/msg3.txt
+../testdata/EmailMessage/Msg4.txt    			/epoc32/winscw/c/msgtest/config/emailmessage/msg4.txt
+../testdata/EmailMessage/TCase_11_6KBAttchmnt.txt  	/epoc32/winscw/c/msgtest/config/emailmessage/tcase_11_6kbattchmnt.txt
+../testdata/EmailMessage/test_9.txt  			/epoc32/winscw/c/msgtest/config/emailmessage/test_9.txt
+../testdata/EmailMessage/test1.txt  			/epoc32/winscw/c/msgtest/config/emailmessage/test1.txt
+../testdata/EmailMessage/test10.txt    			/epoc32/winscw/c/msgtest/config/emailmessage/test10.txt
+../testdata/EmailMessage/test13_1.txt    		/epoc32/winscw/c/msgtest/config/emailmessage/test13_1.txt
+../testdata/EmailMessage/test14_1.txt  			/epoc32/winscw/c/msgtest/config/emailmessage/test14_1.txt
+../testdata/EmailMessage/test14_2.txt  			/epoc32/winscw/c/msgtest/config/emailmessage/test14_2.txt
+../testdata/EmailMessage/test15_1.txt  			/epoc32/winscw/c/msgtest/config/emailmessage/test15_1.txt
+../testdata/EmailMessage/test20_3.txt  			/epoc32/winscw/c/msgtest/config/emailmessage/test20_3.txt
+../testdata/EmailMessage/test21_1.txt 			/epoc32/winscw/c/msgtest/config/emailmessage/test21_1.txt
+../testdata/EmailMessage/test21_2.txt  			/epoc32/winscw/c/msgtest/config/emailmessage/test21_2.txt
+../testdata/EmailMessage/test22.txt	 		/epoc32/winscw/c/msgtest/config/emailmessage/test22.txt
+../testdata/EmailMessage/test23.txt	 		/epoc32/winscw/c/msgtest/config/emailmessage/test23.txt
+../testdata/EmailMessage/test24.txt	 		/epoc32/winscw/c/msgtest/config/emailmessage/test24.txt
+../testdata/EmailMessage/test3.txt  			/epoc32/winscw/c/msgtest/config/emailmessage/test3.txt
+../testdata/EmailMessage/test6.txt  			/epoc32/winscw/c/msgtest/config/emailmessage/test6.txt
+../testdata/EmailMessage/test66.txt  			/epoc32/winscw/c/msgtest/config/emailmessage/test66.txt
+../testdata/EmailMessage/TestCase12_1_Attcmnt.txt  	/epoc32/winscw/c/msgtest/config/emailmessage/testcase12_1_attcmnt.txt
+../testdata/EmailMessage/TestCase13_1_3KBAttcmnt.txt  	/epoc32/winscw/c/msgtest/config/emailmessage/testcase13_1_3kbattcmnt.txt
+../testdata/EmailMessage/TestCase13_Bdy7KBn3KBAtchmnt.txt  /epoc32/winscw/c/msgtest/config/emailmessage/testcase13_bdy7kbn3kbatchmnt.txt
+
+//required for load Testing
+../testdata/EmailMessage/VCards.txt	/epoc32/winscw/c/msgtest/config/emailmessage/vcards.txt
+../testdata/EmailMessage/DRM_SeparateDelivery01.txt /epoc32/winscw/c/msgtest/config/emailmessage/drm_separatedelivery01.txt
+//../testdata/EmailMessage/test4_mail.txt  /epoc32/winscw/c/msgtest/Config/EmailMessage/test4_mail.txt
+//../testdata/EmailMessage/test2_mail.txt  /epoc32/winscw/c/msgtest/Config/EmailMessage/test2_mail.txt
+
+../testdata/EmailMessage/simpleemail.txt   /epoc32/winscw/c/msgtest/config/emailmessage/simpleemail.txt
+../testdata/EmailMessage/mutliattach.txt /epoc32/winscw/c/msgtest/config/emailmessage/mutliattach.txt 
+../testdata/EmailMessage/zeroattachmentwithbody.txt /epoc32/winscw/c/msgtest/config/emailmessage/zeroattachmentwithbody.txt
+../testdata/EmailMessage/zeroattachmentzerobody.txt /epoc32/winscw/c/msgtest/config/emailmessage/zeroattachmentzerobody.txt
+../testdata/EmailMessage/zeromsgpartmultiattach.txt /epoc32/winscw/c/msgtest/config/emailmessage/zeromsgpartmultiattach.txt
+../testdata/EmailMessage/zeromsgpartnoattach.txt /epoc32/winscw/c/msgtest/config/emailmessage/zeromsgpartnoattach.txt
+../testdata/EmailMessage/zeromsgpartwithattach4kb.txt /epoc32/winscw/c/msgtest/config/emailmessage/zeromsgpartwithattach4kb.txt
+../testdata/EmailMessage/musicSmall.txt               /epoc32/winscw/c/msgtest/config/emailmessage/musicsmall.txt
+../testdata/EmailMessage/music1mb.txt            /epoc32/winscw/c/msgtest/config/emailmessage/music1mb.txt 
+../testdata/EmailMessage/musicExtraLarge.txt /epoc32/winscw/c/msgtest/config/emailmessage/musicextralarge.txt
+
+//../testdata/EmailMessage/ccsimpleemail.txt  ///epoc32/winscw/c/msgtest/Config/EmailMessage/ccsimpleemail.txt
+//../testdata/EmailMessage/ccsimpleemailmutiattach.txt  ///epoc32/winscw/c/msgtest/Config/ccsimpleemailmutiattach.txt
+//../testdata/EmailMessage/ccsimpleemailzeroattach.txt ///epoc32/winscw/c/msgtest/Config/ccsimpleemailzeroattach.txt
+
+../scripts/codenomicon/msg-imap-codenomicon-search.script /epoc32/winscw/c/msgtest/email/imap/codenomicon/msg-imap-codenomicon-search.script
+../scripts/codenomicon/msg-imap-codenomicon-rename.script /epoc32/winscw/c/msgtest/email/imap/codenomicon/msg-imap-codenomicon-rename.script
+../scripts/codenomicon/msg-imap-codenomicon-folder.script /epoc32/winscw/c/msgtest/email/imap/codenomicon/msg-imap-codenomicon-folder.script
+../scripts/codenomicon/msg-imap-codenomicon-fetch-store.script /epoc32/winscw/c/msgtest/email/imap/codenomicon/msg-imap-codenomicon-fetch-store.script
+../scripts/codenomicon/msg-imap-codenomicon-create-delete.script /epoc32/winscw/c/msgtest/email/imap/codenomicon/msg-imap-codenomicon-create-delete.script
+../scripts/codenomicon/msg-imap-codenomicon-unsubscribe.script /epoc32/winscw/c/msgtest/email/imap/codenomicon/msg-imap-codenomicon-unsubscribe.script
+../scripts/codenomicon/msg-imap-codenomicon-connect.script /epoc32/winscw/c/msgtest/email/imap/codenomicon/msg-imap-codenomicon-connect.script
+../scripts/codenomicon/msg-imap-codenomicon-copy-examine.script /epoc32/winscw/c/msgtest/email/imap/codenomicon/msg-imap-codenomicon-copy-examine.script
+
+
+// IBY file
+msg_tp_imap.iby    /epoc32/rom/include/msg_tp_imap.iby

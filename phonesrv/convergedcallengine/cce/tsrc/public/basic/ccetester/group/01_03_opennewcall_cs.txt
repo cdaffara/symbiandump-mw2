@@ -1,0 +1,17 @@
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 1.3 OpenNewCall, CS
+timeout 10000
+create ccetester test
+
+// CS test plugin
+
+test OpenNewCall 1 0 Recipient1 1 ECCECallTypeCSVoice ECCELineTypePrimary
+test Release 1 0
+
+test VerifyTest
+delete test
+[Endtest] 

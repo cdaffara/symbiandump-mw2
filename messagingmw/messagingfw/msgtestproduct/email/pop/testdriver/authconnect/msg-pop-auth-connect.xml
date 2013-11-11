@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>msg-pop-auth-connect</name>
+	<timeout>16000</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\email\pop\authconnect\msg-pop-auth-connect.script</hostPath>
+			<devicePath>c:\msgtest\email\pop\authconnect\msg-pop-auth-connect.script</devicePath>
+		</script>
+	</testScripts>
+
+	<testServers>
+		<server>T_MsgCommonServer</server>
+		<server>T_MsgPopServer</server>
+		<server>T_MsgSmtpServer</server>
+	</testServers>
+
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\email\pop\authconnect\msg-pop-auth-connect.ini</hostPath>
+			<devicePath>c:\msgtest\email\pop\authconnect\msg-pop-auth-connect.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\pop_settings_auth_test1.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\pop_settings_auth_test1.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\pop_settings_auth_test2.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\pop_settings_auth_test2.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\pop_settings_auth_test3.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\pop_settings_auth_test3.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\pop_settings_auth_test4.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\pop_settings_auth_test4.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\pop_settings_auth_test5.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\pop_settings_auth_test5.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\pop_settings_auth_test6.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\pop_settings_auth_test6.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\pop_settings_auth_test7.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\pop_settings_auth_test7.txt</devicePath>
+		</data>
+			<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\pop_settings_auth_test8.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\pop_settings_auth_test8.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\pop_settings_auth_test8.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\pop_settings_auth_test8.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\pop_settings_auth_test9.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\pop_settings_auth_test9.txt</devicePath>
+		</data>
+
+	</dependencies>	
+</testExecuteTest>

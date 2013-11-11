@@ -1,0 +1,46 @@
+// Copyright (c) 1997-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// Registry file for Push App Handler interface dll
+// Interfaces : CPushHandlerBase
+// 
+//
+
+#include <ecom/registryinfo.rh>
+
+RESOURCE REGISTRY_INFO theInfo
+	{
+	// KUidPushAppHanderPlugin
+	dll_uid = 0x101F3E6E;
+	interfaces = 
+		{
+		INTERFACE_INFO
+			{
+			// KUidPushMessageFilter - CWapPushMessageFilter UID
+			interface_uid = 0x101F3E66;
+			implementations = 
+				{
+				IMPLEMENTATION_INFO
+					{
+					// KUIDTestPushMessageFilter - CTestPushMessageFilter UID
+					implementation_uid = 0x101F3E6E;
+					version_no = 1;
+					display_name = "CTestPushMessageFilter||WAP Push Filter Plug-in";
+					default_data = "*";
+					opaque_data = "";
+					}
+				};
+			}
+		};
+	}
+

@@ -1,0 +1,131 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  This header file describes the class that handles the storage
+*                of triggers in RAM Structures.
+*
+*/
+
+
+#ifndef C_LBTCONTAINER_RAMTRIGGERSCLIENTSID_TREE_H
+#define C_LBTCONTAINER_RAMTRIGGERSCLIENTSID_TREE_H
+
+// system includes
+#include <e32base.h>
+#include <e32cmn.h>
+#include "lbtcontainertriggerentry.h"
+#include "lbttriggerclientsidkey.h"
+
+/**
+ *  This class consists of the RAM structures that store the triggers.
+ *
+ *  It internally utilizes RAM memory and stores the trigger information
+ *  in a efficient data structure.
+ */
+NONSHARABLE_CLASS( CLbtRamTriggersClientSIDTree ) : public CBase
+                                        
+    {
+public:
+
+	struct TTriggerTreeBasedOnSID
+	{
+		TSecureId ownerSID;
+		RPointerArray <CLbtContainerTriggerEntry> trigArray;
+	};
+    /**
+     * The Symbian 2 phase constructor.
+     * This method creates a new instance of CLbtRamTriggersClientSIDTree
+     *
+     * @return An instance of this class
+     */
+    static CLbtRamTriggersClientSIDTree* NewL();
+
+    /**
+     * Destructor.
+     */
+    virtual ~CLbtRamTriggersClientSIDTree();
+
+	/**
+     *
+     */    
+    void AddToTreeL(TTriggerTreeBasedOnSID* aEntry );
+    
+    void UpdateEntry( TSecureId aSid,CLbtContainerTriggerEntry* aEntry);
+    
+    /** Reset the whole tree. Remove the entries if required */
+    void ResetL();
+    
+    TBool IsEntryPresent(TSecureId aSid);
+    void SetIteratorL();
+    TTriggerTreeBasedOnSID* GetNextEntryL();
+    TTriggerTreeBasedOnSID* FindEntry(TSecureId aSid);
+    void DeleteFromTreeL( TSecureId aSid );
+    void RemoveTriggerFromSIDTreeL( TSecureId aSid , TLbtTriggerId aId);
+
+protected: 
+   
+
+private:
+    /**
+     * C++ constructor
+     */
+    CLbtRamTriggersClientSIDTree();
+
+    /**
+     * Symbian 2nd phase of construction
+     */
+    void ConstructL();
+
+    /**
+     * C++ Copy Constructor
+     * The private copy constructor prevents the usage of copy constructors
+     * with this class.
+     */
+    CLbtRamTriggersClientSIDTree(const CLbtRamTriggersClientSIDTree& aRamTriggersStore);
+    
+    /**
+     * Overload equality operator
+     * The private overload of the equality operator prevents the usage of
+     * equality operator with this class.
+     */
+    CLbtRamTriggersClientSIDTree& operator =(const CLbtRamTriggersClientSIDTree& aRamTriggersStore);
+    
+    /**
+     * Instance of TLbtTriggerKey to manage key values to access trigger 
+     * information stored in the Btree
+     */
+    TLbtTriggerClientSIDKey                                  iKey;
+    
+    /**
+     * Allocates memory to be used by the BTree to store trigger information
+     */
+    CMemPagePool*                                   iPool;
+    
+    /**
+     * An instance of TBtreeFix to contain the list of enabled and valid 
+     * triggers in the system
+     */
+    TBtreeFix< TTriggerTreeBasedOnSID*, TSecureId >*           iTriggerList;
+    
+    /**
+     * To gain access to trigger information structure
+     */
+   friend class TLbtTriggerClientSIDKey; 
+
+    TBtreeMark iMark;
+     
+    TBool iNext;
+    };
+
+
+#endif // C_LBTCONTAINER_RAMTRIGGERS_STORE_H

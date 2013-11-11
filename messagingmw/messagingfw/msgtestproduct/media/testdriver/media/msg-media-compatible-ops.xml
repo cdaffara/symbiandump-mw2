@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>msg-media-compatible-ops</name>
+	<timeout>6000</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-media-compatible-ops.script</hostPath>
+			<devicePath>c:\msgtest\media\msg-media-compatible-ops.script</devicePath>
+		</script>
+		
+	</testScripts>
+
+	<testServers>
+		<server>t_media</server>
+	</testServers>
+
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-media-compatible-ops.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-media-compatible-ops.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-compatible-0001.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-compatible-0001.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-compatible-0002.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-compatible-0002.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-compatible-0003.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-compatible-0003.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-compatible-0004.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-compatible-0004.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-compatible-0005.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-compatible-0005.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-compatible-0006.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-compatible-0006.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-compatible-0007.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-compatible-0007.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-compatible-0008.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-compatible-0008.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\corrupt.db</hostPath>
+			<devicePath>c:\msgtest\media\corrupt.db</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\compatible.db</hostPath>
+			<devicePath>c:\msgtest\media\compatible.db</devicePath>
+		</data>
+
+	</dependencies>	
+</testExecuteTest>

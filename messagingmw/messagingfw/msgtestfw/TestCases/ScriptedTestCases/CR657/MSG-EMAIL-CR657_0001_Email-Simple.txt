@@ -1,0 +1,6 @@
+From: matthewf@msexchange2k.closedtest.intra
+Date: Mon, 01 Jan 2000 00:00:00 GMT
+To: matthewf@msexchange2k.closedtest.intra
+Subject: SimpleEmail
+
+This is a simple email message. 

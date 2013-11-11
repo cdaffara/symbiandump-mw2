@@ -1,0 +1,114 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description:
+;
+;Languages
+&EN
+
+;packet-header (name, uid, major, minor, build, type)
+#{"Metadata System Upgrade"},(0x200009F5), 10, 10, 15, TYPE=SA, RU
+
+; Localised vendor name
+%{"Nokia"}
+
+; Unique vendor name
+:"Nokia"
+
+;Files
+"\epoc32\release\armv5\udeb\mdsiadstop.exe"-"c:\sys\bin\mdsiadstop.exe",FILERUN,RB,RW
+
+; CenRep
+"..\..\clfwrapper\conf\102828AC.txt"-"c:\private\10202be9\102828AC.txt"
+"..\..\harvester\common\data\200009FE.txt"-"c:\private\10202be9\200009FE.txt"
+"..\..\locationmanager\data\200071BE.txt"-"c:\private\10202be9\200071BE.txt"
+
+; contextengine
+"\EPOC32\RELEASE\ARMV5\UREL\contextengine.dll" -"c:\sys\bin\contextengine.dll"
+"\EPOC32\RELEASE\ARMV5\UREL\contextplugininterface.dll" -"c:\sys\bin\contextplugininterface.dll"
+"\EPOC32\RELEASE\ARMV5\UREL\calendarcontextplugin.dll" -"c:\sys\bin\calendarcontextplugin.dll"
+"\epoc32\data\z\resource\plugins\calendarcontextplugin.rsc" -"c:\resource\plugins\calendarcontextplugin.rsc"
+"\EPOC32\RELEASE\ARMV5\UREL\locationcontextplugin.dll" -"c:\sys\bin\locationcontextplugin.dll"
+"\epoc32\data\z\resource\plugins\locationcontextplugin.rsc" -"c:\resource\plugins\locationcontextplugin.rsc"
+
+; clf wrapper
+"\EPOC32\RELEASE\ARMV5\UREL\MediaCollectionManager.dll" -"c:\sys\bin\MediaCollectionManager.dll"
+"\EPOC32\RELEASE\ARMV5\UREL\ContentListingFramework.dll" -"c:\sys\bin\ContentListingFramework.dll"
+
+; blacklist 
+"\EPOC32\RELEASE\ARMV5\UREL\!blacklistserver.exe" -"c:\sys\bin\!blacklistserver.exe"
+"\EPOC32\RELEASE\ARMV5\UREL\blacklistclient.dll" -"c:\sys\bin\blacklistclient.dll"
+
+; composer plugins
+"\epoc32\RELEASE\armv5\UREL\composerplugininterface.dll"-"c:\sys\bin\composerplugininterface.dll"
+"\epoc32\RELEASE\armv5\UREL\composerimageplugin.dll"-"c:\sys\bin\composerimageplugin.dll"
+"\epoc32\data\z\resource\plugins\composerimageplugin.rsc"-"c:\resource\plugins\composerimageplugin.rsc"
+
+; harvester
+"\epoc32\RELEASE\armv5\UREL\harvesterclient.dll" -"c:\sys\bin\harvesterclient.dll"
+"\epoc32\RELEASE\armv5\UREL\harvestercommon.dll" -"c:\sys\bin\harvestercommon.dll"
+"\epoc32\RELEASE\armv5\UREL\harvesterdata.dll" -"c:\sys\bin\harvesterdata.dll"
+"\epoc32\RELEASE\armv5\UREL\harvesterplugininterface.dll" -"c:\sys\bin\harvesterplugininterface.dll"
+"\epoc32\RELEASE\armv5\UREL\harvesterserver.exe" -"c:\sys\bin\harvesterserver.exe"
+
+; harvester plugins
+"\epoc32\RELEASE\armv5\UREL\harvesteraudioplugin.dll"-"c:\sys\bin\harvesteraudioplugin.dll"
+"\epoc32\data\z\resource\plugins\harvesteraudioplugin.rsc"-"c:\resource\plugins\harvesteraudioplugin.rsc"
+"\epoc32\RELEASE\armv5\UREL\harvesterimageplugin.dll"-"c:\sys\bin\harvesterimageplugin.dll"
+"\epoc32\data\z\resource\plugins\harvesterimageplugin.rsc"-"c:\resource\plugins\harvesterimageplugin.rsc"
+"\epoc32\RELEASE\armv5\UREL\harvestermessageplugin.dll"-"c:\sys\bin\harvestermessageplugin.dll"
+"\epoc32\data\z\resource\plugins\harvestermessageplugin.rsc"-"c:\resource\plugins\harvestermessageplugin.rsc"
+"\epoc32\RELEASE\armv5\UREL\harvesteromadrmplugin.dll"-"c:\sys\bin\harvesteromadrmplugin.dll"
+"\epoc32\data\z\resource\plugins\harvesteromadrmplugin.rsc"-"c:\resource\plugins\harvesteromadrmplugin.rsc"
+"\epoc32\RELEASE\armv5\UREL\harvesterrtpplugin.dll"-"c:\sys\bin\harvesterrtpplugin.dll"
+"\epoc32\data\z\resource\plugins\harvesterrtpplugin.rsc"-"c:\resource\plugins\harvesterrtpplugin.rsc"
+"\epoc32\RELEASE\armv5\UREL\harvestervideoplugin.dll"-"c:\sys\bin\harvestervideoplugin.dll"
+"\epoc32\data\z\resource\plugins\harvestervideoplugin.rsc"-"c:\resource\plugins\harvestervideoplugin.rsc"
+"\epoc32\RELEASE\armv5\UREL\harvesterwmvplugin.dll"-"c:\sys\bin\harvesterwmvplugin.dll"
+"\epoc32\data\z\resource\plugins\harvesterwmvplugin.rsc"-"c:\resource\plugins\harvesterwmvplugin.rsc"
+
+; monitor plugins
+"\epoc32\RELEASE\armv5\UREL\monitorplugininterface.dll"-"c:\sys\bin\monitorplugininterface.dll"
+"\epoc32\RELEASE\armv5\UREL\mdsfileserverplugin.pxt"-"c:\sys\bin\mdsfileserverplugin.pxt"
+"\epoc32\RELEASE\armv5\UREL\filemonitorplugin.dll"-"c:\sys\bin\filemonitorplugin.dll"
+"\epoc32\data\z\resource\plugins\filemonitorplugin.rsc"-"c:\resource\plugins\filemonitorplugin.rsc"
+"\epoc32\RELEASE\armv5\UREL\MessageMonitorPlugin.dll"-"c:\sys\bin\MessageMonitorPlugin.dll"
+"\epoc32\data\z\resource\plugins\MessageMonitorPlugin.rsc"-"c:\resource\plugins\MessageMonitorPlugin.rsc"
+"\epoc32\RELEASE\armv5\UREL\mmcmonitorplugin.dll"-"c:\sys\bin\mmcmonitorplugin.dll"
+"\epoc32\data\z\resource\plugins\mmcmonitorplugin.rsc"-"c:\resource\plugins\mmcmonitorplugin.rsc"
+"\epoc32\RELEASE\armv5\UREL\mdsoomplugin.dll"-"c:\sys\bin\mdsoomplugin.dll"
+"\epoc32\data\z\resource\plugins\mdsoomplugin.rsc"-"c:\resource\plugins\mdsoomplugin.rsc"
+
+; location manager
+"\EPOC32\RELEASE\ARMV5\UREL\LocationTrail.dll" -"c:\sys\bin\LocationTrail.dll"
+"\EPOC32\RELEASE\ARMV5\UREL\locationmanager.dll" -"c:\sys\bin\locationmanager.dll"
+"\EPOC32\RELEASE\ARMV5\UREL\locationmanagerserver.exe" -"c:\sys\bin\locationmanagerserver.exe"
+"\EPOC32\RELEASE\ARMV5\UREL\geoconverter.dll" -"c:\sys\bin\geoconverter.dll"
+"\EPOC32\RELEASE\ARMV5\UREL\tagcreator.dll" -"c:\sys\bin\tagcreator.dll"
+"\EPOC32\RELEASE\ARMV5\UREL\geotagger.dll" -"c:\sys\bin\geotagger.dll"
+
+; metadata engine
+"\EPOC32\RELEASE\ARMV5\UREL\mdeclient.dll" -"c:\sys\bin\mdeclient.dll"
+"\EPOC32\RELEASE\ARMV5\UREL\mdccommon.dll" -"c:\sys\bin\mdccommon.dll"
+"\EPOC32\RELEASE\ARMV5\UREL\!mdsserver.exe" -"c:\sys\bin\!mdsserver.exe"
+
+"\epoc32\release\armv5\udeb\mdswatchdog.exe"-"c:\sys\bin\mdswatchdog.exe"
+
+"\epoc32\data\z\Private\200009F3\schema.mde"-"c:\PRIVATE\200009F3\schema.mde"
+"\epoc32\data\z\Private\200009F3\defaultimportfile.mde"-"c:\PRIVATE\200009F3\defaultimportfile.mde"
+"\epoc32\data\z\Private\200009F3\backup_registration.xml"-"c:\PRIVATE\200009F3\backup_registration.xml"
+"\epoc32\data\z\Private\200009F5\backup_registration.xml"-"c:\PRIVATE\200009F5\backup_registration.xml"
+"\epoc32\data\z\Private\200009F5\mappings.db"-"c:\PRIVATE\200009F5\mappings.db"
+
+"\epoc32\release\armv5\udeb\mdsiadrestart.exe"-"c:\sys\bin\mdsiadrestart.exe",FILERUN,RB,RW
+

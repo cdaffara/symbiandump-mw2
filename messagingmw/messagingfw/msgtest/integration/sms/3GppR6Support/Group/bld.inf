@@ -1,0 +1,67 @@
+// Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// bld.inf file for the SpecialSmsTestServer
+// 
+//
+
+
+
+PRJ_TESTMMPFILES
+
+3GppSupportTestServer.mmp
+
+
+PRJ_TESTEXPORTS
+
+//Scripts & Ini to be exported
+//Ini
+../Scripts/3GppMixedIndicationTest.ini			/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gppmixedindicationtest.ini
+../Scripts/3GppMultipleFaxIndicationTest.ini		/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gppmultiplefaxindicationtest.ini
+../Scripts/3GppMultipleVideoIndicationTest.ini		/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gppmultiplevideoindicationtest.ini
+../Scripts/3GppMultipleVoiceIndicationTest.ini		/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gppmultiplevoiceindicationtest.ini
+../Scripts/3GppSingleFaxIndicationTest.ini		/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gppsinglefaxindicationtest.ini
+../Scripts/3GppSingleVideoIndicationTest.ini		/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gppsinglevideoindicationtest.ini
+../Scripts/3GppSingleVoiceIndicationTest.ini		/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gppsinglevoiceindicationtest.ini
+../Scripts/3GppWithoutReplyIndicationTest.ini		/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gppwithoutreplyindicationtest.ini
+../Scripts/3GppWithReplyIndicationTest.ini		/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gppwithreplyindicationtest.ini
+../Scripts/3GppTestReplyForMsgWithoutReply.ini		/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gpptestreplyformsgwithoutreply.ini
+../Scripts/3GppTestReplyForMsgWithReply.ini		/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gpptestreplyformsgwithreply.ini
+//Scripts
+../Scripts/3GppMixedIndicationTest.script		/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gppmixedindicationtest.script
+../Scripts/3GppMultipleFaxIndicationTest.script		/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gppmultiplefaxindicationtest.script
+../Scripts/3GppMultipleVideoIndicationTest.script	/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gppmultiplevideoindicationtest.script
+../Scripts/3GppMultipleVoiceIndicationTest.script	/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gppmultiplevoiceindicationtest.script
+../Scripts/3GppSingleFaxIndicationTest.script		/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gppsinglefaxindicationtest.script
+../Scripts/3GppSingleVideoIndicationTest.script		/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gppsinglevideoindicationtest.script
+../Scripts/3GppSingleVoiceIndicationTest.script		/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gppsinglevoiceindicationtest.script
+../Scripts/3GppWithoutReplyIndicationTest.script	/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gppwithoutreplyindicationtest.script
+../Scripts/3GppWithReplyIndicationTest.script		/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gppwithreplyindicationtest.script
+../Scripts/3GppTestReplyForMsgWithoutReply.script		/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gpptestreplyformsgwithoutreply.script
+../Scripts/3GppTestReplyForMsgWithReply.script		/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gpptestreplyformsgwithreply.script
+
+
+//Configuration Files to be exported
+../Configurations/3GppConfigMixedIndication.txt			/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gppconfigmixedindication.txt
+../Configurations/3GppConfigMultipleEnhanVoiceMail.txt		/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gppconfigmultipleenhanvoicemail.txt
+../Configurations/3GppConfigMultipleFaxIndication.txt		/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gppconfigmultiplefaxindication.txt
+../Configurations/3GppConfigMultipleVideoIndication.txt		/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gppconfigmultiplevideoindication.txt
+../Configurations/3GppConfigNoReplyAddr.txt			/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gppconfignoreplyaddr.txt
+../Configurations/3GppConfigReplyAddr.txt			/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gppconfigreplyaddr.txt
+../Configurations/3GppConfigSingleEnhanVoiceMail.txt		/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gppconfigsingleenhanvoicemail.txt
+../Configurations/3GppConfigSingleFaxIndication.txt		/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gppconfigsinglefaxindication.txt
+../Configurations/3GppConfigSingleVideoIndication.txt		/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gppconfigsinglevideoindication.txt
+../Configurations/3GppSettings1.txt				/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gppsettings1.txt
+../Configurations/3GppTestMsg.txt				/epoc32/winscw/c/msgtest/testframework/scriptedtestcases/preq1121/3gpptestmsg.txt
+ced_simtsy.cfg /epoc32/wins/c/ced_simtsy.cfg
+ced_simtsy.cfg /epoc32/winscw/c/ced_simtsy.cfg

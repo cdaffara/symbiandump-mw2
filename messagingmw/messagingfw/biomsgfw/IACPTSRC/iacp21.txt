@@ -1,0 +1,9 @@
+//SIAP11
+password
+Iname:Lemon
+Iuid:yashar
+Ipwd:dig23ler
+Itel:+44 845 2121666
+Idns1:C04F:12:0:205:B0A4:F00E:158.152.1.58
+Idns2:C04F:12:0:205:0::158.152.1.43
+Iini: modem initialisation string.

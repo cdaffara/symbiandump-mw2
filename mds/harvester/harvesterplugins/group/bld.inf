@@ -1,0 +1,40 @@
+/*
+* Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Build information file
+*
+*/
+
+
+#include "../ImagePlugin/group/bld.inf"
+#include "../MessagePlugin/group/bld.inf"
+#include "../VideoPlugin/group/bld.inf"
+#include "../OMADRMPlugin/group/bld.inf"
+#include "../WMVPlugin/group/bld.inf"
+#include "../RTPPlugin/group/bld.inf"
+#include "../AudioPlugin/group/bld.inf"
+
+#ifdef MDS_PLAYLIST_HARVESTING_ENABLED
+#include "../AudioPlaylistPlugin/group/bld.inf"
+#endif
+
+PRJ_PLATFORMS
+    DEFAULT
+
+PRJ_EXPORTS
+
+PRJ_MMPFILES
+
+PRJ_TESTMMPFILES
+
+PRJ_TESTEXPORTS

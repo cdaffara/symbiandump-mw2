@@ -1,0 +1,60 @@
+/*******************************************************
+   1. Create conference of 2 CS calls
+   2. Remote party hangs up other call
+   		Expected: Cnference ends
+   3. Hangup the remaining call
+*******************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 9.1.4 Conference Call, CS, End by remote
+timeout 8000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test OpenNewCall 1 0 5050505355 1 ECCECallTypeCSVoice ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+test OpenNewCall 2 0 142141244155 1 ECCECallTypeCSVoice ECCELineTypePrimary
+test Dial 2 0 SubAddress Bearer
+test WaitEvent 2 Dialling
+test WaitEvent 2 Connecting
+test WaitEvent 2 Connected
+
+test AddToConference 1 0
+test WaitEvent ConferenceCallAdded 1
+
+test AddToConference 2 0
+test WaitEvents ConferenceCallAdded 2, ConferenceActive, 1 Connected
+
+// Step 2
+print Step_2
+
+// Plugin 2 = CS plugin
+test SendPluginRequest 2 HangupCall 2
+test WaitEvents 2 RemoteTerminated, 2 Disconnecting, ConferenceCallRemoved 2, 2 Idle, ConferenceCallRemoved 1, ConferenceIdle
+test Release 2 0
+
+// Step 3
+print Step_3
+
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+test VerifyTest
+delete test
+[Endtest]

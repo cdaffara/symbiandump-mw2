@@ -1,0 +1,53 @@
+/*
+* Copyright (c)  Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file for HXAudioPlayControllerRecognizer
+*
+*/
+
+
+#include <data_caging_paths.hrh>
+#include <platform_paths.hrh>
+
+TARGET                  HXAudioPlayControllerRecognizer.DLL
+TARGETTYPE              PLUGIN
+UID		0x10009D8D 0x10207B62 
+CAPABILITY              CAP_ECOM_PLUGIN
+VENDORID                VID_DEFAULT
+
+SOURCEPATH      ../Data
+
+START RESOURCE         10207B62.rss 
+TARGET HXAudioPlayControllerRecognizer.rsc
+END // RESOURCE
+
+TARGETPATH      /System/Recogs
+
+USERINCLUDE	../Inc
+USERINCLUDE	../../../../inc
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   /epoc32/include/ecom
+
+
+SOURCEPATH	../Src
+SOURCE		HXAudioPlayControllerRecognizer.cpp
+
+LIBRARY		euser.lib 
+LIBRARY		apmime.lib
+LIBRARY		efsrv.lib
+
+#ifdef RD_RA_SUPPORT_FOR_MUSIC_PLAYER
+STATICLIBRARY     hxmetadatautil.lib
+#endif
+

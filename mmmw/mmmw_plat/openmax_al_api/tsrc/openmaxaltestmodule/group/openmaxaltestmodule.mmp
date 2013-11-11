@@ -1,0 +1,96 @@
+/*
+* Copyright (c) 2010 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: MMP file for STIF Test Framework's TestScripter
+* testclass openmaxal module.
+*
+*/
+
+#include <platform_paths.hrh>
+
+SMPSAFE
+
+TARGET          openmaxaltestmodule.dll
+TARGETTYPE      dll
+UID             0x1000008D 0x10207CA4
+
+CAPABILITY      ALL -TCB
+VENDORID        VID_DEFAULT
+
+//MACRO           PROFILE_TIME
+//MACRO           PRINT_TO_CONSOLE_TIME_DIFF
+
+USERINCLUDE     ../inc
+OS_LAYER_LIBC_SYSTEMINCLUDE
+OS_LAYER_GLIB_SYSTEMINCLUDE
+OS_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   /epoc32/include/platform/mw/khronos/
+MW_LAYER_SYSTEMINCLUDE
+
+SOURCEPATH      ../src/common
+SOURCE          openmaxaltestmodule.cpp
+SOURCE          openmaxaltestmoduleblocks.cpp
+SOURCE          openmaxalcommontests.cpp
+SOURCE          openmaxalobjectitftests.cpp
+SOURCE          openmaxalobjectcallbacks.cpp
+SOURCE          openmaxaldynitfmgmtitftests.cpp
+SOURCE          openmaxaldynitfmgmtitfcallbacks.cpp
+SOURCE          openmaxaldynsrcitftests.cpp
+SOURCE          openmaxalstrminfoitftests.cpp
+SOURCE          openmaxalvolumeitftests.cpp
+SOURCE          openmaxalnokiavolumeextitftests.cpp
+SOURCE          openmaxalnokialinearvolumeitftests.cpp
+SOURCE          TimeoutController.cpp
+SOURCE          openmaxalvideoppitftests.cpp
+
+SOURCEPATH      ../src/engine
+SOURCE          openmaxalenginetests.cpp
+SOURCE          openmaxalengineitftests.cpp
+SOURCE          openmaxalaudioiodevicecapabilitiesitftests.cpp
+SOURCE          openmaxalaudioencodercapabiltiesitftests.cpp
+SOURCE          openmaxalaudioiodevicecapabilitiesitfcallbacks.cpp
+
+SOURCEPATH      ../src/recorder
+SOURCE          openmaxalrecorditftests.cpp
+SOURCE          openmaxalaudioencoderitftests.cpp
+SOURCE          openmaxalmetadatainsertionitftests.cpp
+SOURCE          openmaxalrecorditfcallbacks.cpp
+SOURCE          openmaxalmetadatainsertionitfcallbacks.cpp
+
+SOURCEPATH      ../src/player
+SOURCE          openmaxalplayitftests.cpp
+SOURCE          openmaxalseekitftests.cpp
+SOURCE          openmaxalplaybackrateitftests.cpp
+SOURCE          openmaxalprefetchstatusitftests.cpp
+
+SOURCEPATH      ../src/metadata
+SOURCE          openmaxalmetadataextractionitftests.cpp
+
+SOURCEPATH      ../src/radio
+SOURCE          openmaxalradioitftests.cpp
+
+LIBRARY         euser.lib
+LIBRARY         libglib.lib
+LIBRARY         stiftestinterface.lib
+LIBRARY         stiftestengine.lib
+LIBRARY         ecom.lib
+LIBRARY         openmaxal.lib
+LIBRARY         libc.lib
+LIBRARY         ws32.lib
+LANG            SC
+
+DEFFILE         openmaxaltestmodule.def
+
+
+// End of File
+

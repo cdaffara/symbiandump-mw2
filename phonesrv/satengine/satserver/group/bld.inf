@@ -1,0 +1,65 @@
+/*
+* Copyright (c) 2003-2010 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Build information file for project SatServer
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+satserver_stub.sis               /epoc32/data/z/system/install/SatServer_stub.sis
+../rom/satserver.iby             CORE_MW_LAYER_IBY_EXPORT_PATH( satserver.iby )
+
+// Generic configuration interface for component cenrep settings  
+../conf/sat.confml                      MW_LAYER_CONFML(sat.confml)
+../conf/sat_102078E1.crml 	        MW_LAYER_CRML(sat_102078E1.crml)
+
+#include "../SystemState/group/bld.inf"
+#include "../EventMonitors/group/bld.inf"
+#include "../Engine/group/bld.inf"
+#include "../SatServer/group/bld.inf"
+#include "../SatClient/group/bld.inf"
+#include "../SatInternalClient/group/bld.inf"
+#include "../Commands/ProvideLocalInfoCmd/group/bld.inf"
+#include "../Commands/SelectItemCmd/group/bld.inf"
+#include "../Commands/SetUpCallCmd/group/bld.inf"
+#include "../Commands/SetUpMenuCmd/group/bld.inf"
+#include "../Commands/SimSessionEndCmd/group/bld.inf"
+#include "../Commands/SendSmCmd/group/bld.inf"
+#include "../Commands/LaunchBrowserCmd/group/bld.inf"
+#include "../Commands/PlayToneCmd/group/bld.inf"
+#include "../Commands/MoSmControlCmd/group/bld.inf"
+#include "../Commands/SendDtmfCmd/group/bld.inf"
+#include "../Commands/GetInkeyCmd/group/bld.inf"
+#include "../Commands/GetInputCmd/group/bld.inf"
+#include "../Commands/SendSSCmd/group/bld.inf"
+#include "../Commands/SendUSSDCmd/group/bld.inf"
+#include "../Commands/SetUpIdleModeTextCmd/group/bld.inf"
+#include "../Commands/CallControlCmd/group/bld.inf"
+#include "../Commands/DisplayTextCmd/group/bld.inf"
+#include "../Commands/RefreshCmd/group/bld.inf"
+#include "../Commands/RefreshRequiredCmd/group/bld.inf"
+#include "../Commands/SetUpEventListCmd/group/bld.inf"
+#include "../Commands/LanguageNotificationCmd/group/bld.inf"
+#include "../Commands/GetChannelStatusCmd/group/bld.inf"
+#include "../Commands/CloseChannelCmd/group/bld.inf"
+#include "../Commands/OpenChannelCmd/group/bld.inf"
+#include "../Commands/SendDataCmd/group/bld.inf"
+#include "../Commands/ReceiveDataCmd/group/bld.inf"
+
+PRJ_TESTMMPFILES

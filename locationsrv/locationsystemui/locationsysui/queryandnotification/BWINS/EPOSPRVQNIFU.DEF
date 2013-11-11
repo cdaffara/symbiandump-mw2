@@ -1,0 +1,20 @@
+EXPORTS
+	??0CPosPrivacyNotifier@@IAE@XZ @ 1 NONAME ; CPosPrivacyNotifier::CPosPrivacyNotifier(void)
+	??1CPosPrivacyNotifier@@UAE@XZ @ 2 NONAME ; CPosPrivacyNotifier::~CPosPrivacyNotifier(void)
+	?BaseConstructL@CPosPrivacyNotifier@@IAEXVTUid@@H@Z @ 3 NONAME ; void CPosPrivacyNotifier::BaseConstructL(class TUid, int)
+	?CancelReason@CPosPrivacyNotifier@@QBE?AW4TPosVerifyCancelReason@@XZ @ 4 NONAME ; enum TPosVerifyCancelReason CPosPrivacyNotifier::CancelReason(void) const
+	?CheckClientSecureId@CPosPrivacyNotifier@@QAEHVTSecureId@@@Z @ 5 NONAME ; int CPosPrivacyNotifier::CheckClientSecureId(class TSecureId)
+	?CompleteAllRequests@CPosPrivacyNotifier@@QAEXH@Z @ 6 NONAME ; void CPosPrivacyNotifier::CompleteAllRequests(int)
+	?CompleteRequest@CPosPrivacyNotifier@@QAEXJH@Z @ 7 NONAME ; void CPosPrivacyNotifier::CompleteRequest(long, int)
+	?CurrentRequest@CPosPrivacyNotifier@@QBEJXZ @ 8 NONAME ; long CPosPrivacyNotifier::CurrentRequest(void) const
+	?GetRequestsL@CPosPrivacyNotifier@@QBEXAAV?$RArray@J@@@Z @ 9 NONAME ; void CPosPrivacyNotifier::GetRequestsL(class RArray<long> &) const
+	?LocationRequestDecision@CPosPrivacyNotifier@@QBE?AW4TPosRequestDecision@@XZ @ 10 NONAME ; enum TPosRequestDecision CPosPrivacyNotifier::LocationRequestDecision(void) const
+	?NotificationReason@CPosPrivacyNotifier@@QBE?AW4TPosNotificationReason@@XZ @ 11 NONAME ; enum TPosNotificationReason CPosPrivacyNotifier::NotificationReason(void) const
+	?NotifierBase@CPosPrivacyNotifier@@QBEPAVMEikSrvNotifierBase2@@XZ @ 12 NONAME ; class MEikSrvNotifierBase2 * CPosPrivacyNotifier::NotifierBase(void) const
+	?QueryTimeoutStrategy@CPosPrivacyNotifier@@QBE?AW4TPosRequestDecision@@XZ @ 13 NONAME ; enum TPosRequestDecision CPosPrivacyNotifier::QueryTimeoutStrategy(void) const
+	?RequestSource@CPosPrivacyNotifier@@QBE?AW4TPosRequestSource@@XZ @ 14 NONAME ; enum TPosRequestSource CPosPrivacyNotifier::RequestSource(void) const
+	?RequestTypeL@CPosPrivacyNotifier@@QBE?AW4TRequestType@1@J@Z @ 15 NONAME ; enum CPosPrivacyNotifier::TRequestType CPosPrivacyNotifier::RequestTypeL(long) const
+	?RequestorCountL@CPosPrivacyNotifier@@QBEHXZ @ 16 NONAME ; int CPosPrivacyNotifier::RequestorCountL(void) const
+	?RequestorLC@CPosPrivacyNotifier@@QBEPAVCPosRequestor@@H@Z @ 17 NONAME ; class CPosRequestor * CPosPrivacyNotifier::RequestorLC(int) const
+	?SetCurrentRequestL@CPosPrivacyNotifier@@QAEXJ@Z @ 18 NONAME ; void CPosPrivacyNotifier::SetCurrentRequestL(long)
+

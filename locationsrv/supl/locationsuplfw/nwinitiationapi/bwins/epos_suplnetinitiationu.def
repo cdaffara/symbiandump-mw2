@@ -1,0 +1,7 @@
+EXPORTS
+	??0RSuplNetworkServer@@QAE@XZ @ 1 NONAME ; RSuplNetworkServer::RSuplNetworkServer(void)
+	?Close@RSuplNetworkServer@@QAEXXZ @ 2 NONAME ; void RSuplNetworkServer::Close(void)
+	?Connect@RSuplNetworkServer@@QAEHXZ @ 3 NONAME ; int RSuplNetworkServer::Connect(void)
+	?ForwardMessage@RSuplNetworkServer@@QAEHABVTDesC8@@@Z @ 4 NONAME ; int RSuplNetworkServer::ForwardMessage(class TDesC8 const &)
+	?Version@RSuplNetworkServer@@QBE?AVTVersion@@XZ @ 5 NONAME ; class TVersion RSuplNetworkServer::Version(void) const
+

@@ -1,0 +1,425 @@
+// Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// TestDriver v1 .xml files for Messaging
+// 
+//
+
+PRJ_TESTEXPORTS
+
+// **** Test Suite: Messaging
+
+#if (defined SYMBIAN_MSGS_ENHANCED_REMOVABLE_MEDIA_SUPPORT)
+../messaging_removable.xml	/epoc32/testdriver/testproduct/messaging.xml
+#else
+../messaging.xml	/epoc32/testdriver/testproduct/messaging.xml
+#endif // #if (defined SYMBIAN_MSGS_ENHANCED_REMOVABLE_MEDIA_SUPPORT)
+
+
+//PREQ1667 test
+../../email/imap/testdriver/T_MsgImapServer.xml		/epoc32/testdriver/testproduct/messaging/common/testexecuteservers/t_msgimapserver.xml
+../../email/pop/testdriver/T_MsgPopServer.xml		/epoc32/testdriver/testproduct/messaging/common/testexecuteservers/t_msgpopserver.xml
+../../email/smtp/testdriver/T_MsgSmtpServer.xml		/epoc32/testdriver/testproduct/messaging/common/testexecuteservers/t_msgsmtpserver.xml
+../../common/testdriver/T_MsgCommonServer.xml		/epoc32/testdriver/testproduct/messaging/common/testexecuteservers/t_msgcommonserver.xml
+
+//**** Test Suite: Messaging.common.search
+../messaging/common.xml						/epoc32/testdriver/testproduct/messaging/common.xml
+
+//unit test cases added for code coverage.
+../../common/testdriver/unit.xml				/epoc32/testdriver/testproduct/messaging/common/unit.xml
+../../common/testdriver/unit/msg-fw-cmsventry.xml		/epoc32/testdriver/testproduct/messaging/common/unit/msg-fw-cmsventry.xml
+../../common/testdriver/unit/msg-fw-cmsvsession.xml		/epoc32/testdriver/testproduct/messaging/common/unit/msg-fw-cmsvsession.xml
+
+// if enhanced search feature is available then use searchwithpreq1667.xml 
+../../common/testdriver/search.xml						/epoc32/testdriver/testproduct/messaging/common/search.xml
+../../common/testdriver/search/msg-searchsort1.xml		/epoc32/testdriver/testproduct/messaging/common/search/msg-searchsort1.xml
+../../common/testdriver/search/msg-searchsort2.xml		/epoc32/testdriver/testproduct/messaging/common/search/msg-searchsort2.xml
+../../common/testdriver/search/msg-sort-operation1.xml		/epoc32/testdriver/testproduct/messaging/common/search/msg-sort-operation1.xml
+../../common/testdriver/search/msg-searchsort-iterator.xml	/epoc32/testdriver/testproduct/messaging/common/search/msg-searchsort-iterator.xml
+../../common/testdriver/search/msg-combinesearch.xml		/epoc32/testdriver/testproduct/messaging/common/search/msg-combinesearch.xml
+../../common/testdriver/search/msg-searchsort-performance.xml	/epoc32/testdriver/testproduct/messaging/common/search/msg-searchsort-performance.xml
+../../common/testdriver/search/msg-searchsort-performance1.xml	/epoc32/testdriver/testproduct/messaging/common/search/msg-searchsort-performance1.xml
+
+../../common/testdriver/search/msg-imap-client-search.xml	/epoc32/testdriver/testproduct/messaging/common/search/msg-imap-client-search.xml
+../../common/testdriver/search/msg-imap-search-to.xml		/epoc32/testdriver/testproduct/messaging/common/search/msg-imap-search-to.xml
+../../common/testdriver/search/search_entry.xml			/epoc32/testdriver/testproduct/messaging/common/search/search_entry.xml
+
+
+// **** Test Suite: Messaging.Email
+#ifdef __MOBILITY_TEST_FRAMEWORK
+../messaging/EmailWithMigration.xml	/epoc32/testdriver/testproduct/messaging/email.xml
+#else
+../messaging/Email.xml					/epoc32/testdriver/testproduct/messaging/email.xml
+#endif
+
+
+../../email/imap/testdriver/T_MsgImapServer.xml		/epoc32/testdriver/testproduct/messaging/email/testexecuteservers/t_msgimapserver.xml
+../../email/pop/testdriver/T_MsgPopServer.xml		/epoc32/testdriver/testproduct/messaging/email/testexecuteservers/t_msgpopserver.xml
+../../email/smtp/testdriver/T_MsgSmtpServer.xml		/epoc32/testdriver/testproduct/messaging/email/testexecuteservers/t_msgsmtpserver.xml
+../../common/testdriver/T_MsgCommonServer.xml		/epoc32/testdriver/testproduct/messaging/email/testexecuteservers/t_msgcommonserver.xml
+
+// **** Test Suite: Messaging.Email.Imap
+
+#ifdef SYMBIAN_EMAIL_CAPABILITY_SUPPORT
+	../messaging/Email/imap_with_capa_support.xml		/epoc32/testdriver/testproduct/messaging/email/imap.xml
+#else
+	../messaging/Email/Imap.xml							/epoc32/testdriver/testproduct/messaging/email/imap.xml
+#endif
+
+//email imap unit test case for code coverage.
+../../email/imap/testdriver/unit.xml				/epoc32/testdriver/testproduct/messaging/email/imap/unit.xml
+../../email/imap/testdriver/unit/msg-email-imap-cimap4clientmtm.xml	/epoc32/testdriver/testproduct/messaging/email/imap/unit/msg-email-imap-cimap4clientmtm.xml
+
+
+// **** Test Suite: Messaging.Email.Imap.general
+../../email/imap/testdriver/general.xml					/epoc32/testdriver/testproduct/messaging/email/imap/general.xml
+../../email/imap/testdriver/general/msg-imap-general1.xml		/epoc32/testdriver/testproduct/messaging/email/imap/general/msg-imap-general1.xml	
+
+// **** Test Suite: Messaging.Email.Imap.connect
+../../email/imap/testdriver/connect.xml					/epoc32/testdriver/testproduct/messaging/email/imap/connect.xml
+../../email/imap/testdriver/connect/msg-imap-connect1.xml		/epoc32/testdriver/testproduct/messaging/email/imap/connect/msg-imap-connect1.xml
+
+// ********** Test Suite Binary download support 
+#if (defined SYMBIAN_EMAIL_CAPABILITY_SUPPORT)
+../../email/imap/testdriver/binarydownloadsupport.xml					/epoc32/testdriver/testproduct/messaging/email/imap/binarydownloadsupport.xml
+../../email/imap/testdriver/binarydownloadsupport/msg-imap-auth-connect.xml		/epoc32/testdriver/testproduct/messaging/email/imap/binarydownloadsupport/msg-imap-auth-connect.xml
+../../email/imap/testdriver/binarydownloadsupport/msg-imap-binary-cache1.xml		/epoc32/testdriver/testproduct/messaging/email/imap/binarydownloadsupport/msg-imap-binary-cache1.xml
+../../email/imap/testdriver/binarydownloadsupport/msg-imap-binary-performance.xml		/epoc32/testdriver/testproduct/messaging/email/imap/binarydownloadsupport/msg-imap-binary-performance.xml
+../../email/imap/testdriver/binarydownloadsupport/msg-imap-binary-plainbody.xml		/epoc32/testdriver/testproduct/messaging/email/imap/binarydownloadsupport/msg-imap-binary-plainbody.xml
+// ***** Test Suite :Messaging.Binary.Pop.AuthConnect
+../../email/pop/testdriver/authconnect.xml					/epoc32/testdriver/testproduct/messaging/email/pop/authconnect.xml
+../../email/pop/testdriver/authconnect/msg-pop-auth-connect.xml		/epoc32/testdriver/testproduct/messaging/email/pop/authconnect/msg-pop-auth-connect.xml
+#endif
+
+  // **** Test Suite: Messaging.Email.Imap.folder
+../../email/imap/testdriver/folder.xml					/epoc32/testdriver/testproduct/messaging/email/imap/folder.xml
+../../email/imap/testdriver/folder/msg-imap-folder1.xml		/epoc32/testdriver/testproduct/messaging/email/imap/folder/msg-imap-folder1.xml
+../../email/imap/testdriver/folder/msg-imap-folder2.xml		/epoc32/testdriver/testproduct/messaging/email/imap/folder/msg-imap-folder2.xml
+../../email/imap/testdriver/folder/msg-imap-folder3.xml		/epoc32/testdriver/testproduct/messaging/email/imap/folder/msg-imap-folder3.xml
+
+// **** Test Suite: Messaging.Email.Imap.cenrep
+../../email/imap/testdriver/cenrep.xml				/epoc32/testdriver/testproduct/messaging/email/imap/cenrep.xml
+../../email/imap/testdriver/cenrep/msg-imap-cenrep1.xml	/epoc32/testdriver/testproduct/messaging/email/imap/cenrep/msg-imap-cenrep1.xml
+
+// **** Test Suite: Messaging.Email.Imap.idle
+../../email/imap/testdriver/idle.xml				/epoc32/testdriver/testproduct/messaging/email/imap/idle.xml
+../../email/imap/testdriver/idle/msg-imap-idle1-ic.xml	/epoc32/testdriver/testproduct/messaging/email/imap/idle/msg-imap-idle1-ic.xml
+
+
+// **** Test Suite: Messaging.Email.Imap.Imessage
+../../email/imap/testdriver/message.xml					/epoc32/testdriver/testproduct/messaging/email/imap/message.xml
+../../email/imap/testdriver/message/msg-imap-message1.xml	/epoc32/testdriver/testproduct/messaging/email/imap/message/msg-imap-message1.xml
+../../email/imap/testdriver/message/msg-imap-message2.xml	/epoc32/testdriver/testproduct/messaging/email/imap/message/msg-imap-message2.xml
+../../email/imap/testdriver/message/msg-imap-message3.xml	/epoc32/testdriver/testproduct/messaging/email/imap/message/msg-imap-message3.xml
+
+// **** Test Suite: Messaging.Email.Imap.offline
+../../email/imap/testdriver/offline.xml						/epoc32/testdriver/testproduct/messaging/email/imap/offline.xml
+../../email/imap/testdriver/offline/msg-imap-offline1.xml		/epoc32/testdriver/testproduct/messaging/email/imap/offline/msg-imap-offline1.xml
+../../email/imap/testdriver/offline/msg-imap-offline2.xml		/epoc32/testdriver/testproduct/messaging/email/imap/offline/msg-imap-offline2.xml
+../../email/imap/testdriver/offline/msg-imap-offline3.xml		/epoc32/testdriver/testproduct/messaging/email/imap/offline/msg-imap-offline3.xml
+
+
+// **** Test Suite: Messaging.Email.Imap.search
+../../email/imap/testdriver/search.xml				/epoc32/testdriver/testproduct/messaging/email/imap/search.xml
+../../email/imap/testdriver/search/msg-imap-search1.xml	/epoc32/testdriver/testproduct/messaging/email/imap/search/msg-imap-search1.xml
+
+// **** Test Suite: Messaging.Email.Imap.sizefilter
+../../email/imap/testdriver/sizefilter.xml				        /epoc32/testdriver/testproduct/messaging/email/imap/sizefilter.xml
+../../email/imap/testdriver/sizefilter/msg-imap-sizefilter1.xml		/epoc32/testdriver/testproduct/messaging/email/imap/sizefilter/msg-imap-sizefilter1.xml	
+../../email/imap/testdriver/sizefilter/msg-imap-sizefilter2.xml		/epoc32/testdriver/testproduct/messaging/email/imap/sizefilter/msg-imap-sizefilter2.xml	
+
+// **** Test Suite: Messaging.Email.Imap.sync
+../../email/imap/testdriver/sync.xml					 /epoc32/testdriver/testproduct/messaging/email/imap/sync.xml
+../../email/imap/testdriver/sync/msg-imap-sync1.xml           /epoc32/testdriver/testproduct/messaging/email/imap/sync/msg-imap-sync1.xml 
+../../email/imap/testdriver/sync/msg-imap-sync2.xml  	 /epoc32/testdriver/testproduct/messaging/email/imap/sync/msg-imap-sync2.xml 
+../../email/imap/testdriver/sync/msg-imap-sync3.xml 		 /epoc32/testdriver/testproduct/messaging/email/imap/sync/msg-imap-sync3.xml 	
+../../email/imap/testdriver/sync/msg-imap-sync4-ic.xml 		 /epoc32/testdriver/testproduct/messaging/email/imap/sync/msg-imap-sync4-ic.xml 	
+
+// **** Test Suite: Messaging.Email.Imap.plainbody
+../../email/imap/testdriver/plainbody.xml					/epoc32/testdriver/testproduct/messaging/email/imap/plainbody.xml
+../../email/imap/testdriver/plainbody/msg-imap-plainbody1.xml		/epoc32/testdriver/testproduct/messaging/email/imap/plainbody/msg-imap-plainbody1.xml	
+
+// **** Test Suite: Messaging.Email.Imap.ram
+../../email/imap/testdriver/ram.xml					/epoc32/testdriver/testproduct/messaging/email/imap/ram.xml
+../../email/imap/testdriver/ram/msg-imap-ram1.xml		/epoc32/testdriver/testproduct/messaging/email/imap/ram/msg-imap-ram1.xml	
+
+// **** Test Suite: Messaging.Email.Imap.transportbuffersizes
+../../email/imap/testdriver/transportbuffersizes.xml /epoc32/testdriver/testproduct/messaging/email/imap/transportbuffersizes.xml
+../../email/imap/testdriver/transportbuffersizes/msg-imap-transportbuffersizes1.xml /epoc32/testdriver/testproduct/messaging/email/imap/transportbuffersizes/msg-imap-transportbuffersizes1.xml	
+
+// **** Test Suite: Messaging.Email.Imap.bearermobility
+../../email/imap/testdriver/bearermobility.xml /epoc32/testdriver/testproduct/messaging/email/imap/bearermobility.xml
+../../email/imap/testdriver/bearermobility/msg-imap-bearermobility1.xml /epoc32/testdriver/testproduct/messaging/email/imap/bearermobility/msg-imap-bearermobility1.xml
+
+// **** Test Suite: Messaging.Email.Imap.downloadrules
+../../email/imap/testdriver/downloadrules.xml /epoc32/testdriver/testproduct/messaging/email/imap/downloadrules.xml
+../../email/imap/testdriver/downloadrules/msg-imap-downloadrules1.xml /epoc32/testdriver/testproduct/messaging/email/imap/downloadrules/msg-imap-downloadrules1.xml
+../../email/imap/testdriver/downloadrules/msg-imap-downloadrules2.xml /epoc32/testdriver/testproduct/messaging/email/imap/downloadrules/msg-imap-downloadrules2.xml
+../../email/imap/testdriver/downloadrules/msg-imap-downloadrules3.xml /epoc32/testdriver/testproduct/messaging/email/imap/downloadrules/msg-imap-downloadrules3.xml
+
+// **** Test Suite: Messaging.Email.Imap.snap
+../../email/imap/testdriver/snap.xml /epoc32/testdriver/testproduct/messaging/email/imap/snap.xml
+../../email/imap/testdriver/snap/msg-imap-snap1.xml /epoc32/testdriver/testproduct/messaging/email/imap/snap/msg-imap-snap1.xml
+
+// **** Test Suite: Messaging.Email.Imap.media
+../../email/imap/testdriver/media.xml				/epoc32/testdriver/testproduct/messaging/email/imap/media.xml
+../../email/imap/testdriver/media/msg-imap-removablemedia1.xml	/epoc32/testdriver/testproduct/messaging/email/imap/media/msg-imap-removablemedia1.xml
+
+// **** Test Suite: Messaging.Email.Imap.performance
+../../email/imap/testdriver/performance.xml										/epoc32/testdriver/testproduct/messaging/email/imap/performance.xml
+../../email/imap/testdriver/performance/msg-imap-cache1.xml						/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-cache1.xml
+../../email/imap/testdriver/performance/msg-imap-performance1.xml				/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance1.xml
+../../email/imap/testdriver/performance/msg-imap-performance1_1kb.xml			/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance1_1kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance1_5kb.xml			/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance1_5kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance1_10kb.xml			/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance1_10kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance1_100kb.xml			/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance1_100kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance1_200kb.xml			/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance1_200kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance1_500kb.xml			/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance1_500kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance1_1000kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance1_1000kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance10_1kb.xml			/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance10_1kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance10_5kb.xml			/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance10_5kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance10_10kb.xml			/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance10_10kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance10_100kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance10_100kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance10_200kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance10_200kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance10_500kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance10_500kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance10_1000kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance10_1000kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance50_1kb.xml			/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance50_1kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance50_5kb.xml			/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance50_5kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance50_10kb.xml			/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance50_10kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance50_100kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance50_100kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance50_200kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance50_200kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance50_500kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance50_500kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance50_1000kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance50_1000kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance100_1kb.xml			/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance100_1kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance100_5kb.xml			/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance100_5kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance100_10kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance100_10kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance100_100kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance100_100kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance100_200kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance100_200kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance100_500kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance100_500kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance100_1000kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance100_1000kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance200_1kb.xml			/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance200_1kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance200_5kb.xml			/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance200_5kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance200_10kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance200_10kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance200_100kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance200_100kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance200_200kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance200_200kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance200_500kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance200_500kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance200_1000kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance200_1000kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance500_1kb.xml			/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance500_1kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance500_5kb.xml			/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance500_5kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance500_10kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance500_10kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance500_100kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance500_100kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance500_200kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance500_200kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance500_500kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance500_500kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance500_1000kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance500_1000kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance1000_1kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance1000_1kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance1000_5kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance1000_5kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance1000_10kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance1000_10kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance1000_100kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance1000_100kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance1000_200kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance1000_200kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance1000_500kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance1000_500kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance1000_1000kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance1000_1000kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance2000_1kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance2000_1kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance2000_5kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance2000_5kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance2000_10kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance2000_10kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance2000_100kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance2000_100kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance2000_200kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance2000_200kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance2000_500kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance2000_500kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance2000_1000kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance2000_1000kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance5000_1kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance5000_1kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance5000_5kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance5000_5kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance5000_10kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance5000_10kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance5000_100kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance5000_100kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance5000_200kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance5000_200kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance5000_500kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance5000_500kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance5000_1000kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance5000_1000kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance15000_1kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance15000_1kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance15000_5kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance15000_5kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance15000_10kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance15000_10kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance15000_100kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance15000_100kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance15000_200kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance15000_200kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance15000_500kb.xml		/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance15000_500kb.xml
+../../email/imap/testdriver/performance/msg-imap-performance15000_1000kb.xml	/epoc32/testdriver/testproduct/messaging/email/imap/performance/msg-imap-performance15000_1000kb.xml
+
+// **** Test Suite: Messaging.Email.Imap.tls
+../../email/imap/testdriver/tls.xml /epoc32/testdriver/testproduct/messaging/email/imap/tls.xml
+../../email/imap/testdriver/tls/msg-imap-connect-tlssls.xml /epoc32/testdriver/testproduct/messaging/email/imap/tls/msg-imap-connect-tlssls.xml
+../../email/imap/testdriver/tls/msg-imap-connect-wrongdns-tlssls.xml /epoc32/testdriver/testproduct/messaging/email/imap/tls/msg-imap-connect-wrongdns-tlssls.xml
+
+
+//*********************************************************************************************
+
+#ifdef __MOBILITY_TEST_FRAMEWORK
+
+// **** Test Suite: Messaging.Email.ImapMigration
+../messaging/Email/imapmigration.xml	/epoc32/testdriver/testproduct/messaging/email/imapmigration.xml
+
+// **** Test Suite: Messaging.Email.ImapMigration.migration
+../../email/imap/testdriver/migration.xml /epoc32/testdriver/testproduct/messaging/email/imapmigration/migration.xml
+../../email/imap/testdriver/migration/msg-imap-migration1.xml /epoc32/testdriver/testproduct/messaging/email/imapmigration/migration/msg-imap-migration1.xml
+../../email/imap/testdriver/migration/msg-imap-migration2.xml /epoc32/testdriver/testproduct/messaging/email/imapmigration/migration/msg-imap-migration2.xml
+
+#endif
+
+//*********************************************************************************************
+
+
+// **** Test Suite: Messaging.Email.Pop
+#ifdef SYMBIAN_EMAIL_CAPABILITY_SUPPORT
+	../messaging/Email/pop_with_capa_support.xml		/epoc32/testdriver/testproduct/messaging/email/pop.xml
+#else
+	../messaging/Email/pop_with_upssupport.xml			/epoc32/testdriver/testproduct/messaging/email/pop.xml
+#endif
+
+// **** Test Suite: Messaging.Email.Pop.upssupport
+../../email/pop/testdriver/upssupport.xml				/epoc32/testdriver/testproduct/messaging/email/pop/upssupport.xml
+../../email/pop/testdriver/upssupport/msg-email-upssupport.xml      /epoc32/testdriver/testproduct/messaging/email/pop/upssupport/msg-email-upssupport.xml  
+../../email/imap/testdriver/T_MsgImapServer.xml		/epoc32/testdriver/testproduct/messaging/email/pop/upssupport/testexecuteservers/t_msgimapserver.xml
+
+// email pop unit test cases for code coverage.
+../../email/pop/testdriver/unit.xml				/epoc32/testdriver/testproduct/messaging/email/pop/unit.xml
+../../email/pop/testdriver/unit/msg-email-pop-cpop3clientmtm.xml	/epoc32/testdriver/testproduct/messaging/email/pop/unit/msg-email-pop-cpop3clientmtm.xml
+
+// **** Test Suite: Messaging.Email.Pop.cenrep
+../../email/pop/testdriver/cenrep.xml				/epoc32/testdriver/testproduct/messaging/email/pop/cenrep.xml
+../../email/pop/testdriver/cenrep/msg-pop-cenrep1.xml        /epoc32/testdriver/testproduct/messaging/email/pop/cenrep/msg-pop-cenrep1.xml
+
+
+// **** Test Suite: Messaging.Email.Pop.general
+../../email/pop/testdriver/general.xml				/epoc32/testdriver/testproduct/messaging/email/pop/general.xml
+../../email/pop/testdriver/general/msg-pop-general1.xml      /epoc32/testdriver/testproduct/messaging/email/pop/general/msg-pop-general1.xml  
+
+// **** Test Suite: Messaging.Email.Pop.top
+../../email/pop/testdriver/top.xml				/epoc32/testdriver/testproduct/messaging/email/pop/top.xml
+../../email/pop/testdriver/top/msg-pop-top1.xml	/epoc32/testdriver/testproduct/messaging/email/pop/top/msg-pop-top1.xml
+
+
+// **** Test Suite: Messaging.Email.Pop.plainbody
+../../email/pop/testdriver/plainbody.xml				/epoc32/testdriver/testproduct/messaging/email/pop/plainbody.xml
+../../email/pop/testdriver/plainbody/msg-pop-plainbody1.xml      /epoc32/testdriver/testproduct/messaging/email/pop/plainbody/msg-pop-plainbody1.xml  
+
+
+// **** Test Suite: Messaging.Email.Pop.ram
+../../email/pop/testdriver/ram.xml				/epoc32/testdriver/testproduct/messaging/email/pop/ram.xml
+../../email/pop/testdriver/ram/msg-pop-ram1.xml      /epoc32/testdriver/testproduct/messaging/email/pop/ram/msg-pop-ram1.xml  
+
+// **** Test Suite: Messaging.Email.Pop.bearermobility
+../../email/pop/testdriver/bearermobility.xml /epoc32/testdriver/testproduct/messaging/email/pop/bearermobility.xml
+../../email/pop/testdriver/bearermobility/msg-pop-bearermobility1.xml /epoc32/testdriver/testproduct/messaging/email/pop/bearermobility/msg-pop-bearermobility1.xml
+
+// **** Test Suite: Messaging.Email.Pop.snap
+../../email/pop/testdriver/snap.xml /epoc32/testdriver/testproduct/messaging/email/pop/snap.xml
+../../email/pop/testdriver/snap/msg-pop-snap1.xml /epoc32/testdriver/testproduct/messaging/email/pop/snap/msg-pop-snap1.xml
+
+// **** Test Suite: Messaging.Email.pop.performance
+../../email/pop/testdriver/performance.xml				/epoc32/testdriver/testproduct/messaging/email/pop/performance.xml
+../../email/pop/testdriver/performance/msg-pop-cache1.xml		/epoc32/testdriver/testproduct/messaging/email/pop/performance/msg-pop-cache1.xml
+../../email/pop/testdriver/performance/msg-pop-performance1.xml		/epoc32/testdriver/testproduct/messaging/email/pop/performance/msg-pop-performance1.xml
+
+// **** Test Suite: Messaging.Email.Pop.tls
+../../email/pop/testdriver/tls.xml /epoc32/testdriver/testproduct/messaging/email/pop/tls.xml
+../../email/pop/testdriver/tls/msg-pop-connect-tlssls.xml /epoc32/testdriver/testproduct/messaging/email/pop/tls/msg-pop-connect-tlssls.xml
+../../email/pop/testdriver/tls/msg-pop-connect-wrongdns-tlssls.xml /epoc32/testdriver/testproduct/messaging/email/pop/tls/msg-pop-connect-wrongdns-tlssls.xml
+
+
+//*********************************************************************************************
+
+#ifdef __MOBILITY_TEST_FRAMEWORK
+
+// **** Test Suite: Messaging.Email.PopMigration
+../messaging/Email/popmigration.xml	/epoc32/testdriver/testproduct/messaging/email/popmigration.xml
+
+// **** Test Suite: Messaging.Email.PopMigration.migration
+../../email/pop/testdriver/migration.xml /epoc32/testdriver/testproduct/messaging/email/popmigration/migration.xml
+../../email/pop/testdriver/migration/msg-pop-migration1.xml /epoc32/testdriver/testproduct/messaging/email/popmigration/migration/msg-pop-migration1.xml
+../../email/pop/testdriver/migration/msg-pop-migration2.xml /epoc32/testdriver/testproduct/messaging/email/popmigration/migration/msg-pop-migration2.xml
+../../email/pop/testdriver/migration/msg-pop-migration3.xml /epoc32/testdriver/testproduct/messaging/email/popmigration/migration/msg-pop-migration3.xml
+
+#endif
+
+//*********************************************************************************************
+
+// **** Test Suite: Messaging.Email.Smtp
+../messaging/Email/smtp.xml /epoc32/testdriver/testproduct/messaging/email/smtp.xml
+
+// **** Test Suite: Messaging.Email.Smtp.mobility
+../../email/smtp/testdriver/mobility.xml /epoc32/testdriver/testproduct/messaging/email/smtp/mobility.xml
+../../email/smtp/testdriver/mobility/msg-smtp-mobility1.xml /epoc32/testdriver/testproduct/messaging/email/smtp/mobility/msg-smtp-mobility1.xml
+
+// **** Test Suite: Messaging.Email.Smtp.bearermobility
+../../email/smtp/testdriver/bearermobility.xml /epoc32/testdriver/testproduct/messaging/email/smtp/bearermobility.xml
+../../email/smtp/testdriver/bearermobility/msg-smtp-bearermobility1.xml /epoc32/testdriver/testproduct/messaging/email/smtp/bearermobility/msg-smtp-bearermobility1.xml
+
+// **** Test Suite: Messaging.Email.Smtp.snap
+../../email/smtp/testdriver/snap.xml /epoc32/testdriver/testproduct/messaging/email/smtp/snap.xml
+../../email/smtp/testdriver/snap/msg-smtp-snap1.xml /epoc32/testdriver/testproduct/messaging/email/smtp/snap/msg-smtp-snap1.xml
+
+//*********************************************************************************************
+
+#ifdef __MOBILITY_TEST_FRAMEWORK
+
+// **** Test Suite: Messaging.Email.SmtpMigration
+../messaging/Email/smtpmigration.xml	/epoc32/testdriver/testproduct/messaging/email/smtpmigration.xml
+
+// **** Test Suite: Messaging.Email.SmtpMigration.migration
+../../email/smtp/testdriver/migration.xml /epoc32/testdriver/testproduct/messaging/email/smtpmigration/migration.xml
+../../email/smtp/testdriver/migration/msg-smtp-migration1.xml /epoc32/testdriver/testproduct/messaging/email/smtpmigration/migration/msg-smtp-migration1.xml
+../../email/smtp/testdriver/migration/msg-smtp-migration2.xml /epoc32/testdriver/testproduct/messaging/email/smtpmigration/migration/msg-smtp-migration2.xml
+../../email/smtp/testdriver/migration/msg-smtp-migration3.xml /epoc32/testdriver/testproduct/messaging/email/smtpmigration/migration/msg-smtp-migration3.xml
+
+#endif
+
+// **** robustness/sytem level tests: messaging.email.imap.sys
+../../email/imap/testdriver/sys.xml					/epoc32/testdriver/testproduct/messaging/email/imap/sys.xml
+../../email/imap/testdriver/sys/st-mess-batterydown-0001.xml		/epoc32/testdriver/testproduct/messaging/email/imap/sys/st-mess-batterydown-0001.xml
+../../email/imap/testdriver/sys/st-mess-cacheempty-0001.xml		/epoc32/testdriver/testproduct/messaging/email/imap/sys/st-mess-cacheempty-0001.xml
+../../email/imap/testdriver/sys/st-mess-cachefull-0001.xml		/epoc32/testdriver/testproduct/messaging/email/imap/sys/st-mess-cachefull-0001.xml
+../../email/imap/testdriver/sys/st-mess-conndown-0001.xml		/epoc32/testdriver/testproduct/messaging/email/imap/sys/st-mess-conndown-0001.xml
+../../email/imap/testdriver/sys/st-mess-dbcorrupt-0001.xml		/epoc32/testdriver/testproduct/messaging/email/imap/sys/st-mess-dbcorrupt-0001.xml
+../../email/imap/testdriver/sys/st-mess-nospacemmc-0001.xml		/epoc32/testdriver/testproduct/messaging/email/imap/sys/st-mess-nospacemmc-0001.xml
+../../email/imap/testdriver/sys/st-mess-oom-0001.xml			/epoc32/testdriver/testproduct/messaging/email/imap/sys/st-mess-oom-0001.xml
+../../email/imap/testdriver/sys/st-mess-oom-0002.xml			/epoc32/testdriver/testproduct/messaging/email/imap/sys/st-mess-oom-0002.xml
+../../email/imap/testdriver/sys/st-mess-soaktest-0001.xml		/epoc32/testdriver/testproduct/messaging/email/imap/sys/st-mess-soaktest-0001.xml
+../../email/imap/testdriver/sys/st-mess-sqldown-0001.xml		/epoc32/testdriver/testproduct/messaging/email/imap/sys/st-mess-sqldown-0001.xml
+../../email/imap/testdriver/sys/st-mess-sqldown-0002.xml		/epoc32/testdriver/testproduct/messaging/email/imap/sys/st-mess-sqldown-0002.xml
+
+
+#if (defined SYMBIAN_MSGS_ENHANCED_REMOVABLE_MEDIA_SUPPORT)
+../../media/testdriver/t_media.xml								/epoc32/testdriver/testproduct/messaging/removable/testexecuteservers/t_media.xml
+../messaging/removable.xml										/epoc32/testdriver/testproduct/messaging/removable.xml
+../../media/testdriver/media.xml								/epoc32/testdriver/testproduct/messaging/removable/media.xml
+../../media/testdriver/media/msg-createdrive.xml		/epoc32/testdriver/testproduct/messaging/removable/media/msg-createdrive.xml
+../../media/testdriver/media/msg-deletedrive.xml		/epoc32/testdriver/testproduct/messaging/removable/media/msg-deletedrive.xml
+../../media/testdriver/media/msg-preferred-drivelist-ops.xml	/epoc32/testdriver/testproduct/messaging/removable/media/msg-preferred-drivelist-ops.xml
+../../media/testdriver/media/msg-media-compatible-ops.xml		/epoc32/testdriver/testproduct/messaging/removable/media/msg-media-compatible-ops.xml
+../../media/testdriver/media/msg-dynamicview-ops.xml			/epoc32/testdriver/testproduct/messaging/removable/media/msg-dynamicview-ops.xml
+../../media/testdriver/media/msg-media-ops.xml					/epoc32/testdriver/testproduct/messaging/removable/media/msg-media-ops.xml
+../../media/testdriver/media/msg-drivefull-ops.xml				/epoc32/testdriver/testproduct/messaging/removable/media/msg-drivefull-ops.xml
+#endif // #if (defined SYMBIAN_MSGS_ENHANCED_REMOVABLE_MEDIA_SUPPORT)
+
+
+
+../../burtestserver/testdriver/t_burtestserver.xml				/epoc32/testdriver/testproduct/messaging/backup/testexecuteservers/burtestserver.xml
+../../email/imap/testdriver/T_MsgImapServer.xml					/epoc32/testdriver/testproduct/messaging/backup/testexecuteservers/t_msgimapserver.xml
+../../email/pop/testdriver/T_MsgPopServer.xml					/epoc32/testdriver/testproduct/messaging/backup/testexecuteservers/t_msgpopserver.xml
+../../email/smtp/testdriver/T_MsgSmtpServer.xml					/epoc32/testdriver/testproduct/messaging/backup/testexecuteservers/t_msgsmtpserver.xml
+../../common/testdriver/T_MsgCommonServer.xml					/epoc32/testdriver/testproduct/messaging/backup/testexecuteservers/t_msgcommonserver.xml
+../../msgtestserver/testdriver/t_emailtestserver.xml					/epoc32/testdriver/testproduct/messaging/backup/testexecuteservers/t_emailtestserver.xml
+../messaging/backup.xml								/epoc32/testdriver/testproduct/messaging/backup.xml
+../../burtestserver/testdriver/burtestserver.xml				/epoc32/testdriver/testproduct/messaging/backup/burtestserver.xml
+../../burtestserver/testdriver/burtestserver/msg-backuprestore1.xml		/epoc32/testdriver/testproduct/messaging/backup/burtestserver/msg-backuprestore1.xml
+../../burtestserver/testdriver/burtestserver/msg-backuprestore2.xml		/epoc32/testdriver/testproduct/messaging/backup/burtestserver/msg-backuprestore2.xml
+../../burtestserver/testdriver/burtestserver/msg-backuprestore3.xml		/epoc32/testdriver/testproduct/messaging/backup/burtestserver/msg-backuprestore3.xml
+../../burtestserver/testdriver/burtestserver/msg-backuprestore4.xml		/epoc32/testdriver/testproduct/messaging/backup/burtestserver/msg-backuprestore4.xml
+../../burtestserver/testdriver/burtestserver/msg-backuprestore5.xml		/epoc32/testdriver/testproduct/messaging/backup/burtestserver/msg-backuprestore5.xml
+
+

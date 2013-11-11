@@ -1,0 +1,49 @@
+/*
+* Copyright (c) 2006-2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file for project RadioUtility
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET        	Radio_Utility.dll
+TARGETTYPE    	DLL
+CAPABILITY    	CAP_GENERAL_DLL
+VENDORID      	VID_DEFAULT
+UID           	0x1000008D 0x10207B81
+VERSION 10.1
+
+SOURCEPATH	../src
+SOURCE		RadioUtility.cpp
+SOURCE		RadioUtilityBody.cpp
+SOURCE		RadioPlayerUtility.cpp
+SOURCE		RadioPlayerUtilityBody.cpp
+SOURCE		RadioFmTunerUtility.cpp
+SOURCE		RadioFmTunerUtilityBody.cpp
+SOURCE		RadioRdsUtility.cpp
+SOURCE		RadioRdsUtilityBody.cpp
+SOURCE		RadioMonitor.cpp
+SOURCE		RadioMonitorBody.cpp
+
+USERINCLUDE	../inc
+USERINCLUDE	../../inc
+USERINCLUDE	../../../inc
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY		euser.lib 
+LIBRARY		RadioSession.lib
+LIBRARY		CustomInterfaceUtility.lib 
+LIBRARY		flogger.lib 

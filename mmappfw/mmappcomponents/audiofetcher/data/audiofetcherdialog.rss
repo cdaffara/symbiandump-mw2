@@ -1,0 +1,241 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Resource definitions for project AudioFetcher
+*
+*/
+
+//  RESOURCE IDENTIFIER
+NAME MGFP    // 4 letter ID
+
+
+//  INCLUDES
+#include <eikon.rh>
+#include <avkon.rh>
+#include <avkon.loc>
+#include <avkon.rsg>
+#include <appinfo.rh>
+
+#include "audiofetcher.hrh"
+#include <audiofetcher.loc>
+
+
+//  RESOURCE DEFINITIONS
+// -----------------------------------------------------------------------------
+//
+//    Define the resource file signature
+//    This resource should be empty.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF { buf="MGFP"; }
+    
+RESOURCE AVKON_VIEW r_audiofetcher_dialog
+	{
+	menubar = r_audiofetcher_menubar;
+	}
+	
+RESOURCE MENU_BAR r_audiofetcher_menubar
+	{
+	titles = 
+		{
+		MENU_TITLE {menu_pane=r_audiofetcher_menu; txt="";}
+		};
+	}
+
+RESOURCE MENU_PANE r_audiofetcher_menu
+	{
+	items=
+		{
+		};
+	}
+
+RESOURCE TBUF r_audiofetcher_dialog_title_audio
+	{
+	buf = qtn_audiofetcher_select_audio;
+	}	
+
+RESOURCE TBUF r_audiofetcher_dialog_title_any_file
+	{
+	buf = qtn_audiofetcher_select_any_file;
+	}
+	
+//MultiSelect
+/*
+RESOURCE MENU_BAR r_multiselect_audiofetcher_menubar
+	{
+	titles = 
+		{
+		MENU_TITLE {menu_pane=r_multiselect_audiofetcher_menu; txt="";}
+		};
+	}
+
+RESOURCE MENU_PANE r_multiselect_audiofetcher_menu
+	{
+	items=
+		{
+		MENU_ITEM 
+			{
+			command=EAknSoftkeySelect; 
+			txt = qtn_cffh_options_select; 
+			},
+
+		MENU_ITEM
+			{
+			command=ECmdSelectMarked; 
+			txt = qtn_cffh_select_marked; 
+			},      
+        
+		MENU_ITEM
+			{
+			command=ECmdMarkingSubmenu;
+			txt = qtn_options_list; 
+			cascade = r_multiselect_marking_submenu; 
+			},
+
+		MENU_ITEM 
+			{
+			command=EAknCmdHelp; 
+			txt = qtn_options_help; 
+			}
+		};
+	}
+*/
+/*
+RESOURCE MENU_PANE r_multiselect_marking_submenu
+  {
+    items=
+        {
+        MENU_ITEM
+            {
+            command = EAknCmdMark;
+            txt = qtn_options_list_mark_one;
+            },
+        MENU_ITEM
+            {
+            command = EAknMarkAll;
+            txt = qtn_options_list_mark_all;
+            },
+        MENU_ITEM
+            {
+            command = EAknCmdUnmark;
+            txt = qtn_options_list_unmark_one;
+            },
+	    MENU_ITEM
+            {
+            command = EAknUnmarkAll;
+            txt = qtn_options_list_unmark_all;
+            }      
+        };
+    }
+	
+RESOURCE MENU_BAR r_multiselect_ok_menubar
+	{
+	titles=
+		{
+		MENU_TITLE { menu_pane=r_multiselect_ok_menu; txt=""; }
+		};
+	}
+
+
+RESOURCE MENU_PANE r_multiselect_ok_menu
+	{
+    items=
+        {
+        MENU_ITEM
+            {
+            command=EAknSoftkeySelect; 
+            txt = qtn_cffh_options_select; 
+            },
+
+        MENU_ITEM 
+            {
+            command=ECmdSelectMarked; 
+            txt = qtn_cffh_select_marked; 
+            },
+        MENU_ITEM
+			{
+			command = ECmdStartMultipleMarking; 
+			txt = qtn_audiofetcher_options_mark_multi;
+			},
+        MENU_ITEM 
+            {
+            command=ECmdMarkingSubmenu;
+            txt = qtn_options_list; 
+            cascade = r_multiselect_marking_submenu; 
+            }
+        };
+	}
+*/
+	
+//End of MultiSelect	
+
+//RESOURCE DIALOG r_modal_multi_dialog
+  //{
+  // blocking dialog with CBA and no border please
+  //flags=EEikDialogFlagNoDrag | EEikDialogFlagFillAppClientRect |
+  //EEikDialogFlagCbaButtons | EEikDialogFlagWait |EEikDialogFlagNoBackgroundFade |EEikDialogFlagNoBorder;
+  // softkeys: left options, middle select, right cancel
+  //buttons = R_AVKON_SOFTKEYS_OK_CANCEL__MARK;
+  // Do not add any items
+  //}
+
+// -----------------------------------------------------------------------------
+// mediafetch plug-in dialog resource.
+// -----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_modal_single_dialog
+    {
+    flags=EEikDialogFlagWait | EEikDialogFlagFillAppClientRect | EEikDialogFlagNotifyEsc | EEikDialogFlagNoBackup;
+    buttons = R_AVKON_SOFTKEYS_SELECT_CANCEL__SELECT;    
+    items=
+        {
+        DLG_LINE
+            {
+            type=EAknCtSingleGraphicListBox;
+            itemflags=EEikDlgItemTakesEnterKey | EEikDlgItemOfferAllHotKeys;
+            id=1;
+            control=LISTBOX
+                {
+                flags = EAknListBoxSelectionList;
+                };   
+            }
+        };
+    }
+
+
+RESOURCE TBUF r_audiofetcher_empty_list_text_no_audio
+    {
+    buf = qtn_audiofetcher_empty_list_no_audio;
+    }
+
+RESOURCE TBUF r_audiofetcher_empty_list_text_no_media
+    {
+    buf = qtn_audiofetcher_empty_list_no_media;
+    }
+
+
+// custom CBA resource for options - ok options menu - cancel
+/*
+RESOURCE CBA r_glx_softkeys_options_cancel_context
+    {
+    buttons =
+        {
+        CBA_BUTTON { id=EAknSoftkeyOptions; txt = text_softkey_option; },
+        CBA_BUTTON { id=EAknSoftkeyCancel; txt = text_softkey_cancel; },
+        CBA_BUTTON { id=EAknSoftkeyContextOptions; txt = text_softkey_option; }
+        };
+    }
+*/

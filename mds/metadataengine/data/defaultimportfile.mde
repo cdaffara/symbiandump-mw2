@@ -1,0 +1,11 @@
+object http://sw.nokia.com/MdE Album "defaultalbum_favourites" 0
+property Type 2
+property LastModifiedDate 20080101000000
+property CreationDate 20080101000000
+property ItemType "application/vnd.nokia.mde.album"
+
+object http://sw.nokia.com/MdE Album "defaultalbum_captured" 0
+property Type 3
+property LastModifiedDate 20080101000000
+property CreationDate 20080101000000
+property ItemType "application/vnd.nokia.mde.album"

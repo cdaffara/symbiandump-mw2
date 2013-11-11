@@ -1,0 +1,66 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+//! @SYMTestCaseID MSG-SENDAS-CIT-0026-HP
+//! @SYMTestCaseDesc Confirmed Send
+//! @SYMFssID 
+//! @SYMTestStatus Defined
+//! @SYMTestPriority High
+//! @SYMTestActions xxxxxxxx
+//! @SYMTestExpectedResults yyyyyyyyy
+//! @SYMTestType CIT
+
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_UTILS CopyFile c:\msgtest\TestFramework\Configurations\SmsSettings\config.txt C:\config.txt
+RUN_UTILS MakeReadWrite C:\config.txt
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+InitializeSimTsy		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMS-CIT-03-Performance-ConfirmedSend.ini	InitializeSimTsy
+GetBaseConstants		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMS-CIT-03-Performance-ConfirmedSend.ini	GetBaseConstants
+GetSmsConstants			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMS-CIT-03-Performance-ConfirmedSend.ini	GetSmsConstants
+CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMS-CIT-03-Performance-ConfirmedSend.ini	CreateSession
+ResetMessageStore		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMS-CIT-03-Performance-ConfirmedSend.ini	ResetMessageStore
+SetDefaultSmsSettings		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMS-CIT-03-Performance-ConfirmedSend.ini	SetDefaultSmsSettings
+SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMS-CIT-03-Performance-ConfirmedSend.ini	SetDefaultConfiguration
+SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMS-CIT-03-Performance-ConfirmedSend.ini	SetDefaultConfigurationBodyTxt
+CreateSmsService		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMS-CIT-03-Performance-ConfirmedSend.ini	CreateSmsService
+SetSmsServiceSettings		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMS-CIT-03-Performance-ConfirmedSend.ini	SetSmsServiceSettings
+CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMS-CIT-03-Performance-ConfirmedSend.ini	CreateRegistry
+CreateMtm			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMS-CIT-03-Performance-ConfirmedSend.ini	CreateSmsMtm
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMS-CIT-03-Performance-ConfirmedSend.ini	ChkChildrenCountDraft0
+EXECUTE_TEST_CASE
+ConnectSendAsServer		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMS-CIT-03-Performance-ConfirmedSend.ini	ConnectSendAsServer
+StartTimer			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMS-CIT-03-Performance-ConfirmedSend.ini	StartTimer
+SendAsCreateMessageofType	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMS-CIT-03-Performance-ConfirmedSend.ini	SendAsCreateMessageofType
+StopTimer			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMS-CIT-03-Performance-ConfirmedSend.ini	StopTimer
+SendAsAddRecipient		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMS-CIT-03-Performance-ConfirmedSend.ini	SendAsAddRecipient
+SendAsSetBodyText		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMS-CIT-03-Performance-ConfirmedSend.ini	SendAsSetBodyText
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMS-CIT-03-Performance-ConfirmedSend.ini	ChkChildrenCountDraft1
+SetUserResponse			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMS-CIT-03-Performance-ConfirmedSend.ini	SetUserResponse
+StartTimer			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMS-CIT-03-Performance-ConfirmedSend.ini	StartTimer
+SendAsSendMessageNew		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMS-CIT-03-Performance-ConfirmedSend.ini	SendAsSendMessageNew
+StopTimer			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMS-CIT-03-Performance-ConfirmedSend.ini	StopTimer
+SendAsCloseMessage		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMS-CIT-03-Performance-ConfirmedSend.ini	CloseMessage
+Sleep				c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMS-CIT-03-Performance-ConfirmedSend.ini	Sleep
+CloseSendAsServerConnection	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMS-CIT-03-Performance-ConfirmedSend.ini	CloseSvrConnection
+CHECK_POSTCONDITIONS
+UnloadPhoneModule		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\Performance\MSG-SENDAS-SMS-CIT-03-Performance-ConfirmedSend.ini	UnloadPhoneModule
+END_TEST_CASE

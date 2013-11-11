@@ -1,0 +1,17 @@
+EXPORTS
+	??1CMPXAlbumArtUtility@@UAE@XZ @ 1 NONAME ; CMPXAlbumArtUtility::~CMPXAlbumArtUtility(void)
+	?BitmapDataL@CMPXAlbumArtUtility@@QAEPAVHBufC8@@ABVCFbsBitmap@@@Z @ 2 NONAME ; class HBufC8 * CMPXAlbumArtUtility::BitmapDataL(class CFbsBitmap const &)
+	?BitmapL@CMPXAlbumArtUtility@@QAEPAVCFbsBitmap@@ABVTDesC8@@@Z @ 3 NONAME ; class CFbsBitmap * CMPXAlbumArtUtility::BitmapL(class TDesC8 const &)
+	?CancelRequest@CMPXAlbumArtUtility@@QAEXXZ @ 4 NONAME ; void CMPXAlbumArtUtility::CancelRequest(void)
+	?Decode@CMPXAlbumArtUtility@@QAEXAAVTRequestStatus@@ABVTDesC16@@AAVCFbsBitmap@@VTSize@@W4TDisplayMode@@@Z @ 5 NONAME ; void CMPXAlbumArtUtility::Decode(class TRequestStatus &, class TDesC16 const &, class CFbsBitmap &, class TSize, enum TDisplayMode)
+	?Decode@CMPXAlbumArtUtility@@QAEXAAVTRequestStatus@@ABVTDesC8@@AAVCFbsBitmap@@VTSize@@W4TDisplayMode@@@Z @ 6 NONAME ; void CMPXAlbumArtUtility::Decode(class TRequestStatus &, class TDesC8 const &, class CFbsBitmap &, class TSize, enum TDisplayMode)
+	?DecodeL@CMPXAlbumArtUtility@@QAEPAVCFbsBitmap@@ABVTDesC16@@VTSize@@W4TDisplayMode@@@Z @ 7 NONAME ; class CFbsBitmap * CMPXAlbumArtUtility::DecodeL(class TDesC16 const &, class TSize, enum TDisplayMode)
+	?DecodeL@CMPXAlbumArtUtility@@QAEPAVCFbsBitmap@@ABVTDesC8@@VTSize@@W4TDisplayMode@@@Z @ 8 NONAME ; class CFbsBitmap * CMPXAlbumArtUtility::DecodeL(class TDesC8 const &, class TSize, enum TDisplayMode)
+	?Encode@CMPXAlbumArtUtility@@QAEXAAVTRequestStatus@@ABVCFbsBitmap@@AAPAVHBufC8@@@Z @ 9 NONAME ; void CMPXAlbumArtUtility::Encode(class TRequestStatus &, class CFbsBitmap const &, class HBufC8 * &)
+	?EncodeL@CMPXAlbumArtUtility@@QAEPAVHBufC8@@ABVCFbsBitmap@@@Z @ 10 NONAME ; class HBufC8 * CMPXAlbumArtUtility::EncodeL(class CFbsBitmap const &)
+	?ExtractAlbumArtL@CMPXAlbumArtUtility@@QAEXABVCMPXMedia@@AAVMMPXAlbumArtUtilityObserver@@ABVTSize@@W4TDisplayMode@@@Z @ 11 NONAME ; void CMPXAlbumArtUtility::ExtractAlbumArtL(class CMPXMedia const &, class MMPXAlbumArtUtilityObserver &, class TSize const &, enum TDisplayMode)
+	?ExtractL@CMPXAlbumArtUtility@@QAEPAVHBufC8@@ABVTDesC16@@@Z @ 12 NONAME ; class HBufC8 * CMPXAlbumArtUtility::ExtractL(class TDesC16 const &)
+	?NewL@CMPXAlbumArtUtility@@SAPAV1@XZ @ 13 NONAME ; class CMPXAlbumArtUtility * CMPXAlbumArtUtility::NewL(void)
+	?Scale@CMPXAlbumArtUtility@@QAEXAAVTRequestStatus@@AAVCFbsBitmap@@1VTSize@@W4TDisplayMode@@@Z @ 14 NONAME ; void CMPXAlbumArtUtility::Scale(class TRequestStatus &, class CFbsBitmap &, class CFbsBitmap &, class TSize, enum TDisplayMode)
+	?ScaleL@CMPXAlbumArtUtility@@QAEPAVCFbsBitmap@@AAV2@VTSize@@W4TDisplayMode@@@Z @ 15 NONAME ; class CFbsBitmap * CMPXAlbumArtUtility::ScaleL(class CFbsBitmap &, class TSize, enum TDisplayMode)
+

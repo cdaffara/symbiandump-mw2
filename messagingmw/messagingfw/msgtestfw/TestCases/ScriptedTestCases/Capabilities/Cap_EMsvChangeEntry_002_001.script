@@ -1,0 +1,38 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+//********************************
+// Cap_EMsvChangeEntry_002_001.script
+//********************************
+
+PRINT Running  Cap_EMsvChangeEntry_002_001.script : SendProxyServer has full capabilities to modify a pre-created a message in the outbox folder. 
+PRINT Running  Cap_EMsvChangeEntry_002_001.script : SID's are the same (but should be irrelevant). 
+
+//********************************
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_Caps.exe 0003fffe -SID 101F7778 C:\sys\bin\MessagingTestServer.exe
+	// Ensure sufficient caps to delete everything in the folders.
+	
+RUN_PROGRAM -1 setcap c:\sys\bin\SendProxyServer_Caps.exe  0001a000 -SID 101F7778 C:\sys\bin\SendProxyServer.exe
+	// Using ECapabilityReadUserData, ECapabilityWriteUserData, ECapabilityNetworkServices
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateSingleEntryOutbox.Script
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_ChangeSingleEntryInOutboxPass.script
+
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+//********************************

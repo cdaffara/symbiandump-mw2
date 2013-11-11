@@ -1,0 +1,45 @@
+// Copyright (c) 1999-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// GFP.INF
+// 
+//
+
+PRJ_PLATFORMS
+
+
+PRJ_EXPORTS
+../gfpinc/gfp.h SYMBIAN_OS_LAYER_PLATFORM_EXPORT_PATH(gfp.h)
+
+PRJ_TESTEXPORTS
+../gfptsrc/oplogo1.txt /epoc32/winscw/c/test/bio/gfp/oplogo1.txt
+../gfptsrc/oplogo2.txt /epoc32/winscw/c/test/bio/gfp/oplogo2.txt
+../gfptsrc/oplogo3.txt /epoc32/winscw/c/test/bio/gfp/oplogo3.txt
+../gfptsrc/oplogo4.txt /epoc32/winscw/c/test/bio/gfp/oplogo4.txt
+../gfptsrc/oplogo5.txt /epoc32/winscw/c/test/bio/gfp/oplogo5.txt
+../gfptsrc/oplogo6.txt /epoc32/winscw/c/test/bio/gfp/oplogo6.txt
+../gfptsrc/rtone1.txt /epoc32/winscw/c/test/bio/gfp/rtone1.txt
+../gfptsrc/rtone2.txt /epoc32/winscw/c/test/bio/gfp/rtone2.txt
+../gfptsrc/rtone3.txt /epoc32/winscw/c/test/bio/gfp/rtone3.txt
+../gfptsrc/rtone4.txt /epoc32/winscw/c/test/bio/gfp/rtone4.txt
+../gfptsrc/rtone5.txt /epoc32/winscw/c/test/bio/gfp/rtone5.txt
+../gfptsrc/rtone6.txt /epoc32/winscw/c/test/bio/gfp/rtone6.txt
+../gfptsrc/rtone7.txt /epoc32/winscw/c/test/bio/gfp/rtone7.txt
+../gfptsrc/vcal1.txt /epoc32/winscw/c/test/bio/gfp/vcal1.txt
+../gfptsrc/vcard1.txt /epoc32/winscw/c/test/bio/gfp/vcard1.txt
+
+PRJ_MMPFILES
+group/gfp.mmp
+
+PRJ_TESTMMPFILES
+../gfptsrc/t_gfp.mmp

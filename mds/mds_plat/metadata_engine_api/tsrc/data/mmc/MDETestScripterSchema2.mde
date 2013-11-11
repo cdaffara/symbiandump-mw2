@@ -1,0 +1,18 @@
+// TestSchema2.mde
+
+namespace http://sw.nokia.com/MdE/TestSchema2 0
+
+object http://sw.nokia.com/MdE/TestSchema2 TestObjectType Object 1
+property   TestPropertyBool               0    0        0    min   max
+property   TestPropertyInt8               1    0        1    min   max
+property   TestPropertyUint8              0    0        2    min   max
+property   TestPropertyInt16              1    0        3    min   max
+property   TestPropertyUint16             0    0        4    min   max
+property   TestPropertyInt32              1    0        5    min   max
+property   TestPropertyUint32             0    0        6    min   max
+property   TestPropertyInt64              1    0        7    min   max
+property   TestPropertyReal32             0    0        8    min   max
+property   TestPropertyReal64             1    0        9    min   max
+property   TestPropertyTime               0    0        10   min   20100629163021
+property   TestPropertyText               1    0        11   min   max
+

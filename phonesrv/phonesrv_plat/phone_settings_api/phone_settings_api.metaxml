@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<api id="258e9c3db979d8760022df65f123e89a" dataversion="1.0">
+  <name>Phone Settings API</name>
+  <description>Supplementary services (Call divert, Call barring, Call waiting, network selection, CSP, CLI).</description>
+  <type>c++</type>
+  <subsystem>phonesettings</subsystem>
+  <libs>
+    <lib name="phonesettings.lib" />
+  </libs>
+  <release category="domain"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>yes</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

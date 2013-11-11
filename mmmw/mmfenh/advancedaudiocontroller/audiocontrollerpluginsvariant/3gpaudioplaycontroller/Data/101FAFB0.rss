@@ -1,0 +1,128 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Resource file for ECOM registry.
+*
+*/
+
+
+// INCLUDES
+#include <registryinfov2.rh>
+#include <mmfplugininterfaceuids.hrh>
+#include "3GPAudioPlayControllerPluginUIDs.hrh"
+
+
+//  RESOURCE DEFINITIONS 
+// -----------------------------------------------------------------------------
+//   
+// theInfo
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE REGISTRY_INFO theInfo
+	{
+        resource_format_version = RESOURCE_FORMAT_VERSION_2;
+	dll_uid = KUID3GPPlayControllerPluginDll;
+	interfaces = 
+		{
+		INTERFACE_INFO
+			{
+			interface_uid = KMmfUidPluginInterfaceController;
+			implementations = 
+				{
+				IMPLEMENTATION_INFO
+					{
+					implementation_uid = KUID3GPPlayControllerPluginImplementation;
+					version_no = 1;
+					display_name = "3GP Audio Controller Plugin";
+					default_data = "?";
+					opaque_data = "<s>Nokia<i>0x101F5D07<p>0x101FAFB2<a>0x8CA000<d>";
+                                        rom_only = 0;					
+					}
+				};
+			},
+		INTERFACE_INFO
+			{
+			interface_uid = KUID3GPPlayControllerPluginFormatInterface;	// 0x101FAFB2
+			implementations = 
+				{
+				IMPLEMENTATION_INFO
+					{
+					implementation_uid = 0x10207B4D;   // Dummy uid needed for place holder
+					version_no = 1;
+					display_name = "3GP Read Format";
+					default_data = "0x101FAFB1";
+					opaque_data = "<s>Nokia<i>0x101f5d07<h>????ftyp3gp<e>.3gp<e>.3ga<m>audio/3gpp";
+                    			rom_only = 0;
+					},
+				IMPLEMENTATION_INFO
+					{
+					implementation_uid = 0x10207B4E;   // Dummy uid needed for place holder
+					version_no = 1;
+					display_name = "MP4 Read Format";
+					default_data = "0x101FAFB1";
+					opaque_data = "<s>Nokia<i>0x101f5d07<h>????ftypmp4<h>????ftypM4A<e>.mp4<e>.m4a<m>audio/mp4";
+                    			rom_only = 0;
+					},
+				IMPLEMENTATION_INFO
+					{
+					implementation_uid = 0x10207B4F;   // Dummy uid needed for place holder
+					version_no = 1;
+					display_name = "3G2 Read Format";
+					default_data = "0x101FAFB1";
+					opaque_data = "<s>Nokia<i>0x101f5d07<h>????ftyp3g2<e>.3g2<m>audio/3gpp2";
+                    			rom_only = 0;
+					},
+				IMPLEMENTATION_INFO //3GPP Release 6 basic Profile
+					{
+					implementation_uid = 0x10207B50;   // Dummy uid needed for place holder
+					version_no = 1;
+					display_name = "3GP Read Format";
+					default_data = "0x101FAFB1";
+					opaque_data = "<s>Nokia<i>0x101f5d07<h>????ftyp3gp6<e>.3gp<e>.3ga<m>audio/3gpp";
+                    			rom_only = 0;
+					},
+				IMPLEMENTATION_INFO //3GPP Release 6 progressive-download Profile
+					{
+					implementation_uid = 0x10207B51;   // Dummy uid needed for place holder
+					version_no = 1;
+					display_name = "3GP Read Format";
+					default_data = "0x101FAFB1";
+					opaque_data = "<s>Nokia<i>0x101f5d07<h>????ftyp3gr6<e>.3gp<e>.3ga<m>audio/3gpp";
+                    			rom_only = 0;
+					},
+				IMPLEMENTATION_INFO //3GPP Release 6 streaming-server Profile
+					{
+					implementation_uid = 0x10207B52;   // Dummy uid needed for place holder
+					version_no = 1;
+					display_name = "3GP Read Format";
+					default_data = "0x101FAFB1";
+					opaque_data = "<s>Nokia<i>0x101f5d07<h>????ftyp3gs6<e>.3gp<e>.3ga<m>audio/3gpp";
+                    			rom_only = 0;
+					},
+				IMPLEMENTATION_INFO //Mobile MP4
+					{
+					implementation_uid = 0x10207B53;   // Dummy uid needed for place holder
+					version_no = 1;
+					display_name = "3GP Read Format";
+					default_data = "0x101FAFB1";
+					opaque_data = "<s>Nokia<i>0x101f5d07<h>????ftypmmp4<e>.3gp<e>.3ga<m>audio/3gpp";
+                    			rom_only = 0;
+					}
+
+				};
+			}
+		};
+	}
+
+// End of file

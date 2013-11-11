@@ -1,0 +1,6 @@
+PosSettingsGroupboxItem::dataItem_ContentWidget
+{
+    left: 0.0un;
+    right: var(hb-param-margin-gene-right);
+    top: 0.0un;
+}

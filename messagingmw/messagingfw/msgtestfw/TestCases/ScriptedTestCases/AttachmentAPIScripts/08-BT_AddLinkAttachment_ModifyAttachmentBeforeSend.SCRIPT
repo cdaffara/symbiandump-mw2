@@ -1,0 +1,105 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+// Test Case Name:
+//	Sending message with link attachment from public area and file to be attached is 
+//	modified before sending
+// ------------------------------------------
+// Component Under Test:
+//	Attachment API
+// ------------------------------------------
+// API function under test:
+//	MMsvAttachmentManager::AddLinkedAttachmentL
+// ------------------------------------------
+// Requirement/Use Case/Functional Spec:
+//	SGL.GT0216.051 (2.3.1)
+// ------------------------------------------
+// Polarity:
+//	Positive
+// ------------------------------------------
+// Test Type (unit, integration, panic, performance, conformance, stress, or interoperability):
+//	Integration
+// ------------------------------------------
+// Expected Panic ID (if a panic test, only for non-scripted test cases):
+//	N/A
+// ------------------------------------------
+// Interface Dependencies (does it require connection, which subsystems does it require):
+// 	Requires connection to Messaging Server
+// ------------------------------------------
+// Importance (critical, high, or low):
+//	High
+// ------------------------------------------
+// Execution Time (fast, medium, or slow):
+//	Medium
+// ------------------------------------------
+// Pre-condition description:
+//	1. New IR message in drafts folder
+//	2. Read/Write access to message store
+//	3. Add the desired file as linked attachment
+//	4. The attachment count should be 1
+// ------------------------------------------
+// Action Description:
+// 	1. Modify the file attached as link
+//	2. Send the message
+// ------------------------------------------
+// Post-condition description (i.e., expected outcome):
+//	Message is successfully sent with the attachment
+// ------------------------------------------
+// Reference to a review document:
+//	AttachmentAPI_TestSpecificationDocument_Ver1.0.doc
+// ------------------------------------------
+// Full pathname of an epoc.ini (if there are special epoc.ini requirements)
+// 	For emulator, an epoc.ini that creates an emulated external drive (drive letter 
+//	between D: and Y:) is required. Optionally, an environment variable can be defined.
+// ------------------------------------------
+// Any CommDb restrictions:
+//	NTRAS CommDb
+// ------------------------------------------
+// Build Requirements (e.g., no watchers):
+//	N/A
+// ------------------------------------------
+// Hardware Requirements
+//	H2 Board
+// ------------------------------------------
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer GetBaseConstants				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\08-BT_AddLinkAttachment_ModifyAttachmentBeforeSend.INI GetConstants
+RUN_TEST_STEP 100 MessagingTestServer GetBTMTMUId				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\08-BT_AddLinkAttachment_ModifyAttachmentBeforeSend.INI GetBtMTMUId
+RUN_TEST_STEP 100 MessagingTestServer CreateSession				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\08-BT_AddLinkAttachment_ModifyAttachmentBeforeSend.INI SessionId
+RUN_TEST_STEP 100 MessagingTestServer CreateRegistry				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\08-BT_AddLinkAttachment_ModifyAttachmentBeforeSend.INI CreateRegistry
+RUN_TEST_STEP 100 MessagingTestServer CreateService				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\08-BT_AddLinkAttachment_ModifyAttachmentBeforeSend.INI CreateBtService
+RUN_TEST_STEP 100 MessagingTestServer CreateMtm					c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\08-BT_AddLinkAttachment_ModifyAttachmentBeforeSend.INI CreateBtMtm
+RUN_TEST_STEP 100 MessagingTestServer CreateMessage				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\08-BT_AddLinkAttachment_ModifyAttachmentBeforeSend.INI CreateMessage
+RUN_TEST_STEP 100 MessagingTestServer CreateSelection				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\08-BT_AddLinkAttachment_ModifyAttachmentBeforeSend.INI CreateSelection
+RUN_TEST_STEP 100 MessagingTestServer GetDefaultAppendToSelection		c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\08-BT_AddLinkAttachment_ModifyAttachmentBeforeSend.INI AppendToSelection
+
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer AddLinkedAttachment			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\08-BT_AddLinkAttachment_ModifyAttachmentBeforeSend.INI AddLinkedAttachment
+RUN_TEST_STEP 100 MessagingTestServer DeletePath				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\08-BT_AddLinkAttachment_ModifyAttachmentBeforeSend.INI DeletePath
+RUN_TEST_STEP 100 MessagingTestServer RenamePath				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\08-BT_AddLinkAttachment_ModifyAttachmentBeforeSend.INI RenamePath
+RUN_TEST_STEP 100 MessagingTestServer CountAttachments				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\08-BT_AddLinkAttachment_ModifyAttachmentBeforeSend.INI CountAttachments
+RUN_TEST_STEP 100 MessagingTestServer GetDefaultMtmCommandParameters		c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\08-BT_AddLinkAttachment_ModifyAttachmentBeforeSend.INI GetDefaultMtmCommandParameters
+RUN_TEST_STEP 100 MessagingTestServer ExecuteMtmCommand				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\08-BT_AddLinkAttachment_ModifyAttachmentBeforeSend.INI ExecuteMtmCommand
+
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+
+RUN_TEST_STEP 100 MessagingTestServer END_TEST_CASE

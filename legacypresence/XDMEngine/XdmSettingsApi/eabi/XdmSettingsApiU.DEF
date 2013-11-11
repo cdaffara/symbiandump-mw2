@@ -1,0 +1,24 @@
+EXPORTS
+	_ZN15TXdmSettingsApi15CreatePropertyLEiRK7TDesC1620TXdmSettingsProperty @ 1 NONAME
+	_ZN15TXdmSettingsApi15RemovePropertyLEi20TXdmSettingsProperty @ 2 NONAME
+	_ZN15TXdmSettingsApi15UpdatePropertyLEiRK7TDesC1620TXdmSettingsProperty @ 3 NONAME
+	_ZN15TXdmSettingsApi17CollectionNamesLCER6RArrayIiE @ 4 NONAME
+	_ZN15TXdmSettingsApi17CreateCollectionLERK22CXdmSettingsCollection @ 5 NONAME
+	_ZN15TXdmSettingsApi17RemoveCollectionLEi @ 6 NONAME
+	_ZN15TXdmSettingsApi19SettingsCollectionLEi @ 7 NONAME
+	_ZN15TXdmSettingsApi9PropertyLEi20TXdmSettingsProperty @ 8 NONAME
+	_ZN22CXdmSettingsCollection7AppendLERK7TDesC1620TXdmSettingsProperty @ 9 NONAME
+	_ZN22CXdmSettingsCollection7RemoveLE20TXdmSettingsProperty @ 10 NONAME
+	_ZN22CXdmSettingsCollectionC1Ev @ 11 NONAME
+	_ZN22CXdmSettingsCollectionC2Ev @ 12 NONAME
+	_ZN22CXdmSettingsCollectionD0Ev @ 13 NONAME
+	_ZN22CXdmSettingsCollectionD1Ev @ 14 NONAME
+	_ZN22CXdmSettingsCollectionD2Ev @ 15 NONAME
+	_ZNK20CXdmSettingsProperty12PropertyNameEv @ 16 NONAME
+	_ZNK20CXdmSettingsProperty13PropertyValueEv @ 17 NONAME
+	_ZNK22CXdmSettingsCollection5CountEv @ 18 NONAME
+	_ZNK22CXdmSettingsCollection8PropertyE20TXdmSettingsProperty @ 19 NONAME
+	_ZNK22CXdmSettingsCollection8PropertyEi @ 20 NONAME
+	_ZTI22CXdmSettingsCollection @ 21 NONAME ; #<TI>#
+	_ZTV22CXdmSettingsCollection @ 22 NONAME ; #<VT>#
+

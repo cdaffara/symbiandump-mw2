@@ -1,0 +1,4 @@
+EXPORTS
+	?CreateDataSource@CMultimediaDataSourceFactory@@SAHAAVMDataSource@@AAPAVCMultimediaDataSource@@@Z @ 1 NONAME ; int CMultimediaDataSourceFactory::CreateDataSource(class MDataSource &, class CMultimediaDataSource * &)
+	?CreateSeekableDataSource@CMultimediaDataSourceFactory@@SAHAAVMDataSource@@AAPAVCMultimediaDataSource@@AAPAVCDataSourceConfigIntfc@@@Z @ 2 NONAME ; int CMultimediaDataSourceFactory::CreateSeekableDataSource(class MDataSource &, class CMultimediaDataSource * &, class CDataSourceConfigIntfc * &)
+

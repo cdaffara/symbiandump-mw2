@@ -1,0 +1,7 @@
+EXPORTS
+	_ZN23RContactResolverSession18ResolveRequestorsLER13RPointerArrayI13CPosRequestorE @ 1 NONAME
+	_ZN23RContactResolverSession5CloseEv @ 2 NONAME
+	_ZN23RContactResolverSession7ConnectEv @ 3 NONAME
+	_ZN23RContactResolverSessionC1Ev @ 4 NONAME
+	_ZN23RContactResolverSessionC2Ev @ 5 NONAME
+

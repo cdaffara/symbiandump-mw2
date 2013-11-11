@@ -1,0 +1,57 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+//! @file
+//! @SYMTestCaseID MSG-SENDAS-CIT-0034-HP
+//! @SYMTestCaseDesc UnConfirmed Send, application does not have privileges to send the message, user reject the request that is now converted to confirmed send
+//! @SYMFssID 
+//! @SYMTestStatus Defined
+//! @SYMTestPriority High
+//! @SYMTestActions xxxxxxxx
+//! @SYMTestExpectedResults yyyyyyyyy
+//! @SYMTestType CIT
+
+
+// Use Setcap to set capabilities of new MessagingTestServer.exe to ReadUserData + WriteUserData
+RUN_PROGRAM setcap MessagingTestServer.exe 00039FFE MessagingTestServer_New.exe
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer_New -SharedData
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer_New
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+GetBaseConstants		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0034-UnConfirmedSendNoPrivileges.ini	GetBaseConstants
+GetSmsConstants			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0034-UnConfirmedSendNoPrivileges.ini	GetSmsConstants
+CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0034-UnConfirmedSendNoPrivileges.ini	CreateSession
+ResetMessageStore		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0034-UnConfirmedSendNoPrivileges.ini	ResetMessageStore
+CreateSmsService		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0034-UnConfirmedSendNoPrivileges.ini	CreateSmsService
+SetSmsServiceSettings		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0034-UnConfirmedSendNoPrivileges.ini	SetSmsServiceSettings
+CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0034-UnConfirmedSendNoPrivileges.ini	CreateRegistry
+CreateMtm			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0034-UnConfirmedSendNoPrivileges.ini	CreateSmsMtm
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0034-UnConfirmedSendNoPrivileges.ini	ChkChildrenCountDraft0
+EXECUTE_TEST_CASE
+ConnectSendAsServer		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0034-UnConfirmedSendNoPrivileges.ini	ConnectSendAsServer
+SendAsCreateMessageofType	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0034-UnConfirmedSendNoPrivileges.ini	SendAsCreateMessageofType
+SetUserResponse			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0034-UnConfirmedSendNoPrivileges.ini	SetUserResponse
+SendAsSendMessage		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0034-UnConfirmedSendNoPrivileges.ini	SendAsSendMessage
+SendAsCloseMessage		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0034-UnConfirmedSendNoPrivileges.ini	SendAsCloseMessage
+CloseSendAsServerConnection	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0034-UnConfirmedSendNoPrivileges.ini	CloseSvrConnection
+CHECK_POSTCONDITIONS
+CheckErrorCode			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0034-UnConfirmedSendNoPrivileges.ini	CheckErrorCode
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0034-UnConfirmedSendNoPrivileges.ini	ChkChildrenCountDraft1
+END_TEST_CASE

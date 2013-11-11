@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<api id="0923949953c0d1e76294d7f5cf45d9d5" dataversion="2.0">
+  <name>SUPL Settings API</name>
+  <description>API to update and read the SUPL settings like SUPL access point.</description>
+  <type>c++</type>
+  <collection>supl</collection>
+  <libs>
+  </libs>
+  <release category="platform"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>no</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

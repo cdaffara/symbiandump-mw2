@@ -1,0 +1,11 @@
+<!DOCTYPE Feature SYSTEM "CT_XMLData.dtd">
+<Feature Name="Metadata Server 2.5 settings" Plugin="CRPlugin" Group="MdS 2.5" Desc="">
+	<Settings>
+		<Setting Name="Metadata Server major version" Key="0x1" Type="Int" ref="Variant/MdS/MajorVrsion" Desc="">2</Setting>
+		<Setting Name="Metadata Server minor version" Key="0x2" Type="Int" ref="Variant/MdS/MinorVersion" Desc="">5</Setting>
+    </Settings>
+	<Rules>
+		<CenRepfile Name1="\epoc32\data\z\private\10202BE9\200009F3.txt">1</CenRepfile>
+		<Ibyfile Name1="\epoc32\rom\include\S60Cenrep_variant.iby">1</Ibyfile>
+	</Rules>
+</Feature>

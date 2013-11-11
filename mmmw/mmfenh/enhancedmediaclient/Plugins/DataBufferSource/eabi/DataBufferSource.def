@@ -1,0 +1,20 @@
+EXPORTS
+	_Z24ImplementationGroupProxyRi @ 1 NONAME
+	_ZN27CDataBufferMultimediaSource4NewLER11MDataSource @ 2 NONAME
+	_ZTI11CChildIntfc @ 3 NONAME ; #<TI>#
+	_ZTI12CParentIntfc @ 4 NONAME ; #<TI>#
+	_ZTI14CSinkQueueItem @ 5 NONAME ; #<TI>#
+	_ZTI16CSourceQueueItem @ 6 NONAME ; #<TI>#
+	_ZTI17CDataBufferSource @ 7 NONAME ; #<TI>#
+	_ZTI17CDataCopyEngineAO @ 8 NONAME ; #<TI>#
+	_ZTI19CDRMConfigIntcfImpl @ 9 NONAME ; #<TI>#
+	_ZTI27CDataBufferMultimediaSource @ 10 NONAME ; #<TI>#
+	_ZTV11CChildIntfc @ 11 NONAME ; #<VT>#
+	_ZTV12CParentIntfc @ 12 NONAME ; #<VT>#
+	_ZTV14CSinkQueueItem @ 13 NONAME ; #<VT>#
+	_ZTV16CSourceQueueItem @ 14 NONAME ; #<VT>#
+	_ZTV17CDataBufferSource @ 15 NONAME ; #<VT>#
+	_ZTV17CDataCopyEngineAO @ 16 NONAME ; #<VT>#
+	_ZTV19CDRMConfigIntcfImpl @ 17 NONAME ; #<VT>#
+	_ZTV27CDataBufferMultimediaSource @ 18 NONAME ; #<VT>#
+

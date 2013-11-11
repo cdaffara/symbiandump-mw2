@@ -1,0 +1,62 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Structure definition for resource file.
+*
+*/
+
+
+//  INCLUDES
+#include "AdvancedAudioResource.rh"
+
+//  STRUCTURE DEFINITIONS
+
+// -----------------------------------------------------------------------------
+// MODE
+// Structure definition for the AAC encoder supported bit rates.
+// -----------------------------------------------------------------------------
+//
+STRUCT MODE
+    {
+    LONG	bit_rate;
+    }
+    
+// -----------------------------------------------------------------------------
+// SAMPLERATE
+// Structure definition for the AAC encoder supported sample rates.
+// -----------------------------------------------------------------------------
+//
+STRUCT SAMPLERATE
+    {
+    LONG	sample_rate;
+    }
+
+// -----------------------------------------------------------------------------
+// AAC_ENCODER_CONFIG_PARAMS
+// Structure definition for the AAC Encoder configuration parameters.
+// -----------------------------------------------------------------------------
+//
+STRUCT AAC_ENCODER_CONFIG_PARAMS
+    {
+    LONG	bitrate;
+    LONG	sampling_frequency;
+    LONG	tool_flag;
+    LONG	num_of_channels;
+    LONG	use_format;
+    LONG	fill_buffer;
+    STRUCT	supported_bit_rates[];
+    STRUCT	supported_sample_rates[];
+    }
+
+
+// End of File

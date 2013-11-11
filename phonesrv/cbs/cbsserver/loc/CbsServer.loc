@@ -1,0 +1,36 @@
+/*
+* Copyright (c) 2003 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  This is the localisation file of CBS Server.
+*
+*/
+
+
+// LOCALISATION STRINGS:
+
+// d: SIM topic description
+// l: list_single_graphic_heading_pane_t1
+// w: S90DialogListBox
+#define qtn_cb_litext_sim_topic             "SIM topic"
+
+// d: This text is used when adding a Index topic to database. 
+// l: list_single_graphic_heading_pane_t1
+// w: S90DialogListBox
+#define qtn_cb_litext_index                 "Index"
+
+// d: This text is used when adding Standard Topic List to database. 
+// l: list_single_graphic_heading_pane_t1
+// w: S90DialogListBox
+#define qtn_cb_litext_standard_topic_list   "Default Topic List"
+
+// End of File

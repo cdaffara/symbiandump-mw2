@@ -1,0 +1,98 @@
+Subject: DRM_email_subject
+Date: Mon, 15 Nov 2004 15:19:07 -0000
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+	boundary="----=_NextPart_000_00A2_01C4CB26.734739E0"
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 5.50.4807.1700
+X-MimeOLE: Produced By Microsoft MimeOLE V5.50.4910.0300
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_00A2_01C4CB26.734739E0
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_001_00A3_01C4CB26.734739E0"
+
+
+------=_NextPart_001_00A3_01C4CB26.734739E0
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+
+
+------=_NextPart_001_00A3_01C4CB26.734739E0
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Diso-8859-1">
+<META content=3D"MSHTML 5.50.4807.2300" name=3DGENERATOR>
+<STYLE></STYLE>
+</HEAD>
+<BODY bgColor=3D#ffffff>
+<DIV>&nbsp;</DIV></BODY></HTML>
+
+------=_NextPart_001_00A3_01C4CB26.734739E0--
+
+------=_NextPart_000_00A2_01C4CB26.734739E0
+Content-Type: message/rfc822;
+	name="OMA-CD.eml"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+	filename="OMA-CD.eml"
+
+Received: from LONBOBC01 ([10.23.189.4]) by lon-cn-exchng2k.msexchange2k.closedtest.intra with Microsoft SMTPSVC(5.0.2195.5329);
+         Wed, 13 Oct 2004 15:45:40 +0100
+Message-ID: <000e01c4b133$9c8225c0$04bd170azzzyyy@LONBOBC01>
+From: "msexchange2k.closedtest.intra" <matthewf@msexchange2k.closedtest.intra>
+To: <matthewf@msexchange2k.closedtest.intra>
+Subject: AttachmentAPITestMail
+Date: Thu, 30 Sep 2004 16:54:06 +0530
+MIME-Version: 1.0
+Content-Type: application/testagent.drm;
+ boundary=boundary-1
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 5.50.4807.1700
+X-MimeOLE: Produced By Microsoft MimeOLE V5.50.4910.0300
+Return-Path: matthewf@msexchange2k.closedtest.intra
+X-OriginalArrivalTime: 13 Oct 2004 14:45:40.0765 (UTC) FILETIME=[4F73BCD0:01C4B133]
+
+
+--boundary-1
+Content-type: application/vnd.oma.drm.rights+xml
+Content-Transfer-Encoding: binary
+
+<o-ex:rights
+xmlns:o-ex="http://odrl.net/1.1/ODRL-EX"
+xmlns:o-dd="http://odrl.net/1.1/ODRL-DD"
+>
+    <o-ex:context>
+        <o-dd:version>1.0</o-dd:version>
+    </o-ex:context>
+    <o-ex:agreement>
+        <o-ex:asset>
+            <o-ex:context>
+                <o-dd:uid>cid:4567829547@foo.bar</o-dd:uid>
+            </o-ex:context>
+        </o-ex:asset>
+        <o-ex:permission>
+            <o-dd:display/>
+        </o-ex:permission>
+    </o-ex:agreement>
+</o-ex:rights>
+
+--boundary-1
+Content-type: image/jpeg
+Content-ID: <45678929547@foo.bar>
+Content-Transfer-Encoding: binary
+
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+--boundary-1--
+
+------=_NextPart_000_00A2_01C4CB26.734739E0--

@@ -1,0 +1,43 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: Resource file for postester
+*
+*/
+//  RESOURCE IDENTIFIER
+NAME    PTST
+
+//  INCLUDES
+#include <uikon.rh>
+
+
+//  RESOURCE SIGNATURE
+
+RESOURCE RSS_SIGNATURE { }
+
+//  RESOURCE DEFINITIONS
+
+RESOURCE TBUF { buf=""; }
+
+// ---------------------------------------------------------
+//
+//    r_pos_tester_msg_file_path_name
+//    Resource strings for POS Tester
+//    Name and path of the file containing data
+//	  from which Pos payload is to be created.
+//
+// ---------------------------------------------------------
+//
+RESOURCE LBUF  r_pos_tester_msg_file_path_name { txt = "\\postester\\postestermessagefile.txt";}
+
+//End of file

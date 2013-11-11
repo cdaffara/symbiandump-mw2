@@ -1,0 +1,53 @@
+EXPORTS
+	??1CMnrpEngine@@UAE@XZ @ 1 NONAME ; CMnrpEngine::~CMnrpEngine(void)
+	??1CMnrpMapModel@@UAE@XZ @ 2 NONAME ; CMnrpMapModel::~CMnrpMapModel(void)
+	??1CMnrpPositionRequest@@UAE@XZ @ 3 NONAME ; CMnrpPositionRequest::~CMnrpPositionRequest(void)
+	?AbsoluteToScreen@CMnrpMapModel@@QBE?AVTPoint@@VTCoordinate@@@Z @ 4 NONAME ; class TPoint CMnrpMapModel::AbsoluteToScreen(class TCoordinate) const
+	?AbsoluteToScreen@CMnrpMapModel@@QBEHN@Z @ 5 NONAME ; int CMnrpMapModel::AbsoluteToScreen(double) const
+	?AddressToCoordLC@CMnrpEngine@@QAEPAVCPosLandmark@@ABV2@@Z @ 6 NONAME ; class CPosLandmark * CMnrpEngine::AddressToCoordLC(class CPosLandmark const &)
+	?AddressToCoordLC@CMnrpEngine@@QAEPAVCPosLandmark@@ABVTDesC16@@@Z @ 7 NONAME ; class CPosLandmark * CMnrpEngine::AddressToCoordLC(class TDesC16 const &)
+	?AngleToString@MnrpUtils@@SAXNAAVTDes16@@@Z @ 8 NONAME ; void MnrpUtils::AngleToString(double, class TDes16 &)
+	?BestCoordToAddressMatchesL@CMnrpEngine@@QAEXABVTCoordinate@@AAV?$RPointerArray@VCPosLandmark@@@@H@Z @ 9 NONAME ; void CMnrpEngine::BestCoordToAddressMatchesL(class TCoordinate const &, class RPointerArray<class CPosLandmark> &, int)
+	?Bottom@CMnrpMapModel@@QBENXZ @ 10 NONAME ; double CMnrpMapModel::Bottom(void) const
+	?Center@CMnrpMapModel@@QBE?AVTCoordinate@@XZ @ 11 NONAME ; class TCoordinate CMnrpMapModel::Center(void) const
+	?CoordToAddressLC@CMnrpEngine@@QAEPAVCPosLandmark@@ABVTCoordinate@@@Z @ 12 NONAME ; class CPosLandmark * CMnrpEngine::CoordToAddressLC(class TCoordinate const &)
+	?CoordinateToString@MnrpUtils@@SAXNAAVTDes16@@HH@Z @ 13 NONAME ; void MnrpUtils::CoordinateToString(double, class TDes16 &, int, int)
+	?Course@CMnrpPositionRequest@@QAEMXZ @ 14 NONAME ; float CMnrpPositionRequest::Course(void)
+	?CurrentLocation@CMnrpMapModel@@QBE?AVTCurrentLocation@1@XZ @ 15 NONAME ; class CMnrpMapModel::TCurrentLocation CMnrpMapModel::CurrentLocation(void) const
+	?DistanceBetweenLandmarks@CMnrpEngine@@QAEMABVCPosLandmark@@0@Z @ 16 NONAME ; float CMnrpEngine::DistanceBetweenLandmarks(class CPosLandmark const &, class CPosLandmark const &)
+	?DistanceToString@MnrpUtils@@SAXNAAVTDes16@@@Z @ 17 NONAME ; void MnrpUtils::DistanceToString(double, class TDes16 &)
+	?FetchNewPosition@CMnrpPositionRequest@@QAEXH@Z @ 18 NONAME ; void CMnrpPositionRequest::FetchNewPosition(int)
+	?FindClosestPoisL@CMnrpEngine@@QAEXABVCPosLandmark@@AAV?$RArray@UTDistanceToPoi@CMnrpEngine@@@@H@Z @ 19 NONAME ; void CMnrpEngine::FindClosestPoisL(class CPosLandmark const &, class RArray<struct CMnrpEngine::TDistanceToPoi> &, int)
+	?FindResourceFileL@CMnrpEngine@@QAEXABVTDesC16@@AAV?$TBuf@$0BAA@@@@Z @ 20 NONAME ; void CMnrpEngine::FindResourceFileL(class TDesC16 const &, class TBuf<256> &)
+	?Fs@CMnrpEngine@@QAEAAVRFs@@XZ @ 21 NONAME ; class RFs & CMnrpEngine::Fs(void)
+	?GetGrid@CMnrpMapModel@@QBEXAAVTGrid@1@@Z @ 22 NONAME ; void CMnrpMapModel::GetGrid(class CMnrpMapModel::TGrid &) const
+	?GetPosition@CMnrpPositionRequest@@QAEXAAVTPositionInfo@@@Z @ 23 NONAME ; void CMnrpPositionRequest::GetPosition(class TPositionInfo &)
+	?GoCenter@CMnrpMapModel@@QAEXXZ @ 24 NONAME ; void CMnrpMapModel::GoCenter(void)
+	?Heading@CMnrpPositionRequest@@QAEMXZ @ 25 NONAME ; float CMnrpPositionRequest::Heading(void)
+	?Height@CMnrpMapModel@@QBENXZ @ 26 NONAME ; double CMnrpMapModel::Height(void) const
+	?KnownPlacesL@CMnrpEngine@@QAE?AV?$TArray@PAVCPosLandmark@@@@XZ @ 27 NONAME ; class TArray<class CPosLandmark *> CMnrpEngine::KnownPlacesL(void)
+	?Left@CMnrpMapModel@@QBENXZ @ 28 NONAME ; double CMnrpMapModel::Left(void) const
+	?MagneticCourse@CMnrpPositionRequest@@QAEMXZ @ 29 NONAME ; float CMnrpPositionRequest::MagneticCourse(void)
+	?MagneticHeading@CMnrpPositionRequest@@QAEMXZ @ 30 NONAME ; float CMnrpPositionRequest::MagneticHeading(void)
+	?MoveTo@CMnrpMapModel@@QAEXVTCoordinate@@@Z @ 31 NONAME ; void CMnrpMapModel::MoveTo(class TCoordinate)
+	?NewL@CMnrpEngine@@SAPAV1@XZ @ 32 NONAME ; class CMnrpEngine * CMnrpEngine::NewL(void)
+	?NewL@CMnrpMapModel@@SAPAV1@AAVCMnrpEngine@@@Z @ 33 NONAME ; class CMnrpMapModel * CMnrpMapModel::NewL(class CMnrpEngine &)
+	?NewL@CMnrpMapModel@@SAPAV1@AAVMMapModelObserver@@AAVCMnrpEngine@@@Z @ 34 NONAME ; class CMnrpMapModel * CMnrpMapModel::NewL(class MMapModelObserver &, class CMnrpEngine &)
+	?NewL@CMnrpPositionRequest@@SAPAV1@ABVTDesC16@@AAVMMnrpPositionObserver@@@Z @ 35 NONAME ; class CMnrpPositionRequest * CMnrpPositionRequest::NewL(class TDesC16 const &, class MMnrpPositionObserver &)
+	?RenderL@CMnrpMapModel@@QBEXAAVCFbsBitmap@@VTRect@@PAVCFont@@2@Z @ 36 NONAME ; void CMnrpMapModel::RenderL(class CFbsBitmap &, class TRect, class CFont *, class CFont *) const
+	?Right@CMnrpMapModel@@QBENXZ @ 37 NONAME ; double CMnrpMapModel::Right(void) const
+	?ScreenToAbsolute@CMnrpMapModel@@QBE?AVTCoordinate@@VTPoint@@@Z @ 38 NONAME ; class TCoordinate CMnrpMapModel::ScreenToAbsolute(class TPoint) const
+	?ScreenToAbsolute@CMnrpMapModel@@QBENH@Z @ 39 NONAME ; double CMnrpMapModel::ScreenToAbsolute(int) const
+	?SetOptionsL@CMnrpPositionRequest@@QAEXABVTPositionUpdateOptionsBase@@@Z @ 40 NONAME ; void CMnrpPositionRequest::SetOptionsL(class TPositionUpdateOptionsBase const &)
+	?SetScreenSize@CMnrpMapModel@@QAEXVTSize@@@Z @ 41 NONAME ; void CMnrpMapModel::SetScreenSize(class TSize)
+	?Speed@CMnrpPositionRequest@@QAEMXZ @ 42 NONAME ; float CMnrpPositionRequest::Speed(void)
+	?SpeedToString@MnrpUtils@@SAXNAAVTDes16@@@Z @ 43 NONAME ; void MnrpUtils::SpeedToString(double, class TDes16 &)
+	?Top@CMnrpMapModel@@QBENXZ @ 44 NONAME ; double CMnrpMapModel::Top(void) const
+	?UpdateModelL@CMnrpMapModel@@QAEXAAVCMnrpMapViewService@@@Z @ 45 NONAME ; void CMnrpMapModel::UpdateModelL(class CMnrpMapViewService &)
+	?Width@CMnrpMapModel@@QBENXZ @ 46 NONAME ; double CMnrpMapModel::Width(void) const
+	?Zoom@CMnrpMapModel@@QAEXN@Z @ 47 NONAME ; void CMnrpMapModel::Zoom(double)
+	?PrintableStringLC@MnrpUtils@@SAPAVHBufC16@@ABVTDesC16@@@Z @ 48 NONAME ; class HBufC16 * MnrpUtils::PrintableStringLC(class TDesC16 const &)
+	?AddressToCoord@CMnrpEngine@@QAEPAVCPosLandmark@@ABV2@@Z @ 49 NONAME ; class CPosLandmark * CMnrpEngine::AddressToCoord(class CPosLandmark const &)
+	?AddressToCoord@CMnrpEngine@@QAEPAVCPosLandmark@@ABVTDesC16@@@Z @ 50 NONAME ; class CPosLandmark * CMnrpEngine::AddressToCoord(class TDesC16 const &)
+	?NumIgnoredLandmarks@CMnrpMapModel@@QAEHXZ @ 51 NONAME ; int CMnrpMapModel::NumIgnoredLandmarks(void)
+

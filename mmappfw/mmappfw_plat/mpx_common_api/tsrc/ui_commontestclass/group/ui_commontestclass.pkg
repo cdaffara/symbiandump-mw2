@@ -1,0 +1,40 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: Package file for project StifTFW
+;
+;commontestclass.pkg
+
+;languages
+&EN
+
+;Header
+#{"StifTFW"},(0x10005942),1,1,0,TYPE=SA
+
+;Localised Vendor name
+%{"MPXCommonTest"}
+
+;Unique Vendor name
+:"Vendor"
+
+;Files to install
+
+"..\..\data\mmc\mpxtest1.mp3"   -   "e:\testing\data\mpxtest1.mp3"
+"..\..\data\mmc\mpxtest2.mp3"   -   "e:\testing\data\mpxtest2.mp3"
+"..\..\data\mmc\testdrm.cm"   -   "e:\testing\data\testdrm.cm"
+
+"..\..\init\TestFramework.ini"   -   "c:\testframework\TestFramework.ini" 
+
+"..\..\conf\ui_commontestclass.cfg"   -   "c:\testframework\ui_commontestclass.cfg"
+
+"\epoc32\release\armv5\urel\ui_commontestclass.dll" - "c:\sys\bin\ui_commontestclass.dll"

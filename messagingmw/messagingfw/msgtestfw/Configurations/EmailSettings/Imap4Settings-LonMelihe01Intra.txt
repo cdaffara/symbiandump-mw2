@@ -1,0 +1,9 @@
+# lon-darrenm01.intra server
+__type__   = Imap4Settings
+
+EmailAddressExtension = msexchange2k.closedtest.intra
+
+# lon-cn-exchange2k.msexchange2k.msexchange2k.closedtest.intra = 10.22.64.6
+ServerName = 10.22.64.6
+# FolderPath =  
+# DeleteEmailWhenDisconnected = 1

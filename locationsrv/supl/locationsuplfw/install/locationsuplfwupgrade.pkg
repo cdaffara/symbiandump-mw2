@@ -1,0 +1,42 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: Installation file for locationsuplfw upgrade
+;
+
+; Installation file for SUPL Framework
+
+; Languages, (English only)
+&EN
+
+; UID is the app's UID
+#{"Location SUPLFramework"},(0x102073CA),1,0,0,TYPE=SA,RU
+;Series 60 v3.0
+(0x101f7961), 0, 0, 0, {"Series60ProductID"}
+
+; Localised Vendor name
+%{"Nokia"}
+
+; Unique Vendor name
+:"Nokia"
+
+;
+; Files to install
+;
+"\Epoc32\release\armv5\urel\epos_suplterminitiation.dll"-"!:\sys\bin\epos_suplterminitiation.dll"
+"\Epoc32\release\armv5\urel\epos_suplnetinitiation.dll"-"!:\sys\bin\epos_suplnetinitiation.dll"
+"\Epoc32\release\armv5\urel\epossuplprotocolhandlerplugin.dll"-"!:\sys\bin\epossuplprotocolhandlerplugin.dll"
+"\Epoc32\release\armv5\urel\epossuplgateway.exe"-"!:\sys\bin\epossuplgateway.exe"
+"\Epoc32\release\armv5\urel\epos_suplsettings.dll"-"!:\sys\bin\epos_suplsettings.dll"
+
+; End of File

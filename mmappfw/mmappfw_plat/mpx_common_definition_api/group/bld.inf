@@ -1,0 +1,40 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  File that exports the files belonging to 
+:                mpx common API
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS          
+          
+../inc/mpxattributespecs.h                       MW_LAYER_PLATFORM_EXPORT_PATH(mpxattributespecs.h)        
+../inc/mpxcmn.h                                  MW_LAYER_PLATFORM_EXPORT_PATH(mpxcmn.h)                   
+../inc/mpxcmn.inl                                MW_LAYER_PLATFORM_EXPORT_PATH(mpxcmn.inl)                 
+../inc/mpxcommand.h                              MW_LAYER_PLATFORM_EXPORT_PATH(mpxcommand.h)               
+../inc/mpxcommonframeworkdefs.h                  MW_LAYER_PLATFORM_EXPORT_PATH(mpxcommonframeworkdefs.h)   
+../inc/mpxfilter.h                               MW_LAYER_PLATFORM_EXPORT_PATH(mpxfilter.h)                
+../inc/mpxitemid.h                               MW_LAYER_PLATFORM_EXPORT_PATH(mpxitemid.h)                
+../inc/mpxitemid.inl                             MW_LAYER_PLATFORM_EXPORT_PATH(mpxitemid.inl)              
+../inc/mpxlog.h                                  MW_LAYER_PLATFORM_EXPORT_PATH(mpxlog.h)                   
+../inc/mpxmessage2.h                             MW_LAYER_PLATFORM_EXPORT_PATH(mpxmessage2.h)              
+../inc/mpxpathconfiguration.hrh                  MW_LAYER_PLATFORM_EXPORT_PATH(mpxpathconfiguration.hrh)   
+../inc/mpxprivatecrkeys.h                        MW_LAYER_PLATFORM_EXPORT_PATH(mpxprivatecrkeys.h)         
+../inc/mpxsearchcriteria.h                       MW_LAYER_PLATFORM_EXPORT_PATH(mpxsearchcriteria.h)
+../inc/EqualizerConstants.h                      MW_LAYER_PLATFORM_EXPORT_PATH(EqualizerConstants.h)

@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<api id="60a22d1fdbdb394a908191b4e9c00bea" dataversion="1.0">
+  <name>Watcher info API</name>
+  <description>This API is used for managing the watcher list subscriptions by:
+- creating the presence watcher list subscription
+- creating filters for the subscription
+- terminating watcher list subscriptions
+- notifications about watcher list changes</description>
+  <type>c++</type>
+  <subsystem>simpleengine</subsystem>
+  <libs>
+    <lib name="simpleengine.lib" />
+  </libs>
+  <release category="domain"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>yes</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

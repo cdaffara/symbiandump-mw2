@@ -1,0 +1,46 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project build file for MetaDataUtility
+*
+*/
+
+
+#include <bldvariant.hrh>
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+../Data/metadata_stub.SIS		/epoc32/data/Z/system/install/metadata_stub.sis
+../rom/MetaDataUtility.iby              CORE_MW_LAYER_IBY_EXPORT_PATH(MetaDataUtility.iby)
+
+// Generic configuration interface for component cenrep settings  
+// metadatautility_10207AF7 implementation specifics for cenrep data
+../Conf/metadatautility.confml                  MW_LAYER_CONFML(metadatautility.confml)
+../Conf/metadatautility_apac.confml               CONFML_EXPORT_PATH(metadatautility_apac.confml, apac)
+../Conf/metadatautility_japan.confml              CONFML_EXPORT_PATH(metadatautility_japan.confml, japan)
+../Conf/metadatautility_10207AF7.crml 	        MW_LAYER_CRML(metadatautility_10207AF7.crml)
+
+
+
+PRJ_MMPFILES
+
+#ifdef  __3GP_EXTENTION
+#include "../3GPExtParserLib/group/bld.inf"
+#endif 
+
+MetaDataUtility.mmp
+
+//  End of File  

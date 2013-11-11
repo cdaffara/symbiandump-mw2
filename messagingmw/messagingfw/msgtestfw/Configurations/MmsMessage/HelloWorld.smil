@@ -1,0 +1,19 @@
+<smil xmlns="http://www.w3.org/2000/SMIL20/CR/Language">
+  <head>
+    <layout>
+      <root-layout width="160" height="140"/>
+      <region id="Image" width="160" height="120" left="0" top="0"/>
+      <region id="Text" width="160" height="20" left="0" top="120"/>
+    </layout>
+  </head>
+  <body>
+    <par dur="10s">
+      <img src="SmileyFace.gif" region="Image" />
+      <text src="HelloWorld.txt" region="Text" />
+    </par>
+    <par dur="10s">
+      <img src="TheEnd.gif" region="Image" />
+      <text src="TheEnd.txt" region="Text" />
+    </par>
+  </body>
+</smil>

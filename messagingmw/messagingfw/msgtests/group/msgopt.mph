@@ -1,0 +1,5 @@
+// define these to remove logging from msg components
+// the first is used in source code the second is defined
+// for mmp files (so you can #ifdef in/out flogger.lib)
+MACRO _MSG_NO_LOGGING
+#define  _MSG_NO_LOGGING_DEFINE

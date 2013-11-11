@@ -1,0 +1,1 @@
+http://www.maps.ovi.com/?la=85.100000&lo=101.102000&a=100.00&pa=12.00&aa=3.12&pid=1234&n=Nokia%20India&d=This%20is%20an%20Example&sn=2A%20Jupiter%20Block&s=Outer%20Ring%20Road&c=Bangalore&sp=Karnataka&cr=India&pz=560%20103&t=%2b91%2d9902019801&v=5.12&h=90.00&cat=dummy&w=www%2enokia%2ecom&ts=20090430:120000.100000

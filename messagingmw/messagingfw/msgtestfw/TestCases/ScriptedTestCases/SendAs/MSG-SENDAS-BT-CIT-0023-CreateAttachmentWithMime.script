@@ -1,0 +1,55 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+//! @file
+//! @SYMTestCaseID		CM-SENDAS-CIT-0023-HP
+//! @SYMTestCaseDesc		CreateAttachment with Mime Information
+//! @SYMFssID
+//! @SYMTestStatus		Defined
+//! @SYMTestPriority		High
+//! @SYMTestActions
+//! @SYMTestExpectedResults	Attachment is created with Mime Information
+//! @SYMTestType		CIT
+
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+GetBaseConstants		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0023-CreateAttachmentWithMime.ini	GetBaseConstants
+CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0023-CreateAttachmentWithMime.ini	CreateSession
+ResetMessageStore		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0023-CreateAttachmentWithMime.ini	ResetMessageStore
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0023-CreateAttachmentWithMime.ini	ChkChildrenCountDraft0
+CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0023-CreateAttachmentWithMime.ini	CreateRegistry
+GetBTMTMUId			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0023-CreateAttachmentWithMime.ini	GetBtMtmUid
+CreateService			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0023-CreateAttachmentWithMime.ini	CreateBtService
+EXECUTE_TEST_CASE
+ConnectSendAsServer		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0023-CreateAttachmentWithMime.ini	ConnectSendAsServer
+SendAsCreateMessageofType	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0023-CreateAttachmentWithMime.ini	CreateMessageofType
+SendAsAddRecipient		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0023-CreateAttachmentWithMime.ini	SendAsAddRecipient
+SendAsCreateAttachment		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0023-CreateAttachmentWithMime.ini	SendAsCreateAttachment
+SendAsSaveMessageAndClose	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0023-CreateAttachmentWithMime.ini	CloseMessage
+CloseSendAsServerConnection	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0023-CreateAttachmentWithMime.ini	CloseSvrConnection
+CHECK_POSTCONDITIONS
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0023-CreateAttachmentWithMime.ini	ChkChildrenCountDraft1
+CreateChildrenSelection		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0023-CreateAttachmentWithMime.ini	CreateChildrenSelDraft
+GetMessageAtIndex		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0023-CreateAttachmentWithMime.ini	GetMessageAtIndex
+GetEntry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0023-CreateAttachmentWithMime.ini	GetEntry
+GetAttachmentInfoByIndex	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-BT-CIT-0023-CreateAttachmentWithMime.ini	GetAttachmentInfoByIndex
+END_TEST_CASE

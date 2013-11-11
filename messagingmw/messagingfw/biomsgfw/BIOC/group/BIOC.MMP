@@ -1,0 +1,44 @@
+// Copyright (c) 1999-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// bioc.dll BIO client MTM
+// 
+//
+
+/**
+ @file
+*/
+
+TARGET        bioc.dll
+TARGETPATH    /system/libs
+TARGETTYPE    dll
+
+CAPABILITY All -TCB
+UID    0x10003C5F 0x1000125A
+VENDORID 0x70000001
+SOURCEPATH	../../BIOCSRC
+SOURCE        BIOCMTM.CPP
+SOURCE        BIOOP.CPP
+USERINCLUDE   ../../BIOCINC
+USERINCLUDE   ../../BIUTINC
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+LIBRARY       euser.lib msgs.lib
+LIBRARY       biodb.lib
+LIBRARY       bifu.lib
+LIBRARY       biut.lib
+LIBRARY       etext.lib
+LIBRARY	      efsrv.lib
+
+DEFFILE		bioc.def
+
+SMPSAFE

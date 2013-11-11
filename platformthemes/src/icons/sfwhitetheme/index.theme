@@ -1,0 +1,8 @@
+[Icon Theme]
+Name=sfwhitetheme
+Comment=Reference SF White Theme
+Hidden=false
+Directories=scalable
+PreviewIconPath_prt=/scalable/qtg_graf_theme_preview_prt.svg
+PreviewIconPath_lsc=/scalable/qtg_graf_theme_preview_lsc.svg
+PreviewThumbnailPath=/scalable/qtg_graf_theme_preview_thumbnail.svg

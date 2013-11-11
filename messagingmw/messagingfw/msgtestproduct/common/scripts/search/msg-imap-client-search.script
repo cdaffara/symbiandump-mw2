@@ -1,0 +1,66 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+LOAD_SUITE	T_MsgCommonServer -SharedData
+LOAD_SUITE	T_MsgImapServer	-SharedData
+LOAD_SUITE	T_MsgSmtpServer	-SharedData
+
+
+START_TESTCASE		MSG-IMAP-SRCH-0001
+//!	@SYMTestCaseID			MSG-IMAP-CLNT-SRCH-0001
+//!	@SYMTestCaseDesc		Retrieves all messages on the IMAP account, no search string is defined.
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			UT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			First clean out the remote inbox and local message store, send the test emails, 
+//!					get all messages and check they were all retrieved.
+//!	@SYMTestExpectedResults		The number of emails retrieved should match the number of emails that was sent
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+PRINT Running Test 1, no search string
+// Send the test emails
+RUN_TEST_STEP 	300 	T_MsgCommonServer	InitNtRas			c:\msgtest\common\search\msg-imap-client-search.ini   	0001-InitNtRas
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount		c:\msgtest\common\search\msg-imap-client-search.ini   	0001-CreateImapAccount
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\common\search\msg-imap-client-search.ini   	0001-ConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\common\search\msg-imap-client-search.ini   	0001-DoFullImap4Synchronisation
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\common\search\msg-imap-client-search.ini   	0001-DisConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4FullDownloadLimits	c:\msgtest\common\search\msg-imap-client-search.ini   	0001-SetImap4FullDownloadLimits
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\common\search\msg-imap-client-search.ini   	0001-ConnectImap4Server
+RUN_TEST_STEP 	300 	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\common\search\msg-imap-client-search.ini   	0001-DoFullImap4Synchronisation
+RUN_TEST_STEP 	900 	T_MsgImapServer		ImapInvokeAsyncFunction		c:\msgtest\common\search\msg-imap-client-search.ini   	0001-ImapInvokeAsyncFunction
+RUN_TEST_STEP	300	T_MsgCommonServer	ClientSearch			c:\msgtest\common\search\msg-imap-client-search.ini		0001-CheckChildrenCountRemoteInboxTo
+RUN_TEST_STEP	300	T_MsgCommonServer	ClientSearch			c:\msgtest\common\search\msg-imap-client-search.ini		0001-CheckChildrenCountRemoteInboxCC
+RUN_TEST_STEP	300	T_MsgCommonServer	ClientSearch			c:\msgtest\common\search\msg-imap-client-search.ini		0001-CheckChildrenCountRemoteInboxBCC
+RUN_TEST_STEP	300	T_MsgCommonServer	ClientSearch			c:\msgtest\common\search\msg-imap-client-search.ini		0001-CheckChildrenCountRemoteInboxSubject
+//RUN_TEST_STEP	300	T_MsgCommonServer	ClientSearch			c:\msgtest\common\search\msg-imap-client-search.ini		0001-CheckChildrenCountRemoteInboxDate
+RUN_TEST_STEP	300	T_MsgCommonServer	ClientSearch			c:\msgtest\common\search\msg-imap-client-search.ini		0001-CheckChildrenCountRemoteInboxBody
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\common\search\msg-imap-client-search.ini   	0001-DisConnectImap4Server
+//RUN_TEST_STEP 	300 	T_MsgCommonServer	ResetMessageStore		c:\msgtest\common\search\msg-imap-client-search.ini   	0001-ResetMessageStore
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-SRCH-0001
+

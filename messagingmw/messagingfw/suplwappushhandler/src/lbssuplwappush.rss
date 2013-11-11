@@ -1,0 +1,63 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// 10283758.RSS
+// Registry file for the SUPL WAP Push Plug-in
+// 
+//
+
+#include <ecom/registryinfo.rh>
+
+RESOURCE REGISTRY_INFO theInfo
+	{
+	// The DLL UID 
+	dll_uid = 0x10283758;
+	interfaces = 
+		{
+		INTERFACE_INFO
+		{
+		// KUidPushHandlerBase
+		interface_uid = 0x101F3E5A;
+		implementations = 
+			{
+			IMPLEMENTATION_INFO
+				{
+				// Use the DLL UID.
+				implementation_uid = 0x10283758;
+				version_no = 1;
+				display_name = "SUPL WAP Push";
+				default_data = "x-oma-application:ulp.ua||0x10";
+				opaque_data = "";
+				}
+			};
+		},		
+		INTERFACE_INFO
+			{
+			// KUidPushContentHandlerBase
+			interface_uid = 0x101F3E5E;
+			implementations = 
+				{
+				IMPLEMENTATION_INFO
+					{
+					// This is the UID of the plug-in's unit test project.
+					implementation_uid = 0x10283759;
+					version_no = 1;
+					display_name = "SUPL WAP Push";
+					default_data = "application/vnd.omaloc-supl-init||0x312";
+					opaque_data = "";
+					}
+				};
+			}	
+		};
+	}
+

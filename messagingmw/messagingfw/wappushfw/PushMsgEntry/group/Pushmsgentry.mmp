@@ -1,0 +1,59 @@
+// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// pushmsgentry.dll Stores wap push messages in the message store
+// 
+//
+
+/**
+ @file
+*/
+
+
+TARGET				pushmsgentry.dll  
+TARGETTYPE			DLL
+CAPABILITY ALL -TCB
+
+//					Shared lib uid	 PushUtils unique uid
+UID					0x1000008d	 0x1029191
+VENDORID 0x70000001
+
+SOURCEPATH			../src
+SOURCE				Pushentry.cpp PushMsgEntrydll.cpp
+SOURCE				CWapPushMsgUtils.cpp
+
+#ifdef SYMBIAN_ENABLE_SPLIT_HEADERS
+USERINCLUDE			../inc 
+#endif//SYMBIAN_ENABLE_SPLIT_HEADERS
+USERINCLUDE			 ../../pushmtm/inc 
+USERINCLUDE			../../pushwatcher/inc
+USERINCLUDE			../../pushutils/inc
+
+// MW_LAYER_SYSTEMINCLUDE_SYMBIAN has dependancy on smut.h in app layer NEEDS FIXING
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+LIBRARY				euser.lib msgs.lib estor.lib
+#ifdef EABI
+LIBRARY				ecom.lib
+#endif
+
+
+#ifdef WINS
+	DEFFILE			../../bwins/PUSHMSGENTRY.DEF
+#elif defined(GCC32)
+	DEFFILE			../../BMarm/PUSHMSGENTRY.def
+#else
+	DEFFILE			../../eabi/PUSHMSGENTRY.def
+#endif  
+
+SMPSAFE

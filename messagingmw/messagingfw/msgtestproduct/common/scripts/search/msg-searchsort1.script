@@ -1,0 +1,1551 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+LOAD_SUITE 	T_MsgCommonServer 	-SharedData
+LOAD_SUITE 	T_MsgImapServer 	-SharedData
+LOAD_SUITE  	T_MsgSmtpServer 	-SharedData
+LOAD_SUITE	T_MsgPopServer		-SharedData
+LOAD_SUITE	EventLogServer		-SharedData
+
+//! @SYMTestCaseID		MSG-ALL-SEARCH-0027
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8589, REQ8679
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDesc
+//!	Functional Test: Performance improvement for repeated search-sort operation.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1.	Create a search-sort query for "from" sender address in local inbox folder and sort by "from" field in ascending order.
+//!	2.	Perform search-sort operation.
+//!	3.	Calculate and record the time taken to return the result.
+//!	4.	Get the queryId of the search-sort query
+//!	5.	Perform search-sort operation using the queryId.
+//!	6.	Calculate and record the time.
+//!	
+//! @SYMTestExpectedResults
+//!	Turnaround time for Action 4 is less than Action2.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and create messages satisfying different search criteria.
+// As the migration of test framework completed only for EMAIL message related operations, TESTPRODUCT components would  
+// handle the EMAIL message operations and other message related opertions would be handled by TESTFRAMEWORK component.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SEARCH-0027
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer	StartUp
+
+RUN_TEST_STEP	300 EventLogServer	Clear				c:\msgtest\common\search\msg-searchsort1.ini 	
+RUN_TEST_STEP	300 EventLogServer 	Start				c:\msgtest\common\search\msg-searchsort1.ini 	0027-EventLog
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0027-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	RecordCurrentTime		c:\msgtest\common\search\msg-searchsort1.ini    0027-RecordCurrentTime1
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0027-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	RecordCurrentTime		c:\msgtest\common\search\msg-searchsort1.ini    0027-RecordCurrentTime2
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	RecordCurrentTime		c:\msgtest\common\search\msg-searchsort1.ini    0027-RecordCurrentTime1
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortResultByQueryId	c:\msgtest\common\search\msg-searchsort1.ini    0027-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	RecordCurrentTime		c:\msgtest\common\search\msg-searchsort1.ini    0027-RecordCurrentTime2
+
+RUN_TEST_STEP	300 EventLogServer 	Stop				c:\msgtest\common\search\msg-searchsort1.ini 	0027-EventLog
+RUN_TEST_STEP	300 EventLogServer 	GetRecordCount			c:\msgtest\common\search\msg-searchsort1.ini 	0027-EventLog
+RUN_TEST_STEP	300 EventLogServer 	PrintEventLog			c:\msgtest\common\search\msg-searchsort1.ini 	0027-EventLog
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+// Calculate the time span and check for time improvement 
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SEARCH-0027
+
+
+//! @SYMTestCaseID		MSG-ALL-SEARCH-0037
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDesc
+//!	Functional Test: Search all the messages containing the words of specific pattern in details part.
+//! @SYMTestCaseDependencies
+//!	Requires ced -i c:\ced_default_ras.cfg to set comms.
+//! @SYMTestActions
+//!	1. Create Search Sort query
+//!	4. Search for a query with no results repeatedly
+//!	5. Verify if result is zero & no panic occurs
+//! @SYMTestExpectedResults
+//!	Index entries for ten messages only should be returned and each entry description should contain the expected word.
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// As the migration of test framework completed only for EMAIL message related operations, TESTPRODUCT components would  
+// handle the EMAIL message operations and other message related opertions would be hanndled by TESTFRAMEWORK component.
+
+START_TESTCASE MSG-ALL-SEARCH-0037
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0037-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0037-SearchSortQuery
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortResultByQueryId	c:\msgtest\common\search\msg-searchsort1.ini    0037-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0037-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult			c:\msgtest\common\search\msg-searchsort1.ini    0037-SearchSortQuery
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SEARCH-0037
+
+//! @SYMTestCaseID		MSG-ALL-SEARCH-0019
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDesc
+//!	Functional Test: Search for email messages based on the specified (low/medium/high) priority.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1.	Select 10 message entries and set them with message priority "high"
+//!	2.	Select another 10 message entries and set them with message priority "low"
+//!	3.	Create search-sort query for searching messages with priority "low" in local inbox folder.
+//!	4.	Perform search-sort operation.
+//!	5.	Verify that messages returned are with message priority "low".
+//!	6.	Create search-sort query for searching messages with priority "medium" in local inbox folder.
+//!	7.	Perform search-sort operation.
+//!	8.	Verify that messages returned are with message priority "medium".
+//!	9.	Create search-sort query for searching messages with priority "high" in local inbox folder.
+//!	10.	Perform search-sort operation.
+//!	11.	Verify that messages returned are with message priority "high".
+//!	
+//! @SYMTestExpectedResults
+//!	1.	Search-sort operation at Action4 should return messages with priority "low".
+//!	2.	Search-sort operation at Action7 should return messages with priority "medium".
+//!	3.	Search-sort operation at Action10 should return messages with priority "high".
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and create messages satisfying different search criteria.
+// As the migration of test framework completed only for EMAIL message related operations, TESTPRODUCT components would  
+// handle the EMAIL message operations and other message related opertions would be handled by TESTFRAMEWORK component.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SEARCH-0019
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer	StartUp
+
+// Get the entries whose flags are to be modified
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0019-SearchSortQuery
+RUN_TEST_STEP 	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0019-SearchSortQuery
+
+// Serach for low priority messages
+RUN_TEST_STEP	300 T_MsgCommonServer 	ModifyIndexEntryFlags		c:\msgtest\common\search\msg-searchsort1.ini    0019-ModifyIndexEntryFlags1
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0019-SearchSortQuery1
+RUN_TEST_STEP 	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0019-SearchSortQuery1
+RUN_TEST_STEP 	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0019-SearchSortQuery1
+
+// Serach for normal priority messages
+RUN_TEST_STEP	300 T_MsgCommonServer 	ModifyIndexEntryFlags		c:\msgtest\common\search\msg-searchsort1.ini    0019-ModifyIndexEntryFlags2
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0019-SearchSortQuery2
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0019-SearchSortQuery2
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0019-SearchSortQuery2
+
+// Serach for high priority messages
+RUN_TEST_STEP	300 T_MsgCommonServer 	ModifyIndexEntryFlags		c:\msgtest\common\search\msg-searchsort1.ini    0019-ModifyIndexEntryFlags3
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0019-SearchSortQuery3
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0019-SearchSortQuery3
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0019-SearchSortQuery3
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SEARCH-0019
+
+//! @SYMTestCaseID		MSG-ALL-SEARCH-0020
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDesc
+//!	Functional Test: Search for messages with and without attachments.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1.	Create search query to search for messages with attachments in local inbox folder
+//!	2.	Perform search operation.
+//!	3.	Verify that messages returned are with attachments.
+//!	4.	Create search query to search for messages without attachments in local inbox folder
+//!	5.	Perform search operation.
+//!	6.	Verify that messages returned are without attachments
+//!	
+//! @SYMTestExpectedResults
+//!	1.	Search-sort operation at Action2 should return messages with "attachments".
+//!	2.	Search-sort operation at Action7 should return messages without "attachments".
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and create messages satisfying different search criteria.
+// As the migration of test framework completed only for EMAIL message related operations, TESTPRODUCT components would  
+// handle the EMAIL message operations and other message related opertions would be handled by TESTFRAMEWORK component.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SEARCH-0020
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP			300 T_MsgCommonServer	StartUp
+// Serach body part of a messages
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0020-SearchSortQuery1
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0020-SearchSortQuery1
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0020-SearchSortQuery1
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0020-SearchSortQuery2
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0020-SearchSortQuery2
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0020-SearchSortQuery2
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SEARCH-0020
+
+//! @SYMTestCaseID		MSG-ALL-SEARCH-0021
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589, REQ8603, REQ8609
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDesc
+//!	Functional Test: Search for messages having a specified string in the body part.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1.	Create search-sort query searching for "milestone2" in "BODY" field of inbox folder.
+//!	2.	Perform search-sort operation with case sensitive, whole word and wild card option disabled.
+//!	3.	Verify that "BODY" field contains "milestone2" string for all the returned messages and the resultant value is 6.
+//!	4.	Create search-sort query searching for "milestone2" in "BODY" field of inbox folder.
+//!	5.	Perform search-sort operation with case-insensitive option enabled and whole word option disabled.
+//!	6.	Verify that "BODY" field contains "milestone2" string for all the returned messages and the resultant count value is 3.
+//!	7.	Create search-sort query searching for "milestone2" in "BODY" field of inbox folder.
+//!	8.	Perform search-sort operation with case-insensitive option disabled and whole word option enabled.
+//!	9.	Verify that "BODY" field contains "milestone2" string for all the returned messages and the resultant count value is 2.
+//!	10.	Create search-sort query searching for "milestone2" in "BODY" field of inbox folder.
+//!	11.	Perform search-sort operation with case-insensitive and whole word option enabled.
+//!	12.	Verify that "BODY" field contains "milestone2" string for all the returned messages and the resultant count value is 1.
+//!	
+//! @SYMTestExpectedResults
+//!	1.	Action 2 should return messages with "BODY" field matching string and resultant count value as 4.
+//!	2.	Action 2 should return messages with "BODY" field matching string and resultant count value as 3.
+//!	3.	Action 2 should return messages with "BODY" field matching string and resultant count value as 2.
+//!	4.	Action 2 should return messages with "BODY" field matching string and resultant count value as 1.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and create messages satisfying different search criteria.
+// As the migration of test framework completed only for EMAIL message related operations, TESTPRODUCT components would  
+// handle the EMAIL message operations and other message related opertions would be handled by TESTFRAMEWORK component.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SEARCH-0021
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP			300 T_MsgCommonServer	StartUp
+// Serach body part of a messages
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0021-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0021-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0021-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SEARCH-0021
+
+//! @SYMTestCaseID		MSG-ALL-SEARCH-0022
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDesc
+//!	Functional Test: Search-sort for messages based on the specified date.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1.	Create a search-sort query where message date is less than "26th May 1991" and sorted by date in ascending order.
+//!	2.	Perform search-sort operation.
+//!	3.	Verify that the messages returned are dated before "26th May 1991" and sorted by date in ascending order.
+//!	
+//! @SYMTestExpectedResults
+//!	Search-sort results should contain messages dated before specified date and sorted by date in ascending order.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and create messages satisfying different search criteria.
+// As the migration of test framework completed only for EMAIL message related operations, TESTPRODUCT components would  
+// handle the EMAIL message operations and other message related opertions would be handled by TESTFRAMEWORK component.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SEARCH-0022
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP			300 T_MsgCommonServer	StartUp
+// Serach messages received before a specific date
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0022-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0022-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0022-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SEARCH-0022
+
+//! @SYMTestCaseID		MSG-ALL-SEARCH-0023
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDesc
+//!	Functional Test: Search-sort for messages based on the specified date.
+//! @SYMTestCaseDependencies
+//!	Requires ced -i c:\ced_default_ras.cfg to set comms.
+//! @SYMTestActions
+//!	1.	Create a search-sort query where message date is after "26th May 2009" and sorted by date in descending order.
+//!	2.	Perform search-sort operation.
+//!	3.	Verify that the messages returned are dated after "26th May 2009" and sorted by date in descending order.
+//!
+//! @SYMTestExpectedResults
+//!	Search-sort results should contain messages dated after specified date and sorted by date in descending order.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and create messages satisfying different search criteria.
+// As the migration of test framework completed only for EMAIL message related operations, TESTPRODUCT components would  
+// handle the EMAIL message operations and other message related opertions would be handled by TESTFRAMEWORK component.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SEARCH-0023
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP			300 T_MsgCommonServer	StartUp
+// Serach body messages received after a specific date
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0023-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0023-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0023-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SEARCH-0023
+
+
+//! @SYMTestCaseID		MSG-EMAIL-SEARCH-0001
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	Functional Test: Search-sort for recipients address  in the "TO" field of email messages.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//! 	1.	Create search-sort query for searching "test002" recipient address in "To" field of local inbox folder and sort by "To" field in ascending order.
+//! 	2.	Perform search-sort operation.
+//! 	3.	Verify that "To" field contains "test002" recipient address and sorted by "To" field in ascending order.
+//! 	
+//! @SYMTestExpectedResults
+//!	Index entries of only "test002"  recipient address messages should be returned and in ascending sorted order.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-EMAIL-SEARCH-0001
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0001-SearchSortQuery
+RUN_TEST_STEP 300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0001-SearchSortQuery
+RUN_TEST_STEP 300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0001-SearchSortQuery
+RUN_TEST_STEP 300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-searchsort1.ini    0001-SearchSortQuery
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-EMAIL-SEARCH-0001
+
+
+//! @SYMTestCaseID		MSG-EMAIL-SEARCH-0002
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	Negative Test: Search-sort for non-existent recipients address  in the "TO" field of email messages.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1.	Create search-sort query searching for "123" recipient address in "To" field of inbox folder and sort by "To" field in ascending order.
+//!	2.	Perform search-sort operation.
+//!	3.	Verify that 0 is returned.
+//!
+//! @SYMTestExpectedResults
+//!	Resultant count is 0.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-EMAIL-SEARCH-0002
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer	StartUp
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0002-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0002-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0002-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-searchsort1.ini    0002-SearchSortQuery
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-EMAIL-SEARCH-0002
+
+//! @SYMTestCaseID		MSG-EMAIL-SEARCH-0003
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	Functional Test : Search-sort for recipients address  in the "CC" field of email messages.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1.	Create search-sort query searching for "test002" recipient address in "CC" field of inbox folder and sort by "CC" field in ascending order.
+//!	2.	Perform search-sort operation.
+//!	3.	Verify that "CC" field contains "test002" recipient address and sorted by "CC" field in ascending order.
+//!	
+//! @SYMTestExpectedResults
+//!	Index entries of only "test002"  recipient address messages should be returned and in ascending sorted order.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-EMAIL-SEARCH-0003
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer	StartUp
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0003-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0003-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0003-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-searchsort1.ini    0003-SearchSortQuery
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-EMAIL-SEARCH-0003
+
+//! @SYMTestCaseID		MSG-EMAIL-SEARCH-0004
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	Negative Test: Search-sort for non-existent recipients address  in the "CC" field of email messages
+//!	
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1.	Create search-sort query searching for "123" recipient address in "CC" field of inbox folder and sort by "CC" field in ascending order.
+//!	2.	Perform search-sort operation.
+//!	3.	Verify that 0 is returned. 
+//!	
+//! @SYMTestExpectedResults
+//!	Resultant count is 0.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-EMAIL-SEARCH-0004
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer	StartUp
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0004-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0004-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0004-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-searchsort1.ini    0004-SearchSortQuery
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-EMAIL-SEARCH-0004
+
+//! @SYMTestCaseID		MSG-EMAIL-SEARCH-0005
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	Functional Test: Search-sort for recipients address in the "BCC" field of email messages.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1.	Create search-sort query searching for "test002" recipient address in "BCC" field of sent folder and sort by "BCC" field in ascending order.
+//!	2.	Perform search-sort operation.
+//!	3.	Verify that "BCC" field contains "test002" recipient address and sorted by "BCC" field in ascending order.
+//!	
+//! @SYMTestExpectedResults
+//!	Index entries of only "test002"  recipient address messages should be returned and in ascending sorted order.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-EMAIL-SEARCH-0005
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer	StartUp
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0005-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0005-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0005-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-searchsort1.ini    0005-SearchSortQuery
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-EMAIL-SEARCH-0005
+
+//! @SYMTestCaseID		MSG-EMAIL-SEARCH-0006
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	Negative Test: Search-sort for non-existent recipients address  in the "BCC" field of email messages.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1.	Create search-sort query searching for "123" recipient address in "BCC" field of sent folder and sort by "BCC" field in ascending order.
+//!	2.	Perform search-sort operation.
+//!	3.	Verify that 0 is returned. 
+//!	
+//! @SYMTestExpectedResults
+//!	Resultant count is 0.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-EMAIL-SEARCH-0006
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer	StartUp
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0006-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0006-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0006-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-searchsort1.ini    0006-SearchSortQuery
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-EMAIL-SEARCH-0006
+
+//! @SYMTestCaseID		MSG-EMAIL-SEARCH-0007
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	Functional Test: Search-sort for senders address  in the "FROM" field of email messages.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1.	Create search-sort query searching for "test002" sender address in "FROM" field of inbox folder and sort by "FROM" field in ascending order.
+//!	2.	Perform search-sort operation.
+//!	3.	Verify that " FROM" field contains "test002" sender address and sorted by "FROM" field in ascending order.
+//!	
+//! @SYMTestExpectedResults
+//!	Index entries of only "test002"  sender address messages should be returned and in ascending sorted order.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-EMAIL-SEARCH-0007
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer	StartUp
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0007-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0007-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0007-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-searchsort1.ini    0007-SearchSortQuery
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-EMAIL-SEARCH-0007
+
+//! @SYMTestCaseID		MSG-EMAIL-SEARCH-0008
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	Negative Test: Search-sort for non-existent senders address  in the "FROM" field of email messages.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1.	Create search-sort query searching for "123" sender address in "FROM" field of inbox folder and sort by "FROM" field in ascending order.
+//!	2.	Perform search-sort operation.
+//!	3.	Verify that 0 is returned.
+//!	
+//! @SYMTestExpectedResults
+//!	Resultant count is 0.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-EMAIL-SEARCH-0008
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer	StartUp
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0008-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0008-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0008-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-searchsort1.ini    0008-SearchSortQuery
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-EMAIL-SEARCH-0008
+
+//! @SYMTestCaseID		MSG-EMAIL-SEARCH-0009
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589, REQ8603, REQ8609
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDesc
+//!	Functional Test: Search-sort  in the "SUBJECT" field of email messages.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1.	Create search-sort query searching for "shares" in "SUBJECT" field of inbox folder and sort by "SUBJECT" field in ascending order.
+//!	2.	Perform search-sort operation.
+//!	3.	Verify that " SUBJECT" field contains "shares" and sorted by "SUBJECT" field in ascending order.
+//!	
+//! @SYMTestExpectedResults
+//!	Index entries of only "shares"  subject messages should be returned and in ascending sorted order.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-EMAIL-SEARCH-0009
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer	StartUp
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0009-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0009-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0009-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-searchsort1.ini    0009-SearchSortQuery
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-EMAIL-SEARCH-0009
+
+//! @SYMTestCaseID		MSG-EMAIL-SEARCH-0010
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589, REQ8603, REQ8609
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDesc
+//!	Functional Test: : Search-sort in the "SUBJECT" field of email messages
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1.	Create search-sort query searching for "this is a very nice video containing" in "SUBJECT" field of inbox folder and sort by "SUBJECT" field in ascending order.
+//!	2.	Perform search-sort operation.
+//!	3.	Verify that " SUBJECT" field contains "this is a very nice video containing" subject and sorted by "SUBJECT" field in ascending order.
+//!	
+//! @SYMTestExpectedResults
+//!	Index entries of only "this is a very nice video containing" messages should be returned and in ascending sorted order.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-EMAIL-SEARCH-0010
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer	StartUp
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0010-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0010-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0010-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-searchsort1.ini    0010-SearchSortQuery
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-EMAIL-SEARCH-0010
+
+//! @SYMTestCaseID		MSG-EMAIL-SEARCH-0011
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589, REQ8603, REQ8609
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDesc
+//!	Negative Test: Search-sort for non-existent string in "SUBJECT" field of email messages.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1.	Create search-sort query searching for "*****" in "SUBJECT" field of inbox folder and sort by "SUBJECT" field in ascending order.
+//!	2.	Perform search-sort operation.
+//!	3.	Verify that zero result is returned.
+//!	
+//! @SYMTestExpectedResults
+//!	Resultant count is 0.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-EMAIL-SEARCH-0011
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer	StartUp
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0011-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0011-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0011-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-searchsort1.ini    0011-SearchSortQuery
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-EMAIL-SEARCH-0011
+//! @SYMTestCaseID		MSG-ALL-SEARCH-0012
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDesc
+//!	Functional Test: Search-sort for email messages with size less than 42900 bytes.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1.	Create search-sort query searching for messages with size less than 42900 bytes from inbox folder and sort by "SIZE" field in descending order.
+//!	2.	Perform search-sort operation.
+//!	3.	Verify that messages with size less than 42900 bytes are returned and sorted by "SIZE" field in descending order.
+//!	
+//! @SYMTestExpectedResults
+//!	Search-sort results should contain messages with size less than 42900 bytes and sorted by size in descending order.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// As the migration of test framework completed only for EMAIL message related operations, TESTPRODUCT components would  
+// handle the EMAIL message operations and other message related opertions would be hanndled by TESTFRAMEWORK component.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SEARCH-0012
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0012-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0012-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0012-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-searchsort1.ini    0012-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SEARCH-0012
+
+//! @SYMTestCaseID		MSG-ALL-SEARCH-0013
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDesc
+//!	Functional Test: Search-sort for email messages with size greater than 42900 bytes.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1.	Create search-sort query searching for messages with size greater than 42900 bytes from inbox folder and sort by "SIZE" field in ascending order.
+//!	2.	Perform search-sort operation.
+//!	3.	Verify that messages with size greater than 42900 bytes are returned and sorted by "SIZE" field in ascending order.
+//!	
+//! @SYMTestExpectedResults
+//!	Search-sort results should contain messages with size greater than 42900 bytes and sorted by size in ascending order.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// As the migration of test framework completed only for EMAIL message related operations, TESTPRODUCT components would  
+// handle the EMAIL message operations and other message related opertions would be hanndled by TESTFRAMEWORK component.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SEARCH-0013
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0013-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0013-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0013-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-searchsort1.ini    0013-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SEARCH-0013
+
+//! @SYMTestCaseID		MSG-ALL-SEARCH-0014
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDesc
+//!	Functional Test: Search-sort for email messages with specified size range.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1.	Create search-sort query searching for messages with size within the range of 30089-42900 bytes from inbox folder and sort by "SIZE" field in descending order.
+//!	2.	Perform search-sort operation.
+//!	3.	Verify that messages with size ranging from 30089-83319 bytes are returned and sorted by "SIZE" field in descending order.
+//!	
+//! @SYMTestExpectedResults
+//!	Search-sort results should contain messages with size ranging from 30089-83319 bytes and sorted by size in descending order.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// As the migration of test framework completed only for EMAIL message related operations, TESTPRODUCT components would  
+// handle the EMAIL message operations and other message related opertions would be hanndled by TESTFRAMEWORK component.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SEARCH-0014
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0014-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0014-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0014-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-searchsort1.ini    0014-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SEARCH-0014
+
+//! @SYMTestCaseID		MSG-ALL-SEARCH-0015
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDesc
+//!	Negative Test: Search-sort for email messages with outside the specified size range.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1.	Create search-sort query searching for messages with size outside the range of 30089-42900 bytes from inbox folder and sort by "SIZE" field in descending order. 
+//!	2.	Verify that during creation of the query mentioned in step 1, the operation leaves with KErrNotSupported.
+//!	
+//! @SYMTestExpectedResults
+//!	Leaves with KErrNotSupported. 
+//!	This use case involved a condition to check if the message size is less than specified value OR greater 
+//!	than specified value. Currently search sort API supports only AND condition but not OR condition.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// As the migration of test framework completed only for EMAIL message related operations, TESTPRODUCT components would  
+// handle the EMAIL message operations and other message related opertions would be hanndled by TESTFRAMEWORK component.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SEARCH-0015
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0015-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0015-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0015-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-searchsort1.ini    0015-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SEARCH-0015
+
+//! @SYMTestCaseID		MSG-ALL-SEARCH-0016
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDesc
+//!	Negative Test: Search-sort for messages with invalid size.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1.	Create search-sort query searching for messages for size -1 bytes from inbox folder and sort by "SIZE" field in ascending order.
+//!	2.	Verify that during creation of the query mentioned in step 1, the operation leaves with KErrArgument.
+//!	
+//! @SYMTestExpectedResults
+//!	Leaves with KErrArgument.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// As the migration of test framework completed only for EMAIL message related operations, TESTPRODUCT components would  
+// handle the EMAIL message operations and other message related opertions would be hanndled by TESTFRAMEWORK component.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SEARCH-0016
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP			300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP	!Error=-6	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0016-SearchSortQuery
+RUN_TEST_STEP			300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SEARCH-0016
+
+//! @SYMTestCaseID		MSG-ALL-SEARCH-0017
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDesc
+//!	Functional Test: Search-sort all the messages with a specific message MTM/service type (EMAIL, SMS etc.)
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1.	Create search-sort query for searching "EMAIL" messages in local inbox folder and sort by "from" field in ascending order.
+//!	2.	Perform search-sort operation.
+//!	3.	Verify that messages returned are of message type "EMAIL" and sorted by "from" field in ascending order.
+//!	4.	Create search-sort query for searching "SMS" messages in local inbox folder.
+//!	5.	Perform search-sort operation.
+//!	6.	Verify that messages returned are of message type "SMS".
+//!	
+//! @SYMTestExpectedResults
+//!	1.	Search-sort operation at Action2, should return messages of type "EMAIL" and "from" filed sorted in ascending order
+//!	2.	Search-sort operation at Action 5 should return messages of type "SMS".
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// As the migration of test framework completed only for EMAIL message related operations, TESTPRODUCT components would  
+// handle the EMAIL message operations and other message related opertions would be hanndled by TESTFRAMEWORK component.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SEARCH-0017
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP			300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP			300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0017-SearchSortQuery1
+RUN_TEST_STEP			300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0017-SearchSortQuery1
+RUN_TEST_STEP			300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0017-SearchSortQuery1
+// Serach for Email messages
+RUN_TEST_STEP			300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0017-SearchSortQuery2
+RUN_TEST_STEP			300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0017-SearchSortQuery2
+RUN_TEST_STEP			300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0017-SearchSortQuery2
+
+RUN_TEST_STEP			300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0017-SearchSortQuery3
+RUN_TEST_STEP			300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0017-SearchSortQuery3
+RUN_TEST_STEP			300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0017-SearchSortQuery3
+RUN_TEST_STEP			300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SEARCH-0017
+
+//! @SYMTestCaseID		MSG-ALL-SEARCH-0018
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDesc
+//!	Functional Test: Search-sort for messages based on read/unread flag.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1.	Select 10 entries from the messages and set them as "unread"
+//!	2.	Create search-sort query for searching messages that are flagged "unread" in local inbox folder.
+//!	3.	Perform search-sort operation.
+//!	4.	Verify that messages returned are flagged "unread".
+//!	5.	Create search-sort query for searching messages that are flagged "read" in local inbox folder.
+//!	6.	Perform search-sort operation.
+//!	7.	Verify that messages returned are flagged " read".
+//!	
+//! @SYMTestExpectedResults
+//!	1.	Search-sort operation at Action3 should return messages that are flagged "unread".
+//!	2.	Search-sort operation at Action 6 should return messages that are flagged "read".
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and create messages satisfying different search criteria.
+// As the migration of test framework completed only for EMAIL message related operations, TESTPRODUCT components would  
+// handle the EMAIL message operations and other message related opertions would be handled by TESTFRAMEWORK component.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SEARCH-0018
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0018-SearchSortQuery
+RUN_TEST_STEP 300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0018-SearchSortQuery
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	ModifyIndexEntryFlags		c:\msgtest\common\search\msg-searchsort1.ini    0018-ModifyIndexEntryFlags
+
+// Serach for read messages
+RUN_TEST_STEP			300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0018-SearchSortQuery1
+RUN_TEST_STEP			300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0018-SearchSortQuery1
+RUN_TEST_STEP			300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0018-SearchSortQuery1
+// Serach for unread messages
+RUN_TEST_STEP			300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0018-SearchSortQuery2
+RUN_TEST_STEP			300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0018-SearchSortQuery2
+RUN_TEST_STEP			300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0018-SearchSortQuery2
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SEARCH-0018
+
+//! @SYMTestCaseID		MSG-ALL-SEARCH-0024
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDesc
+//!	Functional Test: Search-sort all messages within the specified date range.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1.	Create a search-sort query where message date is after "01st Jan 2007" and before "31st Dec 2007" and sorted by date in descending order.
+//!	2.	Perform search-sort operation.
+//!	3.	Verify that the messages returned are dated after "01st an 2007" and before "31st Dec 2007" and sorted by date in descending order.
+//!	
+//! @SYMTestExpectedResults
+//!	Search-sort results should contain messages dated within specified date range and sorted by date in descending order.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and create messages satisfying different search criteria.
+// As the migration of test framework completed only for EMAIL message related operations, TESTPRODUCT components would  
+// handle the EMAIL message operations and other message related opertions would be handled by TESTFRAMEWORK component.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SEARCH-0024
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP			300 T_MsgCommonServer	StartUp
+// Serach body messages received between a specific period of time
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0024-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0024-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0024-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SEARCH-0024
+
+//! @SYMTestCaseID		MSG-ALL-SEARCH-0025
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8603, REQ8609, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDesc
+//!	NegativeTest: Search-sort all messages outside the specified date range.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1.	Create a search-sort query where message date is before "01st Jan 2007" and after "31st Dec 2007" and sorted by date in descending order.
+//!	2.	Verify that during creation of the query mentioned in step 1, the operation leaves with KErrNotSupported.
+//!	
+//! @SYMTestExpectedResults
+//!	Leaves with KErrNotSupported. 
+//!	This use case involved a condition to check if the message date is less than specified value OR greater than specified value. Currently search sort API supports only AND condition but not OR condition.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and create messages satisfying different search criteria.
+// As the migration of test framework completed only for EMAIL message related operations, TESTPRODUCT components would  
+// handle the EMAIL message operations and other message related opertions would be handled by TESTFRAMEWORK component.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SEARCH-0025
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer	StartUp
+
+// Serach body messages containing a specific string
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0025-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0025-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0025-SearchSortQuery
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SEARCH-0025
+
+//! @SYMTestCaseID		MSG-ALL-SEARCH-0026
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8603, REQ8609, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDesc
+//!	Functional Test: Search for messages for body part using wild card characters like ("*" and "?").
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1.	Create search-sort query searching for "miles*2" in "BODY" field of inbox folder.
+//!	2.	Perform search-sort operation with wild card option disabled.
+//!	3.	Verify that "BODY" field contains "milestone2" string for all the returned messages and the resultant value is 1.
+//!	4.	Create search-sort query searching for "miles*2" in "BODY" field of inbox folder.
+//!	5.	Perform search-sort operation with wild card option enabled.
+//!	6.	Verify that "BODY" field contains string matching with pattern "miles*2" for all the returned messages and the resultant value is 8.
+//!	7.	Create search-sort query searching for "miles????2" in "BODY" field of inbox folder.
+//!	8.	Perform search-sort operation with wild card option enabled.
+//!	9.	Verify that "BODY" field contains string matching with pattern "miles????2" for all the returned messages and the resultant value is 8.
+//!	10.	Create search-sort query searching for "miles*2" in "BODY" field of inbox folder.
+//!	11.	Perform search-sort operation with wild card option and whole word option enabled.
+//!	12.	Verify that search-sort operation returns with error code KErrNotSupported.
+//!	
+//! @SYMTestExpectedResults
+//!	1.	Action 2 should return 1 message with matching string
+//!	2.	Action 5 should return 8 messages with matching string.
+//!	3.	Action 8 should return 8 messages with matching string.
+//!	4.	Action 11 should return error message KErrNotSupported.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and create messages satisfying different search criteria.
+// As the migration of test framework completed only for EMAIL message related operations, TESTPRODUCT components would  
+// handle the EMAIL message operations and other message related opertions would be handled by TESTFRAMEWORK component.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SEARCH-0026
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP			300 T_MsgCommonServer	StartUp
+
+// Serach body messages containing a specific pattern of string
+RUN_TEST_STEP			300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0026-SearchSortQuery1
+RUN_TEST_STEP			300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0026-SearchSortQuery1
+RUN_TEST_STEP			300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0026-SearchSortQuery1
+RUN_TEST_STEP			300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-searchsort1.ini    0026-SearchSortQuery1
+
+RUN_TEST_STEP			300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0026-SearchSortQuery2
+RUN_TEST_STEP			300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0026-SearchSortQuery2
+RUN_TEST_STEP			300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0026-SearchSortQuery2
+RUN_TEST_STEP			300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-searchsort1.ini    0026-SearchSortQuery2
+
+RUN_TEST_STEP			300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0026-SearchSortQuery3
+RUN_TEST_STEP			300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0026-SearchSortQuery3
+RUN_TEST_STEP			300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0026-SearchSortQuery3
+RUN_TEST_STEP			300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-searchsort1.ini    0026-SearchSortQuery3
+
+RUN_TEST_STEP			300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0026-SearchSortQuery4
+RUN_TEST_STEP			300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0026-SearchSortQuery4
+RUN_TEST_STEP			300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0026-SearchSortQuery4
+RUN_TEST_STEP			300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-searchsort1.ini    0026-SearchSortQuery4
+
+RUN_TEST_STEP			300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SEARCH-0026
+
+//! @SYMTestCaseID		MSG-ALL-SEARCH-0029
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8730
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDesc
+//!	Functional Test: Search for messages before and after deletion of email messages.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1.	Connect to imap account "test001".
+//!	2.	Create search-sort operation for date after "31st Dec 2007" and sort by date in ascending order.
+//!	3.	Perform search-sort operation.
+//!	4.	Verify the resultant messages are dated after "31st Dec 2007" and sorted by date in ascending order.
+//!	5.	Delete all the messages dated after  "31st Dec 2007".
+//!	6.	Perform Action 3.
+//!	7.	Verify that resultant count value is 0.
+//!	
+//! @SYMTestExpectedResults
+//!	5.	Resultant messages are dated after "31st Dec 2007" and sorted by date in ascending order.
+//!	6.	Action 6 resultant count value is 0.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and create messages satisfying different search criteria.
+// As the migration of test framework completed only for EMAIL message related operations, TESTPRODUCT components would  
+// handle the EMAIL message operations and other message related opertions would be handled by TESTFRAMEWORK component.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+//START_TESTCASE MSG-ALL-SEARCH-0029
+//PRINT Setup Begins #####################################################
+//RUN_TEST_STEP	300 T_MsgCommonServer	StartUp
+
+//RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0029-SearchSortQuery
+//RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0029-SearchSortQuery
+//RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0029-SearchSortQuery
+//RUN_TEST_STEP	300 T_MsgCommonServer 	DeleteMessageSelection		c:\msgtest\common\search\msg-searchsort1.ini    0029-DeleteMessage1
+//RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortResultByQueryId	c:\msgtest\common\search\msg-searchsort1.ini    0029-SearchSortQuery
+//RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0029-SearchSortQuery
+
+//RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+//PRINT Execute Completed ################################################
+//END_TESTCASE MSG-ALL-SEARCH-0029
+
+//! @SYMTestCaseID		MSG-ALL-SEARCH-0032
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8588, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	Functional Test: Search for messages with spcific attachment type(File, linked or entry attachments).
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//! 	1.	Create search-sort query against attachment field for messages with file attachment in sent folder.
+//! 	2.	Perform search-sort operation
+//! 	3.	Verify as all the messages retuned by search mechanism are having only file attachments.
+//! 	4.	Create search-sort query against attachment field for messages with Linked file attachment in sent folder.
+//! 	5.	Perform search-sort operation
+//! 	6.	Verify as all the messages retuned by search mechanism are having only Linked file attachments.
+//! 	7.	Create search-sort query against attachment field for messages with Message entry attachment in sent folder.
+//! 	8.	Perform search-sort operation
+//! 	9.	Verify as all the messages retuned by search mechanism are having only Message entry attachments.
+//!
+//! @SYMTestExpectedResults
+//!	Index entries matching as per the search-sort criteria.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+// Following lines need to be uncommented after defect DEF122606 got fixed.
+// START_TESTCASE MSG-ALL-SEARCH-0032
+// PRINT Setup Begins #####################################################
+// RUN_TEST_STEP	300 T_MsgCommonServer  	StartUp
+
+// RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0032-FileAttachmentSearch
+// RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0032-FileAttachmentSearch
+// RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0032-FileAttachmentSearch
+
+// RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0032-LinkedAttachmentSearch
+// RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0032-LinkedAttachmentSearch
+// RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0032-LinkedAttachmentSearch
+
+// RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0032-EntryAttachmentSearch
+// RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0032-EntryAttachmentSearch
+// RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0032-EntryAttachmentSearch
+
+// RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+// PRINT Execute Completed ################################################
+// END_TESTCASE MSG-ALL-SEARCH-0032
+
+//! @SYMTestCaseID		MSG-ALL-SEARCH-0033
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDesc
+//!	Functional Test: Search all the messages containing the words of specific pattern in description part.
+//! @SYMTestCaseDependencies
+//!	Requires ced -i c:\ced_default_ras.cfg to set comms.
+//! @SYMTestActions
+//!	1. Create different services (EMAIL, SMS).
+//!	2. Create 30 messages and send them. Messages created should satisfy the following conditions:
+//!		a. Only 10 messages should be of size 100 KB or less and other messages should be of more size.
+//!	3. Perform the send/receive operation.
+//!	4. Search all the messages having size less then or equal to 100 KB.
+//!	5. Verify if only ten messages are satisfying the search criteria. 
+
+//! @SYMTestExpectedResults
+//!	Index entries for ten messages only should be returned and each entry description should contain the expected word.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// As the migration of test framework completed only for EMAIL message related operations, TESTPRODUCT components would  
+// handle the EMAIL message operations and other message related opertions would be hanndled by TESTFRAMEWORK component.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SEARCH-0033
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0033-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0033-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0033-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-searchsort1.ini    0033-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SEARCH-0033
+
+//! @SYMTestCaseID		MSG-ALL-SEARCH-0034
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDesc
+//!	Functional Test: Search all the messages containing the words of specific pattern in details part.
+//! @SYMTestCaseDependencies
+//!	Requires ced -i c:\ced_default_ras.cfg to set comms.
+//! @SYMTestActions
+//!	1. Create different services (EMAIL, SMS).
+//!	2. Create 30 messages and send them. Messages created should satisfy the following conditions:
+//!		a. Only 10 messages should be of size 100 KB or less and other messages should be of more size.
+//!	3. Perform the send/receive operation.
+//!	4. Search all the messages having size less then or equal to 100 KB.
+//!	5. Verify if only ten messages are satisfying the search criteria. 
+
+//! @SYMTestExpectedResults
+//!	Index entries for ten messages only should be returned and each entry description should contain the expected word.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// As the migration of test framework completed only for EMAIL message related operations, TESTPRODUCT components would  
+// handle the EMAIL message operations and other message related opertions would be hanndled by TESTFRAMEWORK component.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SEARCH-0034
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0034-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0034-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0034-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-searchsort1.ini    0034-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SEARCH-0034
+
+//! @SYMTestCaseID		MSG-ALL-SEARCH-0035
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDesc
+//!	Functional Test: Search all the messages containing the words of specific pattern in details part.
+//! @SYMTestCaseDependencies
+//!	Requires ced -i c:\ced_default_ras.cfg to set comms.
+//! @SYMTestActions
+//!	1. Create different services (EMAIL, SMS).
+//!	2. Create 30 messages and send them. Messages created should satisfy the following conditions:
+//!		a. Only 10 messages should be of size 100 KB or less and other messages should be of more size.
+//!	3. Perform the send/receive operation.
+//!	4. Search all the messages having size less then or equal to 100 KB.
+//!	5. Verify if only ten messages are satisfying the search criteria. 
+
+//! @SYMTestExpectedResults
+//!	Index entries for ten messages only should be returned and each entry description should contain the expected word.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// As the migration of test framework completed only for EMAIL message related operations, TESTPRODUCT components would  
+// handle the EMAIL message operations and other message related opertions would be hanndled by TESTFRAMEWORK component.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SEARCH-0035
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0035-SearchSortQuery1
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0035-SearchSortQuery1
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0035-SearchSortQuery1
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0035-SearchSortQuery2
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0035-SearchSortQuery2
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0035-SearchSortQuery2
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortResultByQueryId	c:\msgtest\common\search\msg-searchsort1.ini    0035-SearchSortQuery1
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0035-SearchSortQuery1
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortResultByQueryId	c:\msgtest\common\search\msg-searchsort1.ini    0035-SearchSortQuery2
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0035-SearchSortQuery2
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SEARCH-0035
+
+//! @SYMTestCaseID		MSG-ALL-SEARCH-0036
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDesc
+//!	Negative Test: Search behaviour against size field when data supplied for the same is invalid one.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1. Set the serch option on message size field and pass a string or negative integer as input data.
+//!	2. Perform serarch operation.
+//! @SYMTestExpectedResults
+//!	Search operation should return the error code KErrArgument(-6)
+//! @SYMAuthor			Pramod Das
+
+START_TESTCASE MSG-ALL-SEARCH-0036
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP			300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP	!Error=-6	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0016-SearchSortQuery
+RUN_TEST_STEP			300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SEARCH-0036
+
+//! @SYMTestCaseID		MSG-ALL-SEARCH-0028
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8730
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDesc
+//!	Functional Test: Search-sort operation for repeated queries before and after modifications to messages.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1.	Connect to imap account "test001".
+//!	2.	Create search-sort operation for date after "31st Dec 2007" and sort by date in ascending order.
+//!	3.	Perform search-sort operation.
+//!	4.	Verify the resultant messages are dated after "31st Dec 2007" and sorted by date in ascending order.
+//!	5.	Create 2 new messages with date "01st Jan 2008".
+//!	6.	Create another 3 messages with date "30th Dec 2007".
+//!	7.	Perform Action 3.
+//!	8.	Verify that resultant count value is 2 more than the previous resultant count of Action 3 and also verify that messages returned is dated after "31st Dec 2007".
+//!	9.	Delete 4 messages, those are with time-stamp after 31st Dec 2007, from the imap account.
+//!	10.	Perform Action 3.
+//!	11.	Verify that resultant count value is 4 less than the resultant count value of Action 7 and verify that messages returned is dated after "31st Dec 2007".
+//!	12.	Modify 3 messages that are dated after "31st Dec 2007" by setting unread flag.
+//!	13.	Perform Action 3.
+//!	14.	Verify that resultant count value is same as resultant count value of Action 10 and verify that messages returned are dated after "31st Dec 2007". 
+//!	
+//! @SYMTestExpectedResults
+//!	1.	Resultant messages are dated after "31st Dec 2007" and sorted by date in ascending order.
+//!	2.	Action 7 resultant count value is 2 more than the resultant count value of Action 3.
+//!	3.	Action 10 resultant count value is 4 less than the resultant count value of Action 7.
+//!	4.	Action 13 resultant count value is same as resultant count value of Action 10.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and create messages satisfying different search criteria.
+// As the migration of test framework completed only for EMAIL message related operations, TESTPRODUCT components would  
+// handle the EMAIL message operations and other message related opertions would be handled by TESTFRAMEWORK component.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SEARCH-0028
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP			300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP			300 T_MsgImapServer	StartUp
+RUN_TEST_STEP			300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP			300 T_MsgCommonServer 	InitNtRas			c:\msgtest\common\search\msg-searchsort1.ini    0028-InitNtRas
+
+RUN_TEST_STEP			300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0028-SearchSortQuery
+RUN_TEST_STEP			300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0028-SearchSortQuery
+
+// Connect to the mailbox and perform send receive operation(For serch on Remote service)
+// Alternatively, if serching on Local service, copy some messages to to local folder.
+RUN_TEST_STEP			300 T_MsgCommonServer 	ChangeHomeTime			c:\msgtest\common\search\msg-searchsort1.ini	0028-ChangeHomeTime1
+RUN_TEST_STEP			300 T_MsgSmtpServer    	CreateSmtpMessageFromEmailFile	c:\msgtest\common\search\msg-searchsort1.ini    0028-CreateSmtpMessage1
+RUN_TEST_STEP			300 T_MsgSmtpServer    	SendSmtpMessage			c:\msgtest\common\search\msg-searchsort1.ini    0028-SendMessage1
+RUN_TEST_STEP			300 T_MsgSmtpServer    	CreateSmtpMessageFromEmailFile	c:\msgtest\common\search\msg-searchsort1.ini    0028-CreateSmtpMessage2
+RUN_TEST_STEP			300 T_MsgSmtpServer    	SendSmtpMessage			c:\msgtest\common\search\msg-searchsort1.ini    0028-SendMessage2
+
+RUN_TEST_STEP			300 T_MsgCommonServer 	ChangeHomeTime			c:\msgtest\common\search\msg-searchsort1.ini	0028-ChangeHomeTime1
+RUN_TEST_STEP			300 T_MsgSmtpServer    	CreateSmtpMessageFromEmailFile	c:\msgtest\common\search\msg-searchsort1.ini    0028-CreateSmtpMessage3
+RUN_TEST_STEP			300 T_MsgSmtpServer    	SendSmtpMessage			c:\msgtest\common\search\msg-searchsort1.ini    0028-SendMessage3
+RUN_TEST_STEP			300 T_MsgSmtpServer    	CreateSmtpMessageFromEmailFile	c:\msgtest\common\search\msg-searchsort1.ini    0028-CreateSmtpMessage4
+RUN_TEST_STEP			300 T_MsgSmtpServer    	SendSmtpMessage			c:\msgtest\common\search\msg-searchsort1.ini    0028-SendMessage4
+RUN_TEST_STEP			300 T_MsgSmtpServer    	CreateSmtpMessageFromEmailFile	c:\msgtest\common\search\msg-searchsort1.ini    0028-CreateSmtpMessage5
+RUN_TEST_STEP			300 T_MsgSmtpServer    	SendSmtpMessage			c:\msgtest\common\search\msg-searchsort1.ini    0028-SendMessage5
+
+RUN_TEST_STEP			300 T_MsgImapServer	ConnectAndSyncImapServer	c:\msgtest\common\search\msg-searchsort1.ini    0028-ConnectAndSyncImapServer
+RUN_TEST_STEP			300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\common\search\msg-searchsort1.ini    0028-ConnectAndSyncImapServer
+
+RUN_TEST_STEP			300 T_MsgCommonServer 	SearchSortResultByQueryId	c:\msgtest\common\search\msg-searchsort1.ini    0028-SearchSortQuery
+RUN_TEST_STEP			300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0028-SearchSortQuery
+
+// Delete few messages
+RUN_TEST_STEP			300 T_MsgImapServer 	DeleteMessage			c:\msgtest\common\search\msg-searchsort1.ini    0028-DeleteMessage1
+RUN_TEST_STEP			300 T_MsgImapServer 	DeleteMessage			c:\msgtest\common\search\msg-searchsort1.ini    0028-DeleteMessage2
+RUN_TEST_STEP			300 T_MsgImapServer 	DeleteMessage			c:\msgtest\common\search\msg-searchsort1.ini    0028-DeleteMessage3
+RUN_TEST_STEP			300 T_MsgImapServer 	DeleteMessage			c:\msgtest\common\search\msg-searchsort1.ini    0028-DeleteMessage4
+
+RUN_TEST_STEP			300 T_MsgCommonServer 	SearchSortResultByQueryId	c:\msgtest\common\search\msg-searchsort1.ini    0028-SearchSortQuery
+RUN_TEST_STEP			300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0028-SearchSortQuery
+
+RUN_TEST_STEP			300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP			300 T_MsgImapServer	ShutDown
+RUN_TEST_STEP			300 T_MsgCommonServer	ShutDown
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SEARCH-0028
+
+//! @SYMTestCaseID		MSG-FOLDER-SEARCH-0031
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDesc
+//!	Functional Test: Search all the messages under a specified folder for the specified search criteria.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1. Create multiple email services.
+//!	2. Create multiple folders under a particular service. Create a sub-folder (say "friends").
+//!	3. Create multiple messages under different services and send them to the mailbox that holds the subfolder "friends".
+//!	4. Perform the receive operation.
+//!	5. Copy/Move the messages to subfolder "friends".
+//!	6. Search all the messages under "friends" with different search criteria mentioned in the above test cases.
+//!	7. Determine the expected result for each search criteria.
+//!	8. Check if the results returned by search mechanism are same as expected.
+//! @SYMTestExpectedResults
+//!	Message returned by search mechanism are same as expected.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and create messages satisfying different search criteria.
+// As the migration of test framework completed only for EMAIL message related operations, TESTPRODUCT components would  
+// handle the EMAIL message operations and other message related opertions would be handled by TESTFRAMEWORK component.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-FOLDER-SEARCH-0031
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300 T_MsgImapServer	StartUp
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	InitNtRas			c:\msgtest\common\search\msg-searchsort1.ini    0031-InitNtRas
+// Connect to the mailbox
+RUN_TEST_STEP	300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\common\search\msg-searchsort1.ini  	0031-ChangeImapSettings
+RUN_TEST_STEP	300 T_MsgImapServer	ConnectAndSyncImapServer	c:\msgtest\common\search\msg-searchsort1.ini  	0031-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 T_MsgImapServer	CreateImap4Folder		c:\msgtest\common\search\msg-searchsort1.ini    0031-CreateImap4Folder1
+RUN_TEST_STEP 	300 T_MsgImapServer	CreateImap4Folder		c:\msgtest\common\search\msg-searchsort1.ini    0031-CreateImap4Folder2
+RUN_TEST_STEP 	300 T_MsgImapServer	CreateImap4Folder		c:\msgtest\common\search\msg-searchsort1.ini    0031-CreateImap4Folder3
+RUN_TEST_STEP 	300 T_MsgImapServer	CopyImapSelectionRemote		c:\msgtest\common\search\msg-searchsort1.ini  	0031-CopyImapSelectionRemote
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort1.ini    0031-SearchSortByQueryObject
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort1.ini    0031-SearchSortByQueryObject
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort1.ini    0031-SearchSortByQueryObject
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-searchsort1.ini    0031-SearchSortByQueryObject
+
+RUN_TEST_STEP	300 T_MsgImapServer	DeleteAllImapChildren		c:\msgtest\common\search\msg-searchsort1.ini  	0031-DeleteAllImapChildren
+RUN_TEST_STEP	300 T_MsgImapServer	DeleteImap4Folder		c:\msgtest\common\search\msg-searchsort1.ini  	0031-DeleteFolder3
+
+RUN_TEST_STEP	300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\common\search\msg-searchsort1.ini  	0031-DisConnectImap4Server
+
+RUN_TEST_STEP	300 T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-FOLDER-SEARCH-0031
+
+

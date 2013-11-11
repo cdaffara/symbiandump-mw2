@@ -1,0 +1,25 @@
+[main]
+email_client_test email
+
+[email]
+imap_client_test imap_1
+
+[imap_1]
+clean_message_folder
+start_client_session
+select_root_folder
+imap_service imap_service_1
+select_root_folder
+select_folder local
+select_folder outbox
+create_email_message emailsmoke test.txt
+select_all_messages
+
+
+[imap_service_1]
+//set_name psion9
+set_server imap.demon.co.uk
+set_user psion9
+set_pass Bag9Nut
+add_iap 3
+

@@ -1,0 +1,5 @@
+EXPORTS
+	_ZN10CIrWatcher4NewLER3RFsR11CWatcherLog @ 1 NONAME
+	_ZTI10CIrWatcher @ 2 NONAME ; #<TI>#
+	_ZTV10CIrWatcher @ 3 NONAME ; #<VT>#
+

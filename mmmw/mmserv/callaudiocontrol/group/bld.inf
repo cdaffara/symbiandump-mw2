@@ -1,0 +1,43 @@
+/*
+* Copyright (c) 2007-2008 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Call Audio Control
+*
+*/
+
+
+#ifdef __SERIES60_31__
+#include <domain/osextensions/platform_paths.hrh>
+#else
+#include <platform_paths.hrh>
+#endif
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+../data/CallAudioControl_Stub.sis   /epoc32/data/z/system/install/callaudiocontrol_stub.sis
+../data/backup_registration.xml     /epoc32/data/z/private/10207bd2/backup_registration.xml
+
+#ifdef __SERIES60_31__
+../rom/CallAudioControl.iby  /epoc32/rom/include/CallAudioControl.iby
+#else
+../rom/CallAudioControl.iby  CORE_MW_LAYER_IBY_EXPORT_PATH(CallAudioControl.iby)
+#endif
+
+PRJ_MMPFILES
+CallAudioControl.mmp
+
+
+//  End of File  

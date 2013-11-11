@@ -1,0 +1,67 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  harvester server project specification
+*
+*/
+
+
+
+#include <data_caging_paths.hrh>
+#include <platform_paths.hrh>
+
+TARGET                  mpxharvesterserver.exe
+TARGETTYPE              exe
+UID                     0 0x101FFCA9
+#ifdef WINSCW
+EPOCHEAPSIZE            0x1000 0x500000
+#else
+EPOCHEAPSIZE            0x1000 0x800000
+#endif
+EPOCSTACKSIZE           0x5000
+
+CAPABILITY              CAP_SERVER DRM AllFiles
+VENDORID                VID_DEFAULT
+
+SOURCEPATH              ../src
+
+// Core
+SOURCE                  mpxharvesterserver.cpp
+SOURCE                  mpxharvestersession.cpp
+SOURCE                  mpxharvesterengine.cpp
+
+// System events
+SOURCE                  mpxfsformatmonitor.cpp
+SOURCE                  mpxmediaremovalmonitor.cpp
+SOURCE                  mpxconnectioneventhandler.cpp
+
+USERINCLUDE             ../inc
+USERINCLUDE             ../../inc
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY                 euser.lib
+LIBRARY                 efsrv.lib
+LIBRARY                 bafl.lib   // For CBaBackupSessionWrapper
+LIBRARY                 estor.lib
+LIBRARY                 mpxfilehandler.lib
+LIBRARY                 mpxcollectionutility.lib
+LIBRARY                 mpxcommon.lib
+LIBRARY                 mpxplaylistengine.lib
+LIBRARY                 mpxplaybackutility.lib
+LIBRARY                 usbman.lib
+LIBRARY                 PlatformEnv.lib
+LIBRARY                 disknotifyhandler.lib
+
+SMPSAFE
+

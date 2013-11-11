@@ -1,0 +1,56 @@
+[main]
+email_client_test email
+email_client_test select
+
+[email]
+smtp_client_test smtp
+
+[select]
+smtp_client_test delete
+
+[smtp]
+clean_message_folder
+start_client_session
+select_root_folder
+smtp_service smtp_service
+select_destination_folder test
+select_root_folder
+select_folder local
+select_folder inbox
+create_email_message emailsmoke rfc822test.txt 75
+select_root_folder
+select_folder local
+select_folder sent
+create_email_message emailsmoke rfc822test.txt 25
+reset_client
+
+[delete]
+start_client_session
+select_root_folder
+smtp_service smtp_service
+select_destination_folder test
+select_root_folder
+select_folder local
+select_folder inbox
+select_all_messages 
+check_selection_count 301
+add_comment ---- Deleting 300 Inbox messages ---->
+delete
+add_comment ---- Deleted  300 Inbox messages ---->
+select_root_folder
+select_folder local
+select_folder sent
+select_all_messages
+check_selection_count 100
+add_comment ---- Deleting 100 Sent messages ---->
+delete
+add_comment ---- Deleted  100 Sent messages ---->
+reset_client
+
+[smtp_service]
+set_alias test
+set_server lon-paulr01.intra
+
+
+
+

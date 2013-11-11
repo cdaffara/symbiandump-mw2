@@ -1,0 +1,239 @@
+/* Widget color groups */
+
+
+@variables
+{
+/* Default palette */
+qtc_default_decor_normal:#ffffff;
+qtc_default_decor_pressed:#FFFFFF;
+qtc_default_decor_latched:#FFFFFF;
+qtc_default_decor_highlight:#FFFFFF;
+qtc_default_decor_disabled:#9B9B9B; 
+qtc_default_main_pane_normal:#ffffff;
+qtc_default_main_pane_pressed:#3F89A9;
+qtc_default_main_pane_latched:#009CEF;
+qtc_default_main_pane_highlight:#B27200;
+qtc_default_main_pane_disabled:#9B9B9B; 
+qtc_default_popup_normal:#ffffff;
+qtc_default_popup_pressed:#FFFFFF;
+qtc_default_popup_latched:#FFFFFF;
+qtc_default_popup_highlight:#FFFFFF;
+qtc_default_popup_disabled:#9B9B9B;
+
+/* Title pane */
+qtc_title_pane_normal:#ffffff; /* Modified 26.05.2010 */
+qtc_title_pane_pressed:#FFFFFF;
+qtc_title_pane_highlight:#FFFFFF;
+qtc_title_pane_latched:#ffffff; /* Modified 26.05.2010 */
+qtc_title_pane_trans_normal:#FFFFFF;
+qtc_title_pane_trans_pressed:#FFFFFF;
+qtc_title_pane_trans_highlight:#FFFFFF;
+qtc_title_pane_trans_latched:#FFFFFF;
+qtc_status_pane:#FFFFFF; /* Added 05.02.2010 */
+qtc_status_pane_trans:#FFFFFF; /* Added 05.02.2010 */
+
+/* Main area - View */
+qtc_view_normal:#ffffff;
+qtc_view_pressed:#ffffff;
+qtc_view_line_normal:#A0A0A0;
+qtc_view_link_normal:#33C8FF;
+qtc_view_visited_normal:#B378FF;
+qtc_view_separator_normal:#9B9B9B;
+qtc_view_normal_secondary:#519FB9; /* Modified 26.08.2010 */
+
+/* Main area - View title */
+qtc_viewtitle_normal:#ffffff;
+
+/* Main area - Grid */ 
+qtc_grid_normal:#595B5D;
+qtc_grid_pressed:#FFFFFF;
+qtc_grid_highlight:#FFFFFF;
+qtc_grid_latched:#FFFFFF; /* Added 05.02.2010 */
+qtc_grid_disabled:#9B9B9B; /* Modified 01.03.2010 */
+
+/* Main area - List */ 
+qtc_list_item_title_normal:#ffffff;
+qtc_list_item_content_normal:#519FB9;
+qtc_list_item_parent_normal:#ffffff;
+qtc_list_item_pressed:#FFFFFF;
+qtc_list_item_highlight:#FFFFFF;
+qtc_list_item_disabled:#A0A0A0;
+qtc_list_item_latched:#FFFFFF; /* Added 05.02.2010 */
+qtc_list_item_separator:#ffffff; /* Added 22.02.2010 */
+
+/* Button */
+qtc_button_normal:#ffffff;
+qtc_button_pressed:#FFFFFF;
+qtc_button_latched:#FFFFFF;
+qtc_button_highlight:#FFFFFF;
+qtc_button_disabled:#787878;
+
+/* LineEdit */
+qtc_lineedit_normal:#ffffff;
+qtc_lineedit_selected:#FFFFFF;
+qtc_lineedit_marker_normal:#ffffff;
+qtc_lineedit_hint_normal:#A0A0A0;
+qtc_lineedit_cursor:#519FB9; /* Added 25.08.2010 */
+
+/* Combobox */ 
+qtc_combobox_normal:#ffffff;
+qtc_combobox_pressed:#FFFFFF;
+qtc_combobox_highlight:#ffffff;
+qtc_combobox_disabled:#787878;
+qtc_combobox_edit:#ffffff;
+qtc_combobox_latched:#FFFFFF; /* Added 05.02.2010 */
+
+/* Tumbler */
+qtc_tumbler_normal:#ffffff;
+qtc_tumbler_selected:#FFFFFF;
+qtc_tumbler_highlight:#FFFFFF;
+
+/* Main area - DataForm */
+qtc_dataform_heading:#FFFFFF; /* Modified 10.06.2010 */
+qtc_dataform_heading_link:#8CE0FF; /* Modified 10.06.2010 */
+
+/* Main area - ProgressSlider */
+qtc_progslider_normal:#ffffff; /* Added 09.02.2010 */
+qtc_progslider_pressed:#FFFFFF; /* Added 09.02.2010 */
+
+/* Main area - TextEdit */
+qtc_textedit_normal:#ffffff;
+qtc_textedit_selected:#FFFFFF;
+qtc_textedit_marker_normal:#ffffff;
+qtc_textedit_hint_normal:#A0A0A0;
+qtc_textedit_cursor:#519FB9; /* Added 25.08.2010 */
+
+/* Main area - Toolbar */
+qtc_toolbar_normal:#ffffff;
+qtc_toolbar_pressed:#ffffff;
+qtc_toolbar_latched:#FFFFFF;
+qtc_toolbar_disabled:#787878;
+qtc_toolbar_highlight:#ffffff;
+qtc_toolbar_trans_normal:#FFFFFF;
+qtc_toolbar_trans_pressed:#FFFFFF;
+qtc_toolbar_trans_latched:#FFFFFF;
+qtc_toolbar_trans_disabled:#FFFFFF;
+qtc_toolbar_trans_highlight:#FFFFFF;
+
+/* Main area - Groupbox */
+qtc_groupbox_normal:#ffffff;
+qtc_groupbox_pressed:#FFFFFF;
+qtc_groupbox_highlight:#FFFFFF;
+
+/* Pop-ups - Generic pop-up */ 
+qtc_popup_sk_normal:#ffffff;
+qtc_popup_sk_highlight:#FFFFFF;
+qtc_popup_sk_pressed:#FFFFFF;
+qtc_popup_sk_disabled:#787878; /* Added 05.02.2010 */
+qtc_popup_heading_normal:#ffffff;
+qtc_popup_normal:#ffffff;
+qtc_popup_link:#8CE0FF; /* Added 16.02.2010 */
+
+/* Pop-ups - Preview pop-up */
+qtc_popup_preview_normal:#FFFFFF;
+qtc_popup_preview_pressed:#FFFFFF;
+qtc_popup_preview_link:#8CE0FF;
+
+/* Pop-ups - Transparent pop-up */
+qtc_popup_trans_normal:#FFFFFF;
+qtc_popup_trans_pressed:#FFFFFF;
+qtc_popup_trans_link:#8CE0FF;
+
+/* Pop-ups - Grid in a pop-up */
+qtc_popup_grid_normal:#ffffff;
+qtc_popup_grid_pressed:#FFFFFF; 
+qtc_popup_grid_highlight:#FFFFFF;
+qtc_popup_grid_disabled:#787878;
+qtc_popup_grid_latched:#FFFFFF; /* Added 05.02.2010 */
+qtc_popup_grid_trans_normal:#FFFFFF; /* Added 05.02.2010 */
+
+/* Pop-ups - List in a pop-up */ 
+qtc_popup_list_title_normal:#ffffff;
+qtc_popup_list_item_content_normal:#b4d4de;
+qtc_popup_list_item_parent_normal:#ffffff;
+qtc_popup_list_item_pressed:#FFFFFF;
+qtc_popup_list_item_highlight:#FFFFFF;
+qtc_popup_list_item_disabled:#787878;
+qtc_popup_list_item_latched:#FFFFFF; /* Added 05.02.2010 */
+qtc_popup_list_item_trans_normal:#FFFFFF; /* Added 12.02.2010 */
+
+/* Virtual inputs */
+qtc_input_button_normal:#505050; /* Modified 19.02.2010 */
+qtc_input_button_accented_normal:#ffffff; /* Added 22.02.2010 */
+qtc_input_button_pressed:#FFFFFF; /* Modified 19.02.2010 */
+qtc_input_button_latched:#FFFFFF; /* Modified 19.02.2010 */
+qtc_input_button_disabled:#787878; /* Modified 19.02.2010 */
+qtc_input_function_normal:#FFFFFF; /* Modified 19.02.2010 */
+qtc_input_function_pressed:#FFFFFF; /* Modified 19.02.2010 */
+qtc_input_function_latched:#FFFFFF; /* Modified 19.02.2010 */
+qtc_input_function_disabled:#646464; /* Modified 19.02.2010 */
+qtc_input_preview_normal:#ffffff; /* Modified 22.02.2010 */
+qtc_input_hint_normal:#A0A0A0; /* Added 05.03.2010 */
+qtc_input_grid_line:#ffffff; /* Added 12.03.2010 */
+
+/* Application specific color groups */
+
+
+
+/* Application specific - Conversational list */ 
+qtc_conv_list_received_normal:#ffffff; /* Modified 05.02.2010 */
+qtc_conv_list_received_pressed:#FFFFFF; /* Modified 05.02.2010 */
+qtc_conv_list_received_highlight:#FFFFFF; /* Modified 05.02.2010 */
+qtc_conv_list_sent_normal:#ffffff; /* Modified 05.02.2010 */
+qtc_conv_list_sent_pressed:#FFFFFF; /* Modified 05.02.2010 */
+qtc_conv_list_sent_highlight:#FFFFFF; /* Modified 05.02.2010 */
+qtc_conv_list_dimmed:#ffffff; /* Added 26.03.2010 */
+
+/* Application specific - Calendar */ 
+qtc_cal_grid_line:#DCDCDC; /* Added 05.02.2010 */
+qtc_cal_month_highlighted_text:#FFFFFF; /* Added 05.02.2010 */
+qtc_cal_month_active_dates:#ffffff; /* Added 05.02.2010 */
+qtc_cal_month_notactive_dates:#A0A0A0; /* Added 05.02.2010 */
+qtc_cal_month_current_day:#66CCAD; /* Added 05.02.2010 */
+qtc_cal_week_day:#ffffff; /* Added 05.02.2010 */
+qtc_cal_day_preview_heading:#FFFFFF; /* Added 05.02.2010 */
+qtc_cal_day_preview_text:#ffffff; /* Modified 02.08.2010 */
+qtc_cal_day_hour_lines:#ffffff; /* Added 05.02.2010 */
+qtc_cal_monthgrid_title:#FFFFFF; /* Added 05.02.2010 */
+qtc_cal_view_text:#ffffff; /* Added 14.06.2010 */
+qtc_cal_meeting_text:#ffffff; /* Added 17.08.2010 */
+
+/* Application specific - Call handling */ 
+qtc_callhandling_answer_normal:#FFFFFF; /* Added 05.02.2010 */
+qtc_callhandling_answer_pressed:#FFFFFF; /* Added 05.02.2010 */
+qtc_callhandling_answer_highlight:#FFFFFF; /* Added 05.02.2010 */
+qtc_callhandling_reject_normal:#FFFFFF; /* Added 05.02.2010 */
+qtc_callhandling_reject_pressed:#FFFFFF; /* Added 05.02.2010 */
+qtc_callhandling_reject_highlight:#FFFFFF; /* Added 05.02.2010 */
+
+/* Application specific - Home screen */ 
+qtc_hs_list_item_title_normal:#ffffff; /* Added 05.02.2010 */
+qtc_hs_list_title2_normal:#ffffff;
+qtc_hs_list_item_content_normal:#519FB9; /* Added 05.02.2010 */
+qtc_hs_list_item_pressed:#FFFFFF; /* Added 05.02.2010 */
+qtc_hs_list_item_latched:#FFFFFF;
+qtc_hs_list_item_highlight:#FFFFFF; /* Added 05.02.2010 */
+qtc_hs_badge:#FFFFFF; /* Added 01.03.2010 */
+qtc_hs_cal:#ffffff; /* Added 18.03.2010 */
+qtc_hs_snapguide:#f7931e; /* Added 24.05.2010 */
+
+/* Application specific - Radio & Calculator */ 
+qtc_lcd_title_normal:#ffffff; /* Added 11.02.2010 */
+qtc_lcd_content_normal:#519FB9; /* Added 11.02.2010 */
+qtc_lcd_link_normal:#33C8FF; /* Added 22.02.2010 */
+qtc_radio_tuner_normal:#ffffff; /* Added 05.02.2010 */
+qtc_radio_tuner_line:#ffffff; /* Added 05.02.2010 */
+
+/* Application specific - Multimedia */ 
+qtc_multimedia_trans_normal:#FFFFFF; /* Modified 02.06.2010 */
+qtc_multimedia_trans_pressed:#FFFFFF; /* Added 19.02.2010 */
+qtc_multimedia_trans_disabled:#787878; /* Added 09.03.2010 */
+
+/* Application specific - Messaging */ 
+qtc_messaging_char_count:#FFFFFF; /* Added 19.04.2010 */
+
+/* Screensaver */
+qtc_screensaver:#FFFFFF; /* Added 16.06.2010 */
+qtc_screensaver_analog_clock:#E6E6E6; /* Added 24.08.2010 */
+}
+

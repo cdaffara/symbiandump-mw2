@@ -1,0 +1,50 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Structure definition for Advanced Audio Controller resource file.
+*
+*/
+
+
+//  INCLUDES
+#include "AdvancedAudioResource.hrh"
+
+//  STRUCTURE DEFINITIONS
+
+// -----------------------------------------------------------------------------
+// CONFIGURATION_PARAMETERS
+// Structure definition for codec configuration parameters.
+// -----------------------------------------------------------------------------
+//
+STRUCT CONFIGURATION_PARAMETERS
+    {
+    STRUCT	config_params;
+    }
+
+// -----------------------------------------------------------------------------
+// ADVANCED_AUDIO_CONTROLLER_RESOURCE
+// Structure definition for the advanced audio controller resource.
+// -----------------------------------------------------------------------------
+//
+STRUCT ADVANCED_AUDIO_CONTROLLER_RESOURCE
+    {
+    LONG	shared_buffer_max_num;
+    LONG	shared_buffer_max_size;
+    LONG	shared_buffer_max_size_non_seekable_source;
+    LONG	sampling_rate;
+    LONG	stereo_support;
+    LONG	metadata_support;
+    STRUCT	configuration_parameters;
+    }
+
+// End of File

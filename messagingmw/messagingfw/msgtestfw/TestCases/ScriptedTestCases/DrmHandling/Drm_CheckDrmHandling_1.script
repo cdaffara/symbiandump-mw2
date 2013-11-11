@@ -1,0 +1,52 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+// Support script for DRM Handling Tests
+//
+// Name: 
+// Drm_CheckDrmHandling_1.script
+//
+// Purpose:
+// This script will verify that one DRM receipt has been added, that
+// one correct meta data file has been created and that the integrity
+// of the message store is intact.
+//
+// Constraints:
+// Needs WinTap or similar connection (NOT NT RAS) and a 
+// functioning IMAP4 account
+//
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer GetBaseConstants			c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_CheckDrmHandling.ini GetConstants
+RUN_TEST_STEP 100 MessagingTestServer CreateSession				c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_CheckDrmHandling.ini SessionId
+RUN_TEST_STEP 100 MessagingTestServer FindEntryByName			c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_CheckDrmHandling.ini FindEntryByName
+
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer CheckDrmReceipt			c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_CheckDrmHandling.ini CheckDrmReceipt1
+RUN_TEST_STEP 100 MessagingTestServer CheckDrmMetaData			c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_CheckDrmHandling.ini CheckDrmMetaData1
+RUN_TEST_STEP 100 MessagingTestServer CheckMessageStore			c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_CheckDrmHandling.ini CheckMessageStore
+
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+
+RUN_TEST_STEP 100 MessagingTestServer END_TEST_CASE

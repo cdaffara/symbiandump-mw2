@@ -1,0 +1,61 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+//! @file
+//! @SYMTestCaseID		CM-SENDAS-CIT-0020-HP
+//! @SYMTestCaseDesc		Add Linked Attachment to the Message
+//! @SYMFssID 
+//! @SYMTestStatus		Defined
+//! @SYMTestPriority		High
+//! @SYMTestActions
+//! @SYMTestExpectedResults	The Attachment should be attached to message with Mime type information
+//! @SYMTestType		CIT
+
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+GetBaseConstants		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0020-AddLinkedAttachment.ini	GetBaseConstants
+CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0020-AddLinkedAttachment.ini	CreateSession
+ResetMessageStore		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0020-AddLinkedAttachment.ini	ResetMessageStore
+CreatePopAccount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0020-AddLinkedAttachment.ini	CreatePopAccount
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0020-AddLinkedAttachment.ini	ChkChildrenCountDraft0
+CreateSmtpService		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0020-AddLinkedAttachment.ini	CreateSmtpService
+CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0020-AddLinkedAttachment.ini	CreateRegistry
+CreateSmtpMtm			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0020-AddLinkedAttachment.ini	CreateSmtpMtm
+SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0020-AddLinkedAttachment.ini	SetDefaultConfig0
+SetSmtpServiceParameters	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0020-AddLinkedAttachment.ini	SetSmtpServiceParams
+ChangeDefaultSmtpService 	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0020-AddLinkedAttachment.ini	ChangeDfltSmtpService
+EXECUTE_TEST_CASE
+ConnectSendAsServer		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0020-AddLinkedAttachment.ini	ConnectSendAsServer
+GetSMTPMTMUId  			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0020-AddLinkedAttachment.ini	GetSmtpMtmUId
+SendAsCreateMessageofType	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0020-AddLinkedAttachment.ini	CreateMessageofType
+SendAsAddRecipient		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0020-AddLinkedAttachment.ini	SendAsAddRecipient
+SendAsAddLinkedAttachment	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0020-AddLinkedAttachment.ini	AddLinkedAttachment
+SendAsSaveMessageAndClose	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0020-AddLinkedAttachment.ini	CloseMessage
+CloseSendAsServerConnection	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0020-AddLinkedAttachment.ini	CloseSvrConnection
+CHECK_POSTCONDITIONS
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0020-AddLinkedAttachment.ini	ChkChildrenCountDraft1
+CreateChildrenSelection		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0020-AddLinkedAttachment.ini	CreateChildrenSelDraft
+GetMessageAtIndex		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0020-AddLinkedAttachment.ini	GetMessageAtIndex
+GetEntry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0020-AddLinkedAttachment.ini	GetEntry
+VerifyRecipients  		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0020-AddLinkedAttachment.ini	VerifyRecipients
+SmtpGetAttachmentInfoByIndex	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0020-AddLinkedAttachment.ini	SmtpGetAttachmentInfoByIndex
+END_TEST_CASE

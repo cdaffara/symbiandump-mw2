@@ -1,0 +1,7 @@
+EXPORTS
+	?CreateMediaL@CMPXMetadataExtractor@@QAEXABVTDesC16@@AAPAVCMPXMedia@@H@Z @ 1 NONAME ; void CMPXMetadataExtractor::CreateMediaL(class TDesC16 const &, class CMPXMedia * &, int)
+	?NewL@CMPXMetadataExtractor@@SAPAV1@AAVRFs@@AAVRApaLsSession@@AAV?$RPointerArray@VCMPXCollectionType@@@@@Z @ 2 NONAME ; class CMPXMetadataExtractor * CMPXMetadataExtractor::NewL(class RFs &, class RApaLsSession &, class RPointerArray<class CMPXCollectionType> &)
+	?ExtractAlbumArtL@CMPXMetadataExtractor@@QAEHPAVCMPXMedia@@@Z @ 3 NONAME ; int CMPXMetadataExtractor::ExtractAlbumArtL(class CMPXMedia *)
+	?CancelRequest@CMPXMetadataExtractor@@QAEXXZ @ 4 NONAME ; void CMPXMetadataExtractor::CancelRequest(void)
+	?CreateMediaAsyncL@CMPXMetadataExtractor@@QAEXABVTDesC16@@PAVMMPXMetadataExtractorObserver@@H@Z @ 5 NONAME ; void CMPXMetadataExtractor::CreateMediaAsyncL(class TDesC16 const &, class MMPXMetadataExtractorObserver *, int)
+

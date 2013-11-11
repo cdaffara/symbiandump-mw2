@@ -1,0 +1,60 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+// Support script for DRM Handling Tests
+//
+// Name: 
+// Drm_IMAP4_CleanInbox.script
+//
+// Purpose:
+// This scripts will connect to the IMAP account, synchronise
+// and delete all content in the inbox.
+// It will also delete all entries in the local message store.
+//
+// Constraints:
+// Needs WinTap or similar connection (NOT NT RAS) and a 
+// functioning IMAP4 account
+//
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_TEST_STEP 200 MessagingTestServer BEGIN_TEST_CASE
+
+RUN_TEST_STEP 200 MessagingTestServer SETUP_TEST_CASE
+
+RUN_TEST_STEP 200 MessagingTestServer GetBaseConstants					c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_IMAP4_CleanInbox.ini GetConstants
+RUN_TEST_STEP 200 MessagingTestServer InitNtRas						c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_IMAP4_CleanInbox.ini InitNtRas
+RUN_TEST_STEP 200 MessagingTestServer CreateSession					c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_IMAP4_CleanInbox.ini SessionId
+RUN_TEST_STEP 200 MessagingTestServer CreateRegistry					c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_IMAP4_CleanInbox.ini CreateRegistry
+RUN_TEST_STEP 200 MessagingTestServer CreateImap4Service				c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_IMAP4_CleanInbox.ini CreateImap4Service
+RUN_TEST_STEP 200 MessagingTestServer CreateImap4Mtm					c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_IMAP4_CleanInbox.ini CreateImap4Mtm
+RUN_TEST_STEP 200 MessagingTestServer SetDefaultConfiguration				c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_IMAP4_CleanInbox.ini SetDefaultConfigurationIMAP
+RUN_TEST_STEP 200 MessagingTestServer SetImap4ServiceParameters				c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_IMAP4_CleanInbox.ini SetImap4ServiceParameters
+
+RUN_TEST_STEP 200 MessagingTestServer EXECUTE_TEST_CASE
+
+RUN_TEST_STEP 200 MessagingTestServer ConnectImap4Server				c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_IMAP4_CleanInbox.ini ConnectImap4Server0
+RUN_TEST_STEP 200 MessagingTestServer DoFullImap4Synchronisation			c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_IMAP4_CleanInbox.ini DoFullImap4Synchronisation0
+RUN_TEST_STEP 200 MessagingTestServer FindEntryByName					c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_IMAP4_CleanInbox.ini FindEntryByName0
+RUN_TEST_STEP 200 MessagingTestServer DeleteChildren					c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_IMAP4_CleanInbox.ini DeleteChildren
+RUN_TEST_STEP 200 MessagingTestServer DisconnectImap4Server				c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_IMAP4_CleanInbox.ini DisconnectImap4Server0
+RUN_TEST_STEP 200 MessagingTestServer ResetMessageStore					c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_IMAP4_CleanInbox.ini ResetMessageStore
+
+RUN_TEST_STEP 200 MessagingTestServer CHECK_POSTCONDITIONS
+
+RUN_TEST_STEP 200 MessagingTestServer END_TEST_CASE

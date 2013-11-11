@@ -1,0 +1,27 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Have the ECOM DLL UID for the controller
+*
+*/
+
+
+#ifndef _3GPAUDIORECORDCONTROLLERPLUGINUIDS_HRH
+#define _3GPAUDIORECORDCONTROLLERPLUGINUIDS_HRH
+
+// UIDs for 3GP Record Controller Plugin
+#define KUID3GPRecordControllerPluginDll		0x1020383A 	// DLL UID
+#define KUID3GPRecordControllerPluginImplementation	0x1020383B	// Implementation UID
+#define KUID3GPRecordControllerPluginFormatInterface	0x1020383C 	// Format Interface UID
+
+#endif	// _3GPAUDIORECORDCONTROLLERPLUGINUIDS_HRH

@@ -1,0 +1,43 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRINT Running  EMsvCreateEntry_006
+
+
+//********************************
+PRINT Running  EMsvCreateEntry : Entry is created in a message in a  remote folder (Outbox which is protected). 
+PRINT Running  EMsvCreateEntry : Various combinations of Caps.
+//********************************
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCreateEntry_006_001.script
+	// Create an entry in a message in a remote folder(outbox which is protected). Has Read/Write user data + Local/Network services. 
+	// The message is created an owned by the proxy server.
+	// Should PASS.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCreateEntry_006_002.script
+	// Create an entry in a message in a remote folder(outbox which is protected). Has Read user data. 
+	// The message is created an owned by the proxy server.
+	// Should FAIL.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCreateEntry_006_003.script
+	// Create an entry in a message in a remote folder(outbox which is protected). Has Write user data. 
+	// The message is created an owned by the proxy server.
+	// Should FAIL.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCreateEntry_006_004.script
+	// Create an entry in a message in a remote folder(outbox which is protected). Has no caps. 
+	// The message is created an owned by the proxy server.
+	// Should FAIL.

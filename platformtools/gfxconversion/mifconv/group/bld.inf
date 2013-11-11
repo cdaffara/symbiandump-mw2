@@ -1,0 +1,47 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  build file
+*
+*/
+
+
+PRJ_PLATFORMS
+#ifdef SBSV2
+  TOOLS2
+#else
+  TOOLS
+#endif
+
+
+PRJ_MMPFILES
+#if defined(TOOLS) || defined(TOOLS2)
+  mifconv.mmp
+#endif
+
+PRJ_EXPORTS
+#ifdef SBSV2
+  ../makefile_templates/mifconv_global_options.make           +/tools/makefile_templates/s60/mifconv_global_options.make
+  ../makefile_templates/mifconv_option_reader_recursive.make  +/tools/makefile_templates/s60/mifconv_option_reader_recursive.make
+  ../makefile_templates/mifconv_option_reader.make            +/tools/makefile_templates/s60/mifconv_option_reader.make
+  ../makefile_templates/mifconv_step1.make                    +/tools/makefile_templates/s60/mifconv_step1.make
+  ../makefile_templates/mifconv_step2.make                    +/tools/makefile_templates/s60/mifconv_step2.make
+  ../makefile_templates/mifconv_step3.make                    +/tools/makefile_templates/s60/mifconv_step3.make
+  ../makefile_templates/mifconv_step4.make                    +/tools/makefile_templates/s60/mifconv_step4.make
+  ../makefile_templates/mifconv.flm                           +/tools/makefile_templates/s60/mifconv.flm
+  ../makefile_templates/mifconv.meta                          +/tools/makefile_templates/s60/mifconv.meta
+  ../makefile_templates/mifconv.mk                            +/tools/makefile_templates/s60/mifconv.mk
+  ../makefile_templates/mifconv.xml                           +/tools/makefile_templates/s60/mifconv.xml
+  ../bin/mifconv_wrapper.py                                   +/tools/mifconv_wrapper.py
+#endif
+

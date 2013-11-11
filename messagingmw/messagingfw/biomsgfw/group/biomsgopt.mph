@@ -1,0 +1,4 @@
+//Uncomment the following MACRO and #define to disable logging in BioMsg components
+
+//MACRO _BIOMSG_NO_LOGGING
+//#define _BIOMSG_NO_LOGGING_DEFINE

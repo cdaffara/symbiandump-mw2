@@ -1,0 +1,42 @@
+/*
+* Copyright (c) 2006-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Build information file for project Service Provider Settings
+*
+*/
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+../rom/spsettings_stub.sis    /epoc32/data/z/system/install/spsettings_stub.sis
+
+// Public headers
+../data/backup_registration.xml     z:/private/10282e7e/backup_registration.xml
+
+#if defined CORE_MW_LAYER_IBY_EXPORT_PATH
+../rom/spsettings.iby             CORE_MW_LAYER_IBY_EXPORT_PATH(spsettings.iby)
+#endif // CORE_MW_LAYER_IBY_EXPORT_PATH
+
+// Generic configuration interface for component cenrep settings  
+../conf/spsettings.confml           MW_LAYER_CONFML(spsettings.confml)
+../conf/spsettings_10282E7F.crml    MW_LAYER_CRML(spsettings_10282E7F.crml)
+
+PRJ_MMPFILES
+serviceprovidersettings.mmp
+#include "../backuphelper/group/bld.inf"
+
+PRJ_TESTMMPFILES
+//../tsrc/public/basic/group/t_xspsettingsapimoduletests.mmp

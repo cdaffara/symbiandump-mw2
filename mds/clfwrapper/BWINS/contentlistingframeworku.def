@@ -1,0 +1,6 @@
+EXPORTS
+	?NewContentListingEngineLC@ContentListingFactory@@SAPAVMCLFContentListingEngine@@XZ @ 1 NONAME ; public: static class MCLFContentListingEngine * __cdecl ContentListingFactory::NewContentListingEngineLC(void)
+	?NewModifiableItemLC@ContentListingFactory@@SAPAVMCLFModifiableItem@@XZ @ 2 NONAME ; public: static class MCLFModifiableItem * __cdecl ContentListingFactory::NewModifiableItemLC(void)
+	?NewSortingStyleLC@ContentListingFactory@@SAPAVMCLFSortingStyle@@AAVTResourceReader@@@Z @ 3 NONAME ; public: static class MCLFSortingStyle * __cdecl ContentListingFactory::NewSortingStyleLC(class TResourceReader &)
+	?NewSortingStyleLC@ContentListingFactory@@SAPAVMCLFSortingStyle@@XZ @ 4 NONAME ; public: static class MCLFSortingStyle * __cdecl ContentListingFactory::NewSortingStyleLC(void)
+

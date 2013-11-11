@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteServer SYSTEM "file:///c:/program files/common files/symbian/testExecuteServer.dtd" [ ]>
+<testExecuteServer>
+
+	<name>T_MsgCommonServer</name>
+	<mmpFile>T_MsgCommonServer.mmp</mmpFile>
+	<bldInfPath>common\group\bld.inf</bldInfPath>
+	<dependencies>
+		<build type="test">
+			<hostPath>messagingtestutility2.dll</hostPath>
+			<devicePath>c:\sys\Libs\messagingtestutility2.dll</devicePath>
+			<mmpFile>MessagingTestUtility2.mmp</mmpFile>
+			<bldInfPath>testutils\group\bld.inf</bldInfPath>
+		</build>
+		<build type="test">
+			<hostPath>messagingtestutilityserver2.exe</hostPath>
+			<devicePath>c:\sys\Libs\messagingtestutilityserver2.exe</devicePath>
+			<mmpFile>MessagingTestUtilityServer2.mmp</mmpFile>
+			<bldInfPath>testutils\group\bld.inf</bldInfPath>
+		</build>
+		<build type="test">
+			<hostPath>T_MsgUtilityServer.dll</hostPath>
+			<devicePath>c:\sys\Libs\T_MsgUtilityServer.dll</devicePath>
+			<mmpFile>T_Utils.mmp</mmpFile>
+			<bldInfPath>testutils\group\bld.inf</bldInfPath>
+		</build>
+		<data>
+			<hostPath>\epoc32\WINSCW\C\msgtest\MachineName.txt</hostPath>
+			<devicePath>c:\msgtest\MachineName.txt</devicePath>
+		</data>
+	</dependencies>
+
+</testExecuteServer>
+

@@ -1,0 +1,26 @@
+/************************************************************************
+	Test case: Request command CS plugin using ext-if.
+		
+	1. Send request.
+*************************************************************************/	
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 12.1 Request command to CS extension interface
+timeout 15000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+// Request command
+// last parameter is expected result (KErrNone)
+test RequestExtIfCommand 1 123 "Test string for CS extension IF" 0
+
+test VerifyTest
+delete test
+[Endtest]

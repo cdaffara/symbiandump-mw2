@@ -1,0 +1,25 @@
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 13.6 MCCPTransferProvider leave/return value
+timeout 5000
+create ccetester test
+test Delay 1000
+
+
+//////////////////////////////////////////
+// MCCPTransferProvider, provider get tested 
+// in call tests.
+//////////////////////////////////////////
+
+// add observer leaves (called by plugin) with KErrGeneral
+// call is created with null transfer provider
+test ConfigurePlugin 2 ID=MCCPTransferProvider::AddObserverL LEAVE=-2 TYPE=TInt
+test OpenNewCall 1 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+test Release 1 0
+
+test VerifyTest
+delete test
+[Endtest]

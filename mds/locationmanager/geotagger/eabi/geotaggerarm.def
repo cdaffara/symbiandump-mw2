@@ -1,0 +1,9 @@
+EXPORTS
+	_ZN10CGeoTagger4NewLEP18MGeoTaggerObserverP11CMdESession @ 1 NONAME
+	_ZN18CInternalGeoTagger4NewLEP11CMdESessionP18MGeoTaggerObserver @ 2 NONAME
+	_ZTI18CInternalGeoTagger @ 3 NONAME
+	_ZTV18CInternalGeoTagger @ 4 NONAME
+	_ZN18CInternalGeoTaggerD0Ev @ 5 NONAME
+	_ZN18CInternalGeoTaggerD1Ev @ 6 NONAME
+	_ZN18CInternalGeoTaggerD2Ev @ 7 NONAME
+

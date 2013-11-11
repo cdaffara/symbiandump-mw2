@@ -1,0 +1,145 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+TARGET      t_msgs_sql_suite.exe
+TARGETTYPE  exe
+UID             0x1000007A 0x101F7784
+
+CAPABILITY ALL -TCB
+
+
+//Please add any change under here
+SOURCEPATH  ../src
+
+SOURCE				t_msgs_sql_server.cpp
+SOURCE				t_msv_entryfreepool_step.cpp
+SOURCE				t_msv_cacheentry_step.cpp
+SOURCE				t_msv_inidata.cpp
+SOURCE				t_msv_cache_indextableentry_step.cpp
+SOURCE				t_msv_cache_visiblefolder_step.cpp
+SOURCE				t_msv_indexadapter_step.cpp
+SOURCE				t_msv_dbadapter_step.cpp
+SOURCE				t_msv_indexcontext_step.cpp
+
+#if (defined SYMBIAN_MSGS_ENHANCED_REMOVABLE_MEDIA_SUPPORT)
+SOURCE				t_msv_preferreddrivelist_step.cpp
+SOURCE              		t_msv_server_step.cpp
+SOURCE				cactivewaiter.cpp
+SOURCE				t_msv_diskchangenotifier.cpp
+#endif
+
+
+#if (defined SYMBIAN_MESSAGESTORE_HEADER_BODY_USING_SQLDB)
+SOURCE 				t_msv_messagedbadapter_step.cpp
+#endif
+
+SOURCE 				t_msv_server_performance.cpp
+
+SOURCEPATH  ../../../src
+
+#if (defined SYMBIAN_MSGS_ENHANCED_REMOVABLE_MEDIA_SUPPORT)
+SOURCE				cmsvdiskchangenotifier.cpp
+SOURCE				msvpreferreddrivelist.cpp
+#else
+SOURCE				diskchange.cpp
+#endif
+
+//Preq 1667
+SOURCE		msvsearchsortcacheentry.cpp
+SOURCE		msvsearchsortquery.cpp
+SOURCE		msvsearchsortoponheaderbody.cpp
+SOURCE		msvsearchsortoperation.cpp
+SOURCE 		msvsearchsortcachemanager.cpp
+SOURCE 		msvsearchsortdeltacache.cpp
+SOURCE		msvsearchsortdbwrapper.cpp
+SOURCE		msvenhancesearchsortutil.cpp
+
+
+// Additionals ******************************************
+SOURCE		msvcacheentry.cpp msventryfreepool.cpp
+SOURCE		msvdbadapter.cpp msvindexadapter.cpp
+SOURCE		MSVSTD.CPP MSVTIME.CPP msvcacheindextableentry.Cpp 
+SOURCE      msvcachevisiblefolder.Cpp msvinifile.cpp MSVSERV.CPP
+SOURCE        MSVIPC.CPP MSVSTORE.CPP MSVREG.CPP MSVREGIP.CPP 
+SOURCE        MENTACT.CPP MSVARRAY.CPP
+SOURCE        MSVSESS.CPP MSVLOCAL.CPP MSVOPERT.CPP 
+SOURCE        MSVENTRY.CPP MSVSTART.CPP MSVRBLD.CPP
+SOURCE        MSVCMBSE.CPP MSVMOVE.CPP MSVCOPY.CPP MTSR.CPP MTSRUT.CPP MSVDELET.CPP
+SOURCE        MCLIENT.CPP MCLENTRY.CPP MCLSESS.CPP MCLOPERT.CPP
+SOURCE        MTCLBASE.CPP MTCLREG.CPP OBSVREG.CPP MSVUTILS.CPP
+SOURCE        MSVFIND.CPP MSVFTEXT.CPP indexcontext.cpp
+SOURCE        CCopyFiles.cpp CCopyOneFile.cpp
+SOURCE        CMsvCachedStore.cpp CMsvBackupHandler.cpp 
+SOURCE        CMsvChangeBuffer.cpp
+SOURCE        CMsvBodyText.cpp
+SOURCE        MsvSecurityCapabilitySet.cpp
+SOURCE		  CMsvAttachment.cpp
+SOURCE		  CMsvAttachmentManager.cpp
+SOURCE		  CMsvAttachmentRename.cpp
+SOURCE		  CMsvAttributeManager.cpp
+SOURCE		  CMsvAttachmentWaiter.cpp
+SOURCE		  CMsvMimeHeaders.cpp
+SOURCE		  TMsvServerStoreManager.cpp
+SOURCE		  cmsvmailinitwaiter.cpp
+SOURCE        CMsvCopyStoreOperation.cpp
+SOURCE        CMsvDeleteStoreOperation.cpp
+SOURCE		  cmsvrecipientlist.cpp
+SOURCE        TMsvPackedNotifierRequest.cpp
+SOURCE		  cmsvtechnologytypedefaultmtmsettings.cpp
+SOURCE		  tmsvsystemprogress.cpp
+SOURCE		  CMsvPlainBodyText.cpp
+
+
+#if (defined SYMBIAN_MESSAGESTORE_HEADER_BODY_USING_SQLDB)
+	SOURCE		msvmessagedbadapter.cpp
+	SOURCE 		msvheaderfields.cpp
+	SOURCE		cmessageconvertermanager.CPP
+	SOURCE		cmsvconverterwaiter.cpp
+	SOURCE		cmsvversion0version1converter.cpp
+	SOURCE      cmsvversion1version2converter.cpp
+#endif
+
+
+// Additionals ******************************************
+
+
+STATICLIBRARY	tefunit.lib
+
+USERINCLUDE   ../inc
+USERINCLUDE   ../../../inc
+
+USERINCLUDE		../../../../../msgtest/testutils/base/inc
+USERINCLUDE		../../../../../msgtest/testutils/server/inc
+USERINCLUDE		../../../../../msgtest/testutils/sms/inc
+USERINCLUDE		../../../../../msgtest/testutils/email/inc
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+#if !defined (SYMBIAN_MESSAGESTORE_UNIT_TESTCODE)
+MACRO SYMBIAN_MESSAGESTORE_UNIT_TESTCODE
+#define SYMBIAN_MESSAGESTORE_UNIT_TESTCODE
+#endif
+
+//Please add your system include under here. 
+
+LIBRARY		euser.lib
+LIBRARY		testexecuteutils.lib 
+LIBRARY		testexecutelogclient.lib
+LIBRARY		sqldb.lib
+LIBRARY		estor.lib
+LIBRARY		efsrv.lib
+LIBRARY		rfileloggerclient.lib 
+LIBRARY     bafl.lib etext.lib charconv.lib centralrepository.lib 
+LIBRARY     flogger.lib hal.lib
+
+SMPSAFE

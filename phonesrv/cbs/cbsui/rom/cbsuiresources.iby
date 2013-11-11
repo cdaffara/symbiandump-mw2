@@ -1,0 +1,28 @@
+/*
+* Copyright (c) 2010 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: CBS resources rom build file
+*
+*/
+
+
+#ifndef __CBSUI_RESOURCES_IBY__
+#define __CBSUI_RESOURCES_IBY__
+
+#ifdef __CELL_BROADCAST
+
+data=DATAZ_\resource\apps\cbsui.rsc          S60_APP_RESOURCE(cbsui.rsc)
+
+#endif // __CELL_BROADCAST
+
+#endif // __CBSUI_RESOURCES_IBY__

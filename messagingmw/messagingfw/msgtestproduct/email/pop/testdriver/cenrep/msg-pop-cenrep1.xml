@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>msg-pop-cenrep1</name>
+	<timeout>14000</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\email\pop\cenrep\msg-pop-cenrep1.script</hostPath>
+			<devicePath>c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.script</devicePath>
+		</script>
+	</testScripts>
+
+	<testServers>
+		<server>T_MsgPopServer</server>
+	</testServers>
+
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini</hostPath>
+			<devicePath>c:\msgtest\email\pop\cenrep\msg-pop-cenrep1.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\POPSettings_msgacc1.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\POPSettings_msgacc1.txt</devicePath>
+		</data>
+ 		<data>
+ 			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\POPSettings_msgacc2.txt</hostPath>
+ 			<devicePath>c:\msgtest\Config\EmailSettings\POPSettings_msgacc2.txt</devicePath>
+ 		</data>
+ 		<data>
+ 			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\POPSettings_msgacc3.txt</hostPath>
+ 			<devicePath>c:\msgtest\Config\EmailSettings\POPSettings_msgacc3.txt</devicePath>
+ 		</data>
+ 		<data>
+ 			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\POPSettings_msgacc4.txt</hostPath>
+ 			<devicePath>c:\msgtest\Config\EmailSettings\POPSettings_msgacc4.txt</devicePath>
+ 		</data>		
+	</dependencies>	
+</testExecuteTest>

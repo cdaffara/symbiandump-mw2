@@ -1,0 +1,29 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description:
+;
+;Languages
+&EN
+
+;packet-header (name, uid, major, minor, build, type)
+#{"LocationManagerClient Patch"},(0x200071BF), 2, 0, 0, TYPE=SA, RU
+
+; Localised vendor name
+%{"Nokia"}
+
+; Unique vendor name
+:"Nokia"
+
+;Files
+"\EPOC32\RELEASE\ARMV5\UREL\locationmanager.dll" -"c:\sys\bin\locationmanager.dll"

@@ -1,0 +1,78 @@
+/***************************************************
+   1. Create MO call
+   2. Put call on Hold
+   3. Create 2nd MO call
+   4. Swap (connected call)
+      Result: 2nd call is put on Hold
+      ToDo: 1st call should be resumed by plugin
+   5. Disconnect calls
+/***************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 2.3.2 Swap, CS calls
+timeout 10000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test OpenNewCall 1 0 CircuitSwithedCall 1 ECCECallTypeCSVoice ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+// Step 2
+print Step_2
+
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+// Step 3
+print Step_3
+
+// Make 2nd call
+test OpenNewCall 2 0 CircuitSwithedCall2 1 ECCECallTypeCSVoice ECCELineTypePrimary
+test Dial 2 0 SubAddress Bearer
+test WaitEvent 2 Dialling
+test WaitEvent 2 Connecting
+test WaitEvent 2 Connected
+
+test CallIndexForCall 1 1
+test CallIndexForCall 2 2
+
+// Step 4
+print Step_4
+
+// Swap to connected call
+test Swap 2 0
+
+// Test plugin does not complete CS Swap, it only changes state of one call
+test WaitEvents 2 Hold, 2 LocalHold
+
+// Step 5
+print Step_5
+
+// Hangup and Release both calls
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+
+test Release 1 0
+
+test HangUp 2 0
+// CS Swap not completed, so it is cancelled
+test WaitEvent 2 ErrorOccurred -3
+
+test WaitEvent 2 Disconnecting
+test WaitEvent 2 Idle
+test Release 2 0
+
+test VerifyTest
+delete test
+[Endtest]

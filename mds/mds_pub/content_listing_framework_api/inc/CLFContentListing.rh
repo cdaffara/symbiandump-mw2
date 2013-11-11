@@ -1,0 +1,168 @@
+/*
+* Copyright (c) 2002-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+#ifndef CLFCONTENTLISTING_RH
+#define CLFCONTENTLISTING_RH
+
+
+//  INCLUDES
+#include <CLFContentListing.hrh>
+
+//  STRUCTURE DEFINITIONS
+
+// -----------------------------------------------------------------------------
+// CLF_FIELD_ID
+// Field ID
+// -----------------------------------------------------------------------------
+//
+STRUCT CLF_FIELD_ID
+    {
+    LONG field_id;  // TCLFFieldId
+    }
+
+// -----------------------------------------------------------------------------
+// CLF_SORTING_STYLE
+// Sorting style
+// Example:
+// RESOURCE CLF_SORTING_STYLE r_sorting_style
+//     {
+//     ordering = ECLFOrderingAscending;
+//     data_type = ECLFItemDataTypeDesC;
+//     fields =
+//         {
+//         CLF_FIELD_ID { field_id = ECLFFieldIdSongName; },
+//         CLF_FIELD_ID { field_id = ECLFFieldIdAlbum; }
+//         };
+//     }
+// -----------------------------------------------------------------------------
+//
+STRUCT CLF_SORTING_STYLE
+    {
+    WORD version = 1;
+    LONG ordering;      // TCLFSortingStyleOrdering
+    LONG data_type;     // TCLFItemDataType data type of fields
+                                   // TCLFUndefinedItemPosition
+    BYTE undefined_item_position = ECLFSortingStyleUndefinedEnd;
+    STRUCT fields[];    // CLF_FIELD_ID
+    }
+
+// -----------------------------------------------------------------------------
+// CLF_MIME_TYPE_ARRAY
+// List of mime types
+// Example:
+// RESOURCE CLF_MIME_TYPE_ARRAY r_mime_type_array
+//     {
+//     mime_types =
+//         {
+//         LBUF { txt = "image/*"; },
+//         LBUF { txt = "audio/*"; }
+//         };
+//     }
+// -----------------------------------------------------------------------------
+//
+STRUCT CLF_MIME_TYPE_ARRAY
+    {
+    WORD version = 1;
+    STRUCT mime_types[]; // LBUF
+    }
+
+// -----------------------------------------------------------------------------
+// CLF_MEDIA_TYPE
+// List of mime types
+// -----------------------------------------------------------------------------
+//
+STRUCT CLF_MEDIA_TYPE
+    {
+    LONG media_type;    // TCLFMediaType
+    }
+
+// -----------------------------------------------------------------------------
+// CLF_MEDIA_TYPE_ARRAY
+// List of media types
+// -----------------------------------------------------------------------------
+//
+STRUCT CLF_MEDIA_TYPE_ARRAY
+    {
+    WORD version = 1;
+    STRUCT media_types[];   //  CLF_MEDIA_TYPE_ARRAY
+    }
+
+// -----------------------------------------------------------------------------
+// CLF_LIST_MODEL
+// List model
+// Example:
+// RESOURCE CLF_LIST_MODEL r_list_model
+//     {
+//     mime_type_array = CLF_MIME_TYPE_ARRAY
+//         {
+//         mime_types =
+//             {
+//             LBUF { txt = "image/*"; },
+//             LBUF { txt = "audio/*"; }
+//             };
+//         };
+//     media_type_array = CLF_MEDIA_TYPE_ARRAY
+//         {
+//         media_types =
+//             {
+//             CLF_MEDIA_TYPE { media_type = ECLFMediaTypeMusic; }
+//             };
+//         };
+//     sorting_style = CLF_SORTING_STYLE
+//         {
+//         ordering = ECLFOrderingAscending;
+//         data_type = ECLFItemDataTypeDesC;
+//         fields =
+//             {
+//             CLF_FIELD_ID { field_id = ECLFFieldIdSongName; },
+//             CLF_FIELD_ID { field_id = ECLFFieldIdAlbum; }
+//             };
+//         };
+//     }
+// -----------------------------------------------------------------------------
+//
+STRUCT CLF_LIST_MODEL
+    {
+    WORD version = 1;
+    LONG grouping = ECLFNoGrouping; // TCLFGrouping
+    STRUCT mime_type_array;         // CLF_MIME_TYPE_ARRAY
+    STRUCT media_type_array;        // CLF_MEDIA_TYPE_ARRAY
+    STRUCT sorting_style;           // CLF_SORTING_STYLE
+    }
+
+// -----------------------------------------------------------------------------
+// CLF_MEDIA_TYPE_ARRAY
+// List of media types version 2
+// There can be multible sortings styles.
+// First sorting style is primary style, all items is sorted by this style,
+// if there is items that doesn't have field (undefined items) which is defined in
+// primary sorting style, then second sorting style is used to those items etc.
+// -----------------------------------------------------------------------------
+//
+STRUCT CLF_LIST_MODEL_V2
+    {
+    WORD version = 2;
+    LONG grouping = ECLFNoGrouping; // TCLFGrouping
+    STRUCT mime_type_array;         // CLF_MIME_TYPE_ARRAY
+    STRUCT media_type_array;        // CLF_MEDIA_TYPE_ARRAY
+    STRUCT sorting_style_array[];   // array of CLF_SORTING_STYLE
+    }
+
+
+#endif      // CLFCONTENTLISTING_RH
+
+// End of File

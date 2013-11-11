@@ -1,0 +1,3 @@
+EXPORTS
+	?NewL@CMPXHarvesterFactory@@SAPAVMMPXHarvesterUtility@@XZ @ 1 NONAME ; class MMPXHarvesterUtility * CMPXHarvesterFactory::NewL(void)
+

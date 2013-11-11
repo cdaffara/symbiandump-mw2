@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<api id="acd0d4200cfc87deda5fc7bba1da83cd" dataversion="2.0">
+<name>Send UI Plug-in API</name>
+<description>ECom plug-in interface for adding new sending services to Send UI</description>
+<type>c++</type>
+<collection>messagingappbase</collection>
+<libs><lib name="sendui.lib"/>
+</libs>
+<release category="platform" sinceversion="0"/>
+<attributes>
+<htmldocprovided>no</htmldocprovided>
+<adaptation>no</adaptation>
+</attributes>
+</api>

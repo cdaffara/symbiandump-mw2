@@ -1,0 +1,76 @@
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 13.7 MCCPConferenceCall leave/return value
+timeout 5000
+create ccetester test
+test Delay 1000
+
+
+//////////////////////////////////////////
+//////////////////////////////////////////
+// Test CCP API L-functions for Leave
+// Ext IF tested elsewhere
+//////////////////////////////////////////
+//////////////////////////////////////////
+
+
+
+//////////////////////////////////////////
+// MCCPConferenceCall
+//////////////////////////////////////////
+
+
+// Create 2 calls, one is put to hold, other is connected
+test OpenNewCall 1 0 ConfcallOne 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+test OpenNewCall 2 0 ConfcallTwo 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 2 0 SubAddress Bearer
+test WaitEvent 2 Dialling
+test WaitEvent 2 Connecting
+test WaitEvent 2 Connected
+
+
+// add observer leaves with KErrGeneral
+test ConfigurePlugin 2 ID=MCCPConferenceCall::AddObserverL  LEAVE=-2 TYPE=TInt
+test AddToConference 1 -2
+
+// leave with KErrAlreadyExists 
+test ConfigurePlugin 2 ID=MCCPConferenceCall::AddCallL LEAVE=-11 TYPE=TInt 
+test AddToConference 1 -11
+
+// leave with KErrNotReady  
+test ConfigurePlugin 2 ID=MCCPConferenceCall::AddCallL LEAVE=-18 TYPE=TInt  
+test AddToConference 2 -18
+
+// add both calls to conference
+test AddToConference 1 0
+test WaitEvent 0 ConferenceCallAdded 1
+test AddToConference 2 0
+test WaitEvents 0 ConferenceCallAdded 2, 0 ConferenceActive, 1 Connected
+
+
+// leave with KErrNotFound when trying to go one-to-one 
+test ConfigurePlugin 2 ID=MCCPConferenceCall::GoOneToOneL LEAVE=-1 TYPE=TInt 
+test GoOneToOne 1 -1
+
+// leave with KErrNotFound when trying to remove a call 
+test ConfigurePlugin 2 ID=MCCPConferenceCall::RemoveCallL LEAVE=-1 TYPE=TInt 
+test RemoveFromConference 1 -1
+
+
+// leave with KErrNotReady  
+///////////// test ConfigurePlugin 2 ID=MCCPConferenceCall::CurrentCallsToConferenceL LEAVE=-18 TYPE=TInt  
+
+
+test VerifyTest
+delete test
+[Endtest]

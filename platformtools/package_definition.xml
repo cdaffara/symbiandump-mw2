@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SystemDefinition schema="3.0.0">
+ <package id="platformtools" name="Platform Tools">
+  <collection id="gfxconversion" name="Graphics Conversion">
+   <component id="bmconv_s60" filter="s60" name="S60 Bitmap Converter" target="desktop">
+    <!-- Remove from builds -->
+   </component>
+   <component id="mifconv" filter="s60" name="Multi Icon File Converter" target="desktop">
+    <unit bldFile="gfxconversion/mifconv/group"/>
+   </component>
+  </collection>
+ </package>
+</SystemDefinition>

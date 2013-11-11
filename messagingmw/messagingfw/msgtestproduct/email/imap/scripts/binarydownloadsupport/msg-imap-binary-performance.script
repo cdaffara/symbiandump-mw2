@@ -1,0 +1,278 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+//!     @SYMScriptTestEnvironment   Details as in below:-
+//!                                    1. Dovecot IMAP server on Ubuntu 
+//!                                    2. Cyrus IMAP server on Ubuntu  
+//!                                    3. After Installation of the servers run the messaging.sh shell script which generates
+//!                                     and adds the user profile, and this configures the entire environment for testing on both the servers
+//!                                    4. The servers should be part of closed test network.
+//! Bench mark details 
+//! Download time taken for 100 Kb message is 
+//!   
+//!               5 msgs           10 msgs         100 msgs 
+//!                    
+//!   NO BINARY   5620 ms          11278 ms         112489 ms                  
+//!   
+//!   BINARY      2486 ms          4927 ms          58703 ms
+//!
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE 	T_MsgCommonServer 	-SharedData
+LOAD_SUITE 	T_MsgImapServer 	-SharedData
+LOAD_SUITE  	T_MsgSmtpServer 	-SharedData
+
+
+LOAD_SUITE	EventLogServer		-SharedData
+
+
+START_TESTCASE MSG-IMAP-BINARY-PERFORMANCE-0001
+//! 	@SYMTestCaseID		MSG-IMAP-BINARY-PERFORMANCE-0001
+//! 	@SYMTestCaseDesc	A Performance test which records the time taken to download 5  messages each of 100KB size from the servers which support 
+//!                             BINARY capability and the server which does not support BINARY capability
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ 785
+//!	@SYMREQ			REQ 11530 REQ11531
+//!				
+//! 	@SYMTestActions		1.	Initialize the NT-RAS /wintap
+//!				2.	Reset the Message Store in a cleanup state
+//!				3.	Create a IMAP account A 
+//!				4.	Connect and Synchronize the IMAP server which support BINARY CAPABILITY .
+//!				5.	Initialize IMAP account in a cleanup state
+//!				6.	Disconnect IMAP server
+//!				
+//!				7.	Create 5 Messages with Body Text Size of 100KB with 1KB attachment 
+//!				8.	Send the Message to the account mentioned in the settings file.
+//!				9.	Record the time after sending the Message
+//!				
+//!				10.	Connect to the IMAP server
+//!				11.	Record the time before downloading the Message
+//!				12.	Download the Message using IMAP client MTM populate command 
+//!				13.	Record the time after downloading the Message
+//!				14.	Check that there is are 5 Messages in Inbox
+//!				
+//!				15.	Print the time logs for creation, move, copy, and deletion operations
+//!				16.	Disconnect IMAP server.
+//!                             17.     Repeat steps 1 to 16 except that we will be connecting to server which does not Support capability 
+//!				
+//!				Analysis for any speed degradation would be done by the PC side analysis tool and then will upload in to the SYMSYM database
+//!				
+//! 	@SYMTestExpectedResults Time to download from each server is printed.
+//!	@SYMAuthor		Manikandan B
+
+PRINT Setup Begins #####################################################
+PRINT ###############create and Download 5 Messages with IMAP server which has Binary capability###########
+
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer 	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	InitNtRas			c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer 	ResetMessageStore		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer 	CreateImapAccount		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-CreateImapAccount
+
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-ChangeImapSettings
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectAndSyncImapServer	c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-ConnectAndSyncImapServer
+RUN_TEST_STEP 300 T_MsgImapServer	InitialiseImap4Account		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-InitialiseImap4Account
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-DisConnectImap4Server
+
+RUN_TEST_STEP 300 EventLogServer	Clear				c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	
+RUN_TEST_STEP 300 EventLogServer 	Start				c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-EventLog
+
+PRINT ############ Create 5 Messages #################################
+
+
+START_REPEAT	c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini	0001-SectionOne	RepeatParam
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-CreateSmtpMessageFromEmailFile
+END_REPEAT
+RUN_TEST_STEP 300 T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-CheckChildrenCountOutbox
+RUN_TEST_STEP 3000 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-CheckChildrenCountSentItems
+
+RUN_TEST_STEP 300 T_MsgImapServer	SetImap4FullDownloadLimits	c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-SetImap4FullDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-ConnectImap4Server
+RUN_TEST_STEP 3000 T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-DoFullImap4Synchronisation
+
+PRINT ############ Dowload 5 Messages ################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-StartEventCode_Download
+RUN_TEST_STEP 3000 T_MsgImapServer 	ImapInvokeAsyncFunction		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-StopEventCode_Download
+#mani comment6ing out for 785
+RUN_TEST_STEP 300 EventLogServer 	PrintEventLog			c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-EventLog
+
+RUN_TEST_STEP 300 T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-DisConnectImap4Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer 	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer 	ShutDown
+PRINT########### create and Download 5 Messages with IMAP server which does not have Binary capability##################################
+RUN_TEST_STEP 300 T_MsgCommonServer 	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer 	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	InitNtRas			c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer 	ResetMessageStore		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer 	CreateImapAccount		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0002-CreateImapAccount
+
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-ChangeImapSettings
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectAndSyncImapServer	c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-ConnectAndSyncImapServer
+RUN_TEST_STEP 300 T_MsgImapServer	InitialiseImap4Account		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-InitialiseImap4Account
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-DisConnectImap4Server
+
+RUN_TEST_STEP 300 EventLogServer	Clear				c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	
+RUN_TEST_STEP 300 EventLogServer 	Start				c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-EventLog
+
+PRINT ############ Create 5 Messages #################################
+
+
+START_REPEAT	c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini	0001-SectionOne	RepeatParam
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-CreateSmtpMessageFromEmailFile
+END_REPEAT
+
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-CheckChildrenCountOutbox
+
+
+RUN_TEST_STEP 3000 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-SendSmtpMessage
+
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-CheckChildrenCountSentItems
+
+RUN_TEST_STEP 300 T_MsgImapServer	SetImap4FullDownloadLimits	c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-SetImap4FullDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-ConnectImap4Server
+RUN_TEST_STEP 3000 T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-DoFullImap4Synchronisation
+
+PRINT ############ Dowload 5 Messages ################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-StartEventCode_Download
+RUN_TEST_STEP 3000 T_MsgImapServer 	ImapInvokeAsyncFunction		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-StopEventCode_Download
+RUN_TEST_STEP 300 EventLogServer 	PrintEventLog			c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-EventLog
+
+RUN_TEST_STEP 300 T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0001-DisConnectImap4Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer 	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer 	ShutDown
+
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-BINARY-PERFORMANCE-0001
+
+###############TEST CASE 2 CONTENT VALIDATION###################
+
+START_TESTCASE MSG-IMAP-BINARY-PERFORMANCE-0002
+//! 	@SYMTestCaseID		MSG-IMAP-BINARY-PERFORMANCE-0002
+//! 	@SYMTestCaseDesc	Content validation test case to ensure the mail that has been downloaded from a server that supports binary capability is right with its contents
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ 785
+//!	@SYMREQ			REQ 11530 REQ 11531
+//!				
+//! 	@SYMTestActions		1.	Initialize the NT-RAS /wintap
+//!				2.	Reset the Message Store in a cleanup state
+//!				3.	Create a IMAP account A 
+//!				4.	Connect and Synchronize the IMAP server which supports BINARY capability
+//!				5.	Initialize IMAP account in a cleanup state
+//!				6.	Disconnect IMAP server
+//!				7.	Create 10 Messages with Body Text Size of 10KB with 1KB attachment
+//!				8.	Send the Messages
+//!            			9.	Connect to the IMAP server
+//!				10.	Download the Messages using IMAP client MTM populate command 
+//!				11.	Check that there are 10 Messages in Inbox
+//!				12.	Compare each message with its contents when it s downloaded with the messages in sent items folder.
+//!				13.	Disconnect IMAP server
+//!				
+//!				Analysis for any speed degradation would be done by the PC side analysis tool and then will upload in to the SYMBIAN  database
+//!				
+//!				
+//! 	@SYMTestExpectedResults Step 11, 12 should pass.
+//!	@SYMAuthor		Manikandan B
+
+PRINT Setup Begins #####################################################
+
+
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer 	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	InitNtRas			c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0002-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer 	ResetMessageStore		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0002-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer 	CreateImapAccount		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0002-CreateImapAccount
+
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0002-ChangeImapSettings
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectAndSyncImapServer	c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0002-ConnectAndSyncImapServer
+RUN_TEST_STEP 300 T_MsgImapServer	InitialiseImap4Account		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0002-InitialiseImap4Account
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0002-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0002-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0002-DisConnectImap4Server
+
+RUN_TEST_STEP 300 EventLogServer	Clear				c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	
+RUN_TEST_STEP 300 EventLogServer 	Start				c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0002-EventLog
+
+PRINT ############ Create 1 Messages #################################
+
+START_REPEAT	c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini	0002-SectionOne	RepeatParam
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0002-CreateSmtpMessageFromEmailFile
+END_REPEAT
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0002-CheckChildrenCountOutbox
+
+
+RUN_TEST_STEP 3000 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0002-SendSmtpMessage
+
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0002-CheckChildrenCountSentItems
+
+RUN_TEST_STEP 300 T_MsgImapServer	SetImap4FullDownloadLimits	c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0002-SetImap4FullDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0002-ConnectImap4Server
+RUN_TEST_STEP 3000 T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0002-DoFullImap4Synchronisation
+
+PRINT ############ Dowload 1 Message ################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0002-StartEventCode_Download
+RUN_TEST_STEP 3000 T_MsgImapServer 	ImapInvokeAsyncFunction		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0002-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0002-StopEventCode_Download
+
+RUN_TEST_STEP 300 EventLogServer 	Stop				c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0002-EventLog
+RUN_TEST_STEP 300 EventLogServer 	GetRecordCount			c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0002-EventLog
+RUN_TEST_STEP 300 EventLogServer 	PrintEventLog			c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0002-EventLog
+
+RUN_TEST_STEP 300 T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\imap\binaryDownloadSupport\msg-imap-binary-performance.ini 	0002-DisConnectImap4Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer 	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer 	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-BINARY-PERFORMANCE-0002
+
+

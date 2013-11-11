@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>msg-imap-sync2</name>
+	<timeout>92440</timeout>
+	<testScripts>
+		<script>
+		
+			<hostPath>\epoc32\winscw\c\msgtest\email\imap\sync\msg-imap-sync2.script</hostPath>
+			<devicePath>c:\msgtest\email\imap\sync\msg-imap-sync2.script</devicePath>
+			
+		</script>
+	</testScripts>
+
+	<testServers>
+		<server>T_MsgCommonServer</server>
+		<server>T_MsgImapServer</server>
+		<server>T_MsgSmtpServer</server>
+	</testServers>
+
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\email\imap\sync\msg-imap-sync2.ini</hostPath>
+			<devicePath>c:\msgtest\email\imap\sync\msg-imap-sync2.ini</devicePath>
+		</data>
+
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test6.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test6.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\Msg1.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\Msg1.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test1.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test1.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\mail3.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\mail3.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\TCase_11_6KBAttchmnt.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\TCase_11_6KBAttchmnt.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\TestCase13_Bdy7KBn3KBAtchmnt.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\TestCase13_Bdy7KBn3KBAtchmnt.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\ImapSearchEmail2.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\ImapSearchEmail2.txt</devicePath>
+		</data>
+
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test21_2.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test21_2.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test_9.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test_9.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\simpleemail.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\simpleemail.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\mutliattach.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\mutliattach.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\zeroattachmentwithbody.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\zeroattachmentwithbody.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\zeroattachmentzerobody.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\zeroattachmentzerobody.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\zeromsgpartmultiattach.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\zeromsgpartmultiattach.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\zeromsgpartnoattach.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\zeromsgpartnoattach.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\zeromsgpartwithattach4kb.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\zeromsgpartwithattach4kb.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\IMAPSettings_test908.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\IMAPSettings_test908.txt</devicePath>
+		</data>
+	</dependencies>	
+</testExecuteTest>

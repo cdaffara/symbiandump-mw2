@@ -1,0 +1,29 @@
+/************************************************************************
+	Test case: Request command using ext-if, leaves on request.
+		
+	1. Send request.
+*************************************************************************/	
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 12.5 Extension interface when plug-in leaves on get
+timeout 15000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+// set to leave
+test ConfigurePlugin 2 ID=CConvergedCallProvider::ExtensionProviderL LEAVE=-2  TYPE=TInt
+
+// Step 2
+print Step_2
+// should leave
+test RequestExtIfCommand 2 123 "Test ext if leave" -2
+
+test VerifyTest
+delete test
+[Endtest]

@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<api id="cdde32d7267d8819c45531a50e297fc8" dataversion="2.0">
+<name>MPX Common Definition API</name>
+<description>Common definitions used by the MPX framework</description>
+<type>c++</type>
+<collection>mpx</collection>
+<libs>
+</libs>
+<release category="platform" sinceversion=""/>
+<attributes>
+<htmldocprovided>no</htmldocprovided>
+<adaptation>no</adaptation>
+</attributes>
+</api>

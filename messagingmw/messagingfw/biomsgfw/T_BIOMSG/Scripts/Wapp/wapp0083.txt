@@ -1,0 +1,39 @@
+[main]
+bio_test doatstart
+bio_test wapp0083
+bio_test doattheend
+
+
+// Startup section.
+[doatstart]
+clean_all_bio_msgs
+
+
+// Shutdown section.
+[doattheend]
+
+
+// wapp tests.
+[wapp0083]
+gen_msg_from_file wapp\wapp0083.bin
+check_used_bif 10005532
+bio_client_parse
+bio_client_process
+dump_parsed_message
+chk_file_in_msg_dir_with_ext
+//
+// check commdb tables for correct entries
+bio_commdb WAPAccessPoint wapp0083_commdb_wapap_table
+bio_commdb WAPSMSBearer wapp0083_commdb_wapsms_table
+
+
+[wapp0083_commdb_wapap_table]
+commdb_check text StartPage "/index2.wml"
+commdb_check text Name "WAP World"
+
+
+[wapp0083_commdb_wapsms_table]
+commdb_check text GatewayAddress "99334483"
+commdb_check bool WSPOption "true"
+commdb_check bool Security "false"
+commdb_check text ServiceCentreAddress "+448182838485"

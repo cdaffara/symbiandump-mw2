@@ -1,0 +1,34 @@
+// Copyright (c) 1999-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// ENP.INF
+// 
+//
+
+PRJ_PLATFORMS
+
+
+PRJ_EXPORTS
+
+PRJ_TESTEXPORTS
+../ENPTSRC/enp1.txt /epoc32/winscw/c/test/bio/enp/enp1.txt
+../ENPTSRC/enp2.txt /epoc32/winscw/c/test/bio/enp/enp2.txt
+../ENPTSRC/enp3.txt /epoc32/winscw/c/test/bio/enp/enp3.txt
+../ENPTSRC/enp4.txt /epoc32/winscw/c/test/bio/enp/enp4.txt
+../ENPTSRC/enp5.txt /epoc32/winscw/c/test/bio/enp/enp5.txt
+
+PRJ_MMPFILES
+group/ENP.MMP
+
+PRJ_TESTMMPFILES
+../ENPTSRC/T_ENP.MMP	manual

@@ -1,0 +1,78 @@
+/*
+* Copyright (c) 2002 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  
+*     This is project specification file for the Muiu_domain.
+*
+*/
+
+
+
+#include <data_caging_paths.hrh>
+#include <platform_paths.hrh>
+
+target          muiuutils.dll
+targettype      dll
+UID             0x1000008d 0x20028782
+VENDORID        VID_DEFAULT
+CAPABILITY      CAP_GENERAL_DLL
+VERSION 	10.0
+PAGED
+
+SOURCEPATH      .
+
+LANGUAGE_IDS
+
+
+#if defined(ARMCC)
+deffile ../eabi/eabi.def
+#elif defined( WINSCW )
+deffile ../bwinscw/winscwu.def
+#endif
+
+
+userinclude     ../inc
+
+//SYSTEMINCLUDE   ../../../../inc
+MW_LAYER_SYSTEMINCLUDE
+
+// Generic
+sourcepath      ../src
+source          muiudomainpan.cpp
+source          MsvFactorySettings.cpp
+source          MuiuMsvSingleOpWatcher.cpp
+source          MuiuServiceUtilities.cpp
+
+library         euser.lib
+library         estor.lib
+library         apparc.lib
+library         cone.lib
+library         bafl.lib
+library         efsrv.lib
+library         apgrfx.lib
+library         msgs.lib
+library         mtur.lib
+library         eikcore.lib
+library         eikdlg.lib
+library         eikcoctl.lib
+library         egul.lib
+library         eikctl.lib
+library         commonengine.lib
+LIBRARY         centralrepository.lib
+
+
+#if defined(WINS)
+DEBUGLIBRARY	flogger.lib
+#endif
+
+//End of file

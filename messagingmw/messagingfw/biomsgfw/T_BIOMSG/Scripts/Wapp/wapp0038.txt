@@ -1,0 +1,65 @@
+[main]
+bio_test doatstart
+bio_test wapp0038
+bio_test doattheend
+
+
+// Startup section.
+[doatstart]
+clean_all_bio_msgs
+
+
+// Shutdown section.
+[doattheend]
+
+
+// wapp tests.
+[wapp0038]
+gen_msg_from_file wapp\wapp0038.bin
+check_used_bif 10005532
+bio_client_parse
+bio_client_process
+dump_parsed_message
+//
+// check commdb tables for correct entries
+bio_commdb DialOutIsp wapp0038_commdb_dialoutisp_table
+bio_commdb IAP wapp0038_commdb_iap_table
+bio_commdb WAPAccessPoint wapp0038_commdb_wapap_table
+bio_commdb WAPIPBearer wapp0038_commdb_wapip_table
+bio_commdb WAPSMSBearer wapp0038_commdb_wapsms_table
+
+
+[wapp0038_commdb_dialoutisp_table]
+commdb_check text IpGateway "195.134.200.38"
+commdb_check text DefaultTelNum "+35833151001"
+commdb_check text LoginName "username"
+commdb_check text IfAuthName "username"
+commdb_check uint BearerProtocol "3"
+commdb_check uint BearerSpeed "1"
+commdb_check text Description "Everybodys ISP"
+commdb_check text Name "WAPP 0038-GsmCsd"
+
+
+[wapp0038_commdb_iap_table]
+commdb_check text Name "WAPP 0038-GsmCsd"
+
+
+[wapp0038_commdb_wapap_table]
+commdb_check text StartPage "/homepage/index.wml"
+commdb_check text Name "WAPP 0038"
+
+
+[wapp0038_commdb_wapip_table]
+commdb_check text GatewayAddress "195.134.200.38"
+commdb_check uint ProxyPortNumber "9202"
+commdb_check bool WSPOption "false"
+commdb_check bool Security "true"
+commdb_check text ProxyLogin "wapuser"
+commdb_check text ProxyPassword "wappswrd"
+
+
+[wapp0038_commdb_wapsms_table]
+commdb_check text GatewayAddress "1065538"
+commdb_check bool WSPOption "true"
+commdb_check bool Security "false"
+commdb_check text ServiceCentreAddress "+358508771020"

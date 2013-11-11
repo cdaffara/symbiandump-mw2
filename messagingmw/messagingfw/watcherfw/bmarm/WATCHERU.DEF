@@ -1,0 +1,14 @@
+EXPORTS
+	WinsMain__Fv @ 1 NONAME R3UNUSED ; WinsMain(void)
+	NewLC__12CWatcherWaiti @ 2 NONAME R3UNUSED ; CWatcherWait::NewLC(int)
+	NewL__8CWatcheri @ 3 NONAME R3UNUSED ; CWatcher::NewL(int)
+	Printf__11CWatcherLogGt11TRefByValue1ZC7TDesC16e @ 4 NONAME ; CWatcherLog::Printf(TRefByValue<TDesC16 const>,...)
+	Start__12CWatcherWait @ 5 NONAME R3UNUSED ; CWatcherWait::Start(void)
+	Start__8CWatcherR14TRequestStatus @ 6 NONAME R3UNUSED ; CWatcher::Start(TRequestStatus &)
+	"_._8CWatcher" @ 7 NONAME R3UNUSED ; CWatcher::~CWatcher(void)
+	NewL__13CWatcherArray @ 8 NONAME R3UNUSED ; CWatcherArray::NewL(void)
+	"_._12CWatcherWait" @ 9 NONAME R3UNUSED ; CWatcherWait::~CWatcherWait(void)
+	"_._13CWatcherArray" @ 10 NONAME R3UNUSED ; CWatcherArray::~CWatcherArray(void)
+	IsLogging__C11CWatcherLog @ 11 NONAME R3UNUSED ; CWatcherLog::IsLogging(void) const
+	Printf__11CWatcherLogGt11TRefByValue1ZC6TDesC8e @ 12 NONAME ; CWatcherLog::Printf(TRefByValue<TDesC8 const>,...)
+

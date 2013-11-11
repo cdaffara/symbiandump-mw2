@@ -1,0 +1,43 @@
+Subject: DRM_email_subject
+Date: Thu, 30 Sep 2004 16:54:06 +0530
+MIME-Version: 1.0
+Content-type: application/testagent.drm;
+ boundary=boundary-1
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 5.50.4807.1700
+X-MimeOLE: Produced By Microsoft MimeOLE V5.50.4910.0300
+Return-Path: matthewf@msexchange2k.closedtest.intra
+X-OriginalArrivalTime: 13 Oct 2004 14:45:40.0765 (UTC) FILETIME=[4F73BCD0:01C4B133]
+
+
+--boundary-1
+Content-type: application/vnd.oma.drm.rights+xml
+Content-Transfer-Encoding: binary
+
+<o-ex:rights
+xmlns:o-ex="http://odrl.net/1.1/ODRL-EX"
+xmlns:o-dd="http://odrl.net/1.1/ODRL-DD"
+>
+    <o-ex:context>
+        <o-dd:version>1.0</o-dd:version>
+    </o-ex:context>
+    <o-ex:agreement>
+        <o-ex:asset>
+            <o-ex:context>
+                <o-dd:uid>cid:4567829547@foo.bar</o-dd:uid>
+            </o-ex:context>
+        </o-ex:asset>
+        <o-ex:permission>
+            <o-dd:display/>
+        </o-ex:permission>
+    </o-ex:agreement>
+</o-ex:rights>
+
+--boundary-1
+Content-type: image/jpeg
+Content-ID: <45678929547@foo.bar>
+Content-Transfer-Encoding: binary
+
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+--boundary-1--

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hbdocument context="satapp" version="0.7">
+    <widget name="setupmenu_view" type="HbView">
+        <widget name="content" role="HbView:widget" type="HbWidget">
+            <widget name="s:ListWidget" type="HbListWidget">
+                <real name="z" value="1"/>
+            </widget>
+            <layout type="anchor">
+                <anchoritem dst="s:ListWidget" dstEdge="LEFT" spacing="0un" src="" srcEdge="LEFT"/>
+                <anchoritem dst="s:ListWidget" dstEdge="TOP" spacing="0un" src="" srcEdge="TOP"/>
+                <anchoritem dst="s:ListWidget" dstEdge="RIGHT" spacing="0un" src="" srcEdge="RIGHT"/>
+                <anchoritem dst="s:ListWidget" dstEdge="BOTTOM" spacing="0un" src="" srcEdge="BOTTOM"/>
+            </layout>
+        </widget>
+        <widget name="s:MenuAction" role="HbView:menu" type="HbMenu">
+            <!--ref object="t:exit" role="HbMenu:addAction"/-->
+        </widget>
+        <string locid="txt_simatk_title_sim_services" name="title" value="SIM Services"/>
+    </widget>
+    <widget name="selectitem_view" type="HbView">
+        <widget name="content_2" role="HbView:widget" type="HbWidget">
+            <widget name="t:ListWidget" type="HbListWidget">
+                <real name="z" value="2"/>
+            </widget>
+            <widget name="t:label" type="HbLabel">
+                <real name="z" value="3"/>
+                <sizehint height="6un" type="PREFERRED"/>
+            </widget>
+            <layout type="anchor">
+                <anchoritem dst="t:ListWidget" dstEdge="LEFT" spacing="0un" src="" srcEdge="LEFT"/>
+                <anchoritem dst="t:ListWidget" dstEdge="RIGHT" spacing="0un" src="" srcEdge="RIGHT"/>
+                <anchoritem dst="t:ListWidget" dstEdge="TOP" spacing="6un" src="" srcEdge="TOP"/>
+                <anchoritem dst="t:ListWidget" dstEdge="BOTTOM" spacing="0un" src="" srcEdge="BOTTOM"/>
+                <anchoritem dst="t:label" dstEdge="LEFT" spacing="0un" src="" srcEdge="LEFT"/>
+                <anchoritem dst="t:label" dstEdge="RIGHT" spacing="0un" src="" srcEdge="RIGHT"/>
+                <anchoritem dst="t:label" dstEdge="TOP" spacing="0un" src="" srcEdge="TOP"/>
+            </layout>
+        </widget>
+        <widget name="t:MenuAction" role="HbView:menu" type="HbMenu">
+            <!--ref object="t:back" role="HbMenu:addAction"/-->
+            <!--ref object="t:exit" role="HbMenu:addAction"/-->
+        </widget>
+        <string locid="txt_simatk_title_sim_services" name="title" value="SIM Services"/>
+    </widget>
+    <!--connect receiver="selectitem_view" sender="t:back" signal="triggered()" slot="backButtonClicked()"/-->
+    <metadata activeUIState="Common ui state" display="QHD portrait" unit="un">
+        <uistate name="Common ui state" sections="#common"/>
+    </metadata>
+</hbdocument>

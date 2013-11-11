@@ -1,0 +1,61 @@
+// Copyright (c) 2000-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// t_sms.mmp
+//
+
+target          t_sms.exe
+targettype      exe
+
+CAPABILITY All -TCB
+SOURCEPATH		../src
+source          T_SmsEnum.cpp T_SmsSendRecv.cpp T_SmsSc.cpp T_smcm.cpp T_smut.cpp t_sms.cpp
+userinclude     ../inc 
+USERINCLUDE   ../../../testutils/base/inc
+USERINCLUDE   ../../../testutils/email/inc 
+USERINCLUDE   ../../../testutils/sms/inc
+USERINCLUDE   ../../../testutils/server/inc
+USERINCLUDE   ../../../../biomsgfw/biosinc 
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+library         euser.lib msgs.lib
+library			smstestutils.lib msvtestutils.lib
+LIBRARY			commsdat.lib
+LIBRARY			efsrv.lib
+libraRY			smcm.lib
+library         etext.lib gsmu.lib
+library			estor.lib
+LIBRARY			etelmm.lib
+library			esock.lib smsu.lib
+
+SOURCEPATH	.
+
+START RESOURCE	koala.rss
+TARGETPATH	/msgtest/sms
+LANG		SC
+END
+
+START RESOURCE	giraffe.rss
+TARGETPATH	/msgtest/sms
+LANG		SC
+END
+
+START BITMAP	smcm.mbm
+TARGETPATH	/msgtest/sms
+SOURCEPATH	.
+SOURCE		2 smcm.bmp
+END
+
+		
+VENDORID 0x70000001
+
+SMPSAFE

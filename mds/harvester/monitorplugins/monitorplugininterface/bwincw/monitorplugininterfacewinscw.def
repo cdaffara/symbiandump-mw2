@@ -1,0 +1,5 @@
+EXPORTS
+	??1CMonitorPlugin@@UAE@XZ @ 1 NONAME ; CMonitorPlugin::~CMonitorPlugin(void)
+	?ListImplementationsL@CMonitorPlugin@@SAXAAV?$RPointerArray@VCImplementationInformation@@@@@Z @ 2 NONAME ; void CMonitorPlugin::ListImplementationsL(class RPointerArray<class CImplementationInformation> &)
+	?NewL@CMonitorPlugin@@SAPAV1@ABVTUid@@@Z @ 3 NONAME ; class CMonitorPlugin * CMonitorPlugin::NewL(class TUid const &)
+

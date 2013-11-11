@@ -1,0 +1,14 @@
+EXPORTS
+	"_._16CMetaDataUtility" @ 1 NONAME R3UNUSED ; CMetaDataUtility::~CMetaDataUtility(void)
+	At__C23CMetaDataFieldContaineriR16TMetaDataFieldId @ 2 NONAME R3UNUSED ; CMetaDataFieldContainer::At(int, TMetaDataFieldId &) const
+	Count__C23CMetaDataFieldContainer @ 3 NONAME R3UNUSED ; CMetaDataFieldContainer::Count(void) const
+	Field__C23CMetaDataFieldContainer16TMetaDataFieldId @ 4 NONAME R3UNUSED ; CMetaDataFieldContainer::Field(TMetaDataFieldId) const
+	MetaDataCount__C16CMetaDataUtility @ 5 NONAME R3UNUSED ; CMetaDataUtility::MetaDataCount(void) const
+	MetaDataFieldsL__16CMetaDataUtility @ 6 NONAME R3UNUSED ; CMetaDataUtility::MetaDataFieldsL(void)
+	NewL__16CMetaDataUtility @ 7 NONAME R3UNUSED ; CMetaDataUtility::NewL(void)
+	OpenDesL__16CMetaDataUtilityRC6TDesC8 @ 8 NONAME R3UNUSED ; CMetaDataUtility::OpenDesL(TDesC8 const &)
+	OpenDesL__16CMetaDataUtilityRC6TDesC8RCt6RArray1Z16TMetaDataFieldId @ 9 NONAME R3UNUSED ; CMetaDataUtility::OpenDesL(TDesC8 const &, RArray<TMetaDataFieldId> const &)
+	OpenFileL__16CMetaDataUtilityRC7TDesC16 @ 10 NONAME R3UNUSED ; CMetaDataUtility::OpenFileL(TDesC16 const &)
+	OpenFileL__16CMetaDataUtilityRC7TDesC16RCt6RArray1Z16TMetaDataFieldId @ 11 NONAME R3UNUSED ; CMetaDataUtility::OpenFileL(TDesC16 const &, RArray<TMetaDataFieldId> const &)
+	AppendL__23CMetaDataFieldContainer16TMetaDataFieldIdRC7TDesC16 @ 12 NONAME R3UNUSED ; CMetaDataFieldContainer::AppendL(TMetaDataFieldId, TDesC16 const &)
+

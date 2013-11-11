@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE SystemDefinition SYSTEM "sysdef_1_5_1.dtd" [
+  <!ENTITY layer_real_source_path "sf/mw/mmappfw" >
+]> 
+
+<SystemDefinition name="mmappfw" schema="1.5.1">
+	<systemModel>
+  <!-- Common file for prebuild layers-->
+  	<layer name="mw_layer">
+			<module name="mmappfw">
+				<unit unitID="mmappfw" mrp="" bldFile="&layer_real_source_path;/group" name="mmappfw" />
+				<unit unitID="mpxviewframeworkqt" name="mpxviewframeworkqt" bldFile="&layer_real_source_path;/mpx/mpxviewframeworkqt" proFile="mpxviewframeworkqt.pro" qmakeArgs="-r -config rom" mrp=""/>
+				<unit unitID="qtms" name="qtms" bldFile="&layer_real_source_path;/qtms" proFile="qtmsapi.pro" qmakeArgs="-r -config rom" mrp=""/>
+			</module>
+    </layer>   
+    
+    <layer name="api_test_layer">
+			<module name="mmappfw_tsrc">
+				<unit unitID="mmappfw_tsrc" name="mmappfw_tsrc" bldFile="&layer_real_source_path;/tsrc/group" mrp="" />
+			</module>
+    </layer>
+
+    <layer name="pref_test_layer">
+			<module name="mmappfw_tsrc_group">
+				<unit unitID="mmappfw_tsrc_group" name="mmappfw_tsrc_group" bldFile="&layer_real_source_path;/tsrc/group" mrp="" filter="TA_MMAPPFW" />
+			</module>
+    </layer>
+
+  	<layer name="mw_mmappfw_layer">
+			<module name="mmappfw_group">
+				<unit unitID="mmappfw_group" mrp="" bldFile="&layer_real_source_path;/group" name="mmappfw_group" />
+        <unit unitID="mpxviewframeworkqt_group" name="mpxviewframeworkqt_group" bldFile="&layer_real_source_path;/mpx/mpxviewframeworkqt" proFile="mpxviewframeworkqt.pro" qmakeArgs="-r -config rom" mrp=""/>
+        <unit unitID="qtms_group" name="qtms_group" bldFile="&layer_real_source_path;/qtms" proFile="qtmsapi.pro" qmakeArgs="-r -config rom" mrp=""/>
+			</module>
+    </layer>
+
+  </systemModel>
+</SystemDefinition>

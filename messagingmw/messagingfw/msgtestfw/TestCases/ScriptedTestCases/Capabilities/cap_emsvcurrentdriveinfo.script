@@ -1,0 +1,67 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRINT Running  EMsvCurrentDriveInfo
+
+LOAD_SERVER t_media  -SharedData
+START_TEST_BLOCK	100	t_media		c:\msgtest\testframework\scriptedtestcases\capabilities\cap_emsvcurrentdriveinfo.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-adddrive-cap.ini		c:\private\1000484b\msgprioritydrivelist.ini
+
+//******************************************
+// We don't need any capabilities to call EMsvCurrentDriveInfo.
+// Likewise, the SID does not matter either. This call always succeeds.
+//******************************************
+
+PRINT Running  EMsvCurrentDriveInfo : Read Caps = 0. Same SID. Should Pass.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_caps.exe 0003fffe -SID 101F7776 C:\sys\bin\MessagingTestServer.exe
+
+RUN_PROGRAM -1 setcap c:\sys\bin\SendProxyServer_caps.exe 00000000 -SID 101F7776 C:\sys\bin\SendProxyServer.exe
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvCurrentDriveInfo.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+//******************************************
+// We don't need any capabilities to call EMsvCurrentDriveInfo.
+// Likewise, the SID does not matter either. This call always succeeds.
+//******************************************
+
+PRINT Running  EMsvCurrentDriveInfo : Read Caps = 0. Different SID. Should Pass.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_caps.exe 0003fffe -SID 101F7776 C:\sys\bin\MessagingTestServer.exe
+
+RUN_PROGRAM -1 setcap c:\sys\bin\SendProxyServer_caps.exe 00000000 -SID 101F7777 C:\sys\bin\SendProxyServer.exe
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvCurrentDriveInfo.script
+
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak

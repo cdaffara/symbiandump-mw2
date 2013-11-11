@@ -1,0 +1,54 @@
+/*
+* Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file
+*
+*/
+
+#include <platform_paths.hrh>
+#include <data_caging_paths.hrh>
+
+VERSION         10.0
+TARGET          mdccommon.dll
+TARGETTYPE      dll
+TARGETPATH 	    SHARED_LIB_DIR
+UID             0x1000008d 0x200009F2
+
+CAPABILITY	    CAP_GENERAL_DLL
+VENDORID        VID_DEFAULT
+
+#if defined(WINSCW)
+    deffile ../bwincw/mdccommonu.def
+#elif defined(EABI)
+    deffile ../eabi/mdccommonu.def
+#endif
+nostrictdef
+
+USERINCLUDE     ../../../inc
+
+SOURCEPATH  	../src
+SOURCE      	mdccommon.cpp
+SOURCE		mdcserializationbuffer.cpp
+SOURCE		mdcitem.cpp
+SOURCE		mdcdef.cpp
+SOURCE		mdcquery.cpp
+SOURCE		mdcresult.cpp
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY         	euser.lib
+
+PAGED
+BYTEPAIRCOMPRESSTARGET
+OPTION ARMCC -O2 -OTime
+

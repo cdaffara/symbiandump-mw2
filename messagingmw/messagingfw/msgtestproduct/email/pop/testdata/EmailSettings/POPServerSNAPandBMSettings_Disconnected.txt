@@ -1,0 +1,7 @@
+PopServerAddress = msexchange2k.closedtest.intra
+PopSNAPId = 1
+PopBearerMobility = 1
+PopDisconnectedUserMode = 1
+
+SmtpServerAddress = msexchange2k.closedtest.intra
+SmtpSNAPId = 1

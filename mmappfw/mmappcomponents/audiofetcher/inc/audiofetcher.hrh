@@ -1,0 +1,62 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: Resource headers
+*
+*/
+
+#ifndef AUDIOFETCHER_HRH
+#define AUDIOFETCHER_HRH
+
+// CONSTANTS
+
+#define KAudioFetcherDllUid                0x20021213       //dll uid
+#define KAudioFetcherImplementationUid     0x20021214       //implementation uid
+
+enum TAudioFetcherControlId
+    {
+    EFetcherControl = 2300// any arbitary value
+    };
+
+
+enum TTAudioFetcherCommandId
+	{
+	ECmdSelectMarked,
+	ECmdMarkingSubmenu,
+	ECmdStartMultipleMarking,
+	ECmdEndMultipleMarking
+	};
+
+enum TListIcons
+    {
+    EEIconMusic = 0,
+    EEIconTone = 1,
+    EEIconVideo = 2,
+    EEIconRecording = 3,
+    EEIconArtist = 4,
+    EEIconAlbum = 5,
+    EEIconGenre = 6,
+    EEIconComposer = 7,
+    EEIconFolder = 8,
+    EEIconUnknown = 9,
+    EEIconFolderDownload = 10,
+    EEIconNullItemOff = 11,
+    EEIconMemoryCard = 12,
+    EEIconMassStorage = 13,
+    EEIconEmpty = 14,
+    EEIconImage
+    };
+
+#endif  // AUDIOFETCHER_HRH
+
+// End of File

@@ -1,0 +1,794 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Resource file.
+*
+*/
+
+
+//  INCLUDES
+#include <bldvariant.hrh>
+#include <languages.hrh>
+#include "mpxplaylisttopcharacterset.rh"
+#include "mpxplaylistsupplementalcharsets.hrh"
+
+//  RESOURCE DEFINITIONS 
+
+//----------------------------------------------------    
+// Character set resources
+// copied and revised based on MetadataUtility's
+// TopCharacterSet.rss version 9
+//----------------------------------------------------    
+
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_albanian_char_set
+// Description  : Albanian character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_albanian_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88591,
+    	KCharacterSetIdentifierIso88592
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_arabic_char_set
+// Description  : Arabic character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_arabic_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88596,
+    	// windows 1256
+    	KCharacterSetIdentifierCp1256
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_bosnian_char_set
+// Description  : Bosnian character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_bosnian_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88592
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_bulgarian_char_set
+// Description  : Bulgarian character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_bulgarian_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88595,
+    	// Windows 1251
+    	KCharacterSetIdentifierCp1251
+    	};
+    }
+
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_taiwan_hk_chinese_char_set
+// Description  : Taiwan HongKong Chinese character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_taiwan_hk_chinese_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierBig5
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_chinese_char_set
+// Description  : Chinese character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_chinese_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierGb2312,
+    	KCharacterSetIdentifierGbk
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_croatian_char_set
+// Description  : Croatian character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_croatian_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88592,
+    	// windows 1250
+    	KCharacterSetIdentifierCp1250
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_czech_char_set
+// Description  : Czech character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_czech_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88592,
+    	// windows 1250
+    	KCharacterSetIdentifierCp1250
+    	};
+    }    
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_danish_char_set
+// Description  : Danish character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_danish_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88591,
+    	KCharacterSetIdentifierIso885915,
+    	// windows 1252
+    	KCharacterSetIdentifierCp1252
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_dutch_char_set
+// Description  : Dutch character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_dutch_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88591,
+    	KCharacterSetIdentifierIso885915,
+    	// windows 1252
+    	KCharacterSetIdentifierCp1252
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_english_char_set
+// Description  : English character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_english_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierAscii,
+    	KCharacterSetIdentifierIso88591,
+    	KCharacterSetIdentifierIso885915,
+    	// windows 1252
+    	KCharacterSetIdentifierCp1252
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_estonian_char_set
+// Description  : Estonian character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_estonian_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88591,
+    	KCharacterSetIdentifierIso88594,
+    	KCharacterSetIdentifierIso885910,
+    	KCharacterSetIdentifierIso885913,
+    	// windows 1257
+    	KCharacterSetIdentifierCp1257
+
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_farsi_char_set
+// Description  : Farsi character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_farsi_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88596,
+    	// Windows-1256
+    	KCharacterSetIdentifierCp1256
+    	};
+    }    
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_finnish_char_set
+// Description  : Finnish character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_finnish_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88591,
+    	KCharacterSetIdentifierIso885915,
+    	// windows 1252
+    	KCharacterSetIdentifierCp1252
+    	};
+    }    
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_french_char_set
+// Description  : English character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_french_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88591,
+    	KCharacterSetIdentifierIso885915,
+    	// windows 1252
+    	KCharacterSetIdentifierCp1252
+    	};
+    }
+
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_german_char_set
+// Description  : German character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_german_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88591,
+    	KCharacterSetIdentifierIso885915,
+    	// windows 1252
+    	KCharacterSetIdentifierCp1252
+    	};
+    }
+    
+
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_greek_char_set
+// Description  : Greek character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_greek_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88597,
+    	// windows 1253
+    	KCharacterSetIdentifierCp1253
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_hebrew_char_set
+// Description  : Hebrew character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_hebrew_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88598,
+    	// windows 1255
+    	KCharacterSetIdentifierCp1255
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_hungarian_char_set
+// Description  : Hungarian character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_hungarian_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88592,
+    	// windows 1250
+    	KCharacterSetIdentifierCp1250
+    	};
+    }    
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_icelandic_char_set
+// Description  : Icelandic character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_icelandic_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88591,
+    	KCharacterSetIdentifierIso88599,
+    	KCharacterSetIdentifierIso885915,
+    	// windows 1252
+    	KCharacterSetIdentifierCp1252
+    	};
+    }        
+
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_indian_char_set
+// Description  : Indian character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_indian_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	// ISCII
+    	KCharacterSetIdentifierISCII
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_indonesian_char_set
+// Description  : Indonesian character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_indonesian_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierAscii,
+    	KCharacterSetIdentifierIso88591,
+    	// Windows 1252
+    	KCharacterSetIdentifierCp1252
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_irish_char_set
+// Description  : Irish character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_irish_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88591,
+    	KCharacterSetIdentifierIso885914
+    	};
+    }
+        
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_italian_char_set
+// Description  : Italian character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_italian_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88591,
+    	KCharacterSetIdentifierIso885915,
+    	// Windows 1252
+    	KCharacterSetIdentifierCp1252
+    	};
+    }
+    
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_japanese_char_set
+// Description  : Japanese character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_japanese_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierShiftJis,
+    	KCharacterSetIdentifierIso2022Jp,
+    	KCharacterSetIdentifierEucJpPacked
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_latvian_char_set
+// Description  : Latvian character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_latvian_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88594,
+    	KCharacterSetIdentifierIso885910,
+    	KCharacterSetIdentifierIso885913,
+    	// Windows 1257
+    	KCharacterSetIdentifierCp1257    	
+    	};
+    }               
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_lithuanian_char_set
+// Description  : Lithuanian character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_lithuanian_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88594,
+    	KCharacterSetIdentifierIso885910,
+    	KCharacterSetIdentifierIso885913,
+    	// Windows 1257
+    	KCharacterSetIdentifierCp1257    	
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_malay_char_set
+// Description  : Malay character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_malay_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierAscii,
+    	KCharacterSetIdentifierIso88591,
+    	KCharacterSetIdentifierIso885915,
+    	// Windows 1252
+    	KCharacterSetIdentifierCp1252    	
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_maltese_char_set
+// Description  : Maltese character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_maltese_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88593    	
+    	};
+    }
+
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_norwegian_char_set
+// Description  : Norwegian character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_norwegian_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88591,
+    	KCharacterSetIdentifierIso885915,
+    	// Windows 1252
+    	KCharacterSetIdentifierCp1252    	    	
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_pilipino_char_set
+// Description  : Pilipino character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_pilipino_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88591,
+    	// Windows 1252
+    	KCharacterSetIdentifierCp1252    	    	
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_polish_char_set
+// Description  : Polish character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_polish_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88592,
+    	// Windows 1250
+    	KCharacterSetIdentifierCp1250    	    	
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_portuguese_char_set
+// Description  : Portuguese character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_portuguese_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88591,
+    	KCharacterSetIdentifierIso885915,
+    	// Windows 1252
+    	KCharacterSetIdentifierCp1252    	    	
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_romanian_char_set
+// Description  : Romanian character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_romanian_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88592,
+    	// Windows 1250
+    	KCharacterSetIdentifierCp1250    	    	
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_russian_char_set
+// Description  : Russian character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_russian_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,    	
+    	KCharacterSetIdentifierIso88595,
+    	// Windows 1251
+    	KCharacterSetIdentifierCp1251,
+    	// KOI8-R
+    	KCharacterSetIdentifierKOI8R    	
+    	};
+    }    
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_sami_char_set
+// Description  : Sami character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_sami_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88594,
+    	KCharacterSetIdentifierIso885910
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_serbian_char_set
+// Description  : Serbian character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_serbian_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88592,
+    	KCharacterSetIdentifierIso88595,
+   	// Windows 1250
+    	KCharacterSetIdentifierCp1250
+    	};
+    }
+
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_slovak_char_set
+// Description  : Slovak character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_slovak_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88592,
+    	// Windows 1250
+    	KCharacterSetIdentifierCp1250
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_slovenian_char_set
+// Description  : Slovenian character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_slovenian_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88592,
+    	// Windows 1250
+    	KCharacterSetIdentifierCp1250
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_spanish_char_set
+// Description  : Spanish character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_spanish_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88591,
+    	KCharacterSetIdentifierIso885915,
+    	// Windows 1252
+    	KCharacterSetIdentifierCp1252
+    	};
+    }    
+    
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_swedish_char_set
+// Description  : Swedish character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_swedish_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88591,
+    	KCharacterSetIdentifierIso885915,
+    	// Windows 1252
+    	KCharacterSetIdentifierCp1252
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_thai_char_set
+// Description  : Thai character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_thai_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	// TIS-620
+    	KCharacterSetIdentifierTIS620,
+    	// Windows-874
+    	KCharacterSetIdentifierCp874
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_turkish_char_set
+// Description  : Turkish character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_turkish_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88593,
+    	// Windows 1254
+    	KCharacterSetIdentifierCp1254
+    	};
+    }
+    
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_ukrainian_char_set
+// Description  : Ukrainian character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_ukrainian_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88595,
+    	// KOI8-U
+    	KCharacterSetIdentifierKOI8U
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_urdu_char_set
+// Description  : Urdu character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_urdu_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	KCharacterSetIdentifierIso88595,
+    	KCharacterSetIdentifierIso88596,
+    	// Windows-1256
+    	KCharacterSetIdentifierCp1256
+    	};
+    }
+    
+//----------------------------------------------------
+// Resource     : r_mpx_playlist_vietnamese_char_set
+// Description  : Vietnamese character sets
+//----------------------------------------------------
+//
+RESOURCE MPX_PLAYLIST_CHARACTER_SET_ENCODING r_mpx_playlist_vietnamese_char_set
+    {
+    character_set_id =
+    	{
+    	KCharacterSetIdentifierUtf8,
+    	// Windows-1258
+    	KCharacterSetIdentifierCp1258
+    	};
+    }
+
+// End of File
+
+

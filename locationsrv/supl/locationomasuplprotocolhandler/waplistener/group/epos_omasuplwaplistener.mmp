@@ -1,0 +1,50 @@
+/*
+* Copyright (c)  Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:   Project definition file for OMA SUPL WAP Listener
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET          epos_omasuplwaplistener.dll
+TARGETTYPE      PLUGIN
+UID             0x10009d8d 0x102073D3 
+
+CAPABILITY      CAP_ECOM_PLUGIN
+VENDORID        VID_DEFAULT
+
+SOURCEPATH      ../src
+SOURCE          epos_comasuplwaplistener.cpp 
+SOURCE          epos_comasuplwaplistenerproxy.cpp
+SOURCE          epos_comasuplwaplistenermain.cpp
+SOURCE          epos_comasupltrace.cpp
+
+USERINCLUDE     ../inc
+USERINCLUDE     ../../../inc
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   /epoc32/include/ecom 
+SYSTEMINCLUDE   /epoc32/include/push
+
+LIBRARY         euser.lib 
+LIBRARY         charconv.lib 
+LIBRARY         ecom.lib 
+LIBRARY         wappushutils.lib 
+LIBRARY 				epos_csuplutils.lib
+LIBRARY         epos_suplnetinitiation.lib
+
+START RESOURCE  ../data/102073D3.rss
+        TARGET epos_omasuplwaplistener.rsc
+END

@@ -1,0 +1,122 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+// Test Case Name:
+//	Add attachment from public area to the message and compare sent and received 
+//	attachments
+// ------------------------------------------
+// Component Under Test:
+//	Attachment API
+// ------------------------------------------
+// API function under test:
+//	MMsvAttachmentManager::AddAttachmentL
+// ------------------------------------------
+// Requirement/Use Case/Functional Spec:
+//	SGL.GT0216.051 (2.1, 2.3.1, 2.3.3, 2.3.4)
+// ------------------------------------------
+// Polarity:
+//	Positive
+// ------------------------------------------
+// Test Type (unit, integration, panic, performance, conformance, stress, or interoperability):
+//	Integration
+// ------------------------------------------
+// Expected Panic ID (if a panic test, only for non-scripted test cases):
+//	N/A
+// ------------------------------------------
+// Interface Dependencies (does it require connection, which subsystems does it require):
+// 	Requires connection to Messaging Server
+// ------------------------------------------
+// Importance (critical, high, or low):
+//	High
+// ------------------------------------------
+// Execution Time (fast, medium, or slow):
+//	Medium
+// ------------------------------------------
+// Pre-condition description:
+//	1. New SMTP message with an attachment from public area
+//	2. Read/Write access to message store
+//	3. Attachment count is 1
+// ------------------------------------------
+// Action Description:
+//	1. Send the message and check if message is sent successfully
+//	2. Receive the message in Inbox using POP3 protocol
+//	3. Compare the file used for attachment and attachment file received with message in Inbox
+// ------------------------------------------
+// Post-condition description (i.e., expected outcome):
+//	Comparison of both the files, one used for attachment and attachment file received with 
+//	the message is successfull.
+// ------------------------------------------
+// Reference to a review document:
+//	AttachmentAPI_TestSpecificationDocument_Ver1.0.doc
+// ------------------------------------------
+// Full pathname of an epoc.ini (if there are special epoc.ini requirements)
+// 	For emulator, an epoc.ini that creates an emulated external drive (drive letter 
+//	between D: and Y:) is required. Optionally, an environment variable can be defined.
+// ------------------------------------------
+// Any CommDb restrictions:
+//	NTRAS CommDb
+// ------------------------------------------
+// Build Requirements (e.g., no watchers):
+//	No Watchers and Phone Book Synchroniser
+// ------------------------------------------
+// Hardware Requirements
+//	Null Modem Cable for NT RAS connection
+// ------------------------------------------
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer GetBaseConstants				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI GetConstants
+RUN_TEST_STEP 100 MessagingTestServer GetSMTPMTMUId				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI SmtpMTMUId
+RUN_TEST_STEP 100 MessagingTestServer InitNtRas					c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI InitNtRas
+RUN_TEST_STEP 100 MessagingTestServer CreateSession				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI SessionId
+RUN_TEST_STEP 100 MessagingTestServer ResetMessageStore				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI ResetMessageStore
+RUN_TEST_STEP 100 MessagingTestServer CreateRegistry				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI CreateRegistry
+RUN_TEST_STEP 100 MessagingTestServer CreatePop3Service				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI CreatePop3Service
+RUN_TEST_STEP 100 MessagingTestServer CreateService				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI CreateSmtpService
+RUN_TEST_STEP 100 MessagingTestServer CreatePop3Mtm				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI CreatePop3Mtm
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpMtm				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI CreateSmtpMtm
+RUN_TEST_STEP 100 MessagingTestServer GetDefaultSmtpService			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI GetDefaultSmtpService
+RUN_TEST_STEP 100 MessagingTestServer SetDefaultConfiguration			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI SetDefaultConfigurationPOP3
+RUN_TEST_STEP 100 MessagingTestServer SetPop3ServiceParameters			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI SetPop3ServiceParameters
+RUN_TEST_STEP 100 MessagingTestServer ConnectPop3Server				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI ConnectPop3Server0
+RUN_TEST_STEP 100 MessagingTestServer DeleteChildren				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI DeleteChildren
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI CheckChildrenCount0
+RUN_TEST_STEP 100 MessagingTestServer DisconnectPop3Server			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI DisconnectPop3Server0
+RUN_TEST_STEP 100 MessagingTestServer SetDefaultConfiguration			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI SetDefaultConfigurationSMTP
+RUN_TEST_STEP 100 MessagingTestServer SetDefaultConfiguration			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI SetDefaultConfigurationEMailFile
+RUN_TEST_STEP 100 MessagingTestServer SetSmtpServiceParameters			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI SetSmtpServiceParameters
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpMessageFromEmailFile		c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 100 MessagingTestServer SmtpAddFileAttachmentByPath		c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI SmtpAddFileAttachmentByPath
+RUN_TEST_STEP 100 MessagingTestServer SmtpCountAttachments			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI SmtpCountAttachments
+
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer CopyEntry					c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI CopyEntry
+RUN_TEST_STEP 100 MessagingTestServer ConnectPop3Server				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI ConnectPop3Server1
+RUN_TEST_STEP 100 MessagingTestServer CreateChildrenSelection			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI CreateChildrenSelection
+RUN_TEST_STEP 100 MessagingTestServer CopySelection				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI CopySelection
+RUN_TEST_STEP 100 MessagingTestServer DisconnectPop3Server			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI DisconnectPop3Server1
+
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+RUN_TEST_STEP 100 MessagingTestServer FindEntryByName				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI FindEntryByNameInInbox
+RUN_TEST_STEP 100 MessagingTestServer SmtpGetAttachmentFileFromIndex		c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\24-SMTP-POP3_AddAttachmentFromPublicArea_Compare.INI SmtpGetAttachmentFileFromIndex
+
+RUN_TEST_STEP 100 MessagingTestServer END_TEST_CASE

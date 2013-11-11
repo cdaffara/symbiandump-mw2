@@ -1,0 +1,35 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+[All]
+SC= +447785016005
+Recipients= +447747069233
+Encoding= 7
+
+[NBS:InternetCnfg]
+Bearer= NBS
+BioUid= 268457263
+Message= 
+password
+Iname:Demon
+Itel:+44 845 2121666
+Idns1:158.152.1.58
+Idns2:158.152.1.43
+Mname:Demon
+Madr:Brahim@yashar.Demon.co.uk
+Mrcv:pop3.demon.co.uk
+Msnd:post.demon.co.uk
+Mpro:PO

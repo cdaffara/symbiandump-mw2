@@ -1,0 +1,105 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS	  DeleteFile		c:\messaging.db
+
+LOAD_SUITE 	T_MsgCommonServer 	-SharedData
+LOAD_SUITE 	T_MsgImapServer 	-SharedData
+LOAD_SUITE  	T_MsgSmtpServer 	-SharedData
+
+LOAD_SUITE	EventLogServer		-SharedData
+
+
+START_TESTCASE ST-MESS-SOAKTEST-0001
+
+//!	@SYMTestCaseID			ST-MESS-SOAKTEST-0001
+//!	@SYMTestCaseDesc		Send/Receive the messages for long time ( soak testing)
+//!                                     	
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			ST
+//!  	@SYMTestStatus			Implemented
+//!	@SYMPREQ 			PREQ1189   
+//!	@SYMTestCaseDependencies	Requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			Initialises the RAS connection
+//!					Resets the message store to clean up the central repository
+//!					Creates an IMAP account
+//!					Connects to the IMAP server and performs a synchronisation
+//!					Disconnects from the server
+//!					
+//!					Create a loop from 1 to 5000
+//!					Create a message
+//!					Set the timer
+//!					Send the message
+//!					Set the timer to log the timing for sending the message
+//!					Connects to the IMAP server
+//!					Set the timer
+//!					Receive the message
+//!					Set the timer to log the timing for sending the message
+//!					End the loop
+//!					Disconnects from the server
+//!					
+//!	@SYMTestExpectedResults		Messaging database should not be corrupted
+//!	@SYMAuthor			Rajat Bal
+
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer 	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	InitNtRas			c:\msgtest\sys\st-mess.ini 	0001-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer 	ResetMessageStore		c:\msgtest\sys\st-mess.ini 	0001-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer 	CreateImapAccount		c:\msgtest\sys\st-mess.ini 	0001-CreateImapAccount
+
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\sys\st-mess.ini 	0001-ChangeImapSettings
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectAndSyncImapServer	c:\msgtest\sys\st-mess.ini 	0001-ConnectAndSyncImapServer
+RUN_TEST_STEP 300 T_MsgImapServer	InitialiseImap4Account		c:\msgtest\sys\st-mess.ini 	0001-InitialiseImap4Account
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\sys\st-mess.ini 	0001-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\sys\st-mess.ini 	0001-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\sys\st-mess.ini 	0001-DisConnectImap4Server
+RUN_TEST_STEP 300 EventLogServer	Clear				c:\msgtest\sys\st-mess.ini 	
+RUN_TEST_STEP 300 EventLogServer 	Start				c:\msgtest\sys\st-mess.ini 	0001-EventLog
+
+PRINT ################## demo: soak testing ###
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\sys\st-mess.ini 	0001-StartEventCode_Create
+START_REPEAT	c:\msgtest\sys\st-mess.ini	0001-Section4	RepeatParam
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\sys\st-mess.ini 	0001-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\sys\st-mess.ini 	0001-StopEventCode_Create
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\sys\st-mess.ini 	0001-StartEventCode_Send
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\sys\st-mess.ini 	0001-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\sys\st-mess.ini 	0001-StopEventCode_Send
+RUN_TEST_STEP 300 T_MsgImapServer	SetImap4FullDownloadLimits	c:\msgtest\sys\st-mess.ini 	0001-SetImap4FullDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer 	ConnectImap4Server		c:\msgtest\sys\st-mess.ini 	0001-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\sys\st-mess.ini 	0001-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\sys\st-mess.ini 	0001-StartEventCode_Download
+RUN_TEST_STEP 50000 T_MsgImapServer 	ImapInvokeAsyncFunction		c:\msgtest\sys\st-mess.ini 	0001-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\sys\st-mess.ini 	0001-StopEventCode_Download
+RUN_TEST_STEP 300 T_MsgImapServer 	DisConnectImapServer		c:\msgtest\sys\st-mess.ini 	0001-DisConnectImap4Server
+PRINT ##################
+END_REPEAT
+
+RUN_TEST_STEP 300 EventLogServer 	Stop				c:\msgtest\sys\st-mess.ini 	0001-EventLog
+RUN_TEST_STEP 300 EventLogServer 	GetRecordCount			c:\msgtest\sys\st-mess.ini 	0001-EventLog
+RUN_TEST_STEP 300 EventLogServer 	PrintEventLog			c:\msgtest\sys\st-mess.ini 	0001-EventLog
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer 	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer 	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE ST-MESS-SOAKTEST-0001
+
+

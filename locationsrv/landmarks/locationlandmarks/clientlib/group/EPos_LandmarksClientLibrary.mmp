@@ -1,0 +1,62 @@
+/*
+* Copyright (c) 2002-2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*     This is the project specification file for Landmarks
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET          eposlandmarks.dll
+TARGETTYPE      dll
+UID             0x1000008d 0x101fdf8a
+
+VENDORID        VID_DEFAULT
+CAPABILITY      CAP_CLIENT_DLL
+
+SOURCEPATH      ../src
+SOURCE          EPos_CPosLandmark.cpp
+SOURCE          EPos_Landmarks.cpp
+SOURCE          EPos_CPosLmItemIterator.cpp
+SOURCE          EPos_CPosLandmarkDatabase.cpp
+SOURCE          EPos_CPosLmPartialReadParameters.cpp
+SOURCE          EPos_CPosLandmarkCategory.cpp
+SOURCE          EPos_CPosLmCategoryManager.cpp
+SOURCE          EPos_TPosLmSortPref.cpp
+SOURCE          EPos_CPosLmOperation.cpp
+SOURCE          EPos_CPosLandmarkParser.cpp
+SOURCE          EPos_CPosLandmarkEncoder.cpp
+SOURCE          EPos_PosLmImplExtension.cpp
+SOURCE          EPos_LandmarksErrors.cpp
+SOURCE          epos_cposreadbufstorage.cpp
+SOURCE          epos_cposwritebufstorage.cpp
+SOURCE          epos_poslandmarkserialization.cpp
+SOURCE          epos_poslmcategoryserialization.cpp 
+SOURCE          epos_cposlandmarkdatabaseextended.cpp
+
+USERINCLUDE     ../inc
+USERINCLUDE     ../../../inc
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY         euser.lib
+LIBRARY         ecom.lib
+LIBRARY         bafl.lib
+LIBRARY         lbs.lib
+
+
+SMPSAFE
+
+// End of File

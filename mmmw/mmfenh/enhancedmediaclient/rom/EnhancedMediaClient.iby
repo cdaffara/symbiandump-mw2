@@ -1,0 +1,43 @@
+/*
+* Copyright (c) 2002-2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Contains all DLLs that must be included in image
+*
+*/
+
+
+#ifndef ENHANCEDAUDIOPLAYER_IBY
+#define ENHANCEDAUDIOPLAYER_IBY
+
+#include <bldvariant.hrh>
+
+//Moved above to flag as AudioControllerPluginsVariant depends on this dlls
+file=ABI_DIR\BUILD_DIR\MMDataSourceFactory.dll		        SHARED_LIB_DIR\MMDataSourceFactory.dll
+file=ABI_DIR\BUILD_DIR\StreamControlCustomCommands.dll		SHARED_LIB_DIR\StreamControlCustomCommands.dll
+file=ABI_DIR\BUILD_DIR\CacheSource.dll				        SHARED_LIB_DIR\CacheSource.dll
+file=ABI_DIR\BUILD_DIR\DataSourceConfigIntfc.dll            SHARED_LIB_DIR\DataSourceConfigIntfc.dll
+
+
+file=ABI_DIR\BUILD_DIR\EnhancedMediaClient.dll	            SHARED_LIB_DIR\EnhancedMediaClient.dll
+
+ECOM_PLUGIN(DataBufferSource.DLL,DataBufferSource.rsc)
+ECOM_PLUGIN(FileSource.DLL,FileSource.rsc)
+ECOM_PLUGIN(DescriptorDataSource.DLL,DescriptorDataSource.rsc)
+
+
+data=ZSYSTEM\install\WMA_AudCon_stub.sis    System\Install\WMA_AudCon_stub.sis
+data=ZSYSTEM\install\EnhancedMediaClient_Stub.SIS    System\Install\EnhancedMediaClient_Stub.SIS
+
+#endif // ENHANCEDAUDIOPLAYER_IBY
+
+//  End of File  

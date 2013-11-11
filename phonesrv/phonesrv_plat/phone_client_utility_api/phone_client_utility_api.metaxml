@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<api id="77a53fe807841f4c6e9d8a7bd7f93a86" dataversion="1.0">
+  <name>Phone Client Utility API</name>
+  <description>API for checking valid phone number characters and removing invalid characters from phone number.</description>
+  <type>c++</type>
+  <subsystem>phoneclientserver</subsystem>
+  <libs>
+     <lib name="PhoneClient.lib" />
+  </libs>
+  <release category="domain"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>yes</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

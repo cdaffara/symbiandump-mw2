@@ -1,0 +1,24 @@
+EXPORTS
+	_ZN19CPosLmMultiDbSearch14MatchIteratorLEj @ 1 NONAME
+	_ZN19CPosLmMultiDbSearch14SetDisplayDataER17CPosLmDisplayData @ 2 NONAME
+	_ZN19CPosLmMultiDbSearch16UnsetDisplayDataEv @ 3 NONAME
+	_ZN19CPosLmMultiDbSearch18DatabasesToSearchLEv @ 4 NONAME
+	_ZN19CPosLmMultiDbSearch18SetMaxNumOfMatchesEi @ 5 NONAME
+	_ZN19CPosLmMultiDbSearch20StartCategorySearchLERK20CPosLmSearchCriteriaN21CPosLmCategoryManager17TCategorySortPrefEi @ 6 NONAME
+	_ZN19CPosLmMultiDbSearch20StartLandmarkSearchLERK20CPosLmSearchCriteriaRK14TPosLmSortPrefi @ 7 NONAME
+	_ZN19CPosLmMultiDbSearch20StartLandmarkSearchLERK20CPosLmSearchCriteriai @ 8 NONAME
+	_ZN19CPosLmMultiDbSearch21SetDatabasesToSearchLERK12CDesC16Array @ 9 NONAME
+	_ZN19CPosLmMultiDbSearch4NewLERK12CDesC16Array @ 10 NONAME
+	_ZN19CPosLmMultiDbSearchD0Ev @ 11 NONAME
+	_ZN19CPosLmMultiDbSearchD1Ev @ 12 NONAME
+	_ZN19CPosLmMultiDbSearchD2Ev @ 13 NONAME
+	_ZNK19CPosLmMultiDbSearch12NumOfMatchesEj @ 14 NONAME
+	_ZNK19CPosLmMultiDbSearch14DatabaseUriPtrEj @ 15 NONAME
+	_ZNK19CPosLmMultiDbSearch14GetSearchErrorEjRNS_12TSearchErrorE @ 16 NONAME
+	_ZNK19CPosLmMultiDbSearch15MaxNumOfMatchesEv @ 17 NONAME
+	_ZNK19CPosLmMultiDbSearch17NumOfSearchErrorsEv @ 18 NONAME
+	_ZNK19CPosLmMultiDbSearch17TotalNumOfMatchesEv @ 19 NONAME
+	_ZNK19CPosLmMultiDbSearch22NumOfDatabasesToSearchEv @ 20 NONAME
+	_ZTI19CPosLmMultiDbSearch @ 21 NONAME ; #<TI>#
+	_ZTV19CPosLmMultiDbSearch @ 22 NONAME ; #<VT>#
+

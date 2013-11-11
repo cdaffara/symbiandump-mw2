@@ -1,0 +1,28 @@
+// Copyright (c) 1998-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+
+PRJ_TESTMMPFILES
+t_converter.mmp
+
+PRJ_TESTEXPORTS
+../scripts/msg-converter.script	/epoc32/winscw/c/msgtest/converter/msg-converter.script
+../scripts/msg-converter_multiplerequests.script	/epoc32/winscw/c/msgtest/converter/msg-converter_multiplerequests.script
+../scripts/msg-converter_OOM.script	/epoc32/winscw/c/msgtest/converter/msg-converter_OOM.script
+
+../testdata/msg-converter.ini	/epoc32/winscw/c/msgtest/converter/msg-converter.ini
+:zip	../testdata/mail2.zip  /epoc32/winscw/c/msgtest/converter
+

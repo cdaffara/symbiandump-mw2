@@ -1,0 +1,41 @@
+// Copyright (c) 1999-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// smstestutils.mmp
+//
+
+TARGET			smstestutils.dll
+TARGETTYPE		dll
+
+CAPABILITY All -TCB
+UID		0x10003C5E 0x10005F32
+VENDORID 0x70000001
+SOURCEPATH	../src
+SOURCE			SmsTestUtils.cpp SmsTestBase.cpp EmsMsgTestUtils.cpp emstestutils.cpp
+SOURCE			CAsyncWaiter.cpp
+
+USERINCLUDE		../inc 
+USERINCLUDE		../../base/inc
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+LIBRARY			euser.lib msgs.lib efsrv.lib etext.lib msvtestutils.lib smcm.lib
+LIBRARY			gsmu.lib schsend.lib logcli.lib fbscli.lib
+library         commsdat.lib etel.lib
+START WINS
+	baseaddress     0x4AD60000
+END
+
+#ifndef WINS
+DEFFILE				v2_SmsTestUtils.def
+#endif	// WINS
+
+SMPSAFE

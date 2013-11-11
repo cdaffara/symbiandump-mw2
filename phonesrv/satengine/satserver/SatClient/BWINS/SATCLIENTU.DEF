@@ -1,0 +1,26 @@
+EXPORTS
+	??0RSatRefresh@@QAE@AAVMSatRefreshObserver@@@Z @ 1 NONAME ; RSatRefresh::RSatRefresh(class MSatRefreshObserver &)
+	??0RSatService@@QAE@XZ @ 2 NONAME ; RSatService::RSatService(void)
+	??0RSatSession@@QAE@XZ @ 3 NONAME ; RSatSession::RSatSession(void)
+	?Cancel@RSatRefresh@@QBEXXZ @ 4 NONAME ; void RSatRefresh::Cancel(void) const
+	?Close@RSatRefresh@@QAEXXZ @ 5 NONAME ; void RSatRefresh::Close(void)
+	?Close@RSatService@@QAEXXZ @ 6 NONAME ; void RSatService::Close(void)
+	?CodingScheme@TSatIconInfo@@QBE?AW4TCodingScheme@1@XZ @ 7 NONAME ; enum TSatIconInfo::TCodingScheme TSatIconInfo::CodingScheme(void) const
+	?ConnectL@RSatSession@@QAEXXZ @ 8 NONAME ; void RSatSession::ConnectL(void)
+	?DataLength@TSatIconInfo@@QBEGXZ @ 9 NONAME ; unsigned short TSatIconInfo::DataLength(void) const
+	?FileIdentifier@TSatIconInfo@@QBEGXZ @ 10 NONAME ; unsigned short TSatIconInfo::FileIdentifier(void) const
+	?GetIconInfoL@RSatService@@QBEXEAAV?$RArray@VTSatIconInfo@@@@@Z @ 11 NONAME ; void RSatService::GetIconInfoL(unsigned char, class RArray<class TSatIconInfo> &) const
+	?GetIconL@RSatService@@QBEPAVCFbsBitmap@@ABVTSatIconInfo@@@Z @ 12 NONAME ; class CFbsBitmap * RSatService::GetIconL(class TSatIconInfo const &) const
+	?GetSetupIdleModeTextL@RSatService@@QAEHAAPAVHBufC16@@AAW4TSatIconQualifier@1@AAE@Z @ 13 NONAME ; int RSatService::GetSetupIdleModeTextL(class HBufC16 * &, enum RSatService::TSatIconQualifier &, unsigned char &)
+	?IconSize@TSatIconInfo@@QBE?AVTSize@@XZ @ 14 NONAME ; class TSize TSatIconInfo::IconSize(void) const
+	?NotifyFileChangeL@RSatRefresh@@QAEXABV?$TBuf16@$0PC@@@@Z @ 15 NONAME ; void RSatRefresh::NotifyFileChangeL(class TBuf16<242> const &)
+	?NotifyFileChangeL@RSatRefresh@@QAEXXZ @ 16 NONAME ; void RSatRefresh::NotifyFileChangeL(void)
+	?NotifySetupIdleModeTextChange@RSatService@@QAEHAAVTRequestStatus@@@Z @ 17 NONAME ; int RSatService::NotifySetupIdleModeTextChange(class TRequestStatus &)
+	?NotifySetupIdleModeTextChangeCancel@RSatService@@QAEXXZ @ 18 NONAME ; void RSatService::NotifySetupIdleModeTextChangeCancel(void)
+	?Offset@TSatIconInfo@@QBEGXZ @ 19 NONAME ; unsigned short TSatIconInfo::Offset(void) const
+	?OpenL@RSatRefresh@@QAEXABVRSatSession@@@Z @ 20 NONAME ; void RSatRefresh::OpenL(class RSatSession const &)
+	?OpenL@RSatService@@QAEXABVRSatSession@@@Z @ 21 NONAME ; void RSatService::OpenL(class RSatSession const &)
+	?RefreshEFRead@RSatRefresh@@QBEXH@Z @ 22 NONAME ; void RSatRefresh::RefreshEFRead(int) const
+	?SetIdleModeTextResponse@RSatService@@QBEXABW4TSATIdleResult@1@@Z @ 23 NONAME ; void RSatService::SetIdleModeTextResponse(enum RSatService::TSATIdleResult const &) const
+	?Version@RSatSession@@QBE?AVTVersion@@XZ @ 24 NONAME ; class TVersion RSatSession::Version(void) const
+

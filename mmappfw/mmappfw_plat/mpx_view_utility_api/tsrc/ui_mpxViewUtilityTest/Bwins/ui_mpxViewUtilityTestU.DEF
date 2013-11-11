@@ -1,0 +1,4 @@
+EXPORTS
+	?LibEntryL@@YAPAVCScriptBase@@AAVCTestModuleIf@@@Z @ 1 NONAME ; class CScriptBase * __cdecl LibEntryL(class CTestModuleIf &)
+	?UtilityL@CMPXViewUtility@@SAPAVMMPXViewUtility@@XZ @ 2 NONAME ABSENT ; class MMPXViewUtility * CMPXViewUtility::UtilityL(void)
+

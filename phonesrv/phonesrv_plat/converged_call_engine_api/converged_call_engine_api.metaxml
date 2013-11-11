@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<api id="d75a74b93a71adee201628c491d1728c" dataversion="1.0">
+  <name>Converged Call Engine API</name>
+  <description>Provides services for managing calls regardless of their type.</description>
+  <type>c++</type>
+  <subsystem>convergedcallengine</subsystem>
+  <libs>
+    <lib name="cce.lib" />
+  </libs>
+  <release category="domain"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>yes</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

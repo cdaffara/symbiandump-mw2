@@ -1,0 +1,9 @@
+header
+Business Card
+surname firstname
+company
+title
+fax 01234 56788
+tel 01234 56789
+email@server.com
+address

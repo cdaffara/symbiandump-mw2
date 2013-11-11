@@ -1,0 +1,9 @@
+EXPORTS
+	?CreateIdleModeChangeNotifierL@TSatSystemStateFactory@@SAPAVMSatSystemStateChangeNotifier@@AAVMSatSystemStateObserver@@@Z @ 1 NONAME ; class MSatSystemStateChangeNotifier * TSatSystemStateFactory::CreateIdleModeChangeNotifierL(class MSatSystemStateObserver &)
+	?CreateLanguageSelectionChangeNotifierL@TSatSystemStateFactory@@SAPAVMSatSystemStateChangeNotifier@@AAVMSatSystemStateObserver@@@Z @ 2 NONAME ; class MSatSystemStateChangeNotifier * TSatSystemStateFactory::CreateLanguageSelectionChangeNotifierL(class MSatSystemStateObserver &)
+	?CreateSIMAccessProfileChangeNotifierL@TSatSystemStateFactory@@SAPAVMSatSystemStateChangeNotifier@@AAVMSatSystemStateObserver@@@Z @ 3 NONAME ; class MSatSystemStateChangeNotifier * TSatSystemStateFactory::CreateSIMAccessProfileChangeNotifierL(class MSatSystemStateObserver &)
+	?CreateSimStatusChangeNotifierL@TSatSystemStateFactory@@SAPAVMSatSystemStateChangeNotifier@@AAVMSatSystemStateObserver@@@Z @ 4 NONAME ; class MSatSystemStateChangeNotifier * TSatSystemStateFactory::CreateSimStatusChangeNotifierL(class MSatSystemStateObserver &)
+	?CreateSystemStateL@TSatSystemStateFactory@@SAPAVMSatSystemState@@AAVMSatMultiModeApi@@@Z @ 5 NONAME ; class MSatSystemState * TSatSystemStateFactory::CreateSystemStateL(class MSatMultiModeApi &)
+	?CreateProfileChangeNotifierL@TSatSystemStateFactory@@SAPAVMSatSystemStateChangeNotifier@@AAVMSatSystemStateObserver@@@Z @ 6 NONAME ; class MSatSystemStateChangeNotifier * TSatSystemStateFactory::CreateProfileChangeNotifierL(class MSatSystemStateObserver &)
+	?CreateStartupChangeNotifierL@TSatSystemStateFactory@@SAPAVMSatSystemStateChangeNotifier@@AAVMSatSystemStateObserver@@@Z @ 7 NONAME ; class MSatSystemStateChangeNotifier * TSatSystemStateFactory::CreateStartupChangeNotifierL(class MSatSystemStateObserver &)
+

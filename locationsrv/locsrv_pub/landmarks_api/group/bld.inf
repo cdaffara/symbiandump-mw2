@@ -1,0 +1,42 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  File that exports the files belonging to 
+:                Landmarks API
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+../inc/EPos_CPosLandmark.h     MW_LAYER_PUBLIC_EXPORT_PATH(EPos_CPosLandmark.h)
+../inc/EPos_TPosLmSortPref.h     MW_LAYER_PUBLIC_EXPORT_PATH(EPos_TPosLmSortPref.h)
+../inc/EPos_CPosLandmarkDatabase.h     MW_LAYER_PUBLIC_EXPORT_PATH(EPos_CPosLandmarkDatabase.h)
+../inc/EPos_CPosLandmarkParser.h     MW_LAYER_PUBLIC_EXPORT_PATH(EPos_CPosLandmarkParser.h)
+../inc/EPos_CPosLmOperation.h     MW_LAYER_PUBLIC_EXPORT_PATH(EPos_CPosLmOperation.h)
+../inc/epos_poslmcategoryserialization.h     MW_LAYER_PUBLIC_EXPORT_PATH(epos_poslmcategoryserialization.h)
+../inc/EPos_CPosLandmarkEncoder.h     MW_LAYER_PUBLIC_EXPORT_PATH(EPos_CPosLandmarkEncoder.h)
+../inc/EPos_CPosLmCategoryManager.h     MW_LAYER_PUBLIC_EXPORT_PATH(EPos_CPosLmCategoryManager.h)
+../inc/epos_poslandmarkserialization.h     MW_LAYER_PUBLIC_EXPORT_PATH(epos_poslandmarkserialization.h)
+../inc/EPos_CPosLandmarkCategory.h     MW_LAYER_PUBLIC_EXPORT_PATH(EPos_CPosLandmarkCategory.h)
+../inc/EPos_CPosLmOperation.inl     MW_LAYER_PUBLIC_EXPORT_PATH(EPos_CPosLmOperation.inl)
+../inc/EPos_Landmarks.h     MW_LAYER_PUBLIC_EXPORT_PATH(EPos_Landmarks.h)
+../inc/EPos_CPosLmItemIterator.h     MW_LAYER_PUBLIC_EXPORT_PATH(EPos_CPosLmItemIterator.h)
+../inc/EPos_CPosLmPartialReadParameters.h     MW_LAYER_PUBLIC_EXPORT_PATH(EPos_CPosLmPartialReadParameters.h)
+../inc/epos_cposlandmarkdatabaseextended.h     MW_LAYER_PUBLIC_EXPORT_PATH(epos_cposlandmarkdatabaseextended.h)
+

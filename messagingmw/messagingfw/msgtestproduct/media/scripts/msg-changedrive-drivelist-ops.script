@@ -1,0 +1,73 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+LOAD_SERVER t_media  -SharedData
+
+//! @file			
+//! @SYMTestSuiteName		MSG-CHANGEDRIVE-DRIVELIST-OPS
+//! @SYMScriptTestEnvironment   Details as in below:-
+//!				1. test driver
+//!				2. testexecute framework(TEF3.0)
+//!				
+//! @SYMScriptPurpose		Testing of "DEF140608 - Message Server doesn't support changedrive to a drive not present in drive list "
+//! @SYMScriptCreationDate	26/06/2009
+
+
+START_TESTCASE	MSG-CHANGEDRIVE-DRIVELIST-OPS-0001
+//! @SYMTestCaseID		MSG-CHANGEDRIVE-DRIVELIST-OPS-0001
+//! @SYMTestCaseDesc	Change drive to a drive which is not in the preferred drive list.
+//!	
+//!	@SYMAPI		void CMsvSession::CurrentDriveInfo (TDriveNumber& aDrive, Tint& aPriority)
+//!				void CMsvSession::AddDriveL (TDriveNumber aDrive, Tint& aPriority)
+//!				void CMsvSession::RemoveDriveL (TDriveNumber aDrive)
+//!				void CMsvSession::DriveListL(RArray<TDriveNumber>& aDriveList)
+//!				void CMsvSession::ChangeDriveL(TInt aDrive, TRequestStatus& aStatus)
+//!	
+//!	
+//! @SYMTestPriority	High
+//! @SYMTestActions		1. Change drive to a drive which is not in the preferred drive list.
+//!						2. Get the current drive info.
+//!
+//! @SYMTestExpectedResults 1. The drive is added to the preferred drive list and current drive is changed to the same.
+//!							2. Current drive should be the target drive specified.
+//!	
+//!	@SYMAuthor		Vikas Prabhu
+//!				
+//! @SYMTestType		CIT
+//! @SYMTestStatus 		Defined
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-changedrive-drivelist-ops.ini
+	CREATE_OBJECT	CenRepTestWrapper	0001_obj
+	COMMAND		0001_obj		ResetCentralRepository	0001_ResetCentralRepository
+END_TEST_BLOCK
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-preferred-0011.ini		c:\private\1000484b\msgprioritydrivelist.ini
+
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-changedrive-drivelist-ops.ini
+		CREATE_OBJECT	MediaTestWrapper 	0001_obj_1
+		COMMAND		0001_obj_1 	New 	0001_obj_1
+		COMMAND		0001_obj_1 	ChangeDrive 	0001_ChangeDrive_1
+		COMMAND		0001_obj_1 	GetCurrentDrive	0001_GetCurrentDrive_1
+	END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+
+END_TESTCASE	MSG-CHANGEDRIVE-DRIVELIST-OPS-0001
+

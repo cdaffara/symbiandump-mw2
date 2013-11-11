@@ -1,0 +1,244 @@
+/*
+* Copyright (c) 2002-2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:   Resource definitions for project SendUi
+*
+*/
+
+
+
+NAME SEND
+
+#include <eikon.rh>
+#include <avkon.rh>
+#include <avkon.rsg>
+#include <avkon.mbg>
+#include <avkon.loc>
+#include <AiwCommon.hrh>
+#include <AiwCommon.rh>
+#include <sendnorm.loc>
+#include <drmcommon.loc>
+//#include <messaging.loc>
+#include <AvkonIcons.hrh>   // AVKON_ICON_FILE
+
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF32 r_sendui_menuitem_send   { buf = qtn_options_send_via; }
+
+RESOURCE MENU_PANE r_sendui_menu
+{
+    items =
+    {
+        // will be dynamically populated
+    };
+}
+
+RESOURCE DIALOG r_sendui_list_query
+{
+    flags   = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_SELECT_CANCEL__SELECT;
+    items =
+    {
+        DLG_LINE
+        {
+            type    = EAknCtListQueryControl;
+            id      = EListQueryControl;
+            control = AVKON_LIST_QUERY_CONTROL
+            {
+                heading  = " "; // needed, otherwise heading is not created at all!
+                listtype = EAknCtSinglePopupMenuListBox;
+                listbox  = LISTBOX
+                {
+                    flags  = EAknListBoxMenuList;
+                    height = 3;
+                    width  = 3;
+                };
+            };
+        }
+    };
+}
+
+
+RESOURCE DIALOG r_sendui_create_mailbox_confirmation_query
+{
+    flags    = EGeneralQueryFlags;
+    buttons  = R_AVKON_SOFTKEYS_YES_NO__YES;
+    items =
+    {
+        DLG_LINE
+        {
+            type    = EAknCtQuery;
+            id      = EGeneralQuery;
+            control = AVKON_CONFIRMATION_QUERY
+            {
+                layout = EConfirmationQueryLayout;
+                label  = qtn_mce_conf_no_mailboxes;
+            };
+        }
+    };
+}
+
+RESOURCE DIALOG r_sendui_wait_note
+{
+    flags   = EAknWaitNoteFlags;
+    buttons = R_AVKON_SOFTKEYS_EMPTY;
+    items =
+    {
+        DLG_LINE
+        {
+            type    = EAknCtNote;
+            id      = 10;
+            control = AVKON_NOTE
+            {
+                layout         = EWaitLayout;
+                singular_label = qtn_mail_wait_opening_editor;
+                plural_label   = "";
+                animation      = R_QGN_GRAF_WAIT_BAR_ANIM;
+            };
+        }
+    };
+}
+
+RESOURCE DIALOG r_sendui_drm_forwardlocked_content_query
+{
+    flags    = EGeneralQueryFlags;
+    buttons  = R_AVKON_SOFTKEYS_YES_NO__YES;
+    items =
+    {
+        DLG_LINE
+        {
+            type    = EAknCtQuery;
+            id      = EGeneralQuery;
+            control = AVKON_CONFIRMATION_QUERY
+            {
+                layout = EConfirmationQueryLayout;                
+            };
+        }
+    };
+}
+
+// For DRM engine
+RESOURCE TBUF r_sendui_drm_single_distrutable  { buf = qtn_drm_send_wo_rights_sd_1; }
+RESOURCE TBUF r_sendui_drm_several_distrutable  { buf = qtn_drm_send_wo_rights_misc; }
+RESOURCE TBUF r_sendui_drm_several_locked  { buf = qtn_drm_fl_query_send_forbid; }
+RESOURCE TBUF r_sendui_drm_one_file_deleted  { buf = qtn_drm_send_forbid_1; }
+RESOURCE TBUF r_sendui_drm_all_files_deleted  { buf = qtn_drm_send_forbid; }
+
+// For MMS Media Resolver
+RESOURCE TBUF r_sendui_mme_one_too_big  { buf = qtn_mms_info_not_inserted; }
+RESOURCE TBUF r_sendui_mme_many_too_big  { buf = qtn_mms_info_all_not_inserted; }
+RESOURCE TBUF r_sendui_mme_some_files_deleted  { buf = qtn_mms_info_some_not_supported; }
+RESOURCE TBUF r_sendui_mme_file_not_supported  { buf = qtn_mms_info_object_not_supported; }
+RESOURCE TBUF r_sendui_mme_files_not_supported  { buf = qtn_mms_info_objects_not_supported; }
+RESOURCE TBUF r_sendui_mme_none_cannot_ins  { buf = qtn_mms_info_cannot_ins; }
+RESOURCE TBUF r_sendui_mme_some_inserted  { buf = qtn_mms_info_only_some_ins; }
+
+RESOURCE TBUF r_sendui_settings_not_ok { buf = qtn_mce_error_stand_settings; }
+
+
+RESOURCE AIW_INTEREST r_sendui_baseinterest
+{
+    items=
+    {
+        // This application is interested in printing jpeg images from menu.	
+        AIW_CRITERIA_ITEM      
+        {	
+            id = 200000;
+            serviceCmd   = KAiwCmdSend;
+            serviceClass = KAiwClassBase;
+            contentType  = "*";
+            maxProviders = 3;
+        }
+    };
+}
+
+// For DRM engine
+RESOURCE TBUF r_sendui_drm_many_sd_items  { buf = qtn_drm_send_wo_rights_sd; }
+RESOURCE TBUF r_sendui_drm_some_locked  { buf = qtn_drm_query_send_forbid; }
+
+// For MMS upload
+RESOURCE TBUF r_sendui_mms_upload_file_corrupted  { buf = qtn_mms_upload_info_corrupted; }
+RESOURCE TBUF r_sendui_mms_upload_files_corrupted  { buf = qtn_mms_upload_info_corrupted_all; }
+RESOURCE TBUF r_sendui_mms_upload_some_files_corrupted { buf = qtn_mms_upload_info_corrupted_some; }
+RESOURCE TBUF r_sendui_mms_upload_one_too_big  { buf = qtn_mms_info_size_not_sent; }
+RESOURCE TBUF r_sendui_mms_upload_many_too_big  { buf = qtn_mms_info_size_all_not_sent; }
+RESOURCE TBUF r_sendui_mms_upload_none_cannot_ins  { buf = qtn_mms_info_cannot_send; }
+RESOURCE TBUF r_sendui_mms_upload_some_inserted  { buf = qtn_mms_info_only_some_sent; }
+RESOURCE TBUF r_sendui_mms_upload_some_files_deleted  { buf = qtn_mms_info_some_not_supp_send; }
+RESOURCE TBUF r_sendui_mms_upload_file_not_supported  { buf = qtn_mms_info_obj_not_supp_send; }
+RESOURCE TBUF r_sendui_mms_upload_files_not_supported  { buf = qtn_mms_info_objects_not_supp_send; }
+RESOURCE TBUF r_sendui_mms_upload_drm_one_sd  { buf = qtn_drm_query_mms_upload_one_sd; }
+RESOURCE TBUF r_sendui_mms_upload_drm_many_sd  { buf = qtn_drm_query_mms_upload_all_sd; }
+RESOURCE TBUF r_sendui_mms_upload_drm_some_sd  { buf = qtn_drm_query_mms_upload_some; }
+RESOURCE TBUF r_sendui_settings_not_ok_many { buf = qtn_mce_error_stand_settings_many; }
+
+RESOURCE TBUF r_sendui_list_query_title  { buf = qtn_query_heading_send; }
+
+// DRM notes
+RESOURCE TBUF r_sendui_drm_send_forbid_one  { buf = qtn_drm_info_send_forbid_one; }
+RESOURCE TBUF r_sendui_drm_send_forbid_some  { buf = qtn_drm_info_send_forbid_some; }
+
+// -----------------------------------------------------------------------------
+//   
+// r_sendui_confirmable_info
+// Confirmation query.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_sendui_confirmable_info
+    {
+    flags    = EGeneralQueryFlags;
+	buttons  = R_AVKON_SOFTKEYS_OK_EMPTY__OK;
+    items =
+        {
+        DLG_LINE
+            {
+            type    = EAknCtQuery;
+            id      = EGeneralQuery;
+            control = AVKON_CONFIRMATION_QUERY
+                {
+                layout	= EConfirmationQueryLayout;
+                animation = R_QGN_NOTE_INFO_ANIM;
+                };
+            }
+        };
+    }
+
+RESOURCE TBUF r_sendui_menuitem_write   { buf = qtn_options_write; }
+RESOURCE TBUF r_sendui_list_query_title_write  { buf = qtn_query_heading_write; }
+RESOURCE TBUF r_sendui_mme_rmode_file_not_supported  { buf = qtn_mms_info_rmode_object_not_supported; }
+RESOURCE TBUF r_sendui_mme_rmode_files_not_supported  { buf = qtn_mms_info_rmode_objects_not_supported; }
+RESOURCE TBUF r_sendui_mme_rmode_some_not_supported  { buf = qtn_mms_info_rmode_some_not_supported; }
+
+
+RESOURCE ARRAY r_senduiserviceorder_array
+{
+	items = 
+		{
+		NUMBER_INT32 { value = 0x102072D6; }, // KSenduiMtmUniMessageUidValue,
+		NUMBER_INT32 { value = 0x1020745B; }, // KSenduiMtmAudioMessageUidValue,
+		NUMBER_INT32 { value = 0x10001028; }, // KSenduiMtmSmtpUidValue,
+		NUMBER_INT32 { value = 0x101f7c5c; }, // KSenduiMtmSyncMLEmailUidValue,
+		NUMBER_INT32 { value = 0x10207245; }, // KSenduiMtmPostcardUidValue,
+		NUMBER_INT32 { value = 0x101F8835; }, // KMmsUploadService1,
+		NUMBER_INT32 { value = 0x101F8836; }, // KMmsUploadService2,
+		NUMBER_INT32 { value = 0x101F8837; }, // KMmsUploadService3,
+		NUMBER_INT32 { value = 0x101F8838; }, // KMmsUploadService4,
+		NUMBER_INT32 { value = 0x10009ED5; }, // KSenduiMtmBtUidValue,
+		NUMBER_INT32 { value = 0x100053A4; }, // KSenduiMtmIrUidValue,
+		NUMBER_INT32 { value = 0x10207388; } // KDrmLinkSenderValue
+		};
+}
+
+// End of File
+

@@ -1,0 +1,77 @@
+/*
+* Copyright (c) 2002-2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*   Project specification file for Landmarks Content Format Converter
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET          eposlmconverter.dll
+TARGETTYPE      PLUGIN
+UID             0x10009D8D 0x101fdf85
+
+VENDORID        VID_DEFAULT
+CAPABILITY      CAP_GENERAL_DLL
+
+SOURCEPATH      ../src
+SOURCE          EPos_LmContentFormatConverterMain.cpp
+SOURCE          EPos_CPosLmConverterOperation.cpp
+SOURCE          EPos_CPosLmCollectionData.cpp
+SOURCE          EPos_CPosLmParsedLmBuffer.cpp
+SOURCE          EPos_CPosLmXmlParserOperation.cpp
+SOURCE          EPos_CPosLmXmlParser.cpp
+SOURCE          EPos_CPosLmGpxParser.cpp
+SOURCE          EPos_CPosLmKmlParser.cpp
+SOURCE          EPos_CPosLmLmxParser.cpp
+SOURCE          EPos_CPosLmXmlEncoderOperation.cpp
+SOURCE          EPos_CPosLmXmlEncoder.cpp
+SOURCE          EPos_CPosLmLmxEncoder.cpp
+SOURCE          EPos_CPosLmOutput.cpp
+SOURCE          EPos_CPosLmFileOutput.cpp
+SOURCE          EPos_CPosLmBufferOutput.cpp
+SOURCE          EPos_PosLmConverterUtils.cpp
+SOURCE			EPos_PosLmUnzipUtil.cpp
+SOURCE					epos_cposlmurlencoder.cpp 
+SOURCE				  epos_cposlmurlencoderoperation.cpp
+SOURCE			epos_cposlmurlparser.cpp 
+SOURCE			 epos_cposlmurlparseroperation.cpp 
+
+USERINCLUDE     ../inc
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   ../../../inc
+
+start resource  ../data/101fdf85.rss
+TARGET          eposlmconverter.rsc
+end
+
+LIBRARY         euser.lib
+LIBRARY         efsrv.lib
+LIBRARY         estor.lib
+LIBRARY         bafl.lib
+LIBRARY         charconv.lib
+LIBRARY         xmlframework.lib
+LIBRARY         lbs.lib
+LIBRARY         eposlandmarks.lib
+LIBRARY         eposlmintservices.lib
+LIBRARY         InetProtUtil.lib
+
+LIBRARY			egul.lib 
+LIBRARY 		ezip.lib 
+SMPSAFE
+
+// END OF FILE
+

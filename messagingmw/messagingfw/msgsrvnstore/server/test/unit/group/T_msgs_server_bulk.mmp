@@ -1,0 +1,35 @@
+// Copyright (c) 2000-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// T_MSGS_SERVER_REGISTRY.MMP
+// 
+//
+
+TARGET			t_msgs_server_bulk.exe
+TARGETTYPE		exe
+
+CAPABILITY All -TCB
+SOURCEPATH		../src
+USERINCLUDE		../inc
+SOURCE			T_SERVER_BULK.CPP
+USERINCLUDE		../../../inc 
+USERINCLUDE		../../../../../msgtest/testutils/base/inc
+USERINCLUDE		../../../../../msgtest/testutils/server/inc
+USERINCLUDE		../../../../../msgtest/testutils/sms/inc
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+LIBRARY			euser.lib msgs.lib estor.lib efsrv.lib msvtestutils.lib sqldb.lib 
+EPOCSTACKSIZE 0x4000
+
+VENDORID 0x70000001
+
+SMPSAFE

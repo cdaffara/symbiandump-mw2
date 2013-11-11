@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<api id="618f0f3c63704be15a6f1d5b6a197ae0" dataversion="1.0">
+  <name>Msg Common Utils API</name>
+  <description>API for storing internal settings and keys</description>
+  <type>c++</type>
+  <subsystem>messagingfw</subsystem>
+  <libs>
+     <lib name="msgcommonutils.lib" />
+  </libs>
+  <release category="domain"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>yes</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

@@ -1,0 +1,32 @@
+/*******************************************************
+   1. Create empty conference from plug-in
+   2. Try to Hang up and releaes conference
+      Expected: - KErrNotReady, conference not active
+                - Release does nothing
+*******************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 9.13.1 Conference Call, plugin created, empty conference
+timeout 5000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test SendPluginRequest 2 CreateConferenceCall
+test WaitEvent ConferenceCallCreated
+
+// Step 2
+print Step_2
+
+test HangupConference -18
+test ReleaseConference 0
+
+test VerifyTest
+delete test
+[Endtest]

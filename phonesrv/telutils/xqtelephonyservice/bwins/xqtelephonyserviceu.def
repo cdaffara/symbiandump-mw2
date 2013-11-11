@@ -1,0 +1,17 @@
+EXPORTS
+	?staticMetaObject@XQCallInfo@@2UQMetaObject@@B @ 1 NONAME ; struct QMetaObject const XQCallInfo::staticMetaObject
+	?callInformationChanged@XQCallInfo@@IAEXXZ @ 2 NONAME ; void XQCallInfo::callInformationChanged(void)
+	??_EXQCallInfo@@UAE@I@Z @ 3 NONAME ; XQCallInfo::~XQCallInfo(unsigned int)
+	?metaObject@XQCallInfo@@UBEPBUQMetaObject@@XZ @ 4 NONAME ; struct QMetaObject const * XQCallInfo::metaObject(void) const
+	??0XQCallInfo@@IAE@XZ @ 5 NONAME ; XQCallInfo::XQCallInfo(void)
+	?tr@XQCallInfo@@SA?AVQString@@PBD0H@Z @ 6 NONAME ; class QString XQCallInfo::tr(char const *, char const *, int)
+	?trUtf8@XQCallInfo@@SA?AVQString@@PBD0H@Z @ 7 NONAME ; class QString XQCallInfo::trUtf8(char const *, char const *, int)
+	?trUtf8@XQCallInfo@@SA?AVQString@@PBD0@Z @ 8 NONAME ; class QString XQCallInfo::trUtf8(char const *, char const *)
+	?sendCallInfoChangedSignal@XQCallInfo@@IAEXXZ @ 9 NONAME ; void XQCallInfo::sendCallInfoChangedSignal(void)
+	?tr@XQCallInfo@@SA?AVQString@@PBD0@Z @ 10 NONAME ; class QString XQCallInfo::tr(char const *, char const *)
+	?qt_metacall@XQCallInfo@@UAEHW4Call@QMetaObject@@HPAPAX@Z @ 11 NONAME ; int XQCallInfo::qt_metacall(enum QMetaObject::Call, int, void * *)
+	?getStaticMetaObject@XQCallInfo@@SAABUQMetaObject@@XZ @ 12 NONAME ; struct QMetaObject const & XQCallInfo::getStaticMetaObject(void)
+	??1XQCallInfo@@UAE@XZ @ 13 NONAME ; XQCallInfo::~XQCallInfo(void)
+	?create@XQCallInfo@@SAPAV1@XZ @ 14 NONAME ; class XQCallInfo * XQCallInfo::create(void)
+	?qt_metacast@XQCallInfo@@UAEPAXPBD@Z @ 15 NONAME ; void * XQCallInfo::qt_metacast(char const *)
+

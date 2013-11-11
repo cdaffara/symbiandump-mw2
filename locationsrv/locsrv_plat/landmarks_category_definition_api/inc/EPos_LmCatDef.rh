@@ -1,0 +1,66 @@
+/*
+* Copyright (c) 2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*     This file defines the struct which is used to predefine global landmark
+*     categories. The file can be included only in resource file.
+*
+*/
+
+
+//  INCLUDES
+#include <EPos_LmCatDef.hrh>
+
+//  STRUCTURE DEFINITIONS
+
+// ---------------------------------------------------------
+//    POS_LM_CATEGORY_SPECIFICATION
+//    Struct for declaring a set of predefined landmark
+//    categories
+// ---------------------------------------------------------
+//
+
+STRUCT POS_LM_CATEGORY_SPECIFICATION
+    {
+    LEN BYTE LTEXT icon_files[];
+    STRUCT categories[];
+    }
+
+// ---------------------------------------------------------
+//    POS_LM_CATEGORY_INFO
+//    Struct for defining attributes for a global landmark
+//    category
+// ---------------------------------------------------------
+//
+STRUCT POS_LM_CATEGORY_INFO
+    {
+    LONG category_id;         // The global landmark category ID
+    LTEXT category_name;      // The name of the category
+
+    LONG icon_index = KPosLMCategoryNoIcon;
+         // The index of the icon in the icon file.
+         // If set to -1 or lower then no icon information is set.
+         // In this case icon mask will be set to -1.
+         // In this case icon file name will not be set.
+
+    LONG icon_mask_index = KPosLMCategoryNoMask;
+         // The index of the icon mask in the
+         // icon file.
+         // If set to -1 or lower then no icon mask index will be set.
+
+    BYTE icon_file_index = 0;
+         // The index of the icon_files, as declared in the
+         // POS_LM_CATEGORY_SPECIFICATION icon_files list.
+    }
+
+// End of File

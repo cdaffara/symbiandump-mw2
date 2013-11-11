@@ -1,0 +1,91 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+// Test Case Name:
+//	 LaunchSchSendExe.script
+// ------------------------------------------
+// Component Under Test:
+//	Schedule Send
+// ------------------------------------------
+// API function under test:
+//	
+//	
+// ------------------------------------------
+// Requirement/Use Case/Functional Spec:
+//	 
+// ------------------------------------------
+// Polarity: Negative
+//	
+// ------------------------------------------
+// Test Type (unit, integration, panic, performance, conformance, stress, or interoperability):
+//	Integration
+// ------------------------------------------
+// Expected Panic ID (if a panic test, only for non-scripted test cases):
+//	n/a
+// ------------------------------------------
+// Interface Dependencies (does it require connection, which subsystems does it require):
+// 	Requires connection to Messaging Server
+// ------------------------------------------
+// Importance (critical, high, or low):
+//	High
+// ------------------------------------------
+// Execution Time (fast, medium, or slow):
+//	medium
+// ------------------------------------------
+// Pre-condition description:
+//	1.  Create a session with the Message Server
+//
+// ------------------------------------------
+// Action Description:
+// 
+//	1.Launch the process LaunchSchSendExe.exe
+//		
+//	If the Schedule Send is Secure then, it should fail with KErrPermissionDenied
+// ------------------------------------------
+// Post-condition description (i.e., expected outcome):
+//	
+// ------------------------------------------
+// Reference to a review document:
+//
+// ------------------------------------------
+// Full pathname of an epoc.ini (if there are special epoc.ini requirements)
+// 	For emulator, an epoc.ini that creates an emulated external drive (drive letter 
+//	between D: and Y:) is required. Optionally, an environment variable can be defined.
+// ------------------------------------------
+// Any CommDb restrictions:
+//	None
+// ------------------------------------------
+// Build Requirements (e.g., no watchers):
+//	None
+// ------------------------------------------
+// Hardware Requirements
+//	None
+// ------------------------------------------
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+	GetPigeonMtmConstant		c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\LaunchSchSendExe.ini 	GetPigeonMtmConstant
+	CreateSession 			c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\LaunchSchSendExe.ini	CreateSession
+	DeleteExistingService		c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\LaunchSchSendExe.ini	DeleteExistingService
+	CreateService			c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\LaunchSchSendExe.ini	CreateService
+	SetSchSendSettings 		c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\LaunchSchSendExe.ini	SetSchSendSettings
+EXECUTE_TEST_CASE
+	LaunchSchSendExe		c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\LaunchSchSendExe.ini	LaunchScheduleSend
+CHECK_POSTCONDITIONS
+END_TEST_CASE

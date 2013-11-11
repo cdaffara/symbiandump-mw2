@@ -1,0 +1,49 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Includes all the Domain API specific bld.inf files, which 
+*                export files.
+*  Version     : %version: da1ido#1.1.4.1.3.3.8 %
+*
+*/
+
+
+#include <bldvariant.hrh>
+#include "../inc/mmappfwbldvariant.hrh"
+
+#include "../collection_helper_api/group/bld.inf"
+#include "../harvester_collection_mediator_api/group/bld.inf"
+#include "../harvester_metadata_extractor_api/group/bld.inf"
+#include "../harvester_server_api/group/bld.inf"
+#include "../harvester_utility_api/group/bld.inf"
+#include "../playlist_engine_api/group/bld.inf"
+#include "../mtp_keys_api/group/bld.inf"
+#include "../mpx_collection_common_definition_api/group/bld.inf"
+#include "../mpx_collection_utility_api/group/bld.inf"
+#include "../mpx_common_api/group/bld.inf"
+#include "../mpx_common_definition_api/group/bld.inf"
+#include "../mpx_playback_common_definition_api/group/bld.inf"
+#include "../mpx_playback_utility_api/group/bld.inf"
+#include "../mpx_base_view_plugins_api/group/bld.inf"
+#include "../mpx_view_utility_api/group/bld.inf"
+#include "../mpx_albumart_utility_api/group/bld.inf"
+#include "../media_player_settings_engine_api/group/bld.inf"
+#ifdef IAD_INCLUDE_BACKSTEPPING
+#include "../mpx_backstepping_utility_api/group/bld.inf"
+#endif // IAD_INCLUDE_BACKSTEPPING
+#ifdef __WINDOWS_MEDIA
+#include "../asx_parser_api/group/bld.inf"
+#endif
+#include "../playback_helper_api/group/bld.inf"
+#include "../videoplaylist_utility_api/group/bld.inf"
+#include "../qt_telephony_multimedia_service_api/group/bld.inf"

@@ -1,0 +1,2 @@
+Dummy SMS message.
+Hello Goodbye

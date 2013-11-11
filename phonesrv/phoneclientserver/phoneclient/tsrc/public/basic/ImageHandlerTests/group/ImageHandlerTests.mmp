@@ -1,0 +1,48 @@
+/*
+* Copyright (c) 2002 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  MMP file for ImageHandlerTests component.
+*
+*/
+
+
+#if defined(__S60_)
+        // To get the OS_LAYER_SYSTEMINCLUDE-definition
+        #include <platform_paths.hrh>
+#endif
+
+TARGET          ImageHandlerTests.dll
+TARGETTYPE      dll
+UID             0x1000008D 0x101FB3E7
+
+CAPABILITY      ALL -TCB
+
+DEFFILE         ImageHandlerTests.def
+
+SOURCEPATH      ../src
+SOURCE          ImageHandlerTests.cpp
+SOURCE          ImageHandlerTestsCases.cpp
+
+USERINCLUDE     ../inc 
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY         euser.lib
+LIBRARY         stiftestinterface.lib
+LIBRARY         PhoneClient.lib
+LIBRARY         fbscli.lib
+LIBRARY         efsrv.lib
+
+LANG            SC
+
+

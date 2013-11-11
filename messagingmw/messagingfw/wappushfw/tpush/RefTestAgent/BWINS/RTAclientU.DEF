@@ -1,0 +1,53 @@
+EXPORTS
+	??0RRtaData@ReferenceTestAgent@@QAE@XZ @ 1 NONAME ; ReferenceTestAgent::RRtaData::RRtaData(void)
+	??0RRtaRights@ReferenceTestAgent@@QAE@XZ @ 2 NONAME ; ReferenceTestAgent::RRtaRights::RRtaRights(void)
+	?AddRightsL@RRtaRights@ReferenceTestAgent@@QAEXAAVCRightsObject@2@@Z @ 3 NONAME ; void ReferenceTestAgent::RRtaRights::AddRightsL(class ReferenceTestAgent::CRightsObject &)
+	?ClearAllRightsL@RRtaRights@ReferenceTestAgent@@QAEXXZ @ 4 NONAME ; void ReferenceTestAgent::RRtaRights::ClearAllRightsL(void)
+	?Connect@RRtaRights@ReferenceTestAgent@@QAEHXZ @ 5 NONAME ; int ReferenceTestAgent::RRtaRights::Connect(void)
+	?DataSize@RRtaData@ReferenceTestAgent@@QAEHAAH@Z @ 6 NONAME ; int ReferenceTestAgent::RRtaData::DataSize(int &)
+	?DumpRightsDatabaseL@RRtaRights@ReferenceTestAgent@@QAEXABVTDesC16@@@Z @ 7 NONAME ; void ReferenceTestAgent::RRtaRights::DumpRightsDatabaseL(class TDesC16 const &)
+	?EvaluateIntentL@RRtaData@ReferenceTestAgent@@QAEXW4TIntent@ContentAccess@@@Z @ 8 NONAME ; void ReferenceTestAgent::RRtaData::EvaluateIntentL(enum ContentAccess::TIntent)
+	?ExecuteIntentL@RRtaData@ReferenceTestAgent@@QAEXW4TIntent@ContentAccess@@@Z @ 9 NONAME ; void ReferenceTestAgent::RRtaData::ExecuteIntentL(enum ContentAccess::TIntent)
+	?GetAttribute@RRtaData@ReferenceTestAgent@@QBEHHAAH@Z @ 10 NONAME ; int ReferenceTestAgent::RRtaData::GetAttribute(int, int &) const
+	?GetAttributeSetL@RRtaData@ReferenceTestAgent@@QBEHAAVRAttributeSet@ContentAccess@@@Z @ 11 NONAME ; int ReferenceTestAgent::RRtaData::GetAttributeSetL(class ContentAccess::RAttributeSet &) const
+	?GetStringAttribute@RRtaData@ReferenceTestAgent@@QBEHHAAVTDes16@@@Z @ 12 NONAME ; int ReferenceTestAgent::RRtaData::GetStringAttribute(int, class TDes16 &) const
+	?GetStringAttributeSetL@RRtaData@ReferenceTestAgent@@QBEHAAVRStringAttributeSet@ContentAccess@@@Z @ 13 NONAME ; int ReferenceTestAgent::RRtaData::GetStringAttributeSetL(class ContentAccess::RStringAttributeSet &) const
+	?Open@RRtaData@ReferenceTestAgent@@QAEHAAVRFile@@ABVTDesC16@@@Z @ 14 NONAME ; int ReferenceTestAgent::RRtaData::Open(class RFile &, class TDesC16 const &)
+	?Open@RRtaData@ReferenceTestAgent@@QAEHABVTDesC16@@0I@Z @ 15 NONAME ; int ReferenceTestAgent::RRtaData::Open(class TDesC16 const &, class TDesC16 const &, unsigned int)
+	?Read@RRtaData@ReferenceTestAgent@@QAEHAAVTDes8@@H@Z @ 16 NONAME ; int ReferenceTestAgent::RRtaData::Read(class TDes8 &, int)
+	?Seek@RRtaData@ReferenceTestAgent@@QBEHW4TSeek@@AAH@Z @ 17 NONAME ; int ReferenceTestAgent::RRtaData::Seek(enum TSeek, int &) const
+	??0RRtaManager@ReferenceTestAgent@@QAE@XZ @ 18 NONAME ; ReferenceTestAgent::RRtaManager::RRtaManager(void)
+	?Connect@RRtaManager@ReferenceTestAgent@@QAEHXZ @ 19 NONAME ; int ReferenceTestAgent::RRtaManager::Connect(void)
+	?CopyFile@RRtaManager@ReferenceTestAgent@@QBEHABVTDesC16@@0@Z @ 20 NONAME ; int ReferenceTestAgent::RRtaManager::CopyFile(class TDesC16 const &, class TDesC16 const &) const
+	?DeleteFile@RRtaManager@ReferenceTestAgent@@QBEHABVTDesC16@@@Z @ 21 NONAME ; int ReferenceTestAgent::RRtaManager::DeleteFile(class TDesC16 const &) const
+	?GetDirL@RRtaManager@ReferenceTestAgent@@QBEHABVTDesC16@@IIAAPAVCDir@@1@Z @ 22 NONAME ; int ReferenceTestAgent::RRtaManager::GetDirL(class TDesC16 const &, unsigned int, unsigned int, class CDir * &, class CDir * &) const
+	?GetDirL@RRtaManager@ReferenceTestAgent@@QBEHABVTDesC16@@IIAAPAVCDir@@@Z @ 23 NONAME ; int ReferenceTestAgent::RRtaManager::GetDirL(class TDesC16 const &, unsigned int, unsigned int, class CDir * &) const
+	?GetDirL@RRtaManager@ReferenceTestAgent@@QBEHABVTDesC16@@VTUidType@@IAAPAVCDir@@@Z @ 24 NONAME ; int ReferenceTestAgent::RRtaManager::GetDirL(class TDesC16 const &, class TUidType, unsigned int, class CDir * &) const
+	?MkDir@RRtaManager@ReferenceTestAgent@@QBEHABVTDesC16@@@Z @ 25 NONAME ; int ReferenceTestAgent::RRtaManager::MkDir(class TDesC16 const &) const
+	?MkDirAll@RRtaManager@ReferenceTestAgent@@QBEHABVTDesC16@@@Z @ 26 NONAME ; int ReferenceTestAgent::RRtaManager::MkDirAll(class TDesC16 const &) const
+	?RenameFile@RRtaManager@ReferenceTestAgent@@QBEHABVTDesC16@@0@Z @ 27 NONAME ; int ReferenceTestAgent::RRtaManager::RenameFile(class TDesC16 const &, class TDesC16 const &) const
+	?RmDir@RRtaManager@ReferenceTestAgent@@QBEHABVTDesC16@@@Z @ 28 NONAME ; int ReferenceTestAgent::RRtaManager::RmDir(class TDesC16 const &) const
+	?RenameDir@RRtaManager@ReferenceTestAgent@@QBEHABVTDesC16@@0@Z @ 29 NONAME ; int ReferenceTestAgent::RRtaManager::RenameDir(class TDesC16 const &, class TDesC16 const &) const
+	?GetAttribute@RRtaManager@ReferenceTestAgent@@QBEHABVTVirtualPathPtr@ContentAccess@@HAAH@Z @ 30 NONAME ; int ReferenceTestAgent::RRtaManager::GetAttribute(class ContentAccess::TVirtualPathPtr const &, int, int &) const
+	?GetAttributeSetL@RRtaManager@ReferenceTestAgent@@QBEHABVTVirtualPathPtr@ContentAccess@@AAVRAttributeSet@4@@Z @ 31 NONAME ; int ReferenceTestAgent::RRtaManager::GetAttributeSetL(class ContentAccess::TVirtualPathPtr const &, class ContentAccess::RAttributeSet &) const
+	?GetStringAttribute@RRtaManager@ReferenceTestAgent@@QBEHABVTVirtualPathPtr@ContentAccess@@HAAVTDes16@@@Z @ 32 NONAME ; int ReferenceTestAgent::RRtaManager::GetStringAttribute(class ContentAccess::TVirtualPathPtr const &, int, class TDes16 &) const
+	?GetStringAttributeSetL@RRtaManager@ReferenceTestAgent@@QBEHABVTVirtualPathPtr@ContentAccess@@AAVRStringAttributeSet@4@@Z @ 33 NONAME ; int ReferenceTestAgent::RRtaManager::GetStringAttributeSetL(class ContentAccess::TVirtualPathPtr const &, class ContentAccess::RStringAttributeSet &) const
+	??0RRtaContent@ReferenceTestAgent@@QAE@XZ @ 34 NONAME ; ReferenceTestAgent::RRtaContent::RRtaContent(void)
+	?CloseContainer@RRtaContent@ReferenceTestAgent@@QBEHXZ @ 35 NONAME ; int ReferenceTestAgent::RRtaContent::CloseContainer(void) const
+	?GetAttribute@RRtaContent@ReferenceTestAgent@@QBEHABVTDesC16@@HAAH@Z @ 36 NONAME ; int ReferenceTestAgent::RRtaContent::GetAttribute(class TDesC16 const &, int, int &) const
+	?GetAttributeSetL@RRtaContent@ReferenceTestAgent@@QBEHABVTDesC16@@AAVRAttributeSet@ContentAccess@@@Z @ 37 NONAME ; int ReferenceTestAgent::RRtaContent::GetAttributeSetL(class TDesC16 const &, class ContentAccess::RAttributeSet &) const
+	?GetEmbeddedObjectsL@RRtaContent@ReferenceTestAgent@@QBEXAAV?$RStreamablePtrArray@VCEmbeddedObject@ContentAccess@@@ContentAccess@@@Z @ 38 NONAME ; void ReferenceTestAgent::RRtaContent::GetEmbeddedObjectsL(class ContentAccess::RStreamablePtrArray<class ContentAccess::CEmbeddedObject> &) const
+	?GetEmbeddedObjectsL@RRtaContent@ReferenceTestAgent@@QBEXAAV?$RStreamablePtrArray@VCEmbeddedObject@ContentAccess@@@ContentAccess@@W4TEmbeddedType@4@@Z @ 39 NONAME ; void ReferenceTestAgent::RRtaContent::GetEmbeddedObjectsL(class ContentAccess::RStreamablePtrArray<class ContentAccess::CEmbeddedObject> &, enum ContentAccess::TEmbeddedType) const
+	?GetStringAttribute@RRtaContent@ReferenceTestAgent@@QBEHABVTDesC16@@HAAVTDes16@@@Z @ 40 NONAME ; int ReferenceTestAgent::RRtaContent::GetStringAttribute(class TDesC16 const &, int, class TDes16 &) const
+	?GetStringAttributeSetL@RRtaContent@ReferenceTestAgent@@QBEHABVTDesC16@@AAVRStringAttributeSet@ContentAccess@@@Z @ 41 NONAME ; int ReferenceTestAgent::RRtaContent::GetStringAttributeSetL(class TDesC16 const &, class ContentAccess::RStringAttributeSet &) const
+	?Open@RRtaContent@ReferenceTestAgent@@QAEHAAVRFile@@@Z @ 42 NONAME ; int ReferenceTestAgent::RRtaContent::Open(class RFile &)
+	?Open@RRtaContent@ReferenceTestAgent@@QAEHABVTDesC16@@I@Z @ 43 NONAME ; int ReferenceTestAgent::RRtaContent::Open(class TDesC16 const &, unsigned int)
+	?OpenContainer@RRtaContent@ReferenceTestAgent@@QBEHABVTDesC16@@@Z @ 44 NONAME ; int ReferenceTestAgent::RRtaContent::OpenContainer(class TDesC16 const &) const
+	?SearchL@RRtaContent@ReferenceTestAgent@@QBEHAAV?$RStreamablePtrArray@VCEmbeddedObject@ContentAccess@@@ContentAccess@@ABVTDesC8@@H@Z @ 45 NONAME ; int ReferenceTestAgent::RRtaContent::SearchL(class ContentAccess::RStreamablePtrArray<class ContentAccess::CEmbeddedObject> &, class TDesC8 const &, int) const
+	?CopyFile@RRtaManager@ReferenceTestAgent@@QBEHAAVRFile@@ABVTDesC16@@@Z @ 46 NONAME ; int ReferenceTestAgent::RRtaManager::CopyFile(class RFile &, class TDesC16 const &) const
+	?DeleteRightsByKeyL@RRtaRights@ReferenceTestAgent@@QAEXABVTDesC8@@@Z @ 47 NONAME ; void ReferenceTestAgent::RRtaRights::DeleteRightsByKeyL(class TDesC8 const &)
+	?EraseDeleteKeyL@RRtaRights@ReferenceTestAgent@@QAEXABVTDesC8@@@Z @ 48 NONAME ; void ReferenceTestAgent::RRtaRights::EraseDeleteKeyL(class TDesC8 const &)
+	?Read@RRtaData@ReferenceTestAgent@@QAEHHAAVTDes8@@H@Z @ 49 NONAME ; int ReferenceTestAgent::RRtaData::Read(int, class TDes8 &, int)
+	?ReloadRightsDatabaseL@RRtaRights@ReferenceTestAgent@@QAEXABVTDesC16@@@Z @ 50 NONAME ; void ReferenceTestAgent::RRtaRights::ReloadRightsDatabaseL(class TDesC16 const &)
+	?GetRights@RRtaRights@ReferenceTestAgent@@QAEHXZ @ 51 NONAME ; int ReferenceTestAgent::RRtaRights::GetRights(void)
+

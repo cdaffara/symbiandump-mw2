@@ -1,0 +1,75 @@
+// Copyright (c) 1999-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// schsend.dll Schedule sending utilties & framework
+// 
+//
+
+/**
+ @file
+*/
+
+
+#include "../../../msgtests/group/msgopt.mph"
+
+TARGET          schsend.dll
+TARGETTYPE      dll
+
+CAPABILITY All -TCB
+UID      0x10003C5F 0x100056A0
+VENDORID 0x70000001
+SOURCEPATH	../src
+USERINCLUDE     ../inc
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+SOURCE          MsvScheduleSend.cpp
+SOURCE          MsvScheduleSettings.cpp
+SOURCE		MsvEntryScheduleData.cpp
+SOURCE		ScheduleBaseServerMtm.cpp
+SOURCE		MsvSchedulePackage.cpp
+SOURCE		MsvOffPeakTime.cpp
+SOURCE		MsvSendErrorAction.cpp
+SOURCE		MsvScheduledEntry.cpp
+SOURCE		MsvSysAgentAction.cpp
+SOURCE     	tmsvschedulesettingsutils.cpp
+LIBRARY         euser.lib estor.lib efsrv.lib
+LIBRARY         msgs.lib
+LIBRARY         schsvr.lib
+LIBRARY			bafl.lib
+LIBRARY		centralrepository.lib
+
+#ifdef _MSG_NO_LOGGING_DEFINE
+DEBUGLIBRARY		flogger.lib
+#else
+LIBRARY		flogger.lib
+#endif
+
+
+
+START WINS
+	baseaddress     0x4AD40000
+END
+
+
+
+// This is the final version of the def-file - removed methods have been
+// replaced by panicking stub-functions.
+
+#ifdef WINSCW
+DEFFILE		V2_SCHSEND.DEF
+#else
+DEFFILE		v2_schsend.def
+#endif
+
+
+
+SMPSAFE

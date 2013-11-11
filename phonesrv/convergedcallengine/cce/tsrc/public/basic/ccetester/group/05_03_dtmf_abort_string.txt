@@ -1,0 +1,66 @@
+/***************************************************
+   1. Create MO call
+   2. Send DTMF tone string including pause
+   		Expected: DTMF tone events are received until pause character
+   3. Abort DTMF string
+   		Expected: The rest of DTMF characters are discarded
+   4. Disconnect call
+***************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 5.3 DTMF, Abort String
+timeout 10000
+create ccetester test
+test Delay 500
+
+// Step 1
+print Step_1
+
+test OpenNewCall 1 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+// Step 2
+print Step_2
+
+test SendDtmfToneString 0 12349w876983151983758753857
+test WaitEvent DtmfSequenceStart 0 1
+test WaitEvent DtmfSequenceStop 0 1
+test WaitEvent DtmfSequenceStart 0 2
+test WaitEvent DtmfSequenceStop 0 2
+test WaitEvent DtmfSequenceStart 0 3
+test WaitEvent DtmfSequenceStop 0 3
+test WaitEvent DtmfSequenceStart 0 4	//event 10
+test WaitEvent DtmfSequenceStop 0 4
+test WaitEvent DtmfSequenceStart 0 9
+test WaitEvent DtmfSequenceStop 0 9
+
+// Wait for pause
+test WaitEvent DtmfStopInDtmfString 0 0
+
+// Step 3
+print Step_3
+
+// Abort sending (parameter 2: aContinue, TBool)
+test ContinueStringSending 0 0
+
+test WaitEvent DtmfSequenceAbort 0 0
+
+// Step 4
+print Step_4
+
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+test VerifyTest
+delete test
+[Endtest] 

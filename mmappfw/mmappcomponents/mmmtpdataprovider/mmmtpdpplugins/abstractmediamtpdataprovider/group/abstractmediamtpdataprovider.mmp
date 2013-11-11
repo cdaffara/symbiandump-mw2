@@ -1,0 +1,84 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file for project AbstractMediaMtpDataProvider
+*
+*/
+
+
+#include <platform_paths.hrh>
+#include <comms-infras/commsdebugutility.mmh> 
+#include "../../../inc/mmmtpdp_variant.hrh"
+
+// mtpdp plugin target name
+TARGET        abstractmediamtpdataprovider.dll
+TARGETTYPE    PLUGIN
+UID 0x10009D8D 0x10207C52
+VENDORID      0x70000001
+
+CAPABILITY    CAP_ECOM_PLUGIN
+
+MW_LAYER_SYSTEMINCLUDE
+
+USERINCLUDE    ../inc
+USERINCLUDE    ../../../mmmtpdprequestprocessor/inc
+USERINCLUDE    ../../../inc
+
+SOURCEPATH ../src
+
+SOURCE    cabstractmediamtpdataprovider.cpp
+SOURCE    abstractmediamtpdataprovidercontrollerimp.cpp
+SOURCE    abstractmediamtpdataproviderprocessor.cpp
+SOURCE    cabstractmediamtpdataproviderenumerator.cpp
+SOURCE    cabstractmediamtpdataprovidergetobjectpropvalue.cpp
+SOURCE    cabstractmediamtpdataprovidergetobjectproplist.cpp
+SOURCE    cabstractmediamtpdataprovidersetobjectpropvalue.cpp
+SOURCE    cabstractmediamtpdataproviderabstractmediapreference.cpp
+SOURCE    cabstractmediamtpdataprovidercopyobject.cpp
+SOURCE    cabstractmediamtpdataprovidermoveobject.cpp
+SOURCE    cabstractmediamtpdataproviderrenameobject.cpp
+SOURCE    cabstractmediamtpdataproviderpropertysettingutility.cpp
+SOURCE    cabstractmediamtpdataproviderdescriptionutility.cpp
+
+
+SOURCEPATH        ../data 
+START RESOURCE abstractmediamtpdataprovider.rss
+    TARGET abstractmediamtpdataprovider.rsc
+END
+
+// Data provider configuration resource file. 
+// The target filename corresponds to the implementation UID.
+START RESOURCE    abstractmediamtpdataprovider_config.rss
+TARGETPATH        /resource/mtp
+TARGET            10207C53.rsc
+END
+
+// Data provider configuration resource file. 
+// The target filename corresponds to the implementation UID.
+
+LIBRARY    euser.lib
+LIBRARY    efsrv.lib    // TEntry, TEntryArray
+LIBRARY    bafl.lib     // RResourceFile
+LIBRARY    PlatformEnv.lib
+LIBRARY    mtpdataproviderapi.lib // CMTPDataProviderPlugin
+LIBRARY    mtpdatatypes.lib
+LIBRARY    mmmtpdprequestprocessor.lib
+LIBRARY    mpxcommon.lib
+LIBRARY    mpxcollectionhelper.lib
+
+// for nanotick perf measurement
+#if defined(MMMTPDP_PERFLOG)
+LIBRARY         hal.lib
+#else
+DEBUGLIBRARY    hal.lib
+#endif

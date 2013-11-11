@@ -1,0 +1,5 @@
+EXPORTS
+	_Z24ImplementationGroupProxyRi @ 1 NONAME
+	_ZTI13CXdmDMAdapter @ 2 NONAME ; #<TI>#
+	_ZTV13CXdmDMAdapter @ 3 NONAME ; #<VT>#
+

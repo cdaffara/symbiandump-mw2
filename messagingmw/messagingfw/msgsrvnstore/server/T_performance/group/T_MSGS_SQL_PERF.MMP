@@ -1,0 +1,103 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// t_msgs_sql_suite.mmp
+// 
+//
+
+TARGET      tmsgsqlunitserver.exe
+TARGETTYPE  exe
+UID             0x1000007A 0x101F7784
+
+CAPABILITY ALL -TCB
+//Give same secure id as of msexe.exe to access data in its private folder for eg: ini file
+secureid 0x1000484B
+
+//Please add any change under here
+SOURCEPATH  ../src
+SOURCE				t_msgs_sql_server.cpp
+SOURCE				t_msv_performance.cpp
+SOURCE				t_msv_performancecu.cpp
+SOURCE				t_msv_performancem.cpp
+
+
+
+// Additionals ******************************************
+SOURCEPATH  ../../src
+SOURCE        MSVSTD.CPP MSVIPC.CPP MSVSTORE.CPP MSVREG.CPP MSVREGIP.CPP 
+SOURCE        MENTACT.CPP MSVARRAY.CPP
+SOURCE        MSVSERV.CPP MSVSESS.CPP MSVLOCAL.CPP MSVOPERT.CPP 
+SOURCE        MSVENTRY.CPP MSVSTART.CPP MSVRBLD.CPP
+SOURCE        MSVCMBSE.CPP MSVMOVE.CPP MSVCOPY.CPP MTSR.CPP MTSRUT.CPP MSVDELET.CPP
+SOURCE        MCLIENT.CPP MCLENTRY.CPP MCLSESS.CPP MCLOPERT.CPP
+SOURCE        MTCLBASE.CPP MTCLREG.CPP OBSVREG.CPP MSVUTILS.CPP
+SOURCE        MSVFIND.CPP MSVFTEXT.CPP MSVTIME.CPP indexcontext.cpp
+SOURCE        CCopyFiles.cpp CCopyOneFile.cpp
+SOURCE        CMsvCachedStore.cpp CMsvBackupHandler.cpp 
+SOURCE        CMsvChangeBuffer.cpp
+SOURCE        CMsvBodyText.cpp
+SOURCE        MsvSecurityCapabilitySet.cpp
+SOURCE		CMsvAttachment.cpp
+SOURCE		CMsvAttachmentManager.cpp
+SOURCE		CMsvAttachmentRename.cpp
+SOURCE		CMsvAttributeManager.cpp
+SOURCE		CMsvAttachmentWaiter.cpp
+SOURCE		CMsvMimeHeaders.cpp
+SOURCE		TMsvServerStoreManager.cpp
+SOURCE		cmsvmailinitwaiter.cpp
+SOURCE      CMsvCopyStoreOperation.cpp
+SOURCE      CMsvDeleteStoreOperation.cpp
+SOURCE		cmsvrecipientlist.cpp
+SOURCE      TMsvPackedNotifierRequest.cpp
+SOURCE		cmsvtechnologytypedefaultmtmsettings.cpp
+SOURCE		tmsvsystemprogress.cpp
+SOURCE		CMsvPlainBodyText.cpp
+
+// Additionals ******************************************
+#if (defined SYMBIAN_MESSAGESTORE_USING_SQLDB)
+SOURCE		msvindexadapter.cpp
+SOURCE		msvdbadapter.cpp
+SOURCE		msvcacheentry.cpp
+SOURCE		msventryfreepool.cpp
+SOURCE		msvcacheindextableentry.cpp
+SOURCE		msvcachevisiblefolder.cpp
+SOURCE		msvinifile.cpp
+#else
+SOURCE		MSVINDEX.CPP diskchange.cpp
+#endif
+
+#if (defined SYMBIAN_MESSAGESTORE_USING_SQLDB)
+LIBRARY  sqldb.lib 
+#endif
+
+STATICLIBRARY	tefunit.lib
+
+USERINCLUDE   ../inc
+USERINCLUDE   ../../inc
+
+
+
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+//Please add your system include under here. 
+
+LIBRARY		euser.lib
+LIBRARY		testexecuteutils.lib 
+LIBRARY		testexecutelogclient.lib
+LIBRARY		estor.lib
+LIBRARY		efsrv.lib
+LIBRARY		rfileloggerclient.lib 
+LIBRARY     bafl.lib etext.lib charconv.lib centralrepository.lib 
+LIBRARY     flogger.lib
+LIBRARY		hal.lib
+LIBRARY		emailtestutils.lib msvtestutils.lib imut.lib
+SMPSAFE

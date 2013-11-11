@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api id="c6f2523bdae1abe59937ce8d8c3fefe9" dataversion="1.0">
+  <name>telephony_mediator_api</name>
+  <description>This API is used by call_information_api and call_remote_party_information_api implementation (telephonyservice) and call_information_api provider (CCE) and call_remote_party_information_api provider (Phone Engine). Clients should only use API's provided by telephonyservice.dll</description>
+  <type>c++</type>
+  <subsystem>telutils</subsystem>
+  <libs>
+    <lib name="telephonyservice.lib"/>
+  </libs>
+  <release category="domain" sinceversion="5.1"/>
+  <attributes>
+    <htmldocprovided>no</htmldocprovided>
+    <adaptation>no</adaptation>
+  </attributes>
+</api>

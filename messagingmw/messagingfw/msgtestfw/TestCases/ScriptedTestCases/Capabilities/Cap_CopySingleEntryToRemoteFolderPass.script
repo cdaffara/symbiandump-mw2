@@ -1,0 +1,42 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//
+// Cap_CopySingleEntryToRemoteFolderPass.script
+//
+
+
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer GetBaseConstants			c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CopySingleEntryToRemoteFolder.ini GetBaseConstants
+RUN_TEST_STEP 100 MessagingTestServer CreateSession				c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CopySingleEntryToRemoteFolder.ini CreateSession
+RUN_TEST_STEP 100 MessagingTestServer ResetMessageStore			c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CopySingleEntryToRemoteFolder.ini ResetMessageStore
+RUN_TEST_STEP 100 MessagingTestServer GetPigeonMtmConstant		c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CopySingleEntryToRemoteFolder.ini GetPigeonMtmConstant
+RUN_TEST_STEP 100 MessagingTestServer CreateService				c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CopySingleEntryToRemoteFolder.ini CreateService
+RUN_TEST_STEP 100 MessagingTestServer CreatePigeonMessage		c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CopySingleEntryToRemoteFolder.ini CreatePigeonMessage
+RUN_TEST_STEP 100 MessagingTestServer CreateFolder				c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CopySingleEntryToRemoteFolder.ini CreateFolder
+
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer SendEMsvCopyEntries		c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CopySingleEntryToRemoteFolder.ini SendEMsvCopyEntriesPass
+
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+
+RUN_TEST_STEP 100 MessagingTestServer END_TEST_CASE
+

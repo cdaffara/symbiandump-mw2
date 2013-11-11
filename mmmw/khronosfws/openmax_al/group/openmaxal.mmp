@@ -1,0 +1,174 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project file for openmaxal
+*
+*/
+
+#include <data_caging_paths.hrh>
+#include <platform_paths.hrh>
+
+TARGET		openmaxal.dll
+TARGETTYPE	DLL
+UID		    0x1000008D 0x10207CA3
+VENDORID	VID_DEFAULT
+
+VERSION 10.0
+#if !defined(__WINSCW__) && !defined(__WINS__)
+EpocAllowDllData
+#endif
+
+CAPABILITY ALL -TCB
+
+MACRO   USE_NGA_SURFACES
+MACRO 	XA_API=EXPORT_C
+
+//MACRO 	MARKERPOSITIONTIMERLOG
+//MACRO		POSITIONUPDATETIMERLOG
+//MACRO 	USE_LOCAL_WINDOW_RESOURCES
+//MACRO           PROFILE_TIME
+//MACRO           PRINT_TO_CONSOLE_TIME_DIFF
+//MACRO		PROFILE_HEAP_USAGE
+//MACRO		INPUTSRCSELECTION_FEATURE
+
+SOURCEPATH      ../src/gst_adaptation
+SOURCE	        xaadaptationgst.c
+SOURCE 	        xagstcapabilitiesmgr.c
+SOURCE	        xaaudioencoderitfadaptation.c
+SOURCE	        xamediarecorderadaptctx.c
+SOURCE	        xarecorditfadaptation.c
+
+SOURCEPATH ../src/adptcommon
+SOURCE 	        xaframeworkmgr.c
+SOURCE 	        xacapabilitiesmgr.c
+SOURCE 	        xaadptbasectx.c
+
+SOURCEPATH      ../src/common
+SOURCE          openmaxal.c
+SOURCE          xacommon.c
+SOURCE          xadynamicsourceitf.c
+SOURCE          xadynintmgmtitf.c
+SOURCE          xametadataextractionitf.c
+SOURCE          xaobjectitf.c
+SOURCE          xaplatform.c
+SOURCE          xathreadsafety.c
+SOURCE          xavolumeitf.c
+SOURCE 		xastreaminformationitf.c
+SOURCE          xanokialinearvolumeitf.c
+SOURCE          xanokiavolumeextitf.c
+SOURCE          xavideopostprocessingitf.c
+
+SOURCEPATH      ../src/engine
+SOURCE          xaaudioencodercapabilitiesitf.c
+SOURCE          xaaudioiodevicecapabilitiesitf.c
+SOURCE          xaengine.c
+SOURCE          xaengineitf.c
+SOURCE          xathreadsyncitf.c
+
+SOURCEPATH      ../src/mediaplayer
+SOURCE          xamediaplayer.c
+SOURCE          xaplaybackrateitf.c
+SOURCE          xaplayitf.c
+SOURCE          xaprefetchstatusitf.c
+SOURCE          xaseekitf.c
+
+SOURCEPATH      ../src/mediarecorder
+SOURCE          xaaudioencoderitf.c
+SOURCE          xamediarecorder.c
+SOURCE          xarecorditf.c
+
+SOURCEPATH      ../src/metadataextractor
+SOURCE          xametadataextractor.c
+
+SOURCEPATH      ../src/radio
+SOURCE          xaradiodevice.c
+SOURCE		xaradioitf.c
+
+SOURCEPATH      ../src/mmf_adaptation
+SOURCE	        xamediaplayeradaptctxmmf.c
+SOURCE	        xaplayitfadaptationmmf.c
+SOURCE	        xaadaptationmmf.c
+SOURCE          cmmfbackendengine.cpp
+SOURCE          xamediarecorderadaptctxmmf.c
+SOURCE          xarecorditfadaptationmmf.c
+SOURCE 	        sfmrlocaltimer.cpp
+SOURCE		xaradioitfadaptation.c
+SOURCE  	xaradioadaptctx.c
+SOURCE 		cmmfradiobackendengine.cpp
+SOURCE          xanokialinearvolumeitfadaptationmmf.c
+SOURCE          xanokiavolumeextitfadaptationmmf.c
+SOURCE 	        xammfcapabilitiesmgr.c
+SOURCE          markerpositiontimer.cpp
+SOURCE          positionupdatetimer.cpp 
+SOURCE          xaseekitfadaptationmmf.c
+SOURCE          xadynamicsourceitfadaptationmmf.c
+SOURCE 	        xastreaminformationitfadaptationmmf.c
+SOURCE  	cmetadatautilityitf.cpp
+SOURCE		xametadataadaptctxmmf.c
+SOURCE		xaplaybackrateitfadaptationmmf.c
+SOURCE 		xaprefetchstatusitfadaptationmmf.c
+SOURCE		prefetchlevelupdatetimer.cpp
+SOURCE      	xavideopostprosessingitfadaptationmmf.c
+
+USERINCLUDE     ../inc
+USERINCLUDE     ../src
+USERINCLUDE     ../src/khronos
+USERINCLUDE     ../src/mmf_adaptation
+USERINCLUDE     ../src/gst_adaptation
+USERINCLUDE     ../src/common
+USERINCLUDE     ../src/engine
+USERINCLUDE     ../src/mediaplayer
+USERINCLUDE     ../src/mediarecorder
+USERINCLUDE     ../src/radio
+USERINCLUDE	../src/adptcommon
+
+MW_LAYER_SYSTEMINCLUDE
+OS_LAYER_LIBC_SYSTEMINCLUDE
+OS_LAYER_GLIB_SYSTEMINCLUDE
+MW_LAYER_GSTREAMER_SYSTEMINCLUDE
+
+#if defined (MW_LAYER_KHRONOS_SYSTEMINCLUDE)
+MW_LAYER_KHRONOS_SYSTEMINCLUDE
+#else
+SYSTEMINCLUDE /epoc32/include/platform/mw/khronos 
+#endif
+
+SOURCEPATH      ../src/xadebugtraceutility
+SOURCE          xadebugtraceutility.cpp
+
+LIBRARY         euser.lib
+LIBRARY         libc.lib
+LIBRARY         libglib.lib
+LIBRARY         libpthread.lib
+
+LIBRARY         mediaclientvideodisplay.lib
+LIBRARY         ws32.lib
+LIBRARY		inetprotutil.lib
+LIBRARY         mediaclientaudio.lib
+LIBRARY         mmfcontrollerframework.lib
+LIBRARY         mediaclientvideo.lib
+LIBRARY         AudioInputRouting.lib
+LIBRARY		Radio_Utility.lib
+
+LIBRARY         libgmodule.lib
+LIBRARY         libgobject.lib
+LIBRARY         libgstreamer.lib
+LIBRARY         libgstapp.lib
+LIBRARY 	libgstinterfaces.lib 
+LIBRARY 	libgstbase.lib
+LIBRARY 	libgstcoreelements.lib
+LIBRARY		libgstcoreindexers.lib
+LIBRARY 	MetaDataUtility.lib
+LIBRARY		libgstdevsoundext.lib
+STATICLIBRARY   hxmetadatautil.lib
+

@@ -1,0 +1,116 @@
+/*
+* Copyright (c) 2006-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*  Metadata system iby file (for ROM image creation)
+*       
+*
+*/
+
+
+#ifndef __METADATA_IBY__
+#define __METADATA_IBY__
+
+// sql is mandatory for mds
+#include <sql.iby>
+
+rem - MdE binaries
+file=ABI_DIR\BUILD_DIR\mdeclient.dll		SHARED_LIB_DIR\mdeclient.dll
+file=ABI_DIR\BUILD_DIR\mdccommon.dll		SHARED_LIB_DIR\mdccommon.dll
+file=ABI_DIR\BUILD_DIR\!mdsserver.exe		PROGRAMS_DIR\!mdsserver.exe
+
+rem - MdE data files
+data=EPOCROOT##epoc32\data\z\Private\200009F3\schema.mde                PRIVATE\200009F3\schema.mde
+data=EPOCROOT##epoc32\data\z\Private\200009F3\defaultimportfile.mde	    PRIVATE\200009F3\defaultimportfile.mde
+data=EPOCROOT##epoc32\data\z\Private\200009F3\backup_registration.xml   PRIVATE\200009F3\backup_registration.xml
+data=EPOCROOT##epoc32\data\z\Private\200009F5\backup_registration.xml   PRIVATE\200009F5\backup_registration.xml
+data=EPOCROOT##epoc32\data\z\Private\200009F5\mappings.db               PRIVATE\200009F5\mappings.db
+
+rem - Harvester and Context Engine binaries
+file=ABI_DIR\BUILD_DIR\HarvesterPluginInterface.dll		SHARED_LIB_DIR\HarvesterPluginInterface.dll
+file=ABI_DIR\BUILD_DIR\HarvesterClient.dll		        SHARED_LIB_DIR\HarvesterClient.dll
+file=ABI_DIR\BUILD_DIR\HarvesterServer.exe		        PROGRAMS_DIR\HarvesterServer.exe
+file=ABI_DIR\BUILD_DIR\harvestercommon.dll		    SHARED_LIB_DIR\harvestercommon.dll
+file=ABI_DIR\BUILD_DIR\harvesterdata.dll		    SHARED_LIB_DIR\harvesterdata.dll
+file=ABI_DIR\BUILD_DIR\mdsfileserverplugin.pxt			SHARED_LIB_DIR\mdsfileserverplugin.pxt
+ECOM_PLUGIN(HarvesterImagePlugin.dll,HarvesterImagePlugin.rsc)
+ECOM_PLUGIN(HarvesterVideoPlugin.dll,HarvesterVideoPlugin.rsc)
+ECOM_PLUGIN(HarvesterMessagePlugin.dll,HarvesterMessagePlugin.rsc)
+ECOM_PLUGIN(harvesteromadrmplugin.dll,harvesteromadrmplugin.rsc)
+ECOM_PLUGIN(harvesterwmvplugin.dll,harvesterwmvplugin.rsc)
+ECOM_PLUGIN(harvesterrtpplugin.dll,harvesterrtpplugin.rsc)
+ECOM_PLUGIN(harvesteraudioplugin.dll,harvesteraudioplugin.rsc)
+
+rem - Blacklist server binaries
+file=ABI_DIR\BUILD_DIR\!blacklistserver.exe		        PROGRAMS_DIR\!blacklistserver.exe
+file=ABI_DIR\BUILD_DIR\blacklistclient.dll		        SHARED_LIB_DIR\blacklistclient.dll
+
+file=ABI_DIR\BUILD_DIR\MonitorPluginInterface.dll		SHARED_LIB_DIR\MonitorPluginInterface.dll
+ECOM_PLUGIN(MMCMonitorPlugin.dll,MMCMonitorPlugin.rsc)
+ECOM_PLUGIN(FileMonitorPlugin.dll,FileMonitorPlugin.rsc)
+ECOM_PLUGIN(MessageMonitorPlugin.dll,MessageMonitorPlugin.rsc)
+ECOM_PLUGIN(mdsoomplugin.dll,mdsoomplugin.rsc)
+
+file=ABI_DIR\BUILD_DIR\ContextPluginInterface.dll		SHARED_LIB_DIR\ContextPluginInterface.dll
+file=ABI_DIR\BUILD_DIR\ContextEngine.dll		        SHARED_LIB_DIR\ContextEngine.dll
+ECOM_PLUGIN(locationcontextplugin.dll,locationcontextplugin.rsc)
+ECOM_PLUGIN(calendarcontextplugin.dll,calendarcontextplugin.rsc)
+
+file=ABI_DIR\BUILD_DIR\ComposerPluginInterface.dll		SHARED_LIB_DIR\ComposerPluginInterface.dll
+ECOM_PLUGIN(ComposerImagePlugin.dll,ComposerImagePlugin.rsc)
+
+// Location Manager
+REM locationmanager
+file=ABI_DIR\BUILD_DIR\locationmanager.dll		    SHARED_LIB_DIR\locationmanager.dll
+
+REM locationmanagerserver
+file=ABI_DIR\BUILD_DIR\locationmanagerserver.exe	PROGRAMS_DIR\locationmanagerserver.exe
+
+REM watchdog
+file=ABI_DIR\BUILD_DIR\mdswatchdog.exe	PROGRAMS_DIR\mdswatchdog.exe
+
+REM locationtrail
+file=ABI_DIR\BUILD_DIR\locationtrail.dll		    SHARED_LIB_DIR\locationtrail.dll
+
+REM geoconverter
+file=ABI_DIR\BUILD_DIR\geoconverter.dll		    SHARED_LIB_DIR\geoconverter.dll
+
+REM geotagger
+file=ABI_DIR\BUILD_DIR\geotagger.dll		    SHARED_LIB_DIR\geotagger.dll
+
+
+REM Location Manager data files
+data=ZPRIVATE\10202BE9\200071BE.txt					"PRIVATE\10202BE9\200071BE.txt"
+
+REM Harvester Cen Repo file
+data=ZPRIVATE\10202BE9\200009FE.txt					"PRIVATE\10202BE9\200009FE.txt"
+
+REM MdS version CenRep file
+data=ZPRIVATE\10202BE9\200009F3.txt                 "PRIVATE\10202BE9\200009F3.txt"
+
+REM Harvester MMC plugin CenRep file
+data=ZPRIVATE\10202BE9\20007183.txt                 "PRIVATE\10202BE9\20007183.txt"
+
+data=ZSYSTEM\install\contentlistingframework_stub.sis       system\install\contentlistingframework_stub.sis
+data=ZSYSTEM\install\contextengine_stub.sis       system\install\contextengine_stub.sis
+data=ZSYSTEM\install\blacklistserver_stub.sis       system\install\blacklistserver_stub.sis
+data=ZSYSTEM\install\composerplugins_stub.sis       system\install\composerplugins_stub.sis
+data=ZSYSTEM\install\harvester_stub.sis	system\install\harvester_stub.sis
+data=ZSYSTEM\install\harvesterplugins_stub.sis	system\install\harvesterplugins_stub.sis
+data=ZSYSTEM\install\monitorplugins_stub.sis	system\install\monitorplugins_stub.sis
+data=ZSYSTEM\install\locationmanager_stub.sis	system\install\locationmanager_stub.sis
+data=ZSYSTEM\install\metadataengine_stub.sis	system\install\metadataengine_stub.sis
+data=ZSYSTEM\install\mds_stub.sis	system\install\mds_stub.sis
+data=ZSYSTEM\install\mdswatchdog_stub.sis	system\install\mdswatchdog_stub.sis
+
+#endif //__METADATA_IBY__

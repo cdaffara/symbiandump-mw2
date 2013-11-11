@@ -1,0 +1,3 @@
+EXPORTS
+	?NewL@CMPXHarvesterFileHandler@@SAPAV1@AAVRFs@@@Z @ 1 NONAME ; class CMPXHarvesterFileHandler * CMPXHarvesterFileHandler::NewL(class RFs &)
+

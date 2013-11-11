@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api id="fab871be362a466ed241e6168fa181ac" dataversion="2.0">
+  <name>EMC Audio Effects API</name>
+  <description>This API defines an how to use S60 effects from EMC</description>
+  <type>c++</type>
+  <collection>mmfenh</collection>
+  <libs>
+    <lib name="EnhancedMediaClient.lib"/>
+  </libs>
+  <release category="platform" sinceversion="3.2"/>
+  <attributes>
+    <htmldocprovided>no</htmldocprovided>
+    <adaptation>no</adaptation>
+  </attributes>
+</api>

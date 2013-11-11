@@ -1,0 +1,7 @@
+EXPORTS
+	??1CComposerPlugin@@UAE@XZ @ 1 NONAME ; CComposerPlugin::~CComposerPlugin(void)
+	?ListImplementationsL@CComposerPlugin@@SAXAAV?$RPointerArray@VCImplementationInformation@@@@@Z @ 2 NONAME ; void CComposerPlugin::ListImplementationsL(class RPointerArray<class CImplementationInformation> &)
+	?NewL@CComposerPlugin@@SAPAV1@ABVTUid@@@Z @ 3 NONAME ; class CComposerPlugin * CComposerPlugin::NewL(class TUid const &)
+	?RemoveSession@CComposerPlugin@@QAEXXZ @ 4 NONAME ; void CComposerPlugin::RemoveSession(void)
+	?SetSession@CComposerPlugin@@QAEXAAVCMdESession@@@Z @ 5 NONAME ; void CComposerPlugin::SetSession(class CMdESession &)
+

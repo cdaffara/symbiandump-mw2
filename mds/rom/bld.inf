@@ -1,0 +1,54 @@
+/*
+* Copyright (c) 2010 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Build information file
+*
+*/
+
+
+#include <platform_paths.hrh>
+#include "../locationmanager/inc/locplatsupport.mmh"
+
+PRJ_PLATFORMS
+    DEFAULT
+
+PRJ_EXPORTS
+
+#if defined(_LOC_GEOTAGGING_CELLID)
+#ifdef _LOC_REVERSEGEOCODE
+mds_cellid_reverse_geocode_enabled.iby   CORE_MW_LAYER_IBY_EXPORT_PATH(mds.iby)
+#else
+mds_cellidenabled.iby   CORE_MW_LAYER_IBY_EXPORT_PATH(mds.iby)
+#endif
+#elif defined(_LOC_REVERSEGEOCODE)
+#ifdef _LOC_GEOTAGGING_CELLID
+mds_cellid_reverse_geocode_enabled.iby   CORE_MW_LAYER_IBY_EXPORT_PATH(mds.iby)
+#else
+mds_reverse_geocode_enabled_only.iby   CORE_MW_LAYER_IBY_EXPORT_PATH(mds.iby)
+#endif
+#else
+mds.iby    CORE_MW_LAYER_IBY_EXPORT_PATH(mds.iby)
+#endif
+
+#ifdef RD_MDS_2_5
+ContentListingFramework.iby	CORE_MW_LAYER_IBY_EXPORT_PATH( ContentListingFramework.iby )
+#endif
+
+//Stubs
+../sis/mds/mds_stub.sis  /epoc32/data/z/system/install/mds_stub.sis
+
+PRJ_TESTMMPFILES
+
+PRJ_TESTEXPORTS
+mds_testers.iby	CORE_MW_LAYER_IBY_EXPORT_PATH(mds_testers.iby)
+

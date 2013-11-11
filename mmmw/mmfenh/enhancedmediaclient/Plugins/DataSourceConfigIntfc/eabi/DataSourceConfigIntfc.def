@@ -1,0 +1,5 @@
+EXPORTS
+	_ZN26CDataSourceConfigIntfcImpl4NewLEv @ 1 NONAME
+	_ZTI26CDataSourceConfigIntfcImpl @ 2 NONAME ; #<TI>#
+	_ZTV26CDataSourceConfigIntfcImpl @ 3 NONAME ; #<VT>#
+

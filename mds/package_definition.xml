@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SystemDefinition schema="3.0.0">
+ <package id="mds" name="Metadata Services" version="2.0.0" levels="mgr eng server int">
+  <collection id="mds_plat" name="Metadata Services Platform Interfaces" level="int">
+   <component id="context_engine_plugin_api" name="Context Engine Plugin API" introduced="^2" class="api" filter="s60">
+    <meta rel="Api" href="mds_plat/context_engine_plugin_api/context_engine_plugin_api.metaxml"/>
+    <unit bldFile="mds_plat/context_engine_plugin_api/group" filter="!test"/>
+    <unit bldFile="mds_plat/context_engine_plugin_api/tsrc/group" filter="test,api_test"/>
+   </component>
+   <component id="harvester_framework_api" name="Harvester Framework API" introduced="^2" class="api" filter="s60">
+    <meta rel="Api" href="mds_plat/harvester_framework_api/harvester_framework_api.metaxml"/>
+    <unit bldFile="mds_plat/harvester_framework_api/group" filter="!test"/>
+		<!-- can only have one unit with the same filter, #include the following from the previous unit -->
+    <unit bldFile="mds_plat/harvester_framework_api/tsrc/composerplugintest/group" filter="test,api_test"/>
+    <unit bldFile="mds_plat/harvester_framework_api/tsrc/harvesterclienttest/group" filter="test,api_test"/>
+    <unit bldFile="mds_plat/harvester_framework_api/tsrc/harvesterdatatest/group" filter="test,api_test"/>
+    <unit bldFile="mds_plat/harvester_framework_api/tsrc/harvesterplugintest/group" filter="test,api_test"/>
+    <unit bldFile="mds_plat/harvester_framework_api/tsrc/monitorplugintest/group" filter="test,api_test"/>
+   </component>
+   <component id="location_manager_api" name="Location Manager API" introduced="^2" class="api" filter="s60">
+    <meta rel="Api" href="mds_plat/location_manager_api/location_manager_api.metaxml"/>
+    <unit bldFile="mds_plat/location_manager_api/group" filter="!test"/>
+    <unit bldFile="mds_plat/location_manager_api/tsrc/group" filter="test,api_test"/>
+   </component>
+   <component id="metadata_engine_api" name="Metadata Engine API" introduced="^2" class="api" filter="s60">
+    <meta rel="Api" href="mds_plat/metadata_engine_api/metadata_engine_api.metaxml"/>
+    <unit bldFile="mds_plat/metadata_engine_api/group" filter="!test"/>
+    <unit bldFile="mds_plat/metadata_engine_api/tsrc/group" filter="test,api_test"/>
+   </component>
+   <component id="content_listing_framework_collection_manager_api" name="Content Listing Framework Collection Manager API" introduced="^2" class="api" filter="s60">
+    <meta rel="Api" href="mds_plat/content_listing_framework_collection_manager_api/content_listing_framework_collection_manager_api.metaxml"/>
+    <meta rel="config">
+     <defined condition="RD_MDS_2_5"/>
+    </meta>
+    <unit bldFile="mds_plat/content_listing_framework_collection_manager_api/group" filter="!test"/>
+    <unit bldFile="mds_plat/content_listing_framework_collection_manager_api/tsrc/group" filter="test,api_test"/>
+   </component>
+   <component id="content_listing_framework_extended_api" name="Content Listing Framework Extended API" introduced="^2" class="api" filter="s60">
+    <meta rel="Api" href="mds_plat/content_listing_framework_extended_api/content_listing_framework_extended_api.metaxml"/>
+    <meta rel="config">
+     <defined condition="RD_MDS_2_5"/>
+    </meta>
+    <unit bldFile="mds_plat/content_listing_framework_extended_api/group"/>
+   </component>
+  </collection>
+  <collection id="mds_pub" name="Metadata Services Public Interfaces" level="int">
+   <component id="content_listing_framework_api" name="Content Listing Framework API" introduced="^2" class="api" filter="s60">
+    <meta rel="Api" href="mds_pub/content_listing_framework_api/content_listing_framework_api.metaxml"/>
+    <meta rel="config">
+     <defined condition="RD_MDS_2_5"/>
+    </meta>
+    <unit bldFile="mds_pub/content_listing_framework_api/group" filter="!test"/>
+    <unit bldFile="mds_pub/content_listing_framework_api/tsrc/group" filter="test,api_test"/>
+   </component>
+  </collection>
+  <collection id="metadataengine" name="Metadata Engine" level="eng">
+   <component id="metadataengine_build" filter="s60" name="Metadata Engine Build" introduced="^2">
+    <!--collection is really a component. Move down a directory  -->
+    <unit bldFile="metadataengine/group"/>
+   </component>
+  </collection>
+  <collection id="locationmanager" name="Location Manager" level="mgr">
+   <component id="geoconverter" filter="s60" name="Geoconverter" introduced="^4">
+    <unit bldFile="locationmanager/geoconverter/group"/>
+   </component>
+   <component id="geo_tagcreator" filter="s60" name="Geo Tag Creator" introduced="^4">
+    <unit bldFile="locationmanager/tagcreator/group"/>
+   </component>
+   <component id="geotagger" filter="s60" name="Geo Tagger" introduced="^4">
+    <unit bldFile="locationmanager/geotagger/group"/>
+   </component>
+   <component id="locationtrail" filter="s60" name="Location Trail" introduced="^2">
+    <unit bldFile="locationmanager/locationtrail/group"/>
+   </component>
+   <component id="locationmanager_server" filter="s60" name="Location Manager Server" introduced="^2">
+    <unit bldFile="locationmanager/server/group"/>
+   </component>
+   <component id="locationmanager_client" filter="s60" name="Location Manager Client" introduced="^2">
+    <unit bldFile="locationmanager/client/group"/>
+   </component>
+   <component id="locationmanager_data" filter="s60" name="Location Manager Data" introduced="^2">
+    <unit bldFile="locationmanager/data"/>
+   </component>
+  </collection>
+  <collection id="contextengine" name="Context Engine" level="eng">
+   <component id="contextengine_build" filter="s60" name="Context Engine Build" introduced="^2">
+   <!-- collection is really a component. Move down a directory -->
+    <unit bldFile="contextengine/group"/>
+   </component>
+  </collection>
+  <collection id="harvester" name="Harvester" level="eng">
+   <component id="blacklistclient" filter="s60" name="Blacklist Client" introduced="^2">
+    <unit bldFile="harvester/blacklistclient/group"/>
+   </component>
+   <component id="blacklistserver" filter="s60" name="Blacklist Server" introduced="^2">
+    <unit bldFile="harvester/blacklistserver/group"/>
+   </component>
+   <component id="harvester_common" filter="s60" name="Harvester Common" introduced="^2">
+    <unit bldFile="harvester/common/group"/>
+   </component>
+   <component id="composerplugins" filter="s60" name="Composer Plugins" class="plugin" introduced="^2">
+    <unit bldFile="harvester/composerplugins/group"/>
+   </component>
+   <component id="harvesterplugins" filter="s60" name="Harvester Plugins" class="plugin" introduced="^2">
+    <unit bldFile="harvester/harvesterplugins/group"/>
+   </component>
+   <component id="monitorplugins" filter="s60" name="Monitor Plugins" class="plugin" introduced="^2">
+    <unit bldFile="harvester/monitorplugins/group"/>
+   </component>
+   <component id="harvester_server" filter="s60" name="Harvester Server" introduced="^2">
+    <unit bldFile="harvester/server/group"/>
+   </component>
+   <component id="harvester_client" filter="s60" name="Harvester Client" introduced="^2">
+    <unit bldFile="harvester/client/group"/>
+   </component>
+   <component id="harvester_data" filter="s60" name="Harvester Data" class="config" introduced="^2">
+    <!-- consider moving these exports into the other components -->
+    <unit bldFile="harvester/data"/>
+   </component>
+  </collection>
+  <collection id="watchdog" name="Watchdog" level="server">
+   <!-- collection is really a component. Move down a directory -->
+   <component id="mdswatchdog" filter="s60" name="Metadata Watchdog" introduced="^2">
+    <unit bldFile="watchdog/group"/>
+   </component>
+  </collection>
+  <collection id="clfwrapper" name="Content Listing Framework Wrapper" level="int">
+   <!-- collection is really a component. Move down a directory -->
+   <meta rel="config">
+    <defined condition="RD_MDS_2_5"/>
+   </meta>
+   <component id="clfwrapper_build" filter="s60" name="CLF Wrapper Build" introduced="^2">
+    <unit bldFile="clfwrapper/group"/>
+   </component>
+  </collection>
+  <collection id="mds_info" name="Metadata Services Info" level="int">
+   <component id="mds_rom" filter="s60" name="Metadata Services ROM" class="config" introduced="^2">
+    <!-- consider moving these exports into the other collections -->
+    <unit bldFile="rom"/>
+   </component>
+  </collection>
+ </package>
+</SystemDefinition>

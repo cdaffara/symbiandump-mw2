@@ -1,0 +1,30 @@
+EXPORTS
+	?trUtf8@MpxViewPlugin@@SA?AVQString@@PBD0@Z @ 1 NONAME ; class QString MpxViewPlugin::trUtf8(char const *, char const *)
+	?tr@MpxViewFramework@@SA?AVQString@@PBD0H@Z @ 2 NONAME ; class QString MpxViewFramework::tr(char const *, char const *, int)
+	??0MpxViewFramework@@QAE@PAVQWidget@@V?$QFlags@W4WindowFlag@Hb@@@@@Z @ 3 NONAME ; MpxViewFramework::MpxViewFramework(class QWidget *, class QFlags<enum Hb::WindowFlag>)
+	??1MpxViewPluginResolver@@UAE@XZ @ 4 NONAME ; MpxViewPluginResolver::~MpxViewPluginResolver(void)
+	?tr@MpxViewPlugin@@SA?AVQString@@PBD0H@Z @ 5 NONAME ; class QString MpxViewPlugin::tr(char const *, char const *, int)
+	??0MpxViewPluginResolver@@QAE@ABV?$QList@H@@@Z @ 6 NONAME ; MpxViewPluginResolver::MpxViewPluginResolver(class QList<int> const &)
+	?tr@MpxViewFramework@@SA?AVQString@@PBD0@Z @ 7 NONAME ; class QString MpxViewFramework::tr(char const *, char const *)
+	?qt_metacast@MpxViewFramework@@UAEPAXPBD@Z @ 8 NONAME ; void * MpxViewFramework::qt_metacast(char const *)
+	?trUtf8@MpxViewFramework@@SA?AVQString@@PBD0H@Z @ 9 NONAME ; class QString MpxViewFramework::trUtf8(char const *, char const *, int)
+	?getStaticMetaObject@MpxViewFramework@@SAABUQMetaObject@@XZ @ 10 NONAME ; struct QMetaObject const & MpxViewFramework::getStaticMetaObject(void)
+	?staticMetaObject@MpxViewFramework@@2UQMetaObject@@B @ 11 NONAME ; struct QMetaObject const MpxViewFramework::staticMetaObject
+	?qt_metacall@MpxViewFramework@@UAEHW4Call@QMetaObject@@HPAPAX@Z @ 12 NONAME ; int MpxViewFramework::qt_metacall(enum QMetaObject::Call, int, void * *)
+	?trUtf8@MpxViewFramework@@SA?AVQString@@PBD0@Z @ 13 NONAME ; class QString MpxViewFramework::trUtf8(char const *, char const *)
+	?staticMetaObject@MpxViewPlugin@@2UQMetaObject@@B @ 14 NONAME ; struct QMetaObject const MpxViewPlugin::staticMetaObject
+	?metaObject@MpxViewPlugin@@UBEPBUQMetaObject@@XZ @ 15 NONAME ; struct QMetaObject const * MpxViewPlugin::metaObject(void) const
+	?metaObject@MpxViewFramework@@UBEPBUQMetaObject@@XZ @ 16 NONAME ; struct QMetaObject const * MpxViewFramework::metaObject(void) const
+	?resolvePlugin@MpxViewPluginResolver@@QAEPAVMpxViewPlugin@@XZ @ 17 NONAME ; class MpxViewPlugin * MpxViewPluginResolver::resolvePlugin(void)
+	?tr@MpxViewPlugin@@SA?AVQString@@PBD0@Z @ 18 NONAME ; class QString MpxViewPlugin::tr(char const *, char const *)
+	?getStaticMetaObject@MpxViewPlugin@@SAABUQMetaObject@@XZ @ 19 NONAME ; struct QMetaObject const & MpxViewPlugin::getStaticMetaObject(void)
+	??1MpxViewFramework@@UAE@XZ @ 20 NONAME ; MpxViewFramework::~MpxViewFramework(void)
+	??_EMpxViewFramework@@UAE@I@Z @ 21 NONAME ; MpxViewFramework::~MpxViewFramework(unsigned int)
+	?resolvePlugin@MpxViewFramework@@UAEPAVMpxViewPlugin@@ABV?$QList@H@@@Z @ 22 NONAME ; class MpxViewPlugin * MpxViewFramework::resolvePlugin(class QList<int> const &)
+	?qt_metacast@MpxViewPlugin@@UAEPAXPBD@Z @ 23 NONAME ; void * MpxViewPlugin::qt_metacast(char const *)
+	?viewPlugin@MpxViewPlugin@@UAEPAV1@XZ @ 24 NONAME ; class MpxViewPlugin * MpxViewPlugin::viewPlugin(void)
+	??_EMpxViewPluginResolver@@UAE@I@Z @ 25 NONAME ; MpxViewPluginResolver::~MpxViewPluginResolver(unsigned int)
+	?qt_metacall@MpxViewPlugin@@UAEHW4Call@QMetaObject@@HPAPAX@Z @ 26 NONAME ; int MpxViewPlugin::qt_metacall(enum QMetaObject::Call, int, void * *)
+	?command@MpxViewPlugin@@IAEXH@Z @ 27 NONAME ; void MpxViewPlugin::command(int)
+	?trUtf8@MpxViewPlugin@@SA?AVQString@@PBD0H@Z @ 28 NONAME ; class QString MpxViewPlugin::trUtf8(char const *, char const *, int)
+

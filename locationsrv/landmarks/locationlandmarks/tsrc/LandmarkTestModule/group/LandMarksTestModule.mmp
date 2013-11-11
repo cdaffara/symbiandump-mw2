@@ -1,0 +1,180 @@
+/*
+* Copyright (c) 2002 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  ?Description
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET          LandMarksTestModule.dll
+TARGETTYPE      dll
+UID             0x1000008D 0x101F4FF4
+
+CAPABILITY      ALL -TCB
+
+
+
+//TARGETPATH      ?target_path
+DEFFILE         LandMarksTestModule.def
+
+SOURCEPATH      ../src
+SOURCE          LandMarksTestModule.cpp
+SOURCE          LandMarksTestModuleBlocks.cpp
+
+//Sorce for the Tp5
+SOURCE			FT_CLandmarkTestProcedureBase.cpp
+SOURCE			FT_CSearchResult.cpp
+SOURCE			FT_CAreaSearchResult.cpp
+SOURCE			FT_CCategorySearchResult.cpp
+SOURCE			FT_CCategoryLandmarkSearchResult.cpp
+SOURCE			FT_CSearchResultBase.cpp
+SOURCE			FT_CCompositeSearchResult.cpp
+SOURCE			FT_DatabaseUtility.cpp
+
+//Source for Testprocedures
+
+SOURCE			FT_CPosTp1.cpp
+SOURCE			FT_CPosTp2.cpp
+SOURCE			FT_CPosTp3.cpp
+SOURCE			FT_CPosTp4.cpp
+SOURCE			FT_CPosTp5.cpp
+SOURCE			FT_CPosTp6.cpp
+SOURCE			FT_CPosTp7.cpp
+SOURCE			FT_CPosTp8.cpp
+SOURCE			FT_CPosTp9.cpp
+
+SOURCE			FT_CPosTp10.cpp
+SOURCE			FT_CPosTp11.cpp
+SOURCE			FT_CPosTp12.cpp
+SOURCE			FT_CPosTp13.cpp
+SOURCE			FT_CPosTp18.cpp
+SOURCE			FT_CPosTp19.cpp
+
+SOURCE			FT_CPosTp20.cpp
+SOURCE			FT_CPosTp21.cpp
+SOURCE			FT_CPosTp23.cpp
+SOURCE			FT_CPosTp24.cpp
+SOURCE			FT_CPosTp25.cpp
+SOURCE			FT_CPosTp26.cpp
+SOURCE			FT_CPosTp28.cpp
+
+SOURCE			FT_CPosTp35.cpp
+SOURCE			FT_CPosTp36.cpp
+SOURCE			FT_CPosTp37.cpp
+SOURCE			FT_CPosTp38.cpp
+
+SOURCE			FT_CPosTp42.cpp
+SOURCE			FT_CPosTp43.cpp
+SOURCE			FT_CPosTp44.cpp
+SOURCE			FT_CPosTp45.cpp
+SOURCE			FT_CPosTp47.cpp
+SOURCE			FT_CPosTp48.cpp
+
+SOURCE			FT_CPosTp51.cpp
+SOURCE			FT_CPosTp52.cpp
+
+SOURCE			FT_CPosTp100.cpp
+SOURCE			FT_CPosTp101.cpp
+SOURCE			FT_CPosTp102.cpp
+SOURCE			FT_CPosTp103.cpp
+SOURCE			FT_CPosTp104.cpp
+SOURCE			FT_CPosTp106.cpp
+
+SOURCE			FT_CPosTp116.cpp
+SOURCE			FT_CPosTp117.cpp
+SOURCE			FT_CPosTp118.cpp
+SOURCE			FT_CPosTp119.cpp
+
+SOURCE			FT_CPosTp120.cpp
+SOURCE			FT_CPosTp121.cpp
+SOURCE			FT_CPosTp122.cpp
+SOURCE			FT_CPosTp123.cpp
+SOURCE			FT_CPosTp124.cpp
+SOURCE			FT_CPosTp125.cpp
+SOURCE			FT_CPosTp126.cpp
+
+SOURCE			FT_CPosTp130.cpp
+SOURCE			FT_CPosTp131.cpp
+SOURCE			FT_CPosTp132.cpp
+SOURCE			FT_CPosTp133.cpp
+SOURCE			FT_CPosTp134.cpp
+SOURCE			FT_CPosTp135.cpp
+SOURCE			FT_CPosTp136.cpp
+SOURCE			FT_CPosTp137.cpp
+SOURCE			FT_CPosTp139.cpp
+
+SOURCE			FT_CPosTp141.cpp
+SOURCE			FT_CPosTp143.cpp
+
+SOURCE			FT_CPosTp144.cpp
+SOURCE			FT_CPosTp145.cpp
+SOURCE			FT_CPosTp146.cpp
+SOURCE			FT_CPosTp147.cpp
+
+SOURCE			FT_CPosTp148.cpp
+SOURCE			FT_CPosTp149.cpp
+SOURCE			FT_CPosTp150.cpp
+SOURCE			FT_CPosTp151.cpp
+SOURCE			FT_CPosTp152.cpp
+SOURCE			FT_CPosTp153.cpp
+SOURCE			FT_CPosTp154.cpp
+SOURCE			FT_CPosTp155.cpp
+SOURCE			FT_CPosTp156.cpp
+SOURCE			FT_CPosTp157.cpp
+SOURCE			FT_CPosTp158.cpp
+SOURCE			FT_CPosTp159.cpp
+SOURCE			FT_CPosTp160.cpp
+
+SOURCE			FT_CPosTp161.cpp
+SOURCE			FT_CPosTp162.cpp
+SOURCE			FT_CPosTp163.cpp
+SOURCE			FT_CPosTp164.cpp
+USERINCLUDE     ../inc 
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   /Epoc32/Include/ecom
+SYSTEMINCLUDE   /Epoc32/Include/xml
+
+LIBRARY         euser.lib
+LIBRARY         stiftestinterface.lib
+
+//Landmarks Lib
+//Added for testing -- Start
+LIBRARY         edbms.lib
+
+//Added for testing -- End
+
+LIBRARY			eposlandmarks.lib
+LIBRARY			Lbs.lib
+LIBRARY	        eposlmdbmanlib.lib
+LIBRARY	        eposlmsearchlib.lib
+LIBRARY         ws32.lib
+LIBRARY         eposlmmultidbsearch.lib
+LIBRARY	        ecom.lib
+LIBRARY         efsrv.lib
+LIBRARY	        bafl.lib
+LIBRARY			    estor.lib
+
+LIBRARY	        apmime.lib // CApaDataRecognizerType used in TP42
+LIBRARY	        apgrfx.lib // RApaLsSession used in TP42
+
+
+LIBRARY         centralrepository.lib charconv.lib
+
+
+
+SMPSAFE
+
+// End of File

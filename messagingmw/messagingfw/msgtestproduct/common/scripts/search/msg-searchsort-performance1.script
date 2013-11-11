@@ -1,0 +1,51 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+LOAD_SUITE 	T_MsgCommonServer 	-SharedData
+
+//! @SYMTestCaseID		MSG-ALL-PERFRM-0004
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8588,REQ8589,REQ8731
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	Negative: Search-sort operation using non- existent  QueryID in cache memory.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//! 	1.	Create a search-sort query where "TO" field contains "test001" recipient address and sort by Date in ascending order.
+//! 	2.	Capture and record the time before search-sort operation without query ID.
+//! 	3.	Perform Search-Sort operation and store the query ID.
+//! 	4.	Generate a system random number and perform search-sort operation with this number as query ID..
+//! 	5.	Verify that search-sort operation returns error KErrNotFound.
+//! @SYMTestExpectedResults
+//!	Search-sort operation leaves with error code KErrNotFound
+//! @SYMAuthor			Pramod Das
+
+START_TESTCASE MSG-ALL-PERFRM-0004
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP			300 T_MsgCommonServer  	StartUp
+
+RUN_TEST_STEP			300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort-performance.ini 0004-SearchSortQuery1
+RUN_TEST_STEP !Error=-1		300 T_MsgCommonServer 	SearchSortResultByQueryId	c:\msgtest\common\search\msg-searchsort-performance.ini 0004-SearchSortQuery1
+
+RUN_TEST_STEP			300 T_MsgCommonServer	ShutDown
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-PERFRM-0004
+

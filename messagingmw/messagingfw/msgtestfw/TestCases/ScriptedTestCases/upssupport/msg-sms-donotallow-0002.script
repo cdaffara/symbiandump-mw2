@@ -1,0 +1,87 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//!	@file
+//! 	@SYMTestCaseID		MSG-SMS-DONOTALLOW-0002
+//! 	@SYMTestCaseDesc	For SMS send request message should not be sent if user
+//!				selects don't allow option against the user prompt service.
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ1678
+//!	@SYMREQ			REQ7008
+//!				
+//! 	@SYMTestActions		1.	Cleanup the message store.
+//!				2.	Create the SMS service with proper settings.
+//!				3.	Create an SMS message and send it to the intended recipient. Set don't allow for the user response. 
+//!				4.	Check if the children counts on local outbox is one and sent item is zero.
+//!				
+//! 	@SYMTestExpectedResults Message shouldn't be sent and children count on sent item should be zero.
+//!				
+//!	@SYMAuthor		Pramod Das
+
+RUN_SCRIPT  c:\msgtest\testframework\scriptedtestcases\upssupport\upssupport_setup.script
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_UTILS CopyFile	c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\upssupportconfig.txt C:\config.txt
+RUN_UTILS MakeReadWrite C:\config.txt
+RUN_PROGRAM   100 SetUserPromptResponse No
+
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer InitializeSimTsy			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sms-upssupport.ini Init1
+RUN_TEST_STEP 100 MessagingTestServer StartWatchers			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sms-upssupport.ini StartWatchers
+RUN_TEST_STEP 100 MessagingTestServer Sleep				c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sms-upssupport.ini Sleep10
+RUN_TEST_STEP 100 MessagingTestServer GetBaseConstants			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sms-upssupport.ini GetBaseConstants
+RUN_TEST_STEP 100 MessagingTestServer SetDefaultSmsSettings		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sms-upssupport.ini SetSettingsFile
+RUN_TEST_STEP 100 MessagingTestServer SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sms-upssupport.ini SetSmsMessageConfigFile
+RUN_TEST_STEP 100 MessagingTestServer CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sms-upssupport.ini CreateSession
+RUN_TEST_STEP 100 MessagingTestServer CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sms-upssupport.ini CreateRegistry
+RUN_TEST_STEP 100 MessagingTestServer CreateSmsService			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sms-upssupport.ini CreateSmsService
+RUN_TEST_STEP 100 MessagingTestServer SetSmsServiceSettings		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sms-upssupport.ini SetSmsSettings
+RUN_TEST_STEP 100 MessagingTestServer SetSchSendSettings		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sms-upssupport.ini SetSchSendSettings
+RUN_TEST_STEP 100 MessagingTestServer CreateMtm				c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sms-upssupport.ini CreateMtm
+
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer DeleteChildren			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sms-upssupport.ini EmptyOutbox
+RUN_TEST_STEP 100 MessagingTestServer DeleteChildren			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sms-upssupport.ini EmptySent
+RUN_TEST_STEP 100 MessagingTestServer DeleteChildren			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sms-upssupport.ini EmptyInbox
+
+RUN_TEST_STEP 100 MessagingTestServer GetSmsConstants			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sms-upssupport.ini GetSmsConstants
+RUN_TEST_STEP 100 MessagingTestServer CreateSmsMessage			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sms-upssupport.ini CreateMessage
+RUN_TEST_STEP 100 MessagingTestServer CreateSelection			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sms-upssupport.ini CreateSelection
+RUN_TEST_STEP 100 MessagingTestServer GetDefaultAppendToSelection	c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sms-upssupport.ini AppendToSelection
+RUN_TEST_STEP 100 MessagingTestServer SetNetworkRegistrationStatus	c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sms-upssupport.ini NetAvailable
+RUN_TEST_STEP 100 MessagingTestServer SetSignalStrength			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sms-upssupport.ini NetStrengthHigh
+RUN_TEST_STEP 100 MessagingTestServer Sleep				c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sms-upssupport.ini Sleep3
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sms-upssupport.ini CheckChildrenCountOutbox20
+
+RUN_TEST_STEP 100 MessagingTestServer ExecuteMtmCommand			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sms-upssupport.ini ScheduleMessage
+	// Send the SMS.
+RUN_TEST_STEP 100 MessagingTestServer CheckMessageSendingState		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sms-upssupport.ini MsgSent2
+	// Ensure that the message is sent correctly.
+
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sms-upssupport.ini CheckChildrenCountOutbox21
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sms-upssupport.ini CheckChildrenCountSent20
+RUN_TEST_STEP 100 MessagingTestServer UnloadPhoneModule			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sms-upssupport.ini UnloadPhoneModule
+RUN_TEST_STEP 100 MessagingTestServer END_TEST_CASE
+
+RUN_SCRIPT  c:\msgtest\testframework\scriptedtestcases\upssupport\restore_setup.script

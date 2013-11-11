@@ -1,0 +1,157 @@
+EXPORTS
+	_ZN10CTestTimer4NewLEv @ 1 NONAME
+	_ZN10CTestTimer4RunLEv @ 2 NONAME
+	_ZN10CTestTimer8AfterReqE27TTimeIntervalMicroSeconds32R14TRequestStatus @ 3 NONAME
+	_ZN10CTestTimerC1Ev @ 4 NONAME
+	_ZN10CTestTimerC2Ev @ 5 NONAME
+	_ZN10CTestUtils10AppendTextERK7TDesC16R6TDes16i @ 6 NONAME
+	_ZN10CTestUtils10ConstructLEv @ 7 NONAME
+	_ZN10CTestUtils10ReadFileLCERK7TDesC16 @ 8 NONAME
+	_ZN10CTestUtils10SetRunAutoEi @ 9 NONAME
+	_ZN10CTestUtils10TestFinishEii @ 10 NONAME
+	_ZN10CTestUtils11ClearScreenEi @ 11 NONAME
+	_ZN10CTestUtils11DisplayFileERK7TDesC16 @ 12 NONAME
+	_ZN10CTestUtils11DisplayLogLERK10CLogFilteri @ 13 NONAME
+	_ZN10CTestUtils11DisplayMenuERK7TDesC16iiii @ 14 NONAME
+	_ZN10CTestUtils11ResolveFileERK7TDesC16S2_R6TParse @ 15 NONAME
+	_ZN10CTestUtils11SeekLogFileE5TSeekRi @ 16 NONAME
+	_ZN10CTestUtils12SetLogToFileEi @ 17 NONAME
+	_ZN10CTestUtils12WriteCommentERK7TDesC16 @ 18 NONAME
+	_ZN10CTestUtils12WriteToFileLER5RFileR6TDesC8 @ 19 NONAME
+	_ZN10CTestUtils12WriteToFileLER5RFileRK7TDesC16 @ 20 NONAME
+	_ZN10CTestUtils13AppendToMenuLERK7TDesC16 @ 21 NONAME
+	_ZN10CTestUtils14CreateContactLERK7TDesC16S2_S2_S2_i @ 22 NONAME
+	_ZN10CTestUtils14ResolveLogFileERK7TDesC16R6TParse @ 23 NONAME
+	_ZN10CTestUtils15SetLogToConsoleEi @ 24 NONAME
+	_ZN10CTestUtils17OpenResourceFileLERK7TDesC16R13RResourceFile @ 25 NONAME
+	_ZN10CTestUtils17TestHarnessFailedEi @ 26 NONAME
+	_ZN10CTestUtils19DeleteContactsFileLEv @ 27 NONAME
+	_ZN10CTestUtils19ReadResourceStringLER13RResourceFileiR6TDes16 @ 28 NONAME
+	_ZN10CTestUtils19ReadResourceStringLERK7TDesC16iR6TDes16 @ 29 NONAME
+	_ZN10CTestUtils20SetSimTsyTestNumberLEi @ 30 NONAME
+	_ZN10CTestUtils20TestHarnessCompletedEv @ 31 NONAME
+	_ZN10CTestUtils23CopyToSimTsyConfigFileLER3RFsRK7TDesC16 @ 32 NONAME
+	_ZN10CTestUtils23RemoveRichtextFormatingER6TDes16 @ 33 NONAME
+	_ZN10CTestUtils24CreateAllTestDirectoriesEv @ 34 NONAME
+	_ZN10CTestUtils5DoBufER5TDes8RK7TDesC16RK6TDesC8 @ 35 NONAME
+	_ZN10CTestUtils5DoBufER5TDes8RK7TDesC16S4_ @ 36 NONAME
+	_ZN10CTestUtils6PrintfE11TRefByValueIK7TDesC16Ez @ 37 NONAME
+	_ZN10CTestUtils8PrintHexERK6TDesC8 @ 38 NONAME
+	_ZN10CTestUtils8PrintHexERK7TDesC16 @ 39 NONAME
+	_ZN10CTestUtils8SetNameLER12CContactItem4TUidRK7TDesC16i @ 40 NONAME
+	_ZN10CTestUtils9ClearLogLERK10CLogFilter @ 41 NONAME
+	_ZN10CTestUtils9ResetMenuEv @ 42 NONAME
+	_ZN10CTestUtils9TestStartEi @ 43 NONAME
+	_ZN10CTestUtils9TestStartEiRK7TDesC16 @ 44 NONAME
+	_ZN10CTestUtilsC2ER5RTest @ 45 NONAME
+	_ZN10CTestUtilsD0Ev @ 46 NONAME
+	_ZN10CTestUtilsD1Ev @ 47 NONAME
+	_ZN10CTestUtilsD2Ev @ 48 NONAME
+	_ZN11CScriptFile10ItemValueLER10CTestUtilsRK7TDesC16S4_S4_S4_i @ 49 NONAME
+	_ZN11CScriptFile11GetNextWordER6TLex165TCharR7TPtrC16 @ 50 NONAME
+	_ZN11CScriptFile11GetNextWordER6TLex165TCharRi @ 51 NONAME
+	_ZN11CScriptFile11ItemValueLCER10CTestUtilsRK7TDesC16S4_S4_S4_S4_ @ 52 NONAME
+	_ZN11CScriptFile11ReadScriptLERK7TDesC16 @ 53 NONAME
+	_ZN11CScriptFile5NewLCER10CTestUtilsRK7TDesC16 @ 54 NONAME
+	_ZN11CScriptFile5NewLCER10CTestUtilsRK7TDesC16S4_ @ 55 NONAME
+	_ZN11CScriptFile8ReplaceLERK7TDesC16S2_RP7HBufC16 @ 56 NONAME
+	_ZN11CScriptFile9ItemValueERK7TDesC16S2_S2_ @ 57 NONAME
+	_ZN11CScriptFile9ItemValueERK7TDesC16S2_i @ 58 NONAME
+	_ZN11CScriptFile9ReplaceLCERK7TDesC16S2_S2_ @ 59 NONAME
+	_ZN11CScriptFileD0Ev @ 60 NONAME
+	_ZN11CScriptFileD1Ev @ 61 NONAME
+	_ZN11CScriptFileD2Ev @ 62 NONAME
+	_ZN11CTestActive4RunLEv @ 63 NONAME
+	_ZN11CTestActive6StartLEv @ 64 NONAME
+	_ZN11CTestActive8DoCancelEv @ 65 NONAME
+	_ZN11CTestActiveC1Ev @ 66 NONAME
+	_ZN11CTestActiveC2Ev @ 67 NONAME
+	_ZN11CTestActiveD0Ev @ 68 NONAME
+	_ZN11CTestActiveD1Ev @ 69 NONAME
+	_ZN11CTestActiveD2Ev @ 70 NONAME
+	_ZN13CMsvTestUtils10ConstructLEj @ 71 NONAME
+	_ZN13CMsvTestUtils10ServiceIdLE4TUidRlP18CMsvEntrySelection @ 72 NONAME
+	_ZN13CMsvTestUtils12ScheduleTimeElR5TTimeS1_R9TTaskInfo @ 73 NONAME
+	_ZN13CMsvTestUtils13DisplayChildLERK9TMsvEntry @ 74 NONAME
+	_ZN13CMsvTestUtils13FindChildrenLElRK4TBufILi256EEii @ 75 NONAME
+	_ZN13CMsvTestUtils13FindChildrenLElii @ 76 NONAME
+	_ZN13CMsvTestUtils13GoClientSideLEv @ 77 NONAME
+	_ZN13CMsvTestUtils13GoServerSideLEv @ 78 NONAME
+	_ZN13CMsvTestUtils13ListChildrenLER5RFileR4CDirRiS4_ii @ 79 NONAME
+	_ZN13CMsvTestUtils13SetFolderTypeER9TMsvEntryR7TPtrC16 @ 80 NONAME
+	_ZN13CMsvTestUtils14CreateServiceLE4TUidii @ 81 NONAME
+	_ZN13CMsvTestUtils14DeleteServiceLE4TUid @ 82 NONAME
+	_ZN13CMsvTestUtils14SpecifyLogsDirERK4TBufILi256EE @ 83 NONAME
+	_ZN13CMsvTestUtils14WriteBodyDataLElRK4TBufILi256EER9CMsvStorei @ 84 NONAME
+	_ZN13CMsvTestUtils14WriteFileDataLElRK4TBufILi256EES3_i @ 85 NONAME
+	_ZN13CMsvTestUtils16InstallMtmGroupLERK7TDesC16 @ 86 NONAME
+	_ZN13CMsvTestUtils16SpecifyRfc822DirERK4TBufILi256EE @ 87 NONAME
+	_ZN13CMsvTestUtils19AppendScheduleTimeLElR6TDes16 @ 88 NONAME
+	_ZN13CMsvTestUtils19CleanMessageFolderLEv @ 89 NONAME
+	_ZN13CMsvTestUtils19CreateServerMtmRegLE4TUidRK7TDesC16RK15TMsvTestDllInfoS6_S6_S6_S0_S3_ @ 90 NONAME
+	_ZN13CMsvTestUtils21InstantiateClientMtmLE4TUidl @ 91 NONAME
+	_ZN13CMsvTestUtils21InstantiateServerMtmLE4TUidl @ 92 NONAME
+	_ZN13CMsvTestUtils21NavigateMessageStoreLEl @ 93 NONAME
+	_ZN13CMsvTestUtils24CreateAllTestDirectoriesEv @ 94 NONAME
+	_ZN13CMsvTestUtils31CreateRegistryObjectAndControlLEv @ 95 NONAME
+	_ZN13CMsvTestUtils5ResetEv @ 96 NONAME
+	_ZN13CMsvTestUtilsC2ER5RTest @ 97 NONAME
+	_ZN13CMsvTestUtilsD0Ev @ 98 NONAME
+	_ZN13CMsvTestUtilsD1Ev @ 99 NONAME
+	_ZN13CMsvTestUtilsD2Ev @ 100 NONAME
+	_ZN14CScriptSection12DeleteItemsLERK7TDesC16 @ 101 NONAME
+	_ZN14CScriptSection12ReplaceItemLERK7TDesC16S2_ @ 102 NONAME
+	_ZN14CScriptSection18AddItemIfNotExistLERK7TDesC16S2_ @ 103 NONAME
+	_ZN14CScriptSection4ItemERK7TDesC16 @ 104 NONAME
+	_ZN14CScriptSection5NewLCERK7TDesC16 @ 105 NONAME
+	_ZN14CScriptSection5NewLCERK7TDesC16RS_ @ 106 NONAME
+	_ZN14CScriptSection6CopyLCEv @ 107 NONAME
+	_ZN14CScriptSection8AddItemLERK7TDesC16S2_ @ 108 NONAME
+	_ZN14CScriptSection9ItemValueERK7TDesC16S2_ @ 109 NONAME
+	_ZN14CScriptSection9ItemValueERK7TDesC16i @ 110 NONAME
+	_ZN14CScriptSectionD0Ev @ 111 NONAME
+	_ZN14CScriptSectionD1Ev @ 112 NONAME
+	_ZN14CScriptSectionD2Ev @ 113 NONAME
+	_ZN15TMsvConfigEntry3SetERK7TDesC16 @ 114 NONAME
+	_ZN18CScriptSectionItem5NewLCER14CScriptSectionRK7TDesC16S4_ @ 115 NONAME
+	_ZN18CScriptSectionItemD0Ev @ 116 NONAME
+	_ZN18CScriptSectionItemD1Ev @ 117 NONAME
+	_ZN18CScriptSectionItemD2Ev @ 118 NONAME
+	_ZN21TestMsvOperationTimer10ConstructLEv @ 119 NONAME
+	_ZN21TestMsvOperationTimer12IssueRequestEv @ 120 NONAME
+	_ZN21TestMsvOperationTimer4RunLEv @ 121 NONAME
+	_ZN21TestMsvOperationTimer5NewLCEP12CConsoleBaseP13CMsvOperationR5RTest @ 122 NONAME
+	_ZN21TestMsvOperationTimer8DoCancelEv @ 123 NONAME
+	_ZN21TestMsvOperationTimerC1EP12CConsoleBaseP13CMsvOperationR5RTest @ 124 NONAME
+	_ZN21TestMsvOperationTimerC2EP12CConsoleBaseP13CMsvOperationR5RTest @ 125 NONAME
+	_ZN24CMsvConfigEntrySelection4NewLER3RFsRK7TDesC16 @ 126 NONAME
+	_ZN24CTestUtilsWatcherStarter4NewLER14TRequestStatus27TTimeIntervalMicroSeconds32i @ 127 NONAME
+	_ZN24CTestUtilsWatcherStarter4NewLEi @ 128 NONAME
+	_ZN24CTestUtilsWatcherStarterD0Ev @ 129 NONAME
+	_ZN24CTestUtilsWatcherStarterD1Ev @ 130 NONAME
+	_ZN24CTestUtilsWatcherStarterD2Ev @ 131 NONAME
+	_ZNK10CTestUtils7RunAutoEv @ 132 NONAME
+	_ZNK10CTestUtils9MenuCountEv @ 133 NONAME
+	_ZNK15TMsvConfigEntry3IntEv @ 134 NONAME
+	_ZNK15TMsvConfigEntry7VersionEv @ 135 NONAME
+	_ZNK24CMsvConfigEntrySelection4FindERK7TDesC16 @ 136 NONAME
+	_ZNK24CMsvConfigEntrySelection7FindPosERK7TDesC16 @ 137 NONAME
+	_ZTI10CTestTimer @ 138 NONAME ; #<TI>#
+	_ZTI10CTestUtils @ 139 NONAME ; #<TI>#
+	_ZTI11CTestActive @ 140 NONAME ; #<TI>#
+	_ZTI13CMsvTestUtils @ 141 NONAME ; #<TI>#
+	_ZTI21TestMsvOperationTimer @ 142 NONAME ; #<TI>#
+	_ZTV10CTestTimer @ 143 NONAME ; #<VT>#
+	_ZTV10CTestUtils @ 144 NONAME ; #<VT>#
+	_ZTV11CTestActive @ 145 NONAME ; #<VT>#
+	_ZTV13CMsvTestUtils @ 146 NONAME ; #<VT>#
+	_ZTV21TestMsvOperationTimer @ 147 NONAME ; #<VT>#
+	_ZTI11CScriptFile @ 148 NONAME ; #<TI>#
+	_ZTI14CScriptSection @ 149 NONAME ; #<TI>#
+	_ZTI18CScriptSectionItem @ 150 NONAME ; #<TI>#
+	_ZTI24CTestUtilsWatcherStarter @ 151 NONAME ; #<TI>#
+	_ZTV11CScriptFile @ 152 NONAME ; #<VT>#
+	_ZTV14CScriptSection @ 153 NONAME ; #<VT>#
+	_ZTV18CScriptSectionItem @ 154 NONAME ; #<VT>#
+	_ZTV24CTestUtilsWatcherStarter @ 155 NONAME ; #<VT>#
+

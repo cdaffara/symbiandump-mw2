@@ -1,0 +1,27 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Have the ECOM DLL UID for the controller
+*
+*/
+
+
+#ifndef MP3AUDIOPLAYCONTROLLERPLUGIN_HRH
+#define MP3AUDIOPLAYCONTROLLERPLUGIN_HRH
+
+// UIDs for MP3 Play Controller Plugin
+#define KUIDMP3PlayControllerPluginDll			0x101FAFB6 	// DLL UID
+#define KUIDMP3PlayControllerPluginImplementation	0x101FAFB7	// Implementation UID
+#define KUIDMP3PlayControllerPluginFormatInterface	0x101FAFB8 	// Format Interface UID
+
+#endif	// MP3AUDIOPLAYCONTROLLERPLUGIN_HRH

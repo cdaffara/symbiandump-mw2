@@ -1,0 +1,33 @@
+<?xml version="1.0"?><!DOCTYPE testExecuteTest SYSTEM "c:\program files\common files\symbian\testExecuteTest.dtd" [ ]>
+	<testExecuteTest>
+		<name>T_Performance425_test</name>
+			<timeout>600</timeout>
+				<testScripts>
+					<script>
+					<hostPath>\epoc32\release\armv5\urel\z\msgtest\T_Performance425.script</hostPath>
+					<devicePath>c:\msgtest\performance\T_Performance425.script</devicePath>
+					</script>
+				</testScripts>
+ 
+ 
+			<dependencies>				
+				<data>
+ 				<hostPath>\epoc32\release\armv5\urel\z\msgtest\T_Performance425.ini</hostPath>
+				<devicePath>c:\msgtest\performance\T_Performance425.ini</devicePath>
+				</data>
+				
+				<data>
+ 				<hostPath>\epoc32\release\armv5\urel\z\msgtest\T_Performance43KImage.jpg</hostPath>
+				<devicePath>c:\msgtest\performance\T_Performance43KImage.jpg</devicePath>
+				</data>
+				
+				<data>
+				<hostPath>\epoc32\winscw\c\msgtest\MachineName.txt</hostPath>
+				<devicePath>c:\msgtest\MachineName.txt</devicePath>
+				</data> <!--Already copied over by copydeps!-->
+			</dependencies>
+			
+		<testServers>
+			<server>T_Performance425</server>
+		</testServers> 
+	</testExecuteTest>

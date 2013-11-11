@@ -1,0 +1,114 @@
+EXPORTS
+	__27TMsvSysAgentConditionAction @ 1 NONAME R3UNUSED ; TMsvSysAgentConditionAction::TMsvSysAgentConditionAction(void)
+	CheckScheduleL__16CMsvScheduleSendRC18CMsvEntrySelection @ 2 NONAME R3UNUSED ; CMsvScheduleSend::CheckScheduleL(CMsvEntrySelection const &)
+	ConditionsMetL__19CMsvSysAgentActionsR19TMsvSendErrorAction @ 3 NONAME R3UNUSED ; CMsvSysAgentActions::ConditionsMetL(TMsvSendErrorAction &)
+	ConstructL__16CMsvScheduleSend @ 4 NONAME R3UNUSED ; CMsvScheduleSend::ConstructL(void)
+	ConstructL__22CScheduleBaseServerMtm @ 5 NONAME R3UNUSED ; CScheduleBaseServerMtm::ConstructL(void)
+	Day__C15TMsvOffPeakTime @ 6 NONAME R3UNUSED ; TMsvOffPeakTime::Day(void) const
+	Default__C20CMsvSendErrorActions @ 7 NONAME R3UNUSED ; CMsvSendErrorActions::Default(void) const
+	DeleteScheduleL__16CMsvScheduleSendRC18CMsvEntrySelection @ 8 NONAME R3UNUSED ; CMsvScheduleSend::DeleteScheduleL(CMsvEntrySelection const &)
+	Entry__C18CMsvScheduledEntryR9TMsvEntry @ 9 NONAME R3UNUSED ; CMsvScheduledEntry::Entry(TMsvEntry &) const
+	Errors__C20CMsvSendErrorActions @ 10 NONAME R3UNUSED ; CMsvSendErrorActions::Errors(void) const
+	ExternalizeL__C15TMsvOffPeakTimeR12RWriteStream @ 11 NONAME R3UNUSED ; TMsvOffPeakTime::ExternalizeL(RWriteStream &) const
+	ExternalizeL__C19TMsvSendErrorActionR12RWriteStream @ 12 NONAME R3UNUSED ; TMsvSendErrorAction::ExternalizeL(RWriteStream &) const
+	ExternalizeL__C27TMsvSysAgentConditionActionR12RWriteStream @ 13 NONAME R3UNUSED ; TMsvSysAgentConditionAction::ExternalizeL(RWriteStream &) const
+	GetNextOffPeakTime__C16CMsvOffPeakTimesRC5TTimeR15TMsvOffPeakTimeR5TTime @ 14 NONAME ; CMsvOffPeakTimes::GetNextOffPeakTime(TTime const &, TMsvOffPeakTime &, TTime &) const
+	GetSendErrorAction__C20CMsvSendErrorActionsiR19TMsvSendErrorAction @ 15 NONAME R3UNUSED ; CMsvSendErrorActions::GetSendErrorAction(int, TMsvSendErrorAction &) const
+	Hour__C15TMsvOffPeakTime @ 16 NONAME R3UNUSED ; TMsvOffPeakTime::Hour(void) const
+	IncreaseRetries__21TMsvEntryScheduleData @ 17 NONAME R3UNUSED ; TMsvEntryScheduleData::IncreaseRetries(void)
+	InternalizeL__15TMsvOffPeakTimeR11RReadStream @ 18 NONAME R3UNUSED ; TMsvOffPeakTime::InternalizeL(RReadStream &)
+	InternalizeL__19TMsvSendErrorActionR11RReadStream @ 19 NONAME R3UNUSED ; TMsvSendErrorAction::InternalizeL(RReadStream &)
+	InternalizeL__27TMsvSysAgentConditionActionR11RReadStream @ 20 NONAME R3UNUSED ; TMsvSysAgentConditionAction::InternalizeL(RReadStream &)
+	IntervalType__C20CMsvScheduleSettings @ 21 NONAME R3UNUSED ; CMsvScheduleSettings::IntervalType(void) const
+	IsReset__C21TMsvEntryScheduleData @ 22 NONAME R3UNUSED ; TMsvEntryScheduleData::IsReset(void) const
+	Latency__C20CMsvScheduleSettings @ 23 NONAME R3UNUSED ; CMsvScheduleSettings::Latency(void) const
+	LoadResourceFileL__22CScheduleBaseServerMtmRC7TDesC16 @ 24 NONAME R3UNUSED ; CScheduleBaseServerMtm::LoadResourceFileL(TDesC16 const &)
+	LongInterval__C20CMsvScheduleSettings @ 25 NONAME R3UNUSED ; CMsvScheduleSettings::LongInterval(void) const
+	MaxRetries__C19TMsvSendErrorAction @ 26 NONAME R3UNUSED ; TMsvSendErrorAction::MaxRetries(void) const
+	Minute__C15TMsvOffPeakTime @ 27 NONAME R3UNUSED ; TMsvOffPeakTime::Minute(void) const
+	NewL__20CMsvScheduleSettings @ 28 NONAME R3UNUSED ; CMsvScheduleSettings::NewL(void)
+	NewL__20CMsvSendErrorActions @ 29 NONAME R3UNUSED ; CMsvSendErrorActions::NewL(void)
+	NextTimeInclusive__C15TMsvOffPeakTimeRC5TTime @ 30 NONAME R3UNUSED ; TMsvOffPeakTime::NextTimeInclusive(TTime const &) const
+	Priority__C20CMsvScheduleSettings @ 31 NONAME R3UNUSED ; CMsvScheduleSettings::Priority(void) const
+	Queue__22CScheduleBaseServerMtmR14TRequestStatus @ 32 NONAME R3UNUSED ; CScheduleBaseServerMtm::Queue(TRequestStatus &)
+	ReScheduleL__16CMsvScheduleSendRC18CMsvEntrySelectionRC19TMsvSchedulePackagePC19TMsvSendErrorAction @ 33 NONAME ; CMsvScheduleSend::ReScheduleL(CMsvEntrySelection const &, TMsvSchedulePackage const &, TMsvSendErrorAction const *)
+	RemoveL__C21TMsvEntryScheduleDataR9CMsvStore @ 34 NONAME R3UNUSED ; TMsvEntryScheduleData::RemoveL(CMsvStore &) const
+	RemoveSendErrorAction__20CMsvSendErrorActionsi @ 35 NONAME R3UNUSED ; CMsvSendErrorActions::RemoveSendErrorAction(int)
+	ResetRetries__21TMsvEntryScheduleData @ 36 NONAME R3UNUSED ; TMsvEntryScheduleData::ResetRetries(void)
+	Reset__15TMsvOffPeakTime @ 37 NONAME R3UNUSED ; TMsvOffPeakTime::Reset(void)
+	Reset__19TMsvSendErrorAction @ 38 NONAME R3UNUSED ; TMsvSendErrorAction::Reset(void)
+	Reset__20CMsvScheduleSettings @ 39 NONAME R3UNUSED ; CMsvScheduleSettings::Reset(void)
+	Reset__21TMsvEntryScheduleData @ 40 NONAME R3UNUSED ; TMsvEntryScheduleData::Reset(void)
+	RestoreFromResourceL__20CMsvSendErrorActionsR15TResourceReader @ 41 NONAME R3UNUSED ; CMsvSendErrorActions::RestoreFromResourceL(TResourceReader &)
+	RestoreL__16CMsvOffPeakTimesR9CMsvStore @ 42 NONAME R3UNUSED ; CMsvOffPeakTimes::RestoreL(CMsvStore &)
+	RestoreL__16CMsvScheduleSendR9CMsvStore @ 43 NONAME R3UNUSED ; CMsvScheduleSend::RestoreL(CMsvStore &)
+	RestoreL__18CMsvScheduledEntryR9CMsvStore @ 44 NONAME R3UNUSED ; CMsvScheduledEntry::RestoreL(CMsvStore &)
+	RestoreL__19CMsvSysAgentActionsR9CMsvStore @ 45 NONAME R3UNUSED ; CMsvSysAgentActions::RestoreL(CMsvStore &)
+	RestoreL__20CMsvScheduleSettingsR9CMsvStore @ 46 NONAME R3UNUSED ; CMsvScheduleSettings::RestoreL(CMsvStore &)
+	RestoreL__20CMsvSendErrorActionsR9CMsvStore @ 47 NONAME R3UNUSED ; CMsvSendErrorActions::RestoreL(CMsvStore &)
+	RestoreL__21TMsvEntryScheduleDataR9CMsvStore @ 48 NONAME R3UNUSED ; TMsvEntryScheduleData::RestoreL(CMsvStore &)
+	RestoreScheduleSettingsL__22CScheduleBaseServerMtmii @ 49 NONAME R3UNUSED ; CScheduleBaseServerMtm::RestoreScheduleSettingsL(int, int)
+	Retries__C21TMsvEntryScheduleData @ 50 NONAME R3UNUSED ; TMsvEntryScheduleData::Retries(void) const
+	ScheduleL__16CMsvScheduleSendRC18CMsvEntrySelectionRC19TMsvSchedulePackage @ 51 NONAME R3UNUSED ; CMsvScheduleSend::ScheduleL(CMsvEntrySelection const &, TMsvSchedulePackage const &)
+	ScheduleL__22CScheduleBaseServerMtmR18CMsvEntrySelectioniRC6TDesC8R14TRequestStatus @ 52 NONAME ; CScheduleBaseServerMtm::ScheduleL(CMsvEntrySelection &, int, TDesC8 const &, TRequestStatus &)
+	SendExe__C20CMsvScheduleSettings @ 53 NONAME R3UNUSED ; CMsvScheduleSettings::SendExe(void) const
+	SendScheduledL__22CScheduleBaseServerMtmR18CMsvEntrySelectioniRC6TDesC8R14TRequestStatus @ 54 NONAME ; CScheduleBaseServerMtm::SendScheduledL(CMsvEntrySelection &, int, TDesC8 const &, TRequestStatus &)
+	SendingCompleteL__16CMsvScheduleSendR9TMsvEntryi @ 55 NONAME R3UNUSED ; CMsvScheduleSend::SendingCompleteL(TMsvEntry &, int)
+	SendingCompleteL__16CMsvScheduleSendRC18CMsvEntrySelection @ 56 NONAME R3UNUSED ; CMsvScheduleSend::SendingCompleteL(CMsvEntrySelection const &)
+	SetDay__15TMsvOffPeakTime4TDay @ 57 NONAME R3UNUSED ; TMsvOffPeakTime::SetDay(TDay)
+	SetDefault__20CMsvSendErrorActionsRC19TMsvSendErrorAction @ 58 NONAME R3UNUSED ; CMsvSendErrorActions::SetDefault(TMsvSendErrorAction const &)
+	SetErrorsL__20CMsvSendErrorActionsRCt13CArrayFixFlat1Z19TMsvSendErrorAction @ 59 NONAME R3UNUSED ; CMsvSendErrorActions::SetErrorsL(CArrayFixFlat<TMsvSendErrorAction> const &)
+	SetHour__15TMsvOffPeakTimei @ 60 NONAME R3UNUSED ; TMsvOffPeakTime::SetHour(int)
+	SetIntervalType__20CMsvScheduleSettings13TIntervalType @ 61 NONAME R3UNUSED ; CMsvScheduleSettings::SetIntervalType(TIntervalType)
+	SetLatency__20CMsvScheduleSettingsRC27TTimeIntervalMicroSeconds32 @ 62 NONAME R3UNUSED ; CMsvScheduleSettings::SetLatency(TTimeIntervalMicroSeconds32 const &)
+	SetLongInterval__20CMsvScheduleSettingsRC20TTimeIntervalSeconds @ 63 NONAME R3UNUSED ; CMsvScheduleSettings::SetLongInterval(TTimeIntervalSeconds const &)
+	SetMaxRetries__19TMsvSendErrorActions @ 64 NONAME R3UNUSED ; TMsvSendErrorAction::SetMaxRetries(short)
+	SetMinute__15TMsvOffPeakTimei @ 65 NONAME R3UNUSED ; TMsvOffPeakTime::SetMinute(int)
+	SetPriority__20CMsvScheduleSettingsi @ 66 NONAME R3UNUSED ; CMsvScheduleSettings::SetPriority(int)
+	SetSendExe__20CMsvScheduleSettingsRC7TDesC16 @ 67 NONAME R3UNUSED ; CMsvScheduleSettings::SetSendExe(TDesC16 const &)
+	SetShortInterval__20CMsvScheduleSettingsRC20TTimeIntervalSeconds @ 68 NONAME R3UNUSED ; CMsvScheduleSettings::SetShortInterval(TTimeIntervalSeconds const &)
+	SetValidityPeriod__15TMsvOffPeakTimeG20TTimeIntervalMinutes @ 69 NONAME R3UNUSED ; TMsvOffPeakTime::SetValidityPeriod(TTimeIntervalMinutes)
+	SetValidityPeriod__20CMsvScheduleSettingsRC20TTimeIntervalMinutes @ 70 NONAME R3UNUSED ; CMsvScheduleSettings::SetValidityPeriod(TTimeIntervalMinutes const &)
+	SetVariableIntervalsL__20CMsvScheduleSettingsRCt13CArrayFixFlat1Z20TTimeIntervalSeconds @ 71 NONAME R3UNUSED ; CMsvScheduleSettings::SetVariableIntervalsL(CArrayFixFlat<TTimeIntervalSeconds> const &)
+	ShortInterval__C20CMsvScheduleSettings @ 72 NONAME R3UNUSED ; CMsvScheduleSettings::ShortInterval(void) const
+	StoreL__C16CMsvOffPeakTimesR9CMsvStore @ 73 NONAME R3UNUSED ; CMsvOffPeakTimes::StoreL(CMsvStore &) const
+	StoreL__C18CMsvScheduledEntryR9CMsvStore @ 74 NONAME R3UNUSED ; CMsvScheduledEntry::StoreL(CMsvStore &) const
+	StoreL__C19CMsvSysAgentActionsR9CMsvStore @ 75 NONAME R3UNUSED ; CMsvSysAgentActions::StoreL(CMsvStore &) const
+	StoreL__C20CMsvScheduleSettingsR9CMsvStore @ 76 NONAME R3UNUSED ; CMsvScheduleSettings::StoreL(CMsvStore &) const
+	StoreL__C20CMsvSendErrorActionsR9CMsvStore @ 77 NONAME R3UNUSED ; CMsvSendErrorActions::StoreL(CMsvStore &) const
+	StoreL__C21TMsvEntryScheduleDataR9CMsvStore @ 78 NONAME R3UNUSED ; TMsvEntryScheduleData::StoreL(CMsvStore &) const
+	ValidityPeriod__C15TMsvOffPeakTime @ 79 NONAME R3UNUSED ; TMsvOffPeakTime::ValidityPeriod(void) const
+	ValidityPeriod__C20CMsvScheduleSettings @ 80 NONAME R3UNUSED ; CMsvScheduleSettings::ValidityPeriod(void) const
+	VariableIntervals__C20CMsvScheduleSettings @ 81 NONAME R3UNUSED ; CMsvScheduleSettings::VariableIntervals(void) const
+	"_._16CMsvScheduleSend" @ 82 NONAME R3UNUSED ; CMsvScheduleSend::~CMsvScheduleSend(void)
+	"_._19CMsvSysAgentActions" @ 83 NONAME R3UNUSED ; CMsvSysAgentActions::~CMsvSysAgentActions(void)
+	"_._20CMsvScheduleSettings" @ 84 NONAME R3UNUSED ; CMsvScheduleSettings::~CMsvScheduleSettings(void)
+	"_._20CMsvSendErrorActions" @ 85 NONAME R3UNUSED ; CMsvSendErrorActions::~CMsvSendErrorActions(void)
+	__15TMsvOffPeakTime @ 86 NONAME R3UNUSED ; TMsvOffPeakTime::TMsvOffPeakTime(void)
+	__15TMsvOffPeakTime4TDayiiG20TTimeIntervalMinutes @ 87 NONAME ; TMsvOffPeakTime::TMsvOffPeakTime(TDay, int, int, TTimeIntervalMinutes)
+	__16CMsvOffPeakTimes @ 88 NONAME R3UNUSED ; CMsvOffPeakTimes::CMsvOffPeakTimes(void)
+	__16CMsvScheduleSendR15CMsvServerEntry @ 89 NONAME R3UNUSED ; CMsvScheduleSend::CMsvScheduleSend(CMsvServerEntry &)
+	__18CMsvScheduledEntryRC9TMsvEntry @ 90 NONAME R3UNUSED ; CMsvScheduledEntry::CMsvScheduledEntry(TMsvEntry const &)
+	__19CMsvSysAgentActions @ 91 NONAME R3UNUSED ; CMsvSysAgentActions::CMsvSysAgentActions(void)
+	__19TMsvSchedulePackage @ 92 NONAME R3UNUSED ; TMsvSchedulePackage::TMsvSchedulePackage(void)
+	__19TMsvSendErrorAction @ 93 NONAME R3UNUSED ; TMsvSendErrorAction::TMsvSendErrorAction(void)
+	__21TMsvEntryScheduleData @ 94 NONAME R3UNUSED ; TMsvEntryScheduleData::TMsvEntryScheduleData(void)
+	__22CScheduleBaseServerMtmR17CRegisteredMtmDllP15CMsvServerEntry @ 95 NONAME R3UNUSED ; CScheduleBaseServerMtm::CScheduleBaseServerMtm(CRegisteredMtmDll &, CMsvServerEntry *)
+	AddSendErrorActionL__20CMsvSendErrorActionsRC19TMsvSendErrorAction @ 96 NONAME R3UNUSED ; CMsvSendErrorActions::AddSendErrorActionL(TMsvSendErrorAction const &)
+	CheckScheduleL__22CScheduleBaseServerMtmRC18CMsvEntrySelectionRC6TDesC8R14TRequestStatus @ 97 NONAME ; CScheduleBaseServerMtm::CheckScheduleL(CMsvEntrySelection const &, TDesC8 const &, TRequestStatus &)
+	DeleteScheduleL__22CScheduleBaseServerMtmRC18CMsvEntrySelectionRC6TDesC8R14TRequestStatus @ 98 NONAME ; CScheduleBaseServerMtm::DeleteScheduleL(CMsvEntrySelection const &, TDesC8 const &, TRequestStatus &)
+	"_._22CScheduleBaseServerMtm" @ 99 NONAME R3UNUSED ; CScheduleBaseServerMtm::~CScheduleBaseServerMtm(void)
+	PackLC__C19TMsvSchedulePackageR9TTaskInfoRP7HBufC16 @ 100 NONAME R3UNUSED ; TMsvSchedulePackage::PackLC(TTaskInfo &, HBufC16 *&) const
+	UnpackL__19TMsvSchedulePackageRC9TTaskInfoRC7TDesC16 @ 101 NONAME R3UNUSED ; TMsvSchedulePackage::UnpackL(TTaskInfo const &, TDesC16 const &)
+	ConnectAndRegisterL__16CMsvScheduleSendR10RSchedulerRC20CMsvScheduleSettings @ 102 NONAME R3UNUSED ; CMsvScheduleSend::ConnectAndRegisterL(RScheduler &, CMsvScheduleSettings const &)
+	CreateScheduleL__16CMsvScheduleSendR10RSchedulerRC20CMsvScheduleSettingsRC5TTimeRC20TTimeIntervalMinutesR17TSchedulerItemRef @ 103 NONAME ; CMsvScheduleSend::CreateScheduleL(RScheduler &, CMsvScheduleSettings const &, TTime const &, TTimeIntervalMinutes const &, TSchedulerItemRef &)
+	FindScheduleL__16CMsvScheduleSendR10RSchedulerRC5TTimeR17TSchedulerItemRef @ 104 NONAME R3UNUSED ; CMsvScheduleSend::FindScheduleL(RScheduler &, TTime const &, TSchedulerItemRef &)
+	RoundUpToMinute__16CMsvScheduleSendR5TTime @ 105 NONAME R3UNUSED ; CMsvScheduleSend::RoundUpToMinute(TTime &)
+	ScheduleEntryL__16CMsvScheduleSendR10RSchedulerRC17TSchedulerItemRefRC19TMsvSchedulePackageR9TTaskInfo @ 106 NONAME ; CMsvScheduleSend::ScheduleEntryL(RScheduler &, TSchedulerItemRef const &, TMsvSchedulePackage const &, TTaskInfo &)
+	UpdateEntryAfterSchedule__16CMsvScheduleSendRC17TSchedulerItemRefRC9TTaskInfoRC5TTimeiR9TMsvEntryR21TMsvEntryScheduleData @ 107 NONAME ; CMsvScheduleSend::UpdateEntryAfterSchedule(TSchedulerItemRef const &, TTaskInfo const &, TTime const &, int, TMsvEntry &, TMsvEntryScheduleData &)
+	PendingConditionsTimeout__C20CMsvScheduleSettings @ 108 NONAME R3UNUSED ; CMsvScheduleSettings::PendingConditionsTimeout(void) const
+	PendingConditions__C18CMsvScheduledEntry @ 109 NONAME R3UNUSED ; CMsvScheduledEntry::PendingConditions(void) const
+	SetPendingConditionsTimeout__20CMsvScheduleSettingsRC20TTimeIntervalMinutes @ 110 NONAME R3UNUSED ; CMsvScheduleSettings::SetPendingConditionsTimeout(TTimeIntervalMinutes const &)
+	SetPendingConditions__18CMsvScheduledEntryi @ 111 NONAME R3UNUSED ; CMsvScheduledEntry::SetPendingConditions(int)
+	CreateScheduleL__16CMsvScheduleSendR10RSchedulerRCt13CArrayFixFlat1Z23TTaskSchedulerConditionRC5TTimeR17TSchedulerItemRef @ 112 NONAME ; CMsvScheduleSend::CreateScheduleL(RScheduler &, CArrayFixFlat<TTaskSchedulerCondition> const &, TTime const &, TSchedulerItemRef &)
+	FindScheduleL__16CMsvScheduleSendR10RSchedulerRCt13CArrayFixFlat1Z23TTaskSchedulerConditionRC5TTimeR17TSchedulerItemRef @ 113 NONAME ; CMsvScheduleSend::FindScheduleL(RScheduler &, CArrayFixFlat<TTaskSchedulerCondition> const &, TTime const &, TSchedulerItemRef &)

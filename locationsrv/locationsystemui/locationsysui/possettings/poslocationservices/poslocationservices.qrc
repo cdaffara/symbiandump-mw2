@@ -1,0 +1,10 @@
+<RCC>    
+    <qresource prefix="/data" >
+        <file alias="locationserviceswidget.widgetml">resources/locationserviceswidget.widgetml</file>
+        <file alias="locationserviceswidget.css">resources/locationserviceswidget.css</file>
+        <file alias="locationservicesviewitemwidget.css">resources/locationservicesviewitemwidget.css</file>
+    </qresource>  
+    <qresource prefix="/" >
+       <file>resources/qgn_note_warning.svg</file>
+    </qresource>    
+</RCC>

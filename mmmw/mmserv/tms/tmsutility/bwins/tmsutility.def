@@ -1,0 +1,15 @@
+EXPORTS
+	?NewL@TMSTimer@TMS@@SAPAV12@H@Z @ 1 NONAME ; class TMS::TMSTimer * TMS::TMSTimer::NewL(int)
+	?EtelToTMSResult@TMSUtility@TMS@@SAHH@Z @ 2 NONAME ; int TMS::TMSUtility::EtelToTMSResult(int)
+	?ToTMSOutput@TMSUtility@TMS@@SAHW4TAudioOutput@CTelephonyAudioRouting@@@Z @ 3 NONAME ; int TMS::TMSUtility::ToTMSOutput(enum CTelephonyAudioRouting::TAudioOutput)
+	?IsRunning@TMSTimer@TMS@@QAEHXZ @ 4 NONAME ; int TMS::TMSTimer::IsRunning(void)
+	?TMSResult@TMSUtility@TMS@@SAHH@Z @ 5 NONAME ; int TMS::TMSUtility::TMSResult(int)
+	?CancelNotify@TMSTimer@TMS@@QAEXXZ @ 6 NONAME ; void TMS::TMSTimer::CancelNotify(void)
+	?FourCCToTMSFormat@TMSUtility@TMS@@SAHK@Z @ 7 NONAME ; int TMS::TMSUtility::FourCCToTMSFormat(unsigned long)
+	?NotifyAfter@TMSTimer@TMS@@QAEXHAAVTMSTimerObserver@2@@Z @ 8 NONAME ; void TMS::TMSTimer::NotifyAfter(int, class TMS::TMSTimerObserver &)
+	?ToTAROutput@TMSUtility@TMS@@SA?AW4TAudioOutput@CTelephonyAudioRouting@@H@Z @ 9 NONAME ; enum CTelephonyAudioRouting::TAudioOutput TMS::TMSUtility::ToTAROutput(int)
+	?SymbianResult@TMSUtility@TMS@@SAHH@Z @ 10 NONAME ; int TMS::TMSUtility::SymbianResult(int)
+	?ToFourCC@TMSUtility@TMS@@SAKH@Z @ 11 NONAME ; unsigned long TMS::TMSUtility::ToFourCC(int)
+	??1TMSTimer@TMS@@UAE@XZ @ 12 NONAME ; TMS::TMSTimer::~TMSTimer(void)
+	?NotifyAfter@TMSTimer@TMS@@QAEXHVTCallBack@@@Z @ 13 NONAME ; void TMS::TMSTimer::NotifyAfter(int, class TCallBack)
+

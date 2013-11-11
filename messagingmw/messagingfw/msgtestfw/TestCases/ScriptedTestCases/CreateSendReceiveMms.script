@@ -1,0 +1,50 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+CED c:\msgtest\TestFramework\Configurations\CommDbSettings\NtRasLongIdleTimeout.cfg
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer GetBaseConstants				c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveMms.ini GetBaseConstants
+RUN_TEST_STEP 100 MessagingTestServer InitNtRas						c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveMms.ini InitNtRas
+RUN_TEST_STEP 100 MessagingTestServer CreateSession					c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveMms.ini CreateSession
+RUN_TEST_STEP 100 MessagingTestServer ResetMessageStore				c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveMms.ini ResetMessageStore
+RUN_TEST_STEP 100 MessagingTestServer CreateMmsService				c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveMms.ini CreateMmsService
+RUN_TEST_STEP 100 MessagingTestServer CreateRegistry                c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveMms.ini CreateRegistry
+RUN_TEST_STEP 100 MessagingTestServer CreateMmsMtm					c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveMms.ini CreateMmsMtm
+RUN_TEST_STEP 100 MessagingTestServer SetMmsServiceParameters		c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveMms.ini SetMmsServiceParameters
+RUN_TEST_STEP 100 MessagingTestServer DeleteChildren                c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveMms.ini DeleteChildren
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount			c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveMms.ini CheckChildrenCount0
+
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer CreateMmsMessageFromSmilFile	c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveMms.ini CreateMmsMessageFromSmilFile
+RUN_TEST_STEP 100 MessagingTestServer CopyEntry						c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveMms.ini CopyEntry
+//RUN_TEST_STEP 100 MessagingTestServer Sleep					   		c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveMms.ini ConnectMmsServer1
+//RUN_TEST_STEP 100 MessagingTestServer CreateChildrenSelection	   	c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveMms.ini CreateChildrenSelection
+//RUN_TEST_STEP 100 MessagingTestServer CopySelection					c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveMms.ini CopySelection
+
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+//RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount		   	c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveMms.ini CheckChildrenCount1
+//RUN_TEST_STEP 100 MessagingTestServer FindEntryByName			   	c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveMms.ini FindEntryByName1
+//RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount		   	c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveMms.ini CheckChildrenCount2
+//RUN_TEST_STEP 100 MessagingTestServer FindEntryByName			   	c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveMms.ini FindEntryByName2
+//RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount		   	c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveMms.ini CheckChildrenCount3
+//RUN_TEST_STEP 100 MessagingTestServer FindEntryByName			   	c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveMms.ini FindEntryByName3
+	
+RUN_TEST_STEP 100 MessagingTestServer END_TEST_CASE

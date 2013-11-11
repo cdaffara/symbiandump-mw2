@@ -1,0 +1,370 @@
+EXPORTS
+	_ZN10CMdEObject10SetMediaIdEm @ 1 NONAME
+	_ZN10CMdEObject12AddFreeTextLERK7TDesC16 @ 2 NONAME
+	_ZN10CMdEObject14RemoveFreeTextEi @ 3 NONAME
+	_ZN10CMdEObject14RemovePropertyEi @ 4 NONAME
+	_ZN10CMdEObject14SetPlaceholderEi @ 5 NONAME
+	_ZN10CMdEObject15MovePropertiesLERS_ @ 6 NONAME
+	_ZN10CMdEObject15SetConfidentialEi @ 7 NONAME
+	_ZN10CMdEObject16AddBoolPropertyLER15CMdEPropertyDefi @ 8 NONAME
+	_ZN10CMdEObject16AddInt8PropertyLER15CMdEPropertyDefa @ 9 NONAME
+	_ZN10CMdEObject16AddTextPropertyLER15CMdEPropertyDefRK7TDesC16 @ 10 NONAME
+	_ZN10CMdEObject16AddTimePropertyLER15CMdEPropertyDef5TTime @ 11 NONAME
+	_ZN10CMdEObject17AddInt16PropertyLER15CMdEPropertyDefs @ 12 NONAME
+	_ZN10CMdEObject17AddInt32PropertyLER15CMdEPropertyDefl @ 13 NONAME
+	_ZN10CMdEObject17AddInt64PropertyLER15CMdEPropertyDefx @ 14 NONAME
+	_ZN10CMdEObject17AddUint8PropertyLER15CMdEPropertyDefh @ 15 NONAME
+	_ZN10CMdEObject18AddReal32PropertyLER15CMdEPropertyDeff @ 16 NONAME
+	_ZN10CMdEObject18AddReal64PropertyLER15CMdEPropertyDefd @ 17 NONAME
+	_ZN10CMdEObject18AddUint16PropertyLER15CMdEPropertyDeft @ 18 NONAME
+	_ZN10CMdEObject18AddUint32PropertyLER15CMdEPropertyDefm @ 19 NONAME
+	_ZN10CMdEObject7SetDefLER13CMdEObjectDef @ 20 NONAME
+	_ZN10CMdEObject7SetGuidERKxS1_ @ 21 NONAME
+	_ZN10CMdEObject7SetUriLERK7TDesC16 @ 22 NONAME
+	_ZN10TMdEObjectC1Ev @ 23 NONAME
+	_ZN10TMdEObjectC2Ev @ 24 NONAME
+	_ZN11CMdESession4NewLER19MMdESessionObserver @ 25 NONAME
+	_ZN11CMdESession5NewLCER19MMdESessionObserver @ 26 NONAME
+	_ZN12CMdEProperty13SetBoolValueLEi @ 27 NONAME
+	_ZN12CMdEProperty13SetInt8ValueLEa @ 28 NONAME
+	_ZN12CMdEProperty13SetTextValueLERK7TDesC16 @ 29 NONAME
+	_ZN12CMdEProperty13SetTimeValueLERK5TTime @ 30 NONAME
+	_ZN12CMdEProperty14SetInt16ValueLEs @ 31 NONAME
+	_ZN12CMdEProperty14SetInt32ValueLEl @ 32 NONAME
+	_ZN12CMdEProperty14SetInt64ValueLEx @ 33 NONAME
+	_ZN12CMdEProperty14SetUint8ValueLEh @ 34 NONAME
+	_ZN12CMdEProperty15SetReal32ValueLEf @ 35 NONAME
+	_ZN12CMdEProperty15SetReal64ValueLEd @ 36 NONAME
+	_ZN12CMdEProperty15SetUint16ValueLEt @ 37 NONAME
+	_ZN12CMdEProperty15SetUint32ValueLEm @ 38 NONAME
+	_ZN12CMdERelation12SetParameterEl @ 39 NONAME
+	_ZN12CMdERelation16SetLeftObjectIdLEm @ 40 NONAME
+	_ZN12CMdERelation17SetRightObjectIdLEm @ 41 NONAME
+	_ZN12CMdERelation19SetLastModifiedDateE5TTime @ 42 NONAME
+	_ZN12CMdERelation7SetGuidERKxS1_ @ 43 NONAME
+	_ZN13CMdECondition9SetLockedEi @ 44 NONAME
+	_ZN13CMdECondition9SetNegateEi @ 45 NONAME
+	_ZN13CMdEObjectDef12PropertyDefLEi @ 46 NONAME
+	_ZN13CMdEObjectDef15GetPropertyDefLERK7TDesC16 @ 47 NONAME
+	_ZN13CMdEObjectDef7ParentLEv @ 48 NONAME
+	_ZN13TMdEOrderRule12SetAscendingEi @ 49 NONAME
+	_ZN13TMdEOrderRule13CaseSensitiveEv @ 50 NONAME
+	_ZN13TMdEOrderRule14SetPropertyDefERK15CMdEPropertyDef @ 51 NONAME
+	_ZN13TMdEOrderRule16SetCaseSensitiveEi @ 52 NONAME
+	_ZN13TMdEOrderRule7SetTypeE14TOrderRuleType @ 53 NONAME
+	_ZN13TMdEOrderRuleC1E14TOrderRuleTypei @ 54 NONAME
+	_ZN13TMdEOrderRuleC1ERK15CMdEPropertyDefi @ 55 NONAME
+	_ZN13TMdEOrderRuleC2E14TOrderRuleTypei @ 56 NONAME
+	_ZN13TMdEOrderRuleC2ERK15CMdEPropertyDefi @ 57 NONAME
+	_ZN14RMdEDataBuffer5CloseEv @ 58 NONAME
+	_ZN14RMdEDataBufferC1Ev @ 59 NONAME
+	_ZN14RMdEDataBufferC2Ev @ 60 NONAME
+	_ZN15CMdEObjectQuery18AddPropertyFilterLEPK15CMdEPropertyDef @ 61 NONAME
+	_ZN15CMdEObjectQuery19ResetPropertyFilterEv @ 62 NONAME
+	_ZN15CMdESessionImpl10GetObjectLERK7TDesC16P16CMdENamespaceDef @ 63 NONAME
+	_ZN16CMdENamespaceDef10ObjectDefLEi @ 64 NONAME
+	_ZN16CMdENamespaceDef12GetEventDefLERK7TDesC16 @ 65 NONAME
+	_ZN16CMdENamespaceDef12GetEventDefLEm @ 66 NONAME ABSENT
+	_ZN16CMdENamespaceDef12RelationDefLEi @ 67 NONAME
+	_ZN16CMdENamespaceDef13GetObjectDefLERK7TDesC16 @ 68 NONAME
+	_ZN16CMdENamespaceDef15GetRelationDefLERK7TDesC16 @ 69 NONAME
+	_ZN16CMdENamespaceDef15GetRelationDefLEm @ 70 NONAME ABSENT
+	_ZN16CMdENamespaceDef9EventDefLEi @ 71 NONAME
+	_ZN18CMdEEventCondition17ObjectConditionsLEv @ 72 NONAME
+	_ZN18CMdEEventCondition23SourceObjectConditionsLEv @ 73 NONAME
+	_ZN18CMdEEventCondition28ParticipantObjectConditionsLEv @ 74 NONAME
+	_ZN18CMdELogicCondition11SetOperatorE23TLogicConditionOperator @ 75 NONAME
+	_ZN18CMdELogicCondition18AddEventConditionLE28TEventConditionCompareMethodRK7TDesC16 @ 76 NONAME
+	_ZN18CMdELogicCondition18AddEventConditionLERK12CMdEEventDef @ 77 NONAME
+	_ZN18CMdELogicCondition18AddEventConditionLERK9TMdERangeI5TTimeE @ 78 NONAME
+	_ZN18CMdELogicCondition18AddEventConditionLERK9TMdERangeI5TTimeE28TEventConditionCompareMethodRK7TDesC16 @ 79 NONAME
+	_ZN18CMdELogicCondition18AddEventConditionLEm @ 80 NONAME
+	_ZN18CMdELogicCondition18AddEventConditionLEv @ 81 NONAME
+	_ZN18CMdELogicCondition18AddLogicConditionLE23TLogicConditionOperator @ 82 NONAME
+	_ZN18CMdELogicCondition19AddObjectConditionLE29TObjectConditionCompareMethodRK7TDesC16 @ 83 NONAME
+	_ZN18CMdELogicCondition19AddObjectConditionLERK13CMdEObjectDef @ 84 NONAME
+	_ZN18CMdELogicCondition19AddObjectConditionLERK6RArrayImE @ 85 NONAME
+	_ZN18CMdELogicCondition19AddObjectConditionLERK9TMdERangeIjE @ 86 NONAME
+	_ZN18CMdELogicCondition19AddObjectConditionLEm @ 87 NONAME
+	_ZN18CMdELogicCondition19AddObjectConditionLExx @ 88 NONAME
+	_ZN18CMdELogicCondition21AddPropertyConditionLERK15CMdEPropertyDef @ 89 NONAME
+	_ZN18CMdELogicCondition21AddPropertyConditionLERK15CMdEPropertyDef35TTextPropertyConditionCompareMethodRK7TDesC16 @ 90 NONAME
+	_ZN18CMdELogicCondition21AddPropertyConditionLERK15CMdEPropertyDefRK9TMdERangeI5TTimeE @ 91 NONAME
+	_ZN18CMdELogicCondition21AddPropertyConditionLERK15CMdEPropertyDefRK9TMdERangeIdE @ 92 NONAME
+	_ZN18CMdELogicCondition21AddPropertyConditionLERK15CMdEPropertyDefRK9TMdERangeIiE @ 93 NONAME
+	_ZN18CMdELogicCondition21AddPropertyConditionLERK15CMdEPropertyDefRK9TMdERangeIjE @ 94 NONAME
+	_ZN18CMdELogicCondition21AddPropertyConditionLERK15CMdEPropertyDefRK9TMdERangeIxE @ 95 NONAME
+	_ZN18CMdELogicCondition21AddPropertyConditionLERK15CMdEPropertyDefi @ 96 NONAME
+	_ZN18CMdELogicCondition21AddRelationConditionLE22TRelationConditionSide @ 97 NONAME
+	_ZN18CMdELogicCondition21AddRelationConditionLER6RArrayImE22TRelationConditionSide @ 98 NONAME
+	_ZN18CMdELogicCondition21AddRelationConditionLERK15CMdERelationDef22TRelationConditionSide @ 99 NONAME
+	_ZN18CMdELogicCondition21AddRelationConditionLERK15CMdERelationDefRK9TMdERangeIiE22TRelationConditionSide @ 100 NONAME
+	_ZN18CMdELogicCondition21AddRelationConditionLEm22TRelationConditionSide @ 101 NONAME
+	_ZN18CMdELogicCondition4NewLE23TLogicConditionOperator @ 102 NONAME
+	_ZN18CMdELogicCondition5NewLCE23TLogicConditionOperator @ 103 NONAME
+	_ZN18CMdELogicCondition6RemoveEi @ 104 NONAME
+	_ZN19CMdEObjectCondition13SetNotPresentEi @ 105 NONAME
+	_ZN19CMdEObjectCondition17SetNotPlaceholderEi @ 106 NONAME
+	_ZN19CMdEObjectCondition23SetConfidentialityLevelE36TObjectConditionConfidentialityLevel @ 107 NONAME
+	_ZN20CMdEHarvesterSession10ChangePathERK7TDesC16S2_R14TRequestStatus @ 108 NONAME
+	_ZN20CMdEHarvesterSession10GetPendingEPK13CMdEObjectDefRiR23CMdCSerializationBufferR14TRequestStatus @ 109 NONAME ABSENT
+	_ZN20CMdEHarvesterSession10SessionRefEv @ 110 NONAME
+	_ZN20CMdEHarvesterSession10SetPendingERK6RArrayImE @ 111 NONAME ABSENT
+	_ZN20CMdEHarvesterSession10SetSessionER11CMdESession @ 112 NONAME
+	_ZN20CMdEHarvesterSession12ResetPendingERK6RArrayImE @ 113 NONAME ABSENT
+	_ZN20CMdEHarvesterSession13AddMemoryCardEm @ 114 NONAME
+	_ZN20CMdEHarvesterSession13GetMemoryCardERm @ 115 NONAME
+	_ZN20CMdEHarvesterSession15CheckMemoryCardEmRi @ 116 NONAME
+	_ZN20CMdEHarvesterSession15GetPendingCountEPK13CMdEObjectDefR14TRequestStatus @ 117 NONAME ABSENT
+	_ZN20CMdEHarvesterSession16SetFileToPresentEmRK7TDesC16R12TMdSFileInfo @ 118 NONAME
+	_ZN20CMdEHarvesterSession17GetPresentMediasLER6RArrayI13TMdEMediaInfoE @ 119 NONAME
+	_ZN20CMdEHarvesterSession18SetFilesToPresentLEmRK6RArrayI7TPtrC16ERKS0_I12TMdSFileInfoERS0_I18TFilePresentStatesE @ 120 NONAME
+	_ZN20CMdEHarvesterSession20SetFilesToNotPresentEm @ 121 NONAME
+	_ZN20CMdEHarvesterSession20SetFilesToNotPresentEmi @ 122 NONAME
+	_ZN20CMdEHarvesterSession21RemoveFilesNotPresentEm @ 123 NONAME
+	_ZN20CMdEHarvesterSession21RemoveFilesNotPresentEmi @ 124 NONAME
+	_ZN20CMdEHarvesterSession28HarvestingPrioritizationUriLEi @ 125 NONAME
+	_ZN20CMdEHarvesterSession33HarvestingPrioritizationUriCountLEv @ 126 NONAME
+	_ZN20CMdEHarvesterSession33SetHarvestingPrioritizationChunkLEi @ 127 NONAME
+	_ZN20CMdEHarvesterSession35AddHarvestingPrioritizationObserverER14TRequestStatus @ 128 NONAME
+	_ZN20CMdEHarvesterSession38CancelHarvestingPrioritizationObserverEv @ 129 NONAME
+	_ZN20CMdEHarvesterSession4NewLER11CMdESession @ 130 NONAME
+	_ZN20CMdEHarvesterSession5NewLCER11CMdESession @ 131 NONAME
+	_ZN20CMdEHarvesterSession7SessionEv @ 132 NONAME
+	_ZN20CMdEHarvesterSession8ResetDBLEv @ 133 NONAME
+	_ZN20CMdEHarvesterSession9AutoLockLER13RPointerArrayI10CMdEObjectE @ 134 NONAME
+	_ZN20CMdEHarvesterSession9GetMediaLEmR5TCharRi @ 135 NONAME
+	_ZN20CMdEHarvesterSession9SetMediaLEm5TChari @ 136 NONAME
+	_ZN21CMdERelationCondition25SetLastModifiedDateRangeLERK9TMdERangeI5TTimeE @ 137 NONAME
+	_ZN21CMdERelationCondition5LeftLEv @ 138 NONAME
+	_ZN21CMdERelationCondition6RightLEv @ 139 NONAME
+	_ZN21CMdERelationCondition7SetGuidERKxS1_ @ 140 NONAME
+	_ZN21CMdERelationCondition7SetSideE22TRelationConditionSide @ 141 NONAME
+	_ZN9CMdEQuery10OwnsResultEi @ 142 NONAME
+	_ZN9CMdEQuery12AddObserverLER17MMdEQueryObserver @ 143 NONAME
+	_ZN9CMdEQuery13SetResultModeE16TQueryResultMode @ 144 NONAME
+	_ZN9CMdEQuery14RemoveObserverER17MMdEQueryObserver @ 145 NONAME
+	_ZN9CMdEQuery15RemoveOrderRuleEi @ 146 NONAME
+	_ZN9CMdEQuery16AppendOrderRuleLERK13TMdEOrderRule @ 147 NONAME
+	_ZN9CMdEQuery16InsertOrderRuleLERK13TMdEOrderRulei @ 148 NONAME
+	_ZN9CMdEQuery21TakeOwnershipOfResultEi @ 149 NONAME
+	_ZN9CMdEQuery5FindLEjj @ 150 NONAME
+	_ZN9CMdEQuery6CancelEv @ 151 NONAME
+	_ZNK10CMdEObject10UsageCountEv @ 152 NONAME
+	_ZNK10CMdEObject11PlaceholderEv @ 153 NONAME
+	_ZNK10CMdEObject12ConfidentialEv @ 154 NONAME
+	_ZNK10CMdEObject13FreeTextCountEv @ 155 NONAME
+	_ZNK10CMdEObject13FreeTextIndexERK7TDesC16 @ 156 NONAME
+	_ZNK10CMdEObject13PropertyCountERK15CMdEPropertyDef @ 157 NONAME
+	_ZNK10CMdEObject13PropertyCountEv @ 158 NONAME
+	_ZNK10CMdEObject20OpenForModificationsEv @ 159 NONAME
+	_ZNK10CMdEObject3DefEv @ 160 NONAME
+	_ZNK10CMdEObject3UriEv @ 161 NONAME
+	_ZNK10CMdEObject4GuidERxS0_ @ 162 NONAME
+	_ZNK10CMdEObject7MediaIdEv @ 163 NONAME
+	_ZNK10CMdEObject8FreeTextEi @ 164 NONAME
+	_ZNK10CMdEObject8PropertyERK15CMdEPropertyDefRP12CMdEPropertyi @ 165 NONAME
+	_ZNK10CMdEObject9PropertyLEi @ 166 NONAME
+	_ZNK10TMdEObject10NotPresentEv @ 167 NONAME
+	_ZNK10TMdEObject11PlaceholderEv @ 168 NONAME
+	_ZNK10TMdEObject12ConfidentialEv @ 169 NONAME
+	_ZNK10TMdEObject2IdEv @ 170 NONAME
+	_ZNK10TMdEObject4DefLEv @ 171 NONAME
+	_ZNK10TMdEObject7RemovedEv @ 172 NONAME
+	_ZNK12CMdEEventDef12NamespaceDefEv @ 173 NONAME
+	_ZNK12CMdEEventDef4NameEv @ 174 NONAME
+	_ZNK12CMdEEventDef7CompareERKS_ @ 175 NONAME
+	_ZNK12CMdEProperty10BoolValueLEv @ 176 NONAME
+	_ZNK12CMdEProperty10Int8ValueLEv @ 177 NONAME
+	_ZNK12CMdEProperty10TextValueLEv @ 178 NONAME
+	_ZNK12CMdEProperty10TimeValueLEv @ 179 NONAME
+	_ZNK12CMdEProperty11Int16ValueLEv @ 180 NONAME
+	_ZNK12CMdEProperty11Int32ValueLEv @ 181 NONAME
+	_ZNK12CMdEProperty11Int64ValueLEv @ 182 NONAME
+	_ZNK12CMdEProperty11Uint8ValueLEv @ 183 NONAME
+	_ZNK12CMdEProperty12Real32ValueLEv @ 184 NONAME
+	_ZNK12CMdEProperty12Real64ValueLEv @ 185 NONAME
+	_ZNK12CMdEProperty12Uint16ValueLEv @ 186 NONAME
+	_ZNK12CMdEProperty12Uint32ValueLEv @ 187 NONAME
+	_ZNK12CMdEProperty3DefEv @ 188 NONAME
+	_ZNK12CMdEProperty6ObjectEv @ 189 NONAME
+	_ZNK12CMdEProperty8ModifiedEv @ 190 NONAME
+	_ZNK12CMdERelation12LeftObjectIdEv @ 191 NONAME
+	_ZNK12CMdERelation13RightObjectIdEv @ 192 NONAME
+	_ZNK12CMdERelation16LastModifiedDateEv @ 193 NONAME
+	_ZNK12CMdERelation3DefEv @ 194 NONAME
+	_ZNK12CMdERelation4GuidERxS0_ @ 195 NONAME
+	_ZNK12CMdERelation9ParameterEv @ 196 NONAME
+	_ZNK12TMdERelation12LeftObjectIdEv @ 197 NONAME
+	_ZNK12TMdERelation13RightObjectIdEv @ 198 NONAME
+	_ZNK12TMdERelation2IdEv @ 199 NONAME
+	_ZNK12TMdERelation4DefLEv @ 200 NONAME
+	_ZNK13CMdECondition4TypeEv @ 201 NONAME
+	_ZNK13CMdECondition6LockedEv @ 202 NONAME
+	_ZNK13CMdECondition6NegateEv @ 203 NONAME
+	_ZNK13CMdEObjectDef12NamespaceDefEv @ 204 NONAME
+	_ZNK13CMdEObjectDef16PropertyDefCountEv @ 205 NONAME
+	_ZNK13CMdEObjectDef4NameEv @ 206 NONAME
+	_ZNK13CMdEObjectDef7CompareERKS_ @ 207 NONAME
+	_ZNK13TMdEOrderRule11PropertyDefEv @ 208 NONAME
+	_ZNK13TMdEOrderRule4TypeEv @ 209 NONAME
+	_ZNK13TMdEOrderRule9AscendingEv @ 210 NONAME
+	_ZNK14CMdEEventQuery6ResultEi @ 211 NONAME
+	_ZNK15CMdEObjectQuery6ResultEi @ 212 NONAME
+	_ZNK15CMdEObjectQuery9ObjectDefEv @ 213 NONAME
+	_ZNK15CMdEPropertyDef12NamespaceDefEv @ 214 NONAME
+	_ZNK15CMdEPropertyDef12PropertyTypeEv @ 215 NONAME
+	_ZNK15CMdEPropertyDef13MaxRealValueLEv @ 216 NONAME
+	_ZNK15CMdEPropertyDef13MaxTimeValueLEv @ 217 NONAME
+	_ZNK15CMdEPropertyDef13MinRealValueLEv @ 218 NONAME
+	_ZNK15CMdEPropertyDef13MinTimeValueLEv @ 219 NONAME
+	_ZNK15CMdEPropertyDef14MaxInt32ValueLEv @ 220 NONAME
+	_ZNK15CMdEPropertyDef14MaxInt64ValueLEv @ 221 NONAME
+	_ZNK15CMdEPropertyDef14MaxTextLengthLEv @ 222 NONAME
+	_ZNK15CMdEPropertyDef14MinInt32ValueLEv @ 223 NONAME
+	_ZNK15CMdEPropertyDef14MinInt64ValueLEv @ 224 NONAME
+	_ZNK15CMdEPropertyDef14MinTextLengthLEv @ 225 NONAME
+	_ZNK15CMdEPropertyDef15MaxUint32ValueLEv @ 226 NONAME
+	_ZNK15CMdEPropertyDef15MinUint32ValueLEv @ 227 NONAME
+	_ZNK15CMdEPropertyDef4NameEv @ 228 NONAME
+	_ZNK15CMdEPropertyDef7CompareERKS_ @ 229 NONAME
+	_ZNK15CMdEPropertyDef8ReadOnlyEv @ 230 NONAME
+	_ZNK15CMdEPropertyDef9MandatoryEv @ 231 NONAME
+	_ZNK15CMdEPropertyDef9ObjectDefEv @ 232 NONAME
+	_ZNK15CMdERelationDef12NamespaceDefEv @ 233 NONAME
+	_ZNK15CMdERelationDef4NameEv @ 234 NONAME
+	_ZNK15CMdERelationDef7CompareERKS_ @ 235 NONAME
+	_ZNK16CMdENamespaceDef13EventDefCountEv @ 236 NONAME
+	_ZNK16CMdENamespaceDef14ObjectDefCountEv @ 237 NONAME
+	_ZNK16CMdENamespaceDef16RelationDefCountEv @ 238 NONAME
+	_ZNK16CMdENamespaceDef4NameEv @ 239 NONAME
+	_ZNK16CMdENamespaceDef7CompareERKS_ @ 240 NONAME
+	_ZNK16CMdENamespaceDef8ReadOnlyEv @ 241 NONAME
+	_ZNK17CMdERelationQuery6ResultEi @ 242 NONAME
+	_ZNK18CMdEEventCondition14ParticipantURIEv @ 243 NONAME
+	_ZNK18CMdEEventCondition7EventIdEv @ 244 NONAME
+	_ZNK18CMdEEventCondition8EventDefEv @ 245 NONAME
+	_ZNK18CMdEEventCondition9SourceURIEv @ 246 NONAME
+	_ZNK18CMdEEventCondition9TimeRangeEv @ 247 NONAME
+	_ZNK18CMdELogicCondition5CountEv @ 248 NONAME
+	_ZNK18CMdELogicCondition8OperatorEv @ 249 NONAME
+	_ZNK18CMdELogicCondition9ConditionEi @ 250 NONAME
+	_ZNK19CMdEObjectCondition10NotPresentEv @ 251 NONAME
+	_ZNK19CMdEObjectCondition13CompareMethodEv @ 252 NONAME
+	_ZNK19CMdEObjectCondition14NotPlaceholderEv @ 253 NONAME
+	_ZNK19CMdEObjectCondition20ConfidentialityLevelEv @ 254 NONAME
+	_ZNK19CMdEObjectCondition6StringEv @ 255 NONAME
+	_ZNK19CMdEObjectCondition8ObjectIdEv @ 256 NONAME
+	_ZNK19CMdEObjectCondition9ObjectDefEv @ 257 NONAME
+	_ZNK19CMdEObjectCondition9ObjectIdsEv @ 258 NONAME
+	_ZNK21CMdEPropertyCondition11PropertyDefEv @ 259 NONAME
+	_ZNK21CMdERelationCondition10RelationIdEv @ 260 NONAME
+	_ZNK21CMdERelationCondition11RelationDefEv @ 261 NONAME
+	_ZNK21CMdERelationCondition11RelationIdsEv @ 262 NONAME
+	_ZNK21CMdERelationCondition14ParameterRangeEv @ 263 NONAME
+	_ZNK21CMdERelationCondition21LastModifiedDateRangeER9TMdERangeI5TTimeE @ 264 NONAME
+	_ZNK21CMdERelationCondition4GuidERxS0_ @ 265 NONAME
+	_ZNK25CMdEBoolPropertyCondition5ValueEv @ 266 NONAME
+	_ZNK8CMdEItem10InDatabaseEv @ 267 NONAME
+	_ZNK8CMdEItem16BelongsToSessionEv @ 268 NONAME
+	_ZNK8CMdEItem2IdEv @ 269 NONAME
+	_ZNK8CMdEItem7SessionEv @ 270 NONAME
+	_ZNK9CMdEEvent11ParticipantEv @ 271 NONAME
+	_ZNK9CMdEEvent3DefEv @ 272 NONAME
+	_ZNK9CMdEEvent4TimeEv @ 273 NONAME
+	_ZNK9CMdEEvent6SourceEv @ 274 NONAME
+	_ZNK9CMdEEvent8ObjectIdEv @ 275 NONAME
+	_ZNK9CMdEQuery10ConditionsEv @ 276 NONAME
+	_ZNK9CMdEQuery10IsCompleteEv @ 277 NONAME
+	_ZNK9CMdEQuery10ResultItemEi @ 278 NONAME
+	_ZNK9CMdEQuery10ResultModeEv @ 279 NONAME
+	_ZNK9CMdEQuery12NamespaceDefEv @ 280 NONAME
+	_ZNK9CMdEQuery14OrderRuleCountEv @ 281 NONAME
+	_ZNK9CMdEQuery16ResultObjectItemEv @ 282 NONAME
+	_ZNK9CMdEQuery19ResultDistinctValueEi @ 283 NONAME
+	_ZNK9CMdEQuery4TypeEv @ 284 NONAME
+	_ZNK9CMdEQuery5CountEv @ 285 NONAME
+	_ZNK9CMdEQuery5ErrorEv @ 286 NONAME
+	_ZNK9CMdEQuery5StateEv @ 287 NONAME
+	_ZNK9CMdEQuery7SessionEv @ 288 NONAME
+	_ZNK9CMdEQuery8ResultIdEi @ 289 NONAME
+	_ZNK9CMdEQuery9OrderRuleEi @ 290 NONAME
+	_ZNK9CMdEQuery9ResultIdsEv @ 291 NONAME
+	_ZTI10CMdEObject @ 292 NONAME ABSENT ; #<TI>#
+	_ZTI11CMdESession @ 293 NONAME ABSENT ; #<TI>#
+	_ZTI12CMdEEventDef @ 294 NONAME ABSENT ; #<TI>#
+	_ZTI12CMdEProperty @ 295 NONAME ABSENT ; #<TI>#
+	_ZTI12CMdERelation @ 296 NONAME ABSENT ; #<TI>#
+	_ZTI13CMdECondition @ 297 NONAME ABSENT ; #<TI>#
+	_ZTI13CMdEObjectDef @ 298 NONAME ABSENT ; #<TI>#
+	_ZTI14CMdEEventQuery @ 299 NONAME ABSENT ; #<TI>#
+	_ZTI14CMdENotifierAO @ 300 NONAME ABSENT ; #<TI>#
+	_ZTI15CMdEObjectQuery @ 301 NONAME ABSENT ; #<TI>#
+	_ZTI15CMdEPropertyDef @ 302 NONAME ABSENT ; #<TI>#
+	_ZTI15CMdERelationDef @ 303 NONAME ABSENT ; #<TI>#
+	_ZTI15CMdESessionImpl @ 304 NONAME ABSENT ; #<TI>#
+	_ZTI16CMdEInstanceItem @ 305 NONAME ABSENT ; #<TI>#
+	_ZTI16CMdENamespaceDef @ 306 NONAME ABSENT ; #<TI>#
+	_ZTI17CMdERelationQuery @ 307 NONAME ABSENT ; #<TI>#
+	_ZTI18CMdEEventCondition @ 308 NONAME ABSENT ; #<TI>#
+	_ZTI18CMdEEventQueryImpl @ 309 NONAME
+	_ZTI18CMdELogicCondition @ 310 NONAME ABSENT ; #<TI>#
+	_ZTI19CMdEObjectCondition @ 311 NONAME ABSENT ; #<TI>#
+	_ZTI19CMdEObjectQueryImpl @ 312 NONAME ABSENT ; #<TI>#
+	_ZTI20CMdEHarvesterSession @ 313 NONAME ABSENT ; #<TI>#
+	_ZTI20CMdESessionStartupAO @ 314 NONAME ABSENT ; #<TI>#
+	_ZTI21CMdEPropertyCondition @ 315 NONAME ABSENT ; #<TI>#
+	_ZTI21CMdERelationCondition @ 316 NONAME ABSENT ; #<TI>#
+	_ZTI21CMdERelationQueryImpl @ 317 NONAME
+	_ZTI22CMdEAsynchronousFindAO @ 318 NONAME ABSENT ; #<TI>#
+	_ZTI23CMdESessionAsyncHandler @ 319 NONAME ABSENT ; #<TI>#
+	_ZTI25CMdEBoolPropertyCondition @ 320 NONAME ABSENT ; #<TI>#
+	_ZTI25CMdETextPropertyCondition @ 321 NONAME ABSENT ; #<TI>#
+	_ZTI30CMdEQueryCriteriaSerialization @ 322 NONAME ABSENT ; #<TI>#
+	_ZTI8CMdEItem @ 323 NONAME ABSENT ; #<TI>#
+	_ZTI9CMdEEvent @ 324 NONAME ABSENT ; #<TI>#
+	_ZTI9CMdEQuery @ 325 NONAME ABSENT ; #<TI>#
+	_ZTV10CMdEObject @ 326 NONAME ABSENT ; #<VT>#
+	_ZTV11CMdESession @ 327 NONAME ABSENT ; #<VT>#
+	_ZTV12CMdEEventDef @ 328 NONAME ABSENT ; #<VT>#
+	_ZTV12CMdEProperty @ 329 NONAME ABSENT ; #<VT>#
+	_ZTV12CMdERelation @ 330 NONAME ABSENT ; #<VT>#
+	_ZTV13CMdECondition @ 331 NONAME ABSENT ; #<VT>#
+	_ZTV13CMdEObjectDef @ 332 NONAME ABSENT ; #<VT>#
+	_ZTV14CMdEEventQuery @ 333 NONAME ABSENT ; #<VT>#
+	_ZTV14CMdENotifierAO @ 334 NONAME ABSENT ; #<VT>#
+	_ZTV15CMdEObjectQuery @ 335 NONAME ABSENT ; #<VT>#
+	_ZTV15CMdEPropertyDef @ 336 NONAME ABSENT ; #<VT>#
+	_ZTV15CMdERelationDef @ 337 NONAME ABSENT ; #<VT>#
+	_ZTV15CMdESessionImpl @ 338 NONAME ABSENT ; #<VT>#
+	_ZTV16CMdEInstanceItem @ 339 NONAME ABSENT ; #<VT>#
+	_ZTV16CMdENamespaceDef @ 340 NONAME ABSENT ; #<VT>#
+	_ZTV17CMdERelationQuery @ 341 NONAME ABSENT ; #<VT>#
+	_ZTV18CMdEEventCondition @ 342 NONAME ABSENT ; #<VT>#
+	_ZTV18CMdEEventQueryImpl @ 343 NONAME 
+	_ZTV18CMdELogicCondition @ 344 NONAME ABSENT ; #<VT>#
+	_ZTV19CMdEObjectCondition @ 345 NONAME ABSENT ; #<VT>#
+	_ZTV19CMdEObjectQueryImpl @ 346 NONAME ABSENT ; #<VT>#
+	_ZTV20CMdEHarvesterSession @ 347 NONAME ABSENT ; #<VT>#
+	_ZTV20CMdESessionStartupAO @ 348 NONAME ABSENT ; #<VT>#
+	_ZTV21CMdEPropertyCondition @ 349 NONAME ABSENT ; #<VT>#
+	_ZTV21CMdERelationCondition @ 350 NONAME ABSENT ; #<VT>#
+	_ZTV21CMdERelationQueryImpl @ 351 NONAME 
+	_ZTV22CMdEAsynchronousFindAO @ 352 NONAME ABSENT ; #<VT>#
+	_ZTV23CMdESessionAsyncHandler @ 353 NONAME ABSENT ; #<VT>#
+	_ZTV25CMdEBoolPropertyCondition @ 354 NONAME ABSENT ; #<VT>#
+	_ZTV25CMdETextPropertyCondition @ 355 NONAME ABSENT ; #<VT>#
+	_ZTV30CMdEQueryCriteriaSerialization @ 356 NONAME ABSENT ; #<VT>#
+	_ZTV8CMdEItem @ 357 NONAME ABSENT ; #<VT>#
+	_ZTV9CMdEEvent @ 358 NONAME ABSENT ; #<VT>#
+	_ZTV9CMdEQuery @ 359 NONAME ABSENT ; #<VT>#
+	_ZN20CMdEHarvesterSession10GetPendingEPK13CMdEObjectDefRiR23CMdCSerializationBuffer @ 360 NONAME
+	_ZN20CMdEHarvesterSession15GetPendingCountEPK13CMdEObjectDef @ 361 NONAME
+	_ZN20CMdEHarvesterSession19ChangeCDriveMediaIdEv @ 362 NONAME
+	_ZN20CMdEHarvesterSession11SetPendingLERK6RArrayImE @ 363 NONAME
+	_ZN20CMdEHarvesterSession13ResetPendingLERK6RArrayImE @ 364 NONAME
+	_ZN19CMdEObjectCondition18SetPlaceholderOnlyEi @ 365 NONAME
+	_ZNK19CMdEObjectCondition15PlaceholderOnlyEv @ 366 NONAME
+	_ZN20CMdEHarvesterSession23CheckMassStorageMediaIdEm @ 367 NONAME
+	_ZNK13CMdEObjectDef2IdEv @ 368 NONAME
+

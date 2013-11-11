@@ -1,0 +1,100 @@
+EXPORTS
+	_ZN17CPosLmDisplayData12NewItemIndexEv @ 1 NONAME
+	_ZN17CPosLmDisplayData25SetPartialReadParametersLERK27CPosLmPartialReadParameters @ 2 NONAME
+	_ZN17CPosLmDisplayData4NewLEv @ 3 NONAME
+	_ZN17CPosLmDisplayData5ResetEv @ 4 NONAME
+	_ZN17CPosLmDisplayItem4NewLEP12CPosLandmarkj @ 5 NONAME
+	_ZN17CPosLmDisplayItem4NewLEP20CPosLandmarkCategoryj @ 6 NONAME
+	_ZN18CPosLandmarkSearch18SetMaxNumOfMatchesEi @ 7 NONAME
+	_ZN18CPosLandmarkSearch4NewLER20CPosLandmarkDatabase @ 8 NONAME
+	_ZN18CPosLandmarkSearchC2Ev @ 9 NONAME
+	_ZN18CPosLandmarkSearchD0Ev @ 10 NONAME
+	_ZN18CPosLandmarkSearchD1Ev @ 11 NONAME
+	_ZN18CPosLandmarkSearchD2Ev @ 12 NONAME
+	_ZN18CPosLmAreaCriteria13SetSearchAreaERKdS1_S1_S1_ @ 13 NONAME
+	_ZN18CPosLmAreaCriteria5NewLCERKdS1_S1_S1_ @ 14 NONAME
+	_ZN18CPosLmTextCriteria21SetAttributesToSearchEm @ 15 NONAME
+	_ZN18CPosLmTextCriteria26SetPositionFieldsToSearchLERK6RArrayIjE @ 16 NONAME
+	_ZN18CPosLmTextCriteria27ClearPositionFieldsToSearchEv @ 17 NONAME
+	_ZN18CPosLmTextCriteria5NewLCEv @ 18 NONAME
+	_ZN18CPosLmTextCriteria8SetTextLERK7TDesC16 @ 19 NONAME
+	_ZN20CPosLmIdListCriteria15SetLandmarkIdsLERK6RArrayImE @ 20 NONAME
+	_ZN20CPosLmIdListCriteria5NewLCEv @ 21 NONAME
+	_ZN20CPosLmIdListCriteriaD0Ev @ 22 NONAME
+	_ZN20CPosLmIdListCriteriaD1Ev @ 23 NONAME
+	_ZN20CPosLmIdListCriteriaD2Ev @ 24 NONAME
+	_ZN21CPosLmCatNameCriteria17SetSearchPatternLERK7TDesC16 @ 25 NONAME
+	_ZN21CPosLmCatNameCriteria5NewLCEv @ 26 NONAME
+	_ZN21CPosLmNearestCriteria13SetCoordinateERK11TCoordinate @ 27 NONAME
+	_ZN21CPosLmNearestCriteria14SetMaxDistanceEf @ 28 NONAME
+	_ZN21CPosLmNearestCriteria20SetUseCoverageRadiusEi @ 29 NONAME
+	_ZN21CPosLmNearestCriteria5NewLCERK11TCoordinatei @ 30 NONAME
+	_ZN22CPosLmCategoryCriteria16SetCategoryNameLERK7TDesC16 @ 31 NONAME
+	_ZN22CPosLmCategoryCriteria17SetCategoryItemIdEm @ 32 NONAME
+	_ZN22CPosLmCategoryCriteria17SetGlobalCategoryEt @ 33 NONAME
+	_ZN22CPosLmCategoryCriteria5NewLCEv @ 34 NONAME
+	_ZN23CPosLmCompositeCriteria11AddArgumentEP20CPosLmSearchCriteria @ 35 NONAME
+	_ZN23CPosLmCompositeCriteria14ClearArgumentsEv @ 36 NONAME
+	_ZN23CPosLmCompositeCriteria14RemoveArgumentEj @ 37 NONAME
+	_ZN23CPosLmCompositeCriteria18SetCompositionTypeENS_16TCompositionTypeE @ 38 NONAME
+	_ZN23CPosLmCompositeCriteria5NewLCENS_16TCompositionTypeE @ 39 NONAME
+	_ZN23CPosLmCompositeCriteria8ArgumentEj @ 40 NONAME
+	_ZN23PosLmDisplayDataHandler10RemoveItemER17CPosLmDisplayDatai @ 41 NONAME
+	_ZN23PosLmDisplayDataHandler11InsertItemLER17CPosLmDisplayDataP17CPosLmDisplayItem @ 42 NONAME
+	_ZN23PosLmDisplayDataHandler18InsertItemInOrderLER17CPosLmDisplayDataP17CPosLmDisplayItem14TPosLmSortPref @ 43 NONAME
+	_ZN23PosLmDisplayDataHandler18InsertItemInOrderLER17CPosLmDisplayDataP17CPosLmDisplayItemN21CPosLmCategoryManager17TCategorySortPrefE @ 44 NONAME
+	_ZN23PosLmDisplayDataHandler22InsertInDistanceOrderLER17CPosLmDisplayDataP17CPosLmDisplayItem @ 45 NONAME
+	_ZN24PosLmSearchImplExtension11SetDistanceER17CPosLmDisplayItemf @ 46 NONAME
+	_ZN24PosLmSearchImplExtension16SetDatabaseIndexER17CPosLmDisplayItemj @ 47 NONAME
+	_ZN24PosLmSearchImplExtension21PartialReadParametersERK17CPosLmDisplayData @ 48 NONAME
+	_ZNK17CPosLmDisplayData11DisplayItemEi @ 49 NONAME
+	_ZNK17CPosLmDisplayData5CountEv @ 50 NONAME
+	_ZNK17CPosLmDisplayItem11GetDistanceERf @ 51 NONAME
+	_ZNK17CPosLmDisplayItem13DatabaseIndexEv @ 52 NONAME
+	_ZNK17CPosLmDisplayItem15DisplayItemTypeEv @ 53 NONAME
+	_ZNK17CPosLmDisplayItem8CategoryEv @ 54 NONAME
+	_ZNK17CPosLmDisplayItem8LandmarkEv @ 55 NONAME
+	_ZNK18CPosLandmarkSearch15MaxNumOfMatchesEv @ 56 NONAME
+	_ZNK18CPosLmAreaCriteria13GetSearchAreaERdS0_S0_S0_ @ 57 NONAME
+	_ZNK18CPosLmTextCriteria18AttributesToSearchEv @ 58 NONAME
+	_ZNK18CPosLmTextCriteria26GetPositionFieldsToSearchLER6RArrayIjE @ 59 NONAME
+	_ZNK18CPosLmTextCriteria4TextEv @ 60 NONAME
+	_ZNK20CPosLmIdListCriteria15GetLandmarkIdsLER6RArrayImE @ 61 NONAME
+	_ZNK20CPosLmSearchCriteria12CriteriaTypeEv @ 62 NONAME
+	_ZNK21CPosLmCatNameCriteria13SearchPatternEv @ 63 NONAME
+	_ZNK21CPosLmNearestCriteria11MaxDistanceEv @ 64 NONAME
+	_ZNK21CPosLmNearestCriteria13GetCoordinateER11TCoordinate @ 65 NONAME
+	_ZNK21CPosLmNearestCriteria17UseCoverageRadiusEv @ 66 NONAME
+	_ZNK22CPosLmCategoryCriteria12CategoryNameEv @ 67 NONAME
+	_ZNK22CPosLmCategoryCriteria14CategoryItemIdEv @ 68 NONAME
+	_ZNK22CPosLmCategoryCriteria14GlobalCategoryEv @ 69 NONAME
+	_ZNK23CPosLmCompositeCriteria14NumOfArgumentsEv @ 70 NONAME
+	_ZNK23CPosLmCompositeCriteria15CompositionTypeEv @ 71 NONAME
+	_ZNK23CPosLmCompositeCriteria8ArgumentEj @ 72 NONAME
+	_ZTI17CPosLmDisplayData @ 73 NONAME ; #<TI>#
+	_ZTI17CPosLmDisplayItem @ 74 NONAME ; #<TI>#
+	_ZTI18CPosLandmarkSearch @ 75 NONAME ; #<TI>#
+	_ZTI18CPosLmAreaCriteria @ 76 NONAME ; #<TI>#
+	_ZTI18CPosLmTextCriteria @ 77 NONAME ; #<TI>#
+	_ZTI20CPosLmIdListCriteria @ 78 NONAME ; #<TI>#
+	_ZTI20CPosLmSearchCriteria @ 79 NONAME ; #<TI>#
+	_ZTI21CPosLmCatNameCriteria @ 80 NONAME ; #<TI>#
+	_ZTI21CPosLmNearestCriteria @ 81 NONAME ; #<TI>#
+	_ZTI22CPosLmCategoryCriteria @ 82 NONAME ; #<TI>#
+	_ZTI23CPosLmCompositeCriteria @ 83 NONAME ; #<TI>#
+	_ZTV17CPosLmDisplayData @ 84 NONAME ; #<VT>#
+	_ZTV17CPosLmDisplayItem @ 85 NONAME ; #<VT>#
+	_ZTV18CPosLandmarkSearch @ 86 NONAME ; #<VT>#
+	_ZTV18CPosLmAreaCriteria @ 87 NONAME ; #<VT>#
+	_ZTV18CPosLmTextCriteria @ 88 NONAME ; #<VT>#
+	_ZTV20CPosLmIdListCriteria @ 89 NONAME ; #<VT>#
+	_ZTV20CPosLmSearchCriteria @ 90 NONAME ; #<VT>#
+	_ZTV21CPosLmCatNameCriteria @ 91 NONAME ; #<VT>#
+	_ZTV21CPosLmNearestCriteria @ 92 NONAME ; #<VT>#
+	_ZTV22CPosLmCategoryCriteria @ 93 NONAME ; #<VT>#
+	_ZTV23CPosLmCompositeCriteria @ 94 NONAME ; #<VT>#
+	_ZN17CPosLmDisplayData26UnsetPartialReadParametersEv @ 95 NONAME
+	_ZN23PosLmDisplayDataHandler13FindItemIndexER17CPosLmDisplayDataP17CPosLmDisplayItem @ 96 NONAME
+	_ZN23PosLmDisplayDataHandler10CopyItemLCER17CPosLmDisplayDatai @ 97 NONAME
+	_ZN23PosLmDisplayDataHandler11InsertItemLER17CPosLmDisplayDataP17CPosLmDisplayItemj @ 98 NONAME
+

@@ -1,0 +1,36 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+// Test script: 1_GetAllMessages.script
+
+//!@file
+//! @SYMTestCaseID MSG-IMAP-712-1-CP
+//! @SYMTestType UT
+//! @SYMTestPriority Critical
+//! @SYMPREQ 712
+//! @SYMTestCaseDesc Retrieves all messages on the IMAP account, no search string is defined.
+//! @SYMTestActions First clean out the remote inbox and local message store, send the test emails, get all messages and check they were all retrieved
+//! @SYMTestExpectedResults The number of emails retrieved should match the number of emails that were send
+
+PRINT Running Test 1, no search string
+
+// First clean out the remote inbox and local message store
+RUN_SCRIPT c:\msgtest\testframework\scriptedtestcases\imapsearchtests\clean_all.script
+
+// Send the test emails
+RUN_SCRIPT c:\msgtest\testframework\scriptedtestcases\imapsearchtests\send_emails.script
+
+// get all messages and check they we're all retreived
+RUN_SCRIPT c:\msgtest\testframework\scriptedtestcases\imapsearchtests\imap_sync.script

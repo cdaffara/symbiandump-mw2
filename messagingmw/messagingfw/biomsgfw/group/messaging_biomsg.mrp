@@ -1,0 +1,98 @@
+#
+# Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+# All rights reserved.
+# This component and the accompanying materials are made available
+# under the terms of "Eclipse Public License v1.0"
+# which accompanies this distribution, and is available
+# at the URL "http://www.eclipse.org/legal/epl-v10.html".
+#
+# Initial Contributors:
+# Nokia Corporation - initial contribution.
+#
+# Contributors:
+#
+# Description: 
+#
+
+component	messaging_biomsg
+
+#All the subdirectories have to be explicitly referenced
+#This can be changed if and when the "-source" operator will 
+#be available in the release tools.
+
+source \sf\mw\messagingmw\messagingfw\biomsgfw\BDB
+source \sf\mw\messagingmw\messagingfw\biomsgfw\BDBINC
+source \sf\mw\messagingmw\messagingfw\biomsgfw\BDBSRC
+source \sf\mw\messagingmw\messagingfw\biomsgfw\BDBTSRC
+source \sf\mw\messagingmw\messagingfw\biomsgfw\BIFU
+source \sf\mw\messagingmw\messagingfw\biomsgfw\BIFUINC
+source \sf\mw\messagingmw\messagingfw\biomsgfw\BIFUSRC
+source \sf\mw\messagingmw\messagingfw\biomsgfw\BIFUTSRC
+source \sf\mw\messagingmw\messagingfw\biomsgfw\BIOC
+source \sf\mw\messagingmw\messagingfw\biomsgfw\BIOCINC
+source \sf\mw\messagingmw\messagingfw\biomsgfw\BIOCSRC
+source \sf\mw\messagingmw\messagingfw\biomsgfw\BIOCTSRC
+source \sf\mw\messagingmw\messagingfw\biomsgfw\BIOS
+source \sf\mw\messagingmw\messagingfw\biomsgfw\BIOSINC
+source \sf\mw\messagingmw\messagingfw\biomsgfw\BIOSSRC
+source \sf\mw\messagingmw\messagingfw\biomsgfw\BIOSTSRC
+source \sf\mw\messagingmw\messagingfw\biomsgfw\BioWatchers
+source \sf\mw\messagingmw\messagingfw\biomsgfw\BITS
+source \sf\mw\messagingmw\messagingfw\biomsgfw\BITSINC
+source \sf\mw\messagingmw\messagingfw\biomsgfw\BITSSRC
+source \sf\mw\messagingmw\messagingfw\biomsgfw\BITSTSRC
+source \sf\mw\messagingmw\messagingfw\biomsgfw\BIUT
+source \sf\mw\messagingmw\messagingfw\biomsgfw\BIUTINC
+source \sf\mw\messagingmw\messagingfw\biomsgfw\BIUTSRC
+source \sf\mw\messagingmw\messagingfw\biomsgfw\BIUTTSRC
+source \sf\mw\messagingmw\messagingfw\biomsgfw\cbcp
+source \sf\mw\messagingmw\messagingfw\biomsgfw\cbcpbif
+source \sf\mw\messagingmw\messagingfw\biomsgfw\CBCPINC
+source \sf\mw\messagingmw\messagingfw\biomsgfw\CBCPSRC
+source \sf\mw\messagingmw\messagingfw\biomsgfw\CBCPTSRC
+source \sf\mw\messagingmw\messagingfw\biomsgfw\enp
+source \sf\mw\messagingmw\messagingfw\biomsgfw\enpbif
+source \sf\mw\messagingmw\messagingfw\biomsgfw\ENPINC
+source \sf\mw\messagingmw\messagingfw\biomsgfw\ENPSRC
+source \sf\mw\messagingmw\messagingfw\biomsgfw\ENPTSRC
+source \sf\mw\messagingmw\messagingfw\biomsgfw\gfp
+source \sf\mw\messagingmw\messagingfw\biomsgfw\gfpinc
+source \sf\mw\messagingmw\messagingfw\biomsgfw\gfpsrc
+source \sf\mw\messagingmw\messagingfw\biomsgfw\gfptsrc
+source \sf\mw\messagingmw\messagingfw\biomsgfw\group
+source \sf\mw\messagingmw\messagingfw\biomsgfw\iacp
+source \sf\mw\messagingmw\messagingfw\biomsgfw\iacpbif
+source \sf\mw\messagingmw\messagingfw\biomsgfw\IACPINC
+source \sf\mw\messagingmw\messagingfw\biomsgfw\IACPSRC
+source \sf\mw\messagingmw\messagingfw\biomsgfw\IACPTSRC
+source \sf\mw\messagingmw\messagingfw\biomsgfw\olpbif
+source \sf\mw\messagingmw\messagingfw\biomsgfw\Rom
+source \sf\mw\messagingmw\messagingfw\biomsgfw\rtpbif
+source \sf\mw\messagingmw\messagingfw\biomsgfw\T_BIOMSG
+source \sf\mw\messagingmw\messagingfw\biomsgfw\wapp
+source \sf\mw\messagingmw\messagingfw\biomsgfw\wappbif
+source \sf\mw\messagingmw\messagingfw\biomsgfw\wappinc
+source \sf\mw\messagingmw\messagingfw\biomsgfw\wappsrc
+source \sf\mw\messagingmw\messagingfw\biomsgfw\wapptsrc
+source \sf\mw\messagingmw\messagingfw\biomsgfw\wappxml
+
+
+binary	\sf\mw\messagingmw\messagingfw\biomsgfw\group	all
+exports	\sf\mw\messagingmw\messagingfw\biomsgfw\group
+notes_source	\component_defs\release.src
+
+
+ipr E 
+ipr T \sf\mw\messagingmw\messagingfw\biomsgfw\BDBTSRC
+ipr T \sf\mw\messagingmw\messagingfw\biomsgfw\BIFUTSRC
+ipr T \sf\mw\messagingmw\messagingfw\biomsgfw\BIOSTSRC
+ipr T \sf\mw\messagingmw\messagingfw\biomsgfw\BioWatchers\Test
+ipr T \sf\mw\messagingmw\messagingfw\biomsgfw\BITSTSRC
+ipr T \sf\mw\messagingmw\messagingfw\biomsgfw\BIUTTSRC
+ipr T \sf\mw\messagingmw\messagingfw\biomsgfw\CBCPTSRC
+ipr T \sf\mw\messagingmw\messagingfw\biomsgfw\ENPTSRC
+ipr T \sf\mw\messagingmw\messagingfw\biomsgfw\gfptsrc
+ipr T \sf\mw\messagingmw\messagingfw\biomsgfw\IACPTSRC
+ipr T \sf\mw\messagingmw\messagingfw\biomsgfw\T_BIOMSG
+ipr T \sf\mw\messagingmw\messagingfw\biomsgfw\wapptsrc
+

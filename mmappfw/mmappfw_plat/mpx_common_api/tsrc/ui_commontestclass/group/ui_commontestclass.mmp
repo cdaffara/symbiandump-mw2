@@ -1,0 +1,89 @@
+/*
+* Copyright (c) 2002 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  API test automation for Radio Utility
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+
+TARGET          ui_commontestclass.dll
+TARGETTYPE      DLL
+CAPABILITY      CAP_GENERAL_DLL
+VENDORID     		VID_DEFAULT
+UID             0x1000008D 0x10207BD6
+
+DEFFILE         commontestclass.def
+
+EPOCSTACKSIZE   0x5000
+EPOCHEAPSIZE    0x10000 0x1000000
+
+SOURCEPATH      ../src
+SOURCE          timeoutcontroller.cpp
+SOURCE          commontestclass.cpp
+SOURCE          commontestclassblocks.cpp
+SOURCE          testpluginmonitor.cpp
+SOURCE          testcenrepwatcher.cpp
+SOURCE          testmpxparameter.cpp
+SOURCE          testmpxcollectiontype.cpp
+SOURCE          testmpxpskeywatcher.cpp
+SOURCE          testmpxdrmmediautility.cpp
+SOURCE          testmpxmessage.cpp
+SOURCE          testmpxmessagequeue.cpp
+SOURCE          testmpxattribute.cpp
+SOURCE          testmpxmedia.cpp 
+SOURCE          testmpxcollectionpath.cpp
+SOURCE          testmpxsession.cpp
+SOURCE          testmpxmessagemonitor.cpp
+SOURCE          testmpxactivetaskqueue.cpp
+SOURCE          testmpxuser.cpp
+SOURCE          testmpxclientlist.cpp 
+SOURCE          testmpxpluginhandlerbase.cpp
+SOURCE          testviewplugin.cpp 
+SOURCE          testmpxplugininfo.cpp 
+SOURCE          EdwinTestControl.cpp 
+SOURCE          testmpxsubscription.cpp
+
+USERINCLUDE     ../inc
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY         efsrv.lib
+LIBRARY         bafl.lib
+LIBRARY         euser.lib
+LIBRARY         estor.lib    // RWriteStream
+LIBRARY         ecom.lib //REComSession
+LIBRARY         stiftestinterface.lib
+LIBRARY         mpxviewplugin.lib
+LIBRARY         mpxviewutility.lib 
+LIBRARY         charconv.lib 
+LIBRARY         cone.lib 
+LIBRARY         ws32.lib 
+LIBRARY         avkon.lib 
+LIBRARY         eikcoctl.lib 
+LIBRARY         eikctl.lib 
+LIBRARY         apgrfx.lib 
+LIBRARY         aknskins.lib 
+LIBRARY         aknskinsrv.lib 
+LIBRARY         aknswallpaperutils.lib 
+LIBRARY         eikcore.lib 
+LIBRARY         sysutil.lib 
+LIBRARY         apmime.lib 
+LIBRARY         CommonEngine.lib 
+LIBRARY         mpxcommon.lib MPXCommon.lib
+
+
+
+// End of File

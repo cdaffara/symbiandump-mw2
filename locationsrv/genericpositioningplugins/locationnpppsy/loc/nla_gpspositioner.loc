@@ -1,0 +1,30 @@
+/*
+* Copyright (c) 2002-2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Localization file for GPS PSY
+*
+*/
+
+
+// LOCALISATION STRINGS
+
+//d: Name of the GPS PSY represented to the user
+//d: The GPS PSY is the location technology name for Integrated GPS positioning method.
+//d:
+//l: list_set_graphic_pane_t1
+//w:
+//r: 3.1
+//
+#define qtn_loc_psy_gps "Integrated GPS"
+
+// End of File

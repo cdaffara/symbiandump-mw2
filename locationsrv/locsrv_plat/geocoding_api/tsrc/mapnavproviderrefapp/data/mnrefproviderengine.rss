@@ -1,0 +1,205 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Resource definition file for MnRefProviderEngine
+*
+*/
+
+
+NAME MNRE
+
+#include <eikon.rsg>
+#include <eikon.rh>
+#include <avkon.rsg>
+#include <avkon.mbg>
+#include <avkon.rh>
+
+#include <appinfo.rh>
+
+RESOURCE RSS_SIGNATURE {  }
+
+RESOURCE TBUF { buf=""; }
+
+STRUCT PLACE
+    {
+    LTEXT city;
+    LTEXT country;
+    DOUBLE lat;
+    DOUBLE lon;
+    }
+
+STRUCT PLACES
+    {
+    STRUCT places[];
+    }
+
+RESOURCE PLACES r_mnrefproviderengine_places
+    {
+    places =
+        {
+        PLACE { city="Tampere"; country="Finland"; lat=61.50; lon=23.83; }, 
+        PLACE { city="Turku"; country="Finland"; lat=60.45; lon=22.28; }, 
+        PLACE { city="Oulu"; country="Finland"; lat=65.02; lon=28.47; }, 
+        PLACE { city="Saint-Petersburg"; country="Russia"; lat=59.92; lon=30.42; }, 
+        PLACE { city="Göteborg"; country="Sweden"; lat=57.72; lon=11.97; }, 
+        PLACE { city="Kabul"; country="Afghanistan"; lat=35.10; lon=68.55; },
+        PLACE { city="Tirana"; country="Albania"; lat=41.74; lon=19.38; },
+        PLACE { city="Algiers"; country="Algeria"; lat=37.55; lon=2.29; },
+        PLACE { city="Luanda"; country="Angola"; lat=-8.35; lon=12.76; },
+        PLACE { city="Yerevan"; country="Armenia"; lat=40.47; lon=44.21; },
+        PLACE { city="Oranjestad"; country="Aruba"; lat=13.12; lon=-70.76; },
+        PLACE { city="Canberra"; country="Australia"; lat=-35.15; lon=149.04; },
+        PLACE { city="Vienna"; country="Austria"; lat=48.75; lon=15.82; },
+        PLACE { city="Baku"; country="Azerbaijan"; lat=40.79; lon=49.50; },
+        PLACE { city="Nassau"; country="Bahamas"; lat=25.74; lon=-77.99; },
+        PLACE { city="Dhaka"; country="Bangladesh"; lat=24.10; lon=90.05; },
+        PLACE { city="Bridgetown"; country="Barbados"; lat=13.68; lon=-60.20; },
+        PLACE { city="Minsk"; country="Belarus"; lat=54.08; lon=27.43; },
+        PLACE { city="Brussels"; country="Belgium"; lat=51.64; lon=3.56; },
+        PLACE { city="Belmopan"; country="Belize"; lat=17.32; lon=-88.52; },
+        PLACE { city="Hamilton"; country="Bermuda"; lat=-37.75; lon=175.28; },
+        PLACE { city="Thimphu"; country="Bhutan"; lat=28.07; lon=89.05; },
+        PLACE { city="Gaborone"; country="Botswana"; lat=-24.36; lon=25.56; },
+        PLACE { city="Brasilia"; country="Brazil"; lat=-15.48; lon=-48.22; },
+        PLACE { city="Sofia"; country="Bulgaria"; lat=43.08; lon=23.00; },
+        PLACE { city="Bujumbura"; country="Burundi"; lat=-3.19; lon=29.17; },
+        PLACE { city="Yaounde"; country="Cameroon"; lat=4.52; lon=10.90; },
+        PLACE { city="Ottawa"; country="Canada"; lat=46.28; lon=-76.53; },
+        PLACE { city="Santiago"; country="Chile"; lat=-33.07; lon=-70.99; },
+        PLACE { city="Beijing"; country="China"; lat=40.13; lon=116.12; },
+        PLACE { city="Bogota"; country="Colombia"; lat=4.78; lon=-74.21; },
+        PLACE { city="Moroni"; country="Comoros"; lat=-11.10; lon=42.69; },
+        PLACE { city="Brazzaville"; country="Congo"; lat=-3.48; lon=14.50; },
+        PLACE { city="Zagreb"; country="Croatia"; lat=45.95; lon=15.88; },
+        PLACE { city="Havana"; country="Cuba"; lat=23.82; lon=-83.05; },
+        PLACE { city="Nicosia"; country="Cyprus"; lat=35.79; lon=32.73; },
+        PLACE { city="Copenhagen"; country="Denmark"; lat=56.32; lon=11.93; },
+        PLACE { city="Djibouti"; country="Djibouti"; lat=12.24; lon=42.35; },
+        PLACE { city="Roseau"; country="Dominica"; lat=15.85; lon=-61.91; },
+        PLACE { city="Quito"; country="Ecuador"; lat=-0.20; lon=-78.55; },
+        PLACE { city="Cairo"; country="Egypt"; lat=30.38; lon=30.87; },
+        PLACE { city="Asmara"; country="Eritrea"; lat=15.40; lon=38.83; },
+        PLACE { city="Tallinn"; country="Estonia"; lat=60.28; lon=23.90; },
+        PLACE { city="Suva"; country="Fiji"; lat=-18.07; lon=178.47; },
+        PLACE { city="Helsinki"; country="Finland"; lat=60.32; lon=24.98; },
+        PLACE { city="Paris"; country="France"; lat=49.86; lon=1.34; },
+        PLACE { city="Libreville"; country="Gabon"; lat=1.11; lon=8.74; },
+        PLACE { city="Banjul"; country="Gambia"; lat=14.07; lon=-17.27; },
+        PLACE { city="Tbilisi"; country="Georgia"; lat=42.63; lon=43.90; },
+        PLACE { city="Berlin"; country="Germany"; lat=52.67; lon=13.23; },
+        PLACE { city="Accra"; country="Ghana"; lat=6.16; lon=-0.79; },
+        PLACE { city="Gibraltar"; country="Gibraltar"; lat=36.14; lon=-5.39; },
+        PLACE { city="Athens"; country="Greece"; lat=38.94; lon=22.74; },
+        PLACE { city="Godthabsfjord"; country="Greenland"; lat=64.47; lon=-52.05; },
+        PLACE { city="Agana"; country="Guam"; lat=14.05; lon=144.17; },
+        PLACE { city="Guatemala"; country="Guatemala"; lat=14.69; lon=-90.39; },
+        PLACE { city="Conakry"; country="Guinea"; lat=9.87; lon=-14.20; },
+        PLACE { city="Georgetown"; country="Guyana"; lat=6.90; lon=-58.26; },
+        PLACE { city="Tegucigalpa"; country="Honduras"; lat=14.40; lon=-87.55; },
+        PLACE { city="Budapest"; country="Hungary"; lat=47.53; lon=19.04; },
+        PLACE { city="Reykjavik"; country="Iceland"; lat=64.58; lon=-22.36; },
+        PLACE { city="Delhi"; country="India"; lat=29.56; lon=76.29; },
+        PLACE { city="Jakarta"; country="Indonesia"; lat=-5.99; lon=106.66; },
+        PLACE { city="Tehran"; country="Iran"; lat=35.91; lon=51.24; },
+        PLACE { city="Baghdad"; country="Iraq"; lat=33.40; lon=44.35; },
+        PLACE { city="Jerusalem"; country="Israel"; lat=31.98; lon=34.97; },
+        PLACE { city="Rome"; country="Italy"; lat=42.78; lon=11.60; },
+        PLACE { city="Kingston"; country="Jamaica"; lat=29.30; lon=167.80; },
+        PLACE { city="Tokyo"; country="Japan"; lat=36.39; lon=139.04; },
+        PLACE { city="Amman"; country="Jordan"; lat=32.28; lon=35.54; },
+        PLACE { city="Almaty"; country="Kazakhstan"; lat=43.45; lon=76.75; },
+        PLACE { city="Nairobi"; country="Kenya"; lat=-0.91; lon=36.43; },
+        PLACE { city="Bairiki"; country="Kiribati"; lat=1.87; lon=172.55; },
+        PLACE { city="Bishkek"; country="Kyrgyzstan"; lat=43.45; lon=74.02; },
+        PLACE { city="Vientiane"; country="Laos"; lat=18.51; lon=102.05; },
+        PLACE { city="Riga"; country="Latvia"; lat=57.18; lon=23.92; },
+        PLACE { city="Beirut"; country="Lebanon"; lat=34.19; lon=35.21; },
+        PLACE { city="Maseru"; country="Lesotho"; lat=-28.58; lon=26.78; },
+        PLACE { city="Monrovia"; country="Liberia"; lat=7.24; lon=-11.72; },
+        PLACE { city="Tripoli"; country="Libya"; lat=33.21; lon=12.87; },
+        PLACE { city="Vaduz"; country="Liechtenstein"; lat=48.11; lon=8.54; },
+        PLACE { city="Vilnius"; country="Lithuania"; lat=54.97; lon=25.00; },
+        PLACE { city="Luxembourg"; country="Luxembourg"; lat=50.55; lon=5.22; },
+        PLACE { city="Macau"; country="Macau"; lat=22.49; lon=113.33; },
+        PLACE { city="Antananarivo"; country="Madagascar"; lat=-18.61; lon=47.21; },
+        PLACE { city="Lilongwe"; country="Malawi"; lat=-13.42; lon=33.22; },
+        PLACE { city="Male"; country="Maldives"; lat=4.90; lon=72.77; },
+        PLACE { city="Bamako"; country="Mali"; lat=13.47; lon=-8.82; },
+        PLACE { city="Valletta"; country="Malta"; lat=36.43; lon=13.97; },
+        PLACE { city="Nouakchott"; country="Mauritania"; lat=18.32; lon=-16.14; },
+        PLACE { city="Dzaoudzi"; country="Mayotte"; lat=-12.34; lon=44.84; },
+        PLACE { city="Palikir"; country="Micronesia"; lat=7.51; lon=157.56; },
+        PLACE { city="Chisinau"; country="Moldova"; lat=47.92; lon=27.95; },
+        PLACE { city="Monaco"; country="Monaco"; lat=44.41; lon=6.67; },
+        PLACE { city="Plymouth"; country="Montserrat"; lat=50.65; lon=-4.42; },
+        PLACE { city="Rabat"; country="Morocco"; lat=34.81; lon=-7.57; },
+        PLACE { city="Maputo"; country="Mozambique"; lat=-25.66; lon=32.23; },
+        PLACE { city="Yangon"; country="Myanmar"; lat=16.84; lon=96.08; },
+        PLACE { city="Windhoek"; country="Namibia"; lat=-21.94; lon=16.42; },
+        PLACE { city="Domaneab"; country="Nauru"; lat=0.31; lon=166.07; },
+        PLACE { city="Kathmandu"; country="Nepal"; lat=28.43; lon=84.66; },
+        PLACE { city="Amsterdam"; country="Netherlands"; lat=53.17; lon=4.01; },
+        PLACE { city="Managua"; country="Nicaragua"; lat=12.61; lon=-86.84; },
+        PLACE { city="Niamey"; country="Niger"; lat=13.73; lon=1.89; },
+        PLACE { city="Lagos"; country="Nigeria"; lat=38.00; lon=-9.60; },
+        PLACE { city="Alofi"; country="Niue"; lat=-18.95; lon=-170.02; },
+        PLACE { city="Oslo"; country="Norway"; lat=60.46; lon=10.20; },
+        PLACE { city="Muscat"; country="Oman"; lat=24.48; lon=57.74; },
+        PLACE { city="Islamabad"; country="Pakistan"; lat=34.43; lon=72.40; },
+        PLACE { city="Koror"; country="Palau"; lat=7.77; lon=134.06; },
+        PLACE { city="Panama"; country="Panama"; lat=9.97; lon=-80.52; },
+        PLACE { city="Asuncion"; country="Paraguay"; lat=-25.26; lon=-57.67; },
+        PLACE { city="Lima"; country="Peru"; lat=-11.31; lon=-77.79; },
+        PLACE { city="Manila"; country="Philippines"; lat=14.80; lon=120.75; },
+        PLACE { city="Adamstown"; country="Pitcairn"; lat=-24.53; lon=-130.62; },
+        PLACE { city="Warsaw"; country="Poland"; lat=52.94; lon=20.28; },
+        PLACE { city="Lisbon"; country="Portugal"; lat=38.72; lon=-9.20; },
+        PLACE { city="Doha"; country="Qatar"; lat=25.95; lon=50.93; },
+        PLACE { city="Bucharest"; country="Romania"; lat=45.34; lon=25.21; },
+        PLACE { city="Moscow"; country="Russia"; lat=55.88; lon=37.50; },
+        PLACE { city="Kigali"; country="Rwanda"; lat=-1.70; lon=29.78; },
+        PLACE { city="Dakar"; country="Senegal"; lat=15.06; lon=-17.87; },
+        PLACE { city="Victoria"; country="Seychelles"; lat=-3.71; lon=54.53; },
+        PLACE { city="Singapore"; country="Singapore"; lat=1.28; lon=103.85; },
+        PLACE { city="Ljubljana"; country="Slovenia"; lat=46.83; lon=13.79; },
+        PLACE { city="Mogadishu"; country="Somalia"; lat=2.60; lon=44.85; },
+        PLACE { city="Madrid"; country="Spain"; lat=41.49; lon=-4.74; },
+        PLACE { city="Khartoum"; country="Sudan"; lat=15.56; lon=32.54; },
+        PLACE { city="Paramaribo"; country="Surinam"; lat=5.85; lon=-55.18; },
+        PLACE { city="Mbabane"; country="Swaziland"; lat=-25.92; lon=30.72; },
+        PLACE { city="Stockholm"; country="Sweden"; lat=59.67; lon=17.71; },
+        PLACE { city="Berne"; country="Switzerland"; lat=47.49; lon=6.92; },
+        PLACE { city="Damascus"; country="Syria"; lat=33.89; lon=35.91; },
+        PLACE { city="Taipei"; country="Taiwan"; lat=25.93; lon=120.62; },
+        PLACE { city="Dushanbe"; country="Tajikistan"; lat=39.48; lon=67.88; },
+        PLACE { city="Dodoma"; country="Tanzania"; lat=-5.16; lon=34.78; },
+        PLACE { city="Bangkok"; country="Thailand"; lat=14.36; lon=99.90; },
+        PLACE { city="Lhasa"; country="Tibet"; lat=30.60; lon=90.17; },
+        PLACE { city="Lome"; country="Togo"; lat=6.63; lon=0.73; },
+        PLACE { city="Tunis"; country="Tunisia"; lat=36.85; lon=10.17; },
+        PLACE { city="Ankara"; country="Turkey"; lat=40.34; lon=32.56; },
+        PLACE { city="Ashkhabad"; country="Turkmenistan"; lat=38.22; lon=58.11; },
+        PLACE { city="Funafuti"; country="Tuvalu"; lat=-8.30; lon=178.96; },
+        PLACE { city="Kampala"; country="Uganda"; lat=1.20; lon=31.64; },
+        PLACE { city="Kiev"; country="Ukraine"; lat=50.92; lon=30.06; },
+        PLACE { city="Montevideo"; country="Uruguay"; lat=-34.21; lon=-56.81; },
+        PLACE { city="Tashkent"; country="Uzbekistan"; lat=41.40; lon=69.24; },
+        PLACE { city="Caracas"; country="Venezuela"; lat=11.16; lon=-67.58; },
+        PLACE { city="Hanoi"; country="Vietnam"; lat=21.33; lon=105.67; },
+        PLACE { city="Sanaa"; country="Yemen"; lat=16.39; lon=43.26; },
+        PLACE { city="Belgrade"; country="Yugoslavia"; lat=45.56; lon=19.77; },
+        PLACE { city="Lusaka"; country="Zambia"; lat=-15.00; lon=27.80; },
+        PLACE { city="Harare"; country="Zimbabwe"; lat=-17.30; lon=30.61; }
+		};
+	}
+

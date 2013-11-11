@@ -1,0 +1,41 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Main Blf.inf file for the Project
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_EXPORTS
+../Data/WMA_AudCon_stub.SIS   /epoc32/data/z/system/install/WMA_AudCon_stub.SIS
+../Data/EnhancedMediaClient_Stub.SIS   /epoc32/data/z/system/install/EnhancedMediaClient_Stub.SIS
+../rom/EnhancedMediaClient.iby         CORE_MW_LAYER_IBY_EXPORT_PATH(EnhancedMediaClient.iby)
+
+// Generic configuration interface for component cenrep settings  
+// enhancedmediaclient_10207B74 implementation specifics for cenrep data
+../Conf/enhancedmediaclient.confml              MW_LAYER_CONFML(enhancedmediaclient.confml)
+../Conf/enhancedmediaclient_10207B74.crml 	MW_LAYER_CRML(enhancedmediaclient_10207B74.crml)
+
+PRJ_MMPFILES
+#include "../Plugins/StreamControlCustomCommands/group/bld.inf"
+#include "../Plugins/DataBufferSource/group/bld.inf"
+#include "../Plugins/DescriptorSource/group/bld.inf"
+#include "../Plugins/FileSource/group/bld.inf"
+#include "../Plugins/CacheSource/group/bld.inf"
+#include "../Plugins/DataSourceConfigIntfc/group/bld.inf"
+#include "../Client/group/bld.inf"
+#include "../Plugins/MultimediaDataSource/group/bld.inf"
+#include "../Plugins/MultimediaDataSource/DataSourceFactory/group/bld.inf"
+

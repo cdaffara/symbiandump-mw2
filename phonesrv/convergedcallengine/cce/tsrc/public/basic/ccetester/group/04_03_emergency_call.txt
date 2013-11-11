@@ -1,0 +1,112 @@
+/***********************************************************
+	1. Create Emergency call
+	2. Try Hold, Resume, Swap (KErrNotSupported)
+	3. Hangup emergency call
+	4. Try normal Dial with emergency call handle (KErrNotSupported)
+	5. Create Emergency call
+	6. Try Transfer and Forward (Not supported)
+	7. Try Dtmf (KErrNotReady)
+	8. Disconnect emergency call
+************************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 4.3 Emergency Call, Error
+timeout 5000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test InitializeEmergencyCall 1 0
+
+test DialEmergencyCall 1 EmergencyNumber
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+// Step 2
+print Step_2
+
+// Not supported for emergency call
+test Hold 1 -5
+test Resume 1 -5
+test Swap 1 -5
+
+// Step 3
+print Step_3
+
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+// Step 4
+print Step_4
+
+test InitializeEmergencyCall 2 0
+
+// Try normal dial with emergency call
+test Dial 2 -5 SubAddress Bearer
+
+// Step 5
+print Step_5
+
+test DialEmergencyCall 2 EmergencyNumber
+test WaitEvent 2 Dialling
+test WaitEvent 2 Connecting
+test WaitEvent 2 Connected
+
+// Step 6
+print Step_6
+
+// Not supported for emergency call
+test UnattendedTransfer 2 -5
+test AttendedTransfer 2 -5
+test GetForwardAddressChoices 2 -5
+// In CCE this method is empty and does not leave (function has no return value)
+test ForwardToAddress 2 0 0
+
+// Step 7
+print Step_7
+
+test StartDtmfTone 0 3
+test WaitEvent 0 DtmfManualStart 0 3
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+
+test SendDtmfToneString 0 1234134
+test WaitEvent DtmfSequenceStart 0 1
+test WaitEvent DtmfSequenceStop 0 1
+test WaitEvent DtmfSequenceStart 0 2
+test WaitEvent DtmfSequenceStop 0 2
+test WaitEvent DtmfSequenceStart 0 3
+test WaitEvent DtmfSequenceStop 0 3
+test WaitEvent DtmfSequenceStart 0 4
+test WaitEvent DtmfSequenceStop 0 4
+test WaitEvent DtmfSequenceStart 0 1
+test WaitEvent DtmfSequenceStop 0 1
+test WaitEvent DtmfSequenceStart 0 3
+test WaitEvent DtmfSequenceStop 0 3
+test WaitEvent DtmfSequenceStart 0 4
+test WaitEvent DtmfSequenceStop 0 4
+test WaitEvent DtmfStringSendCompleted 0 0
+
+test ContinueStringSending -1 0
+test ContinueStringSending -1 1
+
+// Step 8
+print Step_8
+
+test HangUp 2 0
+test WaitEvent 2 Disconnecting
+test WaitEvent 2 Idle
+test Release 2 0
+
+test VerifyTest
+delete test
+[Endtest]

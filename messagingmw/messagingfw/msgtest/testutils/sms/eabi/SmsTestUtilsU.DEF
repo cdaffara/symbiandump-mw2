@@ -1,0 +1,75 @@
+EXPORTS
+	_ZN12CSmsTestBase11DisplayLogLEv @ 1 NONAME
+	_ZN12CSmsTestBase14DoTestSendingLERK7TDesC16i @ 2 NONAME
+	_ZN12CSmsTestBase17DoTestForwardMsgLEl @ 3 NONAME
+	_ZN12CSmsTestBase17DoTestSchedulingLERK7TDesC16i20TTimeIntervalSeconds @ 4 NONAME
+	_ZN12CSmsTestBase19DoTestSendMesssageLEl @ 5 NONAME
+	_ZN12CSmsTestBase6StartLEv @ 6 NONAME
+	_ZN12CSmsTestBase8RunErrorEi @ 7 NONAME
+	_ZN12CSmsTestBase9ClearLogLEv @ 8 NONAME
+	_ZN12CSmsTestBaseC2ER13CSmsTestUtilsRK7TDesC16Rii @ 9 NONAME
+	_ZN12CSmsTestBaseD0Ev @ 10 NONAME
+	_ZN12CSmsTestBaseD1Ev @ 11 NONAME
+	_ZN12CSmsTestBaseD2Ev @ 12 NONAME
+	_ZN12EmsTestUtils12CompareEmsIEERK22CEmsInformationElementS2_ @ 13 NONAME
+	_ZN12EmsTestUtils12FindElementLERK11CSmsMessageN22CSmsInformationElement32TSmsInformationElementIdentifierE @ 14 NONAME
+	_ZN12EmsTestUtils14CompareEmsMsgLERK11CSmsMessageS2_ @ 15 NONAME
+	_ZN12EmsTestUtils14CreatePictureLEi @ 16 NONAME
+	_ZN12EmsTestUtils16CreateAnimationLEi @ 17 NONAME
+	_ZN13CSmsTestUtils10ConstructLEj @ 18 NONAME
+	_ZN13CSmsTestUtils11GetHeaderLCEl @ 19 NONAME
+	_ZN13CSmsTestUtils11ReadScriptLERK7TDesC16lR18CMsvEntrySelectionRK5TTime @ 20 NONAME
+	_ZN13CSmsTestUtils13AddRecipientLElRK7TDesC16 @ 21 NONAME
+	_ZN13CSmsTestUtils14CreateMessageLElR9TMsvEntryR10CSmsHeaderR9CRichTextRK5TTime @ 22 NONAME
+	_ZN13CSmsTestUtils15DisplayMessageLEl @ 23 NONAME
+	_ZN13CSmsTestUtils15SaveBodyToFileLEl @ 24 NONAME
+	_ZN13CSmsTestUtils16DisplayMessagesLERK18CMsvEntrySelection @ 25 NONAME
+	_ZN13CSmsTestUtils16NotifySaPhoneOnLEv @ 26 NONAME
+	_ZN13CSmsTestUtils16SendingCompleteLERK18CMsvEntrySelectionRi @ 27 NONAME
+	_ZN13CSmsTestUtils17CreateSmsServiceLEv @ 28 NONAME
+	_ZN13CSmsTestUtils17DeleteSmsServiceLEv @ 29 NONAME
+	_ZN13CSmsTestUtils17NotifySaPhoneOffLEv @ 30 NONAME
+	_ZN13CSmsTestUtils18DeleteSmsMessagesLEl @ 31 NONAME
+	_ZN13CSmsTestUtils18WaitForInitializeLEv @ 32 NONAME
+	_ZN13CSmsTestUtils19InstallSmsMtmGroupLEv @ 33 NONAME
+	_ZN13CSmsTestUtils20AreMessagesSameTextLElli @ 34 NONAME
+	_ZN13CSmsTestUtils21DisplaySendingStatesLERK18CMsvEntrySelection @ 35 NONAME
+	_ZN13CSmsTestUtils21FindExistingServicesLEv @ 36 NONAME
+	_ZN13CSmsTestUtils22CreateSmsServerMtmRegLEv @ 37 NONAME
+	_ZN13CSmsTestUtils23FindExistingSmsServiceLEv @ 38 NONAME
+	_ZN13CSmsTestUtils24InstantiateSmsClientMtmLEv @ 39 NONAME
+	_ZN13CSmsTestUtils24InstantiateSmsServerMtmLEv @ 40 NONAME
+	_ZN13CSmsTestUtils25AddSystemAgentConditionsLEv @ 41 NONAME
+	_ZN13CSmsTestUtils25CreateDummyMessageToSendLEv @ 42 NONAME
+	_ZN13CSmsTestUtils28CreateDummyMessageToReceiveLEv @ 43 NONAME
+	_ZN13CSmsTestUtils33SetCommDbServiceCenterFromScriptLERK7TDesC16 @ 44 NONAME
+	_ZN13CSmsTestUtils4NewLER5RTestj @ 45 NONAME
+	_ZN13CSmsTestUtils5NewLCER5RTestj @ 46 NONAME
+	_ZN13CSmsTestUtils5PanicE18TSmsTestUtilsPanic @ 47 NONAME
+	_ZN13CSmsTestUtils5PanicEi @ 48 NONAME
+	_ZN13CSmsTestUtilsC1ER5RTest @ 49 NONAME
+	_ZN13CSmsTestUtilsC2ER5RTest @ 50 NONAME
+	_ZN13CSmsTestUtilsD0Ev @ 51 NONAME
+	_ZN13CSmsTestUtilsD1Ev @ 52 NONAME
+	_ZN13CSmsTestUtilsD2Ev @ 53 NONAME
+	_ZTI12CSmsTestBase @ 54 NONAME ; #<TI>#
+	_ZTI13CSmsTestUtils @ 55 NONAME ; #<TI>#
+	_ZTV12CSmsTestBase @ 56 NONAME ; #<VT>#
+	_ZTV13CSmsTestUtils @ 57 NONAME ; #<VT>#
+	_ZTI12EmsPicParser @ 58 NONAME ; #<TI>#
+	_ZTI13CEmsExtractor @ 59 NONAME ; #<TI>#
+	_ZTI13EmsAnimParser @ 60 NONAME ; #<TI>#
+	_ZTI15EmsFormatParser @ 61 NONAME ; #<TI>#
+	_ZTI18EmsUserSoundParser @ 62 NONAME ; #<TI>#
+	_ZTI19EmsPredefAnimParser @ 63 NONAME ; #<TI>#
+	_ZTI19EmsUserPromptParser @ 64 NONAME ; #<TI>#
+	_ZTI20EmsPredefSoundParser @ 65 NONAME ; #<TI>#
+	_ZTV12EmsPicParser @ 66 NONAME ; #<VT>#
+	_ZTV13CEmsExtractor @ 67 NONAME ; #<VT>#
+	_ZTV13EmsAnimParser @ 68 NONAME ; #<VT>#
+	_ZTV15EmsFormatParser @ 69 NONAME ; #<VT>#
+	_ZTV18EmsUserSoundParser @ 70 NONAME ; #<VT>#
+	_ZTV19EmsPredefAnimParser @ 71 NONAME ; #<VT>#
+	_ZTV19EmsUserPromptParser @ 72 NONAME ; #<VT>#
+	_ZTV20EmsPredefSoundParser @ 73 NONAME ; #<VT>#
+

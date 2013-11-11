@@ -1,0 +1,134 @@
+object http://sw.nokia.com/MdE Video "e:\testing\data\test2video1.3gp" 4184041685
+property Origin 0
+property Size 66192
+property TimeOffset 120
+property CreationDate 20071217163916
+property LastModifiedDate 20071217143916
+property ItemType "video/H263-2000"
+property Bitrate 23
+property Width 176
+property Height 144
+property Duration 21
+property ReleaseDate 20071217163916
+property CaptureDate 20071217163916
+property Framerate 7
+
+object http://sw.nokia.com/MdE Video "e:\testing\data\test2video2.mp4" 4184041685
+property Origin 0
+property Size 733064
+property TimeOffset 120
+property CreationDate 20071217163916
+property LastModifiedDate 20071217143916
+property Bitrate 288
+property Width 320
+property Height 240
+property Duration 20
+property ReleaseDate 20071217163916
+property CaptureDate 20071217163916
+property Framerate 14
+
+object http://sw.nokia.com/MdE Video "e:\testing\data\test3video1.3gp" 4184041685
+property Origin 0
+property Size 66192
+property TimeOffset 120
+property CreationDate 20071217163916
+property LastModifiedDate 20071217143916
+property ItemType "video/H263-2000"
+property Bitrate 23
+property Width 176
+property Height 144
+property Duration 21
+property ReleaseDate 20071217163916
+property CaptureDate 20071217163916
+property Framerate 7
+
+object http://sw.nokia.com/MdE Video "e:\testing\data\test3video2.mp4" 4184041685
+property Origin 0
+property Size 733064
+property TimeOffset 120
+property CreationDate 20071217163916
+property LastModifiedDate 20071217143916
+property Bitrate 288
+property Width 320
+property Height 240
+property Duration 20
+property ReleaseDate 20071217163916
+property CaptureDate 20071217163916
+property Framerate 14
+
+object http://sw.nokia.com/MdE Video "e:\testing\data\test4video1.3gp" 4184041685
+property Origin 0
+property Size 66192
+property TimeOffset 120
+property CreationDate 20071217163916
+property LastModifiedDate 20071217143916
+property ItemType "video/H263-2000"
+property Bitrate 23
+property Width 176
+property Height 144
+property Duration 21
+property ReleaseDate 20071217163916
+property CaptureDate 20071217163916
+property Framerate 7
+
+object http://sw.nokia.com/MdE Video "e:\testing\data\test4video2" 4184041685
+property Origin 0
+property Size 733064
+property TimeOffset 120
+property CreationDate 20071217163916
+property LastModifiedDate 20071217143916
+property Bitrate 288
+property Width 320
+property Height 240
+property Duration 20
+property ReleaseDate 20071217163916
+property CaptureDate 20071217163916
+property Framerate 14
+
+object http://sw.nokia.com/MdE Video "e:\testing\data\test26video1.3gp" 4184041685
+property Origin 0
+property Size 66192
+property TimeOffset 120
+property CreationDate 20080808000000
+property LastModifiedDate 20080808000000
+property ItemType "video/H263-2000"
+property Bitrate 23
+property Size 12345678
+property Rating 4
+property Width 176
+property Height 144
+property Duration 21
+property ReleaseDate 20080808000000
+property CaptureDate 20080808000000
+property Framerate 7
+property DRM 0
+
+object http://sw.nokia.com/MdE Video "e:\testing\data\testvideo1.3gp" 4184041685
+property Origin 0
+property Size 66192
+property TimeOffset 120
+property CreationDate 20071217163916
+property LastModifiedDate 20071217143916
+property ItemType "video/H263-2000"
+property Bitrate 23
+property Width 176
+property Height 144
+property Duration 21
+property ReleaseDate 20071217163916
+property CaptureDate 20071217163916
+property Framerate 7
+
+object http://sw.nokia.com/MdE Video "e:\testing\data\testvideo2.mp4" 4184041685
+property Origin 0
+property Size 733064
+property TimeOffset 120
+property CreationDate 20071217163916
+property LastModifiedDate 20071217143916
+property Bitrate 288
+property Width 320
+property Height 240
+property Duration 20
+property ReleaseDate 20071217163916
+property CaptureDate 20071217163916
+property Framerate 14
+ 

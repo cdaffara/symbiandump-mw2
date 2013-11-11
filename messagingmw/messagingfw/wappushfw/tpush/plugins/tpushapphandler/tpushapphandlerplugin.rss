@@ -1,0 +1,47 @@
+// Copyright (c) 2006-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// 102822AC.RSS
+// Registry file for Test Push App Handler interface dll
+// Interfaces : CPushHandlerBase
+// 
+//
+
+#include <ecom/registryinfo.rh>
+
+RESOURCE REGISTRY_INFO theInfo
+	{
+	// KUidTestPushAppHandlerPlugin
+	dll_uid = 0x102822AB;
+	interfaces = 
+		{
+		INTERFACE_INFO
+			{
+			// KUidPushHandlerBase - CPushHandlerBase UID
+			interface_uid = 0x101F3E5A;
+			implementations = 
+				{
+				IMPLEMENTATION_INFO
+					{
+					// KUidTestPushAppHandler
+					implementation_uid = 0x102822AC;
+					version_no = 1;
+					display_name = "CTPushAppHandler||WAP Push Handler Plug-in";
+					default_data = "x-wap-application:*||0x0000000d";
+					opaque_data = "";
+					}
+				};
+			}
+		};
+	}
+

@@ -1,0 +1,3 @@
+EXPORTS
+	?NewSatController@@YAPAVMSatShellController@@XZ @ 1 NONAME ; class MSatShellController * __cdecl NewSatController(void)
+

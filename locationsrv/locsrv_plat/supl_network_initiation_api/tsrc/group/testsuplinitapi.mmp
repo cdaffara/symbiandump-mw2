@@ -1,0 +1,48 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: Project definition file for  supl_network_initiation_api_test Test module
+*
+*/
+
+
+
+#include <platform_paths.hrh>
+
+TARGET          testsuplinitapi.dll
+TARGETTYPE      dll
+UID             0x1000008D 0x101FB3E3
+
+CAPABILITY      ALL -TCB
+
+//TARGETPATH      ?target_path
+DEFFILE         testsuplinitapi.def
+
+SOURCEPATH      ../src
+SOURCE          testsuplinitapi.cpp
+SOURCE          testsuplinitapiBlocks.cpp
+SOURCE					testsuplnetworkserver.cpp
+
+
+USERINCLUDE     ../inc 
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY         euser.lib
+LIBRARY         stiftestinterface.lib
+LIBRARY         epos_suplnetinitiation.lib
+
+LANG            SC
+
+
+// End of File

@@ -1,0 +1,34 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+
+REM
+REM T_TEST.IBY
+REM
+
+REM data
+
+data=EPOCROOT##epoc32\wins\c\msgtest\emailsmoke\script.txt		System\MsgTest\msgtest\smoke\email\script\script.txt 		
+data=EPOCROOT##epoc32\wins\c\msgtest\emailsmoke\rfc822test.txt	System\MsgTest\msgtest\smoke\email\script\rfc822test.txt 	
+
+data=EPOCROOT##epoc32\wins\c\msgtest\sms\smoke_enum.script		System\MsgTest\msgtest\smoke\sms\script\smoke_enum.script	
+data=EPOCROOT##epoc32\wins\c\msgtest\sms\smoke_recv.script		System\MsgTest\msgtest\smoke\sms\script\smoke_recv.script	
+data=EPOCROOT##epoc32\wins\c\msgtest\sms\t_sms.html				System\MsgTest\msgtest\smoke\sms\docs\t_sms.html			
+
+REM harnesses
+file=ABI_DIR\BUILD_DIR\T_EMAIL.exe				System\MsgTest\T_EMAIL.exe
+file=ABI_DIR\BUILD_DIR\T_SMS.exe				System\MsgTest\T_SMS.exe
+

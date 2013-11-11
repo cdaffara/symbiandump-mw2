@@ -1,0 +1,61 @@
+// Copyright (c) 1998-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// iacp.dll BIO Internet Access Configuration parser (email settings and internet settings)
+// iacp.rsc BIO Internet Access Configuration resource file
+// iacp.mbm BIO Internet Access Configuration bitmap for UI
+// 
+//
+
+/**
+ @file
+*/
+
+
+TARGET          iacp.dll
+
+
+TARGETTYPE      dll
+
+CAPABILITY All -TCB
+
+UID      0x10001251 0x10005269
+VENDORID 0x70000001
+
+SOURCEPATH	../../IACPSRC
+USERINCLUDE     ../../IACPINC
+USERINCLUDE     ../../BIUTINC 
+// MW_LAYER_SYSTEMINCLUDE_SYMBIAN -- should be this but has a dependency smtpset.h in the APP layer.
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+SOURCE          IACPDLL.CPP IACP.CPP IMP.CPP ISPP.CPP ISSP.CPP TVMP.CPP SMSP.CPP gprsp.cpp wwwp.CPP
+
+LIBRARY         euser.lib imcm.lib msgs.lib smcm.lib biut.lib efsrv.lib
+LIBRARY 	commsdat.lib
+#ifdef SYMBIAN_BOOKMARK_DATABASE
+LIBRARY			bookmarkdb.lib
+#endif // SYMBIAN_BOOKMARK_DATABASE
+
+START RESOURCE	../iacpbif/iacp.rss
+TARGETPATH      resource/messaging/bif
+LANG		SC
+END
+START BITMAP	iacp.mbm
+TARGETPATH      resource/messaging/bif
+SOURCEPATH	../../iacpbif
+SOURCE		2 iacp0.bmp 
+END
+
+DEFFILE		iacp.def
+
+SMPSAFE

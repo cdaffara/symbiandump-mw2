@@ -1,0 +1,5 @@
+EXPORTS
+	??1CMPSettingsModel@@UAE@XZ @ 1 NONAME ; public: virtual __thiscall CMPSettingsModel::~CMPSettingsModel(void)
+	?ListImplementationsL@CMPSettingsModel@@SAXAAV?$RPointerArray@VCImplementationInformation@@@@@Z @ 2 NONAME ; public: static void __cdecl CMPSettingsModel::ListImplementationsL(class RPointerArray<class CImplementationInformation> &)
+	?NewL@CMPSettingsModel@@SAPAV1@VTUid@@@Z @ 3 NONAME ; public: static class CMPSettingsModel * __cdecl CMPSettingsModel::NewL(class TUid)
+

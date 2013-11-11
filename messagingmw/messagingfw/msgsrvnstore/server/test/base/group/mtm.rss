@@ -1,0 +1,69 @@
+// Copyright (c) 2000-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+#include <mtmconfig.rh>
+
+RESOURCE MTM_INFO_FILE
+	{
+	mtm_type_uid = 0x100012FA;
+	technology_type_uid = 0x10001626;
+	components = 
+		{
+		MTM_COMPONENT_V2
+			{
+			human_readable_name = "My server dll info";
+			component_uid = KUidMtmServerComponentVal;
+			entry_point = 1;
+			version = VERSION_V2 {};
+			filename = "z:\\system\\libs\\servermtm.dll";
+			},
+		MTM_COMPONENT_V2
+			{
+			human_readable_name = "My client dll info";
+			component_uid = KUidMtmClientComponentVal;
+			entry_point = 1;
+			version = VERSION_V2 {};
+			filename = "z:\\system\\libs\\clientmtm.dll";
+			},
+		MTM_COMPONENT_V2
+			{
+			human_readable_name = "My ui dll info";
+			component_uid = KUidMtmUiComponentVal;
+			entry_point = 1;
+			version = VERSION_V2 {};
+			filename = "z:\\system\\libs\\dummyuimtm.dll"; // this does not exist
+			},
+		MTM_COMPONENT_V2
+			{
+			human_readable_name = "My ui data dll info";
+			component_uid = KUidMtmUiDataComponentVal;
+			entry_point = 1;
+			version = VERSION_V2 {};
+			filename = "z:\\system\\libs\\dummyuidatamtm.dll"; // this does not exist
+			}
+		};
+	}
+
+
+RESOURCE MTM_CAPABILITIES
+	{
+	}
+	
+RESOURCE MTM_SECURITY_CAPABILITY_SET
+	{
+	// Require some dummy capabilities
+	capabilities = { ECapabilityLocalServices, ECapabilityPowerMgmt };
+	}
+

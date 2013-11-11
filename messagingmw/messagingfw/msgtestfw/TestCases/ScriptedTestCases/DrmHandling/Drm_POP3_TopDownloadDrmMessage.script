@@ -1,0 +1,62 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+// Support script for DRM Handling Tests
+//
+// Name: 
+// Drm_POP3_TopDownloadDrmMessage.script
+//
+// Purpose:
+// This scripts will connect to the POP account
+// and download the first n lines of the test email.
+//
+// Constraints:
+// Needs WinTap or similar connection (NOT NT RAS) and a 
+// functioning POP3 account
+//
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer GetBaseConstants					c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_POP3_TopDownloadDrmMessage.ini GetBaseConstants
+RUN_TEST_STEP 100 MessagingTestServer CreateSession						c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_POP3_TopDownloadDrmMessage.ini CreateSession
+
+RUN_TEST_STEP 100 MessagingTestServer SetDefaultConfiguration			c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_POP3_TopDownloadDrmMessage.ini SetDefaultConfigurationPOP3
+
+RUN_TEST_STEP 100 MessagingTestServer CreatePop3Service					c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_POP3_TopDownloadDrmMessage.ini CreatePop3Service
+
+RUN_TEST_STEP 100 MessagingTestServer CreateRegistry					c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_POP3_TopDownloadDrmMessage.ini CreateRegistry
+RUN_TEST_STEP 100 MessagingTestServer SetPop3ServiceParameters			c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_POP3_TopDownloadDrmMessage.ini SetPop3ServiceParameters
+
+RUN_TEST_STEP 100 MessagingTestServer CreatePop3Mtm						c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_POP3_TopDownloadDrmMessage.ini CreatePop3Mtm
+
+RUN_TEST_STEP 100 MessagingTestServer CreatePop3MailInfo				c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_POP3_TopDownloadDrmMessage.ini CreatePop3MailInfo
+
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer ConnectPop3Server		   			c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_POP3_TopDownloadDrmMessage.ini ConnectPop3Server
+RUN_TEST_STEP 100 MessagingTestServer CreateChildrenSelection			c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_POP3_TopDownloadDrmMessage.ini CreateChildrenSelectionPop3
+RUN_TEST_STEP 100 MessagingTestServer Pop3TopPopulate					c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_POP3_TopDownloadDrmMessage.ini Pop3TopPopulate
+RUN_TEST_STEP 100 MessagingTestServer DisconnectPop3Server				c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_POP3_TopDownloadDrmMessage.ini DisconnectPop3Server
+
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+
+RUN_TEST_STEP 100 MessagingTestServer END_TEST_CASE

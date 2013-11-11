@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>msg-imap-exploratorytesting</name>
+	<timeout>5000</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\email\imap\exploratorytesting\msg-imap-exploratorytesting.script</hostPath>
+			<devicePath>c:\msgtest\email\imap\exploratorytesting\msg-imap-exploratorytesting.script</devicePath>
+		</script>
+		
+		
+	</testScripts>
+
+	<testServers>
+		<server>T_MsgCommonServer</server>
+		<server>T_MsgImapServer</server>
+		<server>T_MsgSmtpServer</server>
+		<server>t_media</server>
+	</testServers>
+
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\email\imap\exploratorytesting\msg-imap-exploratorytesting-1000kb.ini</hostPath>
+			<devicePath>c:\msgtest\email\imap\exploratorytesting\msg-imap-exploratorytesting-1000kb.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-preferred-0007.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-preferred-0007.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\IMAPSettings_test908.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\IMAPSettings_test908.txt</devicePath>
+		</data>
+
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\1000kbody.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\1000kbody.txt</devicePath>
+		</data>	
+	
+		<data>
+			<hostPath>\epoc32\RELEASE\ARMV5\UREL\EventLogServer.exe</hostPath>
+			<devicePath>c:\sys\bin\EventLogServer.exe</devicePath>
+		</data>
+
+	</dependencies>	
+</testExecuteTest>

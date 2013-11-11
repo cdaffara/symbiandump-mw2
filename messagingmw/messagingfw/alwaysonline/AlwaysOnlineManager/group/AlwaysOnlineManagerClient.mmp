@@ -1,0 +1,41 @@
+/*
+* Copyright (c) 2002 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: AlwaysOnline client mmp
+*		
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET          AlwaysOnlineManagerClient.dll
+TARGETTYPE      dll
+UID             0x10004845 0x101F85EA
+VENDORID        VID_DEFAULT
+
+SOURCEPATH      ../src
+SOURCE          AlwaysOnlineManagerClient.cpp
+SOURCE          AOActiveScheduler.cpp
+
+
+USERINCLUDE     ../inc
+USERINCLUDE     ../../inc
+SYSTEMINCLUDE   ../../../../inc
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY         euser.lib  
+LIBRARY         alwaysonlinemanagerserver.lib
+DEBUGLIBRARY    flogger.lib
+
+CAPABILITY      CAP_GENERAL_DLL

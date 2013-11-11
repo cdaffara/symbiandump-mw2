@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>msg-pop-top1</name>
+	<timeout>16000</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\email\pop\top\msg-pop-top1.script</hostPath>
+			<devicePath>c:\msgtest\email\pop\top\msg-pop-top1.script</devicePath>
+		</script>
+	</testScripts>
+
+	<testServers>
+		<server>T_MsgCommonServer</server>
+		<server>T_MsgPopServer</server>
+		<server>T_MsgSmtpServer</server>
+	</testServers>
+
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\email\pop\top\msg-pop-top1.ini</hostPath>
+			<devicePath>c:\msgtest\email\pop\top\msg-pop-top1.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\POPSettings_test908.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\POPSettings_test908.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test1_mail.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test1_mail.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test2_mail.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test2_mail.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test3_mail.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test3_mail.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test4_mail.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test4_mail.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test5_mail.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test5_mail.txt</devicePath>
+		</data>
+	</dependencies>	
+</testExecuteTest>

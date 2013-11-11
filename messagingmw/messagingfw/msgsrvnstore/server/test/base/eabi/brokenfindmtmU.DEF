@@ -1,0 +1,5 @@
+EXPORTS
+	_ZN14CBrokenFindMtm4NewLER17CRegisteredMtmDllR11CMsvSession @ 1 NONAME
+	_ZTI14CBrokenFindMtm @ 2 NONAME ; #<TI>#
+	_ZTV14CBrokenFindMtm @ 3 NONAME ; #<VT>#
+

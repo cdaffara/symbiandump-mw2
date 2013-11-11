@@ -1,0 +1,48 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// handling class 0 sms message - class0sms.dll 
+// 
+//
+
+/**
+ @file
+*/
+
+
+TARGET			class0sms.dll
+TARGETTYPE		PLUGIN
+
+// UIDs - 2nd UID specifies an ECom dll, 3rd UID is unique identifier
+UID			0x10009d8d  0x2000BDF1
+VENDORID 	0x70000001
+
+
+SOURCEPATH	    Src
+SOURCE          class0sms.cpp csmsclass0base.cpp
+
+USERINCLUDE     Inc
+
+//MW_LAYER_SYSTEMINCLUDE_SYMBIAN -- should be this but has dependency on APP layer
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+LIBRARY         euser.lib ecom.lib gsmu.lib biowatcher.lib watcher.lib
+LIBRARY		    wapmsgcli.lib bafl.lib efsrv.lib
+
+CAPABILITY ReadDeviceData WriteDeviceData NetworkServices LocalServices ReadUserData WriteUserData
+
+start resource  2000BDF1.rss
+target          class0sms.rsc
+end
+
+SMPSAFE

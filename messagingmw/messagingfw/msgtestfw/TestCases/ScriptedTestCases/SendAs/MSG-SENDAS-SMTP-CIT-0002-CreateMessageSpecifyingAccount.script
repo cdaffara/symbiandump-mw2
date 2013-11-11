@@ -1,0 +1,63 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+//! @file
+//! @SYMTestCaseID 		CM-SENDAS-CIT-0002-HP
+//! @SYMTestCaseDesc 		Create SMTP Message using SendAs API, specifying the account
+//! @SYMFssID 
+//! @SYMTestStatus 		Defined
+//! @SYMTestPriority 		High
+//! @SYMTestActions 
+//! @SYMTestExpectedResults 	A SMTP message is created in the Drafts folder
+//! @SYMTestType 		CIT
+
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+GetBaseConstants		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0002-CreateMessageSpecifyingAccount.ini	GetBaseConstants
+DeletePopAccounts		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0002-CreateMessageSpecifyingAccount.ini	DeletePopAccounts
+DeleteImapAccounts		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0002-CreateMessageSpecifyingAccount.ini	DeleteImapAccounts
+CountPopAccountsInArray		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0002-CreateMessageSpecifyingAccount.ini	CountPopAccounts1
+CountImapAccountsInArray	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0002-CreateMessageSpecifyingAccount.ini	CountImapAccounts1
+CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0002-CreateMessageSpecifyingAccount.ini	CreateSession
+ResetMessageStore		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0002-CreateMessageSpecifyingAccount.ini	ResetMessageStore
+CreateImapAccount 		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0002-CreateMessageSpecifyingAccount.ini	CreateImapAccount1
+CreateSmtpService		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0002-CreateMessageSpecifyingAccount.ini	CreateSmtpService
+CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0002-CreateMessageSpecifyingAccount.ini	CreateRegistry
+CreateSmtpMtm			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0002-CreateMessageSpecifyingAccount.ini	CreateSmtpMtm
+SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0002-CreateMessageSpecifyingAccount.ini	SetDefaultConfiguration0
+SetSmtpServiceParameters	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0002-CreateMessageSpecifyingAccount.ini	SetSmtpServiceParameters
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0002-CreateMessageSpecifyingAccount.ini	ChkChildrenCountDraft0
+EXECUTE_TEST_CASE
+ChangeDefaultSmtpService	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0002-CreateMessageSpecifyingAccount.ini	ChangeDefaultSmtpService
+ConnectSendAsServer		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0002-CreateMessageSpecifyingAccount.ini	ConnectSendAsServer
+GetSMTPMTMUId			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0002-CreateMessageSpecifyingAccount.ini	GetSMTPMTMUId
+SendAsGetAvailableAccounts	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0002-CreateMessageSpecifyingAccount.ini	GetAvailableAccounts
+SendAsGetAvailableAccounts	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0002-CreateMessageSpecifyingAccount.ini	GetAvailableAccounts
+SendAsGetAccountNames		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0002-CreateMessageSpecifyingAccount.ini	GetAccountNames
+CountAvailableAccounts		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0002-CreateMessageSpecifyingAccount.ini	CountAvailableAccounts1
+SendAsGetAccount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0002-CreateMessageSpecifyingAccount.ini	GetAccount
+SendAsCreateMessageWithAccount	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0002-CreateMessageSpecifyingAccount.ini	CreateMessageWithAccount
+SendAsSaveMessageAndClose	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0002-CreateMessageSpecifyingAccount.ini	SendAsSaveMessageAndClose
+CloseSendAsServerConnection	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0002-CreateMessageSpecifyingAccount.ini	CloseSvrConnection
+CHECK_POSTCONDITIONS
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0002-CreateMessageSpecifyingAccount.ini	ChkChildrenCountDraft1
+END_TEST_CASE

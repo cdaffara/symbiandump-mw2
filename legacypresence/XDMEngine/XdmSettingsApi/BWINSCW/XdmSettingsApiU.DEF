@@ -1,0 +1,20 @@
+EXPORTS
+	??0CXdmSettingsCollection@@QAE@XZ @ 1 NONAME ; CXdmSettingsCollection::CXdmSettingsCollection(void)
+	??1CXdmSettingsCollection@@UAE@XZ @ 2 NONAME ; CXdmSettingsCollection::~CXdmSettingsCollection(void)
+	??1CXdmSettingsProperty@@UAE@XZ @ 3 NONAME ; CXdmSettingsProperty::~CXdmSettingsProperty(void)
+	?AppendL@CXdmSettingsCollection@@QAEXABVTDesC16@@W4TXdmSettingsProperty@@@Z @ 4 NONAME ; void CXdmSettingsCollection::AppendL(class TDesC16 const &, enum TXdmSettingsProperty)
+	?CollectionNamesLC@TXdmSettingsApi@@SAPAVCDesC16Array@@AAV?$RArray@H@@@Z @ 5 NONAME ; class CDesC16Array * TXdmSettingsApi::CollectionNamesLC(class RArray<int> &)
+	?Count@CXdmSettingsCollection@@QBEHXZ @ 6 NONAME ; int CXdmSettingsCollection::Count(void) const
+	?CreateCollectionL@TXdmSettingsApi@@SAHABVCXdmSettingsCollection@@@Z @ 7 NONAME ; int TXdmSettingsApi::CreateCollectionL(class CXdmSettingsCollection const &)
+	?CreatePropertyL@TXdmSettingsApi@@SAXHABVTDesC16@@W4TXdmSettingsProperty@@@Z @ 8 NONAME ; void TXdmSettingsApi::CreatePropertyL(int, class TDesC16 const &, enum TXdmSettingsProperty)
+	?Property@CXdmSettingsCollection@@QBE?AVTPtrC16@@W4TXdmSettingsProperty@@@Z @ 9 NONAME ; class TPtrC16 CXdmSettingsCollection::Property(enum TXdmSettingsProperty) const
+	?Property@CXdmSettingsCollection@@QBEABVCXdmSettingsProperty@@H@Z @ 10 NONAME ; class CXdmSettingsProperty const & CXdmSettingsCollection::Property(int) const
+	?PropertyL@TXdmSettingsApi@@SAPAVHBufC16@@HW4TXdmSettingsProperty@@@Z @ 11 NONAME ; class HBufC16 * TXdmSettingsApi::PropertyL(int, enum TXdmSettingsProperty)
+	?PropertyName@CXdmSettingsProperty@@QBE?AW4TXdmSettingsProperty@@XZ @ 12 NONAME ; enum TXdmSettingsProperty CXdmSettingsProperty::PropertyName(void) const
+	?PropertyValue@CXdmSettingsProperty@@QBE?AVTPtrC16@@XZ @ 13 NONAME ; class TPtrC16 CXdmSettingsProperty::PropertyValue(void) const
+	?RemoveCollectionL@TXdmSettingsApi@@SAXH@Z @ 14 NONAME ; void TXdmSettingsApi::RemoveCollectionL(int)
+	?RemoveL@CXdmSettingsCollection@@QAEXW4TXdmSettingsProperty@@@Z @ 15 NONAME ; void CXdmSettingsCollection::RemoveL(enum TXdmSettingsProperty)
+	?RemovePropertyL@TXdmSettingsApi@@SAXHW4TXdmSettingsProperty@@@Z @ 16 NONAME ; void TXdmSettingsApi::RemovePropertyL(int, enum TXdmSettingsProperty)
+	?SettingsCollectionL@TXdmSettingsApi@@SAPAVCXdmSettingsCollection@@H@Z @ 17 NONAME ; class CXdmSettingsCollection * TXdmSettingsApi::SettingsCollectionL(int)
+	?UpdatePropertyL@TXdmSettingsApi@@SAXHABVTDesC16@@W4TXdmSettingsProperty@@@Z @ 18 NONAME ; void TXdmSettingsApi::UpdatePropertyL(int, class TDesC16 const &, enum TXdmSettingsProperty)
+

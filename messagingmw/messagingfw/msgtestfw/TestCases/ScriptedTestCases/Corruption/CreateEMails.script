@@ -1,0 +1,52 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+RUN_UTILS MkDir c:\private\1000484b\Mail2\
+RUN_UTILS MkDir c:\private\1000484b\Mail2\00001001_S\
+RUN_UTILS MkDir c:\private\1000484b\Mail2\00100000_S\
+RUN_UTILS MkDir c:\private\1000484b\Mail2\00100001_S\
+RUN_UTILS MkDir c:\private\1000484b\Mail2\00001001_S\2\
+RUN_UTILS MkDir c:\private\1000484b\Mail2\00001001_S\4\
+RUN_UTILS MkDir c:\private\1000484b\Mail2\00001001_S\5\
+RUN_UTILS MkDir c:\private\1000484b\Mail2\00001001_S\6\
+RUN_UTILS MkDir c:\private\1000484b\Mail2\00001001_S\7\
+RUN_UTILS MkDir c:\private\1000484b\Mail2\00001001_S\8\
+RUN_UTILS MkDir c:\private\1000484b\Mail2\00001001_S\a\
+RUN_UTILS MkDir c:\private\1000484b\Mail2\00001001_S\b\
+RUN_UTILS MkDir c:\private\1000484b\Mail2\00001001_S\c\
+RUN_UTILS MkDir c:\private\1000484b\Mail2\00001001_S\d\
+RUN_UTILS MkDir c:\private\1000484b\Mail2\00001001_S\6\00100006_F\
+RUN_UTILS MkDir c:\private\1000484b\Mail2\00001001_S\7\00100007_F\
+RUN_UTILS MkDir c:\private\1000484b\Mail2\00001001_S\c\0010000c_F\
+RUN_UTILS MkDir c:\private\1000484b\Mail2\00001001_S\d\0010000d_F\
+
+RUN_UTILS CopyFile c:\msgtest\TestFramework\ScriptedTestCases\Corruption\data\00100000			c:\private\1000484b\Mail2\00100000
+RUN_UTILS CopyFile c:\msgtest\TestFramework\ScriptedTestCases\Corruption\data\00100001			c:\private\1000484b\Mail2\00100001
+RUN_UTILS CopyFile c:\msgtest\TestFramework\ScriptedTestCases\Corruption\data\Index				c:\private\1000484b\Mail2\Index
+RUN_UTILS CopyFile c:\msgtest\TestFramework\ScriptedTestCases\Corruption\data\00100002			c:\private\1000484b\Mail2\00001001_S\2\00100002
+RUN_UTILS CopyFile c:\msgtest\TestFramework\ScriptedTestCases\Corruption\data\00100004			c:\private\1000484b\Mail2\00001001_S\4\00100004
+RUN_UTILS CopyFile c:\msgtest\TestFramework\ScriptedTestCases\Corruption\data\00100005			c:\private\1000484b\Mail2\00001001_S\5\00100005
+RUN_UTILS CopyFile c:\msgtest\TestFramework\ScriptedTestCases\Corruption\data\00100006			c:\private\1000484b\Mail2\00001001_S\6\00100006
+RUN_UTILS CopyFile c:\msgtest\TestFramework\ScriptedTestCases\Corruption\data\Attachment.html	c:\private\1000484b\Mail2\00001001_S\6\00100006_F\Attachment.html
+RUN_UTILS CopyFile c:\msgtest\TestFramework\ScriptedTestCases\Corruption\data\00100007			c:\private\1000484b\Mail2\00001001_S\7\00100007
+RUN_UTILS CopyFile c:\msgtest\TestFramework\ScriptedTestCases\Corruption\data\Fix_crop.jpg		c:\private\1000484b\Mail2\00001001_S\7\00100007_F\Fix_crop.jpg
+RUN_UTILS CopyFile c:\msgtest\TestFramework\ScriptedTestCases\Corruption\data\00100008			c:\private\1000484b\Mail2\00001001_S\8\00100008
+RUN_UTILS CopyFile c:\msgtest\TestFramework\ScriptedTestCases\Corruption\data\0010000a			c:\private\1000484b\Mail2\00001001_S\a\0010000a
+RUN_UTILS CopyFile c:\msgtest\TestFramework\ScriptedTestCases\Corruption\data\0010000b			c:\private\1000484b\Mail2\00001001_S\b\0010000b
+RUN_UTILS CopyFile c:\msgtest\TestFramework\ScriptedTestCases\Corruption\data\0010000c			c:\private\1000484b\Mail2\00001001_S\c\0010000c
+RUN_UTILS CopyFile c:\msgtest\TestFramework\ScriptedTestCases\Corruption\data\Attachment.html	c:\private\1000484b\Mail2\00001001_S\c\0010000c_F\Attachment.html
+RUN_UTILS CopyFile c:\msgtest\TestFramework\ScriptedTestCases\Corruption\data\0010000d			c:\private\1000484b\Mail2\00001001_S\d\0010000d
+RUN_UTILS CopyFile c:\msgtest\TestFramework\ScriptedTestCases\Corruption\data\Fix_crop.jpg		c:\private\1000484b\Mail2\00001001_S\d\0010000d_F\Fix_crop.jpg

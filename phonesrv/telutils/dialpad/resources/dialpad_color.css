@@ -1,0 +1,27 @@
+
+
+/* backspace */
+DialpadButton[state = "normal"][buttonType = "1"]::icon{
+    color: var(qtc_input_function_normal);
+}
+
+DialpadButton[state = "pressed"][buttonType = "1"]::icon{
+    color: var(qtc_input_function_pressed);
+}
+
+DialpadButton[buttonType = "1"]::icon[!enabled]{
+    color: var(qtc_input_function_disabled);
+}
+
+/* call button */
+DialpadButton[state = "normal"][buttonType = "2"]::icon{
+    color: var(qtc_callhandling_answer_normal);
+}
+
+DialpadButton[state = "pressed"][buttonType = "2"]::icon{
+    color: var(qtc_callhandling_answer_pressed);
+}
+
+DialpadButton[buttonType = "2"]::icon[!enabled]{
+    color: var(qtc_input_function_disabled);
+}

@@ -1,0 +1,97 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Resource file for ECOM registry.
+*
+*/
+
+
+// INCLUDES
+#include <ecom/registryinfo.rh>
+#include <mmf/plugin/mmfplugininterfaceuids.hrh>
+#include "mmfaudiotonecontroller.hrh"
+//  RESOURCE DEFINITIONS 
+// -----------------------------------------------------------------------------
+//   
+// theInfo
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE REGISTRY_INFO theInfo
+	{
+	dll_uid = 0x101F7D95;
+	interfaces = 
+		{
+		INTERFACE_INFO
+			{
+			interface_uid = KMmfUidPluginInterfaceController ;
+			implementations = 
+				{
+				IMPLEMENTATION_INFO
+					{
+					implementation_uid = KMmfUidControllerAudioTone ;
+					version_no = 1;
+					display_name = "Symbian Audio Tone controller";
+					default_data = "?";
+					opaque_data = "<s>Symbian<i>0x101F5D07<p>0x101F7DC4";
+					}
+				};
+			},
+		INTERFACE_INFO
+			{
+			interface_uid = KMmfUidToneSequenceFormatInterface;
+			implementations = 
+				{
+				BINARY_IMPLEMENTATION_INFO
+					{
+					implementation_uid = KMmfUidToneSequenceFormatRead4 ;
+					version_no = 1;
+					display_name = "Tone Sequence Play Format";
+					default_data = {0x3f};
+					opaque_data = {0x3c, 0x73, 0x3e, 0x4e, 0x6f, 0x6b , 0x69 , 0x61, 0x3c, 0x69, 0x3e, 0x30, 0x78, 0x31, 0x30, 0x31, 0x46, 0x35, 0x44, 0x30, 0x37, 
+						0x3c, 0x68, 0x3e, /*0x3f,*/ 0x00, 0x11, 0x06,
+						0x3c, 0x68, 0x3e, 0x02, 0x4a, 0x3a,
+						0x3c, 0x65, 0x3e, 0x3f };
+					},
+
+				IMPLEMENTATION_INFO
+					{
+					implementation_uid = KMmfUidToneSequenceFormatRead3 ;
+					version_no = 1;
+					display_name = "Tone Sequence Play Format";
+					default_data = "?";
+					opaque_data = "<s>Symbian<i>0x101F5D07<h>?application/vnd.nokia.ringing-tone<e>.rng<e>.nrt";
+					},
+				IMPLEMENTATION_INFO
+					{
+					implementation_uid = KMmfUidToneSequenceFormatRead ;
+					version_no = 1;
+					display_name = "Tone Sequence Play Format";
+					default_data = "?";
+					opaque_data = "<s>Symbian<i>0x101F5D07<e>.rng<e>.nrt";
+					},
+				IMPLEMENTATION_INFO
+					{
+					implementation_uid = KMmfUidToneSequenceFormatRead2 ;
+					version_no = 1;
+					display_name = "Tone Sequence Play Format";
+					default_data = "?";
+					opaque_data = "<s>Symbian<i>0x101F5D07<e>.sqn<h>SQNC";
+					}
+
+				};
+			}
+		};
+	}
+
+// End of file

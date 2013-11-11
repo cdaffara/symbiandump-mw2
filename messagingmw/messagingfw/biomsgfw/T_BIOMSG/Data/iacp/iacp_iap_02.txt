@@ -1,0 +1,9 @@
+//SIAP11
+password
+Iname:Demon
+Itel:+447818044588
+//Inop:10.0.0.0; 10.0.0.1; 10.0.0.3
+//Iprx:100.101.102.103
+//Ippo:99999
+//Ilgn:0 
+//Icmp:Y

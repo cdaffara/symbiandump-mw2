@@ -1,0 +1,5 @@
+EXPORTS
+	??1CMPSettingsModel@@UAE@XZ @ 1 NONAME ; CMPSettingsModel::~CMPSettingsModel(void)
+	?ListImplementationsL@CMPSettingsModel@@SAXAAV?$RPointerArray@VCImplementationInformation@@@@@Z @ 2 NONAME ; void CMPSettingsModel::ListImplementationsL(class RPointerArray<class CImplementationInformation> &)
+	?NewL@CMPSettingsModel@@SAPAV1@VTUid@@@Z @ 3 NONAME ; class CMPSettingsModel * CMPSettingsModel::NewL(class TUid)
+

@@ -1,0 +1,50 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+//********************************
+// Cap_Setup.script
+//********************************
+// Enure that we have a copy of MessagingTestServer_caps.exe  on c:
+// And that we pick up no other copies of MessagingTestServer.exe from anywhere except c:.
+
+PRINT Running  Cap_Setup.script :
+
+//********************************
+
+
+RUN_PROGRAM -1 CapUtils RenameIfEmulator MessagingTestServer.exe z:\sys\bin\MessagingTestServer.tmp
+	// Ensure that we do not pick up a rogue copy MessagingTestServer.exe from z:.
+	// We change caps on c: and want to ensure that c:/../../MessagingTestServer.exe is picked up. 
+	// Note we only report an error if we have the file and can not change its name.
+	
+	// IMPORTANT THIS FAILS IF THE FILE EXISTS AND CANNOT BE MOVED> THE LIKLYHOOD IS THAT SOMETHING HAS A FILE LOCK ON THE FILE
+	// (i.e. CW) SO THAT IT CAN NOT BE MOVED. UNFORTUNATLY THIS WILL BE PICED UP FIRST CAUSING CAPABILITIES TEST TO FAIL.
+	// Remove the MessagingTestServer from CW, this should free up the lock.
+	
+	
+RUN_UTILS CopyFile  z:\sys\bin\MessagingTestServer_Caps.exe c:\msgtest\MessagingTestServer_Caps.exe
+	// Put MessagingTestServer_Caps.exe on c: so that we start with it in the same place on both the emulator and the hardware.
+
+RUN_UTILS CopyFile z:\sys\bin\SendProxyServer_caps.exe c:\msgtest\SendProxyServer_caps.exe
+
+
+RUN_PROGRAM -1 CapUtils RenameIfExists c:\sys\bin\MessagingTestServer.exe c:\sys\bin\MessagingTestServer.tmp
+	// Preserve the current MessagingTestServer.exe (particulaty its caps and sid) if it is on the c:.
+	// So other code before and after still runs correctly.
+
+
+
+//********************************

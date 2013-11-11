@@ -1,0 +1,8 @@
+EXPORTS
+	_ZN14CMetaDataWrite14CommitMetaDataEv @ 1 NONAME
+	_ZN14CMetaDataWrite16EnableDelayWriteEv @ 2 NONAME
+	_ZN14CMetaDataWrite4NewLER24CMdaAudioRecorderUtility @ 3 NONAME
+	_ZN33CMetaDataWriteCustomCommandParser4NewLER38MMetaDataWriteCustomCommandImplementor @ 4 NONAME
+	_ZTI33CMetaDataWriteCustomCommandParser @ 5 NONAME ; #<TI>#
+	_ZTV33CMetaDataWriteCustomCommandParser @ 6 NONAME ; #<VT>#
+

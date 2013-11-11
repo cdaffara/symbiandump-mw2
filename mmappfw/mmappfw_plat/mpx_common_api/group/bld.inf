@@ -1,0 +1,77 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  File that exports the files belonging to 
+:                mpx common API
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+          
+../inc/mpxattribute.h                            MW_LAYER_PLATFORM_EXPORT_PATH(mpxattribute.h)
+../inc/mpxcenrepobserver.h                       MW_LAYER_PLATFORM_EXPORT_PATH(mpxcenrepobserver.h)
+../inc/mpxcenrepwatcher.h                        MW_LAYER_PLATFORM_EXPORT_PATH(mpxcenrepwatcher.h)
+../inc/mpxclientlist.h                           MW_LAYER_PLATFORM_EXPORT_PATH(mpxclientlist.h)
+../inc/mpxclientlist.inl                         MW_LAYER_PLATFORM_EXPORT_PATH(mpxclientlist.inl)
+../inc/mpxcollectionpath.h                       MW_LAYER_PLATFORM_EXPORT_PATH(mpxcollectionpath.h)
+../inc/mpxcollectiontype.h                       MW_LAYER_PLATFORM_EXPORT_PATH(mpxcollectiontype.h)
+../inc/mpxcollectiontype.inl                     MW_LAYER_PLATFORM_EXPORT_PATH(mpxcollectiontype.inl)
+../inc/mpxcommandgeneraldefs.h                   MW_LAYER_PLATFORM_EXPORT_PATH(mpxcommandgeneraldefs.h)
+../inc/mpxcustomcommandobserver.h                MW_LAYER_PLATFORM_EXPORT_PATH(mpxcustomcommandobserver.h)
+../inc/mpxdata.h                                 MW_LAYER_PLATFORM_EXPORT_PATH(mpxdata.h)
+../inc/mpxdrmmediautility.h                      MW_LAYER_PLATFORM_EXPORT_PATH(mpxdrmmediautility.h)
+../inc/mpxmedia.h                                MW_LAYER_PLATFORM_EXPORT_PATH(mpxmedia.h)
+../inc/mpxmedia.inl                              MW_LAYER_PLATFORM_EXPORT_PATH(mpxmedia.inl)
+../inc/mpxmediaarray.h                           MW_LAYER_PLATFORM_EXPORT_PATH(mpxmediaarray.h)
+../inc/mpxmediaaudiodefs.h                       MW_LAYER_PLATFORM_EXPORT_PATH(mpxmediaaudiodefs.h)
+
+../inc/mpxmediabase.h                            MW_LAYER_PLATFORM_EXPORT_PATH(mpxmediabase.h)
+../inc/mpxmediabase.inl                          MW_LAYER_PLATFORM_EXPORT_PATH(mpxmediabase.inl)
+
+../inc/mpxmediacollectiondetaildefs.h            MW_LAYER_PLATFORM_EXPORT_PATH(mpxmediacollectiondetaildefs.h)
+../inc/mpxmediacontainerdefs.h                   MW_LAYER_PLATFORM_EXPORT_PATH(mpxmediacontainerdefs.h)
+../inc/mpxmediadrmdefs.h                         MW_LAYER_PLATFORM_EXPORT_PATH(mpxmediadrmdefs.h)
+../inc/mpxmediageneraldefs.h                     MW_LAYER_PLATFORM_EXPORT_PATH(mpxmediageneraldefs.h)
+//../inc/mpxmediaimagedefs.h                       MW_LAYER_PLATFORM_EXPORT_PATH(mpxmediaimagedefs.h)
+../inc/mpxmediamtpdefs.h                         MW_LAYER_PLATFORM_EXPORT_PATH(mpxmediamtpdefs.h)
+../inc/mpxmediamusicdefs.h                       MW_LAYER_PLATFORM_EXPORT_PATH(mpxmediamusicdefs.h)
+../inc/mpxmessage.h                              MW_LAYER_PLATFORM_EXPORT_PATH(mpxmessage.h)
+../inc/mpxmessagecontainerdefs.h                 MW_LAYER_PLATFORM_EXPORT_PATH(mpxmessagecontainerdefs.h)
+../inc/mpxmessagegeneraldefs.h                   MW_LAYER_PLATFORM_EXPORT_PATH(mpxmessagegeneraldefs.h)
+../inc/mpxmessagemonitor.h                       MW_LAYER_PLATFORM_EXPORT_PATH(mpxmessagemonitor.h)
+../inc/mpxmessageobserver.h                      MW_LAYER_PLATFORM_EXPORT_PATH(mpxmessageobserver.h)
+../inc/mpxmessageprogressdefs.h                  MW_LAYER_PLATFORM_EXPORT_PATH(mpxmessageprogressdefs.h)
+../inc/mpxmessagequeue.h                         MW_LAYER_PLATFORM_EXPORT_PATH(mpxmessagequeue.h)
+../inc/mpxparameter.h                            MW_LAYER_PLATFORM_EXPORT_PATH(mpxparameter.h)
+../inc/mpxpluginhandlerbase.h                    MW_LAYER_PLATFORM_EXPORT_PATH(mpxpluginhandlerbase.h)
+../inc/mpxpluginhandlerobserver.h                MW_LAYER_PLATFORM_EXPORT_PATH(mpxpluginhandlerobserver.h)  
+../inc/mpxpluginmonitor.h                        MW_LAYER_PLATFORM_EXPORT_PATH(mpxpluginmonitor.h)
+../inc/mpxpluginmonitorobserver.h                MW_LAYER_PLATFORM_EXPORT_PATH(mpxpluginmonitorobserver.h)
+../inc/mpxplugin.hrh                             MW_LAYER_PLATFORM_EXPORT_PATH(mpxplugin.hrh)
+../inc/mpxpodcastdefs.h                          MW_LAYER_PLATFORM_EXPORT_PATH(mpxpodcastdefs.h)
+../inc/mpxpskeyobserver.h                        MW_LAYER_PLATFORM_EXPORT_PATH(mpxpskeyobserver.h)
+../inc/mpxpskeywatcher.h                         MW_LAYER_PLATFORM_EXPORT_PATH(mpxpskeywatcher.h)
+../inc/mpxsession.h                              MW_LAYER_PLATFORM_EXPORT_PATH(mpxsession.h)
+../inc/mpxtaskqueue.h                            MW_LAYER_PLATFORM_EXPORT_PATH(mpxtaskqueue.h)
+../inc/mpxtaskqueueobserver.h                    MW_LAYER_PLATFORM_EXPORT_PATH(mpxtaskqueueobserver.h)
+../inc/mpxuser.h                                 MW_LAYER_PLATFORM_EXPORT_PATH(mpxuser.h)
+../inc/mpxsubscription.h                         MW_LAYER_PLATFORM_EXPORT_PATH(mpxsubscription.h)
+../inc/mpxplugininfo.h                           MW_LAYER_PLATFORM_EXPORT_PATH(mpxplugininfo.h)
+../inc/mpxmessagepluginupdatedefs.h              MW_LAYER_PLATFORM_EXPORT_PATH(mpxmessagepluginupdatedefs.h)  
+../inc/mpxmediageneralextdefs.h                  MW_LAYER_PLATFORM_EXPORT_PATH(mpxmediageneralextdefs.h)

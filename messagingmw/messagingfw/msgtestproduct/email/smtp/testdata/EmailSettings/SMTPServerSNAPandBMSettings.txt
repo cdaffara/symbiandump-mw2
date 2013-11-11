@@ -1,0 +1,11 @@
+ServerName =  msexchange2k.closedtest.intra
+
+ImapServerAddress =  msexchange2k.closedtest.intra
+ImapSearchString =
+ImapPathSeperator = /
+ImapFolderPath = 
+ImapSNAPId = 1
+
+SmtpServerAddress = msexchange2k.closedtest.intra
+SmtpSNAPId = 1
+SmtpBearerMobility = 1

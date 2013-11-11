@@ -1,0 +1,88 @@
+// *****************************************
+//  
+//  Author:	Stephen Lewis
+//  Date:	13/03/03
+//
+// Tests use of IMAP with secure sockets. 
+//
+// 
+// TO run t_email testing rename this file 
+// to script.txt and copy it to 
+// c:\msgtest\emailsmoke
+//
+// Requirements:
+//    Server must have a folder named testinbox.
+// 
+// *****************************************
+
+[main]
+email_client_test email
+
+// *****************************************
+
+[email]
+imap_client_test imap_testing_Case
+
+// *****************************************
+
+//
+// Prepare remote inbox for testing
+//
+[imap_testing_Case]
+clean_message_folder
+add_comment Start client Session
+start_client_session
+add_comment Select IMAP service
+select_root_folder
+imap_service imap_service
+select_folder test_imap_service
+add_comment Connect
+connect
+add_comment Connect Complete
+check_imap_error 0
+sync_tree
+check_imap_error 0
+//
+//Select a foleder testinbox on the server
+//and then download a message
+select_root_folder
+select_folder test_imap_service
+select_folder testinbox
+sync_folder
+check_imap_error 0
+select_all_messages
+add_comment select 1 message
+select_first_in_selection 1
+add_comment  Download  Email 
+populate_folder
+check_imap_error 0
+add_comment Email Downloaded
+add_comment disconnect
+disconnect
+check_imap_error 0
+
+
+//
+// defining email server:
+//
+[imap_service]
+set_name test_imap_service
+// NOKIA
+set_server avavir.it.cellulardata.com
+set_user kamineni
+set_pass vamSym
+set_tls 0
+set_wrapped_tls 1
+set_port 993
+
+
+// Stalker trmai02.it.cellulardata.com now passes
+// alternate username: mendonca
+// alternate password: keiSym
+//
+// Any of the following No can be used to access this server
+// +358 3 3617 770
+// +358 3 31520 444
+// +358 3 31520 111
+// +358 3 31520 999
+// *****************************************

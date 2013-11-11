@@ -1,0 +1,86 @@
+/*****************************************************
+   Description: Test Swap when both calls are created
+   with different plug-in. When Swap is called for
+   CS call, CCE only calls Swap for the other call.
+   When Swap is called for PS call, CCE calls
+   plug-in's Swap for both calls. When there is
+   one CS and one PS call, the latter way is used.
+   
+   1. Create MO CS call
+   2. Put call on Hold
+   3. Create 2nd call, MO PS
+   4. Swap (connected call)
+   		Result: 2nd call is put on Hold, 1st is resumed
+   5. Swap (connected call)
+   		Result: 1st call is put on Hold, 2nd is resumed
+   6. Disconnect calls
+******************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 2.3.4 Swap, PS and CS
+timeout 10000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test OpenNewCall 1 0 +319351835913958 1 ECCECallTypeCSVoice ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+// Step 2
+print Step_2
+
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+// Step 3
+print Step_3
+
+test OpenNewCall 2 0 Recipient2-PS@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 2 0 SubAddress Bearer
+test WaitEvent 2 Dialling
+test WaitEvent 2 Connecting
+test WaitEvent 2 Connected
+
+// Step 4
+print Step_4
+
+test Swap 2 0
+test WaitEvents 2 Hold, 1 Connected, 1 LocalResume, 2 LocalHold
+
+// Step 5
+print Step_5
+
+test Swap 1 0
+test WaitEvents 1 Hold, 2 Connected, 2 LocalResume, 1 LocalHold
+
+// Step 6
+print Step_6
+
+// Hangup and release calls
+test HangUp 1 0
+
+// CS Swap not completed, so it is cancelled
+test WaitEvent 1 ErrorOccurred -3
+
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+test HangUp 2 0
+test WaitEvent 2 ErrorOccurred -3
+test WaitEvent 2 Disconnecting
+test WaitEvent 2 Idle
+test Release 2 0
+
+test VerifyTest
+delete test
+[Endtest]

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<relnotes name="Scheduled Send MTM">
+  <purpose>
+    Supports scheduled sending of messages including SMS and fax by messaging MTMs.
+  </purpose>
+
+  <deliverystep number="1462" name="Splitting mixed header files for Messaging" osproject="SymTB92" revision="007">
+   <preq number="2510" title=" Splitting mixed header files for Messaging">
+    Mixed header files will now contain only published All or published Partner or internal
+   </preq>
+    <milestone project="GT0465" number="3.5"/>
+  </deliverystep>
+
+  <defect number="DEF128078" title="@prototype tags in messaging" revision="006">
+      Added IM tag message server.
+    </defect>  
+
+  <defect number="DEF126024" title="T_ScheduleSend fails creating service" revision="005">
+    T_ScheduleSend fails creating service.
+  </defect>
+
+  <defect number="PDEF121668" title="MMS and SMS sending is broken" revision="004">
+    Used RScheduler to check if message task ids are within range or not.
+  </defect>
+
+  <defect number="PDEF111034" title="Failing sms sending does not update log entry" revision="003">
+    ResetScheduleInfoForEntryL, the entry was not updated, when the message is failed to send after repeated tries.This is now done. 
+  </defect>
+  <defect number="DEF108002" title="Warnings generated with checksource build  " revision="002">
+    Added condition to differentiate the winscw and armv5 def files for case sensitive 
+  </defect>
+
+  <deliverystep number="500" name="Messaging file name changes to support GNU compiler for Linux" osproject="Oghma" revision="001">
+    <preq number="1182" title="GNU Make-based build system">
+    GNU Make-based build system
+  </preq>
+    <milestone project="GT0342" number="3.3"/>
+  </deliverystep>
+</relnotes>

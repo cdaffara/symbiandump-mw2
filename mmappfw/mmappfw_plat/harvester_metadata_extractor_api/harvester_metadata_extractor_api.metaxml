@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<api id="4c8fdd4e023adfbdce4c7eb9c269c27d" dataversion="2.0">
+<name>Harvester Metadata Extractor API</name>
+<description>Extracts metadata from a file</description>
+<type>c++</type>
+<collection>mmappcomponents</collection>
+<libs>
+<lib name="mpxmetadataextractor.lib"/>
+</libs>
+<release category="platform" sinceversion=""/>
+<attributes>
+<htmldocprovided>no</htmldocprovided>
+<adaptation>no</adaptation>
+</attributes>
+</api>

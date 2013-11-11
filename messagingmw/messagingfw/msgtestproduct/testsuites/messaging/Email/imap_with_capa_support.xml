@@ -1,0 +1,29 @@
+<?xml version="1.0" ?> 
+<!DOCTYPE testSuite SYSTEM "file:///c:/program files/common files/symbian/testSuite.dtd" [ ]>
+
+<testSuite>
+	<name>Imap</name> 
+	<testItems>
+		<suite>media</suite>
+		<suite>performance</suite>
+		<suite>folder </suite> 
+		<suite>cenrep</suite>
+		<suite>connect</suite>
+		<suite>general</suite>
+		<suite>sizefilter</suite>
+		<suite>search</suite>
+	<!--	<suite>offline</suite> -->
+		<suite>downloadrules</suite>
+		<suite>transportbuffersizes</suite>
+		<suite>bearermobility</suite>
+		<suite>plainbody</suite>
+		<suite>ram</suite>
+	<!-- 	<suite>snap</suite> -->
+		<suite>tls</suite> 
+		<suite>message</suite>
+		<suite>idle</suite>
+		<suite>sync</suite>
+		<suite>binarydownloadsupport</suite>
+	<!-- 	<suite>unit</suite> -->
+	</testItems>
+</testSuite>

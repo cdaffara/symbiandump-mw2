@@ -1,0 +1,1072 @@
+EXPORTS
+	_Z13NullFunction1v @ 1 NONAME ABSENT
+	_Z13NullFunction2v @ 2 NONAME ABSENT
+	_Z18StartMessageServerPv @ 3 NONAME
+	_Z20CreateMessageServerLRP15CMsvServerEntry @ 4 NONAME
+	_ZN10CMsgActive10DoCompleteERi @ 5 NONAME
+	_ZN10CMsgActive4RunLEv @ 6 NONAME
+	_ZN10CMsgActive5QueueER14TRequestStatus @ 7 NONAME
+	_ZN10CMsgActive8CompleteEi @ 8 NONAME
+	_ZN10CMsgActive8DoCancelEv @ 9 NONAME
+	_ZThn4_N8CBaseMtm17HandleEntryEventLEN17MMsvEntryObserver14TMsvEntryEventEPvS2_S2_ @ 10 NONAME ; #<thunk>#
+	_ZN10CMsgActiveC2Ei @ 11 NONAME
+	_ZN10CMsgActiveD0Ev @ 12 NONAME
+	_ZN10CMsgActiveD1Ev @ 13 NONAME
+	_ZN10CMsgActiveD2Ev @ 14 NONAME
+	_ZN10CMsvServer11ChangeDriveEiP14TRequestStatus @ 15 NONAME
+	_ZN10CMsvServer12CreateIndexLEi @ 16 NONAME ABSENT
+	_ZN10CMsvServer4NewLERK7TDesC16 @ 17 NONAME ABSENT
+	_ZN11CMsvSession10OpenAsyncLER19MMsvSessionObserver @ 18 NONAME
+	_ZN11CMsvSession12AddObserverLER19MMsvSessionObserver @ 19 NONAME
+	_ZN11CMsvSession12ChangeDriveLEiR14TRequestStatus @ 20 NONAME
+	_ZN11CMsvSession12CleanupEntryEPv @ 21 NONAME
+	_ZN11CMsvSession12GetChildIdsLElRK15CMsvEntryFilterR18CMsvEntrySelection @ 22 NONAME
+	_ZN11CMsvSession14RemoveObserverER19MMsvSessionObserver @ 23 NONAME
+	_ZN11CMsvSession15CleanupEntryPopEi @ 24 NONAME
+	_ZN11CMsvSession15DecPcSyncCountLERK18CMsvEntrySelection @ 25 NONAME
+	_ZN11CMsvSession15IncPcSyncCountLERK18CMsvEntrySelection @ 26 NONAME
+	_ZN11CMsvSession15OpenAsObserverLER19MMsvSessionObserver @ 27 NONAME
+	_ZN11CMsvSession16TransferCommandLERK18CMsvEntrySelectioniRK6TDesC8R14TRequestStatus @ 28 NONAME
+	_ZN11CMsvSession16TransferCommandLERK18CMsvEntrySelectioniRK6TDesC8R5TDes8 @ 29 NONAME
+	_ZN11CMsvSession17ChangeAttributesLERK18CMsvEntrySelectionjj @ 30 NONAME
+	_ZN11CMsvSession17CleanupEntryPushLEl @ 31 NONAME
+	_ZN11CMsvSession21SetReceiveEntryEventsEi @ 32 NONAME
+	_ZN11CMsvSession22OutstandingOperationsLEv @ 33 NONAME
+	_ZN11CMsvSession9OpenSyncLER19MMsvSessionObserver @ 34 NONAME
+	_ZN11CMtmDllInfo12InternalizeLER11RReadStream @ 35 NONAME
+	_ZN11CMtmDllInfo21SetHumanReadableNameLERK7TDesC16 @ 36 NONAME
+	_ZN11CMtmDllInfo4NewLER11RReadStream @ 37 NONAME
+	_ZN11CMtmDllInfo4NewLERK7TDesC16RK8TUidTypei8TVersion @ 38 NONAME ABSENT
+	_ZN11CMtmDllInfoD0Ev @ 39 NONAME
+	_ZN11CMtmDllInfoD1Ev @ 40 NONAME
+	_ZN11CMtmDllInfoD2Ev @ 41 NONAME
+	_ZN12CMsvBodyText12GetBodyTextLER3RFsR9CMsvStoreR9CRichText @ 42 NONAME
+	_ZN12CMsvBodyText15SetCharacterSetEj @ 43 NONAME
+	_ZN12CMsvBodyText22SetDefaultCharacterSetEj @ 44 NONAME
+	_ZN12CMsvBodyText4NewLEv @ 45 NONAME
+	_ZN12CMsvBodyText5NewLCEv @ 46 NONAME
+	_ZN12CMsvBodyText6StoreLER9CMsvStore @ 47 NONAME
+	_ZN12CMsvBodyText6StoreLER9CMsvStoreRK8CBufBase @ 48 NONAME
+	_ZN12CMsvBodyText7RemoveLER9CMsvStore @ 49 NONAME
+	_ZN12CMsvBodyText8RestoreLER9CMsvStore @ 50 NONAME
+	_ZN12CMsvBodyTextD0Ev @ 51 NONAME
+	_ZN12CMsvBodyTextD1Ev @ 52 NONAME
+	_ZN12CMsvBodyTextD2Ev @ 53 NONAME
+	_ZN12CMsvFindText13FindRichTextLERK7TDesC16RK9CRichTextj @ 54 NONAME
+	_ZN12CMsvFindText13FindRichTextLERK7TDesC16RK9CRichTextjR14TRequestStatus @ 55 NONAME
+	_ZN12CMsvFindText4NewLEi @ 56 NONAME
+	_ZN12CMsvFindText5NewLCEi @ 57 NONAME
+	_ZN12CMsvFindText9FindTextLERK7TDesC16S2_j @ 58 NONAME
+	_ZN12CMsvFindText9FindTextLERK7TDesC16S2_jR14TRequestStatus @ 59 NONAME
+	_ZN12CMsvFindTextD0Ev @ 60 NONAME
+	_ZN12CMsvFindTextD1Ev @ 61 NONAME
+	_ZN12CMsvFindTextD2Ev @ 62 NONAME
+	_ZN13CMsvOperation13FinalProgressEv @ 63 NONAME
+	_ZThn4_N19CMtmRegistryControl15ReleaseMtmGroupE4TUid @ 64 NONAME ; #<thunk>#
+	_ZN13CMsvOperationC2ER11CMsvSessioniR14TRequestStatus @ 65 NONAME
+	_ZN13CMsvOperationD0Ev @ 66 NONAME
+	_ZN13CMsvOperationD1Ev @ 67 NONAME
+	_ZN13CMsvOperationD2Ev @ 68 NONAME
+	_ZN13CMsvRecipient12InternalizeLER11RReadStream @ 69 NONAME
+	_ZN13CMsvRecipientC1Ev @ 70 NONAME
+	_ZN13CMsvRecipientC2Ev @ 71 NONAME
+	_ZN13CMtmGroupData12InternalizeLER11RReadStream @ 72 NONAME
+	_ZN13CMtmGroupData4NewLE4TUidS0_RK16CMtmDllInfoArray @ 73 NONAME ABSENT
+	_ZN13CMtmGroupData4NewLER11RReadStream @ 74 NONAME
+	_ZN13CMtmGroupDataD0Ev @ 75 NONAME
+	_ZN13CMtmGroupDataD1Ev @ 76 NONAME
+	_ZN13CMtmGroupDataD2Ev @ 77 NONAME
+	_ZN13MessageServer12NullUidValueEv @ 78 NONAME
+	_ZN13MessageServer13CurrentDriveLER3RFs @ 79 NONAME
+	_ZN13MessageServer18DriveContainsStoreER3RFsi @ 80 NONAME
+	_ZN13MessageServer7VersionEv @ 81 NONAME
+	_ZN14CBaseServerMtm4RunLEv @ 82 NONAME
+	_ZThn4_N19CMtmRegistryControl11UseMtmGroupE4TUid @ 83 NONAME ; #<thunk>#
+	_ZN14CBaseServerMtmC2ER17CRegisteredMtmDllP15CMsvServerEntry @ 84 NONAME
+	_ZN14CBaseServerMtmD0Ev @ 85 NONAME
+	_ZN14CBaseServerMtmD1Ev @ 86 NONAME
+	_ZN14CBaseServerMtmD2Ev @ 87 NONAME
+	_ZN14CMsvEntryArray4NewLERK9CArrayFixI4TUidE @ 88 NONAME
+	_ZN14CMsvEntryArray5NewLCERK9CArrayFixI4TUidE @ 89 NONAME
+	_ZN14CMsvEntryArray5SortLE21TMsvSelectionOrdering @ 90 NONAME
+	_ZN14CMsvEntryArrayD0Ev @ 91 NONAME
+	_ZN14CMsvEntryArrayD1Ev @ 92 NONAME
+	_ZN14CMsvEntryArrayD2Ev @ 93 NONAME
+	_ZN14CMsvIndexEntry12InternalizeLER11RReadStream @ 94 NONAME ABSENT
+	_ZN14RMsvReadStream5OpenLERK9CMsvStore4TUid @ 95 NONAME
+	_ZN14RMsvReadStream6OpenLCERK9CMsvStore4TUid @ 96 NONAME
+	_ZN14TMsvFindResultC1Ejl @ 97 NONAME
+	_ZN14TMsvFindResultC1Ev @ 98 NONAME
+	_ZN14TMsvFindResultC2Ejl @ 99 NONAME
+	_ZN14TMsvFindResultC2Ev @ 100 NONAME
+	_ZN15CMsvCachedStore5OpenLER3RFsRK7TDesC16 @ 101 NONAME ABSENT
+	_ZN15CMsvEntryFilter4NewLEv @ 102 NONAME
+	_ZN15CMsvEntryFilter5NewLCEv @ 103 NONAME
+	_ZN15CMsvServerEntry10CopyEntryLEllR14TRequestStatus @ 104 NONAME
+	_ZN15CMsvServerEntry10CopyEntryLEllRlR14TRequestStatus @ 105 NONAME
+	_ZN15CMsvServerEntry10EditStoreLEv @ 106 NONAME
+	_ZN15CMsvServerEntry10MoveEntryLEllR14TRequestStatus @ 107 NONAME
+	_ZN15CMsvServerEntry10ReadStoreLEv @ 108 NONAME
+	_ZN15CMsvServerEntry11ChangeEntryERK9TMsvEntry @ 109 NONAME
+	_ZN15CMsvServerEntry11CreateEntryER9TMsvEntry @ 110 NONAME
+	_ZN15CMsvServerEntry11DeleteEntryEl @ 111 NONAME
+	_ZN15CMsvServerEntry11FileSessionEv @ 112 NONAME
+	_ZN15CMsvServerEntry11GetChildrenER18CMsvEntrySelection @ 113 NONAME
+	_ZN15CMsvServerEntry11GetFilePathER4TBufILi256EE @ 114 NONAME ABSENT
+	_ZN15CMsvServerEntry12CopyEntriesLERK18CMsvEntrySelectionlR14TRequestStatus @ 115 NONAME
+	_ZN15CMsvServerEntry12CopyEntriesLERK18CMsvEntrySelectionlRS0_R14TRequestStatus @ 116 NONAME
+	_ZN15CMsvServerEntry12MoveEntriesLERK18CMsvEntrySelectionlR14TRequestStatus @ 117 NONAME
+	_ZN15CMsvServerEntry13DeleteEntriesER18CMsvEntrySelection @ 118 NONAME
+	_ZN15CMsvServerEntry14GetEntryFromIdElRP9TMsvEntry @ 119 NONAME
+	_ZN15CMsvServerEntry16ChangeAttributesERK18CMsvEntrySelectionjj @ 120 NONAME
+	_ZN15CMsvServerEntry18GetChildrenWithMtmE4TUidR18CMsvEntrySelection @ 121 NONAME
+	_ZN15CMsvServerEntry19GetChildrenWithTypeE4TUidR18CMsvEntrySelection @ 122 NONAME
+	_ZN15CMsvServerEntry22GetChildrenWithServiceElR18CMsvEntrySelection @ 123 NONAME
+	_ZN15CMsvServerEntry22MoveEntryWithinServiceEll @ 124 NONAME
+	_ZN15CMsvServerEntry24MoveEntriesWithinServiceER18CMsvEntrySelectionl @ 125 NONAME
+	_ZN15CMsvServerEntry4NewLER10CMsvServerl @ 126 NONAME
+	_ZN15CMsvServerEntry8SetEntryEl @ 127 NONAME
+	_ZN15CMsvServerEntry9NewEntryLEl @ 128 NONAME
+	_ZN15CMsvServerIndex11ChangeEntryERK9TMsvEntry @ 129 NONAME ABSENT
+	_ZN15CMsvServerIndex11DeleteEntryEl @ 130 NONAME ABSENT
+	_ZN15CMsvServerIndex12ReleaseEntryEl @ 131 NONAME ABSENT
+	_ZN15CMsvServerIndex12ReleaseStoreEl @ 132 NONAME ABSENT
+	_ZN15CMsvServerIndex15DeleteSelectionERK18CMsvEntrySelection @ 133 NONAME ABSENT
+	_ZN15CMsvServerIndex16ChangeAttributesER18CMsvEntrySelectionjj @ 134 NONAME ABSENT
+	_ZN15CMsvServerIndex17LockEntryAndStoreEl @ 135 NONAME ABSENT
+	_ZN15CMsvServerIndex19ChangeTemporaryDataERK9TMsvEntry @ 136 NONAME ABSENT
+	_ZN15CMsvServerIndex20ReleaseEntryAndStoreEl @ 137 NONAME ABSENT
+	_ZN15CMsvServerIndex26ExpandSelectionRecursivelyER18CMsvEntrySelection @ 138 NONAME ABSENT
+	_ZN15CMsvServerIndex4NewLER19CPermanentFileStore @ 139 NONAME ABSENT
+	_ZN15CMsvServerIndex5OpenLER19CPermanentFileStore @ 140 NONAME ABSENT
+	_ZN15CMsvServerIndex5OpenLER19CPermanentFileStoreR17MMsvIndexObserver @ 141 NONAME ABSENT
+	_ZN15CMsvServerIndex8AddEntryER9TMsvEntryi @ 142 NONAME ABSENT
+	_ZN15CMsvServerIndex9LockEntryEl @ 143 NONAME ABSENT
+	_ZN15CMsvServerIndex9LockStoreEl @ 144 NONAME ABSENT
+	_ZN15CMsvServerIndex9MoveEntryEll @ 145 NONAME ABSENT
+	_ZN15CMtmDllRegistry19AddRegisteredMtmDllE4TUidS0_RK11CMtmDllInfoR25MRegisteredMtmDllObserver @ 146 NONAME
+	_ZN15CMtmDllRegistry22RemoveRegisteredMtmDllE4TUid @ 147 NONAME
+	_ZN15CMtmDllRegistry26RemoveAllRegisteredMtmDllsEv @ 148 NONAME
+	_ZN15CMtmDllRegistryC1ER3RFs4TUid27TTimeIntervalMicroSeconds32 @ 149 NONAME
+	_ZN15CMtmDllRegistryC2ER3RFs4TUid27TTimeIntervalMicroSeconds32 @ 150 NONAME
+	_ZN15CMtmDllRegistryD0Ev @ 151 NONAME
+	_ZN15CMtmDllRegistryD1Ev @ 152 NONAME
+	_ZN15CMtmDllRegistryD2Ev @ 153 NONAME
+	_ZN15RMsvWriteStream7AssignLER9CMsvStore4TUid @ 154 NONAME
+	_ZN15RMsvWriteStream8AssignLCER9CMsvStore4TUid @ 155 NONAME
+	_ZN15TMsvPackedEntry11UnpackEntryER9TMsvEntry @ 156 NONAME
+	_ZN15TMsvPackedEntry9PackEntryERK9TMsvEntry @ 157 NONAME
+	_ZN15TMsvPackedEntryC1ERP6HBufC8 @ 158 NONAME
+	_ZN15TMsvPackedEntryC2ERP6HBufC8 @ 159 NONAME
+	_ZN16CMtmDllInfoArray14AddMtmDllInfoLEP11CMtmDllInfo @ 160 NONAME
+	_ZN16CMtmDllInfoArrayC1Ev @ 161 NONAME
+	_ZN16CMtmDllInfoArrayC2Ev @ 162 NONAME
+	_ZN16CMtmDllInfoArrayD0Ev @ 163 NONAME
+	_ZN16CMtmDllInfoArrayD1Ev @ 164 NONAME
+	_ZN16CMtmDllInfoArrayD2Ev @ 165 NONAME
+	_ZN17CMsvFindOperation13FinalProgressEv @ 166 NONAME
+	_ZN17CMsvFindOperation15FindInChildrenLER11CMsvSessionRK7TDesC16ljR14TRequestStatus @ 167 NONAME
+	_ZN17CMsvFindOperation16FindInSelectionLER11CMsvSessionRK7TDesC16RK18CMsvEntrySelectionjR14TRequestStatus @ 168 NONAME
+	_ZN17CMsvFindOperation24ConstructFindInChildrenLEl @ 169 NONAME
+	_ZN17CMsvFindOperation25ConstructFindInSelectionLERK18CMsvEntrySelection @ 170 NONAME
+	_ZN17CMsvFindOperation4RunLEv @ 171 NONAME
+	_ZN17CMsvFindOperation8DoCancelEv @ 172 NONAME
+	_ZN17CMsvFindOperation9ProgressLEv @ 173 NONAME
+	_ZN17CMsvFindOperationC1ER11CMsvSessionRK7TDesC16jR14TRequestStatus @ 174 NONAME
+	_ZN17CMsvFindOperationC2ER11CMsvSessionRK7TDesC16jR14TRequestStatus @ 175 NONAME
+	_ZN17CMsvFindOperationD0Ev @ 176 NONAME
+	_ZN17CMsvFindOperationD1Ev @ 177 NONAME
+	_ZN17CMsvFindOperationD2Ev @ 178 NONAME
+	_ZN17CMsvOperationWait5NewLCEi @ 179 NONAME
+	_ZN17CMsvOperationWait5StartEv @ 180 NONAME
+	_ZN17CMsvOperationWaitD0Ev @ 181 NONAME
+	_ZN17CMsvOperationWaitD1Ev @ 182 NONAME
+	_ZN17CMsvOperationWaitD2Ev @ 183 NONAME
+	_ZN17CObserverRegistry10ConstructLEv @ 184 NONAME
+	_ZN17CObserverRegistry19HandleSessionEventLEN19MMsvSessionObserver16TMsvSessionEventEPvS2_S2_ @ 185 NONAME
+	_ZN17CObserverRegistryC1ER11CMsvSession4TUid27TTimeIntervalMicroSeconds32 @ 186 NONAME
+	_ZN17CObserverRegistryC2ER11CMsvSession4TUid27TTimeIntervalMicroSeconds32 @ 187 NONAME
+	_ZN17CObserverRegistryD0Ev @ 188 NONAME
+	_ZN17CObserverRegistryD1Ev @ 189 NONAME
+	_ZN17CObserverRegistryD2Ev @ 190 NONAME
+	_ZN17CRegisteredMtmDll10GetLibraryER3RFsR8RLibrary @ 191 NONAME
+	_ZN17CRegisteredMtmDll14ReleaseLibraryEv @ 192 NONAME
+	_ZN17CRegisteredMtmDll4NewLE4TUidS0_RK11CMtmDllInfo27TTimeIntervalMicroSeconds32R25MRegisteredMtmDllObserver @ 193 NONAME
+	_ZN17CRegisteredMtmDllD0Ev @ 194 NONAME
+	_ZN17CRegisteredMtmDllD1Ev @ 195 NONAME
+	_ZN17CRegisteredMtmDllD2Ev @ 196 NONAME
+	_ZN17RMsvServerSession10DelMtmPathERK8TUidType @ 197 NONAME ABSENT
+	_ZN17RMsvServerSession10SetFailureEiiii @ 198 NONAME
+	_ZN17RMsvServerSession10SetMtmPathERK8TUidTypeRK7TDesC16 @ 199 NONAME ABSENT
+	_ZN17RMsvServerSession11GetChildrenElR13CArrayPtrFlatI15CMsvClientEntryERK21TMsvSelectionOrdering @ 200 NONAME
+	_ZN17RMsvServerSession11RemoveEntryEl @ 201 NONAME
+	_ZN17RMsvServerSession11StopServiceEl @ 202 NONAME
+	_ZN17RMsvServerSession11UseMtmGroupE4TUid @ 203 NONAME
+	_ZN17RMsvServerSession12ChangeEntryLERK9TMsvEntryl @ 204 NONAME ABSENT
+	_ZN17RMsvServerSession12ChangeEntryLERK9TMsvEntrylR14TRequestStatus @ 205 NONAME ABSENT
+	_ZN17RMsvServerSession12CopyEntriesLERK18CMsvEntrySelectionll @ 206 NONAME
+	_ZN17RMsvServerSession12CopyEntriesLERK18CMsvEntrySelectionllR14TRequestStatus @ 207 NONAME
+	_ZN17RMsvServerSession12CreateEntryLERK9TMsvEntryl @ 208 NONAME ABSENT
+	_ZN17RMsvServerSession12CreateEntryLERK9TMsvEntrylR14TRequestStatus @ 209 NONAME ABSENT
+	_ZN17RMsvServerSession12GetChildIdsLElRK15CMsvEntryFilterR18CMsvEntrySelection @ 210 NONAME
+	_ZN17RMsvServerSession12MoveEntriesLERK18CMsvEntrySelectionll @ 211 NONAME
+	_ZN17RMsvServerSession12MoveEntriesLERK18CMsvEntrySelectionllR14TRequestStatus @ 212 NONAME
+	_ZN17RMsvServerSession12ReleaseEntryEl @ 213 NONAME
+	_ZN17RMsvServerSession12ReleaseStoreEl @ 214 NONAME
+	_ZN17RMsvServerSession13OperationMtmLEllR4TUidRl @ 215 NONAME
+	_ZN17RMsvServerSession13ServiceActiveEl @ 216 NONAME
+	_ZN17RMsvServerSession14DeleteEntriesLERK18CMsvEntrySelectionl @ 217 NONAME
+	_ZN17RMsvServerSession14DeleteEntriesLERK18CMsvEntrySelectionlR14TRequestStatus @ 218 NONAME
+	_ZN17RMsvServerSession15CancelOperationElR5TDes8 @ 219 NONAME
+	_ZN17RMsvServerSession15InstallMtmGroupERK7TDesC16 @ 220 NONAME
+	_ZN17RMsvServerSession15ReleaseMtmGroupE4TUid @ 221 NONAME
+	_ZN17RMsvServerSession15ServiceProgressElR5TDes8 @ 222 NONAME
+	_ZN17RMsvServerSession16GetMtmGroupDataLE4TUid @ 223 NONAME
+	_ZN17RMsvServerSession16TransferCommandLERK18CMsvEntrySelectioniRK6TDesC8l @ 224 NONAME
+	_ZN17RMsvServerSession16TransferCommandLERK18CMsvEntrySelectioniRK6TDesC8lR14TRequestStatus @ 225 NONAME
+	_ZN17RMsvServerSession17ChangeAttributesLERK18CMsvEntrySelectionjj @ 226 NONAME
+	_ZN17RMsvServerSession17DeInstallMtmGroupERK7TDesC16 @ 227 NONAME
+	_ZN17RMsvServerSession17LocalStoreDeletedEl @ 228 NONAME ABSENT
+	_ZN17RMsvServerSession17OperationProgressElR5TDes8 @ 229 NONAME
+	_ZN17RMsvServerSession18CloseMessageServerEv @ 230 NONAME
+	_ZN17RMsvServerSession19GetMessageDirectoryER6TDes16 @ 231 NONAME
+	_ZN17RMsvServerSession19OperationCompletionElR5TDes8 @ 232 NONAME
+	_ZN17RMsvServerSession21SetReceiveEntryEventsEi @ 233 NONAME
+	_ZN17RMsvServerSession24QueueSessionEventRequestER5TDes8S1_R14TRequestStatus @ 234 NONAME
+	_ZN17RMsvServerSession25CancelSessionEventRequestEv @ 235 NONAME
+	_ZN17RMsvServerSession25FillRegisteredMtmDllArrayE4TUidR22CRegisteredMtmDllArray27TTimeIntervalMicroSeconds32 @ 236 NONAME
+	_ZN17RMsvServerSession7ConnectER3RFs @ 237 NONAME
+	_ZN17RMsvServerSession8GetEntryElRlR9TMsvEntry @ 238 NONAME
+	_ZN17RMsvServerSession9LockEntryEl @ 239 NONAME
+	_ZN17RMsvServerSession9LockStoreEl @ 240 NONAME
+	_ZN17RMsvServerSession9ReadStoreEl @ 241 NONAME
+	_ZN17RMsvServerSessionC1Ev @ 242 NONAME
+	_ZN17RMsvServerSessionC2Ev @ 243 NONAME
+	_ZN17RMsvServerSessionD0Ev @ 244 NONAME
+	_ZN17RMsvServerSessionD1Ev @ 245 NONAME
+	_ZN17RMsvServerSessionD2Ev @ 246 NONAME
+	_ZN17TMsvIndexProgressC1Ev @ 247 NONAME
+	_ZN17TMsvIndexProgressC2Ev @ 248 NONAME
+	_ZN18CClientMtmRegistry4NewLER11CMsvSession27TTimeIntervalMicroSeconds32 @ 249 NONAME
+	_ZN18CClientMtmRegistry7NewMtmLE4TUid @ 250 NONAME
+	_ZN18CClientMtmRegistryD0Ev @ 251 NONAME
+	_ZN18CClientMtmRegistryD1Ev @ 252 NONAME
+	_ZN18CClientMtmRegistryD2Ev @ 253 NONAME
+	_ZN18CMsvEntrySelectionC1Ev @ 254 NONAME
+	_ZN18CMsvEntrySelectionC2Ev @ 255 NONAME
+	_ZN19CMsvDefaultServices20RemoveDefaultServiceE4TUid @ 256 NONAME ABSENT
+	_ZN19CMsvDefaultServices21ChangeDefaultServiceLERK18TMsvDefaultService @ 257 NONAME ABSENT
+	_ZN19CMsvDefaultServices8RestoreLER9CMsvStore @ 258 NONAME ABSENT
+	_ZN19CMsvDefaultServicesC1Ev @ 259 NONAME ABSENT
+	_ZN19CMsvDefaultServicesC2Ev @ 260 NONAME ABSENT
+	_ZN19CMsvDefaultServicesD0Ev @ 261 NONAME ABSENT
+	_ZN19CMsvDefaultServicesD1Ev @ 262 NONAME ABSENT
+	_ZN19CMsvDefaultServicesD2Ev @ 263 NONAME ABSENT
+	_ZN19CMtmRegistryControl11UseMtmGroupE4TUid @ 264 NONAME
+	_ZN19CMtmRegistryControl12InternalizeLER11RReadStream @ 265 NONAME
+	_ZN19CMtmRegistryControl15InstallMtmGroupERK7TDesC16R4TUid @ 266 NONAME
+	_ZN19CMtmRegistryControl15ReleaseMtmGroupE4TUid @ 267 NONAME
+	_ZN19CMtmRegistryControl16RestoreRegistryLEv @ 268 NONAME
+	_ZN19CMtmRegistryControl17DeInstallMtmGroupE4TUid @ 269 NONAME
+	_ZN19CMtmRegistryControl25FillRegisteredMtmDllArrayE4TUidR22CRegisteredMtmDllArray27TTimeIntervalMicroSeconds32 @ 270 NONAME
+	_ZN19CMtmRegistryControl4NewLER3RFsR21CServerMtmDllRegistry @ 271 NONAME
+	_ZN19CMtmRegistryControlD0Ev @ 272 NONAME
+	_ZN19CMtmRegistryControlD1Ev @ 273 NONAME
+	_ZN19CMtmRegistryControlD2Ev @ 274 NONAME
+	_ZN19TMsvChildrenDetailsC1Ev @ 275 NONAME
+	_ZN19TMsvChildrenDetailsC2Ev @ 276 NONAME
+	_ZN19TMsvPackedOperation4PackERK18CMsvEntrySelectionii @ 277 NONAME
+	_ZN19TMsvPackedOperation7UnpackLER18CMsvEntrySelectionRiS2_ @ 278 NONAME
+	_ZN19TMsvPackedOperationC1ERP6HBufC8 @ 279 NONAME
+	_ZN19TMsvPackedOperationC2ERP6HBufC8 @ 280 NONAME
+	_ZN20TMsvPackedEntryArray11UnpackEntryEiR9TMsvEntry @ 281 NONAME
+	_ZN20TMsvPackedEntryArray5ResetEv @ 282 NONAME
+	_ZN20TMsvPackedEntryArray9PackEntryERK9TMsvEntry @ 283 NONAME
+	_ZN20TMsvPackedEntryArrayC1ERP6HBufC8i @ 284 NONAME
+	_ZN20TMsvPackedEntryArrayC2ERP6HBufC8i @ 285 NONAME
+	_ZN21CServerMtmDllRegistry13NewServerMtmLE4TUidP15CMsvServerEntry @ 286 NONAME
+	_ZN21CServerMtmDllRegistry4NewLER3RFs27TTimeIntervalMicroSeconds32 @ 287 NONAME
+	_ZN21CServerMtmDllRegistryD0Ev @ 288 NONAME
+	_ZN21CServerMtmDllRegistryD1Ev @ 289 NONAME
+	_ZN21CServerMtmDllRegistryD2Ev @ 290 NONAME
+	_ZN21TMsvIndexLoadProgressC1Ev @ 291 NONAME
+	_ZN21TMsvIndexLoadProgressC2Ev @ 292 NONAME
+	_ZN21TMsvSelectionOrdering12InternalizeLER11RReadStream @ 293 NONAME
+	_ZN21TMsvSelectionOrderingC1Ei11TMsvSortingi @ 294 NONAME
+	_ZN21TMsvSelectionOrderingC1Ev @ 295 NONAME
+	_ZN21TMsvSelectionOrderingC2Ei11TMsvSortingi @ 296 NONAME
+	_ZN21TMsvSelectionOrderingC2Ev @ 297 NONAME
+	_ZN22CMsvCompletedOperation4NewLER11CMsvSession4TUidRK6TDesC8lR14TRequestStatusi @ 298 NONAME
+	_ZN22CMsvCompletedOperationD0Ev @ 299 NONAME
+	_ZN22CMsvCompletedOperationD1Ev @ 300 NONAME
+	_ZN22CMsvCompletedOperationD2Ev @ 301 NONAME
+	_ZN22CRegisteredMtmDllArray20AddRegisteredMtmDllLEP17CRegisteredMtmDll @ 302 NONAME
+	_ZN22CRegisteredMtmDllArrayC1Ev @ 303 NONAME
+	_ZN22CRegisteredMtmDllArrayC2Ev @ 304 NONAME
+	_ZN22CRegisteredMtmDllArrayD0Ev @ 305 NONAME
+	_ZN22CRegisteredMtmDllArrayD1Ev @ 306 NONAME
+	_ZN22CRegisteredMtmDllArrayD2Ev @ 307 NONAME
+	_ZN22TMsvPackedMtmGroupData16PackMtmGroupDataERK13CMtmGroupData @ 308 NONAME ABSENT
+	_ZN22TMsvPackedMtmGroupDataC1ERP6HBufC8 @ 309 NONAME ABSENT
+	_ZN22TMsvPackedMtmGroupDataC2ERP6HBufC8 @ 310 NONAME ABSENT
+	_ZN23CMsvFindResultSelectionC1Ev @ 311 NONAME
+	_ZN23CMsvFindResultSelectionC2Ev @ 312 NONAME
+	_ZN25TMsvFindOperationProgressC1Ev @ 313 NONAME
+	_ZN25TMsvFindOperationProgressC2Ev @ 314 NONAME
+	_ZN26TMsvLocalOperationProgressC1Ev @ 315 NONAME
+	_ZN26TMsvLocalOperationProgressC2Ev @ 316 NONAME
+	_ZN27TMsvServerOperationProgressC1Ev @ 317 NONAME
+	_ZN27TMsvServerOperationProgressC2Ev @ 318 NONAME
+	_ZN28TMsvPackedChangeNotification4PackE32TMsvServerChangeNotificationTypeRK18CMsvEntrySelectioniiii @ 319 NONAME
+	_ZN28TMsvPackedChangeNotification4PackE32TMsvServerChangeNotificationTypelii @ 320 NONAME
+	_ZN28TMsvPackedChangeNotification7UnpackLER32TMsvServerChangeNotificationTypeR18CMsvEntrySelectionRiS4_ @ 321 NONAME
+	_ZN28TMsvPackedChangeNotificationC1ER5TBuf8ILi128EE @ 322 NONAME
+	_ZN28TMsvPackedChangeNotificationC2ER5TBuf8ILi128EE @ 323 NONAME
+	_ZN31TMsvPackedRegisteredMtmDllArray25PackRegisteredMtmDllArrayERK22CRegisteredMtmDllArray @ 324 NONAME ABSENT
+	_ZN31TMsvPackedRegisteredMtmDllArray28UnpackRegisteredMtmDllArrayLER22CRegisteredMtmDllArray27TTimeIntervalMicroSeconds32R25MRegisteredMtmDllObserver @ 325 NONAME ABSENT
+	_ZN31TMsvPackedRegisteredMtmDllArrayC1ERP6HBufC8 @ 326 NONAME ABSENT
+	_ZN31TMsvPackedRegisteredMtmDllArrayC2ERP6HBufC8 @ 327 NONAME ABSENT
+	_ZN32CMsvOperationActiveSchedulerWait5NewLCEi @ 328 NONAME
+	_ZN32CMsvOperationActiveSchedulerWait5StartEv @ 329 NONAME
+	_ZN32CMsvOperationActiveSchedulerWaitD0Ev @ 330 NONAME
+	_ZN32CMsvOperationActiveSchedulerWaitD1Ev @ 331 NONAME
+	_ZN32CMsvOperationActiveSchedulerWaitD2Ev @ 332 NONAME
+	_ZN8CBaseMtm10StoreBodyLER9CMsvStore @ 333 NONAME
+	_ZN8CBaseMtm11SetSubjectLERK7TDesC16 @ 334 NONAME
+	_ZN8CBaseMtm12RestoreBodyLER9CMsvStore @ 335 NONAME
+	_ZN8CBaseMtm14CreateMessageLEl @ 336 NONAME
+	_ZN8CBaseMtm15BioTypeChangedLE4TUid @ 337 NONAME
+	_ZN8CBaseMtm15QueryCapabilityE4TUidRi @ 338 NONAME
+	_ZN8CBaseMtm16SetCurrentEntryLEP9CMsvEntry @ 339 NONAME
+	_ZN8CBaseMtm17CreateAttachmentLERlR4TBufILi256EE @ 340 NONAME ABSENT
+	_ZN8CBaseMtm17DeleteAttachmentLEll @ 341 NONAME ABSENT
+	_ZN8CBaseMtm17HandleEntryEventLEN17MMsvEntryObserver14TMsvEntryEventEPvS2_S2_ @ 342 NONAME
+	_ZN8CBaseMtm19SwitchCurrentEntryLEl @ 343 NONAME
+	_ZThn40_N17CObserverRegistry19HandleSessionEventLEN19MMsvSessionObserver16TMsvSessionEventEPvS2_S2_ @ 344 NONAME ; #<thunk>#
+	_ZN8CBaseMtmC2ER17CRegisteredMtmDllR11CMsvSession @ 345 NONAME
+	_ZN8CBaseMtmD0Ev @ 346 NONAME
+	_ZN8CBaseMtmD1Ev @ 347 NONAME
+	_ZN8CBaseMtmD2Ev @ 348 NONAME
+	_ZN8MsvUtils10ValidEntryERK9TMsvEntry @ 349 NONAME
+	_ZN8MsvUtils12HasDirectoryERK3RFsRK7TDesC16ll @ 350 NONAME
+	_ZN8MsvUtils18ConstructEntryNameEllR6TDes16NS_9TNameModeE @ 351 NONAME
+	_ZN8MsvUtils29AddPathAndExtensionToResFileLER4TBufILi256EE @ 352 NONAME
+	_ZN8MsvUtils8HasStoreERK3RFsRK7TDesC16ll @ 353 NONAME
+	_ZN9CMsvEntry10EditStoreLEv @ 354 NONAME
+	_ZN9CMsvEntry10ReadStoreLEv @ 355 NONAME
+	_ZN9CMsvEntry11SetMtmListLERK9CArrayFixI4TUidE @ 356 NONAME
+	_ZN9CMsvEntry12AddObserverLER17MMsvEntryObserver @ 357 NONAME
+	_ZN9CMsvEntry12SetSortTypeLERK21TMsvSelectionOrdering @ 358 NONAME
+	_ZN9CMsvEntry14RemoveObserverER17MMsvEntryObserver @ 359 NONAME
+	_ZN9CMsvEntry17ChangeAttributesLERK18CMsvEntrySelectionjj @ 360 NONAME
+	_ZN9CMsvEntry4NewLER11CMsvSessionlRK21TMsvSelectionOrdering @ 361 NONAME
+	_ZN9CMsvEntry5CopyLERK18CMsvEntrySelectionlR14TRequestStatus @ 362 NONAME
+	_ZN9CMsvEntry5CopyLERK18CMsvEntrySelectionlR26TMsvLocalOperationProgress @ 363 NONAME
+	_ZN9CMsvEntry5CopyLEll @ 364 NONAME
+	_ZN9CMsvEntry5CopyLEllR14TRequestStatus @ 365 NONAME
+	_ZN9CMsvEntry5MoveLERK18CMsvEntrySelectionlR14TRequestStatus @ 366 NONAME
+	_ZN9CMsvEntry5MoveLERK18CMsvEntrySelectionlR26TMsvLocalOperationProgress @ 367 NONAME
+	_ZN9CMsvEntry5MoveLEll @ 368 NONAME
+	_ZN9CMsvEntry5MoveLEllR14TRequestStatus @ 369 NONAME
+	_ZN9CMsvEntry7ChangeLERK9TMsvEntry @ 370 NONAME
+	_ZN9CMsvEntry7ChangeLERK9TMsvEntryR14TRequestStatus @ 371 NONAME
+	_ZN9CMsvEntry7CreateLER9TMsvEntry @ 372 NONAME
+	_ZN9CMsvEntry7CreateLERK9TMsvEntryR14TRequestStatus @ 373 NONAME
+	_ZN9CMsvEntry7DeleteLERK18CMsvEntrySelectionR14TRequestStatus @ 374 NONAME
+	_ZN9CMsvEntry7DeleteLERK18CMsvEntrySelectionR26TMsvLocalOperationProgress @ 375 NONAME
+	_ZN9CMsvEntry7DeleteLEl @ 376 NONAME
+	_ZN9CMsvEntry7DeleteLElR14TRequestStatus @ 377 NONAME
+	_ZN9CMsvEntry9SetEntryLEl @ 378 NONAME
+	_ZN9CMsvEntryD0Ev @ 379 NONAME
+	_ZN9CMsvEntryD1Ev @ 380 NONAME
+	_ZN9CMsvEntryD2Ev @ 381 NONAME
+	_ZN9CMsvStore12OpenForReadLER17MMsvStoreObserverR3RFsRK7TDesC16l @ 382 NONAME ABSENT
+	_ZN9CMsvStore13OpenForWriteLER17MMsvStoreObserverR3RFsRK7TDesC16l @ 383 NONAME ABSENT
+	_ZN9CMsvStore14StoreBodyTextLERK9CRichText @ 384 NONAME
+	_ZN9CMsvStore15DeleteBodyTextLEv @ 385 NONAME
+	_ZN9CMsvStore16RestoreBodyTextLER9CRichText @ 386 NONAME
+	_ZN9CMsvStore5SizeLEv @ 387 NONAME
+	_ZN9CMsvStore6CommitEv @ 388 NONAME
+	_ZN9CMsvStore6RemoveE4TUid @ 389 NONAME
+	_ZN9CMsvStore6RevertEv @ 390 NONAME
+	_ZN9CMsvStore7CommitLEv @ 391 NONAME
+	_ZN9CMsvStore7DeleteLEv @ 392 NONAME
+	_ZN9CMsvStore7RemoveLE4TUid @ 393 NONAME
+	_ZN9CMsvStore7RevertLEv @ 394 NONAME
+	_ZN9CMsvStoreC1ER17MMsvStoreObserverR3RFsl @ 395 NONAME ABSENT
+	_ZN9CMsvStoreC2ER17MMsvStoreObserverR3RFsl @ 396 NONAME ABSENT
+	_ZN9CMsvStoreD0Ev @ 397 NONAME
+	_ZN9CMsvStoreD1Ev @ 398 NONAME
+	_ZN9CMsvStoreD2Ev @ 399 NONAME
+	_ZN9McliUtils17GetLocalProgressLER13CMsvOperation @ 400 NONAME
+	_ZN9McliUtils21GetFinalLocalProgressER13CMsvOperation @ 401 NONAME
+	_ZN9TMsvEntry11SetPriorityE12TMsvPriority @ 402 NONAME
+	_ZN9TMsvEntry12InternalizeLER11RReadStream @ 403 NONAME
+	_ZN9TMsvEntryC1ERKS_ @ 404 NONAME
+	_ZN9TMsvEntryC1Ev @ 405 NONAME
+	_ZN9TMsvEntryC2ERKS_ @ 406 NONAME
+	_ZN9TMsvEntryC2Ev @ 407 NONAME
+	_ZN9TMsvEntryaSERKS_ @ 408 NONAME
+	_ZNK11CMtmDllInfo12ExternalizeLER12RWriteStream @ 409 NONAME
+	_ZNK11CMtmDllInfo18SendBodyCapabilityEv @ 410 NONAME
+	_ZNK11CMtmDllInfo19MessagingCapabilityEv @ 411 NONAME
+	_ZNK11CMtmDllInfo21CapabilitiesAvailableEv @ 412 NONAME
+	_ZNK11CMtmDllInfoeqERKS_ @ 413 NONAME
+	_ZNK12CMsvBodyText10IsPresentLERK9CMsvStore @ 414 NONAME
+	_ZNK12CMsvBodyText12CharacterSetEv @ 415 NONAME
+	_ZNK12CMsvBodyText19DefaultCharacterSetEv @ 416 NONAME
+	_ZNK13CMsvOperation3MtmEv @ 417 NONAME
+	_ZNK13CMsvRecipient12ExternalizeLER12RWriteStream @ 418 NONAME
+	_ZNK13CMtmGroupData12ExternalizeLER12RWriteStream @ 419 NONAME
+	_ZNK13CMtmGroupDataeqERKS_ @ 420 NONAME
+	_ZNK14CMsvIndexEntry12ExternalizeLER12RWriteStream @ 421 NONAME ABSENT
+	_ZNK15CMsvServerEntry13HasDirectoryLEv @ 422 NONAME ABSENT
+	_ZNK15CMsvServerEntry13OwningServiceEv @ 423 NONAME
+	_ZNK15CMsvServerEntry9HasStoreLEv @ 424 NONAME
+	_ZNK15CMsvServerIndex11EntryExistsEl @ 425 NONAME ABSENT
+	_ZNK15CMsvServerIndex12GetChildrenLElR9CArrayPtrIK9TMsvEntryERK21TMsvSelectionOrdering4TUid @ 426 NONAME ABSENT
+	_ZNK15CMsvServerIndex13GetChildrenIdElRK15CMsvEntryFilterR18CMsvEntrySelection @ 427 NONAME ABSENT
+	_ZNK15CMsvServerIndex13IsADescendentEllRi @ 428 NONAME ABSENT
+	_ZNK15CMsvServerIndex13IsEntryLockedElRi @ 429 NONAME ABSENT
+	_ZNK15CMsvServerIndex13IsStoreLockedElRi @ 430 NONAME ABSENT
+	_ZNK15CMsvServerIndex13OwningServiceElRl @ 431 NONAME ABSENT
+	_ZNK15CMsvServerIndex18__DbgTestInvariantEv @ 432 NONAME ABSENT
+	_ZNK15CMsvServerIndex20IsEntryOrStoreLockedElRi @ 433 NONAME ABSENT
+	_ZNK15CMsvServerIndex7IsLocalElRi @ 434 NONAME ABSENT
+	_ZNK15CMsvServerIndex8GetEntryElRP9TMsvEntry @ 435 NONAME ABSENT
+	_ZNK15CMtmDllRegistry10MtmTypeUidEi @ 436 NONAME
+	_ZNK15CMtmDllRegistry17MtmTypeUidToIndexE4TUid @ 437 NONAME
+	_ZNK15CMtmDllRegistry17TechnologyTypeUidE4TUid @ 438 NONAME
+	_ZNK15CMtmDllRegistry20RegisteredMtmDllInfoE4TUid @ 439 NONAME
+	_ZNK15CMtmDllRegistry7IsInUseE4TUid @ 440 NONAME
+	_ZNK15CMtmDllRegistry7IsInUseEv @ 441 NONAME
+	_ZNK15TKeyArrayFixPtr2AtEi @ 442 NONAME
+	_ZNK17RMsvServerSession10GetMtmPathERK8TUidTypeR6TDes16 @ 443 NONAME ABSENT
+	_ZNK17RMsvServerSession7VersionEv @ 444 NONAME
+	_ZNK18CMsvEntrySelection4FindEl @ 445 NONAME
+	_ZNK18CMsvEntrySelection5CopyLEv @ 446 NONAME
+	_ZNK18CMsvEntrySelection6CopyLCEv @ 447 NONAME
+	_ZNK19CMsvDefaultServices14DefaultServiceE4TUidRl @ 448 NONAME ABSENT
+	_ZNK19CMsvDefaultServices6StoreLER9CMsvStore @ 449 NONAME ABSENT
+	_ZNK19CMtmRegistryControl12ExternalizeLER12RWriteStream @ 450 NONAME
+	_ZNK19CMtmRegistryControl14StoreRegistryLEv @ 451 NONAME
+	_ZNK19CMtmRegistryControl16GetMtmGroupDataLE4TUid @ 452 NONAME
+	_ZNK19CMtmRegistryControl20FullNameToMtmTypeUidERK7TDesC16R4TUid @ 453 NONAME
+	_ZNK19CMtmRegistryControl7IsInUseE4TUid @ 454 NONAME
+	_ZNK21TMsvSelectionOrdering12ExternalizeLER12RWriteStream @ 455 NONAME
+	_ZNK21TMsvSelectionOrderingeqERKS_ @ 456 NONAME
+	_ZNK22TMsvPackedMtmGroupData19UnpackMtmGroupDataLEv @ 457 NONAME ABSENT
+	_ZNK23CMsvFindResultSelection4FindEl @ 458 NONAME
+	_ZNK23CMsvFindResultSelection5CopyLEv @ 459 NONAME
+	_ZNK23CMsvFindResultSelection6CopyLCEv @ 460 NONAME
+	_ZNK8CBaseMtm8SubjectLEv @ 461 NONAME
+	_ZNK9CMsvEntry10ChildDataLEl @ 462 NONAME
+	_ZNK9CMsvEntry11ChildEntryLEl @ 463 NONAME
+	_ZNK9CMsvEntry11GetFilePathER4TBufILi256EE @ 464 NONAME ABSENT
+	_ZNK9CMsvEntry13HasDirectoryLEv @ 465 NONAME ABSENT
+	_ZNK9CMsvEntry16ChildrenWithMtmLE4TUid @ 466 NONAME
+	_ZNK9CMsvEntry17ChildrenWithTypeLE4TUid @ 467 NONAME
+	_ZNK9CMsvEntry20ChildrenWithServiceLEl @ 468 NONAME
+	_ZNK9CMsvEntry9ChildrenLEv @ 469 NONAME
+	_ZNK9CMsvEntry9HasStoreLEv @ 470 NONAME
+	_ZNK9CMsvEntryixEi @ 471 NONAME
+	_ZNK9CMsvStore10IsPresentLE4TUid @ 472 NONAME
+	_ZNK9CMsvStore12HasBodyTextLEv @ 473 NONAME
+	_ZNK9CMsvStore7IsNullLEv @ 474 NONAME
+	_ZNK9TMsvEntry12ExternalizeLER12RWriteStream @ 475 NONAME
+	_ZNK9TMsvEntry22PermanentDataUnchangedERKS_ @ 476 NONAME
+	_ZNK9TMsvEntry8PriorityEv @ 477 NONAME
+	_ZNK9TMsvEntryeqERKS_ @ 478 NONAME
+	_ZTI10CMsgActive @ 479 NONAME ; #<TI>#
+	_ZTI12CMsvBodyText @ 480 NONAME ; #<TI>#
+	_ZTI13CMsvOperation @ 481 NONAME ; #<TI>#
+	_ZTI13CMsvRecipient @ 482 NONAME ; #<TI>#
+	_ZTI14CBaseServerMtm @ 483 NONAME ; #<TI>#
+	_ZTI15CMtmDllRegistry @ 484 NONAME ; #<TI>#
+	_ZTI16CMtmDllInfoArray @ 485 NONAME ; #<TI>#
+	_ZTI17CMsvFindOperation @ 486 NONAME ; #<TI>#
+	_ZTI17CObserverRegistry @ 487 NONAME ; #<TI>#
+	_ZTI17RMsvServerSession @ 488 NONAME ; #<TI>#
+	_ZTV9CMsvTimer @ 489 NONAME ; #<VT>#
+	_ZTI19CMsvDefaultServices @ 490 NONAME ABSENT ; #<TI>#
+	_ZTI22CRegisteredMtmDllArray @ 491 NONAME ; #<TI>#
+	_ZTV9CMsvEntry @ 492 NONAME ; #<VT>#
+	_ZTI8CBaseMtm @ 493 NONAME ; #<TI>#
+	_ZTI9CMsvStore @ 494 NONAME ; #<TI>#
+	_ZTV10CMsgActive @ 495 NONAME ; #<VT>#
+	_ZTV12CMsvBodyText @ 496 NONAME ; #<VT>#
+	_ZTV13CMsvOperation @ 497 NONAME ; #<VT>#
+	_ZTV13CMsvRecipient @ 498 NONAME ; #<VT>#
+	_ZTV14CBaseServerMtm @ 499 NONAME ; #<VT>#
+	_ZTV15CMtmDllRegistry @ 500 NONAME ; #<VT>#
+	_ZTV16CMtmDllInfoArray @ 501 NONAME ; #<VT>#
+	_ZTV17CMsvFindOperation @ 502 NONAME ; #<VT>#
+	_ZTV17CObserverRegistry @ 503 NONAME ; #<VT>#
+	_ZTV17RMsvServerSession @ 504 NONAME ; #<VT>#
+	_ZTV19CMsvDefaultServices @ 505 NONAME ABSENT ; #<VT>#
+	_ZTV22CRegisteredMtmDllArray @ 506 NONAME ; #<VT>#
+	_ZTV8CBaseMtm @ 507 NONAME ; #<VT>#
+	_ZTV9CMsvStore @ 508 NONAME ; #<VT>#
+	_ZN9TMsvEntry20SetPendingConditionsEi @ 509 NONAME
+	_ZNK9TMsvEntry17PendingConditionsEv @ 510 NONAME
+	_ZTI10CCopyFiles @ 511 NONAME ; #<TI>#
+	_ZTI10CMsvDelete @ 512 NONAME ; #<TI>#
+	_ZTI10CMsvServer @ 513 NONAME ; #<TI>#
+	_ZTI11CMsvSession @ 514 NONAME ; #<TI>#
+	_ZTI11CMtmDllInfo @ 515 NONAME ; #<TI>#
+	_ZTI11HMsvReadBuf @ 516 NONAME ; #<TI>#
+	_ZTI12CCopyOneFile @ 517 NONAME ; #<TI>#
+	_ZTI12CMsvFindText @ 518 NONAME ; #<TI>#
+	_ZTI12CMsvMtmCache @ 519 NONAME ABSENT ; #<TI>#
+	_ZTI12HMsvWriteBuf @ 520 NONAME ; #<TI>#
+	_ZTI13CMsvCopyEntry @ 521 NONAME ; #<TI>#
+	_ZTI13CMtmGroupData @ 522 NONAME ; #<TI>#
+	_ZTI14CMsvEntryArray @ 523 NONAME ; #<TI>#
+	_ZTI14CMsvIndexEntry @ 524 NONAME ABSENT ; #<TI>#
+	_ZTI15CMsvCachedStore @ 525 NONAME ; #<TI>#
+	_ZTI15CMsvClientEntry @ 526 NONAME ; #<TI>#
+	_ZTI15CMsvCopyEntries @ 527 NONAME ; #<TI>#
+	_ZTI15CMsvMoveEntries @ 528 NONAME ; #<TI>#
+	_ZTI15CMsvServerEntry @ 529 NONAME ; #<TI>#
+	_ZTI15CMsvServerIndex @ 530 NONAME ABSENT ; #<TI>#
+	_ZTI15TKeyArrayFixPtr @ 531 NONAME ; #<TI>#
+	_ZTI16CMsvChangeBuffer @ 532 NONAME ; #<TI>#
+	_ZTI16CMsvChangeRecord @ 533 NONAME ; #<TI>#
+	_ZTI16CMsvIndexContext @ 534 NONAME ; #<TI>#
+	_ZTI16CMsvMtmOperation @ 535 NONAME ; #<TI>#
+	_ZTI17CMsvBackupHandler @ 536 NONAME ; #<TI>#
+	_ZTI17CMsvChildMessages @ 537 NONAME ; #<TI>#
+	_ZTI17CMsvOperationData @ 538 NONAME ; #<TI>#
+	_ZTI17CMsvOperationWait @ 539 NONAME ; #<TI>#
+	_ZTI17CMsvServerSession @ 540 NONAME ; #<TI>#
+	_ZTI17CRegisteredMtmDll @ 541 NONAME ; #<TI>#
+	_ZTI18CClientMtmRegistry @ 542 NONAME ; #<TI>#
+	_ZTI18CInstalledMtmGroup @ 543 NONAME ; #<TI>#
+	_ZTI18CMsvEntryOperation @ 544 NONAME ; #<TI>#
+	_ZTI18CMsvLocalOperation @ 545 NONAME ; #<TI>#
+	_ZTI19CMsvServerOperation @ 546 NONAME ; #<TI>#
+	_ZTI19CMtmRegistryControl @ 547 NONAME ; #<TI>#
+	_ZTI20CMsvNotifyDiskChange @ 548 NONAME ABSENT ; #<TI>#
+	_ZTI21CMsvMtmOperationQueue @ 549 NONAME ; #<TI>#
+	_ZTI21CServerMtmDllRegistry @ 550 NONAME ; #<TI>#
+	_ZTI22CMsvCompletedOperation @ 551 NONAME ; #<TI>#
+	_ZTI22CMsvLocalCopyOperation @ 552 NONAME ; #<TI>#
+	_ZTI22CMsvLocalMoveOperation @ 553 NONAME ; #<TI>#
+	_ZTI23CInstalledMtmGroupArray @ 554 NONAME ; #<TI>#
+	_ZTI23CMsvCopyMoveEntriesBase @ 555 NONAME ; #<TI>#
+	_ZTI24CMsvChangeDriveOperation @ 556 NONAME ; #<TI>#
+	_ZTI24CMsvLocalChangeOperation @ 557 NONAME ; #<TI>#
+	_ZTI24CMsvLocalCreateOperation @ 558 NONAME ; #<TI>#
+	_ZTI24CMsvLocalDeleteOperation @ 559 NONAME ; #<TI>#
+	_ZTI32CMsvOperationActiveSchedulerWait @ 560 NONAME ; #<TI>#
+	_ZTI8CMsvCopy @ 561 NONAME ; #<TI>#
+	_ZTI8CMsvMove @ 562 NONAME ; #<TI>#
+	_ZTI8CMsvWait @ 563 NONAME ABSENT ; #<TI>#
+	_ZTI9CMsvEntry @ 564 NONAME ; #<TI>#
+	_ZTI9CMsvTimer @ 565 NONAME ; #<TI>#
+	_ZTV10CCopyFiles @ 566 NONAME ; #<VT>#
+	_ZTV10CMsvDelete @ 567 NONAME ; #<VT>#
+	_ZTV10CMsvServer @ 568 NONAME ; #<VT>#
+	_ZTV11CMsvSession @ 569 NONAME ; #<VT>#
+	_ZTV11CMtmDllInfo @ 570 NONAME ; #<VT>#
+	_ZTV11HMsvReadBuf @ 571 NONAME ; #<VT>#
+	_ZTV12CCopyOneFile @ 572 NONAME ; #<VT>#
+	_ZTV12CMsvFindText @ 573 NONAME ; #<VT>#
+	_ZTV12CMsvMtmCache @ 574 NONAME ABSENT ; #<VT>#
+	_ZTV12HMsvWriteBuf @ 575 NONAME ; #<VT>#
+	_ZTV13CMsvCopyEntry @ 576 NONAME ; #<VT>#
+	_ZTV13CMtmGroupData @ 577 NONAME ; #<VT>#
+	_ZTV14CMsvEntryArray @ 578 NONAME ; #<VT>#
+	_ZTV14CMsvIndexEntry @ 579 NONAME ABSENT ; #<VT>#
+	_ZTV15CMsvCachedStore @ 580 NONAME ; #<VT>#
+	_ZTV15CMsvClientEntry @ 581 NONAME ; #<VT>#
+	_ZTV15CMsvCopyEntries @ 582 NONAME ; #<VT>#
+	_ZTV15CMsvMoveEntries @ 583 NONAME ; #<VT>#
+	_ZTV15CMsvServerEntry @ 584 NONAME ; #<VT>#
+	_ZTV15CMsvServerIndex @ 585 NONAME ABSENT ; #<VT>#
+	_ZTV15TKeyArrayFixPtr @ 586 NONAME ; #<VT>#
+	_ZTV16CMsvChangeBuffer @ 587 NONAME ; #<VT>#
+	_ZTV16CMsvChangeRecord @ 588 NONAME ; #<VT>#
+	_ZTV16CMsvIndexContext @ 589 NONAME ; #<VT>#
+	_ZTV16CMsvMtmOperation @ 590 NONAME ; #<VT>#
+	_ZTV17CMsvBackupHandler @ 591 NONAME ; #<VT>#
+	_ZTV17CMsvChildMessages @ 592 NONAME ; #<VT>#
+	_ZTV17CMsvOperationData @ 593 NONAME ; #<VT>#
+	_ZTV17CMsvOperationWait @ 594 NONAME ; #<VT>#
+	_ZTV17CMsvServerSession @ 595 NONAME ; #<VT>#
+	_ZTV17CRegisteredMtmDll @ 596 NONAME ; #<VT>#
+	_ZTV18CClientMtmRegistry @ 597 NONAME ; #<VT>#
+	_ZTV18CInstalledMtmGroup @ 598 NONAME ; #<VT>#
+	_ZTV18CMsvEntryOperation @ 599 NONAME ; #<VT>#
+	_ZTV18CMsvLocalOperation @ 600 NONAME ; #<VT>#
+	_ZTV19CMsvServerOperation @ 601 NONAME ; #<VT>#
+	_ZTV19CMtmRegistryControl @ 602 NONAME ; #<VT>#
+	_ZTV20CMsvNotifyDiskChange @ 603 NONAME ABSENT ; #<VT>#
+	_ZTV21CMsvMtmOperationQueue @ 604 NONAME ; #<VT>#
+	_ZTV21CServerMtmDllRegistry @ 605 NONAME ; #<VT>#
+	_ZTV22CMsvCompletedOperation @ 606 NONAME ; #<VT>#
+	_ZTV22CMsvLocalCopyOperation @ 607 NONAME ; #<VT>#
+	_ZTV22CMsvLocalMoveOperation @ 608 NONAME ; #<VT>#
+	_ZTV23CInstalledMtmGroupArray @ 609 NONAME ; #<VT>#
+	_ZTV23CMsvCopyMoveEntriesBase @ 610 NONAME ; #<VT>#
+	_ZTV24CMsvChangeDriveOperation @ 611 NONAME ; #<VT>#
+	_ZTV24CMsvLocalChangeOperation @ 612 NONAME ; #<VT>#
+	_ZTV24CMsvLocalCreateOperation @ 613 NONAME ; #<VT>#
+	_ZTV24CMsvLocalDeleteOperation @ 614 NONAME ; #<VT>#
+	_ZTV32CMsvOperationActiveSchedulerWait @ 615 NONAME ; #<VT>#
+	_ZTV8CMsvCopy @ 616 NONAME ; #<VT>#
+	_ZTV8CMsvMove @ 617 NONAME ; #<VT>#
+	_ZTV8CMsvWait @ 618 NONAME ABSENT ; #<VT>#
+	_ZN11CMsvSession11FileSessionEv @ 619 NONAME
+	_ZN11CMsvSession11OperationIdEv @ 620 NONAME
+	_ZN11CMsvSession11RemoveEntryEl @ 621 NONAME
+	_ZN11CMsvSession11StopServiceEl @ 622 NONAME
+	_ZN11CMsvSession13ServiceActiveEl @ 623 NONAME
+	_ZN11CMsvSession15InstallMtmGroupERK7TDesC16 @ 624 NONAME
+	_ZN11CMsvSession15ServiceProgressElR5TDes8 @ 625 NONAME
+	_ZN11CMsvSession17DeInstallMtmGroupERK7TDesC16 @ 626 NONAME
+	_ZN11CMsvSession18CloseMessageServerEv @ 627 NONAME
+	_ZN11CMsvSession28GetAndClearIndexCorruptFlagLEv @ 628 NONAME
+	_ZN11CMsvSession7SessionEv @ 629 NONAME
+	_ZN11CMsvSession8GetEntryElRlR9TMsvEntry @ 630 NONAME
+	_ZN11CMsvSession9GetEntryLEl @ 631 NONAME
+	_ZN11CMtmDllInfo4NewLERK7TDesC16RK8TUidTypeS2_i8TVersion @ 632 NONAME
+	_ZN11CMtmDllInfo4NewLERKS_ @ 633 NONAME
+	_ZN13CMtmGroupData4NewLE4TUidS0_P16CMtmDllInfoArrayRK14TCapabilitySet @ 634 NONAME
+	_ZN13CMtmGroupData4NewLERKS_ @ 635 NONAME
+	_ZN14CMsvAttachment11SetCompleteEi @ 636 NONAME
+	_ZN14CMsvAttachment12SetMimeTypeLERK6TDesC8 @ 637 NONAME
+	_ZN14CMsvAttachment16SetIntAttributeLE4TUidi @ 638 NONAME
+	_ZN14CMsvAttachment18RemoveIntAttributeE4TUid @ 639 NONAME
+	_ZN14CMsvAttachment18SetAttachmentNameLERK7TDesC16 @ 640 NONAME
+	_ZN14CMsvAttachment18SetDesC8AttributeLE4TUidRK6TDesC8 @ 641 NONAME
+	_ZN14CMsvAttachment20RemoveDesC8AttributeE4TUid @ 642 NONAME
+	_ZN14CMsvAttachment4NewLENS_18TMsvAttachmentTypeE @ 643 NONAME
+	_ZN14CMsvAttachment4NewLENS_18TMsvAttachmentTypeEiP6HBufC8P7HBufC16 @ 644 NONAME
+	_ZN14CMsvAttachment4NewLERKS_ @ 645 NONAME
+	_ZN14CMsvAttachment5SetIdEj @ 646 NONAME
+	_ZN14CMsvAttachment7SetSizeEi @ 647 NONAME
+	_ZN14CMsvAttachmentD0Ev @ 648 NONAME
+	_ZN14CMsvAttachmentD1Ev @ 649 NONAME
+	_ZN14CMsvAttachmentD2Ev @ 650 NONAME
+	_ZN15CMsvMimeHeaders11XTypeParamsEv @ 651 NONAME
+	_ZN15CMsvMimeHeaders13SetContentIdLERK6TDesC8 @ 652 NONAME
+	_ZN15CMsvMimeHeaders14SetMimeCharsetEj @ 653 NONAME
+	_ZN15CMsvMimeHeaders15SetContentBaseLERK6TDesC8 @ 654 NONAME
+	_ZN15CMsvMimeHeaders15SetContentTypeLERK6TDesC8 @ 655 NONAME
+	_ZN15CMsvMimeHeaders16SetRelativePathLERK6TDesC8 @ 656 NONAME
+	_ZN15CMsvMimeHeaders17ContentTypeParamsEv @ 657 NONAME
+	_ZN15CMsvMimeHeaders18SetContentSubTypeLERK6TDesC8 @ 658 NONAME
+	_ZN15CMsvMimeHeaders19SetContentLocationLERK7TDesC16 @ 659 NONAME
+	_ZN15CMsvMimeHeaders21SetSuggestedFilenameLERK7TDesC16 @ 660 NONAME
+	_ZN15CMsvMimeHeaders22SetContentDescriptionLERK6TDesC8 @ 661 NONAME
+	_ZN15CMsvMimeHeaders22SetContentDispositionLERK6TDesC8 @ 662 NONAME
+	_ZN15CMsvMimeHeaders24ContentDispositionParamsEv @ 663 NONAME
+	_ZN15CMsvMimeHeaders26SetContentTransferEncodingERK6TDesC8 @ 664 NONAME
+	_ZN15CMsvMimeHeaders4NewLEv @ 665 NONAME
+	_ZN15CMsvMimeHeaders5NewLCEv @ 666 NONAME
+	_ZN15CMsvMimeHeaders5ResetEv @ 667 NONAME
+	_ZN15CMsvMimeHeaders8RestoreLER14CMsvAttachment @ 668 NONAME
+	_ZN15CMsvMimeHeadersD0Ev @ 669 NONAME
+	_ZN15CMsvMimeHeadersD1Ev @ 670 NONAME
+	_ZN15CMsvMimeHeadersD2Ev @ 671 NONAME
+	_ZN15CMsvServerEntry11ChangeEntryERK9TMsvEntry9TSecureId @ 672 NONAME
+	_ZN15CMsvServerEntry11CreateEntryER9TMsvEntry9TSecureId @ 673 NONAME
+	_ZN15CMsvServerIndex11ChangeEntryERK9TMsvEntry9TSecureIdi @ 674 NONAME ABSENT
+	_ZN15CMsvServerIndex8AddEntryER9TMsvEntry9TSecureIdi @ 675 NONAME ABSENT
+	_ZN17RMsvServerSession12ChangeEntryLERK9TMsvEntryl9TSecureId @ 676 NONAME
+	_ZN17RMsvServerSession12ChangeEntryLERK9TMsvEntryl9TSecureIdR14TRequestStatus @ 677 NONAME
+	_ZN17RMsvServerSession12CreateEntryLERK9TMsvEntryl9TSecureId @ 678 NONAME
+	_ZN17RMsvServerSession12CreateEntryLERK9TMsvEntryl9TSecureIdR14TRequestStatus @ 679 NONAME
+	_ZN17RMsvServerSession15OpenAttachmentLElRK7TDesC16R5RFile @ 680 NONAME
+	_ZN17RMsvServerSession16DeleteAttachmentElRK7TDesC16 @ 681 NONAME
+	_ZN17RMsvServerSession16DeleteFileStoreLEl @ 682 NONAME
+	_ZN17RMsvServerSession17ReplaceFileStoreLEl @ 683 NONAME
+	_ZN17RMsvServerSession18OpenTempStoreFileLElR5RFile @ 684 NONAME
+	_ZN17RMsvServerSession20OpenFileStoreForReadElR5RFile @ 685 NONAME
+	_ZN17RMsvServerSession23OpenAttachmentForWriteLElRK7TDesC16R5RFile @ 686 NONAME
+	_ZN17RMsvServerSession25CreateAttachmentForWriteLElR6TDes16R5RFile @ 687 NONAME
+	_ZN31TMsvPackedRegisteredMtmDllArray26PackRegisteredMtmDllArrayLER12RWriteStreamRK22CRegisteredMtmDllArray @ 688 NONAME
+	_ZN31TMsvPackedRegisteredMtmDllArray28UnpackRegisteredMtmDllArrayLER11RReadStreamR22CRegisteredMtmDllArray27TTimeIntervalMicroSeconds32R25MRegisteredMtmDllObserver @ 689 NONAME
+	_ZN8CBaseMtm14AddAttachmentLER5RFileRK6TDesC8R14TRequestStatus @ 690 NONAME ABSENT
+	_ZN8CBaseMtm14AddAttachmentLERK7TDesC16RK6TDesC8R14TRequestStatus @ 691 NONAME ABSENT
+	_ZN8CBaseMtm20AddLinkedAttachmentLERK7TDesC16RK6TDesC8R14TRequestStatus @ 692 NONAME ABSENT
+	_ZN8CBaseMtm21AddEntryAsAttachmentLElR14TRequestStatus @ 693 NONAME
+	_ZN9CMsvEntry7ChangeLERK9TMsvEntry9TSecureId @ 694 NONAME
+	_ZN9CMsvEntry7ChangeLERK9TMsvEntry9TSecureIdR14TRequestStatus @ 695 NONAME
+	_ZN9CMsvEntry7CreateLER9TMsvEntry9TSecureId @ 696 NONAME
+	_ZN9CMsvEntry7CreateLERK9TMsvEntry9TSecureIdR14TRequestStatus @ 697 NONAME
+	_ZN9CMsvStore12OpenForReadLER17MMsvStoreObserverR3RFsR16MMsvStoreManagerl @ 698 NONAME
+	_ZN9CMsvStore13OpenForWriteLER17MMsvStoreObserverR3RFsR16MMsvStoreManagerl @ 699 NONAME
+	_ZN9CMsvStore18AttachmentManagerLEv @ 700 NONAME
+	_ZN9CMsvStore28AttachmentManagerExtensionsLEv @ 701 NONAME
+	_ZN9CMsvStoreC1ER17MMsvStoreObserverR3RFslR16MMsvStoreManager @ 702 NONAME
+	_ZN9CMsvStoreC2ER17MMsvStoreObserverR3RFslR16MMsvStoreManager @ 703 NONAME
+	_ZNK11CMsvSession27GetMtmRequiredCapabilitiesLE4TUidR14TCapabilitySet @ 704 NONAME
+	_ZNK13CMtmGroupData15MtmDllInfoArrayEv @ 705 NONAME
+	_ZNK13CMtmGroupData26GetMtmRequiredCapabilitiesEv @ 706 NONAME
+	_ZNK14CMsvAttachment14AttachmentNameEv @ 707 NONAME
+	_ZNK14CMsvAttachment15GetIntAttributeE4TUidRi @ 708 NONAME
+	_ZNK14CMsvAttachment17EntryAttachmentIdEv @ 709 NONAME
+	_ZNK14CMsvAttachment17GetDesC8AttributeE4TUidR6TPtrC8 @ 710 NONAME
+	_ZNK14CMsvAttachment2IdEv @ 711 NONAME
+	_ZNK14CMsvAttachment4SizeEv @ 712 NONAME
+	_ZNK14CMsvAttachment4TypeEv @ 713 NONAME
+	_ZNK14CMsvAttachment8CompleteEv @ 714 NONAME
+	_ZNK14CMsvAttachment8FilePathEv @ 715 NONAME
+	_ZNK14CMsvAttachment8MimeTypeEv @ 716 NONAME
+	_ZNK15CMsvMimeHeaders11ContentBaseEv @ 717 NONAME
+	_ZNK15CMsvMimeHeaders11ContentTypeEv @ 718 NONAME
+	_ZNK15CMsvMimeHeaders11MimeCharsetEv @ 719 NONAME
+	_ZNK15CMsvMimeHeaders11XTypeParamsEv @ 720 NONAME
+	_ZNK15CMsvMimeHeaders12RelativePathEv @ 721 NONAME
+	_ZNK15CMsvMimeHeaders14ContentSubTypeEv @ 722 NONAME
+	_ZNK15CMsvMimeHeaders15ContentLocationEv @ 723 NONAME
+	_ZNK15CMsvMimeHeaders17ContentTypeParamsEv @ 724 NONAME
+	_ZNK15CMsvMimeHeaders17SuggestedFilenameEv @ 725 NONAME
+	_ZNK15CMsvMimeHeaders18ContentDescriptionEv @ 726 NONAME
+	_ZNK15CMsvMimeHeaders18ContentDispositionEv @ 727 NONAME
+	_ZNK15CMsvMimeHeaders19GetContentTypeValueERK6TDesC8 @ 728 NONAME
+	_ZNK15CMsvMimeHeaders23ContentTransferEncodingER6TPtrC8 @ 729 NONAME
+	_ZNK15CMsvMimeHeaders23ContentTransferEncodingEv @ 730 NONAME
+	_ZNK15CMsvMimeHeaders24ContentDispositionParamsEv @ 731 NONAME
+	_ZNK15CMsvMimeHeaders4SizeEv @ 732 NONAME
+	_ZNK15CMsvMimeHeaders6StoreLER14CMsvAttachment @ 733 NONAME
+	_ZNK15CMsvMimeHeaders9ContentIdEv @ 734 NONAME
+	_ZNK15CMsvServerIndex12GetChildrenLElR9CArrayPtrIK9TMsvEntryERK21TMsvSelectionOrdering4TUidi9TSecureId @ 735 NONAME ABSENT
+	_ZNK15CMsvServerIndex13GetChildrenIdElRK15CMsvEntryFilterR18CMsvEntrySelectioni9TSecureId @ 736 NONAME ABSENT
+	_ZNK15CMsvServerIndex8GetEntryElRP9TMsvEntryR9TSecureId @ 737 NONAME ABSENT
+	_ZNK17RMsvServerSession16FileStoreExistsLEl @ 738 NONAME
+	_ZTI14CMsvAttachment @ 739 NONAME ; #<TI>#
+	_ZTI15CDesC8Attribute @ 740 NONAME ; #<TI>#
+	_ZTI15CMsvMimeHeaders @ 741 NONAME ; #<TI>#
+	_ZTI18CMsvMailinitWaiter @ 742 NONAME ; #<TI>#
+	_ZTI20CMsvAttachmentWaiter @ 743 NONAME ; #<TI>#
+	_ZTI20CMsvAttributeManager @ 744 NONAME ; #<TI>#
+	_ZTI21CMsvAttachmentManager @ 745 NONAME ; #<TI>#
+	_ZTI22TMsvServerStoreManager @ 746 NONAME ; #<TI>#
+	_ZTV14CMsvAttachment @ 747 NONAME ; #<VT>#
+	_ZTV15CDesC8Attribute @ 748 NONAME ; #<VT>#
+	_ZTV15CMsvMimeHeaders @ 749 NONAME ; #<VT>#
+	_ZTV18CMsvMailinitWaiter @ 750 NONAME ; #<VT>#
+	_ZTV20CMsvAttachmentWaiter @ 751 NONAME ; #<VT>#
+	_ZTV20CMsvAttributeManager @ 752 NONAME ; #<VT>#
+	_ZTV21CMsvAttachmentManager @ 753 NONAME ; #<VT>#
+	_ZTV22TMsvServerStoreManager @ 754 NONAME ; #<VT>#
+	_ZThn8_N17RMsvServerSession15OpenAttachmentLElRK7TDesC16R5RFile @ 755 NONAME ; #<thunk>#
+	_ZThn8_N17RMsvServerSession16DeleteAttachmentElRK7TDesC16 @ 756 NONAME ; #<thunk>#
+	_ZThn8_N17RMsvServerSession16DeleteFileStoreLEl @ 757 NONAME ; #<thunk>#
+	_ZThn8_N17RMsvServerSession17ReplaceFileStoreLEl @ 758 NONAME ; #<thunk>#
+	_ZThn8_N17RMsvServerSession18OpenTempStoreFileLElR5RFile @ 759 NONAME ; #<thunk>#
+	_ZThn8_N17RMsvServerSession20OpenFileStoreForReadElR5RFile @ 760 NONAME ; #<thunk>#
+	_ZThn8_N17RMsvServerSession23OpenAttachmentForWriteLElRK7TDesC16R5RFile @ 761 NONAME ; #<thunk>#
+	_ZThn8_N17RMsvServerSession25CreateAttachmentForWriteLElR6TDes16R5RFile @ 762 NONAME ; #<thunk>#
+	_ZThn8_NK17RMsvServerSession16FileStoreExistsLEl @ 763 NONAME ; #<thunk>#
+	_ZN11CMsvSession10CopyStoreLERK10TDriveUnitR14TRequestStatus @ 764 NONAME
+	_ZN11CMsvSession12DeleteStoreLERK10TDriveUnitR14TRequestStatus @ 765 NONAME
+	_ZN16TMsvCopyProgressC1Ev @ 766 NONAME
+	_ZN16TMsvCopyProgressC2Ev @ 767 NONAME
+	_ZN18TMsvDeleteProgressC1Ev @ 768 NONAME
+	_ZN18TMsvDeleteProgressC2Ev @ 769 NONAME
+	_ZN8CBaseMtm21ChangeDefaultServiceLERKl @ 770 NONAME
+	_ZN8CBaseMtm21RemoveDefaultServiceLEv @ 771 NONAME
+	_ZNK8CBaseMtm15DefaultServiceLEv @ 772 NONAME
+	_ZTI22CMsvCopyStoreOperation @ 773 NONAME ; #<TI>#
+	_ZTI24CMsvDeleteStoreOperation @ 774 NONAME ; #<TI>#
+	_ZTV22CMsvCopyStoreOperation @ 775 NONAME ; #<VT>#
+	_ZTV24CMsvDeleteStoreOperation @ 776 NONAME ; #<VT>#
+	_ZN11CMsvSession13CurrentDriveLEv @ 777 NONAME
+	_ZN11CMsvSession19DriveContainsStoreLE10TDriveUnit @ 778 NONAME
+	_ZN17CMsvRecipientList5ResetEv @ 779 NONAME
+	_ZN17CMsvRecipientList6DeleteEi @ 780 NONAME
+	_ZN17CMsvRecipientList6DeleteEii @ 781 NONAME
+	_ZN17CMsvRecipientList7AppendLERK7TDesC16 @ 782 NONAME
+	_ZN17CMsvRecipientList7AppendLEmRK7TDesC16 @ 783 NONAME
+	_ZN17CMsvSendOperation13FinalProgressEv @ 784 NONAME
+	_ZN17CMsvSendOperation4RunLEv @ 785 NONAME
+	_ZN17CMsvSendOperation5StartEP13CMsvOperation @ 786 NONAME
+	_ZN17CMsvSendOperation8DoCancelEv @ 787 NONAME
+	_ZN17CMsvSendOperation9ProgressLEv @ 788 NONAME
+	_ZN17CMsvSendOperationC2ER11CMsvSessionR14TRequestStatus @ 789 NONAME
+	_ZN17CMsvSendOperationD0Ev @ 790 NONAME
+	_ZN17CMsvSendOperationD1Ev @ 791 NONAME
+	_ZN17CMsvSendOperationD2Ev @ 792 NONAME
+	_ZN8CBaseMtm13AddAddresseeLEmRK7TDesC16 @ 793 NONAME
+	_ZN8CBaseMtm13AddAddresseeLEmRK7TDesC16S2_ @ 794 NONAME
+	_ZN8CBaseMtm17CreateAttachmentLERK7TDesC16R5RFileRK6TDesC8R14TRequestStatus @ 795 NONAME ABSENT
+	_ZN8CBaseMtm25CancelAttachmentOperationEv @ 796 NONAME
+	_ZNK17CMsvRecipientList13RecipientListEv @ 797 NONAME
+	_ZNK17CMsvRecipientList4TypeEi @ 798 NONAME
+	_ZNK17CMsvRecipientList5CountEv @ 799 NONAME
+	_ZNK17CMsvRecipientListcvR16CDesC16ArrayFlatEv @ 800 NONAME ABSENT
+	_ZNK17CMsvRecipientListixEi @ 801 NONAME
+	_ZNK8CBaseMtm13AddresseeListEv @ 802 NONAME
+	_ZTI17CMsvRecipientList @ 803 NONAME ; #<TI>#
+	_ZTI17CMsvSendOperation @ 804 NONAME ; #<TI>#
+	_ZTV17CMsvRecipientList @ 805 NONAME ; #<VT>#
+	_ZTV17CMsvSendOperation @ 806 NONAME ; #<VT>#
+	_ZN15CMsvServerEntry11CreateEntryER9TMsvEntry9TSecureIdi @ 807 NONAME
+	_ZN15CMsvServerEntry12CompleteBulkEv @ 808 NONAME
+	_ZN15CMsvServerEntry13DoChangeEntryERK9TMsvEntryi @ 809 NONAME ABSENT
+	_ZN15CMsvServerEntry13DoCreateEntryER9TMsvEntryi @ 810 NONAME ABSENT
+	_ZN15CMsvServerEntry15ChangeEntryBulkERK9TMsvEntry @ 811 NONAME
+	_ZN15CMsvServerEntry15ChangeEntryBulkERK9TMsvEntry9TSecureId @ 812 NONAME
+	_ZN15CMsvServerEntry15CreateEntryBulkER9TMsvEntry @ 813 NONAME
+	_ZN15CMsvServerEntry15CreateEntryBulkER9TMsvEntry9TSecureId @ 814 NONAME
+	_ZN15CMsvServerIndex16AddEntryNoCommitER9TMsvEntryi @ 815 NONAME ABSENT
+	_ZN15CMsvServerIndex16AddEntryNoCommitER9TMsvEntry9TSecureIdi @ 816 NONAME ABSENT
+	_ZN15CMsvServerIndex19ChangeEntryNoCommitERK9TMsvEntry @ 817 NONAME ABSENT
+	_ZN15CMsvServerIndex19ChangeEntryNoCommitERK9TMsvEntry9TSecureIdi @ 818 NONAME ABSENT
+	_ZN15CMsvServerIndex24CommitNonCommitedEntriesEv @ 819 NONAME ABSENT
+	_ZN21TMsvSelectionOrdering20SetSubjectSkipStringERK7TDesC16 @ 820 NONAME
+	_ZNK21TMsvSelectionOrdering17SubjectSkipStringEv @ 821 NONAME
+	_ZN25TMsvPackedNotifierRequest4PackERK18CMsvEntrySelectionRK13TSecurityInfo @ 822 NONAME
+	_ZN25TMsvPackedNotifierRequest7UnpackLERK6TDesC8R18CMsvEntrySelectionR13TSecurityInfo @ 823 NONAME
+	_ZN25TMsvPackedNotifierRequestC1ERP6HBufC8 @ 824 NONAME
+	_ZN25TMsvPackedNotifierRequestC2ERP6HBufC8 @ 825 NONAME
+	_ZN14CBaseServerMtm12GetInterfaceE4TUid @ 826 NONAME
+	_ZN8CBaseMtm12GetInterfaceE4TUid @ 827 NONAME
+	_ZN8CBaseMtm4BodyEv @ 828 NONAME
+	_ZN8CBaseMtm7SessionEv @ 829 NONAME
+	_ZNK8CBaseMtm10HasContextEv @ 830 NONAME
+	_ZNK8CBaseMtm4BodyEv @ 831 NONAME
+	_ZNK8CBaseMtm4TypeEv @ 832 NONAME
+	_ZNK8CBaseMtm5EntryEv @ 833 NONAME
+	_ZN14CBaseServerMtm8RunErrorEi @ 834 NONAME
+	_ZN8CBaseMtm14AddAttachmentLER5RFileRK6TDesC8jR14TRequestStatus @ 835 NONAME
+	_ZN8CBaseMtm14AddAttachmentLERK7TDesC16RK6TDesC8jR14TRequestStatus @ 836 NONAME
+	_ZN8CBaseMtm17CreateAttachmentLERK7TDesC16R5RFileRK6TDesC8jR14TRequestStatus @ 837 NONAME
+	_ZN8CBaseMtm20AddLinkedAttachmentLERK7TDesC16RK6TDesC8jR14TRequestStatus @ 838 NONAME
+	_ZN11CMsvSession25MessageStoreDrivePresentLEv @ 839 NONAME
+	_ZN13MessageServer27IsMessageStoreDrivePresentLER3RFs @ 840 NONAME
+	_ZN17RMsvServerSession25MessageStoreDrivePresentLEv @ 841 NONAME
+	_ZN17RMsvServerSession11FileExistsLERK7TDesC16 @ 842 NONAME
+	_ZThn8_N17RMsvServerSession11FileExistsLERK7TDesC16 @ 843 NONAME ; #<thunk>#
+	_ZN17RMsvServerSession16RenameAttachmentElRK7TDesC16S2_ @ 844 NONAME
+	_ZN17RMsvServerSession26ReplaceAttachmentForWriteLElR6TDes16R5RFile @ 845 NONAME
+	_ZTI20CMsvAttachmentRename @ 846 NONAME ; #<TI>#
+	_ZTV20CMsvAttachmentRename @ 847 NONAME ; #<VT>#
+	_ZThn8_N17RMsvServerSession16RenameAttachmentElRK7TDesC16S2_ @ 848 NONAME ; #<thunk>#
+	_ZThn8_N17RMsvServerSession26ReplaceAttachmentForWriteLElR6TDes16R5RFile @ 849 NONAME ; #<thunk>#
+	_ZN17RMsvServerSession19AttachmentFilePathLElR6TDes16 @ 850 NONAME
+	_ZThn8_N17RMsvServerSession19AttachmentFilePathLElR6TDes16 @ 851 NONAME ; #<thunk>#
+	_ZN11CMsvSession10OpenAsyncLER19MMsvSessionObserverR3RFs @ 852 NONAME
+	_ZN11CMsvSession15OpenAsObserverLER19MMsvSessionObserverR3RFs @ 853 NONAME
+	_ZN11CMsvSession9OpenSyncLER19MMsvSessionObserverR3RFs @ 854 NONAME
+	_ZN36CMsvTechnologyTypeDefaultMtmSettings13LoadSettingsLEv @ 855 NONAME
+	_ZN36CMsvTechnologyTypeDefaultMtmSettings13SaveSettingsLEv @ 856 NONAME
+	_ZN36CMsvTechnologyTypeDefaultMtmSettings14SetDefaultMtmLE4TUidS0_ @ 857 NONAME
+	_ZN36CMsvTechnologyTypeDefaultMtmSettings16RemoveDefaultMtmE4TUid @ 858 NONAME
+	_ZN36CMsvTechnologyTypeDefaultMtmSettings4NewLER3RFs @ 859 NONAME
+	_ZN36CMsvTechnologyTypeDefaultMtmSettingsD0Ev @ 860 NONAME
+	_ZN36CMsvTechnologyTypeDefaultMtmSettingsD1Ev @ 861 NONAME
+	_ZN36CMsvTechnologyTypeDefaultMtmSettingsD2Ev @ 862 NONAME
+	_ZNK36CMsvTechnologyTypeDefaultMtmSettings10DefaultMtmE4TUidRS0_ @ 863 NONAME
+	_ZTI36CMsvTechnologyTypeDefaultMtmSettings @ 864 NONAME ; #<TI>#
+	_ZTV36CMsvTechnologyTypeDefaultMtmSettings @ 865 NONAME ; #<VT>#
+	_ZN15CMsvMimeHeaders19ContainsMimeHeadersERK14CMsvAttachment @ 866 NONAME
+	_ZN9TMsvEntry11SetMtmData1El @ 867 NONAME
+	_ZN9TMsvEntry11SetMtmData2El @ 868 NONAME
+	_ZN9TMsvEntry11SetMtmData3El @ 869 NONAME
+	_ZNK9TMsvEntry8MtmData1Ev @ 870 NONAME
+	_ZNK9TMsvEntry8MtmData2Ev @ 871 NONAME
+	_ZNK9TMsvEntry8MtmData3Ev @ 872 NONAME
+	_ZN9CMsvStore31CreateShareProtectedAttachmentLERK7TDesC16R5RFileP14CMsvAttachment @ 873 NONAME
+	_ZN17RMsvServerSession39CreateShareProtectedAttachmentForWriteLElR6TDes16R5RFile @ 874 NONAME
+	_ZThn8_N17RMsvServerSession39CreateShareProtectedAttachmentForWriteLElR6TDes16R5RFile @ 875 NONAME ; #<thunk>#
+	_ZN11CMsvSession10OpenAsyncLER19MMsvSessionObserverR3RFsi @ 876 NONAME
+	_ZN11CMsvSession10OpenAsyncLER19MMsvSessionObserveri @ 877 NONAME
+	_ZN11CMsvSession15OpenAsObserverLER19MMsvSessionObserverR3RFsi @ 878 NONAME
+	_ZN11CMsvSession15OpenAsObserverLER19MMsvSessionObserveri @ 879 NONAME
+	_ZN11CMsvSession9OpenSyncLER19MMsvSessionObserverR3RFsi @ 880 NONAME
+	_ZN11CMsvSession9OpenSyncLER19MMsvSessionObserveri @ 881 NONAME
+	_ZN13CMsvOperation10Extension_EjRPvS0_ @ 882 NONAME
+	_ZN13CMsvOperation14SystemProgressER18TMsvSystemProgress @ 883 NONAME
+	_ZN14CBaseServerMtm10Extension_EjRPvS0_ @ 884 NONAME
+	_ZN14CBaseServerMtm14SystemProgressER18TMsvSystemProgress @ 885 NONAME
+	_ZN17RMsvServerSession23OperationSystemProgressElR18TMsvSystemProgress @ 886 NONAME
+	_ZN18CMsvEntryOperation10Extension_EjRPvS0_ @ 887 NONAME
+	_ZN18TMsvSystemProgressC1Ev @ 888 NONAME
+	_ZN18TMsvSystemProgressC2Ev @ 889 NONAME
+	_ZN9McliUtils14GetProgressIdLER13CMsvOperation @ 890 NONAME
+	_ZN9McliUtils17GetProgressErrorLER13CMsvOperation @ 891 NONAME
+	_ZN18TMsvSystemProgressaSERKS_ @ 892 NONAME
+	_ZN18TMsvSystemProgressC1ERKS_ @ 893 NONAME
+	_ZN18TMsvSystemProgressC2ERKS_ @ 894 NONAME
+	_ZN9CMsvEntry16SetEntryNoCheckLEli @ 895 NONAME
+	_ZN17CMsvPlainBodyText10NextChunkLER5TDes8 @ 896 NONAME
+	_ZN17CMsvPlainBodyText10NextChunkLER5TDes8R14TRequestStatus @ 897 NONAME
+	_ZN17CMsvPlainBodyText10NextChunkLER6TDes16 @ 898 NONAME
+	_ZN17CMsvPlainBodyText10NextChunkLER6TDes16R14TRequestStatus @ 899 NONAME
+	_ZN17CMsvPlainBodyText11StoreChunkLERK6TDesC8 @ 900 NONAME
+	_ZN17CMsvPlainBodyText11StoreChunkLERK6TDesC8R14TRequestStatus @ 901 NONAME
+	_ZN17CMsvPlainBodyText11StoreChunkLERK7TDesC16 @ 902 NONAME
+	_ZN17CMsvPlainBodyText11StoreChunkLERK7TDesC16R14TRequestStatus @ 903 NONAME
+	_ZN17CMsvPlainBodyText12CharacterSetEv @ 904 NONAME
+	_ZN17CMsvPlainBodyText14PreviousChunkLER5TDes8 @ 905 NONAME
+	_ZN17CMsvPlainBodyText14PreviousChunkLER5TDes8R14TRequestStatus @ 906 NONAME
+	_ZN17CMsvPlainBodyText14PreviousChunkLER6TDes16 @ 907 NONAME
+	_ZN17CMsvPlainBodyText14PreviousChunkLER6TDes16R14TRequestStatus @ 908 NONAME
+	_ZN17CMsvPlainBodyText16SetCharacterSetLEj @ 909 NONAME
+	_ZN17CMsvPlainBodyText19DefaultCharacterSetEv @ 910 NONAME
+	_ZN17CMsvPlainBodyText25StoreRichTextAsPlainTextLER9CRichText @ 911 NONAME
+	_ZN17CMsvPlainBodyText4SizeEv @ 912 NONAME
+	_ZN17CMsvPlainBodyText7CommitLEv @ 913 NONAME
+	_ZN17CMsvPlainBodyTextD0Ev @ 914 NONAME
+	_ZN17CMsvPlainBodyTextD1Ev @ 915 NONAME
+	_ZN17CMsvPlainBodyTextD2Ev @ 916 NONAME
+	_ZN17RMsvServerSession17BodyTextFilePathLElR6TDes16 @ 917 NONAME
+	_ZN17RMsvServerSession20CreatePlainTextFileLER5RFilel @ 918 NONAME
+	_ZN17RMsvServerSession20DeletePlainTextFileLEl @ 919 NONAME
+	_ZN17RMsvServerSession21ReplacePlainTextFileLEl @ 920 NONAME
+	_ZN17RMsvServerSession24OpenBodyTextFileForReadLER5RFilelRK7TDesC16 @ 921 NONAME
+	_ZN9CMsvStore16RestoreBodyTextLER9CRichTextj @ 922 NONAME
+	_ZN9CMsvStore31InitialisePlainBodyTextForReadLEi @ 923 NONAME
+	_ZN9CMsvStore32InitialisePlainBodyTextForWriteLEijj @ 924 NONAME
+	_ZTI17CMsvPlainBodyText @ 925 NONAME
+	_ZTV17CMsvPlainBodyText @ 926 NONAME
+	_ZThn8_N17RMsvServerSession17BodyTextFilePathLElR6TDes16 @ 927 NONAME
+	_ZThn8_N17RMsvServerSession20CreatePlainTextFileLER5RFilel @ 928 NONAME
+	_ZThn8_N17RMsvServerSession20DeletePlainTextFileLEl @ 929 NONAME
+	_ZThn8_N17RMsvServerSession21ReplacePlainTextFileLEl @ 930 NONAME
+	_ZThn8_N17RMsvServerSession24OpenBodyTextFileForReadLER5RFilelRK7TDesC16 @ 931 NONAME
+	_ZN11CMsvSession20ServiceAccessPointIdElRm @ 932 NONAME
+	_ZN8CBaseMtm10Extension_EjRPvS0_ @ 933 NONAME
+	_ZN8CBaseMtm22SetMessageCharacterSetEj @ 934 NONAME
+	_ZN12CMsvBodyText12GetBodyTextLER9CMsvStoreR5TDes8 @ 935 NONAME
+	_ZN12CMsvBodyText14GetBodyLengthLER9CMsvStore @ 936 NONAME
+	_ZN13TMsvPackQuery11UnpackQueryEP19CMsvSearchSortQuery @ 937 NONAME
+	_ZN13TMsvPackQuery9PackQueryEPK19CMsvSearchSortQuery @ 938 NONAME
+	_ZN13TMsvPackQueryC1ERP6HBufC8 @ 939 NONAME
+	_ZN13TMsvPackQueryC2ERP6HBufC8 @ 940 NONAME
+	_ZN19CMsvSearchSortQuery11SetParentIdEl @ 941 NONAME
+	_ZN19CMsvSearchSortQuery12SetWholeWordEi @ 942 NONAME
+	_ZN19CMsvSearchSortQuery13SetResultTypeE24TMsvSearchSortResultType @ 943 NONAME
+	_ZN19CMsvSearchSortQuery14AddSortOptionLE15TMsvMessagePart13TMsvSortOrder @ 944 NONAME
+	_ZN19CMsvSearchSortQuery16AddSearchOptionLE15TMsvMessagePartRK7TDesC1614TMsvRelationOp @ 945 NONAME
+	_ZN19CMsvSearchSortQuery16AddSearchOptionLE15TMsvMessageParti @ 946 NONAME
+	_ZN19CMsvSearchSortQuery16AddSearchOptionLE15TMsvMessageParti14TMsvRelationOp @ 947 NONAME
+	_ZN19CMsvSearchSortQuery17SetWildCardSearchEi @ 948 NONAME
+	_ZN19CMsvSearchSortQuery18SetSubFolderSearchEi @ 949 NONAME
+	_ZN19CMsvSearchSortQuery22SetCaseSensitiveOptionEi @ 950 NONAME
+	_ZN19CMsvSearchSortQuery4NewLEv @ 951 NONAME
+	_ZN19CMsvSearchSortQuery5NewLCEv @ 952 NONAME
+	_ZN19CMsvSearchSortQueryD0Ev @ 953 NONAME
+	_ZN19CMsvSearchSortQueryD1Ev @ 954 NONAME
+	_ZN19CMsvSearchSortQueryD2Ev @ 955 NONAME
+	_ZN21TMsvPackedIdOperation4PackERK6RArrayIlE @ 956 NONAME
+	_ZN21TMsvPackedIdOperation7UnpackLER6RArrayIlE @ 957 NONAME
+	_ZN21TMsvPackedIdOperationC1ERP6HBufC8 @ 958 NONAME
+	_ZN21TMsvPackedIdOperationC2ERP6HBufC8 @ 959 NONAME
+	_ZN23CMsvSearchSortOperation11GetQueryIdLEv @ 960 NONAME
+	_ZN23CMsvSearchSortOperation11GetResultsLER6RArrayI9TMsvEntryE @ 961 NONAME
+	_ZN23CMsvSearchSortOperation11GetResultsLER6RArrayIlE @ 962 NONAME
+	_ZN23CMsvSearchSortOperation11UnmarkQueryEi @ 963 NONAME
+	_ZN23CMsvSearchSortOperation14GetNextResultLER9TMsvEntry @ 964 NONAME
+	_ZN23CMsvSearchSortOperation14GetNextResultLERl @ 965 NONAME
+	_ZN23CMsvSearchSortOperation15GetResultCountLEv @ 966 NONAME
+	_ZN23CMsvSearchSortOperation4NewLER11CMsvSession @ 967 NONAME
+	_ZN23CMsvSearchSortOperation8RequestLEP19CMsvSearchSortQueryiR14TRequestStatusi @ 968 NONAME
+	_ZN23CMsvSearchSortOperation8RequestLEiR14TRequestStatusi @ 969 NONAME
+	_ZN23CMsvSearchSortOperation9ProgressLEv @ 970 NONAME
+	_ZN23CMsvSearchSortOperationD0Ev @ 971 NONAME
+	_ZN23CMsvSearchSortOperationD1Ev @ 972 NONAME
+	_ZN23CMsvSearchSortOperationD2Ev @ 973 NONAME
+	_ZN26TMsvPackedIdAndMessagePart12InternalizeLER11RReadStreamR6RArrayI19TMsvIdWithSortFieldE @ 974 NONAME
+	_ZN26TMsvPackedIdAndMessagePart4SizeERK6RArrayI19TMsvIdWithSortFieldE @ 975 NONAME
+	_ZN26TMsvPackedIdAndMessagePartC1Ev @ 976 NONAME
+	_ZN26TMsvPackedIdAndMessagePartC2Ev @ 977 NONAME
+	_ZN28CMsvSearchsortOpOnHeaderBody18GetResultAsTMsvIdLER6RArrayIlE @ 978 NONAME
+	_ZN28CMsvSearchsortOpOnHeaderBody19DoGetEntryForAllIdLERK6RArrayIlER14TRequestStatus @ 979 NONAME
+	_ZN28CMsvSearchsortOpOnHeaderBody21GetResultAsTmsvEntryLER6RArrayI9TMsvEntryE @ 980 NONAME
+	_ZN28CMsvSearchsortOpOnHeaderBody23SearchSortOnHeaderBodyLEP19CMsvSearchSortQuery6RArrayIlEiR14TRequestStatus @ 981 NONAME
+	_ZN28CMsvSearchsortOpOnHeaderBody25GetResultAsInvalidTMsvIdLER6RArrayIlE @ 982 NONAME
+	_ZN28CMsvSearchsortOpOnHeaderBody31GetResultAsTMsvIdWithSortFieldLER6RArrayI19TMsvIdWithSortFieldE @ 983 NONAME
+	_ZN28CMsvSearchsortOpOnHeaderBodyD0Ev @ 984 NONAME
+	_ZN28CMsvSearchsortOpOnHeaderBodyD1Ev @ 985 NONAME
+	_ZN28CMsvSearchsortOpOnHeaderBodyD2Ev @ 986 NONAME
+	_ZN8CBaseMtm16GetExtensionDataEv @ 987 NONAME
+	_ZN8CBaseMtm16SetExtensionDataEPv @ 988 NONAME
+	_ZNK26TMsvPackedIdAndMessagePart12ExternalizeLER12RWriteStreamR6RArrayI19TMsvIdWithSortFieldE @ 989 NONAME
+	_ZTI19CMsvSearchSortQuery @ 990 NONAME
+	_ZTI23CMsvSearchSortOperation @ 991 NONAME
+	_ZTI28CMsvSearchsortOpOnHeaderBody @ 992 NONAME
+	_ZTV19CMsvSearchSortQuery @ 993 NONAME
+	_ZTV23CMsvSearchSortOperation @ 994 NONAME
+	_ZTV28CMsvSearchsortOpOnHeaderBody @ 995 NONAME
+	_ZN25TMsvEnhanceSearchSortUtil20GetSearchSortSettingEv @ 996 NONAME
+	_ZN25TMsvEnhanceSearchSortUtil20SetSearchSortSettingE28TMsvEnhanceSearchSortSetting @ 997 NONAME
+	_ZN25TMsvEnhanceSearchSortUtilC1Ev @ 998 NONAME
+	_ZN25TMsvEnhanceSearchSortUtilC2Ev @ 999 NONAME
+	_ZN10CMsvServer4NewLEv @ 1000 NONAME
+	_ZN10CMsvServer12CreateIndexLEv @ 1001 NONAME
+	_ZN11CMsvSession10DriveListLER6RArrayI12TDriveNumberE @ 1002 NONAME
+	_ZN11CMsvSession12RemoveDriveLE12TDriveNumber @ 1003 NONAME
+	_ZN11CMsvSession15GetChildIdsAllLElRK15CMsvEntryFilterR18CMsvEntrySelection @ 1004 NONAME
+	_ZN11CMsvSession17CurrentDriveInfoLER12TDriveNumberRj @ 1005 NONAME
+	_ZN11CMsvSession19AvailableDriveListLER6RArrayI12TDriveNumberE @ 1006 NONAME
+	_ZN11CMsvSession20UpdateDrivePriorityLE12TDriveNumberRj @ 1007 NONAME
+	_ZN11CMsvSession9AddDriveLE12TDriveNumberRj @ 1008 NONAME
+	_ZN13MessageServer23IsMessageStoreSupportedE12TDriveNumber @ 1009 NONAME
+	_ZN17RMsvServerSession10DriveListLER6RArrayI12TDriveNumberE @ 1010 NONAME
+	_ZN17RMsvServerSession12RemoveDriveLE12TDriveNumber @ 1011 NONAME
+	_ZN17RMsvServerSession14GetChildrenAllElR13CArrayPtrFlatI15CMsvClientEntryERK21TMsvSelectionOrdering @ 1012 NONAME
+	_ZN17RMsvServerSession15GetChildIdsAllLElRK15CMsvEntryFilterR18CMsvEntrySelection @ 1013 NONAME
+	_ZN17RMsvServerSession17CurrentDriveInfoLER12TDriveNumberRj @ 1014 NONAME
+	_ZN17RMsvServerSession19AvailableDriveListLER6RArrayI12TDriveNumberE @ 1015 NONAME
+	_ZN17RMsvServerSession20UpdateDrivePriorityLE12TDriveNumberRj @ 1016 NONAME
+	_ZN17RMsvServerSession9AddDriveLE12TDriveNumberRj @ 1017 NONAME
+	_ZN26TMsvPackedDriveIdOperation4PackERK6RArrayI12TDriveNumberE @ 1018 NONAME
+	_ZN26TMsvPackedDriveIdOperation7UnpackLER6RArrayI12TDriveNumberE @ 1019 NONAME
+	_ZN26TMsvPackedDriveIdOperationC1ERP6HBufC8 @ 1020 NONAME
+	_ZN26TMsvPackedDriveIdOperationC2ERP6HBufC8 @ 1021 NONAME
+	_ZNK9CMsvEntry26ChildrenOfAvailableDrivesLEv @ 1022 NONAME
+	_ZN28CMsvSearchsortOpOnHeaderBody4NewLER11CMsvSessioni @ 1023 NONAME
+	_ZN13TMsvReadStore5LoadLERP13CHeaderFields @ 1024 NONAME ABSENT
+	_ZN13TMsvReadStore5ReadLERP13CHeaderFields @ 1025 NONAME ABSENT
+	_ZN13TMsvReadStoreC1ER9CMsvStore4TUid @ 1026 NONAME ABSENT
+	_ZN13TMsvReadStoreC2ER9CMsvStore4TUid @ 1027 NONAME ABSENT
+	_ZN14TMsvWriteStore7AssignLEP13CHeaderFields @ 1028 NONAME ABSENT
+	_ZN14TMsvWriteStore7CommitLEv @ 1029 NONAME ABSENT
+	_ZN14TMsvWriteStoreC1ER9CMsvStore @ 1030 NONAME ABSENT
+	_ZN14TMsvWriteStoreC2ER9CMsvStore @ 1031 NONAME ABSENT
+	_ZN15CMsvHeaderStore12CreateStoreLEv @ 1032 NONAME ABSENT
+	_ZN15CMsvHeaderStore16DoesStoreExistsLERK4TUidR11CMsvSession @ 1033 NONAME ABSENT
+	_ZN15CMsvHeaderStore17LastErrorMessageLEv @ 1034 NONAME ABSENT
+	_ZN15CMsvHeaderStore4NewLERK4TUidR11CMsvSession @ 1035 NONAME ABSENT
+	_ZN15CMsvHeaderStore5NewLCERK4TUidR11CMsvSession @ 1036 NONAME ABSENT
+	_ZN15CMsvHeaderStore9AddFieldLENS_18TCommonHeaderFieldE @ 1037 NONAME ABSENT
+	_ZN15CMsvHeaderStore9AddFieldLEP7HBufC1610EFieldType @ 1038 NONAME ABSENT
+	_ZN17RMsvServerSession16LoadHeaderEntryLERK4TUidlR13RPointerArrayI13CHeaderFieldsE @ 1039 NONAME ABSENT
+	_ZN17RMsvServerSession18CreateHeaderEntryLERK4TUidlRK13RPointerArrayI13CHeaderFieldsE @ 1040 NONAME ABSENT
+	_ZN17RMsvServerSession18DeleteHeaderEntryLERK4TUidl @ 1041 NONAME ABSENT
+	_ZN17RMsvServerSession18DoesAnyStoreExistsEl4TUid @ 1042 NONAME ABSENT
+	_ZN17RMsvServerSession18UpdateHeaderEntryLERK4TUidlRK13RPointerArrayI13CHeaderFieldsE @ 1043 NONAME ABSENT
+	_ZN17RMsvServerSession20DoesHeaderTableExistERK4TUid @ 1044 NONAME ABSENT
+	_ZN20TMsvPackedHeaderData4PackERK13RPointerArrayI13CHeaderFieldsE @ 1045 NONAME ABSENT
+	_ZN20TMsvPackedHeaderData7UnpackLER13RPointerArrayI13CHeaderFieldsE @ 1046 NONAME ABSENT
+	_ZN20TMsvPackedHeaderDataC1ERP6HBufC8 @ 1047 NONAME ABSENT
+	_ZN20TMsvPackedHeaderDataC2ERP6HBufC8 @ 1048 NONAME ABSENT
+	_ZN25TMsvPackedHeaderStructure4PackERK13RPointerArrayI10CFieldPairE @ 1049 NONAME ABSENT
+	_ZN25TMsvPackedHeaderStructure7UnpackLER13RPointerArrayI10CFieldPairE @ 1050 NONAME ABSENT
+	_ZN25TMsvPackedHeaderStructureC1ERP6HBufC8 @ 1051 NONAME ABSENT
+	_ZN25TMsvPackedHeaderStructureC2ERP6HBufC8 @ 1052 NONAME ABSENT
+	_ZN9CMsvStore12OpenForReadLER17MMsvStoreObserverR3RFsR16MMsvStoreManagerl4TUid @ 1053 NONAME ABSENT
+	_ZN9CMsvStore13OpenForWriteLER17MMsvStoreObserverR3RFsR16MMsvStoreManagerl4TUid @ 1054 NONAME ABSENT
+	_ZN9CMsvStore9IsDbStoreEv @ 1055 NONAME ABSENT
+	_ZTI15CMsvHeaderStore @ 1056 NONAME ABSENT
+	_ZTV15CMsvHeaderStore @ 1057 NONAME ABSENT
+	_ZThn8_N17RMsvServerSession16LoadHeaderEntryLERK4TUidlR13RPointerArrayI13CHeaderFieldsE @ 1058 NONAME ABSENT
+	_ZThn8_N17RMsvServerSession18CreateHeaderEntryLERK4TUidlRK13RPointerArrayI13CHeaderFieldsE @ 1059 NONAME ABSENT
+	_ZThn8_N17RMsvServerSession18DeleteHeaderEntryLERK4TUidl @ 1060 NONAME ABSENT
+	_ZThn8_N17RMsvServerSession18DoesAnyStoreExistsEl4TUid @ 1061 NONAME ABSENT
+	_ZThn8_N17RMsvServerSession18UpdateHeaderEntryLERK4TUidlRK13RPointerArrayI13CHeaderFieldsE @ 1062 NONAME ABSENT
+	_ZThn8_N17RMsvServerSession20DoesHeaderTableExistERK4TUid @ 1063 NONAME ABSENT
+	_ZN11CMsvSession16CancelConversionE12TDriveNumber @ 1064 NONAME ABSENT
+	_ZN11CMsvSession19ConvertMessageStoreE12TDriveNumberR14TRequestStatus @ 1065 NONAME ABSENT
+	_ZN11CMsvSession20GetConversionStatusLE12TDriveNumber @ 1066 NONAME ABSENT
+	_ZN11CMsvSession24GetConvertibleDriveListLER6RArrayI12TDriveNumberE @ 1067 NONAME ABSENT
+	_ZN11CMsvSession9GetEntryLEli @ 1068 NONAME
+	_ZN9CMsvEntry23SetStandardFolderEntryLEl @ 1069 NONAME
+	_ZN9CMsvEntry4NewLER11CMsvSessionlRK21TMsvSelectionOrderingi @ 1070 NONAME
+

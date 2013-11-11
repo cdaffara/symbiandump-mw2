@@ -1,0 +1,7 @@
+<layer name="messagingmw">
+  <module name="messagingmw">
+    <component name="messagingmw">
+      <unit unitID="messagingmw" mrp="" bldFile="&layer_real_source_path;\group" name="messagingmw" />
+    </component>
+  </module>
+</layer>

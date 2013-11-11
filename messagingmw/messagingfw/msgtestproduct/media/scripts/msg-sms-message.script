@@ -1,0 +1,98 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+	
+LOAD_SUITE MessagingTestServer -SharedData
+
+//! @file			
+//! @SYMTestSuiteName		MSG-SMS
+//! @SYMScriptTestEnvironment   Details as in below:-
+//!				1. simtsy
+//!				
+//! @SYMScriptPurpose		Pre-setup for all preferred drives with sms accounts and messages
+//! @SYMScriptCreationDate	04/04/2008
+
+
+//! 	@SYMTestCaseID		MSG-EMAIL-0001
+//! 	@SYMTestCaseDesc	Sending a sms message
+//!				
+//!	@SYMPREQ 		PREQ557
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1.	Initialize the SIMTSY
+//!				2.	Start watchers
+//!				3.	Set default sms settings and configurations 
+//!				4.	Create session,registry, sms service, and mtm 
+//!				5.	Create a sms message
+//!				6.	Execute the MTM commands
+//!				7.	Check message sending state
+//!				8.	Unload the phone module
+//!				
+//! 	@SYMTestExpectedResults sms message would be created and sent to simtsy
+//!				
+//!	@SYMAuthor		Rajat Bal
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+RUN_UTILS CopyFile c:\msgtest\media\msg-sms-config.txt c:\config.txt
+RUN_UTILS MakeReadWrite c:\config.txt
+
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer InitializeSimTsy c:\msgtest\media\msg-sms-message.ini Init1
+RUN_TEST_STEP 100 MessagingTestServer StartWatchers c:\msgtest\media\msg-sms-message.ini StartWatchers
+RUN_TEST_STEP 100 MessagingTestServer Sleep c:\msgtest\media\msg-sms-message.ini Sleep10
+RUN_TEST_STEP 100 MessagingTestServer GetBaseConstants c:\msgtest\media\msg-sms-message.ini GetBaseConstants
+RUN_TEST_STEP 100 MessagingTestServer SetDefaultSmsSettings c:\msgtest\media\msg-sms-message.ini SetSettingsFile
+RUN_TEST_STEP 100 MessagingTestServer SetDefaultConfiguration c:\msgtest\media\msg-sms-message.ini SetSmsMessageConfigFile
+RUN_TEST_STEP 100 MessagingTestServer CreateSession c:\msgtest\media\msg-sms-message.ini CreateSession
+RUN_TEST_STEP 100 MessagingTestServer CreateRegistry c:\msgtest\media\msg-sms-message.ini CreateRegistry
+RUN_TEST_STEP 100 MessagingTestServer CreateSmsService c:\msgtest\media\msg-sms-message.ini CreateSmsService
+RUN_TEST_STEP 100 MessagingTestServer SetSmsServiceSettings c:\msgtest\media\msg-sms-message.ini SetSmsSettings
+RUN_TEST_STEP 100 MessagingTestServer SetSchSendSettings c:\msgtest\media\msg-sms-message.ini SetSchSendSettings
+RUN_TEST_STEP 100 MessagingTestServer CreateMtm c:\msgtest\media\msg-sms-message.ini CreateMtm
+
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer DeleteChildren c:\msgtest\media\msg-sms-message.ini EmptyOutbox
+RUN_TEST_STEP 100 MessagingTestServer DeleteChildren c:\msgtest\media\msg-sms-message.ini EmptySent
+RUN_TEST_STEP 100 MessagingTestServer DeleteChildren c:\msgtest\media\msg-sms-message.ini EmptyInbox
+RUN_TEST_STEP 100 MessagingTestServer GetSmsConstants c:\msgtest\media\msg-sms-message.ini GetSmsConstants
+RUN_TEST_STEP 100 MessagingTestServer CreateSmsMessage c:\msgtest\media\msg-sms-message.ini CreateMessage
+RUN_TEST_STEP 100 MessagingTestServer CreateSelection c:\msgtest\media\msg-sms-message.ini CreateSelection
+RUN_TEST_STEP 100 MessagingTestServer GetDefaultAppendToSelection c:\msgtest\media\msg-sms-message.ini AppendToSelection
+RUN_TEST_STEP 100 MessagingTestServer SetNetworkRegistrationStatus c:\msgtest\media\msg-sms-message.ini NetAvailable
+RUN_TEST_STEP 100 MessagingTestServer SetSignalStrength c:\msgtest\media\msg-sms-message.ini NetStrengthHigh
+RUN_TEST_STEP 100 MessagingTestServer Sleep c:\msgtest\media\msg-sms-message.ini Sleep3
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount c:\msgtest\media\msg-sms-message.ini CheckChildrenCountOutbox1
+RUN_TEST_STEP 100 MessagingTestServer ExecuteMtmCommand c:\msgtest\media\msg-sms-message.ini ScheduleMessage
+RUN_TEST_STEP 100 MessagingTestServer CheckMessageSendingState c:\msgtest\media\msg-sms-message.ini MsgSent
+
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount c:\msgtest\media\msg-sms-message.ini CheckChildrenCountOutbox0
+RUN_TEST_STEP 100 MessagingTestServer UnloadPhoneModule c:\msgtest\media\msg-sms-message.ini UnloadPhoneModule
+
+RUN_TEST_STEP 100 MessagingTestServer END_TEST_CASE
+
+
+
+
+
+
+

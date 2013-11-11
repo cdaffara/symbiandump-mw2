@@ -1,0 +1,100 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+// Test Case Name:
+//	Remove attachment using invalid index value
+// ------------------------------------------
+// Component Under Test:
+//	Attachment API
+// ------------------------------------------
+// API function under test:
+//	MMsvAttachmentManager::RemoveAttachmentL
+// ------------------------------------------
+// Requirement/Use Case/Functional Spec:
+//	SGL.GT0216.051 (2.1, 2.3.1)
+// ------------------------------------------
+// Polarity:
+//	Negative
+// ------------------------------------------
+// Test Type (unit, integration, panic, performance, conformance, stress, or interoperability):
+//	Integration
+// ------------------------------------------
+// Expected Panic ID (if a panic test, only for non-scripted test cases):
+//	N/A
+// ------------------------------------------
+// Interface Dependencies (does it require connection, which subsystems does it require):
+// 	Requires connection to Messaging Server
+// ------------------------------------------
+// Importance (critical, high, or low):
+//	High
+// ------------------------------------------
+// Execution Time (fast, medium, or slow):
+//	Medium
+// ------------------------------------------
+// Pre-condition description:
+//	1. New SMTP message
+//	2. Read/Write access to message store
+//	3. Add attachment from public area providing valid absolute path
+//	4. Attachment count should be 1
+// ------------------------------------------
+// Action Description:
+// 	Remove attachment using invalid index value, greater than 0
+// ------------------------------------------
+// Post-condition description (i.e., expected outcome):
+//	Appropriate error code should be returned while removing attachment using invalid index
+//	value
+// ------------------------------------------
+// Reference to a review document:
+//	AttachmentAPI_TestSpecificationDocument_Ver1.0.doc
+// ------------------------------------------
+// Full pathname of an epoc.ini (if there are special epoc.ini requirements)
+// 	For emulator, an epoc.ini that creates an emulated external drive (drive letter 
+//	between D: and Y:) is required. Optionally, an environment variable can be defined.
+// ------------------------------------------
+// Any CommDb restrictions:
+//	NTRAS CommDb
+// ------------------------------------------
+// Build Requirements (e.g., no watchers):
+//	N/A
+// ------------------------------------------
+// Hardware Requirements
+//	H2 Board
+// ------------------------------------------
+
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer GetBaseConstants				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\22-SMTP_RemoveAttachmentUsingInvalidIndex.INI GetConstants
+RUN_TEST_STEP 100 MessagingTestServer GetSMTPMTMUId				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\22-SMTP_RemoveAttachmentUsingInvalidIndex.INI SmtpMTMUId
+RUN_TEST_STEP 100 MessagingTestServer CreateSession				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\22-SMTP_RemoveAttachmentUsingInvalidIndex.INI SessionId
+RUN_TEST_STEP 100 MessagingTestServer CreateRegistry				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\22-SMTP_RemoveAttachmentUsingInvalidIndex.INI CreateRegistry
+RUN_TEST_STEP 100 MessagingTestServer CreateService				c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\22-SMTP_RemoveAttachmentUsingInvalidIndex.INI CreateSmtpService
+RUN_TEST_STEP 100 MessagingTestServer SetDefaultConfiguration			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\22-SMTP_RemoveAttachmentUsingInvalidIndex.INI SetDefaultConfigurationEMailFile
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpMessageFromEmailFile		c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\22-SMTP_RemoveAttachmentUsingInvalidIndex.INI CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 100 MessagingTestServer SmtpAddFileAttachmentByPath		c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\22-SMTP_RemoveAttachmentUsingInvalidIndex.INI SmtpAddFileAttachmentByPath
+RUN_TEST_STEP 100 MessagingTestServer SmtpCountAttachments			c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\22-SMTP_RemoveAttachmentUsingInvalidIndex.INI SmtpCountAttachments0
+
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer SmtpRemoveFileAttachmentByIndex		c:\msgtest\TestFramework\ScriptedTestCases\AttachmentAPIScripts\22-SMTP_RemoveAttachmentUsingInvalidIndex.INI SmtpRemoveFileAttachmentByIndex
+
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+
+RUN_TEST_STEP !PanicCode=130 100 MessagingTestServer END_TEST_CASE

@@ -1,0 +1,50 @@
+/*
+* Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file
+*
+*/
+
+
+#include <platform_paths.hrh>
+#include <data_caging_paths.hrh>
+
+TARGET          HarvesterDataTest.dll
+TARGETTYPE      dll
+UID             0x1000008D 0x101FB3E3
+
+CAPABILITY      ALL -TCB
+VENDORID        VID_DEFAULT
+
+DEFFILE         HarvesterDataTest.DEF
+
+SOURCEPATH      ../src
+SOURCE          HarvesterDataTest.cpp
+SOURCE          HarvesterDataTestBlocks.cpp
+
+USERINCLUDE     ../inc 
+USERINCLUDE     ../../../../../inc 
+USERINCLUDE     ../../../../../locationmanager/locationtrail/inc
+SYSTEMINCLUDE 	/epoc32/include/ecom
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY         euser.lib
+LIBRARY         stiftestinterface.lib
+LIBRARY         stiftestengine.lib
+LIBRARY	        ecom.lib
+LIBRARY	        harvesterdata.lib
+LIBRARY         mdeclient.lib
+LIBRARY         etel3rdparty.lib
+LIBRARY 	      Lbs.lib
+

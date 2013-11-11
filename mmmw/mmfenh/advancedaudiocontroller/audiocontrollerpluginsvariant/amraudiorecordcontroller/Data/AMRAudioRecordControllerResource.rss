@@ -1,0 +1,68 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  AMRAudioRecordControllerPlugin resource file.
+*
+*/
+
+
+//  INCLUDES
+#include "AMRAudioRecordControllerResource.rh"
+
+//  RESOURCE DEFINITIONS 
+
+
+// -----------------------------------------------------------------------------
+//   
+// amrEncoder
+// AMR encoder resource file.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE ADVANCED_AUDIO_CONTROLLER_RESOURCE amrEncoder
+    {
+    shared_buffer_max_num = 4;
+    shared_buffer_max_size = 1024;
+    shared_buffer_max_size_non_seekable_source = 1024;
+    sampling_rate = EAapSampleRate8000Hz;
+    stereo_support = 0;
+    metadata_support = EAapMetadataSupportFalse;
+
+    configuration_parameters =
+    		{
+    		AMR_ENCODER_CONFIG_PARAMS
+    			{
+    			encoding_mode = 1;
+    			dtx_flag = 1;
+   			supported_bit_rates = 
+    				{
+    				MODE { bit_rate = 4750; },
+    				MODE { bit_rate = 5150; },
+    				MODE { bit_rate = 5900; },
+    				MODE { bit_rate = 6700; },
+    				MODE { bit_rate = 7400; },
+    				MODE { bit_rate = 7950; },
+    				MODE { bit_rate = 10200; },
+    				MODE { bit_rate = 12200; }
+    				};
+    			supported_sample_rates = 
+    				{
+    				SAMPLERATE { sample_rate = 8000; }
+   				};
+    			}
+    		};
+    }
+
+// End of File
+
+

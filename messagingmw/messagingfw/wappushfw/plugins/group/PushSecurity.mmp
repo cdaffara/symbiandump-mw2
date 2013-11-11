@@ -1,0 +1,50 @@
+// Copyright (c) 2000-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// pushsecurity.dll The HTTP Security plug-in dll
+// 101f3e57.rsc Registry file for WapPush Security interface PushSecurity.dll
+// 
+//
+
+/**
+ @file
+*/
+
+
+TARGET pushsecurity.dll
+TARGETTYPE plugin
+CAPABILITY ReadDeviceData WriteDeviceData NetworkServices LocalServices ReadUserData WriteUserData
+
+// UIDs - 2nd UID specifies an ECom dll, 3rd UID is unique identifier (KUidPushSecurityPlugin)
+UID				0x10009D8D 0x101F3E57
+VENDORID 0x70000001
+
+SOURCEPATH		../PushSecurity
+SOURCE			CGTPushSecurityPolicy.cpp PushSecurityGroupProxy.cpp PushSecurityMain.cpp
+
+USERINCLUDE     ../PushSecurity ../inc ../../pushwatcher/inc
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+LIBRARY         euser.lib ecom.lib
+
+
+start resource 101F3E57.rss
+#ifdef SYMBIAN_SECURE_ECOM
+TARGET pushsecurity.rsc
+#endif
+end
+
+
+
+
+SMPSAFE

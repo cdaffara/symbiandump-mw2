@@ -1,0 +1,37 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Constants defination file
+*
+*/
+
+#ifndef __NLANPPPSY_RESOURCE_IBY__
+#define __NLANPPPSY_RESOURCE_IBY__
+
+#include <bldvariant.hrh>
+#include <data_caging_paths_for_iby.hrh>
+
+// Feature flags
+
+#ifdef __LOCATIONFRAMEWORKCORE
+#ifdef __NP_PROXY
+
+data=ZRESOURCE\nlanpppsy_name.rsc         resource\nlanpppsy_name.rsc
+data=ZRESOURCE\nla_agpspositioner.rsc      resource\nla_agpspositioner.rsc
+data=ZRESOURCE\nla_gpspositioner.rsc        resource\nla_gpspositioner.rsc
+data=ZRESOURCE\nla_nbppositioner.rsc        resource\nla_nbppositioner.rsc
+
+#endif // __NP_PROXY
+#endif // __LOCATIONFRAMEWORKCORE
+
+#endif // __NLANPPPSY_RESOURCE_IBY__

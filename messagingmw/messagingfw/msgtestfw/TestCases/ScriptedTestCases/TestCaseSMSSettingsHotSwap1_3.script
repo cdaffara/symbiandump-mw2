@@ -1,0 +1,130 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+// Test Case Name:
+//	TestCaseSMSSettingsHotSwap1&3.script
+// ------------------------------------------
+// Component Under Test:
+//	SMS
+// ------------------------------------------
+// API function under test:
+//	CSmsSettings::SaveExternalL()
+// ------------------------------------------
+// Requirement/Use Case/Functional Spec:
+//	CR CWAK-5RXDJ4 
+// ------------------------------------------
+// Polarity:
+//	Positive
+// ------------------------------------------
+// Test Type (unit, integration, panic, performance, conformance, stress, or interoperability):
+//	Integration
+// ------------------------------------------
+// Expected Panic ID (if a panic test, only for non-scripted test cases):
+//	n/a
+// ------------------------------------------
+// Interface Dependencies (does it require connection, which subsystems does it require):
+// 	None
+// ------------------------------------------
+// Importance (critical, high, or low):
+//	High
+// ------------------------------------------
+// Execution Time (fast, medium, or slow):
+//	Fast
+// ------------------------------------------
+// Pre-condition description:
+//	None
+// ------------------------------------------
+// Action Description:
+//	CR CWAK-5RXDJ4 – Add limited support for Hot Swap MMC support for the storage of SMS/MMS
+// 	- Test Case 3:
+//
+// 	1. Create a new message store on the C: drive and save some SMS settings.
+// 	2. Create a new message store on the MMC card with different SMS settings.
+// 	3. Save the settings using SaveExternalL.
+// 	4. Remove the MMC card, change to C: drive.
+// 	5. Insert the MMC card again, and select its message store to be the one used by Messaging.
+// 	6. Modify the SMS setings on the MMC card, save them using SaveExternalL.
+// 	7. Remove the MMC card
+//
+// 	8. Verify the latest SMS setings can be restored from the C: drive
+//
+//
+// 	- This implementation also tests Test Case 1:
+//	
+// 	1. Create a new message store on the C: drive
+// 	2. Create a new message store on the MMC card with specific SMS settings.
+// 	3. Save the settings using SaveExternalL.
+// 	4. Remove the MMC card
+//	
+// 	5. Verify the latest SMS setings can be restored from the C: drive.
+//
+// 	Implementation and execution:
+// 	Note that there is no need to create new mail stores. The existing ones are used.
+// 	An external drive (drive letter between D and Y) must be available on the device for
+// 	this test to execute (either an MMC/CF card on hardware or an emulated drive on emulator)
+//
+// ------------------------------------------
+// Post-condition description (i.e., expected outcome):
+//	See above
+// ------------------------------------------
+// Reference to a review document:
+//	
+// ------------------------------------------
+// Full pathname of an epoc.ini (if there are special epoc.ini requirements)
+// 	For emulator, an epoc.ini that creates an emulated external drive (drive letter 
+//	between D: and Y:) is required. Optionally, an environment variable can be defined.
+// ------------------------------------------
+// Any CommDb restrictions:
+//	None, not connected
+// ------------------------------------------
+// Build Requirements (e.g., no watchers):
+//	None
+// ------------------------------------------
+// Hardware Requirements
+//	A removable drive must be available, eg. MMC or CF card.
+// ------------------------------------------
+
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+PREFIX RUN_TEST_STEP 100 MessagingTestServer 
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+SetDefaultSmsSettings c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSMSSettingsHotSwap.ini SmsSettingsFiles
+GetBaseConstants c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSMSSettingsHotSwap.ini GetConstants
+GetSmsConstants c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSMSSettingsHotSwap.ini GetSmsConstants 
+CreateSession c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSMSSettingsHotSwap.ini SessionId
+ChangeToInternalDrive c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSMSSettingsHotSwap.ini ChangeToInternal
+EXECUTE_TEST_CASE
+CreateSmsService c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSMSSettingsHotSwap.ini SmsService2
+SetSmsServiceSettings c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSMSSettingsHotSwap.ini SmsSettingsOrange
+ChangeToExternalDrive c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSMSSettingsHotSwap.ini ChangeToExternal
+CreateSmsService c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSMSSettingsHotSwap.ini SmsService
+SetSmsServiceSettings c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSMSSettingsHotSwap.ini SmsSettingsVodafone
+SmsSettingsSaveExternal c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSMSSettingsHotSwap.ini SaveExternal
+RemoveMedia c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSMSSettingsHotSwap.ini externalDriveID
+CreateMessage c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSMSSettingsHotSwap.ini CreateMessage
+CompareSmsSettings c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSMSSettingsHotSwap.ini checkVodafoneSettings
+InsertMedia c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSMSSettingsHotSwap.ini externalDriveID
+ChangeToExternalDrive c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSMSSettingsHotSwap.ini ChangeToExternal
+CompareSmsSettings c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSMSSettingsHotSwap.ini checkVodafoneSettingsMMC
+SetSmsServiceSettings c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSMSSettingsHotSwap.ini SmsSettingsO2
+SmsSettingsSaveExternal c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSMSSettingsHotSwap.ini SaveExternal
+RemoveMedia c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSMSSettingsHotSwap.ini externalDriveID
+CreateMessage c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSMSSettingsHotSwap.ini CreateMessage
+CHECK_POSTCONDITIONS
+CompareSmsSettings c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSMSSettingsHotSwap.ini checkO2Settings
+InsertMedia c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSMSSettingsHotSwap.ini externalDriveID
+END_TEST_CASE

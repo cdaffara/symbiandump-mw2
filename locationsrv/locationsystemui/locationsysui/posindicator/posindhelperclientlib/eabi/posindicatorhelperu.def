@@ -1,0 +1,53 @@
+EXPORTS
+	_ZN13PosGeoAddress10setCountryE7QString @ 1 NONAME
+	_ZN13PosGeoAddress11qt_metacallEN11QMetaObject4CallEiPPv @ 2 NONAME
+	_ZN13PosGeoAddress11qt_metacastEPKc @ 3 NONAME
+	_ZN13PosGeoAddress11setAltitudeEf @ 4 NONAME
+	_ZN13PosGeoAddress11setDistrictE7QString @ 5 NONAME
+	_ZN13PosGeoAddress11setLatitudeEd @ 6 NONAME
+	_ZN13PosGeoAddress12setLongitudeEd @ 7 NONAME
+	_ZN13PosGeoAddress12sethAccuracyEf @ 8 NONAME
+	_ZN13PosGeoAddress12setvAccuracyEf @ 9 NONAME
+	_ZN13PosGeoAddress16staticMetaObjectE @ 10 NONAME DATA 16
+	_ZN13PosGeoAddress19getStaticMetaObjectEv @ 11 NONAME
+	_ZN13PosGeoAddress6setZipE7QString @ 12 NONAME
+	_ZN13PosGeoAddress7setCityE7QString @ 13 NONAME
+	_ZN13PosGeoAddress8setStateE7QString @ 14 NONAME
+	_ZN13PosGeoAddress9setNumberE7QString @ 15 NONAME
+	_ZN13PosGeoAddress9setStreetE7QString @ 16 NONAME
+	_ZN13PosGeoAddressC1Ev @ 17 NONAME
+	_ZN13PosGeoAddressC2Ev @ 18 NONAME
+	_ZN13PosGeoAddressD0Ev @ 19 NONAME
+	_ZN13PosGeoAddressD1Ev @ 20 NONAME
+	_ZN13PosGeoAddressD2Ev @ 21 NONAME
+	_ZN16PosIndicatorInfo11qt_metacallEN11QMetaObject4CallEiPPv @ 22 NONAME
+	_ZN16PosIndicatorInfo11qt_metacastEPKc @ 23 NONAME
+	_ZN16PosIndicatorInfo14posInfoUpdatedER13PosGeoAddressi @ 24 NONAME
+	_ZN16PosIndicatorInfo14requestPosInfoEv @ 25 NONAME
+	_ZN16PosIndicatorInfo16staticMetaObjectE @ 26 NONAME DATA 16
+	_ZN16PosIndicatorInfo19getStaticMetaObjectEv @ 27 NONAME
+	_ZN16PosIndicatorInfoC1Ev @ 28 NONAME
+	_ZN16PosIndicatorInfoC2Ev @ 29 NONAME
+	_ZN16PosIndicatorInfoD0Ev @ 30 NONAME
+	_ZN16PosIndicatorInfoD1Ev @ 31 NONAME
+	_ZN16PosIndicatorInfoD2Ev @ 32 NONAME
+	_ZNK13PosGeoAddress10metaObjectEv @ 33 NONAME
+	_ZNK13PosGeoAddress3zipEv @ 34 NONAME
+	_ZNK13PosGeoAddress4cityEv @ 35 NONAME
+	_ZNK13PosGeoAddress5stateEv @ 36 NONAME
+	_ZNK13PosGeoAddress6numberEv @ 37 NONAME
+	_ZNK13PosGeoAddress6streetEv @ 38 NONAME
+	_ZNK13PosGeoAddress7countryEv @ 39 NONAME
+	_ZNK13PosGeoAddress8altitudeEv @ 40 NONAME
+	_ZNK13PosGeoAddress8districtEv @ 41 NONAME
+	_ZNK13PosGeoAddress8latitudeEv @ 42 NONAME
+	_ZNK13PosGeoAddress9hAccuracyEv @ 43 NONAME
+	_ZNK13PosGeoAddress9longitudeEv @ 44 NONAME
+	_ZNK13PosGeoAddress9vAccuracyEv @ 45 NONAME
+	_ZNK16PosIndicatorInfo10metaObjectEv @ 46 NONAME
+	_ZTI13PosGeoAddress @ 47 NONAME
+	_ZTI16PosIndicatorInfo @ 48 NONAME
+	_ZTV13PosGeoAddress @ 49 NONAME
+	_ZTV16PosIndicatorInfo @ 50 NONAME
+	_ZN16PosIndicatorInfo13cancelPosInfoEv @ 51 NONAME
+

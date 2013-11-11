@@ -1,0 +1,52 @@
+// Copyright (c) 2008-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// MMP file to compile only the resource files present in messging_config/biomsg component
+// Compilation of resource files present in messging_config/biomsg component
+// 
+//
+
+/**
+ @file
+*/
+
+OPTION CW -w off
+
+TARGETTYPE none
+
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+START RESOURCE	../biomsg/vcdpbif/vcdp.rss
+TARGETPATH      resource/messaging/bif
+LANG			SC
+END
+
+START RESOURCE	../biomsg/vclpbif/vclp.rss
+TARGETPATH      resource/messaging/bif
+LANG		SC
+END
+
+START BITMAP	vcdp.mbm
+TARGETPATH      resource/messaging/bif
+SOURCEPATH		../biomsg/vcdpbif
+SOURCE			2 vcdp0.bmp 
+END
+
+START BITMAP	vclp.mbm
+TARGETPATH      resource/messaging/bif
+SOURCEPATH		../biomsg/vclpbif
+SOURCE			2 vclp0.bmp 
+END
+
+
+SMPSAFE

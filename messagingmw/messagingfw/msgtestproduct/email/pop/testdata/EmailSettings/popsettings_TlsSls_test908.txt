@@ -1,0 +1,40 @@
+#  ban-avinashs01 server
+__type__   = Pop3Settings
+
+#ServerName = 10.192.196.88
+PopServerAddress = 10.192.196.88
+#PopLoginName  = test908
+#PopPassword   = test908
+
+PopSecureSockets = 1
+
+PopIapList = POP001 POP002
+POP001_PopIAP = 1
+POP001_PopCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+POP001_PopIAPIndex = 0
+
+POP002_PopIAP = 1
+POP002_PopCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+POP002_PopIAPIndex = 0
+
+SmtpServerAddress = 10.192.196.88
+#SmtpEmailAddress = test908@10.192.196.88
+#SmtpReceiptAddress = test908@10.192.196.88
+#SmtpUserAddress = test908@10.192.196.88
+#SmtpSetReplyToAddress = test908@10.192.196.88
+#SmtpSetLoginName = test908
+#SmtpSetPassword = test908
+
+SmtpIapList = SMTP001 SMTP002 
+
+SMTP001_SmtpIAP = 1
+SMTP001_SmtpCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+SMTP001_SmtpIAPIndex = 0
+
+
+SMTP001_SmtpIAP = 1
+SMTP001_SmtpCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+SMTP001_SmtpIAPIndex = 0
+
+# ImapSSLWrapper = 1
+TlsSslDomainName = stalker.com

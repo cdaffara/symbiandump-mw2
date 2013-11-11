@@ -1,0 +1,5 @@
+EXPORTS
+	_ZN14CLbtLoggerImpl12CreateLoggerEv @ 1 NONAME
+	_ZN14CLbtLoggerImpl13GetFileLoggerEv @ 2 NONAME
+	_ZN14CLbtLoggerImpl7DestroyEv @ 3 NONAME
+

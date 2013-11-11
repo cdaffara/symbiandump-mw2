@@ -1,0 +1,121 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE 	T_MsgCommonServer 	-SharedData
+LOAD_SUITE 	T_MsgImapServer 	-SharedData
+LOAD_SUITE  	T_MsgSmtpServer 	-SharedData
+
+
+START_TESTCASE MSG-IMAP-OOMTEST-0001
+//! 	@SYMTestCaseID		MSG-IMAP-OOMTEST-0001
+//! 	@SYMTestCaseDesc	A OOM test for Message Creation, Move, Copy and Deletion operations
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ 1189
+//!	@SYMREQ			REQ 6745
+//!				
+//! 	@SYMTestActions		1.	Initialize the NT-RAS
+//!				2.	Reset the Message Store in a cleanup state
+//!				3.	Create a IMAP account A 
+//!				4.	Connect and Synchronize the IMAP server using IMAP account A
+//!				5.	Initialize IMAP account in a cleanup state
+//!				6.	Disconnect IMAP server
+//!				
+//!				7.	Create 100 Messages with Body Text Size of 1KB with attachment
+//!				8.	Send the Messages
+//!				
+//!				9.	Connect to the IMAP server
+//!				10.	Download the Messages using IMAP client MTM populate command in the OOM condition
+//!				
+//!				11.	Create a folder of named test folder1
+//!				12.	Copy 100 Messages from Inbox to test folder1 in the OOM condition
+//!				
+//!				13.	Create a folder of named test folder2
+//!				14.	Move 100 Messages from inbox to test folder2 in the OOM condition
+//!				
+//!				15.	Delete 100 Messages from test folder2 in the OOM condition
+//!				16.	Disconnect IMAP server
+//!				
+//! 	@SYMTestExpectedResults Step 10, 12, 14 and 15 to pass.
+//!	@SYMAuthor		Rajat Bal
+
+PRINT Setup Begins #####################################################
+
+
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer 	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	InitNtRas			c:\msgtest\email\imap\oom\msg-imap-oomtest1.ini 	0001-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer 	ResetMessageStore		c:\msgtest\email\imap\oom\msg-imap-oomtest1.ini 	0001-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer 	CreateImapAccount		c:\msgtest\email\imap\oom\msg-imap-oomtest1.ini 	0001-CreateImapAccount
+
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\oom\msg-imap-oomtest1.ini 	0001-ChangeImapSettings
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectAndSyncImapServer	c:\msgtest\email\imap\oom\msg-imap-oomtest1.ini 	0001-ConnectAndSyncImapServer
+RUN_TEST_STEP 300 T_MsgImapServer	InitialiseImap4Account		c:\msgtest\email\imap\oom\msg-imap-oomtest1.ini 	0001-InitialiseImap4Account
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\oom\msg-imap-oomtest1.ini 	0001-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\oom\msg-imap-oomtest1.ini 	0001-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\oom\msg-imap-oomtest1.ini 	0001-DisConnectImap4Server
+
+PRINT ############ Create 1 Messages #################################
+START_REPEAT	c:\msgtest\email\imap\oom\msg-imap-oomtest1.ini	0001-SectionOne	RepeatParam
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\oom\msg-imap-oomtest1.ini 	0001-CreateSmtpMessageFromEmailFile
+END_REPEAT
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\oom\msg-imap-oomtest1.ini 	0001-CheckChildrenCountOutbox
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\oom\msg-imap-oomtest1.ini 	0001-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgCommonServer 	CheckChildrenCount 		c:\msgtest\email\imap\oom\msg-imap-oomtest1.ini 	0001-CheckChildrenCountSentItems
+
+RUN_TEST_STEP 300 T_MsgImapServer	SetImap4FullDownloadLimits	c:\msgtest\email\imap\oom\msg-imap-oomtest1.ini 	0001-SetImap4FullDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\imap\oom\msg-imap-oomtest1.ini 	0001-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\imap\oom\msg-imap-oomtest1.ini 	0001-DoFullImap4Synchronisation
+
+PRINT ############ Dowload 1 Messages ################################
+RUN_TEST_STEP !OOM 300 T_MsgImapServer 	ImapInvokeAsyncFunction		c:\msgtest\email\imap\oom\msg-imap-oomtest1.ini 	0001-ImapInvokeAsyncFunction
+
+PRINT ############ Copy 1 Messages ###################################
+RUN_TEST_STEP 300 T_MsgImapServer 	CreateImap4Folder		c:\msgtest\email\imap\oom\msg-imap-oomtest1.ini 	0001-CreateTestFolder1
+RUN_TEST_STEP !OOM 300 T_MsgImapServer 	CopyImapSelectionRemote 	c:\msgtest\email\imap\oom\msg-imap-oomtest1.ini 	0001-CopyImapSelectionRemote
+RUN_TEST_STEP 300 T_MsgImapServer 	CheckChildrenCountImap		c:\msgtest\email\imap\oom\msg-imap-oomtest1.ini 	0001-CheckChildrenCount_Copy
+
+PRINT ############ Move 1 Messages ###################################
+RUN_TEST_STEP 300 T_MsgImapServer 	CreateImap4Folder		c:\msgtest\email\imap\oom\msg-imap-oomtest1.ini 	0001-CreateTestFolder2
+START_REPEAT	c:\msgtest\email\imap\oom\msg-imap-oomtest1.ini	0001-SectionOne	RepeatParam
+RUN_TEST_STEP !OOM 300 T_MsgImapServer 	MoveMessage			c:\msgtest\email\imap\oom\msg-imap-oomtest1.ini 	0001-MoveMessage
+END_REPEAT
+RUN_TEST_STEP 300 T_MsgImapServer 	CheckChildrenCountImap		c:\msgtest\email\imap\oom\msg-imap-oomtest1.ini 	0001-CheckChildrenCount_Move
+
+PRINT ############ Delete 1 Messages #################################
+RUN_TEST_STEP !OOM 300 T_MsgImapServer 	DeleteAllMessage		c:\msgtest\email\imap\oom\msg-imap-oomtest1.ini 	0001-DeleteAllMessage
+RUN_TEST_STEP 300 T_MsgImapServer 	CheckChildrenCountImap		c:\msgtest\email\imap\oom\msg-imap-oomtest1.ini 	0001-CheckChildrenCount_Delete
+
+RUN_TEST_STEP 300 T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\imap\oom\msg-imap-oomtest1.ini 	0001-DisConnectImap4Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer 	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer 	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-OOMTEST-0001
+
+

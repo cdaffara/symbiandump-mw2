@@ -1,0 +1,49 @@
+EXPORTS
+	??1CMPXCollectionPlaylist@@UAE@XZ @ 1 NONAME ; CMPXCollectionPlaylist::~CMPXCollectionPlaylist(void)
+	?CancelRequest@CMPXCollectionPlaylist@@QAEXXZ @ 2 NONAME ; void CMPXCollectionPlaylist::CancelRequest(void)
+	?CopyContentL@CMPXCollectionPlaylist@@QAEXABV1@@Z @ 3 NONAME ; void CMPXCollectionPlaylist::CopyContentL(class CMPXCollectionPlaylist const &)
+	?Count@CMPXCollectionPlaylist@@QBEHXZ @ 4 NONAME ; int CMPXCollectionPlaylist::Count(void) const
+	?EmbeddedPlaylist@CMPXCollectionPlaylist@@QBEHXZ @ 5 NONAME ; int CMPXCollectionPlaylist::EmbeddedPlaylist(void) const
+	?ExternalizeL@CMPXCollectionPlaylist@@QBEXAAVRWriteStream@@@Z @ 6 NONAME ; void CMPXCollectionPlaylist::ExternalizeL(class RWriteStream &) const
+	?Index@CMPXCollectionPlaylist@@QBEHXZ @ 7 NONAME ; int CMPXCollectionPlaylist::Index(void) const
+	?InternalizeL@CMPXCollectionPlaylist@@QAEXAAVRReadStream@@@Z @ 8 NONAME ; void CMPXCollectionPlaylist::InternalizeL(class RReadStream &)
+	?Levels@CMPXCollectionPlaylist@@QBEHXZ @ 9 NONAME ; int CMPXCollectionPlaylist::Levels(void) const
+	?MediaL@CMPXCollectionPlaylist@@QAEXABV?$TArray@VTMPXAttribute@@@@AAVMMPXCollectionMediaObserver@@@Z @ 10 NONAME ; void CMPXCollectionPlaylist::MediaL(class TArray<class TMPXAttribute> const &, class MMPXCollectionMediaObserver &)
+	?NewL@CMPXCollectionPlaylist@@SAPAV1@AAVRReadStream@@PAVMMPXCollectionPlaylistObserver@@@Z @ 11 NONAME ; class CMPXCollectionPlaylist * CMPXCollectionPlaylist::NewL(class RReadStream &, class MMPXCollectionPlaylistObserver *)
+	?NewL@CMPXCollectionPlaylist@@SAPAV1@ABV1@PAVMMPXCollectionPlaylistObserver@@@Z @ 12 NONAME ; class CMPXCollectionPlaylist * CMPXCollectionPlaylist::NewL(class CMPXCollectionPlaylist const &, class MMPXCollectionPlaylistObserver *)
+	?NewL@CMPXCollectionPlaylist@@SAPAV1@ABVCMPXCollectionPath@@PAVMMPXCollectionPlaylistObserver@@@Z @ 13 NONAME ; class CMPXCollectionPlaylist * CMPXCollectionPlaylist::NewL(class CMPXCollectionPath const &, class MMPXCollectionPlaylistObserver *)
+	?NewL@CMPXCollectionPlaylist@@SAPAV1@XZ @ 14 NONAME ; class CMPXCollectionPlaylist * CMPXCollectionPlaylist::NewL(void)
+	?NewL@MMPXCollectionUtility@@SAPAV1@PAVMMPXCollectionObserver@@ABVTUid@@@Z @ 15 NONAME ; class MMPXCollectionUtility * MMPXCollectionUtility::NewL(class MMPXCollectionObserver *, class TUid const &)
+	?Next@CMPXCollectionPlaylist@@QAEHH@Z @ 16 NONAME ; int CMPXCollectionPlaylist::Next(int)
+	?Path@CMPXCollectionPlaylist@@QBEABVCMPXCollectionPath@@XZ @ 17 NONAME ; class CMPXCollectionPath const & CMPXCollectionPlaylist::Path(void) const
+	?Previous@CMPXCollectionPlaylist@@QAEHH@Z @ 18 NONAME ; int CMPXCollectionPlaylist::Previous(int)
+	?Remote@CMPXCollectionPlaylist@@QBEHXZ @ 19 NONAME ; int CMPXCollectionPlaylist::Remote(void) const
+	?RepeatMode@CMPXCollectionPlaylist@@QBE?AW4TRepeatMode@1@XZ @ 20 NONAME ; enum CMPXCollectionPlaylist::TRepeatMode CMPXCollectionPlaylist::RepeatMode(void) const
+	?SetEmbeddedPlaylist@CMPXCollectionPlaylist@@QAEXH@Z @ 21 NONAME ; void CMPXCollectionPlaylist::SetEmbeddedPlaylist(int)
+	?SetL@CMPXCollectionPlaylist@@QAEXABVCMPXMedia@@@Z @ 22 NONAME ; void CMPXCollectionPlaylist::SetL(class CMPXMedia const &)
+	?SetObserver@CMPXCollectionPlaylist@@QAEXAAVMMPXCollectionMediaObserver@@PAVMMPXCollectionPlaylistObserver@@PAVMMPXCollectionObserver@@@Z @ 23 NONAME ; void CMPXCollectionPlaylist::SetObserver(class MMPXCollectionMediaObserver &, class MMPXCollectionPlaylistObserver *, class MMPXCollectionObserver *)
+	?SetRepeatEnabled@CMPXCollectionPlaylist@@QAEXH@Z @ 24 NONAME ; void CMPXCollectionPlaylist::SetRepeatEnabled(int)
+	?SetRepeatMode@CMPXCollectionPlaylist@@QAEXW4TRepeatMode@1@@Z @ 25 NONAME ; void CMPXCollectionPlaylist::SetRepeatMode(enum CMPXCollectionPlaylist::TRepeatMode)
+	?SetShuffleEnabledL@CMPXCollectionPlaylist@@QAEXH@Z @ 26 NONAME ; void CMPXCollectionPlaylist::SetShuffleEnabledL(int)
+	?SetShuffleL@CMPXCollectionPlaylist@@QAEXHH@Z @ 27 NONAME ; void CMPXCollectionPlaylist::SetShuffleL(int, int)
+	?SetToFirst@CMPXCollectionPlaylist@@QAEXXZ @ 28 NONAME ; void CMPXCollectionPlaylist::SetToFirst(void)
+	?SetToIndex@CMPXCollectionPlaylist@@QAEXH@Z @ 29 NONAME ; void CMPXCollectionPlaylist::SetToIndex(int)
+	?SetToLast@CMPXCollectionPlaylist@@QAEXXZ @ 30 NONAME ; void CMPXCollectionPlaylist::SetToLast(void)
+	?Shuffle@CMPXCollectionPlaylist@@QBEHXZ @ 31 NONAME ; int CMPXCollectionPlaylist::Shuffle(void) const
+	?Invalidate@CMPXCollectionPlaylist@@QAEXXZ @ 32 NONAME ; void CMPXCollectionPlaylist::Invalidate(void)
+	?NewL@CMPXCollectionOpenUtility@@SAPAV1@PAVMMPXCollectionObserver@@VTUid@@@Z @ 33 NONAME ; class CMPXCollectionOpenUtility * CMPXCollectionOpenUtility::NewL(class MMPXCollectionObserver *, class TUid)
+	?PathL@CMPXCollectionOpenUtility@@QAEPAVCMPXCollectionPath@@XZ @ 34 NONAME ; class CMPXCollectionPath * CMPXCollectionOpenUtility::PathL(void)
+	?SetDelay@CMPXCollectionOpenUtility@@QAEXH@Z @ 35 NONAME ; void CMPXCollectionOpenUtility::SetDelay(int)
+	?SetDirection@CMPXCollectionOpenUtility@@QAEXW4TDirection@1@@Z @ 36 NONAME ; void CMPXCollectionOpenUtility::SetDirection(enum CMPXCollectionOpenUtility::TDirection)
+	?StartL@CMPXCollectionOpenUtility@@QAEXABVCMPXCollectionPath@@V?$TArray@VTMPXAttribute@@@@HHW4TDirection@1@VTMPXAttribute@@@Z @ 37 NONAME ; void CMPXCollectionOpenUtility::StartL(class CMPXCollectionPath const &, class TArray<class TMPXAttribute>, int, int, enum CMPXCollectionOpenUtility::TDirection, class TMPXAttribute)
+	?StartL@CMPXCollectionOpenUtility@@QAEXV?$TArray@VTMPXAttribute@@@@HHW4TDirection@1@VTMPXAttribute@@@Z @ 38 NONAME ; void CMPXCollectionOpenUtility::StartL(class TArray<class TMPXAttribute>, int, int, enum CMPXCollectionOpenUtility::TDirection, class TMPXAttribute)
+	?Stop@CMPXCollectionOpenUtility@@QAEXXZ @ 39 NONAME ; void CMPXCollectionOpenUtility::Stop(void)
+	?NextIndex@CMPXCollectionPlaylist@@QBEHHAAH@Z @ 40 NONAME ; int CMPXCollectionPlaylist::NextIndex(int, int &) const
+	?PathIndex@CMPXCollectionPlaylist@@QBEHH@Z @ 41 NONAME ; int CMPXCollectionPlaylist::PathIndex(int) const
+	?AutoPlay@CMPXCollectionPlaylist@@QBEHXZ @ 42 NONAME ; int CMPXCollectionPlaylist::AutoPlay(void) const
+	?IsSingleItemPlaylist@CMPXCollectionPlaylist@@QAEHXZ @ 43 NONAME ; int CMPXCollectionPlaylist::IsSingleItemPlaylist(void)
+	?SetAutoPlay@CMPXCollectionPlaylist@@QAEXH@Z @ 44 NONAME ; void CMPXCollectionPlaylist::SetAutoPlay(int)
+	?SetSingleItemPlaylist@CMPXCollectionPlaylist@@QAEXXZ @ 45 NONAME ; void CMPXCollectionPlaylist::SetSingleItemPlaylist(void)
+	?PreInitPlugin@CMPXCollectionPlaylist@@QBEHXZ @ 46 NONAME ; int CMPXCollectionPlaylist::PreInitPlugin(void) const
+	?SetPreInitPlugin@CMPXCollectionPlaylist@@QAEXH@Z @ 47 NONAME ; void CMPXCollectionPlaylist::SetPreInitPlugin(int)
+

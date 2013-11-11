@@ -1,0 +1,29 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Contains the Source Plugin Uid for File Source
+*
+*/
+
+
+#ifndef FILEDATASOURCEUID_HRH
+#define FILEDATASOURCEUID_HRH
+
+
+// These are the ECOM Interface UIDs for the file source
+
+#define KFileDataSourcePlugin       0x10207B89
+
+#endif // FILEDATASOURCEUID_HRH
+
+// End of file

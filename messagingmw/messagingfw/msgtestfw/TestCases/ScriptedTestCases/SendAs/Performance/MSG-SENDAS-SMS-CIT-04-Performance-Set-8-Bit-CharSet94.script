@@ -1,0 +1,65 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+//! @SYMTestCaseID MSG-SENDAS-CIT-0030-HP
+//! @SYMTestCaseDesc UnConfirmed Send
+//! @SYMFssID 
+//! @SYMTestStatus Defined
+//! @SYMTestPriority High
+//! @SYMTestActions xxxxxxxx
+//! @SYMTestExpectedResults yyyyyyyyy
+//! @SYMTestType CIT
+
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_UTILS CopyFile c:\msgtest\TestFramework\Configurations\SmsSettings\config.txt C:\config.txt
+RUN_UTILS MakeReadWrite C:\config.txt
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+InitializeSimTsy		c:\msgtest\testframework\scriptedtestcases\sendas\Performance\MSG-SENDAS-SMS-CIT-04-Performance-Set-8-Bit-CharacterSet.ini	InitializeSimTsy
+GetBaseConstants		c:\msgtest\testframework\scriptedtestcases\sendas\Performance\MSG-SENDAS-SMS-CIT-04-Performance-Set-8-Bit-CharacterSet.ini	GetBaseConstants
+GetSmsConstants			c:\msgtest\testframework\scriptedtestcases\sendas\Performance\MSG-SENDAS-SMS-CIT-04-Performance-Set-8-Bit-CharacterSet.ini	GetSmsConstants
+CreateSession			c:\msgtest\testframework\scriptedtestcases\sendas\Performance\MSG-SENDAS-SMS-CIT-04-Performance-Set-8-Bit-CharacterSet.ini	CreateSession
+ResetMessageStore		c:\msgtest\testframework\scriptedtestcases\sendas\Performance\MSG-SENDAS-SMS-CIT-04-Performance-Set-8-Bit-CharacterSet.ini	ResetMessageStore
+SetDefaultSmsSettings		c:\msgtest\testframework\scriptedtestcases\sendas\Performance\MSG-SENDAS-SMS-CIT-04-Performance-Set-8-Bit-CharacterSet.ini	SetDefaultSmsSettings
+SetDefaultConfiguration		c:\msgtest\testframework\scriptedtestcases\sendas\Performance\MSG-SENDAS-SMS-CIT-04-Performance-Set-8-Bit-CharacterSet.ini	SetDefaultConfiguration
+SetDefaultConfiguration		c:\msgtest\testframework\scriptedtestcases\sendas\Performance\MSG-SENDAS-SMS-CIT-04-Performance-Set-8-Bit-CharacterSet.ini	SetDefaultConfigurationBodyTxt
+CreateSmsService		c:\msgtest\testframework\scriptedtestcases\sendas\Performance\MSG-SENDAS-SMS-CIT-04-Performance-Set-8-Bit-CharacterSet.ini	CreateSmsService
+SetSmsServiceSettings		c:\msgtest\testframework\scriptedtestcases\sendas\Performance\MSG-SENDAS-SMS-CIT-04-Performance-Set-8-Bit-CharacterSet.ini	SetSmsServiceSettings
+CreateRegistry			c:\msgtest\testframework\scriptedtestcases\sendas\Performance\MSG-SENDAS-SMS-CIT-04-Performance-Set-8-Bit-CharacterSet.ini	CreateRegistry
+CreateMtm			c:\msgtest\testframework\scriptedtestcases\sendas\Performance\MSG-SENDAS-SMS-CIT-04-Performance-Set-8-Bit-CharacterSet.ini	CreateSmsMtm
+CheckChildrenCount		c:\msgtest\testframework\scriptedtestcases\sendas\Performance\MSG-SENDAS-SMS-CIT-04-Performance-Set-8-Bit-CharacterSet.ini	ChkChildrenCountDraft0
+EXECUTE_TEST_CASE
+ConnectSendAsServer		c:\msgtest\testframework\scriptedtestcases\sendas\Performance\MSG-SENDAS-SMS-CIT-04-Performance-Set-8-Bit-CharacterSet.ini	ConnectSendAsServer
+StartTimer			c:\msgtest\testframework\scriptedtestcases\sendas\Performance\MSG-SENDAS-SMS-CIT-04-Performance-Set-8-Bit-CharacterSet.ini	StartTimer
+SendAsCreateMessageofType	c:\msgtest\testframework\scriptedtestcases\sendas\Performance\MSG-SENDAS-SMS-CIT-04-Performance-Set-8-Bit-CharacterSet.ini	SendAsCreateMessageofType
+StopTimer			c:\msgtest\testframework\scriptedtestcases\sendas\Performance\MSG-SENDAS-SMS-CIT-04-Performance-Set-8-Bit-CharacterSet.ini	StopTimer
+SendAsAddRecipient		c:\msgtest\testframework\scriptedtestcases\sendas\Performance\MSG-SENDAS-SMS-CIT-04-Performance-Set-8-Bit-CharacterSet.ini	SendAsAddRecipient
+SendAsSetBodyText		c:\msgtest\testframework\scriptedtestcases\sendas\Performance\MSG-SENDAS-SMS-CIT-04-Performance-Set-8-Bit-CharacterSet.ini	SendAsSetBodyText
+CheckChildrenCount		c:\msgtest\testframework\scriptedtestcases\sendas\Performance\MSG-SENDAS-SMS-CIT-04-Performance-Set-8-Bit-CharacterSet.ini	ChkChildrenCountDraft1
+StartTimer			c:\msgtest\testframework\scriptedtestcases\sendas\Performance\MSG-SENDAS-SMS-CIT-04-Performance-Set-8-Bit-CharacterSet.ini	StartTimer
+SendAsSendMessageNew		c:\msgtest\testframework\scriptedtestcases\sendas\Performance\MSG-SENDAS-SMS-CIT-04-Performance-Set-8-Bit-CharacterSet.ini	SendAsSendMessageNew
+StopTimer			c:\msgtest\testframework\scriptedtestcases\sendas\Performance\MSG-SENDAS-SMS-CIT-04-Performance-Set-8-Bit-CharacterSet.ini	StopTimer
+SendAsCloseMessage		c:\msgtest\testframework\scriptedtestcases\sendas\Performance\MSG-SENDAS-SMS-CIT-04-Performance-Set-8-Bit-CharacterSet.ini	CloseMessage
+Sleep				c:\msgtest\testframework\scriptedtestcases\sendas\Performance\MSG-SENDAS-SMS-CIT-04-Performance-Set-8-Bit-CharacterSet.ini	Sleep
+CloseSendAsServerConnection	c:\msgtest\testframework\scriptedtestcases\sendas\Performance\MSG-SENDAS-SMS-CIT-04-Performance-Set-8-Bit-CharacterSet.ini	CloseSvrConnection
+CHECK_POSTCONDITIONS
+UnloadPhoneModule 		c:\msgtest\testframework\scriptedtestcases\sendas\Performance\MSG-SENDAS-SMS-CIT-04-Performance-Set-8-Bit-CharacterSet.ini	UnloadPhoneModule
+END_TEST_CASE

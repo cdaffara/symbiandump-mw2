@@ -1,0 +1,101 @@
+// Copyright (c) 1998-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+#include "msgs.rls"
+#include <msvstd.hrh>
+#include <msgs.loc>
+
+// Flags - defined in TMsvEntry
+
+#define KMsvEntryLowPriority	0x0000
+#define KMsvEntryMediumPriority 0x0001
+#define KMsvEntryHighPriority	0x0002
+
+//#define KMsvEntryStoreFlag 0x0004 // Not used
+#define KMsvEntryNotCompleteFlag		0x0008 // the netry is marked as incomplete
+#define KMsvEntryNewFlag				0x0010
+#define KMsvEntryUnreadFlag				0x0020
+#define KMsvEntryInvisibleFlag			0x0200 // will be invisible to the user
+#define KMsvEntryMultipleRecipientFlag	0x0400
+//#define KMsvEntryFileFlag 0x0800 // Not used
+#define KMsvEntryReadOnlyFlag			0x1000 // the entry or store cannot be altered
+#define KMsvEntryStandardFolder			0x4000 // the entry will be place at beginning of a selection
+
+
+
+STRUCT SERVERENTRY
+	{
+	LONG id;
+	LONG parent;
+	LONG service=KMsvLocalServiceIndexEntryIdValue;
+	LONG type;
+	LONG mtm=KUidMsvLocalServiceMtmValue;
+	LONG flags=KMsvEntryMediumPriority;
+	LTEXT description="";
+	LTEXT details="";
+	}
+
+STRUCT SERVERSTARTUPINDEX
+	{
+	STRUCT entries[]; // must be SERVERENTRY's
+	}
+
+RESOURCE SERVERSTARTUPINDEX r_server_index_startup
+	{
+	entries=
+		{
+		SERVERENTRY {	id=KMsvLocalServiceIndexEntryIdValue;	
+						parent=KMsvRootIndexEntryIdValue;
+						type=KUidMsvServiceEntryValue;
+						flags=KMsvEntryReadOnlyFlag|KMsvEntryStandardFolder; 
+						details="Local"; },
+		SERVERENTRY {	id=KMsvGlobalInBoxIndexEntryIdValue;	
+						parent=KMsvLocalServiceIndexEntryIdValue; 
+						type=KUidMsvFolderEntryValue; 
+						flags=KMsvEntryReadOnlyFlag|KMsvEntryStandardFolder; 
+						details=qtn_mce_inbox; },
+		SERVERENTRY {	id=KMsvGlobalOutBoxIndexEntryIdValue;	
+						parent=KMsvLocalServiceIndexEntryIdValue; 
+						type=KUidMsvFolderEntryValue; 
+						flags=KMsvEntryReadOnlyFlag|KMsvEntryStandardFolder; 
+						details=qtn_mce_outbox; },
+		SERVERENTRY {	id=KMsvDraftEntryIdValue; 
+						parent=KMsvLocalServiceIndexEntryIdValue; 
+						type=KUidMsvFolderEntryValue; 
+						flags=KMsvEntryReadOnlyFlag|KMsvEntryStandardFolder; 
+						details=qtn_mce_drafts; },
+		SERVERENTRY {	id=KMsvSentEntryIdValue; 
+						parent=KMsvLocalServiceIndexEntryIdValue; 
+						type=KUidMsvFolderEntryValue; 
+						flags=KMsvEntryReadOnlyFlag|KMsvEntryStandardFolder; 
+						details=qtn_mce_sent_items; },
+		SERVERENTRY {	id=0x1008; 
+						parent=KMsvLocalServiceIndexEntryIdValue; 
+						type=KUidMsvFolderEntryValue; 
+						flags=KMsvEntryReadOnlyFlag|KMsvEntryStandardFolder; 
+						details=qtn_mce_documents; },
+		SERVERENTRY {	id=0x1009;	
+						parent=0x1008; 
+						type=KUidMsvFolderEntryValue; 
+						flags=KMsvEntryReadOnlyFlag|KMsvEntryStandardFolder; 
+						details=qtn_mce_doc_temp_folder; },
+		SERVERENTRY {	id=KMsvDeletedEntryFolderEntryIdValue; 
+						parent=KMsvLocalServiceIndexEntryIdValue; 
+						type=KUidMsvFolderEntryValue; 
+						flags=KMsvEntryReadOnlyFlag|KMsvEntryStandardFolder|KMsvEntryInvisibleFlag; 
+						details="Deleted"; }
+		};
+	}
+

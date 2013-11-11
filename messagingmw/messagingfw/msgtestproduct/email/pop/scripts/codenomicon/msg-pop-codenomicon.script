@@ -1,0 +1,49 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE 	T_MsgCommonServer -SharedData
+LOAD_SUITE 	T_MsgPopServer 	-SharedData
+
+
+START_TESTCASE MSG-POP3-TOP-0001
+//! @SYMTestCaseID			MSG-POP3-TOP-0001
+//! @SYMTestType			CIT
+//! @SYMTestPriority			Medium
+//! @SYMTestStatus 			Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc		
+//! @SYMTestActions			
+//! @SYMTestExpectedResults 	
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer		StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\codenomicon\msg-pop-Codenomicon.ini	0001-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\codenomicon\msg-pop-Codenomicon.ini	0001-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer		CreatePopAccount		c:\msgtest\email\pop\codenomicon\msg-pop-Codenomicon.ini	0001-CreatePopAccount
+RUN_TEST_STEP 3000 T_MsgPopServer 		ConnectPop3Server		c:\msgtest\email\pop\codenomicon\msg-pop-Codenomicon.ini	0001-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 		DisConnectPop3Server 		c:\msgtest\email\pop\codenomicon\msg-pop-Codenomicon.ini	0001-DisConnectPop3Server
+
+RUN_TEST_STEP 300 T_MsgPopServer		ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-TOP-0001

@@ -1,0 +1,6 @@
+#ifndef __MESSAGESERVER_HBY__
+#define __MESSAGESERVER_HBY__
+
+data=MULTI_LINGUIFY(RSC DATAZ_\resource\messaging\MSGS	resource\messaging\MSGS)
+
+#endif

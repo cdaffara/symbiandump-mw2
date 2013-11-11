@@ -1,0 +1,1 @@
+This is a test file for the wapp parser. It should be rejected as it is pure text not WBXML. It has a leading character of value 0x00 to see if the parser rejects the file.

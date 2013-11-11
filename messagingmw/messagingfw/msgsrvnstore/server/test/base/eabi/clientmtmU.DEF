@@ -1,0 +1,5 @@
+EXPORTS
+	_ZN10CMyClntMtm4NewLER17CRegisteredMtmDllR11CMsvSession @ 1 NONAME
+	_ZTI10CMyClntMtm @ 2 NONAME ; #<TI>#
+	_ZTV10CMyClntMtm @ 3 NONAME ; #<VT>#
+

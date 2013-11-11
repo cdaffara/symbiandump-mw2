@@ -1,0 +1,65 @@
+// Copyright (c) 2004-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+#include <biftool2.rh>
+
+
+RESOURCE BIO_INFO_FILE
+	{
+	message_type_uid=0x10005536;
+	message_parser_name="\\system\\parsers\\gfp.dll";
+	message_app_uid=KUidUseDefaultApp;
+	file_extension=".olp";
+
+	description="Operator Logo";
+
+	icons_filename="olp.mbm";
+	icon_zoom_levels={1};
+
+	ids=
+		{
+		ID	
+			{
+			type=EWap;
+			confidence=ECertain;
+			port=5506;				//SCKL1582
+			character_set=KCharSetDefault;	// default is ISO-8859-1, could have missed this line out
+			},
+// The WAP Watcher should get this...
+//		ID
+//			{
+//			type=ENbs;
+//			confidence=ECertain;
+//			port=5506;
+//			text="//SCKL1582";
+//			character_set=KCharSetDefault;	// default is ISO-8859-1, could have missed this line out
+//			},
+		ID
+			{
+			type=EWap;
+			confidence=ECertain;
+			port=5514;
+			character_set=KCharSetDefault; // dummy placeholder for Nokia picture msgs
+			},
+		ID
+			{
+			type=EIana;
+			confidence=EPossible;
+			character_set=KCharSetDefault;	// default is ISO-8859-1, could have missed this line out
+			text="application/vnd.nokia.operator-logo";
+			}
+		};
+	}
+

@@ -1,0 +1,76 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:    XDM Provisioning Adapter
+*
+*/
+
+
+
+#include <platform_paths.hrh>
+// needed for RESOURCE_FILES_DIR
+#include <data_caging_paths.hrh>
+
+
+
+TARGET                                  xdmprovisioning.dll
+TARGETTYPE                              PLUGIN
+UID                                     0x10009D8D 0x1028237A
+CAPABILITY                              CAP_ECOM_PLUGIN
+VENDORID                                VID_DEFAULT                 
+
+SOURCEPATH                              ../src
+
+SOURCE                                  xdmprovitem.cpp
+SOURCE                                  xdmprovadapter.cpp
+SOURCE                                  xdmprovadaptergroupproxy.cpp
+
+SOURCEPATH                              ../data
+START RESOURCE                          1028237A.rss
+    TARGET                              xdmprovisioning.rsc                                                                
+END
+
+
+START RESOURCE xdmprovisioningtexts.rss
+HEADER
+TARGET xdmprovisioningtexts.rsc
+TARGETPATH       RESOURCE_FILES_DIR
+LANGUAGE_IDS
+END
+
+
+USERINCLUDE                             ../inc
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE                           /epoc32/include/ecom
+
+LIBRARY                                 ecom.lib
+LIBRARY                                 euser.lib
+LIBRARY                                 xdmsettingsapi.lib
+LIBRARY                                 provisioningengine.lib
+LIBRARY                                 commdb.lib
+
+
+DEBUGLIBRARY                            flogger.lib
+
+
+
+
+
+#if defined( ARMCC )
+    DEFFILE ../eabi/ 
+#elif defined ( WINSCW )
+    deffile ../BWINSCW/ 
+#endif
+
+

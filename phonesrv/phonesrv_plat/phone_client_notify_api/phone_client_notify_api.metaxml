@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<api id="b478521b615f3cdc01b54297cbcec405" dataversion="1.0">
+  <name>Phone Client Notify API</name>
+  <description>A provider interface for listening service requests from clients.</description>
+  <type>c++</type>
+  <subsystem>phoneclientserver</subsystem>
+  <libs>
+    <lib name="PhoneClient.lib" />
+  </libs>
+  <release category="domain"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>yes</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

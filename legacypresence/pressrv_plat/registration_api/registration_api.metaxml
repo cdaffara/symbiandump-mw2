@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<api id="9c9f435958bcb81eb0cfb0d6d744d2ff" dataversion="1.0">
+  <name>Registration API</name>
+  <description>This API provides the registration and de-registration of SIP profile associated with the provisioned Presence Settings.</description>
+  <type>c++</type>
+  <subsystem>simpleengine</subsystem>
+  <libs>
+    <lib name="simpleengine.lib" />
+  </libs>
+  <release category="domain"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>yes</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

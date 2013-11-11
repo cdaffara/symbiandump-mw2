@@ -1,0 +1,24 @@
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 11.2 Misc, CS tests
+timeout 10000
+create ccetester test
+
+test OpenNewCall 1 0 PhoneNumber 1 ECCECallTypeCSVoice ECCELineTypePrimary
+
+test MiscTests 1
+
+// This event is only in CS side
+test SendPluginRequest 2 SendTestEvents 2
+test WaitEvent MoCallCreated
+
+test InitializeEmergencyCall 2 0
+test MiscTests 2
+test GetMobileCallInfo 2
+
+test VerifyTest
+delete test
+[Endtest] 

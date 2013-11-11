@@ -1,0 +1,40 @@
+// Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// bld.inf file for the Integ Test Pop server
+// 
+//
+ 
+#ifdef SYMBIAN_USER_PROMPT_SERVICE
+#include "../upssupport/group/bld.inf"
+#endif
+
+PRJ_TESTMMPFILES
+T_Utils.mmp
+MessagingTestUtility2.mmp
+MessagingTestUtilityServer2.mmp
+t_sqlserverdown.mmp
+
+
+PRJ_TESTEXPORTS
+../inc/T_Utils.h					SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(t_utils.h)	
+../inc/T_UtilsEnumConverter.h				SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(t_utilsenumconverter.h)
+../inc/T_UtilsConfigFileParserUtility.h			SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(t_utilsconfigfileparserutility.h)	
+../inc/T_UtilsCentralRepository.h			SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(t_utilscentralrepository.h)	
+../inc/T_UtilsReadEmailSettingsFromConfigFile.h		SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(t_utilsreademailsettingsfromconfigfile.h)
+../inc/T_UtilsConfigFileMachineName.h			SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(t_utilsconfigfilemachinename.h)
+../inc/T_TimerUtils.h					SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(t_timerutils.h)
+../inc/T_UtilsDeleteAllChildren.h			SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(t_utilsdeleteallchildren.h)
+../inc/MessagingTestUtility2.h				SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(messagingtestutility2.h)       
+../inc/t_testinstrumentation.h				SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(t_testinstrumentation.h)
+../upssupport/SetUserPromptResponse/group/UserResponse.txt /epoc32/winscw/c/userresponse.txt

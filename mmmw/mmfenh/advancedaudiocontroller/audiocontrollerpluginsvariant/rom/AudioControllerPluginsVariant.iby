@@ -1,0 +1,95 @@
+/*
+* Copyright (c) 2002-2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Contains all DLLs that must be included in image
+*
+*/
+
+
+#ifndef AUDIOCONTROLLERPLUGINSVARIANT_IBY
+#define AUDIOCONTROLLERPLUGINSVARIANT_IBY
+
+#include <bldvariant.hrh>
+
+file=ABI_DIR\BUILD_DIR\DataSourceAdapter.dll              	SHARED_LIB_DIR\DataSourceAdapter.dll
+file=ABI_DIR\BUILD_DIR\3gpDataSourceAdapter.dll              	SHARED_LIB_DIR\3gpDataSourceAdapter.dll
+file=ABI_DIR\BUILD_DIR\AdvancedAudioController.dll              SHARED_LIB_DIR\AdvancedAudioController.dll
+file=ABI_DIR\BUILD_DIR\DevSoundAudioOutput.dll                  SHARED_LIB_DIR\DevSoundAudioOutput.dll
+file=ABI_DIR\BUILD_DIR\DevSoundAudioInput.dll                   SHARED_LIB_DIR\DevSoundAudioInput.dll
+file=ABI_DIR\BUILD_DIR\FileAudioOutput.dll                      SHARED_LIB_DIR\FileAudioOutput.dll
+
+// for MP4MetaDataWrite
+file=ABI_DIR\BUILD_DIR\MetaDataWrite.dll                        SHARED_LIB_DIR\MetaDataWrite.dll
+
+#ifdef RD_3GP_Write_Extention
+file=ABI_DIR\BUILD_DIR\3GPAudioMetaDataComposer.dll             SHARED_LIB_DIR\3GPAudioMetaDataComposer.dll
+#endif
+
+//For Wav Controller
+ECOM_PLUGIN(mmfaudiocontroller.dll,101f55bf.rsc)
+
+//For 3GP
+ECOM_PLUGIN(3GPAudioPlayControllerPlugin.DLL,3GPAudioPlayControllerPlugin.rsc)
+ECOM_PLUGIN(3GPAudioPlayControllerRecognizer.DLL,3GPAudioPlayControllerRecognizer.rsc)
+ECOM_PLUGIN(3GPAudioRecordControllerPlugin.DLL,3GPAudioRecordControllerPlugin.rsc)
+
+data=ZRESOURCE\3GPAudioPlayControllerResource.rsc               RESOURCE_FILES_DIR\3GPAudioPlayControllerResource.rsc
+data=ZRESOURCE\3GPAudioRecordControllerResource.rsc             RESOURCE_FILES_DIR\3GPAudioRecordControllerResource.rsc
+//end for 3GP
+
+#ifdef __MP3
+ECOM_PLUGIN(MP3AudioPlayControllerPlugin.DLL, MP3AudioPlayControllerPlugin.rsc)
+ECOM_PLUGIN(MP3AudioPlayControllerRecognizer.DLL, MP3AudioPlayControllerRecognizer.rsc)
+file=ABI_DIR\BUILD_DIR\MP3AudioControllerUtility.dll            SHARED_LIB_DIR\MP3AudioControllerUtility.dll
+data=ZRESOURCE\MP3AudioPlayControllerResource.rsc               RESOURCE_FILES_DIR\MP3AudioPlayControllerResource.rsc
+#endif
+
+#ifdef __AAC
+ECOM_PLUGIN(AACAudioPlayControllerPlugin.DLL, AACAudioPlayControllerPlugin.rsc)
+ECOM_PLUGIN(AACAudioPlayControllerRecognizer.DLL, AACAudioPlayControllerRecognizer.rsc)
+data=ZRESOURCE\AACAudioPlayControllerResource.rsc               RESOURCE_FILES_DIR\AACAudioPlayControllerResource.rsc
+
+// only EAACPlusAudioControllerUtility support AAC optimization
+//#ifdef __AAC_PLUS_DECODER_PLUGIN // For eAAC+ Codec
+file=ABI_DIR\BUILD_DIR\EAACPlusAudioControllerUtility.dll       SHARED_LIB_DIR\EAACPlusAudioControllerUtility.dll
+/*
+#else
+file=ABI_DIR\BUILD_DIR\AACAudioControllerUtility.dll            SHARED_LIB_DIR\AACAudioControllerUtility.dll
+#endif
+*/
+
+#endif
+
+#ifdef __AMR_NB
+ECOM_PLUGIN(AMRAudioPlayControllerPlugin.DLL, AMRAudioPlayControllerPlugin.rsc)
+ECOM_PLUGIN(AMRAudioRecordControllerPlugin.DLL, AMRAudioRecordControllerPlugin.rsc)
+file=ABI_DIR\BUILD_DIR\AMRAudioControllerUtility.dll	SHARED_LIB_DIR\AMRAudioControllerUtility.dll
+data=ZRESOURCE\AMRAudioPlayControllerResource.rsc	RESOURCE_FILES_DIR\AMRAudioPlayControllerResource.rsc
+data=ZRESOURCE\AMRAudioRecordControllerResource.rsc	RESOURCE_FILES_DIR\AMRAudioRecordControllerResource.rsc
+#endif
+
+#ifdef __AMR_WB
+ECOM_PLUGIN(AWBAudioPlayControllerPlugin.DLL, AWBAudioPlayControllerPlugin.rsc)
+file=ABI_DIR\BUILD_DIR\AWBAudioControllerUtility.dll	SHARED_LIB_DIR\AWBAudioControllerUtility.dll
+data=ZRESOURCE\AWBAudioPlayControllerResource.rsc	RESOURCE_FILES_DIR\AWBAudioPlayControllerResource.rsc
+#endif
+
+#ifdef RD_RA_SUPPORT_FOR_MUSIC_PLAYER
+ECOM_PLUGIN(HXAudioPlayControllerRecognizer.DLL, HXAudioPlayControllerRecognizer.rsc)
+#endif
+
+data=ZSYSTEM\install\AudioControllerPluginsVariant_Stub.SIS    System\Install\AudioControllerPluginsVariant_Stub.SIS
+
+#endif // AUDIOCONTROLLERPLUGINSVARIANT_IBY
+
+//  End of File  

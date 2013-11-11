@@ -1,0 +1,41 @@
+/*****************************************************
+  1. Call is created (between A and B)
+  2. Call is transferred (Unattended)
+  	 Expected: Current call is disconnected
+  3. Release call
+*****************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 7.1 Transfer, Unattended
+timeout 20000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test OpenNewCall 1 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+// Step 2
+print Step_2
+
+test UnattendedTransfer 1 0
+
+test WaitEvents 1 Transferring, 1 RemoteTransferring, 1 Disconnecting, 1 Idle
+
+// Step 3
+print Step_3
+
+test Release 1 0
+
+test VerifyTest
+delete test
+[Endtest]

@@ -1,0 +1,9 @@
+EXPORTS
+	??1CVideoPlaylistUtility@@UAE@XZ @ 1 NONAME ; CVideoPlaylistUtility::~CVideoPlaylistUtility(void)
+	?GetFileInfoL@CVideoPlaylistUtility@@QAEXAAVRFile@@W4TMediaType@CMediaRecognizer@@AAH2@Z @ 2 NONAME ; void CVideoPlaylistUtility::GetFileInfoL(class RFile &, enum CMediaRecognizer::TMediaType, int &, int &)
+	?GetFileInfoL@CVideoPlaylistUtility@@QAEXABVTDesC16@@W4TMediaType@CMediaRecognizer@@AAH2@Z @ 3 NONAME ; void CVideoPlaylistUtility::GetFileInfoL(class TDesC16 const &, enum CMediaRecognizer::TMediaType, int &, int &)
+	?GetLinkLC@CVideoPlaylistUtility@@QAE?AVTPtrC16@@XZ @ 4 NONAME ; class TPtrC16 CVideoPlaylistUtility::GetLinkLC(void)
+	?GetPlayListL@CVideoPlaylistUtility@@QAEPAVCMPXMedia@@H@Z @ 5 NONAME ; class CMPXMedia * CVideoPlaylistUtility::GetPlayListL(int)
+	?NewL@CVideoPlaylistUtility@@SAPAV1@XZ @ 6 NONAME ; class CVideoPlaylistUtility * CVideoPlaylistUtility::NewL(void)
+	?IsSeekable@CVideoPlaylistUtility@@QAEHXZ @ 7 NONAME ; int CVideoPlaylistUtility::IsSeekable(void)
+

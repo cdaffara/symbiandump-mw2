@@ -1,0 +1,49 @@
+// Copyright (c) 2008-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+TARGET		t_msgs_client_suite.exe
+TARGETTYPE	exe
+UID             0x1000007A 0x101F7784
+
+CAPABILITY ALL -TCB
+
+SOURCEPATH		../src
+SOURCE			t_msv_session_step.cpp
+SOURCE 			t_cmsventry_step.cpp
+SOURCE			t_msgs_sql_client.cpp
+
+
+#if (defined SYMBIAN_MESSAGESTORE_HEADER_BODY_USING_SQLDB)
+SOURCE          t_msv_clnt_test_header_step.cpp
+SOURCE			CFakeStoreManager.cpp
+SOURCE			t_msv_store_step.cpp
+#endif
+
+USERINCLUDE		../inc
+USERINCLUDE		../../../inc
+
+USERINCLUDE		../../../../../msgtest/testutils/base/inc
+USERINCLUDE		../../../../../msgtest/testutils/server/inc
+USERINCLUDE		../../../../../msgtest/testutils/sms/inc
+USERINCLUDE		../../../../../msgtest/testutils/email/inc
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+STATICLIBRARY		tefunit.lib 
+LIBRARY			euser.lib msgs.lib efsrv.lib estor.lib msvtestutils.lib sqldb.lib 
+LIBRARY			testexecuteutils.lib testexecutelogclient.lib rfileloggerclient.lib 
+LIBRARY			bafl.lib etext.lib charconv.lib centralrepository.lib flogger.lib 
+
+SMPSAFE
+
+

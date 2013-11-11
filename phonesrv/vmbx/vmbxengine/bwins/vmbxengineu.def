@@ -1,0 +1,30 @@
+EXPORTS
+	?NewL@CVoiceMailbox@@SAPAV1@XZ @ 1 NONAME ; class CVoiceMailbox * CVoiceMailbox::NewL(void)
+	?QueryChangeEntry@CVoiceMailbox@@UAEHABVTVoiceMailboxParams@@AAPAVCVoiceMailboxEntry@@@Z @ 2 NONAME ; int CVoiceMailbox::QueryChangeEntry(class TVoiceMailboxParams const &, class CVoiceMailboxEntry * &)
+	?GetBrandId@CVoiceMailboxEntry@@UBEHAAVTPtrC8@@@Z @ 3 NONAME ; int CVoiceMailboxEntry::GetBrandId(class TPtrC8 &) const
+	?Reset@CVoiceMailboxEntry@@UAEXXZ @ 4 NONAME ; void CVoiceMailboxEntry::Reset(void)
+	?NewL@CVoiceMailboxEntry@@SAPAV1@XZ @ 5 NONAME ; class CVoiceMailboxEntry * CVoiceMailboxEntry::NewL(void)
+	?GetStoredEntry@CVoiceMailbox@@UBEHABVTVoiceMailboxParams@@AAPAVCVoiceMailboxEntry@@@Z @ 6 NONAME ; int CVoiceMailbox::GetStoredEntry(class TVoiceMailboxParams const &, class CVoiceMailboxEntry * &) const
+	??0TVoiceMailboxParams@@QAE@ABVCVoiceMailboxEntry@@@Z @ 7 NONAME ; TVoiceMailboxParams::TVoiceMailboxParams(class CVoiceMailboxEntry const &)
+	?NewLC@CVoiceMailbox@@SAPAV1@XZ @ 8 NONAME ; class CVoiceMailbox * CVoiceMailbox::NewLC(void)
+	?SaveProvisionedEntry@CVoiceMailbox@@QAEHABVCVoiceMailboxEntry@@@Z @ 9 NONAME ; int CVoiceMailbox::SaveProvisionedEntry(class CVoiceMailboxEntry const &)
+	?SetVmbxName@CVoiceMailboxEntry@@UAEHABVTDesC16@@@Z @ 10 NONAME ; int CVoiceMailboxEntry::SetVmbxName(class TDesC16 const &)
+	?ServiceId@CVoiceMailboxEntry@@UBEIXZ @ 11 NONAME ; unsigned int CVoiceMailboxEntry::ServiceId(void) const
+	?SaveEntry@CVoiceMailbox@@UAEHABVCVoiceMailboxEntry@@@Z @ 12 NONAME ; int CVoiceMailbox::SaveEntry(class CVoiceMailboxEntry const &)
+	?GetVmbxName@CVoiceMailboxEntry@@UBEHAAVTPtrC16@@@Z @ 13 NONAME ; int CVoiceMailboxEntry::GetVmbxName(class TPtrC16 &) const
+	?Version@TVoiceMailboxParams@@QAEHXZ @ 14 NONAME ; int TVoiceMailboxParams::Version(void)
+	?CheckConfiguration@CVoiceMailbox@@UAEHABVTVoiceMailboxParams@@H@Z @ 15 NONAME ; int CVoiceMailbox::CheckConfiguration(class TVoiceMailboxParams const &, int)
+	?UsingMemoryLocation@CVoiceMailboxEntry@@UBE?AW4TVmbxMemoryLocation@@XZ @ 16 NONAME ; enum TVmbxMemoryLocation CVoiceMailboxEntry::UsingMemoryLocation(void) const
+	?SetVmbxNumber@CVoiceMailboxEntry@@UAEHABVTDesC16@@@Z @ 17 NONAME ; int CVoiceMailboxEntry::SetVmbxNumber(class TDesC16 const &)
+	?VoiceMailboxType@CVoiceMailboxEntry@@UBE?AW4TVmbxType@@XZ @ 18 NONAME ; enum TVmbxType CVoiceMailboxEntry::VoiceMailboxType(void) const
+	?VmbxAlsLineType@CVoiceMailboxEntry@@UBE?AW4TVmbxAlsLineType@@XZ @ 19 NONAME ; enum TVmbxAlsLineType CVoiceMailboxEntry::VmbxAlsLineType(void) const
+	?NewLC@CVoiceMailboxEntry@@SAPAV1@XZ @ 20 NONAME ; class CVoiceMailboxEntry * CVoiceMailboxEntry::NewLC(void)
+	?NotifyVmbxNumberChangeCancel@CVoiceMailbox@@UAEXXZ @ 21 NONAME ; void CVoiceMailbox::NotifyVmbxNumberChangeCancel(void)
+	?QueryNewEntry@CVoiceMailbox@@UAEHABVTVoiceMailboxParams@@AAPAVCVoiceMailboxEntry@@@Z @ 22 NONAME ; int CVoiceMailbox::QueryNewEntry(class TVoiceMailboxParams const &, class CVoiceMailboxEntry * &)
+	?GetServiceIds@CVoiceMailbox@@UBEHAAV?$RArray@I@@@Z @ 23 NONAME ; int CVoiceMailbox::GetServiceIds(class RArray<unsigned int> &) const
+	??0TVoiceMailboxParams@@QAE@XZ @ 24 NONAME ; TVoiceMailboxParams::TVoiceMailboxParams(void)
+	?GetVmbxNumber@CVoiceMailboxEntry@@UBEHAAVTPtrC16@@@Z @ 25 NONAME ; int CVoiceMailboxEntry::GetVmbxNumber(class TPtrC16 &) const
+	?QueryVmbxType@CVoiceMailbox@@UAEHAAVTVoiceMailboxParams@@@Z @ 26 NONAME ; int CVoiceMailbox::QueryVmbxType(class TVoiceMailboxParams &)
+	?SetVoiceMailboxType@CVoiceMailboxEntry@@UAEXABW4TVmbxType@@@Z @ 27 NONAME ; void CVoiceMailboxEntry::SetVoiceMailboxType(enum TVmbxType const &)
+	?NotifyVmbxNumberChangeL@CVoiceMailbox@@UAEXAAVMVoiceMailboxObserver@@H@Z @ 28 NONAME ; void CVoiceMailbox::NotifyVmbxNumberChangeL(class MVoiceMailboxObserver &, int)
+

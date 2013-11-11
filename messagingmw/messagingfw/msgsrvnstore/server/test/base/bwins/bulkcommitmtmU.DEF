@@ -1,0 +1,3 @@
+EXPORTS
+	?NewL@CBulkCommitServerMtm@@SAPAV1@AAVCRegisteredMtmDll@@AAVCMsvServerEntry@@@Z @ 1 NONAME ; class CBulkCommitServerMtm * CBulkCommitServerMtm::NewL(class CRegisteredMtmDll &, class CMsvServerEntry &)
+

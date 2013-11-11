@@ -1,0 +1,88 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project file for building the ECOM Dll AMRAudioRecordControllerPlugin.dll
+*
+*/
+
+
+#include <data_caging_paths.hrh>
+#include <platform_paths.hrh>
+
+
+TARGET 		AMRAudioRecordControllerPlugin.dll
+TARGETTYPE 	PLUGIN
+UID 		0x10009D8D 0x101FAFBF
+VENDORID	VID_DEFAULT
+
+TARGETPATH 	/System/Libs/Plugins
+
+CAPABILITY CAP_ECOM_PLUGIN
+
+SOURCEPATH	../Src
+SOURCE		AMRAudioRecordControllerPlugin.cpp
+SOURCE		AMRAudioRecordControllerResource.cpp
+
+/*
+* Added condition to check WINS flag, so that Software encoder is built for Emulator
+*/
+#ifdef __USE_AMR_NB_CMMFCODEC
+SOURCE		AMRAudioRecordControllerSwEncoder.cpp
+#else
+	#if defined (WINS)
+	SOURCE		AMRAudioRecordControllerSwEncoder.cpp
+	#else
+	SOURCE		AMRAudioRecordControllerHwEncoder.cpp
+	#endif
+#endif
+
+USERINCLUDE	../Inc ../Src
+USERINCLUDE	../../../../inc
+USERINCLUDE	../../AdvancedAudioController/Inc
+USERINCLUDE	../../DevSoundAudioOutput/Inc
+USERINCLUDE	../../DevSoundAudioInput/Inc
+USERINCLUDE	../../FileAudioOutput/Inc
+USERINCLUDE	../../AdvancedAudioControllerUtility/Inc
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   /epoc32/include/ecom
+SYSTEMINCLUDE	/epoc32/include/mmf/server
+SYSTEMINCLUDE	/epoc32/include/mmf/common
+SYSTEMINCLUDE	/epoc32/include/mmf/plugin
+
+SOURCEPATH	../Data
+
+START RESOURCE 101FAFBF.rss 
+TARGET AMRAudioRecordControllerPlugin.rsc
+END
+
+START RESOURCE AMRAudioRecordControllerResource.rss
+HEADER
+TARGET AMRAudioRecordControllerResource.rsc       
+TARGETPATH    RESOURCE_FILES_DIR
+END
+
+LIBRARY 	euser.lib
+LIBRARY		mmfcontrollerframework.lib
+LIBRARY 	mmfstandardcustomcommands.lib
+LIBRARY 	mmfserverbaseclasses.lib
+LIBRARY 	AdvancedAudioController.lib
+LIBRARY		AMRAudioControllerUtility.lib
+LIBRARY         DevSoundAudioInput.lib
+LIBRARY		bafl.lib				// Resource file
+LIBRARY		efsrv.lib 
+LIBRARY		SpeechEncoderConfig.lib //Used to configure the speech encoders for HW Codec
+
+#ifdef EABI
+LIBRARY     	ecom.lib
+#endif

@@ -1,0 +1,14 @@
+<?xml version="1.0" ?> 
+<!DOCTYPE testSuite SYSTEM "file:///c:/program files/common files/symbian/testSuite.dtd" [ ]>
+
+<testSuite>
+	<name>sync</name> 
+
+	<testItems>
+ 		<test>msg-imap-sync1</test>
+		<test>msg-imap-sync2</test>
+		<!-- <test>msg-imap-sync3</test> refer DEF114115 -->
+		<!-- <test>msg-imap-sync4-ic</test> refer DEF114115 -->
+	</testItems>
+
+</testSuite>

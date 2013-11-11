@@ -1,0 +1,42 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+//********************************
+// Cap_Restore.script
+//********************************
+// Once we have runs a test we need to put back the state of the system to 
+// that which we started with (otherwise later tests may fail).
+// This is particularly relevant for the emulator.
+// The Hardware is different in that it will restore a built sis file. 
+//	but we because we can not differentiate beween emulator and hardware scripts we should
+//  endevor to carry out the same actions (even if some of that effort is wasted).
+
+// This script will restore c:/../../MessagingtestServer.exe for us on the c: and z:.
+
+
+PRINT Running  Cap_Restore.script : 
+
+//********************************
+
+RUN_PROGRAM -1 CapUtils RenameIfExists c:\sys\bin\MessagingTestServer.tmp c:\sys\bin\MessagingTestServer.exe
+	// Ensure MessagingTestServer.exe is restored if it previously existed.
+
+
+RUN_PROGRAM -1 CapUtils RenameIfEmulator z:\sys\bin\MessagingTestServer.tmp MessagingTestServer.exe
+	// Ensure MessagingTestServer.exe is put back on z: for emulator if it existed.
+	
+
+//********************************

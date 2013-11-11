@@ -1,0 +1,86 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+LOAD_SERVER t_media  -SharedData
+
+//! NEED TO RUN THIS TEST CASES MANUALLY USING H4 BOARD
+
+//! @file							
+//! @SYMTestSuiteName			MSG-REMOVE-MEDIA-0006
+//! @SYMScriptTestEnvironment   Details as in below:-
+//!				1. nt-ras connection or winpcap
+//!				2. email servers ( communigatePro or ms exchange)
+//!				3. test driver
+//!				4. testexecute framework(TEF3.0)
+//!				
+//! @SYMScriptPurpose		Integration testing of PREQ557-"Improved support in Messaging for removable media"
+
+START_TESTCASE  MSG-REMOVE-MEDIA-0006
+//! @SYMTestCaseID			MSG-REMOVE-MEDIA-0006
+//! @SYMPREQ				PREQ557
+//! @SYMTestActions 1: Update Priority of the Drive C 		        
+//!                 2: Create message
+//!                 3: Verify count
+//!                 4: Update Priority of the Drive E
+//!                 5: Create message
+//!                 6: Verify count
+//!                 7: Manually remove the MMC card
+//!                 8: Create message
+//!                 9: Verify count
+//!                 10: Delete all msg in present drive messages (you cannot delete msg from draft folders created in E drive)
+//!                 11: Verify count (since all the message created in C drive are deleted so count is zero)
+//! @SYMTestExpectedResults		Verify results should be success
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-remove-media.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+//! Create a Prefered Drive List 
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-preferred-0008.ini		c:\private\1000484b\msgprioritydrivelist.ini
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-remove-media.ini
+	CREATE_OBJECT	MediaTestWrapper	0100_obj
+	COMMAND		0100_obj		CreateSMSAccount		
+	COMMAND		0100_obj		CreateSMS				
+	COMMAND		0100_obj		VerifyCount				smsCount1
+
+	COMMAND		0100_obj		UpdateDrive				UpdateDriveE				
+	COMMAND		0100_obj		CreateSMSAccount		
+	COMMAND		0100_obj		CreateSMS				
+	COMMAND		0100_obj		VerifyCount				smsCount2
+	COMMAND		0100_obj		RemoveMMC				
+
+	COMMAND		0100_obj		CreateSMS				
+	COMMAND		0100_obj		VerifyCount				smsCount3
+	COMMAND		0100_obj		DeleteMsg
+	COMMAND		0100_obj		VerifyCount				smsCount1
+
+	COMMAND		0100_obj		UpdateDrive				UpdateDriveC	
+	COMMAND		0100_obj		VerifyCount				smsCount0
+END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+
+END_TESTCASE   MSG-REMOVE-MEDIA-0006
+
+
+
+

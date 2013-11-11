@@ -1,0 +1,39 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  File that exports the files belonging to 
+:                mpx collection utility API
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+../inc/mpxcollectioncommanddefs.h                MW_LAYER_PLATFORM_EXPORT_PATH(mpxcollectioncommanddefs.h)                
+../inc/mpxcollectionenginecommonobserver.h       MW_LAYER_PLATFORM_EXPORT_PATH(mpxcollectionenginecommonobserver.h)      
+../inc/mpxcollectionframeworkdefs.h              MW_LAYER_PLATFORM_EXPORT_PATH(mpxcollectionframeworkdefs.h)              
+../inc/mpxcollectionmessage.h                    MW_LAYER_PLATFORM_EXPORT_PATH(mpxcollectionmessage.h)                    
+../inc/mpxcollectionmessage.inl                  MW_LAYER_PLATFORM_EXPORT_PATH(mpxcollectionmessage.inl)                  
+../inc/mpxcollectionmessagedefs.h                MW_LAYER_PLATFORM_EXPORT_PATH(mpxcollectionmessagedefs.h)                
+../inc/mpxcollectionobserver.h                   MW_LAYER_PLATFORM_EXPORT_PATH(mpxcollectionobserver.h)                   
+../inc/mpxcollectionplugin.h                     MW_LAYER_PLATFORM_EXPORT_PATH(mpxcollectionplugin.h)                     
+../inc/mpxcollectionplugin.hrh                   MW_LAYER_PLATFORM_EXPORT_PATH(mpxcollectionplugin.hrh)                   
+../inc/mpxcollectionplugin.inl                   MW_LAYER_PLATFORM_EXPORT_PATH(mpxcollectionplugin.inl)                   
+../inc/mpxcollectionpluginobserver.h             MW_LAYER_PLATFORM_EXPORT_PATH(mpxcollectionpluginobserver.h)             
+../inc/mpxincrementalopendefs.h                  MW_LAYER_PLATFORM_EXPORT_PATH(mpxincrementalopendefs.h)
+../inc/mpxcollectionopenlresultdef.h             MW_LAYER_PLATFORM_EXPORT_PATH(mpxcollectionopenlresultdef.h)

@@ -1,0 +1,57 @@
+// Copyright (c) 1997-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+/**
+ @file msg_tp_imap.iby
+*/
+
+#ifndef __MSG_TP_IMAP_IBY__
+#define __MSG_TP_IMAP_IBY__
+
+//#include <testexecute.iby>
+#include <ced.iby>
+
+#ifndef EKA2
+/*
+file=ABI_DIR\BUILD_DIR\T_MsgImapServer.exe			System\Bin\T_MsgImapServer.exe
+file=ABI_DIR\BUILD_DIR\T_MsgCommonServer.exe			System\Bin\T_MsgCommonServer.exe
+file=ABI_DIR\BUILD_DIR\T_MsgSmtpServer.exe			System\Bin\T_MsgSmtpServer.exe
+file=ABI_DIR\BUILD_DIR\T_MsgPopServer.exe			System\Bin\T_MsgPopServer.exe
+file=ABI_DIR\BUILD_DIR\httpexampleclient.exe			System\Bin\httpexampleclient.exe*/
+file=ABI_DIR\BUILD_DIR\T_MsgUtilityServer.dll			System\Libs\T_MsgUtilityServer.dll
+file=ABI_DIR\BUILD_DIR\MessagingTestUtility2.dll		System\Libs\MessagingTestUtility2.dll
+file=ABI_DIR\BUILD_DIR\MessagingTestUtilityServer2.exe		System\Bin\MessagingTestUtilityServer2.exe
+
+
+#else
+/*
+
+file=ABI_DIR\BUILD_DIR\T_MsgImapServer.exe			System\bin\T_MsgImapServer.exe
+
+file=ABI_DIR\BUILD_DIR\T_MsgSmtpServer.exe			System\Bin\T_MsgSmtpServer.exe
+file=ABI_DIR\BUILD_DIR\T_MsgCommonServer.exe			System\Bin\T_MsgCommonServer.exe
+file=ABI_DIR\BUILD_DIR\T_MsgPopServer.exe			System\Bin\T_MsgPopServer.exe
+file=ABI_DIR\BUILD_DIR\httpexampleclient.exe			System\Bin\httpexampleclient.exe*/
+file=ABI_DIR\BUILD_DIR\T_MsgUtilityServer.dll			System\Libs\T_MsgUtilityServer.dl
+file=ABI_DIR\BUILD_DIR\MessagingTestUtility2.dll		System\Libs\MessagingTestUtility2.dll
+file=ABI_DIR\BUILD_DIR\MessagingTestUtilityServer2.exe		System\bin\MessagingTestUtilityServer2.exe
+
+
+
+
+#endif
+
+
+#endif //__MSG_TP_IMAP_IBY__

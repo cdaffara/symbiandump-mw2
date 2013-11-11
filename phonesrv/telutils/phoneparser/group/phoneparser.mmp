@@ -1,0 +1,75 @@
+/*
+* Copyright (c) 2002-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file for project Phone Parser.
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET          phoneparser.dll
+TARGETTYPE      dll
+UID             0x1000008d 0x100058E4
+VERSION         10.0
+
+CAPABILITY CAP_GENERAL_DLL
+
+SOURCEPATH      ../src
+SOURCE          phonegsmparser.cpp 
+SOURCE          cphonegsmparser.cpp 
+SOURCE          cphonegsmparserbase.cpp 
+SOURCE          cphonegsmparserresult.cpp 
+SOURCE          cphonegsmssparser.cpp 
+SOURCE          cphonegsmsshandler.cpp 
+SOURCE          cphonegsmsimcontrolparser.cpp 
+SOURCE          cphonegsmsimcontrolhandler.cpp 
+SOURCE          cphonegsmphonenumberparser.cpp 
+SOURCE          cphonegsmphonenumberhandler.cpp 
+SOURCE          cphonegsmoptioncontainer.cpp 
+SOURCE          cphonegsmhandlercontainer.cpp 
+SOURCE          cphonegsmdummyparser.cpp 
+SOURCE          cphonegsmmischandler.cpp 
+SOURCE          cphonegsmparsercontainer.cpp 
+SOURCE          cphonegsmsscallparser.cpp 
+SOURCE          cphonegsmsscallhandler.cpp 
+SOURCE          cphonegsmmanufacturerparser.cpp 
+SOURCE          cphonegsmmanufacturerhandler.cpp 
+SOURCE          cphonegsmpcnprocedureparser.cpp 
+SOURCE          cphonegsmpcnprocedurehandler.cpp 
+SOURCE          cphonegsmemergencynumberparser.cpp 
+SOURCE          cphonegsmemergencynumberhandler.cpp 
+SOURCE          cphoneparserfeatures.cpp 
+SOURCE          cphonevoipnumberparser.cpp 
+SOURCE          cphonevoipnumberhandler.cpp 
+
+USERINCLUDE     ../inc 
+
+// Default system include paths for MW layer modules.
+MW_LAYER_SYSTEMINCLUDE  
+
+SYSTEMINCLUDE   ../../../inc // telephonyservices internal headers 
+
+LIBRARY         euser.lib
+
+// For shared data connection
+LIBRARY         commonengine.lib
+
+// For feature manager
+LIBRARY         featmgr.lib
+
+// For phone client
+LIBRARY         phoneclient.lib 
+
+// For central repository
+LIBRARY         centralrepository.lib

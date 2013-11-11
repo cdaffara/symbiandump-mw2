@@ -1,0 +1,38 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+//********************************
+// Cap_EMsvChangeEntry_001_003.script
+//********************************
+
+PRINT Running  Cap_EMsvChangeEntry_001_003.script : SendProxyServer has not got any capabilities to modify a pre-created a message in the drafts folder.
+PRINT Running  Cap_EMsvChangeEntry_001_003.script : SID's are the same so this should allow us to modify the message. 
+
+//********************************
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_Caps.exe 0003fffe -SID 101F7778 C:\sys\bin\MessagingTestServer.exe
+	// Ensure suffiect caps to delete everything in the folders.
+	
+RUN_PROGRAM -1 setcap c:\sys\bin\SendProxyServer_Caps.exe  00000000 -SID 101F7778 C:\sys\bin\SendProxyServer.exe
+	// Do not have ECapabilityReadUserData and ECapabilityWriteUserData but SIDs are same.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateSingleEntryInDrafts.Script
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_ChangeSingleEntryInDraftsPass.script
+
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+//********************************

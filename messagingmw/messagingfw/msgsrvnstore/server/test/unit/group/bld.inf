@@ -1,0 +1,64 @@
+// Copyright (c) 2000-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRJ_TESTMMPFILES
+
+T_msgs_basic.mmp
+T_msgs_client4.mmp
+T_msgs_close.mmp
+T_msgs_client0.mmp
+T_msgs_client1.mmp
+T_msgs_client2.mmp
+T_msgs_client3.mmp
+T_msgs_defect.mmp
+T_msgs_disk.mmp
+T_msgs_global_find.mmp
+T_msgs_find_text.mmp
+//T_msgs_FindEntry.mmp
+//T_msgs_index.mmp
+//T_msgs_index_heap.mmp
+//T_msgs_index_file.mmp
+//T_msgs_local.mmp
+T_msgs_client_registry.mmp
+//T_msgs_server_entry.mmp
+//T_msgs_server_fail.mmp
+T_msgs_server_registry.mmp
+//T_msgs_rebuild.mmp
+T_msgs_registry.mmp
+makefile t_msgs_registry_extension.mk support
+T_msgs_server.mmp
+T_msgs_sort.mmp
+//T_msgs_start.mmp
+T_msgs_store.mmp
+t_msgs_notify.mmp
+T_MSGS_BACKUPFAIL.mmp
+t_msgs_operation_wait.mmp
+T_CRegisteredMtmDll.mmp
+T_CMsvChangeBuffer.mmp
+T_msgs_server_bulk.mmp
+//T_msgs_badIniFile.mmp
+T_SORT_UTC.mmp
+T_msgs_mailstore.mmp
+T_RenameAttachment.mmp
+T_msgs_bulk_commit.mmp
+t_msv_sys_progress.mmp
+t_plaintextstore_server.mmp
+
+PRJ_TESTEXPORTS
+../scripts/T_SORT_UTC.script				/epoc32/winscw/c/msgtest/framework/t_sort_utc.script
+
+../group/T_SORT_UTC.iby   				/epoc32/rom/include/t_sort_utc.iby
+
+../scripts/t_unit_plaintextstore_server.script							+/winscw/c/msgtest/framework/t_unit_plaintextstore_server.script

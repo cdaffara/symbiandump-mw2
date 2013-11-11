@@ -1,0 +1,4 @@
+EXPORTS
+	??1CLbtMovementDetector@@UAE@XZ @ 1 NONAME ; CLbtMovementDetector::~CLbtMovementDetector(void)
+	?NewL@CLbtMovementDetector@@SAPAV1@XZ @ 2 NONAME ; class CLbtMovementDetector * CLbtMovementDetector::NewL(void)
+

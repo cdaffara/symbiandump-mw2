@@ -1,0 +1,3 @@
+PopServerAddress = msexchange2k.closedtest.intra
+
+PopSNAPId = 1

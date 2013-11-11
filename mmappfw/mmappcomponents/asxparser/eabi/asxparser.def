@@ -1,0 +1,14 @@
+EXPORTS
+	_ZN10CAsxParser11FileVersionEv @ 1 NONAME
+	_ZN10CAsxParser11GetUrlCountERj @ 2 NONAME
+	_ZN10CAsxParser4NewLERK7TDesC16 @ 3 NONAME
+	_ZN10CAsxParser6GetUrlEjR6TPtrC8 @ 4 NONAME
+	_ZN10CAsxParserD0Ev @ 5 NONAME
+	_ZN10CAsxParserD1Ev @ 6 NONAME
+	_ZN10CAsxParserD2Ev @ 7 NONAME
+	_ZTI10CAsxParser @ 8 NONAME ; #<TI>#
+	_ZTV10CAsxParser @ 9 NONAME ; #<VT>#
+	_ZN10CAsxParser4NewLER5RFile @ 10 NONAME
+	_ZN10CAsxParser8PrintUrlER6TPtrC8R6TPtr16 @ 11 NONAME
+	_ZN10CAsxParser6GetUrlEj @ 12 NONAME
+

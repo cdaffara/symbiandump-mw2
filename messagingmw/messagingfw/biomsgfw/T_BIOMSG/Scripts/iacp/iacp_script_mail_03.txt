@@ -1,0 +1,36 @@
+[main]
+bio_test doatstart
+bio_test mail_03
+bio_test doattheend
+
+
+// Startup section.
+[doatstart]
+clean_all_bio_msgs
+
+
+// Shutdown section.
+[doattheend]
+
+
+// wapp tests.
+[mail_03]
+gen_msg_from_file iacp\iacp_mail_03.txt
+check_used_bif 1000552f
+bio_client_parse
+bio_client_process
+dump_parsed_message
+//
+// check mail settings in msg store
+check_pop3_named mail_03_pop3 Demon03
+check_smtp_named mail_03_smtp Demon03
+
+
+[mail_03_pop3]
+chk_pop3_serveraddress pop3.demon.co.uk
+chk_pop3_useraddress Brahim@yashar.Demon.co.uk
+
+
+[mail_03_smtp]
+chk_smtp_serveraddress post.demon.co.uk
+chk_smtp_emailaddress Brahim@yashar.Demon.co.uk

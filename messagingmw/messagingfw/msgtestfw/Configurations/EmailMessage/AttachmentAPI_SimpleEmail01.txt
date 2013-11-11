@@ -1,0 +1,41 @@
+From: matthewf@msexchange2k.closedtest.intra
+To: matthewf@msexchange2k.closedtest.intra
+Subject: AttachmentAPITestMail
+Date: Thu, 30 Sep 2004 16:54:06 +0530
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_000_0425_01C4A70E.1C401900"
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Unsent: 1
+X-MimeOLE: Produced By Microsoft MimeOLE V5.50.4925.2800
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0425_01C4A70E.1C401900
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+This is a test mail for connected tests for attachment API.
+
+------=_NextPart_000_0425_01C4A70E.1C401900
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Diso-8859-1">
+<META content=3D"MSHTML 5.50.4926.2500" name=3DGENERATOR>
+<STYLE></STYLE>
+</HEAD>
+<BODY bgColor=3D#ffffff>
+<DIV><FONT face=3DArial size=3D2>This is a test mail for connected tests =
+for=20
+attachment API.</FONT></DIV>
+<DIV>
+<DIV>&nbsp;</DIV></DIV></BODY></HTML>
+
+------=_NextPart_000_0425_01C4A70E.1C401900--

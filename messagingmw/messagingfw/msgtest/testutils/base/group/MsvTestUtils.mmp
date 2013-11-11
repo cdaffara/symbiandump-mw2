@@ -1,0 +1,54 @@
+// Copyright (c) 1999-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// msvtestutils.mmp
+//
+
+TARGET        msvtestutils.dll
+TARGETTYPE    dll
+
+CAPABILITY All -TCB
+UID    0x10003C5E 0x10005F31
+VENDORID 0x70000001
+
+SOURCEPATH	../src
+SOURCE		msvtestutilswatcherstarter.cpp
+SOURCE		msvtestutils.cpp MsvTestUtilsBase.cpp 
+SOURCE		msvtestconfig.cpp ScriptFile.cpp
+SOURCE		ScriptSection.cpp ScriptSectionItem.cpp
+USERINCLUDE   ../inc ../../../../../../../app/messaging/email/pop3andsmtpmtm/clientmtms/inc
+USERINCLUDE   ../../../../msgsrvnstore/server/inc
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+#if !defined (SYMBIAN_MESSAGESTORE_USING_SQLDB)
+MACRO SYMBIAN_MESSAGESTORE_USING_SQLDB
+#define SYMBIAN_MESSAGESTORE_USING_SQLDB
+#endif
+
+LIBRARY       euser.lib
+LIBRARY       msgs.lib
+LIBRARY       efsrv.lib
+LIBRARY       estor.lib
+LIBRARY       etext.lib
+LIBRARY       logcli.lib
+LIBRARY       schsend.lib
+LIBRARY       schsvr.lib
+LIBRARY       cntmodel.lib
+LIBRARY       bafl.lib
+LIBRARY       sqldb.lib
+
+
+START WINS
+	baseaddress     0x4AD60000
+END
+
+SMPSAFE

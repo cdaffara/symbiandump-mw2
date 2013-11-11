@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://www.s60.com/xml/confml/1" xmlns:xi="http://www.w3.org/2001/XInclude" name="theme" version="1">
+  <desc>HbTheme</desc>
+  <data>
+    <HbTheme>
+      <AvailableThemes extensionPolicy="append">
+        <ThemeName>sfblacktheme</ThemeName>
+        <ThxPath>\epoc32\data\z\resource\hb\themes\sfblacktheme.thx</ThxPath>
+      </AvailableThemes>
+      <AvailableThemes>
+        <ThemeName>sfwhitetheme</ThemeName>
+        <ThxPath>\epoc32\data\z\resource\hb\themes\sfwhitetheme.thx</ThxPath>
+      </AvailableThemes>
+      <AvailableThemes>
+        <ThemeName>glasstheme.thx</ThemeName>
+        <ThxPath>\epoc32\data\z\resource\hb\themes\glasstheme.thx</ThxPath>
+      </AvailableThemes>
+    </HbTheme>
+  </data>
+</configuration>

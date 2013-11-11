@@ -1,0 +1,41 @@
+/*******************************************************
+   1. Init MT call (Ringing)
+   2. Reject call
+*******************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 3.4 MT call, Reject
+timeout 15000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+// Trigger ICM
+test InitIncomingCall
+// Wait plugin to initialize
+test Delay 1000
+
+// Send plugin command, MT call with CallID 1 is created
+test SendPluginRequest CreateCall 2
+test WaitEvent 0 IncomingCall
+test WaitEvent 1 Ringing
+
+// Step 2
+print Step_2
+
+// Hangup/Reject call
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+
+test Release 1 0
+
+test VerifyTest
+delete test
+[Endtest] 

@@ -1,0 +1,110 @@
+// *****************************************
+//  Test Script 
+//  
+//  Author:	Kashif Nadeem
+//  Date:	08/02/02
+//
+// Performence Test Script for Case 1 and Case 2
+// TO run t_email for Case 1 and 2 performance testing
+// rename this file to script.txt and copy it 
+// to c:\msgtest\emailsmoke
+//
+// Make sure that you have 8 emails in the inbox and
+// three of them have the following subject titles and
+// attachments:
+// 	 JPEG_image_218kb_midnight_1808x1161
+// *****************************************
+
+[main]
+email_client_test email
+
+[email]
+pop3_client_test initialise_tests
+pop3_client_test Test_POP3_Case1
+
+// 
+// Initialise the Tests (ie Clean the Msg Server, start Session & create Accounts)
+// 
+[initialise_tests]
+//--------------------------------------
+//  Clean Message Server & Start Session
+//--------------------------------------
+clean_message_folder
+start_client_session
+//--------------------------------------
+// Create the Services
+//--------------------------------------
+pop3_client_test create_pop_service
+
+
+// *******************************************************************
+// Use case Case1_sync: Sync to inBox with 8 emails
+// *******************************************************************
+[Test_POP3_Case1]
+//
+// Use case Case1_sync: sync to 8 emails
+//
+add_comment *** Connect to POP service ***
+select_root_folder
+select_folder Pop3_service
+add_comment
+add_comment <Time: Start> Sync folder with 8 emails (POP3 test case 1)
+connect
+add_comment <Time: Stop>  Sync folder with 8 emails
+add_comment
+count_children
+add_comment
+check_pop3_error 0
+//
+// Use case Case2_get: download 1 email
+//
+select_root_folder
+select_folder local 
+select_destination_folder inbox
+select_root_folder
+select_folder Pop3_Service
+select_all_messages
+add_comment <Time: Start> Download 1 Email (POP3 test case 2)
+select_entry JPEG_image_218kb_midnight_1808x1161
+copy
+add_comment <Time: Stop> Download 1 Email
+check_pop3_error 0
+disconnect
+check_pop3_error 0
+select_root_folder
+select_folder local
+select_folder inbox
+select_all_messages
+check_selection_count 1
+
+
+// ****************************************************************
+//  Create Pop Service 
+// ****************************************************************
+[create_pop_service]
+add_comment Creating Pop Service
+select_root_folder
+pop3_service Pop_service
+
+
+// *****************************************
+//  POP3 Service Settings 			
+// *****************************************
+[Pop_service]
+set_name Pop3_Service
+set_server trmai02.it.cellulardata.com
+set_user pindoria
+set_pass kevSym
+set_tls 0
+//
+// Any of the following No can be used to access this server
+// +358 3 3617 770
+// +358 3 31520 444
+// +358 3 31520 111
+// +358 3 31520 999
+// *****************************************
+
+
+
+
+

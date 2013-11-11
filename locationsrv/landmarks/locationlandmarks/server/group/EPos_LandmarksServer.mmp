@@ -1,0 +1,82 @@
+/*
+* Copyright (c) 2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: project definition file for server component
+*
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET          eposlmserver.exe
+EPOCSTACKSIZE   0x5000
+TARGETTYPE      exe
+UID             0x00000000 0x101fdf81
+
+VENDORID        VID_DEFAULT
+
+CAPABILITY      CAP_SERVER AllFiles
+
+macro __HIDE_IPC_V1__
+
+SOURCEPATH      ../src
+SOURCE          EPos_LandmarksServerPanics.cpp
+SOURCE          EPos_PosLmServerStartup.cpp
+SOURCE          EPos_CPosLmBackupListener.cpp
+SOURCE          EPos_CPosLmServer.cpp
+SOURCE          EPos_CPosLmServerSession.cpp
+SOURCE          EPos_CPosLmOperationManager.cpp
+SOURCE          EPos_CPosLmServerOperation.cpp
+SOURCE          EPos_CPosLmInitializer.cpp
+SOURCE          EPos_CPosLmServerDelayedShutdown.cpp
+SOURCE          EPos_LmServerGlobal.cpp
+SOURCE          EPos_CPosLmEventHandler.cpp
+SOURCE          EPos_CPosLmDbManEventHandler.cpp
+SOURCE          EPos_CPosLmServerSettingsHandler.cpp
+SOURCE          EPos_PosLmDatabaseManager.cpp
+SOURCE          EPos_CPosLmSubsessionBase.cpp
+SOURCE          EPos_CPosLmSubsessionRegistry.cpp
+SOURCE          EPos_CPosLmLocalAccessSubsession.cpp
+SOURCE          EPos_CPosLmEventListenerSubsession.cpp
+SOURCE          EPos_CPosLmLocalDbManSubsession.cpp
+SOURCE          EPos_CPosLmActiveCompacter.cpp 
+SOURCE          epos_cposlmindexmanager.cpp
+SOURCE          EPos_CPosLmNameIndex.cpp epos_poslmserverutility.cpp
+
+
+START RESOURCE  ../data/eposlmserver.rss
+HEADER
+TARGETPATH      /private/101fdf81
+END
+
+USERINCLUDE     ../inc
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   ../../../inc
+
+LIBRARY         euser.lib
+LIBRARY         edbms.lib
+LIBRARY         bafl.lib
+LIBRARY         estor.lib
+LIBRARY         efsrv.lib
+LIBRARY         eposlandmarks.lib
+LIBRARY         eposlmintservices.lib
+LIBRARY         eposlmdbmanlib.lib
+LIBRARY         eposlmdbreg.lib
+DEBUGLIBRARY	flogger.lib
+
+
+SMPSAFE
+
+// End of File

@@ -1,0 +1,59 @@
+// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// sislpushmsgutils.dll Utilities for Service Initiation and Service Load push messages
+// 
+//
+
+/**
+ @file
+*/
+
+
+TARGET          sislpushmsgutils.dll  
+TARGETTYPE      DLL
+CAPABILITY ALL -TCB
+
+//				Shared lib uid		PushUtils unique uid
+UID				0x1000008d			0x101F55FC
+VENDORID 0x70000001
+
+
+USERINCLUDE     ../inc ../../pushmtm/inc 
+USERINCLUDE		../../pushwatcher/inc
+USERINCLUDE		../../pushutils/inc
+#ifdef SYMBIAN_ENABLE_SPLIT_HEADERS
+USERINCLUDE		../../PushMsgEntry/inc
+#endif//SYMBIAN_ENABLE_SPLIT_HEADERS
+
+
+// MW_LAYER_SYSTEMINCLUDE_SYMBIAN dependancy on smut.h in app layer needs fixing
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+SOURCEPATH      ../src
+SOURCE          SISLPushMsgUtils.cpp
+SOURCE			CSLPushMsgEntry.cpp CSIPushMsgEntry.cpp
+
+
+LIBRARY         euser.lib msgs.lib estor.lib pushmsgentry.lib 
+
+
+#ifdef WINS
+	DEFFILE     ../../bwins/SISLPUSHMSGUTILS.DEF
+#elif defined(GCC32)
+	DEFFILE     ../../BMarm/SISLPUSHMSGUTILS.def
+#else
+	DEFFILE     ../../eabi/SISLPUSHMSGUTILS.def
+#endif  
+
+SMPSAFE

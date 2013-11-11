@@ -1,0 +1,106 @@
+// Copyright (c) 1999-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+#ifndef __SCHSEND_HRH__
+#define __SCHSEND_HRH__
+
+/** TMsvSendAction flags mask value. */
+#define KActionMask					0x0013
+/** ESendActionFail flag value. */
+#define KActionFail					0x0000
+/** ESendActionRetryImmediately flag value. */
+#define KActionRetryImmediately		0x0001
+/** ESendActionRetryLater flag value. */
+#define KActionRetryLater			0x0002
+/** ESendActionSentAlready flag value. */
+#define KActionSentAlready			0x0003
+/** ESendActionRetryConditionMet flag value. */
+#define KActionRetryConditionMet	0x0010
+
+/** TMsvSendRetries flags mask value. */
+#define KRetriesMask			0x0004
+/** ESendRetriesFixed flag value. */
+#define KRetriesFixed			0x0000
+/** ESendRetriesInfinite flag value. */
+#define KRetriesInfinite		0x0004
+
+/** TMsvSendRetrySpacing flags mask value. */
+#define KRetrySpacingMask		0x0008
+/** ESendRetrySpacingStatic flag value. */
+#define KRetrySpacingStatic		0x0000
+/** ESendRetrySpacingVariable flag value. */
+#define KRetrySpacingVariable	0x0008
+
+
+/**
+Defines the action to take if an error occurs in message sending.
+
+@publishedAll
+@released
+*/
+
+enum TMsvSendAction
+	{
+/** Fail and do not retry. */
+	ESendActionFail					= KActionFail,
+/** Retry (after short retry interval). */
+	ESendActionRetryImmediately		= KActionRetryImmediately,
+/** Retry (after long retry interval). */
+	ESendActionRetryLater			= KActionRetryLater,
+/** Do not retry. */
+	ESendActionSentAlready			= KActionSentAlready,
+/** Retry when condition met.
+
+This is only supported in 8.1 onwards. In 8.0 this action is treated the same
+as ESendActionRetryImmediately.
+ */
+	ESendActionRetryConditionMet	= KActionRetryConditionMet
+	};
+
+/**
+Flag that defines retry behaviour if sending a message fails.
+
+@see TMsvSendErrorAction
+
+@publishedAll
+@released
+*/
+
+enum TMsvSendRetries
+	{
+/** Retry for a specified number of attempts. */
+	ESendRetriesFixed		= KRetriesFixed,
+/** Retry until successful (or the user intervenes). */
+	ESendRetriesInfinite		= KRetriesInfinite
+	};
+
+/**
+Flag that defines retry behaviour if sending a message fails.
+
+@see TMsvSendErrorAction
+
+@publishedAll
+@released
+*/
+
+enum TMsvSendRetrySpacing
+	{
+/** Retry at fixed intervals. */
+	ESendRetrySpacingStatic		= KRetrySpacingStatic,
+/** Retry at variable intervals. */
+	ESendRetrySpacingVariable	= KRetrySpacingVariable
+	};
+
+#endif

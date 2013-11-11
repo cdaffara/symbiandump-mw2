@@ -1,0 +1,101 @@
+/***************************************************
+   1. Create MO call
+   2. Put call on Hold
+   3. Create 2nd MO call
+   4. Swap (connected call)
+   		Result: 2nd call is put on Hold, 1st is resumed
+   5. Disconnect calls
+/***************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 2.3.1 Swap, PS calls
+timeout 10000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test ExpectMediatorEvent 1 ECCECallTypePS Dialling 2 MoCall
+test ExpectMediatorEvent 1 ECCECallTypePS Connecting 2 MoCall
+test ExpectMediatorEvent 1 ECCECallTypePS Connected 2 MoCall
+test ExpectMediatorEvent 1 ECCECallTypePS Hold 2 MoCall
+
+// Note that mediator event contains all calls.
+test ExpectMediatorEvent 1 ECCECallTypePS Hold 2 MoCall
+test ExpectMediatorEvent 2 ECCECallTypePS Dialling 2 MoCall
+
+test ExpectMediatorEvent 1 ECCECallTypePS Hold 2 MoCall
+test ExpectMediatorEvent 2 ECCECallTypePS Connecting 2 MoCall
+
+test ExpectMediatorEvent 1 ECCECallTypePS Hold 2 MoCall 
+test ExpectMediatorEvent 2 ECCECallTypePS Connected 2 MoCall
+
+test ExpectMediatorEvent 1 ECCECallTypePS Connected 2 MoCall 
+test ExpectMediatorEvent 2 ECCECallTypePS Hold 2 MoCall
+
+test ExpectMediatorEvent 1 ECCECallTypePS Connected 2 MoCall
+test ExpectMediatorEvent 2 ECCECallTypePS Hold 2 MoCall
+
+test ExpectMediatorEvent 1 ECCECallTypePS Disconnecting 2 MoCall
+test ExpectMediatorEvent 2 ECCECallTypePS Hold 2 MoCall
+
+test ExpectMediatorEvent 2 ECCECallTypePS Hold 2 MoCall
+
+test ExpectMediatorEvent 2 ECCECallTypePS Disconnecting 2 MoCall
+
+test OpenNewCall 1 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+// Step 2
+print Step_2
+
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+// Step 3
+print Step_3
+
+// Make 2nd call
+test OpenNewCall 2 0 RecipientTwo 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 2 0 SubAddress Bearer
+test WaitEvent 2 Dialling
+test WaitEvent 2 Connecting
+test WaitEvent 2 Connected
+
+// Step 4
+print Step_4
+
+//Swap to connected call
+test Swap 2 0
+test WaitEvents 2 Hold, 2 LocalHold, 1 Connected, 1 LocalResume
+
+// Step 5
+print Step_5
+
+// Hangup and Release both calls
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle // event 15
+
+test Release 1 0
+test HangUp 2 0
+
+test WaitEvent 2 ErrorOccurred -3
+
+test WaitEvent 2 Disconnecting
+test WaitEvent 2 Idle
+test Release 2 0
+
+test VerifyTest
+test Delay 3000
+test VerifyMediatorEvents
+delete test
+[Endtest]

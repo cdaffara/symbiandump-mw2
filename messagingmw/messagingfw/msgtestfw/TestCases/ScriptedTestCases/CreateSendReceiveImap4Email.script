@@ -1,0 +1,59 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+CED c:\msgtest\TestFramework\Configurations\CommDbSettings\NtRasLongIdleTimeout.cfg
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer GetBaseConstants					c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini GetBaseConstants
+RUN_TEST_STEP 100 MessagingTestServer InitNtRas							c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini InitNtRas
+RUN_TEST_STEP 100 MessagingTestServer CreateSession						c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini CreateSession
+RUN_TEST_STEP 100 MessagingTestServer ResetMessageStore					c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini ResetMessageStore
+RUN_TEST_STEP 100 MessagingTestServer CreateImap4Service				c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini CreateImap4Service
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpService					c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini CreateSmtpService
+RUN_TEST_STEP 100 MessagingTestServer CreateRegistry					c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini CreateRegistry
+RUN_TEST_STEP 100 MessagingTestServer CreateImap4Mtm					c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini CreateImap4Mtm
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpMtm						c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini CreateSmtpMtm
+RUN_TEST_STEP 100 MessagingTestServer SetImap4ServiceParameters			c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini SetImap4ServiceParameters
+RUN_TEST_STEP 100 MessagingTestServer SetSmtpServiceParameters			c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini SetSmtpServiceParameters
+RUN_TEST_STEP 100 MessagingTestServer ConnectImap4Server   				c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini ConnectImap4Server0
+RUN_TEST_STEP 100 MessagingTestServer DoFullImap4Synchronisation		c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini DoFullImap4Synchronisation0
+RUN_TEST_STEP 100 MessagingTestServer FindEntryByName					c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini FindEntryByName0
+RUN_TEST_STEP 100 MessagingTestServer DeleteChildren					c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini DeleteChildren
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount				c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini CheckChildrenCount0
+RUN_TEST_STEP 100 MessagingTestServer DisconnectImap4Server				c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini DisconnectImap4Server0
+
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpMessageFromEmailFile	c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 100 MessagingTestServer CopyEntry							c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini CopyEntry
+RUN_TEST_STEP 100 MessagingTestServer ConnectImap4Server		   		c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini ConnectImap4Server1
+RUN_TEST_STEP 100 MessagingTestServer DoFullImap4Synchronisation   		c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini DoFullImap4Synchronisation1
+RUN_TEST_STEP 100 MessagingTestServer CreateChildrenSelection	   		c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini CreateChildrenSelection
+RUN_TEST_STEP 100 MessagingTestServer CopySelection						c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini CopySelection
+RUN_TEST_STEP 100 MessagingTestServer DisconnectImap4Server				c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini DisconnectImap4Server1
+
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount		   		c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini CheckChildrenCount1
+RUN_TEST_STEP 100 MessagingTestServer FindEntryByName			   		c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini FindEntryByName1
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount		   		c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini CheckChildrenCount2
+RUN_TEST_STEP 100 MessagingTestServer FindEntryByName			   		c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini FindEntryByName2
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount		   		c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini CheckChildrenCount3
+RUN_TEST_STEP 100 MessagingTestServer FindEntryByName			   		c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceiveImap4Email.ini FindEntryByName3
+	
+RUN_TEST_STEP 100 MessagingTestServer END_TEST_CASE

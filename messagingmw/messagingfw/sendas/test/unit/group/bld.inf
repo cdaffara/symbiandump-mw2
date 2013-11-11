@@ -1,0 +1,34 @@
+// Copyright (c) 2004-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRJ_TESTMMPFILES
+
+SENDAS2MTM1.mmp 	support
+SENDAS2MTM2.mmp 	support
+SENDAS2MTM3.mmp 	support
+SENDAS2MTM4.mmp 	support
+SENDAS2MTM5.mmp 	support
+
+T_SENDAS2_ServerShutdown.mmp
+T_SENDAS2_AddRemoveMtms.mmp
+T_SENDAS2_CAPABILITIES.mmp
+T_SENDAS2_ARRAYS.MMP
+T_SendAs2_Message_Create.mmp
+T_SendAs2_Message_Attachments.mmp
+T_SendAs2_Message_Send.mmp
+T_SendAs2_Message_Send_Cancel.mmp
+T_SendAs2_Message_Send_Fail.mmp
+T_SendAs2_Message_Progress.mmp
+T_SendAs2_Message_Send_SetCharset.mmp

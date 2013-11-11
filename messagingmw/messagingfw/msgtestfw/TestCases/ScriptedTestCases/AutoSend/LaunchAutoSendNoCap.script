@@ -1,0 +1,94 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+// Test Case Name:
+//	LaunchAutoSendNoCap.script
+// ------------------------------------------
+// Component Under Test:
+//	AutoSend
+// ------------------------------------------
+// API function under test:
+//	
+//	
+// ------------------------------------------
+// Requirement/Use Case/Functional Spec:
+//	 
+// ------------------------------------------
+// Polarity:
+//	
+// ------------------------------------------
+// Test Type (unit, integration, panic, performance, conformance, stress, or interoperability):
+//	Integration
+// ------------------------------------------
+// Expected Panic ID (if a panic test, only for non-scripted test cases):
+//	n/a
+// ------------------------------------------
+// Interface Dependencies (does it require connection, which subsystems does it require):
+// 	Requires connection to Messaging Server
+// ------------------------------------------
+// Importance (critical, high, or low):
+//	High
+// ------------------------------------------
+// Execution Time (fast, medium, or slow):
+//	medium
+// ------------------------------------------
+// Pre-condition description:
+//	1.  Set the required Capabilities to the LauncAutoSend.exe using SetCap
+//	2.  Creatr a session with the Message Server
+//	3.  Create a SMTP service Id 
+//
+// ------------------------------------------
+// Action Description:
+// 
+//	1.	Launch the process LaunchAutoSend.exe
+//		
+//
+// ------------------------------------------
+// Post-condition description (i.e., expected outcome):
+//
+// ------------------------------------------
+// Reference to a review document:
+//
+// ------------------------------------------
+// Full pathname of an epoc.ini (if there are special epoc.ini requirements)
+// 	For emulator, an epoc.ini that creates an emulated external drive (drive letter 
+//	between D: and Y:) is required. Optionally, an environment variable can be defined.
+// ------------------------------------------
+// Any CommDb restrictions:
+//	None
+// ------------------------------------------
+// Build Requirements (e.g., no watchers):
+//	None
+// ------------------------------------------
+// Hardware Requirements
+//	None
+// ------------------------------------------
+
+// Use Setcap to change capabilities of LaunchAutoSend.exe
+RUN_PROGRAM -1 setcap LaunchAutoSend.exe 00000000 LaunchAutoSend_New.exe
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+CreateSession				c:\msgtest\TestFramework\ScriptedTestCases\AutoSend\LaunchAutoSendNoCap.ini	CreateSession
+CreatePop3Service			c:\msgtest\TestFramework\ScriptedTestCases\AutoSend\LaunchAutoSendNoCap.ini	CreatePop3Service
+CreateSmtpService			c:\msgtest\TestFramework\ScriptedTestCases\AutoSend\LaunchAutoSendNoCap.ini 	CreateSmtpService
+EXECUTE_TEST_CASE
+LaunchAutoSend				c:\msgtest\TestFramework\ScriptedTestCases\AutoSend\LaunchAutoSendNoCap.ini 	LaunchAutoSend
+CHECK_POSTCONDITIONS
+END_TEST_CASE

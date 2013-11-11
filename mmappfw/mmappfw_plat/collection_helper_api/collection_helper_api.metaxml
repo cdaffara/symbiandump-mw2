@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<api id="d9ba30290003c64ec3c86f337948ba94" dataversion="2.0">
+<name>Collection Helper API</name>
+<description>Provides music player specific extensions to the collection API set</description>
+<type>c++</type>
+<collection>mmappcomponents</collection>
+<libs>
+<lib name="mpxcollectionhelper.lib"/>
+</libs>
+<release category="platform" sinceversion=""/>
+<attributes>
+<htmldocprovided>no</htmldocprovided>
+<adaptation>no</adaptation>
+</attributes>
+</api>

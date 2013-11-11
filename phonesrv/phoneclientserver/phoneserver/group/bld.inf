@@ -1,0 +1,43 @@
+/*
+* Copyright (c) 2002-2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Phone Server build file.
+*
+*/
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+
+backup_registration.xml  z:/private/10000850/backup_registration.xml
+
+../rom/phoneserver_stub.sis         /epoc32/data/z/system/install/phoneserver_stub.sis
+
+// IBY files
+../rom/phoneserver.iby              CORE_MW_LAYER_IBY_EXPORT_PATH(phoneserver.iby)
+
+// LOC files
+../loc/phoneserver.loc              MW_LAYER_LOC_EXPORT_PATH(phoneserver.loc)
+
+PRJ_MMPFILES
+../group/phoneserver.mmp
+
+PRJ_TESTMMPFILES
+// specify the .mmp files required for building any test programs here
+
+
+//  End of File  

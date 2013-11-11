@@ -1,0 +1,62 @@
+// Copyright (c) 2000-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+TARGET          twappush.exe  
+TARGETTYPE      EXE
+CAPABILITY readdevicedata writedevicedata networkservices localservices readuserdata WriteUserData PowerMgmt
+
+USERINCLUDE     ./. 
+USERINCLUDE     ./DummyStack
+USERINCLUDE     ../plugins/PushAppHandler ../plugins/WapUriLookup/inc ../pushutils/test
+USERINCLUDE     ../plugins/PushContentHandler ../plugins/PushSecurity ../plugins/inc  
+USERINCLUDE     ../plugins/ROAppHandler/src
+USERINCLUDE     ../pushutils/inc ../SISLPushMsgUtils/inc 
+USERINCLUDE		../PushMsgEntry/test
+#ifdef SYMBIAN_ENABLE_SPLIT_HEADERS
+USERINCLUDE		../PushMsgEntry/inc
+#endif//SYMBIAN_ENABLE_SPLIT_HEADERS
+USERINCLUDE		../pushwatcher/inc ../pushwatcher/test
+USERINCLUDE     ../pushmtm/inc
+
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+SOURCEPATH	    ./.
+SOURCE			t_baseMessage.cpp wappushmsggen.cpp
+SOURCE			t_wappush.cpp t_slmessage.cpp t_simessage.cpp t_multimessage.cpp
+SOURCE			t_UnkMessage.cpp t_siamessage.cpp t_release3.cpp t_corrupt.cpp t_clientmtmfind.cpp INC081489.cpp
+SOURCE			cwappushfailmessagetest.cpp
+SOURCE			t_slcmessage.cpp t_sicmessage.cpp
+SOURCE			t_invalDTDMessage.cpp
+SOURCE			t_DRMmessage.cpp
+SYSTEMRESOURCE	wappushmtm.rss
+
+SOURCEPATH		../pushwatcher/src
+SOURCE			CLWatcher.cpp ConnMan.cpp 
+
+SOURCEPATH		../PushMsgEntry/test
+SOURCE			t_serviceutils.cpp
+
+LIBRARY     	euser.lib dummywapstack.lib flogger.lib 
+LIBRARY			msgs.lib commdb.lib
+LIBRARY			wappushutils.lib pushmsgentry.lib sislpushmsgutils.lib
+LIBRARY			etext.lib efsrv.lib
+LIBRARY     ecom.lib
+LIBRARY		inetprotutil.lib
+LIBRARY		caf.lib
+LIBRARY		cafutils.lib
+
+VENDORID 0x70000001
+
+SMPSAFE

@@ -1,0 +1,42 @@
+/*
+* Copyright (c) 2002-2005,2007 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: Defines landmarks UIds
+*
+*
+*/
+
+
+#ifndef LANDMARKSUIDS_H
+#define LANDMARKSUIDS_H
+
+// Landmark interface UIDs
+#define KPosLmDatabaseIfUid             0x101fdf77
+#define KPosLmDatabaseExtendedIfUid     0x2000F841
+#define KPosLmCatManagerIfUid           0x101fdf78
+#define KPosLmEventNotifierIfUid        0x101fdf79
+#define KPosLmEncoderIfUid              0x101FE990
+#define KPosLmParserIfUid               0x101FE991
+
+// Landmark local database implementation UID
+#define KPosLmLocalDatabaseImplUid      0x101fdf7a
+#define KPosLmLocalDatabaseExtImplUid   0x2000F842
+
+// Extension interfaces UIDs (not ECom)
+
+/** Value of UID of @ref MPosLmDatabaseFastCounters extension interface
+ *  for @ref CPosLandmarDatabaseExtended.
+ *  @see CPosLandmarkDatabaseExtended::GetExtensionL */
+#define KPosLmDatabaseFastCountersIfUid 0x2000F843
+
+#endif

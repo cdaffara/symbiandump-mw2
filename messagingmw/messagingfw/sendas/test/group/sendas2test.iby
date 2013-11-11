@@ -1,0 +1,37 @@
+// Copyright (c) 2004-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+#ifndef __SENDAS2TEST_IBY__
+#define __SENDAS2TEST_IBY__
+
+// Test utility libraries for messaging test
+#include <msgtestutils.iby>
+
+file=ABI_DIR\BUILD_DIR\sendastestmtm.dll		System\Libs\sendastestmtm.dll
+file=ABI_DIR\BUILD_DIR\sendas2mtm1.dll		System\Libs\sendas2mtm1.dll
+file=ABI_DIR\BUILD_DIR\sendas2mtm2.dll		System\Libs\sendas2mtm2.dll
+file=ABI_DIR\BUILD_DIR\sendas2mtm3.dll		System\Libs\sendas2mtm3.dll
+file=ABI_DIR\BUILD_DIR\sendas2mtm4.dll		System\Libs\sendas2mtm4.dll
+file=ABI_DIR\BUILD_DIR\sendas2mtm5.dll		System\Libs\sendas2mtm5.dll
+file=ABI_DIR\BUILD_DIR\T_SENDAS2_AddRemoveMtms.exe		System\Libs\T_SENDAS2_AddRemoveMtms.exe
+file=ABI_DIR\BUILD_DIR\t_sendas2_arrays.exe		System\Libs\t_sendas2_arrays.exe
+file=ABI_DIR\BUILD_DIR\T_SENDAS2_CAPABILITIES.exe		System\Libs\T_SENDAS2_CAPABILITIES.exe
+file=ABI_DIR\BUILD_DIR\T_SENDAS2_ServerShutdown.exe		System\Libs\T_SENDAS2_ServerShutdown.exe
+file=ABI_DIR\BUILD_DIR\T_SendAs2_Message_Attachments.exe	System\Libs\T_SendAs2_Message_Attachments.exe
+file=ABI_DIR\BUILD_DIR\T_SendAs2_Message_Create.exe			System\Libs\T_SendAs2_Message_Create.exe
+file=ABI_DIR\BUILD_DIR\T_SendAs2_Message_Send.exe			System\Libs\T_SendAs2_Message_Send.exe
+file=ABI_DIR\BUILD_DIR\T_SendAs2_Message_Send_Fail.exe			System\Libs\T_SendAs2_Message_Send_Fail.exe
+
+#endif

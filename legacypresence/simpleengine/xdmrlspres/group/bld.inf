@@ -1,0 +1,40 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  XDM presence build file
+*
+*/
+
+
+
+PRJ_PLATFORMS
+//--------------------
+DEFAULT
+
+//--------------------
+PRJ_MMPFILES
+//--------------------
+rlspresxdm.mmp
+
+PRJ_EXPORTS
+../inc/rlspresxdmconsts.h	MW_LAYER_PLATFORM_EXPORT_PATH(rlspresxdmconsts.h)
+../inc/cpresencexdm.h	MW_LAYER_PLATFORM_EXPORT_PATH(cpresencexdm.h)
+../inc/mrlspresxdmasynchandler.h	MW_LAYER_PLATFORM_EXPORT_PATH(mrlspresxdmasynchandler.h)
+../inc/presenceactionxdm.h	MW_LAYER_PLATFORM_EXPORT_PATH(presenceactionxdm.h)
+../inc/prescondidentityone.h	MW_LAYER_PLATFORM_EXPORT_PATH(prescondidentityone.h)
+../inc/prescondidentitymany.h	MW_LAYER_PLATFORM_EXPORT_PATH(prescondidentitymany.h)
+../inc/prescondvalidity.h	MW_LAYER_PLATFORM_EXPORT_PATH(prescondvalidity.h)
+../inc/prescondsphere.h	MW_LAYER_PLATFORM_EXPORT_PATH(prescondsphere.h)
+../inc/presencetransformxdm.h	MW_LAYER_PLATFORM_EXPORT_PATH(presencetransformxdm.h)
+../inc/crlsxdm.h	MW_LAYER_PLATFORM_EXPORT_PATH(crlsxdm.h)
+../inc/prescondmisc.h    MW_LAYER_PLATFORM_EXPORT_PATH(prescondmisc.h)

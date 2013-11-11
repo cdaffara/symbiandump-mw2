@@ -1,0 +1,33 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: For packing sssettings test compoment.
+;
+; Supported languages
+&en
+
+; Package header (one name for each supported language)
+#{"MT_SSSettings"},(0xA00001F2),1,0,0
+
+;Localised Vendor name
+%{"Nokia Test EN"}
+
+;Unique Vendor name
+:"Vendor"
+
+;Key and certificate
+*"rd-key.pem","rd.cer"
+
+; Language independent files that are always installed
+"\epoc32\release\armv5\urel\MT_SSSettings.dll"-"C:\DigiaEUnit\Tests\MT_SSSettings.dll"
+"\epoc32\release\armv5\urel\MT_SSSettings.dll"-"C:\sys\bin\MT_SSSettings.dll"

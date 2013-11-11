@@ -1,0 +1,23 @@
+[main]
+bio_test doatstart
+bio_test hotlist_03
+bio_test doattheend
+
+
+// Startup section.
+[doatstart]
+clean_all_bio_msgs
+
+
+// Shutdown section.
+[doattheend]
+
+
+// wapp tests.
+[hotlist_03]
+gen_msg_from_file iacp\iacp_hotlist_03.txt
+check_used_bif 1000552f
+bio_client_parse
+bio_client_process -20
+dump_parsed_message
+

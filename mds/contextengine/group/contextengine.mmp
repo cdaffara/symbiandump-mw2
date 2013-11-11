@@ -1,0 +1,58 @@
+/*
+* Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file
+*
+*/
+
+
+#include <platform_paths.hrh>
+#include <data_caging_paths.hrh>
+
+VERSION       10.0
+TARGET        contextengine.dll
+TARGETTYPE    dll
+UID           0x1000008d 0x200009F6
+
+CAPABILITY    CAP_GENERAL_DLL
+VENDORID      VID_DEFAULT
+
+SYSTEMINCLUDE /epoc32/include/ecom
+SYSTEMINCLUDE /epoc32/include/connect
+USERINCLUDE   ../inc
+USERINCLUDE   ../../inc
+USERINCLUDE   ../../harvester/common/inc
+
+SOURCEPATH   ../src
+SOURCE        contextengine.cpp
+SOURCE        contextengineao.cpp
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY       euser.lib
+LIBRARY       ecom.lib
+LIBRARY       contextplugininterface.lib
+LIBRARY	  	  harvesterdata.lib
+LIBRARY	  	  harvestercommon.lib
+
+#if defined(WINS)
+deffile ../bwincw/contextenginewinscw.def
+#elif defined(EABI)
+deffile ../eabi/contextenginearm.def
+#endif
+nostrictdef
+
+PAGED
+BYTEPAIRCOMPRESSTARGET
+OPTION ARMCC -O3 -OTime
+

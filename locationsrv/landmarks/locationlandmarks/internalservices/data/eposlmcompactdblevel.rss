@@ -1,0 +1,74 @@
+/*
+* Copyright (c) 2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: Resource file specifying compact db level
+*
+*
+*/
+
+
+//  INCLUDES
+#include <uikon.rh>
+
+//  RESOURCE SIGNATURE
+RESOURCE RSS_SIGNATURE { }
+
+//  RESOURCE DEFINITIONS
+
+// -----------------------------------------------------------------------------
+//
+// R_POS_LM_LOCAL_COMPACT_DB_USAGE_LEVEL
+// Internal local compact database level in percent. If the database usage
+// percentage gets lower than this specifed value during a long-running
+// operation that modifies the database, compact will be performed.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE NUMBER_INT32 r_pos_lm_local_compact_db_usage_level
+    {
+    value="75";
+    }
+
+// -----------------------------------------------------------------------------
+//
+// R_POS_LM_SERVER_COMPACT_RELATIVE_DB_USAGE_LEVEL
+// Internal server compact relative database level in percent. If the relative
+// database usage percentage gets lower than this specifed value and the
+// absolute wasted database usage is exceeded, compact will be performed after a
+// release of a write lock.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE NUMBER_INT32 r_pos_lm_server_compact_relative_db_usage_level
+    {
+    value="60";
+    }
+
+// -----------------------------------------------------------------------------
+//
+// R_POS_LM_SERVER_COMPACT_ABSOLUTE_WASTED_DB_USAGE_LEVEL
+// Internal server compact absolute database level in kB. If the relative
+// database usage percentage is below the relative database usage level and the
+// absolute wasted database usage exceeds this specifed value, compact will be
+// performed after a release of a write lock.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE NUMBER_INT32 r_pos_lm_server_compact_absolute_wasted_db_usage_level
+    {
+    value="36";
+    }
+
+// End of File
+
+

@@ -1,0 +1,32 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:   
+*    This file provides the localization text strings for presence provisioning.
+*
+*/
+
+
+
+
+#ifndef __SIMPLEENGINE_RESOURCES_IBY__
+#define __SIMPLEENGINE_RESOURCES_IBY__
+
+#include <bldvariant.hrh>
+#ifdef __SIP_SIMPLE_PRESENCE_PROTOCOL
+
+data=DATAZ_\RESOURCE_FILES_DIR\PresenceProvisioningTexts.RSC       RESOURCE_FILES_DIR\PresenceProvisioningTexts.RSC
+
+#endif        //__SIP_SIMPLE_PRESENCE_PROTOCOL
+
+#endif //__SIMPLEENGINE_RESOURCES_IBY__

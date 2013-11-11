@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<api id="44da9f11c5f11e41aa21ef53231a64ee" dataversion="2.0">
+<name>oma_supl_configuration_parameter_api</name>
+<description>OMA SUPL Configuration Parameter API for OMA SUPL configration keys</description>
+<type>c++</type>
+<collection>supl</collection>
+<libs></libs>
+<release category="platform" sinceversion="0"/>
+<attributes>
+<htmldocprovided>no</htmldocprovided>
+<adaptation>no</adaptation>
+</attributes>
+</api>

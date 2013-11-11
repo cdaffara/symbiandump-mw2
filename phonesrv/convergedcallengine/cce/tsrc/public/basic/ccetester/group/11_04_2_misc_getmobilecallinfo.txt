@@ -1,0 +1,443 @@
+/*********************************************
+Description: Test GetMobileCallInfo with all
+             error codes
+*********************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 11.4.2 Misc, GetMobileCallInfo Error
+timeout 60000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+// Create MT CS call
+test SendPluginRequest 2 CreateCall 0
+test WaitEvent 0 IncomingCall
+test WaitEvent 1 Ringing
+test Answer 1 0
+test WaitEvent 1 Answering
+test WaitEvent 1 Connected
+
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+// Step 2
+print Step_2
+
+// Trigger ICM and wait plugin to initialize
+test InitIncomingCall
+test Delay 500
+
+// Create MT PS call
+test SendPluginRequest CreateCall 0
+test WaitEvent 0 IncomingCall
+test WaitEvent 2 Queued
+test Answer 2 0
+test WaitEvent 2 Answering
+test WaitEvent 2 Connected
+
+// Test error codes
+test SendPluginRequest ErrorOccurred 0
+// KErrNone is not notified
+test Delay 250
+test GetMobileCallInfo 1
+
+test SendPluginRequest ErrorOccurred -1
+test WaitEvent 2 ErrorOccurred -1
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -2
+test WaitEvent 2 ErrorOccurred -2
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -3
+test WaitEvent 2 ErrorOccurred -3
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -4
+test WaitEvent 2 ErrorOccurred -4
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -5
+test WaitEvent 2 ErrorOccurred -5
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -14
+test WaitEvent 2 ErrorOccurred -14
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -18
+test WaitEvent 2 ErrorOccurred -18
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -101
+test WaitEvent 2 ErrorOccurred -101
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -102
+test WaitEvent 2 ErrorOccurred -102
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -103
+test WaitEvent 2 ErrorOccurred -103
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -104
+test WaitEvent 2 ErrorOccurred -104
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -105
+test WaitEvent 2 ErrorOccurred -105
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -106
+test WaitEvent 2 ErrorOccurred -106
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -107
+test WaitEvent 2 ErrorOccurred -107
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -108
+test WaitEvent 2 ErrorOccurred -108
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -109
+test WaitEvent 2 ErrorOccurred -109
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -110
+test WaitEvent 2 ErrorOccurred -110
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -111
+test WaitEvent 2 ErrorOccurred -111
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -112
+test WaitEvent 2 ErrorOccurred -112
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -113
+test WaitEvent 2 ErrorOccurred -113
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -114
+test WaitEvent 2 ErrorOccurred -114
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -115
+test WaitEvent 2 ErrorOccurred -115
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -116
+test WaitEvent 2 ErrorOccurred -116
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -117
+test WaitEvent 2 ErrorOccurred -117
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -118
+test WaitEvent 2 ErrorOccurred -118
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -119
+test WaitEvent 2 ErrorOccurred -119
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -120
+test WaitEvent 2 ErrorOccurred -120
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -121
+test WaitEvent 2 ErrorOccurred -121
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -122
+test WaitEvent 2 ErrorOccurred -122
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -123
+test WaitEvent 2 ErrorOccurred -123
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -124
+test WaitEvent 2 ErrorOccurred -124
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -125
+test WaitEvent 2 ErrorOccurred -125
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -126
+test WaitEvent 2 ErrorOccurred -126
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -127
+test WaitEvent 2 ErrorOccurred -127
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -128
+test WaitEvent 2 ErrorOccurred -128
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -129
+test WaitEvent 2 ErrorOccurred -129
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -130
+test WaitEvent 2 ErrorOccurred -130
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -131
+test WaitEvent 2 ErrorOccurred -131
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -132
+test WaitEvent 2 ErrorOccurred -132
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -133
+test WaitEvent 2 ErrorOccurred -133
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -134
+test WaitEvent 2 ErrorOccurred -134
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -135
+test WaitEvent 2 ErrorOccurred -135
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -136
+test WaitEvent 2 ErrorOccurred -136
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -137
+test WaitEvent 2 ErrorOccurred -137
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -138
+test WaitEvent 2 ErrorOccurred -138
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -139
+test WaitEvent 2 ErrorOccurred -139
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -140
+test WaitEvent 2 ErrorOccurred -140
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -141
+test WaitEvent 2 ErrorOccurred -141
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -142
+test WaitEvent 2 ErrorOccurred -142
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -143
+test WaitEvent 2 ErrorOccurred -143
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -144
+test WaitEvent 2 ErrorOccurred -144
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -145
+test WaitEvent 2 ErrorOccurred -145
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -146
+test WaitEvent 2 ErrorOccurred -146
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -147
+test WaitEvent 2 ErrorOccurred -147
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -148
+test WaitEvent 2 ErrorOccurred -148
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -149
+test WaitEvent 2 ErrorOccurred -149
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -150
+test WaitEvent 2 ErrorOccurred -150
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -151
+test WaitEvent 2 ErrorOccurred -151
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -152
+test WaitEvent 2 ErrorOccurred -152
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -153
+test WaitEvent 2 ErrorOccurred -153
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -154
+test WaitEvent 2 ErrorOccurred -154
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -155
+test WaitEvent 2 ErrorOccurred -155
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -156
+test WaitEvent 2 ErrorOccurred -156
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -157
+test WaitEvent 2 ErrorOccurred -157
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -158
+test WaitEvent 2 ErrorOccurred -158
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -159
+test WaitEvent 2 ErrorOccurred -159
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -160
+test WaitEvent 2 ErrorOccurred -160
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -161
+test WaitEvent 2 ErrorOccurred -161
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -162
+test WaitEvent 2 ErrorOccurred -162
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -163
+test WaitEvent 2 ErrorOccurred -163
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -164
+test WaitEvent 2 ErrorOccurred -164
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -165
+test WaitEvent 2 ErrorOccurred -165
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -166
+test WaitEvent 2 ErrorOccurred -166
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -167
+test WaitEvent 2 ErrorOccurred -167
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -168
+test WaitEvent 2 ErrorOccurred -168
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -169
+test WaitEvent 2 ErrorOccurred -169
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -170
+test WaitEvent 2 ErrorOccurred -170
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -171
+test WaitEvent 2 ErrorOccurred -171
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -172
+test WaitEvent 2 ErrorOccurred -172
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -173
+test WaitEvent 2 ErrorOccurred -173
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -174
+test WaitEvent 2 ErrorOccurred -174
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -175
+test WaitEvent 2 ErrorOccurred -175
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -176
+test WaitEvent 2 ErrorOccurred -176
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -177
+test WaitEvent 2 ErrorOccurred -177
+test GetMobileCallInfo 2
+
+test SendPluginRequest ErrorOccurred -178
+test WaitEvent 2 ErrorOccurred -178
+test GetMobileCallInfo 2
+
+
+// Non-existing error code
+test SendPluginRequest ErrorOccurred -81357
+test WaitEvent 2 ErrorOccurred -81357
+test GetMobileCallInfo 2
+
+// Step 3
+print Step_3
+
+// Some for CS call also:
+
+test SendPluginRequest 2 ErrorOccurred -4
+test WaitEvent 1 ErrorOccurred -4
+test GetMobileCallInfo 1
+
+test SendPluginRequest 2 ErrorOccurred -5
+test WaitEvent 1 ErrorOccurred -5
+test GetMobileCallInfo 1
+
+test SendPluginRequest 2 ErrorOccurred -14
+test WaitEvent 1 ErrorOccurred -14
+test GetMobileCallInfo 1
+
+test SendPluginRequest 2 ErrorOccurred -18
+test WaitEvent 1 ErrorOccurred -18
+test GetMobileCallInfo 1
+
+test SendPluginRequest 2 ErrorOccurred -103
+test WaitEvent 1 ErrorOccurred -103
+test GetMobileCallInfo 1
+
+// Non-existing error code
+test SendPluginRequest 2 ErrorOccurred -3557
+test WaitEvent 1 ErrorOccurred -3557
+test GetMobileCallInfo 1
+
+// Step 4
+print Step_4
+
+// End call
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+test HangUp 2 0
+test WaitEvent 2 Disconnecting
+test WaitEvent 2 Idle
+test Release 2 0
+
+test VerifyTest
+delete test
+[Endtest] 

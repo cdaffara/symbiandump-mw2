@@ -1,0 +1,42 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRINT Running  EMsvCopyEntries
+
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCopyEntries_001.script
+	// Copy an entry from a folder to an unprotected folder (a folder in Drafts).
+	// The FolderTo and the FolderFrom and the ProxyServer have various SID's.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCopyEntries_002.script
+	// Copy an entry from a folder to a protected folder (Outbox).
+	// Proxy has various combinations of caps.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCopyEntries_003.script
+	// Copy an entry from a folder to an entry which is part of an entry in an unprotected folder (Drafts).
+	// Proxy has various combinations of caps and SID.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCopyEntries_004.script
+	// Copy an entry from a folder to an entry which is part of an entry in a protected folder (Outbox).
+	// Proxy has various combinations of caps and SID.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCopyEntries_005.script
+	// Copy an entry from a folder to a remote protected folder (Outbox).
+	// Proxy has various combinations of caps and SID.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCopyEntries_006.script
+	// Copy an entry from a folder to an entry in a remote protected folder (Outbox).
+	// Proxy has various combinations of caps and SID.

@@ -1,0 +1,94 @@
+/***************************************************
+   1. Create MO PS call
+   2. Try Dial again (KErrNotReady)
+   3. Create MT call
+   4. Try to create second MT call
+   		Expected: No events received
+   5. Terminate all calls
+   6. Try emergency call with normal call
+      Expected: Nothing happens
+   7. Create emergency call
+   8. Try emergency call again
+   9. Release call
+***************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 2.1.3 Dial, Error
+timeout 10000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test OpenNewCall 1 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+// Step 2
+print Step_2
+
+// Dial again using same CallID
+test Dial 1 -18 SubAddress Bearer
+
+// Step 3
+print Step_3
+
+// Send plugin command, MT call with CallID 1 is created
+// SendPluginRequest CreateCall (ServiceID)
+test SendPluginRequest CreateCall 2
+test WaitEvent 0 IncomingCall
+test WaitEvent 2 Queued
+
+// Step 4
+print Step_4
+
+// Cannot create new call when call is waiting
+test SendPluginRequest CreateCall 2
+test Delay 100
+
+// Step 5
+print Step_5
+
+test TerminateAllCalls
+test WaitEvent 1 Disconnecting
+test WaitEvents 1 Idle, 2 Idle, 2 Disconnecting
+
+// Step 6
+print Step_6
+
+test DialEmergencyCall 1 EmergencyNumber
+
+test Release 1 0
+test Release 2 0
+
+// Step 7
+print Step_7
+
+// Create emergency call
+test InitializeEmergencyCall 3 0
+test DialEmergencyCall 3 EmergencyNumber
+test WaitEvent 3 Dialling
+test WaitEvent 3 Connecting
+test WaitEvent 3 Connected
+
+// Step 8
+print Step_8
+
+// Try to call again with same callID, no events allowed
+test DialEmergencyCall 3 EmergencyNumber
+
+// Step 9
+print Step_9
+
+test Release 3 0
+
+test VerifyTest
+delete test
+[Endtest] 

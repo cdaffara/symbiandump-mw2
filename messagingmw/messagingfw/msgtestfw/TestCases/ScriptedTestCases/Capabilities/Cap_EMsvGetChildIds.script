@@ -1,0 +1,145 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRINT Running  EMsvGetChildIds
+
+//******************************************
+// We should have ReadUserData capability to get the childs ids. 
+// If we have the same SID but not ReadUserData we will get a filtered return containing only the entries we own.
+//******************************************
+
+PRINT Running  EMsvGetChildIds : Read Caps = ReadUserData. Same SID. Should Pass.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_caps.exe 0003fffe -SID 101F7777 C:\sys\bin\MessagingTestServer.exe
+
+// Clean the message store
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CleanMessageStore.script
+
+// Create 30 entries owned by 101F7777	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInbox.script
+
+// Wait for MessagingTestServer to die
+DELAY 5000
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_caps.exe 0003fffe -SID 101F7776 C:\sys\bin\MessagingTestServer.exe
+
+// Create 30 entries owned by 101F7776
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInbox.script
+
+RUN_PROGRAM -1 setcap c:\sys\bin\SendProxyServer_caps.exe 00008000 -SID 101F7776 C:\sys\bin\SendProxyServer.exe
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvGetChildIds_All.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+
+//******************************************
+// We should have ReadUserData capability to get the childs ids. 
+// If we have the same SID but not ReadUserData we will get a filtered return containing only the entries we own.
+//******************************************
+
+PRINT Running  EMsvGetChildIds : Read Caps = 0. Same SID. Should only get the messages created by same SID.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_caps.exe 0003fffe -SID 101F7777 C:\sys\bin\MessagingTestServer.exe
+
+// Clean the message store
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CleanMessageStore.script
+
+// Create 30 entries owned by 101F7777	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInbox.script
+
+// Wait for MessagingTestServer to die
+DELAY 5000
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_caps.exe 0003fffe -SID 101F7776 C:\sys\bin\MessagingTestServer.exe
+
+// Create 30 entries owned by 101F7776
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInbox.script
+
+RUN_PROGRAM -1 setcap c:\sys\bin\SendProxyServer_caps.exe 00000000 -SID 101F7776 C:\sys\bin\SendProxyServer.exe
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvGetChildIds_Owned.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+
+//******************************************
+// We should have ReadUserData capability to get the childs ids. 
+// If we have the same SID but not ReadUserData we will get a filtered return containing only the entries we own.
+//******************************************
+
+PRINT Running  EMsvGetChildIds : Read Caps = ReadUserData. Different SID. Should Pass.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_caps.exe 0003fffe -SID 101F7777 C:\sys\bin\MessagingTestServer.exe
+
+// Clean the message store
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CleanMessageStore.script
+
+// Create 30 entries owned by 101F7777	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInbox.script
+
+// Wait for MessagingTestServer to die
+DELAY 5000
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_caps.exe 0003fffe -SID 101F7776 C:\sys\bin\MessagingTestServer.exe
+
+// Create 30 entries owned by 101F7776
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInbox.script
+
+RUN_PROGRAM -1 setcap c:\sys\bin\SendProxyServer_caps.exe 00008000 -SID 101F7777 C:\sys\bin\SendProxyServer.exe
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvGetChildIds_All.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+
+//******************************************
+// We should have ReadUserData capability to get the childs ids. 
+// If we have the same SID but not ReadUserData we will get a filtered return containing only the entries we own.
+//******************************************
+
+PRINT Running  EMsvGetChildIds :  Read Caps = 0. Different SID. Should get no messages.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_caps.exe 0003fffe -SID 101F7776 C:\sys\bin\MessagingTestServer.exe
+
+RUN_PROGRAM -1 setcap c:\sys\bin\SendProxyServer_caps.exe 00000000 -SID 101F7777 C:\sys\bin\SendProxyServer.exe
+
+// Clean the message store
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CleanMessageStore.script
+
+// Create 30 entries owned by 101F7776
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInbox.script
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvGetChildIds_None.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+

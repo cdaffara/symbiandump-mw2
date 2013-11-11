@@ -1,0 +1,76 @@
+# lon-darrenm01.intra server
+__type__   = Imap4Settings
+
+EmailAddressExtension = msexchange2k.closedtest.intra
+
+# lon-cn-exchange2k.msexchange2k.msexchange2k.closedtest.intra = 10.22.64.6
+ImapServerAddress = 10.22.64.6
+ImapUserAddress = deteo@clara.net
+ImapLoginName = danb
+ImapPassword = danbea
+ImapPort = 143
+ImapSecureSockets = 1
+ImapSSLWrapper = 1
+#ImapFolderPath = 
+ImapMaxEmailSize = 1024
+ImapGetMailOptions = TImap4GetMailOptions::EGetImap4EmailAttachments
+ImapInboxSynchronisationLimit = 99
+ImapMailSynchronisationLimit = 99
+ImapAutoSendOnConnect = 1
+ImapDeleteEmailsWhenDisconnecting = 1
+ImapAcknowledgeReceipts = 1
+ImapDisconnectedUserMode = 1
+ImapSynchronise = TFolderSyncType::EUseRemote
+ImapSubscribe = TFolderSubscribeType::EUpdateBoth
+ImapUpdatingSeenFlags = 1
+ImapSyncRate = 10
+ImapFetchSize = 10
+ImapIdle = 1
+ImapIdleTimeout = 10
+ImapPartialMailOptions = TImImap4PartialMailOptions::ECumulative
+ImapBodyTextSizeLimit = 1024
+ImapAttachmentSizeLimit = 1024
+
+
+ImapIapList = IMAP001 IMAP002 
+
+IMAP001_ImapIAP = 1
+IMAP001_ImapCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+IMAP001_ImapIAPIndex = 1
+
+IMAP002_ImapIAP = 1
+IMAP002_ImapCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+IMAP002_ImapIAPIndex = 1
+
+SmtpServerAddress = 10.22.64.6
+SmtpEmailAddress = deteo@clara.net
+SmtpBodyEncoding = TMsgOutboxBodyEncoding::EMsgOutboxMHTMLAlternativeAsMIME
+SmtpReceiptAddress = deteo@clara.net
+SmtpRequestReceipts = 1
+SmtpSendMessageOption = TImSMTPSendMessageOption::ESendMessageOnRequest
+SmtpSetPort = 25
+SmtpEmailAlias = deteo@clara.net
+SmtpMsgCharSet = 1
+SmtpUserAddress = deteo@clara.net
+SmtpSetReplyToAddress = deteo@clara.net
+SmtpSetAddVCardToEmail = 1
+SmtpSetAddSignatureToEmail = 1
+SmtpSetSendCopyToSelf = TImSMTPSendCopyToSelf::ESendCopyAsBccRecipient
+SmtpSetLoginName = danb
+SmtpSetPassword = danbea
+SmtpSetSMTPAuth = 1
+SmtpSetInboxLoginDetails = 1
+SmtpSetSecureSockets = 1
+SmtpSetSSLWrapper = 1
+
+
+SmtpIapList = SMTP001 SMTP002 
+
+SMTP001_SmtpIAP = 1
+SMTP001_SmtpCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+SMTP001_SmtpIAPIndex = 1
+
+
+SMTP001_SmtpIAP = 1
+SMTP001_SmtpCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+SMTP001_SmtpIAPIndex = 1

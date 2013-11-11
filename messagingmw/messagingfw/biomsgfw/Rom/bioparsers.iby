@@ -1,0 +1,80 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+
+#ifndef __BIOPARSERS_IBY__
+#define __BIOPARSERS_IBY__
+
+#include <charconv.iby>
+#include <commdb.iby>
+#include <messageserver.iby>
+#include <gtbioutils.iby>
+
+REM Bio Parsers
+
+#ifndef NO_CBCP_PARSER_IN_ROM
+file=ABI_DIR\BUILD_DIR\cbcp.dll			sys\bin\cbcp.dll
+data=MULTI_LINGUIFY(rsc DATAZ_\resource\messaging\bif\cbcp	resource\messaging\bif\cbcp)
+data=DATAZ_\resource\messaging\bif\cbcp.mbm			resource\messaging\bif\cbcp.mbm
+#else
+file=ABI_DIR\BUILD_DIR\cbcp.dll			sys\bin\cbcp.dll
+#endif
+
+#ifndef NO_ENP_PARSER_IN_ROM
+file=ABI_DIR\BUILD_DIR\enp.dll			sys\bin\enp.dll
+data=MULTI_LINGUIFY(rsc DATAZ_\resource\messaging\bif\enp		resource\messaging\bif\enp)
+data=DATAZ_\resource\messaging\bif\enp.mbm			resource\messaging\bif\enp.mbm
+#else
+file=ABI_DIR\BUILD_DIR\enp.dll			sys\bin\enp.dll
+#endif
+
+#ifndef NO_IACP_PARSER_IN_ROM
+file=ABI_DIR\BUILD_DIR\iacp.dll			sys\bin\iacp.dll
+data=MULTI_LINGUIFY(rsc DATAZ_\resource\messaging\bif\iacp	resource\messaging\bif\iacp)
+data=DATAZ_\resource\messaging\bif\iacp.mbm			resource\messaging\bif\iacp.mbm
+#else
+file=ABI_DIR\BUILD_DIR\iacp.dll			sys\bin\iacp.dll
+#endif
+
+#ifndef NO_GFP_PARSER_IN_ROM
+file=ABI_DIR\BUILD_DIR\gfp.dll			sys\bin\gfp.dll
+data=MULTI_LINGUIFY(rsc DATAZ_\resource\messaging\bif\vcdp	resource\messaging\bif\vcdp)
+data=DATAZ_\resource\messaging\bif\vcdp.mbm			resource\messaging\bif\vcdp.mbm
+data=MULTI_LINGUIFY(rsc DATAZ_\resource\messaging\bif\vclp	resource\messaging\bif\vclp)
+data=DATAZ_\resource\messaging\bif\vclp.mbm			resource\messaging\bif\vclp.mbm
+data=MULTI_LINGUIFY(rsc DATAZ_\resource\messaging\bif\rtp		resource\messaging\bif\rtp)
+data=DATAZ_\resource\messaging\bif\rtp.mbm			resource\messaging\bif\rtp.mbm
+
+#ifdef SYMBIAN_MESSAGING_TESTCODE  //Exporting Only for Test.
+data=MULTI_LINGUIFY(rsc DATAZ_\resource\messaging\bif\olp		resource\messaging\bif\olp)
+data=DATAZ_\resource\messaging\bif\olp.mbm			resource\messaging\bif\olp.mbm
+#endif //End of (#ifdef SYMBIAN_MESSAGING_TESTCODE)
+
+#else
+file=ABI_DIR\BUILD_DIR\gfp.dll			sys\bin\gfp.dll
+#endif
+
+#ifndef NO_WAPP_PARSER_IN_ROM
+file=ABI_DIR\BUILD_DIR\wapp.dll			sys\bin\wapp.dll
+data=MULTI_LINGUIFY(rsc DATAZ_\resource\messaging\bif\wapp	resource\messaging\bif\wapp)
+data=DATAZ_\resource\messaging\bif\wapp.mbm			resource\messaging\bif\wapp.mbm
+data=MULTI_LINGUIFY(RSC DATAZ_\resource\messaging\wappstr	resource\messaging\wappstr)
+#else
+file=ABI_DIR\BUILD_DIR\wapp.dll			sys\bin\wapp.dll
+data=MULTI_LINGUIFY(RSC DATAZ_\resource\messaging\wappstr	resource\messaging\wappstr)
+#endif
+
+#endif

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api id="a06201c136e52a4a009a5d31effb6e9b" dataversion="2.0">
+  <name>Radio Monitor API</name>
+  <description>An API for monitoring the radio state.</description>
+  <type>c++</type>
+  <collection>mmserv</collection>
+  <libs>
+    <lib name="Radio_Utility.lib"/>
+  </libs>
+  <release category="platform" sinceversion="3.2"/>
+  <attributes>
+    <!-- This indicates wether the api provedes separate html documentation -->
+    <!-- or is the additional documentation generated from headers. -->
+    <!-- If you are unsuere then the value is "no" -->
+    <htmldocprovided>no</htmldocprovided>
+    <adaptation>no</adaptation>
+  </attributes>
+</api>

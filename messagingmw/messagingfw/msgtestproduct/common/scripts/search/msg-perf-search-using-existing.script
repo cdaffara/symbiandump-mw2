@@ -1,0 +1,92 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+LOAD_SUITE	T_MsgCommonServer -SharedData
+LOAD_SUITE	T_MsgImapServer	-SharedData
+LOAD_SUITE	T_MsgSmtpServer	-SharedData
+
+
+START_TESTCASE		MSG-PERF-SEARCH-USING-EXISINTG
+//!	@SYMTestCaseID			MSG-PERF-SEARCH-USING-EXISINTG
+//!	@SYMTestCaseDesc		Logging the time taken in milliseconds to search on fields like To, Cc, Bcc, Subject and Body
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms and msg-searchentry script to be executed before this script.
+//!	@SYMTestActions			Issue search on To Field
+//!	@SYMTestExpectedResults		The number of emails retrieved should match the number of emails that was sent
+//!	@SYMAuthor			Venkata Ganapathiraju
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 	300 	T_MsgCommonServer	InitNtRas			c:\msgtest\common\search\msg-perf-search-using-existing.ini   	0001-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0001-CheckChildrenCountRemoteInboxTo
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0002-CheckChildrenCountRemoteInboxTo
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0003-CheckChildrenCountRemoteInboxTo
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0004-CheckChildrenCountRemoteInboxTo
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0005-CheckChildrenCountRemoteInboxTo
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0006-CheckChildrenCountRemoteInboxTo
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0007-CheckChildrenCountRemoteInboxTo
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0008-CheckChildrenCountRemoteInboxTo
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0009-CheckChildrenCountRemoteInboxTo
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0010-CheckChildrenCountRemoteInboxTo
+
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0001-CheckChildrenCountRemoteInboxCC
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0002-CheckChildrenCountRemoteInboxCC
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0003-CheckChildrenCountRemoteInboxCC
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0004-CheckChildrenCountRemoteInboxCC
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0005-CheckChildrenCountRemoteInboxCC
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0006-CheckChildrenCountRemoteInboxCC
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0007-CheckChildrenCountRemoteInboxCC
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0008-CheckChildrenCountRemoteInboxCC
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0009-CheckChildrenCountRemoteInboxCC
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0010-CheckChildrenCountRemoteInboxCC
+
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0001-CheckChildrenCountRemoteInboxBCC
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0002-CheckChildrenCountRemoteInboxBCC
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0003-CheckChildrenCountRemoteInboxBCC
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0004-CheckChildrenCountRemoteInboxBCC
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0005-CheckChildrenCountRemoteInboxBCC
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0006-CheckChildrenCountRemoteInboxBCC
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0007-CheckChildrenCountRemoteInboxBCC
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0008-CheckChildrenCountRemoteInboxBCC
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0009-CheckChildrenCountRemoteInboxBCC
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0010-CheckChildrenCountRemoteInboxBCC
+
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0001-CheckChildrenCountRemoteInboxSubject
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0002-CheckChildrenCountRemoteInboxSubject
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0003-CheckChildrenCountRemoteInboxSubject
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0004-CheckChildrenCountRemoteInboxSubject
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0005-CheckChildrenCountRemoteInboxSubject
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0006-CheckChildrenCountRemoteInboxSubject
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0007-CheckChildrenCountRemoteInboxSubject
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0008-CheckChildrenCountRemoteInboxSubject
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0009-CheckChildrenCountRemoteInboxSubject
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0010-CheckChildrenCountRemoteInboxSubject
+
+RUN_TEST_STEP	300	T_MsgCommonServer	PerfSearchUsingExisting		c:\msgtest\common\search\msg-perf-search-using-existing.ini	0001-CheckChildrenCountRemoteInboxBody
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-PERF-SEARCH-USING-EXISINTG
+

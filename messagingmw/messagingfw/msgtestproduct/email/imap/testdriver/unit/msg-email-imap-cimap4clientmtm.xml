@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>msg-email-imap-cimap4clientmtm</name>
+	<timeout>600</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\email\imap\unit\msg-email-imap-cimap4clientmtm.script</hostPath>
+			<devicePath>c:\msgtest\email\imap\unit\msg-email-imap-cimap4clientmtm.script</devicePath>
+		</script>
+		
+		
+	</testScripts>
+
+	<testServers>
+		<server>T_MsgCommonServer</server>
+		<server>T_MsgImapServer</server>
+		<server>T_MsgSmtpServer</server>
+		<server>T_MsgPopServer</server>
+	</testServers>
+
+
+</testExecuteTest>

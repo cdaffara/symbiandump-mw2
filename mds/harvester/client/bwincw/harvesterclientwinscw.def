@@ -1,0 +1,17 @@
+EXPORTS
+	??0RHarvesterClient@@QAE@XZ @ 1 NONAME ; RHarvesterClient::RHarvesterClient(void)
+	?AddHarvesterEventObserver@RHarvesterClient@@QAEHAAVMHarvesterEventObserver@@HH@Z @ 2 NONAME ; int RHarvesterClient::AddHarvesterEventObserver(class MHarvesterEventObserver &, int, int)
+	?Close@RHarvesterClient@@QAEXXZ @ 3 NONAME ; void RHarvesterClient::Close(void)
+	?Connect@RHarvesterClient@@QAEHXZ @ 4 NONAME ; int RHarvesterClient::Connect(void)
+	?HarvestFile@RHarvesterClient@@QAEXABVTDesC16@@AAV?$RArray@K@@@Z @ 5 NONAME ABSENT ; void RHarvesterClient::HarvestFile(class TDesC16 const &, class RArray<unsigned long> &)
+	?Pause@RHarvesterClient@@QAEHXZ @ 6 NONAME ; int RHarvesterClient::Pause(void)
+	?RemoveHarvesterEventObserver@RHarvesterClient@@QAEHAAVMHarvesterEventObserver@@@Z @ 7 NONAME ; int RHarvesterClient::RemoveHarvesterEventObserver(class MHarvesterEventObserver &)
+	?RemoveObserver@RHarvesterClient@@QAEXPAVMHarvestObserver@@@Z @ 8 NONAME ; void RHarvesterClient::RemoveObserver(class MHarvestObserver *)
+	?Resume@RHarvesterClient@@QAEHXZ @ 9 NONAME ; int RHarvesterClient::Resume(void)
+	?SetObserver@RHarvesterClient@@QAEXPAVMHarvestObserver@@@Z @ 10 NONAME ; void RHarvesterClient::SetObserver(class MHarvestObserver *)
+	?Stop@RHarvesterClient@@QAEXXZ @ 11 NONAME ABSENT ; void RHarvesterClient::Stop(void)
+	?HarvestFile@RHarvesterClient@@QAEXABVTDesC16@@AAV?$RArray@K@@H@Z @ 12 NONAME ; void RHarvesterClient::HarvestFile(class TDesC16 const &, class RArray<unsigned long> &, int)
+	?HarvestFileWithUID@RHarvesterClient@@QAEXABVTDesC16@@AAV?$RArray@K@@HVTUid@@@Z @ 13 NONAME ; void RHarvesterClient::HarvestFileWithUID(class TDesC16 const &, class RArray<unsigned long> &, int, class TUid)
+	?AddSessionObserverL@RHarvesterClient@@QAEXAAVMHarvesterSessionObserver@@@Z @ 14 NONAME ; void RHarvesterClient::AddSessionObserverL(class MHarvesterSessionObserver &)
+	?RemoveSessionObserver@RHarvesterClient@@QAEXXZ @ 15 NONAME ; void RHarvesterClient::RemoveSessionObserver(void)
+

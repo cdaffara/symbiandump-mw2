@@ -1,0 +1,22 @@
+<?xml version="1.0" ?> 
+<!DOCTYPE testSuite SYSTEM "file:///c:/program files/common files/symbian/testSuite.dtd" [ ]>
+
+<testSuite>
+	<name>search</name> 
+
+	<testItems>
+		<test>search_entry</test>
+		<test>msg-imap-search-to</test>
+		<test>msg-imap-client-search</test>
+		<test>msg-searchsort-iterator</test>
+		<test>msg-sort-operation1</test>
+		<test>msg-imap-search-to</test>
+		<test>msg-imap-client-search</test>
+		<test>msg-searchsort1</test>
+		<test>msg-searchsort2</test>
+		<test>msg-combinesearch</test>
+		<test>msg-searchsort-performance1</test>
+		<test>msg-searchsort-performance</test>
+	</testItems>
+
+</testSuite>

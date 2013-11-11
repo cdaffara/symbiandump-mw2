@@ -1,0 +1,82 @@
+// Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// Project definition file for Pop test Server
+// 
+//
+
+CAPABILITY 		ALL -TCB
+TARGET			t_msgpopserver.exe
+TARGETTYPE		exe
+	UID			0x1000007A 0x1027406F
+VENDORID 		0x70000001
+
+// Include the Framework 
+#include "../../../framework/group/T_MsgFramework.mph"
+
+
+
+
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+USERINCLUDE 	../inc ../../../../msgsrvnstore/server/inc
+USERINCLUDE     ../../../../../../../app/messaging/email/pop3andsmtpmtm/clientmtms/inc
+SOURCEPATH	../src
+SOURCE	T_PopServer.cpp
+SOURCE	T_MsgSharedDataPop.cpp
+SOURCE	T_MsgAsyncStepPOP.cpp
+SOURCE	T_MsgSyncStepPOP.cpp
+SOURCE	T_CheckChildrenCountPop.cpp
+SOURCE	T_ComparePopEmailMsgs.cpp
+SOURCE	T_ComparePopSettings.cpp
+SOURCE	T_ConnectPop3Server.cpp
+SOURCE	T_CopyPopSelection.cpp
+SOURCE	T_CreatePopAccount.cpp
+SOURCE	T_DeleteAllPopChildren.cpp
+SOURCE	T_DeletePopAccount.cpp
+SOURCE	T_DisconnectPop3Server.cpp
+SOURCE	T_ModifyPopSettings.cpp
+SOURCE	T_PopInvokeAsyncFunction.cpp
+SOURCE	T_VerifyPopAccountsCount.cpp
+SOURCE	T_VerifyPopSettings.cpp
+SOURCE	T_StartRamUsageTimer.cpp
+SOURCE	T_StopRamUsageTimer.cpp
+SOURCE	T_CheckPop3AccessPoint.cpp
+SOURCE	T_CreatePopAccountWithoutSmtp.cpp
+SOURCE	T_ModifyPopSettings2.cpp
+SOURCE	T_CheckPopSNAPSetting.cpp
+SOURCE	T_RemovePopSNAPSetting.cpp
+SOURCE	T_CheckPopBMSetting.cpp
+SOURCE	t_cpop3clientmtm.cpp 
+SOURCE	T_VerifyHeaders.cpp
+
+LIBRARY 	testexecuteutils.lib
+LIBRARY		testexecutelogclient.lib
+LIBRARY		imut.lib 
+LIBRARY		bafl.lib
+LIBRARY		etext.lib
+LIBRARY		estor.lib 
+LIBRARY		msgs.lib
+LIBRARY		euser.lib
+LIBRARY		imcm.lib
+LIBRARY		efsrv.lib
+LIBRARY		charconv.lib
+LIBRARY		t_msgutilityserver.lib
+LIBRARY		hal.lib
+LIBRARY		instrumentationhandler.lib
+LIBRARY		netmeta.lib
+
+EPOCHEAPSIZE 0x1000 0x800000
+
+
+SMPSAFE

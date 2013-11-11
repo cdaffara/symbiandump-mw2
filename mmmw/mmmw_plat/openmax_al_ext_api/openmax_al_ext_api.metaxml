@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api id="429a389f5c9afb70c9b789bc52ebaa7d" dataversion="2.0">
+  <name>openmax_al_ext_api</name>
+  <description>This API provides extension to Khronos OpenMAX AL.</description>
+  <type>c++</type>
+  <collection>khronosfws</collection>
+  <libs>
+    <lib name="openmaxal.lib"/>
+  </libs>
+  <release category="platform" sinceversion="^4"/>
+  <attributes>
+    <htmldocprovided>no</htmldocprovided>
+    <adaptation>no</adaptation>
+  </attributes>
+</api>

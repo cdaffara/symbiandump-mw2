@@ -1,0 +1,76 @@
+/*
+* Copyright (c) 2002-2007 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: project definition file for localaccess component
+*
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET          eposlmlocalaccess.dll
+TARGETTYPE      dll
+UID             0x1000008d 0x101fdf88
+
+VENDORID        VID_DEFAULT
+CAPABILITY      CAP_CLIENT_DLL
+
+macro __HIDE_IPC_V1__
+
+SOURCEPATH      ../src
+SOURCE          EPos_CPosLmLocalDatabase.cpp
+SOURCE          EPos_CPosLmLocalCategoryManager.cpp
+SOURCE          EPos_CPosLmLocalAddCatToLmOp.cpp
+SOURCE          EPos_CPosLmLocalIterator.cpp
+SOURCE          EPos_CPosLmLocalLandmarkIterator.cpp
+SOURCE          EPos_CPosLmLocalCategoryIterator.cpp
+SOURCE          EPos_CPosLmLocalRemoveLandmarksOp.cpp
+SOURCE          EPos_CPosLmLocalRemoveCategoriesOp.cpp
+SOURCE          EPos_CPosLmLocalReadPartialLmOp.cpp
+SOURCE          EPos_CPosLmLocalInitializeOp.cpp
+SOURCE          EPos_CPosLmLocalCompactingOp.cpp
+SOURCE          EPos_CPosLmLocalResetGlobalCatOp.cpp
+SOURCE          EPos_CPosLmLocalOperation.cpp
+SOURCE          EPos_CPosLmLocalModifyOp.cpp
+SOURCE          EPos_CPosLmLocalExportOp.cpp
+SOURCE          EPos_CPosLmLocalImportOp.cpp
+SOURCE          EPos_CPosLmLocalImportedLmIterator.cpp
+SOURCE          EPos_CPosLmLocalInternalProxyOp.cpp
+SOURCE          EPos_CPosLmLocalInternalOpActive.cpp
+SOURCE          EPos_RPosLmLocalAccessSubsession.cpp 
+SOURCE          epos_cposlmlocaldbfastcounters.cpp
+SOURCE          EPos_CPosLmLocalGetSortedIdsOp.cpp
+SOURCE          epos_rposlmlocalnameindex.cpp 
+
+
+START RESOURCE  ../data/eposlmasyncops.rss
+HEADER
+TARGETPATH      /resource
+END
+
+USERINCLUDE     ../inc
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   ../../../inc
+
+LIBRARY         euser.lib estor.lib 
+LIBRARY         eposlandmarks.lib
+LIBRARY         eposlmintservices.lib
+LIBRARY         eposlmservlib.lib
+
+
+SMPSAFE
+
+// END OF FILE
+

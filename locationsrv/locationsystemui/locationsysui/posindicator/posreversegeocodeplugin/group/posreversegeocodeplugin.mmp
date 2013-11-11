@@ -1,0 +1,70 @@
+/*
+* Copyright (c) 2010 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file for project reverse geo-code plugin
+*
+*/
+
+
+
+#include <data_caging_paths.hrh>
+#include <platform_paths.hrh>
+
+
+TARGET                  posrevgeocodeplugin.dll
+TARGETTYPE              PLUGIN
+UID                     0x10009D8D 0x2002E68A
+
+CAPABILITY              CAP_GENERAL_DLL
+VENDORID                VID_DEFAULT
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE           /epoc32/include/ecom
+
+
+USERINCLUDE             ../inc
+USERINCLUDE             ../../inc
+USERINCLUDE             ../data
+
+SOURCEPATH              ../src
+
+SOURCE                  posrevgeocodeplugin.cpp
+SOURCE                  posrevgeocodeconnectiontimer.cpp 
+SOURCE                  posrevgeocodexmlparser.cpp
+SOURCE                  posrevgeocodehttpclientengine.cpp
+
+
+START RESOURCE          ../data/2002E68A.rss
+TARGET                  posrevgeocodeplugin.rsc
+END
+
+LIBRARY                 euser.lib
+LIBRARY                 ecom.lib
+LIBRARY                 posreversegeocodeinterface.lib
+LIBRARY                 insock.lib  
+LIBRARY                 inetprotutil.lib
+LIBRARY                 http.lib
+LIBRARY                 bafl.lib
+LIBRARY                 commdb.lib
+LIBRARY                 cmmanager.lib 
+LIBRARY                 xmlframework.lib
+LIBRARY                 esock.lib
+LIBRARY                 lbs.lib
+LIBRARY                 libc.lib
+LIBRARY                 charconv.lib
+LIBRARY                 extendedconnpref.lib
+LIBRARY                 eposlandmarks.lib
+LIBRARY                 netmeta.lib
+LIBRARY                 flogger.lib
+PAGED
+// END OF FILE

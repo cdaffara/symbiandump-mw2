@@ -1,0 +1,142 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE	T_MsgCommonServer	-SharedData
+LOAD_SUITE	T_MsgImapServer		-SharedData
+LOAD_SUITE	T_MsgSmtpServer		-SharedData
+
+// Test script for testing IMAP commands using codenomicon test tool
+
+START_TESTCASE	MSG-IMAP-RenameFolder-0001
+
+
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-ResetMessageStore
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-CreateImapAccount
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-ChangeImapSettings1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-ConnectAndSyncImapServer
+PRINT Setup Completed ##################################################
+PRINT Sub-Setup Begins #################################################
+PRINT Sub-Setup Completed ##############################################
+PRINT Execute Begins ###################################################
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-CreateFolder
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-FindEntryByName1
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-CopyImapSelectionRemote
+RUN_TEST_STEP 	300 T_MsgImapServer		RenameImapFolder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-RenameImapFolder
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-RenameFolder-0001
+
+
+START_TESTCASE	MSG-IMAP-RenameFolder-0002
+
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-ResetMessageStore
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-CreateImapAccount
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-ChangeImapSettings1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-ConnectAndSyncImapServer
+PRINT Setup Completed ##################################################
+PRINT Sub-Setup Begins #################################################
+PRINT Sub-Setup Completed ##############################################
+PRINT Execute Begins ###################################################
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-CreateFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-FindEntryByName1
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-CopyImapSelectionRemote1
+RUN_TEST_STEP 	300 T_MsgImapServer		RenameImapFolder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-RenameImapFolder
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-RenameFolder-0002
+
+START_TESTCASE	MSG-IMAP-RenameFolder-0004
+
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-ResetMessageStore
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-CreateImapAccount
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-ChangeImapSettings
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-ConnectAndSyncImapServer
+PRINT Setup Completed ##################################################
+PRINT Execute Begins ###################################################
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-CreateFolder
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-FindEntryByName
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-CopyImapSelectionRemote
+RUN_TEST_STEP !Error=-5		300 T_MsgImapServer		RenameImapFolder		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-RenameImapFolder
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-RenameFolder-0004
+
+
+START_TESTCASE	MSG-IMAP-RenameFolder-0005
+
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-ResetMessageStore
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-CreateImapAccount
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-ChangeImapSettings1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-ConnectAndSyncImapServer
+PRINT Setup Completed ##################################################
+PRINT Execute Begins ###################################################
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-CreateFolder
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-FindEntryByName1
+RUN_TEST_STEP	300 T_MsgImapServer		RenameImapFolder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-RenameImapFolder
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-RenameFolder-0005
+
+START_TESTCASE	MSG-IMAP-RenameFolder-0007
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-ResetMessageStore
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-CreateImapAccount
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-ChangeImapSettings1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-ConnectAndSyncImapServer
+PRINT Setup Completed ##################################################
+RINT Sub-Setup2 Begins ################################################
+//Creating the folder tree
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-CreateFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-FindEntryByName1
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-CopyImapSelectionRemote1
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-CreateFolder2
+PRINT Sub-Setup2 Completed #############################################
+PRINT Execute Begins ###################################################
+RUN_TEST_STEP 	300 T_MsgImapServer		RenameImapFolder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-RenameImapFolder
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-RenameFolder-0007

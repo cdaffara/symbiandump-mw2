@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>msg-pop-connect-tlssls</name>
+	<timeout>6000</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\email\pop\tls\msg-pop-connect-tlssls.script</hostPath>
+			<devicePath>c:\msgtest\email\pop\tls\msg-pop-connect-tlssls.script</devicePath>
+		</script>
+	</testScripts>
+
+	<testServers>
+		<server>T_MsgCommonServer</server>
+		<server>T_MsgPopServer</server>
+	</testServers>
+
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\email\pop\tls\msg-pop-connect-tlssls.ini</hostPath>
+			<devicePath>c:\msgtest\email\pop\tls\msg-pop-connect-tlssls.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\POPServerSNAPSettings.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\POPServerSNAPSettings.txt</devicePath>
+		</data>
+ 		<data>
+ 			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\POP_SNAPID.txt</hostPath>
+ 			<devicePath>c:\msgtest\Config\EmailSettings\POP_SNAPID.txt</devicePath>
+ 		</data>
+ 		<data>
+ 			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\POPServerSNAPandIAPSettings.txt</hostPath>
+ 			<devicePath>c:\msgtest\Config\EmailSettings\POPServerSNAPandIAPSettings.txt</devicePath>
+ 		</data>
+ 		<data>
+ 			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\POPServerIAPSettings.txt</hostPath>
+ 			<devicePath>c:\msgtest\Config\EmailSettings\POPServerIAPSettings.txt</devicePath>
+ 		</data>
+		<data>
+ 			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\popsettings_tlssls_test908.txt</hostPath>
+ 			<devicePath>c:\msgtest\Config\EmailSettings\popsettings_tlssls_test908.txt</devicePath>
+ 		</data>
+	</dependencies>	
+</testExecuteTest>

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>msg-drivefull-ops</name>
+	<timeout>6000</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-drivefull-ops.script</hostPath>
+			<devicePath>c:\msgtest\media\msg-drivefull-ops.script</devicePath>
+		</script>
+		
+	</testScripts>
+
+	<testServers>
+		<server>t_media</server>
+	</testServers>
+
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-drivefull-ops.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-drivefull-ops.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-drivefull-0001.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-drivefull-0001.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\media\msg-drivefull-0002.ini</hostPath>
+			<devicePath>c:\msgtest\media\msg-drivefull-0002.ini</devicePath>
+		</data>
+	</dependencies>	
+</testExecuteTest>

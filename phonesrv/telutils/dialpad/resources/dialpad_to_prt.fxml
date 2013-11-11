@@ -1,0 +1,28 @@
+<layers>
+<visual>
+
+  <param name="opacity" type="anim">
+      <duration>1.0</duration>
+      <style>linear</style>
+      <keyframe at="0">0</keyframe>
+      <keyframe at="0.2">0</keyframe>
+      <keyframe at="0.5">1</keyframe>
+  </param>
+  
+	<param name="rotation_angle" type="anim">
+            <duration>0.5</duration>
+            <style>outquad</style>
+            <keyframe at="0">90</keyframe>
+            <keyframe at="1">0</keyframe>
+	</param>
+
+	<param name="rotation_origin_x" ref="visual.width">0.5</param>
+	<param name="rotation_origin_y" ref="visual.height">0.5</param>
+	
+	<param name="rotation_axis_x" type="anim">0</param>
+	<param name="rotation_axis_y" type="anim">0</param>
+	<param name="rotation_axis_z" type="anim">1</param>        
+
+</visual>
+</layers>
+

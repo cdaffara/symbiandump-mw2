@@ -1,0 +1,74 @@
+EXPORTS
+	??0CPosLandmarkSearch@@IAE@XZ @ 1 NONAME ; protected: __thiscall CPosLandmarkSearch::CPosLandmarkSearch(void)
+	??1CPosLandmarkSearch@@UAE@XZ @ 2 NONAME ; public: virtual __thiscall CPosLandmarkSearch::~CPosLandmarkSearch(void)
+	??1CPosLmIdListCriteria@@UAE@XZ @ 3 NONAME ; public: virtual __thiscall CPosLmIdListCriteria::~CPosLmIdListCriteria(void)
+	?AddArgument@CPosLmCompositeCriteria@@QAEHPAVCPosLmSearchCriteria@@@Z @ 4 NONAME ; public: int __thiscall CPosLmCompositeCriteria::AddArgument(class CPosLmSearchCriteria *)
+	?Argument@CPosLmCompositeCriteria@@QAEAAVCPosLmSearchCriteria@@I@Z @ 5 NONAME ; public: class CPosLmSearchCriteria & __thiscall CPosLmCompositeCriteria::Argument(unsigned int)
+	?Argument@CPosLmCompositeCriteria@@QBEABVCPosLmSearchCriteria@@I@Z @ 6 NONAME ; public: class CPosLmSearchCriteria const & __thiscall CPosLmCompositeCriteria::Argument(unsigned int)const 
+	?AttributesToSearch@CPosLmTextCriteria@@QBEKXZ @ 7 NONAME ; public: unsigned long __thiscall CPosLmTextCriteria::AttributesToSearch(void)const 
+	?CategoryItemId@CPosLmCategoryCriteria@@QBEKXZ @ 8 NONAME ; public: unsigned long __thiscall CPosLmCategoryCriteria::CategoryItemId(void)const 
+	?CategoryName@CPosLmCategoryCriteria@@QBE?AVTPtrC16@@XZ @ 9 NONAME ; public: class TPtrC16 __thiscall CPosLmCategoryCriteria::CategoryName(void)const 
+	?ClearArguments@CPosLmCompositeCriteria@@QAEXXZ @ 10 NONAME ; public: void __thiscall CPosLmCompositeCriteria::ClearArguments(void)
+	?ClearPositionFieldsToSearch@CPosLmTextCriteria@@QAEXXZ @ 11 NONAME ; public: void __thiscall CPosLmTextCriteria::ClearPositionFieldsToSearch(void)
+	?CompositionType@CPosLmCompositeCriteria@@QBE?AW4TCompositionType@1@XZ @ 12 NONAME ; public: enum CPosLmCompositeCriteria::TCompositionType __thiscall CPosLmCompositeCriteria::CompositionType(void)const 
+	?CriteriaType@CPosLmSearchCriteria@@QBE?AW4TCriteriaType@1@XZ @ 13 NONAME ; public: enum CPosLmSearchCriteria::TCriteriaType __thiscall CPosLmSearchCriteria::CriteriaType(void)const 
+	?GetCoordinate@CPosLmNearestCriteria@@QBEXAAVTCoordinate@@@Z @ 14 NONAME ; public: void __thiscall CPosLmNearestCriteria::GetCoordinate(class TCoordinate &)const 
+	?GetLandmarkIdsL@CPosLmIdListCriteria@@QBEXAAV?$RArray@K@@@Z @ 15 NONAME ; public: void __thiscall CPosLmIdListCriteria::GetLandmarkIdsL(class RArray<unsigned long> &)const 
+	?GetPositionFieldsToSearchL@CPosLmTextCriteria@@QBEXAAV?$RArray@I@@@Z @ 16 NONAME ; public: void __thiscall CPosLmTextCriteria::GetPositionFieldsToSearchL(class RArray<unsigned int> &)const 
+	?GetSearchArea@CPosLmAreaCriteria@@QBEXAAN000@Z @ 17 NONAME ; public: void __thiscall CPosLmAreaCriteria::GetSearchArea(double &,double &,double &,double &)const 
+	?GlobalCategory@CPosLmCategoryCriteria@@QBEGXZ @ 18 NONAME ; public: unsigned short __thiscall CPosLmCategoryCriteria::GlobalCategory(void)const 
+	?MaxDistance@CPosLmNearestCriteria@@QBEMXZ @ 19 NONAME ; public: float __thiscall CPosLmNearestCriteria::MaxDistance(void)const 
+	?MaxNumOfMatches@CPosLandmarkSearch@@QBEHXZ @ 20 NONAME ; public: int __thiscall CPosLandmarkSearch::MaxNumOfMatches(void)const 
+	?NewL@CPosLandmarkSearch@@SAPAV1@AAVCPosLandmarkDatabase@@@Z @ 21 NONAME ; public: static class CPosLandmarkSearch * __cdecl CPosLandmarkSearch::NewL(class CPosLandmarkDatabase &)
+	?NewLC@CPosLmAreaCriteria@@SAPAV1@ABN000@Z @ 22 NONAME ; public: static class CPosLmAreaCriteria * __cdecl CPosLmAreaCriteria::NewLC(double const &,double const &,double const &,double const &)
+	?NewLC@CPosLmCatNameCriteria@@SAPAV1@XZ @ 23 NONAME ; public: static class CPosLmCatNameCriteria * __cdecl CPosLmCatNameCriteria::NewLC(void)
+	?NewLC@CPosLmCategoryCriteria@@SAPAV1@XZ @ 24 NONAME ; public: static class CPosLmCategoryCriteria * __cdecl CPosLmCategoryCriteria::NewLC(void)
+	?NewLC@CPosLmCompositeCriteria@@SAPAV1@W4TCompositionType@1@@Z @ 25 NONAME ; public: static class CPosLmCompositeCriteria * __cdecl CPosLmCompositeCriteria::NewLC(enum CPosLmCompositeCriteria::TCompositionType)
+	?NewLC@CPosLmIdListCriteria@@SAPAV1@XZ @ 26 NONAME ; public: static class CPosLmIdListCriteria * __cdecl CPosLmIdListCriteria::NewLC(void)
+	?NewLC@CPosLmNearestCriteria@@SAPAV1@ABVTCoordinate@@H@Z @ 27 NONAME ; public: static class CPosLmNearestCriteria * __cdecl CPosLmNearestCriteria::NewLC(class TCoordinate const &,int)
+	?NewLC@CPosLmTextCriteria@@SAPAV1@XZ @ 28 NONAME ; public: static class CPosLmTextCriteria * __cdecl CPosLmTextCriteria::NewLC(void)
+	?NumOfArguments@CPosLmCompositeCriteria@@QBEIXZ @ 29 NONAME ; public: unsigned int __thiscall CPosLmCompositeCriteria::NumOfArguments(void)const 
+	?RemoveArgument@CPosLmCompositeCriteria@@QAEPAVCPosLmSearchCriteria@@I@Z @ 30 NONAME ; public: class CPosLmSearchCriteria * __thiscall CPosLmCompositeCriteria::RemoveArgument(unsigned int)
+	?SearchPattern@CPosLmCatNameCriteria@@QBE?AVTPtrC16@@XZ @ 31 NONAME ; public: class TPtrC16 __thiscall CPosLmCatNameCriteria::SearchPattern(void)const 
+	?SetAttributesToSearch@CPosLmTextCriteria@@QAEXK@Z @ 32 NONAME ; public: void __thiscall CPosLmTextCriteria::SetAttributesToSearch(unsigned long)
+	?SetCategoryItemId@CPosLmCategoryCriteria@@QAEXK@Z @ 33 NONAME ; public: void __thiscall CPosLmCategoryCriteria::SetCategoryItemId(unsigned long)
+	?SetCategoryNameL@CPosLmCategoryCriteria@@QAEXABVTDesC16@@@Z @ 34 NONAME ; public: void __thiscall CPosLmCategoryCriteria::SetCategoryNameL(class TDesC16 const &)
+	?SetCompositionType@CPosLmCompositeCriteria@@QAEXW4TCompositionType@1@@Z @ 35 NONAME ; public: void __thiscall CPosLmCompositeCriteria::SetCompositionType(enum CPosLmCompositeCriteria::TCompositionType)
+	?SetCoordinate@CPosLmNearestCriteria@@QAEXABVTCoordinate@@@Z @ 36 NONAME ; public: void __thiscall CPosLmNearestCriteria::SetCoordinate(class TCoordinate const &)
+	?SetGlobalCategory@CPosLmCategoryCriteria@@QAEXG@Z @ 37 NONAME ; public: void __thiscall CPosLmCategoryCriteria::SetGlobalCategory(unsigned short)
+	?SetLandmarkIdsL@CPosLmIdListCriteria@@QAEXABV?$RArray@K@@@Z @ 38 NONAME ; public: void __thiscall CPosLmIdListCriteria::SetLandmarkIdsL(class RArray<unsigned long> const &)
+	?SetMaxDistance@CPosLmNearestCriteria@@QAEXM@Z @ 39 NONAME ; public: void __thiscall CPosLmNearestCriteria::SetMaxDistance(float)
+	?SetMaxNumOfMatches@CPosLandmarkSearch@@QAEXH@Z @ 40 NONAME ; public: void __thiscall CPosLandmarkSearch::SetMaxNumOfMatches(int)
+	?SetPositionFieldsToSearchL@CPosLmTextCriteria@@QAEXABV?$RArray@I@@@Z @ 41 NONAME ; public: void __thiscall CPosLmTextCriteria::SetPositionFieldsToSearchL(class RArray<unsigned int> const &)
+	?SetSearchArea@CPosLmAreaCriteria@@QAEHABN000@Z @ 42 NONAME ; public: int __thiscall CPosLmAreaCriteria::SetSearchArea(double const &,double const &,double const &,double const &)
+	?SetSearchPatternL@CPosLmCatNameCriteria@@QAEXABVTDesC16@@@Z @ 43 NONAME ; public: void __thiscall CPosLmCatNameCriteria::SetSearchPatternL(class TDesC16 const &)
+	?SetTextL@CPosLmTextCriteria@@QAEXABVTDesC16@@@Z @ 44 NONAME ; public: void __thiscall CPosLmTextCriteria::SetTextL(class TDesC16 const &)
+	?SetUseCoverageRadius@CPosLmNearestCriteria@@QAEXH@Z @ 45 NONAME ; public: void __thiscall CPosLmNearestCriteria::SetUseCoverageRadius(int)
+	?Text@CPosLmTextCriteria@@QBE?AVTPtrC16@@XZ @ 46 NONAME ; public: class TPtrC16 __thiscall CPosLmTextCriteria::Text(void)const 
+	?UseCoverageRadius@CPosLmNearestCriteria@@QBEHXZ @ 47 NONAME ; public: int __thiscall CPosLmNearestCriteria::UseCoverageRadius(void)const 
+	?Category@CPosLmDisplayItem@@QBEABVCPosLandmarkCategory@@XZ @ 48 NONAME ; class CPosLandmarkCategory const & CPosLmDisplayItem::Category(void) const
+	?Count@CPosLmDisplayData@@QBEHXZ @ 49 NONAME ; int CPosLmDisplayData::Count(void) const
+	?DatabaseIndex@CPosLmDisplayItem@@QBEIXZ @ 50 NONAME ; unsigned int CPosLmDisplayItem::DatabaseIndex(void) const
+	?DisplayItem@CPosLmDisplayData@@QBEAAVCPosLmDisplayItem@@H@Z @ 51 NONAME ; class CPosLmDisplayItem & CPosLmDisplayData::DisplayItem(int) const
+	?DisplayItemType@CPosLmDisplayItem@@QBE?AW4TDisplayItemType@1@XZ @ 52 NONAME ; enum CPosLmDisplayItem::TDisplayItemType CPosLmDisplayItem::DisplayItemType(void) const
+	?GetDistance@CPosLmDisplayItem@@QBEHAAM@Z @ 53 NONAME ; int CPosLmDisplayItem::GetDistance(float &) const
+	?InsertInDistanceOrderL@PosLmDisplayDataHandler@@SAXAAVCPosLmDisplayData@@PAVCPosLmDisplayItem@@@Z @ 54 NONAME ; void PosLmDisplayDataHandler::InsertInDistanceOrderL(class CPosLmDisplayData &, class CPosLmDisplayItem *)
+	?InsertItemInOrderL@PosLmDisplayDataHandler@@SAXAAVCPosLmDisplayData@@PAVCPosLmDisplayItem@@VTPosLmSortPref@@@Z @ 55 NONAME ; void PosLmDisplayDataHandler::InsertItemInOrderL(class CPosLmDisplayData &, class CPosLmDisplayItem *, class TPosLmSortPref)
+	?InsertItemInOrderL@PosLmDisplayDataHandler@@SAXAAVCPosLmDisplayData@@PAVCPosLmDisplayItem@@W4TCategorySortPref@CPosLmCategoryManager@@@Z @ 56 NONAME ; void PosLmDisplayDataHandler::InsertItemInOrderL(class CPosLmDisplayData &, class CPosLmDisplayItem *, enum CPosLmCategoryManager::TCategorySortPref)
+	?InsertItemL@PosLmDisplayDataHandler@@SAXAAVCPosLmDisplayData@@PAVCPosLmDisplayItem@@@Z @ 57 NONAME ; void PosLmDisplayDataHandler::InsertItemL(class CPosLmDisplayData &, class CPosLmDisplayItem *)
+	?Landmark@CPosLmDisplayItem@@QBEABVCPosLandmark@@XZ @ 58 NONAME ; class CPosLandmark const & CPosLmDisplayItem::Landmark(void) const
+	?NewItemIndex@CPosLmDisplayData@@QAEHXZ @ 59 NONAME ; int CPosLmDisplayData::NewItemIndex(void)
+	?NewL@CPosLmDisplayData@@SAPAV1@XZ @ 60 NONAME ; class CPosLmDisplayData * CPosLmDisplayData::NewL(void)
+	?NewL@CPosLmDisplayItem@@SAPAV1@PAVCPosLandmark@@I@Z @ 61 NONAME ; class CPosLmDisplayItem * CPosLmDisplayItem::NewL(class CPosLandmark *, unsigned int)
+	?NewL@CPosLmDisplayItem@@SAPAV1@PAVCPosLandmarkCategory@@I@Z @ 62 NONAME ; class CPosLmDisplayItem * CPosLmDisplayItem::NewL(class CPosLandmarkCategory *, unsigned int)
+	?PartialReadParameters@PosLmSearchImplExtension@@SAPAVCPosLmPartialReadParameters@@ABVCPosLmDisplayData@@@Z @ 63 NONAME ; class CPosLmPartialReadParameters * PosLmSearchImplExtension::PartialReadParameters(class CPosLmDisplayData const &)
+	?RemoveItem@PosLmDisplayDataHandler@@SAPAVCPosLmDisplayItem@@AAVCPosLmDisplayData@@H@Z @ 64 NONAME ; class CPosLmDisplayItem * PosLmDisplayDataHandler::RemoveItem(class CPosLmDisplayData &, int)
+	?Reset@CPosLmDisplayData@@QAEXXZ @ 65 NONAME ; void CPosLmDisplayData::Reset(void)
+	?SetDatabaseIndex@PosLmSearchImplExtension@@SAXAAVCPosLmDisplayItem@@I@Z @ 66 NONAME ; void PosLmSearchImplExtension::SetDatabaseIndex(class CPosLmDisplayItem &, unsigned int)
+	?SetDistance@PosLmSearchImplExtension@@SAXAAVCPosLmDisplayItem@@M@Z @ 67 NONAME ; void PosLmSearchImplExtension::SetDistance(class CPosLmDisplayItem &, float)
+	?SetPartialReadParametersL@CPosLmDisplayData@@QAEXABVCPosLmPartialReadParameters@@@Z @ 68 NONAME ; void CPosLmDisplayData::SetPartialReadParametersL(class CPosLmPartialReadParameters const &)
+	?UnsetPartialReadParameters@CPosLmDisplayData@@QAEXXZ @ 69 NONAME ; void CPosLmDisplayData::UnsetPartialReadParameters(void)
+	?FindItemIndex@PosLmDisplayDataHandler@@SAHAAVCPosLmDisplayData@@PAVCPosLmDisplayItem@@@Z @ 70 NONAME ; int PosLmDisplayDataHandler::FindItemIndex(class CPosLmDisplayData &, class CPosLmDisplayItem *)
+	?CopyItemLC@PosLmDisplayDataHandler@@SAPAVCPosLmDisplayItem@@AAVCPosLmDisplayData@@H@Z @ 71 NONAME ; class CPosLmDisplayItem * PosLmDisplayDataHandler::CopyItemLC(class CPosLmDisplayData &, int)
+	?InsertItemL@PosLmDisplayDataHandler@@SAXAAVCPosLmDisplayData@@PAVCPosLmDisplayItem@@I@Z @ 72 NONAME ; void PosLmDisplayDataHandler::InsertItemL(class CPosLmDisplayData &, class CPosLmDisplayItem *, unsigned int)
+

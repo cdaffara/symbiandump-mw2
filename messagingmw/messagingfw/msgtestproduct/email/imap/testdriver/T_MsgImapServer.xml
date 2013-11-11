@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteServer SYSTEM "file:///c:/program files/common files/symbian/testExecuteServer.dtd" [ ]>
+<testExecuteServer>
+
+	<name>T_MsgImapServer</name>
+	<mmpFile>T_ImapServer.mmp</mmpFile>
+	<bldInfPath>email\imap\group\bld.inf</bldInfPath>
+
+	<dependencies>
+		<build type="test">
+			<hostPath>T_MsgUtilityServer.dll</hostPath>
+			<devicePath>c:\sys\Libs\T_MsgUtilityServer.dll</devicePath>
+			<mmpFile>T_Utils.mmp</mmpFile>
+			<bldInfPath>testutils\group\bld.inf</bldInfPath>
+		</build>
+		<data>
+			<hostPath>\epoc32\WINSCW\C\msgtest\MachineName.txt</hostPath>
+			<devicePath>c:\msgtest\MachineName.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\WINSCW\C\UserResponse.txt</hostPath>
+			<devicePath>c:\UserResponse.txt</devicePath>
+		</data>
+	</dependencies>
+
+</testExecuteServer>
+

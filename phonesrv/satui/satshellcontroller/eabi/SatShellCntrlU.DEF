@@ -1,0 +1,5 @@
+EXPORTS
+	_Z16NewSatControllerv @ 1 NONAME
+	_ZTI19CSatShellController @ 2 NONAME ; #<TI>#
+	_ZTV19CSatShellController @ 3 NONAME ; #<VT>#
+

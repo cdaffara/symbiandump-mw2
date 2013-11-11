@@ -1,0 +1,11 @@
+EXPORTS
+	??1CMcn@@UAE@XZ @ 1 NONAME ; public: virtual __thiscall CMcn::~CMcn(void)
+	?AddCbTopicL@CMcnTopicArray@@QAEXG@Z @ 2 NONAME ; public: void __thiscall CMcnTopicArray::AddCbTopicL(unsigned short)
+	?GetCellInfo@CMcn@@QBEHAAVTDes16@@@Z @ 3 NONAME ; public: int __thiscall CMcn::GetCellInfo(class TDes16 &)const 
+	?NewL@CMcn@@SAPAV1@XZ @ 4 NONAME ; public: static class CMcn * __cdecl CMcn::NewL(void)
+	?NewL@CMcnTopicArray@@SAPAV1@XZ @ 5 NONAME ; public: static class CMcnTopicArray * __cdecl CMcnTopicArray::NewL(void)
+	?RegisterL@CMcn@@QAEXPAVMCbsMcnObserver@@ABVCMcnTopicArray@@@Z @ 6 NONAME ; public: void __thiscall CMcn::RegisterL(class MCbsMcnObserver *,class CMcnTopicArray const &)
+	?Unregister@CMcn@@QAEXPAVMCbsMcnObserver@@@Z @ 7 NONAME ; public: void __thiscall CMcn::Unregister(class MCbsMcnObserver *)
+	?GetInfoMessage@CMcn@@QBEHAAVTDes16@@H@Z @ 8 NONAME ; public: int __thiscall CMcn::GetInfoMessage(class TDes16 &,int)const 
+	?GetTopicNumber@CMcnTopicArray@@QBEXABIAAI@Z @ 9 NONAME ; public: void __thiscall CMcnTopicArray::GetTopicNumber(unsigned int const &,unsigned int &)const 
+

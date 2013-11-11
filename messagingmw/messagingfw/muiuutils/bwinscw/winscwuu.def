@@ -1,0 +1,14 @@
+EXPORTS
+	?GetListOfAccountsWithMTML@MsvUiServiceUtilities@@SAPAVCMsvEntrySelection@@AAVCMsvSession@@VTUid@@H@Z @ 1 NONAME ; class CMsvEntrySelection * MsvUiServiceUtilities::GetListOfAccountsWithMTML(class CMsvSession &, class TUid, int)
+	?NewLC@CMsvSingleOpWatcher@@SAPAV1@AAVMMsvSingleOpWatcher@@@Z @ 2 NONAME ; class CMsvSingleOpWatcher * CMsvSingleOpWatcher::NewLC(class MMsvSingleOpWatcher &)
+	?NewL@CMsvSingleOpWatcher@@SAPAV1@AAVMMsvSingleOpWatcher@@@Z @ 3 NONAME ; class CMsvSingleOpWatcher * CMsvSingleOpWatcher::NewL(class MMsvSingleOpWatcher &)
+	?SetOperation@CMsvSingleOpWatcher@@QAEXPAVCMsvOperation@@@Z @ 4 NONAME ; void CMsvSingleOpWatcher::SetOperation(class CMsvOperation *)
+	?ResetL@MsvFactorySettings@@SAXW4TMsvFactorySettingsLevel@@@Z @ 5 NONAME ; void MsvFactorySettings::ResetL(enum TMsvFactorySettingsLevel)
+	?Operation@CMsvSingleOpWatcher@@QBEAAVCMsvOperation@@XZ @ 6 NONAME ; class CMsvOperation & CMsvSingleOpWatcher::Operation(void) const
+	?DiskSpaceBelowCriticalLevelL@MsvUiServiceUtilities@@SAHAAVCMsvSession@@H@Z @ 7 NONAME ; int MsvUiServiceUtilities::DiskSpaceBelowCriticalLevelL(class CMsvSession &, int)
+	??1CMsvSingleOpWatcher@@UAE@XZ @ 8 NONAME ; CMsvSingleOpWatcher::~CMsvSingleOpWatcher(void)
+	?GetListOfAccountsL@MsvUiServiceUtilities@@SAPAVCMsvEntrySelection@@AAVCMsvSession@@H@Z @ 9 NONAME ; class CMsvEntrySelection * MsvUiServiceUtilities::GetListOfAccountsL(class CMsvSession &, int)
+	?IsValidDomainL@MsvUiServiceUtilities@@SAHABVTDesC16@@@Z @ 10 NONAME ; int MsvUiServiceUtilities::IsValidDomainL(class TDesC16 const &)
+	?IsValidEmailAddressL@MsvUiServiceUtilities@@SAHABVTDesC16@@@Z @ 11 NONAME ; int MsvUiServiceUtilities::IsValidEmailAddressL(class TDesC16 const &)
+	?DiskSpaceBelowCriticalLevelWithOverheadL@MsvUiServiceUtilities@@SAHAAVCMsvSession@@HH@Z @ 12 NONAME ; int MsvUiServiceUtilities::DiskSpaceBelowCriticalLevelWithOverheadL(class CMsvSession &, int, int)
+

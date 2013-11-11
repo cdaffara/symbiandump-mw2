@@ -1,0 +1,9 @@
+EXPORTS
+	_Z9LibEntryLR13CTestModuleIf @ 1 NONAME
+	_ZTI14CSimpleTimeout @ 2 NONAME ; #<TI>#
+	_ZTV14CSimpleTimeout @ 3 NONAME ; #<VT>#
+	_ZTI17CEdwinTestControl @ 4 NONAME ; #<TI>#
+	_ZTI22CDummyMpxPluginHandler @ 5 NONAME ; #<TI>#
+	_ZTV17CEdwinTestControl @ 6 NONAME ; #<VT>#
+	_ZTV22CDummyMpxPluginHandler @ 7 NONAME ; #<VT>#
+

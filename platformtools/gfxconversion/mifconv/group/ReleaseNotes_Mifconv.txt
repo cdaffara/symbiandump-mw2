@@ -1,0 +1,171 @@
+===============================================================================
+
+RELEASE NOTES - MIFCONV v3.3.0
+RELEASED 10th August 2010 
+
+SUPPORTS S60 3.2+
+
+===============================================================================
+
+Product Description:
+====================
+Mifconv is a Multi-Icon File (MIF) converter tool for generating MIF, MBM and 
+MBG header files from SVGB, SVG and BMP sources. It can be called directly 
+from the command line or from the PRJ_EXTENSIONS block in a component's 
+bld.inf file, utilizing makefile templates during the build process.
+
+Main Features:
+==============
+- Command line interface for calling Mifconv from custom makefiles
+- Makefile templates for incremental building, supporting GNU make syntax for
+  ABLD build system and FLM syntax for SBSv2 build system
+- Generating MIF files from SVG/SVGB icon sources and BMP file ids
+- Converting SVG to SVGB with the Svgtbinencode utility
+- Generating MBM files (alternatively with Bmconv utility given with -B
+  parameter)
+- Generating icon id enumeration MBG header files from the given source files
+
+===============================================================================
+
+What's New in v3.3.0
+====================
+- Change: Most of the FLM functionality is now in Python with speed
+  optimizations and dependency checks doesn't report false warnings anymore
+- Change: SBSv2 dependency is now version 2.13.0 or higher
+- Feature: Via FLM it is now possible to define Mifconv and Svgtbinencode
+  locations outside EPOCROOT
+
+===============================================================================
+
+Installation Notes:
+===================
+Mifconv is pre-installed in an SDK environment and does not contain any 
+Symbian software counterparts. 
+
+===============================================================================
+
+System Requirements:
+====================
+Basic Requirements:
+- Any S60 3.2 or higher RnD environment
+- SBSv2 2.13.0 or higher for SBSv2 compilation
+
+===============================================================================
+
+Compatibility Issues:
+=====================
+N/A
+
+===============================================================================
+
+Known Issues:
+=============
+- There must not be any spaces in a path given with -B parameter
+- Depth parameter must always be given for each bitmap
+- Heavier components, such as avkon2.mif, are not supported in ABLD build
+  system due to restrictions in GNU make in the SDK
+- If you don't specify TARGETFILE in the bld.inf at all but only a HEADERFILE,
+  the MBM file will be generated to the header file directory 
+
+===============================================================================
+
+Version History:
+================
+
+Version 3.2.2 - 28th April 2010
+-------------------------------
+- Fix: Mifconv now support the marking ".\" in front of a filename in Linux.
+- Fix: Mifconv now compiles correctly in Linux.
+
+Version 3.2.1 - 20th April 2010
+-------------------------------
+- Change: Added new default search directories for icon files
+
+Version 3.2.0 - 24th February 2010
+----------------------------------
+- Change: Removed dependencies to BMCONV tool by adding the BMCONV encoding 
+  functionality as a part of MifConv functionality. External BMCONV tool can still 
+  be used by giving -B parameter.
+
+Version 3.1.7 - 10th July 2009
+------------------------------
+- Fix: MIF-file is created also when no input files are given.
+- Fix: Correct build directory used with mifconv.flm.
+- Fix: MBM-file is included in RELEASABLES macro in mifconv.flm.
+- Fix: '/' is not a valid option prefix in Linux. Only '-' is allowed.
+- Change: If SBS_BUILD_DIR environment variable is defined, it is used as 
+  a base of temporary icon folder.
+
+Version 3.1.6 - 22nd June 2009
+------------------------------
+- Fix: Mifconv.xml updated to schema version 2.0
+
+Version 3.1.5 - 30th April 2009
+-------------------------------
+- Fix: Supressed most of the "overriding commands for target..." warnings 
+  when using mifconv.flm and parallel building.
+- Fix: When using mifconv.flm, svg conversion fails because of unsufficient
+  file access rights after copying the svg files to intermediate directory.
+
+Version 3.1.4 - 17th April 2009 
+-------------------------------
+- Fix: Directory separators in EPOCROOT environment variable and source-
+  directories fixed in mifconv.exe. In some cases there were mixed '/' and '\'
+  characters in a path.
+- Change: Intermediate directory for SVGB files is unique for target component.
+  For example: For target myicons.mif, intermediate directory would be:
+  <EPOCROOT>/epoc32/build/s60/icons/myicons/
+- Fix: No error returned if mifconv.exe cannot remove mif- or mbm-files. Only
+  a warning is printed to debug log.
+- Fix: Info statements were not well-formed in mifconv.flm.
+
+Version 3.1.3 - 9th March 2009
+------------------------------
+- Fix: Removed comments corrupting SBS build log in mifconv.flm
+- Change: Mifconv.flm uses GNURM tool instead of RM.
+
+Version 3.1.2 - 20th February 2009
+----------------------------------
+- Fix: Dependency on mask files added to mifconv.flm. 
+- Fix: Parameter file given to mifconv.exe was generated wrongly when header 
+file parameter was not used with makefile templates.
+- Fix: Mifconv crashed if the file was locked in error situation. 
+- Fix: Mifconv svg conversion failed when EPOCROOT environment variable did
+not end with directory separator.
+
+Version 3.1.1 - 6th February 2009
+---------------------------------
+- Fix: If the header file to be generated is already in use, no error is returned
+  anymore. Instead a warning shown. 
+- Fix: mifconv and svgtbinencode executable name resolution fixed in mifconv.flm.
+- Change: MIFCONVDEBUG parameter added to mifconv.xml
+- Change: TOOLCAT, TOOLCOPY and TOOLMKDIR parameters added to mifconv.xml
+- Change: MIFCONVDEBUG parameter taken into use in mifconv.flm
+- Change: ABLD -what target handling added in mifconv.flm
+
+Version 3.1.0 - 23rd January 2009
+---------------------------------
+- Change: Mifconv makefile templates are included in the project.
+
+Version 3.0.1 - 28th November 2008
+----------------------------------
+- Feature: Support for NVG file format generated by SVGTBinEncode
+
+Version 3.0.0 - 14th November 2008
+----------------------------------
+- Change: Mifconv Extension templates are now a part of normal Mifconv package 
+- Feature: Custom input directories can be given with -i parameter
+- Feature: SVGB binary files can be given as input
+- Feature: Mifconv can be compiled and used in Linux environment
+- Fix: Bmconv is no longer executed from makefile templates, but always from
+  the main executable to avoid problems in the build process
+
+===============================================================================
+
+Copyright (c) 2010 Nokia Corporation and/or its subsidiary(-ies).
+All rights reserved.
+
+This component and the accompanying materials are made available
+under the terms of "Eclipse Public License v1.0"
+which accompanies this distribution, and is available
+at the URL "http://www.eclipse.org/legal/epl-v10.html".

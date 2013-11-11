@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<api id="f7f26a357dcbf067a342aea4c6f192c4" dataversion="1.0">
+  <name>Authorization API</name>
+  <description>API for presence rules. It supports authorization rule management by: 
+- creating modifying and deleting individual rules
+- creating, modifying and deleting default policy</description>
+  <type>c++</type>
+  <subsystem>simpleengine</subsystem>
+  <libs>
+    <lib name="rlspresxdm.lib" />
+  </libs>
+  <release category="domain"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>yes</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

@@ -1,0 +1,114 @@
+EXPORTS
+	??0CDummyWSPCOTrans@@QAE@AAVCDummyWSPCOConn@@@Z @ 1 NONAME ; public: __thiscall CDummyWSPCOTrans::CDummyWSPCOTrans(class CDummyWSPCOConn &)
+	??0CWapBoundCLPushService@@IAE@XZ @ 2 NONAME ; protected: __thiscall CWapBoundCLPushService::CWapBoundCLPushService(void)
+	??0RWAPServ@@QAE@XZ @ 3 NONAME ; public: __thiscall RWAPServ::RWAPServ(void)
+	??0RWSPCOTrans@@QAE@XZ @ 4 NONAME ; public: __thiscall RWSPCOTrans::RWSPCOTrans(void)
+	??0TAliasAddress@@QAE@XZ @ 5 NONAME ; public: __thiscall TAliasAddress::TAliasAddress(void)
+	??1CCapCodec@@UAE@XZ @ 6 NONAME ; public: virtual __thiscall CCapCodec::~CCapCodec(void)
+	??1CDummyWSPCOTrans@@UAE@XZ @ 7 NONAME ; public: virtual __thiscall CDummyWSPCOTrans::~CDummyWSPCOTrans(void)
+	??1CWapBoundCLPushService@@UAE@XZ @ 8 NONAME ; public: virtual __thiscall CWapBoundCLPushService::~CWapBoundCLPushService(void)
+	??1RWSPCOTrans@@QAE@XZ @ 9 NONAME ; public: __thiscall RWSPCOTrans::~RWSPCOTrans(void)
+	??1TAliasAddress@@QAE@XZ @ 10 NONAME ; public: __thiscall TAliasAddress::~TAliasAddress(void)
+	?Abort@RWSPCOTrans@@QAEHE@Z @ 11 NONAME ; public: int __thiscall RWSPCOTrans::Abort(unsigned char)
+	?Acknowledge@RWSPCOTrans@@QAEHABVTDesC8@@@Z @ 12 NONAME ; public: int __thiscall RWSPCOTrans::Acknowledge(class TDesC8 const &)
+	?AddAliasAddress@CCapCodec@@QAEHABVTAliasAddress@@@Z @ 13 NONAME ; public: int __thiscall CCapCodec::AddAliasAddress(class TAliasAddress const &)
+	?AddCodePage@CCapCodec@@QAEHAAVTDes8@@E@Z @ 14 NONAME ; public: int __thiscall CCapCodec::AddCodePage(class TDes8 &,unsigned char)
+	?AddExtendedMethod@CCapCodec@@QAEHAAVTDes8@@E@Z @ 15 NONAME ; public: int __thiscall CCapCodec::AddExtendedMethod(class TDes8 &,unsigned char)
+	?AddUnknownCap@CCapCodec@@QAEHAAVTDes8@@ABVTDesC8@@@Z @ 16 NONAME ; public: int __thiscall CCapCodec::AddUnknownCap(class TDes8 &,class TDesC8 const &)
+	?Address@TAliasAddress@@QBEABVTDesC8@@XZ @ 17 NONAME ; public: class TDesC8 const & __thiscall TAliasAddress::Address(void)const 
+	?AwaitPush@RWSPCLConn@@QAEHAAVTDes8@@0AAIAAVTRequestStatus@@@Z @ 18 NONAME ; public: int __thiscall RWSPCLConn::AwaitPush(class TDes8 &,class TDes8 &,unsigned int &,class TRequestStatus &)
+	?Bearer@TAliasAddress@@QBEEXZ @ 19 NONAME ; public: unsigned char __thiscall TAliasAddress::Bearer(void)const 
+	?CancelAwaitPush@RWSPCLConn@@QAEXXZ @ 20 NONAME ; public: void __thiscall RWSPCLConn::CancelAwaitPush(void)
+	?CancelConnect@RWTLS@@QAEXXZ @ 21 NONAME ; public: void __thiscall RWTLS::CancelConnect(void)
+	?CancelConnectPhaseTwo@RWTLS@@QAEXXZ @ 22 NONAME ; public: void __thiscall RWTLS::CancelConnectPhaseTwo(void)
+	?CancelGetEvent@CDummyWSPCOConn@@QAEXXZ @ 23 NONAME ; public: void __thiscall CDummyWSPCOConn::CancelGetEvent(void)
+	?CancelGetEvent@RWSPCOConn@@QAEXXZ @ 24 NONAME ; public: void __thiscall RWSPCOConn::CancelGetEvent(void)
+	?CancelUnitWaitPush@RWSPCLConn@@QAEXXZ @ 25 NONAME ; public: void __thiscall RWSPCLConn::CancelUnitWaitPush(void)
+	?CapEncodeSize@CCapCodec@@ABEHXZ @ 26 NONAME ; private: int __thiscall CCapCodec::CapEncodeSize(void)const 
+	?ClientSDUSize@CCapCodec@@QBEXAAK@Z @ 27 NONAME ; public: void __thiscall CCapCodec::ClientSDUSize(unsigned long &)const 
+	?Close@RWAPConn@@UAEHXZ @ 28 NONAME ; public: virtual int __thiscall RWAPConn::Close(void)
+	?Close@RWAPServ@@QAEXXZ @ 29 NONAME ; public: void __thiscall RWAPServ::Close(void)
+	?Close@RWSPCOConn@@UAEHXZ @ 30 NONAME ; public: virtual int __thiscall RWSPCOConn::Close(void)
+	?CloseSession@CDummyWapStack@@QAEXPAVCDummyWapSession@@@Z @ 31 NONAME ; public: void __thiscall CDummyWapStack::CloseSession(class CDummyWapSession *)
+	?CompleteGetEventL@CDummyWSPCOConn@@QAEXAAV?$TPckgBuf@H@@AAVCDummyWSPCOTrans@@@Z @ 32 NONAME ; public: void __thiscall CDummyWSPCOConn::CompleteGetEventL(class TPckgBuf<int> &,class CDummyWSPCOTrans &)
+	?CompleteUnitWaitPushL@CDummyWSPCLConn@@QAEXAAVTDes8@@0@Z @ 33 NONAME ; public: void __thiscall CDummyWSPCLConn::CompleteUnitWaitPushL(class TDes8 &,class TDes8 &)
+	?Connect@RWAPServ@@QAEHH@Z @ 34 NONAME ; public: int __thiscall RWAPServ::Connect(int)
+	?Connect@RWSPCOConn@@QAEHABVTDesC8@@PAVCCapCodec@@@Z @ 35 NONAME ; public: int __thiscall RWSPCOConn::Connect(class TDesC8 const &,class CCapCodec *)
+	?Connect@RWTLS@@QAEXAAVTRequestStatus@@H@Z @ 36 NONAME ; public: void __thiscall RWTLS::Connect(class TRequestStatus &,int)
+	?ConnectPhaseTwo@RWTLS@@QAEHAAVTRequestStatus@@@Z @ 37 NONAME ; public: int __thiscall RWTLS::ConnectPhaseTwo(class TRequestStatus &)
+	?ConstructL@CCapCodec@@AAEXABVTDesC8@@@Z @ 38 NONAME ; private: void __thiscall CCapCodec::ConstructL(class TDesC8 const &)
+	?ConstructL@CCapCodec@@AAEXXZ @ 39 NONAME ; private: void __thiscall CCapCodec::ConstructL(void)
+	?CreateTransaction@RWSPCOConn@@QAEHW4TMethod@RWAPConn@@ABVTDesC16@@ABVTDesC8@@2AAVRWSPCOTrans@@@Z @ 40 NONAME ; public: int __thiscall RWSPCOConn::CreateTransaction(enum RWAPConn::TMethod,class TDesC16 const &,class TDesC8 const &,class TDesC8 const &,class RWSPCOTrans &)
+	?Decode@CCapCodec@@AAEHABVTDesC8@@@Z @ 41 NONAME ; private: int __thiscall CCapCodec::Decode(class TDesC8 const &)
+	?Delete@RCertificate@@QAEHABVTDesC8@@@Z @ 42 NONAME ; public: int __thiscall RCertificate::Delete(class TDesC8 const &)
+	?Disconnect@RWSPCOConn@@QAEHXZ @ 43 NONAME ; public: int __thiscall RWSPCOConn::Disconnect(void)
+	?Encode@CCapCodec@@ABEHAAVTDes8@@@Z @ 44 NONAME ; private: int __thiscall CCapCodec::Encode(class TDes8 &)const 
+	?FindFirst@RCertificate@@QBEHAAVTDes8@@AAG@Z @ 45 NONAME ; public: int __thiscall RCertificate::FindFirst(class TDes8 &,unsigned short &)const 
+	?FindNext@RCertificate@@QBEHAAVTDes8@@AAG@Z @ 46 NONAME ; public: int __thiscall RCertificate::FindNext(class TDes8 &,unsigned short &)const 
+	?GetAliasAddress@CCapCodec@@QBEHHAAVTAliasAddress@@@Z @ 47 NONAME ; public: int __thiscall CCapCodec::GetAliasAddress(int,class TAliasAddress &)const 
+	?GetCipherSuite@RWTLS@@QBEHAAUTCipherSuite@1@@Z @ 48 NONAME ; public: int __thiscall RWTLS::GetCipherSuite(struct RWTLS::TCipherSuite &)const 
+	?GetCodePage@CCapCodec@@QBEHHAAVTDes8@@AAE@Z @ 49 NONAME ; public: int __thiscall CCapCodec::GetCodePage(int,class TDes8 &,unsigned char &)const 
+	?GetData@RWSPCOTrans@@QBEHAAVTDes8@@W4TDataType@1@PAH@Z @ 50 NONAME ; public: int __thiscall RWSPCOTrans::GetData(class TDes8 &,enum RWSPCOTrans::TDataType,int *)const 
+	?GetEvent@RWSPCOConn@@QBEHAAV?$TPckgBuf@H@@AAVRWSPCOTrans@@@Z @ 51 NONAME ; public: int __thiscall RWSPCOConn::GetEvent(class TPckgBuf<int> &,class RWSPCOTrans &)const 
+	?GetEvent@RWSPCOConn@@QBEXAAV?$TPckgBuf@H@@AAVRWSPCOTrans@@AAVTRequestStatus@@@Z @ 52 NONAME ; public: void __thiscall RWSPCOConn::GetEvent(class TPckgBuf<int> &,class RWSPCOTrans &,class TRequestStatus &)const 
+	?GetExtendedMethod@CCapCodec@@QBEHHAAVTDes8@@AAE@Z @ 53 NONAME ; public: int __thiscall CCapCodec::GetExtendedMethod(int,class TDes8 &,unsigned char &)const 
+	?GetKeyRefreshRate@RWTLS@@QBEHAAE@Z @ 54 NONAME ; public: int __thiscall RWTLS::GetKeyRefreshRate(unsigned char &)const 
+	?GetNrOfEvents@RWSPCOConn@@QBEHAAI@Z @ 55 NONAME ; public: int __thiscall RWSPCOConn::GetNrOfEvents(unsigned int &)const 
+	?GetProtocolOptions@CCapCodec@@QAEXAAK@Z @ 56 NONAME ; public: void __thiscall CCapCodec::GetProtocolOptions(unsigned long &)
+	?GetPushMOR@CCapCodec@@QBEXAAE@Z @ 57 NONAME ; public: void __thiscall CCapCodec::GetPushMOR(unsigned char &)const 
+	?GetSequenceNumberMode@RWTLS@@QBEHAAW4TSequenceNumberMode@1@@Z @ 58 NONAME ; public: int __thiscall RWTLS::GetSequenceNumberMode(enum RWTLS::TSequenceNumberMode &)const 
+	?GetServerSDUSize@CCapCodec@@QBEXAAK@Z @ 59 NONAME ; public: void __thiscall CCapCodec::GetServerSDUSize(unsigned long &)const 
+	?GetSessionData@RWSPCOConn@@QBEHAAVTDes8@@W4TSessionDataType@1@@Z @ 60 NONAME ; public: int __thiscall RWSPCOConn::GetSessionData(class TDes8 &,enum RWSPCOConn::TSessionDataType)const 
+	?GetSessionState@RWSPCOConn@@QBEHAAW4TSessionState@1@@Z @ 61 NONAME ; public: int __thiscall RWSPCOConn::GetSessionState(enum RWSPCOConn::TSessionState &)const 
+	?GetState@RWSPCOTrans@@QBEHAAW4TState@1@@Z @ 62 NONAME ; public: int __thiscall RWSPCOTrans::GetState(enum RWSPCOTrans::TState &)const 
+	?GetUnknownCap@CCapCodec@@QBEHHAAVTDes8@@0@Z @ 63 NONAME ; public: int __thiscall CCapCodec::GetUnknownCap(int,class TDes8 &,class TDes8 &)const 
+	?HasBearer@TAliasAddress@@QBEEXZ @ 64 NONAME ; public: unsigned char __thiscall TAliasAddress::HasBearer(void)const 
+	?HasMsgBeenCompleted@CDummyWSPCLConn@@QAEHXZ @ 65 NONAME ; public: int __thiscall CDummyWSPCLConn::HasMsgBeenCompleted(void)
+	?HasPort@TAliasAddress@@QBEEXZ @ 66 NONAME ; public: unsigned char __thiscall TAliasAddress::HasPort(void)const 
+	?Id@RWSPCOTrans@@QAEHAAH@Z @ 67 NONAME ; public: int __thiscall RWSPCOTrans::Id(int &)
+	?Info@RCertificate@@QBEHAAUTInfo@1@@Z @ 68 NONAME ; public: int __thiscall RCertificate::Info(struct RCertificate::TInfo &)const 
+	?Load@RCertificate@@QAEHABVTDesC8@@@Z @ 69 NONAME ; public: int __thiscall RCertificate::Load(class TDesC8 const &)
+	?LoadById@RCertificate@@QAEHABG@Z @ 70 NONAME ; public: int __thiscall RCertificate::LoadById(unsigned short const &)
+	?MethodMOR@CCapCodec@@QBEXAAE@Z @ 71 NONAME ; public: void __thiscall CCapCodec::MethodMOR(unsigned char &)const 
+	?NewL@CCapCodec@@SAPAV1@ABVTDesC8@@@Z @ 72 NONAME ; public: static class CCapCodec * __cdecl CCapCodec::NewL(class TDesC8 const &)
+	?NewL@CCapCodec@@SAPAV1@XZ @ 73 NONAME ; public: static class CCapCodec * __cdecl CCapCodec::NewL(void)
+	?NewL@CDummyWapStack@@SAPAV1@AAVMDummyWapStackObserver@@@Z @ 74 NONAME ; public: static class CDummyWapStack * __cdecl CDummyWapStack::NewL(class MDummyWapStackObserver &)
+	?NewL@CWapBoundCLPushService@@SAPAV1@XZ @ 75 NONAME ; public: static class CWapBoundCLPushService * __cdecl CWapBoundCLPushService::NewL(void)
+	?NewSessionL@CDummyWapStack@@QAEPAVCDummyWapSession@@XZ @ 76 NONAME ; public: class CDummyWapSession * __thiscall CDummyWapStack::NewSessionL(void)
+	?NumAliasAddress@CCapCodec@@QBEXAAH@Z @ 77 NONAME ; public: void __thiscall CCapCodec::NumAliasAddress(int &)const 
+	?NumCodePages@CCapCodec@@QBEXAAH@Z @ 78 NONAME ; public: void __thiscall CCapCodec::NumCodePages(int &)const 
+	?NumExtendedMethods@CCapCodec@@QBEXAAH@Z @ 79 NONAME ; public: void __thiscall CCapCodec::NumExtendedMethods(int &)const 
+	?NumUnknownCap@CCapCodec@@QBEXAAH@Z @ 80 NONAME ; public: void __thiscall CCapCodec::NumUnknownCap(int &)const 
+	?Observer@CDummyWapStack@@QAEAAVMDummyWapStackObserver@@XZ @ 81 NONAME ; public: class MDummyWapStackObserver & __thiscall CDummyWapStack::Observer(void)
+	?Open@RWSPCLConn@@QAEHAAVRWAPServ@@ABVTDesC8@@GGW4TBearer@Wap@@H@Z @ 82 NONAME ; public: int __thiscall RWSPCLConn::Open(class RWAPServ &,class TDesC8 const &,unsigned short,unsigned short,enum Wap::TBearer,int)
+	?Open@RWSPCLConn@@QAEHAAVRWAPServ@@G@Z @ 83 NONAME ; public: int __thiscall RWSPCLConn::Open(class RWAPServ &,unsigned short)
+	?Open@RWSPCOConn@@QAEHAAVRWAPServ@@ABVTDesC8@@GGW4TBearer@@H@Z @ 84 NONAME ; public: int __thiscall RWSPCOConn::Open(class RWAPServ &,class TDesC8 const &,unsigned short,unsigned short,enum TBearer,int)
+	?Port@TAliasAddress@@QBEGXZ @ 85 NONAME ; public: unsigned short __thiscall TAliasAddress::Port(void)const 
+	?Release@RWSPCOTrans@@QAEHXZ @ 86 NONAME ; public: int __thiscall RWSPCOTrans::Release(void)
+	?Reset@CCapCodec@@QAEXXZ @ 87 NONAME ; public: void __thiscall CCapCodec::Reset(void)
+	?Reset@TAliasAddress@@QAEXXZ @ 88 NONAME ; public: void __thiscall TAliasAddress::Reset(void)
+	?Resume@RWSPCOConn@@QAEHAAV1@ABVTDesC8@@@Z @ 89 NONAME ; public: int __thiscall RWSPCOConn::Resume(class RWSPCOConn &,class TDesC8 const &)
+	?Save@RCertificate@@QAEHABVTDesC8@@AAVTDes8@@@Z @ 90 NONAME ; public: int __thiscall RCertificate::Save(class TDesC8 const &,class TDes8 &)
+	?ServerCert@RWTLS@@QAE?AVRCertificate@@XZ @ 91 NONAME ; public: class RCertificate  __thiscall RWTLS::ServerCert(void)
+	?SetAddress@TAliasAddress@@QAEHABVTDesC8@@@Z @ 92 NONAME ; public: int __thiscall TAliasAddress::SetAddress(class TDesC8 const &)
+	?SetBearer@TAliasAddress@@QAEXE@Z @ 93 NONAME ; public: void __thiscall TAliasAddress::SetBearer(unsigned char)
+	?SetCipherSuites@RWTLS@@QAEHABV?$CArrayFixFlat@UTCipherSuite@RWTLS@@@@@Z @ 94 NONAME ; public: int __thiscall RWTLS::SetCipherSuites(class CArrayFixFlat<struct RWTLS::TCipherSuite> const &)
+	?SetClientSDUSize@CCapCodec@@QAEXK@Z @ 95 NONAME ; public: void __thiscall CCapCodec::SetClientSDUSize(unsigned long)
+	?SetData@CDummyWSPCOTrans@@QAEXABVTDesC8@@W4TDataType@RWSPCOTrans@@@Z @ 96 NONAME ; public: void __thiscall CDummyWSPCOTrans::SetData(class TDesC8 const &,enum RWSPCOTrans::TDataType)
+	?SetId@CDummyWSPCOTrans@@QAEXH@Z @ 97 NONAME ; public: void __thiscall CDummyWSPCOTrans::SetId(int)
+	?SetKeyExchangeSuite@RWTLS@@QAEHW4TKeyExchangeSuite@1@W4TIdType@1@ABVTDesC8@@@Z @ 98 NONAME ; public: int __thiscall RWTLS::SetKeyExchangeSuite(enum RWTLS::TKeyExchangeSuite,enum RWTLS::TIdType,class TDesC8 const &)
+	?SetKeyRefreshRate@RWTLS@@QAEHE@Z @ 99 NONAME ; public: int __thiscall RWTLS::SetKeyRefreshRate(unsigned char)
+	?SetMethodMOR@CCapCodec@@QAEXE@Z @ 100 NONAME ; public: void __thiscall CCapCodec::SetMethodMOR(unsigned char)
+	?SetPort@TAliasAddress@@QAEXG@Z @ 101 NONAME ; public: void __thiscall TAliasAddress::SetPort(unsigned short)
+	?SetProtocolOptions@CCapCodec@@QAEXK@Z @ 102 NONAME ; public: void __thiscall CCapCodec::SetProtocolOptions(unsigned long)
+	?SetPushMOR@CCapCodec@@QAEXE@Z @ 103 NONAME ; public: void __thiscall CCapCodec::SetPushMOR(unsigned char)
+	?SetRecordLengthUsage@RWTLS@@QAEHH@Z @ 104 NONAME ; public: int __thiscall RWTLS::SetRecordLengthUsage(int)
+	?SetSequenceNumberMode@RWTLS@@QAEHW4TSequenceNumberMode@1@@Z @ 105 NONAME ; public: int __thiscall RWTLS::SetSequenceNumberMode(enum RWTLS::TSequenceNumberMode)
+	?SetServerSDUSize@CCapCodec@@QAEXK@Z @ 106 NONAME ; public: void __thiscall CCapCodec::SetServerSDUSize(unsigned long)
+	?SetSharedSecret@RWTLS@@QAEHABVTDesC8@@@Z @ 107 NONAME ; public: int __thiscall RWTLS::SetSharedSecret(class TDesC8 const &)
+	?Suspend@RWSPCOConn@@QAEHXZ @ 108 NONAME ; public: int __thiscall RWSPCOConn::Suspend(void)
+	?UnitWaitPush@RWSPCLConn@@QAEHAAVTDes8@@0AAV?$TPckgBuf@E@@@Z @ 109 NONAME ; public: int __thiscall RWSPCLConn::UnitWaitPush(class TDes8 &,class TDes8 &,class TPckgBuf<unsigned char> &)
+	?UnitWaitPush@RWSPCLConn@@QAEXAAVTDes8@@0AAV?$TPckgBuf@E@@AAVTRequestStatus@@@Z @ 110 NONAME ; public: void __thiscall RWSPCLConn::UnitWaitPush(class TDes8 &,class TDes8 &,class TPckgBuf<unsigned char> &,class TRequestStatus &)
+	?Wtls@RWAPConn@@QAE?AVRWTLS@@XZ @ 111 NONAME ; public: class RWTLS  __thiscall RWAPConn::Wtls(void)
+	?SetServerAddressL@CDummyWSPCLConn@@QAEXABVTDesC8@@@Z @ 112 NONAME ; void CDummyWSPCLConn::SetServerAddressL(class TDesC8 const &)
+

@@ -1,0 +1,68 @@
+/*
+* Copyright (c) 2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:   Project specification file for Supl Provisioning Adapter.
+*
+*/
+
+
+
+
+#include <data_caging_paths.hrh>
+#include <platform_paths.hrh>
+
+
+TARGET		    epos_omasuplprovhandler.dll
+TARGETTYPE		PLUGIN
+UID			    0x10009D8D 0x1027509B
+
+VENDORID		  VID_DEFAULT
+CAPABILITY		CAP_ECOM_PLUGIN
+
+SOURCEPATH		../src
+SOURCE		 epos_comasuplprovhandler.cpp 
+SOURCE		 epos_comasuplparameters.cpp 
+SOURCE		 epos_comasuplsettings.cpp 
+SOURCE		 epos_comasuplsettingsrepository.cpp
+SOURCE		 epos_omasuplprovhandlergroupproxy.cpp 
+SOURCE       epos_omasuplprovhandlermain.cpp
+SOURCE       epos_comasupltrace.cpp
+
+SOURCEPATH		../group
+
+START RESOURCE ../data/1027509B.rss
+        TARGET epos_omasuplprovhandler.rsc
+END
+
+START RESOURCE ../data/epos_omasuplprovhandlerres.rss
+HEADER
+TARGET 			epos_omasuplprovhandlerres.rsc
+TARGETPATH 		RESOURCE_FILES_DIR
+LANGUAGE_IDS
+END
+
+USERINCLUDE		../inc
+USERINCLUDE		../../../inc
+
+MW_LAYER_SYSTEMINCLUDE
+
+
+LIBRARY         euser.lib
+LIBRARY         provisioningengine.lib
+LIBRARY 		bafl.lib 
+ 
+LIBRARY         commdb.lib
+LIBRARY         centralrepository.lib
+LIBRARY 				epos_csuplutils.lib
+LIBRARY         epos_suplsettings.lib
+LIBRARY         cmmanager.lib

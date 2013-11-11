@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>msg-pop-plainbody1</name>
+	<timeout>75000</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\email\pop\plainbody\msg-pop-plainbody1.script</hostPath>
+			<devicePath>c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.script</devicePath>
+		</script>
+	</testScripts>
+	<testServers>
+		<server>T_MsgCommonServer</server>
+		<server>T_MsgPopServer</server>
+		<server>T_MsgSmtpServer</server>
+	</testServers>
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini</hostPath>
+			<devicePath>c:\msgtest\email\pop\plainbody\msg-pop-plainbody1.ini</devicePath>
+		</data>
+		
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\POPSettings_test908.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\POPSettings_test908.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\10KBody.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\10KBody.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\20KBody.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\20KBody.txt</devicePath>
+		</data>
+
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\100KBody.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\100KBody.txt</devicePath>
+		</data>
+
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\512KBody.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\512KBody.txt</devicePath>
+		</data>
+		
+	</dependencies>
+</testExecuteTest>

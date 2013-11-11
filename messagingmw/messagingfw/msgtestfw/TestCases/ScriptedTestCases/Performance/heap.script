@@ -1,0 +1,47 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//
+//	This script downloads n-1 emails
+//	over pop3 and simulates a low memory condition
+//	The aim to test the stability of messaging
+//	before the downloaded headers have been committed
+//	'n' will typically equal 16
+//
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+//CED c:\msgtest\TestFramework\Configurations\CommDbSettings\NtRasLongIdleTimeout.cfg
+RUN_TEST_STEP -1 MessagingTestServer BEGIN_TEST_CASE
+RUN_TEST_STEP -1 MessagingTestServer SETUP_TEST_CASE
+//	download a bunch of emails
+RUN_TEST_STEP -1 MessagingTestServer GetBaseConstants			c:\perf\heap.ini GetBaseConstants
+RUN_TEST_STEP -1 MessagingTestServer InitNtRas					c:\perf\heap.ini InitNtRas
+RUN_TEST_STEP -1 MessagingTestServer CreateSession				c:\perf\heap.ini CreateSession
+RUN_TEST_STEP -1 MessagingTestServer ResetMessageStore			c:\perf\heap.ini ResetMessageStore
+RUN_TEST_STEP -1 MessagingTestServer CreateRegistry				c:\perf\heap.ini CreateRegistry
+RUN_TEST_STEP -1 MessagingTestServer SetDefaultConfiguration	c:\perf\heap.ini SetDefaultConfigurationPOP3
+RUN_TEST_STEP -1 MessagingTestServer CreatePop3Service			c:\perf\heap.ini CreatePop3Service
+RUN_TEST_STEP -1 MessagingTestServer CreatePop3Mtm				c:\perf\heap.ini CreatePop3Mtm
+RUN_TEST_STEP -1 MessagingTestServer SetPop3ServiceParameters	c:\perf\heap.ini SetPop3ServiceParameters
+RUN_TEST_STEP -1 MessagingTestServer EXECUTE_TEST_CASE
+RUN_TEST_STEP -1 MessagingTestServer ConnectPop3Server 			c:\perf\heap.ini ConnectPop3Server
+RUN_TEST_STEP -1 MessagingTestServer CreateChildrenSelection	c:\perf\heap.ini CreateChildrenSelection
+RUN_TEST_STEP -1 MessagingTestServer CopySelection				c:\perf\heap.ini CopySelection
+RUN_TEST_STEP -1 MessagingTestServer DisconnectPop3Server		c:\perf\heap.ini DisconnectPop3Server
+// connection to mail server terminated
+RUN_TEST_STEP -1 MessagingTestServer SetHeapFailure 			c:\perf\heap.ini SetHeapFailure
+RUN_TEST_STEP -1 MessagingTestServer CHECK_POSTCONDITIONS
+RUN_TEST_STEP -1 MessagingTestServer CheckChildrenCount			c:\perf\heap.ini CheckChildrenCount_15
+RUN_TEST_STEP -1 MessagingTestServer END_TEST_CASE

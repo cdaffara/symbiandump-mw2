@@ -1,0 +1,34 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// WapPush
+// 
+//
+
+PRJ_PLATFORMS
+
+
+PRJ_EXPORTS
+// none		
+
+PRJ_MMPFILES
+
+PRJ_TESTMMPFILES
+../tpushscriptbased/t_wappushscriptbased.mmp
+
+PRJ_TESTEXPORTS
+./wapini/wap.ini			/epoc32/winscw/c/httptest/wapini/wap.ini
+./testdata/ineturilist.xml		z:/ineturilist/testdata/ineturilist_tpushscriptbased.xml
+
+
+

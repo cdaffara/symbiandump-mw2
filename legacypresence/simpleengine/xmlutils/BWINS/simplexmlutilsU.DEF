@@ -1,0 +1,13 @@
+EXPORTS
+	?NewContentL@TSimpleXmlFactory@@SAPAVMSimpleContent@@ABVTDesC8@@0@Z @ 1 NONAME ; class MSimpleContent * TSimpleXmlFactory::NewContentL(class TDesC8 const &, class TDesC8 const &)
+	?NewDocumentInMultiPartL@TSimpleXmlFactory@@SAPAVMSimpleDocument@@ABVTDesC8@@00@Z @ 2 NONAME ; class MSimpleDocument * TSimpleXmlFactory::NewDocumentInMultiPartL(class TDesC8 const &, class TDesC8 const &, class TDesC8 const &)
+	?NewDocumentL@TSimpleXmlFactory@@SAPAVMSimpleDocument@@ABVTDesC8@@@Z @ 3 NONAME ; class MSimpleDocument * TSimpleXmlFactory::NewDocumentL(class TDesC8 const &)
+	?NewDocumentL@TSimpleXmlFactory@@SAPAVMSimpleDocument@@XZ @ 4 NONAME ; class MSimpleDocument * TSimpleXmlFactory::NewDocumentL(void)
+	?NewElementL@TSimpleXmlFactory@@SAPAVMSimpleElement@@ABVTDesC8@@0@Z @ 5 NONAME ; class MSimpleElement * TSimpleXmlFactory::NewElementL(class TDesC8 const &, class TDesC8 const &)
+	?NewFilterDocumentL@TSimpleXmlFactory@@SAPAVMSimpleFilterDocument@@ABVTDesC8@@@Z @ 6 NONAME ; class MSimpleFilterDocument * TSimpleXmlFactory::NewFilterDocumentL(class TDesC8 const &)
+	?NewFilterDocumentL@TSimpleXmlFactory@@SAPAVMSimpleFilterDocument@@XZ @ 7 NONAME ; class MSimpleFilterDocument * TSimpleXmlFactory::NewFilterDocumentL(void)
+	?NewNamespaceL@TSimpleXmlFactory@@SAPAVMSimpleNamespace@@ABVTDesC8@@0@Z @ 8 NONAME ; class MSimpleNamespace * TSimpleXmlFactory::NewNamespaceL(class TDesC8 const &, class TDesC8 const &)
+	?NewPresenceListL@TSimpleXmlFactory@@SAPAVMSimplePresenceList@@ABVTDesC8@@00@Z @ 9 NONAME ; class MSimplePresenceList * TSimpleXmlFactory::NewPresenceListL(class TDesC8 const &, class TDesC8 const &, class TDesC8 const &)
+	?NewWinfoL@TSimpleXmlFactory@@SAPAVMSimpleWinfo@@ABVTDesC8@@@Z @ 10 NONAME ; class MSimpleWinfo * TSimpleXmlFactory::NewWinfoL(class TDesC8 const &)
+	?NewWinfoL@TSimpleXmlFactory@@SAPAVMSimpleWinfo@@XZ @ 11 NONAME ; class MSimpleWinfo * TSimpleXmlFactory::NewWinfoL(void)
+

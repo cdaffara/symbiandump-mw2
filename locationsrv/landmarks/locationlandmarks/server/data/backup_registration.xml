@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+
+<!--
+      Landmarks backup registration file, static data
+-->
+
+<backup_registration version="1.0">
+   <passive_backup>
+      <include_directory name = "\"/>
+   </passive_backup>
+   <dbms_backup policy="101fe978" />
+   <proxy_data_manager SID="0x10202BE9"/>
+   <restore requires_reboot="no"/>
+</backup_registration>

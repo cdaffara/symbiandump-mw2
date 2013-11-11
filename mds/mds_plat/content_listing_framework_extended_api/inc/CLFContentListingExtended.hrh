@@ -1,0 +1,69 @@
+/*
+* Copyright (c) 2002-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  S60 internal CLF field IDs
+*
+*/
+
+
+#ifndef CLFCONTENTLISTINGEXTENDED_HRH
+#define CLFCONTENTLISTINGEXTENDED_HRH
+
+#include <CLFContentListing.hrh>
+
+// DATA TYPES
+
+/**
+*  Content Listing Framework list model media types.
+*  Last default media type is 0x7FFFFFFF,
+*  Custom media type range 0x80000000 0xFFFFFFFF
+*/
+enum TCLFMediaTypeExtended
+    {
+    /// Gallery collections
+    ECLFMediaTypeCollection     = 0x7
+    };
+
+/**
+*  S60 internal Content Listing Framework item field IDs.
+*  Last default field ID is 0x7FFFFFFF,
+*  Custom field ID range 0x80000000 - 0xFFFFFFFF
+*/
+enum TCLFExtendedFieldId
+    {
+    /// Media gallery collection name:
+    /// descriptor
+    ECLFFieldIdCollectionName       = 0x00002000,
+    /// Media gallery collection ID:
+    /// integer
+    ECLFFieldIdCollectionId         = 0x00002001,
+    /// Media gallery collection type:
+    /// integer
+    ECLFFieldIdCollectionType       = 0x00002002,
+    /// Media gallery collection memory:
+    /// integer
+    ECLFFieldIdCollectionMemory     = 0x00002003,
+    /// Media gallery collection properties:
+    /// integer
+    ECLFFieldIdCollectionProperties = 0x00002004,
+    /// Media gallery collection files:
+    /// descriptor
+    ECLFFieldIdCollectionFiles      = 0x00002005,
+    /// Media gallery item count of the collection:
+    /// integer
+    ECLFFieldIdCollectionItemCount  = 0x00002006
+    };
+
+#endif
+
+// End of File

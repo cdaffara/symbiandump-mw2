@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<api id="d37a0fa0de27ab68522d660392609ab7" dataversion="1.0">
+  <name>Presence list API</name>
+  <description>API for presence list management. Supports:
+- creating presence lists
+- retrieving of existing presence lists
+- adding, modifying and deleting of contacts on the lists</description>
+  <type>c++</type>
+  <subsystem>simpleengine</subsystem>
+  <libs>
+    <lib name="rlspresxdm.lib" />
+  </libs>
+  <release category="domain"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>yes</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

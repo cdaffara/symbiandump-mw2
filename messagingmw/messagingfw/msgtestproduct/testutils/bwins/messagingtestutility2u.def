@@ -1,0 +1,16 @@
+EXPORTS
+	?Connect@RMessagingTestUtilityServer2@@QAEHXZ @ 1 NONAME ; int RMessagingTestUtilityServer2::Connect(void)
+	?CopyFile@RMessagingTestUtilityServer2@@QAEHABVTDesC16@@0@Z @ 2 NONAME ; int RMessagingTestUtilityServer2::CopyFile(class TDesC16 const &, class TDesC16 const &)
+	?DeleteFile@RMessagingTestUtilityServer2@@QAEHABVTDesC16@@@Z @ 3 NONAME ; int RMessagingTestUtilityServer2::DeleteFile(class TDesC16 const &)
+	?DeleteMessageStore@RMessagingTestUtilityServer2@@QAEHJ@Z @ 4 NONAME ; int RMessagingTestUtilityServer2::DeleteMessageStore(long)
+	?EventHandlerAdd@RMessagingTestUtilityServer2@@QAEHABVTDesC16@@0@Z @ 5 NONAME ; int RMessagingTestUtilityServer2::EventHandlerAdd(class TDesC16 const &, class TDesC16 const &)
+	?EventHandlerCheck@RMessagingTestUtilityServer2@@QAEHXZ @ 6 NONAME ; int RMessagingTestUtilityServer2::EventHandlerCheck(void)
+	?EventHandlerInit@RMessagingTestUtilityServer2@@QAEHXZ @ 7 NONAME ; int RMessagingTestUtilityServer2::EventHandlerInit(void)
+	?FileExists@RMessagingTestUtilityServer2@@QAEHABVTDesC16@@@Z @ 8 NONAME ; int RMessagingTestUtilityServer2::FileExists(class TDesC16 const &)
+	?GetDirL@RMessagingTestUtilityServer2@@QAEHABVTDesC16@@IIAAPAVCDir@@@Z @ 9 NONAME ; int RMessagingTestUtilityServer2::GetDirL(class TDesC16 const &, unsigned int, unsigned int, class CDir * &)
+	?KillProcess@RMessagingTestUtilityServer2@@QAEHVTProcessId@@@Z @ 10 NONAME ; int RMessagingTestUtilityServer2::KillProcess(class TProcessId)
+	?MkDir@RMessagingTestUtilityServer2@@QAEHABVTDesC16@@@Z @ 11 NONAME ; int RMessagingTestUtilityServer2::MkDir(class TDesC16 const &)
+	?RmDir@RMessagingTestUtilityServer2@@QAEHABVTDesC16@@@Z @ 12 NONAME ; int RMessagingTestUtilityServer2::RmDir(class TDesC16 const &)
+	?MountDrive@RMessagingTestUtilityServer2@@QAEHH@Z @ 13 NONAME ; int RMessagingTestUtilityServer2::MountDrive(int)
+	?UnMountDrive@RMessagingTestUtilityServer2@@QAEHH@Z @ 14 NONAME ; int RMessagingTestUtilityServer2::UnMountDrive(int)
+

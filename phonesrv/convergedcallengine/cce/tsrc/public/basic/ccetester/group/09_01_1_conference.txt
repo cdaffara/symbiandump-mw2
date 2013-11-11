@@ -1,0 +1,90 @@
+/*******************************************************
+   1. Create conference of 2 PS calls
+   2. Hang up 1st call
+   		Expected: Conference is ended
+   3. Hangup 2nd call
+*******************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 9.1.1 Conference Call, PS
+timeout 15000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+// Creation of first call
+test ExpectMediatorEvent 1 ECCECallTypePS Dialling 2 MoCall
+test ExpectMediatorEvent 1 ECCECallTypePS Connecting 2 MoCall
+test ExpectMediatorEvent 1 ECCECallTypePS Connected 2 MoCall
+
+// Call is put on hold
+test ExpectMediatorEvent 1 ECCECallTypePS Hold 2 MoCall
+
+// 2nd call is created
+test ExpectMediatorEvent 1 ECCECallTypePS Hold 2 MoCall
+test ExpectMediatorEvent 2 ECCECallTypePS Dialling 2 MoCall
+test ExpectMediatorEvent 1 ECCECallTypePS Hold 2 MoCall
+test ExpectMediatorEvent 2 ECCECallTypePS Connecting 2 MoCall
+test ExpectMediatorEvent 1 ECCECallTypePS Hold 2 MoCall
+test ExpectMediatorEvent 2 ECCECallTypePS Connected 2 MoCall
+
+// In conference calls are connected
+test ExpectMediatorEvent 1 ECCECallTypePS Connected 2 MoCall
+test ExpectMediatorEvent 2 ECCECallTypePS Connected 2 MoCall
+
+test ExpectMediatorEvent 1 ECCECallTypePS Disconnecting 2 MoCall
+test ExpectMediatorEvent 2 ECCECallTypePS Connected 2 MoCall
+
+test ExpectMediatorEvent 2 ECCECallTypePS Connected 2 MoCall
+
+test ExpectMediatorEvent 2 ECCECallTypePS Disconnecting 2 MoCall
+
+
+test OpenNewCall 1 0 Conf_A@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+test OpenNewCall 2 0 RecipientTwo 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 2 0 SubAddress Bearer
+test WaitEvent 2 Dialling
+test WaitEvent 2 Connecting
+test WaitEvent 2 Connected
+
+test AddToConference 1 0
+test WaitEvent ConferenceCallAdded 1
+test AddToConference 2 0
+test WaitEvents ConferenceCallAdded 2, ConferenceActive, 1 Connected
+
+// Step 2
+print Step_2
+
+test HangUp 1 0
+test WaitEvents 1 Disconnecting, ConferenceCallRemoved 1, 1 Idle, ConferenceCallRemoved 2, ConferenceIdle
+test Release 1 0
+
+test ReleaseConference 0
+
+// Step 3
+print Step_3
+
+test HangUp 2 0
+test WaitEvent 2 Disconnecting
+test WaitEvent 2 Idle
+test Release 2 0
+
+test VerifyTest
+test Delay 3000
+test VerifyMediatorEvents
+delete test
+[Endtest]

@@ -1,0 +1,143 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+// Test Case Name:
+//	ConnectAndPopulateAllStayOnlineImap4Email.script
+// ------------------------------------------
+// Component Under Test:
+//	Email
+// ------------------------------------------
+// API function under test:
+//	CImap4ClientMtm::InvokeAsyncFunctionL()
+//	with IMAP4 command KIMAP4MTMConnectAndPopulateAllMailAndStayOnline
+// ------------------------------------------
+// Requirement/Use Case/Functional Spec:
+//	DEF 045525 
+// ------------------------------------------
+// Polarity:
+//	Positive
+// ------------------------------------------
+// Test Type (unit, integration, panic, performance, conformance, stress, or interoperability):
+//	Integration
+// ------------------------------------------
+// Expected Panic ID (if a panic test, only for non-scripted test cases):
+//	n/a
+// ------------------------------------------
+// Interface Dependencies (does it require connection, which subsystems does it require):
+// 	NTRAS
+// ------------------------------------------
+// Importance (critical, high, or low):
+//	High
+// ------------------------------------------
+// Execution Time (fast, medium, or slow):
+//	medium
+// ------------------------------------------
+// Pre-condition description:
+//	1.  Set the SMTP and IMAP4 service settings for an IMAP4 account
+//	2.  Connect to IMAP4 server and synchronise with the IMAP4 server 
+//	3.  Delete all mails in the Inbox on the server
+//	4.  Disconnect from IMAP4 server
+//
+//	The Local Inbox and Sent Item folders and the remote Inbox folder of IMAP4 
+//	account are cleaned up before starting the test.
+// ------------------------------------------
+// Action Description:
+// 	Main purpose of test that to check that emails marked as New get populated (and stay as
+//  as new after ConnectAndPopulateAllMailAndStayOnline operation. Before bug was fixed the New
+//  flag would be cleared after any connection. (i.e. should be only cleared before 1st Sync
+//  after connection).
+//	
+// 	Implementation and execution:
+//	1.  Create 2 emails from data file and send emails to the same account
+//	2.  Synchronise Inbox 
+//  3.  Send 2 more emails to the same account
+//	4.  Synchronise Inbox 
+//	5.  Fetch the mails with IMAP4 KIMAP4MTMConnectAndPopulateAllMailAndStayOnline command
+//	6.  Disconnect from IMAP4 server
+//	7.  Check the received messages' flags. 
+//		
+// ------------------------------------------
+// Post-condition description (i.e., expected outcome):
+//      Should have 4 messages, 2 New, 4 Complete (fetched)
+//		
+// ------------------------------------------
+// Reference to a review document:
+//	
+// ------------------------------------------
+// Full pathname of an epoc.ini (if there are special epoc.ini requirements)
+// 	For emulator, an epoc.ini that creates an emulated external drive (drive letter 
+//	between D: and Y:) is required. Optionally, an environment variable can be defined.
+// ------------------------------------------
+// Any CommDb restrictions:
+//	NTRAS CommDb (should have reasonably long idle timeout values to avoid disconnection during
+//  Sleep actions
+// ------------------------------------------
+// Build Requirements (e.g., no watchers):
+//	No Watchers and Phone Book Synchroniser
+// ------------------------------------------
+// Hardware Requirements
+//	Null Modem Cable for NT RAS connection
+// ------------------------------------------
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+//CED c:\msgtest\TestFramework\Configurations\CommDbSettings\NtRasLongIdleTimeout.cfg
+PREFIX RUN_TEST_STEP 100 MessagingTestServer 
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+GetBaseConstants				c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini GetBaseConstants
+InitNtRas						c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini InitNtRas
+CreateSession					c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini CreateSession
+ResetMessageStore				c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini ResetMessageStore
+CreateImap4Service				c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini CreateImap4Service
+CreateSmtpService				c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini CreateSmtpService
+CreateRegistry					c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini CreateRegistry
+CreateImap4Mtm					c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini CreateImap4Mtm
+CreateSmtpMtm					c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini CreateSmtpMtm
+GetDefaultSmtpService				c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini GetDefaultSmtpService
+SetImap4ServiceParameters		c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini SetImap4ServiceParameters
+SetSmtpServiceParameters		c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini SetSmtpServiceParameters
+SetDefaultConfiguration			c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini SetDefaultConfiguration2
+ConnectImap4Server   			c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini ConnectImap4Server0
+DoFullImap4Synchronisation		c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini DoFullImap4Synchronisation0
+FindEntryByName					c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini FindEntryByName0
+DeleteChildren					c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini DeleteChildren
+CheckChildrenCount				c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini CheckChildrenCount0
+DisconnectImap4Server			c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini DisconnectImap4Server0
+EXECUTE_TEST_CASE
+CreateSmtpMessageFromEmailFile	c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini CreateSmtpMessageFromEmailFile0
+CopyEntry						c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini CopyEntry0
+CreateSmtpMessageFromEmailFile	c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini CreateSmtpMessageFromEmailFile1
+CopyEntry						c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini CopyEntry1
+Sleep		   					c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini Sleep5
+ConnectImap4Server		   		c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini ConnectImap4Server1
+DoFullImap4Synchronisation   	c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini DoFullImap4Synchronisation1
+DisconnectImap4Server			c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini DisconnectImap4Server1
+CreateSmtpMessageFromEmailFile	c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini CreateSmtpMessageFromEmailFile0
+CopyEntry						c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini CopyEntry0
+CreateSmtpMessageFromEmailFile	c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini CreateSmtpMessageFromEmailFile1
+CopyEntry						c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini CopyEntry1
+Sleep		   					c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini Sleep5
+ConnectImap4Server		   		c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini ConnectImap4Server1
+DoFullImap4Synchronisation   	c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini DoFullImap4Synchronisation1
+DisconnectImap4Server			c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini DisconnectImap4Server1
+SetImap4FullDownloadLimits		c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini SetImap4FullDownloadLimits1 
+DoImap4ConnectAndPopulateAllMailAndStayOnline   		c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini ConnPopulateAllMailAndStayOnline
+DisconnectImap4Server			c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini DisconnectImap4Server1
+CHECK_POSTCONDITIONS
+CheckChildrenCount		   		c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini CheckChildrenCount4
+CheckChildrenCountWithFlagNew		   		c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini CheckChildrenCountWithFlagNew2
+CheckChildrenCountWithFlagComplete			c:\msgtest\TestFramework\ScriptedTestCases\ConnectAndPopulateImap4EmailTests.ini CheckChildrenCountWithFlagComp4
+END_TEST_CASE

@@ -1,0 +1,70 @@
+// Copyright (c) 2004-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// test_schsend_server.mmp
+//
+
+TARGET          test_schsend_server.exe
+
+// For EKA2, conditionally add your platform security capabilities 
+CAPABILITY All -TCB
+TARGETTYPE      exe
+UID             0x1000007A 0x101F777C
+VENDORID 0x70000001
+
+MACRO __UNIT_TEST
+
+SOURCEPATH		../src
+SOURCE      	test_schsend_server.cpp
+SOURCE     		test_offpeaktime_step.cpp
+SOURCE     		test_scheduledentry_step.cpp
+SOURCE     		test_schedulesettings_step.cpp
+SOURCE     		test_schedulepackage_step.cpp
+SOURCE     		test_sysagentactions_step.cpp
+SOURCE     		test_erroractions_step.cpp
+
+SOURCEPATH		../../../schedulesendmtm/src
+source	      MsvScheduleSettings.cpp
+source		MsvEntryScheduleData.cpp
+source		MsvSchedulePackage.cpp
+source		MsvOffPeakTime.cpp
+source		MsvSendErrorAction.cpp
+source		MsvScheduledEntry.cpp
+source		MsvSysAgentAction.cpp
+source		MsvScheduleSend.cpp
+
+USERINCLUDE     ../inc
+USERINCLUDE		../../../schedulesendmtm/inc
+USERINCLUDE		../../../../msgtest/testutils/base/inc
+USERINCLUDE		../../../../msgtest/testutils/server/inc
+USERINCLUDE		../../../../msgtest/testutils/sms/inc
+USERINCLUDE		../../../../msgtest/testutils/email/inc
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+LIBRARY		euser.lib
+LIBRARY 		estor.lib
+LIBRARY		testexecuteutils.lib
+LIBRARY 		testexecutelogclient.lib
+LIBRARY		msgs.lib
+LIBRARY		efsrv.lib
+LIBRARY		flogger.lib
+LIBRARY		bafl.lib
+LIBRARY		schsvr.lib
+LIBRARY		schsend.lib
+LIBRARY		smcm.lib
+
+
+
+//EXPORTUNFROZEN
+
+SMPSAFE

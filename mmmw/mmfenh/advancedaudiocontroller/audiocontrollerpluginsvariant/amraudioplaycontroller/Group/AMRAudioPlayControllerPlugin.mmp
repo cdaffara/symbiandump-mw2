@@ -1,0 +1,99 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project file for building the ECOM Dll AMRAudioPlayControllerPlugin.dll
+*
+*/
+
+
+#include <data_caging_paths.hrh>
+#include <platform_paths.hrh>
+
+
+TARGET 		AMRAudioPlayControllerPlugin.dll
+TARGETTYPE 	PLUGIN
+UID 		0x10009D8D 0x101FAFB9
+VENDORID	VID_DEFAULT
+
+TARGETPATH 	/System/Libs/Plugins
+
+CAPABILITY CAP_ECOM_PLUGIN
+
+
+SOURCEPATH	../Src
+SOURCE		AMRAudioPlayControllerPlugin.cpp
+SOURCE		AMRAudioPlayControllerResource.cpp
+
+/*
+* Added condition to check WINS flag, so that Software decoder is built for Emulator
+*/
+#ifdef __USE_AMR_NB_CMMFCODEC
+SOURCE		AMRAudioPlayControllerSwDecoder.cpp
+#else
+	#if defined(WINS)
+		SOURCE		AMRAudioPlayControllerSwDecoder.cpp
+	#else
+		SOURCE		AMRAudioPlayControllerHwDecoder.cpp
+	#endif
+#endif
+
+SOURCE		AMRAudioPlayControllerDecoderBuilder.cpp
+
+USERINCLUDE	../Inc 
+USERINCLUDE     ../Src
+USERINCLUDE	../../../../inc
+USERINCLUDE	../../AdvancedAudioController/Inc
+USERINCLUDE	../../DevSoundAudioOutput/Inc
+USERINCLUDE	../../DevSoundAudioInput/Inc
+USERINCLUDE	../../FileAudioOutput/Inc
+USERINCLUDE	../../AdvancedAudioControllerUtility/Inc
+USERINCLUDE     ../../DataSourceAdapter/Inc
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   /epoc32/include/ecom
+SYSTEMINCLUDE	/epoc32/include/mmf/server
+SYSTEMINCLUDE	/epoc32/include/mmf/common
+SYSTEMINCLUDE	/epoc32/include/mmf/plugin
+
+SOURCEPATH	../Data
+
+START RESOURCE 101FAFB9.rss 
+TARGET AMRAudioPlayControllerPlugin.rsc
+END
+
+START RESOURCE AMRAudioPlayControllerResource.rss
+HEADER
+TARGET AMRAudioPlayControllerResource.rsc       
+TARGETPATH    RESOURCE_FILES_DIR
+END
+
+LIBRARY 	euser.lib
+LIBRARY		mmfcontrollerframework.lib
+LIBRARY 	mmfstandardcustomcommands.lib
+LIBRARY 	mmfserverbaseclasses.lib
+LIBRARY 	AdvancedAudioController.lib
+LIBRARY		AMRAudioControllerUtility.lib
+LIBRARY         DevSoundAudioOutput.lib
+LIBRARY		FileAudioOutput.lib
+LIBRARY		bafl.lib				// Resource file
+LIBRARY		efsrv.lib 
+
+#ifndef WINSCW					//to support build on Linux
+LIBRARY		FrameTable.lib
+#else
+LIBRARY		frametable.lib
+#endif
+
+#ifdef EABI
+LIBRARY     	ecom.lib
+#endif

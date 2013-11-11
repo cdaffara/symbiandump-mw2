@@ -1,0 +1,37 @@
+<ASX version = "3.0">
+    <TITLE>Advanced Playlist Demo</TITLE>
+    <ABSTRACT>More Information at this Web site</ABSTRACT>
+    <MOREINFO HREF="http://www.microsoft.com/windows/windowsmedia" />
+    <BANNER HREF = "http://10.48.2.51/users/gaby/banner.bmp">
+        <ABSTRACT>MSN Web site</ABSTRACT>
+        <MOREINFO HREF = "http://www.msn.com" />
+    </BANNER>
+    <PARAM name="track" value="1"/>
+    <ENTRY>      
+		<TITLE>Link 1</TITLE>     
+		<COPYRIGHT>2008 NokiaTest</COPYRIGHT>      
+		<MOREINFO HREF = "http://www.microsoft.com/windows/windowsmedia"></MOREINFO>      
+		<REF HREF = "http://10.48.2.56:443/WMTest/Kill_Kevin_01_US_s.wmv" />   
+	 </ENTRY>
+    <ENTRY ClientSkip="no">
+        <BANNER HREF = "http://10.48.2.51/users/gaby/banner.bmp">
+            <ABSTRACT>Visit Our Web site</ABSTRACT>
+            <MOREINFO HREF = "http://www.msn.com" />
+        </BANNER>
+        <MOREINFO HREF = "http://www.msn.com" />
+        <!-- This is the ToolTip text for Title/Author/Copyright text -->
+        <ABSTRACT>Visit the YourImage Web site</ABSTRACT>
+        <TITLE>The first entry in an advanced playlist</TITLE>
+        <AUTHOR>YourImage</AUTHOR>
+        <COPYRIGHT>(c)2000 YourImage</COPYRIGHT>
+        <!-- This is a comment.  Change the following path to point to 
+            your Windows Media file -->
+         <REF HREF = "http://10.48.2.56:443/WMTest/256k_WMV9_QCIF_WMA9_30fps.wmv?MSWMExt=.wmv" />
+    </ENTRY>
+    <ENTRY>      
+		<TITLE>Link 3</TITLE>     
+		<COPYRIGHT>2008 NokiaTest</COPYRIGHT>      
+		<MOREINFO HREF = "http://www.microsoft.com/windows/windowsmedia"></MOREINFO>      
+		<REF HREF = "http://10.48.2.56:443/WMTest/Kill_Kevin_02_US_s.wmv" />   
+	 </ENTRY>
+</ASX>

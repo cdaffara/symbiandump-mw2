@@ -1,0 +1,76 @@
+// Copyright (c) 2004-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// sendasserver.exe SendAs2 Server
+// 
+//
+
+/**
+ @file
+*/
+
+TARGET		sendasserver.exe
+TARGETTYPE	exe
+TARGETPATH	sys/bin
+
+CAPABILITY	ReadDeviceData WriteDevicedata ProtServ NetworkControl NetworkServices LocalServices ReaduserData WriteUserData
+UID		0x1000008d 0x10204286
+VENDORID	0x70000001
+
+EPOCHEAPSIZE 0x1000 0x400000
+
+SOURCEPATH	../src
+SOURCE		sendasserverstart.cpp
+SOURCE		csendasserver.cpp
+SOURCE		csendasservertimer.cpp
+SOURCE		csendassession.cpp
+SOURCE		csendasmessage.cpp
+SOURCE		csendasmtmmanager.cpp
+SOURCE		csendassender.cpp
+SOURCE		csendasattachment.cpp
+SOURCE		csendasactivecontainer.cpp
+SOURCE		tsendasserverpanic.cpp
+SOURCE		csendaseditwatcher.cpp
+
+
+USERINCLUDE 	../inc
+USERINCLUDE	    ../../../msgsrvnstore/server/inc
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+#if (defined SYMBIAN_USER_PROMPT_SERVICE)
+#endif
+
+LIBRARY		euser.lib 
+LIBRARY		msgs.lib 
+LIBRARY		bafl.lib 
+LIBRARY		efsrv.lib 
+LIBRARY		etext.lib 
+LIBRARY		estor.lib 
+LIBRARY		mtur.lib
+LIBRARY		sendas2.lib
+LIBRARY		eikcore.lib
+LIBRARY		cone.lib
+LIBRARY		ecom.lib
+
+#if (defined SYMBIAN_USER_PROMPT_SERVICE)
+LIBRARY		upsclient.lib
+#endif
+
+SOURCEPATH	.
+start resource sendasserver.rss
+TARGET		sendasserver.rsc
+TARGETPATH  resource/messaging
+end
+
+
+SMPSAFE

@@ -1,0 +1,103 @@
+EXPORTS
+	_ZN13CRadioMonitor4NewLER21MRadioMonitorObserver @ 1 NONAME
+	_ZN13CRadioMonitorD0Ev @ 2 NONAME
+	_ZN13CRadioMonitorD1Ev @ 3 NONAME
+	_ZN13CRadioMonitorD2Ev @ 4 NONAME
+	_ZN13CRadioUtility16RadioRdsUtilityLER17MRadioRdsObserver @ 5 NONAME
+	_ZN13CRadioUtility19RadioPlayerUtilityLER20MRadioPlayerObserver @ 6 NONAME
+	_ZN13CRadioUtility20RadioFmTunerUtilityLER21MRadioFmTunerObserver @ 7 NONAME
+	_ZN13CRadioUtility4NewLEi @ 8 NONAME
+	_ZN13CRadioUtilityD0Ev @ 9 NONAME
+	_ZN13CRadioUtilityD1Ev @ 10 NONAME
+	_ZN13CRadioUtilityD2Ev @ 11 NONAME
+	_ZN16CRadioRdsUtility10GetPSByPTYEi @ 12 NONAME
+	_ZN16CRadioRdsUtility11GetFreqByTAEv @ 13 NONAME
+	_ZN16CRadioRdsUtility12GetClockTimeER9TDateTime @ 14 NONAME
+	_ZN16CRadioRdsUtility12GetFreqByPTYEi @ 15 NONAME
+	_ZN16CRadioRdsUtility12GetRadioTextER6TBuf16ILi64EE @ 16 NONAME
+	_ZN16CRadioRdsUtility14CancelAFSearchEv @ 17 NONAME
+	_ZN16CRadioRdsUtility15CancelGetPSByTAEv @ 18 NONAME
+	_ZN16CRadioRdsUtility15StationSeekByTAEi @ 19 NONAME
+	_ZN16CRadioRdsUtility15StationSeekByTPEi @ 20 NONAME
+	_ZN16CRadioRdsUtility16CancelGetPSByPTYEv @ 21 NONAME
+	_ZN16CRadioRdsUtility16GetProgrammeTypeERi @ 22 NONAME
+	_ZN16CRadioRdsUtility16GetRadioTextPlusE15TRdsRTplusClassR6TBuf16ILi64EE @ 23 NONAME
+	_ZN16CRadioRdsUtility16StationSeekByPTYEii @ 24 NONAME
+	_ZN16CRadioRdsUtility17CancelGetFreqByTAEv @ 25 NONAME
+	_ZN16CRadioRdsUtility18CancelGetFreqByPTYEv @ 26 NONAME
+	_ZN16CRadioRdsUtility19GetProgrammeServiceER6TBuf16ILi8EE @ 27 NONAME
+	_ZN16CRadioRdsUtility19NotifyRdsDataChangeE8TRdsData @ 28 NONAME
+	_ZN16CRadioRdsUtility20CancelRdsStationSeekEv @ 29 NONAME
+	_ZN16CRadioRdsUtility21GetAutomaticSwitchingERi @ 30 NONAME
+	_ZN16CRadioRdsUtility21SetAutomaticSwitchingEi @ 31 NONAME
+	_ZN16CRadioRdsUtility25CancelNotifyRdsDataChangeEv @ 32 NONAME
+	_ZN16CRadioRdsUtility25GetTrafficProgrammeStatusERi @ 33 NONAME
+	_ZN16CRadioRdsUtility26GetProgrammeIdentificationERi @ 34 NONAME
+	_ZN16CRadioRdsUtility28GetTrafficAnnouncementStatusERi @ 35 NONAME
+	_ZN16CRadioRdsUtility31GetAutomaticTrafficAnnouncementERi @ 36 NONAME
+	_ZN16CRadioRdsUtility31SetAutomaticTrafficAnnouncementEi @ 37 NONAME
+	_ZN16CRadioRdsUtility5CloseEv @ 38 NONAME
+	_ZN16CRadioRdsUtility9GetPSByTAEv @ 39 NONAME
+	_ZN19CRadioPlayerUtility10SetBalanceEii @ 40 NONAME
+	_ZN19CRadioPlayerUtility13SetVolumeRampERK25TTimeIntervalMicroSeconds @ 41 NONAME
+	_ZN19CRadioPlayerUtility15CustomInterfaceE4TUid @ 42 NONAME
+	_ZN19CRadioPlayerUtility4MuteEi @ 43 NONAME
+	_ZN19CRadioPlayerUtility4PlayEv @ 44 NONAME
+	_ZN19CRadioPlayerUtility4StopEv @ 45 NONAME
+	_ZN19CRadioPlayerUtility5CloseEv @ 46 NONAME
+	_ZN19CRadioPlayerUtility6IsMuteEv @ 47 NONAME
+	_ZN19CRadioPlayerUtility9SetVolumeEi @ 48 NONAME
+	_ZN19CRadioPlayerUtilityD0Ev @ 49 NONAME
+	_ZN19CRadioPlayerUtilityD1Ev @ 50 NONAME
+	_ZN19CRadioPlayerUtilityD2Ev @ 51 NONAME
+	_ZN20CRadioFmTunerUtility10SetSquelchEi @ 52 NONAME
+	_ZN20CRadioFmTunerUtility11StationSeekEi @ 53 NONAME
+	_ZN20CRadioFmTunerUtility12SetFrequencyEi @ 54 NONAME
+	_ZN20CRadioFmTunerUtility15GetCapabilitiesER20TFmTunerCapabilities @ 55 NONAME
+	_ZN20CRadioFmTunerUtility17CancelStationSeekEv @ 56 NONAME
+	_ZN20CRadioFmTunerUtility17SetFrequencyRangeE22TFmRadioFrequencyRange @ 57 NONAME
+	_ZN20CRadioFmTunerUtility18CancelSetFrequencyEv @ 58 NONAME
+	_ZN20CRadioFmTunerUtility18ForceMonoReceptionEi @ 59 NONAME
+	_ZN20CRadioFmTunerUtility19RequestTunerControlEv @ 60 NONAME
+	_ZN20CRadioFmTunerUtility23CancelSetFrequencyRangeEv @ 61 NONAME
+	_ZN20CRadioFmTunerUtility24EnableTunerInOfflineModeEi @ 62 NONAME
+	_ZN20CRadioFmTunerUtility5CloseEv @ 63 NONAME
+	_ZN20CRadioFmTunerUtilityD0Ev @ 64 NONAME
+	_ZN20CRadioFmTunerUtilityD1Ev @ 65 NONAME
+	_ZN20CRadioFmTunerUtilityD2Ev @ 66 NONAME
+	_ZNK13CRadioMonitor9IsRadioOnEv @ 67 NONAME
+	_ZNK16CRadioRdsUtility15GetCapabilitiesER16TRdsCapabilities @ 68 NONAME
+	_ZNK16CRadioRdsUtility18GetRdsSignalStatusERi @ 69 NONAME
+	_ZNK19CRadioPlayerUtility10GetBalanceERiS0_ @ 70 NONAME
+	_ZNK19CRadioPlayerUtility11PlayerStateEv @ 71 NONAME
+	_ZNK19CRadioPlayerUtility12GetMaxVolumeERi @ 72 NONAME
+	_ZNK19CRadioPlayerUtility9GetVolumeERi @ 73 NONAME
+	_ZNK20CRadioFmTunerUtility10GetSquelchERi @ 74 NONAME
+	_ZNK20CRadioFmTunerUtility12GetFrequencyERi @ 75 NONAME
+	_ZNK20CRadioFmTunerUtility13GetStereoModeERi @ 76 NONAME
+	_ZNK20CRadioFmTunerUtility17GetFrequencyRangeER22TFmRadioFrequencyRangeRiS2_ @ 77 NONAME
+	_ZNK20CRadioFmTunerUtility17GetSignalStrengthERi @ 78 NONAME
+	_ZNK20CRadioFmTunerUtility20GetMaxSignalStrengthERi @ 79 NONAME
+	_ZNK20CRadioFmTunerUtility22GetForcedMonoReceptionERi @ 80 NONAME
+	_ZTI13CRadioMonitor @ 81 NONAME ; #<TI>#
+	_ZTI13CRadioUtility @ 82 NONAME ; #<TI>#
+	_ZTI16CRadioRdsUtility @ 83 NONAME ; #<TI>#
+	_ZTI19CRadioPlayerUtility @ 84 NONAME ; #<TI>#
+	_ZTI20CRadioFmTunerUtility @ 85 NONAME ; #<TI>#
+	_ZTIN13CRadioMonitor5CBodyE @ 86 NONAME ; #<TI>#
+	_ZTIN13CRadioUtility5CBodyE @ 87 NONAME ; #<TI>#
+	_ZTIN16CRadioRdsUtility5CBodyE @ 88 NONAME ; #<TI>#
+	_ZTIN19CRadioPlayerUtility5CBodyE @ 89 NONAME ; #<TI>#
+	_ZTIN20CRadioFmTunerUtility5CBodyE @ 90 NONAME ; #<TI>#
+	_ZTV13CRadioMonitor @ 91 NONAME ; #<VT>#
+	_ZTV13CRadioUtility @ 92 NONAME ; #<VT>#
+	_ZTV16CRadioRdsUtility @ 93 NONAME ; #<VT>#
+	_ZTV19CRadioPlayerUtility @ 94 NONAME ; #<VT>#
+	_ZTV20CRadioFmTunerUtility @ 95 NONAME ; #<VT>#
+	_ZTVN13CRadioMonitor5CBodyE @ 96 NONAME ; #<VT>#
+	_ZTVN13CRadioUtility5CBodyE @ 97 NONAME ; #<VT>#
+	_ZTVN16CRadioRdsUtility5CBodyE @ 98 NONAME ; #<VT>#
+	_ZTVN19CRadioPlayerUtility5CBodyE @ 99 NONAME ; #<VT>#
+	_ZTVN20CRadioFmTunerUtility5CBodyE @ 100 NONAME ; #<VT>#
+	_ZThn4_N19CRadioPlayerUtility15CustomInterfaceE4TUid @ 101 NONAME ; #<thunk>#
+

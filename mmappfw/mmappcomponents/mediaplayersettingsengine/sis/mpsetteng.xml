@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependencies xmlns="http://nokia.com/arrow/repository/ia_component">
+  <appResources>
+     <appResource>
+        <language>1</language>
+        <iacName>Media Player Settings Engine</iacName>
+        <iacDescription>Media Player Settings Engine</iacDescription>
+     </appResource>
+  </appResources>
+  <swPlatformDep>
+     <platform>S60</platform>
+     <versionFrom>
+        <major>5</major>
+        <minor>1</minor>
+        <date>
+           <year>2009</year>
+           <week>14</week>
+        </date>
+     </versionFrom>
+     <versionTo>
+        <major>9</major>
+        <minor>2</minor>
+        <date>
+           <year>2010</year>
+           <week>1</week>
+        </date>
+     </versionTo>
+  </swPlatformDep>
+  <interDeps>
+  </interDeps>
+</dependencies>

@@ -1,0 +1,16 @@
+//SIAP11
+password
+Mname:Demon
+Muid:yashar
+Mpwd:dig23ler
+Madr:Brahim@yashar.Demon.co.uk
+Mrcv:194.217.242.59
+Mpro:PO
+Msnd:194.217.242.55
+Mapop:N
+Iname:Demon
+Iuid:yashar
+Ipwd:dig23ler
+Itel:+44 845 2121666
+Idns1:158.152.1.58
+Idns2:158.152.1.43

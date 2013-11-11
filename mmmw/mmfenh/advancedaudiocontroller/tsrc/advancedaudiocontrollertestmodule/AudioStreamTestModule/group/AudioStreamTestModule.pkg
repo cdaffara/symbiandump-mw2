@@ -1,0 +1,140 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: Advanced Audio Controller - Audio Stream test
+;
+;Language
+&en
+
+;Header
+# {"AudioStreamTest"}, (0x10207CB8), 2, 2, 2,TYPE=SA
+
+;Dependency header
+
+;Localised Vendor name
+%{"Nokia"}
+
+;Unique Vendor name
+:"Nokia"
+
+;Optional logofile
+
+;Files to install
+"\epoc32\release\armv5\urel\AudioStreamTestModule.dll" - "c:\sys\bin\AudioStreamTestModule.dll"
+
+"..\init\TestFramework.ini"-"c:\Testframework\TestFramework.ini"
+"..\init\AudioStreamTestModule.ini"-"c:\Testframework\AudioStreamTestModule.ini"
+
+"..\conf\AudioStreamTestModule.cfg"-"c:\Testframework\AudioStreamTestModule.cfg"
+
+"..\data\mmc\3gpp\3GP_AAC+_8kbps_16khz_mono.3gp"-"e:\testing\data\3gpp\3GP_AAC+_8kbps_16khz_mono.3gp"
+"..\data\mmc\aac\10s_AAC_LC_320kbps_48khz_stereo.aac"-"e:\testing\data\aac\10s_AAC_LC_320kbps_48khz_stereo.aac"
+"..\data\mmc\amr\10s_AMR_NB_mode_0.amr"-"e:\testing\data\amr\10s_AMR_NB_mode_0.amr"
+"..\data\mmc\amr\AMR_NB_12.2kbps.amr"-"e:\testing\data\amr\AMR_NB_12.2kbps.amr"
+"..\data\mmc\awb\10s_AMR_WB_15.85kbps.awb"-"e:\testing\data\awb\10s_AMR_WB_15.85kbps.awb"
+"..\data\mmc\awb\10s_AMR_WB_23.85kbps_Generic.awb"-"e:\testing\data\awb\10s_AMR_WB_23.85kbps_Generic.awb"
+"..\data\mmc\awb\AMR-WB-23kb.awb"-"e:\testing\data\awb\AMR-WB-23kb.awb"
+"..\data\mmc\awb\AMR_WB_6.6kbps.awb"-"e:\testing\data\awb\AMR_WB_6.6kbps.awb"
+"..\data\mmc\mid\10s_MID_Generic.mid"-"e:\testing\data\mid\10s_MID_Generic.mid"
+"..\data\mmc\mid\10s_RMF_MID.rmf"-"e:\testing\data\mid\10s_RMF_MID.rmf"
+"..\data\mmc\mid\30s_MID_Generic.mid"-"e:\testing\data\mid\30s_MID_Generic.mid"
+"..\data\mmc\mp3\10s_smooth.mp3"-"e:\testing\data\mp3\10s_smooth.mp3"
+"..\data\mmc\mp3\30s_batendo_a_porta.mp3"-"e:\testing\data\mp3\30s_batendo_a_porta.mp3"
+"..\data\mmc\mp4\MP4_24kbps_16khz_mono.mp4"-"e:\testing\data\mp4\MP4_24kbps_16khz_mono.mp4"
+"..\data\mmc\AudioStream\PCM_11Khz_16Bit_Mono.wav"-"e:\testing\data\AudioStream\PCM_11Khz_16Bit_Mono.wav"
+"..\data\mmc\AudioStream\PCM_11Khz_16Bit_Stereo.wav"-"e:\testing\data\AudioStream\PCM_11Khz_16Bit_Stereo.wav"
+"..\data\mmc\AudioStream\PCM_16Khz_16Bit_Mono.wav"-"e:\testing\data\AudioStream\PCM_16Khz_16Bit_Mono.wav"
+"..\data\mmc\AudioStream\PCM_16Khz_16Bit_Stereo.wav"-"e:\testing\data\AudioStream\PCM_16Khz_16Bit_Stereo.wav"
+"..\data\mmc\AudioStream\PCM_22Khz_16Bit_Mono.wav"-"e:\testing\data\AudioStream\PCM_22Khz_16Bit_Mono.wav"
+"..\data\mmc\AudioStream\PCM_22_16_s.wav"-"e:\testing\data\AudioStream\PCM_22_16_s.wav"
+"..\data\mmc\AudioStream\PCM_32Khz_16Bit_Mono.wav"-"e:\testing\data\AudioStream\PCM_32Khz_16Bit_Mono.wav"
+"..\data\mmc\AudioStream\PCM_32_16_s.wav"-"e:\testing\data\AudioStream\PCM_32_16_s.wav"
+"..\data\mmc\AudioStream\PCM_44_16_m.wav"-"e:\testing\data\AudioStream\PCM_44_16_m.wav"
+"..\data\mmc\AudioStream\PCM_44_16_s.wav"-"e:\testing\data\AudioStream\PCM_44_16_s.wav"
+"..\data\mmc\AudioStream\PCM_48_16_m.wav"-"e:\testing\data\AudioStream\PCM_48_16_m.wav"
+"..\data\mmc\AudioStream\PCM_48_16_s.wav"-"e:\testing\data\AudioStream\PCM_48_16_s.wav"
+"..\data\mmc\AudioStream\PCM_8Khz_16Bit_Mono.wav"-"e:\testing\data\AudioStream\PCM_8Khz_16Bit_Mono.wav"
+"..\data\mmc\AudioStream\PCM_8Khz_16Bit_Stereo.wav"-"e:\testing\data\AudioStream\PCM_8Khz_16Bit_Stereo.wav"
+"..\data\mmc\metadata\11entriesID3v2.aac"-"e:\testing\data\metadata\11entriesID3v2.aac"
+"..\data\mmc\metadata\AAC_MD2.aac"-"e:\testing\data\metadata\AAC_MD2.aac"
+"..\data\mmc\metadata\DownUnder_remix.aac"-"e:\testing\data\metadata\DownUnder_remix.aac"
+"..\data\mmc\metadata\DRM_NRTmeta.dcf"-"e:\testing\data\metadata\DRM_NRTmeta.dcf"
+"..\data\mmc\metadata\JapJap.mp3"-"e:\testing\data\metadata\JapJap.mp3"
+"..\data\mmc\metadata\JepJep.mp3"-"e:\testing\data\metadata\JepJep.mp3"
+"..\data\mmc\metadata\JipJip.mp3"-"e:\testing\data\metadata\JipJip.mp3"
+"..\data\mmc\metadata\MP3_MD.mp3"-"e:\testing\data\metadata\MP3_MD.mp3"
+"..\data\mmc\metadata\rtng_gnre_perf_dscp.m4a"-"e:\testing\data\metadata\rtng_gnre_perf_dscp.m4a"
+"..\data\mmc\metadata\rtng_gnre_perf_dscp.mp4"-"e:\testing\data\metadata\rtng_gnre_perf_dscp.mp4"
+"..\data\mmc\metadata\test3gp.3gp"-"e:\testing\data\metadata\test3gp.3gp"
+"..\data\mmc\metadata\testm4a.m4a"-"e:\testing\data\metadata\testm4a.m4a"
+"..\data\mmc\metadata\testmp4.mp4"-"e:\testing\data\metadata\testmp4.mp4"
+"..\data\mmc\metadata\Titl_Auth_Desc_Cprt.3gp"-"e:\testing\data\metadata\Titl_Auth_Desc_Cprt.3gp"
+"..\data\mmc\metadata\Titl_Auth_Perf_Gnre.3gp"-"e:\testing\data\metadata\Titl_Auth_Perf_Gnre.3gp"
+"..\data\mmc\metadata\titl_cprt_auth_dscp.m4a"-"e:\testing\data\metadata\titl_cprt_auth_dscp.m4a"
+"..\data\mmc\metadata\titl_cprt_auth_dscp.mp4"-"e:\testing\data\metadata\titl_cprt_auth_dscp.mp4" 
+"..\data\mmc\metadata\Titl_Perf_Rtng_Gnre.3gp"-"e:\testing\data\metadata\Titl_Perf_Rtng_Gnre.3gp"
+"..\data\mmc\ra\RA_11 kbps_Music.ra"-"e:\testing\data\ra\RA_11 kbps_Music.ra"
+"..\data\mmc\ra\RA_12 kbps_Stereo Music.ra"-"e:\testing\data\ra\RA_12 kbps_Stereo Music.ra"
+"..\data\mmc\ra\RA_128 kbps_Stereo Music - RealAudio 10.ra"-"e:\testing\data\ra\RA_128 kbps_Stereo Music - RealAudio 10.ra"
+"..\data\mmc\ra\RA_16 kbps_Stereo Music.ra"-"e:\testing\data\ra\RA_16 kbps_Stereo Music.ra"
+"..\data\mmc\ra\RA_160 kbps_Stereo Music - RealAudio 10.ra"-"e:\testing\data\ra\RA_160 kbps_Stereo Music - RealAudio 10.ra"
+"..\data\mmc\ra\RA_192 kbps_Stereo Music - RealAudio 10.ra"-"e:\testing\data\ra\RA_192 kbps_Stereo Music - RealAudio 10.ra"
+"..\data\mmc\ra\RA_20 kbps_Stereo Music.ra"-"e:\testing\data\ra\RA_20 kbps_Stereo Music.ra"
+"..\data\mmc\ra\RA_256 kbps_Stereo Music - RealAudio 10.ra"-"e:\testing\data\ra\RA_256 kbps_Stereo Music - RealAudio 10.ra"
+"..\data\mmc\ra\RA_32 kbps_Stereo Music.ra"-"e:\testing\data\ra\RA_32 kbps_Stereo Music.ra"
+"..\data\mmc\ra\RA_320 kbps_Stereo Music - RealAudio 10.ra"-"e:\testing\data\ra\RA_320 kbps_Stereo Music - RealAudio 10.ra"
+"..\data\mmc\ra\RA_44 kbps_Stereo Music.ra"-"e:\testing\data\ra\RA_44 kbps_Stereo Music.ra"
+"..\data\mmc\ra\RA_5 kbps_Voice.ra"-"e:\testing\data\ra\RA_5 kbps_Voice.ra"
+"..\data\mmc\ra\RA_6 kbps_Music.ra"-"e:\testing\data\ra\RA_6 kbps_Music.ra"
+"..\data\mmc\ra\RA_64 kbps_Stereo Music - RealAudio 10.ra"-"e:\testing\data\ra\RA_64 kbps_Stereo Music - RealAudio 10.ra"
+"..\data\mmc\ra\RA_8 kbps_Music.ra"-"e:\testing\data\ra\RA_8 kbps_Music.ra"
+"..\data\mmc\ra\RA_96 kbps_Stereo Music - RealAudio 10.ra"-"e:\testing\data\ra\RA_96 kbps_Stereo Music - RealAudio 10.ra"
+"..\data\mmc\Tone\Desk_phone_lo.rng"-"e:\testing\data\Tone\Desk_phone_lo.rng"
+"..\data\mmc\Tone\Espionage.rng"-"e:\testing\data\Tone\Espionage.rng"
+"..\data\mmc\wav\recordwav10s.wav"-"e:\testing\data\wav\recordwav10s.wav"
+"..\data\mmc\wav\recordwav30s.wav"-"e:\testing\data\wav\recordwav30s.wav"
+"..\data\mmc\wav\WAV_PCM_8bit_8khz_mono.wav"-"e:\testing\data\wav\WAV_PCM_8bit_8khz_mono.wav"
+"..\data\mmc\wma\10kbps 11khz cbr mono.wma"-"e:\testing\data\wma\10kbps 11khz cbr mono.wma"
+"..\data\mmc\wma\12kbps 8khz cbr stereo.wma"-"e:\testing\data\wma\12kbps 8khz cbr stereo.wma"
+"..\data\mmc\wma\96kbps 44khz cbr stereo.wma"-"e:\testing\data\wma\96kbps 44khz cbr stereo.wma"
+"..\data\mmc\wma\128kbps 44khz cbr stereo.wma"-"e:\testing\data\wma\128kbps 44khz cbr stereo.wma"
+"..\data\mmc\wma\160kbps 44khz cbr stereo.wma"-"e:\testing\data\wma\160kbps 44khz cbr stereo.wma"
+"..\data\mmc\wma\192kbps 48khz cbr stereo.wma"-"e:\testing\data\wma\192kbps 48khz cbr stereo.wma"
+"..\data\mmc\wma\256kbps 44khz cbr stereo.wma"-"e:\testing\data\wma\256kbps 44khz cbr stereo.wma"
+"..\data\mmc\wma\320kbps 44khz cbr stereo.wma"-"e:\testing\data\wma\320kbps 44khz cbr stereo.wma"
+"..\data\mmc\wma\VBR Q98 44Khz stereo.wma"-"e:\testing\data\wma\VBR Q98 44Khz stereo.wma"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

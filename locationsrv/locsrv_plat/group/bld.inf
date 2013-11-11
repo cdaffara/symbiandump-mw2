@@ -1,0 +1,34 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Includes all the Domain API specific bld.inf files, which 
+*                export files.
+*
+*/
+
+
+
+#include "../geocoding_api/group/bld.inf"
+//#include "../supl_pos_message_plugin_api/group/bld.inf"
+#include "../landmarks_category_definition_api/group/bld.inf"
+#include "../supl_settings_api/group/bld.inf"
+#include "../np_proxy_configuration_api/group/bld.inf"
+#include "../supl_terminal_initiation_api/group/bld.inf"
+#include "../supl_network_initiation_api/group/bld.inf"
+#include "../oma_supl_configuration_parameter_api/group/bld.inf"
+#include "../location_triggering_management_api/group/bld.inf"
+#include "../location_triggering_status_information_api/group/bld.inf"
+#include "../oma_supl_asn_codec_plugin_api/group/bld.inf"
+#include "../query_and_notification_api/group/bld.inf"
+#include "../location_local_variation_api/group/bld.inf"
+

@@ -1,0 +1,5 @@
+EXPORTS
+	_ZN9CMySvrMtm4NewLER17CRegisteredMtmDllP15CMsvServerEntry @ 1 NONAME
+	_ZTI9CMySvrMtm @ 2 NONAME ; #<TI>#
+	_ZTV9CMySvrMtm @ 3 NONAME ; #<VT>#
+

@@ -1,0 +1,75 @@
+/*
+* Copyright (c) 2005 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Location Triggering API
+*    
+*
+*/
+
+
+#include <platform_paths.hrh> // For the MW_LAYER_SYSTEMINCLUDE
+
+TARGET            lbt.dll
+TARGETTYPE        dll
+UID               0x1000008d 0x10283130 
+
+VENDORID          VID_DEFAULT
+CAPABILITY        CAP_CLIENT_DLL
+
+SOURCEPATH        ../src
+SOURCE            lbt.cpp
+SOURCE            lbtgeocircle.cpp
+SOURCE            lbtgeorect.cpp
+SOURCE			  lbtlisttriggeroptions.cpp
+SOURCE            lbtserver.cpp
+SOURCE			  lbtstartuptrigger.cpp
+SOURCE            lbttriggerentry.cpp
+SOURCE			  lbttriggerfilterbyarea.cpp
+SOURCE			  lbttriggerfilterbyattribute.cpp
+SOURCE			  lbtgeoareabase.cpp
+SOURCE 			  lbttriggerfilterbase.cpp
+SOURCE			  lbtterminalptrholder.cpp
+SOURCE			  lbtsessiontrigger.cpp
+SOURCE			  lbttriggerconditionbase.cpp
+SOURCE			  lbttriggerinfo.cpp
+SOURCE 			  lbttriggerfiltercomposite.cpp
+SOURCE			  lbttriggerconditionarea.cpp
+SOURCE			  lbttriggerfiringeventnotifier.cpp
+SOURCE 			  lbttriggeringsystemsettingschangeeventnotifier.cpp
+SOURCE			  lbttriggerchangeeventnotifier.cpp	
+SOURCE			  lbttriggeringsystemsettings.cpp
+SOURCE			  lbtclientrequester.cpp
+SOURCE            lbtgeocell.cpp 
+SOURCE            lbtgeogsmcell.cpp
+SOURCE            lbtgeowcdmacell.cpp
+SOURCE            lbtoperation.cpp
+SOURCE            lbtcelloperation.cpp
+SOURCE        lbtgeohybrid.cpp
+
+// System Include
+MW_LAYER_SYSTEMINCLUDE
+
+USERINCLUDE       ../inc ../../inc
+
+LIBRARY           euser.lib estor.lib lbs.lib 
+LIBRARY           etel.lib
+LIBRARY           etelmm.lib      // etel multimode library
+LIBRARY           customapi.lib   // etel mm custom api
+LIBRARY           commdb.lib
+LIBRARY			  flogger.lib
+
+PAGED
+SMPSAFE
+
+// END OF FILE
+

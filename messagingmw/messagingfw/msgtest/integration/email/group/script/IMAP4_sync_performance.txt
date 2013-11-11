@@ -1,0 +1,275 @@
+// ###########################################
+//  
+//  Author:	Santiago Rilova
+//  Date:	15/07/2003
+//
+// Performance Test Script for IMAP sync
+//    Gets timings for downloading 800 emails for the first time
+//     and timings for resyncing after 100 mails have been deleted and 100 new added.
+// 1. Create an IMAP service (serviceA) on drive C.
+// 2. Sync Inbox on serviceA for the first time, capture the time required.
+// 3. Create a second IMAP service (serviceB) to the same account but residing on 
+//     different drive (MMC/CF card) to make sure the operations don't alter
+//     the msv store where serviceA resides.
+// 4. Sync Inbox on serviceB for the first time, capture the time required.
+// 5. Delete 100 messages from the inbox using serviceB.
+// 6. Add 100 new messages in the inbox using serviceB (copy from folder ExtraStore).
+// 7. Get timings for syncing the inbox again with serviceA.
+// 8. Delete 100 messages from the inbox using serviceA.
+// 9. Add 100 new messages in the inbox using serviceA (copy from folder ExtraStore).
+// 10. Get timings for syncing the inbox again with serviceB.
+
+
+//
+//
+// Execution:
+// 1. Update sections change_to_removable_drive and imap_init_mail_folders 
+//    to point to the drive containing the removable media if different than F.
+// 2. Copy this file to c:\msgtest\emailsmoke
+//  and execute "t_email -testparams imap4_sync_performance newlog"
+//
+//
+//
+// Pre-requisites:
+// 1. IMAP account with folders: 
+//    	Inbox (800 messages), 
+//    	ExtraStore (100 messages)
+//   
+// ####################################################
+
+[main]
+email_client_test email
+
+// Perform the test steps.
+
+[email]
+imap_client_test imap_init_mail_folders
+imap_client_test create_IMAP_serviceA
+add_comment ***************************************
+add_comment First Inbox sync on C: drive
+imap_client_test imap_do_inbox_sync_serviceA
+imap_client_test change_to_removable_drive
+imap_client_test create_IMAP_serviceB
+add_comment ****************************************
+add_comment First Inbox sync on removable drive (MMC/CF card)
+imap_client_test imap_do_inbox_sync_serviceB
+imap_client_test imap_delete_selection_serviceB
+imap_client_test imap_add_new_mails_serviceB
+imap_client_test change_to_c
+add_comment ****************************************
+add_comment Re-sync Inbox on C: drive
+imap_client_test imap_do_inbox_sync_serviceA
+imap_client_test imap_delete_selection_serviceA
+imap_client_test imap_add_new_mails_serviceA
+imap_client_test change_to_removable_drive
+add_comment Re-sync Inbox
+add_comment ****************************************
+add_comment Re-sync Inbox on removable drive (MMC/CF card)
+imap_client_test imap_do_inbox_sync_serviceB
+
+
+
+
+[change_to_c]
+change_to_drive C
+
+// Note: on Lubbock board MMC card is F and CF card is D
+[change_to_removable_drive]
+change_to_drive F
+
+// Delete the mail folder
+[imap_init_mail_folders]
+add_comment Clean message folder in C drive
+clean_message_folder
+add_comment Clean message folder in removable drive
+remove_file_or_dir f:\system\mail\
+add_comment Remove msgs ini file
+remove_file_or_dir c:\system\data\msgs.ini
+add_comment Start client session
+start_client_session
+
+//
+// Create two services, one to capture timings and one to do aside operations on the server mailbox
+// 
+[create_IMAP_serviceA]
+add_comment Create IMAP service for testing
+select_root_folder
+imap_service imap_serviceA_MsgExchange
+select_folder test_imap_serviceA
+add_comment Connecting
+connect
+check_imap_error 0
+add_comment Synchronising tree
+sync_tree
+check_imap_error 0
+add_comment Disconnecting
+disconnect
+check_imap_error 0
+
+[create_IMAP_serviceB]
+add_comment Create operations IMAP service
+select_root_folder
+imap_service imap_serviceB_MsgExchange
+select_folder test_imap_serviceB
+add_comment Connecting
+connect
+check_imap_error 0
+add_comment Synchronising tree
+sync_tree
+check_imap_error 0
+add_comment Disconnecting
+disconnect
+check_imap_error 0
+
+[delete_ops_service]
+add_comment Create operations IMAP service
+select_root_folder
+select_entry test_imap_serviceB
+delete
+//check_imap_error 0
+
+
+[imap_do_inbox_sync_serviceA]
+add_comment Do sync
+select_root_folder
+select_folder test_imap_serviceA
+use_service
+add_comment Connecting
+connect
+check_imap_error 0
+select_root_folder
+select_folder test_imap_serviceA
+select_folder Inbox
+add_comment *****************************
+add_comment Time: Start syncing Inbox now
+sync_folder
+add_comment Time: Finished Inbox sync
+add_comment *****************************
+// Verify we have 800 message headers
+check_remote_folder_size 800
+add_comment Disconnecting
+disconnect
+check_imap_error 0
+
+[imap_do_inbox_sync_serviceB]
+add_comment Do sync
+select_root_folder
+select_folder test_imap_serviceB
+use_service
+add_comment Connecting
+connect
+check_imap_error 0
+select_root_folder
+select_folder test_imap_serviceB
+select_folder Inbox
+add_comment *****************************
+add_comment Time: Start syncing Inbox now
+sync_folder
+add_comment Time: Finished Inbox sync
+add_comment *****************************
+// Verify we have 800 message headers
+check_remote_folder_size 800
+add_comment Disconnecting
+disconnect
+check_imap_error 0
+
+
+[imap_delete_selection_serviceB]
+select_root_folder
+select_folder test_imap_serviceB
+add_comment Connecting
+connect
+check_imap_error 0
+select_root_folder
+select_folder test_imap_serviceB
+select_folder Inbox
+sync_folder
+check_remote_folder_size 800
+select_all_messages
+select_last_in_selection 100
+add_comment Deleting 100 messages
+delete
+add_comment Disconnecting
+disconnect
+check_imap_error 0
+
+[imap_add_new_mails_serviceB]
+select_root_folder
+select_folder test_imap_serviceB
+add_comment Connecting
+connect
+check_imap_error 0
+select_root_folder
+select_folder test_imap_serviceB
+select_destination_folder Inbox
+select_folder ExtraStore
+sync_folder
+check_remote_folder_size 100
+select_all_messages
+add_comment Copying new messages into Inbox
+copy
+check_imap_error 0
+add_comment Disconnecting
+disconnect
+check_imap_error 0
+
+[imap_delete_selection_serviceA]
+select_root_folder
+select_folder test_imap_serviceA
+add_comment Connecting
+connect
+check_imap_error 0
+select_root_folder
+select_folder test_imap_serviceA
+select_folder Inbox
+sync_folder
+check_remote_folder_size 800
+select_all_messages
+select_last_in_selection 100
+add_comment Deleting 100 messages
+delete
+add_comment Disconnecting
+disconnect
+check_imap_error 0
+
+[imap_add_new_mails_serviceA]
+select_root_folder
+select_folder test_imap_serviceA
+add_comment Connecting
+connect
+check_imap_error 0
+select_root_folder
+select_folder test_imap_serviceA
+select_destination_folder Inbox
+select_folder ExtraStore
+sync_folder
+check_remote_folder_size 100
+select_all_messages
+add_comment Copying new messages into Inbox
+copy
+check_imap_error 0
+add_comment Disconnecting
+disconnect
+check_imap_error 0
+
+
+//
+// serviceA
+//
+[imap_serviceA_MsgExchange]
+set_name test_imap_serviceA
+set_server lon-msgtest06.intra
+set_user perform1
+set_pass password
+set_tls 0
+
+//
+// serviceB, connecting to the same account
+//
+[imap_serviceB_MsgExchange]
+set_name test_imap_serviceB
+set_server lon-msgtest06.intra
+set_user perform1
+set_pass password
+set_tls 0
+

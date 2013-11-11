@@ -1,0 +1,171 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description:	Package file for project MPX.
+;
+
+;Languages
+&EN, FR, GE, SP, IT, SW, DA, NO, FI, AM, PO, TU, IC, RU, HU, DU, CS, SK, PL, SL, TC, HK, ZH, JA, TH, AR, TL, BG, CA, 
+HR, ET, FA, CF, EL, HE, IN, LV, LT, MS, BP, RO, SR, LS, UK, UR, VI, BA, GL, 129, 157, 158, 159, 160, 161, 326, 327
+
+
+;Header
+#{"MPX", "MPX", "MPX", "MPX",
+  "MPX", "MPX", "MPX", "MPX",
+  "MPX", "MPX", "MPX", "MPX",
+  "MPX", "MPX", "MPX", "MPX",
+  "MPX", "MPX", "MPX", "MPX",
+  "MPX", "MPX", "MPX", "MPX",
+  "MPX", "MPX", "MPX", "MPX",
+  "MPX", "MPX", "MPX", "MPX",
+  "MPX", "MPX", "MPX", "MPX",
+  "MPX", "MPX", "MPX", "MPX",
+  "MPX", "MPX", "MPX", "MPX",
+  "MPX", "MPX", "MPX", "MPX",
+  "MPX", "MPX", "MPX", "MPX",
+  "MPX", "MPX", "MPX", "MPX"
+  },(0x101FFC63),11,0,1,TYPE=SA, RU
+
+; Localised vendor names
+%{"Nokia", "Nokia", "Nokia", "Nokia",
+  "Nokia", "Nokia", "Nokia", "Nokia",
+  "Nokia", "Nokia", "Nokia", "Nokia",
+  "Nokia", "Nokia", "Nokia", "Nokia",
+  "Nokia", "Nokia", "Nokia", "Nokia",
+  "Nokia", "Nokia", "Nokia", "Nokia",
+  "Nokia", "Nokia", "Nokia", "Nokia",
+  "Nokia", "Nokia", "Nokia", "Nokia",
+  "Nokia", "Nokia", "Nokia", "Nokia",
+  "Nokia", "Nokia", "Nokia", "Nokia",
+  "Nokia", "Nokia", "Nokia", "Nokia",
+  "Nokia", "Nokia", "Nokia", "Nokia",
+  "Nokia", "Nokia", "Nokia", "Nokia",
+  "Nokia", "Nokia", "Nokia", "Nokia"
+  }
+
+; Unique, global vendor name  
+:"Nokia"
+
+
+;Files to install
+
+;
+; Display restart message
+;
+"restart.txt" - "", FILETEXT, TEXTEXIT
+
+; From Common Framework
+"\epoc32\release\armv5\urel\mpxcommon.dll"                      -"!:\sys\bin\mpxcommon.dll"
+
+; From Collection Framework
+"\epoc32\release\armv5\urel\mpxcollectionutility.dll"           -"!:\sys\bin\mpxcollectionutility.dll"
+"\epoc32\release\armv5\urel\mpxcollectionserver.exe"            -"!:\sys\bin\mpxcollectionserver.exe"
+"\epoc32\release\armv5\urel\mpxcollectionengine.dll"            -"!:\sys\bin\mpxcollectionengine.dll"
+
+; From Playback Framework
+"\epoc32\release\armv5\urel\mpxplaybackengine.dll"              -"!:\sys\bin\mpxplaybackengine.dll"
+"\epoc32\release\armv5\urel\mpxplaybackserver.exe"              -"!:\sys\bin\mpxplaybackserver.exe"
+"\epoc32\release\armv5\urel\mpxplaybackutility.dll"             -"!:\sys\bin\mpxplaybackutility.dll"
+
+; From Harvester
+"\epoc32\release\armv5\urel\mpxharvesterserver.exe"             -"!:\sys\bin\mpxharvesterserver.exe"
+"\epoc32\release\armv5\urel\mpxfilehandler.dll"                 -"!:\sys\bin\mpxfilehandler.dll"
+"\epoc32\release\armv5\urel\mpxharvesterutility.dll"            -"!:\sys\bin\mpxharvesterutility.dll"
+"\epoc32\release\armv5\urel\mpxcollectionmediator.dll"          -"!:\sys\bin\mpxcollectionmediator.dll"
+"\epoc32\release\armv5\urel\mpxmetadataextractor.dll"           -"!:\sys\bin\mpxmetadataextractor.dll"
+
+; From Playlist Engine
+"\epoc32\release\armv5\urel\mpxplaylistengine.dll"              -"!:\sys\bin\mpxplaylistengine.dll"
+"\epoc32\release\armv5\urel\mpxplaylistrecognizer.dll"          -"!:\sys\bin\mpxplaylistrecognizer.dll"
+
+; From View Framework
+"\epoc32\release\armv5\urel\mpxviewutility.dll"                 -"!:\sys\bin\mpxviewutility.dll"
+"\epoc32\release\armv5\urel\mpxviewplugin.dll"                  -"!:\sys\bin\mpxviewplugin.dll"
+
+; From AlbumArt Utility
+"\epoc32\release\armv5\urel\mpxalbumartutility.dll"             -"!:\sys\bin\mpxalbumartutility.dll"
+"\epoc32\release\armv5\urel\mpxcollectionhelper.dll"            -"!:\sys\bin\mpxcollectionhelper.dll"
+
+; From BackStepping
+"\epoc32\release\armv5\urel\mpxbacksteppingutility.dll"         -"!:\sys\bin\mpxbacksteppingutility.dll"
+
+; Central Repositary Files
+"101FFC03.cre"           -"!:\private\10202BE9\101FFC03.cre"
+"101FFCD2.cre"           -"!:\private\10202BE9\101FFCD2.cre"
+
+
+; Interface Resources
+"\epoc32\data\Z\resource\plugins\mpxplaylistrecognizer.rsc"     -"!:\resource\plugins\mpxplaylistrecognizer.rsc"
+"\epoc32\data\Z\resource\mpxplaylisttopcharacterset.rsc"        -"!:\resource\mpxplaylisttopcharacterset.rsc"
+
+
+; Localised String Resources
+{
+"\epoc32\data\Z\resource\apps\mpxmediator.r01"
+"\epoc32\data\Z\resource\apps\mpxmediator.r02"
+"\epoc32\data\Z\resource\apps\mpxmediator.r03"
+"\epoc32\data\Z\resource\apps\mpxmediator.r04"
+"\epoc32\data\Z\resource\apps\mpxmediator.r05"
+"\epoc32\data\Z\resource\apps\mpxmediator.r06"
+"\epoc32\data\Z\resource\apps\mpxmediator.r07"
+"\epoc32\data\Z\resource\apps\mpxmediator.r08"
+"\epoc32\data\Z\resource\apps\mpxmediator.r09"
+"\epoc32\data\Z\resource\apps\mpxmediator.r10"
+"\epoc32\data\Z\resource\apps\mpxmediator.r13"
+"\epoc32\data\Z\resource\apps\mpxmediator.r14"
+"\epoc32\data\Z\resource\apps\mpxmediator.r15"
+"\epoc32\data\Z\resource\apps\mpxmediator.r16"
+"\epoc32\data\Z\resource\apps\mpxmediator.r17"
+"\epoc32\data\Z\resource\apps\mpxmediator.r18"
+"\epoc32\data\Z\resource\apps\mpxmediator.r25"
+"\epoc32\data\Z\resource\apps\mpxmediator.r26"
+"\epoc32\data\Z\resource\apps\mpxmediator.r27"
+"\epoc32\data\Z\resource\apps\mpxmediator.r28"
+"\epoc32\data\Z\resource\apps\mpxmediator.r29"
+"\epoc32\data\Z\resource\apps\mpxmediator.r30"
+"\epoc32\data\Z\resource\apps\mpxmediator.r31"
+"\epoc32\data\Z\resource\apps\mpxmediator.r32"
+"\epoc32\data\Z\resource\apps\mpxmediator.r33"
+"\epoc32\data\Z\resource\apps\mpxmediator.r37"
+"\epoc32\data\Z\resource\apps\mpxmediator.r39"
+"\epoc32\data\Z\resource\apps\mpxmediator.r42"
+"\epoc32\data\Z\resource\apps\mpxmediator.r44"
+"\epoc32\data\Z\resource\apps\mpxmediator.r45"
+"\epoc32\data\Z\resource\apps\mpxmediator.r49"
+"\epoc32\data\Z\resource\apps\mpxmediator.r50"
+"\epoc32\data\Z\resource\apps\mpxmediator.r51"
+"\epoc32\data\Z\resource\apps\mpxmediator.r54"
+"\epoc32\data\Z\resource\apps\mpxmediator.r57"
+"\epoc32\data\Z\resource\apps\mpxmediator.r59"
+"\epoc32\data\Z\resource\apps\mpxmediator.r67"
+"\epoc32\data\Z\resource\apps\mpxmediator.r68"
+"\epoc32\data\Z\resource\apps\mpxmediator.r70"
+"\epoc32\data\Z\resource\apps\mpxmediator.r76"
+"\epoc32\data\Z\resource\apps\mpxmediator.r78"
+"\epoc32\data\Z\resource\apps\mpxmediator.r79"
+"\epoc32\data\Z\resource\apps\mpxmediator.r83"
+"\epoc32\data\Z\resource\apps\mpxmediator.r93"
+"\epoc32\data\Z\resource\apps\mpxmediator.r94"
+"\epoc32\data\Z\resource\apps\mpxmediator.r96"
+"\epoc32\data\Z\resource\apps\mpxmediator.r102"
+"\epoc32\data\Z\resource\apps\mpxmediator.r103"
+"\epoc32\data\Z\resource\apps\mpxmediator.r129"
+"\epoc32\data\Z\resource\apps\mpxmediator.r157"
+"\epoc32\data\Z\resource\apps\mpxmediator.r158"
+"\epoc32\data\Z\resource\apps\mpxmediator.r159"
+"\epoc32\data\Z\resource\apps\mpxmediator.r160"
+"\epoc32\data\Z\resource\apps\mpxmediator.r161"
+"\epoc32\data\Z\resource\apps\mpxmediator.r326"
+"\epoc32\data\Z\resource\apps\mpxmediator.r327"
+} - "!:\resource\apps\mpxmediator.rsc"
+

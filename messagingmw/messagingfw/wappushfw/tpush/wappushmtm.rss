@@ -1,0 +1,107 @@
+// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+#include <mtmconfig.rh>
+
+RESOURCE MTM_INFO_FILE
+	{
+	mtm_type_uid = 0x10009158;
+	technology_type_uid = 0x10009157;
+	components = 
+		{
+#ifdef __MESSAGING_API_V2__
+		MTM_COMPONENT_V2
+			{
+			human_readable_name = "WAP Push Server MTM";					
+			component_uid = KUidMtmServerComponentVal;
+			entry_point = 2;
+			version = VERSION_V2 {};			
+			filename = "z:\\system\\libs\\WapPushMtmClientServer.dll";
+			},
+		MTM_COMPONENT_V2
+			{
+			human_readable_name = "WAP Push Client MTM";
+			component_uid = KUidMtmClientComponentVal;
+			entry_point = 1;
+			version = VERSION_V2 {};
+			filename = "z:\\system\\libs\\WapPushMtmClientServer.dll"; 
+			},
+		MTM_COMPONENT_V2
+			{			
+			human_readable_name = "WAP Push UI MTM";
+			component_uid = KUidMtmUiComponentVal;
+			entry_point = 2;
+			version = VERSION_V2 {};
+			filename = "z:\\system\\libs\\dummyuimtm.dll"; // this does not exist
+			},
+		MTM_COMPONENT_V2
+			{
+			human_readable_name = "WapPush UI Data MTM";
+			component_uid = KUidMtmUiDataComponentVal;
+			entry_point = 1;
+			version = VERSION_V2 {};
+			filename = "z:\\system\\libs\\dummyuidatamtm.dll"; // this does not exist
+			}
+#else		
+		MTM_COMPONENT
+			{
+			human_readable_name = "WAP Push Server MTM";
+			component_uid = KUidMtmServerComponentVal;
+			specific_uid = 0x10009146;
+			entry_point = 2;
+			version = VERSION { major = 1; minor = 0; build = 100; };
+			},
+		MTM_COMPONENT
+			{
+			human_readable_name = "WAP Push Client MTM";
+			component_uid = KUidMtmClientComponentVal;
+			specific_uid = 0x10009146;
+			entry_point = 1;
+			version = VERSION { major = 1; minor = 0; build = 100; };
+			},
+		MTM_COMPONENT
+			{
+			human_readable_name = "WAP Push UI MTM";
+			component_uid = KUidMtmUiComponentVal;
+			specific_uid = 0x100094D0;
+			entry_point = 2;
+			version = VERSION { major = 1; minor = 0; build = 100; };
+			},
+		MTM_COMPONENT
+			{
+			human_readable_name = "WapPush UI Data MTM";
+			component_uid = KUidMtmUiDataComponentVal;
+			specific_uid = 0x100094D0;
+			entry_point = 1;
+			version = VERSION { major = 1; minor = 0; build = 100; };
+			}
+#endif // __MESSAGING_API_V2__			
+		};
+	}
+	
+#ifdef __MESSAGING_API_V2__
+
+RESOURCE MTM_CAPABILITIES
+	{
+	}
+	
+RESOURCE MTM_SECURITY_CAPABILITY_SET
+	{
+	// Require some dummy capabilities
+	capabilities = { ECapabilityLocalServices, ECapabilityPowerMgmt };
+	}
+
+#endif // __MESSAGING_API_V2__
+	

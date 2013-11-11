@@ -1,0 +1,110 @@
+#CategoryId	CategoryName	Icon name	Icon index	Id	In Categories	 LandmarkName	CoverageRadius	Description	Icon name	Icon index	Street	PostalCode	City	LocationName	Country	Media Link 1	Media Link 2	Lat	Long	Hor. Acc	Vert. Acc
+1	Pizzeria	z:\\system\\test\\landmarkstestsicon.mbm	1	1	1	LOG	1	jadajadjada	ikon slask	1			Halmstad	Drivhuset Plan7		html/text/http://www.idg.se/to.html1	html/text/https://www.aftonbladet.s	45,5	-44,5	10	10
+2	Hamburgerbar	z:\\system\\test\\landmarkstestsicon.mbm	1	2	1	LOG11	2	jadajadjada	ikon snask	1	Berghemsgatan 2	531 37	Kållered	Västra Götaland	 Sverige 	html/text/http://www.idg.se/to.html2	html/text/https://www.aftonbladet.se	46	44	14	10
+3	Kinarestaurang	z:\\system\\test\\landmarkstestsicon.mbm	1	3	2	God	23		ikon skask	1		431 31	Mölndal	Västra Götaland	 Sverige1 	html/text/http://www.idg.se/to.html3	html/text/https://www.aftonbladet.se	45	45	11	10
+4	Garaget	z:\\system\\test\\landmarkstestsicon.mbm	1	4	2	vegetariskt	5	jadajadjada	ikon spask	1	Berghemsgatan 10		Mölndal	Västra Götaland	 Sverige1 	html/text/http://www.idg.se/to.html4	html/text/https://www.aftonbladet.se	-45,5	-44,5	0	10
+5	Bilverkstad	z:\\system\\test\\landmarkstestsicon.mbm	2	5	3	Inte sa bra	6	jadajadjada			Berghemsgatan 4	431 31		Västra Götaland	 Sverige1 	html/text/http://www.idg.se/to.html5	html/text/https://www.aftonbladet.se	-46,105	46,105	0	10
+6	Pasta Restaurang	z:\\system\\test\\landmarkstestsicon.mbm	2	6	3	Dyrt	7	jadajadjada	ikon PelleFant	2	Berghemsgatan 7	431 31	Mölndal		 Sverige1 	html/text/http://www.idg.se/to.html6	html/text/https://www.aftonbladet.se	70	70	180	10
+7	Bilia		2	7	1-3,14-17	Billigt	8	jadajadjada	ikon Abibblan	2	Berghemsgatan 6	431 31	Mölndal	Västra Götaland		html/text/http://www.idg.se/to.html7	html/text/https://www.aftonbladet.se	63	23	18	10
+8	VolksWagen	sddsa	2	8	3	Medel	1	MLFW	ikon bibblan123	2	Berghemsgatan 8	431 31	Mölndal	Västra Götaland	 Sverige1 	html/text/http://www.idg.se/to.html8		5	37,6	37,6	10
+9	Taxi Göteborg	dasdsada	2	9	3	Medel2	1	jadajadjada	ikon bibblan123	2	Berghemsgatan 5	431 31	Mölndal	Västra Götaland	 Sverige1 	html/text/http://www.idg.se/to.html9		5	37,6	37,6	10
+10	Taxi	dsa	2	10	3	MLFW2	1	MLFW	ikon PelleFant	2	Berghemsgatan 9	431 31	Mölndal	Västra Götaland	 Sverige1 	html/text/http://www.idg.se/to.html10	html/text/http://www.idg.se	-1	-81	25	0
+11	Stadsbibliotek	aaa	2	11		MLFW	1	aaaaaa	ikon PelleFant	2	MLFW	351 25	 HalmstadA 		 BSverige1 	html/text/http://www.idg.se/to.html11	html/text/http://www.idg.se	0	-67	48	0
+12	Systembolag	aaa	3	12	3	GatesB	1	bbbbbbb	ikon PelleFant	3	PastaGatan L	MLFW	 HalmstadB 		 BSverige2 	html/text/http://www.idg.se/to.html12	html/text/http://www.hotmail.com	1	-81	7	0
+13	Nokia Kontor	aaa	3	13	3	Text'''1	1	ccccccc	ikon PelleFant	3	PastaGatan N	MLFW	 MLFW 		 BSverige3 	html/text/http://www.idg.se/to.html13	html/text/http://www.idg.se	45	-45	18	0
+14	TietoEnator kontor	aaa	3	14	5	GatesF	1	dddddddd	ikon PelleFant	3	MLFW	351 29	 HalmstadJ 		 BSverige4 	html/text/http://www.idg.se/to.html14	html/text/http://www.idg.se	-1	-80	168	0
+15	Thai Restaurang	bbb	3	15	5	xStekt	1	MLFW	ikon PelleFant	3	Berghemsgatan 11	431 31	 Mölndal 		Västra Götaland	html/text/http://www.idg.se/to.html15	html/text/http://www.idg.se	-5	25		
+16	McDonalds	bbb	3	16	3	Akorthus	1	fffffffffffffffff	ikon PelleFant	3	AStora biblioteksgatan 24	A123 45	 AStorGöteborg 		AÖstra Götaland	html/text/http://www.idg.se/to.html16	html/text/http://www.idg.se	1	-81	12	50
+17	BurgerKing	bbb	3	17	17	Stadskortxhus	1	ggghhhhhh	ikon PelleFant	3	Stora biblioteksgatan 25	321 32	 StorGöteborg123 		Östra Götaland123	html/text/http://www.idg.se/to.html17	html/text/http://www.idg.se	57	11	11	9
+18	Frisör	bbb	3	18	18	enat?r	1	iiiijjjjjj	ikon PelleFant	3	Stora biblioteksgatan 25	321 32	 StorGöteborg123 		Östra Götaland123	html/text/http://www.idg.se/to.html18	html/text/http://www.idg.se	0	-80,5	10,2	1,5
+19	Hunddagis	bbb	4	19	19	enator	1	kkkkklll	Gårdaikonen	4	Berghemsgatan 1				Finland	html/text/http://www.idg.se/to.html19		23	23	10,2	1,5
+20	Veterinär	bbb	4	20	21	LOG2	1	mmmm	Gårdaikonen	4	Berghemsgatan 2	431 32	Mölndal		Västra Götaland	html/text/http://www.idg.se/to.html20	html/text/https://www.aftonbladet.se	-1	80	10,2	1,5
+21	Kyrkogård	bbb	4	21	19	LOG3	1	nnnxnnn	Gårdaikonen	4	Berghemsgatan 3	431 33	Mölndal 		Västra Götaland	html/text/http://www.idg.se/to.html21	html/text/https://www.aftonbladet.se	1	80	25	300
+22	Museum	bbb	4	22	22	LOG4	1	ooooooo	Gårdaikonen	4	Berghemsgatan 4	431 34	Mölndal		Västra Götaland	html/text/http://www.idg.se/to.html22	html/text/http://www.idg.se	-1	81	10,2	1,55
+23	Dagis	bbb	4	23	23	LOG5	1	ppppppx	Gårdaikonen	4	Berghemsgatan 5	431 35	Mölndal		Västra Götaland	html/text/http://www.idg.se/to.html23	html/text/https://www.aftonbladet.se	1	81	18	120
+24	StadsPark	bbb	4	24	24	LOG6	1	asd	Gårdaikonen	4	Berghemsgxatan 6	431 36	Mölndal		Västra Götaland	html/text/http://www.idg.se/to.html24	html/text/http://www.idg.se	0	80,5	168,9	7000
+25	Sjukhus	bbb	4	25	25	x	1	r	Gårdaikonen	4	Berghemsgatan 7	x431 37	Mölndal		Västra Götaland	html/text/http://www.idg.se/to.html25	html/text/https://www.aftonbladet.se	-84	12,4	12,5	10
+26	Läkare	bbb	5	26	26	LOG8	1	x	Gårdaikonen	5	Berghemsgatan 8	431 38	xMölndal		Västra Götaland	html/text/http://www.idg.se/to.html26	html/text/https://www.aftonbladet.se	5	25	59	2000
+				27	11-17	LOG9	1	ttttt	Gårdaikonen	5	Berghemsgatan 9	431 39	Mölndal	x	Västra Götaland	html/text/http://www.idg.se/to.html27	html/text/https://www.aftonbladet.se	-84	12		
+				28	11	LOG10	1	v	Gårdaikonen	5	Berghemsgatan 10	431 40	Mölndal		Västra Götalandx	html/text/http://www.idg.se/to.html28	html/text/https://www.aftonbladet.se	10	14	13,9	6000
+				29	26	Unique	1		Gårdaikonen	5		256 78	Mölndal		Daanmark	html/text/http://www.idg.se/to.html29	html/text/https://www.aftonbladet.se	45,5	-0,5	0	1200
+				30	26	Text'1	1	Unique	Gårdaikonen	5		256 78	Götet		Daanmark	html/text/http://www.idg.se/to.html30	html/text/https://wwwx.aftonbladet.se	45,5	0	0	112
+				31	26	Text1	1		 Focus Torget1 	56	Unique	256 78	Mölndal		Daanmark	html/text/http://www.idg.se/to.html31	html/text/https://www.aftonbladet.se	45,5	0,5	0	0
+				32		Text2	1		 Focus Torget1 	6		256 78	 Unique 		Daanmark	html/text/http://www.idg.se/to.html32	html/text/https://www.aftonbladet.se	89	-15	0	0								
+				33	26	Text3	1		 Focus Torget1 	6		256 78	Götet		Daanmark	html/text/http://www.idg.se/to.html33	html/text/https://www.aftonbladet.se	5	37,6	0	0								
+				34	26	Text4	1		 Focus Torget1 	66		256 78	Götet		Daanmark	html/text/http://www.idg.se/to.html34	html/text/http://www.idg.se	63	23	18	0								
+				35	26	Text5	1		 Focus Torget1 	6		256 78	Götet		Daanmark	html/text/http://www.idg.se/to.html35	html/text/https://www.aftonbladet.se	-84,2	-2,67	168,9	0								
+				36		Text6	1		 Focus Torget1 	6		256 78	Götet		Daanmark	html/text/http://www.idg.se/to.html36	html/text/http://www.idg.se	5	37,6	37,6	0								
+				37	26	Text7	1		 Focus Torget1 	6		256 78	Götet		Daanmark	html/text/http://www.idg.se/to.html37	o	5	37,6	37,6	0								
+				38	26	Text8	1					256 78	Götet		Daanmark	html/text/http://www.idg.se/to.html38	html/text/http://www.idg.se	5	37,6	0	0								
+				39		Text9	1					256 78	Götet		Daanmark	html/text/http://www.idg.se/to.html39		5	25	59	2000								
+				40	26	Text10	1					256 78	Götet		Daanmark	html/text/http://www.idg.se/to.html40		0	180	168,9	4500								
+				41	26	q	1					256 78	Götet		Daanmark	html/text/http://www.idg.se/to.html41		-1	180	37,6	2								
+				42	26	asd	1					256 78				html/text/http://www.idg.se/to.html42		1	180	37,6	1								
+				43		asdf	1					256 78				html/text/http://www.idg.se/to.html43		0	-179										
+				44	26	dfdsf	1					256 78				html/text/http://www.idg.se/to.html44		0	179										
+				45	26	Several	1	Several	Several	1	Several	Several	Several	Several	Several	html/text/http://www.idg.se/to.html45	Several	-1	-179										
+				46	26	oki	1	aaa	aaa							html/text/http://www.idg.se/to.html46		-1	179										
+				47	26	abab	1	oki	aaa							html/text/http://www.idg.se/to.html47		1	-179										
+				48	26	Nokia	1	aaa	aaa		oki					html/text/http://www.idg.se/to.html48		1	179										
+				49	26	aba	1	Nokia	aaa		aaa		aaa			html/text/http://www.idg.se/to.html49		-25	34										
+				50	26	aca	1	aaa	aaa			Noki				html/text/http://www.idg.se/to.html50		65	-76,6										
+				51	1	PellesPizza	1		IconName1		Berghemsgatan1				 Sverige 	html/text/http://www.idg.se/to.html51		12,89	156										
+				52	19	Kalles Hundgård	1		IconName2		Berghemsgatan2				 Sverige 	html/text/http://www.idg.se/to.html52		-45	-1	12	50								
+				53	21	Sjömanskyrkan	1		IconName3		Berghemsgatan3				 Sverige 	html/text/http://www.idg.se/to.html53		25,05	-5,5	13	49								
+				54	14	TE, Gårda	10		IconName4		Berghemsgatan4				 Sverige 	html/text/http://www.idg.se/to.html54		-45	-5	14	48								
+				55	14	TE, Eriksberg	20		IconName5		Berghemsgatan5				 Sverige 	html/text/http://www.idg.se/to.html55		-35	0	15	47								
+				56		TE, Lund	30		IconName6		Berghemsgatan6				 Sverige 	html/text/http://www.idg.se/to.html56		-25	5	16	46								
+				57	14	TE, Karlstad	40		IconName7		Berghemsgatan7				 Sverige 	html/text/http://www.idg.se/to.html57		-15	10										
+				58	14	TE, Kista	50		IconName8		Berghemsgatan8				 Sverige 	html/text/http://www.idg.se/to.html58		-5	15										
+				59	14	TE, Stockholm	60		IconName9		Berghemsgatan9				 Sverige 	html/text/http://www.idg.se/to.html59		5	20										
+				60	14	TE, Oulu	70		IconName10		Berghemsgatan10				Finland	html/text/http://www.idg.se/to.html60		15	25										
+				61	14	TE, Tampere	80		IconName11		Berghemsgatan11				Finland	html/text/http://www.idg.se/to.html61		25	30										
+				62	13	Nokia, Köpenhamn	1		IconName12		Berghemsgatan12				Danmark	html/text/http://www.idg.se/to.html62		90	1										
+				63	13	Nokia, Stockholm	1		IconName13		Berghemsgatan13				 Sverige 	html/text/http://www.idg.se/to.html63		90	-180										
+				64	13	Oulu	1		IconName14		Berghemsgatan14				 Sverige 	html/text/http://www.idg.se/to.html64		67	123		
+				65	13	Tampere	5		IconName15		Berghemsgatan15				 Sverige 	html/text/http://www.idg.se/to.html65		67	123		
+				66	13	Helsinki	10		IconName16		Berghemsgatan16				 Sverige 	html/text/http://www.idg.se/to.html66		67	123		
+				67	13	Bengtfors	15		IconName17		Berghemsgatan17				 Sverige 	html/text/http://www.idg.se/to.html67		67	123		
+				68	13	Karlstad	20		IconName18		Berghemsgatan18				 Sverige 	html/text/http://www.idg.se/to.html68		67	123		
+				69	13	Mölndal	25		IconName19		Berghemsgatan19				 Sverige 	html/text/http://www.idg.se/to.html69		67	123		
+				70	13	Göteborg	30		IconName20		Berghemsgatan20				 Sverige 	html/text/http://www.idg.se/to.html70		67	123		
+				71	13	PallesPalör	35		IconName21		Berghemsgatan21				 Sverige 	html/text/http://www.idg.se/to.html71		89	0		
+				72	26	Läkare utan gränser	1		IconName22		Berghemsgatan22				 Sverige 	html/text/http://www.idg.se/to.html72		179	120,58		
+				73	26	Mölndal	1		IconName23		Berghemsgatan23				 Sverige 	html/text/http://www.idg.se/to.html73		-89	-180		
+				74	26	Läkargruppen	1		IconName24		Berghemsgatan24				 Sverige 	html/text/http://www.idg.se/to.html74		-89	180		
+				75	26	Läkarhuset	1		IconName25		Berghemsgatan25				 Sverige 	html/text/http://www.idg.se/to.html75		-90	180		
+				76	26	Sahlgrenska	1		IconName26		Berghemsgatan26				 Sverige 	html/text/http://www.idg.se/to.html76		-90	-180		
+				77	26	östra sjukhuset	1		IconName27		Berghemsgatan27				 Sverige 	html/text/http://www.idg.se/to.html77		-90	0		
+				78	20	Blå stjärnan	1		IconName28		Berghemsgatan28				 Sverige 	html/text/http://www.idg.se/to.html78		-89	0		
+				79	10	MiniTaxi	1		IconName29		Berghemsgatan29				 Sverige 	html/text/http://www.idg.se/to.html79		137	36,65		
+				80	10	GöteborgsTaxi	1		IconName30		Berghemsgatan30				 Sverige 	html/text/http://www.idg.se/to.html80		-89	20		
+				81	10	LandvetterTaxi	1		IconName31		Berghemsgatan31				 Sverige 	html/text/http://www.idg.se/to.html81		-89	-20		
+				82	10	TaxiStockholm	1		IconName32		Berghemsgatan32				 Sverige 	html/text/http://www.idg.se/to.html82		-90	20		
+				83	10	SvartTaxi	1		IconName33		Berghemsgatan33				 Sverige 	html/text/http://www.idg.se/to.html83		113	-11,31		
+				84	22	Länsmuseumet	1		IconName34		Berghemsgatan34				 Sverige 	html/text/http://www.idg.se/to.html84		107	-23,3		
+				85	22	Sjöfartsmuseumet	1		IconName35		Berghemsgatan35				 Sverige 	html/text/http://www.idg.se/to.html85		0	0		
+				86	22	KinaMuseumet	1		IconName36		Berghemsgatan36				 Sverige 	html/text/http://www.idg.se/to.html86		-0,5	0		
+				87	22	Naturhistoriska	1		IconName37		Berghemsgatan37				 Sverige 	html/text/http://www.idg.se/to.html87		0,5	0		
+				88		Etnogfrafiska	1		IconName38		Berghemsgatan38				 Sverige 	html/text/http://www.idg.se/to.html88		0	0,5		
+				89	22	TekniskaMuseumet	1		IconName39		Berghemsgatan39				 Sverige 	html/text/http://www.idg.se/to.html89		0	-0,5		
+				90	23	Krokslätts dagis	1		IconName40		Berghemsgatan40				 Sverige 	html/text/http://www.idg.se/to.html90		0,5	0,5		
+				91	23	Centrum dagiset	1		IconName41		Berghemsgatan41				 Sverige 	html/text/http://www.idg.se/to.html91		0,5	-0,5		
+				92		Dagis Majorna	1		IconName42		Berghemsgatan42				 Sverige 	html/text/http://www.idg.se/to.html92		-0,5	0,5		
+				93	23	Lackarbäcks daghem	1		IconName43		Berghemsgatan43				 Sverige 	html/text/http://www.idg.se/to.html93		-0,5	-0,5		
+				94	23	Saab dagis	1		IconName44		Berghemsgatan44				 Sverige 	html/text/http://www.idg.se/to.html94		47	-143,2		
+				95	23	TE dagis	1		IconName45		Berghemsgatan45				 Sverige 	html/text/http://www.idg.se/to.html95		41	-155,19		
+				96	23	TietoEnator Lekstugan	1		IconName46		Berghemsgatan46				 Sverige 	html/text/http://www.idg.se/to.html96		11,00005	11,00005		
+				97	18	Panache	1		IconName47		Berghemsgatan47				 Sverige 	html/text/http://www.idg.se/to.html97		29	32		
+				98	18	Börjessons herrfrisör	1		IconName48		Berghemsgatan48				 Sverige 	html/text/http://www.idg.se/to.html98		23	4		
+				99	18	Modefrisörerna	1		IconName49		Berghemsgatan49				 Sverige 	html/text/http://www.idg.se/to.html99		17	55		
+				100	18	krokslätts frisörerna	1		IconName50		Berghemsgatan50				 Sverige 	html/text/http://www.idg.se/to.html100		11	66		
+				101	12	Gårda	1		IconName51		Berghemsgatan51				 Sverige 	html/text/http://www.idg.se/to.html101		5	77		
+				102	12	Mölndal	1		IconName52		Berghemsgatan52				 Sverige 	html/text/http://www.idg.se/to.html102		-1	88		
+				103		Kållered	1		IconName53		Berghemsgatan53				 Sverige 	html/text/http://www.idg.se/to.html103		-7	56,56		
+				104	12	Nordstan	1		IconName54		Berghemsgatan54				 Sverige 	html/text/http://www.idg.se/to.html104		-13	54,45		
+				105	12	Munkebäck	1		IconName55		Berghemsgatan55				 Sverige 	html/text/http://www.idg.se/to.html105		17,0005	17,0005		
+#																					
+#																					
+#																					
+#																					

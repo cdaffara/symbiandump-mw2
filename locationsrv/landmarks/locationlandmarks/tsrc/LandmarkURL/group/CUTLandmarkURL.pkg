@@ -1,0 +1,69 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+; 
+; Description:   package file for device installation
+;
+
+; Languages
+&EN
+
+; Provide value for uid
+#{"STIF"},(0x00000000),1,1,0,TYPE=SA
+
+; Series60 product id for S60 3.0
+[0x101F7961], 0, 0, 0, {"Series60ProductID"}
+
+; Localised Vendor name
+%{"Nokia"}
+
+; Unique Vendor name
+:"Nokia"
+
+; Logo
+; None
+
+; Package signature - Optional
+; None
+
+; Start of Package body
+
+; Condition blocks
+; None
+
+; Options list
+; None
+
+; Files to install
+"\epoc32\release\armv5\urel\CUTLandmarkURL.dll"-"!:\sys\bin\CUTLandmarkURL.dll"
+
+;data file
+"..\data\URLParser.txt"-"C:\testframework\URLParser.txt"
+
+"..\conf\CUTLandmarkURL.cfg"-"C:\testframework\CUTLandmarkURL.cfg"
+"..\conf\CUTLandmarkURL1.cfg"-"C:\testframework\CUTLandmarkURL1.cfg"
+"..\conf\CUTLandmarkURL2.cfg"-"C:\testframework\CUTLandmarkURL2.cfg"
+"..\conf\CUTLmkURLParser.cfg"-"C:\testframework\CUTLmkURLParser.cfg"
+"..\conf\CUTLmkURLParser1.cfg"-"C:\testframework\CUTLmkURLParser1.cfg"
+
+"..\init\testframework.ini"-"C:\testframework\testframework.ini"
+  
+; Embedded SIS 
+; None
+
+; End of Package body
+
+; PKG dependencies
+; None
+
+; PKG capabilities
+; None

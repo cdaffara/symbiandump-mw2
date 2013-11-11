@@ -1,0 +1,75 @@
+// Copyright (c) 2001-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// msgurlhandler.app URI resolver: Hidden app to launch editor for mail & sms URI links (optional)
+// 
+//
+
+/**
+ @file
+*/
+
+TARGET          msgurlhandler.exe
+TARGETPATH		/sys/bin
+TARGETTYPE      EXE
+
+
+
+EPOCSTACKSIZE 0x5000
+
+CAPABILITY NetworkServices LocalServices ReadUserData WriteUserData
+UID     	0x100039CE 0x1000A7FC
+VENDORID 0x70000001
+
+SOURCEPATH	../src
+SOURCE	      	MSGBASE.CPP
+SOURCE	      	MTSCHEME.CPP
+SOURCE        	SMSSCH.CPP
+SOURCE		MsgUrlHandlerApp.cpp
+SOURCE		MsgUrlHandlerDoc.CPP
+SOURCE		MsgUrlHandlerAppUi.cpp
+SOURCE		msgurlparser.cpp
+
+USERINCLUDE     ../inc
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+SOURCEPATH	.
+
+START RESOURCE	msgurlhandler.rss
+TARGETPATH resource/apps
+HEADER
+LANG	SC
+END
+
+START RESOURCE	msgurlhandler_loc.rss
+TARGETPATH resource/apps
+HEADER
+LANG	SC
+END
+
+START RESOURCE	msgurlhandler_reg.rss
+TARGETPATH		/private/10003a3f/apps
+END
+
+START BITMAP msgurlhandler.mbm
+HEADER
+TARGETPATH resource/apps
+SOURCE c12 aif/mai_i_applic.bmp aif/mai_i_applic_mask.bmp aif/mai_i_list.bmp aif/mai_i_list_mask.bmp
+END
+
+
+LIBRARY     	euser.lib apparc.lib cone.lib eikcore.lib
+LIBRARY     	mtur.lib etext.lib inetprotutil.lib
+LIBRARY		sendas2.lib
+
+SMPSAFE

@@ -1,0 +1,33 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//********************************
+// EMsvCancelOperation_001_002.script
+//********************************
+
+PRINT Running  EMsvCancelOperation_001_002.script : Just give it read/write user data in an attempt to break it. Should always pass.
+
+//********************************
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_Caps.exe 0003fffe -SID 101F7780 C:\sys\bin\MessagingTestServer.exe
+	// Be paranoid just ensure  that the SID's are different. Should be irrelevant.
+
+RUN_PROGRAM -1 setcap c:\sys\bin\SendProxyServer_Caps.exe  00018000 -SID 101F7770 C:\sys\bin\SendProxyServer.exe
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCancelOperationPass.script
+
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+//********************************

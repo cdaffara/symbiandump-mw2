@@ -1,0 +1,5 @@
+EXPORTS
+	??0CLbtServerLogicBase@@IAE@XZ @ 1 NONAME ; CLbtServerLogicBase::CLbtServerLogicBase(void)
+	??1CLbtServerLogicBase@@UAE@XZ @ 2 NONAME ; CLbtServerLogicBase::~CLbtServerLogicBase(void)
+	?NewL@CLbtServerLogicBase@@SAPAV1@VTUid@@@Z @ 3 NONAME ; class CLbtServerLogicBase * CLbtServerLogicBase::NewL(class TUid)
+

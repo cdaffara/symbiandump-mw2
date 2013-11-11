@@ -1,0 +1,1 @@
+ImapDownloadRules = 0

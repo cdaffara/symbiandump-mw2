@@ -1,0 +1,66 @@
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 13.5 MCCPForwardProvide leave/return value
+timeout 5000
+create ccetester test
+test Delay 1000
+
+
+
+//////////////////////////////////////////
+//////////////////////////////////////////
+// Test CCP API L-functions for Leave
+// Ext IF tested elsewhere
+//////////////////////////////////////////
+//////////////////////////////////////////
+
+
+//////////////////////////////////////////
+// MCCPForwardProvider
+//////////////////////////////////////////
+
+
+// create forwarding call with multiple address choices available
+test OpenNewCall 1 0 "plugincmd forwardchoices 0" 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvents 1 Dialling, 1 Connecting, 1 Forwarding, 1 VoipMultipleChoices
+
+// leave with KErrNotReady when fetching addresses 
+test ConfigurePlugin 2 ID=MCCPForwardProvider::GetForwardAddressChoicesL LEAVE=-18 TYPE=TInt
+test GetForwardAddressChoices 1 -18
+
+// leave with KErrNotSupported when fetching addresses  
+test ConfigurePlugin 2 ID=MCCPForwardProvider::GetForwardAddressChoicesL LEAVE=-5 TYPE=TInt
+test GetForwardAddressChoices 1 -5
+
+// get addresses successfully
+test GetForwardAddressChoices 1 0
+
+
+// leave with KErrNotSupported when trying to forward call to selected address
+test ConfigurePlugin 2 ID=MCCPForwardProvider::ForwardToAddressL  LEAVE=-5 TYPE=TInt
+test ForwardToAddress 1 -5 0
+
+// leave with KErrArgument when trying to forward call to selected address 
+test ConfigurePlugin 2 ID=MCCPForwardProvider::ForwardToAddressL  LEAVE=-6 TYPE=TInt
+test ForwardToAddress 1 -6 0
+
+// leave with KErrNotReady when trying to forward call to selected address 
+test ConfigurePlugin 2 ID=MCCPForwardProvider::ForwardToAddressL  LEAVE=-18 TYPE=TInt
+test ForwardToAddress 1 -18 0
+test Release 1 0
+
+// use new call 
+// add observer leaves with KErrGeneral
+// call is created with null forward provider
+test ConfigurePlugin 2 ID=MCCPForwardProvider::AddObserverL LEAVE=-2 TYPE=TInt
+// returns ok provider is just null in cce
+test OpenNewCall 2 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+test Release 2 0
+
+test VerifyTest
+delete test
+[Endtest]

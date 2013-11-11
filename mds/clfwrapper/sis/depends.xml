@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ad:metadata xmlns="http://nokia.com/arrow/repository/ia_component"
+  xmlns:ad="http://nokia.com/arrow/application_metadata">
+  <appResources>
+     <appResource>
+        <language>1</language>
+        <iacName>ContentListingFramework</iacName>
+        <iacDescription>Upgrade package for ContentListingFramework</iacDescription>
+     </appResource>
+  </appResources>
+  <swPlatformDep>
+     <platform>S60</platform>
+     <versionFrom>
+        <major>5</major>
+        <minor>0</minor>
+        <date>
+           <year>2009</year>
+           <week>16</week>
+        </date>
+     </versionFrom>
+  </swPlatformDep>
+  <interDeps>
+  </interDeps>
+</ad:metadata>

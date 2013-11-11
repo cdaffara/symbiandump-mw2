@@ -1,0 +1,30 @@
+/************************************************************************
+	Test case: Request command using ext-if, when plug-in does not 
+	support ext IF.
+		
+	1. Send request.
+*************************************************************************/	
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 12.4 Extension interface,  plug-in does not support ext IF
+timeout 15000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+// return NULL (not supported) for ext if
+test ConfigurePlugin 2 ID=CConvergedCallProvider::ExtensionProviderL RETURN=0 TYPE=TInt
+
+// Step 2
+print Step_2
+// should return -5 KErrNotSupported
+test RequestExtIfCommand 2 123 "Test ext if return null" -5
+
+test VerifyTest
+delete test
+[Endtest]

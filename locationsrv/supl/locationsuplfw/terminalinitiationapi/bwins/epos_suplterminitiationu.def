@@ -1,0 +1,59 @@
+EXPORTS
+	?PtrC@CSuplSubSessnPtrHolder@@QAEAAVTPtrC8@@H@Z @ 1 NONAME ; class TPtrC8 & CSuplSubSessnPtrHolder::PtrC(int)
+	?Close@RSuplTerminalServer@@QAEXXZ @ 2 NONAME ; void RSuplTerminalServer::Close(void)
+	?Destruct@RSuplTerminalSubSession@@MAEXXZ @ 3 NONAME ; void RSuplTerminalSubSession::Destruct(void)
+	?Connect@RSuplTerminalServer@@QAEHXZ @ 4 NONAME ; int RSuplTerminalServer::Connect(void)
+	?StopSuplTriggerSession@RSuplTerminalSubSession@@QAEXXZ @ 5 NONAME ; void RSuplTerminalSubSession::StopSuplTriggerSession(void)
+	?SetHorizontalAccuracy@TSuplTerminalQop@@QAEHM@Z @ 6 NONAME ; int TSuplTerminalQop::SetHorizontalAccuracy(float)
+	??0RSuplTerminalSubSession@@QAE@XZ @ 7 NONAME ; RSuplTerminalSubSession::RSuplTerminalSubSession(void)
+	?RunSession@RSuplTerminalSubSession@@QAEHHHH@Z @ 8 NONAME ; int RSuplTerminalSubSession::RunSession(int, int, int)
+	?StartSuplTriggerSession@RSuplTerminalSubSession@@QAEXAAVTRequestStatus@@AAVTSuplTerminalPeriodicTrigger@@HH@Z @ 9 NONAME ; void RSuplTerminalSubSession::StartSuplTriggerSession(class TRequestStatus &, class TSuplTerminalPeriodicTrigger &, int, int)
+	?SetMaxLocationAge@TSuplTerminalQop@@QAEHH@Z @ 10 NONAME ; int TSuplTerminalQop::SetMaxLocationAge(int)
+	?Get@TSuplTriggerFireInfo@@QBEHAAVTPositionInfo@@@Z @ 11 NONAME ; int TSuplTriggerFireInfo::Get(class TPositionInfo &) const
+	?Connect@RSuplTerminalServer@@QAEHAAVTRequestStatus@@@Z @ 12 NONAME ; int RSuplTerminalServer::Connect(class TRequestStatus &)
+	?Get@TSuplTerminalQop@@QBEHAAM0AAH1@Z @ 13 NONAME ; int TSuplTerminalQop::Get(float &, float &, int &, int &) const
+	??0TSuplTerminalQop@@QAE@XZ @ 14 NONAME ; TSuplTerminalQop::TSuplTerminalQop(void)
+	?Close@RSuplTerminalSubSession@@QAEXXZ @ 15 NONAME ; void RSuplTerminalSubSession::Close(void)
+	?Ptr@CSuplSubSessnPtrHolder@@QAEAAVTPtr8@@H@Z @ 16 NONAME ; class TPtr8 & CSuplSubSessnPtrHolder::Ptr(int)
+	??0RSuplTerminalServer@@QAE@XZ @ 17 NONAME ; RSuplTerminalServer::RSuplTerminalServer(void)
+	?GetSlpList@RSuplTerminalSubSession@@QAEHAAV?$RPointerArray@VCSuplTerminalParams@@@@@Z @ 18 NONAME ; int RSuplTerminalSubSession::GetSlpList(class RPointerArray<class CSuplTerminalParams> &)
+	?Get@TSuplTerminalPeriodicTrigger@@QBEHAAI00@Z @ 19 NONAME ; int TSuplTerminalPeriodicTrigger::Get(unsigned int &, unsigned int &, unsigned int &) const
+	?RunSession@RSuplTerminalSubSession@@QAEXAAVTRequestStatus@@AAVTSuplTerminalQop@@ABVTDesC16@@HHHH@Z @ 20 NONAME ; void RSuplTerminalSubSession::RunSession(class TRequestStatus &, class TSuplTerminalQop &, class TDesC16 const &, int, int, int, int)
+	??0TSuplTerminalPeriodicTrigger@@QAE@XZ @ 21 NONAME ; TSuplTerminalPeriodicTrigger::TSuplTerminalPeriodicTrigger(void)
+	?Open@RSuplTerminalSubSession@@QAEHAAVRSuplTerminalServer@@W4TSuplServiceType@1@@Z @ 22 NONAME ; int RSuplTerminalSubSession::Open(class RSuplTerminalServer &, enum RSuplTerminalSubSession::TSuplServiceType)
+	?GetVerticalAccuracy@TSuplTerminalQop@@QBEHAAM@Z @ 23 NONAME ; int TSuplTerminalQop::GetVerticalAccuracy(float &) const
+	?RunSession@RSuplTerminalSubSession@@QAEHAAVTSuplTerminalQop@@ABVTDesC16@@HHHH@Z @ 24 NONAME ; int RSuplTerminalSubSession::RunSession(class TSuplTerminalQop &, class TDesC16 const &, int, int, int, int)
+	?Set@TSuplTriggerFireInfo@@QAEHABVTPositionInfo@@@Z @ 25 NONAME ; int TSuplTriggerFireInfo::Set(class TPositionInfo const &)
+	??1CSuplTerminalParams@@UAE@XZ @ 26 NONAME ; CSuplTerminalParams::~CSuplTerminalParams(void)
+	?GetDelay@TSuplTerminalQop@@QBEHAAH@Z @ 27 NONAME ; int TSuplTerminalQop::GetDelay(int &) const
+	?Version@RSuplTerminalServer@@QBE?AVTVersion@@XZ @ 28 NONAME ; class TVersion RSuplTerminalServer::Version(void) const
+	?SetDelay@TSuplTerminalQop@@QAEHH@Z @ 29 NONAME ; int TSuplTerminalQop::SetDelay(int)
+	?Get@CSuplTerminalParams@@QBEHAA_JVTPtr16@@1AAH222@Z @ 30 NONAME ; int CSuplTerminalParams::Get(long long &, class TPtr16, class TPtr16, int &, int &, int &, int &) const
+	?RunSession@RSuplTerminalSubSession@@QAEXAAVTRequestStatus@@ABVTDesC16@@HHHH@Z @ 31 NONAME ; void RSuplTerminalSubSession::RunSession(class TRequestStatus &, class TDesC16 const &, int, int, int, int)
+	?StartSuplTriggerSession@RSuplTerminalSubSession@@QAEXAAVTRequestStatus@@AAVTSuplTerminalPeriodicTrigger@@ABVTDesC16@@HHH@Z @ 32 NONAME ; void RSuplTerminalSubSession::StartSuplTriggerSession(class TRequestStatus &, class TSuplTerminalPeriodicTrigger &, class TDesC16 const &, int, int, int)
+	?ConstructL@RSuplTerminalSubSession@@MAEXXZ @ 33 NONAME ; void RSuplTerminalSubSession::ConstructL(void)
+	?NewLC@CSuplTerminalParams@@SAPAV1@XZ @ 34 NONAME ; class CSuplTerminalParams * CSuplTerminalParams::NewLC(void)
+	?RunSession@RSuplTerminalSubSession@@QAEHAAVTSuplTerminalQop@@HHH@Z @ 35 NONAME ; int RSuplTerminalSubSession::RunSession(class TSuplTerminalQop &, int, int, int)
+	?ExtendedInterface@RSuplTerminalSubSession@@MAEPAXHPAX0@Z @ 36 NONAME ; void * RSuplTerminalSubSession::ExtendedInterface(int, void *, void *)
+	??1CSuplSubSessnPtrHolder@@UAE@XZ @ 37 NONAME ; CSuplSubSessnPtrHolder::~CSuplSubSessnPtrHolder(void)
+	?RunSession@RSuplTerminalSubSession@@QAEXAAVTRequestStatus@@HHH@Z @ 38 NONAME ; void RSuplTerminalSubSession::RunSession(class TRequestStatus &, int, int, int)
+	?RunSession@RSuplTerminalSubSession@@QAEHABVTDesC16@@HHHH@Z @ 39 NONAME ; int RSuplTerminalSubSession::RunSession(class TDesC16 const &, int, int, int, int)
+	?Set@TSuplTerminalPeriodicTrigger@@QAEHABI00@Z @ 40 NONAME ; int TSuplTerminalPeriodicTrigger::Set(unsigned int const &, unsigned int const &, unsigned int const &)
+	?RunSession@RSuplTerminalSubSession@@QAEXAAVTRequestStatus@@AAVTSuplTerminalQop@@HHH@Z @ 41 NONAME ; void RSuplTerminalSubSession::RunSession(class TRequestStatus &, class TSuplTerminalQop &, int, int, int)
+	?NotifyTriggerFired@RSuplTerminalSubSession@@QAEXAAVTRequestStatus@@AAVTSuplTriggerFireInfo@@@Z @ 42 NONAME ; void RSuplTerminalSubSession::NotifyTriggerFired(class TRequestStatus &, class TSuplTriggerFireInfo &)
+	?Set@CSuplTerminalParams@@QAEHABVTDesC16@@0HHHH_J@Z @ 43 NONAME ; int CSuplTerminalParams::Set(class TDesC16 const &, class TDesC16 const &, int, int, int, int, long long)
+	?CancelRunSession@RSuplTerminalSubSession@@QAEXXZ @ 44 NONAME ; void RSuplTerminalSubSession::CancelRunSession(void)
+	??0TSuplTriggerFireInfo@@QAE@XZ @ 45 NONAME ; TSuplTriggerFireInfo::TSuplTriggerFireInfo(void)
+	?Set@TSuplTerminalQop@@QAEHMMHH@Z @ 46 NONAME ; int TSuplTerminalQop::Set(float, float, int, int)
+	?GetServerAddress@RSuplTerminalSubSession@@QAEHAAVTDes16@@@Z @ 47 NONAME ; int RSuplTerminalSubSession::GetServerAddress(class TDes16 &)
+	?NewL@CSuplTerminalParams@@SAPAV1@XZ @ 48 NONAME ; class CSuplTerminalParams * CSuplTerminalParams::NewL(void)
+	?GetHorizontalAccuracy@TSuplTerminalQop@@QBEHAAM@Z @ 49 NONAME ; int TSuplTerminalQop::GetHorizontalAccuracy(float &) const
+	?SetVerticalAccuracy@TSuplTerminalQop@@QAEHM@Z @ 50 NONAME ; int TSuplTerminalQop::SetVerticalAccuracy(float)
+	?GetMaxLocationAge@TSuplTerminalQop@@QBEHAAH@Z @ 51 NONAME ; int TSuplTerminalQop::GetMaxLocationAge(int &) const
+	?GetPosition@RSuplTerminalSubSession@@QAEHAAVTPositionInfoBase@@@Z @ 52 NONAME ; int RSuplTerminalSubSession::GetPosition(class TPositionInfoBase &)
+	?ConstructL@CSuplSubSessnPtrHolder@@IAEXHH@Z @ 53 NONAME ; void CSuplSubSessnPtrHolder::ConstructL(int, int)
+	?NewL@CSuplSubSessnPtrHolder@@SAPAV1@HH@Z @ 54 NONAME ; class CSuplSubSessnPtrHolder * CSuplSubSessnPtrHolder::NewL(int, int)
+	?CancelLocationConversion@RSuplTerminalInternal@@QAEXXZ @ 55 NONAME ; void RSuplTerminalInternal::CancelLocationConversion(void)
+	??0RSuplTerminalInternal@@QAE@XZ @ 56 NONAME ; RSuplTerminalInternal::RSuplTerminalInternal(void)
+	?ConvertAreaInfoToCoordinates@RSuplTerminalInternal@@QAEXAAVTRequestStatus@@AAUTGeoCellInfo@@@Z @ 57 NONAME ; void RSuplTerminalInternal::ConvertAreaInfoToCoordinates(class TRequestStatus &, struct TGeoCellInfo &)
+

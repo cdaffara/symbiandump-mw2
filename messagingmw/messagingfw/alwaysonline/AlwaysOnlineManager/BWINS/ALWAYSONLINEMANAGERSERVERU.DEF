@@ -1,0 +1,7 @@
+EXPORTS
+	?NewL@CAlwaysOnlineManagerServer@@SAPAV1@XZ @ 1 NONAME ; public: static class CAlwaysOnlineManagerServer * __cdecl CAlwaysOnlineManagerServer::NewL(void)
+	?ThreadFunction@CAlwaysOnlineManagerServer@@SAHPAX@Z @ 2 NONAME ; public: static int __cdecl CAlwaysOnlineManagerServer::ThreadFunction(void *)
+	?HandleClientCommandL@CAlwaysOnlineManagerServer@@QAEXW4TAlwaysOnlineServerAPICommands@@AAVTDes8@@@Z @ 3 NONAME ; void CAlwaysOnlineManagerServer::HandleClientCommandL(enum TAlwaysOnlineServerAPICommands, class TDes8 &)
+	?WinsMain@@YAHXZ @ 4 NONAME ; int __cdecl WinsMain(void)
+	
+

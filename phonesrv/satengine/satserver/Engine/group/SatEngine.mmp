@@ -1,0 +1,111 @@
+/*
+* Copyright (c) 2002-2010 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file for project SatEngine
+*
+*/
+
+
+#include <data_caging_paths.hrh>
+#include <platform_paths.hrh>
+#include "../../inc/SatMacroes.h"
+
+TARGET                  satengine.dll
+TARGETTYPE              dll
+UID                     0x1000008d 0x1000f100
+
+CAPABILITY              CAP_GENERAL_DLL NetworkControl ReadDeviceData WriteDeviceData AllFiles
+VENDORID                VID_DEFAULT
+
+// Library is created by SatEngineLib.mmp
+NOEXPORTLIBRARY
+
+SOURCEPATH              ../src
+SOURCE                  std.cpp
+SOURCE                  CSatSServer.cpp
+SOURCE                  CSatSSession.cpp
+SOURCE                  CSatSSubSession.cpp
+SOURCE                  CSatSUiSubSession.cpp
+SOURCE                  CSatSIconSubSession.cpp
+SOURCE                  CSatSIconConverter.cpp
+SOURCE                  CSatSBasicIconConverter.cpp
+SOURCE                  CSatSColorIconConverter.cpp
+SOURCE                  CSatIconHandler.cpp
+SOURCE                  TSatBitOP.cpp
+SOURCE                  CSatClientServiceReq.cpp
+SOURCE                  CSatSScheduler.cpp
+SOURCE                  CSatCommandHandler.cpp
+SOURCE                  CSatCommandContainer.cpp
+SOURCE                  TSatEventMediator.cpp
+SOURCE                  TSatEventsObserver.cpp
+SOURCE                  TUSatAPI.cpp
+SOURCE                  Panic.cpp
+SOURCE                  CSatSRefreshSubSession.cpp
+SOURCE                  CSatSSimSubscriberId.cpp
+SOURCE                  CSatThreadDeathMonitor.cpp
+SOURCE                  CSatSUiClientHandler.cpp
+SOURCE                  CSatEventMonitorContainer.cpp
+SOURCE                  CSatSAPChangeObserver.cpp
+SOURCE                  CSatBIPGPRSDataChannel.cpp
+SOURCE                  CSatBIPUtils.cpp
+SOURCE                  CSatBIPDataSender.cpp
+SOURCE                  CSatBIPDataReceiver.cpp
+SOURCE                  CSatApnHandler.cpp
+SOURCE                  TSatChannelIDInfo.cpp
+SOURCE                  TSatQoSParser.cpp
+SOURCE                  TSatExtErrorUtils.cpp
+SOURCE                  csatmediatoreventprovider.cpp
+SOURCE                  csatsactivewrapper.cpp
+SOURCE                  csatprofilechangeobserver.cpp
+SOURCE                  csatbipconnectionobserver.cpp
+SOURCE                  csatbipsubconneventobserver.cpp
+SOURCE                  csatmultimodeapi.cpp
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE           /epoc32/include/ecom
+SYSTEMINCLUDE           ../../../../inc         // Domain telephonyservices
+SYSTEMINCLUDE           ../../../inc            // Subsystem satengine
+SYSTEMINCLUDE           /epoc32/include/mw/hb/hbcore
+
+
+USERINCLUDE             ../inc
+USERINCLUDE             ../../inc
+
+LIBRARY                 euser.lib
+LIBRARY                 etel.lib
+LIBRARY                 etelsat.lib
+LIBRARY                 etelmm.lib
+LIBRARY                 ecom.lib
+LIBRARY                 bafl.lib
+LIBRARY                 efsrv.lib
+LIBRARY                 syslangutil.lib
+LIBRARY                 satsystemstate.lib
+LIBRARY                 sateventmonitors.lib
+LIBRARY                 fbscli.lib
+LIBRARY                 esock.lib
+LIBRARY                 insock.lib
+LIBRARY                 qoslib.lib
+LIBRARY                 etelpckt.lib
+LIBRARY                 commdb.lib
+LIBRARY                 customapi.lib
+LIBRARY                 featmgr.lib
+LIBRARY                 centralrepository.lib
+LIBRARY                 mediatorclient.lib
+LIBRARY                 netmeta.lib
+LIBRARY                 cmmanager.lib
+LIBRARY                 extendedconnpref.lib 
+LIBRARY                 hbcore.lib
+
+#ifdef ENABLE_SAT_LOGGING
+LIBRARY                 flogger.lib
+#endif

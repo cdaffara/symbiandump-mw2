@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api id="f5a65440f33b24667dc3ea04f489cfa1" dataversion="2.0">
+  <name>Audio MetaData Reader API</name>
+  <description>An API to support metadata (ID3v1, ID3v2, 3GPP-udta) extraction from MP3, AAC, and 3GPP files. A separate API from the Symbian API that is tied to MMFController Framework, Meta Data Utility is more efficient in that it does need to launch audio controllers to retrieve metadata.</description>
+  <type>c++</type>
+  <collection>mmserv</collection>
+  <libs>
+    <lib name="MetaDataUtility.lib"/>
+    <lib name="3GPExtParser.lib"/>
+  </libs>
+  <release category="platform" sinceversion="3.0"/>
+  <attributes>
+    <htmldocprovided>no</htmldocprovided>
+    <adaptation>no</adaptation>
+  </attributes>
+</api>

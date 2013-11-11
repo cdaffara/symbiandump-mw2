@@ -1,0 +1,184 @@
+#TextCriteria	Attributes (bitmask)	PositionFields	LmSearchResult (Id's)	Redefined seach	Comment																
+*	0X0021		1-105		Maka sure Pos. fields an id's are comma seperated with no extra space inbetween																
+*	0x0001		1-105																		
+*	0x0020		1-105																		
+?	0x0000		1-7,9-38,41,45		All field searched -> medialinks field will contain one character if any media link set.																
+?	0x0001		25,41																		
+?	0x0000	401																			
+?	0x0000	404,406																			
+?	0x0000	803	37																		
+Unique	0x0021	406	29-31																		
+Götet	0x0021	404	30	1	The search is performed on the previous result. 																
+Several	0x0001		45																		
+MLFW	0x0021	401,404,406,408,409	8,10-15																		
+MLFW	0x0021		8,10,11,15	1	The search is performed on the previous result. 																
+MLFW	0x0021		8,10,11,15																		
+adx	0x0021	401,404,406,408,409																			
+*oki*	0x0021	401,404,406,408,409	46-50,62-63																		
+Noki?	0x0021	401,404,406,408,409	48,49																		
+Nokia?	0x0021	401,404,406,408,409																			
+Nok*	0x0021	401,404,406,408,409	48-50,62-63																		
+*okia	0x0021	401,404,406,408,409	48,49																		
+#																					
+#																					
+#																					
+#																					
+x	0x0000		25-27		All attributes and fields is searched																
+q	0x0001		41																		
+enat?r	0x0001		18,19																		
+Daanmark	0x0000	401	29-41																		
+veg??ariskt	0x0001		4																		
+Text'1	0x0001		30																		
+Text'''1	0x0001		13																		
+Kalles*	0x0001		52																		
+Kalles Hundgård	0x0001		52																		
+kalles*	0x0001		52		Tests Symbian TR in TeamTrack INC043475 will fail until the TR is solved																
+kalles Hundgård	0x0001		52		Tests Symbian TR in TeamTrack INC043475 will fail until the TR is solved																
+#	ENoAttribute = 0x0000        	Country = 401																			
+#	ELandmarkName= 0x0001   000001	City = 404																			
+#	EPosition= 0x0002              000010	Street = 406																			
+#	ECoverageRadius = 0x0004 000100	LocationName = 408																			
+#	ECategoryInfo= 0x0008       001000	PostalCode = 409																			
+#	EIcon= 0x0010                   010000 	MediaLinks = 800																			
+#	EDescription= 0x0020         100000	MediaLinkStart = 801																			
+																					
+																					
+																					
+																					
+																					
+																					
+																					
+																					
+																					
+																					
+																					
+																					
+																					
+																					
+																					
+																					
+																					
+																					
+																					
+																					
+																					
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				

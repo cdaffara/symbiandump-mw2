@@ -1,0 +1,43 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+//********************************
+// UPSSupport_Setup.script
+//********************************
+// Enure that we have a copy of t_msgimapserver.exe, t_msgpopserver.exe and t_msgsmtpserver.exe on c:
+// And that we pick up no other copies of executables from anywhere except c:.
+
+PRINT Running  UPSSupport_Setup.script:
+
+// Ensure that required executables are available on C:.
+	
+RUN_PROGRAM -1 CapUtils CopyIfEmulator t_msgimapserver.exe c:\sys\bin\t_msgimapserver.exe
+RUN_PROGRAM -1 CapUtils CopyIfEmulator t_msgpopserver.exe c:\sys\bin\t_msgpopserver.exe
+RUN_PROGRAM -1 CapUtils CopyIfEmulator t_msgsmtpserver.exe c:\sys\bin\t_msgsmtpserver.exe
+
+
+// Ensure that we do not pick up a rogue copy t_msgimapserver.exe from z:.
+// We change the executabe name on release folder for emulator test on and want
+// to ensure that c:\..\..\t_msgimapserver.exe etc. is picked up. 
+// Note we only report an error if we have the file and can not change its name.
+	
+// IMPORTANT THIS FAILS IF THE FILE EXISTS AND CANNOT BE MOVED> THE LIKLYHOOD IS THAT SOMETHING HAS A FILE LOCK ON THE FILE
+// (i.e. CW) SO THAT IT CAN NOT BE MOVED. UNFORTUNATLY THIS WILL BE PICED UP FIRST CAUSING UPS tests TO FAIL.
+// Remove the execurables(t_msgsmtpserver.exe etc.) from CW, this should free up the lock.
+
+RUN_PROGRAM -1 CapUtils RenameIfEmulator t_msgimapserver.exe z:\sys\bin\t_msgimapserver.tmp
+RUN_PROGRAM -1 CapUtils RenameIfEmulator t_msgpopserver.exe z:\sys\bin\t_msgpopserver.tmp
+RUN_PROGRAM -1 CapUtils RenameIfEmulator t_msgsmtpserver.exe z:\sys\bin\t_msgsmtpserver.tmp

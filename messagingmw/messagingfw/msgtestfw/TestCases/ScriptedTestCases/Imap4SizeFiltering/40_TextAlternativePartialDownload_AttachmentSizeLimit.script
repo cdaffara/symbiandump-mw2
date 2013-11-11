@@ -1,0 +1,66 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+//! @SYMTestCaseID MSG-Email-ImapSizeFiltering-40
+//! @SYMTestType CIT
+//! @SYMTestCaseDesc Creates a multipart/alternative email with text attachment and check if it is downloaded
+//! @SYMTestPriority High
+//! @SYMREQ CR DCUO-6ASJ9Y
+//! @SYMTestActions Creates a multipart/alternative email with text attachment, sets synchronisation-settings to EBodyAlternativeText and size limit to be smaller than attachment size and checks if email is downloaded without the attachment.
+//! @SYMTestExpectedResults All parts of the email EXCEPT the attachment should be downloaded
+//! @SYMAuthor Tom Janssens
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+//CED c:\msgtest\TestFramework\Configurations\CommDbSettings\NtRasLongIdleTimeout.cfg
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+GetBaseConstants			c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	GetBaseConstants
+InitNtRas					c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	InitNtRas
+CreateSession				c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	CreateSession
+ResetMessageStore			c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	ResetMessageStore
+CreateImap4Service			c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	CreateImap4Service
+CreateSmtpService			c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	CreateSmtpService
+SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	SetDefaultConfiguration0
+SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	SetDefaultConfiguration1
+SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	SetDefaultConfiguration2
+CreateRegistry				c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	CreateRegistry
+CreateImap4Mtm				c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	CreateImap4Mtm
+CreateSmtpMtm				c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	CreateSmtpMtm
+GetDefaultSmtpService		c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	GetDefaultSmtpService	
+SetImap4ServiceParameters	c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	SetImap4ServiceParameters
+SetSmtpServiceParameters	c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	SetSmtpServiceParameters
+ConnectImap4Server   		c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	ConnectImap4Server0
+DoFullImap4Synchronisation	c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	DoFullImap4Synchronisation0
+FindEntryByName				c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	FindEntryByName0
+DeleteChildren				c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	DeleteChildren
+CheckChildrenCount			c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	CheckChildrenCount0
+DisconnectImap4Server		c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	DisconnectImap4Server0
+EXECUTE_TEST_CASE	
+CreateSmtpMessageFromEmailFile	c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	CreateSmtpMessageFromEmailFile0
+CopyEntry					c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	CopyEntry0
+SetImap4PartialDownloadLimits	c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	SetImap4PartialDownloadLimits
+ConnectImap4Server   		c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	ConnectImap4Server1
+DoFullImap4Synchronisation	c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	DoFullImap4Synchronisation1
+CreateChildrenSelection		c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	CreateChildrenSelection
+DoImap4Populate				c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	DoImap4Populate
+DisconnectImap4Server		c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	DisconnectImap4Server1
+CHECK_POSTCONDITIONS
+CreateChildrenSelection		c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	CreateChildrenSentItems
+CompareEmailMessages		c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\40_TextAlternativePartialDownload_AttachmentSizeLimit.ini	CompareEmailMessages
+END_TEST_CASE

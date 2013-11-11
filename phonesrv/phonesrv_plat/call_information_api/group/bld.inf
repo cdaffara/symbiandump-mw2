@@ -1,0 +1,30 @@
+/*
+* Copyright (c) 2007-2008 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  File that exports the files belonging to
+                                 Call Information API   
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+../inc/mcall.h                          MW_LAYER_PLATFORM_EXPORT_PATH(mcall.h)
+../inc/mcallinformationobserver.h       MW_LAYER_PLATFORM_EXPORT_PATH(mcallinformationobserver.h)
+../inc/ccallinformation.h               MW_LAYER_PLATFORM_EXPORT_PATH(ccallinformation.h)
+../inc/ccallinfoiter.h                  MW_LAYER_PLATFORM_EXPORT_PATH(ccallinfoiter.h)
+../inc/xqcallinfo.h                     MW_LAYER_PLATFORM_EXPORT_PATH(xqcallinfo.h)

@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<api id="70bbe98ea0a3ad1f0a2fb40e53fdf1d6" dataversion="2.0">
+  <name>SUPL POS Message Plug-in API</name>
+  <description>Enables adding new handlers forpayload messages transferred inside SUPL_POS messages defined by OMA.</description>
+  <type>c++</type>
+  <collection>supl</collection>
+  <libs>
+  </libs>
+  <release category="platform"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>no</htmldocprovided>
+     <adaptation>yes</adaptation>
+  </attributes>
+</api>

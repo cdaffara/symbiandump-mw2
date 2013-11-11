@@ -1,0 +1,70 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:    MMP for Presence Provisioning adapter
+*
+*/
+
+
+
+
+#include <data_caging_paths.hrh>
+// To get the APP_LAYER_SYSTEMINCLUDE-definition
+#include <platform_paths.hrh>
+
+TARGET          presenceprovisioning.dll
+TARGETTYPE      PLUGIN
+UID             0x10009D8D 0x10282417
+CAPABILITY      CAP_ECOM_PLUGIN
+VENDORID        VID_DEFAULT                 
+
+SOURCEPATH      ../src
+
+SOURCE          presenceprovitem.cpp
+SOURCE          presenceprovadapter.cpp
+SOURCE          presenceprovgroupproxy.cpp
+
+SOURCEPATH      ../data
+START RESOURCE  10282417.rss
+    TARGET      presenceprovisioning.rsc                                                                
+END
+
+
+START RESOURCE presenceprovisioningtexts.rss
+HEADER
+TARGET presenceprovisioningtexts.rsc
+TARGETPATH       RESOURCE_FILES_DIR
+LANGUAGE_IDS
+END
+
+
+USERINCLUDE     ../inc
+
+// default system include paths for middleware layer modules
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   /epoc32/include/ecom
+
+LIBRARY         ecom.lib
+LIBRARY         euser.lib
+LIBRARY         presencesettingsapi.lib
+LIBRARY         provisioningengine.lib
+LIBRARY         commonengine.lib
+LIBRARY         bafl.lib
+
+DEBUGLIBRARY    flogger.lib
+
+
+SOURCEPATH      ../loc
+DOCUMENT        presenceprovadapter.loc
+
+// End of File

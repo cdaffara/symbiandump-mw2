@@ -1,0 +1,93 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description: 
+//
+//! @file	
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE 	T_MsgCommonServer 	-SharedData
+LOAD_SUITE 	T_MsgPopServer 		-SharedData
+LOAD_SUITE 	T_MsgSmtpServer 	-SharedData
+
+
+START_TESTCASE MSG-POP3-HEADER-0001
+//! 	@SYMTestCaseDesc	Verification of header parts for multiple messages with multiple different receipents
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ2073
+//!	@SYMREQ			REQ11120, REQ11156, REQ11158, REQ11161
+//!				
+//! 	@SYMTestActions		1.	Initialize the NT-RAS
+//!				2.	Reset the Message Store in a cleanup state
+//!				3.	Create a POP account A 
+//!				4.	Connect and Synchronize the POP server using POP account A
+//!				5.	Initialize POP account in a cleanup state
+//!				6.	Disconnect POP server
+//!				7.	Create first Message with multiple different addresses in To , Cc, and Bcc
+//!				8.	Send the Messages
+//!				9.	Create second Message with multiple different addresses in To , Cc, and Bcc
+//!				10.	Send the Messages
+//!				11.	Connect to the POP server
+//!				12.	Download the Messages using POP client MTM populate command 
+//!				13.	Disconnect POP server
+//!				14.	Verify header parts for all messages in Inbox folder
+//!				
+//! 	@SYMTestExpectedResults Ensure all the header parts are verified without any error
+//!	@SYMAuthor		Rajat Bal
+//! 	@SYMTestType		CIT
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\header\msg-pop-header1.ini  0001-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\header\msg-pop-header1.ini  0001-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\header\msg-pop-header1.ini  0001-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\header\msg-pop-header1.ini  0001-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\header\msg-pop-header1.ini  0001-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\header\msg-pop-header1.ini  0001-DisConnectPop3Server
+
+PRINT ############ Create first Message with multiple different addresses in To , Cc, and Bcc #########################  
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\header\msg-pop-header1.ini	 0001-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\header\msg-pop-header1.ini  0001-CheckChildrenCountOutbox1
+RUN_TEST_STEP 300 T_MsgCommonServer	VerifyHeaders	 		c:\msgtest\email\pop\header\msg-pop-header1.ini  0001-VerifyHeaders_Outbox1
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\pop\header\msg-pop-header1.ini  0001-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\header\msg-pop-header1.ini  0001-CheckChildrenCountOutbox0
+
+PRINT ############ Create second Message with multiple different addresses in To , Cc, and Bcc ########################
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\header\msg-pop-header1.ini  0001-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\header\msg-pop-header1.ini  0001-CheckChildrenCountOutbox1
+RUN_TEST_STEP 300 T_MsgCommonServer	VerifyHeaders	 		c:\msgtest\email\pop\header\msg-pop-header1.ini  0001-VerifyHeaders_Outbox2
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\pop\header\msg-pop-header1.ini  0001-SendSmtpMessage2
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\header\msg-pop-header1.ini  0001-CheckChildrenCountOutbox0
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\header\msg-pop-header1.ini  0001-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	PopInvokeAsyncFunction		c:\msgtest\email\pop\header\msg-pop-header1.ini  0001-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\header\msg-pop-header1.ini  0001-DisConnectPop3Server
+
+PRINT ############ Verify header parts for all messages in Inbox folder #######
+RUN_TEST_STEP 300 T_MsgPopServer 	VerifyHeaders			c:\msgtest\email\pop\header\msg-pop-header1.ini  0001-VerifyHeaders
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-HEADER-0001
+

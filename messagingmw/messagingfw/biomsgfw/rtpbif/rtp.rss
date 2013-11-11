@@ -1,0 +1,56 @@
+// Copyright (c) 2004-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+#include <biftool2.rh>
+
+
+RESOURCE BIO_INFO_FILE
+	{
+	message_type_uid=0x10005535;
+	message_parser_name="\\system\\parsers\\gfp.dll";
+	message_app_uid=KUidUseDefaultApp;
+ 	message_appctrl_name = "ringtonebio.dll";
+
+	description="Ringing Tone";
+	icons_filename="rtp.mbm";
+	icon_zoom_levels={1};
+	file_extension=".rtp";
+
+
+	ids=
+		{
+		ID	
+			{
+			type=EWap;
+			confidence=ECertain;
+			port=5505;				//SCKL1581 is a NBS Port
+			},
+// The WAP Watcher should get this
+//		ID
+//			{
+//			type=ENbs;
+//			confidence=ECertain;
+//			port=5505;
+//			text="//SCKL1581";
+//			},
+		ID
+			{
+			type=EIana;
+			confidence=EPossible;
+			text="application/vnd.nokia.ringing-tone";
+			}
+		};
+	}
+

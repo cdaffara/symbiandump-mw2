@@ -1,0 +1,82 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*   ?description_line
+*
+*/
+
+
+#ifndef CPOSTP57_H
+#define CPOSTP57_H
+
+//  INCLUDES
+#include <EPos_CPosLmAreaCriteria.h>
+
+#include "FT_CLandmarkTestProcedureBase.h"
+
+// CLASS DECLARATION
+
+/**
+*  Test procedure 57
+*/
+class CPosTp57 : public CLandmarkTestProcedureBase
+    {
+    public:  // Constructors and destructor
+        
+        /**
+        * C++ default constructor.
+        */
+        CPosTp57() : CLandmarkTestProcedureBase(57) {};
+        
+        /**
+        * Destructor.
+        */
+        ~CPosTp57() {};
+
+    public: // Functions from base classes
+
+        /**
+        * From CUtfwTestBase
+        * Retrieves the test module name
+        * @param aName The name of the test module.
+        */
+        void GetName(
+            TDes&   aName
+            ) const;
+
+        /**
+        * From CLandmarkTestProcedureBase
+        * Runs the test in the module
+        */
+        void StartL();
+        
+        void CloseTest();
+
+    private:
+    
+        void CreateDatabasesL();
+        
+        void SearchWithTextCriteriaL();    
+        
+        void SearchWithAreaCriteriaL();
+        
+       static CPosLmAreaCriteria* NewLmAreaCriteriaL(const TReal64 &aSouthLat, 
+                                                     const TReal64 &aNorthLat,
+                                                     const TReal64 &aWestLong, 
+                                                     const TReal64 &aEastLong);
+    };
+
+#endif      // CPOSTP56_H
+            
+// End of File

@@ -1,0 +1,41 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  project definition file
+*
+*/
+
+#include <platform_paths.hrh>
+
+TARGET                      mifconv.exe
+TARGETTYPE                  exe
+
+USERINCLUDE                 ../inc
+MW_LAYER_SYSTEMINCLUDE
+SOURCEPATH                  ../src
+
+SOURCE                      mifconv.cpp 
+SOURCE                      mifconv_argument.cpp 
+SOURCE                      mifconv_argumentmanager.cpp 
+SOURCE                      mifconv_bitmapconverter.cpp 
+SOURCE                      mifconv_bitmapheaderconverter.cpp 
+SOURCE                      mifconv_convertermanager.cpp
+SOURCE                      mifconv_exception.cpp
+SOURCE                      mifconv_iconbinaryconverter.cpp
+SOURCE                      mifconv_mifconverter.cpp
+SOURCE                      mifconv_sourcefile.cpp
+SOURCE                      mifconv_util.cpp
+SOURCE                      mifconv_mbmgenerator.cpp
+SOURCE                      mifconv_mbmgenerator_pbmcomp.cpp
+SOURCE                      mifconv_mbmgenerator_bmtopbm.cpp
+SOURCE                      mifconv_mbmgenerator_rgb.cpp

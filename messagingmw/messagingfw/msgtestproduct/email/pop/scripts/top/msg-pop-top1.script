@@ -1,0 +1,739 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE 	T_MsgCommonServer -SharedData
+LOAD_SUITE 	T_MsgPopServer 	-SharedData
+LOAD_SUITE 	T_MsgSmtpServer 	-SharedData
+
+
+START_TESTCASE MSG-POP3-TOP-0001
+//! @SYMTestCaseID			MSG-POP3-TOP-0001
+//! @SYMTestType			CIT
+//! @SYMTestPriority			Medium
+//! @SYMTestStatus 			Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc		
+//! @SYMTestActions			CreateSmtpMessageFromEmailFile
+//! 						SendSmtpMessage
+//! 						PopInvokeAsyncFunction
+//! 						ComparePopEmailMsgs
+//! 					Verify header parts
+//! @SYMTestExpectedResults 	
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer		StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer		StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\top\msg-pop-top1.ini	0001-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\top\msg-pop-top1.ini	0001-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer		CreatePopAccount		c:\msgtest\email\pop\top\msg-pop-top1.ini	0001-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 		ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0001-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer		DeleteAllPopChildren		c:\msgtest\email\pop\top\msg-pop-top1.ini	0001-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 		DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0001-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer 		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0001-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgSmtpServer 		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0001-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 300 T_MsgSmtpServer 		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0001-CreateSmtpMessageFromEmailFile3
+RUN_TEST_STEP 300 T_MsgSmtpServer 		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0001-CreateSmtpMessageFromEmailFile4
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0001-CheckChildrenCountOutbox4
+RUN_TEST_STEP 300 T_MsgSmtpServer 		SendSmtpMessage 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0001-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0001-CheckChildrenCountOutbox0
+RUN_TEST_STEP 300 T_MsgPopServer 		ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0001-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 		PopInvokeAsyncFunction		c:\msgtest\email\pop\top\msg-pop-top1.ini	0001-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgPopServer 		DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0001-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 		ComparePopEmailMsgs		c:\msgtest\email\pop\top\msg-pop-top1.ini	0001-ComparePopEmailMsgs
+
+RUN_TEST_STEP 300 T_MsgSmtpServer		ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer		ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-TOP-0001
+
+
+START_TESTCASE MSG-POP3-TOP-0003
+
+//! @SYMTestCaseID		MSG-POP3-TOP-0003
+//! @SYMTestType		CIT
+//! @SYMTestPriority		Medium
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc		
+//! @SYMTestActions		CreateSmtpMessageFromEmailFile
+//! 					SendSmtpMessage
+//! 					PopInvokeAsyncFunction
+//! 					ComparePopEmailMsgs
+//! 					Verify header parts
+//! @SYMTestExpectedResults 	
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer		StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer		StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\top\msg-pop-top1.ini	0003-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\top\msg-pop-top1.ini	0003-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\top\msg-pop-top1.ini	0003-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0003-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\top\msg-pop-top1.ini	0003-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0003-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0003-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0003-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0003-CreateSmtpMessageFromEmailFile3
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0003-CreateSmtpMessageFromEmailFile4
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0003-CheckChildrenCountOutbox4
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0003-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0003-CheckChildrenCountOutbox0
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0003-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	PopInvokeAsyncFunction		c:\msgtest\email\pop\top\msg-pop-top1.ini	0003-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0003-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	ComparePopEmailMsgs		c:\msgtest\email\pop\top\msg-pop-top1.ini	0003-ComparePopEmailMsgs
+
+RUN_TEST_STEP 300 T_MsgSmtpServer		ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer		ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-TOP-0003
+
+
+START_TESTCASE MSG-POP3-TOP-0004
+//! @SYMTestCaseID		MSG-POP3-TOP-0004
+//! @SYMTestType		CIT
+//! @SYMTestPriority		Medium
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc		
+//! @SYMTestActions		CreateSmtpMessageFromEmailFile
+//! 					SendSmtpMessage
+//! 					PopInvokeAsyncFunction
+//! 					ComparePopEmailMsgs
+//! 					Verify header parts
+//! @SYMTestExpectedResults 	
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer		StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer		StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\top\msg-pop-top1.ini	0004-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\top\msg-pop-top1.ini	0004-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\top\msg-pop-top1.ini	0004-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0004-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\top\msg-pop-top1.ini	0004-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0004-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0004-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0004-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0004-CreateSmtpMessageFromEmailFile3
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0004-CreateSmtpMessageFromEmailFile4
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0004-CheckChildrenCountOutbox4
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0004-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0004-CheckChildrenCountOutbox0
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0004-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	PopInvokeAsyncFunction		c:\msgtest\email\pop\top\msg-pop-top1.ini	0004-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0004-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	ComparePopEmailMsgs		c:\msgtest\email\pop\top\msg-pop-top1.ini	0004-ComparePopEmailMsgs
+
+RUN_TEST_STEP 300 T_MsgSmtpServer		ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer		ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-TOP-0004
+
+
+START_TESTCASE MSG-POP3-TOP-0005
+//! @SYMTestCaseID			MSG-POP3-TOP-0005
+//! @SYMTestType			CIT
+//! @SYMTestPriority			Medium
+//! @SYMTestStatus 			Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc		
+//! @SYMTestActions			CreateSmtpMessageFromEmailFile
+//! 						SendSmtpMessage
+//! 						PopInvokeAsyncFunction
+//! 						ComparePopEmailMsgs
+//! @SYMTestExpectedResults 	
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer		StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer		StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\top\msg-pop-top1.ini	0005-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\top\msg-pop-top1.ini	0005-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\top\msg-pop-top1.ini	0005-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0005-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\top\msg-pop-top1.ini	0005-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0005-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0005-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0005-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0005-CreateSmtpMessageFromEmailFile3
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0005-CreateSmtpMessageFromEmailFile4
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0005-CheckChildrenCountOutbox4
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0005-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0005-CheckChildrenCountOutbox0
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0005-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	PopInvokeAsyncFunction		c:\msgtest\email\pop\top\msg-pop-top1.ini	0005-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0005-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	ComparePopEmailMsgs		c:\msgtest\email\pop\top\msg-pop-top1.ini	0005-ComparePopEmailMsgs
+
+RUN_TEST_STEP 300 T_MsgSmtpServer		ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer		ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-TOP-0005
+
+
+START_TESTCASE MSG-POP3-TOP-0006
+//! @SYMTestCaseID			MSG-POP3-TOP-0006
+//! @SYMTestType			CIT
+//! @SYMTestPriority			Medium
+//! @SYMTestStatus 			Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc		
+//! @SYMTestActions			CreateSmtpMessageFromEmailFile
+//! 						SendSmtpMessage
+//! 						PopInvokeAsyncFunction
+//! 						ComparePopEmailMsgs
+//! @SYMTestExpectedResults 	
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer		StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer		StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\top\msg-pop-top1.ini	0006-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\top\msg-pop-top1.ini	0006-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\top\msg-pop-top1.ini	0006-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0006-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\top\msg-pop-top1.ini	0006-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0006-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0006-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0006-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0006-CreateSmtpMessageFromEmailFile3
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0006-CreateSmtpMessageFromEmailFile4
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0006-CheckChildrenCountOutbox4
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0006-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0006-CheckChildrenCountOutbox0
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0006-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	PopInvokeAsyncFunction		c:\msgtest\email\pop\top\msg-pop-top1.ini	0006-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0006-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	ComparePopEmailMsgs		c:\msgtest\email\pop\top\msg-pop-top1.ini	0006-ComparePopEmailMsgs
+
+RUN_TEST_STEP 300 T_MsgSmtpServer		ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer		ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-TOP-0006
+
+
+START_TESTCASE MSG-POP3-TOP-0008
+//! @SYMTestCaseID			MSG-POP3-TOP-0008
+//! @SYMTestType			CIT
+//! @SYMTestPriority			Medium
+//! @SYMTestStatus 			Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc		
+//! @SYMTestActions			CreateSmtpMessageFromEmailFile
+//! 						SendSmtpMessage
+//! 						PopInvokeAsyncFunction
+//! 						ComparePopEmailMsgs
+//! @SYMTestExpectedResults 	
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer		StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer		StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\top\msg-pop-top1.ini	0008-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\top\msg-pop-top1.ini	0008-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\top\msg-pop-top1.ini	0008-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0008-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\top\msg-pop-top1.ini	0008-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0008-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0008-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0008-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0008-CreateSmtpMessageFromEmailFile3
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0008-CreateSmtpMessageFromEmailFile4
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0008-CheckChildrenCountOutbox4
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0008-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0008-CheckChildrenCountOutbox0
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0008-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	PopInvokeAsyncFunction		c:\msgtest\email\pop\top\msg-pop-top1.ini	0008-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0008-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	ComparePopEmailMsgs		c:\msgtest\email\pop\top\msg-pop-top1.ini	0008-ComparePopEmailMsgs
+
+RUN_TEST_STEP 300 T_MsgSmtpServer		ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer		ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-TOP-0008
+
+
+START_TESTCASE MSG-POP3-TOP-0009
+
+//! @SYMTestCaseID			MSG-POP3-TOP-0009
+//! @SYMTestType			CIT
+//! @SYMTestPriority			Medium
+//! @SYMTestStatus 			Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc		
+//! @SYMTestActions			CreateSmtpMessageFromEmailFile
+//! 						SendSmtpMessage
+//! 						PopInvokeAsyncFunction
+//! 						ComparePopEmailMsgs
+//! @SYMTestExpectedResults 	
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer		StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer		StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\top\msg-pop-top1.ini	0009-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\top\msg-pop-top1.ini	0009-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\top\msg-pop-top1.ini	0009-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0009-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\top\msg-pop-top1.ini	0009-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0009-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0009-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0009-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0009-CreateSmtpMessageFromEmailFile3
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0009-CreateSmtpMessageFromEmailFile4
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0009-CheckChildrenCountOutbox4
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0009-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0009-CheckChildrenCountOutbox0
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0009-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	PopInvokeAsyncFunction		c:\msgtest\email\pop\top\msg-pop-top1.ini	0009-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0009-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	ComparePopEmailMsgs		c:\msgtest\email\pop\top\msg-pop-top1.ini	0009-ComparePopEmailMsgs
+
+RUN_TEST_STEP 300 T_MsgSmtpServer		ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer		ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-TOP-0009
+
+
+START_TESTCASE MSG-POP3-TOP-0010
+
+//! @SYMTestCaseID			MSG-POP3-TOP-0010
+//! @SYMTestType			CIT
+//! @SYMTestPriority			Medium
+//! @SYMTestStatus 			Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc		
+//! @SYMTestActions			CreateSmtpMessageFromEmailFile
+//! 						SendSmtpMessage
+//! 						PopInvokeAsyncFunction
+//! 						ComparePopEmailMsgs
+//! @SYMTestExpectedResults 	
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer		StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer		StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\top\msg-pop-top1.ini	0010-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\top\msg-pop-top1.ini	0010-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\top\msg-pop-top1.ini	0010-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0010-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\top\msg-pop-top1.ini	0010-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0010-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0010-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0010-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0010-CreateSmtpMessageFromEmailFile3
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0010-CreateSmtpMessageFromEmailFile4
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0010-CheckChildrenCountOutbox4
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0010-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0010-CheckChildrenCountOutbox0
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0010-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	PopInvokeAsyncFunction		c:\msgtest\email\pop\top\msg-pop-top1.ini	0010-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0010-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	ComparePopEmailMsgs		c:\msgtest\email\pop\top\msg-pop-top1.ini	0010-ComparePopEmailMsgs
+
+RUN_TEST_STEP 300 T_MsgSmtpServer		ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer		ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-TOP-0010
+
+
+START_TESTCASE MSG-POP3-TOP-0011
+//! @SYMTestCaseID			MSG-POP3-TOP-0011
+//! @SYMTestType			CIT
+//! @SYMTestPriority			Medium
+//! @SYMTestStatus 			Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc		
+//! @SYMTestActions			CreateSmtpMessageFromEmailFile
+//! 						SendSmtpMessage
+//! 						PopInvokeAsyncFunction
+//! 						ComparePopEmailMsgs
+//! @SYMTestExpectedResults 	
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer		StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer		StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\top\msg-pop-top1.ini	0011-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\top\msg-pop-top1.ini	0011-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\top\msg-pop-top1.ini	0011-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0011-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\top\msg-pop-top1.ini	0011-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0011-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0011-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0011-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0011-CreateSmtpMessageFromEmailFile3
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0011-CreateSmtpMessageFromEmailFile4
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0011-CheckChildrenCountOutbox4
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0011-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0011-CheckChildrenCountOutbox0
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0011-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	PopInvokeAsyncFunction		c:\msgtest\email\pop\top\msg-pop-top1.ini	0011-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0011-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	ComparePopEmailMsgs		c:\msgtest\email\pop\top\msg-pop-top1.ini	0011-ComparePopEmailMsgs
+
+
+RUN_TEST_STEP 300 T_MsgSmtpServer		ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer		ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-TOP-0011
+
+
+START_TESTCASE MSG-POP3-TOP-0013
+//! @SYMTestCaseID			MSG-POP3-TOP-0013
+//! @SYMTestType			CIT
+//! @SYMTestPriority			Medium
+//! @SYMTestStatus 			Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc		
+//! @SYMTestActions			CreateSmtpMessageFromEmailFile
+//! 						SendSmtpMessage
+//! 						PopInvokeAsyncFunction
+//! 						ComparePopEmailMsgs
+//! @SYMTestExpectedResults 	
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer		StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer		StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\top\msg-pop-top1.ini	0013-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\top\msg-pop-top1.ini	0013-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer		CreatePopAccount		c:\msgtest\email\pop\top\msg-pop-top1.ini	0013-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 		ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0013-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer		DeleteAllPopChildren		c:\msgtest\email\pop\top\msg-pop-top1.ini	0013-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 		DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0013-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer 		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0013-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0013-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0013-CreateSmtpMessageFromEmailFile3
+RUN_TEST_STEP 300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0013-CreateSmtpMessageFromEmailFile4
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0013-CheckChildrenCountOutbox4
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0013-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0013-CheckChildrenCountOutbox0
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0013-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	PopInvokeAsyncFunction		c:\msgtest\email\pop\top\msg-pop-top1.ini	0013-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0013-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	ComparePopEmailMsgs		c:\msgtest\email\pop\top\msg-pop-top1.ini	0013-ComparePopEmailMsgs
+
+RUN_TEST_STEP 300 T_MsgSmtpServer		ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer		ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-TOP-0013
+
+
+START_TESTCASE MSG-POP3-TOP-0014
+//! @SYMTestCaseID		MSG-POP3-TOP-0014
+//! @SYMTestType		CIT
+//! @SYMTestPriority		Medium
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc		
+//! @SYMTestActions		CreateSmtpMessageFromEmailFile
+//! 					SendSmtpMessage
+//! 					PopInvokeAsyncFunction
+//! 					ComparePopEmailMsgs
+//! @SYMTestExpectedResults 	
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer		StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer		StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\top\msg-pop-top1.ini	0014-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\top\msg-pop-top1.ini	0014-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer		CreatePopAccount		c:\msgtest\email\pop\top\msg-pop-top1.ini	0014-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 		ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0014-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer		DeleteAllPopChildren		c:\msgtest\email\pop\top\msg-pop-top1.ini	0014-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 		DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0014-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer 		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0014-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0014-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0014-CreateSmtpMessageFromEmailFile3
+RUN_TEST_STEP 300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0014-CreateSmtpMessageFromEmailFile4
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0014-CheckChildrenCountOutbox4
+RUN_TEST_STEP 300 T_MsgSmtpServer 		SendSmtpMessage 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0014-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0014-CheckChildrenCountOutbox0
+RUN_TEST_STEP 300 T_MsgPopServer 		ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0014-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 		PopInvokeAsyncFunction		c:\msgtest\email\pop\top\msg-pop-top1.ini	0014-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgPopServer 		DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0014-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 		ComparePopEmailMsgs		c:\msgtest\email\pop\top\msg-pop-top1.ini	0014-ComparePopEmailMsgs
+
+RUN_TEST_STEP 300 T_MsgSmtpServer		ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer		ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-TOP-0014
+
+
+START_TESTCASE MSG-POP3-TOP-0015
+//! @SYMTestCaseID			MSG-POP3-TOP-0015
+//! @SYMTestType			CIT
+//! @SYMTestPriority			Medium
+//! @SYMTestStatus 			Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc		
+//! @SYMTestActions			CreateSmtpMessageFromEmailFile
+//! 						SendSmtpMessage
+//! 						PopInvokeAsyncFunction
+//! 						ComparePopEmailMsgs
+//! @SYMTestExpectedResults 	
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer		StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer		StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\top\msg-pop-top1.ini	0015-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\top\msg-pop-top1.ini	0015-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer		CreatePopAccount		c:\msgtest\email\pop\top\msg-pop-top1.ini	0015-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 		ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0015-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer		DeleteAllPopChildren		c:\msgtest\email\pop\top\msg-pop-top1.ini	0015-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 		DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0015-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer 		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0015-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgSmtpServer 		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0015-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0015-CreateSmtpMessageFromEmailFile3
+RUN_TEST_STEP 300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0015-CreateSmtpMessageFromEmailFile4
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0015-CheckChildrenCountOutbox4
+RUN_TEST_STEP 300 T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0015-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0015-CheckChildrenCountOutbox0
+RUN_TEST_STEP 300 T_MsgPopServer 		ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0015-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 		PopInvokeAsyncFunction		c:\msgtest\email\pop\top\msg-pop-top1.ini	0015-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgPopServer 		DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0015-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 		ComparePopEmailMsgs		c:\msgtest\email\pop\top\msg-pop-top1.ini	0015-ComparePopEmailMsgs
+
+RUN_TEST_STEP 300 T_MsgSmtpServer		ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer		ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-TOP-0015
+
+
+START_TESTCASE MSG-POP3-TOP-0016
+//! @SYMTestCaseID			MSG-POP3-TOP-0016
+//! @SYMTestType			CIT
+//! @SYMTestPriority			Medium
+//! @SYMTestStatus 			Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc		
+//! @SYMTestActions			CreateSmtpMessageFromEmailFile
+//! 						SendSmtpMessage
+//! 						PopInvokeAsyncFunction
+//! 					ComparePopEmailMsgs
+//! @SYMTestExpectedResults 	
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer		StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer		StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\top\msg-pop-top1.ini	0016-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\top\msg-pop-top1.ini	0016-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer		CreatePopAccount		c:\msgtest\email\pop\top\msg-pop-top1.ini	0016-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 		ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0016-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer		DeleteAllPopChildren		c:\msgtest\email\pop\top\msg-pop-top1.ini	0016-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 		DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0016-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer 		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0016-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0016-CheckChildrenCountOutbox1
+RUN_TEST_STEP 300 T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0016-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0016-CheckChildrenCountOutbox0
+RUN_TEST_STEP 300 T_MsgPopServer 		ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0016-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 		PopInvokeAsyncFunction		c:\msgtest\email\pop\top\msg-pop-top1.ini	0016-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgPopServer 		DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0016-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 		ComparePopEmailMsgs		c:\msgtest\email\pop\top\msg-pop-top1.ini	0016-ComparePopEmailMsgs
+
+RUN_TEST_STEP 300 T_MsgSmtpServer		ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer		ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-TOP-0016
+
+
+START_TESTCASE MSG-POP3-TOP-0017
+//! @SYMTestCaseID		MSG-POP3-TOP-0017
+//! @SYMTestType		CIT
+//! @SYMTestPriority		Medium
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc		
+//! @SYMTestActions		CreateSmtpMessageFromEmailFile
+//! 				SendSmtpMessage
+//! 				PopInvokeAsyncFunction
+//! 				ComparePopEmailMsgs
+//! @SYMTestExpectedResults 	
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer		StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer		StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\top\msg-pop-top1.ini	0017-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\top\msg-pop-top1.ini	0017-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer		CreatePopAccount		c:\msgtest\email\pop\top\msg-pop-top1.ini	0017-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 		ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0017-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer		DeleteAllPopChildren		c:\msgtest\email\pop\top\msg-pop-top1.ini	0017-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 		DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0017-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0017-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0017-CheckChildrenCountOutbox1
+RUN_TEST_STEP 300 T_MsgSmtpServer 		SendSmtpMessage 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0017-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0017-CheckChildrenCountOutbox0
+RUN_TEST_STEP 300 T_MsgPopServer 		ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0017-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 		PopInvokeAsyncFunction		c:\msgtest\email\pop\top\msg-pop-top1.ini	0017-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgPopServer 		DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0017-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 		ComparePopEmailMsgs		c:\msgtest\email\pop\top\msg-pop-top1.ini	0017-ComparePopEmailMsgs
+
+RUN_TEST_STEP 300 T_MsgSmtpServer		ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer		ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-TOP-0017
+
+START_TESTCASE MSG-POP3-TOP-0020
+//! @SYMTestCaseID		MSG-POP3-TOP-0020
+//! @SYMTestType		CIT
+//! @SYMTestPriority		Medium
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc		
+//! @SYMTestActions		CreateSmtpMessageFromEmailFile
+//! 				SendSmtpMessage
+//! 				PopInvokeAsyncFunction
+//! 				ComparePopEmailMsgs
+//! @SYMTestExpectedResults 	
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer		StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer		StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\top\msg-pop-top1.ini	0020-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\top\msg-pop-top1.ini	0020-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\top\msg-pop-top1.ini	0020-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0020-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\top\msg-pop-top1.ini	0020-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0020-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0020-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0020-CheckChildrenCountOutbox1
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0020-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0020-CheckChildrenCountOutbox0
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0020-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	PopInvokeAsyncFunction		c:\msgtest\email\pop\top\msg-pop-top1.ini	0020-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0020-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	ComparePopEmailMsgs		c:\msgtest\email\pop\top\msg-pop-top1.ini	0020-ComparePopEmailMsgs
+
+RUN_TEST_STEP 300 T_MsgSmtpServer		ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer		ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-TOP-0020
+
+
+START_TESTCASE MSG-POP3-TOP-0021
+//! @SYMTestCaseID			MSG-POP3-TOP-0021
+//! @SYMTestType			CIT
+//! @SYMTestPriority			Medium
+//! @SYMTestStatus 			Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc		
+//! @SYMTestActions			CreateSmtpMessageFromEmailFile
+//! 						SendSmtpMessage
+//! 						PopInvokeAsyncFunction
+//! 						ComparePopEmailMsgs
+//! @SYMTestExpectedResults 	
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer		StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer		StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\top\msg-pop-top1.ini	0021-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\top\msg-pop-top1.ini	0021-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\top\msg-pop-top1.ini	0021-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0021-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\top\msg-pop-top1.ini	0021-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0021-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\top\msg-pop-top1.ini	0021-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0021-CheckChildrenCountOutbox1
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0021-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0021-CheckChildrenCountOutbox0
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\top\msg-pop-top1.ini	0021-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	PopInvokeAsyncFunction		c:\msgtest\email\pop\top\msg-pop-top1.ini	0021-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\top\msg-pop-top1.ini	0021-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	ComparePopEmailMsgs		c:\msgtest\email\pop\top\msg-pop-top1.ini	0021-ComparePopEmailMsgs
+
+RUN_TEST_STEP 300 T_MsgSmtpServer		ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer		ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-TOP-0021
+
+
+

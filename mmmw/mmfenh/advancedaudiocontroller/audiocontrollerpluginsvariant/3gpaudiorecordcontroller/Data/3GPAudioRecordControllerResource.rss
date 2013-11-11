@@ -1,0 +1,81 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  3GPAudioRecordControllerPlugin Resource file.
+*
+*/
+
+
+//  INCLUDES
+#include "3GPAudioRecordControllerResource.rh"
+
+//  RESOURCE DEFINITIONS 
+
+// -----------------------------------------------------------------------------
+//   
+// aacEncoder
+// AAC encoder resource file.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE ADVANCED_AUDIO_CONTROLLER_RESOURCE aacEncoder
+    {
+    shared_buffer_max_num = 2;
+    shared_buffer_max_size = 20480;
+    shared_buffer_max_size_non_seekable_source = 20480;
+    sampling_rate = EAapSampleRate8000Hz;
+    stereo_support = 1;
+    metadata_support = EAapMetadataSupportFalse;
+
+    configuration_parameters =
+    		{
+    		AAC_ENCODER_CONFIG_PARAMS
+    			{
+    			bitrate = 64000;            // Default bitrate
+     			sampling_frequency = 48000;  // Default sampling frequency  			
+     			tool_flag = 0;
+    			num_of_channels = 1;        // 1 = mono, 2 = stereo
+    			use_format = 0;             // Raw
+    			fill_buffer = 0;
+    			supported_bit_rates = 
+    				{
+    				MODE { bit_rate = 32000; },
+    				MODE { bit_rate = 64000; },
+    				MODE { bit_rate = 96000; },
+    				MODE { bit_rate = 128000; },
+     				MODE { bit_rate = 160000; },
+                    MODE { bit_rate = 192000; },
+                    MODE { bit_rate = 224000; },
+    				MODE { bit_rate = 256000; }
+    				};
+    			supported_sample_rates = 
+    				{
+    				SAMPLERATE { sample_rate = 8000; },
+    				SAMPLERATE { sample_rate = 11025; },
+    				SAMPLERATE { sample_rate = 12000; },
+     				SAMPLERATE { sample_rate = 16000; },
+    				SAMPLERATE { sample_rate = 22050; },
+    				SAMPLERATE { sample_rate = 24000; },
+    				SAMPLERATE { sample_rate = 32000; },
+    				SAMPLERATE { sample_rate = 44100; },
+    				SAMPLERATE { sample_rate = 48000; }
+   				};
+    			}
+    		};
+    }
+    
+
+
+// End of File
+
+

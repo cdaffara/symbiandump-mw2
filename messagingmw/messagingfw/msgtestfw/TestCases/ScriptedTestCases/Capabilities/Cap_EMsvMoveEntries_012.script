@@ -1,0 +1,56 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRINT Running  EMsvMoveEntries_012
+
+
+//********************************
+PRINT Running  EMsvMoveEntries : Move an entry, owned by the proxy, from an unprotected folder (Drafts)
+PRINT Running  EMsvMoveEntries : to a folder under the Outbox (not part of an existing message).
+PRINT Running  EMsvMoveEntries : Source entry requires no capabilities.
+PRINT Running  EMsvMoveEntries : Target entry requires Read/Write user data + MTM specified caps.
+PRINT Running  EMsvMoveEntries : Source entry has same SID as proxy.
+//********************************
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvMoveEntries_012_001.script
+	// Proxy has Read/Write user data + Network services + Local services.
+	// Should PASS.
+
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvMoveEntries_012_002.script
+	// Proxy has Read/Write user data.
+	// Should FAIL.
+
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvMoveEntries_012_003.script
+	// Proxy has Read user data + Network services.
+	// Should FAIL.
+
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvMoveEntries_012_004.script
+	// Proxy has Write user data + Network services.
+	// Should FAIL.
+
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvMoveEntries_012_005.script
+	// Proxy has no caps.
+	// Should FAIL.
+
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvMoveEntries_012_006.script
+	// Proxy has Read/Write user data + Network services.
+	// Should FAIL.
+

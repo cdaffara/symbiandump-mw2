@@ -1,0 +1,29 @@
+EXPORTS
+	??0CPosLmLocalOperation@@IAE@AAVCPosLmLocalDatabase@@@Z @ 1 NONAME ; CPosLmLocalOperation::CPosLmLocalOperation(class CPosLmLocalDatabase &)
+	??1CPosLmLocalCategoryManager@@UAE@XZ @ 2 NONAME ; CPosLmLocalCategoryManager::~CPosLmLocalCategoryManager(void)
+	??1CPosLmLocalDatabase@@UAE@XZ @ 3 NONAME ; CPosLmLocalDatabase::~CPosLmLocalDatabase(void)
+	??1CPosLmLocalOperation@@UAE@XZ @ 4 NONAME ; CPosLmLocalOperation::~CPosLmLocalOperation(void)
+	?AquireLockL@CPosLmLocalDatabase@@QAEXW4TLockType@1@@Z @ 5 NONAME ; void CPosLmLocalDatabase::AquireLockL(enum CPosLmLocalDatabase::TLockType)
+	?AquireLockL@CPosLmLocalOperation@@IAEXW4TLockType@CPosLmLocalDatabase@@@Z @ 6 NONAME ; void CPosLmLocalOperation::AquireLockL(enum CPosLmLocalDatabase::TLockType)
+	?AquireLockLC@CPosLmLocalDatabase@@QAEXW4TLockType@1@@Z @ 7 NONAME ; void CPosLmLocalDatabase::AquireLockLC(enum CPosLmLocalDatabase::TLockType)
+	?BaseConstructL@CPosLmLocalOperation@@IAEXXZ @ 8 NONAME ; void CPosLmLocalOperation::BaseConstructL(void)
+	?DatabaseAccess@CPosLmLocalDatabase@@QAEPAVCPosLmLocalDbAccess@@XZ @ 9 NONAME ; class CPosLmLocalDbAccess * CPosLmLocalDatabase::DatabaseAccess(void)
+	?ExecuteL@CPosLmLocalOperation@@UAEXXZ @ 10 NONAME ; void CPosLmLocalOperation::ExecuteL(void)
+	?LeaveIfInitializingIsNeededL@CPosLmLocalDatabase@@QAEXXZ @ 11 NONAME ; void CPosLmLocalDatabase::LeaveIfInitializingIsNeededL(void)
+	?NewL@CPosLmLocalCategoryManager@@SAPAV1@PAX@Z @ 12 NONAME ; class CPosLmLocalCategoryManager * CPosLmLocalCategoryManager::NewL(void *)
+	?NextStep@CPosLmLocalOperation@@UAEXAAVTRequestStatus@@AAM@Z @ 13 NONAME ; void CPosLmLocalOperation::NextStep(class TRequestStatus &, float &)
+	?OpenL@CPosLmLocalDatabase@@SAPAV1@PAX@Z @ 14 NONAME ; class CPosLmLocalDatabase * CPosLmLocalDatabase::OpenL(void *)
+	?ReleaseLock@CPosLmLocalDatabase@@QAEHW4TLockType@1@@Z @ 15 NONAME ; int CPosLmLocalDatabase::ReleaseLock(enum CPosLmLocalDatabase::TLockType)
+	?ReleaseLock@CPosLmLocalOperation@@IAEHXZ @ 16 NONAME ; int CPosLmLocalOperation::ReleaseLock(void)
+	?BeginServerTransactionL@CPosLmLocalDatabase@@QAEXXZ @ 17 NONAME ; void CPosLmLocalDatabase::BeginServerTransactionL(void)
+	?BeginServerTransactionLC@CPosLmLocalDatabase@@QAEXXZ @ 18 NONAME ; void CPosLmLocalDatabase::BeginServerTransactionLC(void)
+	?CommitServerTransactionL@CPosLmLocalDatabase@@QAEXXZ @ 19 NONAME ; void CPosLmLocalDatabase::CommitServerTransactionL(void)
+	?CommitServerTransactionLX@CPosLmLocalDatabase@@QAEXXZ @ 20 NONAME ; void CPosLmLocalDatabase::CommitServerTransactionLX(void)
+	?RollbackServerTransaction@CPosLmLocalDatabase@@QAEXXZ @ 21 NONAME ; void CPosLmLocalDatabase::RollbackServerTransaction(void)
+	?NameIndex@CPosLmLocalDatabase@@QAEAAVRPosLmLocalNameIndex@@XZ @ 22 NONAME ; class RPosLmLocalNameIndex & CPosLmLocalDatabase::NameIndex(void)
+	?Count@RPosLmLocalNameIndex@@QBEHXZ @ 23 NONAME ; int RPosLmLocalNameIndex::Count(void) const
+	?ReadSortedIds@RPosLmLocalNameIndex@@QAEHPAKHHAAH@Z @ 24 NONAME ; int RPosLmLocalNameIndex::ReadSortedIds(unsigned long *, int, int, int &)
+	?ReadSortedLandmarksL@RPosLmLocalNameIndex@@QAEXHHAAV?$RPointerArray@VCIndexItem@RPosLmLocalNameIndex@@@@AAH@Z @ 25 NONAME ; void RPosLmLocalNameIndex::ReadSortedLandmarksL(int, int, class RPointerArray<class RPosLmLocalNameIndex::CIndexItem> &, int &)
+	?NameIndex@CPosLmLocalDatabase@@QBEABVRPosLmLocalNameIndex@@XZ @ 26 NONAME ; class RPosLmLocalNameIndex const & CPosLmLocalDatabase::NameIndex(void) const
+	?Status@RPosLmLocalNameIndex@@QBEHXZ @ 27 NONAME ; int RPosLmLocalNameIndex::Status(void) const
+

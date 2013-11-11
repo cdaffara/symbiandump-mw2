@@ -1,0 +1,36 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:    Includes all the Domain API specific bld.inf files, which 
+*                export files.
+*
+*/
+
+
+
+
+
+#include "../presence_list_api/group/bld.inf"
+#include "../watcher_info_api/group/bld.inf"
+#include "../simple_documents_api/group/bld.inf"
+#include "../authorization_api/group/bld.inf"
+#include "../xdm_protocol_plugin_api/group/bld.inf"
+#include "../watcher_api/group/bld.inf"
+#include "../xdm_api/group/bld.inf"
+#include "../registration_api/group/bld.inf"
+#include "../publisher_api/group/bld.inf"
+#include "../messaging_connection_manager_api/group/bld.inf"
+#include "../xdm_settings_api/group/bld.inf"
+#include "../simple_settings_api/group/bld.inf"
+#include "../simple_instant_msg_api/group/bld.inf"
+

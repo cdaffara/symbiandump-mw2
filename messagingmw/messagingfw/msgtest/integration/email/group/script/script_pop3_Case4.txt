@@ -1,0 +1,98 @@
+// *****************************************
+//  Test Script 
+//  
+//  Author:	Kashif Nadeem
+//  Date:	08/02/02
+//
+// Performence Test Script for Case 4
+// TO run t_email for Case 4 performance testing
+// rename this file to script.txt and copy it 
+// to c:\msgtest\emailsmoke
+//
+// Make sure that you have 3 emails in the inbox with 
+// the following subject titles and attachments:
+//	JPEG_image_53kb_midnight_800x513
+//	JPEG_image_93kb_midnight_1200x769
+//	large_plan_text_body_179kb_82_pages
+//
+// *****************************************
+
+[main]
+email_client_test email
+
+[email]
+pop3_client_test initialise_tests
+pop3_client_test Test_POP3_Case4
+
+// 
+// Initialise the Tests (ie Clean the Msg Server, start Session & create Accounts)
+// 
+[initialise_tests]
+//--------------------------------------
+//  Clean Message Server & Start Session
+//--------------------------------------
+clean_message_folder
+start_client_session
+//--------------------------------------
+// Create the Services
+//--------------------------------------
+pop3_client_test create_pop_service
+
+
+// *******************************************************************
+// Use case Case4_sync: Download 3 emails from InBox
+// *******************************************************************
+[Test_POP3_Case4]
+add_comment *** Connect to POP service ***
+select_root_folder
+select_folder Pop3_service
+connect
+select_root_folder
+select_folder local 
+select_destination_folder inbox
+select_root_folder
+select_folder Pop3_Service
+select_all_messages
+add_comment <Time: Start> Download 3 Email (POP3 test case 4)
+select_entry JPEG_image_53kb_midnight_800x513
+copy
+select_entry JPEG_image_93kb_midnight_1200x769
+copy
+select_entry large_plan_text_body_179kb_82_pages
+copy
+add_comment <Time: Stop> Download 3 Email
+check_pop3_error 0
+disconnect
+check_pop3_error 0
+select_root_folder
+select_folder local
+select_folder inbox
+select_all_messages
+check_selection_count 3
+
+
+// ****************************************************************
+//  Create Pop Service 
+// ****************************************************************
+[create_pop_service]
+add_comment Creating Pop Service
+select_root_folder
+pop3_service Pop_service
+
+
+// *****************************************
+//  POP3 Service Settings 			
+// *****************************************
+[Pop_service]
+set_name Pop3_Service
+set_server trmai02.it.cellulardata.com
+set_user kamineni
+set_pass vamSym
+set_tls 0
+//
+// Any of the following No can be used to access this server
+// +358 3 3617 770
+// +358 3 31520 444
+// +358 3 31520 111
+// +358 3 31520 999
+// *****************************************

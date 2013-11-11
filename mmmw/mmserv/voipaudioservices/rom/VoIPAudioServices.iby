@@ -1,0 +1,30 @@
+/*
+ * Copyright (c) 2007-2008 Nokia Corporation and/or its subsidiary(-ies).
+ * All rights reserved.
+ * This component and the accompanying materials are made available
+ * under the terms of "Eclipse Public License v1.0"
+ * which accompanies this distribution, and is available
+ * at the URL "http://www.eclipse.org/legal/epl-v10.html".
+ *
+ * Initial Contributors:
+ * Nokia Corporation - initial contribution.
+ *
+ * Contributors:
+ *
+ * Description:  Contains exported components included in the image.
+ *
+ */
+
+
+#ifndef VOIPAUDIOSERVICES_IBY
+#define VOIPAUDIOSERVICES_IBY
+
+file=ABI_DIR\BUILD_DIR\VoIPJitterBuffer.dll  SHARED_LIB_DIR\VoIPJitterBuffer.dll
+file=ABI_DIR\BUILD_DIR\VoIPAudioServer.exe   SHARED_LIB_DIR\VoIPAudioServer.exe
+file=ABI_DIR\BUILD_DIR\VoIPAudioSession.dll  SHARED_LIB_DIR\VoIPAudioSession.dll
+file=ABI_DIR\BUILD_DIR\VoIPAudioIntfc.dll    SHARED_LIB_DIR\VoIPAudioIntfc.dll
+
+// VoIPAudioSrvc_Stub
+data=ZSYSTEM\install\VoIPAudioSrvc_Stub.sis  System\Install\VoIPAudioSrvc_Stub.sis
+
+#endif

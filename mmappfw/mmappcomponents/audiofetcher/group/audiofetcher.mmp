@@ -1,0 +1,86 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file for project mgfecthplugin
+*
+*/
+
+
+#include <platform_paths.hrh>
+#include <data_caging_paths.hrh>
+
+TARGET                  audiofetcher.dll
+TARGETTYPE              PLUGIN
+UID                     0x10009d8d 0x20021213
+#ifndef WINSCW
+EPOCALLOWDLLDATA
+#endif
+
+CAPABILITY              CAP_ECOM_PLUGIN
+VENDORID                VID_DEFAULT
+
+SOURCEPATH              ../src
+SOURCE                  audiofetcher.cpp
+SOURCE					audiofetcherproxy.cpp
+SOURCE					audiofetcherdialog.cpp
+SOURCE					audiofetcherfilehandler.cpp
+SOURCE					audiofetcherlisthandler.cpp
+SOURCE 					audiofetcherdialogutils.cpp
+
+// ECom resource file
+START RESOURCE  ../data/20021213.rss
+  TARGET	audiofetcher.rsc
+  TARGETPATH    ECOM_RESOURCE_DIR
+END
+
+START RESOURCE            ../data/audiofetcherdialog.rss
+TARGET                    audiofetcherdialog.rsc
+HEADER
+TARGETPATH                APP_RESOURCE_DIR
+LANGUAGE_IDS
+END
+
+USERINCLUDE             ../inc
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY		aknicon.lib 
+LIBRARY     aknskins.lib
+LIBRARY   	apgrfx.lib  			// RApaLsSession
+LIBRARY   	apmime.lib  			// TDataType
+LIBRARY		avkon.lib
+LIBRARY     bafl.lib				// For BaflUtils
+LIBRARY		bitgdi.lib 
+LIBRARY     CommonEngine.lib
+LIBRARY  	euser.lib
+LIBRARY     ecom.lib
+LIBRARY		cone.lib 				// TParser
+LIBRARY		efsrv.lib
+LIBRARY   	egul.lib				// CGulIcon 
+LIBRARY	    eikdlg.lib  
+LIBRARY		eikctl.lib
+LIBRARY		eikcoctl.lib
+LIBRARY		eikcore.lib
+LIBRARY		fbscli.lib 
+LIBRARY     ws32.lib 				// For Rwindow
+
+LIBRARY		mdccommon.lib           // mds
+LIBRARY   	mdeclient.lib           // mds
+LIBRARY   	harvesterclient.lib		// mds
+LIBRARY		PlatformEnv.lib			// DriveInfo
+
+COMPRESSTARGET
+
+// End of File
+
+

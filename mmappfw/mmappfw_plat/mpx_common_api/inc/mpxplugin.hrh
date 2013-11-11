@@ -1,0 +1,48 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Generic plugin resource file constants
+*
+*/
+
+
+
+#ifndef MPXPLUGIN_HRH
+#define MPXPLUGIN_HRH
+
+// CONSTANTS
+
+/* Plugin feature flags 
+*  General common flags use the bottom 16 bits
+*  Framework specific flags use the top 16 bits.
+*  IE: 0xaaaabbbb where a are framework flags, b are generic flags 
+*/
+enum TMPXPluginFlags
+    {
+    EMPXPluginFlagPreLoad = 0x0001,           /** Indicates that this plugin needs to be preloaded */
+    EMPXPluginFlagUserSelectable = 0x0002    /** Indicates that this plugin is user selectable */
+    };
+    
+/** Plugin priorities */
+enum TMPXPluginPriorities
+    {
+    EMPXPluginPriorityLowest = -20000,
+    EMPXPluginPriorityLow = -10000,
+    EMPXPluginPriorityNormal = 0,
+    EMPXPluginPriorityHigh = 10000,
+    EMPXPluginPriorityHighest = 20000
+    };
+
+#endif  // MPXPLUGIN_HRH
+
+// End of File

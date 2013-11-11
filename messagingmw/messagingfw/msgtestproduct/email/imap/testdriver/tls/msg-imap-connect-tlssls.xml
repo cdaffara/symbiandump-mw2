@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>msg-imap-connect-tlssls</name>
+	<timeout>3000</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\email\imap\tls\msg-imap-connect-tlssls.script</hostPath>
+			<devicePath>c:\msgtest\email\imap\tls\msg-imap-connect-tlssls.script</devicePath>
+		</script>
+	</testScripts>
+
+	<testServers>
+		<server>T_MsgCommonServer</server>
+		<server>T_MsgImapServer</server>
+	</testServers>
+
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\email\imap\tls\msg-imap-connect-tlssls.ini</hostPath>
+			<devicePath>c:\msgtest\email\imap\tls\msg-imap-connect-tlssls.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\IMAPServerSNAPSettings.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\IMAPServerSNAPSettings.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\IMAP_SNAPID.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\IMAP_SNAPID.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\IMAPServerSNAPandIAPSettings.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\IMAPServerSNAPandIAPSettings.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\IMAPServerIAPSettings.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\IMAPServerIAPSettings.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\IMAPSettings_TlsSls_test908.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\IMAPSettings_TlsSls_test908.txt</devicePath>
+		</data>
+	</dependencies>	
+</testExecuteTest>

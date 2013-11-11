@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<relnotes name="INTEGRATIONTEST">
+  <purpose>
+  </purpose>
+
+   <defect number="PDEF141359 " title="test failures on 93 winscw regression " revision="021">
+    Changed the cfg file name.
+  </defect>
+
+   <defect number="PDEF141362 " title="Unconfirmed sendAs tests are failing on Hardware " revision="020">
+    Fixed the  script.
+  </defect>
+
+   <defect number="DEF141172" title="Failure of AddFileAttachmentbyPath" revision="019">
+    Removed newly added test steps which were causing the test to fail.
+  </defect>
+
+  <deliverystep number="1462" name="Splitting mixed header files for Messaging" osproject="SymTB92" revision="018">
+   <preq number="2510" title=" Splitting mixed header files for Messaging">
+    Mixed header files will now contain only published All or published Partner or internal
+   </preq>
+    <milestone project="GT0465" number="3.5"/>
+  </deliverystep>
+
+  <deliverystep number="1472" name="Removal of CDMA support" osproject="Sphinx" revision="017">
+    <preq number="2002" title="Removal of CDMA support">
+    Removed BiowatchersCdma and multimode component.
+    </preq>
+    <milestone project="GT0358" number="3.6"/>
+  </deliverystep>
+
+  <defect number="PDEF132548" title="Some of the Legacy test cases are Failing after migration" revision="016">
+    Updated the server names in the Transform_Receive configuration files.
+  </defect>
+
+  <defect number="DEF124868" title="CWatcherBase::WaitForPhoneToPowerUpL() throws KERN-EXEC 0" revision="015">
+    SMS test configuration changed from [test1] to [test0].
+  </defect>
+  
+  <defect number="DEF127889" title="Include statement not case consistent in messaging_mmssettings " revision="014">
+    Fixed the filename policy warnings
+  </defect>
+	
+  <defect number="DEF126105" title="Potential misclassification of IPR in messaging_testframework" revision="013">
+      Changed according to the Symbian OS source classifications policy.
+  </defect>
+
+  <defect number="DEF126023" title="SMS test fails setting and obtaining smssetting for hotswap functionality " 	revision="014">
+    Modified testcode and test data
+  </defect>
+
+  <defect number="PDEF125292" title="Filename Case Check errors most of them from PREQ1881" revision="013">
+    Changed according to the filename case check policy.
+  </defect>
+  
+  <defect number="DEF117895" title="Filename case issues cause build failure on Linux with Raptor" revision="012">
+   Updating bld.inf file by changing uppsercase names to lowercase
+  </defect>
+
+  <deliverystep number="808" name="Messaging: Unicode / Binary encoding for SMS in SendAs" osproject="Sphinx" revision="011">
+    <preq number="1881" title="UNICODE/Binary for SMS SendAs">
+    UNICODE/Binary for SMS SendAs
+  </preq>
+    <milestone project="GT0358" number="3.1"/>
+  </deliverystep>
+
+  <defect number="DEF109559" title="3Gpp tests are failing on hardware" revision="010">
+   New test step written to switch off test phone.
+  </defect>
+  <defect number="DEF113315" title="emailoversms tests are failing" revision="009">
+  These files missed during submission for DEF113315 (008).
+  </defect>
+  <defect number="DEF113315" title="emailoversms tests are failing" revision="008">
+  Fix was to write new Test step for unloading phone module and to reset RProperty. All the tests are related to Simtsy
+  This fix is implemented for EmailOverSms tests
+  </defect>
+  <defect number="DEF109546" title="Cap_EMsvMtmCommand.script fails" revision="007">
+  The test expects to fail with -46, for a particular but since there is a change in behavior due to 1678, the test will not fail with -46, Fix was to write the new script copied from Cap_SendMtmCommandFail.Script and exclusion this failing test, and export this instead of old Cap_SendMtmCommandFail.script and this new script will be exported from 9.5 onwords.
+  </defect>
+  <defect number="DEF079989" title="Typo in IPCCommandForCapsPermissions.cpp" revision="006">
+   Fix was to change the loging message."Test Expected to Fail and Fails" is the new change for "Test Expected to Pass and Passes"
+  </defect>
+  <defect number="DEF109554" title="PREQ1678: Some sendas tests are failing because of  use SetUserPromptResponse" revision="005">
+    Fix for SendAs failing tests because of SetUserPromptResponse utility unavailability in 9.4
+  </defect>
+
+  <deliverystep number="695" name="Submit PREQ1736 to MCL" osproject="Oghma" revision="004">
+    <preq number="1736" title="SMS Class 0 and Type 0 3GPP Compliance">
+    SMS Class 0 and Type 0 3GPP Compliance
+    </preq>
+    <milestone project="GT0342" number="3.6"/>
+  </deliverystep>
+
+  <deliverystep number="601" name="Implemented user prompting while sending/recieving the messages" osproject="Oghma" revision="003">
+    <preq number="1678" title="Messaging User Prompting">
+    Messaging User Prompting
+  </preq>
+    <milestone project="GT0342" number="3.4"/>
+  </deliverystep>
+
+  <deliverystep number="500" name="Messaging file name changes to support GNU compiler for Linux" osproject="Oghma" revision="002">
+    <preq number="1182" title="GNU Make-based build system">
+    GNU Make-based build system
+  </preq>
+    <milestone project="GT0342" number="3.3"/>
+  </deliverystep>
+
+  <minorchange revision="001">
+    Minor fix for capabilities
+  </minorchange>
+</relnotes>

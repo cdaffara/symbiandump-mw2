@@ -1,0 +1,136 @@
+/*
+* Copyright (c) 2003-2008 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Sat Sever iby file, contains client and shell controller
+*                iby- information
+*
+*/
+
+
+#ifndef SATSERVER_IBY
+#define SATSERVER_IBY
+
+
+file=ABI_DIR\BUILD_DIR\SatSystemState.dll           SHARED_LIB_DIR\SatSystemState.dll
+file=ABI_DIR\BUILD_DIR\SatEventMonitors.dll         SHARED_LIB_DIR\SatEventMonitors.dll
+file=ABI_DIR\BUILD_DIR\SATENGINE.DLL                SHARED_LIB_DIR\SATENGINE.DLL
+file=ABI_DIR\BUILD_DIR\SATSERVER.EXE                PROGRAMS_DIR\SATSERVER.EXE
+file=ABI_DIR\BUILD_DIR\SATCLIENT.DLL                SHARED_LIB_DIR\SATCLIENT.DLL
+file=ABI_DIR\BUILD_DIR\SATINTERNALCLIENT.DLL        SHARED_LIB_DIR\SATINTERNALCLIENT.DLL
+
+// SAT Stub SIS
+data=ZSYSTEM\install\SatServer_stub.sis     System\Install\SatServer_stub.sis
+
+// COMMANDS
+#ifdef __SAT_DISPLAY_TEXT
+ECOM_PLUGIN( DisplayTextCmd.dll, 10202989.rsc )
+#endif
+
+#ifdef __SAT_CALL_CONTROL
+ECOM_PLUGIN( CallControlCmd.dll, 1020298B.rsc )
+#endif
+
+#ifdef __SAT_GET_INKEY
+ECOM_PLUGIN( GetInkeyCmd.dll, 1000A889.rsc )
+#endif
+
+#ifdef __SAT_GET_INPUT
+ECOM_PLUGIN( GetInputCmd.dll, 10202985.rsc )
+#endif
+
+#ifdef __SAT_LANGUAGE_NOTIFICATION
+ECOM_PLUGIN( LanguageNotificationCmd.dll, 101F79FE.rsc )
+#endif
+
+#ifdef __SAT_LAUNCH_BROWSER
+ECOM_PLUGIN( LaunchBrowserCmd.dll, 1000A88D.rsc )
+#endif
+
+#ifdef __SAT_MO_SM_CONTROL
+ECOM_PLUGIN( MoSmControlCmd.dll, 1020298D.rsc )
+#endif
+
+#ifdef __SAT_PLAY_TONE
+ECOM_PLUGIN( PlayToneCmd.dll, 1000A887.rsc )
+#endif
+
+#ifdef __SAT_PROVIDE_LOCAL_INFO
+ECOM_PLUGIN( ProvideLocalInfoCmd.dll, 10205C45.rsc )
+#endif
+
+#ifdef __SAT_REFRESH
+ECOM_PLUGIN( RefreshCmd.dll, 10202990.rsc )
+
+ECOM_PLUGIN( RefreshRequiredCmd.dll, 102078D9.rsc )
+#endif
+
+#ifdef __SAT_SELECT_ITEM
+ECOM_PLUGIN( SelectItemCmd.dll, 1000f00A.rsc )
+#endif
+
+#ifdef __SAT_SEND_DTMF
+ECOM_PLUGIN( SendDtmfCmd.dll, 1000A88B.rsc )
+#endif
+
+#ifdef __SAT_SEND_SS
+ECOM_PLUGIN( SendSsCmd.dll, 1000A884.rsc )
+#endif
+
+#ifdef __SAT_SEND_SM
+ECOM_PLUGIN( SendSmCmd.dll, 1000f020.rsc )
+#endif
+
+#ifdef __SAT_SEND_USSD
+ECOM_PLUGIN( SendUssdCmd.dll, 10202983.rsc )
+#endif
+
+#ifdef __SAT_SETUP_CALL
+ECOM_PLUGIN( SetUpCallCmd.dll, 1000f005.rsc )
+#endif
+
+#ifdef __SAT_SET_UP_EVENT_LIST
+ECOM_PLUGIN( SetUpEventListCmd.dll, 10202992.rsc )
+#endif
+
+#ifdef __SAT_SET_UP_IDLE_MODE_TEXT
+ECOM_PLUGIN( SetUpIdleModeTextCmd.dll, 1000A88A.rsc )
+#endif
+
+#ifdef __SAT_SET_UP_MENU
+ECOM_PLUGIN( SetUpMenuCmd.dll, 1000f000.rsc )
+#endif
+
+ECOM_PLUGIN( SimSessionEndCmd.dll, 1000f010.rsc )
+
+#ifdef __SAT_BIP
+ECOM_PLUGIN( CloseChannelCmd.dll, 102078DB.rsc )
+
+ECOM_PLUGIN( OpenChannelCmd.dll, 101F79FA.rsc )
+
+ECOM_PLUGIN( SendDataCmd.dll, 10205C50.rsc )
+
+ECOM_PLUGIN( ReceiveDataCmd.dll, 10205C52.rsc )
+
+ECOM_PLUGIN( GetChannelStatusCmd.dll, 102078DD.rsc )
+#endif
+
+// USE THESE ONLY IF YOU ARE USING AUTOMATED SAT TSY
+//file=ABI_DIR\BUILD_DIR\DSAT.TSY         SHARED_LIB_DIR\DSAT.TSY
+//file=ABI_DIR\BUILD_DIR\Commands.dll     SHARED_LIB_DIR\commands.dll
+//file=ABI_DIR\BUILD_DIR\TestCases.dll    SHARED_LIB_DIR\TestCases.dll
+//file=ABI_DIR\BUILD_DIR\Tester.dll       SHARED_LIB_DIR\Tester.dll
+
+
+#endif // SATSERVER_IBY
+
+//  End of File

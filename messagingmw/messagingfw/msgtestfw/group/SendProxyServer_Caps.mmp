@@ -1,0 +1,39 @@
+// Copyright (c) 2000-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// SendProxyServer.mmp
+// Transient server example - server executable
+// 
+//
+
+macro __HIDE_IPC_V1__
+
+target sendproxyserver_caps.exe
+targettype exe
+
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+USERINCLUDE		../TestActions/Capabilities/inc
+USERINCLUDE		../../msgsrvnstore/server/inc
+
+sourcepath ../TestActions/Capabilities/src
+
+source SendProxyServer.cpp
+
+LIBRARY euser.lib
+LIBRARY	msgs.lib
+
+UID	0x1000007A 0x1027406B
+
+VENDORID 0x70000001
+SMPSAFE

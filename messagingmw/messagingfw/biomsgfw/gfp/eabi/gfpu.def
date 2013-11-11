@@ -1,0 +1,5 @@
+EXPORTS
+	_ZN21CMsvGenericFileParser4NewLER20CRegisteredParserDllR9CMsvEntryR3RFs @ 1 NONAME
+	_ZTI21CMsvGenericFileParser @ 2 NONAME ; #<TI>#
+	_ZTV21CMsvGenericFileParser @ 3 NONAME ; #<VT>#
+

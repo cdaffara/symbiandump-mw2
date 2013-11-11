@@ -1,0 +1,7 @@
+#  lon-cn-exchng2k.msexchange2k.closedtest.intra server settings
+__type__   = Imap4Settings
+
+EmailAddressExtension = msexchange2k.closedtest.intra
+
+ServerName = lon-cn-exchng2k.msexchange2k.closedtest.intra
+# FolderPath =  

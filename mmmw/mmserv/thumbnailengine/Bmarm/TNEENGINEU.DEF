@@ -1,0 +1,19 @@
+EXPORTS
+	__22CVedVideoClipGenerator @ 1 NONAME R3UNUSED ; CVedVideoClipGenerator::CVedVideoClipGenerator(void)
+	E32Dll__F10TDllReason @ 2 NONAME R3UNUSED ; E32Dll(TDllReason)
+	IsInserted__C22CVedVideoClipGenerator @ 3 NONAME R3UNUSED ; CVedVideoClipGenerator::IsInserted(void) const
+	IsOwnedByVideoClip__C22CVedVideoClipGenerator @ 4 NONAME R3UNUSED ; CVedVideoClipGenerator::IsOwnedByVideoClip(void) const
+	Movie__C22CVedVideoClipGenerator @ 5 NONAME R3UNUSED ; CVedVideoClipGenerator::Movie(void) const
+	NewLC__17CVedAudioClipInfoRC7TDesC16R25MVedAudioClipInfoObserver @ 6 NONAME R3UNUSED ; CVedAudioClipInfo::NewLC(TDesC16 const &, MVedAudioClipInfoObserver &)
+	NewLC__17CVedVideoClipInfoRC7TDesC16R25MVedVideoClipInfoObserver @ 7 NONAME R3UNUSED ; CVedVideoClipInfo::NewLC(TDesC16 const &, MVedVideoClipInfoObserver &)
+	NewLC__9CVedMovieP3RFs @ 8 NONAME R3UNUSED ; CVedMovie::NewLC(RFs *)
+	NewL__17CVedAudioClipInfoRC7TDesC16R25MVedAudioClipInfoObserver @ 9 NONAME R3UNUSED ; CVedAudioClipInfo::NewL(TDesC16 const &, MVedAudioClipInfoObserver &)
+	NewL__17CVedVideoClipInfoRC7TDesC16R25MVedVideoClipInfoObserver @ 10 NONAME R3UNUSED ; CVedVideoClipInfo::NewL(TDesC16 const &, MVedVideoClipInfoObserver &)
+	NewL__9CVedMovieP3RFs @ 11 NONAME R3UNUSED ; CVedMovie::NewL(RFs *)
+	ReportDescriptiveNameChanged__C22CVedVideoClipGenerator @ 12 NONAME R3UNUSED ; CVedVideoClipGenerator::ReportDescriptiveNameChanged(void) const
+	ReportDurationChanged__C22CVedVideoClipGenerator @ 13 NONAME R3UNUSED ; CVedVideoClipGenerator::ReportDurationChanged(void) const
+	ReportSettingsChanged__C22CVedVideoClipGenerator @ 14 NONAME R3UNUSED ; CVedVideoClipGenerator::ReportSettingsChanged(void) const
+	VideoClipIndex__C22CVedVideoClipGenerator @ 15 NONAME R3UNUSED ; CVedVideoClipGenerator::VideoClipIndex(void) const
+	"_._22CVedVideoClipGenerator" @ 16 NONAME R3UNUSED ; CVedVideoClipGenerator::~CVedVideoClipGenerator(void)
+	CalculateFrameComplexityFactor__C22CVedVideoClipGeneratorP10CFbsBitmap @ 17 NONAME R3UNUSED ; CVedVideoClipGenerator::CalculateFrameComplexityFactor(CFbsBitmap *) const
+

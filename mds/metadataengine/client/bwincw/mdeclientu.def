@@ -1,0 +1,299 @@
+EXPORTS
+	??0RMdEDataBuffer@@QAE@XZ @ 1 NONAME ; RMdEDataBuffer::RMdEDataBuffer(void)
+	??0TMdEObject@@QAE@XZ @ 2 NONAME ; TMdEObject::TMdEObject(void)
+	??0TMdEOrderRule@@QAE@ABVCMdEPropertyDef@@H@Z @ 3 NONAME ; TMdEOrderRule::TMdEOrderRule(class CMdEPropertyDef const &, int)
+	??0TMdEOrderRule@@QAE@W4TOrderRuleType@@H@Z @ 4 NONAME ; TMdEOrderRule::TMdEOrderRule(enum TOrderRuleType, int)
+	?AddBoolPropertyL@CMdEObject@@QAEAAVCMdEProperty@@AAVCMdEPropertyDef@@H@Z @ 5 NONAME ; class CMdEProperty & CMdEObject::AddBoolPropertyL(class CMdEPropertyDef &, int)
+	?AddEventConditionL@CMdELogicCondition@@QAEAAVCMdEEventCondition@@ABV?$TMdERange@VTTime@@@@@Z @ 6 NONAME ; class CMdEEventCondition & CMdELogicCondition::AddEventConditionL(class TMdERange<class TTime> const &)
+	?AddEventConditionL@CMdELogicCondition@@QAEAAVCMdEEventCondition@@ABV?$TMdERange@VTTime@@@@W4TEventConditionCompareMethod@@ABVTDesC16@@@Z @ 7 NONAME ; class CMdEEventCondition & CMdELogicCondition::AddEventConditionL(class TMdERange<class TTime> const &, enum TEventConditionCompareMethod, class TDesC16 const &)
+	?AddEventConditionL@CMdELogicCondition@@QAEAAVCMdEEventCondition@@ABVCMdEEventDef@@@Z @ 8 NONAME ; class CMdEEventCondition & CMdELogicCondition::AddEventConditionL(class CMdEEventDef const &)
+	?AddEventConditionL@CMdELogicCondition@@QAEAAVCMdEEventCondition@@K@Z @ 9 NONAME ; class CMdEEventCondition & CMdELogicCondition::AddEventConditionL(unsigned long)
+	?AddEventConditionL@CMdELogicCondition@@QAEAAVCMdEEventCondition@@W4TEventConditionCompareMethod@@ABVTDesC16@@@Z @ 10 NONAME ; class CMdEEventCondition & CMdELogicCondition::AddEventConditionL(enum TEventConditionCompareMethod, class TDesC16 const &)
+	?AddEventConditionL@CMdELogicCondition@@QAEAAVCMdEEventCondition@@XZ @ 11 NONAME ; class CMdEEventCondition & CMdELogicCondition::AddEventConditionL(void)
+	?AddFreeTextL@CMdEObject@@QAEXABVTDesC16@@@Z @ 12 NONAME ; void CMdEObject::AddFreeTextL(class TDesC16 const &)
+	?AddHarvestingPrioritizationObserver@CMdEHarvesterSession@@QAEXAAVTRequestStatus@@@Z @ 13 NONAME ; void CMdEHarvesterSession::AddHarvestingPrioritizationObserver(class TRequestStatus &)
+	?AddInt16PropertyL@CMdEObject@@QAEAAVCMdEProperty@@AAVCMdEPropertyDef@@F@Z @ 14 NONAME ; class CMdEProperty & CMdEObject::AddInt16PropertyL(class CMdEPropertyDef &, short)
+	?AddInt32PropertyL@CMdEObject@@QAEAAVCMdEProperty@@AAVCMdEPropertyDef@@J@Z @ 15 NONAME ; class CMdEProperty & CMdEObject::AddInt32PropertyL(class CMdEPropertyDef &, long)
+	?AddInt64PropertyL@CMdEObject@@QAEAAVCMdEProperty@@AAVCMdEPropertyDef@@_J@Z @ 16 NONAME ; class CMdEProperty & CMdEObject::AddInt64PropertyL(class CMdEPropertyDef &, long long)
+	?AddInt8PropertyL@CMdEObject@@QAEAAVCMdEProperty@@AAVCMdEPropertyDef@@C@Z @ 17 NONAME ; class CMdEProperty & CMdEObject::AddInt8PropertyL(class CMdEPropertyDef &, signed char)
+	?AddLogicConditionL@CMdELogicCondition@@QAEAAV1@W4TLogicConditionOperator@@@Z @ 18 NONAME ; class CMdELogicCondition & CMdELogicCondition::AddLogicConditionL(enum TLogicConditionOperator)
+	?AddMemoryCard@CMdEHarvesterSession@@QAEXK@Z @ 19 NONAME ; void CMdEHarvesterSession::AddMemoryCard(unsigned long)
+	?AddObjectConditionL@CMdELogicCondition@@QAEAAVCMdEObjectCondition@@ABV?$RArray@K@@@Z @ 20 NONAME ; class CMdEObjectCondition & CMdELogicCondition::AddObjectConditionL(class RArray<unsigned long> const &)
+	?AddObjectConditionL@CMdELogicCondition@@QAEAAVCMdEObjectCondition@@ABV?$TMdERange@I@@@Z @ 21 NONAME ; class CMdEObjectCondition & CMdELogicCondition::AddObjectConditionL(class TMdERange<unsigned int> const &)
+	?AddObjectConditionL@CMdELogicCondition@@QAEAAVCMdEObjectCondition@@ABVCMdEObjectDef@@@Z @ 22 NONAME ; class CMdEObjectCondition & CMdELogicCondition::AddObjectConditionL(class CMdEObjectDef const &)
+	?AddObjectConditionL@CMdELogicCondition@@QAEAAVCMdEObjectCondition@@K@Z @ 23 NONAME ; class CMdEObjectCondition & CMdELogicCondition::AddObjectConditionL(unsigned long)
+	?AddObjectConditionL@CMdELogicCondition@@QAEAAVCMdEObjectCondition@@W4TObjectConditionCompareMethod@@ABVTDesC16@@@Z @ 24 NONAME ; class CMdEObjectCondition & CMdELogicCondition::AddObjectConditionL(enum TObjectConditionCompareMethod, class TDesC16 const &)
+	?AddObjectConditionL@CMdELogicCondition@@QAEAAVCMdEObjectCondition@@_J0@Z @ 25 NONAME ; class CMdEObjectCondition & CMdELogicCondition::AddObjectConditionL(long long, long long)
+	?AddObserverL@CMdEQuery@@QAEXAAVMMdEQueryObserver@@@Z @ 26 NONAME ; void CMdEQuery::AddObserverL(class MMdEQueryObserver &)
+	?AddPropertyConditionL@CMdELogicCondition@@QAEAAV?$CMdERangePropertyCondition@$03H@@ABVCMdEPropertyDef@@ABV?$TMdERange@H@@@Z @ 27 NONAME ; class CMdERangePropertyCondition<4, int> & CMdELogicCondition::AddPropertyConditionL(class CMdEPropertyDef const &, class TMdERange<int> const &)
+	?AddPropertyConditionL@CMdELogicCondition@@QAEAAV?$CMdERangePropertyCondition@$04_J@@ABVCMdEPropertyDef@@ABV?$TMdERange@_J@@@Z @ 28 NONAME ; class CMdERangePropertyCondition<5, long long> & CMdELogicCondition::AddPropertyConditionL(class CMdEPropertyDef const &, class TMdERange<long long> const &)
+	?AddPropertyConditionL@CMdELogicCondition@@QAEAAV?$CMdERangePropertyCondition@$05I@@ABVCMdEPropertyDef@@ABV?$TMdERange@I@@@Z @ 29 NONAME ; class CMdERangePropertyCondition<6, unsigned int> & CMdELogicCondition::AddPropertyConditionL(class CMdEPropertyDef const &, class TMdERange<unsigned int> const &)
+	?AddPropertyConditionL@CMdELogicCondition@@QAEAAV?$CMdERangePropertyCondition@$06N@@ABVCMdEPropertyDef@@ABV?$TMdERange@N@@@Z @ 30 NONAME ; class CMdERangePropertyCondition<7, double> & CMdELogicCondition::AddPropertyConditionL(class CMdEPropertyDef const &, class TMdERange<double> const &)
+	?AddPropertyConditionL@CMdELogicCondition@@QAEAAV?$CMdERangePropertyCondition@$07VTTime@@@@ABVCMdEPropertyDef@@ABV?$TMdERange@VTTime@@@@@Z @ 31 NONAME ; class CMdERangePropertyCondition<8, class TTime> & CMdELogicCondition::AddPropertyConditionL(class CMdEPropertyDef const &, class TMdERange<class TTime> const &)
+	?AddPropertyConditionL@CMdELogicCondition@@QAEAAVCMdEBoolPropertyCondition@@ABVCMdEPropertyDef@@H@Z @ 32 NONAME ; class CMdEBoolPropertyCondition & CMdELogicCondition::AddPropertyConditionL(class CMdEPropertyDef const &, int)
+	?AddPropertyConditionL@CMdELogicCondition@@QAEAAVCMdEPropertyCondition@@ABVCMdEPropertyDef@@@Z @ 33 NONAME ; class CMdEPropertyCondition & CMdELogicCondition::AddPropertyConditionL(class CMdEPropertyDef const &)
+	?AddPropertyConditionL@CMdELogicCondition@@QAEAAVCMdETextPropertyCondition@@ABVCMdEPropertyDef@@W4TTextPropertyConditionCompareMethod@@ABVTDesC16@@@Z @ 34 NONAME ; class CMdETextPropertyCondition & CMdELogicCondition::AddPropertyConditionL(class CMdEPropertyDef const &, enum TTextPropertyConditionCompareMethod, class TDesC16 const &)
+	?AddPropertyFilterL@CMdEObjectQuery@@QAEXPBVCMdEPropertyDef@@@Z @ 35 NONAME ; void CMdEObjectQuery::AddPropertyFilterL(class CMdEPropertyDef const *)
+	?AddReal32PropertyL@CMdEObject@@QAEAAVCMdEProperty@@AAVCMdEPropertyDef@@M@Z @ 36 NONAME ; class CMdEProperty & CMdEObject::AddReal32PropertyL(class CMdEPropertyDef &, float)
+	?AddReal64PropertyL@CMdEObject@@QAEAAVCMdEProperty@@AAVCMdEPropertyDef@@N@Z @ 37 NONAME ; class CMdEProperty & CMdEObject::AddReal64PropertyL(class CMdEPropertyDef &, double)
+	?AddRelationConditionL@CMdELogicCondition@@QAEAAVCMdERelationCondition@@AAV?$RArray@K@@W4TRelationConditionSide@@@Z @ 38 NONAME ; class CMdERelationCondition & CMdELogicCondition::AddRelationConditionL(class RArray<unsigned long> &, enum TRelationConditionSide)
+	?AddRelationConditionL@CMdELogicCondition@@QAEAAVCMdERelationCondition@@ABVCMdERelationDef@@ABV?$TMdERange@H@@W4TRelationConditionSide@@@Z @ 39 NONAME ; class CMdERelationCondition & CMdELogicCondition::AddRelationConditionL(class CMdERelationDef const &, class TMdERange<int> const &, enum TRelationConditionSide)
+	?AddRelationConditionL@CMdELogicCondition@@QAEAAVCMdERelationCondition@@ABVCMdERelationDef@@W4TRelationConditionSide@@@Z @ 40 NONAME ; class CMdERelationCondition & CMdELogicCondition::AddRelationConditionL(class CMdERelationDef const &, enum TRelationConditionSide)
+	?AddRelationConditionL@CMdELogicCondition@@QAEAAVCMdERelationCondition@@KW4TRelationConditionSide@@@Z @ 41 NONAME ; class CMdERelationCondition & CMdELogicCondition::AddRelationConditionL(unsigned long, enum TRelationConditionSide)
+	?AddRelationConditionL@CMdELogicCondition@@QAEAAVCMdERelationCondition@@W4TRelationConditionSide@@@Z @ 42 NONAME ; class CMdERelationCondition & CMdELogicCondition::AddRelationConditionL(enum TRelationConditionSide)
+	?AddTextPropertyL@CMdEObject@@QAEAAVCMdEProperty@@AAVCMdEPropertyDef@@ABVTDesC16@@@Z @ 43 NONAME ; class CMdEProperty & CMdEObject::AddTextPropertyL(class CMdEPropertyDef &, class TDesC16 const &)
+	?AddTimePropertyL@CMdEObject@@QAEAAVCMdEProperty@@AAVCMdEPropertyDef@@VTTime@@@Z @ 44 NONAME ; class CMdEProperty & CMdEObject::AddTimePropertyL(class CMdEPropertyDef &, class TTime)
+	?AddUint16PropertyL@CMdEObject@@QAEAAVCMdEProperty@@AAVCMdEPropertyDef@@G@Z @ 45 NONAME ; class CMdEProperty & CMdEObject::AddUint16PropertyL(class CMdEPropertyDef &, unsigned short)
+	?AddUint32PropertyL@CMdEObject@@QAEAAVCMdEProperty@@AAVCMdEPropertyDef@@K@Z @ 46 NONAME ; class CMdEProperty & CMdEObject::AddUint32PropertyL(class CMdEPropertyDef &, unsigned long)
+	?AddUint8PropertyL@CMdEObject@@QAEAAVCMdEProperty@@AAVCMdEPropertyDef@@E@Z @ 47 NONAME ; class CMdEProperty & CMdEObject::AddUint8PropertyL(class CMdEPropertyDef &, unsigned char)
+	?AppendOrderRuleL@CMdEQuery@@QAEXABVTMdEOrderRule@@@Z @ 48 NONAME ; void CMdEQuery::AppendOrderRuleL(class TMdEOrderRule const &)
+	?Ascending@TMdEOrderRule@@QBEHXZ @ 49 NONAME ; int TMdEOrderRule::Ascending(void) const
+	?AutoLockL@CMdEHarvesterSession@@QAEXAAV?$RPointerArray@VCMdEObject@@@@@Z @ 50 NONAME ; void CMdEHarvesterSession::AutoLockL(class RPointerArray<class CMdEObject> &)
+	?BelongsToSession@CMdEItem@@QBEHXZ @ 51 NONAME ; int CMdEItem::BelongsToSession(void) const
+	?BoolValueL@CMdEProperty@@QBEHXZ @ 52 NONAME ; int CMdEProperty::BoolValueL(void) const
+	?Cancel@CMdEQuery@@QAEXXZ @ 53 NONAME ; void CMdEQuery::Cancel(void)
+	?CancelHarvestingPrioritizationObserver@CMdEHarvesterSession@@QAEHXZ @ 54 NONAME ; int CMdEHarvesterSession::CancelHarvestingPrioritizationObserver(void)
+	?CaseSensitive@TMdEOrderRule@@QAEHXZ @ 55 NONAME ; int TMdEOrderRule::CaseSensitive(void)
+	?ChangePath@CMdEHarvesterSession@@QAEXABVTDesC16@@0AAVTRequestStatus@@@Z @ 56 NONAME ; void CMdEHarvesterSession::ChangePath(class TDesC16 const &, class TDesC16 const &, class TRequestStatus &)
+	?CheckMemoryCard@CMdEHarvesterSession@@QAEHKAAH@Z @ 57 NONAME ; int CMdEHarvesterSession::CheckMemoryCard(unsigned long, int &)
+	?Close@RMdEDataBuffer@@QAEXXZ @ 58 NONAME ; void RMdEDataBuffer::Close(void)
+	?Compare@CMdEEventDef@@QBEHABV1@@Z @ 59 NONAME ; int CMdEEventDef::Compare(class CMdEEventDef const &) const
+	?Compare@CMdENamespaceDef@@QBEHABV1@@Z @ 60 NONAME ; int CMdENamespaceDef::Compare(class CMdENamespaceDef const &) const
+	?Compare@CMdEObjectDef@@QBEHABV1@@Z @ 61 NONAME ; int CMdEObjectDef::Compare(class CMdEObjectDef const &) const
+	?Compare@CMdEPropertyDef@@QBEHABV1@@Z @ 62 NONAME ; int CMdEPropertyDef::Compare(class CMdEPropertyDef const &) const
+	?Compare@CMdERelationDef@@QBEHABV1@@Z @ 63 NONAME ; int CMdERelationDef::Compare(class CMdERelationDef const &) const
+	?CompareMethod@CMdEObjectCondition@@QBE?AW4TObjectConditionCompareMethod@@XZ @ 64 NONAME ; enum TObjectConditionCompareMethod CMdEObjectCondition::CompareMethod(void) const
+	?Condition@CMdELogicCondition@@QBEAAVCMdECondition@@H@Z @ 65 NONAME ; class CMdECondition & CMdELogicCondition::Condition(int) const
+	?Conditions@CMdEQuery@@QBEAAVCMdELogicCondition@@XZ @ 66 NONAME ; class CMdELogicCondition & CMdEQuery::Conditions(void) const
+	?Confidential@CMdEObject@@QBEHXZ @ 67 NONAME ; int CMdEObject::Confidential(void) const
+	?Confidential@TMdEObject@@QBEHXZ @ 68 NONAME ; int TMdEObject::Confidential(void) const
+	?ConfidentialityLevel@CMdEObjectCondition@@QBE?AW4TObjectConditionConfidentialityLevel@@XZ @ 69 NONAME ; enum TObjectConditionConfidentialityLevel CMdEObjectCondition::ConfidentialityLevel(void) const
+	?Count@CMdELogicCondition@@QBEHXZ @ 70 NONAME ; int CMdELogicCondition::Count(void) const
+	?Count@CMdEQuery@@QBEHXZ @ 71 NONAME ; int CMdEQuery::Count(void) const
+	?Def@CMdEEvent@@QBEAAVCMdEEventDef@@XZ @ 72 NONAME ; class CMdEEventDef & CMdEEvent::Def(void) const
+	?Def@CMdEObject@@QBEAAVCMdEObjectDef@@XZ @ 73 NONAME ; class CMdEObjectDef & CMdEObject::Def(void) const
+	?Def@CMdEProperty@@QBEABVCMdEPropertyDef@@XZ @ 74 NONAME ; class CMdEPropertyDef const & CMdEProperty::Def(void) const
+	?Def@CMdERelation@@QBEAAVCMdERelationDef@@XZ @ 75 NONAME ; class CMdERelationDef & CMdERelation::Def(void) const
+	?DefL@TMdEObject@@QBEABVCMdEObjectDef@@XZ @ 76 NONAME ; class CMdEObjectDef const & TMdEObject::DefL(void) const
+	?DefL@TMdERelation@@QBEAAVCMdERelationDef@@XZ @ 77 NONAME ; class CMdERelationDef & TMdERelation::DefL(void) const
+	?Error@CMdEQuery@@QBEHXZ @ 78 NONAME ; int CMdEQuery::Error(void) const
+	?EventDef@CMdEEventCondition@@QBEPBVCMdEEventDef@@XZ @ 79 NONAME ; class CMdEEventDef const * CMdEEventCondition::EventDef(void) const
+	?EventDefCount@CMdENamespaceDef@@QBEHXZ @ 80 NONAME ; int CMdENamespaceDef::EventDefCount(void) const
+	?EventDefL@CMdENamespaceDef@@QAEAAVCMdEEventDef@@H@Z @ 81 NONAME ; class CMdEEventDef & CMdENamespaceDef::EventDefL(int)
+	?EventId@CMdEEventCondition@@QBEKXZ @ 82 NONAME ; unsigned long CMdEEventCondition::EventId(void) const
+	?FindL@CMdEQuery@@QAEXII@Z @ 83 NONAME ; void CMdEQuery::FindL(unsigned int, unsigned int)
+	?FreeText@CMdEObject@@QBE?AVTPtrC16@@H@Z @ 84 NONAME ; class TPtrC16 CMdEObject::FreeText(int) const
+	?FreeTextCount@CMdEObject@@QBEHXZ @ 85 NONAME ; int CMdEObject::FreeTextCount(void) const
+	?FreeTextIndex@CMdEObject@@QBEHABVTDesC16@@@Z @ 86 NONAME ; int CMdEObject::FreeTextIndex(class TDesC16 const &) const
+	?GetEventDefL@CMdENamespaceDef@@QAEAAVCMdEEventDef@@ABVTDesC16@@@Z @ 87 NONAME ; class CMdEEventDef & CMdENamespaceDef::GetEventDefL(class TDesC16 const &)
+	?GetEventDefL@CMdENamespaceDef@@QAEPAVCMdEEventDef@@K@Z @ 88 NONAME ABSENT ; class CMdEEventDef * CMdENamespaceDef::GetEventDefL(unsigned long)
+	?GetMediaL@CMdEHarvesterSession@@QAEHKAAVTChar@@AAH@Z @ 89 NONAME ; int CMdEHarvesterSession::GetMediaL(unsigned long, class TChar &, int &)
+	?GetMemoryCard@CMdEHarvesterSession@@QAEHAAK@Z @ 90 NONAME ; int CMdEHarvesterSession::GetMemoryCard(unsigned long &)
+	?GetObjectDefL@CMdENamespaceDef@@QAEAAVCMdEObjectDef@@ABVTDesC16@@@Z @ 91 NONAME ; class CMdEObjectDef & CMdENamespaceDef::GetObjectDefL(class TDesC16 const &)
+	?GetObjectL@CMdESessionImpl@@UAEPAVCMdEObject@@ABVTDesC16@@PAVCMdENamespaceDef@@@Z @ 92 NONAME ; class CMdEObject * CMdESessionImpl::GetObjectL(class TDesC16 const &, class CMdENamespaceDef *)
+	?GetPending@CMdEHarvesterSession@@QAEPAVTGetPendingPgckWrapper@@PBVCMdEObjectDef@@AAHAAVCMdCSerializationBuffer@@AAVTRequestStatus@@@Z @ 93 NONAME ABSENT ; class TGetPendingPgckWrapper * CMdEHarvesterSession::GetPending(class CMdEObjectDef const *, int &, class CMdCSerializationBuffer &, class TRequestStatus &)
+	?GetPendingCount@CMdEHarvesterSession@@QAEPAVTGetPendingPgckWrapper@@PBVCMdEObjectDef@@AAVTRequestStatus@@@Z @ 94 NONAME ABSENT ; class TGetPendingPgckWrapper * CMdEHarvesterSession::GetPendingCount(class CMdEObjectDef const *, class TRequestStatus &)
+	?GetPresentMediasL@CMdEHarvesterSession@@QAEXAAV?$RArray@UTMdEMediaInfo@@@@@Z @ 95 NONAME ; void CMdEHarvesterSession::GetPresentMediasL(class RArray<struct TMdEMediaInfo> &)
+	?GetPropertyDefL@CMdEObjectDef@@QAEAAVCMdEPropertyDef@@ABVTDesC16@@@Z @ 96 NONAME ; class CMdEPropertyDef & CMdEObjectDef::GetPropertyDefL(class TDesC16 const &)
+	?GetRelationDefL@CMdENamespaceDef@@QAEAAVCMdERelationDef@@ABVTDesC16@@@Z @ 97 NONAME ; class CMdERelationDef & CMdENamespaceDef::GetRelationDefL(class TDesC16 const &)
+	?GetRelationDefL@CMdENamespaceDef@@QAEPAVCMdERelationDef@@K@Z @ 98 NONAME ABSENT ; class CMdERelationDef * CMdENamespaceDef::GetRelationDefL(unsigned long)
+	?Guid@CMdEObject@@QBEXAA_J0@Z @ 99 NONAME ; void CMdEObject::Guid(long long &, long long &) const
+	?Guid@CMdERelation@@QBEXAA_J0@Z @ 100 NONAME ; void CMdERelation::Guid(long long &, long long &) const
+	?Guid@CMdERelationCondition@@QBEHAA_J0@Z @ 101 NONAME ; int CMdERelationCondition::Guid(long long &, long long &) const
+	?HarvestingPrioritizationUriCountL@CMdEHarvesterSession@@QAEHXZ @ 102 NONAME ; int CMdEHarvesterSession::HarvestingPrioritizationUriCountL(void)
+	?HarvestingPrioritizationUriL@CMdEHarvesterSession@@QAEPAVHBufC16@@H@Z @ 103 NONAME ; class HBufC16 * CMdEHarvesterSession::HarvestingPrioritizationUriL(int)
+	?Id@CMdEItem@@QBEKXZ @ 104 NONAME ; unsigned long CMdEItem::Id(void) const
+	?Id@TMdEObject@@QBEKXZ @ 105 NONAME ; unsigned long TMdEObject::Id(void) const
+	?Id@TMdERelation@@QBEKXZ @ 106 NONAME ; unsigned long TMdERelation::Id(void) const
+	?InDatabase@CMdEItem@@QBEHXZ @ 107 NONAME ; int CMdEItem::InDatabase(void) const
+	?InsertOrderRuleL@CMdEQuery@@QAEXABVTMdEOrderRule@@H@Z @ 108 NONAME ; void CMdEQuery::InsertOrderRuleL(class TMdEOrderRule const &, int)
+	?Int16ValueL@CMdEProperty@@QBEFXZ @ 109 NONAME ; short CMdEProperty::Int16ValueL(void) const
+	?Int32ValueL@CMdEProperty@@QBEJXZ @ 110 NONAME ; long CMdEProperty::Int32ValueL(void) const
+	?Int64ValueL@CMdEProperty@@QBE_JXZ @ 111 NONAME ; long long CMdEProperty::Int64ValueL(void) const
+	?Int8ValueL@CMdEProperty@@QBECXZ @ 112 NONAME ; signed char CMdEProperty::Int8ValueL(void) const
+	?IsComplete@CMdEQuery@@QBEHXZ @ 113 NONAME ; int CMdEQuery::IsComplete(void) const
+	?LastModifiedDate@CMdERelation@@QBE?AVTTime@@XZ @ 114 NONAME ; class TTime CMdERelation::LastModifiedDate(void) const
+	?LastModifiedDateRange@CMdERelationCondition@@QBEHAAV?$TMdERange@VTTime@@@@@Z @ 115 NONAME ; int CMdERelationCondition::LastModifiedDateRange(class TMdERange<class TTime> &) const
+	?LeftL@CMdERelationCondition@@QAEAAVCMdELogicCondition@@XZ @ 116 NONAME ; class CMdELogicCondition & CMdERelationCondition::LeftL(void)
+	?LeftObjectId@CMdERelation@@QBEKXZ @ 117 NONAME ; unsigned long CMdERelation::LeftObjectId(void) const
+	?LeftObjectId@TMdERelation@@QBEKXZ @ 118 NONAME ; unsigned long TMdERelation::LeftObjectId(void) const
+	?Locked@CMdECondition@@QBEHXZ @ 119 NONAME ; int CMdECondition::Locked(void) const
+	?Mandatory@CMdEPropertyDef@@QBEHXZ @ 120 NONAME ; int CMdEPropertyDef::Mandatory(void) const
+	?MaxInt32ValueL@CMdEPropertyDef@@QBEJXZ @ 121 NONAME ; long CMdEPropertyDef::MaxInt32ValueL(void) const
+	?MaxInt64ValueL@CMdEPropertyDef@@QBE_JXZ @ 122 NONAME ; long long CMdEPropertyDef::MaxInt64ValueL(void) const
+	?MaxRealValueL@CMdEPropertyDef@@QBENXZ @ 123 NONAME ; double CMdEPropertyDef::MaxRealValueL(void) const
+	?MaxTextLengthL@CMdEPropertyDef@@QBEHXZ @ 124 NONAME ; int CMdEPropertyDef::MaxTextLengthL(void) const
+	?MaxTimeValueL@CMdEPropertyDef@@QBE?AVTTime@@XZ @ 125 NONAME ; class TTime CMdEPropertyDef::MaxTimeValueL(void) const
+	?MaxUint32ValueL@CMdEPropertyDef@@QBEKXZ @ 126 NONAME ; unsigned long CMdEPropertyDef::MaxUint32ValueL(void) const
+	?MediaId@CMdEObject@@QBEKXZ @ 127 NONAME ; unsigned long CMdEObject::MediaId(void) const
+	?MinInt32ValueL@CMdEPropertyDef@@QBEJXZ @ 128 NONAME ; long CMdEPropertyDef::MinInt32ValueL(void) const
+	?MinInt64ValueL@CMdEPropertyDef@@QBE_JXZ @ 129 NONAME ; long long CMdEPropertyDef::MinInt64ValueL(void) const
+	?MinRealValueL@CMdEPropertyDef@@QBENXZ @ 130 NONAME ; double CMdEPropertyDef::MinRealValueL(void) const
+	?MinTextLengthL@CMdEPropertyDef@@QBEHXZ @ 131 NONAME ; int CMdEPropertyDef::MinTextLengthL(void) const
+	?MinTimeValueL@CMdEPropertyDef@@QBE?AVTTime@@XZ @ 132 NONAME ; class TTime CMdEPropertyDef::MinTimeValueL(void) const
+	?MinUint32ValueL@CMdEPropertyDef@@QBEKXZ @ 133 NONAME ; unsigned long CMdEPropertyDef::MinUint32ValueL(void) const
+	?Modified@CMdEProperty@@QBEHXZ @ 134 NONAME ; int CMdEProperty::Modified(void) const
+	?MovePropertiesL@CMdEObject@@QAEXAAV1@@Z @ 135 NONAME ; void CMdEObject::MovePropertiesL(class CMdEObject &)
+	?Name@CMdEEventDef@@QBEABVTDesC16@@XZ @ 136 NONAME ; class TDesC16 const & CMdEEventDef::Name(void) const
+	?Name@CMdENamespaceDef@@QBEABVTDesC16@@XZ @ 137 NONAME ; class TDesC16 const & CMdENamespaceDef::Name(void) const
+	?Name@CMdEObjectDef@@QBEABVTDesC16@@XZ @ 138 NONAME ; class TDesC16 const & CMdEObjectDef::Name(void) const
+	?Name@CMdEPropertyDef@@QBEABVTDesC16@@XZ @ 139 NONAME ; class TDesC16 const & CMdEPropertyDef::Name(void) const
+	?Name@CMdERelationDef@@QBEABVTDesC16@@XZ @ 140 NONAME ; class TDesC16 const & CMdERelationDef::Name(void) const
+	?NamespaceDef@CMdEEventDef@@QBEAAVCMdENamespaceDef@@XZ @ 141 NONAME ; class CMdENamespaceDef & CMdEEventDef::NamespaceDef(void) const
+	?NamespaceDef@CMdEObjectDef@@QBEAAVCMdENamespaceDef@@XZ @ 142 NONAME ; class CMdENamespaceDef & CMdEObjectDef::NamespaceDef(void) const
+	?NamespaceDef@CMdEPropertyDef@@QBEAAVCMdENamespaceDef@@XZ @ 143 NONAME ; class CMdENamespaceDef & CMdEPropertyDef::NamespaceDef(void) const
+	?NamespaceDef@CMdEQuery@@QBEAAVCMdENamespaceDef@@XZ @ 144 NONAME ; class CMdENamespaceDef & CMdEQuery::NamespaceDef(void) const
+	?NamespaceDef@CMdERelationDef@@QBEAAVCMdENamespaceDef@@XZ @ 145 NONAME ; class CMdENamespaceDef & CMdERelationDef::NamespaceDef(void) const
+	?Negate@CMdECondition@@QBEHXZ @ 146 NONAME ; int CMdECondition::Negate(void) const
+	?NewL@CMdEHarvesterSession@@SAPAV1@AAVCMdESession@@@Z @ 147 NONAME ; class CMdEHarvesterSession * CMdEHarvesterSession::NewL(class CMdESession &)
+	?NewL@CMdELogicCondition@@SAPAV1@W4TLogicConditionOperator@@@Z @ 148 NONAME ; class CMdELogicCondition * CMdELogicCondition::NewL(enum TLogicConditionOperator)
+	?NewL@CMdESession@@SAPAV1@AAVMMdESessionObserver@@@Z @ 149 NONAME ; class CMdESession * CMdESession::NewL(class MMdESessionObserver &)
+	?NewLC@CMdEHarvesterSession@@SAPAV1@AAVCMdESession@@@Z @ 150 NONAME ; class CMdEHarvesterSession * CMdEHarvesterSession::NewLC(class CMdESession &)
+	?NewLC@CMdELogicCondition@@SAPAV1@W4TLogicConditionOperator@@@Z @ 151 NONAME ; class CMdELogicCondition * CMdELogicCondition::NewLC(enum TLogicConditionOperator)
+	?NewLC@CMdESession@@SAPAV1@AAVMMdESessionObserver@@@Z @ 152 NONAME ; class CMdESession * CMdESession::NewLC(class MMdESessionObserver &)
+	?NotPlaceholder@CMdEObjectCondition@@QBEHXZ @ 153 NONAME ; int CMdEObjectCondition::NotPlaceholder(void) const
+	?NotPresent@CMdEObjectCondition@@QBEHXZ @ 154 NONAME ; int CMdEObjectCondition::NotPresent(void) const
+	?NotPresent@TMdEObject@@QBEHXZ @ 155 NONAME ; int TMdEObject::NotPresent(void) const
+	?Object@CMdEProperty@@QBEABVCMdEObject@@XZ @ 156 NONAME ; class CMdEObject const & CMdEProperty::Object(void) const
+	?ObjectConditionsL@CMdEEventCondition@@QAEAAVCMdELogicCondition@@XZ @ 157 NONAME ; class CMdELogicCondition & CMdEEventCondition::ObjectConditionsL(void)
+	?ObjectDef@CMdEObjectCondition@@QBEPBVCMdEObjectDef@@XZ @ 158 NONAME ; class CMdEObjectDef const * CMdEObjectCondition::ObjectDef(void) const
+	?ObjectDef@CMdEObjectQuery@@QBEAAVCMdEObjectDef@@XZ @ 159 NONAME ; class CMdEObjectDef & CMdEObjectQuery::ObjectDef(void) const
+	?ObjectDef@CMdEPropertyDef@@QBEAAVCMdEObjectDef@@XZ @ 160 NONAME ; class CMdEObjectDef & CMdEPropertyDef::ObjectDef(void) const
+	?ObjectDefCount@CMdENamespaceDef@@QBEHXZ @ 161 NONAME ; int CMdENamespaceDef::ObjectDefCount(void) const
+	?ObjectDefL@CMdENamespaceDef@@QAEAAVCMdEObjectDef@@H@Z @ 162 NONAME ; class CMdEObjectDef & CMdENamespaceDef::ObjectDefL(int)
+	?ObjectId@CMdEEvent@@QBEKXZ @ 163 NONAME ; unsigned long CMdEEvent::ObjectId(void) const
+	?ObjectId@CMdEObjectCondition@@QBEKXZ @ 164 NONAME ; unsigned long CMdEObjectCondition::ObjectId(void) const
+	?ObjectIds@CMdEObjectCondition@@QBEPBV?$RArray@K@@XZ @ 165 NONAME ; class RArray<unsigned long> const * CMdEObjectCondition::ObjectIds(void) const
+	?OpenForModifications@CMdEObject@@QBEHXZ @ 166 NONAME ; int CMdEObject::OpenForModifications(void) const
+	?Operator@CMdELogicCondition@@QBE?AW4TLogicConditionOperator@@XZ @ 167 NONAME ; enum TLogicConditionOperator CMdELogicCondition::Operator(void) const
+	?OrderRule@CMdEQuery@@QBE?AVTMdEOrderRule@@H@Z @ 168 NONAME ; class TMdEOrderRule CMdEQuery::OrderRule(int) const
+	?OrderRuleCount@CMdEQuery@@QBEHXZ @ 169 NONAME ; int CMdEQuery::OrderRuleCount(void) const
+	?OwnsResult@CMdEQuery@@QAEHH@Z @ 170 NONAME ; int CMdEQuery::OwnsResult(int)
+	?Parameter@CMdERelation@@QBEJXZ @ 171 NONAME ; long CMdERelation::Parameter(void) const
+	?ParameterRange@CMdERelationCondition@@QBEPBV?$TMdERange@H@@XZ @ 172 NONAME ; class TMdERange<int> const * CMdERelationCondition::ParameterRange(void) const
+	?ParentL@CMdEObjectDef@@QAEPAV1@XZ @ 173 NONAME ; class CMdEObjectDef * CMdEObjectDef::ParentL(void)
+	?Participant@CMdEEvent@@QBEPBVTDesC16@@XZ @ 174 NONAME ; class TDesC16 const * CMdEEvent::Participant(void) const
+	?ParticipantObjectConditionsL@CMdEEventCondition@@QAEAAVCMdELogicCondition@@XZ @ 175 NONAME ; class CMdELogicCondition & CMdEEventCondition::ParticipantObjectConditionsL(void)
+	?ParticipantURI@CMdEEventCondition@@QBEPBVTDesC16@@XZ @ 176 NONAME ; class TDesC16 const * CMdEEventCondition::ParticipantURI(void) const
+	?Placeholder@CMdEObject@@QBEHXZ @ 177 NONAME ; int CMdEObject::Placeholder(void) const
+	?Placeholder@TMdEObject@@QBEHXZ @ 178 NONAME ; int TMdEObject::Placeholder(void) const
+	?Property@CMdEObject@@QBEHABVCMdEPropertyDef@@AAPAVCMdEProperty@@H@Z @ 179 NONAME ; int CMdEObject::Property(class CMdEPropertyDef const &, class CMdEProperty * &, int) const
+	?PropertyCount@CMdEObject@@QBEHABVCMdEPropertyDef@@@Z @ 180 NONAME ; int CMdEObject::PropertyCount(class CMdEPropertyDef const &) const
+	?PropertyCount@CMdEObject@@QBEHXZ @ 181 NONAME ; int CMdEObject::PropertyCount(void) const
+	?PropertyDef@CMdEPropertyCondition@@QBEABVCMdEPropertyDef@@XZ @ 182 NONAME ; class CMdEPropertyDef const & CMdEPropertyCondition::PropertyDef(void) const
+	?PropertyDef@TMdEOrderRule@@QBEPBVCMdEPropertyDef@@XZ @ 183 NONAME ; class CMdEPropertyDef const * TMdEOrderRule::PropertyDef(void) const
+	?PropertyDefCount@CMdEObjectDef@@QBEHXZ @ 184 NONAME ; int CMdEObjectDef::PropertyDefCount(void) const
+	?PropertyDefL@CMdEObjectDef@@QAEAAVCMdEPropertyDef@@H@Z @ 185 NONAME ; class CMdEPropertyDef & CMdEObjectDef::PropertyDefL(int)
+	?PropertyL@CMdEObject@@QBEAAVCMdEProperty@@H@Z @ 186 NONAME ; class CMdEProperty & CMdEObject::PropertyL(int) const
+	?PropertyType@CMdEPropertyDef@@QBE?AW4TPropertyType@@XZ @ 187 NONAME ; enum TPropertyType CMdEPropertyDef::PropertyType(void) const
+	?ReadOnly@CMdENamespaceDef@@QBEHXZ @ 188 NONAME ; int CMdENamespaceDef::ReadOnly(void) const
+	?ReadOnly@CMdEPropertyDef@@QBEHXZ @ 189 NONAME ; int CMdEPropertyDef::ReadOnly(void) const
+	?Real32ValueL@CMdEProperty@@QBEMXZ @ 190 NONAME ; float CMdEProperty::Real32ValueL(void) const
+	?Real64ValueL@CMdEProperty@@QBENXZ @ 191 NONAME ; double CMdEProperty::Real64ValueL(void) const
+	?RelationDef@CMdERelationCondition@@QBEPBVCMdERelationDef@@XZ @ 192 NONAME ; class CMdERelationDef const * CMdERelationCondition::RelationDef(void) const
+	?RelationDefCount@CMdENamespaceDef@@QBEHXZ @ 193 NONAME ; int CMdENamespaceDef::RelationDefCount(void) const
+	?RelationDefL@CMdENamespaceDef@@QAEAAVCMdERelationDef@@H@Z @ 194 NONAME ; class CMdERelationDef & CMdENamespaceDef::RelationDefL(int)
+	?RelationId@CMdERelationCondition@@QBEKXZ @ 195 NONAME ; unsigned long CMdERelationCondition::RelationId(void) const
+	?RelationIds@CMdERelationCondition@@QBEPBV?$RArray@K@@XZ @ 196 NONAME ; class RArray<unsigned long> const * CMdERelationCondition::RelationIds(void) const
+	?Remove@CMdELogicCondition@@QAEXH@Z @ 197 NONAME ; void CMdELogicCondition::Remove(int)
+	?RemoveFilesNotPresent@CMdEHarvesterSession@@QAEXK@Z @ 198 NONAME ; void CMdEHarvesterSession::RemoveFilesNotPresent(unsigned long)
+	?RemoveFilesNotPresent@CMdEHarvesterSession@@QAEXKH@Z @ 199 NONAME ; void CMdEHarvesterSession::RemoveFilesNotPresent(unsigned long, int)
+	?RemoveFreeText@CMdEObject@@QAEXH@Z @ 200 NONAME ; void CMdEObject::RemoveFreeText(int)
+	?RemoveObserver@CMdEQuery@@QAEXAAVMMdEQueryObserver@@@Z @ 201 NONAME ; void CMdEQuery::RemoveObserver(class MMdEQueryObserver &)
+	?RemoveOrderRule@CMdEQuery@@QAEXH@Z @ 202 NONAME ; void CMdEQuery::RemoveOrderRule(int)
+	?RemoveProperty@CMdEObject@@QAEXH@Z @ 203 NONAME ; void CMdEObject::RemoveProperty(int)
+	?Removed@TMdEObject@@QBEHXZ @ 204 NONAME ; int TMdEObject::Removed(void) const
+	?ResetDBL@CMdEHarvesterSession@@QAEXXZ @ 205 NONAME ; void CMdEHarvesterSession::ResetDBL(void)
+	?ResetPending@CMdEHarvesterSession@@QAEXABV?$RArray@K@@@Z @ 206 NONAME ABSENT ; void CMdEHarvesterSession::ResetPending(class RArray<unsigned long> const &)
+	?ResetPropertyFilter@CMdEObjectQuery@@QAEXXZ @ 207 NONAME ; void CMdEObjectQuery::ResetPropertyFilter(void)
+	?Result@CMdEEventQuery@@QBEAAVCMdEEvent@@H@Z @ 208 NONAME ; class CMdEEvent & CMdEEventQuery::Result(int) const
+	?Result@CMdEObjectQuery@@QBEAAVCMdEObject@@H@Z @ 209 NONAME ; class CMdEObject & CMdEObjectQuery::Result(int) const
+	?Result@CMdERelationQuery@@QBEAAVCMdERelation@@H@Z @ 210 NONAME ; class CMdERelation & CMdERelationQuery::Result(int) const
+	?ResultDistinctValue@CMdEQuery@@QBE?AVTPtrC16@@H@Z @ 211 NONAME ; class TPtrC16 CMdEQuery::ResultDistinctValue(int) const
+	?ResultId@CMdEQuery@@QBEKH@Z @ 212 NONAME ; unsigned long CMdEQuery::ResultId(int) const
+	?ResultIds@CMdEQuery@@QBEABV?$RArray@K@@XZ @ 213 NONAME ; class RArray<unsigned long> const & CMdEQuery::ResultIds(void) const
+	?ResultItem@CMdEQuery@@QBEAAVCMdEItem@@H@Z @ 214 NONAME ; class CMdEItem & CMdEQuery::ResultItem(int) const
+	?ResultMode@CMdEQuery@@QBE?AW4TQueryResultMode@@XZ @ 215 NONAME ; enum TQueryResultMode CMdEQuery::ResultMode(void) const
+	?ResultObjectItem@CMdEQuery@@QBEAAVCMdEItem@@XZ @ 216 NONAME ; class CMdEItem & CMdEQuery::ResultObjectItem(void) const
+	?RightL@CMdERelationCondition@@QAEAAVCMdELogicCondition@@XZ @ 217 NONAME ; class CMdELogicCondition & CMdERelationCondition::RightL(void)
+	?RightObjectId@CMdERelation@@QBEKXZ @ 218 NONAME ; unsigned long CMdERelation::RightObjectId(void) const
+	?RightObjectId@TMdERelation@@QBEKXZ @ 219 NONAME ; unsigned long TMdERelation::RightObjectId(void) const
+	?Session@CMdEHarvesterSession@@QAEPAVCMdESession@@XZ @ 220 NONAME ; class CMdESession * CMdEHarvesterSession::Session(void)
+	?Session@CMdEItem@@QBEAAVCMdESession@@XZ @ 221 NONAME ; class CMdESession & CMdEItem::Session(void) const
+	?Session@CMdEQuery@@QBEAAVCMdESession@@XZ @ 222 NONAME ; class CMdESession & CMdEQuery::Session(void) const
+	?SessionRef@CMdEHarvesterSession@@QAEAAVCMdESession@@XZ @ 223 NONAME ; class CMdESession & CMdEHarvesterSession::SessionRef(void)
+	?SetAscending@TMdEOrderRule@@QAEXH@Z @ 224 NONAME ; void TMdEOrderRule::SetAscending(int)
+	?SetBoolValueL@CMdEProperty@@QAEXH@Z @ 225 NONAME ; void CMdEProperty::SetBoolValueL(int)
+	?SetCaseSensitive@TMdEOrderRule@@QAEXH@Z @ 226 NONAME ; void TMdEOrderRule::SetCaseSensitive(int)
+	?SetConfidential@CMdEObject@@QAEXH@Z @ 227 NONAME ; void CMdEObject::SetConfidential(int)
+	?SetConfidentialityLevel@CMdEObjectCondition@@QAEXW4TObjectConditionConfidentialityLevel@@@Z @ 228 NONAME ; void CMdEObjectCondition::SetConfidentialityLevel(enum TObjectConditionConfidentialityLevel)
+	?SetDefL@CMdEObject@@QAEXAAVCMdEObjectDef@@@Z @ 229 NONAME ; void CMdEObject::SetDefL(class CMdEObjectDef &)
+	?SetFileToPresent@CMdEHarvesterSession@@QAEHKABVTDesC16@@AAUTMdSFileInfo@@@Z @ 230 NONAME ; int CMdEHarvesterSession::SetFileToPresent(unsigned long, class TDesC16 const &, struct TMdSFileInfo &)
+	?SetFilesToNotPresent@CMdEHarvesterSession@@QAEXK@Z @ 231 NONAME ; void CMdEHarvesterSession::SetFilesToNotPresent(unsigned long)
+	?SetFilesToNotPresent@CMdEHarvesterSession@@QAEXKH@Z @ 232 NONAME ; void CMdEHarvesterSession::SetFilesToNotPresent(unsigned long, int)
+	?SetFilesToPresentL@CMdEHarvesterSession@@QAEXKABV?$RArray@VTPtrC16@@@@ABV?$RArray@UTMdSFileInfo@@@@AAV?$RArray@W4TFilePresentStates@@@@@Z @ 233 NONAME ; void CMdEHarvesterSession::SetFilesToPresentL(unsigned long, class RArray<class TPtrC16> const &, class RArray<struct TMdSFileInfo> const &, class RArray<enum TFilePresentStates> &)
+	?SetGuid@CMdEObject@@QAEXAB_J0@Z @ 234 NONAME ; void CMdEObject::SetGuid(long long const &, long long const &)
+	?SetGuid@CMdERelation@@QAEXAB_J0@Z @ 235 NONAME ; void CMdERelation::SetGuid(long long const &, long long const &)
+	?SetGuid@CMdERelationCondition@@QAEXAB_J0@Z @ 236 NONAME ; void CMdERelationCondition::SetGuid(long long const &, long long const &)
+	?SetHarvestingPrioritizationChunkL@CMdEHarvesterSession@@QAEXH@Z @ 237 NONAME ; void CMdEHarvesterSession::SetHarvestingPrioritizationChunkL(int)
+	?SetInt16ValueL@CMdEProperty@@QAEXF@Z @ 238 NONAME ; void CMdEProperty::SetInt16ValueL(short)
+	?SetInt32ValueL@CMdEProperty@@QAEXJ@Z @ 239 NONAME ; void CMdEProperty::SetInt32ValueL(long)
+	?SetInt64ValueL@CMdEProperty@@QAEX_J@Z @ 240 NONAME ; void CMdEProperty::SetInt64ValueL(long long)
+	?SetInt8ValueL@CMdEProperty@@QAEXC@Z @ 241 NONAME ; void CMdEProperty::SetInt8ValueL(signed char)
+	?SetLastModifiedDate@CMdERelation@@QAEXVTTime@@@Z @ 242 NONAME ; void CMdERelation::SetLastModifiedDate(class TTime)
+	?SetLastModifiedDateRangeL@CMdERelationCondition@@QAEXABV?$TMdERange@VTTime@@@@@Z @ 243 NONAME ; void CMdERelationCondition::SetLastModifiedDateRangeL(class TMdERange<class TTime> const &)
+	?SetLeftObjectIdL@CMdERelation@@QAEXK@Z @ 244 NONAME ; void CMdERelation::SetLeftObjectIdL(unsigned long)
+	?SetLocked@CMdECondition@@UAEXH@Z @ 245 NONAME ; void CMdECondition::SetLocked(int)
+	?SetMediaId@CMdEObject@@QAEXK@Z @ 246 NONAME ; void CMdEObject::SetMediaId(unsigned long)
+	?SetMediaL@CMdEHarvesterSession@@QAEXKVTChar@@H@Z @ 247 NONAME ; void CMdEHarvesterSession::SetMediaL(unsigned long, class TChar, int)
+	?SetNegate@CMdECondition@@QAEXH@Z @ 248 NONAME ; void CMdECondition::SetNegate(int)
+	?SetNotPlaceholder@CMdEObjectCondition@@QAEXH@Z @ 249 NONAME ; void CMdEObjectCondition::SetNotPlaceholder(int)
+	?SetNotPresent@CMdEObjectCondition@@QAEXH@Z @ 250 NONAME ; void CMdEObjectCondition::SetNotPresent(int)
+	?SetOperator@CMdELogicCondition@@QAEXW4TLogicConditionOperator@@@Z @ 251 NONAME ; void CMdELogicCondition::SetOperator(enum TLogicConditionOperator)
+	?SetParameter@CMdERelation@@QAEXJ@Z @ 252 NONAME ; void CMdERelation::SetParameter(long)
+	?SetPending@CMdEHarvesterSession@@QAEXABV?$RArray@K@@@Z @ 253 NONAME ABSENT ; void CMdEHarvesterSession::SetPending(class RArray<unsigned long> const &)
+	?SetPlaceholder@CMdEObject@@QAEXH@Z @ 254 NONAME ; void CMdEObject::SetPlaceholder(int)
+	?SetPropertyDef@TMdEOrderRule@@QAEXABVCMdEPropertyDef@@@Z @ 255 NONAME ; void TMdEOrderRule::SetPropertyDef(class CMdEPropertyDef const &)
+	?SetReal32ValueL@CMdEProperty@@QAEXM@Z @ 256 NONAME ; void CMdEProperty::SetReal32ValueL(float)
+	?SetReal64ValueL@CMdEProperty@@QAEXN@Z @ 257 NONAME ; void CMdEProperty::SetReal64ValueL(double)
+	?SetResultMode@CMdEQuery@@QAEXW4TQueryResultMode@@@Z @ 258 NONAME ; void CMdEQuery::SetResultMode(enum TQueryResultMode)
+	?SetRightObjectIdL@CMdERelation@@QAEXK@Z @ 259 NONAME ; void CMdERelation::SetRightObjectIdL(unsigned long)
+	?SetSession@CMdEHarvesterSession@@QAEXAAVCMdESession@@@Z @ 260 NONAME ; void CMdEHarvesterSession::SetSession(class CMdESession &)
+	?SetSide@CMdERelationCondition@@QAEXW4TRelationConditionSide@@@Z @ 261 NONAME ; void CMdERelationCondition::SetSide(enum TRelationConditionSide)
+	?SetTextValueL@CMdEProperty@@QAEXABVTDesC16@@@Z @ 262 NONAME ; void CMdEProperty::SetTextValueL(class TDesC16 const &)
+	?SetTimeValueL@CMdEProperty@@QAEXABVTTime@@@Z @ 263 NONAME ; void CMdEProperty::SetTimeValueL(class TTime const &)
+	?SetType@TMdEOrderRule@@QAEXW4TOrderRuleType@@@Z @ 264 NONAME ; void TMdEOrderRule::SetType(enum TOrderRuleType)
+	?SetUint16ValueL@CMdEProperty@@QAEXG@Z @ 265 NONAME ; void CMdEProperty::SetUint16ValueL(unsigned short)
+	?SetUint32ValueL@CMdEProperty@@QAEXK@Z @ 266 NONAME ; void CMdEProperty::SetUint32ValueL(unsigned long)
+	?SetUint8ValueL@CMdEProperty@@QAEXE@Z @ 267 NONAME ; void CMdEProperty::SetUint8ValueL(unsigned char)
+	?SetUriL@CMdEObject@@QAEXABVTDesC16@@@Z @ 268 NONAME ; void CMdEObject::SetUriL(class TDesC16 const &)
+	?Source@CMdEEvent@@QBEPBVTDesC16@@XZ @ 269 NONAME ; class TDesC16 const * CMdEEvent::Source(void) const
+	?SourceObjectConditionsL@CMdEEventCondition@@QAEAAVCMdELogicCondition@@XZ @ 270 NONAME ; class CMdELogicCondition & CMdEEventCondition::SourceObjectConditionsL(void)
+	?SourceURI@CMdEEventCondition@@QBEPBVTDesC16@@XZ @ 271 NONAME ; class TDesC16 const * CMdEEventCondition::SourceURI(void) const
+	?State@CMdEQuery@@QBE?AW4TState@1@XZ @ 272 NONAME ; enum CMdEQuery::TState CMdEQuery::State(void) const
+	?String@CMdEObjectCondition@@QBEPBVTDesC16@@XZ @ 273 NONAME ; class TDesC16 const * CMdEObjectCondition::String(void) const
+	?TakeOwnershipOfResult@CMdEQuery@@QAEPAVCMdEItem@@H@Z @ 274 NONAME ; class CMdEItem * CMdEQuery::TakeOwnershipOfResult(int)
+	?TextValueL@CMdEProperty@@QBEABVTDesC16@@XZ @ 275 NONAME ; class TDesC16 const & CMdEProperty::TextValueL(void) const
+	?Time@CMdEEvent@@QBE?AVTTime@@XZ @ 276 NONAME ; class TTime CMdEEvent::Time(void) const
+	?TimeRange@CMdEEventCondition@@QBEPBV?$TMdERange@VTTime@@@@XZ @ 277 NONAME ; class TMdERange<class TTime> const * CMdEEventCondition::TimeRange(void) const
+	?TimeValueL@CMdEProperty@@QBE?AVTTime@@XZ @ 278 NONAME ; class TTime CMdEProperty::TimeValueL(void) const
+	?Type@CMdECondition@@QBE?AW4TConditionType@@XZ @ 279 NONAME ; enum TConditionType CMdECondition::Type(void) const
+	?Type@CMdEQuery@@QBE?AW4TQueryType@@XZ @ 280 NONAME ; enum TQueryType CMdEQuery::Type(void) const
+	?Type@TMdEOrderRule@@QBE?AW4TOrderRuleType@@XZ @ 281 NONAME ; enum TOrderRuleType TMdEOrderRule::Type(void) const
+	?Uint16ValueL@CMdEProperty@@QBEGXZ @ 282 NONAME ; unsigned short CMdEProperty::Uint16ValueL(void) const
+	?Uint32ValueL@CMdEProperty@@QBEKXZ @ 283 NONAME ; unsigned long CMdEProperty::Uint32ValueL(void) const
+	?Uint8ValueL@CMdEProperty@@QBEEXZ @ 284 NONAME ; unsigned char CMdEProperty::Uint8ValueL(void) const
+	?Uri@CMdEObject@@QBEABVTDesC16@@XZ @ 285 NONAME ; class TDesC16 const & CMdEObject::Uri(void) const
+	?UsageCount@CMdEObject@@QBEKXZ @ 286 NONAME ; unsigned long CMdEObject::UsageCount(void) const
+	?Value@CMdEBoolPropertyCondition@@QBEHXZ @ 287 NONAME ; int CMdEBoolPropertyCondition::Value(void) const
+	?GetPendingCount@CMdEHarvesterSession@@QAEPAVTGetPendingPgckWrapper@@PBVCMdEObjectDef@@@Z @ 288 NONAME ABSENT ; class TGetPendingPgckWrapper * CMdEHarvesterSession::GetPendingCount(class CMdEObjectDef const *)
+	?GetPendingCount@CMdEHarvesterSession@@QAEHPBVCMdEObjectDef@@@Z @ 289 NONAME ; int CMdEHarvesterSession::GetPendingCount(class CMdEObjectDef const *)
+	?GetPending@CMdEHarvesterSession@@QAEHPBVCMdEObjectDef@@AAHAAVCMdCSerializationBuffer@@@Z @ 290 NONAME ; int CMdEHarvesterSession::GetPending(class CMdEObjectDef const *, int &, class CMdCSerializationBuffer &)
+	?ChangeCDriveMediaId@CMdEHarvesterSession@@QAEXXZ @ 291 NONAME ; void CMdEHarvesterSession::ChangeCDriveMediaId(void)
+	?ResetPendingL@CMdEHarvesterSession@@QAEXABV?$RArray@K@@@Z @ 292 NONAME ; void CMdEHarvesterSession::ResetPendingL(class RArray<unsigned long> const &)
+	?SetPendingL@CMdEHarvesterSession@@QAEXABV?$RArray@K@@@Z @ 293 NONAME ; void CMdEHarvesterSession::SetPendingL(class RArray<unsigned long> const &)
+	?PlaceholderOnly@CMdEObjectCondition@@QBEHXZ @ 294 NONAME ; int CMdEObjectCondition::PlaceholderOnly(void) const
+	?SetPlaceholderOnly@CMdEObjectCondition@@QAEXH@Z @ 295 NONAME ; void CMdEObjectCondition::SetPlaceholderOnly(int)
+	?CheckMassStorageMediaId@CMdEHarvesterSession@@QAEXK@Z @ 296 NONAME ; void CMdEHarvesterSession::CheckMassStorageMediaId(unsigned long)
+	?Id@CMdEObjectDef@@QBEKXZ @ 297 NONAME ; unsigned long CMdEObjectDef::Id(void) const
+

@@ -1,0 +1,9 @@
+EXPORTS
+	??0CAudioOutputControlUtility@@IAE@XZ @ 1 NONAME ; CAudioOutputControlUtility::CAudioOutputControlUtility(void)
+	??1CAudioOutputControlUtility@@UAE@XZ @ 2 NONAME ; CAudioOutputControlUtility::~CAudioOutputControlUtility(void)
+	?Configure@CAudioOutputControlUtility@@QAEHAAVCMMFDevSound@@@Z @ 3 NONAME ; int CAudioOutputControlUtility::Configure(class CMMFDevSound &)
+	?ConstructL@CAudioOutputControlUtility@@IAEXPAVCAudioOutputControlUtilityImpl@@@Z @ 4 NONAME ; void CAudioOutputControlUtility::ConstructL(class CAudioOutputControlUtilityImpl *)
+	?SetDRMConfigIntfc@CAudioOutputControlUtility@@QAEHAAPAVCDRMConfigIntfc@@@Z @ 5 NONAME ; int CAudioOutputControlUtility::SetDRMConfigIntfc(class CDRMConfigIntfc * &)
+	?SetDataSource@CAudioOutputControlUtility@@QAEHPAVCMultimediaDataSource@@@Z @ 6 NONAME ; int CAudioOutputControlUtility::SetDataSource(class CMultimediaDataSource *)
+	?SetDataSource@CAudioOutputControlUtility@@QAEHPAVMDataSource@@@Z @ 7 NONAME ; int CAudioOutputControlUtility::SetDataSource(class MDataSource *)
+

@@ -1,0 +1,66 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Registration file for MnRefProvider
+*
+*/
+
+
+#include <appinfo.rh>
+
+#include "mnappserviceuids.hrh"
+#include "mnappservices.hrh"
+#include "mnserviceinfo.rh"
+
+#include <MnRefProvider.rsg>
+
+UID2 KUidAppRegistrationResourceFile
+UID3 0x03132013
+
+RESOURCE APP_REGISTRATION_INFO
+    {
+    app_file = "MnRefProvider";
+    localisable_resource_file = "\\resource\\apps\\MnRefProvider";
+    localisable_resource_id = R_MNREFPROVIDER_LOCALISABLE_APP_INFO;
+    
+    launch = KAppLaunchInForeground;
+    hidden = KAppNotHidden;
+        
+    datatype_list = {};
+    file_ownership_list = {};
+    service_list =
+        {
+        SERVICE_INFO
+            {
+            uid = KMnAppMapViewService;
+            datatype_list = {};
+            opaque_data = r_mnrefprovider_mapview_opaquedata;
+            },
+        SERVICE_INFO
+            {
+            uid = KMnAppNavigationService;
+            datatype_list = {};
+            opaque_data = r_mnrefprovider_navigation_opaquedata;
+            }
+        };
+    }
+
+RESOURCE MN_SERVICE_INFO r_mnrefprovider_mapview_opaquedata
+    {
+    service_features = KMnSvcFeatureShowMap | KMnSvcFeatureSelectFromMap;
+    }
+
+RESOURCE MN_SERVICE_INFO r_mnrefprovider_navigation_opaquedata
+    {
+    service_features = KMnSvcFeatureNavigateTo;
+    }

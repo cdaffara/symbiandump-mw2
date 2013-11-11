@@ -1,0 +1,92 @@
+// Copyright (c) 2004-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+TARGET        				mts_sms_mms.lib
+TARGETTYPE    				lib
+UID 0
+VENDORID 					0x70000001
+
+USERINCLUDE					../Framework/inc
+USERINCLUDE					../TestActions/sms/inc
+USERINCLUDE					../TestActionUtils/inc
+USERINCLUDE					../TestActions/Mms/inc
+
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+
+
+
+SOURCEPATH					../TestActions/Sms/src 
+SOURCE						CMtfTestActionGetSmsConstants.cpp
+SOURCE						CMtfTestActionCreateSmsService.cpp
+SOURCE						CMtfTestActionSetDefaultSmsSettings.cpp
+SOURCE						CMtfTestActionSetSmsServiceSettings.cpp
+SOURCE						CMtfTestActionSmsSettingsSaveExternal.cpp
+SOURCE						CMtfTestActionCompareSmsSettings.cpp
+SOURCE    			 		CMtfTestActionCheckIfSmsWatcherRunning.cpp
+SOURCE				      	CMtfTestActionReceiveSmsMessages.cpp
+SOURCE      				CMtfTestActionCompareSmsMessages.cpp
+SOURCE						CMtfTestActionSetSchSendSettings.cpp
+SOURCE						CMtfTestActionCheckMessageSendingState.cpp
+SOURCE						CMtfTestActionCreateSmsMessage.cpp
+SOURCE						CMtfTestActionCreateSmsMessageFromFile.cpp
+SOURCE						CMtfTestActionGetDefaultSmsService.cpp
+SOURCE						CMtfTestActionCompareLastSegmentReport.cpp
+// CENTRAL REPOSITORY SMS TESTS
+
+SOURCE						CMtfTestActionChangeDefaultSmsService.cpp
+SOURCE						CMtfTestActionCompareScheduleSendSettings.cpp
+SOURCE						CMtfTestActionCompareSmsSettingsCR.cpp
+SOURCE						CMtfTestActionInitialiseDefaultScheduleSettings.cpp
+SOURCE						CMtfTestActionInitialiseSmsDefaultSettings.cpp
+SOURCE						CMtfTestActionLoadScheduleSendSettings.cpp
+SOURCE						CMtfTestActionLoadSmsSettings.cpp
+SOURCE						CMtfTestActionRemoveDefaultSmsService.cpp
+SOURCE						CMtfTestActionSaveScheduleSendSettings.cpp
+SOURCE						CMtfTestActionSaveSmsSettings.cpp
+
+
+
+SOURCEPATH	../TestActions/Mms/src 
+SOURCE						CMtfTestActionCreateMmsService.cpp 
+SOURCE						CMtfTestActionDeleteMmsService.cpp 
+SOURCE						CMtfTestActionCreateMmsMtm.cpp 
+SOURCE						CMtfTestActionDeleteMmsMtm.cpp 
+SOURCE						CMtfTestActionSetMmsServiceParameters.cpp
+SOURCE						CMtfTestActionCreateMmsMessageFromSmilFile.cpp
+
+
+
+
+USERINCLUDE	../TestActions/Obex/Ir/inc
+SOURCEPATH	../TestActions/Obex/Ir/src
+
+SOURCE		CMtfTestActionGetIRMTMUId.cpp
+SOURCE		CMtfTestActionGetIrMTMCommandParameters.cpp
+
+
+
+USERINCLUDE	../TestActions/Obex/Bt/inc
+SOURCEPATH	../TestActions/Obex/Bt/src
+
+SOURCE		CMtfTestActionGetBTMTMUId.cpp
+SOURCE		CMtfTestActionGetBtMTMCommandParameters.cpp
+
+
+
+EPOCSTACKSIZE				0x6000
+
+SMPSAFE

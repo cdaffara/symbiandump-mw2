@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>msg-email-upssupport</name>
+	<timeout>5000</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\email\pop\upssupport\msg-email-upssupport.script</hostPath>
+			<devicePath>c:\msgtest\email\pop\upssupport\msg-email-upssupport.script</devicePath>
+		</script>
+		
+		
+	</testScripts>
+
+	<testServers>
+		<server>T_MsgCommonServer</server>
+		<server>T_MsgImapServer</server>
+		<server>T_MsgSmtpServer</server>
+		<server>T_MsgPopServer</server>
+	</testServers>
+
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\email\pop\upssupport\msg-email-upssupport.ini</hostPath>
+			<devicePath>c:\msgtest\email\pop\upssupport\msg-email-upssupport.ini</devicePath>
+		</data>
+		
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\IMAPSettings_test908.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\IMAPSettings_test908.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\POPSettings_test908.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\POPSettings_test908.txt</devicePath>
+		</data>
+	
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test1.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test1.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test_9.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test_9.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test1_mail.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test1_mail.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test2_mail.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test2_mail.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\email\pop\upssupport\restore_setup.script</hostPath>
+			<devicePath>c:\msgtest\email\pop\upssupport\restore_setup.script</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\email\pop\upssupport\upssupport_setup.script</hostPath>
+			<devicePath>c:\msgtest\email\pop\upssupport\upssupport_setup.script</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\RELEASE\ARMV5\UREL\CapUtils.exe</hostPath>
+			<devicePath>c:\sys\bin\CapUtils.exe</devicePath>
+		</data>
+
+	</dependencies>	
+</testExecuteTest>

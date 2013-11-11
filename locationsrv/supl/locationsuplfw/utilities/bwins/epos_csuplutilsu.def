@@ -1,0 +1,7 @@
+EXPORTS
+	??1CSuplTrace@@UAE@XZ @ 1 NONAME ; CSuplTrace::~CSuplTrace(void)
+	?Log@CSuplTrace@@SAXABVTDesC16@@0V?$TRefByValue@$$CBVTDesC16@@@@ZZ @ 2 NONAME ; void CSuplTrace::Log(class TDesC16 const &, class TDesC16 const &, class TRefByValue<class TDesC16 const >, ...)
+	?NewL@CSuplTrace@@SAPAV1@ABVTDesC16@@0@Z @ 3 NONAME ; class CSuplTrace * CSuplTrace::NewL(class TDesC16 const &, class TDesC16 const &)
+	?NewL@CSuplTrace@@SAPAV1@XZ @ 4 NONAME ; class CSuplTrace * CSuplTrace::NewL(void)
+	?TraceL@CSuplTrace@@QAEXABVTDesC16@@0H@Z @ 5 NONAME ; void CSuplTrace::TraceL(class TDesC16 const &, class TDesC16 const &, int)
+

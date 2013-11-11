@@ -1,0 +1,104 @@
+/*
+ * Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+ * All rights reserved.
+ * This component and the accompanying materials are made available
+ * under the terms of "Eclipse Public License v1.0"
+ * which accompanies this distribution, and is available
+ * at the URL "http://www.eclipse.org/legal/epl-v10.html".
+ *
+ * Initial Contributors:
+ * Nokia Corporation - initial contribution.
+ *
+ * Contributors:
+ *
+ * Description: Telephony Multimedia Service
+ *
+ */
+
+#include <data_caging_paths.hrh>
+#include <platform_paths.hrh>
+#include "../../inc/tmsgstreamer.h"
+
+TARGET          tmscallserver.dll
+TARGETTYPE      DLL
+UID             0x1000008d 0x10207C78
+EPOCSTACKSIZE   0x5000
+EPOCHEAPSIZE    0x500000 0x1800000
+CAPABILITY      ALL -Tcb
+VENDORID        VID_DEFAULT
+
+#ifndef WINSCW
+EpocAllowDllData
+#endif
+
+SOURCEPATH      ../src
+
+SOURCE          tmscallserver.cpp
+SOURCE          tmscallsrvrstart.cpp
+SOURCE          tmsdelaytimer.cpp
+SOURCE          tmscallsession.cpp
+SOURCE          tmscalladpt.cpp
+SOURCE          tmscallcsadpt.cpp
+SOURCE          tmscallipadpt.cpp
+SOURCE          tmsipcallstreambase.cpp
+#ifdef __USE_GSTREAMER__
+SOURCE          tmsipcalldownlink.cpp
+SOURCE          tmsipcalluplink.cpp
+#else //__USE_GSTREAMER__
+SOURCE          tmsipcalldownlinkds.cpp
+SOURCE          tmsipcalluplinkds.cpp
+#endif //__USE_GSTREAMER__
+SOURCE          tmscsdevsound.cpp
+SOURCE          tmscsdownlink.cpp
+SOURCE          tmscsuplink.cpp
+SOURCE          tmstarsettings.cpp
+SOURCE          tmsyncvol.cpp
+
+USERINCLUDE     ../inc
+USERINCLUDE     ../../inc
+
+MW_LAYER_SYSTEMINCLUDE
+OS_LAYER_LIBC_SYSTEMINCLUDE
+OS_LAYER_GLIB_SYSTEMINCLUDE
+OS_LAYER_STDCPP_SYSTEMINCLUDE
+SYSTEMINCLUDE   /epoc32/include/mmf/server
+SYSTEMINCLUDE   /epoc32/include/mda/common
+SYSTEMINCLUDE   /epoc32/include/mmf/common
+
+#ifdef __USE_GSTREAMER__
+MW_LAYER_GSTREAMER_SYSTEMINCLUDE
+MW_LAYER_GSTREAMER_SYSTEMINCLUDE(gst_plugins_symbian/gst/devsound)
+
+LIBRARY         libgobject.lib
+LIBRARY         libgstreamer.lib
+LIBRARY         libgstapp.lib
+LIBRARY         libgstdevsoundext.lib
+#else //__USE_GSTREAMER__
+LIBRARY         ErrorConcealmentIntfc.lib
+LIBRARY         G711DecoderIntfc.lib
+LIBRARY         G711EncoderIntfc.lib
+LIBRARY         G729DecoderIntfc.lib
+LIBRARY         G729EncoderIntfc.lib
+LIBRARY         IlbcDecoderIntfc.lib
+LIBRARY         IlbcEncoderIntfc.lib
+LIBRARY         SpeechEncoderConfig.lib
+LIBRARY         AudioOutputRouting.lib
+#endif //__USE_GSTREAMER__
+LIBRARY         euser.lib
+LIBRARY         estor.lib
+LIBRARY         efsrv.lib
+LIBRARY         ecom.lib
+LIBRARY         libglib.lib
+LIBRARY         mmfdevsound.lib
+LIBRARY         mmfserverbaseclasses.lib
+LIBRARY         mediaclientaudio.lib
+LIBRARY         ProfileEngine.lib
+LIBRARY         TelephonyAudioRouting.lib
+LIBRARY         tmsutility.lib
+
+DEFFILE         tmscallserver.def
+NOSTRICTDEF
+
+SMPSAFE
+
+// End of file

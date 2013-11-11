@@ -1,0 +1,7 @@
+EXPORTS
+	?CreateLocationTagsL@CTagCreator@@QAEXABVTPtrC16@@AAK01@Z @ 1 NONAME ; void CTagCreator::CreateLocationTagsL(class TPtrC16 const &, unsigned long &, class TPtrC16 const &, unsigned long &)
+	?SetSession@CTagCreator@@QAEXPAVCMdESession@@@Z @ 2 NONAME ; void CTagCreator::SetSession(class CMdESession *)
+	?AttachTagsL@CTagCreator@@QAEXKKK@Z @ 3 NONAME ; void CTagCreator::AttachTagsL(unsigned long, unsigned long, unsigned long)
+	?NewL@CTagCreator@@SAPAV1@XZ @ 4 NONAME ; class CTagCreator * CTagCreator::NewL(void)
+	??1CTagCreator@@UAE@XZ @ 5 NONAME ; CTagCreator::~CTagCreator(void)
+

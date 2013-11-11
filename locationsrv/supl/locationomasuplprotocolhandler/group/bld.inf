@@ -1,0 +1,49 @@
+/*
+* Copyright (c) 2005-2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:   Build information file for project locationomasuplprotocolhandler
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+WINSCW ARMV5 GCCE
+
+PRJ_EXPORTS
+../rom/omasuplprotocolhandler.iby           CORE_MW_LAYER_IBY_EXPORT_PATH(omasuplprotocolhandler.iby)
+../rom/omasuplprotocolhandler_resource.iby  LANGUAGE_MW_LAYER_IBY_EXPORT_PATH(omasuplprotocolhandler_resource.iby)
+../rom/omasuplprotocolhandlerstub.iby       CORE_MW_LAYER_IBY_EXPORT_PATH(omasuplprotocolhandlerstub.iby)
+../data/omasuplprotocolhandlerstub.sis 		/epoc32/data/z/system/install/omasuplprotocolhandlerstub.sis
+
+// conf files...
+../conf/omasuplconfigparam.confml           MW_LAYER_CONFML(omasuplconfigparam.confml) 
+../crml/omasuplconfigparam_102750A0.crml    MW_LAYER_CRML(omasuplconfigparam_102750A0.crml)
+../conf/suplsettings_productconfig.confml                	MW_LAYER_CONFML(suplsettings_productconfig.confml) 
+../crml/suplsettings_productconfig_2001FCB9.crml         MW_LAYER_CRML(suplsettings_productconfig_2001FCB9.crml)
+
+//#include "../posmsgpluginapi/group/bld.inf"
+#include "../asnconverterpluginapi/group/bld.inf"
+
+
+#include "../protocolhandler/group/bld.inf"
+#include "../protocolhandlerver1/group/bld.inf"
+#include "../protocolhandlerver2/group/bld.inf"
+#include "../supllistener/group/bld.inf"
+#include "../waplistener/group/bld.inf"
+#include "../syncmlprovhandler/group/bld.inf"
+#include "../provisioninghandler/group/bld.inf"
+//#include "../notifier/group/bld.inf"
+
+// End of File

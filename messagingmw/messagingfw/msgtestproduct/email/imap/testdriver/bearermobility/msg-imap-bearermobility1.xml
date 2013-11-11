@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>msg-imap-bearermobility1</name>
+	<timeout>600</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\email\imap\bearermobility\msg-imap-bearermobility1.script</hostPath>
+			<devicePath>c:\msgtest\email\imap\bearermobility\msg-imap-bearermobility1.script</devicePath>
+		</script>
+	</testScripts>
+
+	<testServers>
+		<server>T_MsgCommonServer</server>
+		<server>T_MsgImapServer</server>
+	</testServers>
+
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\email\imap\bearermobility\msg-imap-bearermobility1.ini</hostPath>
+			<devicePath>c:\msgtest\email\imap\bearermobility\msg-imap-bearermobility1.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\IMAPServerBMSettings.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\IMAPServerBMSettings.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\IMAP_BM_OFF.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\IMAP_BM_OFF.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\IMAP_BM_ON.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\IMAP_BM_ON.txt</devicePath>
+		</data>
+	</dependencies>	
+</testExecuteTest>

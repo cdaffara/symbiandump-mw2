@@ -1,0 +1,564 @@
+// COMMON FILES SHARED BETWEEN
+// MessagingTestServer and MessagingTestServer_Caps
+
+
+USERINCLUDE		../Framework/inc
+USERINCLUDE		../TestActions/Sample/inc ../TestActions/Base/inc 
+USERINCLUDE		../TestActions/Email/Common/inc ../TestActions/Email/Imap4/inc ../TestActions/Email/Pop3/inc ../TestActions/Email/Smtp/inc
+USERINCLUDE		../TestActions/Sms/inc 
+USERINCLUDE		../TestActions/Framework/inc
+USERINCLUDE		../TestActionUtils/inc
+USERINCLUDE		../TestActions/SendAs/inc
+USERINCLUDE		../TestActions/Pigeon/inc
+USERINCLUDE		../TestCases/NonScriptedTestCases/inc 
+
+USERINCLUDE		../../msgsrvnstore/server/inc
+USERINCLUDE		../../watcherfw/inc
+USERINCLUDE		../../../../../app/messaging/email/pop3andsmtpmtm/servermtmutils/inc
+
+USERINCLUDE		../TestActions/Performance/Inc
+USERINCLUDE		../../scheduledsendmtm/test/unit/inc
+USERINCLUDE		../TestActions/Capabilities/inc
+
+USERINCLUDE		../TestActions/Drm/inc
+USERINCLUDE		../../../../../app/messaging/email/pop3andsmtpmtm/clientmtms/inc
+USERINCLUDE             ../../msgtest/testutils/base/inc
+USERINCLUDE             ../../msgtest/testutils/email/inc
+USERINCLUDE             ../../msgtest/testutils/server/inc
+USERINCLUDE             ../../msgtest/testutils/sms/inc
+USERINCLUDE             ../../msgtest/testutils/MsgTestUtilServer/inc
+USERINCLUDE             ../../scheduledsendmtm/test/base/inc
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+SOURCEPATH	../Framework/src
+SOURCE		CMtfTestAction.cpp CMtfTestActionManager.cpp CMtfTestActionWait.cpp 
+SOURCE		CMtfTestCase.cpp CMtfTestActionSectionComplete.cpp CMtfTestBeginManager.cpp
+SOURCE		CMtfTestParameterStore.cpp CMtfTestActionNamePair.cpp CMtfTestCaseNamePair.cpp
+SOURCE		CMtfTestActionParameters.cpp CMtfTestServer.cpp CMtfSynchronousTestAction.cpp
+SOURCE		CMtfScriptedTestCase.cpp CMtfTestParameter.cpp CMtfConfigurationType.cpp
+SOURCE		CMtfEnumeratorConverter.cpp CMtfSetConfigurationTestStep.cpp
+
+SOURCEPATH	../TestActions/Sample/src 
+SOURCE		CMtfTestActionSampleActionA.cpp CMtfTestActionSampleActionB.cpp
+SOURCE		CMtfTestActionSampleActionC.cpp CMtfTestActionSampleActionD.cpp
+SOURCE		CMtfTestActionSampleActionE.cpp CMtfTestActionSampleActionF.cpp
+
+SOURCEPATH	../TestActions/Performance/Src
+SOURCE		CMtfTestActionStartTimer.cpp CMtfTestActionStopTimer.cpp
+SOURCE		CMtfTestActionSetHeapFailure.cpp
+
+SOURCEPATH	../TestActions/Base/src 
+SOURCE		CMtfTestActionGetBaseConstants.cpp 
+SOURCE		CMtfTestActionGetEntryPriorityEnums.cpp 
+SOURCE		CMtfTestActionSleep.cpp 
+SOURCE		CMtfTestActionDeleteMessageStore.cpp 
+SOURCE		CMtfTestActionCloseServer.cpp
+SOURCE		CMtfTestActionIsUsingHardcodedDefaultSettings.cpp
+SOURCE		CMtfTestActionCreateSession.cpp CMtfTestActionDeleteSession.cpp 
+SOURCE		CMtfTestActionResetMessageStore.cpp 
+SOURCE		CMtfTestActionCreateService.cpp CMtfTestActionDeleteService.cpp 
+SOURCE		CMtfTestActionCreateRegistry.cpp CMtfTestActionDeleteRegistry.cpp
+SOURCE		CMtfTestActionCreateMtm.cpp CMtfTestActionDeleteMtm.cpp 
+SOURCE		CMtfTestActionCreateEntry.cpp CMtfTestActionDeleteEntry.cpp
+SOURCE		CMtfTestActionCreateMessage.cpp CMtfTestActionDeleteMessage.cpp
+SOURCE		CMtfTestActionCopyEntry.cpp CMtfTestActionMoveEntry.cpp
+SOURCE		CMtfTestActionFindEntryByName.cpp
+SOURCE		CMtfTestActionCreateFolder.cpp CMtfTestActionDeleteFolder.cpp
+SOURCE		CMtfTestActionCreateSelection.cpp CMtfTestActionDeleteSelection.cpp 
+SOURCE		CMtfTestActionAppendToSelection.cpp 
+SOURCE		CMtfTestActionDeleteChildren.cpp 
+SOURCE		CMtfTestActionGetDefaultMtmCommandParameters.cpp CMtfTestActionExecuteMtmCommand.cpp
+SOURCE		CMtfTestActionCheckChildrenCount.cpp 
+SOURCE		CMtfTestActionCheckChildrenCountWithFlagBase.cpp 
+SOURCE		CMtfTestActionCheckChildrenCountWithFlagNew.cpp 
+SOURCE		CMtfTestActionCheckChildrenCountWithFlagComplete.cpp 
+SOURCE		CMtfTestActionCreateChildrenSelection.cpp 
+SOURCE		CMtfTestActionCopySelection.cpp CMtfTestActionMoveSelection.cpp
+SOURCE		CMtfTestActionSetDefaultDataFile.cpp
+SOURCE		CMtfTestActionChangeToExternalDrive.cpp
+SOURCE		CMtfTestActionChangeToInternalDrive.cpp
+SOURCE		CMtfTestActionRemoveMedia.cpp
+SOURCE		CMtfTestActionInsertMedia.cpp
+SOURCE		CMtfTestActionDeletePath.cpp
+SOURCE 		CMtfTestActionStartWatchers.cpp
+SOURCE		CMtfTestActionSetDefaultConfiguration.cpp
+SOURCE     	CMtfTestActionGetArrayCount.cpp
+SOURCE		CMtfTestActionCompareNumbers.cpp
+SOURCE    	CMtfTestActionGetNumberOfChildren.cpp
+SOURCE		CMtfTestActionInitializeSimTsy.cpp
+SOURCE		CMtfTestActionUnloadPhoneModule.cpp
+SOURCE		CMtfTestActionSetNetRegStatus.cpp
+SOURCE		CMtfTestActionSetSignalStrength.cpp
+
+SOURCE		CMtfTestActionCompareEntryWithFile.cpp
+
+SOURCE		CMtfTestActionInstallMtmGroup.cpp
+SOURCE		CMtfTestActionDeInstallMtmGroup.cpp
+SOURCE		CMtfTestActionDeleteExistingService.cpp
+SOURCE		CMtfTestActionCheckIfMessagePresent.cpp
+SOURCE		CMtfTestActionFindFile.cpp
+SOURCE		CMtfTestActionRenamePath.cpp
+SOURCE		CMtfTestActionGetEntry.cpp
+SOURCE		CMtfTestActionGetStore.cpp
+SOURCE		CMtfTestActionReadMessage.cpp
+SOURCE		CMtfTestActionSetUTCOffset.cpp
+SOURCE		CMtfTestActionCreateOrderedChildrenSelection.cpp
+SOURCE		CMtfTestActionCompareSelections.cpp
+SOURCE		CMtfTestActionAddRecipient.cpp
+SOURCE		CMtfTestActionSetBodyText.cpp
+SOURCE		CMtfTestActionCountAvailableAccounts.cpp
+SOURCE		CMtfTestActionDeleteStore.cpp
+
+SOURCEPATH	../TestActions/Email/Common/src 
+SOURCE		CMtfTestActionInitNtRas.cpp 
+SOURCE		CMtfTestActionGetEmailConstants.cpp 
+SOURCE		CMtfTestActionPruneMessages.cpp
+SOURCE		CMtfTestActionStopAllSocketConnections.cpp
+SOURCE		CMtfTestActionLaunchAutoSend.cpp
+SOURCE		CMtfTestActionCheckAttachmentPathFromEntrySelection.cpp
+
+SOURCEPATH	../TestActions/Email/Imap4/src 
+SOURCE		CMtfTestActionCreateImap4Service.cpp CMtfTestActionDeleteImap4Service.cpp 
+SOURCE		CMtfTestActionCreateImap4Mtm.cpp CMtfTestActionDeleteImap4Mtm.cpp 
+SOURCE		CMtfTestActionSetImap4ServiceParameters.cpp
+SOURCE		Cmtftestactionsetimap4serviceidleparameters.cpp
+SOURCE		CMtfTestActionConnectImap4Server.cpp CMtfTestActionDisconnectImap4Server.cpp
+SOURCE		CMtfTestActionConnectAndSyncImap4Server.cpp
+SOURCE		CMtfTestActionDoFullImap4Synchronisation.cpp
+SOURCE		CMtfTestActionImap4Connected.cpp
+SOURCE		CMtfTestActionSetImap4FullDownloadLimits.cpp
+SOURCE		CMtfTestActionSetImap4PartialDownloadLimits.cpp
+SOURCE 		CMtfTestActionCreateMailSelection.cpp
+SOURCE 		CMtfTestActionCreatePartiallyDownloadedMailSelection.cpp
+SOURCE		CMtfDoInvokeAsyncFunctionTestAction.cpp
+SOURCE 		CMtfDoInvokeAsyncFunctionWithSelectionTestAction.cpp
+SOURCE 		CMtfDoInvokeAsyncFunctionWithoutSelectionTestAction.cpp
+SOURCE 		CMtfTestActionDoImap4PopulateNewMailWhenAlreadyConnected.cpp
+SOURCE 		CMtfTestActionDoImap4PopulateAllMailWhenAlreadyConnected.cpp
+SOURCE 		CMtfTestActionDoImap4PopulateMailSelectionWhenAlreadyConnected.cpp
+SOURCE 		CMtfTestActionDoImap4ConnectAndPopulateNewMailAndStayOnline.cpp
+SOURCE 		CMtfTestActionDoImap4ConnectAndPopulateNewMailAndDisconnect.cpp
+SOURCE 		CMtfTestActionDoImap4ConnectAndPopulateAllMailAndStayOnline.cpp
+SOURCE 		CMtfTestActionDoImap4ConnectAndPopulateAllMailAndDisconnect.cpp
+SOURCE		CMtfTestActionDoImap4ConnectAndPopMailSelAndStayOnline.cpp
+SOURCE 		CMtfTestActionDoImap4ConnectAndPopMailSelAndDisconnect.cpp
+SOURCE		CMtfTestActionDoImap4Populate.cpp
+SOURCE		CMtfTestActionCompareEmailMessages.cpp
+SOURCE 	Cmtftestactionsetimap4serviceLongidleparameters.cpp
+
+// CENTRAL REPOSITORY IMAP TESTS
+
+SOURCE		CMtfTestActionChangeDefaultImapService.cpp
+SOURCE		CMtfTestActionCompareImapAccountId.cpp
+SOURCE		CMtfTestActionCompareImapSettings.cpp
+SOURCE		CMtfTestActionCountImapAccountsInArray.cpp
+SOURCE		CMtfTestActionCreateImapAccount.cpp
+SOURCE		CMtfTestActionDeleteImapAccounts.cpp
+SOURCE		CMtfTestActionGetDefaultImapService.cpp
+SOURCE		CMtfTestActionGetImapAccountInArray.cpp
+SOURCE		CMtfTestActionLoadImapSettings.cpp
+SOURCE		CMtfTestActionPopulateDefaultImapSettings.cpp
+SOURCE		CMtfTestActionRemoveDefaultImapService.cpp
+SOURCE		CMtfTestActionSaveImapSettings.cpp	
+SOURCE		CMtfTestActionModifyImapSettings.cpp
+SOURCE		CMtfTestActionGetImapAccountSettings.cpp
+
+
+
+//ssaging\testframework\TestActionUtils\src
+SOURCEPATH	../TestActionUtils/src 
+// utility files for setting up service params
+SOURCE 		CMtfTestActionUtilsImapScripts.cpp
+SOURCE 		CMtfTestActionUtilsPopScripts.cpp
+SOURCE 		CMtfTestActionUtilsConfigFileMachineName.cpp
+
+SOURCEPATH	../TestActions/Email/Pop3/src 
+SOURCE		CMtfTestActionCreatePop3Service.cpp CMtfTestActionDeletePop3Service.cpp 
+SOURCE		CMtfTestActionCreatePop3Mtm.cpp CMtfTestActionDeletePop3Mtm.cpp 
+SOURCE		CMtfTestActionSetPop3ServiceParameters.cpp
+SOURCE		CMtfTestActionConnectPop3Server.cpp CMtfTestActionDisconnectPop3Server.cpp
+SOURCE		CMtfTestActionCreatePop3MailInfo.cpp
+SOURCE		CMtfTestActionPop3TopBase.cpp
+SOURCE		CMtfTestActionPop3Populate.cpp
+SOURCE		CMtfTestActionPop3PopulateAll.cpp
+SOURCE		CMtfTestActionPop3PopulateNew.cpp
+SOURCE		CMtfTestActionVerifyEmail.cpp
+SOURCE		CMtfTestActionCreateExpPop3MailInfo.cpp
+
+
+// CENTRAL REPOSITORY POP TESTS
+
+SOURCE		CMtfTestActionChangeDefaultPopService.cpp
+SOURCE		CMtfTestActionComparePopAccountId.cpp
+SOURCE		CMtfTestActionComparePopSettings.cpp
+SOURCE		CMtfTestActionCountPopAccountsInArray.cpp
+SOURCE		CMtfTestActionCreatePopAccount.cpp
+SOURCE		CMtfTestActionDeletePopAccounts.cpp
+SOURCE		CMtfTestActionGetDefaultPopService.cpp
+SOURCE		CMtfTestActionGetPopAccountInArray.cpp
+SOURCE		CMtfTestActionLoadPopSettings.cpp
+SOURCE		CMtfTestActionPopulateDefaultPopSettings.cpp
+SOURCE		CMtfTestActionRemoveDefaultPopService.cpp		
+SOURCE		CMtfTestActionSavePopSettings.cpp					// CHECK SCRIPTS - CAN THIS GO
+SOURCE		CMtfTestActionModifyPopSettings.cpp
+SOURCE		CMtfTestActionGetPopAccountSettings.cpp
+SOURCE		CMtfTestActionVerifyReplyToAddress.cpp
+
+
+SOURCEPATH	../TestActions/Email/Smtp/src 
+SOURCE		CMtfTestActionCreateSmtpService.cpp 
+SOURCE		CMtfTestActionDeleteSmtpService.cpp 
+SOURCE		CMtfTestActionCreateSmtpMtm.cpp 
+SOURCE		CMtfTestActionDeleteSmtpMtm.cpp 
+SOURCE		CMtfTestActionSetSmtpServiceParameters.cpp
+SOURCE		CMtfTestActionCreateSmtpMessageFromEmailFile.cpp
+SOURCE		CMtfTestActionCreateSmtpMessageVariable.cpp
+SOURCE		ImCltCvRecv.cpp
+SOURCE		Local_imcvrecv.cpp
+SOURCE		Local_imutdll.cpp
+
+// CENTRAL REPOSITORY SMTP TESTS
+
+SOURCE		CMtfTestActionGetDefaultSmtpService.cpp
+SOURCE		CMtfTestActionRemoveDefaultSmtpService.cpp
+SOURCE		CMtfTestActionChangeDefaultSmtpService.cpp
+
+
+
+
+SOURCE		CMtfTestActionGetSMTPMTMUId.cpp
+SOURCE		CMtfTestActionSmtpGetAttachmentFileFromIndex.cpp
+SOURCE		CMtfTestActionSmtpAddEntryAttachment.cpp
+SOURCE		CMtfTestActionSmtpAddFileAttachmentByHandleSync.cpp
+SOURCE		CMtfTestActionSmtpAddFileAttachmentByPath.cpp
+SOURCE		CMtfTestActionSmtpAddLinkedAttachment.cpp
+SOURCE		CMtfTestActionSmtpCompareAttachment.cpp
+SOURCE		CMtfTestActionSmtpCountAttachments.cpp
+SOURCE		CMtfTestActionSmtpCreateAttachment.cpp
+SOURCE		CMtfTestActionSmtpGetAttachmentFileFromId.cpp
+SOURCE		CMtfTestActionSmtpGetAttachmentInfoById.cpp
+SOURCE		CMtfTestActionSmtpGetAttachmentInfoByIndex.cpp
+SOURCE		CMtfTestActionSmtpRemoveAllAttachments.cpp
+SOURCE		CMtfTestActionSmtpRemoveFileAttachmentById.cpp
+SOURCE		CMtfTestActionSmtpRemoveFileAttachmentByIndex.cpp
+SOURCE		CMtfTestActionSmtpRemoveEntryAttachmentById.cpp
+SOURCE		CMtfTestActionSmtpModifyAttachmentInfo.cpp
+
+
+
+
+SOURCEPATH	../TestActions/Sms/src 
+SOURCE		CMtfTestActionGetSmsConstants.cpp
+SOURCE		CMtfTestActionCreateSmsService.cpp
+SOURCE		CMtfTestActionSetDefaultSmsSettings.cpp
+SOURCE		CMtfTestActionSetSmsServiceSettings.cpp
+SOURCE		CMtfTestActionSmsSettingsSaveExternal.cpp
+SOURCE		CMtfTestActionCompareSmsSettings.cpp
+SOURCE     	CMtfTestActionCheckIfSmsWatcherRunning.cpp
+SOURCE      CMtfTestActionReceiveSmsMessages.cpp
+SOURCE      CmtfTestActionCompareSmsMessages.cpp
+SOURCE		CMtfTestActionSetSchSendSettings.cpp
+SOURCE		CMtfTestActionCheckMessageSendingState.cpp
+SOURCE		CMtfTestActionCreateSmsMessage.cpp
+SOURCE		CMtfTestActionCreateSmsMessageFromFile.cpp
+SOURCE          CMtfTestActionClass0SmsNotifier.cpp
+SOURCE          CMtfTestActionForwardSystemTime.cpp
+
+SOURCE		CMtfTestActionCreateEmailOverSmsMessage.cpp
+SOURCE      CMtfTestActionReceiveSmsMessages2.cpp
+
+
+SOURCE		CMtfTestActionGetDefaultSmsService.cpp
+
+SOURCE		CMtfTestActionSetDiskSpaceMonitorLimits.cpp
+SOURCE		CMtfTestActionSetDiskSpace.cpp
+SOURCE		CMtfTestActionFreeDiskSpace.cpp
+
+// CENTRAL REPOSITORY SMS TESTS
+
+SOURCE		CMtfTestActionChangeDefaultSmsService.cpp
+SOURCE		CMtfTestActionCompareScheduleSendSettings.cpp
+SOURCE		CMtfTestActionCompareSmsSettingsCR.cpp
+SOURCE		CMtfTestActionInitialiseDefaultScheduleSettings.cpp
+SOURCE		CMtfTestActionInitialiseSmsDefaultSettings.cpp
+SOURCE		CMtfTestActionLoadScheduleSendSettings.cpp
+SOURCE		CMtfTestActionLoadSmsSettings.cpp
+SOURCE		CMtfTestActionRemoveDefaultSmsService.cpp
+SOURCE		CMtfTestActionSaveScheduleSendSettings.cpp
+SOURCE		CMtfTestActionSaveSmsSettings.cpp
+SOURCE		CMtfTestActionCheckSmsService.cpp
+SOURCE		CMtfTestActionCompareLastSegmentReport.cpp
+
+
+SOURCEPATH	../TestActions/Framework/src 
+SOURCE		CMtfTestActionGetEntryTypeConstants.cpp	
+SOURCE		CMtfTestActionCreateAttachmentForWrite.cpp
+SOURCE		CMtfTestActionDeleteAttachment.cpp
+SOURCE		CMtfTestActionOpenAttachment.cpp
+SOURCE		CMtfTestActionOpenFileStoreForRead.cpp
+SOURCE		CMtfTestActionOpenTempStoreFile.cpp
+SOURCE		CMtfTestActionDeleteFileStore.cpp
+SOURCE		CMtfTestActionFileStoreExists.cpp
+SOURCE 		CMtfTestActionReplaceFileStore.cpp
+
+USERINCLUDE	../TestActions/Base/Attachments/inc
+SOURCEPATH	../TestActions/Base/Attachments/src
+SOURCE		CMtfTestActionAddFileAttachmentByPath.cpp
+SOURCE		CMtfTestActionAddFileAttachmentByPathSync.cpp
+SOURCE		CMtfTestActionAddFileAttachmentByHandle.cpp
+SOURCE		CMtfTestActionAddFileAttachmentByHandleSync.cpp
+SOURCE		CMtfTestActionAddFileAttachmentWithRevert.cpp
+SOURCE		CMtfTestActionAddFileAttachmentWithDestroy.cpp
+SOURCE		CMtfTestActionAddLinkedAttachment.cpp
+SOURCE		CMtfTestActionAddEntryAttachment.cpp
+SOURCE		CMtfTestActionGetAttachmentInfoById.cpp
+SOURCE		CMtfTestActionGetAttachmentInfoByIndex.cpp
+SOURCE		CMtfTestActionCreateAttachment.cpp
+SOURCE		CMtfTestActionCompareAttachment.cpp
+SOURCE		CMtfTestActionCreateAttachmentNoFileClose.cpp
+SOURCE		CMtfTestActionCheckErrorCode.cpp
+SOURCE		CMtfTestActionCountAttachments.cpp
+SOURCE		CMtfTestActionGetAttachmentIndexFromId.cpp
+SOURCE		CMtfTestActionGetAttachmentFileFromId.cpp
+SOURCE		CMtfTestActionGetAttachmentFileFromIndex.cpp
+SOURCE		CMtfTestActionGetAttachmentFileForWriteFromId.cpp
+SOURCE		CMtfTestActionRemoveFileAttachmentById.cpp
+SOURCE		CMtfTestActionRemoveFileAttachmentByIndex.cpp
+SOURCE		CMtfTestActionRemoveLinkedAttachmentById.cpp
+SOURCE		CMtfTestActionRemoveEntryAttachmentById.cpp
+SOURCE		CMtfTestActionRemoveFileAttachmentWithRevert.cpp
+SOURCE		CMtfTestActionRemoveFileAttachmentWithDestroy.cpp
+SOURCE		CMtfTestActionCreateTestMimeHeaders.cpp
+SOURCE		CMtfTestActionRenameFileAttachmentById.cpp
+SOURCE		CMtfAsyncWaiter.cpp
+
+SOURCE		CMtfTestActionVerifyAttachmentInfo.cpp
+SOURCE		CMtfTestActionRemoveAllAttachments.cpp
+SOURCE		CMtfTestActionAddAttachmentAsLink.cpp
+
+
+SOURCEPATH	../TestActions/Capabilities/src 
+SOURCE		CMtfTestActionSendEMsvGetEntry.cpp
+SOURCE		CMtfTestActionSendEMsvGetChildren.cpp
+SOURCE		CMtfTestActionSendEMsvGetRemainingChildren.cpp
+SOURCE		CMtfTestActionSendEMsvChangeEntry.cpp
+SOURCE		CMtfTestActionSendEMsvCreateEntry.cpp
+SOURCE		CMtfTestActionSendEMsvDeleteEntries.cpp
+SOURCE		CMtfTestActionSendEMsvMoveEntries.cpp
+SOURCE		CMtfTestActionSendEMsvCopyEntries.cpp
+SOURCE		CMtfTestActionSendEMsvNotifySessionEvent.cpp
+SOURCE		CMtfTestActionSendEMsvCancelSessionEventNotification.cpp
+SOURCE		CMtfTestActionSendEMsvReadStore.cpp
+SOURCE		CMtfTestActionSendEMsvLockStore.cpp
+SOURCE		CMtfTestActionSendEMsvReleaseStore.cpp
+SOURCE		CMtfTestActionSendEMsvOperationData.cpp
+SOURCE		CMtfTestActionSendEMsvCommandData.cpp
+SOURCE		CMtfTestActionSendEMsvCancelOperation.cpp
+SOURCE		CMtfTestActionSendEMsvOperationProgress.cpp
+SOURCE		CMtfTestActionSendEMsvOperationCompletion.cpp
+SOURCE		CMtfTestActionSendEMsvOperationMtm.cpp
+SOURCE		CMtfTestActionSendEMsvMtmCommand.cpp
+SOURCE		CMtfTestActionSendEMsvFillRegisteredMtmDllArray.cpp
+SOURCE		CMtfTestActionSendEMsvInstallMtmGroup.cpp
+SOURCE		CMtfTestActionSendEMsvDeInstallMtmGroup.cpp
+SOURCE		CMtfTestActionSendEMsvUseMtmGroup.cpp
+SOURCE		CMtfTestActionSendEMsvReleaseMtmGroup.cpp
+SOURCE		CMtfTestActionSendEMsvGetMtmGroupData.cpp
+SOURCE		CMtfTestActionSendEMsvCloseServer.cpp
+SOURCE		CMtfTestActionSendEMsvStopService.cpp
+SOURCE		CMtfTestActionSendEMsvServiceActive.cpp
+SOURCE		CMtfTestActionSendEMsvServiceProgress.cpp
+SOURCE		CMtfTestActionSendEMsvRemoveEntry.cpp
+SOURCE		CMtfTestActionSendEMsvSlotAvailable.cpp
+SOURCE		CMtfTestActionSendEMsvSetSessionAsObserver.cpp
+SOURCE		CMtfTestActionSendEMsvSetFailure.cpp
+SOURCE		CMtfTestActionSendEMsvChangeAttributes.cpp
+SOURCE		CMtfTestActionSendEMsvGetChildIds.cpp
+SOURCE		CMtfTestActionSendEMsvChangeDrive.cpp
+SOURCE		CMtfTestActionSendEMsvOutstandingOperations.cpp
+SOURCE		CMtfTestActionSendEMsvGetNotifySequence.cpp
+SOURCE		CMtfTestActionSendEMsvReceiveEntyEvents.cpp
+SOURCE		CMtfTestActionSendEMsvDecStoreReaderCount.cpp
+SOURCE		CMtfTestActionSendEMsvGetMessageDrive.cpp
+SOURCE		CMtfTestActionSendEMsvGetMtmRequiredCapabilities.cpp
+SOURCE		CMtfTestActionSendEMsvCreateAttachmentForWrite.cpp
+SOURCE		CMtfTestActionSendEMsvOpenAttachment.cpp
+SOURCE		CMtfTestActionSendEMsvOpenAttachmentForWrite.cpp
+SOURCE		CMtfTestActionSendEMsvDeleteAttachment.cpp
+SOURCE		CMtfTestActionSendEMsvOpenFileStoreForRead.cpp
+SOURCE		CMtfTestActionSendEMsvOpenTempStoreFile.cpp
+SOURCE		CMtfTestActionSendEMsvReplaceFileStore.cpp
+SOURCE		CMtfTestActionSendEMsvDeleteFileStore.cpp
+SOURCE		CMtfTestActionSendEMsvFileStoreExists.cpp
+SOURCE		CMtfTestActionSendEMsvGetAndClearIndexCorruptFlag.cpp
+SOURCE		CMtfTestActionSendEMsvCopyStore.cpp
+SOURCE		CMtfTestActionSendEMsvDeleteStore.cpp
+SOURCE		CMtfTestActionSendEMsvDriveContainsStore.cpp
+SOURCE		IPCCommandForCapsPermissions.cpp
+SOURCE		SendProxyClient.cpp
+
+// 1667 Enhanced Search Sort in message Store
+SOURCE		CMtfTestActionSendEMsvGetResultCount.cpp
+
+// 557 Removable media
+#if (defined SYMBIAN_MSGS_ENHANCED_REMOVABLE_MEDIA_SUPPORT)
+SOURCE		cmtftestactionsendemsvgetchildidsall.cpp
+SOURCE		cmtftestactionsendemsvchildrenofavailabledrives.cpp
+SOURCE		cmtftestactionsendemsvadddrive.cpp
+SOURCE		cmtftestactionsendemsvremovedrive.cpp
+SOURCE		cmtftestactionsendemsvupdatedrive.cpp
+SOURCE		cmtftestactionsendemsvdrivelist.cpp
+SOURCE		cmtftestactionsendemsvavailabledrivelist.cpp
+SOURCE		cmtftestactionsendemsvcurrentdriveinfo.cpp
+#endif // #if (defined SYMBIAN_MSGS_ENHANCED_REMOVABLE_MEDIA_SUPPORT)
+
+// PREQ 2073
+#if (defined SYMBIAN_MESSAGESTORE_HEADER_BODY_USING_SQLDB)
+SOURCE		cmtftestactionsendemsvcreatestore.cpp
+SOURCE		cmtftestactionsendemsvcheckstore.cpp
+SOURCE		cmtftestactionsendemsvcreateheaderentry.cpp
+SOURCE		cmtftestactionsendemsvupdateheaderentry.cpp
+SOURCE		cmtftestactionsendemsvloadheaderentry.cpp
+SOURCE		cmtftestactionsendemsvdeleteheaderentry.cpp
+#endif // #if (defined SYMBIAN_MESSAGESTORE_HEADER_BODY_USING_SQLDB)
+
+USERINCLUDE	../../msgsrvnstore/server/test/unit/inc
+USERINCLUDE	../TestActions/Base/corruption/inc
+SOURCEPATH	../TestActions/Base/corruption/src
+SOURCE		CMtfTestActionCorruptFile.cpp
+
+
+SOURCEPATH	../TestActions/Base/src 
+
+SOURCE		CMtfTestActionSaveMsvIdParamToFile.cpp
+SOURCE		CMtfTestActionLoadMsvIdParamToFile.cpp
+
+SOURCEPATH	../TestActions/SendAs/src
+//SOURCE		CMtfTestActionSendAsCancelMessage.cpp
+//SOURCE		CMtfTestActionSendAsFilterAgainstCapability.cpp
+//SOURCE		CMtfTestActionSendAsCountAvailableAccounts.cpp
+//SOURCE		CMtfTestActionSendAsResetMessageTypeFilter.cpp
+//SOURCE		CMtfTestActionSendAsResetAccounts.cpp
+//SOURCE		CMtfTestActionSendAsLaunchEditorAndWait.cpp
+
+SOURCE		CMtfTestActionCloseSendAsServerConnection.cpp
+SOURCE		CMtfTestActionSendAsAddAttachment.cpp
+SOURCE		CMtfTestActionSendAsAddLinkedAttachment.cpp
+SOURCE		CMtfTestActionSendAsAddRecipient.cpp
+SOURCE		CMtfTestActionSendAsAddMultipleRecipient.cpp
+SOURCE		CMtfTestActionSendAsCheckMultipleRecipientFlag.cpp 
+SOURCE		CMtfTestActionSendAsSaveMessageAndClose.cpp
+SOURCE		CMtfTestActionSendAsLaunchEditorAndClose.cpp
+SOURCE		CMtfTestActionSendAsCloseMessage.cpp
+SOURCE		CMtfTestActionSendAsCreateAttachment.cpp
+SOURCE		CMtfTestActionSendAsCreateMessageofType.cpp
+SOURCE		CMtfTestActionSendAsCreateMessageWithAccount.cpp
+SOURCE		CMtfTestActionSendAsGetAccount.cpp
+SOURCE		CMtfTestActionSendAsGetAccountNames.cpp
+SOURCE		CMtfTestActionSendAsGetAvailableAccounts.cpp
+SOURCE		CMtfTestActionSendAsGetAvailableMessageTypes.cpp
+SOURCE		CMtfTestActionSendAsGetFilteredMessageTypes.cpp
+SOURCE		CMtfTestActionSendAsGetMessageTypeUid.cpp
+SOURCE		CMtfTestActionSendAsSendMessage.cpp
+SOURCE		CMtfTestActionSendAsSetBioType.cpp
+SOURCE		CMtfTestActionSendAsSetSubject.cpp
+SOURCE		CMtfTestActionVerifyBioType.cpp
+SOURCE		CMtfTestActionVerifyBodyText.cpp
+SOURCE		CMtfTestActionVerifyRecipients.cpp
+SOURCE		CMtfTestActionVerifySubject.cpp
+SOURCE		CMtfTestActionSendAsSendMessageNew.cpp
+
+SOURCE		CMtfTestActionVerifySendAsMessageState.cpp
+SOURCE		CMtfTestActionGetMessageAtIndex.cpp
+SOURCE		CMtfTestActionSendAsCloseAndSendMessage.cpp
+
+SOURCE		CMtfTestActionSendAsSetBodyText.cpp
+SOURCE		CMtfTestActionConnectSendAsServer.cpp
+SOURCE		CMtfTestActionCompareEmails.cpp
+SOURCE		CMtfTestActionSetUserResponse.cpp
+
+SOURCEPATH	../TestActions/Pigeon/src
+SOURCE		CMtfTestActionCreatePigeonMessage.cpp
+SOURCE		CMtfTestActionGetPigeonMtmConstant.cpp
+SOURCE		CMtfTestActionSchedulePigeonMessage.cpp
+SOURCE		CMtfTestActionLaunchSchSendExe.cpp
+SOURCE		CMtfTestActionCheckIfMessageScheduleDateExpired.cpp
+SOURCE		CMtfTestActionLaunchScheduleMessageExe.cpp
+
+SOURCEPATH	../TestActions/Drm/src
+SOURCE		CMtfTestActionCheckDrmReceipt.cpp
+SOURCE		CMtfTestActionCheckMessageStore.cpp
+SOURCE		CMtfTestActionCheckDrmMetaData.cpp
+SOURCE		CMtfTestActionSmtpSendEmail.cpp
+
+USERINCLUDE	../TestActions/OBEX/IR/inc
+SOURCEPATH	../TestActions/OBEX/IR/src
+
+SOURCE		CMtfTestActionGetIRMTMUId.cpp
+SOURCE		CMtfTestActionGetIrMTMCommandParameters.cpp
+
+USERINCLUDE	../TestActions/OBEX/BT/inc
+SOURCEPATH	../TestActions/OBEX/BT/src
+
+SOURCE		CMtfTestActionGetBTMTMUId.cpp
+SOURCE		CMtfTestActionGetBtMTMCommandParameters.cpp
+
+SOURCEPATH	../TestActionUtils/src
+SOURCE		CMtfTestActionUtilsTimer.cpp CMtfTestActionUtilsDeleteAllChildren.cpp 
+SOURCE		CMtfTestActionUtilsConfigFileParser.cpp 
+SOURCE		MtfTestActionUtilsUser.cpp
+SOURCE		CMtfTestActionUtilsSmsScripts.cpp
+SOURCE		TestFrameworkActionsUtils.cpp
+SOURCE		TMtfTestActionUtilsSchSendScripts.cpp
+SOURCE		CMtfTestActionUtils.cpp
+SOURCE		CMtfTestActionUtilsEmailMessage.cpp
+SOURCE		CMtfTestActionUtilsMessage.cpp
+
+
+SOURCEPATH	../TestCases/NonScriptedTestCases/src
+SOURCE		CMtfTestCaseSample001.cpp
+SOURCE		CMtfTestCaseCreateSendReceivePop3Email.cpp
+SOURCE		CMtfTestCaseCreateSendReceiveImap4Email.cpp
+
+
+
+
+LIBRARY		euser.lib 
+LIBRARY		testexecutelogclient.lib
+LIBRARY 	testexecuteutils.lib
+LIBRARY		efsrv.lib
+LIBRARY		estor.lib
+LIBRARY		charconv.lib
+LIBRARY		msgs.lib
+LIBRARY		imut.lib
+LIBRARY		imcm.lib
+LIBRARY		smcm.lib
+LIBRARY     	bafl.lib
+//LIBRARY     mmsutils.lib
+//LIBRARY     xmlparser.lib xmldom.lib smildtd.lib
+LIBRARY     	smsu.lib
+LIBRARY     	esock.lib
+LIBRARY     	etext.lib
+LIBRARY     	gsmu.lib 
+LIBRARY		schsend.lib
+LIBRARY		etel.lib
+LIBRARY			commsdat.lib
+
+LIBRARY		sendas2.lib
+LIBRARY		btcmtm.lib
+LIBRARY		irc.lib
+LIBRARY		obexmtmutil.lib
+LIBRARY		bluetooth.lib
+
+LIBRARY		etelmm.lib
+LIBRARY		messagingtestutility.lib
+
+EPOCSTACKSIZE		0x6000
+
+
+#ifdef WINS
+DEFFILE				../bwins/wins.def
+#else
+DEFFILE				..\bmarm\marm.def
+#endif
+

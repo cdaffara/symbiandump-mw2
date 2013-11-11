@@ -1,0 +1,16 @@
+//SIAP11
+password
+Mname:Demon
+Muid:yashar
+Mpwd:dig23ler
+Madr:brahim@yashar.demon.co.uk
+Mrcv:pop3.demon.co.uk
+Msnd:post.demon.co.uk
+Mpro:PO
+Mport:110
+Masoc:y
+Msport:25
+Memal:Brahim Abes
+Mrpto:replyname@address.com
+Mrcto:brahim@yashar.demon.co.uk
+Mbenc:y

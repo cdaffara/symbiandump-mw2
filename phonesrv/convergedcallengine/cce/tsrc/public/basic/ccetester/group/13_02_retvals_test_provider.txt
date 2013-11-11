@@ -1,0 +1,146 @@
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 13.2 CConvergedCallProvider leave/return value
+timeout 5000
+create ccetester test
+test Delay 1000
+
+
+//////////////////////////////////////////
+// CConvergedCallProvider, extension provider 
+// tested elsewhere
+//////////////////////////////////////////
+
+// set to return null for dtmf provider
+test ConfigurePlugin 2 ID=CConvergedCallProvider::DTMFProviderL RETURN=0 TYPE=TInt
+
+// dial a call 
+test OpenNewCall 1 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+// return not supported for dtmf operation
+test StartDtmfTone -5 2
+
+// leave with KErrNoMemory 
+test ConfigurePlugin 2 ID=CConvergedCallProvider::DTMFProviderL LEAVE=-6 TYPE=TInt 
+
+// at the moment always return not supported for dtmf operation
+test StartDtmfTone -5 2
+
+// now test again should return KErrNone
+test SendDtmfToneString 0 1
+test WaitEvent 0 DtmfSequenceStart 0 1
+test WaitEvent 0 DtmfSequenceStop 0 1
+test WaitEvent 0 DtmfStringSendCompleted 0 0
+
+// release call
+test Release 1 0
+
+// leave with KErrAlreadyExists 
+test ConfigurePlugin 2 ID=CConvergedCallProvider::NewCallL LEAVE=-11 TYPE=TInt
+test OpenNewCall 2 -11 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+
+// leave with KErrNoMemory  
+test ConfigurePlugin 2 ID=CConvergedCallProvider::NewCallL LEAVE=-4 TYPE=TInt
+test OpenNewCall 2 -4 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+
+// leave with KErrNotSupported  
+test ConfigurePlugin 2 ID=CConvergedCallProvider::NewCallL LEAVE=-5 TYPE=TInt
+test OpenNewCall 2 -5 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+
+// leave with KErrArgument  
+test ConfigurePlugin 2 ID=CConvergedCallProvider::NewCallL LEAVE=-6 TYPE=TInt
+test OpenNewCall 2 -6 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+
+
+
+
+
+
+
+
+// Create 2 calls, one is put to hold, other is connected
+test OpenNewCall 2 0 ConfcallOne 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 2 0 SubAddress Bearer
+test WaitEvent 2 Dialling
+test WaitEvent 2 Connecting
+test WaitEvent 2 Connected
+test Hold 2 0
+test WaitEvents 2 Hold, 2 LocalHold
+
+test OpenNewCall 3 0 ConfcallTwo 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 3 0 SubAddress Bearer
+test WaitEvent 3 Dialling
+test WaitEvent 3 Connecting
+test WaitEvent 3 Connected
+
+
+// add observer leaves with KErrGeneral
+test ConfigurePlugin 2 ID=MCCPConferenceCall::AddObserverL  LEAVE=-2 TYPE=TInt
+test AddToConference 3 -2
+
+// set new conference call creating to leave with KErrNotReady 
+test ConfigurePlugin 2 ID=CConvergedCallProvider::NewConferenceL LEAVE=-18 TYPE=TInt 
+test AddToConference 3 -18
+
+test ReleaseConference 0
+
+///test NewConferenceCall 5 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+////test Release 5 0
+
+
+
+
+
+
+
+
+
+
+
+
+// leave with KErrNotReady 
+///test ConfigurePlugin 2 ID=CConvergedCallProvider::NewConferenceL LEAVE=-18 TYPE=TInt 
+///test NewConferenceCall 5 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+////test Release 5 0
+// leave with KErrNoMemory  
+///test ConfigurePlugin 2 ID=CConvergedCallProvider::NewConferenceL LEAVE=-4 TYPE=TInt 
+///test NewConferenceCall 5 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+////test Release 5 0
+// leave with KErrArgument 
+///test ConfigurePlugin 2 ID=CConvergedCallProvider::NewConferenceL LEAVE=-6 TYPE=TInt 
+///test NewConferenceCall 5 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+////test Release 5 0
+
+// leave with KErrNoMemory 
+///test ConfigurePlugin 2 ID=CConvergedCallProvider::ExtensionProviderL LEAVE=-6 TYPE=TInt 
+
+
+
+
+//----------------->
+
+// leave with KErrNoMemory
+///////////////// at startup ... test ConfigurePlugin 2 ID=CConvergedCallProvider::NewEmergencyCallL LEAVE=-4 TYPE=TInt
+///////////////// at startup ... test InitializeEmergencyCall 8 -4 
+///////////////// at startup ... //Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+///////////////// at startup ... ////test Release 5 0
+///////////////// at startup ... test DialEmergencyCall 8 12345
+
+
+// leave with KErrAlreadyExists 
+// todo how to set up when plugin starts up
+//test ConfigurePlugin 2 ID=CConvergedCallProvider::InitializeL LEAVE=-2 TYPE=TInt
+
+
+
+
+test VerifyTest
+delete test
+[Endtest]

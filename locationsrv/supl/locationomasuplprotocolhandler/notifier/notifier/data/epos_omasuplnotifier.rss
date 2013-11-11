@@ -1,0 +1,143 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:   Resource definitions for project SUPL Notifiers
+*
+*/
+
+
+
+// System Includes
+#include <data_caging_paths_strings.hrh>
+#include <bldvariant.hrh>
+#include <avkon.rh>
+#include <avkon.rsg>
+#include <avkon.mbg>
+#include <EIKCORE.rsg>
+#include <eikon.rh>
+#include <eikon.rsg>
+#include <avkon.loc>
+
+// User Includes
+#include <sc/epos_omasuplnotifier.loc>
+
+//  RESOURCE IDENTIFIER
+NAME SUNO   // 4 Letter Identifier
+
+RESOURCE RSS_SIGNATURE 
+    {
+    }
+    
+// ---------------------------------------------------------------------------
+// r_loc_supl_connection
+// Prompt text for configuring SUPL settings in a confirmation query .The
+// corresponding query would be displayed to the user when the user is in his
+// home network.
+// ---------------------------------------------------------------------------
+// 
+RESOURCE TBUF r_loc_supl_connection
+    {
+    buf = qtn_loc_supl_connection;
+    }
+
+// ---------------------------------------------------------------------------
+// r_loc_supl_roaming_connection
+// Prompt text for configuring SUPL settings in a confirmation query .The
+// corresponding query would be displayed to the user when the user is not in
+// his home network.
+// ---------------------------------------------------------------------------
+// 
+RESOURCE TBUF r_loc_supl_roaming_connection
+    {
+    buf = qtn_loc_supl_roaming_connection;
+    }
+    
+// ---------------------------------------------------------------------------
+// r_loc_supl_settings_link
+// Link text for SUPL confirmation queries.
+// ---------------------------------------------------------------------------
+// 
+RESOURCE TBUF r_loc_supl_settings_link
+    {
+    buf = qtn_loc_supl_settings_link;
+    }
+
+//------------------------------------------------------------------------------  
+// r_loc_supl_timeout_no_connection
+// SUPL Connection Timeout text
+//------------------------------------------------------------------------------
+//
+RESOURCE TBUF r_loc_supl_timeout_no_connection
+    {
+    buf = qtn_loc_supl_timeout_no_connection;
+    }  
+    
+// ---------------------------------------------------------------------------
+// r_supl_confirm_query
+// SUPL Confirmation query
+// ---------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_supl_confirm_query
+    {
+    flags = EGeneralQueryFlags | EEikDialogFlagNoBorder | EEikDialogFlagNoShadow;
+    buttons = R_AVKON_SOFTKEYS_YES_NO__YES;
+    items =
+        {
+		DLG_LINE 
+	        {
+            type = EAknCtPopupHeadingPane;
+            id = EAknMessageQueryHeaderId;
+            control = AVKON_HEADING
+                {
+                label = qtn_loc_supl_heading;
+                headinglayout = R_AVKON_WML_SIGN_QUERY_HEADING_PANE;
+                };
+            },
+        DLG_LINE
+            {
+            type = EAknCtMessageQuery;
+            id = EAknMessageQueryContentId;
+            control = AVKON_MESSAGE_QUERY
+                {               
+                };
+            }
+        };
+    }
+
+// ---------------------------------------------------------------------------
+// r_supl_timeout_query
+// SUPL Timeout query
+// ---------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_supl_timeout_query
+    {
+    flags = EGeneralQueryFlags | EEikDialogFlagNoBorder | EEikDialogFlagNoShadow;
+    buttons=R_AVKON_SOFTKEYS_OK_EMPTY;
+    items=
+        {
+        DLG_LINE
+            {
+            type = EAknCtQuery;
+            id = EGeneralQuery;
+            control= AVKON_CONFIRMATION_QUERY
+                {
+                layout = EConfirmationQueryLayout;
+                bmpfile = AVKON_BITMAP_FILE;
+                bmpid = EMbmAvkonQgn_note_empty;
+                bmpmask = EMbmAvkonQgn_note_empty_mask;
+                };
+            }
+        };
+    }
+                       	          
+// End of File

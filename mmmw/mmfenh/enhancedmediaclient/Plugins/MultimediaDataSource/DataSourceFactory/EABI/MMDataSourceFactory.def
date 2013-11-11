@@ -1,0 +1,4 @@
+EXPORTS
+	_ZN28CMultimediaDataSourceFactory16CreateDataSourceER11MDataSourceRP21CMultimediaDataSource @ 1 NONAME
+	_ZN28CMultimediaDataSourceFactory24CreateSeekableDataSourceER11MDataSourceRP21CMultimediaDataSourceRP22CDataSourceConfigIntfc @ 2 NONAME
+

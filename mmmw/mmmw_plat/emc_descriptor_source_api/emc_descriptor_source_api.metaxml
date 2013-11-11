@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api id="701522427712381e65a41e7edd32cb20" dataversion="2.0">
+  <name>EMC Descriptor Source API</name>
+  <description>This API defines a Descriptor Source API for playing back media content from memory on the S60 platform using Enhanced Audio Playback API.</description>
+  <type>c++</type>
+  <collection>mmfenh</collection>
+  <libs>
+    <lib name="EnhancedMediaClient.lib"/>
+  </libs>
+  <release category="platform" sinceversion="3.2"/>
+  <attributes>
+    <!-- This indicates wether the api provedes separate html documentation -->
+    <!-- or is the additional documentation generated from headers. -->
+    <!-- If you are unsuere then the value is "no" -->
+    <htmldocprovided>no</htmldocprovided>
+    <adaptation>no</adaptation>
+  </attributes>
+</api>

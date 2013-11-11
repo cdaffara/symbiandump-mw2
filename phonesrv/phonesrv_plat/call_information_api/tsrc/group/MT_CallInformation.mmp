@@ -1,0 +1,60 @@
+/*
+* Copyright (c) 2009-2010 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+/*
+
+*/
+#include <platform_paths.hrh>
+TARGET          MT_CallInformation.dll
+TARGETTYPE      dll
+UID             0x1000af5a 0x01700000
+
+CAPABILITY      ALL -TCB 
+VENDORID        VID_DEFAULT
+
+SOURCEPATH              ../src
+SOURCE                  MT_CallInformation.cpp
+SOURCE                  MT_CallInformation_DllMain.cpp
+
+#if defined(WINSCW)
+SOURCE                  CPhoneEngineCreator.cpp
+SOURCE                  CPEMessageWaiter.cpp
+SOURCE                  T_TelephonyAudioRouting.cpp
+SOURCE                  CActiveWait.cpp
+#endif
+
+USERINCLUDE             ../src
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE           /epoc32/include/platform/digia/eunit
+#if defined(WINSCW)
+SYSTEMINCLUDE           ../../../../../../app/phone/inc
+SYSTEMINCLUDE           ../../../../../../app/phone/phoneengine/inc
+SYSTEMINCLUDE           ../../../../../../app/phone/phoneengine/audiohandling/inc
+#endif
+
+LIBRARY                 eunit.lib
+LIBRARY                 eunitutil.lib
+LIBRARY                 euser.lib
+LIBRARY                 telephonyservice.lib
+LIBRARY                 etel.lib
+LIBRARY	                etelmm.lib
+LIBRARY                 phoneclient.lib
+
+#if defined(WINSCW)
+LIBRARY                 phoneengine.lib
+LIBRARY                 audiohandling.lib
+#endif

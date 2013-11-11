@@ -1,0 +1,67 @@
+//	Email Notification Parser Test Script
+//	=====================================
+
+
+[main]
+bio_test doatstart
+bio_test enp1
+bio_test enp2
+bio_test enp3
+bio_test enp4
+bio_test enp5
+bio_test enp6
+bio_test enp7
+bio_test doattheend
+
+
+// Startup section.
+[doatstart]
+clean_all_bio_msgs
+
+// Shutdown section.
+[doattheend]
+
+
+// enp tests.
+
+[enp1]
+gen_msg_from_file enp\enp1.txt
+check_used_bif 10005530
+bio_client_parse
+dump_parsed_message
+
+[enp2]
+gen_msg_from_file enp\enp2.txt
+check_used_bif 10005530
+bio_client_parse
+dump_parsed_message
+
+[enp3]
+gen_msg_from_file enp\enp3.txt
+check_used_bif 10005530
+bio_client_parse
+dump_parsed_message
+
+[enp4]
+gen_msg_from_file enp\enp4.txt
+check_used_bif 10005530
+bio_client_parse
+dump_parsed_message
+
+[enp5]
+gen_msg_from_file enp\enp5.txt
+check_used_bif 10005530
+bio_client_parse
+dump_parsed_message
+
+[enp6]
+gen_msg_from_file enp\enp6.txt
+check_used_bif 10005530
+bio_client_parse
+dump_parsed_message
+
+[enp7]
+gen_msg_from_file enp\enp7.txt
+check_used_bif 10005530
+bio_client_parse
+dump_parsed_message

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<relnotes name="BIO Messaging Framework">
+  <purpose>
+    Bearer Independent Object (BIO) messaging framework enabling send/receive of system or application targeted messages e.g. a vCard message intended for the Contacts Model.
+  </purpose>
+
+ <defect number="DEF143312   " title=" bioparsers.iby missing files on ROM stage in MSF00279 " revision="037">
+  	Added test macro.
+  </defect>
+ 
+  <defect number="DEF143278  " title="to support CR351 (Re-splitting Public Headers) raised by CBS team " revision="036">
+  	removing header file dependncy.
+  </defect>
+
+  <defect number="DEF143274  " title="biowatcher.dll is caught in a loop, consuming a lot of CPU and slowing down emul  " revision="036">
+  	fix in GFP MMP file.
+  </defect>
+
+  <defect number="PDEF141769 " title="T_BOC test is failing " revision="035">
+  	fix in iacp text file
+  </defect>
+
+  <defect number="PDEF140601 " title="AT&T Any Message Delivering to unknown port Deletion " revision="034">
+  	Introduced two new APIs in CSmsSettings class to set the "Discard UnknownPort Message" flag.
+  </defect>
+
+  <defect number="DEF140071 " title="Warnings in CDB phase when switching to Raptor for messaging " revision="033">
+  	bsp.h included in iacp.h
+  </defect>
+ 
+  <defect number="DEF139287 " title="S60 build breaks due to PREQ2510 submission  " revision="032">
+   modified .h files in biomessaging
+  </defect>
+
+  <deliverystep number="1462" name="Splitting mixed header files for Messaging" osproject="SymTB92" revision="031">
+   <preq number="2510" title=" Splitting mixed header files for Messaging">
+    Mixed header files will now contain only published All or published Partner or internal
+   </preq>
+    <milestone project="GT0465" number="3.5"/>
+  </deliverystep>
+
+  <defect number="INC136844" title="Biomsging db recreated evry 10secs intrval if CNbsSmsSocketWatcher constr fails " revision="030">
+    moved the ConstructDbl() to CSMSBaseWatchers::ConstructL() and moving the ResetDbL() to the Dtor of CSmsBaseWatcher
+  </defect>
+
+  <deliverystep number="1472" name="Removal of CDMA support" osproject="Sphinx" revision="029">
+    <preq number="2002" title="Removal of CDMA support">
+    Removed BiowatchersCdma and multimode component.
+    </preq>
+    <milestone project="GT0358" number="3.6"/>
+  </deliverystep>
+
+  <defect number="DEF133266" title="[System Build]: Elf2e32: Warning in Bio messaging framework ARMV7 M04816 vFuture" revision="028">
+    Added EXPORT_C for destructor of CBIODatabase in BIODB.CPP. Followed by abld freeze to freeze the new export function.
+  </defect>
+
+  <defect number="DEF132834" title="Inappropriate error handling in messaging server" revision="027">
+    Used RBuf::CreateL() instead of RBuf::Create().  
+
+  </defect>
+
+  <defect number="PDEF131907" title="Memory card disk space can be filled by receiving SMS messages." revision="026">
+    Drive is checked for thresholdvalue while receiving SMS message .
+  </defect>
+
+  <defect number="DEF129209" title="BioMsg tests are failing with the submission of DEF121661 related changes." revision="025">
+    Modified the maxlength for service type to bearertype.
+  </defect>
+
+<defect number="PDEF128748" title=" Watcher leaks memory in CBifChangeObserver::DoRunL() " revision="024">
+   Removed if condition so that  it will call ResetandDestroy on iEntries.
+  </defect>
+  
+  <defect number="DEF126849" title="[Coverity] - SYMBIAN.CLEANUP -messaging/framework/" revision="023">
+    Initialized the declared variable, removed the double push into the cleanupstack, removed the dead code, checked the function return valure.   
+  </defect>
+
+  <defect number="DEF126851" title="[Coverity]-UNUSED_VALUE,DEADCODE,PASS_BY_VALUE -messaging/framework/" revision="022">
+    Initialized the declared variable, removed the double push into the cleanupstack, removed the dead code, checked the function return valure.  
+  </defect>
+
+  <defect number="DEF125038" title="[coverity] Double_PUsh- messaging/biomsg/biowatchers/src/WapSocketWatcher.cpp" 	revision="021">
+    Removed double push  for Buffer
+  </defect>
+
+  <defect number="PDEF124769" title="messaging_email should not require patching" revision="020">
+    Removed biomsg\vcdpbif and biomsg\vcd=lpbif compoenents from biomsg to the new messaging_config component
+  </defect>
+
+  <defect number="DEF125443" title="9.5 Coverity errors" revision="019">
+    Removed Un Used Values 
+  </defect>
+
+  <defect number="DEF125038" title="[coverity] - FORWARD_NULL - messaging/biomsg/biowatchers/src/smswatcher.cpp" revision="018">
+    Checked the if condition is not false
+  </defect>
+
+  <defect number="DEF125064" title="[coverity] - CHECKED_RETURN - messaging/biomsg/iacpsrc/ispp.cpp " revision="017">
+    Checked the if condition is not false for the function GetFieldValueAndLength
+  </defect>
+
+  <deliverystep number="835" name="Messaging: New advanced APIs for searching and sorting for Message store" osproject="Sphinx" revision="016">
+   <preq number="1667" title="Enhanced search capabilities for message store">
+    For supportong new advanced APIs for searching and sorting for Message store
+   </preq>
+    <milestone project="GT0358" number="3.2.2"/>
+  </deliverystep>  
+
+  <defect number="DEF120104" title="Biomessaging tests fail after catchup made from MCL to support GCC" revision="015">
+   updated the dif file for gcc compatible.
+  </defect>
+
+  <defect number="PDEF118757" title="Klocwork issues,NULL pointer can be used in release build messaging_biomsg" revision="014">
+   Removed the ASSERT as NULL value will never be assigned to the pointer.
+  </defect>
+
+  <defect number="PDEF115604" title="SMS reception becomes blocked" revision="013">
+    If message arrived with "replace short message functionality", and some how message deleted from Mail2 store but entry exist in Index file. In such case, need to delete entry from Index file and treat this as a new message. now It's handled in CBaseSmsActiveSocketWatcher::DeleteReplaceTypeMessagesL() in SmsSocketWatcher.cpp
+  </defect>
+
+  <defect number="PDEF114442" title="Application crashes when receiving SMS via email " revision="012">
+    The TBuf is changed to RBuf, and if email is being handled the size will be calculated based on the email fields data. 
+  </defect>
+  
+  <defect number="DEF111689" title="Filename Policy non-conformance generates warnings in checksource build " revision="011">
+    Replaced the #ifdef WINS with #ifdef WINSCW 
+  </defect>
+
+  <defect number="PDEF110775" title="Not interpret as vcard when sending from device without software" revision="010">
+    Needs to check Whether Vcard opened as text when received.  
+  </defect>
+
+  <deliverystep number="695" name="Submit PREQ1736 to MCL" osproject="Oghma" revision="009">
+    <preq number="1736" title="SMS Class 0 and Type 0 3GPP Compliance">
+    SMS Class 0 and Type 0 3GPP Compliance
+    </preq>
+    <milestone project="GT0342" number="3.6"/>
+  </deliverystep>
+  
+  <deliverystep number="602" name="Submit PREQ1307 to MCL" osproject="Oghma" revision="008">
+    <preq number="1307" title="Non-Seamless Network Bearer Mobility for Messaging">
+    Non-Seamless Network Bearer Mobility for Messaging
+    </preq>
+    <milestone project="GT0342" number="3.2.1"/>
+  </deliverystep>
+
+  <defect number="DEF108002" title="Warnings generated with checksource build  " revision="007">
+    Added condition to differentiate the winscw and armv5 def files for case sensitive 
+  </defect>
+
+  <defect number="PDEF109016" title="BIO MTM fails if v: drive is present in emulator" revision="006">
+    Changed CBIODatabase::AddAllBifsL() to include KErrNotSupported in the list of allowed error codes.
+  </defect>
+
+  <defect number="PDEF107885" title="MSA: SMS sent to an unrecognized port number is received in inbox" revision="005">
+    Added functions to check if the message delivered to an unknown port and it has a 7-bit or UCS-2 alphabet, then the message is delivered to the inbox as normal and if the message is delivered to an unknown port and it does NOT have a 7-bit or UCS-2 alphabet, then the message is deleted.
+  </defect>
+
+  <defect number="DEF105400" title="Add missing IM tags to Messaging public header files" revision="004">
+    Added IM tag for all given header files.
+  </defect>
+
+  <defect number="PDEF105933" title="Problem with BT transfer while USB MSD transfer" revision="003">
+    AddAllBifsL() function will leave even if returned value is KErrInUse.
+  </defect>
+
+  <deliverystep number="500" name="Messaging file name changes to support GNU compiler for Linux" osproject="Oghma" revision="002">
+    <preq number="1182" title="GNU Make-based build system">
+    GNU Make-based build system
+  </preq>
+    <milestone project="GT0342" number="3.3"/>
+  </deliverystep>
+
+  <defect number="PDEF104225" title="MessageFormat does not trap and handle errors properly." revision="001">
+    Message format error handling.
+  </defect>
+</relnotes>

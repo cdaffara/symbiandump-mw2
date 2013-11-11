@@ -1,0 +1,4 @@
+EXPORTS
+	_ZN26CLocRequestorUtilsResolver18ResolveRequestorsLER13RPointerArrayI13CPosRequestorE @ 1 NONAME
+	_ZN26CLocRequestorUtilsResolver4NewLEv @ 2 NONAME
+

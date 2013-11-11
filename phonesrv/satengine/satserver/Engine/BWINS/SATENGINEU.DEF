@@ -1,0 +1,20 @@
+EXPORTS
+	??0CSatCommandHandler@@IAE@XZ @ 1 NONAME ; CSatCommandHandler::CSatCommandHandler(void)
+	??0CSatSScheduler@@QAE@XZ @ 2 NONAME ; CSatSScheduler::CSatSScheduler(void)
+	??1CSatCommandHandler@@UAE@XZ @ 3 NONAME ; CSatCommandHandler::~CSatCommandHandler(void)
+	?BaseConstructL@CSatCommandHandler@@IAEXPAVMSatUtils@@@Z @ 4 NONAME ; void CSatCommandHandler::BaseConstructL(class MSatUtils *)
+	?ClientResponse@CSatCommandHandler@@UAEXXZ @ 5 NONAME ; void CSatCommandHandler::ClientResponse(void)
+	?CreateSatServerL@@YAPAVCSatSServer@@XZ @ 6 NONAME ; class CSatSServer * CreateSatServerL(void)
+	?DoHandleCommand@CSatCommandHandler@@MAEXXZ @ 7 NONAME ; void CSatCommandHandler::DoHandleCommand(void)
+	?Event@CSatCommandHandler@@UAEXH@Z @ 8 NONAME ; void CSatCommandHandler::Event(int)
+	?IsCommandExecuting@CSatCommandHandler@@QBEHXZ @ 9 NONAME ; int CSatCommandHandler::IsCommandExecuting(void) const
+	?IsExtendedError@TSatExtErrorUtils@@SAHH@Z @ 10 NONAME ; int TSatExtErrorUtils::IsExtendedError(int)
+	?IsNetworkError@TSatExtErrorUtils@@SAHH@Z @ 11 NONAME ; int TSatExtErrorUtils::IsNetworkError(int)
+	?IsPhoneInIdleState@CSatCommandHandler@@IAEHXZ @ 12 NONAME ; int CSatCommandHandler::IsPhoneInIdleState(void)
+	?MapError@TSatExtErrorUtils@@SAEHH@Z @ 13 NONAME ; unsigned char TSatExtErrorUtils::MapError(int, int)
+	?Panic@CSatCommandHandler@@QBEXABVTDesC16@@H@Z @ 14 NONAME ; void CSatCommandHandler::Panic(class TDesC16 const &, int) const
+	?RunL@CSatCommandHandler@@MAEXXZ @ 15 NONAME ; void CSatCommandHandler::RunL(void)
+	?SetServer@CSatSScheduler@@QAEXPAVCSatSServer@@@Z @ 16 NONAME ; void CSatSScheduler::SetServer(class CSatSServer *)
+	?Start@CSatCommandHandler@@QAEXXZ @ 17 NONAME ; void CSatCommandHandler::Start(void)
+	?TerminalRsp@CSatCommandHandler@@IAEXW4TPCmd@RSat@@ABVTDesC8@@@Z @ 18 NONAME ; void CSatCommandHandler::TerminalRsp(enum RSat::TPCmd, class TDesC8 const &)
+

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>msg-combinesearch</name>
+	<timeout>4000</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\common\search\msg-combinesearch.script</hostPath>
+			<devicePath>c:\msgtest\common\search\msg-combinesearch.script</devicePath>
+		</script>
+	</testScripts>
+
+	<testServers>
+		<server>T_MsgCommonServer</server>
+		<server>T_MsgImapServer</server>
+		<server>T_MsgSmtpServer</server>
+	</testServers>
+
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\common\search\msg-combinesearch.ini</hostPath>
+			<devicePath>c:\msgtest\common\search\msg-combinesearch.ini</devicePath>
+		</data>
+	</dependencies>	
+</testExecuteTest>

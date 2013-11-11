@@ -1,0 +1,45 @@
+// Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// BULKCOMMITMTM.RSS
+// 
+//
+
+#include <mtmconfig.rh>
+
+RESOURCE MTM_INFO_FILE
+	{
+	mtm_type_uid = 0x1028308F;
+	technology_type_uid = 0x1000127D;
+	components = 
+		{
+		MTM_COMPONENT_V2
+			{
+			human_readable_name = "Test Server Mtm";
+			component_uid = KUidMtmServerComponentVal;
+			entry_point = 1;
+			version = VERSION_V2 {};
+			filename = "z:\\sys\\bin\\msvsysprogresstestmtm.dll";
+			}
+		};
+	}
+
+
+RESOURCE MTM_CAPABILITIES
+	{
+	}
+	
+RESOURCE MTM_SECURITY_CAPABILITY_SET
+	{
+	}
+

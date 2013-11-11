@@ -1,0 +1,86 @@
+// Copyright (c) 2006-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// t_msgcommonserver.mmp
+//
+
+/**
+ @file 
+*/
+
+CAPABILITY 		ALL -TCB
+TARGET			t_msgcommonserver.exe
+TARGETTYPE		exe
+UID			0x1000007A 0x1027406D
+VENDORID 		0x70000001
+EPOCHEAPSIZE 0x4000 0x1200000
+
+/* Include the Framework */
+#include "../../framework/group/T_MsgFramework.mph"
+
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+	
+USERINCLUDE		../inc 
+USERINCLUDE     ../../../../../../app/messaging/email/pop3andsmtpmtm/clientmtms/inc
+SOURCEPATH		../src
+
+SOURCE			T_MsgCommonServer.cpp
+SOURCE			T_InitNtRas.cpp
+SOURCE			T_CheckChildrenCount.cpp
+SOURCE			T_ResetMessageStore.cpp
+SOURCE			T_MsgAsyncStepCommon.cpp
+SOURCE			T_MsgSyncStepCommon.cpp
+SOURCE			T_MsgSharedDataCommon.cpp
+SOURCE			T_MsgEventHandlerAdd.cpp
+SOURCE			T_MsgEventHandlerInit.cpp
+SOURCE			T_MsgEventHandlerCheck.cpp
+SOURCE			t_msgsearchentry.cpp
+SOURCE			T_ChangeHomeTime.cpp
+SOURCE			t_msgclientsearch.cpp
+SOURCE			t_cmsvsession.cpp
+SOURCE			t_cmsventry.cpp
+// PREQ 1667 Tests
+SOURCE			t_deletemessageselection.cpp
+SOURCE			t_createsearchsortquery.cpp
+SOURCE			t_searchsortbyqueryobject.cpp
+SOURCE			t_searchsortresultbyqueryid.cpp
+SOURCE			t_verifysearchresult.cpp
+SOURCE			t_verifysortresult.cpp
+SOURCE			t_modifyindexentryflags.cpp
+SOURCE			t_msgsearchperformance.cpp
+SOURCE 			t_msgperfsearchusingexisting.cpp
+SOURCE			t_msgperfsearchusing1667qo.cpp
+SOURCE			t_createperfsearchsortquery.cpp
+SOURCE			t_msgperfsearchsortusingqi.cpp 
+SOURCE			t_verifyheaders.cpp
+
+LIBRARY 		testexecuteutils.lib
+LIBRARY			testexecutelogclient.lib
+LIBRARY			messagingtestutility2.lib
+LIBRARY			imut.lib 
+LIBRARY			bafl.lib
+LIBRARY			etext.lib
+LIBRARY			estor.lib 
+LIBRARY			msgs.lib
+LIBRARY			euser.lib
+LIBRARY			smcm.lib
+LIBRARY			gsmu.lib
+LIBRARY			imcm.lib
+LIBRARY			efsrv.lib
+LIBRARY			charconv.lib
+LIBRARY			t_msgutilityserver.lib
+LIBRARY			instrumentationhandler.lib
+LIBRARY			netmeta.lib
+
+EPOCHEAPSIZE 0x1000 0x800000
+SMPSAFE

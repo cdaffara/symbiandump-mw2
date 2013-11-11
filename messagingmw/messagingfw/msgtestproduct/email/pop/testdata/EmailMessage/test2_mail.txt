@@ -1,0 +1,46 @@
+From: test908@msexchange2k.closedtest.intra
+To: test908@msexchange2k.closedtest.intra
+Subject: test_mail_2
+Date: Thu, 6 May 2004 14:43:21 +0100
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_000_007D_01C43378.7A96C5D0"
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 5.50.4807.1700
+X-MIMEOLE: Produced By Microsoft MimeOLE V5.50.4910.0300
+Return-Path: test908@msexchange2k.closedtest.intra
+X-OriginalArrivalTime: 06 May 2004 13:42:08.0890 (UTC) FILETIME=[ED4DC5A0:01C4336F]
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_007D_01C43378.7A96C5D0
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+test 2 line 1
+test 2 line 2
+test 2 line 3
+test 2 line 4
+test 2 line 5
+test 2 line 6
+------=_NextPart_000_007D_01C43378.7A96C5D0
+Content-Type: text/html;charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Diso-8859-1">
+<META content=3D"MSHTML 5.50.4937.800" name=3DGENERATOR>
+<STYLE></STYLE>
+</HEAD>
+<BODY bgColor=3D#ffffff>
+<DIV><FONT face=3DArial size=3D2>test 2 line 1</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2>test 2 line 2</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2>test 2 line 3</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2>test 2 line 4</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2>test 2 line 5</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2>test 2 line 6</FONT></DIV></BODY></HTML>
+
+------=_NextPart_000_007D_01C43378.7A96C5D0--

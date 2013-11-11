@@ -1,0 +1,66 @@
+/***************************************************************
+  1. Create conference of 2 calls
+	2. Hold conference (with Swap)
+	3. Resume conference (with Swap)
+	4. End conference
+***************************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 9.3.2 Conference Call, Resume
+timeout 30000
+create ccetester test
+
+// Step 1
+print Step_1
+
+test OpenNewCall 1 0 Conf_A@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+test OpenNewCall 2 0 RecipientTwo 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 2 0 SubAddress Bearer
+test WaitEvent 2 Dialling
+test WaitEvent 2 Connecting
+test WaitEvent 2 Connected
+
+test AddToConference 1 0
+test WaitEvent ConferenceCallAdded 1
+
+test AddToConference 2 0
+// Plugin sets to match conference state (connected)
+test WaitEvents ConferenceCallAdded 2, ConferenceActive, 1 Connected // events 10-12
+
+// Step 2
+print Step_2
+
+test SwapConference 0
+// Plugin changes call states to match conference (Hold)
+test WaitEvents 1 Hold, 2 Hold, ConferenceHold, ConferenceCallSwapped
+
+// Step 3
+print Step_3
+
+test SwapConference 0
+// Plugin changes call states to match conference (Connected)
+test WaitEvents 1 Connected, 2 Connected, ConferenceActive, ConferenceCallSwapped // 17-20
+
+// Step 4
+print Step_4
+
+test HangupConference 0
+test WaitEvents ConferenceCallRemoved 1, ConferenceCallRemoved 2, ConferenceIdle, 1 Disconnecting, 1 Idle, 2 Disconnecting, 2 Idle
+
+test ReleaseConference 0
+
+test VerifyTest
+delete test
+[Endtest]

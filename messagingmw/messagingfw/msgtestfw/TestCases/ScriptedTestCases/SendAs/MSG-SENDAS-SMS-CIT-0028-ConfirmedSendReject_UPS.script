@@ -1,0 +1,66 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+//! @file
+//! @SYMTestCaseID MSG-SENDAS-CIT-0026-HP
+//! @SYMTestCaseDesc Confirmed Send
+//! @SYMFssID 
+//! @SYMTestStatus Defined
+//! @SYMTestPriority High
+//! @SYMTestActions xxxxxxxx
+//! @SYMTestExpectedResults yyyyyyyyy
+//! @SYMTestType CIT
+
+// Set the user response for UPS prompt service
+RUN_PROGRAM SetUserPromptResponse No
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_UTILS CopyFile c:\msgtest\TestFramework\Configurations\SmsSettings\config.txt C:\config.txt
+RUN_UTILS MakeReadWrite C:\config.txt
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+InitializeSimTsy		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0028-ConfirmedSendReject.ini	InitializeSimTsy
+GetBaseConstants		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0028-ConfirmedSendReject.ini	GetBaseConstants
+GetSmsConstants			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0028-ConfirmedSendReject.ini	GetSmsConstants
+CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0028-ConfirmedSendReject.ini	CreateSession
+ResetMessageStore		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0028-ConfirmedSendReject.ini	ResetMessageStore
+SetDefaultSmsSettings		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0028-ConfirmedSendReject.ini	SetDefaultSmsSettings
+SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0028-ConfirmedSendReject.ini	SetDefaultConfiguration
+SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0028-ConfirmedSendReject.ini	SetDefaultConfigurationBodyTxt
+CreateSmsService		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0028-ConfirmedSendReject.ini	CreateSmsService
+SetSmsServiceSettings		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0028-ConfirmedSendReject.ini	SetSmsServiceSettings
+CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0028-ConfirmedSendReject.ini	CreateRegistry
+CreateMtm			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0028-ConfirmedSendReject.ini	CreateSmsMtm
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0028-ConfirmedSendReject.ini	ChkChildrenCountDraft0
+EXECUTE_TEST_CASE
+ConnectSendAsServer		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0028-ConfirmedSendReject.ini	ConnectSendAsServer
+SendAsCreateMessageofType	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0028-ConfirmedSendReject.ini	SendAsCreateMessageofType
+SendAsAddRecipient		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0028-ConfirmedSendReject.ini	SendAsAddRecipient
+SendAsSetBodyText		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0028-ConfirmedSendReject.ini	SendAsSetBodyText
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0028-ConfirmedSendReject.ini	ChkChildrenCountDraft1
+SetUserResponse			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0028-ConfirmedSendReject.ini	SetUserResponse
+SendAsSendMessage		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0028-ConfirmedSendReject.ini	SendAsSendMessage
+SendAsCloseMessage		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0028-ConfirmedSendReject.ini	CloseMessage
+CloseSendAsServerConnection	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0028-ConfirmedSendReject.ini	CloseSvrConnection
+CHECK_POSTCONDITIONS
+CheckErrorCode			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0028-ConfirmedSendReject.ini	CheckErrorCode
+UnloadPhoneModule		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0028-ConfirmedSendReject.ini	UnloadPhoneModule
+END_TEST_CASE

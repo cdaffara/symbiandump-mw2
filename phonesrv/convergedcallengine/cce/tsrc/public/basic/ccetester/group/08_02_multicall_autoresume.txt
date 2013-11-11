@@ -1,0 +1,72 @@
+/*************************************************************
+   1. Create MO call  
+   2. Create 2nd (MO) call
+      Expected: Call 1 is automatically put on Hold
+   3. Hang up 2nd call 
+   4. Create 2nd (MO) call
+      Expected: Call 1 is automatically put on Hold  
+   5. Remote hangs up call 2
+   6. Hang up call 1
+*************************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 8.2 Multicall, Autoresume
+timeout 10000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test OpenNewCall 1 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+// Step 2
+print Step_2
+
+test OpenNewCall 2 0 RecipientTwo 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 2 0 SubAddress Bearer
+test WaitEvents 1 Hold, 2 Dialling, 2 Connecting, 2 Connected, 1 LocalHold
+
+// Step 3
+print Step_3
+
+test HangUp 2 0
+test WaitEvent 2 Disconnecting
+test WaitEvent 2 Idle
+
+// Step 4
+print Step_4
+
+test Dial 2 0 SubAddress Bearer
+test WaitEvent 2 Dialling
+test WaitEvent 2 Connecting
+test WaitEvent 2 Connected
+
+// Step 5
+print Step_5
+
+test SendPluginRequest HangupCall 2
+test WaitEvent 2 RemoteTerminated
+test WaitEvent 2 Disconnecting
+test WaitEvent 2 Idle
+test Release 2 0
+
+// Step 6
+print Step_6
+
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+test VerifyTest
+delete test
+[Endtest]

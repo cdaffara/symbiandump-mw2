@@ -1,0 +1,33 @@
+/*
+* Copyright (c) 2010 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: IBY file for satapp application
+*
+*/
+
+#ifndef __SATAPP_IBY__
+#define __SATAPP_IBY__
+
+#ifdef __SIMCARD
+// SAT SHELL CONTROLLER
+file=ABI_DIR\BUILD_DIR\satshellcntrl.dll           SHARED_LIB_DIR\satshellcntrl.dll
+file=ABI_DIR\BUILD_DIR\satapp.exe                  SHARED_LIB_DIR\satapp.exe
+
+data=DATAZ_\resource\apps\satapp.rsc               resource\apps\satapp.rsc
+data=DATAZ_\resource\apps\satapp.mif               resource\apps\satapp.mif
+data=ZSYSTEM\install\satapp_stub.sis               system\install\satapp_stub.sis
+data=ZPRIVATE\10003a3f\import\apps\satapp_reg.rsc  private\10003a3f\import\apps\satapp_reg.rsc
+
+#endif
+
+#endif

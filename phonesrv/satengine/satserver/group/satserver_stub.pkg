@@ -1,0 +1,60 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: For packing satserver stub.
+;
+; Languages
+&EN
+
+; Header
+#{"satserver"}, (0x1000A833), 1, 0, 0, TYPE=SA
+
+; Localised Vendor name
+%{"Nokia"}
+
+; Unique Vendor name
+:"Nokia"
+
+; Files
+""-"z:\sys\bin\SatServer.exe"
+""-"z:\sys\bin\satengine.dll"
+""-"z:\sys\bin\SatEventMonitors.dll"
+""-"z:\sys\bin\SatClient.dll"
+""-"z:\sys\bin\SatInternalClient.dll"
+""-"z:\sys\bin\SatSystemState.dll"
+""-"z:\sys\bin\CallControlCmd.dll"
+""-"z:\sys\bin\CloseChannelCmd.dll"
+""-"z:\sys\bin\DisplayTextCmd.dll"
+""-"z:\sys\bin\GetChannelStatusCmd.dll"
+""-"z:\sys\bin\GetInkeyCmd.dll"
+""-"z:\sys\bin\GetInputCmd.dll"
+""-"z:\sys\bin\LanguageNotificationCmd.dll"
+""-"z:\sys\bin\LaunchBrowserCmd.dll"
+""-"z:\sys\bin\MoSmControlCmd.dll"
+""-"z:\sys\bin\OpenChannelCmd.dll"
+""-"z:\sys\bin\PlayToneCmd.dll"
+""-"z:\sys\bin\ProvideLocalInfoCmd.dll"
+""-"z:\sys\bin\ReceiveDataCmd.dll"
+""-"z:\sys\bin\RefreshCmd.dll"
+""-"z:\sys\bin\RefreshRequiredCmd.dll"
+""-"z:\sys\bin\SelectItemCmd.dll"
+""-"z:\sys\bin\SendDataCmd.dll"
+""-"z:\sys\bin\SendDtmfCmd.dll"
+""-"z:\sys\bin\SendSmCmd.dll"
+""-"z:\sys\bin\SendSsCmd.dll"
+""-"z:\sys\bin\SendUssdCmd.dll"
+""-"z:\sys\bin\SetUpCallCmd.dll"
+""-"z:\sys\bin\SetUpEventListCmd.dll"
+""-"z:\sys\bin\SetUpIdleModeTextCmd.dll"
+""-"z:\sys\bin\SetUpMenuCmd.dll"
+""-"z:\sys\bin\SimSessionEndCmd.dll"

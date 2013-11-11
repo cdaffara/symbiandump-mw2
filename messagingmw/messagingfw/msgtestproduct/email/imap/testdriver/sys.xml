@@ -1,0 +1,21 @@
+<?xml version="1.0" ?> 
+<!DOCTYPE testSuite SYSTEM "file:///c:/program files/common files/symbian/testSuite.dtd" [ ]>
+
+<testSuite>
+	<name>sys</name> 
+
+	<testItems>
+		<test>st-mess-cacheempty-0001</test>
+		<test>st-mess-dbcorrupt-0001</test>
+		<test>st-mess-batterydown-0001</test>
+		<test>st-mess-conndown-0001</test>
+		<test>st-mess-sqldown-0001</test>
+		<test>st-mess-sqldown-0002</test>
+		<test>st-mess-nospacemmc-0001</test>
+		<test>st-mess-cachefull-0001</test>
+		<test>st-mess-soaktest-0001</test>
+		<test>st-mess-oom-0001</test>
+		<test>st-mess-oom-0002</test>
+	</testItems>
+
+</testSuite>

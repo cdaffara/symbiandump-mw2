@@ -1,0 +1,400 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE	T_MsgCommonServer -SharedData
+LOAD_SUITE	T_MsgImapServer	-SharedData
+LOAD_SUITE	T_MsgSmtpServer	-SharedData
+
+
+START_TESTCASE	MSG-IMAP-IDLE-0001
+//!	@SYMTestCaseID		MSG-IMAP-IDLE-0001
+//!	@SYMTestCaseDesc	Verification test: 
+//!				The aim of this test is to confirm the basic functionality of 
+//!				'switching off IDLE support', on a client. In this test case we 
+//!				will use the 'Use Idle command is False' setting, and once connected 
+//!				to the account, we will send it an email.
+//!				We will confirm that updates cannot be recieved by this client,
+//!				when its is not in idle mode.			 
+//!				We will confirm that updates can only be recieved by specifically polling the server
+//!				(such as a synchronisation or fetch requests).
+//!				This test case will confirm this by a synchronisation request 
+//!				(please note that here only the email header will be downloaded). 
+//!				This test can be run against servers that support idle  
+//!				or servers that do not support the idle command.  				
+//!					
+//!	@SYMTestPriority	Critical
+//!   	@SYMTestType		CIT
+//!  	@SYMTestStatus		Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ImapIdle.cfg to set comms.
+//!	@SYMTestActions	
+//!                  		Start of set up actions:		
+//!				We Initialise the RAS connection
+//!				We reset the message store and clean up the central repository
+//!				We create an IMAP account by reading the settings from the file mentioned within the corresponding .ini file
+//!				Thus setting the IMAP and SMTP service settings.
+//!				We set the IMAP service parameters.
+//!				The IMAP service parameters are set as follows: IsImapIdleSelected is set as EFALSE,
+//!				ImapIdleTimeout is set to default 1680 seconds (28 minutes), and 
+//!				ImapSyncRate is set to default 300 seconds  (5 minutes) .
+//!				We connect to the IMAP server and reset the account thus insuring that it is empty,
+//!				and disconnect form the IMAP service. 
+//!				We create a simple smtp message within the outbox, and confirm that it is there.
+//!				End of set up actions
+//!					
+//!				We connect to the IMAP server and perform a background synchronisation with it. Using 
+//!				KIMAP4MTMConnectAndSynchronise.We also wait for this background synchronisation to complete 
+//!				using KIMAP4MTMWaitForBackground. 
+//!				We send the mail created during setup, and confirm this sent via checking the sent items folder.
+//!				We wait for a short time to ensure that the remote server account recieves this email.
+//!				We confirm that the inbox is empty on the remote service.
+//!				We perform a full synchronisation and check that we have recieved the email message
+//!				We disconnect from the IMAP service. 													
+//!					
+//!				
+//!	@SYMTestExpectedResults	EPass: 
+//!				Client should not recieve the updates (for example the new email), 
+//!				unless the client specifically,requests this update (via a synchronisation 
+//!				or a fetch request.) In this case the client only recieves 
+//!				the inbox update by performing a full synchronisation of the account.
+//!
+//!	@SYMAuthor		Kavyashree.D and Rehana Anwar.
+
+PRINT Setup begins ############################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0001-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0001-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0001-CreateImapAccount 
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0001-ChangeImapSubSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0001-SetImap4ServiceIdleParamters 
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0001-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0001-DoFullImap4Synchronisation
+RUN_TEST_STEP  300 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0001-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0001-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0001-DisConnectImap4Server
+//create an email message 
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0001-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 	100 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini    	0001-CheckChildrenCountOutbox
+PRINT Setup Completed ###########################################
+PRINT Execute begin ############################################
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0001-ConnectAndSyncImapServer
+//send the email message
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0001-SendSmtpMessage
+RUN_TEST_STEP 	100 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini    	0001-CheckChildrenCountSentItems
+// Delay to allow the email message to be recieved
+DELAY 30000
+//confirm that the inbox is empty  remotely
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini    	0001-CheckChildrenCountRemoteInbox0
+//confirm that the email is there
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0001-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini    	0001-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0001-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute end #############################################
+END_TESTCASE	MSG-IMAP-IDLE-0001
+
+
+//#####Script MSG_IMAP_IDLE_0002 has been commented out. ##########################
+//#####As MSG_IMAP_IDLE_0002 can only run against servers that DO NOT support idle. #########
+//#####At the moment all our server(s) are only configured to support idle so it should not be run! #
+//START_TESTCASE	MSG-IMAP-IDLE-0002
+//!	@SYMTestCaseID		MSG-IMAP-IDLE-0002
+//!	
+//!	@SYMTestCaseDesc	Verification test: 
+//!				The aim of this test is to confirm the basic functionality of 
+//!				'switching ON IDLE support', on a client . This test case should
+//!				ONLY run aganist servers that DO NOT support the idle command.  	
+//!				In this test case we will use the 'Use Idle command is True' 
+//!				setting, and once connected to the account, we will send it 
+//!				an email.
+//!				We will confirm that updates cannot be recieved by this client,
+//!				when its is in idle mode.			 
+//!				We will confirm that updates can only be recieved by specifically polling the server
+//!				(such as a synchronisation or fetch requests).
+//!				This test case will confirm this by a synchronisation request 
+//!				(please note that here only the email header will be downloaded). 
+//!
+//!	@SYMTestPriority	Critical
+//!   	@SYMTestType		CIT
+//!  	@SYMTestStatus		Implemented   
+//!
+//!	@SYMTestCaseDependencies	requires ced -i c:\ImapIdle.cfg to set comms.
+//!	@SYMTestActions		Start of set up actions: 		
+//!				We Initialise the RAS connection
+//!				We reset the message store and clean up the central repository
+//!				We create an IMAP account by reading the settings from the file mentioned
+//!				Thus setting the IMAP and SMTP service settings.
+//!				We set the IMAP service parameters.
+//!				The IMAP service parameters are set as follows: IsImapIdleSelected is set as ETRUE
+//!				ImapIdleTimeout is set to  240 seconds (4 minutes), and 
+//!				ImapSyncRate is set to 30 seconds  (0.5 minutes) .
+//!				We connect to the IMAP server and reset the account thus insuring that it is empty,
+//!				and disconnect form the IMAPservice. 
+//!				We create a simple smtp message within the outbox, and confirm that it is there.
+//!				End of set up actions
+//!					
+//!				We connect to the IMAP server and perform a background synchronisation with it. Using 
+//!				KIMAP4MTMConnectAndSynchronise.We also wait for this background synchronisation to complete 
+//!				using KIMAP4MTMWaitForBackground. 
+//!				We send the mail created during setup, and confirm this sent via checking the sent items folder
+//!				We wait for a period of 4 minutes to ensure that IDLE expires and re-issues
+//!				and that the remote server account recieves this email.
+//!				We confirm that the inbox is empty on the remote service.
+//!				We perform a full synchronisation and check that we have recieved the email message
+//!				We disconnect from the IMAP service. 	
+//!
+//!	@SYMTestExpectedResults	EPass:
+//!				Client should not recieve the updates (for example the new email), 
+//!				unless the client specifically,requests this update 
+//!				(via a synchronisation or a fetch request.) In this case the client only recieves 
+//!				the inbox update by performing a full synchronisation of the account.
+//!
+//!	@SYMAuthor		Kavyashree.D and Rehana Anwar.
+
+//PRINT Setup begins ############################################a
+//
+//RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+//RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+//RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+//
+//RUN_TEST_STEP	100	T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   		0002-InitNtRas
+//RUN_TEST_STEP	100	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0002-ResetMessageStore
+//RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0002-CreateImapAccount 
+//RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0002-ChangeImapSubSettings
+//RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0002-SetImap4ServiceIdleParamters 
+//RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0002-ConnectImap4Server
+//RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0002-DoFullImap4Synchronisation
+//RUN_TEST_STEP  300 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0002-InitialiseImap4Account
+//RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0002-DoFullImap4Synchronisation
+//RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0002-DisConnectImap4Server
+//create an email message 
+//RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0002-CreateSmtpMessageFromEmailFile
+//RUN_TEST_STEP 	100 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini    	0002-CheckChildrenCountOutbox
+//PRINT Setup Completed ##########################################
+//PRINT Execute begin ############################################
+//RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0002-ConnectAndSyncImapServer
+//RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0002-SendSmtpMessage
+//RUN_TEST_STEP 	100 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini    	0002-CheckChildrenCountSentItems
+// Delay of four minutes  to allow Idle to expire and re-issue
+//DELAY 240000
+//confirm that the inbox is empty remotely
+//RUN_TEST_STEP 	100 	T_MsgImapServer	CheckChildrenCountImap 		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini    0002-CheckChildrenCountRemoteInbox0
+//confirm that the email is there
+//RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0002-DoFullImap4Synchronisation
+//RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini    	0002-CheckChildrenCountRemoteInbox1
+//RUN_TEST_STEP 	100 	T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0002-DisConnectImap4Server
+//
+//RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+//RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+//RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+//
+//PRINT Execute end ###########################################
+//PRINT shutdown servers ########################################
+//END_TESTCASE	MSG-IMAP-IDLE-0002
+
+
+//#####Script MSG_IMAP_IDLE_0003 has been commented out. ##########################
+//#####As functionality is covered in other MSG-IMAP-IdleBkSyncComplete tests ########
+
+//START_TESTCASE	MSG-IMAP-IDLE-0003
+//!	@SYMTestCaseID		MSG-IMAP-IDLE-0003
+//!
+//!	@SYMTestCaseDesc	Verification test: 
+//!				The aim of this test is to confirm the basic functionality of 
+//!				'switching ON IDLE support', on a client . This test case should
+//!				ONLY run aganist servers that DO SUPPORT the idle command.  	
+//!				In this test case we will use the 'Use Idle command is True' 
+//!				setting, and once connected to the account, we will send it 
+//!				an email.
+//!				This test will confirm that updates can be recieved by this client,
+//!				when its is in idle mode.
+//!
+//!	@SYMTestPriority	Critical
+//!   	@SYMTestType		CIT
+//!  	@SYMTestStatus		Implemented   
+//!
+//!	@SYMTestCaseDependencies	requires ced -i c:\ImapIdle.cfg to set comms.
+//!	@SYMTestActions		Start of set up actions: 		
+//!				We Initialise the RAS connection
+//!				We reset the message store and clean up the central repository
+//!				We create an IMAP account by reading the settings from the file mentioned
+//!				Thus setting the IMAP and SMTP service settings.
+//!				We set the IMAP service parameters.
+//!				The IMAP service parameters are set as follows: IsImapIdleSelected is set as ETRUE,
+//!				ImapIdleTimeout is set to  240 seconds (4 minutes), and 
+//!				ImapSyncRate is set to  30 seconds  (0.5 minutes) .
+//!				We connect to the IMAP server and reset the account thus insuring that it is empty,
+//!				and disconnect form the IMAPservice. 
+//!				We create a simple smtp message within the outbox, and confirm that it is there.
+//!				End of set up actions
+//!					
+//!				We connect to the IMAP server and perform a background synchronisation with it. Using 
+//!				KIMAP4MTMConnectAndSynchronise.We also wait for this background synchronisation to complete 
+//!				using KIMAP4MTMWaitForBackground. 
+//!				We send the mail created during setup, and confirm this sent via checking the sent items folder.
+//!				We wait for a period of 4 minutes to ensure that IDLE expires and re-issues
+//!				and that the remote server account recieves this email.
+//!				We confirm that the inbox recieves the mail on the remote service.
+//!				We disconnect from the IMAP service. 	
+//!
+//!	@SYMTestExpectedResults	EPass:
+//!
+//!				The client should recieve email updates.
+//!				In this case the client  recieves an email.
+//!						
+//!	@SYMAuthor		Kavyashree.D and Rehana Anwar.
+
+//PRINT Setup begins ############################################
+//
+//RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+//RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+//RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+//
+//RUN_TEST_STEP	100	T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0003-InitNtRas
+//RUN_TEST_STEP	100	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0003-ResetMessageStore
+//RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0003-CreateImapAccount 
+//RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0003-ChangeImapSubSettings
+//RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0003-SetImap4ServiceIdleParamters 
+//RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0003-ConnectImap4Server
+//RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0003-DoFullImap4Synchronisation
+//RUN_TEST_STEP  300 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0003-InitialiseImap4Account
+//RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0003-DoFullImap4Synchronisation
+//RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0003-DisConnectImap4Server
+//create an email message 
+//RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0003-CreateSmtpMessageFromEmailFile
+//RUN_TEST_STEP 	100 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini    	0003-CheckChildrenCountOutbox
+//PRINT Setup Completed ##########################################
+//PRINT Execute begin ############################################
+//RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0003-ConnectAndSyncImapServer
+//RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0003-SendSmtpMessage
+//RUN_TEST_STEP 	100 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini    	0003-CheckChildrenCountSentItems
+// Delay of four minutes  to allow Idle to expire and re-issue
+//DELAY 240000
+//RUN_TEST_STEP 	100 	T_MsgImapServer	CheckChildrenCountImap 		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini    0003-CheckChildrenCountRemoteInbox
+//RUN_TEST_STEP 	100 	T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0003-DisConnectImap4Server
+//
+//RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+//RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+//RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+//
+//PRINT Execute end ###########################################
+//END_TESTCASE	MSG-IMAP-IDLE-0003
+
+
+START_TESTCASE	MSG-IMAP-IDLE-0004
+//!	@SYMTestCaseID		MSG-IMAP-IDLE-0004
+//!
+//!	@SYMTestCaseDesc	Verification test: 
+//!				The aim of this test is to confirm the basic functionality of 
+//!				'switching ON IDLE support', on a client . This test case should
+//!				ONLY run aganist servers that DO SUPPORT the idle command.  	
+//!				In this test case we will use the 'Use Idle command is True' 
+//!				setting, and once connected to the account, we will wait for  
+//!				idle to expire and re-issue and confirm that we are connected, 
+//!				after which we will send it an email.
+//!				This test will confirm that updates can be recieved by this client,
+//!				when its is in idle mode, and that idle correctly re-issues after a timeout.
+//!
+//!	@SYMTestPriority	Critical
+//!   	@SYMTestType		CIT
+//!  	@SYMTestStatus		Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ImapIdle.cfg to set comms.
+//!	@SYMTestActions		
+//!				Start of set up actions: 	
+//!
+//!				We Initialise the RAS connection
+//!				We reset the message store and clean up the central repository
+//!				We create an IMAP account by reading the settings from the file mentioned
+//!				Thus setting the IMAP and SMTP service settings.
+//!				We set the IMAP service parameters.
+//!				The IMAP service parameters are set as follows: IsImapIdleSelected is set as ETRUE,
+//!				ImapIdleTimeout is set to default 1680 seconds (28 minutes), and 
+//!				ImapSyncRate is set to default 300 seconds  (5 minutes).
+//!				We connect to the IMAP server and reset the account thus insuring that it is empty,
+//!				and disconnect form the IMAPservice. 
+//!						
+//!				End of set up actions
+//!					
+//!				We connect to the IMAP server and perform a background synchronisation with it. Using 
+//!				KIMAP4MTMConnectAndSynchronise.We also wait for this background synchronisation to complete 
+//!				using KIMAP4MTMWaitForBackground. 
+//!				We wait for a period of 31 minutes to ensure that IDLE expires and re-issues
+//!				We confirm that idle is re-issued by checking that we are still connected to the IMAP server.
+//!				We create a simple smtp message within the outbox, and confirm that it is there.
+//!				We send this mail and confirm this sent via checking the sent items folder.
+//!				We wait for a period of 1 minute to ensure that the remote server 
+//!				account recieves this email.
+//!				We confirm that the inbox recieves the mail on the remote service.
+//!				We disconnect from the IMAP service. 	
+//!
+//!	@SYMTestExpectedResults	EPass:
+//!				The client should recieve email updates.
+//!				In this case the client  recieves an email.
+//!
+//!	@SYMAuthor		Kavyashree.D and Rehana Anwar.
+
+PRINT Setup begins ############################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0004-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0004-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0004-CreateImapAccount 
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0004-ChangeImapSubSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0004-SetImap4ServiceIdleParamters 
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0004-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0004-DoFullImap4Synchronisation
+RUN_TEST_STEP  300 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0004-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0004-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0004-DisConnectImap4Server
+PRINT Setup Completed ##########################################
+PRINT Execute begin ############################################
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0004-ConnectAndSyncImapServer
+// Delay of 31 minutes to allow Idle to expire and re-issue
+DELAY 1860000
+//Confirming that idle is re-issued
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckIfConnected		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0004-CheckIfConnected
+//Create an email message 
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0004-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 	100 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini    	0004-CheckChildrenCountOutbox
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0004-SendSmtpMessage
+// Delay of one minute to allow the email message to be recieved
+DELAY 60000
+RUN_TEST_STEP 	100 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini    	0004-CheckChildrenCountSentItems
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini    	0004-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\idle\msg-imap-idle1-ic.ini   	0004-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute end ###########################################
+END_TESTCASE	MSG-IMAP-IDLE-0004
+
+
+

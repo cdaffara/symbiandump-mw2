@@ -1,0 +1,51 @@
+/*
+* Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file
+*
+*/
+
+
+#include <platform_paths.hrh>
+#include <data_caging_paths.hrh>
+
+TARGET          MdETestScripter.dll
+TARGETTYPE      dll
+UID             0x1000008D 0x101FB3E3
+
+CAPABILITY      ALL -TCB
+VENDORID        VID_DEFAULT
+
+DEFFILE         MdETestScripter.DEF
+
+SOURCEPATH      ../src
+SOURCE          MdETestScripter.cpp
+SOURCE          MdETestScripterBlocks.cpp
+SOURCE          MdETestScripterEditCommands.cpp
+SOURCE          MdETestScripterSchemaCommands.cpp
+SOURCE          MdETestScripterQueryCommands.cpp
+SOURCE          MdETestScripterAO.cpp
+
+USERINCLUDE     ../inc 
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY         euser.lib
+LIBRARY         efsrv.lib
+LIBRARY         stiftestinterface.lib
+LIBRARY         stiftestengine.lib
+LIBRARY         mdccommon.lib
+LIBRARY         mdeclient.lib
+LIBRARY         PlatformEnv.lib
+LIBRARY	        bafl.lib
+

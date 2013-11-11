@@ -1,0 +1,41 @@
+// Copyright (c) 2002-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// 10202D54.rss (t_mmssettingsproxy.dll)
+// 
+//
+
+#include <ecom/registryinfo.rh>
+
+RESOURCE REGISTRY_INFO info
+	{
+	dll_uid = 0x10202D54;
+	interfaces =
+		{
+		INTERFACE_INFO 
+			{
+			interface_uid = 0x101F9420;
+			implementations =
+				{
+				IMPLEMENTATION_INFO
+					{
+					implementation_uid = 0x101F9421;
+					version_no = 2;
+					display_name = "Test MMS Settings Proxy";
+					default_data = "Test MMS settings proxy";
+					opaque_data = "";
+					}
+				};
+			}
+		};
+	}

@@ -1,0 +1,169 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+LOAD_SERVER t_media  -SharedData
+
+//! @file			
+//! @SYMTestSuiteName		MSG-DRIVEFULL-OPS
+//! @SYMScriptTestEnvironment   Details as in below:-
+//!				1. nt-ras connection or winpcap
+//!				2. email servers ( communigatePro or ms exchange)
+//!				3. test driver
+//!				4. testexecute framework(TEF3.0)
+//!				
+//! @SYMScriptPurpose		Integration testing of PREQ557-"Improved support in Messaging for removable media"
+//! @SYMScriptCreationDate	04/04/2008
+
+START_TESTCASE	MSG-DRIVEFULL-OPS-0001
+//! 	@SYMTestCaseID		MSG-DRIVEFULL-OPS-0001
+//! 	@SYMTestCaseDesc	Drive is full
+//!				
+//!	@SYMREQ			REQ9049 
+//!	@SYMPREQ 		PREQ557
+//!	@SYMAPI			void CMsvSession::CurrentDriveInfo (TDriveNumber& aDrive, Tint& aPriority)
+//!				
+//!	@SYMTestCaseDependencies Manually setup the disk full condition as mentioned in steps:-
+//!	
+//!	1. Create a logical drive of size 8 MB or insert a MMC card for USB removable drive of size 128 MB
+//!	2. Set current epoc drive with logical or USB removable drive in epoc.ini file. example _EPOC_DRIVE_E S:\
+//!	3. Fill the drive to 99% to get the KErrDiskFull(-26) error
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1. Set the max size of the current removable drive to 100kb in epoc.ini file
+//!				2. Create an email account
+//!				3. Create an email message of 95kb size
+//!				4. Send an email message 
+//!				5. Download the email messages 
+//!				Note: disk is arround 99% full
+//!				6. Get the current drive
+//! 				7. Create an another email message of 10kb
+//! 				8. Send the message
+//!				9. Download the message will return with disk full notification
+//!				10. Delete some old messages from same drive
+//!				11. Download the message again
+//!				
+//! 	@SYMTestExpectedResults 1. Max size is set to 100kb
+//!				2. email account should be created
+//!				3. email message should be created
+//!				4. Sent the email to server is completed
+//!				5. Download should be completed
+//!				6. should return the current drive and its priority
+//!				7. Another email message should be created
+//!				8. email message should be sent
+//!				9. Download should return the disk full notification
+//!				10. Messages should delete from the drive
+//!				11. Download should complete
+//!				
+//!	@SYMAuthor		Rajat Bal
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-drivefull-ops.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-drivefull-0001.ini		c:\private\1000484b\msgprioritydrivelist.ini
+
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-drivefull-ops.ini
+		CREATE_OBJECT	MediaTestWrapper	0001_obj_1
+		COMMAND		0001_obj_1		New		0001_obj_1
+		COMMAND		0001_obj_1		GetDrivelist	0001_GetDrivelist_1
+		COMMAND		0001_obj_1		GetAvailableDriveList	0001_GetAvailableDriveList_1
+		COMMAND		0001_obj_1		GetCurrentDrive	0001_GetCurrentDrive_1
+	END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+	
+END_TESTCASE	MSG-DRIVEFULL-OPS-0001
+
+START_TESTCASE	MSG-DRIVEFULL-OPS-0002
+//! 	@SYMTestCaseID		MSG-DRIVEFULL-OPS-0002
+//! 	@SYMTestCaseDesc	Drive is full while downloading the message
+//!				
+//!	@SYMREQ			REQ9049 
+//!	@SYMPREQ 		PREQ557
+//!	@SYMAPI			void CMsvSession::CurrentDriveInfo (TDriveNumber& aDrive, Tint& aPriority)
+//!				void CMsvSession::UpdateDrivePriorityL (TDriveNumber aDrive, TInt& aPriority)
+//!				
+//!	@SYMTestCaseDependencies Manually setup the disk full condition as mentioned in steps:-
+//!	
+//!	1. Create a logical drive of size 8 MB or insert a MMC card for USB removable drive of size 128 MB
+//!	2. Set current epoc drive with logical or USB removable drive in epoc.ini file. example _EPOC_DRIVE_E S:\
+//!	3. Fill the drive to 99% to get the KErrDiskFull(-26) error
+//!				
+//! 	@SYMTestPriority	High
+//! 	@SYMTestActions		1. Set the max size of the current removable drive to 100kb in epoc.ini file
+//!				2. Get the current drive(E: drive)
+//!				Note: Ensure the current drive should not be system drive.
+//!				3. Create an email account
+//!				4. Create an email message of 150kb size
+//!				5. Send an email message 
+//!				6. Download the messages will return with disk full notification
+//!				7. Change the drive to system drive(C: Drive) with high priority
+//!				8. Download the message
+//!				
+//! 	@SYMTestExpectedResults 1. Max size is set to 100kb
+//!				2. E: drive should be the current drive
+//!				3. email account should be created
+//!				4. email message should be created
+//!				5. Sent the email to server is completed
+//!				6. Download should return the disk full notification
+//!				7. Should return the current drive
+//!				8. Download should complete
+//!				
+//!	@SYMAuthor		Rajat Bal
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestStatus 		Defined
+
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-drivefull-ops.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-drivefull-0002.ini		c:\private\1000484b\msgprioritydrivelist.ini
+
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-drivefull-ops.ini
+		CREATE_OBJECT	MediaTestWrapper	0002_obj_1
+		COMMAND		0002_obj_1		New		0002_obj_1
+		COMMAND		0002_obj_1		GetDrivelist	0002_GetDrivelist_1
+		COMMAND		0002_obj_1		GetAvailableDriveList	0002_GetAvailableDriveList_1
+		STORE		0002_obj_1		
+		COMMAND		0002_obj_1		GetCurrentDrive	0002_GetCurrentDrive_1
+	END_TEST_BLOCK
+	
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\msg-drivefull-ops.ini
+		RESTORE_OBJECT	MediaTestWrapper	0002_obj_1
+		COMMAND		0002_obj_1		UpdateDrive	0002_UpdateDrive_1
+	END_TEST_BLOCK
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+
+END_TESTCASE	MSG-DRIVEFULL-OPS-0002
+

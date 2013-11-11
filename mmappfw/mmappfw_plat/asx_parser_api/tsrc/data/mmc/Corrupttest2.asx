@@ -1,0 +1,20 @@
+<ASX version = "3.0">   
+	<ABSTRACT>This text will show up as a Tooltip and in the Properties dialog box.</ABSTRACT>
+	<TITLE>Global title of the show</TITLE>   
+	<AUTHOR>The name of the author</AUTHOR>   
+	<COPYRIGHT>2004 by Your Company</COPYRIGHT>   
+	<MOREINFO HREF = "http://www.microsoft.com/windows/windowsmedia" />   
+	<ENT2RY>      
+		<REF HREF = "rtsp://ServerName/Path/FileName.wmv" />      
+		<BANNER HREF="http://Servername/Path/Banner1.gif">          
+			<MOREINFO HREF ="http://www.microsoft.com/windows/windowsmedia" />          
+			<ABSTRACT>This is the description for this clip.</ABSTRACT>      
+		</BANNER>   
+	</ENT2RY>   
+	<ENTRY>      
+		<TITLE>Markers Discussion</TITLE>     
+		<CsOPYRIGHT>2004 Microsoft Corporation</COPYRIGHT>      
+		<MOREINFO HREF = "http://www.microsoft.com/windows/windowsmedia"></MOREINFO>      
+		<REF HREF = "rtsp://ServerName/Path/markers_info.wmv" />   
+	</ENTRY>
+</ASX>

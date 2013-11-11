@@ -1,0 +1,120 @@
+EXPORTS
+	?GetPosProtocol@TOMASuplPosProtocol@@QBEXAAH00@Z @ 1 NONAME ; void TOMASuplPosProtocol::GetPosProtocol(int &, int &, int &) const
+	?Type@COMASuplInfoRequest@@QBE?AW4TOMASuplInfoType@1@XZ @ 2 NONAME ; enum COMASuplInfoRequest::TOMASuplInfoType COMASuplInfoRequest::Type(void) const
+	?SetHorizVertUncertVel@COMASuplHorizAndVertUncertVelocity@@QAEXGGEEEE@Z @ 3 NONAME ; void COMASuplHorizAndVertUncertVelocity::SetHorizVertUncertVel(unsigned short, unsigned short, unsigned char, unsigned char, unsigned char, unsigned char)
+	?NewL@COMASuplInfoRequest@@SAPAV1@XZ @ 4 NONAME ; class COMASuplInfoRequest * COMASuplInfoRequest::NewL(void)
+	?GetUncertainty@TOMASuplPositionEstimate@@QBEHAAVTOMASuplUncertainty@@@Z @ 5 NONAME ; int TOMASuplPositionEstimate::GetUncertainty(class TOMASuplUncertainty &) const
+	??0TOMASuplUtcTime@@QAE@XZ @ 6 NONAME ; TOMASuplUtcTime::TOMASuplUtcTime(void)
+	??0COMASuplPosHandlerBase@@IAE@XZ @ 7 NONAME ; COMASuplPosHandlerBase::COMASuplPosHandlerBase(void)
+	?NewL@COMASuplHorizVelocity@@SAPAV1@XZ @ 8 NONAME ; class COMASuplHorizVelocity * COMASuplHorizVelocity::NewL(void)
+	?SetPosTechnology@TOMASuplPosTechnology@@QAEXHHHHHH@Z @ 9 NONAME ; void TOMASuplPosTechnology::SetPosTechnology(int, int, int, int, int, int)
+	??0COMASuplInfoRequest@@QAE@XZ @ 10 NONAME ; COMASuplInfoRequest::COMASuplInfoRequest(void)
+	??1COMASuplPosHandlerBase@@UAE@XZ @ 11 NONAME ; COMASuplPosHandlerBase::~COMASuplPosHandlerBase(void)
+	??0COMASuplReqAsstData@@AAE@XZ @ 12 NONAME ; COMASuplReqAsstData::COMASuplReqAsstData(void)
+	?VelType@COMASuplVelocity@@QBE?AW4TOMASuplVelocityType@@XZ @ 13 NONAME ; enum TOMASuplVelocityType COMASuplVelocity::VelType(void) const
+	?NewL@COMASuplHorizAndVertUncertVelocity@@SAPAV1@XZ @ 14 NONAME ; class COMASuplHorizAndVertUncertVelocity * COMASuplHorizAndVertUncertVelocity::NewL(void)
+	?GetCount@COMASuplInfoRequestList@@QAEHXZ @ 15 NONAME ; int COMASuplInfoRequestList::GetCount(void)
+	?SetNavigationData@COMASuplReqAsstData@@QAEXABVTOMASuplNavigationModel@@@Z @ 16 NONAME ; void COMASuplReqAsstData::SetNavigationData(class TOMASuplNavigationModel const &)
+	??1COMASuplInfoRequestList@@UAE@XZ @ 17 NONAME ; COMASuplInfoRequestList::~COMASuplInfoRequestList(void)
+	?SetHorizAndVertVel@COMASuplHorizAndVertVelocity@@QAEXFFCC@Z @ 18 NONAME ; void COMASuplHorizAndVertVelocity::SetHorizAndVertVel(short, short, signed char, signed char)
+	?GetSatInfoElement@TOMASuplNavigationModel@@QBEHAAV?$RArray@VTOMASuplSatelliteInfoElement@@@@@Z @ 19 NONAME ; int TOMASuplNavigationModel::GetSatInfoElement(class RArray<class TOMASuplSatelliteInfoElement> &) const
+	?GetPositionEstimate@TOMASuplPositionEstimate@@QBEXAAW4TOMASuplLatitudeSign@1@AAH1@Z @ 20 NONAME ; void TOMASuplPositionEstimate::GetPositionEstimate(enum TOMASuplPositionEstimate::TOMASuplLatitudeSign &, int &, int &) const
+	?SetSatInfoElement@TOMASuplNavigationModel@@QAEHABVTOMASuplSatelliteInfoElement@@H@Z @ 21 NONAME ; int TOMASuplNavigationModel::SetSatInfoElement(class TOMASuplSatelliteInfoElement const &, int)
+	?SetSuplState@COMASuplPosSessionBase@@QAEXW4TOMASuplMsg@1@W4TOMASuplMsgState@1@@Z @ 22 NONAME ; void COMASuplPosSessionBase::SetSuplState(enum COMASuplPosSessionBase::TOMASuplMsg, enum COMASuplPosSessionBase::TOMASuplMsgState)
+	?GetConfidence@TOMASuplPositionEstimate@@QBEHAAH@Z @ 23 NONAME ; int TOMASuplPositionEstimate::GetConfidence(int &) const
+	??0TOMASuplSatelliteInfoElement@@QAE@XZ @ 24 NONAME ; TOMASuplSatelliteInfoElement::TOMASuplSatelliteInfoElement(void)
+	?SetUncertainty@TOMASuplPositionEstimate@@QAEHABVTOMASuplUncertainty@@@Z @ 25 NONAME ; int TOMASuplPositionEstimate::SetUncertainty(class TOMASuplUncertainty const &)
+	?SetStatus@COMASuplInfoRequest@@QAEXH@Z @ 26 NONAME ; void COMASuplInfoRequest::SetStatus(int)
+	?SetPosProtocol@TOMASuplPosProtocol@@QAEXHHH@Z @ 27 NONAME ; void TOMASuplPosProtocol::SetPosProtocol(int, int, int)
+	?SetSETCapabilities@COMASuplSETCapabilities@@QAEXABVTOMASuplPosTechnology@@ABW4TOMASuplPrefMethod@1@ABVTOMASuplPosProtocol@@ABVTOMASuplPosProtocolVersion@@@Z @ 28 NONAME ; void COMASuplSETCapabilities::SetSETCapabilities(class TOMASuplPosTechnology const &, enum COMASuplSETCapabilities::TOMASuplPrefMethod const &, class TOMASuplPosProtocol const &, class TOMASuplPosProtocolVersion const &)
+	??1COMASuplPosSessionBase@@UAE@XZ @ 29 NONAME ; COMASuplPosSessionBase::~COMASuplPosSessionBase(void)
+	?VersionL@COMASuplPosHandlerBase@@QBEHXZ @ 30 NONAME ; int COMASuplPosHandlerBase::VersionL(void) const
+	??1COMASuplHorizUncertVelocity@@UAE@XZ @ 31 NONAME ; COMASuplHorizUncertVelocity::~COMASuplHorizUncertVelocity(void)
+	?GetNavigationModel@TOMASuplNavigationModel@@QBEXAAH000@Z @ 32 NONAME ; void TOMASuplNavigationModel::GetNavigationModel(int &, int &, int &, int &) const
+	?CloneL@COMASuplReqAsstData@@UBEPAVCOMASuplInfoRequest@@XZ @ 33 NONAME ; class COMASuplInfoRequest * COMASuplReqAsstData::CloneL(void) const
+	?NewL@COMASuplPosPayload@@SAPAV1@XZ @ 34 NONAME ; class COMASuplPosPayload * COMASuplPosPayload::NewL(void)
+	?NewL@COMASuplPosHandlerBase@@SAPAV1@ABVTUid@@@Z @ 35 NONAME ; class COMASuplPosHandlerBase * COMASuplPosHandlerBase::NewL(class TUid const &)
+	??0TOMASuplAltitudeInfo@@QAE@XZ @ 36 NONAME ; TOMASuplAltitudeInfo::TOMASuplAltitudeInfo(void)
+	?NewL@COMASuplReqAsstData@@SAPAV1@XZ @ 37 NONAME ; class COMASuplReqAsstData * COMASuplReqAsstData::NewL(void)
+	?SetType@COMASuplInfoRequest@@QAEXW4TOMASuplInfoType@1@@Z @ 38 NONAME ; void COMASuplInfoRequest::SetType(enum COMASuplInfoRequest::TOMASuplInfoType)
+	?GetSETCapabilities@COMASuplSETCapabilities@@QBEXAAVTOMASuplPosTechnology@@AAW4TOMASuplPrefMethod@1@AAVTOMASuplPosProtocol@@@Z @ 39 NONAME ; void COMASuplSETCapabilities::GetSETCapabilities(class TOMASuplPosTechnology &, enum COMASuplSETCapabilities::TOMASuplPrefMethod &, class TOMASuplPosProtocol &) const
+	?GetPosTechnology@TOMASuplPosTechnology@@QBEXAAH00000@Z @ 40 NONAME ; void TOMASuplPosTechnology::GetPosTechnology(int &, int &, int &, int &, int &, int &) const
+	?GetPosProtocolVersion@TOMASuplPosProtocolVersion@@QBEHAAE00@Z @ 41 NONAME ; int TOMASuplPosProtocolVersion::GetPosProtocolVersion(unsigned char &, unsigned char &, unsigned char &) const
+	?SetSETCapabilities@COMASuplSETCapabilities@@QAEXABVTOMASuplPosTechnology@@ABW4TOMASuplPrefMethod@1@ABVTOMASuplPosProtocol@@@Z @ 42 NONAME ; void COMASuplSETCapabilities::SetSETCapabilities(class TOMASuplPosTechnology const &, enum COMASuplSETCapabilities::TOMASuplPrefMethod const &, class TOMASuplPosProtocol const &)
+	?SetAllowedCapabilities@TOMASuplAllowedCapabilities@@QAEXHHHHHHHH@Z @ 43 NONAME ; void TOMASuplAllowedCapabilities::SetAllowedCapabilities(int, int, int, int, int, int, int, int)
+	?CloneL@COMASuplPosition@@UBEPAVCOMASuplInfoRequest@@XZ @ 44 NONAME ; class COMASuplInfoRequest * COMASuplPosition::CloneL(void) const
+	?NewL@COMASuplHorizAndVertVelocity@@SAPAV1@XZ @ 45 NONAME ; class COMASuplHorizAndVertVelocity * COMASuplHorizAndVertVelocity::NewL(void)
+	?GetReqAsstData@COMASuplReqAsstData@@QBEXAAH0000000@Z @ 46 NONAME ; void COMASuplReqAsstData::GetReqAsstData(int &, int &, int &, int &, int &, int &, int &, int &) const
+	?Append@COMASuplInfoRequestList@@QAEHPAVCOMASuplInfoRequest@@@Z @ 47 NONAME ; int COMASuplInfoRequestList::Append(class COMASuplInfoRequest *)
+	?SetPosProtocolVersion@TOMASuplPosProtocolVersion@@QAEHEEE@Z @ 48 NONAME ; int TOMASuplPosProtocolVersion::SetPosProtocolVersion(unsigned char, unsigned char, unsigned char)
+	?GetVelocity@COMASuplPosition@@QBEHAAPAVCOMASuplVelocity@@@Z @ 49 NONAME ; int COMASuplPosition::GetVelocity(class COMASuplVelocity * &) const
+	?NewL@COMASuplVelocity@@SAPAV1@XZ @ 50 NONAME ; class COMASuplVelocity * COMASuplVelocity::NewL(void)
+	?SetUncertainty@TOMASuplUncertainty@@QAEHHHH@Z @ 51 NONAME ; int TOMASuplUncertainty::SetUncertainty(int, int, int)
+	?SetPosPayload@COMASuplPosPayload@@QAEXPAVHBufC8@@W4TOMASuplPosPayloadType@1@@Z @ 52 NONAME ; void COMASuplPosPayload::SetPosPayload(class HBufC8 *, enum COMASuplPosPayload::TOMASuplPosPayloadType)
+	?SetSLPAddressUsed@COMASuplPosSessionBase@@UAEXABVTDesC16@@@Z @ 53 NONAME ; void COMASuplPosSessionBase::SetSLPAddressUsed(class TDesC16 const &)
+	?SetSatInfoElement@TOMASuplNavigationModel@@QAEXABV?$RArray@VTOMASuplSatelliteInfoElement@@@@@Z @ 54 NONAME ; void TOMASuplNavigationModel::SetSatInfoElement(class RArray<class TOMASuplSatelliteInfoElement> const &)
+	?SetPosMethodAndAllowedCapabilities@COMASuplPosSessionBase@@UAEXVTOMASuplAllowedCapabilities@@W4TOMASuplPositioningMethod@1@@Z @ 55 NONAME ; void COMASuplPosSessionBase::SetPosMethodAndAllowedCapabilities(class TOMASuplAllowedCapabilities, enum COMASuplPosSessionBase::TOMASuplPositioningMethod)
+	?GetHorizUncertVel@COMASuplHorizUncertVelocity@@QBEXAAG0AAE@Z @ 56 NONAME ; void COMASuplHorizUncertVelocity::GetHorizUncertVel(unsigned short &, unsigned short &, unsigned char &) const
+	?GetAltitudeInfo@TOMASuplAltitudeInfo@@QBEXAAW4TOMASuplAltitudeDirection@1@AAH1@Z @ 57 NONAME ; void TOMASuplAltitudeInfo::GetAltitudeInfo(enum TOMASuplAltitudeInfo::TOMASuplAltitudeDirection &, int &, int &) const
+	?SetReqAsstData@COMASuplReqAsstData@@QAEXHHHHHHHH@Z @ 58 NONAME ; void COMASuplReqAsstData::SetReqAsstData(int, int, int, int, int, int, int, int)
+	??0TOMASuplNavigationModel@@QAE@XZ @ 59 NONAME ; TOMASuplNavigationModel::TOMASuplNavigationModel(void)
+	?NewL@COMASuplSETCapabilities@@SAPAV1@XZ @ 60 NONAME ; class COMASuplSETCapabilities * COMASuplSETCapabilities::NewL(void)
+	?GetUtcTime@TOMASuplUtcTime@@QBEXAAVTDateTime@@AAH1@Z @ 61 NONAME ; void TOMASuplUtcTime::GetUtcTime(class TDateTime &, int &, int &) const
+	?GetPosition@COMASuplPosition@@QBEXAAVTOMASuplUtcTime@@AAVTOMASuplPositionEstimate@@@Z @ 62 NONAME ; void COMASuplPosition::GetPosition(class TOMASuplUtcTime &, class TOMASuplPositionEstimate &) const
+	??0TOMASuplAllowedCapabilities@@QAE@XZ @ 63 NONAME ; TOMASuplAllowedCapabilities::TOMASuplAllowedCapabilities(void)
+	??1COMASuplHorizAndVertVelocity@@UAE@XZ @ 64 NONAME ; COMASuplHorizAndVertVelocity::~COMASuplHorizAndVertVelocity(void)
+	?ImplementationUID@COMASuplPosHandlerBase@@QBE?AVTUid@@XZ @ 65 NONAME ; class TUid COMASuplPosHandlerBase::ImplementationUID(void) const
+	?GetUncertainty@TOMASuplUncertainty@@QBEXAAH00@Z @ 66 NONAME ; void TOMASuplUncertainty::GetUncertainty(int &, int &, int &) const
+	?CloneL@COMASuplSETCapabilities@@UBEPAVCOMASuplInfoRequest@@XZ @ 67 NONAME ; class COMASuplInfoRequest * COMASuplSETCapabilities::CloneL(void) const
+	?SuplObserver@COMASuplPosSessionBase@@UAEPAVMOMASuplObserver@@XZ @ 68 NONAME ; class MOMASuplObserver * COMASuplPosSessionBase::SuplObserver(void)
+	?SetSuplPayloadType@COMASuplPosPayload@@QAEXW4TOMASuplPosPayloadType@1@@Z @ 69 NONAME ; void COMASuplPosPayload::SetSuplPayloadType(enum COMASuplPosPayload::TOMASuplPosPayloadType)
+	?SetNavigationModel@TOMASuplNavigationModel@@QAEHHHHH@Z @ 70 NONAME ; int TOMASuplNavigationModel::SetNavigationModel(int, int, int, int)
+	?SetAltitudeInfo@TOMASuplAltitudeInfo@@QAEHW4TOMASuplAltitudeDirection@1@HH@Z @ 71 NONAME ; int TOMASuplAltitudeInfo::SetAltitudeInfo(enum TOMASuplAltitudeInfo::TOMASuplAltitudeDirection, int, int)
+	??1COMASuplVelocity@@UAE@XZ @ 72 NONAME ; COMASuplVelocity::~COMASuplVelocity(void)
+	?SetConfidence@TOMASuplPositionEstimate@@QAEHH@Z @ 73 NONAME ; int TOMASuplPositionEstimate::SetConfidence(int)
+	??1COMASuplPosition@@UAE@XZ @ 74 NONAME ; COMASuplPosition::~COMASuplPosition(void)
+	?GetHorizVertUncertVel@COMASuplHorizAndVertUncertVelocity@@QBEXAAG0AAE111@Z @ 75 NONAME ; void COMASuplHorizAndVertUncertVelocity::GetHorizVertUncertVel(unsigned short &, unsigned short &, unsigned char &, unsigned char &, unsigned char &, unsigned char &) const
+	?SetSatInfoElement@TOMASuplSatelliteInfoElement@@QAEHHH@Z @ 76 NONAME ; int TOMASuplSatelliteInfoElement::SetSatInfoElement(int, int)
+	?SetUtcTime@TOMASuplUtcTime@@QAEHABVTDateTime@@HH@Z @ 77 NONAME ; int TOMASuplUtcTime::SetUtcTime(class TDateTime const &, int, int)
+	??0TOMASuplUncertainty@@QAE@XZ @ 78 NONAME ; TOMASuplUncertainty::TOMASuplUncertainty(void)
+	?GetAltitudeInfo@TOMASuplPositionEstimate@@QBEHAAVTOMASuplAltitudeInfo@@@Z @ 79 NONAME ; int TOMASuplPositionEstimate::GetAltitudeInfo(class TOMASuplAltitudeInfo &) const
+	??0COMASuplInfoRequestList@@QAE@XZ @ 80 NONAME ; COMASuplInfoRequestList::COMASuplInfoRequestList(void)
+	?CloneL@COMASuplInfoRequest@@UBEPAV1@XZ @ 81 NONAME ; class COMASuplInfoRequest * COMASuplInfoRequest::CloneL(void) const
+	??0TOMASuplPosTechnology@@QAE@XZ @ 82 NONAME ; TOMASuplPosTechnology::TOMASuplPosTechnology(void)
+	??0TOMASuplPosProtocolVersion@@QAE@XZ @ 83 NONAME ; TOMASuplPosProtocolVersion::TOMASuplPosProtocolVersion(void)
+	??1TOMASuplNavigationModel@@QAE@XZ @ 84 NONAME ; TOMASuplNavigationModel::~TOMASuplNavigationModel(void)
+	?CloneL@COMASuplPosPayload@@UBEPAVCOMASuplInfoRequest@@XZ @ 85 NONAME ; class COMASuplInfoRequest * COMASuplPosPayload::CloneL(void) const
+	??1COMASuplReqAsstData@@UAE@XZ @ 86 NONAME ; COMASuplReqAsstData::~COMASuplReqAsstData(void)
+	?GetSETCapabilities@COMASuplSETCapabilities@@QBEXAAVTOMASuplPosTechnology@@AAW4TOMASuplPrefMethod@1@AAVTOMASuplPosProtocol@@AAVTOMASuplPosProtocolVersion@@@Z @ 87 NONAME ; void COMASuplSETCapabilities::GetSETCapabilities(class TOMASuplPosTechnology &, enum COMASuplSETCapabilities::TOMASuplPrefMethod &, class TOMASuplPosProtocol &, class TOMASuplPosProtocolVersion &) const
+	?NewL@COMASuplInfoRequestList@@SAPAV1@XZ @ 88 NONAME ; class COMASuplInfoRequestList * COMASuplInfoRequestList::NewL(void)
+	?SetPositionEstimate@TOMASuplPositionEstimate@@QAEHW4TOMASuplLatitudeSign@1@HH@Z @ 89 NONAME ; int TOMASuplPositionEstimate::SetPositionEstimate(enum TOMASuplPositionEstimate::TOMASuplLatitudeSign, int, int)
+	?NewL@COMASuplPosition@@SAPAV1@XZ @ 90 NONAME ; class COMASuplPosition * COMASuplPosition::NewL(void)
+	??1COMASuplHorizVelocity@@UAE@XZ @ 91 NONAME ; COMASuplHorizVelocity::~COMASuplHorizVelocity(void)
+	?Velocity@COMASuplVelocity@@QBEPAVCOMASuplHorizVelocity@@XZ @ 92 NONAME ; class COMASuplHorizVelocity * COMASuplVelocity::Velocity(void) const
+	?SetHorizVel@COMASuplHorizVelocity@@QAEXGG@Z @ 93 NONAME ; void COMASuplHorizVelocity::SetHorizVel(unsigned short, unsigned short)
+	??0TOMASuplPositionEstimate@@QAE@XZ @ 94 NONAME ; TOMASuplPositionEstimate::TOMASuplPositionEstimate(void)
+	?SetSuplVelocity@COMASuplPosition@@QAEXPAVCOMASuplVelocity@@@Z @ 95 NONAME ; void COMASuplPosition::SetSuplVelocity(class COMASuplVelocity *)
+	??1COMASuplPosPayload@@UAE@XZ @ 96 NONAME ; COMASuplPosPayload::~COMASuplPosPayload(void)
+	?SetVelocity@COMASuplVelocity@@QAEXPAVCOMASuplHorizVelocity@@@Z @ 97 NONAME ; void COMASuplVelocity::SetVelocity(class COMASuplHorizVelocity *)
+	?GetElement@COMASuplInfoRequestList@@QAEPAVCOMASuplInfoRequest@@H@Z @ 98 NONAME ; class COMASuplInfoRequest * COMASuplInfoRequestList::GetElement(int)
+	?GetPosPayload@COMASuplPosPayload@@QBEXAAPAVHBufC8@@AAW4TOMASuplPosPayloadType@1@@Z @ 99 NONAME ; void COMASuplPosPayload::GetPosPayload(class HBufC8 * &, enum COMASuplPosPayload::TOMASuplPosPayloadType &) const
+	?GetSatInfoElement@TOMASuplSatelliteInfoElement@@QBEXAAH0@Z @ 100 NONAME ; void TOMASuplSatelliteInfoElement::GetSatInfoElement(int &, int &) const
+	??1COMASuplHorizAndVertUncertVelocity@@UAE@XZ @ 101 NONAME ; COMASuplHorizAndVertUncertVelocity::~COMASuplHorizAndVertUncertVelocity(void)
+	?SetHorizUncertVel@COMASuplHorizUncertVelocity@@QAEXGGE@Z @ 102 NONAME ; void COMASuplHorizUncertVelocity::SetHorizUncertVel(unsigned short, unsigned short, unsigned char)
+	?GetSatInfoElement@TOMASuplNavigationModel@@QBEHAAVTOMASuplSatelliteInfoElement@@H@Z @ 103 NONAME ; int TOMASuplNavigationModel::GetSatInfoElement(class TOMASuplSatelliteInfoElement &, int) const
+	?GetAllowedCapabilities@TOMASuplAllowedCapabilities@@QBEXAAH0000000@Z @ 104 NONAME ; void TOMASuplAllowedCapabilities::GetAllowedCapabilities(int &, int &, int &, int &, int &, int &, int &, int &) const
+	?GetHorizVel@COMASuplHorizVelocity@@QBEXAAG0@Z @ 105 NONAME ; void COMASuplHorizVelocity::GetHorizVel(unsigned short &, unsigned short &) const
+	?NewL@COMASuplHorizUncertVelocity@@SAPAV1@XZ @ 106 NONAME ; class COMASuplHorizUncertVelocity * COMASuplHorizUncertVelocity::NewL(void)
+	?Status@COMASuplInfoRequest@@QBEHXZ @ 107 NONAME ; int COMASuplInfoRequest::Status(void) const
+	?SetPosition@COMASuplPosition@@QAEXABVTOMASuplUtcTime@@ABVTOMASuplPositionEstimate@@@Z @ 108 NONAME ; void COMASuplPosition::SetPosition(class TOMASuplUtcTime const &, class TOMASuplPositionEstimate const &)
+	?GetHorizAndVertVel@COMASuplHorizAndVertVelocity@@QBEXAAG0AAE1@Z @ 109 NONAME ; void COMASuplHorizAndVertVelocity::GetHorizAndVertVel(unsigned short &, unsigned short &, unsigned char &, unsigned char &) const
+	?GetNavigationData@COMASuplReqAsstData@@QBEHAAVTOMASuplNavigationModel@@@Z @ 110 NONAME ; int COMASuplReqAsstData::GetNavigationData(class TOMASuplNavigationModel &) const
+	?SuplPayloadType@COMASuplPosPayload@@QBE?AW4TOMASuplPosPayloadType@1@XZ @ 111 NONAME ; enum COMASuplPosPayload::TOMASuplPosPayloadType COMASuplPosPayload::SuplPayloadType(void) const
+	??0COMASuplPosSessionBase@@QAE@PAVMOMASuplObserver@@@Z @ 112 NONAME ; COMASuplPosSessionBase::COMASuplPosSessionBase(class MOMASuplObserver *)
+	??1COMASuplSETCapabilities@@UAE@XZ @ 113 NONAME ; COMASuplSETCapabilities::~COMASuplSETCapabilities(void)
+	??1COMASuplInfoRequest@@UAE@XZ @ 114 NONAME ; COMASuplInfoRequest::~COMASuplInfoRequest(void)
+	?CloneL@COMASuplVelocity@@UBEPAVCOMASuplInfoRequest@@XZ @ 115 NONAME ; class COMASuplInfoRequest * COMASuplVelocity::CloneL(void) const
+	??0TOMASuplPosProtocol@@QAE@XZ @ 116 NONAME ; TOMASuplPosProtocol::TOMASuplPosProtocol(void)
+	?SetAltitudeInfo@TOMASuplPositionEstimate@@QAEHABVTOMASuplAltitudeInfo@@@Z @ 117 NONAME ; int TOMASuplPositionEstimate::SetAltitudeInfo(class TOMASuplAltitudeInfo const &)
+	?GetSuplState@COMASuplPosSessionBase@@QBEXAAW4TOMASuplMsg@1@AAW4TOMASuplMsgState@1@@Z @ 118 NONAME ; void COMASuplPosSessionBase::GetSuplState(enum COMASuplPosSessionBase::TOMASuplMsg &, enum COMASuplPosSessionBase::TOMASuplMsgState &) const
+

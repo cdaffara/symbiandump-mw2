@@ -1,0 +1,32 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+//CED c:\msgtest\TestFramework\Configurations\CommDbSettings\NtRasLongIdleTimeout.cfg
+RUN_TEST_STEP -1 MessagingTestServer GetBaseConstants			c:\perf\p.ini GetBaseConstants
+RUN_TEST_STEP -1 MessagingTestServer InitNtRas					c:\perf\p.ini InitNtRas
+RUN_TEST_STEP -1 MessagingTestServer CreateSession				c:\perf\p.ini CreateSession
+RUN_TEST_STEP -1 MessagingTestServer ResetMessageStore			c:\perf\pop3.ini ResetMessageStore
+RUN_TEST_STEP -1 MessagingTestServer CreateRegistry				c:\perf\p.ini CreateRegistry
+RUN_TEST_STEP -1 MessagingTestServer SetDefaultConfiguration	c:\perf\p.ini SetDefaultConfigurationPOP3
+RUN_TEST_STEP -1 MessagingTestServer CreatePop3Service			c:\perf\p.ini CreatePop3Service
+RUN_TEST_STEP -1 MessagingTestServer CreatePop3Mtm				c:\perf\p.ini CreatePop3Mtm
+RUN_TEST_STEP -1 MessagingTestServer SetPop3ServiceParameters	c:\perf\p.ini SetPop3ServiceParameters
+RUN_TEST_STEP -1 MessagingTestServer ConnectPop3Server 			c:\perf\p.ini ConnectPop3Server
+RUN_TEST_STEP -1 MessagingTestServer CreateChildrenSelection	c:\perf\p.ini CreateChildrenSelection
+RUN_TEST_STEP -1 MessagingTestServer CopySelection				c:\perf\p.ini CopySelection
+RUN_TEST_STEP -1 MessagingTestServer DisconnectPop3Server		c:\perf\p.ini DisconnectPop3Server

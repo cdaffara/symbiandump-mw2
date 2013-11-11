@@ -1,0 +1,1331 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE	T_MsgCommonServer	-SharedData
+LOAD_SUITE	T_MsgImapServer		-SharedData
+LOAD_SUITE	T_MsgSmtpServer		-SharedData
+
+
+START_TESTCASE	MSG-IMAP-DeleteFolder-0006
+//!	@SYMTestCaseID				MSG-IMAP-DeleteFolder-0006
+//!	@SYMTestCaseDesc			Positive: Delete selectable 2nd level remote sub folder (+ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						5569 (Delete Folder)
+//! @SYMPREQ					1160
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create IMAP account in Central Repository using settings from a configuration file.
+//!								3.	Connect to IMAP4 service using Account Settings and initialise account on remote IMAP4 server to default clean state.
+//!								4.	Create remote root-level folder with multiple messages.
+//!								5.	Create sub folder under the folder created in step 4 with multiple messages.
+//!								6.	Delete the sub folder created in step 5.
+//!								7.	Check if the sub folder created in step 5 has been removed with all its contents deleted.
+//!								8.	Disconnect from IMAP4 service.
+//!								
+//!	@SYMTestExpectedResults		OK - delete completed (See step 7)
+//!	@SYMAuthor					Sandip Ahluwalia
+
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-ResetMessageStore
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-CreateImapAccount
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-ChangeImapSettings
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-InitialiseImap4Account
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-DisConnectImap4Server
+PRINT Setup Completed ##################################################
+PRINT Sub-Setup Begins #################################################
+//Following set of test steps create multiple messages from file and send it using SMTP to remote INBOX
+RUN_TEST_STEP 	300 T_MsgImapServer		SetImap4FullDownloadLimits 		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-SetImap4FullDownloadLimits
+//Sending first message
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-SendSmtpMessage1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-DisConnectImap4Server
+//Sending second message
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-SendSmtpMessage2
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-DisConnectImap4Server
+//ConnectAndPopulateAllMailAndStayOnline
+RUN_TEST_STEP 	300 T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-ImapInvokeAsyncFunction
+RUN_TEST_STEP  	300 T_MsgImapServer		CheckChildrenCountImap 			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-DisConnectImap4Server
+PRINT Sub-Setup Completed ##############################################
+PRINT Execute Begins ###################################################
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-CreateFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-FindEntryByName1
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-CopyImapSelectionRemote1
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-CheckChildrenCountTargetFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-CreateFolder2
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-FindEntryByName2
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-CopyImapSelectionRemote2
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-CheckChildrenCountTargetFolder2
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-DisConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		DeleteImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-DeleteFolder
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-DoFullImap4Synchronisation
+RUN_TEST_STEP	!Error=-1	300	T_MsgImapServer		FindEntryByName		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-FindEntryByName2
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0001-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-DeleteFolder-0006
+
+
+START_TESTCASE	MSG-IMAP-DeleteFolder-0007
+//!	@SYMTestCaseID				MSG-IMAP-DeleteFolder-0007
+//!	@SYMTestCaseDesc			Positive/Negative: Delete 2 selectable remote sub folders in a hierarchy of 4 folders (+ve/-ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						5569 (Delete Folder)
+//! @SYMPREQ					1160
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create IMAP account in Central Repository using settings from a configuration file.
+//!								3.	Connect to IMAP4 service using Account Settings.
+//!								4.	Create remote root-level folder with multiple messages.
+//!								5.	Create a further 3 sub folders starting under the folder created in step 4 with multiple messages. (E.g. "foo/foo1/foo2/foo3")
+//!								6.	Delete the 2nd and 4th level sub folders created in step 5.
+//!								7.	If IMAP4 server responds OK/NO then check if the sub folders deleted in step 6 still exists, but all its contents deleted 
+//!									and that hierarchy is still in tact with the root and 3rd level folders existing with all its contents.
+//!								8.	Disconnect from IMAP4 service.
+//!								
+//!	@SYMTestExpectedResults		OK - delete completed or NO - delete failure: can't delete mailbox with that name (See step 7)
+//!	@SYMAuthor					Sandip Ahluwalia
+
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-ResetMessageStore
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-CreateImapAccount
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-ChangeImapSettings1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-InitialiseImap4Account
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-DisConnectImap4Server
+PRINT Setup Completed ##################################################
+PRINT Sub-Setup Begins #################################################
+//Following set of test steps create multiple messages from file and send it using SMTP to remote INBOX
+RUN_TEST_STEP 	300 T_MsgImapServer		SetImap4FullDownloadLimits 		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-SetImap4FullDownloadLimits
+//Sending first message
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-SendSmtpMessage1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-DisConnectImap4Server
+//Sending second message
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-SendSmtpMessage2
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-DisConnectImap4Server
+//ConnectAndPopulateAllMailAndStayOnline
+RUN_TEST_STEP 	300 T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-ImapInvokeAsyncFunction
+RUN_TEST_STEP  	300 T_MsgImapServer		CheckChildrenCountImap 			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-DisConnectImap4Server
+PRINT Sub-Setup Completed ##############################################
+PRINT Sub-Setup2 Begins ################################################
+//Creating the folder tree
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-CreateFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-FindEntryByName1
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-CopyImapSelectionRemote1
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-CheckChildrenCountTargetFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-CreateFolder2
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-FindEntryByName2
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-CopyImapSelectionRemote2
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-CheckChildrenCountTargetFolder2
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-CreateFolder3
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-FindEntryByName3
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-CopyImapSelectionRemote3
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-CheckChildrenCountTargetFolder3
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-CreateFolder4
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-FindEntryByName4
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-CopyImapSelectionRemote4
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-CheckChildrenCountTargetFolder4
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-DisConnectImap4Server
+PRINT Sub-Setup2 Completed #############################################
+PRINT Execute Begins ###################################################
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		DeleteImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-DeleteFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		DeleteImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-DeleteFolder2
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-FindEntryByName1
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-FindEntryByName2
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-FindEntryByName3
+RUN_TEST_STEP	!Error=-1	300	T_MsgImapServer		FindEntryByName		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-FindEntryByName4
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-DisConnectImap4Server
+// Need to subscribe to sub folders for its contents to be synchronised!
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-ChangeImapSettings2
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		SubscribeImap4Folder			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-SubscribeImap4Folder1
+RUN_TEST_STEP	300	T_MsgImapServer		SubscribeImap4Folder			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-SubscribeImap4Folder2
+RUN_TEST_STEP	300	T_MsgImapServer		SubscribeImap4Folder			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-SubscribeImap4Folder3
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-CheckChildrenCountTargetFolder1a
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-CheckChildrenCountTargetFolder2a
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-CheckChildrenCountTargetFolder3
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0002-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-DeleteFolder-0007
+
+
+START_TESTCASE	MSG-IMAP-RenameFolder-0001
+//!	@SYMTestCaseID				MSG-IMAP-RenameFolder-0001
+//!	@SYMTestCaseDesc			Positive: Rename selectable remote Root-level folder (+ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						5570 (Rename Folder)
+//! @SYMPREQ					1160
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create IMAP account in Central Repository using settings from a configuration file.
+//!								3.	Connect to IMAP4 service using Account Settings and initialise account on remote IMAP4 server to default clean state.
+//!								4.	Create remote root-level folder with multiple messages.
+//!								5.	Rename folder created in step 4.
+//!								6.	Check successful renaming and that the new renamed folder still contains all the existing messages from the previous named mailbox.
+//!								7.	Disconnect from IMAP4 service.
+//!								
+//!	@SYMTestExpectedResults		OK - rename completed (See step 6)
+//!	@SYMAuthor					Sandip Ahluwalia
+
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-ResetMessageStore
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-CreateImapAccount
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-ChangeImapSettings1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-InitialiseImap4Account
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-DisConnectImap4Server
+PRINT Setup Completed ##################################################
+PRINT Sub-Setup Begins #################################################
+//Following set of test steps create multiple messages from file and send it using SMTP to remote INBOX
+RUN_TEST_STEP 	300 T_MsgImapServer		SetImap4FullDownloadLimits 		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-SetImap4FullDownloadLimits
+//Sending first message
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-SendSmtpMessage1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-DisConnectImap4Server
+//Sending second message
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-SendSmtpMessage2
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-DisConnectImap4Server
+//ConnectAndPopulateAllMailAndStayOnline
+RUN_TEST_STEP 	300 T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-ImapInvokeAsyncFunction
+RUN_TEST_STEP  	300 T_MsgImapServer		CheckChildrenCountImap 			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-DisConnectImap4Server
+PRINT Sub-Setup Completed ##############################################
+PRINT Execute Begins ###################################################
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-CreateFolder
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-FindEntryByName1
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-CopyImapSelectionRemote
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-CheckChildrenCountTargetFolder
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-CheckChildrenCountTargetFolder1
+RUN_TEST_STEP 	300 T_MsgImapServer		RenameImapFolder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-RenameImapFolder
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-FindEntryByName2
+RUN_TEST_STEP	!Error=-1	300	T_MsgImapServer		FindEntryByName		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-FindEntryByName1
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-DisConnectImap4Server
+// Need to subscribe to folder for its contents to be synchronised!
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-ChangeImapSettings2
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		SubscribeImap4Folder			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-SubscribeImapFolder
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-CheckChildrenCount_RenameImapFolder
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini  	0003-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-RenameFolder-0001
+
+
+START_TESTCASE	MSG-IMAP-RenameFolder-0002
+//!	@SYMTestCaseID				MSG-IMAP-RenameFolder-0002
+//!	@SYMTestCaseDesc			Positive: Rename selectable remote Root-level folder with a sub folder(+ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						5570 (Rename Folder)
+//! @SYMPREQ					1160
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create IMAP account in Central Repository using settings from a configuration file.
+//!								3.	Connect to IMAP4 service using Account Settings and initialise account on remote IMAP4 server to default clean state.
+//!								4.	Create remote root-level folder with a sub folder underneath it.  Both folders should contain multiple messages. (E.g. "foo/bar")
+//!								5.	Rename root-level folder created in step 4. (E.g. "foo" renamed to "foo1")
+//!								6.	Check successful renaming of root-level folder and then the inferior hierarchical sub folder.
+//!									Also confirm that the new renamed folders contain all the existing messages from there previous named mailboxes. (E.g. rename of "foo" to "foo1" and "foo/bar" to "foo1/bar")
+//!								7.	Disconnect from IMAP4 service.
+//!								
+//!	@SYMTestExpectedResults		OK - rename completed (See step 6)
+//!	@SYMAuthor					Sandip Ahluwalia
+
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-ResetMessageStore
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-CreateImapAccount
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-ChangeImapSettings1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-InitialiseImap4Account
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-DisConnectImap4Server
+PRINT Setup Completed ##################################################
+PRINT Sub-Setup Begins #################################################
+//Following set of test steps create multiple messages from file and send it using SMTP to remote INBOX
+RUN_TEST_STEP 	300 T_MsgImapServer		SetImap4FullDownloadLimits 		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-SetImap4FullDownloadLimits
+//Sending first message
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-SendSmtpMessage1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-DisConnectImap4Server
+//Sending second message
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-SendSmtpMessage2
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-DisConnectImap4Server
+//ConnectAndPopulateAllMailAndStayOnline
+RUN_TEST_STEP 	300 T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-ImapInvokeAsyncFunction
+RUN_TEST_STEP  	300 T_MsgImapServer		CheckChildrenCountImap 			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-DisConnectImap4Server
+PRINT Sub-Setup Completed ##############################################
+PRINT Execute Begins ###################################################
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-CreateFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-FindEntryByName1
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-CopyImapSelectionRemote1
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-CheckChildrenCountTargetFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-CreateFolder2
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-FindEntryByName2
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-CopyImapSelectionRemote2
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-CheckChildrenCountTargetFolder2
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-CheckChildrenCountTargetFolder1a
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-CheckChildrenCountTargetFolder2a
+RUN_TEST_STEP 	300 T_MsgImapServer		RenameImapFolder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-RenameImapFolder
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-FindEntryByName1a
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-FindEntryByName2a
+RUN_TEST_STEP	!Error=-1	300	T_MsgImapServer		FindEntryByName		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-FindEntryByName1
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-DisConnectImap4Server
+// Need to subscribe to folders for its contents to be synchronised!
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-ChangeImapSettings2
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		SubscribeImap4Folder			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-SubscribeImapFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		SubscribeImap4Folder			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-SubscribeImapFolder2
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-CheckChildrenCount_RenameImapFolder
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-CheckChildrenCountTargetFolder2
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0004-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-RenameFolder-0002
+
+
+START_TESTCASE	MSG-IMAP-RenameFolder-0003
+//!	@SYMTestCaseID				MSG-IMAP-RenameFolder-0003
+//!	@SYMTestCaseDesc			Negative: Rename non-existing remote mailbox (-ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						5570 (Rename Folder)
+//! @SYMPREQ					1160
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create 2 IMAP accounts in Central Repository using same settings from a configuration file.
+//!								3.	Connect to IMAP4 service using Account Settings via one of the accounts created in step 2 (called for example AccountB) 
+//!									and initialise account on remote IMAP4 server to default clean state.
+//!								4.	Create remote folder in AccountB and check for successful creation.
+//!								5.	Disconnect from IMAP4 service using AccountB.
+//!								6.	Connect to IMAP4 service using Account Settings via the other account not used step 3 (called for example AccountA).
+//!								7.	Delete the remote folder created in step 4.
+//!								8.	Disconnect from IMAP4 service using AccountA.
+//!								9.	Connect without synchronising to IMAP4 service using AccountB.
+//!								10.	Rename the remote folder created in step 4 that does not exist on the IMAP4 server, but still should exist in the remote mirrored message store.
+//!								11.	Check for appropriate error message after attempting step 10.
+//!								12.	Disconnect from IMAP4 service using AccountB.
+//!								
+//!	@SYMTestExpectedResults		NO - rename failure: can't rename mailbox with that name (See step 11)
+//!	@SYMAuthor					Sandip Ahluwalia
+
+PRINT Setup Begins #################################################
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\folder\msg-imap-folder2.ini       0005-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0005-ResetMessageStore
+//Account A creation...
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0005-CreateImapAccount_A
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0005-ChangeImapSettings_A
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0005-ConnectAndSyncImapServer_A
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0005-InitialiseImap4Account_A
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0005-DoFullImap4Synchronisation_A
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0005-CheckChildrenCountRemoteInbox_A
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0005-DisConnectImap4Server_A
+PRINT Setup Completed ##################################################
+PRINT ##################################
+//Account B creation...
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0005-CreateImapAccount_B
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0005-ConnectAndSyncImapServer_B
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0005-CheckChildrenCountRemoteInbox_B
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0005-DisConnectImap4Server_B
+PRINT Setup Completed ##############################################
+PRINT Execute Begins ###############################################
+//Account B execution...
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0005-ConnectAndSyncImapServer_B
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0005-CreateImap4Folder_B
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0005-FindEntryByName_B
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0005-DisConnectImap4Server_B
+PRINT ##################################
+//Account A execution...
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0005-ConnectAndSyncImapServer_A
+RUN_TEST_STEP 	300	T_MsgImapServer		DeleteImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0005-DeleteImap4Folder_A
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0005-DisConnectImap4Server_A
+PRINT ##################################
+//Account B execution...
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectImap4Server				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0005-ConnectImap4Server_B
+RUN_TEST_STEP	!Error=-5 300	T_MsgImapServer		RenameImapFolder		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0005-RenameImapFolder_B
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      0005-DisConnectImap4Server_B
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ############################################
+END_TESTCASE	MSG-IMAP-RenameFolder-0003
+
+
+START_TESTCASE	MSG-IMAP-RenameFolder-0004
+//!	@SYMTestCaseID				MSG-IMAP-RenameFolder-0004
+//!	@SYMTestCaseDesc			Negative: Rename remote mailbox name that already exists (-ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						5570 (Rename Folder)
+//! @SYMPREQ					1160
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create IMAP account in Central Repository using settings from a configuration file.
+//!								3.	Connect to IMAP4 service using Account Settings and initialise account on remote IMAP4 server to default clean state.
+//!								4.	Create remote root-level folder with multiple messages. (E.g. "foo")
+//!								5.	Rename mailbox created in step 4 with the same name or a mailbox name that already exists. (E.g. rename of "foo" to "foo or rename of "foo to "bar" where bar is an existing folder!") 
+//!								6.	Check for appropriate error message after attempting step 5.
+//!								7.	Disconnect from IMAP4 service.
+//!								
+//!	@SYMTestExpectedResults		NO - rename failure: can't rename mailbox with that name (see step 6)
+//!	@SYMAuthor					Sandip Ahluwalia
+
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-ResetMessageStore
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-CreateImapAccount
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-ChangeImapSettings
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-InitialiseImap4Account
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-DisConnectImap4Server
+PRINT Setup Completed ##################################################
+PRINT Sub-Setup Begins #################################################
+//Following set of test steps create multiple messages from file and send it using SMTP to remote INBOX
+RUN_TEST_STEP 	300 T_MsgImapServer		SetImap4FullDownloadLimits 		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-SetImap4FullDownloadLimits
+//Sending first message
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-SendSmtpMessage1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-DisConnectImap4Server
+//Sending second message
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-SendSmtpMessage2
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-DisConnectImap4Server
+//ConnectAndPopulateAllMailAndStayOnline
+RUN_TEST_STEP 	300 T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-ImapInvokeAsyncFunction
+RUN_TEST_STEP  	300 T_MsgImapServer		CheckChildrenCountImap 			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-DisConnectImap4Server
+PRINT Sub-Setup Completed ##############################################
+PRINT Execute Begins ###################################################
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-CreateFolder
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-FindEntryByName
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-CopyImapSelectionRemote
+RUN_TEST_STEP !Error=-5		300 T_MsgImapServer		RenameImapFolder		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-RenameImapFolder
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-CheckChildrenCountTargetFolder
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0006-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-RenameFolder-0004
+
+
+START_TESTCASE	MSG-IMAP-RenameFolder-0005
+//!	@SYMTestCaseID				MSG-IMAP-RenameFolder-0005
+//!	@SYMTestCaseDesc			Positive: Renaming of remote INBOX (+ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						5570 (Rename Folder)
+//! @SYMPREQ					1160
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create IMAP account in Central Repository using settings from a configuration file.
+//!								3.	Connect to IMAP4 service using Account Settings and initialise account on remote IMAP4 server to default clean state.
+//!								4.	Create sub folder under the remote INBOX. (E.g. "bar")
+//!								5.	Rename remote INBOX. (E.g. rename of INBOX  to "old-inbox")
+//!								6.	Check successful renaming of INBOX and then check that the inferior hierarchical sub folder is unaffected by the rename of INBOX.  
+//!									Also confirm that all the messages in INBOX are moved to the new mailbox with the given name and that INBOX is left empty. 
+//!									(E.g. the LIST command should now include "old-inbox" as well as the previous existing INBOX and INBOX/bar mailboxes)
+//!								7.	Disconnect from IMAP4 service.
+//!								
+//!	@SYMTestExpectedResults		OK - rename completed (See step 6)
+//!	@SYMAuthor					Sandip Ahluwalia
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-ResetMessageStore
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-CreateImapAccount
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-ChangeImapSettings1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-InitialiseImap4Account
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-DisConnectImap4Server
+PRINT Setup Completed ##################################################
+PRINT Sub-Setup Begins #################################################
+//Following set of test steps create multiple messages from file and send it using SMTP to remote INBOX
+RUN_TEST_STEP 	300 T_MsgImapServer		SetImap4FullDownloadLimits 		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-SetImap4FullDownloadLimits
+//Sending first message
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-SendSmtpMessage1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-DisConnectImap4Server
+//Sending second message
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-SendSmtpMessage2
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-DisConnectImap4Server
+//ConnectAndPopulateAllMailAndStayOnline
+RUN_TEST_STEP 	300 T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-ImapInvokeAsyncFunction
+RUN_TEST_STEP  	300 T_MsgImapServer		CheckChildrenCountImap 			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-DisConnectImap4Server
+PRINT Sub-Setup Completed ##############################################
+PRINT Execute Begins ###################################################
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-CreateFolder
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-FindEntryByName1
+RUN_TEST_STEP	300 T_MsgImapServer		RenameImapFolder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-RenameImapFolder
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-FindEntryByName2
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-FindEntryByName1
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-DisConnectImap4Server
+// Need to subscribe to folder for its contents to be synchronised!
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-ChangeImapSettings2
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		SubscribeImap4Folder			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-SubscribeImapFolder
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-CheckChildrenCount_RenameImapFolder
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-CheckChildrenCountRemoteInbox2
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0007-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-RenameFolder-0005
+
+
+START_TESTCASE	MSG-IMAP-RenameFolder-0007
+//!	@SYMTestCaseID				MSG-IMAP-RenameFolder-0007
+//!	@SYMTestCaseDesc			Positive: Renaming of a selectable remote sub folder (+ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						5570 (Rename Folder)
+//! @SYMPREQ					1160
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create IMAP account in Central Repository using settings from a configuration file.
+//!								3.	Connect to IMAP4 service using Account Settings.
+//!								4.	Create remote root-level folder with a further 2 levels of sub folders underneath it.  All folders should contain multiple messages. (E.g. "foo/bar/bar1")
+//!								5.	Rename the 2nd level sub folder created in step 4 to a new folder name. (E.g. rename of "foo/bar" to "foo/blah")
+//!								6.	Check successful renaming of 2nd level folder in step 5 and thus the change to name and hierarchy of the 3rd level folder created in step 4 to now being a sub folder of the new renamed folder. 
+//!									Also confirm that the new renamed folders contain all the existing messages from there previous named mailboxes. 
+//!									(E.g. rename of "foo/bar" to blah in this test case example should create foo/blah and foo/blah/bar1)
+//!								7.	Disconnect from IMAP4 service.
+//!								
+//!	@SYMTestExpectedResults		OK - rename completed (See step 6)
+//!	@SYMAuthor					Sandip Ahluwalia
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-ResetMessageStore
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-CreateImapAccount
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-ChangeImapSettings1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-InitialiseImap4Account
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-DisConnectImap4Server
+PRINT Setup Completed ##################################################
+PRINT Sub-Setup Begins #################################################
+//Following set of test steps create multiple messages from file and send it using SMTP to remote INBOX
+RUN_TEST_STEP 	300 T_MsgImapServer		SetImap4FullDownloadLimits 		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-SetImap4FullDownloadLimits
+//Sending first message
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-SendSmtpMessage1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-DisConnectImap4Server
+//Sending second message
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-SendSmtpMessage2
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-DisConnectImap4Server
+//ConnectAndPopulateAllMailAndStayOnline
+RUN_TEST_STEP 	300 T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-ImapInvokeAsyncFunction
+RUN_TEST_STEP  	300 T_MsgImapServer		CheckChildrenCountImap 			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-DisConnectImap4Server
+PRINT Sub-Setup Completed ##############################################
+PRINT Sub-Setup2 Begins ################################################
+//Creating the folder tree
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-CreateFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-FindEntryByName1
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-CopyImapSelectionRemote1
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-CheckChildrenCountTargetFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-CreateFolder2
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-FindEntryByName2
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-CopyImapSelectionRemote2
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-CheckChildrenCountTargetFolder2
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-CreateFolder3
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-FindEntryByName3
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-CopyImapSelectionRemote3
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-CheckChildrenCountTargetFolder3
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-DisConnectImap4Server
+PRINT Sub-Setup2 Completed #############################################
+PRINT Execute Begins ###################################################
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 T_MsgImapServer		RenameImapFolder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-RenameImapFolder
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-FindEntryByNameA
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-FindEntryByNameB
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-FindEntryByName1
+RUN_TEST_STEP	!Error=-1	300	T_MsgImapServer		FindEntryByName		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-FindEntryByName2
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-DisConnectImap4Server
+// Need to subscribe to folders for its contents to be synchronised!
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-ChangeImapSettings2
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		SubscribeImap4Folder			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-SubscribeImapFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		SubscribeImap4Folder			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-SubscribeImapFolder2
+RUN_TEST_STEP	300	T_MsgImapServer		SubscribeImap4Folder			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-SubscribeImapFolder3
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-CheckChildrenCount_RenameImapFolderA
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-CheckChildrenCount_RenameImapFolderB
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-CheckChildrenCount_RenameImapFolderC
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0008-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-RenameFolder-0007
+
+
+START_TESTCASE	MSG-IMAP-Subscribe-0001
+//!	@SYMTestCaseID				MSG-IMAP-Subscribe-0001
+//!	@SYMTestCaseDesc			Positive: Subscribe to selectable remote Root-level folder (+ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						5567 (Subscribe to Folders)
+//! @SYMPREQ					1160
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create IMAP account in Central Repository using settings from a configuration file.
+//!								3.	Connect to IMAP4 service using Account Settings and initialise account on remote IMAP4 server to default clean state.
+//!								4.	Create remote root-level folder with multiple messages.
+//!								5.	Check root-level mailbox created in step 4 is unsubscribed.
+//!								6.	Subscribe to the folder created in step 4 and synchronise with the server.
+//!								7.	Check mailbox created in step 4 is subscribed.
+//!								8.	Check when synchronizing email from the server that the folder subscribed in step 6 is synchronized.
+//!								9.	Disconnect from IMAP4 service.
+//!								
+//!	@SYMTestExpectedResults		OK - subscribe completed (See steps 7 and 8)
+//!	@SYMAuthor					Sandip Ahluwalia
+
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-ResetMessageStore
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-CreateImapAccount
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-ChangeImapSettings1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-InitialiseImap4Account
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-DisConnectImap4Server
+PRINT Setup Completed ##################################################
+PRINT Sub-Setup Begins #################################################
+//Following set of test steps create multiple messages from file and send it using SMTP to remote INBOX
+RUN_TEST_STEP 	300 T_MsgImapServer		SetImap4FullDownloadLimits 		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-SetImap4FullDownloadLimits
+//Sending first message
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-SendSmtpMessage1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-DisConnectImap4Server
+//Sending second message
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-SendSmtpMessage2
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-DisConnectImap4Server
+//ConnectAndPopulateAllMailAndStayOnline
+RUN_TEST_STEP 	300 T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-ImapInvokeAsyncFunction
+RUN_TEST_STEP  	300 T_MsgImapServer		CheckChildrenCountImap 			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-DisConnectImap4Server
+PRINT Sub-Setup Completed ##############################################
+PRINT Execute Begins ###################################################
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-ChangeImapSettings2
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-CreateFolder
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-FindEntryByName
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-CopyImapSelectionRemote
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-CheckChildrenCountTargetFolder
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-CheckChildrenCountTargetFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-CheckSubscription1
+RUN_TEST_STEP	300	T_MsgImapServer		SubscribeImap4Folder			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-SubscribeImapFolder
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-CheckSubscription2
+//Check when synchronizing email from the server that the folder subscribed above is synchronized
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-CheckChildrenCountTargetFolder
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0009-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-Subscribe-0001
+
+
+START_TESTCASE	MSG-IMAP-Subscribe-0002
+//!	@SYMTestCaseID				MSG-IMAP-Subscribe-0002
+//!	@SYMTestCaseDesc			Positive: Subscribe to selectable remote Root-level folder with unsubscribed sub folder (+ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						5567 (Subscribe to Folders)
+//! @SYMPREQ					1160
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create IMAP account in Central Repository using settings from a configuration file.
+//!								3	Connect to IMAP4 service using Account Settings and initialise account on remote IMAP4 server to default clean state.
+//!								4.	Create remote root-level folder with a sub folder underneath it.  Both folders should contain multiple messages.
+//!								5.	Check mailboxes created in step 4 are unsubscribed.
+//!								6.	Subscribe to the root-level folder created in step 4 and synchronise with the server.
+//!								7.	Check that only the root-level mailbox created in step 4 is subscribed.
+//!								8.	Check when synchronizing email from the server that only the root-level folder subscribed in step 6 is synchronized and not the sub folder.
+//!								9.	Disconnect from IMAP4 service.
+//!								
+//!	@SYMTestExpectedResults		OK - subscribe completed (See steps 7 and 8)
+//!	@SYMAuthor					Sandip Ahluwalia
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-ResetMessageStore
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-CreateImapAccount
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-ChangeImapSettings1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-InitialiseImap4Account
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-DisConnectImap4Server
+PRINT Setup Completed ##################################################
+PRINT Sub-Setup Begins #################################################
+//Following set of test steps create multiple messages from file and send it using SMTP to remote INBOX
+RUN_TEST_STEP 	300 T_MsgImapServer		SetImap4FullDownloadLimits 		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-SetImap4FullDownloadLimits
+//Sending first message
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-SendSmtpMessage1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-DisConnectImap4Server
+//Sending second message
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-SendSmtpMessage2
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-DisConnectImap4Server
+//ConnectAndPopulateAllMailAndStayOnline
+RUN_TEST_STEP 	300 T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-ImapInvokeAsyncFunction
+RUN_TEST_STEP  	300 T_MsgImapServer		CheckChildrenCountImap 			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-DisConnectImap4Server
+PRINT Sub-Setup Completed ##############################################
+PRINT Execute Begins ###################################################
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-ChangeImapSettings2
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-CreateFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-FindEntryByName1
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-CopyImapSelectionRemote1
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-CheckChildrenCountTargetFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-CreateFolder2
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-FindEntryByName2
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-CopyImapSelectionRemote2
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-CheckChildrenCountTargetFolder2
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-CheckChildrenCountTargetFolder1a
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-CheckChildrenCountTargetFolder2a
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-CheckSubscription1
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-CheckSubscription1a
+RUN_TEST_STEP	300	T_MsgImapServer		SubscribeImap4Folder			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-SubscribeImapFolder
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-CheckSubscription2
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-CheckSubscription1a
+//Check when synchronizing email from the server that only the root-level folder subscribed above is synchronized and not the sub folder
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-CheckChildrenCountTargetFolder1b
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-CheckChildrenCountTargetFolder2a
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0010-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-Subscribe-0002
+
+
+START_TESTCASE	MSG-IMAP-Subscribe-0003
+//!	@SYMTestCaseID				MSG-IMAP-Subscribe-0003
+//!	@SYMTestCaseDesc			Positive: Subscribe to 2 selectable remote sub folders in a tree of 4 unsubscribed remote folders (+ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						5567 (Subscribe to Folders)
+//! @SYMPREQ					1160
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create IMAP account in Central Repository using settings from a configuration file.
+//!								3.	Connect to IMAP4 service using Account Settings and initialise account on remote IMAP4 server to default clean state.
+//!								4.	Create remote root-level folder with a further 3 levels of sub folders underneath it.  All folders should contain multiple messages. (E.g. "foo/foo1/foo2/foo3")
+//!								5.	Check mailboxes created in step 4 are unsubscribed.
+//!								6.	Subscribe to 2nd and 4th level folders created in step 4 and synchronise with the server.
+//!								7.	Check 2nd and 4th level mailboxes created in step 2 are subscribed.
+//!								8.	Check when synchronizing email from the server that the folders subscribed in step 6 are synchronized, but the 2 remaining folders that are unsubscribed should not be synchronized.
+//!								9.	Disconnect from IMAP4 service.
+//!								
+//!	@SYMTestExpectedResults		OK - subscribe completed (See steps 7 and 8)
+//!	@SYMAuthor					Sandip Ahluwalia
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-ResetMessageStore
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CreateImapAccount
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-ChangeImapSettings1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-InitialiseImap4Account
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-DisConnectImap4Server
+PRINT Setup Completed ##################################################
+PRINT Sub-Setup Begins #################################################
+//Following set of test steps create multiple messages from file and send it using SMTP to remote INBOX
+RUN_TEST_STEP 	300 T_MsgImapServer		SetImap4FullDownloadLimits 		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-SetImap4FullDownloadLimits
+//Sending first message
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-SendSmtpMessage1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-DisConnectImap4Server
+//Sending second message
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-SendSmtpMessage2
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-DisConnectImap4Server
+//ConnectAndPopulateAllMailAndStayOnline
+RUN_TEST_STEP 	300 T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-ImapInvokeAsyncFunction
+RUN_TEST_STEP  	300 T_MsgImapServer		CheckChildrenCountImap 			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-DisConnectImap4Server
+PRINT Sub-Setup Completed ##############################################
+PRINT Sub-Setup2 Begins ################################################
+//Creating the folder tree
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-ChangeImapSettings2
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CreateFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-FindEntryByName1
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CopyImapSelectionRemote1
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CheckChildrenCountTargetFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CreateFolder2
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CopyImapSelectionRemote2
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CheckChildrenCountTargetFolder2
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CreateFolder3
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CopyImapSelectionRemote3
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CheckChildrenCountTargetFolder3
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CreateFolder4
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CopyImapSelectionRemote4
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CheckChildrenCountTargetFolder4
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-DisConnectImap4Server
+PRINT Sub-Setup2 Completed #############################################
+PRINT Execute Begins ###################################################
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CheckChildrenCountTargetFolder1a
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CheckChildrenCountTargetFolder2a
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CheckChildrenCountTargetFolder3a
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CheckChildrenCountTargetFolder4a
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CheckSubscription1
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CheckSubscription1a
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CheckSubscription1b
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CheckSubscription1c
+RUN_TEST_STEP	300	T_MsgImapServer		SubscribeImap4Folder			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-SubscribeImapFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		SubscribeImap4Folder			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-SubscribeImapFolder2
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CheckSubscription2
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CheckSubscription2a
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CheckSubscription1
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CheckSubscription1b
+//Check when synchronizing email from the server that the folders subscribed above are synchronized, but the 2 remaining folders that are unsubscribed should not be synchronized
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CheckChildrenCountTargetFolder2b
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CheckChildrenCountTargetFolder4
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CheckChildrenCountTargetFolder1a
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-CheckChildrenCountTargetFolder3a
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0011-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-Subscribe-0003
+
+
+START_TESTCASE	MSG-IMAP-Unsubscribe-0001
+//!	@SYMTestCaseID				MSG-IMAP-Unsubscribe-0001
+//!	@SYMTestCaseDesc			Positive: Unsubscribe to selectable remote Root-level folder (+ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						5568 (Unsubscribe to Folders)
+//! @SYMPREQ					1160
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create IMAP account in Central Repository using settings from a configuration file.
+//!								3.	Connect to IMAP4 service using Account Settings and initialise account on remote IMAP4 server to default clean state.
+//!								4.	Create remote root-level folder with multiple messages.
+//!								5.	Subscribe to the folder created in step 4 and synchronise with the server.
+//!								6.	Check mailbox created in step 4 is subscribed.
+//!								7.	Unsubscribe to folder created in step 4 and synchronise with the server.
+//!								8.	Check mailbox created in step 4 is unsubscribed.
+//!								9.	Check when synchronizing email from the server that the folder unsubscribed in step 7 is no longer synchronized.
+//!								10.	Disconnect from IMAP4 service.
+//!								
+//!	@SYMTestExpectedResults		OK - unsubscribe completed (See steps 8 and 9)
+//!	@SYMAuthor					Sandip Ahluwalia
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-ResetMessageStore
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-CreateImapAccount
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-ChangeImapSettings1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-InitialiseImap4Account
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-DisConnectImap4Server
+PRINT Setup Completed ##################################################
+PRINT Sub-Setup Begins #################################################
+//Following set of test steps create multiple messages from file and send it using SMTP to remote INBOX
+RUN_TEST_STEP 	300 T_MsgImapServer		SetImap4FullDownloadLimits 		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-SetImap4FullDownloadLimits
+//Sending first message
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-SendSmtpMessage1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-DisConnectImap4Server
+//Sending second message
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-SendSmtpMessage2
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-DisConnectImap4Server
+//ConnectAndPopulateAllMailAndStayOnline
+RUN_TEST_STEP 	300 T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-ImapInvokeAsyncFunction
+RUN_TEST_STEP  	300 T_MsgImapServer		CheckChildrenCountImap 			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-DisConnectImap4Server
+PRINT Sub-Setup Completed ##############################################
+PRINT Execute Begins ###################################################
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-ChangeImapSettings2
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-CreateFolder
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-FindEntryByName
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-CopyImapSelectionRemote
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-CheckChildrenCountTargetFolder
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-CheckChildrenCountTargetFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-CheckSubscription1
+RUN_TEST_STEP	300	T_MsgImapServer		SubscribeImap4Folder			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-SubscribeImapFolder
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-CheckSubscription2
+//Check when synchronizing email from the server that the folder subscribed above is synchronized
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-CheckChildrenCountTargetFolder
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-DisConnectImap4Server
+//UNSUBSCRIBE process...
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-ChangeImapSettings1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		UnsubscribeImap4Folder			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-UnsubscribeImapFolder
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-CheckSubscription1
+//Check when synchronizing email from the server that the folder unsubscribed above is no longer synchronized
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-CheckChildrenCountTargetFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0012-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-Unsubscribe-0001
+
+
+START_TESTCASE	MSG-IMAP-Unsubscribe-0002
+//!	@SYMTestCaseID				MSG-IMAP-Unsubscribe-0002
+//!	@SYMTestCaseDesc			Positive: Unsubscribe to selectable remote Root-level folder with subscribed sub folder (+ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						5568 (Unsubscribe to Folders)
+//! @SYMPREQ					1160
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create IMAP account in Central Repository using settings from a configuration file.
+//!								3.	3.	Connect to IMAP4 service using Account Settings and initialise account on remote IMAP4 server to default clean state.
+//!								4.	Create remote root-level folder with a sub folder underneath it.  Both folders should contain multiple messages.
+//!								5.	Subscribe to the folders created in step 4 and synchronise with the server.
+//!								6.	Check mailboxes created in step 4 are subscribed.
+//!								7.	Unsubscribe to the root-level folder created in step 4 and synchronise with the server.
+//!								8.	Check root-level mailbox created in step 4 is unsubscribed.
+//!								9.	Check when synchronizing email from the server that the folder unsubscribed in step 7 is no longer synchronized, but the sub folder subscribed should still be synchronized.
+//!								10.	Disconnect from IMAP4 service.
+//!								
+//!	@SYMTestExpectedResults		OK - unsubscribe completed (See steps 8 and 9)
+//!	@SYMAuthor					Sandip Ahluwalia
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-ResetMessageStore
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-CreateImapAccount
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-ChangeImapSettings1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-InitialiseImap4Account
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-DisConnectImap4Server
+PRINT Setup Completed ##################################################
+PRINT Sub-Setup Begins #################################################
+//Following set of test steps create multiple messages from file and send it using SMTP to remote INBOX
+RUN_TEST_STEP 	300 T_MsgImapServer		SetImap4FullDownloadLimits 		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-SetImap4FullDownloadLimits
+//Sending first message
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-SendSmtpMessage1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-DisConnectImap4Server
+//Sending second message
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-SendSmtpMessage2
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-DisConnectImap4Server
+//ConnectAndPopulateAllMailAndStayOnline
+RUN_TEST_STEP 	300 T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-ImapInvokeAsyncFunction
+RUN_TEST_STEP  	300 T_MsgImapServer		CheckChildrenCountImap 			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-DisConnectImap4Server
+PRINT Sub-Setup Completed ##############################################
+PRINT Execute Begins ###################################################
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-ChangeImapSettings2
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-CreateFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-FindEntryByName1
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-CopyImapSelectionRemote1
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-CheckChildrenCountTargetFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-CreateFolder2
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-FindEntryByName2
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-CopyImapSelectionRemote2
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-CheckChildrenCountTargetFolder2
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-CheckChildrenCountTargetFolder1a
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-CheckChildrenCountTargetFolder2a
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-CheckSubscription1
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-CheckSubscription1a
+RUN_TEST_STEP	300	T_MsgImapServer		SubscribeImap4Folder			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-SubscribeImapFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		SubscribeImap4Folder			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-SubscribeImapFolder2
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-CheckSubscription2
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-CheckSubscription2a
+//Check when synchronizing email from the server that both the root-level and sub folders subscribed above is synchronized
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-CheckChildrenCountTargetFolder1b
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-CheckChildrenCountTargetFolder2
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-DisConnectImap4Server
+//UNSUBSCRIBE process...
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-ChangeImapSettings1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		UnsubscribeImap4Folder			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-UnsubscribeImapFolder
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-CheckSubscription1
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-CheckSubscription2a
+//Check when synchronizing email from the server that the folder unsubscribed above is no longer synchronized, but the sub folder subscribed should still be synchronized
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-CheckChildrenCountTargetFolder1a
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-CheckChildrenCountTargetFolder2
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0013-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-Unsubscribe-0002
+
+
+START_TESTCASE	MSG-IMAP-Unsubscribe-0003
+//!	@SYMTestCaseID				MSG-IMAP-Unsubscribe-0003
+//!	@SYMTestCaseDesc			Positive: Unsubscribe to selectable remote Root-level folder with subscribed sub folder (+ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						5568 (Unsubscribe to Folders)
+//! @SYMPREQ					1160
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create IMAP account in Central Repository using settings from a configuration file.
+//!								3.	Connect to IMAP4 service using Account Settings and initialise account on remote IMAP4 server to default clean state.
+//!								4.	Create remote root-level folder with a further 3 levels of sub folders underneath it.  All folders should contain multiple messages. (E.g. "foo/foo1/foo2/foo3")
+//!								5.	Subscribe to all the folders created in step 4 and synchronise with the server.
+//!								6.	Check mailboxes created in step 4 are subscribed.
+//!								7.	Unsubscribe to 2nd and 4th level folders created in step 4 and synchronise with the server.
+//!								8.	Check 2nd and 4th level mailboxes created in step 4 are unsubscribed.
+//!								9.	Check when synchronizing email from the server that the folders unsubscribed in step 7 are no longer synchronized, but the 2 remaining folders subscribed should still be synchronized.
+//!								10.	Disconnect from IMAP4 service.
+//!								
+//!	@SYMTestExpectedResults		OK - unsubscribe completed (See steps 8 and 9)
+//!	@SYMAuthor					Sandip Ahluwalia
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-ResetMessageStore
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CreateImapAccount
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-ChangeImapSettings1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-InitialiseImap4Account
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-DisConnectImap4Server
+PRINT Setup Completed ##################################################
+PRINT Sub-Setup Begins #################################################
+//Following set of test steps create multiple messages from file and send it using SMTP to remote INBOX
+RUN_TEST_STEP 	300 T_MsgImapServer		SetImap4FullDownloadLimits 		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-SetImap4FullDownloadLimits
+//Sending first message
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-SendSmtpMessage1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-DisConnectImap4Server
+//Sending second message
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckChildrenCountOutbox
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-SendSmtpMessage2
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-DisConnectImap4Server
+//ConnectAndPopulateAllMailAndStayOnline
+RUN_TEST_STEP 	300 T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-ImapInvokeAsyncFunction
+RUN_TEST_STEP  	300 T_MsgImapServer		CheckChildrenCountImap 			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-DisConnectImap4Server
+PRINT Sub-Setup Completed ##############################################
+PRINT Sub-Setup2 Begins ################################################
+//Creating the folder tree
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-ChangeImapSettings2
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CreateFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-FindEntryByName1
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CopyImapSelectionRemote1
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckChildrenCountTargetFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CreateFolder2
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-FindEntryByName2
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CopyImapSelectionRemote2
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckChildrenCountTargetFolder2
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CreateFolder3
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-FindEntryByName3
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CopyImapSelectionRemote3
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckChildrenCountTargetFolder3
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CreateFolder4
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-FindEntryByName4
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CopyImapSelectionRemote4
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckChildrenCountTargetFolder4
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-DisConnectImap4Server
+PRINT Sub-Setup2 Completed #############################################
+PRINT Execute Begins ###################################################
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckChildrenCountTargetFolder1a
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckChildrenCountTargetFolder2a
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckChildrenCountTargetFolder3a
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckChildrenCountTargetFolder4a
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckSubscription1
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckSubscription1a
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckSubscription1b
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckSubscription1c
+RUN_TEST_STEP	300	T_MsgImapServer		SubscribeImap4Folder			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-SubscribeImapFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		SubscribeImap4Folder			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-SubscribeImapFolder2
+RUN_TEST_STEP	300	T_MsgImapServer		SubscribeImap4Folder			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-SubscribeImapFolder3
+RUN_TEST_STEP	300	T_MsgImapServer		SubscribeImap4Folder			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-SubscribeImapFolder4
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckSubscription2
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckSubscription2a
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckSubscription2b
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckSubscription2c
+//Check when synchronizing email from the server that all the folders subscribed above are synchronized
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckChildrenCountTargetFolder1b
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckChildrenCountTargetFolder2b
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckChildrenCountTargetFolder3b
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckChildrenCountTargetFolder4
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-DisConnectImap4Server
+//UNSUBSCRIBE process...
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-ChangeImapSettings1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		UnsubscribeImap4Folder			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-UnsubscribeImapFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		UnsubscribeImap4Folder			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-UnsubscribeImapFolder2
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckSubscription2
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckSubscription1a
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckSubscription2b
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckSubscription1c
+//Check when synchronizing email from the server that the folders unsubscribed above are no longer synchronized, but the 2 remaining folders subscribed should still be synchronized
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckChildrenCountTargetFolder1b
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckChildrenCountTargetFolder2a
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckChildrenCountTargetFolder3b
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-CheckChildrenCountTargetFolder4a
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder2.ini      	0014-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-Unsubscribe-0003
+

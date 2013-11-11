@@ -1,0 +1,49 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file for project mpxharvestertest
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET          mpxharvestertest.dll
+TARGETTYPE      dll
+UID             0x1000008D 0x101FB3E3
+
+CAPABILITY      ALL -TCB
+VENDORID     	VID_DEFAULT
+
+DEFFILE         mpxharvestertest.def
+
+SOURCEPATH      ../src
+SOURCE          mpxharvestertest.cpp
+SOURCE          mpxharvestertestBlocks.cpp
+
+USERINCLUDE     ../inc 
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY         euser.lib
+LIBRARY         stiftestinterface.lib
+LIBRARY         stiftestengine.lib
+LIBRARY         mpxharvesterutility.lib
+LIBRARY         mpxcommon.lib
+LIBRARY         mpxcollectionutility.lib
+LIBRARY         efsrv.lib
+LIBRARY         bafl.lib
+
+LANG            SC
+
+// End of File

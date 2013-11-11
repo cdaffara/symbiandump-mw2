@@ -1,0 +1,57 @@
+// Copyright (c) 2006-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description: bld.inf file for the burtestserver
+// 
+//
+
+// @file
+
+PRJ_TESTEXPORTS
+burtestserver.iby   		/epoc32/rom/include/burtestserver.iby
+
+
+PRJ_TESTMMPFILES
+burtestserver.mmp
+
+PRJ_TESTEXPORTS
+../scripts/msg-backuprestore1.script	/epoc32/winscw/c/msgtest/backup/msg-backuprestore1.script
+../testdata/msg-backuprestore1.ini	/epoc32/winscw/c/msgtest/backup/msg-backuprestore1.ini
+
+../scripts/msg-backuprestore2.script	/epoc32/winscw/c/msgtest/backup/msg-backuprestore2.script
+../testdata/msg-backuprestore2.ini	/epoc32/winscw/c/msgtest/backup/msg-backuprestore2.ini
+
+../scripts/msg-backuprestore3.script	/epoc32/winscw/c/msgtest/backup/msg-backuprestore3.script
+../testdata/msg-backuprestore3.ini	/epoc32/winscw/c/msgtest/backup/msg-backuprestore3.ini
+
+../scripts/msg-backuprestore4.script	/epoc32/winscw/c/msgtest/backup/msg-backuprestore4.script
+../testdata/msg-backuprestore4.ini	/epoc32/winscw/c/msgtest/backup/msg-backuprestore4.ini
+
+../scripts/msg-backuprestore5.script	/epoc32/winscw/c/msgtest/backup/msg-backuprestore5.script
+../testdata/msg-backuprestore5.ini	/epoc32/winscw/c/msgtest/backup/msg-backuprestore5.ini
+
+../scripts/msg-concurrent-bur-copy-oprs1.script		/epoc32/winscw/c/msgtest/backup/msg-concurrent-bur-copy-oprs1.script
+../scripts/msg-concurrent-bur-copy-oprs2.script		/epoc32/winscw/c/msgtest/backup/msg-concurrent-bur-copy-oprs2.script
+../scripts/msg-concurrent-bur-copy-oprs3.script		/epoc32/winscw/c/msgtest/backup/msg-concurrent-bur-copy-oprs3.script
+../scripts/msg-concurrent-bur-copy-oprs4.script		/epoc32/winscw/c/msgtest/backup/msg-concurrent-bur-copy-oprs4.script
+
+../scripts/msg-concurrent-bur-move-oprs1.script		/epoc32/winscw/c/msgtest/backup/msg-concurrent-bur-move-oprs1.script
+../scripts/msg-concurrent-bur-move-oprs2.script		/epoc32/winscw/c/msgtest/backup/msg-concurrent-bur-move-oprs2.script
+../scripts/msg-concurrent-bur-move-oprs3.script		/epoc32/winscw/c/msgtest/backup/msg-concurrent-bur-move-oprs3.script
+../scripts/msg-concurrent-bur-move-oprs4.script		/epoc32/winscw/c/msgtest/backup/msg-concurrent-bur-move-oprs4.script
+
+../scripts/msg-concurrent-bur-delete-oprs1.script	/epoc32/winscw/c/msgtest/backup/msg-concurrent-bur-delete-oprs1.script
+../scripts/msg-concurrent-bur-delete-oprs2.script	/epoc32/winscw/c/msgtest/backup/msg-concurrent-bur-delete-oprs2.script
+../scripts/msg-concurrent-bur-delete-oprs3.script	/epoc32/winscw/c/msgtest/backup/msg-concurrent-bur-delete-oprs3.script
+../scripts/msg-concurrent-bur-delete-oprs4.script	/epoc32/winscw/c/msgtest/backup/msg-concurrent-bur-delete-oprs4.script
+
+

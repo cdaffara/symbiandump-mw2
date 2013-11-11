@@ -1,0 +1,59 @@
+// Copyright (c) 2004-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// @file T_Utils.mmp
+// 
+//
+
+
+TARGET			t_msgutilityserver.dll
+TARGETPATH		/system/libs
+TARGETTYPE		DLL
+
+CAPABILITY ALL -TCB
+
+UID			0 0x10274071
+VENDORID 		0x70000001
+
+
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+
+USERINCLUDE	../inc ../../../msgsrvnstore/server/inc
+USERINCLUDE ../../../../../../app/messaging/email/pop3andsmtpmtm/clientmtms/inc
+SOURCEPATH	../src
+SOURCE		T_TimerUtils.cpp
+SOURCE		T_Utils.cpp
+SOURCE		T_UtilsCentralRepository.cpp
+SOURCE		T_UtilsConfigFileMachineName.cpp
+SOURCE		T_UtilsConfigFileParserUtility.cpp
+SOURCE		T_UtilsDeleteAllChildren.cpp
+SOURCE		T_UtilsEnumConverter.cpp
+SOURCE		T_UtilsReadEmailSettingsFromConfigFile.cpp
+
+
+LIBRARY 		testexecuteutils.lib
+LIBRARY			testexecutelogclient.lib
+LIBRARY			imut.lib 
+LIBRARY			bafl.lib
+LIBRARY			etext.lib
+LIBRARY			estor.lib 
+LIBRARY			msgs.lib
+LIBRARY			euser.lib
+LIBRARY			imcm.lib
+LIBRARY			efsrv.lib
+LIBRARY			charconv.lib
+
+DEFFILE		v1_t_msgutilityserver.def
+
+SMPSAFE

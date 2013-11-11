@@ -1,0 +1,49 @@
+// Copyright (c) 2004-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// MessagingTestUtilityServer2
+// 
+//
+
+TARGET			messagingtestutilityserver2.exe
+TARGETTYPE		EXE
+
+
+UID			0 0x102857AB
+VENDORID 		0x70000001
+
+CAPABILITY ALL -TCB
+
+SOURCEPATH	../src
+SOURCE		MessagingTestUtilityServer2Main.cpp
+SOURCE		MessagingTestUtilityServer2.cpp
+SOURCE		TestUtilityServerObserver.cpp
+
+USERINCLUDE	../inc
+USERINCLUDE	../../../../../../app/messaging/email/pop3andsmtpmtm/servermtmutils/mobilitytestframework/inc
+
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+LIBRARY		euser.lib
+LIBRARY		msgs.lib
+LIBRARY		bafl.lib
+LIBRARY		efsrv.lib
+LIBRARY		netmeta.lib
+
+#ifdef __MOBILITY_TEST_FRAMEWORK
+LIBRARY		mobilitytestframework.lib
+#endif //__MOBILITY_TEST_FRAMEWORK
+
+EPOCSTACKSIZE	32000
+
+SMPSAFE

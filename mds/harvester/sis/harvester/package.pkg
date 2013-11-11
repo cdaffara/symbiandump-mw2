@@ -1,0 +1,33 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description:
+;
+;Languages
+&EN
+
+;packet-header (name, uid, major, minor, build, type)
+#{"Metadata Harvester Patch"},(0x200009F4), 2, 0, 0, TYPE=SA, RU
+
+; Localised vendor name
+%{"Nokia"}
+
+; Unique vendor name
+:"Nokia"
+
+;Files
+"\epoc32\RELEASE\armv5\UREL\harvesterclient.dll" -"c:\sys\bin\harvesterclient.dll"
+"\epoc32\RELEASE\armv5\UREL\harvestercommon.dll" -"c:\sys\bin\harvestercommon.dll"
+"\epoc32\RELEASE\armv5\UREL\harvesterdata.dll" -"c:\sys\bin\harvesterdata.dll"
+"\epoc32\RELEASE\armv5\UREL\harvesterplugininterface.dll" -"c:\sys\bin\harvesterplugininterface.dll"
+"\epoc32\RELEASE\armv5\UREL\harvesterserver.exe" -"c:\sys\bin\harvesterserver.exe"

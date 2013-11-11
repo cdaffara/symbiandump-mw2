@@ -1,0 +1,53 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+//! @file
+//! @SYMTestCaseID 		CM-SENDAS-CIT-0013-HP
+//! @SYMTestCaseDesc 		Add Recipient Address of type "To" to IR message where number of recepients added < Number of recipeints supported
+//! @SYMFssID 
+//! @SYMTestStatus 		Defined
+//! @SYMTestPriority 		High
+//! @SYMTestActions 
+//! @SYMTestExpectedResults 	The Recipient Address is added to the IR message
+//! @SYMTestType 		CIT
+
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+GetBaseConstants		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0013-Add'To'RecipientAddr.ini	GetBaseConstants
+CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0013-Add'To'RecipientAddr.ini	CreateSession
+ResetMessageStore		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0013-Add'To'RecipientAddr.ini	ResetMessageStore
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0013-Add'To'RecipientAddr.ini	ChkChildrenCountDraft0
+CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0013-Add'To'RecipientAddr.ini	CreateRegistry
+GetIRMTMUId			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0013-Add'To'RecipientAddr.ini	GetIrMtmUid
+CreateService			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0013-Add'To'RecipientAddr.ini	CreateIrService
+EXECUTE_TEST_CASE
+ConnectSendAsServer		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0013-Add'To'RecipientAddr.ini	ConnectSendAsServer
+SendAsCreateMessageofType	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0013-Add'To'RecipientAddr.ini	CreateMessageofType
+SendAsAddRecipient		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0013-Add'To'RecipientAddr.ini	SendAsAddRecipient
+SendAsSaveMessageAndClose	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0013-Add'To'RecipientAddr.ini	CloseMessage
+CloseSendAsServerConnection	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0013-Add'To'RecipientAddr.ini	CloseSvrConnection
+CHECK_POSTCONDITIONS
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0013-Add'To'RecipientAddr.ini	ChkChildrenCountDraft1
+CreateChildrenSelection 	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0013-Add'To'RecipientAddr.ini	CreateChildrenSelDraft
+GetMessageAtIndex		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0013-Add'To'RecipientAddr.ini	GetMessageAtIndex
+GetEntry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0013-Add'To'RecipientAddr.ini	GetEntry
+END_TEST_CASE

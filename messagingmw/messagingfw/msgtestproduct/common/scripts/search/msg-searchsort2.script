@@ -1,0 +1,79 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+LOAD_SUITE 	T_MsgCommonServer 	-SharedData
+LOAD_SUITE 	T_MsgImapServer 	-SharedData
+LOAD_SUITE  	T_MsgSmtpServer 	-SharedData
+LOAD_SUITE	T_MsgPopServer		-SharedData
+
+//! @SYMTestCaseID		MSG-ALL-SEARCH-0030
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8581, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDesc
+//!	Functional Test: Search all the messages under a specified service for the specified search criteria.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//!	1.	Create search-sort query searching for "test002" sender address in "FROM" field of local service and sort by "FROM" field in ascending order.
+//!	2.	Perform search-sort operation.
+//!	3.	Verify that " FROM" field contains "test002" sender address and sorted by "FROM" field in ascending order.
+//!	4.	Create search-sort query searching for "test002" sender address in "FROM" field of remote imap service and sort by "FROM" field in ascending order.
+//!	5.	Perform search-sort operation.
+//!	6.	Verify that " FROM" field contains "test002" sender address and sorted by "FROM" field in ascending order.
+//!	7.	Create search-sort query searching for "test002" sender address in "FROM" field of remote pop service and sort by "FROM" field in ascending order.
+//!	8.	Perform search-sort operation.
+//!	9.	Verify that " FROM" field contains "test002" sender address and sorted by "FROM" field in ascending order.
+//!	10.	Create search-sort query searching for "test002" sender address in "FROM" field of sms service and sort by "FROM" field in ascending order.
+//!	11.	Perform search-sort operation.
+//!	12.	Verify that " FROM" field contains "test002" sender address and sorted by "FROM" field in ascending order.
+//!	
+//! @SYMTestExpectedResults
+//!	Action 2, 5 ,8 and 11 returns messages with "FROM" field containing "test002" sender address and sorted on "FROM" field in ascending order.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and create messages satisfying different search criteria.
+// As the migration of test framework completed only for EMAIL message related operations, TESTPRODUCT components would  
+// handle the EMAIL message operations and other message related opertions would be handled by TESTFRAMEWORK component.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-ALL-SEARCH-0030
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort2.ini    0030-SearchSortQuery1
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort2.ini    0030-SearchSortQuery1
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort2.ini    0030-SearchSortQuery1
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-searchsort2.ini    0030-SearchSortQuery1
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort2.ini    0030-SearchSortQuery2
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort2.ini    0030-SearchSortQuery2
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort2.ini    0030-SearchSortQuery2
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-searchsort2.ini    0030-SearchSortQuery2
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort2.ini    0030-SearchSortQuery3
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort2.ini    0030-SearchSortQuery3
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort2.ini    0030-SearchSortQuery3
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-searchsort2.ini    0030-SearchSortQuery3
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort2.ini    0030-SearchSortQuery4
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort2.ini    0030-SearchSortQuery4
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-searchsort2.ini    0030-SearchSortQuery4
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-searchsort2.ini    0030-SearchSortQuery4
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-SEARCH-0030

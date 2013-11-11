@@ -1,0 +1,97 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  common project specification
+*
+*/
+
+
+
+#include <data_caging_paths.hrh>
+#include <platform_paths.hrh>
+
+TARGET          mpxcommon.dll
+CAPABILITY      CAP_GENERAL_DLL
+TARGETTYPE      DLL
+UID             0x1000008D  0x101FFC12
+VENDORID        VID_DEFAULT
+
+MACRO CAMESE_IN_DRM_UTILITY
+
+USERINCLUDE     ../inc
+USERINCLUDE     ../../../inc
+
+MW_LAYER_SYSTEMINCLUDE
+
+SOURCEPATH      ../src
+SOURCE          mpxsession.cpp
+SOURCE          mpxclientlist.cpp 
+SOURCE          mpxcenrepwatcher.cpp
+SOURCE          mpxmessage.cpp 
+SOURCE          mpxcollectionpath.cpp
+SOURCE          mpxtaskqueue.cpp 
+SOURCE          mpxmessagemonitor.cpp
+SOURCE          mpxuser.cpp
+SOURCE          mpxpskeywatcher.cpp
+SOURCE          mpxcollectiontype.cpp
+SOURCE          mpxpluginmonitor.cpp
+SOURCE          mpxpluginhandlerbase.cpp
+SOURCE          mpxmedia.cpp
+SOURCE          mpxmediaarray.cpp
+SOURCE          mpxdrmmediautility.cpp
+SOURCE          mpxdrmmediaagent.cpp
+SOURCE          mpxdrmmediaomaagent.cpp
+SOURCE          mpxdrmmediawmaagent.cpp
+SOURCE          mpxattribute.cpp
+SOURCE          mpxdata.cpp
+SOURCE          mpxheapmanager.cpp
+SOURCE          mpxfixedarray.cpp
+SOURCE          mpxdataarray.cpp
+SOURCE          mpxmediadataarray.cpp
+SOURCE          mpxmediabase.cpp
+SOURCE          mpxparameter.cpp
+SOURCE          mpxplugininfo.cpp
+SOURCE          mpxmessagequeue.cpp
+SOURCE          mpxsubscription.cpp
+SOURCE          mpxsessionretry.cpp
+
+LIBRARY         euser.lib
+LIBRARY         centralrepository.lib
+LIBRARY         estor.lib
+LIBRARY         bafl.lib
+LIBRARY         efsrv.lib
+LIBRARY         ecom.lib
+LIBRARY         inetprotutil.lib
+LIBRARY         apgrfx.lib
+LIBRARY         apmime.lib
+LIBRARY         drmhelper.lib
+
+//CAMESE_IN_DRM_UTILITY
+LIBRARY         drmuihandling.lib
+LIBRARY		drmautomatedusage.lib
+LIBRARY         DRMCommon.lib
+LIBRARY         DrmRights.lib
+LIBRARY         caf.lib
+LIBRARY         cafutils.lib
+LIBRARY         ws32.lib
+LIBRARY         hal.lib
+
+#if defined(ARMCC)
+deffile ../eabi/ 
+#elif defined(WINSCW)
+deffile ../bwinscw/ 
+#endif
+
+SMPSAFE
+
+// End of file

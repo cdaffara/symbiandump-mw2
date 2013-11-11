@@ -1,0 +1,50 @@
+/*
+* Copyright (c) 2002 - 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  mmp file for TestViewFramework
+*
+*/
+
+#include <platform_paths.hrh>
+
+TARGET          testviewframework.dll
+TARGETTYPE      dll
+UID             0x1000008D  0x101FFCD4
+VENDORID        VID_DEFAULT
+
+CAPABILITY      CAP_GENERAL_DLL
+
+SOURCEPATH      ../src
+SOURCE          consolemain.cpp
+SOURCE          consolereader.cpp
+SOURCE          scrollertimer.cpp
+SOURCE          testbaseview.cpp
+SOURCE          testutility.cpp
+SOURCE          testplaybackview.cpp
+SOURCE          testmenuview.cpp
+
+USERINCLUDE     ../inc
+
+APP_LAYER_SYSTEMINCLUDE
+
+
+LIBRARY         euser.lib
+LIBRARY         bafl.lib 
+LIBRARY         stiftestinterface.lib
+
+LANG            SC
+
+#if defined(ARMCC)
+#elif defined(WINSCW)
+deffile ../bwinscw/ 
+#endif

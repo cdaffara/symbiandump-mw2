@@ -1,0 +1,5 @@
+EXPORTS
+	_Z9LibEntryLR13CTestModuleIf @ 1 NONAME
+	_ZTI20CTriggerFireObserver @ 2 NONAME
+	_ZTV20CTriggerFireObserver @ 3 NONAME
+

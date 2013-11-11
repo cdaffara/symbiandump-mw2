@@ -1,0 +1,39 @@
+// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+#include <testexecute.iby>
+#include <simtsy.iby>
+//#include <GTMmsMtm.iby>
+#include <scheduledsending.iby>
+#include <gtsmsmtm.iby>
+#include <gmxml.iby>
+
+//file=ABI_DIR\BUILD_DIR\messagingtestserver.exe System\Libs\messagingtestserver.exe
+
+//data=ZSYSTEM\mtm\sms.rsc System\mtm\sms.rsc
+
+data=EPOCROOT##Epoc32\release\winscw\udeb\z\testdata\scripts\preq694SchSend.ini		\testdata\scripts\preq694SchSend.ini
+data=EPOCROOT##Epoc32\release\winscw\udeb\z\testdata\scripts\helloworld.txt			\testdata\scripts\helloworld.txt
+data=EPOCROOT##Epoc32\release\winscw\udeb\z\testdata\scripts\preq694Settings.txt	\testdata\scripts\preq694Settings.txt
+data=EPOCROOT##Epoc32\release\winscw\udeb\z\testdata\scripts\config.txt				\testdata\scripts\config.txt
+data=EPOCROOT##Epoc32\release\winscw\udeb\z\testdata\scripts\preq694SchSend1.script		\testdata\scripts\preq694SchSend1.script
+data=EPOCROOT##Epoc32\release\winscw\udeb\z\testdata\scripts\preq694SchSend2a.script	\testdata\scripts\preq694SchSend2a.script
+data=EPOCROOT##Epoc32\release\winscw\udeb\z\testdata\scripts\preq694SchSend2b.script	\testdata\scripts\preq694SchSend2b.script
+data=EPOCROOT##Epoc32\release\winscw\udeb\z\testdata\scripts\preq694SchSend3.script		\testdata\scripts\preq694SchSend3.script
+data=EPOCROOT##Epoc32\release\winscw\udeb\z\testdata\scripts\preq694SchSend4a.script	\testdata\scripts\preq694SchSend4a.script
+data=EPOCROOT##Epoc32\release\winscw\udeb\z\testdata\scripts\preq694SchSend4b.script	\testdata\scripts\preq694SchSend4b.script
+data=EPOCROOT##Epoc32\release\winscw\udeb\z\testdata\scripts\preq694SchSend5a.script	\testdata\scripts\preq694SchSend5a.script
+data=EPOCROOT##Epoc32\release\winscw\udeb\z\testdata\scripts\preq694SchSend5b.script	\testdata\scripts\preq694SchSend5b.script
+data=EPOCROOT##Epoc32\release\winscw\udeb\z\testdata\scripts\preq694SchSend6.script		\testdata\scripts\preq694SchSend6.script

@@ -1,0 +1,5 @@
+EXPORTS
+	_ZN20CBulkCommitServerMtm4NewLER17CRegisteredMtmDllR15CMsvServerEntry @ 1 NONAME
+	_ZTI20CBulkCommitServerMtm @ 2 NONAME ; #<TI>#
+	_ZTV20CBulkCommitServerMtm @ 3 NONAME ; #<VT>#
+

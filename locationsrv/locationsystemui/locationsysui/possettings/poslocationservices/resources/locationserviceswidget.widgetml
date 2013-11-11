@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hbwidget type="LocationServicesWidget" version="0.1">
+    <layout name="default" type="mesh">
+        <meshitem dst="" dstEdge="LEFT" src="text_box1" srcEdge="LEFT"  />
+        <meshitem dst="" dstEdge="TOP" src="text_box1" srcEdge="TOP"  />
+        <meshitem dst="" dstEdge="RIGHT" src="text_box1" srcEdge="RIGHT" />
+        
+        <meshitem dst="" dstEdge="LEFT" src="text_box2" srcEdge="LEFT"  />
+        <meshitem dst="" dstEdge="RIGHT" src="text_box2" srcEdge="RIGHT" />
+	<meshitem dst="text_box1" dstEdge="BOTTOM" src="text_box2" srcEdge="TOP" />
+        
+        <meshitem dst="" dstEdge="LEFT" src="text_box3" srcEdge="LEFT"  />
+        <meshitem dst="" dstEdge="RIGHT" src="text_box3" srcEdge="RIGHT" />
+	<meshitem dst="text_box2" dstEdge="BOTTOM" src="text_box3" srcEdge="TOP" />
+        <meshitem dst="" dstEdge="BOTTOM" src="text_box3" srcEdge="BOTTOM" />
+	
+    </layout>
+</hbwidget>

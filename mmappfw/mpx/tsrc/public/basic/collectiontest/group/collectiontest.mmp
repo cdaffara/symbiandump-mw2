@@ -1,0 +1,52 @@
+/*
+* Copyright (c) 2002 - 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  mmp file for CollectionTest
+*
+*/
+
+#include <platform_paths.hrh>
+
+TARGET          collectiontest.dll
+TARGETTYPE      dll
+UID             0x1000008D 0x101FB3E7
+
+CAPABILITY	ALL -TCB
+
+SOURCEPATH      ../src
+SOURCE          mpxcollectiontest.cpp
+SOURCE 		    collectiontests.cpp
+SOURCE          pathoptionmenu.cpp
+SOURCE          pathoptionisremote.cpp
+SOURCE		    testutility.cpp
+
+USERINCLUDE     ../inc
+USERINCLUDE     ../../common/testplugins/inc
+USERINCLUDE	    ../../common/testviewframework/inc
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY         euser.lib
+LIBRARY         efsrv.lib
+LIBRARY         mpxcollectionutility.lib
+LIBRARY         mpxcommon.lib
+LIBRARY         stiftestinterface.lib
+LIBRARY         testviewframework.lib
+LIBRARY         bafl.lib
+LIBRARY         estor.lib
+LIBRARY         mpxharvesterutility.lib
+
+#if defined(ARMCC)
+#elif defined(WINSCW)
+deffile ../bwinscw/ 
+#endif

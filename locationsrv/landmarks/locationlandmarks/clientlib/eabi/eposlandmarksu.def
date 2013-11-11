@@ -1,0 +1,122 @@
+EXPORTS
+	_Z24ReleaseLandmarkResourcesPv @ 1 NONAME
+	_Z5PanicRK7TDesC16i @ 2 NONAME
+	_ZN12CPosLandmark12AddCategoryLEm @ 3 NONAME
+	_ZN12CPosLandmark12SetPositionLERK9TLocality @ 4 NONAME
+	_ZN12CPosLandmark14RemoveCategoryEm @ 5 NONAME
+	_ZN12CPosLandmark16SetLandmarkNameLERK7TDesC16 @ 6 NONAME
+	_ZN12CPosLandmark17SetCoverageRadiusEf @ 7 NONAME
+	_ZN12CPosLandmark17SetPositionFieldLEtRK7TDesC16 @ 8 NONAME
+	_ZN12CPosLandmark19RemovePositionFieldEt @ 9 NONAME
+	_ZN12CPosLandmark23SetLandmarkDescriptionLERK7TDesC16 @ 10 NONAME
+	_ZN12CPosLandmark24RemoveLandmarkAttributesEm @ 11 NONAME
+	_ZN12CPosLandmark4NewLERKS_ @ 12 NONAME
+	_ZN12CPosLandmark4NewLEv @ 13 NONAME
+	_ZN12CPosLandmark5NewLCERKS_ @ 14 NONAME
+	_ZN12CPosLandmark5NewLCEv @ 15 NONAME
+	_ZN12CPosLandmark8SetIconLERK7TDesC16ii @ 16 NONAME
+	_ZN14TPosLmSortPref26SetSortByLandmarkAttributeEmNS_10TSortOrderE @ 17 NONAME
+	_ZN14TPosLmSortPrefC1EmNS_10TSortOrderE @ 18 NONAME
+	_ZN14TPosLmSortPrefC2EmNS_10TSortOrderE @ 19 NONAME
+	_ZN15CPosLmOperationC2Ev @ 20 NONAME
+	_ZN15CPosLmOperationD0Ev @ 21 NONAME
+	_ZN15CPosLmOperationD1Ev @ 22 NONAME
+	_ZN15CPosLmOperationD2Ev @ 23 NONAME
+	_ZN18CPosLandmarkParser4NewLERK6TDesC8 @ 24 NONAME
+	_ZN18CPosLandmarkParserC2Ev @ 25 NONAME
+	_ZN18CPosLandmarkParserD0Ev @ 26 NONAME
+	_ZN18CPosLandmarkParserD1Ev @ 27 NONAME
+	_ZN18CPosLandmarkParserD2Ev @ 28 NONAME
+	_ZN18CPosLmItemIteratorC2Ev @ 29 NONAME
+	_ZN18CPosLmItemIteratorD0Ev @ 30 NONAME
+	_ZN18CPosLmItemIteratorD1Ev @ 31 NONAME
+	_ZN18CPosLmItemIteratorD2Ev @ 32 NONAME
+	_ZN18PosLmImplExtension11SetPartialLER12CPosLandmarki @ 33 NONAME
+	_ZN18PosLmImplExtension14SetCategoryIdLER20CPosLandmarkCategorym @ 34 NONAME
+	_ZN18PosLmImplExtension14SetLandmarkIdLER12CPosLandmarkm @ 35 NONAME
+	_ZN18PosLmImplExtension16ImplementationIdERK20CPosLandmarkDatabase @ 36 NONAME
+	_ZN18PosLmImplExtension17SetGlobalCategoryER20CPosLandmarkCategoryt @ 37 NONAME
+	_ZN19CPosLandmarkEncoder4NewLERK6TDesC8 @ 38 NONAME
+	_ZN19CPosLandmarkEncoderC2Ev @ 39 NONAME
+	_ZN19CPosLandmarkEncoderD0Ev @ 40 NONAME
+	_ZN19CPosLandmarkEncoderD1Ev @ 41 NONAME
+	_ZN19CPosLandmarkEncoderD2Ev @ 42 NONAME
+	_ZN20CPosLandmarkCategory16SetCategoryNameLERK7TDesC16 @ 43 NONAME
+	_ZN20CPosLandmarkCategory24RemoveCategoryAttributesEm @ 44 NONAME
+	_ZN20CPosLandmarkCategory4NewLERKS_ @ 45 NONAME
+	_ZN20CPosLandmarkCategory4NewLEv @ 46 NONAME
+	_ZN20CPosLandmarkCategory5NewLCERKS_ @ 47 NONAME
+	_ZN20CPosLandmarkCategory5NewLCEv @ 48 NONAME
+	_ZN20CPosLandmarkCategory8SetIconLERK7TDesC16ii @ 49 NONAME
+	_ZN20CPosLandmarkDatabase5OpenLERK7TDesC16 @ 50 NONAME
+	_ZN20CPosLandmarkDatabase5OpenLEv @ 51 NONAME
+	_ZN20CPosLandmarkDatabaseC2Ev @ 52 NONAME
+	_ZN20CPosLandmarkDatabaseD0Ev @ 53 NONAME
+	_ZN20CPosLandmarkDatabaseD1Ev @ 54 NONAME
+	_ZN20CPosLandmarkDatabaseD2Ev @ 55 NONAME
+	_ZN21CPosLmCategoryManager4NewLER20CPosLandmarkDatabase @ 56 NONAME
+	_ZN21CPosLmCategoryManagerC2Ev @ 57 NONAME
+	_ZN21CPosLmCategoryManagerD0Ev @ 58 NONAME
+	_ZN21CPosLmCategoryManagerD1Ev @ 59 NONAME
+	_ZN21CPosLmCategoryManagerD2Ev @ 60 NONAME
+	_ZN27CPosLmPartialReadParameters22SetRequestedAttributesEm @ 61 NONAME
+	_ZN27CPosLmPartialReadParameters26SetRequestedPositionFieldsERK6RArrayIjE @ 62 NONAME
+	_ZN27CPosLmPartialReadParameters5NewLCEv @ 63 NONAME
+	_ZNK12CPosLandmark10LandmarkIdEv @ 64 NONAME
+	_ZNK12CPosLandmark11GetPositionER9TLocality @ 65 NONAME
+	_ZNK12CPosLandmark14GetCategoriesLER6RArrayImE @ 66 NONAME
+	_ZNK12CPosLandmark15GetLandmarkNameER7TPtrC16 @ 67 NONAME
+	_ZNK12CPosLandmark16GetPositionFieldEtR7TPtrC16 @ 68 NONAME
+	_ZNK12CPosLandmark17GetCoverageRadiusERf @ 69 NONAME
+	_ZNK12CPosLandmark19NextPositionFieldIdEt @ 70 NONAME
+	_ZNK12CPosLandmark20FirstPositionFieldIdEv @ 71 NONAME
+	_ZNK12CPosLandmark22GetLandmarkDescriptionER7TPtrC16 @ 72 NONAME
+	_ZNK12CPosLandmark24IsPositionFieldAvailableEt @ 73 NONAME
+	_ZNK12CPosLandmark28NumOfAvailablePositionFieldsEv @ 74 NONAME
+	_ZNK12CPosLandmark7GetIconER7TPtrC16RiS2_ @ 75 NONAME
+	_ZNK12CPosLandmark9IsPartialEv @ 76 NONAME
+	_ZNK14TPosLmSortPref25LandmarkAttributeToSortByEv @ 77 NONAME
+	_ZNK14TPosLmSortPref9SortOrderEv @ 78 NONAME
+	_ZNK20CPosLandmarkCategory10CategoryIdEv @ 79 NONAME
+	_ZNK20CPosLandmarkCategory14GlobalCategoryEv @ 80 NONAME
+	_ZNK20CPosLandmarkCategory15GetCategoryNameER7TPtrC16 @ 81 NONAME
+	_ZNK20CPosLandmarkCategory7GetIconER7TPtrC16RiS2_ @ 82 NONAME
+	_ZNK27CPosLmPartialReadParameters19RequestedAttributesEv @ 83 NONAME
+	_ZNK27CPosLmPartialReadParameters26GetRequestedPositionFieldsER6RArrayIjE @ 84 NONAME
+	_ZTI12CPosLandmark @ 85 NONAME ; #<TI>#
+	_ZTI15CPosLmOperation @ 86 NONAME ; #<TI>#
+	_ZTI18CPosLandmarkParser @ 87 NONAME ; #<TI>#
+	_ZTI18CPosLmItemIterator @ 88 NONAME ; #<TI>#
+	_ZTI19CPosLandmarkEncoder @ 89 NONAME ; #<TI>#
+	_ZTI20CPosLandmarkCategory @ 90 NONAME ; #<TI>#
+	_ZTI20CPosLandmarkDatabase @ 91 NONAME ; #<TI>#
+	_ZTI21CPosLmCategoryManager @ 92 NONAME ; #<TI>#
+	_ZTI27CPosLmPartialReadParameters @ 93 NONAME ; #<TI>#
+	_ZTV12CPosLandmark @ 94 NONAME ; #<VT>#
+	_ZTV15CPosLmOperation @ 95 NONAME ; #<VT>#
+	_ZTV18CPosLandmarkParser @ 96 NONAME ; #<VT>#
+	_ZTV18CPosLmItemIterator @ 97 NONAME ; #<VT>#
+	_ZTV19CPosLandmarkEncoder @ 98 NONAME ; #<VT>#
+	_ZTV20CPosLandmarkCategory @ 99 NONAME ; #<VT>#
+	_ZTV20CPosLandmarkDatabase @ 100 NONAME ; #<VT>#
+	_ZTV21CPosLmCategoryManager @ 101 NONAME ; #<VT>#
+	_ZTV27CPosLmPartialReadParameters @ 102 NONAME ; #<VT>#
+	_ZN24PosLandmarkSerialization5PackLERK12CPosLandmark @ 103 NONAME
+	_ZN24PosLandmarkSerialization7UnpackLERK6TDesC8 @ 104 NONAME
+	_ZN26PosLmCategorySerialization5PackLERK20CPosLandmarkCategory @ 105 NONAME
+	_ZN26PosLmCategorySerialization7UnpackLERK6TDesC8 @ 106 NONAME
+	_ZN28CPosLandmarkDatabaseExtended14LandmarksCountEv @ 107 NONAME
+	_ZN28CPosLandmarkDatabaseExtended15CategoriesCountEv @ 108 NONAME
+	_ZN28CPosLandmarkDatabaseExtended5OpenLERK7TDesC16 @ 109 NONAME
+	_ZN28CPosLandmarkDatabaseExtended5OpenLEv @ 110 NONAME
+	_ZN28CPosLandmarkDatabaseExtendedC2Ev @ 111 NONAME
+	_ZN28CPosLandmarkDatabaseExtendedD0Ev @ 112 NONAME
+	_ZN28CPosLandmarkDatabaseExtendedD1Ev @ 113 NONAME
+	_ZN28CPosLandmarkDatabaseExtendedD2Ev @ 114 NONAME
+	_ZTI28CPosLandmarkDatabaseExtended @ 115 NONAME ; #<TI>#
+	_ZTV28CPosLandmarkDatabaseExtended @ 116 NONAME ; #<VT>#
+	_ZN12CPosLandmark11SetPlaceIdLERK7TDesC16 @ 117 NONAME
+	_ZN12CPosLandmark13SetTimeStampLE5TTime @ 118 NONAME
+	_ZNK12CPosLandmark10GetPlaceIdER7TPtrC16 @ 119 NONAME
+	_ZNK12CPosLandmark12GetTimeStampER5TTime @ 120 NONAME
+

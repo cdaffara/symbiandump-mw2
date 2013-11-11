@@ -1,0 +1,260 @@
+// Copyright (c) 1999-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// WAPP.INF
+// Build information file for the WAP Settings Parser
+// 
+//
+
+PRJ_PLATFORMS
+
+
+PRJ_EXPORTS
+../wappinc/wapp.h	SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(wapp.h)
+../wappinc/wappdef.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(wappdef.h)
+../wappinc/MMSSettingsProxyBase.h SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(mmssettingsproxybase.h)
+../wappinc/MMSSettingsProxyBase.inl SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(mmssettingsproxybase.inl)
+
+PRJ_MMPFILES
+group/wapp.mmp
+
+PRJ_TESTEXPORTS
+../wapptsrc/oplogo2.txt /epoc32/winscw/c/test/bio/wapp/oplogo2.txt
+../wapptsrc/PAP200.txt /epoc32/winscw/c/test/bio/wapp/pap200.txt
+../wapptsrc/Readme.txt /epoc32/winscw/c/test/bio/wapp/readme.txt
+../wapptsrc/wapp.txt /epoc32/winscw/c/test/bio/wapp/wapp.txt
+../wapptsrc/wapp0001.txt /epoc32/winscw/c/test/bio/wapp/wapp0001.txt
+../wapptsrc/wapp0002.txt /epoc32/winscw/c/test/bio/wapp/wapp0002.txt
+../wapptsrc/wapp0003.txt /epoc32/winscw/c/test/bio/wapp/wapp0003.txt
+../wapptsrc/wapp0004.txt /epoc32/winscw/c/test/bio/wapp/wapp0004.txt
+../wapptsrc/wapp0005.txt /epoc32/winscw/c/test/bio/wapp/wapp0005.txt
+../wapptsrc/wapp0006.txt /epoc32/winscw/c/test/bio/wapp/wapp0006.txt
+../wapptsrc/wapp0007.txt /epoc32/winscw/c/test/bio/wapp/wapp0007.txt
+../wapptsrc/wapp0008.txt /epoc32/winscw/c/test/bio/wapp/wapp0008.txt
+../wapptsrc/wapp0009.txt /epoc32/winscw/c/test/bio/wapp/wapp0009.txt
+../wapptsrc/wapp0010.txt /epoc32/winscw/c/test/bio/wapp/wapp0010.txt
+../wapptsrc/wapp0011.txt /epoc32/winscw/c/test/bio/wapp/wapp0011.txt
+../wapptsrc/wapp0012.txt /epoc32/winscw/c/test/bio/wapp/wapp0012.txt
+../wapptsrc/wapp0013.txt /epoc32/winscw/c/test/bio/wapp/wapp0013.txt
+../wapptsrc/wapp0014.txt /epoc32/winscw/c/test/bio/wapp/wapp0014.txt
+../wapptsrc/wapp0015.txt /epoc32/winscw/c/test/bio/wapp/wapp0015.txt
+../wapptsrc/wapp0016.txt /epoc32/winscw/c/test/bio/wapp/wapp0016.txt
+../wapptsrc/wapp0017.txt /epoc32/winscw/c/test/bio/wapp/wapp0017.txt
+../wapptsrc/wapp0018.txt /epoc32/winscw/c/test/bio/wapp/wapp0018.txt
+../wapptsrc/wapp0019.txt /epoc32/winscw/c/test/bio/wapp/wapp0019.txt
+../wapptsrc/wapp0020.txt /epoc32/winscw/c/test/bio/wapp/wapp0020.txt
+../wapptsrc/wapp0021.txt /epoc32/winscw/c/test/bio/wapp/wapp0021.txt
+../wapptsrc/wapp0022.txt /epoc32/winscw/c/test/bio/wapp/wapp0022.txt
+../wapptsrc/wapp0023.txt /epoc32/winscw/c/test/bio/wapp/wapp0023.txt
+../wapptsrc/wapp0024.txt /epoc32/winscw/c/test/bio/wapp/wapp0024.txt
+../wapptsrc/wapp0025.txt /epoc32/winscw/c/test/bio/wapp/wapp0025.txt
+../wapptsrc/wapp0026.txt /epoc32/winscw/c/test/bio/wapp/wapp0026.txt
+../wapptsrc/wapp0027.txt /epoc32/winscw/c/test/bio/wapp/wapp0027.txt
+../wapptsrc/wapp0028.txt /epoc32/winscw/c/test/bio/wapp/wapp0028.txt
+../wapptsrc/wapp0029.txt /epoc32/winscw/c/test/bio/wapp/wapp0029.txt
+../wapptsrc/wapp0030.txt /epoc32/winscw/c/test/bio/wapp/wapp0030.txt
+../wapptsrc/wapp0031.txt /epoc32/winscw/c/test/bio/wapp/wapp0031.txt
+../wapptsrc/wapp0032.txt /epoc32/winscw/c/test/bio/wapp/wapp0032.txt
+../wapptsrc/wapp0033.txt /epoc32/winscw/c/test/bio/wapp/wapp0033.txt
+../wapptsrc/wapp0034.txt /epoc32/winscw/c/test/bio/wapp/wapp0034.txt
+../wapptsrc/wapp0035.txt /epoc32/winscw/c/test/bio/wapp/wapp0035.txt
+../wapptsrc/wapp0036.txt /epoc32/winscw/c/test/bio/wapp/wapp0036.txt
+../wapptsrc/wapp0037.txt /epoc32/winscw/c/test/bio/wapp/wapp0037.txt
+../wapptsrc/wapp0038.txt /epoc32/winscw/c/test/bio/wapp/wapp0038.txt
+../wapptsrc/wapp0039.txt /epoc32/winscw/c/test/bio/wapp/wapp0039.txt
+../wapptsrc/wapp0040.txt /epoc32/winscw/c/test/bio/wapp/wapp0040.txt
+../wapptsrc/wapp0041.txt /epoc32/winscw/c/test/bio/wapp/wapp0041.txt
+../wapptsrc/wapp0042.txt /epoc32/winscw/c/test/bio/wapp/wapp0042.txt
+../wapptsrc/wapp0043.txt /epoc32/winscw/c/test/bio/wapp/wapp0043.txt
+../wapptsrc/wapp0044.txt /epoc32/winscw/c/test/bio/wapp/wapp0044.txt
+../wapptsrc/wapp0045.txt /epoc32/winscw/c/test/bio/wapp/wapp0045.txt
+../wapptsrc/wapp0046.txt /epoc32/winscw/c/test/bio/wapp/wapp0046.txt
+../wapptsrc/wapp0047.txt /epoc32/winscw/c/test/bio/wapp/wapp0047.txt
+../wapptsrc/wapp0048.txt /epoc32/winscw/c/test/bio/wapp/wapp0048.txt
+../wapptsrc/wapp0049.txt /epoc32/winscw/c/test/bio/wapp/wapp0049.txt
+../wapptsrc/wapp0050.txt /epoc32/winscw/c/test/bio/wapp/wapp0050.txt
+../wapptsrc/wapp0051.txt /epoc32/winscw/c/test/bio/wapp/wapp0051.txt
+../wapptsrc/wapp0052.txt /epoc32/winscw/c/test/bio/wapp/wapp0052.txt
+../wapptsrc/wapp0053.txt /epoc32/winscw/c/test/bio/wapp/wapp0053.txt
+../wapptsrc/wapp0054.txt /epoc32/winscw/c/test/bio/wapp/wapp0054.txt
+../wapptsrc/wapp0055.txt /epoc32/winscw/c/test/bio/wapp/wapp0055.txt
+../wapptsrc/wapp0056.txt /epoc32/winscw/c/test/bio/wapp/wapp0056.txt
+../wapptsrc/wapp0057.txt /epoc32/winscw/c/test/bio/wapp/wapp0057.txt
+../wapptsrc/wapp0058.txt /epoc32/winscw/c/test/bio/wapp/wapp0058.txt
+../wapptsrc/wapp0059.txt /epoc32/winscw/c/test/bio/wapp/wapp0059.txt
+../wapptsrc/wapp0060.txt /epoc32/winscw/c/test/bio/wapp/wapp0060.txt
+../wapptsrc/wapp0061.txt /epoc32/winscw/c/test/bio/wapp/wapp0061.txt
+../wapptsrc/wapp0062.txt /epoc32/winscw/c/test/bio/wapp/wapp0062.txt
+../wapptsrc/wapp0063.txt /epoc32/winscw/c/test/bio/wapp/wapp0063.txt
+../wapptsrc/wapp0064.txt /epoc32/winscw/c/test/bio/wapp/wapp0064.txt
+../wapptsrc/wapp0065.txt /epoc32/winscw/c/test/bio/wapp/wapp0065.txt
+../wapptsrc/wapp0066.txt /epoc32/winscw/c/test/bio/wapp/wapp0066.txt
+../wapptsrc/wapp0067.txt /epoc32/winscw/c/test/bio/wapp/wapp0067.txt
+../wapptsrc/wapp0068.txt /epoc32/winscw/c/test/bio/wapp/wapp0068.txt
+../wapptsrc/wapp0069.txt /epoc32/winscw/c/test/bio/wapp/wapp0069.txt
+../wapptsrc/wapp0070.txt /epoc32/winscw/c/test/bio/wapp/wapp0070.txt
+../wapptsrc/wapp0071.txt /epoc32/winscw/c/test/bio/wapp/wapp0071.txt
+../wapptsrc/wapp0072.txt /epoc32/winscw/c/test/bio/wapp/wapp0072.txt
+../wapptsrc/wapp0073.txt /epoc32/winscw/c/test/bio/wapp/wapp0073.txt
+../wapptsrc/wapp0074.txt /epoc32/winscw/c/test/bio/wapp/wapp0074.txt
+../wapptsrc/wapp0075.txt /epoc32/winscw/c/test/bio/wapp/wapp0075.txt
+../wapptsrc/wapp0076.txt /epoc32/winscw/c/test/bio/wapp/wapp0076.txt
+../wapptsrc/wapp0077.txt /epoc32/winscw/c/test/bio/wapp/wapp0077.txt
+../wapptsrc/wapp0078.txt /epoc32/winscw/c/test/bio/wapp/wapp0078.txt
+../wapptsrc/wapp0079.txt /epoc32/winscw/c/test/bio/wapp/wapp0079.txt
+../wapptsrc/wapp0080.txt /epoc32/winscw/c/test/bio/wapp/wapp0080.txt
+../wapptsrc/wapp0081.txt /epoc32/winscw/c/test/bio/wapp/wapp0081.txt
+../wapptsrc/wapp0082.txt /epoc32/winscw/c/test/bio/wapp/wapp0082.txt
+../wapptsrc/wapp0083.txt /epoc32/winscw/c/test/bio/wapp/wapp0083.txt
+../wapptsrc/wapp0084.txt /epoc32/winscw/c/test/bio/wapp/wapp0084.txt
+../wapptsrc/wapp0085.txt /epoc32/winscw/c/test/bio/wapp/wapp0085.txt
+../wapptsrc/wapp0086.txt /epoc32/winscw/c/test/bio/wapp/wapp0086.txt
+../wapptsrc/wapp0087.txt /epoc32/winscw/c/test/bio/wapp/wapp0087.txt
+../wapptsrc/wapp0088.txt /epoc32/winscw/c/test/bio/wapp/wapp0088.txt
+../wapptsrc/wapp0089.txt /epoc32/winscw/c/test/bio/wapp/wapp0089.txt
+../wapptsrc/wapp0090.txt /epoc32/winscw/c/test/bio/wapp/wapp0090.txt
+../wapptsrc/wapp0091.txt /epoc32/winscw/c/test/bio/wapp/wapp0091.txt
+../wapptsrc/wapp0092.txt /epoc32/winscw/c/test/bio/wapp/wapp0092.txt
+../wapptsrc/wapp0093.txt /epoc32/winscw/c/test/bio/wapp/wapp0093.txt
+../wapptsrc/wapp0094.txt /epoc32/winscw/c/test/bio/wapp/wapp0094.txt
+../wapptsrc/wapp0095.txt /epoc32/winscw/c/test/bio/wapp/wapp0095.txt
+../wapptsrc/wapp0096.txt /epoc32/winscw/c/test/bio/wapp/wapp0096.txt
+../wapptsrc/wapp0097.txt /epoc32/winscw/c/test/bio/wapp/wapp0097.txt
+../wapptsrc/wapp0098.txt /epoc32/winscw/c/test/bio/wapp/wapp0098.txt
+../wapptsrc/wapp0099.txt /epoc32/winscw/c/test/bio/wapp/wapp0099.txt
+../wapptsrc/wapp01.txt /epoc32/winscw/c/test/bio/wapp/wapp01.txt
+../wapptsrc/wapp0100.txt /epoc32/winscw/c/test/bio/wapp/wapp0100.txt
+../wapptsrc/wapp0101.txt /epoc32/winscw/c/test/bio/wapp/wapp0101.txt
+../wapptsrc/wapp02.txt /epoc32/winscw/c/test/bio/wapp/wapp02.txt
+../wapptsrc/wapp03.txt /epoc32/winscw/c/test/bio/wapp/wapp03.txt
+../wapptsrc/wapp04.txt /epoc32/winscw/c/test/bio/wapp/wapp04.txt
+../wapptsrc/wapp05.txt /epoc32/winscw/c/test/bio/wapp/wapp05.txt
+../wapptsrc/wapp06.txt /epoc32/winscw/c/test/bio/wapp/wapp06.txt
+../wapptsrc/wapp07.txt /epoc32/winscw/c/test/bio/wapp/wapp07.txt
+../wapptsrc/wapp08.txt /epoc32/winscw/c/test/bio/wapp/wapp08.txt
+../wapptsrc/wapp09.txt /epoc32/winscw/c/test/bio/wapp/wapp09.txt
+../wapptsrc/wapp10.txt /epoc32/winscw/c/test/bio/wapp/wapp10.txt
+../wapptsrc/wapp100.txt /epoc32/winscw/c/test/bio/wapp/wapp100.txt
+../wapptsrc/wapp1001.txt /epoc32/winscw/c/test/bio/wapp/wapp1001.txt
+../wapptsrc/wapp1002.txt /epoc32/winscw/c/test/bio/wapp/wapp1002.txt
+../wapptsrc/wapp1003.txt /epoc32/winscw/c/test/bio/wapp/wapp1003.txt
+../wapptsrc/wapp1004.txt /epoc32/winscw/c/test/bio/wapp/wapp1004.txt
+../wapptsrc/wapp1005.txt /epoc32/winscw/c/test/bio/wapp/wapp1005.txt
+../wapptsrc/wapp1006.txt /epoc32/winscw/c/test/bio/wapp/wapp1006.txt
+../wapptsrc/wapp1007.txt /epoc32/winscw/c/test/bio/wapp/wapp1007.txt
+../wapptsrc/wapp1008.txt /epoc32/winscw/c/test/bio/wapp/wapp1008.txt
+../wapptsrc/wapp1009.txt /epoc32/winscw/c/test/bio/wapp/wapp1009.txt
+../wapptsrc/wapp101.txt /epoc32/winscw/c/test/bio/wapp/wapp101.txt
+../wapptsrc/wapp1010.txt /epoc32/winscw/c/test/bio/wapp/wapp1010.txt
+../wapptsrc/wapp1011.txt /epoc32/winscw/c/test/bio/wapp/wapp1011.txt
+../wapptsrc/wapp1012.txt /epoc32/winscw/c/test/bio/wapp/wapp1012.txt
+../wapptsrc/wapp1013.txt /epoc32/winscw/c/test/bio/wapp/wapp1013.txt
+../wapptsrc/wapp1014.txt /epoc32/winscw/c/test/bio/wapp/wapp1014.txt
+../wapptsrc/wapp1015.txt /epoc32/winscw/c/test/bio/wapp/wapp1015.txt
+../wapptsrc/wapp1016.txt /epoc32/winscw/c/test/bio/wapp/wapp1016.txt
+../wapptsrc/wapp1017.txt /epoc32/winscw/c/test/bio/wapp/wapp1017.txt
+../wapptsrc/wapp1018.txt /epoc32/winscw/c/test/bio/wapp/wapp1018.txt
+../wapptsrc/wapp1019.txt /epoc32/winscw/c/test/bio/wapp/wapp1019.txt
+../wapptsrc/wapp102.txt /epoc32/winscw/c/test/bio/wapp/wapp102.txt
+../wapptsrc/wapp1020.txt /epoc32/winscw/c/test/bio/wapp/wapp1020.txt
+../wapptsrc/wapp1021.txt /epoc32/winscw/c/test/bio/wapp/wapp1021.txt
+../wapptsrc/wapp1022.txt /epoc32/winscw/c/test/bio/wapp/wapp1022.txt
+../wapptsrc/wapp1023.txt /epoc32/winscw/c/test/bio/wapp/wapp1023.txt
+../wapptsrc/wapp1024.txt /epoc32/winscw/c/test/bio/wapp/wapp1024.txt
+../wapptsrc/wapp1025.txt /epoc32/winscw/c/test/bio/wapp/wapp1025.txt
+../wapptsrc/wapp1026.txt /epoc32/winscw/c/test/bio/wapp/wapp1026.txt
+../wapptsrc/wapp1027.txt /epoc32/winscw/c/test/bio/wapp/wapp1027.txt
+../wapptsrc/wapp1028.txt /epoc32/winscw/c/test/bio/wapp/wapp1028.txt
+../wapptsrc/wapp1029.txt /epoc32/winscw/c/test/bio/wapp/wapp1029.txt
+../wapptsrc/wapp103.txt /epoc32/winscw/c/test/bio/wapp/wapp103.txt
+../wapptsrc/wapp1030.txt /epoc32/winscw/c/test/bio/wapp/wapp1030.txt
+../wapptsrc/wapp1031.txt /epoc32/winscw/c/test/bio/wapp/wapp1031.txt
+../wapptsrc/wapp1032.txt /epoc32/winscw/c/test/bio/wapp/wapp1032.txt
+../wapptsrc/wapp1033.txt /epoc32/winscw/c/test/bio/wapp/wapp1033.txt
+../wapptsrc/wapp1034.txt /epoc32/winscw/c/test/bio/wapp/wapp1034.txt
+../wapptsrc/wapp1035.txt /epoc32/winscw/c/test/bio/wapp/wapp1035.txt
+../wapptsrc/wapp1036.txt /epoc32/winscw/c/test/bio/wapp/wapp1036.txt
+../wapptsrc/wapp1037.txt /epoc32/winscw/c/test/bio/wapp/wapp1037.txt
+../wapptsrc/wapp1038.txt /epoc32/winscw/c/test/bio/wapp/wapp1038.txt
+../wapptsrc/wapp1039.txt /epoc32/winscw/c/test/bio/wapp/wapp1039.txt
+../wapptsrc/wapp1040.txt /epoc32/winscw/c/test/bio/wapp/wapp1040.txt
+../wapptsrc/wapp1041.txt /epoc32/winscw/c/test/bio/wapp/wapp1041.txt
+../wapptsrc/wapp1042.txt /epoc32/winscw/c/test/bio/wapp/wapp1042.txt
+../wapptsrc/wapp1043.txt /epoc32/winscw/c/test/bio/wapp/wapp1043.txt
+../wapptsrc/wapp1044.txt /epoc32/winscw/c/test/bio/wapp/wapp1044.txt
+../wapptsrc/wapp1045.txt /epoc32/winscw/c/test/bio/wapp/wapp1045.txt
+../wapptsrc/wapp1046.txt /epoc32/winscw/c/test/bio/wapp/wapp1046.txt
+../wapptsrc/wapp1047.txt /epoc32/winscw/c/test/bio/wapp/wapp1047.txt
+../wapptsrc/wapp1048.txt /epoc32/winscw/c/test/bio/wapp/wapp1048.txt
+../wapptsrc/wapp1049.txt /epoc32/winscw/c/test/bio/wapp/wapp1049.txt
+../wapptsrc/wapp1050.txt /epoc32/winscw/c/test/bio/wapp/wapp1050.txt
+../wapptsrc/wapp1051.txt /epoc32/winscw/c/test/bio/wapp/wapp1051.txt
+../wapptsrc/wapp1052.txt /epoc32/winscw/c/test/bio/wapp/wapp1052.txt
+../wapptsrc/wapp1053.txt /epoc32/winscw/c/test/bio/wapp/wapp1053.txt
+../wapptsrc/wapp1054.txt /epoc32/winscw/c/test/bio/wapp/wapp1054.txt
+../wapptsrc/wapp1055.txt /epoc32/winscw/c/test/bio/wapp/wapp1055.txt
+../wapptsrc/wapp1056.txt /epoc32/winscw/c/test/bio/wapp/wapp1056.txt
+../wapptsrc/wapp1057.txt /epoc32/winscw/c/test/bio/wapp/wapp1057.txt
+../wapptsrc/wapp1058.txt /epoc32/winscw/c/test/bio/wapp/wapp1058.txt
+../wapptsrc/wapp1059.txt /epoc32/winscw/c/test/bio/wapp/wapp1059.txt
+../wapptsrc/wapp1060.txt /epoc32/winscw/c/test/bio/wapp/wapp1060.txt
+../wapptsrc/wapp1061.txt /epoc32/winscw/c/test/bio/wapp/wapp1061.txt
+../wapptsrc/wapp1062.txt /epoc32/winscw/c/test/bio/wapp/wapp1062.txt
+../wapptsrc/wapp1063.txt /epoc32/winscw/c/test/bio/wapp/wapp1063.txt
+../wapptsrc/wapp1064.txt /epoc32/winscw/c/test/bio/wapp/wapp1064.txt
+../wapptsrc/wapp11.txt /epoc32/winscw/c/test/bio/wapp/wapp11.txt
+../wapptsrc/wapp12.txt /epoc32/winscw/c/test/bio/wapp/wapp12.txt
+../wapptsrc/wapp13.txt /epoc32/winscw/c/test/bio/wapp/wapp13.txt
+../wapptsrc/wapp15.txt /epoc32/winscw/c/test/bio/wapp/wapp15.txt
+../wapptsrc/wapp16.txt /epoc32/winscw/c/test/bio/wapp/wapp16.txt
+../wapptsrc/wapp2001.txt /epoc32/winscw/c/test/bio/wapp/wapp2001.txt
+../wapptsrc/wapp2002.txt /epoc32/winscw/c/test/bio/wapp/wapp2002.txt
+../wapptsrc/wapp2003.txt /epoc32/winscw/c/test/bio/wapp/wapp2003.txt
+../wapptsrc/wapp2004.txt /epoc32/winscw/c/test/bio/wapp/wapp2004.txt
+../wapptsrc/wapp2005.txt /epoc32/winscw/c/test/bio/wapp/wapp2005.txt
+../wapptsrc/wapp2101.txt /epoc32/winscw/c/test/bio/wapp/wapp2101.txt
+../wapptsrc/wapp2102.txt /epoc32/winscw/c/test/bio/wapp/wapp2102.txt
+../wapptsrc/wapp2103.txt /epoc32/winscw/c/test/bio/wapp/wapp2103.txt
+../wapptsrc/wapp2104.txt /epoc32/winscw/c/test/bio/wapp/wapp2104.txt
+../wapptsrc/wapp2105.txt /epoc32/winscw/c/test/bio/wapp/wapp2105.txt
+../wapptsrc/wapp2106.txt /epoc32/winscw/c/test/bio/wapp/wapp2106.txt
+../wapptsrc/wapp2107.txt /epoc32/winscw/c/test/bio/wapp/wapp2107.txt
+../wapptsrc/wapp2108.txt /epoc32/winscw/c/test/bio/wapp/wapp2108.txt
+../wapptsrc/wapp2109.txt /epoc32/winscw/c/test/bio/wapp/wapp2109.txt
+../wapptsrc/wapp2110.txt /epoc32/winscw/c/test/bio/wapp/wapp2110.txt
+../wapptsrc/wapp2111.txt /epoc32/winscw/c/test/bio/wapp/wapp2111.txt
+../wapptsrc/wapp2112.txt /epoc32/winscw/c/test/bio/wapp/wapp2112.txt
+../wapptsrc/wapp22.txt /epoc32/winscw/c/test/bio/wapp/wapp22.txt
+../wapptsrc/wapp2200.txt /epoc32/winscw/c/test/bio/wapp/wapp2200.txt
+../wapptsrc/wapp23.txt /epoc32/winscw/c/test/bio/wapp/wapp23.txt
+../wapptsrc/wapp24.txt /epoc32/winscw/c/test/bio/wapp/wapp24.txt
+../wapptsrc/wapp25.txt /epoc32/winscw/c/test/bio/wapp/wapp25.txt
+../wapptsrc/wapp26.txt /epoc32/winscw/c/test/bio/wapp/wapp26.txt
+../wapptsrc/wapp27.txt /epoc32/winscw/c/test/bio/wapp/wapp27.txt
+../wapptsrc/wapp28.txt /epoc32/winscw/c/test/bio/wapp/wapp28.txt
+../wapptsrc/wapp98.txt /epoc32/winscw/c/test/bio/wapp/wapp98.txt
+../wapptsrc/wapp99.txt /epoc32/winscw/c/test/bio/wapp/wapp99.txt
+../wapptsrc/wappbad.txt /epoc32/winscw/c/test/bio/wapp/wappbad.txt
+../wapptsrc/wappbad2.txt /epoc32/winscw/c/test/bio/wapp/wappbad2.txt
+../wapptsrc/wapp_bookmarks1.txt /epoc32/winscw/c/test/bio/wapp/wapp_bookmarks1.txt
+../wapptsrc/wapp_bookmarks2.txt /epoc32/winscw/c/test/bio/wapp/wapp_bookmarks2.txt
+../wapptsrc/wapp_bookmarks3.txt /epoc32/winscw/c/test/bio/wapp/wapp_bookmarks3.txt
+../wapptsrc/wapp_mms.txt /epoc32/winscw/c/test/bio/wapp/wapp_mms.txt
+../wapptsrc/wapp_mms2.txt /epoc32/winscw/c/test/bio/wapp/wapp_mms2.txt
+
+../wapptsrc/wapp_mms.txt /epoc32/winscw/c/test/bio/wappfinalclose/wapp_mms.txt
+
+PRJ_TESTMMPFILES
+../wapptsrc/t_wapp.mmp	manual
+../wapptsrc/t_wapfinalclose.mmp	manual
+../wapptsrc/t_mmssettingsproxy.mmp

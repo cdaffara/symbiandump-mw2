@@ -1,0 +1,43 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRINT Running  EMsvMoveEntries_002
+
+
+//********************************
+PRINT Running  EMsvMoveEntries : Move an entry from protected folder under local service (Outbox) to an entry, which is part of
+PRINT Running  EMsvMoveEntries : an entry and not owned by the proxy, in an unprotected folder (Drafts).
+PRINT Running  EMsvMoveEntries : Source entry requires Read/Write user data + MTM specified caps.
+PRINT Running  EMsvMoveEntries : Target entry requires Read/Write user data.
+PRINT Running  EMsvMoveEntries : Target entry has different SID from proxy.
+//********************************
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvMoveEntries_002_001.script
+	// Proxy has Read/Write user data.
+	// Should PASS.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvMoveEntries_002_002.script
+	// Proxy has Read user data.
+	// Should FAIL.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvMoveEntries_002_003.script
+	// Proxy has Write user data.
+	// Should FAIL.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvMoveEntries_002_004.script
+	// Proxy has no caps.
+	// Should FAIL.
+

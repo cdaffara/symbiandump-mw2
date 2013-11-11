@@ -1,0 +1,6 @@
+EXPORTS
+	?RunL@MGFetch@@SAHAAVCDesC16Array@@W4TMediaFileType@@HABVTDesC16@@2PAVMDesC16Array@@PAVMMGFetchVerifier@@@Z @ 1 NONAME ; int MGFetch::RunL(class CDesC16Array &, enum TMediaFileType, int, class TDesC16 const &, class TDesC16 const &, class MDesC16Array *, class MMGFetchVerifier *)
+	?RunL@MGFetch@@SAHAAVCDesC16Array@@W4TMediaFileType@@HPAVMMGFetchVerifier@@@Z @ 2 NONAME ; int MGFetch::RunL(class CDesC16Array &, enum TMediaFileType, int, class MMGFetchVerifier *)
+	?RunL@MGFetch@@SAHAAVCDesC16Array@@W4TMediaFileType@@HABVTDesC16@@2PAVMMGFetchVerifier@@@Z @ 3 NONAME ; int MGFetch::RunL(class CDesC16Array &, enum TMediaFileType, int, class TDesC16 const &, class TDesC16 const &, class MMGFetchVerifier *)
+	?RunL@MGFetch@@SAHAAVCDesC16Array@@W4TMediaFileType@@HABVTDesC16@@2PAVMDesC16Array@@AAPAVMMGFetchCanceler@@PAVMMGFetchVerifier@@@Z @ 4 NONAME ; int MGFetch::RunL(class CDesC16Array &, enum TMediaFileType, int, class TDesC16 const &, class TDesC16 const &, class MDesC16Array *, class MMGFetchCanceler * &, class MMGFetchVerifier *)
+

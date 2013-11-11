@@ -1,0 +1,79 @@
+EXPORTS
+	_ZN12CMsgSvgUtils18GenerateThumbnailLER5RFileP10CFbsBitmapS3_iR5TSize @ 1 NONAME
+	_ZN12CMsgSvgUtilsC1Ev @ 2 NONAME
+	_ZN12CMsgSvgUtilsC2Ev @ 3 NONAME
+	_ZN13CMsgTextUtils14ConvertToFileLERK7TDesC16R5RFilej @ 4 NONAME
+	_ZN13CMsgTextUtils17RecognizeCharSetLER3RFsR5RFile @ 5 NONAME
+	_ZN13CMsgTextUtils18CharconvIdToMibIdLEj @ 6 NONAME
+	_ZN13CMsgTextUtils18ConvertLineBreaksLER9CRichTexti @ 7 NONAME
+	_ZN13CMsgTextUtils18ConvertToBuffer8LCERK7TDesC16j @ 8 NONAME
+	_ZN13CMsgTextUtils18MibIdToCharconvIdLEj @ 9 NONAME
+	_ZN13CMsgTextUtils19ConvertToBuffer16LCERK7TDesC16j @ 10 NONAME
+	_ZN13CMsgTextUtils23GetSafeAttachmentNameLCER21MMsvAttachmentManagerRK7TDesC16ji @ 11 NONAME
+	_ZN13CMsgTextUtils26TrimAndRemoveNonAlphaDigitER6TDes16 @ 12 NONAME
+	_ZN13CMsgTextUtils28ConvertParagraphSeparatorsLCERK7TDesC16 @ 13 NONAME
+	_ZN13CMsgTextUtils4NewLER3RFs @ 14 NONAME
+	_ZN13CMsgTextUtils8UTF8SizeE7TPtrC16 @ 15 NONAME
+	_ZN15CContactMatcher10MatchDataLERK12MDesC16ArrayRK18MVPbkFieldTypeListR21CVPbkContactLinkArrayRK9TCallBack @ 16 NONAME ABSENT
+	_ZN15CContactMatcher10MatchDataLERK7TDesC16RK18MVPbkFieldTypeListR21CVPbkContactLinkArray @ 17 NONAME ABSENT
+	_ZN15CContactMatcher10MatchDataLERK7TDesC16RK18MVPbkFieldTypeListR21CVPbkContactLinkArrayR14TRequestStatus @ 18 NONAME ABSENT
+	_ZN15CContactMatcher10OpenStoreLERK25CVPbkContactStoreUriArray @ 19 NONAME ABSENT
+	_ZN15CContactMatcher10OpenStoreLERK25CVPbkContactStoreUriArrayR14TRequestStatus @ 20 NONAME ABSENT
+	_ZN15CContactMatcher12CloseStoresLEv @ 21 NONAME ABSENT
+	_ZN15CContactMatcher12IsOwnNumberLERK7TDesC16R14TRequestStatus @ 22 NONAME ABSENT
+	_ZN15CContactMatcher12IsOwnNumberLERK7TDesC16Ri @ 23 NONAME ABSENT
+	_ZN15CContactMatcher14OpenAllStoresLER14TRequestStatus @ 24 NONAME ABSENT
+	_ZN15CContactMatcher14OpenAllStoresLEv @ 25 NONAME ABSENT
+	_ZN15CContactMatcher15CancelOperationEv @ 26 NONAME ABSENT
+	_ZN15CContactMatcher16GetStoreContactLERK16MVPbkContactLinkPP17MVPbkStoreContact @ 27 NONAME ABSENT
+	_ZN15CContactMatcher16GetStoreContactLERK16MVPbkContactLinkPP17MVPbkStoreContactR14TRequestStatus @ 28 NONAME ABSENT
+	_ZN15CContactMatcher17GetContactManagerEv @ 29 NONAME ABSENT
+	_ZN15CContactMatcher17GetContactStoresLEv @ 30 NONAME ABSENT
+	_ZN15CContactMatcher17MatchPhoneNumberLERK7TDesC16iN29CVPbkPhoneNumberMatchStrategy26TVPbkPhoneNumberMatchFlagsER21CVPbkContactLinkArray @ 31 NONAME ABSENT
+	_ZN15CContactMatcher17MatchPhoneNumberLERK7TDesC16iN29CVPbkPhoneNumberMatchStrategy26TVPbkPhoneNumberMatchFlagsER21CVPbkContactLinkArrayR14TRequestStatus @ 32 NONAME ABSENT
+	_ZN15CContactMatcher20OpenOwnNumberStoresLER14TRequestStatus @ 33 NONAME ABSENT
+	_ZN15CContactMatcher20OpenOwnNumberStoresLEv @ 34 NONAME ABSENT
+	_ZN15CContactMatcher22ContactHasFieldOfTypeLE21TAiwAddressSelectTypeRK17MVPbkStoreContact @ 35 NONAME ABSENT
+	_ZN15CContactMatcher23OpenDefaultMatchStoresLER14TRequestStatus @ 36 NONAME ABSENT
+	_ZN15CContactMatcher23OpenDefaultMatchStoresLEv @ 37 NONAME ABSENT
+	_ZN15CContactMatcher4NewLEP3RFs @ 38 NONAME ABSENT
+	_ZN15CContactMatcher5NewLCEP3RFs @ 39 NONAME ABSENT
+	_ZN15CContactMatcher8GetNameLER32MVPbkStoreContactFieldCollection @ 40 NONAME ABSENT
+	_ZN15CContactMatcherD0Ev @ 41 NONAME ABSENT
+	_ZN15CContactMatcherD1Ev @ 42 NONAME ABSENT
+	_ZN15CContactMatcherD2Ev @ 43 NONAME ABSENT
+	_ZN17CMsgVoIPExtension4NewLEv @ 44 NONAME
+	_ZN23CFileProtectionResolver17ProtectionStatusLER5RFileR9TDataType @ 45 NONAME
+	_ZN23CFileProtectionResolver17ProtectionStatusLER5RFileR9TDataTypeRP6HBufC8 @ 46 NONAME
+	_ZN23CFileProtectionResolver17ProtectionStatusLERK7TDesC16R9TDataType @ 47 NONAME
+	_ZN23CFileProtectionResolver17ProtectionStatusLERK7TDesC16R9TDataTypeRP6HBufC8 @ 48 NONAME
+	_ZN23CFileProtectionResolver4NewLER3RFs @ 49 NONAME
+	_ZN23CFileProtectionResolver5NewLCER3RFs @ 50 NONAME
+	_ZNK15CContactMatcher10FieldTypesEv @ 51 NONAME ABSENT
+	_ZNK15CContactMatcher17GetFieldDataTextLERK17MVPbkStoreContactRK14MVPbkFieldType @ 52 NONAME ABSENT
+	_ZNK15CContactMatcher19GetFieldDataBinaryLERK17MVPbkStoreContactRK14MVPbkFieldType @ 53 NONAME ABSENT
+	_ZNK15CContactMatcher21GetFieldDataDateTimeLERK17MVPbkStoreContactRK14MVPbkFieldType @ 54 NONAME ABSENT
+	_ZNK17CMsgVoIPExtension15IsVoIPSupportedEv @ 55 NONAME
+	_ZNK17CMsgVoIPExtension18VoIPProfilesExistLEv @ 56 NONAME
+	_ZNK17CMsgVoIPExtension24IsPreferredTelephonyVoIPEv @ 57 NONAME
+	_ZTI13CMsgTextUtils @ 58 NONAME ; #<TI>#
+	_ZTI15CContactMatcher @ 59 NONAME ABSENT ; #<TI># 
+	_ZTI17CMsgVoIPExtension @ 60 NONAME ; #<TI>#
+	_ZTI23CFileProtectionResolver @ 61 NONAME ; #<TI>#
+	_ZTV13CMsgTextUtils @ 62 NONAME ; #<VT>#
+	_ZTV15CContactMatcher @ 63 NONAME ABSENT ; #<VT>#
+	_ZTV17CMsgVoIPExtension @ 64 NONAME ; #<VT>#
+	_ZTV23CFileProtectionResolver @ 65 NONAME ; #<VT>#
+	_ZThn12_N15CContactMatcherD0Ev @ 66 NONAME ABSENT ; #<thunk>#
+	_ZThn12_N15CContactMatcherD1Ev @ 67 NONAME ABSENT ; #<thunk>#
+	_ZThn16_N15CContactMatcherD0Ev @ 68 NONAME ABSENT ; #<thunk>#
+	_ZThn16_N15CContactMatcherD1Ev @ 69 NONAME ABSENT ; #<thunk>#
+	_ZThn4_N15CContactMatcherD0Ev @ 70 NONAME ABSENT ; #<thunk>#
+	_ZThn4_N15CContactMatcherD1Ev @ 71 NONAME ABSENT ; #<thunk>#
+	_ZThn8_N15CContactMatcherD0Ev @ 72 NONAME ABSENT ; #<thunk>#
+	_ZThn8_N15CContactMatcherD1Ev @ 73 NONAME ABSENT ; #<thunk>#
+	_ZN13CMsgTextUtils21GetFileNameFromBufferER4TBufILi256EERK7TDesC16iPS4_ @ 74 NONAME
+	_ZN15CContactMatcher21ContactNameFormatterLEv @ 75 NONAME ABSENT
+	_ZN13CMsgTextUtils17ConvertToUnicodeLERK6TDesC8j @ 76 NONAME
+	_ZN13CMsgTextUtils18ConvertPtrToDesC16ERK5TDes8R6TDes16 @ 77 NONAME
+

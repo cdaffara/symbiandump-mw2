@@ -1,0 +1,93 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Defines the NPP PSY project.
+*
+*/
+
+
+// To get the MW_LAYER_SYSTEMINCLUDE-definition
+#include <platform_paths.hrh>
+
+
+TARGET      nlanpppsy.dll
+TARGETTYPE  PLUGIN
+UID         0x10009D8D 0x10206914
+
+VENDORID        VID_DEFAULT
+CAPABILITY      CAP_ECOM_PLUGIN
+
+START RESOURCE  ../data/npppsy.rss
+TARGET          nlanpppsy.rsc
+END
+
+MW_LAYER_SYSTEMINCLUDE
+START RESOURCE  ../data/nlanpppsy_name.rss
+HEADER
+TARGET			nlanpppsy_name.rsc
+TARGETPATH  	/resource
+LANGUAGE_IDS
+END
+
+/*===============================================================
+	Following resource files belongs to Adaptation PSY's. Since from 5.0 localization process has changed which 
+	caused adaptaion teams PSY's string localization problem.
+	To get rid of this issue,WE(S60,Adaptation and build team) have decided to move following resource files to 
+	S60 from adaptation team. (Error ID: ENLV-79E9MU)
+	Manish Patil
+	===============================================================*/
+
+START RESOURCE ../data/nla_agpspositioner.rss
+HEADER
+	TARGETPATH /resource
+LANGUAGE_IDS
+END
+
+START RESOURCE ../data/nla_gpspositioner.rss
+HEADER
+	TARGETPATH  /resource
+LANGUAGE_IDS
+END
+
+START RESOURCE ../data/nla_nbppositioner.rss
+HEADER
+	TARGETPATH /resource
+LANGUAGE_IDS
+END
+
+SOURCEPATH  ../src
+SOURCE      npppsypositioner.cpp
+SOURCE      npppsyrequester.cpp
+SOURCE      npppsysingletonhandler.cpp
+SOURCE      npppsysettinghandler.cpp
+SOURCE      npppsystatushandler.cpp
+
+USERINCLUDE     ../inc 
+
+// Default system include paths for middleware layer modules.
+//MW_LAYER_SYSTEMINCLUDE
+
+SYSTEMINCLUDE   /epoc32/include/ecom
+
+LIBRARY     euser.lib 
+LIBRARY     efsrv.lib
+LIBRARY     bafl.lib
+LIBRARY     lbs.lib
+LIBRARY		epospluginfw.lib
+LIBRARY     centralrepository.lib
+
+
+DEBUGLIBRARY flogger.lib
+
+
+// End of File

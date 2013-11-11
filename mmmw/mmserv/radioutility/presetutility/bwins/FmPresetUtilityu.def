@@ -1,0 +1,23 @@
+EXPORTS
+	??1CRadioFmPresetUtility@@UAE@XZ @ 1 NONAME ; CRadioFmPresetUtility::~CRadioFmPresetUtility(void)
+	?DeletePresetL@CRadioFmPresetUtility@@UAEXH@Z @ 2 NONAME ; void CRadioFmPresetUtility::DeletePresetL(int)
+	?GetFirstPresetL@CRadioFmPresetUtility@@UBEXAAH@Z @ 3 NONAME ; void CRadioFmPresetUtility::GetFirstPresetL(int &) const
+	?GetMaxNumberOfPresets@CRadioFmPresetUtility@@UBEHAAH@Z @ 4 NONAME ; int CRadioFmPresetUtility::GetMaxNumberOfPresets(int &) const
+	?GetNextPresetL@CRadioFmPresetUtility@@UBEXHAAH@Z @ 5 NONAME ; void CRadioFmPresetUtility::GetNextPresetL(int, int &) const
+	?GetNumberOfPresets@CRadioFmPresetUtility@@UBEHAAH@Z @ 6 NONAME ; int CRadioFmPresetUtility::GetNumberOfPresets(int &) const
+	?GetPresetL@CRadioFmPresetUtility@@UAEXHAAV?$TBuf@$0CA@@@AAH@Z @ 7 NONAME ; void CRadioFmPresetUtility::GetPresetL(int, class TBuf<32> &, int &)
+	?NewL@CRadioFmPresetUtility@@SAPAV1@AAVMRadioPresetObserver@@@Z @ 8 NONAME ; class CRadioFmPresetUtility * CRadioFmPresetUtility::NewL(class MRadioPresetObserver &)
+	?SetPresetL@CRadioFmPresetUtility@@UAEXHABV?$TBuf@$0CA@@@H@Z @ 9 NONAME ; void CRadioFmPresetUtility::SetPresetL(int, class TBuf<32> const &, int)
+	?GetPresetFrequencyL@CRadioFmPresetUtility@@UAEXHAAH@Z @ 10 NONAME ; void CRadioFmPresetUtility::GetPresetFrequencyL(int, int &)
+	?GetPresetNameL@CRadioFmPresetUtility@@UAEXHAAV?$TBuf@$0CA@@@@Z @ 11 NONAME ; void CRadioFmPresetUtility::GetPresetNameL(int, class TBuf<32> &)
+	?SetPresetFavouriteInfoL@CRadioFmPresetUtility@@QAEXHH@Z @ 12 NONAME ; void CRadioFmPresetUtility::SetPresetFavouriteInfoL(int, int)
+	?SetPresetUserRenameInfoL@CRadioFmPresetUtility@@QAEXHH@Z @ 13 NONAME ; void CRadioFmPresetUtility::SetPresetUserRenameInfoL(int, int)
+	?SetPresetPICodeL@CRadioFmPresetUtility@@QAEXHI@Z @ 14 NONAME ; void CRadioFmPresetUtility::SetPresetPICodeL(int, unsigned int)
+	?GetPresetUserRenameInfoL@CRadioFmPresetUtility@@QAEXHAAH@Z @ 15 NONAME ; void CRadioFmPresetUtility::GetPresetUserRenameInfoL(int, int &)
+	?GetPresetPtyL@CRadioFmPresetUtility@@QAEXHAAI@Z @ 16 NONAME ; void CRadioFmPresetUtility::GetPresetPtyL(int, unsigned int &)
+	?SetPresetPtyL@CRadioFmPresetUtility@@QAEXHI@Z @ 17 NONAME ; void CRadioFmPresetUtility::SetPresetPtyL(int, unsigned int)
+	?GetPresetPICodeL@CRadioFmPresetUtility@@QAEXHAAI@Z @ 18 NONAME ; void CRadioFmPresetUtility::GetPresetPICodeL(int, unsigned int &)
+	?SetPresetUrlL@CRadioFmPresetUtility@@QAEXHABV?$TBuf@$0EA@@@@Z @ 19 NONAME ; void CRadioFmPresetUtility::SetPresetUrlL(int, class TBuf<64> const &)
+	?GetPresetFavouriteInfoL@CRadioFmPresetUtility@@QAEXHAAH@Z @ 20 NONAME ; void CRadioFmPresetUtility::GetPresetFavouriteInfoL(int, int &)
+	?GetPresetUrlL@CRadioFmPresetUtility@@QAEXHAAV?$TBuf@$0EA@@@@Z @ 21 NONAME ; void CRadioFmPresetUtility::GetPresetUrlL(int, class TBuf<64> &)
+

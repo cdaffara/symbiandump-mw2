@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<api id="2470f587915aca4f8d516e5b6b4f3680" dataversion="2.0">
+  <name>Landmarks Category Definition API</name>
+  <description>This API is used to define localizable data, i.e. name and icon, for predefined global landmark categories.</description>
+  <type>c++</type>
+  <collection>landmarks</collection>
+  <libs>
+  </libs>
+  <release category="platform"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>no</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

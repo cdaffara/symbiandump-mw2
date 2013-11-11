@@ -1,0 +1,34 @@
+// Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+#include <testexecute.iby>
+#include <simtsy.iby>
+#include <scheduledsending.iby>
+#include <gtsmsmtm.iby>
+#include <gmxml.iby>
+
+file=ABI_DIR\BUILD_DIR\messagingtestserver.exe SYSTEM_BINDIR\messagingtestserver.exe
+
+//data=ZSYSTEM\mtm\sms.rsc System\mtm\sms.rsc
+
+file=ABI_DIR\BUILD_DIR\MessagingTestUtility.dll SYSTEM_BINDIR\MessagingTestUtility.dll
+
+//data=\epoc32\release\winscw\c\perf\heap.script	\msgtest\TestFramework\ScriptedTestCases\heap.script
+//data=\epoc32\release\winscw\c\perf\heap.ini		\msgtest\TestFramework\ScriptedTestCases\heap.ini
+//data=\epoc32\release\winscw\c\perf\heap.txt		\msgtest\TestFramework\ScriptedTestCases\heap.txt
+
+//data=\epoc32\release\winscw\c\perf\remove.script	\msgtest\TestFramework\ScriptedTestCases\remove.script
+//data=\epoc32\release\winscw\c\perf\remove.ini		\msgtest\TestFramework\ScriptedTestCases\remove.ini
+//data=\epoc32\release\winscw\c\perf\remove.txt		\msgtest\TestFramework\ScriptedTestCases\remove.txt

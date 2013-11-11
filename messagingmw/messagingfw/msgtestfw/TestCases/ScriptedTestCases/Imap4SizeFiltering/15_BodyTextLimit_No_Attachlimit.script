@@ -1,0 +1,145 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+// Test Case Name:
+//	15_BodyTextLimit_No_Attachlimit.script
+// ------------------------------------------
+// Component Under Test:
+//	Email
+// ------------------------------------------
+// API function under test:
+//	CImap4ClientMtm::InvokeAsyncFunctionL()
+//	with IMAP4 command KIMAP4MTMPopulate
+// ------------------------------------------
+// Requirement/Use Case/Functional Spec:
+//	CR SSIN-5VGN7E 
+// ------------------------------------------
+// Polarity:
+//	Positive
+// ------------------------------------------
+// Test Type (unit, integration, panic, performance, conformance, stress, or interoperability):
+//	Integration
+// ------------------------------------------
+// Expected Panic ID (if a panic test, only for non-scripted test cases):
+//	n/a
+// ------------------------------------------
+// Interface Dependencies (does it require connection, which subsystems does it require):
+// 	None
+// ------------------------------------------
+// Importance (critical, high, or low):
+//	High
+// ------------------------------------------
+// Execution Time (fast, medium, or slow):
+//	medium
+// ------------------------------------------
+// Pre-condition description:
+//	1.  Set the SMTP and IMAP4 service settings for an IMAP4 account
+//	2.  Connect to IMAP4 server and synchronise with the IMAP4 server 
+//	3.  Delete all mails in the Inbox on the server
+//	4.  Disconnect from IMAP4 server
+//
+//	The Local Inbox and Sent Item folders and the remote Inbox folder of IMAP4 
+//	account are cleaned up before starting the test.
+// ------------------------------------------
+// Action Description:
+// 	CR SSIN-5VGN7E - IMAP4 Size Filtering
+// 	- Test Case 15: 
+//	
+//	1.  Create emails from data file and send emails to the same account
+//	2.  Set the download limits
+//	3.  Download the mails with IMAP4 KIMAP4MTMPopulate command
+//	4.  Compare the received messages with sent messages based on the Download limits set
+//		
+// 	Implementation and execution:
+//	The emails are sent to the sender's address only.
+//	New messages are created, sent and received.  The received messages are compared with 
+//    the sent messages, based on the download limits set, for size and contents.
+//   
+//    Download Limits set:
+//			
+//		TImImap4GetPartialMailInfo::iTotalSizeLimit = Default Value
+//		TImImap4GetPartialMailInfo::iBodyTextSizeLimit = 20000
+//		TImImap4GetPartialMailInfo::iAttachmentSizeLimit = Default Value
+//		TImImap4PartialMailOptions::EBodyTextAndAttachments  
+//		Destination Folder : Remote Inbox folder
+// ------------------------------------------
+// Post-condition description (i.e., expected outcome):
+//		
+//		If body text size of email <= TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//		The email should be completely downloaded with no footer string Information.
+//		
+//		If body text size of email > TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//		mail will be downloaded partially containing the footer string information
+//		
+//          All The Attachments will be downloaded.
+// ------------------------------------------
+// Reference to a review document:
+//	
+// ------------------------------------------
+// Full pathname of an epoc.ini (if there are special epoc.ini requirements)
+// 	For emulator, an epoc.ini that creates an emulated external drive (drive letter 
+//	between D: and Y:) is required. Optionally, an environment variable can be defined.
+// ------------------------------------------
+// Any CommDb restrictions:
+//	NTRAS CommDb
+// ------------------------------------------
+// Build Requirements (e.g., no watchers):
+//	No Watchers and Phone Book Synchroniser
+// ------------------------------------------
+// Hardware Requirements
+//	Null Modem Cable for NT RAS connection
+// ------------------------------------------
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+//CED c:\msgtest\TestFramework\Configurations\CommDbSettings\NtRasLongIdleTimeout.cfg
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+GetBaseConstants				c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	GetBaseConstants
+InitNtRas					c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	InitNtRas
+CreateSession				c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	CreateSession
+ResetMessageStore				c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	ResetMessageStore
+CreateImap4Service			c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	CreateImap4Service
+CreateSmtpService				c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	CreateSmtpService
+SetDefaultConfiguration			c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	SetDefaultConfiguration0
+SetDefaultConfiguration			c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	SetDefaultConfiguration1
+SetDefaultConfiguration			c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	SetDefaultConfiguration2
+CreateRegistry				c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	CreateRegistry
+CreateImap4Mtm				c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	CreateImap4Mtm
+CreateSmtpMtm				c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	CreateSmtpMtm
+GetDefaultSmtpService			c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	GetDefaultSmtpService
+SetImap4ServiceParameters		c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	SetImap4ServiceParameters
+SetSmtpServiceParameters		c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	SetSmtpServiceParameters
+ConnectImap4Server   			c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	ConnectImap4Server0
+DoFullImap4Synchronisation		c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	DoFullImap4Synchronisation0
+FindEntryByName				c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	FindEntryByName0
+DeleteChildren				c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	DeleteChildren
+CheckChildrenCount			c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	CheckChildrenCount0
+DisconnectImap4Server			c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	DisconnectImap4Server0
+EXECUTE_TEST_CASE	
+CreateSmtpMessageFromEmailFile	c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	CreateSmtpMessageFromEmailFile0
+CopyEntry					c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	CopyEntry0
+SetImap4PartialDownloadLimits		c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	SetImap4PartialDownloadLimits
+ConnectImap4Server   			c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	ConnectImap4Server1
+DoFullImap4Synchronisation		c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	DoFullImap4Synchronisation1
+CreateChildrenSelection			c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	CreateChildrenSelection
+DoImap4Populate				c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	DoImap4Populate
+DisconnectImap4Server			c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	DisconnectImap4Server1
+CHECK_POSTCONDITIONS
+CreateChildrenSelection			c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	CreateChildrenSentItems
+CompareEmailMessages			c:\msgtest\TestFramework\ScriptedTestCases\Imap4SizeFiltering\15_BodyTextLimit_No_Attachlimit.ini	CompareEmailMessages
+END_TEST_CASE

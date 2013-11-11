@@ -1,0 +1,213 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  All needed character set IDs are included here
+*
+*/
+
+
+
+#ifndef __MDSPLAYLISTCHARACTERSET_HRH__
+#define __MDSPLAYLISTCHARACTERSET_HRH__
+
+// INCLUDES
+
+/** 
+UTF-7 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierUtf7 0x1000582c 
+/** 
+UTF-8 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierUtf8 0x1000582d 
+/** 
+IMAP UTF-7 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierImapUtf7 0x1000582e 
+/** 
+Java UTF-8 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierJavaConformantUtf8 0x1000582f 
+/** 
+Code Page 1252 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierCodePage1252 0x100012b6 
+/** 
+ISO 8859-1 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierIso88591 0x10003b10 
+/** 
+ISO 8859-2 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierIso88592 0x1000507e 
+/** 
+ISO 8859-3 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierIso88593 0x10008a28 
+/** 
+ISO 8859-4 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierIso88594 0x1000507f 
+/** 
+ISO 8859-5 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierIso88595 0x10005080 
+/** 
+ISO 8859-6 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierIso88596 0x10008a29 
+/** 
+ISO 8859-7 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierIso88597 0x10005081 
+/** 
+ISO 8859-8 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierIso88598 0x10008a2a 
+/** 
+ISO 8859-9 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierIso88599 0x10005082 
+/** 
+ISO 8859-10 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierIso885910 0x10008a2b 
+/** 
+ISO 8859-13 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierIso885913 0x10008a2c 
+/** 
+ISO 8859-14 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierIso885914 0x10008a2d 
+/** 
+ISO 8859-15 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierIso885915 0x10008a2e 
+/** 
+ASCII 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierAscii 0x10004cc6 
+/** 
+SMS 7-bit 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierSms7Bit 0x100053ab 
+/** 
+GB 2312 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierGb2312 0x10000fbe 
+/** 
+HZ-GB-2312 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierHz 0x10006065 
+/** 
+GB 12345 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierGb12345 0x1000401a 
+/** 
+GBK 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierGbk 0x10003ecb 
+/** 
+Big 5 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierBig5 0x10000fbf 
+/** 
+Shift-JIS 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierShiftJis 0x10000fbd 
+/** 
+ISO-2022-JP 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierIso2022Jp 0x100066a0 
+/** 
+ISO-2022-JP-1 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierIso2022Jp1 0x100066a3 
+/** 
+JIS Encoding 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierJis 0x10006066 
+/** 
+EUC-JP 
+@publishedAll
+@released
+*/
+#define KCharacterSetIdentifierEucJpPacked 0x10006067 
+#define KCharacterSetIdentifierUnicodeLittle 0x101f3fae   //Little Endian Unicode
+#define KCharacterSetIdentifierUnicodeBig 0x101f4052  // Big Endian Unicode 
+#define KCharacterSetIdentifierUcs2 0x101ff492  
+
+#define KCharacterSetIdentifierWindows874  0x101F854A
+#endif // __MDSPLAYLISTCHARACTERSET_HRH__
+
+
+// End of File

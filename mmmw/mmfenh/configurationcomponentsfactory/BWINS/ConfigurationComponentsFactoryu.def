@@ -1,0 +1,8 @@
+EXPORTS
+	??0CConfigurationComponentsFactory@@IAE@XZ @ 1 NONAME ; CConfigurationComponentsFactory::CConfigurationComponentsFactory(void)
+	??1CConfigurationComponentsFactory@@UAE@XZ @ 2 NONAME ; CConfigurationComponentsFactory::~CConfigurationComponentsFactory(void)
+	?ConstructL@CConfigurationComponentsFactory@@IAEXXZ @ 3 NONAME ; void CConfigurationComponentsFactory::ConstructL(void)
+	?CreateAudioOutputControlUtility@CConfigurationComponentsFactory@@QAEHAAPAVCAudioOutputControlUtility@@@Z @ 4 NONAME ; int CConfigurationComponentsFactory::CreateAudioOutputControlUtility(class CAudioOutputControlUtility * &)
+	?CreateFactoryL@CConfigurationComponentsFactory@@SAHAAPAV1@@Z @ 5 NONAME ; int CConfigurationComponentsFactory::CreateFactoryL(class CConfigurationComponentsFactory * &)
+	?CreateRestrictedAudioOutput@CConfigurationComponentsFactory@@QAEHAAVCMMFDevSound@@AAPAVCRestrictedAudioOutput@@@Z @ 6 NONAME ; int CConfigurationComponentsFactory::CreateRestrictedAudioOutput(class CMMFDevSound &, class CRestrictedAudioOutput * &)
+

@@ -1,0 +1,279 @@
+// *****************************************
+//  
+//  Author:	Stephen Lewis
+//  Date:	26/2/03
+//
+// Tests the setting and clearing of the Unread Flag
+// Related to Hurricane IMAP CR - Fetch should use Body.Peek, not Body
+// 
+// Requirements:
+//  1) Server must have a folder named FlagTest - (Preferably empty, 
+//      but not essential)
+//  2) Server must have a folder named InitFlagTest that contains 
+//      at least 120 messages
+//  3) The 120 message must either be in the Unread State -OR-
+//      this script is run after script-IMAP-flagtests-new.txt
+// *****************************************
+
+[main]
+email_client_test email
+
+// *****************************************
+[email]
+imap_client_test imap_prepare_for_testing
+// *** RUN CONNECTED TESTS ***
+imap_client_test imap_repopulate_flagtest_folder
+imap_client_test imap_test_set_read
+imap_client_test imap_test_set_unread
+// *** RUN DISCONNECTED TESTS ***
+imap_client_test imap_repopulate_flagtest_folder
+imap_client_test imap_test_set_read_disconnected
+imap_client_test imap_test_set_unread_disconnected
+// *** RUN SET FLAGS INTERLEAVED TESTS ***
+imap_client_test imap_repopulate_flagtest_folder
+imap_client_test imap_test_set_flags_interleaved
+// *** Repopulate to ensure all flag states are reset in both folders
+imap_client_test imap_repopulate_flagtest_folder
+
+//
+// Prepare for testing
+//
+[imap_prepare_for_testing]
+clean_message_folder
+start_client_session
+select_root_folder
+imap_service imap_service_fastmail
+select_folder test_imap_service
+connect
+sync_tree
+disconnect
+check_imap_error 0
+
+//
+// Repopulate FlagTest folder
+//
+[imap_repopulate_flagtest_folder]
+select_root_folder
+select_folder test_imap_service
+connect
+check_imap_error 0
+select_root_folder
+select_folder test_imap_service
+select_folder flagtest
+sync_folder
+select_all_messages
+add_comment delete all messages in folder
+delete
+select_root_folder
+select_folder test_imap_service
+select_folder InitFlagtest
+sync_folder
+select_all_messages
+mark_selection_unread 1
+sync_folder
+select_all_messages
+select_first_in_selection 5
+check_selection_count 5
+add_comment Copying messages from InitFlagtest to flagtest
+select_root_folder
+select_folder test_imap_service
+select_destination_folder flagtest
+select_folder InitFlagtest
+copy
+add_comment Copy complete
+add_comment Fetch FlagTest bodies
+select_root_folder
+select_folder test_imap_service
+select_folder FlagTest
+sync_folder
+select_all_messages
+populate_folder
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+//Test setting all to READ
+[imap_test_set_read]
+add_comment Start test setting all to READ while connected
+select_root_folder
+select_folder test_imap_service
+connect
+select_folder flagtest
+sync_folder
+// Mark all as READ
+select_all_messages
+check_selection_count 5
+add_comment Change all to read
+mark_selection_unread 0
+add_comment Upload flags, sync and check all are read
+sync_folder
+check_selection_unread 0
+check_selection_seen 0
+add_comment Sync again and check all are read
+sync_folder
+check_selection_unread 0
+check_selection_seen 1
+add_comment Completed set READ test
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+//
+//Test setting all to UNREAD
+[imap_test_set_unread]
+add_comment Start test setting all to UNREAD while connected
+select_root_folder
+select_folder test_imap_service
+connect
+select_folder flagtest
+sync_folder
+// Mark all as UNREAD
+select_all_messages
+check_selection_count 5
+add_comment Change all to unread
+mark_selection_unread 1
+add_comment Upload flags, sync and check all are read
+sync_folder
+check_selection_unread 1
+check_selection_seen 1
+add_comment Sync again and check all are read
+sync_folder
+check_selection_unread 1
+check_selection_seen 0
+check_imap_error 0
+add_comment Completed set UNREAD test
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+//Test setting all to READ while DISCONNECTED
+[imap_test_set_read_disconnected]
+add_comment Start test setting all to READ while disconnected
+select_root_folder
+select_folder test_imap_service
+select_folder flagtest
+// Mark all as READ
+select_all_messages
+add_comment Change all to read
+mark_selection_unread 0
+add_comment Check all are read
+check_selection_unread 0
+add_comment Connect, upload flags, sync and check all are read
+select_root_folder
+select_folder test_imap_service
+connect
+select_folder flagtest
+sync_folder
+select_all_messages
+check_selection_unread 1
+add_comment Sync again and check all are read
+sync_folder
+check_selection_unread 1
+add_comment Completed set READ test
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+//
+//Test setting all to UNREAD while DISCONNECTED
+[imap_test_set_unread_disconnected]
+add_comment Start test setting all to UNREAD while disconnected
+select_root_folder
+select_folder test_imap_service
+select_folder flagtest
+// Mark all as UNREAD
+select_all_messages
+add_comment Change all to unread
+mark_selection_unread 1
+add_comment Check all are unread
+check_selection_unread 1
+add_comment Connect, upload flags, sync and check all are read
+select_root_folder
+select_folder test_imap_service
+connect
+select_folder flagtest
+sync_folder
+select_all_messages
+check_selection_unread 1
+add_comment Sync again and check all are read
+sync_folder
+check_selection_unread 1
+check_imap_error 0
+add_comment Completed set UNREAD test
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+[imap_test_set_flags_interleaved]
+//
+//
+add_comment Start test setting flags interleaved (on InitFlagtest)
+select_root_folder
+select_folder test_imap_service
+connect
+select_folder InitFlagtest
+select_all_messages
+mark_selected_mail
+add_comment Syncing InitFlagtest
+sync_folder
+check_imap_error 0
+add_comment Check selectiion flags
+check_selected_mail
+add_comment Sync again and check all flags
+sync_folder
+check_selected_mail
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+add_comment Completed setting flags interleave test
+
+
+//
+// defining email server:
+//
+
+[imap_service_fastmail]
+set_name test_imap_service
+// These servers have the correct folder structure required for the tests (28/02/03)
+set_server msexchange01.closedtest.intra
+//set_server avavir.it.cellulardata.com
+//set_server trsrv11.it.cellulardata.com
+//set_server trmai02.it.cellulardata.com
+//set_server trmai09.it.cellulardata.com
+//set_server trmai01.it.cellulardata.com
+//
+// These servers do not have the correct folder structure required for the tests (28/02/03)
+//set_server trmai13.it.cellulardata.com
+//set_server avavir.it.cellulardata.com
+//set_server trmai03w2k.it.cellulardata.com
+//set_server trmai12.oramail.cellulardata.com
+//set_server sims4.sims.cellulardata.com
+//set_server trsrv01.it.cellulardata.com
+//set_server trmai13.it.cellulardata.com
+//set_user kamineni
+//set_pass vamSym
+set_user test
+set_pass test
+// Set this flag to 1 for 'new' tests, or '0' for 'old' tests
+set_updating_seen_flag 1
+// *** Uncomment the next line for trmai01 ***
+//set_folder_path Inbox
+set_tls 0
+
+
+// Stalker trmai02.it.cellulardata.com
+// alternate username: mendonca
+// alternate password: keiSym
+//
+// Any of the following No can be used to access this server
+// +358 3 3617 770
+// +358 3 31520 444
+// +358 3 31520 111
+// +358 3 31520 999
+// *****************************************

@@ -1,0 +1,58 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//
+//
+//	Download n-1 emails and send an SMS
+//	check that the message is in the 'sent' folder
+//	'n' will typically equal 16
+//
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+RUN_UTILS CopyFile Z:\testdata\scripts\config.txt C:\config.txt
+RUN_UTILS MakeReadWrite C:\config.txt
+
+RUN_TEST_STEP 1000 MessagingTestServer 	BEGIN_TEST_CASE
+RUN_TEST_STEP 1000 MessagingTestServer 	SETUP_TEST_CASE
+// start download 15 emails
+RUN_SCRIPT c:\perf\p.script
+// stop download 15 emails
+RUN_TEST_STEP 1000 MessagingTestServer	EXECUTE_TEST_CASE
+RUN_TEST_STEP 1000 MessagingTestServer 	InitializeSimTsy 	c:\perf\sms.ini Init1
+RUN_TEST_STEP 1000 MessagingTestServer 	StartWatchers 		c:\perf\sms.ini StartWatchers
+RUN_TEST_STEP 1000 MessagingTestServer	Sleep 				c:\perf\sms.ini Sleep10
+RUN_TEST_STEP 1000 MessagingTestServer	GetBaseConstants 	c:\perf\sms.ini GetBaseConstants
+RUN_TEST_STEP 1000 MessagingTestServer	SetDefaultSmsSettings 	c:\perf\sms.ini SetSettingsFile
+RUN_TEST_STEP 1000 MessagingTestServer	SetDefaultConfiguration c:\perf\sms.ini SetSmsMessageConfigFile
+RUN_TEST_STEP 1000 MessagingTestServer	CreateSession 		c:\perf\sms.ini CreateSession
+RUN_TEST_STEP 1000 MessagingTestServer	CreateRegistry 		c:\perf\sms.ini CreateRegistry
+RUN_TEST_STEP 1000 MessagingTestServer	CreateSmsService 	c:\perf\sms.ini CreateSmsService
+RUN_TEST_STEP 1000 MessagingTestServer	SetSmsServiceSettings 	c:\perf\sms.ini SetSmsSettings
+RUN_TEST_STEP 1000 MessagingTestServer	SetSchSendSettings 		c:\perf\sms.ini SetSchSendSettings
+RUN_TEST_STEP 1000 MessagingTestServer	CreateMtm 				c:\perf\sms.ini CreateMtm
+RUN_TEST_STEP 1000 MessagingTestServer	DeleteChildren 	c:\perf\sms.ini EmptyOutbox
+RUN_TEST_STEP 1000 MessagingTestServer	DeleteChildren 	c:\perf\sms.ini EmptySent
+RUN_TEST_STEP 1000 MessagingTestServer	GetSmsConstants c:\perf\sms.ini GetSmsConstants
+RUN_TEST_STEP 1000 MessagingTestServer	CreateSmsMessage 	c:\perf\sms.ini CreateMessage
+RUN_TEST_STEP 1000 MessagingTestServer	CreateSelection 	c:\perf\sms.ini CreateSelection
+RUN_TEST_STEP 1000 MessagingTestServer	GetDefaultAppendToSelection 	c:\perf\sms.ini AppendToSelection
+RUN_TEST_STEP 1000 MessagingTestServer	SetNetworkRegistrationStatus 	c:\perf\sms.ini NetAvailable
+RUN_TEST_STEP 1000 MessagingTestServer	SetSignalStrength 	c:\perf\sms.ini NetStrengthHigh
+RUN_TEST_STEP 1000 MessagingTestServer	Sleep 				c:\perf\sms.ini Sleep3
+RUN_TEST_STEP 1000 MessagingTestServer	ExecuteMtmCommand 	c:\perf\sms.ini ScheduleMessage
+RUN_TEST_STEP 1000 MessagingTestServer	CheckMessageSendingState c:\perf\sms.ini MsgSent
+RUN_TEST_STEP 1000 MessagingTestServer	CHECK_POSTCONDITIONS 
+RUN_TEST_STEP 1000 MessagingTestServer	CheckChildrenCount	c:\perf\sms.ini CheckChildrenCount1
+RUN_TEST_STEP 1000 MessagingTestServer	END_TEST_CASE

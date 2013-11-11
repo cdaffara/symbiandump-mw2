@@ -1,0 +1,50 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file for MnRefProviderPlugin
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET              MnRefProviderPlugin.dll
+TARGETTYPE          PLUGIN
+UID                 0x10009D8D 0x03133037
+
+VENDORID            VID_DEFAULT
+CAPABILITY          ReadUserData WriteUserData Location
+
+SOURCEPATH          ../src
+
+SOURCE              mnrefproviderplugin.cpp
+SOURCE				mnrpcoordconverter.cpp
+
+USERINCLUDE         ../inc
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY             euser.lib
+LIBRARY             lbs.lib
+LIBRARY             mnclientlib.lib
+LIBRARY             mnrefproviderengine.lib
+DEBUGLIBRARY        flogger.lib
+
+START RESOURCE      ../data/mnrefproviderplugin.rss
+TARGET			    mnrefproviderplugin.rsc
+TARGETPATH          /resource/plugins
+END
+
+SMPSAFE
+
+// END OF FILE
+

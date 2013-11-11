@@ -1,0 +1,12 @@
+EXPORTS
+	??0CNWMessageHandler@@IAE@AAVCNWSession@@AAVMNWMessageObserver@@AAUTNWInfo@@@Z @ 1 NONAME ; CNWMessageHandler::CNWMessageHandler(class CNWSession &, class MNWMessageObserver &, struct TNWInfo &)
+	??1CNWGsmMessageHandler@@UAE@XZ @ 2 NONAME ; CNWGsmMessageHandler::~CNWGsmMessageHandler(void)
+	??1CNWGsmSessionImplementation@@UAE@XZ @ 3 NONAME ; CNWGsmSessionImplementation::~CNWGsmSessionImplementation(void)
+	??1CNWMessageHandler@@UAE@XZ @ 4 NONAME ; CNWMessageHandler::~CNWMessageHandler(void)
+	??1CNWSession@@UAE@XZ @ 5 NONAME ; CNWSession::~CNWSession(void)
+	?CreateL@@YAPAVCNWSession@@AAVMNWMessageObserver@@AAUTNWInfo@@@Z @ 6 NONAME ; class CNWSession * CreateL(class MNWMessageObserver &, struct TNWInfo &)
+	?NewL@CNWGsmSessionImplementation@@SAPAV1@AAVMNWMessageObserver@@AAUTNWInfo@@@Z @ 7 NONAME ; class CNWGsmSessionImplementation * CNWGsmSessionImplementation::NewL(class MNWMessageObserver &, struct TNWInfo &)
+	?NewL@CNWNetworkModeMonitor@@SAPAV1@AAVCNWMessageHandler@@AAVRMobilePhone@@AAUTNWInfo@@AAVRMmCustomAPI@@@Z @ 8 NONAME ; class CNWNetworkModeMonitor * CNWNetworkModeMonitor::NewL(class CNWMessageHandler &, class RMobilePhone &, struct TNWInfo &, class RMmCustomAPI &)
+	?NewL@CNWNetworkRegistrationStatusMonitor@@SAPAV1@AAVCNWMessageHandler@@AAVRMobilePhone@@AAUTNWInfo@@AAVRMmCustomAPI@@@Z @ 9 NONAME ; class CNWNetworkRegistrationStatusMonitor * CNWNetworkRegistrationStatusMonitor::NewL(class CNWMessageHandler &, class RMobilePhone &, struct TNWInfo &, class RMmCustomAPI &)
+	?SendMessage@CNWMessageHandler@@UAEXW4TNWMessages@MNWMessageObserver@@@Z @ 10 NONAME ; void CNWMessageHandler::SendMessage(enum MNWMessageObserver::TNWMessages)
+

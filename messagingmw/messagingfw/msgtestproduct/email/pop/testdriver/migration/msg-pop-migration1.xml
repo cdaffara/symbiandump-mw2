@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+<testExecuteTest>
+	<name>msg-pop-migration1</name>
+	<timeout>6000</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\email\pop\migration\msg-pop-migration1.script</hostPath>
+			<devicePath>c:\msgtest\email\pop\migration\msg-pop-migration1.script</devicePath>
+		</script>
+	</testScripts>
+	<testServers>
+		<server>T_MsgCommonServer</server>
+		<server>T_MsgPopServer</server>
+		<server>T_MsgSmtpServer</server>
+	</testServers>
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\email\pop\migration\msg-pop-migration1.ini</hostPath>
+			<devicePath>c:\msgtest\email\pop\migration\msg-pop-migration1.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test1_mail.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test1_mail.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\POPServerSNAPandBMSettings.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\POPServerSNAPandBMSettings.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\POPServerSNAPandBMSettings_Disconnected.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\POPServerSNAPandBMSettings_Disconnected.txt</devicePath>
+		</data>
+	</dependencies>
+</testExecuteTest>

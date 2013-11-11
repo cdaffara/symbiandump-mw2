@@ -1,0 +1,48 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_1_SendSingleSMS.script
+	// Establishes that the TSY can send a straight SMS. 
+	// Ensures that the current SMS code has not been broken, with the addition of the EMAIL over SMS code.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_1_2_ReceiveSingleSMS.script
+	// Establishes that the TSY can receive a straight SMS.
+	// Ensures that the current SMS code has not been broken, with the addition of the EMAIL over SMS code.
+
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_2_1_SendMOTestAddressForm1.script
+	// Send an email of the form "user@domain1.domain2"
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_2_2_SendMOTestAddressForm2.script
+	// Send an email of the form "User name<user@domain1.domain2>"
+
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_3_1_ReceiveMTTestAddressForm1.script
+	// Receive an email off the form "user@domain1.domain2"
+	// Checks that the code breaks down correctly the header into  the email addess and messages.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_3_2_ReceiveMTTestAddressForm2.script
+	// Receive an email off the form "User name<user@domain1.domain2>"
+	// Checks that the code breaks down correctly the header into  the email addess and messages.
+
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_1_SubjectForm1.script
+	// Check  that the subject is broken out correcty from 
+	// "User Name<user@domain1.domain2> (Subject)message"
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\EmailOverSMS\EOS_4_2_SubjectForm2.script
+	// Check  that the subject is broken out correcty from 
+	// "user@domain1.domain2 ##Subject#message"

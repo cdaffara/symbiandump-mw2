@@ -1,0 +1,61 @@
+/*
+* Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file
+*
+*/
+
+
+#include <platform_paths.hrh>
+#include <data_caging_paths.hrh>
+
+VERSION       10.0
+TARGET        locationcontextplugin.dll
+TARGETTYPE    PLUGIN
+UID           0x10009D8D 0x200071CF
+
+CAPABILITY 	  CAP_ECOM_PLUGIN
+VENDORID      VID_DEFAULT
+
+SYSTEMINCLUDE /epoc32/include/ecom
+
+USERINCLUDE   ../../../../inc
+USERINCLUDE   ../inc
+
+SOURCEPATH    ../src
+SOURCE        locationcontextplugin.cpp
+SOURCE        locationpluginproxy.cpp
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY       euser.lib
+LIBRARY       ecom.lib
+LIBRARY       inetprotutil.lib
+LIBRARY       contextplugininterface.lib
+LIBRARY       mdeclient.lib
+LIBRARY       lbs.lib
+
+LIBRARY       locationmanager.lib
+LIBRARY       locationtrail.lib
+LIBRARY	  harvesterdata.lib
+LIBRARY	  etel3rdparty.lib
+
+SOURCEPATH    ../data
+start RESOURCE 200071cf.rss
+target locationcontextplugin.rsc
+end
+
+PAGED
+BYTEPAIRCOMPRESSTARGET
+OPTION ARMCC -O3 -OTime
+

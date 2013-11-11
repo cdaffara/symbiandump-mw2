@@ -1,0 +1,681 @@
+// *****************************************
+//  Test Script 
+// *****************************************
+
+[main]
+email_client_test email
+
+// *****************************************
+
+[email]
+imap_client_test imap_prepare_for_testing
+imap_client_test imap_use_case_SA_1
+imap_client_test imap_use_case_SA_2
+imap_client_test imap_use_case_SA_3
+imap_client_test imap_use_case_SA_4
+imap_client_test imap_use_case_SA_5
+imap_client_test imap_use_case_SA_10
+imap_client_test imap_use_case_SA_11
+imap_client_test imap_use_case_SA_12
+imap_client_test imap_use_case_SA_13
+imap_client_test imap_use_case_SA_14
+imap_client_test imap_use_case_SA_15
+imap_client_test imap_use_case_SA_16
+imap_client_test imap_special_case_1
+imap_client_test imap_special_case_2
+imap_client_test imap_special_case_3
+imap_client_test imap_special_case_4
+imap_client_test imap_special_case_5
+imap_client_test imap_special_case_6
+imap_client_test imap_special_case_7
+imap_client_test imap_special_case_8
+imap_client_test imap_special_case_9
+
+// *****************************************
+
+//
+// Prepare remote inbox for testing
+//
+[imap_prepare_for_testing]
+clean_message_folder
+start_client_session
+select_root_folder
+imap_service imap_service_chaos
+//imap_service imap_service_pipex
+select_folder test_imap_service
+add_comment <Time: Start> Connecting to IMAP Service
+connect
+check_imap_error 0
+add_comment Synchronising tree
+//sync_tree
+perform_full_sync
+check_imap_error 0
+add_comment Checking remote inbox
+check_remote_inbox
+check_imap_error 0
+add_comment <Time: Stop> Email Sync Complete
+select_folder inbox
+add_comment Count headers in remote inbox
+count_children
+select_all_messages
+delete
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+//
+// Use case SA-1: Sync-to-all, with empty local and remote mailbox
+//
+[imap_use_case_SA_1]
+select_root_folder
+select_folder test_imap_service
+set_sync_limits -1 -1
+connect
+check_imap_error 0
+add_comment Checking remote inbox
+check_remote_inbox
+check_imap_error 0
+select_folder inbox
+add_comment Counting headers in remote inbox
+count_children
+select_all_messages
+check_selection_count 0
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+//
+// Use case SA-2: Sync-to-all, with 1 mail in remote mailbox
+//
+[imap_use_case_SA_2]
+select_root_folder
+select_folder test_imap_service
+connect
+check_imap_error 0
+select_destination_folder inbox
+select_folder TestInbox
+sync_folder
+select_all_messages
+check_selection_count 20
+check_remote_folder_size 20
+select_last_in_selection 1
+check_selection_count 1
+add_comment Copying 1 message from TestInbox to Inbox
+copy
+select_root_folder
+select_folder test_imap_service
+check_remote_inbox
+select_folder inbox
+select_all_messages
+check_selection_count 1
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+//
+// Use case SA-3: Sync-to-all, where mail has been deleted from remote mailbox
+//
+[imap_use_case_SA_3]
+select_root_folder
+select_folder test_imap_service
+connect
+check_imap_error 0
+select_destination_folder inbox
+select_folder Inbox
+select_all_messages
+check_selection_count 1
+delete
+sync_folder
+select_all_messages
+check_selection_count 0
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+//
+// Use case SA-4: Sync-to-all, with some new mail in remote mailbox
+//
+[imap_use_case_SA_4]
+select_root_folder
+select_folder test_imap_service
+connect
+check_imap_error 0
+select_destination_folder inbox
+select_folder TestInbox
+sync_folder
+select_all_messages
+check_selection_count 20
+select_last_in_selection 5
+check_selection_count 5
+add_comment Copying 5 messages from TestInbox to Inbox
+copy
+select_root_folder
+select_folder test_imap_service
+check_remote_inbox
+select_folder inbox
+select_all_messages
+check_selection_count 5
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+//
+// Use case SA-5: Sync-to-all, with some new and old mail in the remote inbox, and some mail deleted
+//
+[imap_use_case_SA_5]
+select_root_folder
+select_folder test_imap_service
+connect
+check_imap_error 0
+select_destination_folder inbox
+select_folder TestInbox
+sync_folder
+select_all_messages
+check_selection_count 20
+select_last_in_selection 7
+select_first_in_selection 2
+check_selection_count 2
+add_comment Copying 2 newer messages from TestInbox to Inbox
+copy
+select_root_folder
+select_folder test_imap_service
+check_remote_inbox
+select_folder inbox
+select_all_messages
+select_last_in_selection 3
+delete
+sync_folder
+select_all_messages
+check_selection_count 4
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+//
+// Use case SA-10: Sync-to-limit, with empty local and remote mailbox
+//
+[imap_use_case_SA_10]
+select_root_folder
+select_folder test_imap_service
+connect
+check_imap_error 0
+select_folder inbox
+select_all_messages
+delete
+perform_full_sync
+select_root_folder
+select_folder test_imap_service
+select_folder inbox
+select_all_messages
+check_selection_count 0
+// Contents deleted, now lets re-sync and check what happens
+select_root_folder
+select_folder test_imap_service
+set_sync_limits 10 10
+perform_full_sync
+select_folder inbox
+select_all_messages
+check_selection_count 0
+check_remote_folder_size 0
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+//
+// Use case SA-11: Sync-to-limit, with 1 mail in remote mailbox
+//
+[imap_use_case_SA_11]
+select_root_folder
+select_folder test_imap_service
+connect
+check_imap_error 0
+select_destination_folder inbox
+select_folder TestInbox
+sync_folder
+select_all_messages
+check_selection_count 10
+check_remote_folder_size 20
+select_last_in_selection 1
+check_selection_count 1
+add_comment Copying 1 message from TestInbox to Inbox
+copy
+select_root_folder
+select_folder test_imap_service
+perform_full_sync
+select_folder inbox
+select_all_messages
+check_selection_count 1
+check_remote_folder_size 1
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+//
+// Use case SA-12: Sync-to-limit, where mail has been deleted from remote mailbox
+//
+[imap_use_case_SA_12]
+select_root_folder
+select_folder test_imap_service
+connect
+check_imap_error 0
+select_folder inbox
+select_all_messages
+check_selection_count 1
+delete
+select_root_folder
+select_folder test_imap_service
+perform_full_sync
+select_folder inbox
+select_all_messages
+check_selection_count 0
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+//
+// Use case SA-13: Sync-to-limit, with some new mail in remote mailbox
+//
+[imap_use_case_SA_13]
+select_root_folder
+select_folder test_imap_service
+connect
+check_imap_error 0
+select_destination_folder inbox
+select_folder TestInbox
+sync_folder
+select_all_messages
+check_selection_count 10
+select_last_in_selection 5
+check_selection_count 5
+add_comment Copying 5 messages from TestInbox to Inbox
+copy
+select_root_folder
+select_folder test_imap_service
+perform_full_sync
+select_folder inbox
+select_all_messages
+check_selection_count 5
+check_remote_folder_size 5
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+//
+// Use case SA-14: Sync-to-limit, with some new and old mail in the remote inbox, and some mail deleted
+//
+[imap_use_case_SA_14]
+select_root_folder
+select_folder test_imap_service
+connect
+check_imap_error 0
+select_destination_folder inbox
+select_folder TestInbox
+sync_folder
+select_all_messages
+check_selection_count 10
+select_last_in_selection 7
+select_first_in_selection 2
+check_selection_count 2
+add_comment Copying 2 newer messages from TestInbox to Inbox
+copy
+select_root_folder
+select_folder test_imap_service
+check_remote_inbox
+select_folder inbox
+select_all_messages
+select_last_in_selection 3
+delete
+sync_folder
+select_all_messages
+check_selection_count 4
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+//
+// Use case SA-15: Sync-to-limit, with email > limit in remote inbox
+//
+[imap_use_case_SA_15]
+select_root_folder
+select_folder test_imap_service
+set_sync_limits 10 -1
+connect
+check_imap_error 0
+select_destination_folder inbox
+select_folder inbox
+select_all_messages
+delete
+select_root_folder
+select_folder test_imap_service
+perform_full_sync
+select_folder inbox
+select_all_messages
+check_selection_count 0
+select_root_folder
+select_folder test_imap_service
+select_folder TestInbox
+sync_folder
+select_all_messages
+check_selection_count 20
+add_comment Copying 20 messages from TestInbox to Inbox
+copy
+select_root_folder
+select_folder test_imap_service
+perform_full_sync
+select_folder inbox
+select_all_messages
+check_selection_count 10
+check_remote_folder_size 20
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+//
+// Use case SA-16: Sync-to-limit, with populated email > limit in remote inbox
+//
+[imap_use_case_SA_16]
+select_root_folder
+select_folder test_imap_service
+connect
+check_imap_error 0
+select_folder inbox
+select_all_messages
+select_first_in_selection 1
+check_selection_count 1
+populate_folder
+select_root_folder
+select_folder test_imap_service
+set_sync_limits 5 -1
+disconnect
+check_imap_error 0
+connect
+check_imap_error 0
+perform_full_sync
+select_folder inbox
+select_all_messages
+check_selection_count 6
+check_remote_folder_size 20
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+//
+// Special case 1: Sync-to-limit, with large remote mailbox (1200 messages)
+//
+[imap_special_case_1]
+select_root_folder
+select_folder test_imap_service
+set_sync_limits 10 10
+connect
+check_imap_error 0
+perform_full_sync
+select_folder TestBigFolder
+sync_folder
+select_all_messages
+check_selection_count 10
+check_remote_folder_size 1200
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+//
+// Special case 2: Sync-to-limit changed to Sync-to-all
+//
+[imap_special_case_2]
+select_root_folder
+select_folder test_imap_service
+select_folder inbox
+select_all_messages
+check_selection_count 10
+check_remote_folder_size 20
+select_root_folder
+select_folder test_imap_service
+set_sync_limits -1 0
+connect
+check_imap_error 0
+perform_full_sync
+select_folder inbox
+select_all_messages
+check_selection_count 20
+check_remote_folder_size 20
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+//
+// Special case 3: Sync-to-all changed to Sync-to-limit
+//
+[imap_special_case_3]
+select_root_folder
+select_folder test_imap_service
+select_folder inbox
+select_all_messages
+check_selection_count 20
+check_remote_folder_size 20
+select_root_folder
+select_folder test_imap_service
+set_sync_limits 10 0
+connect
+check_imap_error 0
+perform_full_sync
+select_folder inbox
+select_all_messages
+check_selection_count 10
+check_remote_folder_size 20
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+//
+// Special case 4: Sync-to-limit, limit increased
+//
+[imap_special_case_4]
+select_root_folder
+select_folder test_imap_service
+select_folder inbox
+select_all_messages
+check_selection_count 10
+check_remote_folder_size 20
+select_root_folder
+select_folder test_imap_service
+set_sync_limits 15 0
+connect
+check_imap_error 0
+perform_full_sync
+select_folder inbox
+select_all_messages
+check_selection_count 15
+check_remote_folder_size 20
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+//
+// Special case 5: Sync-to-limit, with populated email and limit decreased, then increased
+//
+[imap_special_case_5]
+select_root_folder
+select_folder test_imap_service
+set_sync_limits 5 0
+connect
+check_imap_error 0
+perform_full_sync
+select_folder inbox
+select_all_messages
+// Well we are cheating a little... 'cos in SA-16 we downloaded body parts, so not doing this again
+check_selection_count 6
+check_remote_folder_size 20
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+set_sync_limits 15 0
+connect
+check_imap_error 0
+perform_full_sync
+select_folder inbox
+select_all_messages
+check_selection_count 15
+check_remote_folder_size 20
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+//
+// Special case 6: Sync-to-limit, with populated email deleted from remote folder
+//
+select_populated
+[imap_special_case_6]
+select_root_folder
+select_folder test_imap_service
+set_sync_limits 5 0
+connect
+check_imap_error 0
+perform_full_sync
+select_folder inbox
+select_all_messages
+check_selection_count 6
+check_remote_folder_size 20
+select_populated
+check_selection_count 1
+delete
+select_root_folder
+select_folder test_imap_service
+perform_full_sync
+perform_full_sync
+select_folder inbox
+select_all_messages
+check_selection_count 5
+check_remote_folder_size 19
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+//
+// Special case 7: Sync-to-none, with empty local and remote folder
+//
+[imap_special_case_7]
+select_root_folder
+select_folder test_imap_service
+set_sync_limits -1 -1
+connect
+check_imap_error 0
+perform_full_sync
+select_folder inbox
+select_all_messages
+delete
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+set_sync_limits 0 0
+connect
+check_imap_error 0
+perform_full_sync
+select_folder inbox
+select_all_messages
+check_selection_count 0
+check_remote_folder_size 0
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+//
+// Special case 8: Sync-to-none, with a new message in the remote inbox
+//
+[imap_special_case_8]
+select_root_folder
+select_folder test_imap_service
+set_sync_limits 0 10
+connect
+check_imap_error 0
+select_destination_folder inbox
+select_folder TestInbox
+sync_folder
+select_all_messages
+check_selection_count 10
+check_remote_folder_size 20
+select_last_in_selection 1
+check_selection_count 1
+add_comment Copying 1 message from TestInbox to Inbox
+copy
+select_root_folder
+select_folder test_imap_service
+select_folder inbox
+select_all_messages
+check_selection_count 0
+check_remote_folder_size 1
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+//
+// Special case 9: Purge unsubscribed folder contents
+//
+[imap_special_case_9]
+select_root_folder
+select_folder test_imap_service
+set_sync_limits -1 -1
+connect
+check_imap_error 0
+select_folder TestInbox
+subscribe_folder
+select_root_folder
+select_folder test_imap_service
+perform_full_sync
+select_folder TestInbox
+select_all_messages
+check_selection_count 20
+unsubscribe_folder
+select_root_folder
+select_folder test_imap_service
+perform_full_sync
+select_folder TestInbox
+select_all_messages
+check_selection_count 0
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+
+// *****************************************
+
+[imap_service_pipex]
+set_name test_imap_service
+set_server imap.dial.pipex.com
+set_user abf75
+set_pass oodifama
+set_folder_path ~/Inbox
+
+// *****************************************
+
+[imap_service_chaos]
+set_name test_imap_service
+set_server utter.chaos.org.uk
+set_user test
+set_pass testtest
+//set_folder_path ~/mail
+
+// *****************************************

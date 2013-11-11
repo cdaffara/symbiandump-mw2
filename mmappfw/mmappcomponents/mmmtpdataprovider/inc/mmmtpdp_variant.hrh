@@ -1,0 +1,34 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  centralize control of internal flags
+*
+*/
+
+
+#ifndef MMMTPDP_VARIANT_HRH
+#define MMMTPDP_VARIANT_HRH
+
+// flag to enable performance log even in urel, should be default to off
+#undef MMMTPDP_PERFLOG  // check to make sure it's off
+
+// flag to enable replace the exist object
+#undef MMMTPDP_REPLACE_EXIST_FILE
+
+// flag to enable support for non embedded album art, should be ON by default
+#define MMMTPDP_ABSTRACTAUDIOALBUM_SUPPORT
+
+// flag to enable reset of MTP PS Status flag at CloseSession
+#define MMMTPDP_RESET_STATUS_CLOSESESSION
+
+#endif // MMMTPDP_VARIANT_HRH

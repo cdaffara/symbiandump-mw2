@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<api id="8d0eb1ee269ddf41063e5771eb031a48" dataversion="2.0">
+  <name>NP Proxy Configuration API</name>
+  <description>Defines the Central Repository keys for configuring NP Proxy.</description>
+  <type>c++</type>
+  <collection>genericpositioningplugins</collection>
+  <libs>
+  </libs>
+  <release category="platform"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>no</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

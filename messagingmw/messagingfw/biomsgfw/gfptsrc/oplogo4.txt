@@ -1,0 +1,11 @@
+This is an operator logo message.
+
+A bit of binary data. Another bit of binary data. Yet, more binary data. A bit of binary data. Another bit of binary data. Yet, more binary data. A bit of binary data. Another bit of binary data. Yet, more binary data. A bit of binary data. Another bit of binary data. Yet, more binary data. A bit of binary data. Another bit of binary data. Yet, more binary data. A bit of binary data. Another bit of binary data. Yet, more binary data. A bit of binary data. Another bit of binary data. Yet, more binary data. A bit of binary data. Another bit of binary data. Yet, more binary data. A bit of binary data. Another bit of binary data. Yet, more binary data. A bit of binary data. Another bit of binary data. Yet, more binary data.A bit of binary data. Another bit of binary data. Yet, more binary data.
+
+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY1234567890!£$^&*(){}[];:@#~/?<>,.-_=+
+
+Some ASCII characters starting from 10:
+§#$&()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}~¦ÇüéâäàåçêëèïîìÄÅæÆôòûÖÜ¢£¥Pƒá¬1/21/4¡«»¦¦¦aßGpSsµtFOd8fen=)+vn 
+
+ëèïîìÄÅôòûùÿÖÜ¢£PƒáíóúñÑªº¿¬1/21/4¡«»pSstFTOd8
+

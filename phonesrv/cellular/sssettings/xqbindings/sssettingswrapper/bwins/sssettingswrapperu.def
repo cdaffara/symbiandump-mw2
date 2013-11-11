@@ -1,0 +1,17 @@
+EXPORTS
+	?qt_metacast@SsSettingsWrapper@@UAEPAXPBD@Z @ 1 NONAME ; void * SsSettingsWrapper::qt_metacast(char const *)
+	?metaObject@SsSettingsWrapper@@UBEPBUQMetaObject@@XZ @ 2 NONAME ; struct QMetaObject const * SsSettingsWrapper::metaObject(void) const
+	??_ESsSettingsWrapper@@UAE@I@Z @ 3 NONAME ; SsSettingsWrapper::~SsSettingsWrapper(unsigned int)
+	??1SsSettingsWrapper@@UAE@XZ @ 4 NONAME ; SsSettingsWrapper::~SsSettingsWrapper(void)
+	?get@SsSettingsWrapper@@QAEHW4SsSettingsWrapperSettings@@AAH@Z @ 5 NONAME ; int SsSettingsWrapper::get(enum SsSettingsWrapperSettings, int &)
+	?staticMetaObject@SsSettingsWrapper@@2UQMetaObject@@B @ 6 NONAME ; struct QMetaObject const SsSettingsWrapper::staticMetaObject
+	?set@SsSettingsWrapper@@QAEHW4SsSettingsWrapperSettings@@H@Z @ 7 NONAME ; int SsSettingsWrapper::set(enum SsSettingsWrapperSettings, int)
+	?trUtf8@SsSettingsWrapper@@SA?AVQString@@PBD0@Z @ 8 NONAME ; class QString SsSettingsWrapper::trUtf8(char const *, char const *)
+	?qt_metacall@SsSettingsWrapper@@UAEHW4Call@QMetaObject@@HPAPAX@Z @ 9 NONAME ; int SsSettingsWrapper::qt_metacall(enum QMetaObject::Call, int, void * *)
+	?phoneSettingChanged@SsSettingsWrapper@@IAEXW4SsSettingsWrapperSettings@@H@Z @ 10 NONAME ; void SsSettingsWrapper::phoneSettingChanged(enum SsSettingsWrapperSettings, int)
+	?tr@SsSettingsWrapper@@SA?AVQString@@PBD0H@Z @ 11 NONAME ; class QString SsSettingsWrapper::tr(char const *, char const *, int)
+	?tr@SsSettingsWrapper@@SA?AVQString@@PBD0@Z @ 12 NONAME ; class QString SsSettingsWrapper::tr(char const *, char const *)
+	?trUtf8@SsSettingsWrapper@@SA?AVQString@@PBD0H@Z @ 13 NONAME ; class QString SsSettingsWrapper::trUtf8(char const *, char const *, int)
+	??0SsSettingsWrapper@@QAE@PAVQObject@@@Z @ 14 NONAME ; SsSettingsWrapper::SsSettingsWrapper(class QObject *)
+	?getStaticMetaObject@SsSettingsWrapper@@SAABUQMetaObject@@XZ @ 15 NONAME ; struct QMetaObject const & SsSettingsWrapper::getStaticMetaObject(void)
+

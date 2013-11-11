@@ -1,0 +1,242 @@
+EXPORTS
+	?GetFiredTriggersL@RLbt@@QAEXAAV?$RArray@UTLbtTriggerFireInfo@@@@@Z @ 1 NONAME ; void RLbt::GetFiredTriggersL(class RArray<struct TLbtTriggerFireInfo> &)
+	?SetTriggerEntry@CLbtTriggerInfo@@QAEXPAVCLbtTriggerEntry@@@Z @ 2 NONAME ; void CLbtTriggerInfo::SetTriggerEntry(class CLbtTriggerEntry *)
+	?PtrC@CLbtSubSessnPtrHolder@@QAEAAVTPtrC8@@H@Z @ 3 NONAME ; class TPtrC8 & CLbtSubSessnPtrHolder::PtrC(int)
+	?SetCellId@CLbtGeoCell@@QAEXI@Z @ 4 NONAME ; void CLbtGeoCell::SetCellId(unsigned int)
+	?GetTriggerLC@RLbt@@QAEPAVCLbtTriggerInfo@@KKK@Z @ 5 NONAME ; class CLbtTriggerInfo * RLbt::GetTriggerLC(unsigned long, unsigned long, unsigned long)
+	??1CLbtTriggerFilterBase@@UAE@XZ @ 6 NONAME ; CLbtTriggerFilterBase::~CLbtTriggerFilterBase(void)
+	?WcdmaCellInfo@CLbtGeoWcdmaCell@@QAEABVTLbtWcdmaCellInfo@@XZ @ 7 NONAME ; class TLbtWcdmaCellInfo const & CLbtGeoWcdmaCell::WcdmaCellInfo(void)
+	?SetAdditionalGeoAreaInfo@CLbtGeoCircle@@QAEXPAVCLbtGeoAreaBase@@@Z @ 8 NONAME ; void CLbtGeoCircle::SetAdditionalGeoAreaInfo(class CLbtGeoAreaBase *)
+	?NewL@CLbtSessionTrigger@@SAPAV1@ABVTDesC16@@W4TLbtTriggerState@CLbtTriggerEntry@@ABVRRequestorStack@@VTUid@@PAVCLbtTriggerConditionBase@@@Z @ 9 NONAME ; class CLbtSessionTrigger * CLbtSessionTrigger::NewL(class TDesC16 const &, enum CLbtTriggerEntry::TLbtTriggerState, class RRequestorStack const &, class TUid, class CLbtTriggerConditionBase *)
+	??1CLbtTriggeringSystemSettingsChangeEventNotifier@@UAE@XZ @ 10 NONAME ; CLbtTriggeringSystemSettingsChangeEventNotifier::~CLbtTriggeringSystemSettingsChangeEventNotifier(void)
+	?NewLC@CLbtGeoCell@@SAPAV1@XZ @ 11 NONAME ; class CLbtGeoCell * CLbtGeoCell::NewLC(void)
+	?CancelNotifyTriggerChangeEvent@RLbt@@QAEXXZ @ 12 NONAME ; void RLbt::CancelNotifyTriggerChangeEvent(void)
+	?Direction@CLbtTriggerConditionArea@@QBE?AW4TDirection@1@XZ @ 13 NONAME ; enum CLbtTriggerConditionArea::TDirection CLbtTriggerConditionArea::Direction(void) const
+	?CommandLine@CLbtStartupTrigger@@QBEABVTDesC16@@XZ @ 14 NONAME ; class TDesC16 const & CLbtStartupTrigger::CommandLine(void) const
+	?TriggeringMechanismState@TLbtTriggeringSystemSettings@@QBE?AW4TLbtTriggeringMechanismState@@XZ @ 15 NONAME ; enum TLbtTriggeringMechanismState TLbtTriggeringSystemSettings::TriggeringMechanismState(void) const
+	?CancelAll@RLbt@@QAEXXZ @ 16 NONAME ; void RLbt::CancelAll(void)
+	?SetTriggersStateL@RLbt@@QAEXW4TLbtTriggerState@CLbtTriggerEntry@@W4TLbtFireOnUpdate@@PAVCLbtTriggerFilterBase@@@Z @ 17 NONAME ; void RLbt::SetTriggersStateL(enum CLbtTriggerEntry::TLbtTriggerState, enum TLbtFireOnUpdate, class CLbtTriggerFilterBase *)
+	?CreateGetTriggerIteratorL@RLbt@@QAEXPAVCLbtListTriggerOptions@@@Z @ 18 NONAME ; void RLbt::CreateGetTriggerIteratorL(class CLbtListTriggerOptions *)
+	?SetSortingOption@CLbtListTriggerOptions@@QAEXW4TLbtListTriggerSorting@1@@Z @ 19 NONAME ; void CLbtListTriggerOptions::SetSortingOption(enum CLbtListTriggerOptions::TLbtListTriggerSorting)
+	?CreateTrigger@RLbt@@QAEXABVCLbtTriggerEntry@@AAKHAAVTRequestStatus@@@Z @ 20 NONAME ; void RLbt::CreateTrigger(class CLbtTriggerEntry const &, unsigned long &, int, class TRequestStatus &)
+	??1CLbtTriggerEntry@@UAE@XZ @ 21 NONAME ; CLbtTriggerEntry::~CLbtTriggerEntry(void)
+	??1CLBTOperation@@UAE@XZ @ 22 NONAME ; CLBTOperation::~CLBTOperation(void)
+	?Type@CLbtSessionTrigger@@UBE?AW4TType@CLbtTriggerEntry@@XZ @ 23 NONAME ; enum CLbtTriggerEntry::TType CLbtSessionTrigger::Type(void) const
+	?NewL@CLbtTriggeringSystemSettingsChangeEventNotifier@@SAPAV1@AAVRLbt@@AAVMLbtTriggeringSystemSettingsChangeEventObserver@@H@Z @ 24 NONAME ; class CLbtTriggeringSystemSettingsChangeEventNotifier * CLbtTriggeringSystemSettingsChangeEventNotifier::NewL(class RLbt &, class MLbtTriggeringSystemSettingsChangeEventObserver &, int)
+	?ExternalizeL@CLbtTriggerInfo@@QBEXAAVRWriteStream@@@Z @ 25 NONAME ; void CLbtTriggerInfo::ExternalizeL(class RWriteStream &) const
+	?SetId@CLbtTriggerEntry@@QAEXK@Z @ 26 NONAME ; void CLbtTriggerEntry::SetId(unsigned long)
+	?GetProcessId@CLbtStartupTrigger@@QBEXAAVTDes16@@AAVTSecureId@@@Z @ 27 NONAME ; void CLbtStartupTrigger::GetProcessId(class TDes16 &, class TSecureId &) const
+	?NewL@CLbtStartupTrigger@@SAPAV1@XZ @ 28 NONAME ; class CLbtStartupTrigger * CLbtStartupTrigger::NewL(void)
+	?NewL@CLbtGeoWcdmaCell@@SAPAV1@XZ @ 29 NONAME ; class CLbtGeoWcdmaCell * CLbtGeoWcdmaCell::NewL(void)
+	?SetRequestorL@CLbtTriggerEntry@@QAEXHHABVTDesC16@@@Z @ 30 NONAME ; void CLbtTriggerEntry::SetRequestorL(int, int, class TDesC16 const &)
+	??0RLbt@@QAE@XZ @ 31 NONAME ; RLbt::RLbt(void)
+	?TimeToRearm@CLbtTriggerEntry@@QBEHXZ @ 32 NONAME ; int CLbtTriggerEntry::TimeToRearm(void) const
+	?ListTriggerIdsL@RLbt@@QAEXAAV?$RArray@K@@PAVCLbtListTriggerOptions@@@Z @ 33 NONAME ; void RLbt::ListTriggerIdsL(class RArray<unsigned long> &, class CLbtListTriggerOptions *)
+	?TriggerEntry@CLbtTriggerInfo@@QAEPAVCLbtTriggerEntry@@XZ @ 34 NONAME ; class CLbtTriggerEntry * CLbtTriggerInfo::TriggerEntry(void)
+	?SetBorder@CLbtGeoRect@@QAEXNNNN@Z @ 35 NONAME ; void CLbtGeoRect::SetBorder(double, double, double, double)
+	?GetAdditionalGeoAreaInfo@CLbtGeoCircle@@QAEAAV?$RPointerArray@VCLbtGeoAreaBase@@@@XZ @ 36 NONAME ; class RPointerArray<class CLbtGeoAreaBase> & CLbtGeoCircle::GetAdditionalGeoAreaInfo(void)
+	?SetTriggersState@RLbt@@QAEXAAVTRequestStatus@@W4TLbtTriggerState@CLbtTriggerEntry@@W4TLbtFireOnUpdate@@PAVCLbtTriggerFilterBase@@@Z @ 37 NONAME ; void RLbt::SetTriggersState(class TRequestStatus &, enum CLbtTriggerEntry::TLbtTriggerState, enum TLbtFireOnUpdate, class CLbtTriggerFilterBase *)
+	?SetTriggerArea@CLbtTriggerConditionArea@@QAEXPAVCLbtGeoAreaBase@@@Z @ 38 NONAME ; void CLbtTriggerConditionArea::SetTriggerArea(class CLbtGeoAreaBase *)
+	?IsTriggerTypeInFilter@CLbtTriggerFilterByAttribute@@QBEHW4TType@CLbtTriggerEntry@@@Z @ 39 NONAME ; int CLbtTriggerFilterByAttribute::IsTriggerTypeInFilter(enum CLbtTriggerEntry::TType) const
+	?NewL@CLbtTriggerConditionArea@@SAPAV1@XZ @ 40 NONAME ; class CLbtTriggerConditionArea * CLbtTriggerConditionArea::NewL(void)
+	?GetCondition@CLbtTriggerEntry@@QAEPAVCLbtTriggerConditionBase@@XZ @ 41 NONAME ; class CLbtTriggerConditionBase * CLbtTriggerEntry::GetCondition(void)
+	?CreateGeoAreaForCurrentLocationL@CLBTOperation@@SAPAV1@AAVTRequestStatus@@W4TGeoAreaType@CLbtGeoAreaBase@@PAPAV4@@Z @ 42 NONAME ; class CLBTOperation * CLBTOperation::CreateGeoAreaForCurrentLocationL(class TRequestStatus &, enum CLbtGeoAreaBase::TGeoAreaType, class CLbtGeoAreaBase * *)
+	?CancelCreateTriggerIterator@RLbt@@QAEXXZ @ 43 NONAME ; void RLbt::CancelCreateTriggerIterator(void)
+	?CancelCreateTrigger@RLbt@@QAEXXZ @ 44 NONAME ; void RLbt::CancelCreateTrigger(void)
+	?ConstructL@CLbtSubSessnPtrHolder@@IAEXHH@Z @ 45 NONAME ; void CLbtSubSessnPtrHolder::ConstructL(int, int)
+	?SetState@CLbtTriggerEntry@@QAEXW4TLbtTriggerState@1@@Z @ 46 NONAME ; void CLbtTriggerEntry::SetState(enum CLbtTriggerEntry::TLbtTriggerState)
+	?NewL@CLbtTriggerInfo@@SAPAV1@PAVCLbtTriggerEntry@@PAUTLbtTriggerDynamicInfo@@@Z @ 47 NONAME ; class CLbtTriggerInfo * CLbtTriggerInfo::NewL(class CLbtTriggerEntry *, struct TLbtTriggerDynamicInfo *)
+	?SetRetrievedFields@CLbtListTriggerOptions@@QAEXKK@Z @ 48 NONAME ; void CLbtListTriggerOptions::SetRetrievedFields(unsigned long, unsigned long)
+	?NewL@CLbtGeoWcdmaCell@@SAPAV1@W4TMobilePhoneNetworkMode@RMobilePhone@@V?$TBuf@$03@@V?$TBuf@$07@@II@Z @ 49 NONAME ; class CLbtGeoWcdmaCell * CLbtGeoWcdmaCell::NewL(enum RMobilePhone::TMobilePhoneNetworkMode, class TBuf<4>, class TBuf<8>, unsigned int, unsigned int)
+	?CancelDeleteTriggers@RLbt@@QAEXXZ @ 50 NONAME ; void RLbt::CancelDeleteTriggers(void)
+	?Type@CLbtTriggerFilterComposite@@UBE?AW4TFilterType@CLbtTriggerFilterBase@@XZ @ 51 NONAME ; enum CLbtTriggerFilterBase::TFilterType CLbtTriggerFilterComposite::Type(void) const
+	?UpdateTriggerL@RLbt@@QAEXABVCLbtTriggerEntry@@KW4TLbtFireOnUpdate@@@Z @ 52 NONAME ; void RLbt::UpdateTriggerL(class CLbtTriggerEntry const &, unsigned long, enum TLbtFireOnUpdate)
+	??1CLbtTriggerFilterByArea@@UAE@XZ @ 53 NONAME ; CLbtTriggerFilterByArea::~CLbtTriggerFilterByArea(void)
+	?Open@RLbt@@QAEHAAVRLbtServer@@@Z @ 54 NONAME ; int RLbt::Open(class RLbtServer &)
+	?SetLocationAreaCode@CLbtGeoCell@@QAEXI@Z @ 55 NONAME ; void CLbtGeoCell::SetLocationAreaCode(unsigned int)
+	?IsTriggerManagerUiInFilter@CLbtTriggerFilterByAttribute@@QBEHVTUid@@@Z @ 56 NONAME ; int CLbtTriggerFilterByAttribute::IsTriggerManagerUiInFilter(class TUid) const
+	?NewL@CLbtTriggerConditionArea@@SAPAV1@PAVCLbtGeoAreaBase@@W4TDirection@1@@Z @ 57 NONAME ; class CLbtTriggerConditionArea * CLbtTriggerConditionArea::NewL(class CLbtGeoAreaBase *, enum CLbtTriggerConditionArea::TDirection)
+	?ExternalizeL@CLbtGeoAreaBase@@QBEXAAVRWriteStream@@@Z @ 58 NONAME ; void CLbtGeoAreaBase::ExternalizeL(class RWriteStream &) const
+	??1CLbtListTriggerOptions@@UAE@XZ @ 59 NONAME ; CLbtListTriggerOptions::~CLbtListTriggerOptions(void)
+	?Name@CLbtTriggerEntry@@QBEABVTDesC16@@XZ @ 60 NONAME ; class TDesC16 const & CLbtTriggerEntry::Name(void) const
+	?CellId@CLbtGeoCell@@QBEIXZ @ 61 NONAME ; unsigned int CLbtGeoCell::CellId(void) const
+	?SetDynInfo@CLbtTriggerInfo@@QAEXPAUTLbtTriggerDynamicInfo@@@Z @ 62 NONAME ; void CLbtTriggerInfo::SetDynInfo(struct TLbtTriggerDynamicInfo *)
+	?SetDirection@CLbtTriggerConditionArea@@QAEXW4TDirection@1@@Z @ 63 NONAME ; void CLbtTriggerConditionArea::SetDirection(enum CLbtTriggerConditionArea::TDirection)
+	?NewL@CLbtGeoGsmCell@@SAPAV1@W4TMobilePhoneNetworkMode@RMobilePhone@@V?$TBuf@$03@@V?$TBuf@$07@@II@Z @ 64 NONAME ; class CLbtGeoGsmCell * CLbtGeoGsmCell::NewL(enum RMobilePhone::TMobilePhoneNetworkMode, class TBuf<4>, class TBuf<8>, unsigned int, unsigned int)
+	?NewLC@CLbtTriggerConditionArea@@SAPAV1@XZ @ 65 NONAME ; class CLbtTriggerConditionArea * CLbtTriggerConditionArea::NewLC(void)
+	?NewL@CLbtTriggerFilterByAttribute@@SAPAV1@XZ @ 66 NONAME ; class CLbtTriggerFilterByAttribute * CLbtTriggerFilterByAttribute::NewL(void)
+	?Ptr@CLbtSubSessnPtrHolder@@QAEAAVTPtr8@@H@Z @ 67 NONAME ; class TPtr8 & CLbtSubSessnPtrHolder::Ptr(int)
+	?SetNetworkCountryCode@CLbtGeoCell@@QAEXV?$TBuf@$03@@@Z @ 68 NONAME ; void CLbtGeoCell::SetNetworkCountryCode(class TBuf<4>)
+	?Close@RLbtServer@@QAEXXZ @ 69 NONAME ; void RLbtServer::Close(void)
+	?NetworkType@CLbtGeoCell@@QBE?AW4TMobilePhoneNetworkMode@RMobilePhone@@XZ @ 70 NONAME ; enum RMobilePhone::TMobilePhoneNetworkMode CLbtGeoCell::NetworkType(void) const
+	?NetworkIdentityCode@CLbtGeoCell@@QBE?AV?$TBuf@$07@@XZ @ 71 NONAME ; class TBuf<8> CLbtGeoCell::NetworkIdentityCode(void) const
+	?NewL@CLbtGeoCircle@@SAPAV1@ABVTCoordinate@@N@Z @ 72 NONAME ; class CLbtGeoCircle * CLbtGeoCircle::NewL(class TCoordinate const &, double)
+	?InternalizeL@CLbtTriggerConditionBase@@QAEXAAVRReadStream@@@Z @ 73 NONAME ; void CLbtTriggerConditionBase::InternalizeL(class RReadStream &)
+	??1CLbtTriggerInfo@@UAE@XZ @ 74 NONAME ; CLbtTriggerInfo::~CLbtTriggerInfo(void)
+	?CGISpecifiedDuringCreation@CLbtGeoGsmCell@@UBEHXZ @ 75 NONAME ; int CLbtGeoGsmCell::CGISpecifiedDuringCreation(void) const
+	?UpdateTrigger@RLbt@@QAEXABVCLbtTriggerEntry@@KW4TLbtFireOnUpdate@@AAVTRequestStatus@@@Z @ 76 NONAME ; void RLbt::UpdateTrigger(class CLbtTriggerEntry const &, unsigned long, enum TLbtFireOnUpdate, class TRequestStatus &)
+	?SetTriggeringMechanismState@TLbtTriggeringSystemSettings@@QAEXW4TLbtTriggeringMechanismState@@@Z @ 77 NONAME ; void TLbtTriggeringSystemSettings::SetTriggeringMechanismState(enum TLbtTriggeringMechanismState)
+	?AddTriggerValidityL@CLbtTriggerFilterByAttribute@@QAEXW4TLbtTriggerValidity@TLbtTriggerDynamicInfo@@@Z @ 78 NONAME ; void CLbtTriggerFilterByAttribute::AddTriggerValidityL(enum TLbtTriggerDynamicInfo::TLbtTriggerValidity)
+	?CancelNotifyTriggerFired@RLbt@@QAEXXZ @ 79 NONAME ; void RLbt::CancelNotifyTriggerFired(void)
+	?Version@RLbtServer@@QBE?AVTVersion@@XZ @ 80 NONAME ; class TVersion RLbtServer::Version(void) const
+	??1CLbtGeoRect@@UAE@XZ @ 81 NONAME ; CLbtGeoRect::~CLbtGeoRect(void)
+	?NewL@CLbtSubSessnPtrHolder@@SAPAV1@HH@Z @ 82 NONAME ; class CLbtSubSessnPtrHolder * CLbtSubSessnPtrHolder::NewL(int, int)
+	?NewL@CLbtGeoRect@@SAPAV1@NNNN@Z @ 83 NONAME ; class CLbtGeoRect * CLbtGeoRect::NewL(double, double, double, double)
+	?NewL@CLbtTriggerInfo@@SAPAV1@XZ @ 84 NONAME ; class CLbtTriggerInfo * CLbtTriggerInfo::NewL(void)
+	?CancelNotifyTriggeringSystemSettingChange@RLbt@@QAEXXZ @ 85 NONAME ; void RLbt::CancelNotifyTriggeringSystemSettingChange(void)
+	?IsTriggerIdInFilter@CLbtTriggerFilterByAttribute@@QBEHK@Z @ 86 NONAME ; int CLbtTriggerFilterByAttribute::IsTriggerIdInFilter(unsigned long) const
+	?ResetFilter@CLbtTriggerFilterByAttribute@@QAEXXZ @ 87 NONAME ; void CLbtTriggerFilterByAttribute::ResetFilter(void)
+	?CancelGetTriggers@RLbt@@QAEXXZ @ 88 NONAME ; void RLbt::CancelGetTriggers(void)
+	?SetTriggerStateL@RLbt@@QAEXKW4TLbtTriggerState@CLbtTriggerEntry@@W4TLbtFireOnUpdate@@@Z @ 89 NONAME ; void RLbt::SetTriggerStateL(unsigned long, enum CLbtTriggerEntry::TLbtTriggerState, enum TLbtFireOnUpdate)
+	?Start@CLbtTriggerFiringEventNotifier@@QAEXXZ @ 90 NONAME ; void CLbtTriggerFiringEventNotifier::Start(void)
+	?DoExternalizeL@CLbtTriggerFilterByAttribute@@MBEXAAVRWriteStream@@@Z @ 91 NONAME ; void CLbtTriggerFilterByAttribute::DoExternalizeL(class RWriteStream &) const
+	??1CLbtTriggerFilterComposite@@UAE@XZ @ 92 NONAME ; CLbtTriggerFilterComposite::~CLbtTriggerFilterComposite(void)
+	?NewLC@CLbtTriggerFilterByArea@@SAPAV1@XZ @ 93 NONAME ; class CLbtTriggerFilterByArea * CLbtTriggerFilterByArea::NewLC(void)
+	?DoInternalizeL@CLbtTriggerFilterByAttribute@@MAEXAAVRReadStream@@@Z @ 94 NONAME ; void CLbtTriggerFilterByAttribute::DoInternalizeL(class RReadStream &)
+	?NotifyTriggerFired@RLbt@@QAEXAAUTLbtTriggerFireInfo@@AAVTRequestStatus@@@Z @ 95 NONAME ; void RLbt::NotifyTriggerFired(struct TLbtTriggerFireInfo &, class TRequestStatus &)
+	?NewLC@CLbtGeoCircle@@SAPAV1@XZ @ 96 NONAME ; class CLbtGeoCircle * CLbtGeoCircle::NewLC(void)
+	?NewL@CLbtTriggerChangeEventNotifier@@SAPAV1@AAVRLbt@@AAVMLbtTriggerChangeEventObserver@@H@Z @ 97 NONAME ; class CLbtTriggerChangeEventNotifier * CLbtTriggerChangeEventNotifier::NewL(class RLbt &, class MLbtTriggerChangeEventObserver &, int)
+	?IsTriggerStateInFilter@CLbtTriggerFilterByAttribute@@QBEHW4TLbtTriggerState@CLbtTriggerEntry@@@Z @ 98 NONAME ; int CLbtTriggerFilterByAttribute::IsTriggerStateInFilter(enum CLbtTriggerEntry::TLbtTriggerState) const
+	?SetNameL@CLbtTriggerEntry@@QAEXABVTDesC16@@@Z @ 99 NONAME ; void CLbtTriggerEntry::SetNameL(class TDesC16 const &)
+	?GetTypeArrayL@CLbtTriggerFilterByAttribute@@QBEXAAV?$RArray@W4TType@CLbtTriggerEntry@@@@@Z @ 100 NONAME ; void CLbtTriggerFilterByAttribute::GetTypeArrayL(class RArray<enum CLbtTriggerEntry::TType> &) const
+	?DeleteTriggers@RLbt@@QAEXABV?$RArray@K@@AAVTRequestStatus@@@Z @ 101 NONAME ; void RLbt::DeleteTriggers(class RArray<unsigned long> const &, class TRequestStatus &)
+	?GetFilter@CLbtTriggerFilterComposite@@QAEPAVCLbtTriggerFilterBase@@H@Z @ 102 NONAME ; class CLbtTriggerFilterBase * CLbtTriggerFilterComposite::GetFilter(int)
+	??1CLbtSessionTrigger@@UAE@XZ @ 103 NONAME ; CLbtSessionTrigger::~CLbtSessionTrigger(void)
+	?CancelUpdateTrigger@RLbt@@QAEXXZ @ 104 NONAME ; void RLbt::CancelUpdateTrigger(void)
+	?NewLC@CLbtListTriggerOptions@@SAPAV1@XZ @ 105 NONAME ; class CLbtListTriggerOptions * CLbtListTriggerOptions::NewLC(void)
+	??0CLbtTriggerFilterByAttribute@@AAE@XZ @ 106 NONAME ; CLbtTriggerFilterByAttribute::CLbtTriggerFilterByAttribute(void)
+	?LocationAreaCode@CLbtGeoCell@@QBEIXZ @ 107 NONAME ; unsigned int CLbtGeoCell::LocationAreaCode(void) const
+	?GetRetrievedFields@CLbtListTriggerOptions@@QBEXAAK0@Z @ 108 NONAME ; void CLbtListTriggerOptions::GetRetrievedFields(unsigned long &, unsigned long &) const
+	?SetCondition@CLbtTriggerEntry@@QAEXPAVCLbtTriggerConditionBase@@@Z @ 109 NONAME ; void CLbtTriggerEntry::SetCondition(class CLbtTriggerConditionBase *)
+	?InternalizeL@CLbtTriggerInfo@@QAEXAAVRReadStream@@@Z @ 110 NONAME ; void CLbtTriggerInfo::InternalizeL(class RReadStream &)
+	?State@CLbtTriggerEntry@@QBE?AW4TLbtTriggerState@1@XZ @ 111 NONAME ; enum CLbtTriggerEntry::TLbtTriggerState CLbtTriggerEntry::State(void) const
+	?NewLC@CLbtGeoGsmCell@@SAPAV1@W4TMobilePhoneNetworkMode@RMobilePhone@@V?$TBuf@$03@@V?$TBuf@$07@@II@Z @ 112 NONAME ; class CLbtGeoGsmCell * CLbtGeoGsmCell::NewLC(enum RMobilePhone::TMobilePhoneNetworkMode, class TBuf<4>, class TBuf<8>, unsigned int, unsigned int)
+	?NewL@CLbtSessionTrigger@@SAPAV1@XZ @ 113 NONAME ; class CLbtSessionTrigger * CLbtSessionTrigger::NewL(void)
+	?GetTriggerIdArrayL@CLbtTriggerFilterByAttribute@@QBEXAAV?$RArray@K@@@Z @ 114 NONAME ; void CLbtTriggerFilterByAttribute::GetTriggerIdArrayL(class RArray<unsigned long> &) const
+	?GetTriggers@RLbt@@QAEXAAVTRequestStatus@@AAV?$RPointerArray@VCLbtTriggerInfo@@@@PAVCLbtListTriggerOptions@@@Z @ 115 NONAME ; void RLbt::GetTriggers(class TRequestStatus &, class RPointerArray<class CLbtTriggerInfo> &, class CLbtListTriggerOptions *)
+	?NewLC@CLbtGeoCell@@SAPAV1@W4TMobilePhoneNetworkMode@RMobilePhone@@V?$TBuf@$03@@V?$TBuf@$07@@II@Z @ 116 NONAME ; class CLbtGeoCell * CLbtGeoCell::NewLC(enum RMobilePhone::TMobilePhoneNetworkMode, class TBuf<4>, class TBuf<8>, unsigned int, unsigned int)
+	?Type@CLbtTriggerFilterByArea@@UBE?AW4TFilterType@CLbtTriggerFilterBase@@XZ @ 117 NONAME ; enum CLbtTriggerFilterBase::TFilterType CLbtTriggerFilterByArea::Type(void) const
+	?SetBsic@CLbtGeoGsmCell@@QAEXAAV?$RArray@H@@@Z @ 118 NONAME ; void CLbtGeoGsmCell::SetBsic(class RArray<int> &)
+	?NewL@CLbtTriggerFilterByArea@@SAPAV1@PAVCLbtGeoAreaBase@@@Z @ 119 NONAME ; class CLbtTriggerFilterByArea * CLbtTriggerFilterByArea::NewL(class CLbtGeoAreaBase *)
+	?IsTriggerValidityStatusInFilter@CLbtTriggerFilterByAttribute@@QBEHW4TLbtTriggerValidity@TLbtTriggerDynamicInfo@@@Z @ 120 NONAME ; int CLbtTriggerFilterByAttribute::IsTriggerValidityStatusInFilter(enum TLbtTriggerDynamicInfo::TLbtTriggerValidity) const
+	?Type@TLbtTriggeringSystemSettings@@UAE?AW4TType@1@XZ @ 121 NONAME ; enum TLbtTriggeringSystemSettings::TType TLbtTriggeringSystemSettings::Type(void)
+	?SetCommandLineL@CLbtStartupTrigger@@QAEXABVTDesC16@@@Z @ 122 NONAME ; void CLbtStartupTrigger::SetCommandLineL(class TDesC16 const &)
+	?SetArea@CLbtTriggerFilterByArea@@QAEXPAVCLbtGeoAreaBase@@@Z @ 123 NONAME ; void CLbtTriggerFilterByArea::SetArea(class CLbtGeoAreaBase *)
+	?SetTimeToRearm@CLbtTriggerEntry@@QAEXH@Z @ 124 NONAME ; void CLbtTriggerEntry::SetTimeToRearm(int)
+	?GetStateArrayL@CLbtTriggerFilterByAttribute@@QBEXAAV?$RArray@W4TLbtTriggerState@CLbtTriggerEntry@@@@@Z @ 125 NONAME ; void CLbtTriggerFilterByAttribute::GetStateArrayL(class RArray<enum CLbtTriggerEntry::TLbtTriggerState> &) const
+	?NewLC@CLbtStartupTrigger@@SAPAV1@XZ @ 126 NONAME ; class CLbtStartupTrigger * CLbtStartupTrigger::NewLC(void)
+	?NewLC@CLbtGeoRect@@SAPAV1@NNNN@Z @ 127 NONAME ; class CLbtGeoRect * CLbtGeoRect::NewLC(double, double, double, double)
+	?NewLC@CLbtTriggerInfo@@SAPAV1@XZ @ 128 NONAME ; class CLbtTriggerInfo * CLbtTriggerInfo::NewLC(void)
+	?ExternalizeL@CLbtListTriggerOptions@@QBEXAAVRWriteStream@@@Z @ 129 NONAME ; void CLbtListTriggerOptions::ExternalizeL(class RWriteStream &) const
+	?NewL@CLbtGeoRect@@SAPAV1@XZ @ 130 NONAME ; class CLbtGeoRect * CLbtGeoRect::NewL(void)
+	?InternalizeL@CLbtListTriggerOptions@@QAEXAAVRReadStream@@@Z @ 131 NONAME ; void CLbtListTriggerOptions::InternalizeL(class RReadStream &)
+	?NewL@CLbtGeoCell@@SAPAV1@W4TMobilePhoneNetworkMode@RMobilePhone@@V?$TBuf@$03@@V?$TBuf@$07@@II@Z @ 132 NONAME ; class CLbtGeoCell * CLbtGeoCell::NewL(enum RMobilePhone::TMobilePhoneNetworkMode, class TBuf<4>, class TBuf<8>, unsigned int, unsigned int)
+	?Type@CLbtStartupTrigger@@UBE?AW4TType@CLbtTriggerEntry@@XZ @ 133 NONAME ; enum CLbtTriggerEntry::TType CLbtStartupTrigger::Type(void) const
+	?SetNetworkIdentityCode@CLbtGeoCell@@QAEXV?$TBuf@$07@@@Z @ 134 NONAME ; void CLbtGeoCell::SetNetworkIdentityCode(class TBuf<8>)
+	?ExternalizeL@CLbtTriggerConditionBase@@QBEXAAVRWriteStream@@@Z @ 135 NONAME ; void CLbtTriggerConditionBase::ExternalizeL(class RWriteStream &) const
+	?Start@CLbtTriggeringSystemSettingsChangeEventNotifier@@QAEXXZ @ 136 NONAME ; void CLbtTriggeringSystemSettingsChangeEventNotifier::Start(void)
+	??1CLbtGeoCell@@UAE@XZ @ 137 NONAME ; CLbtGeoCell::~CLbtGeoCell(void)
+	?Id@CLbtTriggerEntry@@QBEABKXZ @ 138 NONAME ; unsigned long const & CLbtTriggerEntry::Id(void) const
+	??1CLbtGeoCircle@@UAE@XZ @ 139 NONAME ; CLbtGeoCircle::~CLbtGeoCircle(void)
+	?Close@RLbt@@QAEXXZ @ 140 NONAME ; void RLbt::Close(void)
+	?AddFilterL@CLbtTriggerFilterComposite@@QAEXPAVCLbtTriggerFilterBase@@@Z @ 141 NONAME ; void CLbtTriggerFilterComposite::AddFilterL(class CLbtTriggerFilterBase *)
+	?DynInfo@CLbtTriggerInfo@@QAEPAUTLbtTriggerDynamicInfo@@XZ @ 142 NONAME ; struct TLbtTriggerDynamicInfo * CLbtTriggerInfo::DynInfo(void)
+	?Start@CLbtTriggerChangeEventNotifier@@QAEXXZ @ 143 NONAME ; void CLbtTriggerChangeEventNotifier::Start(void)
+	??1CLbtSubSessnPtrHolder@@UAE@XZ @ 144 NONAME ; CLbtSubSessnPtrHolder::~CLbtSubSessnPtrHolder(void)
+	??1CLbtGeoAreaBase@@UAE@XZ @ 145 NONAME ; CLbtGeoAreaBase::~CLbtGeoAreaBase(void)
+	?DeleteTriggers@RLbt@@QAEXAAVTRequestStatus@@PAVCLbtTriggerFilterBase@@@Z @ 146 NONAME ; void RLbt::DeleteTriggers(class TRequestStatus &, class CLbtTriggerFilterBase *)
+	?RemoveFilter@CLbtTriggerFilterComposite@@QAEXH@Z @ 147 NONAME ; void CLbtTriggerFilterComposite::RemoveFilter(int)
+	?NetworkCountryCode@CLbtGeoCell@@QBE?AV?$TBuf@$03@@XZ @ 148 NONAME ; class TBuf<4> CLbtGeoCell::NetworkCountryCode(void) const
+	?Reset@CLbtTriggerFilterComposite@@QAEXXZ @ 149 NONAME ; void CLbtTriggerFilterComposite::Reset(void)
+	?DoInternalizeL@CLbtGeoRect@@MAEXAAVRReadStream@@@Z @ 150 NONAME ; void CLbtGeoRect::DoInternalizeL(class RReadStream &)
+	?NewL@CLbtGeoCell@@SAPAV1@XZ @ 151 NONAME ; class CLbtGeoCell * CLbtGeoCell::NewL(void)
+	?SetManagerUi@CLbtTriggerEntry@@QAEXVTUid@@@Z @ 152 NONAME ; void CLbtTriggerEntry::SetManagerUi(class TUid)
+	?NewLC@CLbtGeoWcdmaCell@@SAPAV1@XZ @ 153 NONAME ; class CLbtGeoWcdmaCell * CLbtGeoWcdmaCell::NewLC(void)
+	?NewL@CLbtTriggerFilterByArea@@SAPAV1@XZ @ 154 NONAME ; class CLbtTriggerFilterByArea * CLbtTriggerFilterByArea::NewL(void)
+	?DeleteTriggersL@RLbt@@QAEXPAVCLbtTriggerFilterBase@@@Z @ 155 NONAME ; void RLbt::DeleteTriggersL(class CLbtTriggerFilterBase *)
+	?CancelListTriggerIds@RLbt@@QAEXXZ @ 156 NONAME ; void RLbt::CancelListTriggerIds(void)
+	?DoExternalizeL@CLbtTriggerFilterByArea@@MBEXAAVRWriteStream@@@Z @ 157 NONAME ; void CLbtTriggerFilterByArea::DoExternalizeL(class RWriteStream &) const
+	?GetValidityArrayL@CLbtTriggerFilterByAttribute@@QBEXAAV?$RArray@W4TLbtTriggerValidity@TLbtTriggerDynamicInfo@@@@@Z @ 158 NONAME ; void CLbtTriggerFilterByAttribute::GetValidityArrayL(class RArray<enum TLbtTriggerDynamicInfo::TLbtTriggerValidity> &) const
+	?NewLC@CLbtGeoCircle@@SAPAV1@ABVTCoordinate@@N@Z @ 159 NONAME ; class CLbtGeoCircle * CLbtGeoCircle::NewLC(class TCoordinate const &, double)
+	?ExternalizeL@CLbtTriggerFilterBase@@QBEXAAVRWriteStream@@@Z @ 160 NONAME ; void CLbtTriggerFilterBase::ExternalizeL(class RWriteStream &) const
+	?SetWcdmaCellInfo@CLbtGeoWcdmaCell@@QAEXABVTLbtWcdmaCellInfo@@@Z @ 161 NONAME ; void CLbtGeoWcdmaCell::SetWcdmaCellInfo(class TLbtWcdmaCellInfo const &)
+	?NewL@CLbtSessionTrigger@@SAPAV1@ABVTDesC16@@W4TLbtTriggerState@CLbtTriggerEntry@@HH0VTUid@@PAVCLbtTriggerConditionBase@@@Z @ 162 NONAME ; class CLbtSessionTrigger * CLbtSessionTrigger::NewL(class TDesC16 const &, enum CLbtTriggerEntry::TLbtTriggerState, int, int, class TDesC16 const &, class TUid, class CLbtTriggerConditionBase *)
+	?ListTriggerIds@RLbt@@QAEXAAVTRequestStatus@@AAV?$RArray@K@@PAVCLbtListTriggerOptions@@@Z @ 163 NONAME ; void RLbt::ListTriggerIds(class TRequestStatus &, class RArray<unsigned long> &, class CLbtListTriggerOptions *)
+	?SetFilter@CLbtListTriggerOptions@@QAEXPAVCLbtTriggerFilterBase@@@Z @ 164 NONAME ; void CLbtListTriggerOptions::SetFilter(class CLbtTriggerFilterBase *)
+	??1CLbtTriggerFiringEventNotifier@@UAE@XZ @ 165 NONAME ; CLbtTriggerFiringEventNotifier::~CLbtTriggerFiringEventNotifier(void)
+	?GetTriggersL@RLbt@@QAEXAAV?$RPointerArray@VCLbtTriggerInfo@@@@PAVCLbtListTriggerOptions@@@Z @ 166 NONAME ; void RLbt::GetTriggersL(class RPointerArray<class CLbtTriggerInfo> &, class CLbtListTriggerOptions *)
+	?NewL@CLbtListTriggerOptions@@SAPAV1@XZ @ 167 NONAME ; class CLbtListTriggerOptions * CLbtListTriggerOptions::NewL(void)
+	?NewL@CLbtStartupTrigger@@SAPAV1@ABVTDesC16@@W4TLbtTriggerState@CLbtTriggerEntry@@HH0VTUid@@PAVCLbtTriggerConditionBase@@0ABVTSecureId@@0@Z @ 168 NONAME ; class CLbtStartupTrigger * CLbtStartupTrigger::NewL(class TDesC16 const &, enum CLbtTriggerEntry::TLbtTriggerState, int, int, class TDesC16 const &, class TUid, class CLbtTriggerConditionBase *, class TDesC16 const &, class TSecureId const &, class TDesC16 const &)
+	??1TLbtWcdmaCellInfo@@QAE@XZ @ 169 NONAME ; TLbtWcdmaCellInfo::~TLbtWcdmaCellInfo(void)
+	?DeleteTriggersL@RLbt@@QAEXABV?$RArray@K@@@Z @ 170 NONAME ; void RLbt::DeleteTriggersL(class RArray<unsigned long> const &)
+	?DoExternalizeL@CLbtGeoCircle@@MBEXAAVRWriteStream@@@Z @ 171 NONAME ; void CLbtGeoCircle::DoExternalizeL(class RWriteStream &) const
+	?SortingOption@CLbtListTriggerOptions@@QBE?AW4TLbtListTriggerSorting@1@XZ @ 172 NONAME ; enum CLbtListTriggerOptions::TLbtListTriggerSorting CLbtListTriggerOptions::SortingOption(void) const
+	?GetBorder@CLbtGeoRect@@QBEXAAN000@Z @ 173 NONAME ; void CLbtGeoRect::GetBorder(double &, double &, double &, double &) const
+	?Filter@CLbtListTriggerOptions@@QAEPAVCLbtTriggerFilterBase@@XZ @ 174 NONAME ; class CLbtTriggerFilterBase * CLbtListTriggerOptions::Filter(void)
+	?InternalizeL@CLbtGeoAreaBase@@QAEXAAVRReadStream@@@Z @ 175 NONAME ; void CLbtGeoAreaBase::InternalizeL(class RReadStream &)
+	?DoExternalizeL@CLbtGeoRect@@MBEXAAVRWriteStream@@@Z @ 176 NONAME ; void CLbtGeoRect::DoExternalizeL(class RWriteStream &) const
+	?NewLC@CLbtTriggerFilterByAttribute@@SAPAV1@XZ @ 177 NONAME ; class CLbtTriggerFilterByAttribute * CLbtTriggerFilterByAttribute::NewLC(void)
+	??1CLbtStartupTrigger@@UAE@XZ @ 178 NONAME ; CLbtStartupTrigger::~CLbtStartupTrigger(void)
+	?ExternalizeL@CLbtTriggerEntry@@QBEXAAVRWriteStream@@@Z @ 179 NONAME ; void CLbtTriggerEntry::ExternalizeL(class RWriteStream &) const
+	?NewL@CLbtGeoGsmCell@@SAPAV1@XZ @ 180 NONAME ; class CLbtGeoGsmCell * CLbtGeoGsmCell::NewL(void)
+	?Connect@RLbtServer@@QAEHXZ @ 181 NONAME ; int RLbtServer::Connect(void)
+	?DeleteTriggerL@RLbt@@QAEXK@Z @ 182 NONAME ; void RLbt::DeleteTriggerL(unsigned long)
+	??0RLbtServer@@QAE@XZ @ 183 NONAME ; RLbtServer::RLbtServer(void)
+	?GetNextTriggerLC@RLbt@@QAEPAVCLbtTriggerInfo@@XZ @ 184 NONAME ; class CLbtTriggerInfo * RLbt::GetNextTriggerLC(void)
+	?NotifyTriggeringSystemSettingChange@RLbt@@QAEXAAVTLbtTriggeringSystemSettings@@AAVTRequestStatus@@@Z @ 185 NONAME ; void RLbt::NotifyTriggeringSystemSettingChange(class TLbtTriggeringSystemSettings &, class TRequestStatus &)
+	?SetRequestorsL@CLbtTriggerEntry@@QAEXABVRRequestorStack@@@Z @ 186 NONAME ; void CLbtTriggerEntry::SetRequestorsL(class RRequestorStack const &)
+	?Open@RLbt@@QAEHXZ @ 187 NONAME ; int RLbt::Open(void)
+	?DoInternalizeL@CLbtTriggerFilterByArea@@MAEXAAVRReadStream@@@Z @ 188 NONAME ; void CLbtTriggerFilterByArea::DoInternalizeL(class RReadStream &)
+	?GetRequestorsL@CLbtTriggerEntry@@QBEXAAVRRequestorStack@@@Z @ 189 NONAME ; void CLbtTriggerEntry::GetRequestorsL(class RRequestorStack &) const
+	?ManagerUi@CLbtTriggerEntry@@QBE?AVTUid@@XZ @ 190 NONAME ; class TUid CLbtTriggerEntry::ManagerUi(void) const
+	?MinimumTriggerAreaSize@TLbtTriggeringSystemSettings@@QBENXZ @ 191 NONAME ; double TLbtTriggeringSystemSettings::MinimumTriggerAreaSize(void) const
+	?GetCondition@CLbtTriggerEntry@@QBEPBVCLbtTriggerConditionBase@@XZ @ 192 NONAME ; class CLbtTriggerConditionBase const * CLbtTriggerEntry::GetCondition(void) const
+	?TriggerArea@CLbtTriggerConditionArea@@QBEPAVCLbtGeoAreaBase@@XZ @ 193 NONAME ; class CLbtGeoAreaBase * CLbtTriggerConditionArea::TriggerArea(void) const
+	?NewL@CLbtTriggerFiringEventNotifier@@SAPAV1@AAVRLbt@@AAVMLbtTriggerFiringEventObserver@@H@Z @ 194 NONAME ; class CLbtTriggerFiringEventNotifier * CLbtTriggerFiringEventNotifier::NewL(class RLbt &, class MLbtTriggerFiringEventObserver &, int)
+	?Bsic@CLbtGeoGsmCell@@QAEAAV?$RArray@H@@XZ @ 195 NONAME ; class RArray<int> & CLbtGeoGsmCell::Bsic(void)
+	?GetTriggeringSystemSettingsL@RLbt@@QAEXAAVTLbtTriggeringSystemSettings@@@Z @ 196 NONAME ; void RLbt::GetTriggeringSystemSettingsL(class TLbtTriggeringSystemSettings &)
+	?Radius@CLbtGeoCircle@@QBENXZ @ 197 NONAME ; double CLbtGeoCircle::Radius(void) const
+	?DoInternalizeL@CLbtGeoCircle@@MAEXAAVRReadStream@@@Z @ 198 NONAME ; void CLbtGeoCircle::DoInternalizeL(class RReadStream &)
+	??1CLbtGeoGsmCell@@UAE@XZ @ 199 NONAME ; CLbtGeoGsmCell::~CLbtGeoGsmCell(void)
+	?SetCenter@CLbtGeoCircle@@QAEXABVTCoordinate@@@Z @ 200 NONAME ; void CLbtGeoCircle::SetCenter(class TCoordinate const &)
+	?NewLC@CLbtTriggerFilterComposite@@SAPAV1@W4TCompositeType@1@@Z @ 201 NONAME ; class CLbtTriggerFilterComposite * CLbtTriggerFilterComposite::NewLC(enum CLbtTriggerFilterComposite::TCompositeType)
+	?NewLC@CLbtGeoWcdmaCell@@SAPAV1@W4TMobilePhoneNetworkMode@RMobilePhone@@V?$TBuf@$03@@V?$TBuf@$07@@II@Z @ 202 NONAME ; class CLbtGeoWcdmaCell * CLbtGeoWcdmaCell::NewLC(enum RMobilePhone::TMobilePhoneNetworkMode, class TBuf<4>, class TBuf<8>, unsigned int, unsigned int)
+	?NewL@CLbtStartupTrigger@@SAPAV1@ABVTDesC16@@W4TLbtTriggerState@CLbtTriggerEntry@@ABVRRequestorStack@@VTUid@@PAVCLbtTriggerConditionBase@@0ABVTSecureId@@0@Z @ 203 NONAME ; class CLbtStartupTrigger * CLbtStartupTrigger::NewL(class TDesC16 const &, enum CLbtTriggerEntry::TLbtTriggerState, class RRequestorStack const &, class TUid, class CLbtTriggerConditionBase *, class TDesC16 const &, class TSecureId const &, class TDesC16 const &)
+	??1CLbtTriggerFilterByAttribute@@UAE@XZ @ 204 NONAME ; CLbtTriggerFilterByAttribute::~CLbtTriggerFilterByAttribute(void)
+	?NotifyTriggerChangeEvent@RLbt@@QAEXAAUTLbtTriggerChangeEvent@@AAVTRequestStatus@@@Z @ 205 NONAME ; void RLbt::NotifyTriggerChangeEvent(struct TLbtTriggerChangeEvent &, class TRequestStatus &)
+	?AddTriggerStateL@CLbtTriggerFilterByAttribute@@QAEXW4TLbtTriggerState@CLbtTriggerEntry@@@Z @ 206 NONAME ; void CLbtTriggerFilterByAttribute::AddTriggerStateL(enum CLbtTriggerEntry::TLbtTriggerState)
+	?SetMinimumTriggerAreaSize@TLbtTriggeringSystemSettings@@QAEXN@Z @ 207 NONAME ; void TLbtTriggeringSystemSettings::SetMinimumTriggerAreaSize(double)
+	?InternalizeL@CLbtTriggerEntry@@QAEXAAVRReadStream@@@Z @ 208 NONAME ; void CLbtTriggerEntry::InternalizeL(class RReadStream &)
+	?InternalizeL@CLbtTriggerFilterBase@@QAEXAAVRReadStream@@@Z @ 209 NONAME ; void CLbtTriggerFilterBase::InternalizeL(class RReadStream &)
+	?AddTriggerTypeL@CLbtTriggerFilterByAttribute@@QAEXW4TType@CLbtTriggerEntry@@@Z @ 210 NONAME ; void CLbtTriggerFilterByAttribute::AddTriggerTypeL(enum CLbtTriggerEntry::TType)
+	?CancelSetTriggersState@RLbt@@QAEXXZ @ 211 NONAME ; void RLbt::CancelSetTriggersState(void)
+	?SetProcessId@CLbtStartupTrigger@@QAEXABVTDesC16@@ABVTSecureId@@@Z @ 212 NONAME ; void CLbtStartupTrigger::SetProcessId(class TDesC16 const &, class TSecureId const &)
+	??1CLbtTriggerConditionArea@@UAE@XZ @ 213 NONAME ; CLbtTriggerConditionArea::~CLbtTriggerConditionArea(void)
+	?SetRadius@CLbtGeoCircle@@QAEXN@Z @ 214 NONAME ; void CLbtGeoCircle::SetRadius(double)
+	??0TLbtTriggeringSystemSettings@@QAE@XZ @ 215 NONAME ; TLbtTriggeringSystemSettings::TLbtTriggeringSystemSettings(void)
+	?CreateGetTriggerIterator@RLbt@@QAEXAAVTRequestStatus@@PAVCLbtListTriggerOptions@@@Z @ 216 NONAME ; void RLbt::CreateGetTriggerIterator(class TRequestStatus &, class CLbtListTriggerOptions *)
+	?AddTriggerIdL@CLbtTriggerFilterByAttribute@@QAEXK@Z @ 217 NONAME ; void CLbtTriggerFilterByAttribute::AddTriggerIdL(unsigned long)
+	?GetManagerUiArrayL@CLbtTriggerFilterByAttribute@@QBEXAAV?$RArray@VTUid@@@@@Z @ 218 NONAME ; void CLbtTriggerFilterByAttribute::GetManagerUiArrayL(class RArray<class TUid> &) const
+	??1RLbt@@QAE@XZ @ 219 NONAME ; RLbt::~RLbt(void)
+	?NewLC@CLbtGeoGsmCell@@SAPAV1@XZ @ 220 NONAME ; class CLbtGeoGsmCell * CLbtGeoGsmCell::NewLC(void)
+	??1CLbtTriggerChangeEventNotifier@@UAE@XZ @ 221 NONAME ; CLbtTriggerChangeEventNotifier::~CLbtTriggerChangeEventNotifier(void)
+	?AddTriggerManagerUiL@CLbtTriggerFilterByAttribute@@QAEXVTUid@@@Z @ 222 NONAME ; void CLbtTriggerFilterByAttribute::AddTriggerManagerUiL(class TUid)
+	?NewL@CLbtTriggerFilterComposite@@SAPAV1@W4TCompositeType@1@@Z @ 223 NONAME ; class CLbtTriggerFilterComposite * CLbtTriggerFilterComposite::NewL(enum CLbtTriggerFilterComposite::TCompositeType)
+	?NewL@CLbtGeoCircle@@SAPAV1@XZ @ 224 NONAME ; class CLbtGeoCircle * CLbtGeoCircle::NewL(void)
+	?SetNetworkType@CLbtGeoCell@@QAEXW4TMobilePhoneNetworkMode@RMobilePhone@@@Z @ 225 NONAME ; void CLbtGeoCell::SetNetworkType(enum RMobilePhone::TMobilePhoneNetworkMode)
+	??1CLbtGeoWcdmaCell@@UAE@XZ @ 226 NONAME ; CLbtGeoWcdmaCell::~CLbtGeoWcdmaCell(void)
+	?CGISpecifiedDuringCreation@CLbtGeoWcdmaCell@@UBEHXZ @ 227 NONAME ; int CLbtGeoWcdmaCell::CGISpecifiedDuringCreation(void) const
+	?Type@CLbtTriggerFilterByAttribute@@UBE?AW4TFilterType@CLbtTriggerFilterBase@@XZ @ 228 NONAME ; enum CLbtTriggerFilterBase::TFilterType CLbtTriggerFilterByAttribute::Type(void) const
+	?Area@CLbtTriggerFilterByArea@@QAEPAVCLbtGeoAreaBase@@XZ @ 229 NONAME ; class CLbtGeoAreaBase * CLbtTriggerFilterByArea::Area(void)
+	?NewLC@CLbtSessionTrigger@@SAPAV1@XZ @ 230 NONAME ; class CLbtSessionTrigger * CLbtSessionTrigger::NewLC(void)
+	?NewLC@CLbtGeoRect@@SAPAV1@XZ @ 231 NONAME ; class CLbtGeoRect * CLbtGeoRect::NewLC(void)
+	?NumberOfFilters@CLbtTriggerFilterComposite@@QBEHXZ @ 232 NONAME ; int CLbtTriggerFilterComposite::NumberOfFilters(void) const
+	??0CLbtTriggerInfo@@IAE@XZ @ 233 NONAME ; CLbtTriggerInfo::CLbtTriggerInfo(void)
+	?NewL@CLbtGeoHybrid@@SAPAV1@XZ @ 234 NONAME ; class CLbtGeoHybrid * CLbtGeoHybrid::NewL(void)
+	??1CLbtGeoHybrid@@UAE@XZ @ 235 NONAME ; CLbtGeoHybrid::~CLbtGeoHybrid(void)
+	?NewLC@CLbtGeoHybrid@@SAPAV1@AAV?$RPointerArray@VCLbtGeoAreaBase@@@@@Z @ 236 NONAME ; class CLbtGeoHybrid * CLbtGeoHybrid::NewLC(class RPointerArray<class CLbtGeoAreaBase> &)
+	?NewLC@CLbtGeoHybrid@@SAPAV1@XZ @ 237 NONAME ; class CLbtGeoHybrid * CLbtGeoHybrid::NewLC(void)
+	?SetHybridArea@CLbtGeoHybrid@@QAEXABV?$RPointerArray@VCLbtGeoAreaBase@@@@@Z @ 238 NONAME ; void CLbtGeoHybrid::SetHybridArea(class RPointerArray<class CLbtGeoAreaBase> const &)
+	?HybridArea@CLbtGeoHybrid@@QAEABV?$RPointerArray@VCLbtGeoAreaBase@@@@XZ @ 239 NONAME ; class RPointerArray<class CLbtGeoAreaBase> const & CLbtGeoHybrid::HybridArea(void)
+	?NewL@CLbtGeoHybrid@@SAPAV1@AAV?$RPointerArray@VCLbtGeoAreaBase@@@@@Z @ 240 NONAME ; class CLbtGeoHybrid * CLbtGeoHybrid::NewL(class RPointerArray<class CLbtGeoAreaBase> &)
+

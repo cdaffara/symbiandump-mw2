@@ -1,0 +1,4 @@
+EXPORTS
+	??1CMP3AudioControllerUtility@@UAE@XZ @ 1 NONAME ; CMP3AudioControllerUtility::~CMP3AudioControllerUtility(void)
+	?NewL@CMP3AudioControllerUtility@@SAPAV1@XZ @ 2 NONAME ; class CMP3AudioControllerUtility * CMP3AudioControllerUtility::NewL(void)
+

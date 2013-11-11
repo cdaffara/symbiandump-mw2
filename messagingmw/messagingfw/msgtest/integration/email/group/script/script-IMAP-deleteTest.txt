@@ -1,0 +1,115 @@
+// *****************************************
+//  
+//  Author:	Shahadat Mridha
+//  Date:	06/05/03
+//
+// Tests defect: INC021461 - Email app downloads emails again before deleting them! - IMAP
+//
+// Test Case:
+// - Go online and download a message
+// - delete the message offline (which sets offline delete operation and deletes its children)
+// - Go online to download all messages.
+// - Should not download the deleted message (i.e. should not have any children)
+//
+// Rename this file to script.txt and copy it 
+// to c:\msgtest\emailsmoke
+// *****************************************
+
+[main]
+email_client_test email
+
+// *****************************************
+
+[email]
+imap_client_test imap_prepare_for_testing
+imap_client_test imap_populate_temp1_folder
+imap_client_test imap_offline_delete
+imap_client_test imap_repopulate_temp1_folder
+
+// *****************************************
+
+//
+// Prepare for testing
+//
+[imap_prepare_for_testing]
+clean_message_folder
+start_client_session
+select_root_folder
+imap_service imap_service_fastmail
+select_folder test_imap_service
+connect
+check_imap_error 0
+sync_tree
+check_imap_error 0
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+
+//
+// Download all messages from temp1
+//
+[imap_populate_temp1_folder]
+select_root_folder
+select_folder test_imap_service
+connect
+select_folder temp1
+sync_folder
+select_all_messages
+check_selection_count 1
+add_comment Download 1 Email from temp1
+populate_folder
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+select_folder temp1
+select_entry attachment
+check_children 0 1
+
+// Offline delete the message
+[imap_offline_delete]
+select_root_folder
+select_folder test_imap_service
+select_folder temp1
+select_entry attachment
+add_comment delete the message in folder
+delete
+add_comment delete it's children
+delete_children 0
+select_root_folder
+select_folder test_imap_service
+select_folder temp1
+select_entry attachment
+check_children 0 0
+
+// Download all messages from temp1 again
+[imap_repopulate_temp1_folder]
+select_root_folder
+select_folder test_imap_service
+connect
+select_folder temp1
+sync_folder
+select_all_messages
+check_selection_count 1
+add_comment Download 1 Email from temp1
+populate_folder
+select_root_folder
+select_folder test_imap_service
+disconnect
+check_imap_error 0
+select_folder temp1
+select_entry attachment
+check_children 0 0
+
+//
+// defining email server:
+//
+[imap_service_fastmail]
+set_name test_imap_service
+set_server lon-msgtest06.intra
+set_user t_email3
+set_pass password
+set_tls 0
+
+// *****************************************

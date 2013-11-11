@@ -1,0 +1,48 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer GetBaseConstants				c:\msgtest\TestFramework\ScriptedTestCases\ImapSearchTests\imap_sync_search_enabled.ini GetConstants
+RUN_TEST_STEP 100 MessagingTestServer CreateSession					c:\msgtest\TestFramework\ScriptedTestCases\ImapSearchTests\imap_sync_search_enabled.ini SessionId
+RUN_TEST_STEP 100 MessagingTestServer CreateRegistry				c:\msgtest\TestFramework\ScriptedTestCases\ImapSearchTests\imap_sync_search_enabled.ini CreateRegistry
+RUN_TEST_STEP 100 MessagingTestServer SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\ImapSearchTests\imap_sync_search_enabled.ini SetDefaultConfigurationIMAP
+RUN_TEST_STEP 100 MessagingTestServer CreateImap4Service			c:\msgtest\TestFramework\ScriptedTestCases\ImapSearchTests\imap_sync_search_enabled.ini CreateImap4Service
+RUN_TEST_STEP 100 MessagingTestServer CreateImap4Mtm				c:\msgtest\TestFramework\ScriptedTestCases\ImapSearchTests\imap_sync_search_enabled.ini CreateImap4Mtm
+RUN_TEST_STEP 100 MessagingTestServer SetImap4ServiceParameters		c:\msgtest\TestFramework\ScriptedTestCases\ImapSearchTests\imap_sync_search_enabled.ini SetImap4ServiceParameters
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount			c:\msgtest\TestFramework\ScriptedTestCases\ImapSearchTests\imap_sync_search_enabled.ini CheckChildrenCount0
+
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer ConnectImap4Server			c:\msgtest\TestFramework\ScriptedTestCases\ImapSearchTests\imap_sync_search_enabled.ini ConnectImap4Server0
+RUN_TEST_STEP 100 MessagingTestServer DoFullImap4Synchronisation	c:\msgtest\TestFramework\ScriptedTestCases\ImapSearchTests\imap_sync_search_enabled.ini DoFullImap4Synchronisation0
+RUN_TEST_STEP 100 MessagingTestServer FindEntryByName				c:\msgtest\TestFramework\ScriptedTestCases\ImapSearchTests\imap_sync_search_enabled.ini FindEntryByName0
+RUN_TEST_STEP 100 MessagingTestServer SetImap4FullDownloadLimits	c:\msgtest\TestFramework\ScriptedTestCases\ImapSearchTests\imap_sync_search_enabled.ini SetImap4FullDownloadLimits
+RUN_TEST_STEP 100 MessagingTestServer CreateChildrenSelection		c:\msgtest\TestFramework\ScriptedTestCases\ImapSearchTests\imap_sync_search_enabled.ini CreateChildrenSelection
+RUN_TEST_STEP 100 MessagingTestServer DoImap4Populate				c:\msgtest\TestFramework\ScriptedTestCases\ImapSearchTests\imap_sync_search_enabled.ini DoImap4Populate
+
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount			c:\msgtest\TestFramework\ScriptedTestCases\ImapSearchTests\imap_sync_search_enabled.ini CheckChildrenCount1
+RUN_TEST_STEP 100 MessagingTestServer FindEntryByName				c:\msgtest\TestFramework\ScriptedTestCases\ImapSearchTests\imap_sync_search_enabled.ini FindEntryByName2
+RUN_TEST_STEP 100 MessagingTestServer DisconnectImap4Server			c:\msgtest\TestFramework\ScriptedTestCases\ImapSearchTests\imap_sync_search_enabled.ini DisconnectImap4Server1
+
+RUN_TEST_STEP 100 MessagingTestServer END_TEST_CASE

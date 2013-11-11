@@ -1,0 +1,66 @@
+/*
+* Copyright (c) 2002-2004 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:   Project definition file for SendUI data utils.
+*
+*/
+
+
+
+#include <platform_paths.hrh>
+
+TARGET          SenduiDataUtils.dll
+TARGETTYPE      DLL
+UID             0x1000008D 0x102072A3
+VENDORID        VID_DEFAULT
+VERSION 	10.0
+CAPABILITY CAP_GENERAL_DLL
+PAGED
+
+SOURCEPATH      ../Src
+SOURCE          SendUiFileRightsEngine.cpp
+SOURCE          SendUiOperationWait.cpp
+SOURCE          SendUiDataUtils.cpp
+SOURCE          CSendUiAttachment.cpp
+
+USERINCLUDE     ../Inc
+SYSTEMINCLUDE   /epoc32/include/ecom 
+APP_LAYER_SYSTEMINCLUDE
+
+
+LIBRARY         euser.lib
+LIBRARY         efsrv.lib
+LIBRARY         apgrfx.lib
+LIBRARY         avkon.lib
+LIBRARY         CommonEngine.lib
+LIBRARY         apmime.lib              // TDataType
+LIBRARY         ecom.lib
+LIBRARY         msgs.lib
+LIBRARY         estor.lib
+LIBRARY         etext.lib
+LIBRARY         msgcommonutils.lib      // FileProtectionResolver
+LIBRARY         MsgMedia.lib            // Msg Media Resolver
+LIBRARY         sysutil.lib             // DiskSpaceBelowCriticalLevelL
+#ifdef RD_MULTIPLE_DRIVE
+LIBRARY         PlatformEnv.lib
+#endif
+
+#if defined( ARMCC )
+DEFFILE ../eabi/ 
+#elif defined( WINSCW )
+DEFFILE ../bwinscw/ 
+#elif defined( WINS )
+DEFFILE ../bwins/ 
+#endif
+
+/* End of File */

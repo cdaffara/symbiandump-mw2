@@ -1,0 +1,464 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description:
+;
+;
+;;
+; Installation file for t_locsysuiconsole application
+;
+;Languages
+&EN
+;
+; UID is the app's UID
+;
+#{"Poison FT LandmarkTests"},(0x01ffff73),2,0,0,TYPE=SA
+;
+; Localised Vendor name
+%{"Nokia-EN"}
+
+; Unique Vendor name
+:"Nokia"
+;
+;#{"Poison FT LandmarkTests"},(0x01ffff73),1,0,0
+; Files to install and to where
+
+"\Epoc32\Release\ARMV5\urel\LandMarksTestModule.dll"-"!:\sys\bin\LandMarksTestModule.dll"
+"..\conf\LandMarksTestModule1.cfg"-"C:\TestFramework\LandMarksTestModule1.cfg"
+"..\init\TestFramework.ini"-"C:\Data\TestFramework.ini"
+"..\Script\lmtm.bat"-"C:\lmtm.bat"
+
+
+;This is the test provider, used in TP135 and TP116
+"\Epoc32\Release\ARMV5\urel\FT_lmservlib.dll"-"!:\sys\bin\FT_lmservlib.dll"
+"\Epoc32\Release\ARMV5\urel\dbmanpluginstest.dll"-"!:\sys\bin\dbmanpluginstest.dll"
+"\Epoc32\data\z\resource\plugins\dbmanpluginstest.RSC"-"!:\resource\plugins\dbmanpluginstest.RSC"
+
+;Files needed for Tp1
+"..\databases\landmarks\TP1Test.ldb"-"c:\system\test\TestData\TP1Test.ldb"
+
+;Files needed for Tp4
+"..\databases\landmarks\TP4Test.ldb"-"c:\system\test\TestData\TP4Test.ldb"
+
+;Files needed for Tp8
+"..\databases\landmarks\TP8Test.ldb"-"c:\system\test\TestData\TP8Test.ldb"
+
+
+;Files needed for Tp10
+"..\databases\landmarks\TP10Test.ldb"-"c:\system\test\TestData\TP10Test.ldb"
+
+
+
+;Test data files
+"..\databases\landmarks\eposlm.ldb"-"c:\system\test\TestData\eposlm.ldb"
+"..\databases\landmarks\testlm.ldb"-"c:\system\test\TestData\testlm.ldb"
+"..\databases\landmarks\landmarksDb.txt"-"c:\system\test\TestData\landmarksDb.txt"
+"..\databases\landmarks\lmDbSearchResult.txt"-"c:\system\test\TestData\lmDbSearchResult.txt"
+"..\databases\landmarks\lmDbAreaSearchResult.txt"-"c:\system\test\TestData\lmDbAreaSearchResult.txt"
+"..\databases\landmarks\LmDbCategorySearchResult.txt"-"c:\system\test\TestData\LmDbCategorySearchResult.txt"
+"..\databases\landmarks\LmDbCatLandmarkSearchResult.txt"-"c:\system\test\TestData\LmDbCatLandmarkSearchResult.txt"
+"..\databases\landmarks\eposlmglobalcategories.r01"-"c:\system\test\TestData\eposlmglobalcategories.r01"
+"..\databases\landmarks\eposlmglobalcategories.r02"-"c:\system\test\TestData\eposlmglobalcategories.r02"
+"..\databases\landmarks\eposlmglobalcategories.r03"-"c:\system\test\TestData\eposlmglobalcategories.r03"
+"..\databases\landmarks\SRVeposdamaged.ldb"-"c:\system\test\TestData\SRVeposdamaged.ldb"
+"..\databases\landmarks\EPOSLMASYNCOPS.RSC"-"c:\system\test\TestData\EPOSLMASYNCOPS.RSC"
+"..\databases\landmarks\SRVeposcontact.ldb"-"c:\system\test\TestData\SRVeposcontact.ldb"
+"..\databases\landmarks\SRVepostext.ldb"-"c:\system\test\TestData\SRVepostext.ldb"
+"..\databases\landmarks\eposEmpty.ldb"-"c:\system\test\TestData\eposEmpty.ldb"
+"..\databases\landmarks\lmDbNearestSearchResult.txt"-"c:\system\test\TestData\lmDbNearestSearchResult.txt"
+"..\databases\landmarks\lmDbNearestSearch.txt"-"c:\system\test\TestData\lmDbNearestSearch.txt"
+"..\databases\landmarks\eposlmnearestsearch.ldb"-"c:\system\test\TestData\eposlmnearestsearch.ldb"
+"..\databases\landmarks\lmDbCompositeSearchResult.txt"-"c:\system\test\TestData\lmDbCompositeSearchResult.txt"
+"..\databases\landmarks\compositeeposlm.ldb"-"c:\system\test\TestData\compositeeposlm.ldb"
+"..\databases\landmarks\LmRecognizerData.txt"-"c:\system\test\TestData\LmRecognizerData.txt"
+"..\databases\landmarks\LmRecognizerDataFile.txt"-"c:\system\test\TestData\LmRecognizerDataFile.txt"
+"..\databases\landmarks\eposlm_1000_LMs.ldb"-"c:\system\test\TestData\eposlm_1000_LMs.ldb"
+"..\databases\landmarks\eposlm_5000_LMs.ldb"-"c:\system\test\TestData\eposlm_5000_LMs.ldb"
+"..\databases\landmarks\eposlmintservices_198KB.rsc"-"c:\system\test\TestData\eposlmintservices_198KB.rsc"
+"..\databases\landmarks\eposlmintservices_453KB.rsc"-"c:\system\test\TestData\eposlmintservices_453KB.rsc"
+
+;Files needed in TP13
+;"..\databases\landmarks\TP13_EPOSLMGLOBALCATEGORIES.R06"-"c:\system\test\TestData\TP13_EPOSLMGLOBALCATEGORIES.R06"
+;"..\databases\landmarks\TP13_EPOSLMGLOBALCATEGORIES.R01"-"c:\system\test\TestData\TP13_EPOSLMGLOBALCATEGORIES.R01"
+"..\databases\landmarks\eposlm_tp13.ldb"-"c:\system\test\TestData\eposlm_tp13.ldb"
+
+;Files needed in Tp25
+"..\databases\landmarks\TP25Test.ldb"-"c:\system\test\TestData\TP25Test.ldb"
+;Files needed in Tp28
+"..\databases\landmarks\Tp28Test.ldb"-"c:\system\test\TestData\Tp28Test.ldb"
+
+;Files needed in Tp131
+"..\databases\landmarks\TP131Test.ldb"-"c:\system\test\TestData\TP131Test.ldb"
+;Files needed for Tp116
+"..\databases\landmarks\TP116Test.ldb"-"c:\system\test\TestData\TP116Test.ldb"
+
+
+;Correct trace file
+"..\databases\landmarks\XML_Files\CorrectFileFor_LandmarksTP47Trace.txt"-"c:\system\test\TestData\CorrectFileFor_LandmarksTP47Trace.txt"
+"..\databases\landmarks\XML_Files\CorrectFileFor_LandmarksTP148Trace.txt"-"c:\system\test\TestData\CorrectFileFor_LandmarksTP148Trace.txt"
+"..\databases\landmarks\XML_Files\CorrectFileFor_LandmarksTP149Trace.txt"-"c:\system\test\TestData\CorrectFileFor_LandmarksTP149Trace.txt"
+"..\databases\landmarks\XML_Files\CorrectFileFor_LandmarksTP150Trace.txt"-"c:\system\test\TestData\CorrectFileFor_LandmarksTP150Trace.txt"
+"..\databases\landmarks\XML_Files\CorrectFileFor_LandmarksTP151Trace.txt"-"c:\system\test\TestData\CorrectFileFor_LandmarksTP151Trace.txt"
+"..\databases\landmarks\XML_Files\CorrectFileFor_LandmarksTP152Trace.txt"-"c:\system\test\TestData\CorrectFileFor_LandmarksTP152Trace.txt"
+"..\databases\landmarks\XML_Files\CorrectFileFor_LandmarksTP153Trace.txt"-"c:\system\test\TestData\CorrectFileFor_LandmarksTP153Trace.txt"
+"..\databases\landmarks\XML_Files\CorrectFileFor_LandmarksTP154Trace.txt"-"c:\system\test\TestData\CorrectFileFor_LandmarksTP154Trace.txt"
+"..\databases\landmarks\XML_Files\CorrectFileFor_LandmarksTP155Trace.txt"-"c:\system\test\TestData\CorrectFileFor_LandmarksTP155Trace.txt"
+"..\databases\landmarks\XML_Files\CorrectFileFor_LandmarksTP156Trace.txt"-"c:\system\test\TestData\CorrectFileFor_LandmarksTP156Trace.txt"
+"..\databases\landmarks\XML_Files\CorrectFileFor_LandmarksTP157Trace.txt"-"c:\system\test\TestData\CorrectFileFor_LandmarksTP157Trace.txt"
+"..\databases\landmarks\XML_Files\CorrectFileFor_LandmarksTP158Trace.txt"-"c:\system\test\TestData\CorrectFileFor_LandmarksTP158Trace.txt"
+"..\databases\landmarks\XML_Files\CorrectFileFor_LandmarksTP159Trace.txt"-"c:\system\test\TestData\CorrectFileFor_LandmarksTP159Trace.txt"
+"..\databases\landmarks\XML_Files\CorrectFileFor_LandmarksTP160Trace.txt"-"c:\system\test\TestData\CorrectFileFor_LandmarksTP160Trace.txt"
+
+;XML files needed in TP47
+"..\databases\landmarks\XML_Files\Tp47Data_With_MIME_Name.xml"-"c:\system\test\TestData\Tp47Data_With_MIME_Name.xml"
+"..\databases\landmarks\XML_Files\Tp47UsingXMLTagAsDataField3.xml"-"c:\system\test\TestData\Tp47UsingXMLTagAsDataField3.xml"
+"..\databases\landmarks\XML_Files\Tp47UsingXMLTagAsDataField2.xml"-"c:\system\test\TestData\Tp47UsingXMLTagAsDataField2.xml"
+"..\databases\landmarks\XML_Files\Tp47UsingXMLTagAsDataField1.xml"-"c:\system\test\TestData\Tp47UsingXMLTagAsDataField1.xml"
+"..\databases\landmarks\XML_Files\Tp47ErronousXMLDataTagInTag1.xml"-"c:\system\test\TestData\Tp47ErronousXMLDataTagInTag1.xml"
+"..\databases\landmarks\XML_Files\Tp47ErronousXMLFileEmptyCollection.xml"-"c:\system\test\TestData\Tp47ErronousXMLFileEmptyCollection.xml"
+"..\databases\landmarks\XML_Files\Tp47XMLWithLongLatitudeField.xml"-"c:\system\test\TestData\Tp47XMLWithLongLatitudeField.xml"
+"..\databases\landmarks\XML_Files\Tp47XMLWithLongName.xml"-"c:\system\test\TestData\Tp47XMLWithLongName.xml"
+"..\databases\landmarks\XML_Files\Tp47XMLWithLongCategoryName.xml"-"c:\system\test\TestData\Tp47XMLWithLongCategoryName.xml"
+"..\databases\landmarks\XML_Files\TP47_UTF-8.xml"-"c:\system\test\TestData\TP47_UTF-8.xml"
+"..\databases\landmarks\XML_Files\TP47_UTF-16-bigEndian.xml"-"c:\system\test\TestData\TP47_UTF-16-bigEndian.xml"
+"..\databases\landmarks\XML_Files\TP47_UTF-16-littleEndian.xml"-"c:\system\test\TestData\TP47_UTF-16-littleEndian.xml"
+"..\databases\landmarks\XML_Files\TP47_UTF-Chinese.xml"-"c:\system\test\TestData\TP47_UTF-Chinese.xml"
+"..\databases\landmarks\XML_Files\Tp47DataUTF8.xml"-"c:\system\test\TestData\Tp47DataUTF8.xml"
+"..\databases\landmarks\XML_Files\Tp47DataUTF16.xml"-"c:\system\test\TestData\Tp47DataUTF16.xml"
+"..\databases\landmarks\XML_Files\Tp47ErronousFileNoXML2.xml"-"c:\system\test\TestData\Tp47ErronousFileNoXML2.xml"
+"..\databases\landmarks\XML_Files\Tp47ErronousFileNoXML1.xml"-"c:\system\test\TestData\Tp47ErronousFileNoXML1.xml"
+"..\databases\landmarks\XML_Files\Tp47ErronousXMLDataUnclosedTag2.xml"-"c:\system\test\TestData\Tp47ErronousXMLDataUnclosedTag2.xml"
+"..\databases\landmarks\XML_Files\Tp47ErronousXMLDataUnclosedTag1.xml"-"c:\system\test\TestData\Tp47ErronousXMLDataUnclosedTag1.xml"
+"..\databases\landmarks\XML_Files\Tp47ErronousXMLDataRepeatedTag.xml"-"c:\system\test\TestData\Tp47ErronousXMLDataRepeatedTag.xml"
+"..\databases\landmarks\XML_Files\Tp47Mall.xml"-"c:\system\test\TestData\Tp47Mall.xml"
+"..\databases\landmarks\XML_Files\Tp47XMLDataTestInput1.xml"-"c:\system\test\TestData\Tp47XMLDataTestInput1.xml"
+"..\databases\landmarks\XML_Files\Tp47ErrounousXMLNoEndTag2.xml"-"c:\system\test\TestData\Tp47ErrounousXMLNoEndTag2.xml"
+"..\databases\landmarks\XML_Files\Tp47ErrounousXMLNoEndTag1.xml"-"c:\system\test\TestData\Tp47ErrounousXMLNoEndTag1.xml"
+"..\databases\landmarks\XML_Files\Tp47ErrounousXMLDataWrongOrder3.xml"-"c:\system\test\TestData\Tp47ErrounousXMLDataWrongOrder3.xml"
+"..\databases\landmarks\XML_Files\Tp47UnknownTags.xml"-"c:\system\test\TestData\Tp47UnknownTags.xml"
+"..\databases\landmarks\XML_Files\Tp47UnknownTrees.xml"-"c:\system\test\TestData\Tp47UnknownTrees.xml"
+"..\databases\landmarks\XML_Files\Tp47ErrounousXMLDataWrongOrder2.xml"-"c:\system\test\TestData\Tp47ErrounousXMLDataWrongOrder2.xml"
+"..\databases\landmarks\XML_Files\Tp47ErrounousXMLDataMissingFields3.xml"-"c:\system\test\TestData\Tp47ErrounousXMLDataMissingFields3.xml"
+"..\databases\landmarks\XML_Files\Tp47ErrounousXMLDataWrongOrder1.xml"-"c:\system\test\TestData\Tp47ErrounousXMLDataWrongOrder1.xml"
+"..\databases\landmarks\XML_Files\Tp47ErrounousXMLDataMissingFields2.xml"-"c:\system\test\TestData\Tp47ErrounousXMLDataMissingFields2.xml"
+"..\databases\landmarks\XML_Files\Tp47ErrounousXMLDataMissingFields1.xml"-"c:\system\test\TestData\Tp47ErrounousXMLDataMissingFields1.xml"
+"..\databases\landmarks\XML_Files\Tp47SeveralLandmarkCollection.xml"-"c:\system\test\TestData\Tp47SeveralLandmarkCollection.xml"
+"..\databases\landmarks\XML_Files\Tp47SeveralLandmark.xml"-"c:\system\test\TestData\Tp47SeveralLandmark.xml"
+"..\databases\landmarks\XML_Files\Tp47ErrounousXMLData.xml"-"c:\system\test\TestData\Tp47ErrounousXMLData.xml"
+;"..\databases\landmarks\XML_Files\Tp47ErronousXMLDataMissingLMPrefix.xml"-"c:\system\test\TestData\Tp47ErronousXMLDataMissingLMPrefix.xml"
+"..\databases\landmarks\XML_Files\Tp47EmptyMediaLink.xml"-"c:\system\test\TestData\Tp47EmptyMediaLink.xml"
+"..\databases\landmarks\XML_Files\Tp47EmptyCoordinates.xml"-"c:\system\test\TestData\Tp47EmptyCoordinates.xml"
+"..\databases\landmarks\XML_Files\Tp47EmptyAdresseInfo.xml"-"c:\system\test\TestData\Tp47EmptyAdresseInfo.xml"
+"..\databases\landmarks\XML_Files\Tp47ErronousTextInTag1.xml"-"c:\system\test\TestData\Tp47ErronousTextInTag1.xml"
+"..\databases\landmarks\XML_Files\Tp47ErronousTextInTag2.xml"-"c:\system\test\TestData\Tp47ErronousTextInTag2.xml"
+"..\databases\landmarks\XML_Files\Tp47ErronousTextInTag3.xml"-"c:\system\test\TestData\Tp47ErronousTextInTag3.xml"
+"..\databases\landmarks\XML_Files\Tp47ErronousTextInTag4.xml"-"c:\system\test\TestData\Tp47ErronousTextInTag4.xml"
+"..\databases\landmarks\XML_Files\Tp47ErronousTextInTag5.xml"-"c:\system\test\TestData\Tp47ErronousTextInTag5.xml"
+"..\databases\landmarks\XML_Files\Tp47ErronousTextInTag6.xml"-"c:\system\test\TestData\Tp47ErronousTextInTag6.xml"
+
+"..\databases\landmarks\XML_Files\Tp47Data_With_MIME_Name.gpx"-"c:\system\test\TestData\Tp47Data_With_MIME_Name.gpx"
+"..\databases\landmarks\XML_Files\Tp47UsingXMLTagAsDataField3.gpx"-"c:\system\test\TestData\Tp47UsingXMLTagAsDataField3.gpx"
+"..\databases\landmarks\XML_Files\Tp47UsingXMLTagAsDataField2.gpx"-"c:\system\test\TestData\Tp47UsingXMLTagAsDataField2.gpx"
+"..\databases\landmarks\XML_Files\Tp47UsingXMLTagAsDataField1.gpx"-"c:\system\test\TestData\Tp47UsingXMLTagAsDataField1.gpx"
+"..\databases\landmarks\XML_Files\Tp47ErronousXMLDataTagInTag1.gpx"-"c:\system\test\TestData\Tp47ErronousXMLDataTagInTag1.gpx"
+"..\databases\landmarks\XML_Files\Tp47XMLWithLongLatitudeField.gpx"-"c:\system\test\TestData\Tp47XMLWithLongLatitudeField.gpx"
+"..\databases\landmarks\XML_Files\Tp47XMLWithLongName.gpx"-"c:\system\test\TestData\Tp47XMLWithLongName.gpx"
+"..\databases\landmarks\XML_Files\Tp47XMLWithLongCategoryName.gpx"-"c:\system\test\TestData\Tp47XMLWithLongCategoryName.gpx"
+"..\databases\landmarks\XML_Files\TP47_UTF-8.gpx"-"c:\system\test\TestData\TP47_UTF-8.gpx"
+"..\databases\landmarks\XML_Files\TP47_UTF-16-bigEndian.gpx"-"c:\system\test\TestData\TP47_UTF-16-bigEndian.gpx"
+"..\databases\landmarks\XML_Files\TP47_UTF-16-littleEndian.gpx"-"c:\system\test\TestData\TP47_UTF-16-littleEndian.gpx"
+"..\databases\landmarks\XML_Files\TP47_UTF-Chinese.gpx"-"c:\system\test\TestData\TP47_UTF-Chinese.gpx"
+"..\databases\landmarks\XML_Files\Tp47DataUTF8.gpx"-"c:\system\test\TestData\Tp47DataUTF8.gpx"
+"..\databases\landmarks\XML_Files\Tp47DataUTF16.gpx"-"c:\system\test\TestData\Tp47DataUTF16.gpx"
+"..\databases\landmarks\XML_Files\Tp47ErronousFileNoXML2.gpx"-"c:\system\test\TestData\Tp47ErronousFileNoXML2.gpx"
+"..\databases\landmarks\XML_Files\Tp47ErronousFileNoXML1.gpx"-"c:\system\test\TestData\Tp47ErronousFileNoXML1.gpx"
+"..\databases\landmarks\XML_Files\Tp47ErronousXMLDataUnclosedTag2.gpx"-"c:\system\test\TestData\Tp47ErronousXMLDataUnclosedTag2.gpx"
+"..\databases\landmarks\XML_Files\Tp47ErronousXMLDataUnclosedTag1.gpx"-"c:\system\test\TestData\Tp47ErronousXMLDataUnclosedTag1.gpx"
+"..\databases\landmarks\XML_Files\Tp47ErronousXMLDataRepeatedTag.gpx"-"c:\system\test\TestData\Tp47ErronousXMLDataRepeatedTag.gpx"
+"..\databases\landmarks\XML_Files\Tp47Mall.gpx"-"c:\system\test\TestData\Tp47Mall.gpx"
+"..\databases\landmarks\XML_Files\Tp47XMLDataTestInput1.gpx"-"c:\system\test\TestData\Tp47XMLDataTestInput1.gpx"
+"..\databases\landmarks\XML_Files\Tp47ErrounousXMLNoEndTag2.gpx"-"c:\system\test\TestData\Tp47ErrounousXMLNoEndTag2.gpx"
+"..\databases\landmarks\XML_Files\Tp47ErrounousXMLNoEndTag1.gpx"-"c:\system\test\TestData\Tp47ErrounousXMLNoEndTag1.gpx"
+"..\databases\landmarks\XML_Files\Tp47UnknownTags.gpx"-"c:\system\test\TestData\Tp47UnknownTags.gpx"
+"..\databases\landmarks\XML_Files\Tp47UnknownTrees.gpx"-"c:\system\test\TestData\Tp47UnknownTrees.gpx"
+"..\databases\landmarks\XML_Files\Tp47ErrounousXMLDataWrongOrder2.gpx"-"c:\system\test\TestData\Tp47ErrounousXMLDataWrongOrder2.gpx"
+"..\databases\landmarks\XML_Files\Tp47ErrounousXMLDataMissingFields3.gpx"-"c:\system\test\TestData\Tp47ErrounousXMLDataMissingFields3.gpx"
+"..\databases\landmarks\XML_Files\Tp47ErrounousXMLDataWrongOrder1.gpx"-"c:\system\test\TestData\Tp47ErrounousXMLDataWrongOrder1.gpx"
+"..\databases\landmarks\XML_Files\Tp47ErrounousXMLDataMissingFields2.gpx"-"c:\system\test\TestData\Tp47ErrounousXMLDataMissingFields2.gpx"
+"..\databases\landmarks\XML_Files\Tp47ErrounousXMLDataMissingFields1.gpx"-"c:\system\test\TestData\Tp47ErrounousXMLDataMissingFields1.gpx"
+"..\databases\landmarks\XML_Files\Tp47ErrounousXMLData.gpx"-"c:\system\test\TestData\Tp47ErrounousXMLData.gpx"
+"..\databases\landmarks\XML_Files\Tp47EmptyMediaLink.gpx"-"c:\system\test\TestData\Tp47EmptyMediaLink.gpx"
+"..\databases\landmarks\XML_Files\Tp47EmptyCoordinates.gpx"-"c:\system\test\TestData\Tp47EmptyCoordinates.gpx"
+"..\databases\landmarks\XML_Files\Tp47ErronousTextInTag1.gpx"-"c:\system\test\TestData\Tp47ErronousTextInTag1.gpx"
+"..\databases\landmarks\XML_Files\Tp47ErronousTextInTag2.gpx"-"c:\system\test\TestData\Tp47ErronousTextInTag2.gpx"
+"..\databases\landmarks\XML_Files\Tp47ErronousTextInTag3.gpx"-"c:\system\test\TestData\Tp47ErronousTextInTag3.gpx"
+"..\databases\landmarks\XML_Files\Tp47ErronousTextInTag4.gpx"-"c:\system\test\TestData\Tp47ErronousTextInTag4.gpx"
+"..\databases\landmarks\XML_Files\Tp47ErronousTextInTag5.gpx"-"c:\system\test\TestData\Tp47ErronousTextInTag5.gpx"
+"..\databases\landmarks\XML_Files\Tp47ErronousTextInTag6.gpx"-"c:\system\test\TestData\Tp47ErronousTextInTag6.gpx"
+
+;KML files needed in TP47
+"..\databases\landmarks\XML_Files\Tp47KML.kml"-"c:\system\test\TestData\Tp47KML.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLfile1.kml"-"c:\system\test\TestData\Tp47KMLfile1.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLfile2.kml"-"c:\system\test\TestData\Tp47KMLfile2.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLfile3.kml"-"c:\system\test\TestData\Tp47KMLfile3.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLfile4.kml"-"c:\system\test\TestData\Tp47KMLfile4.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLlongName.kml"-"c:\system\test\TestData\Tp47KMLlongName.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLNameCaps.kml"-"c:\system\test\TestData\Tp47KMLNameCaps.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLErroneousNameTag.kml"-"c:\system\test\TestData\Tp47KMLErroneousNameTag.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLErroneousNameTagPosition1.kml"-"c:\system\test\TestData\Tp47KMLErroneousNameTagPosition1.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLErroneousNameTagPosition2.kml"-"c:\system\test\TestData\Tp47KMLErroneousNameTagPosition2.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLEmptyName.kml"-"c:\system\test\TestData\Tp47KMLEmptyName.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLMissingNameTag1.kml"-"c:\system\test\TestData\Tp47KMLMissingNameTag1.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLMissingNameTag2.kml"-"c:\system\test\TestData\Tp47KMLMissingNameTag2.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLNameWithSpecialCharacters1.kml"-"c:\system\test\TestData\Tp47KMLNameWithSpecialCharacters1.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLNameWithSpecialCharacters2.kml"-"c:\system\test\TestData\Tp47KMLNameWithSpecialCharacters2.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLEmptyPhoneNumber.kml"-"c:\system\test\TestData\Tp47KMLEmptyPhoneNumber.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLErroneousPhoneNumberTag.kml"-"c:\system\test\TestData\Tp47KMLErroneousPhoneNumberTag.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLErroneousPhoneNumberTagPosition.kml"-"c:\system\test\TestData\Tp47KMLErroneousPhoneNumberTagPosition.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLLongPhoneNumer.kml"-"c:\system\test\TestData\Tp47KMLLongPhoneNumer.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLMissingPhoneTag1.kml"-"c:\system\test\TestData\Tp47KMLMissingPhoneTag1.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLMissingPhoneTag2.kml"-"c:\system\test\TestData\Tp47KMLMissingPhoneTag2.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLPhoneNumberCaps.kml"-"c:\system\test\TestData\Tp47KMLPhoneNumberCaps.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLPhoneNumberWithText.kml"-"c:\system\test\TestData\Tp47KMLPhoneNumberWithText.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLPhoneNumberWithText.kml"-"c:\system\test\TestData\Tp47KMLPhoneNumberWithText.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLPhoneNumberWithSpecialCharacters1.kml"-"c:\system\test\TestData\Tp47KMLPhoneNumberWithSpecialCharacters1.kml"
+
+"..\databases\landmarks\XML_Files\Tp47KMLPhoneNumberWithSpecialCharacters2.kml"-"c:\system\test\TestData\Tp47KMLPhoneNumberWithSpecialCharacters2.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLEmptyPoint.kml"-"c:\system\test\TestData\Tp47KMLEmptyPoint.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLErroneousPointTag.kml"-"c:\system\test\TestData\Tp47KMLErroneousPointTag.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLErroneousPointTagPosition.kml"-"c:\system\test\TestData\Tp47KMLErroneousPointTagPosition.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLMissingPointTag1.kml"-"c:\system\test\TestData\Tp47KMLMissingPointTag1.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLMissingPointTag2.kml"-"c:\system\test\TestData\Tp47KMLMissingPointTag2.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLPointCaps.kml"-"c:\system\test\TestData\Tp47KMLPointCaps.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLPointCaps.kml"-"c:\system\test\TestData\Tp47KMLPointCaps.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLPointTag1.kml"-"c:\system\test\TestData\Tp47KMLPointTag1.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLPointTag2.kml"-"c:\system\test\TestData\Tp47KMLPointTag2.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLPointTag3.kml"-"c:\system\test\TestData\Tp47KMLPointTag3.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLEmptyDescription.kml"-"c:\system\test\TestData\Tp47KMLEmptyDescription.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLDescriptionWithSpecialCharacters1.kml"-"c:\system\test\TestData\Tp47KMLDescriptionWithSpecialCharacters1.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLDescriptionWithSpecialCharacters2.kml"-"c:\system\test\TestData\Tp47KMLDescriptionWithSpecialCharacters2.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLDescriptionCaps.kml"-"c:\system\test\TestData\Tp47KMLDescriptionCaps.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLLongDescription.kml"-"c:\system\test\TestData\Tp47KMLLongDescription.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLErroneousDescriptionTag.kml"-"c:\system\test\TestData\Tp47KMLErroneousDescriptionTag.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLErroneousDescriptionTagposition.kml"-"c:\system\test\TestData\Tp47KMLErroneousDescriptionTagposition.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLMissingDescriptionTag1.kml"-"c:\system\test\TestData\Tp47KMLMissingDescriptionTag1.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLMissingDescriptionTag2.kml"-"c:\system\test\TestData\Tp47KMLMissingDescriptionTag2.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLDescriptionWithCDATA.kml"-"c:\system\test\TestData\Tp47KMLDescriptionWithCDATA.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLErroneousFolderTag.kml"-"c:\system\test\TestData\Tp47KMLErroneousFolderTag.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLFolderCaps.kml"-"c:\system\test\TestData\Tp47KMLFolderCaps.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLMissingFolderTag1.kml"-"c:\system\test\TestData\Tp47KMLMissingFolderTag1.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLMissingFolderTag2.kml"-"c:\system\test\TestData\Tp47KMLMissingFolderTag2.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLEmptyFolderName.kml"-"c:\system\test\TestData\Tp47KMLEmptyFolderName.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLLongFolderName.kml"-"c:\system\test\TestData\Tp47KMLLongFolderName.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLFolderNameWithSpecialCharacters1.kml"-"c:\system\test\TestData\Tp47KMLFolderNameWithSpecialCharacters1.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLFolderNameWithSpecialCharacters2.kml"-"c:\system\test\TestData\Tp47KMLFolderNameWithSpecialCharacters2.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLDocumentNameWithSpecialCharacters1.kml"-"c:\system\test\TestData\Tp47KMLDocumentNameWithSpecialCharacters1.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLDocumentNameWithSpecialCharacters2.kml"-"c:\system\test\TestData\Tp47KMLDocumentNameWithSpecialCharacters2.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLEmptyDocumentName.kml"-"c:\system\test\TestData\Tp47KMLEmptyDocumentName.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLLongDocumentName.kml"-"c:\system\test\TestData\Tp47KMLLongDocumentName.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLDocumentCaps.kml"-"c:\system\test\TestData\Tp47KMLDocumentCaps.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLErroneousDocumentTag.kml"-"c:\system\test\TestData\Tp47KMLErroneousDocumentTag.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLMissingDocumentTag1.kml"-"c:\system\test\TestData\Tp47KMLMissingDocumentTag1.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLMissingDocumentTag2.kml"-"c:\system\test\TestData\Tp47KMLMissingDocumentTag2.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLAddressCaps.kml"-"c:\system\test\TestData\Tp47KMLAddressCaps.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLAddressWithSpecialCharacters1.kml"-"c:\system\test\TestData\Tp47KMLAddressWithSpecialCharacters1.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLAddressWithSpecialCharacters2.kml"-"c:\system\test\TestData\Tp47KMLAddressWithSpecialCharacters2.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLEmptyAddress1.kml"-"c:\system\test\TestData\Tp47KMLEmptyAddress1.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLEmptyAddress2.kml"-"c:\system\test\TestData\Tp47KMLEmptyAddress2.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLLongAddress1.kml"-"c:\system\test\TestData\Tp47KMLLongAddress1.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLLongAddress2.kml"-"c:\system\test\TestData\Tp47KMLLongAddress2.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLLongAddress3.kml"-"c:\system\test\TestData\Tp47KMLLongAddress3.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLErroneousAddressTag.kml"-"c:\system\test\TestData\Tp47KMLErroneousAddressTag.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLErroneousAddressTagPosition.kml"-"c:\system\test\TestData\Tp47KMLErroneousAddressTagPosition.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLMissingAddressTag1.kml"-"c:\system\test\TestData\Tp47KMLMissingAddressTag1.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLMissingAddressTag2.kml"-"c:\system\test\TestData\Tp47KMLMissingAddressTag2.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLCoordinateCaps.kml"-"c:\system\test\TestData\Tp47KMLCoordinateCaps.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLMoreCoordinates.kml"-"c:\system\test\TestData\Tp47KMLMoreCoordinates.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLErroneousCoordinateTag.kml"-"c:\system\test\TestData\Tp47KMLErroneousCoordinateTag.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLErroneousCoordinateTagPosition.kml"-"c:\system\test\TestData\Tp47KMLErroneousCoordinateTagPosition.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLCoordinates1.kml"-"c:\system\test\TestData\Tp47KMLCoordinates1.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLCoordinates2.kml"-"c:\system\test\TestData\Tp47KMLCoordinates2.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLCoordinates3.kml"-"c:\system\test\TestData\Tp47KMLCoordinates3.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLCoordinates4.kml"-"c:\system\test\TestData\Tp47KMLCoordinates4.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLCoordinates5.kml"-"c:\system\test\TestData\Tp47KMLCoordinates5.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLCoordinates6.kml"-"c:\system\test\TestData\Tp47KMLCoordinates6.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLLongCoordinates1.kml"-"c:\system\test\TestData\Tp47KMLLongCoordinates1.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLLongCoordinates2.kml"-"c:\system\test\TestData\Tp47KMLLongCoordinates2.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLMissingCoordinateTag1.kml"-"c:\system\test\TestData\Tp47KMLMissingCoordinateTag1.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLMissingCoordinateTag2.kml"-"c:\system\test\TestData\Tp47KMLMissingCoordinateTag2.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLEmptyCoordinates1.kml"-"c:\system\test\TestData\Tp47KMLEmptyCoordinates1.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLEmptyCoordinates2.kml"-"c:\system\test\TestData\Tp47KMLEmptyCoordinates2.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLEmptyCoordinates3.kml"-"c:\system\test\TestData\Tp47KMLEmptyCoordinates3.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLEmptyCoordinates4.kml"-"c:\system\test\TestData\Tp47KMLEmptyCoordinates4.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLEmptyCoordinates5.kml"-"c:\system\test\TestData\Tp47KMLEmptyCoordinates5.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLEmptyCoordinates6.kml"-"c:\system\test\TestData\Tp47KMLEmptyCoordinates6.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLEmptyCoordinates7.kml"-"c:\system\test\TestData\Tp47KMLEmptyCoordinates7.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLErroneousCoordinates1.kml"-"c:\system\test\TestData\Tp47KMLErroneousCoordinates1.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLErroneousCoordinates2.kml"-"c:\system\test\TestData\Tp47KMLErroneousCoordinates2.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLErroneousCoordinates3.kml"-"c:\system\test\TestData\Tp47KMLErroneousCoordinates3.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLErroneousCoordinates4.kml"-"c:\system\test\TestData\Tp47KMLErroneousCoordinates4.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLErroneousCoordinates5.kml"-"c:\system\test\TestData\Tp47KMLErroneousCoordinates5.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLNegativeCoordinates.kml"-"c:\system\test\TestData\Tp47KMLNegativeCoordinates.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLErroneousTextWithinPlacemark.kml"-"c:\system\test\TestData\Tp47KMLErroneousTextWithinPlacemark.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLEmptyfile1.kml"-"c:\system\test\TestData\Tp47KMLEmptyfile1.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLEmptyfile2.kml"-"c:\system\test\TestData\Tp47KMLEmptyfile2.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLInvalidfile.kml"-"c:\system\test\TestData\Tp47KMLInvalidfile.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLPlacemarkCaps.kml"-"c:\system\test\TestData\Tp47KMLPlacemarkCaps.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLErroneousPlacemarkTag.kml"-"c:\system\test\TestData\Tp47KMLErroneousPlacemarkTag.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLMissingPlacemarkTag1.kml"-"c:\system\test\TestData\Tp47KMLMissingPlacemarkTag1.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLMissingPlacemarkTag2.kml"-"c:\system\test\TestData\Tp47KMLMissingPlacemarkTag2.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLEmptyPlacemarkTag.kml"-"c:\system\test\TestData\Tp47KMLEmptyPlacemarkTag.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLGandhi Museum.kml"-"c:\system\test\TestData\Tp47KMLGandhi Museum.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLhilton hotels near new york (1 - 10).kml"-"c:\system\test\TestData\Tp47KMLhilton hotels near new york (1 - 10).kml"
+"..\databases\landmarks\XML_Files\Tp47KMLIndus Heritage Centre, India.kml"-"c:\system\test\TestData\Tp47KMLIndus Heritage Centre, India.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLfile5.kml"-"c:\system\test\TestData\Tp47KMLfile5.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLfile6.kml"-"c:\system\test\TestData\Tp47KMLfile6.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLfile7.kml"-"c:\system\test\TestData\Tp47KMLfile7.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLfile8.kml"-"c:\system\test\TestData\Tp47KMLfile8.kml"
+"..\databases\landmarks\XML_Files\Tp47KMLfile9.kml"-"c:\system\test\TestData\Tp47KMLfile9.kml"
+
+;KMZ test files
+"..\databases\landmarks\XML_Files\Tp148KMZFile.kmz"-"c:\system\test\TestData\Tp148KMZFile.kmz"
+"..\databases\landmarks\XML_Files\Tp149KMZFile.kmz"-"c:\system\test\TestData\Tp149KMZFile.kmz"
+"..\databases\landmarks\XML_Files\Tp150KMZFile.kmz"-"c:\system\test\TestData\Tp150KMZFile.kmz"
+"..\databases\landmarks\XML_Files\Tp151KMZFile.kmz"-"c:\system\test\TestData\Tp151KMZFile.kmz"
+"..\databases\landmarks\XML_Files\Tp152KMZFile.kmz"-"c:\system\test\TestData\Tp152KMZFile.kmz"
+"..\databases\landmarks\XML_Files\Tp153KMZFile.kmz"-"c:\system\test\TestData\Tp153KMZFile.kmz"
+"..\databases\landmarks\XML_Files\Tp154KMZFile.kmz"-"c:\system\test\TestData\Tp154KMZFile.kmz"
+"..\databases\landmarks\XML_Files\Tp155KMZFile.kmz"-"c:\system\test\TestData\Tp155KMZFile.kmz"
+"..\databases\landmarks\XML_Files\Tp156KMZFile.kmz"-"c:\system\test\TestData\Tp156KMZFile.kmz"
+"..\databases\landmarks\XML_Files\Tp157KMZFile.kmz"-"c:\system\test\TestData\Tp157KMZFile.kmz"
+"..\databases\landmarks\XML_Files\Tp158KMZFile.kmz"-"c:\system\test\TestData\Tp158KMZFile.kmz"
+"..\databases\landmarks\XML_Files\Tp159KMZFile.kmz"-"c:\system\test\TestData\Tp159KMZFile.kmz"
+"..\databases\landmarks\XML_Files\Tp160KMZFile.kmz"-"c:\system\test\TestData\Tp160KMZFile.kmz"
+"..\databases\landmarks\XML_Files\Tp163KMZ.kmz"-"c:\system\test\TestData\Tp163KMZ.kmz"
+"..\databases\landmarks\XML_Files\Tp164KMZ.kmz"-"c:\system\test\TestData\Tp164KMZ.kmz"
+
+;KML test files
+"..\databases\landmarks\XML_Files\Tp161KML.kml"-"c:\system\test\TestData\Tp161KML.kml"
+"..\databases\landmarks\XML_Files\Tp162KML.kml"-"c:\system\test\TestData\Tp162KML.kml"
+
+;XML files needed in TP43
+"..\databases\landmarks\XML_Files\Tp43EncodeOutput_Correct.xml"-"c:\system\test\TestData\Tp43EncodeOutput_Correct.xml"
+"..\databases\landmarks\XML_Files\Tp43EncodeOutputIncMode_Correct.xml"-"c:\system\test\TestData\Tp43EncodeOutputIncMode_Correct.xml"
+"..\databases\landmarks\XML_Files\Tp43EncodeOutputCollectionData1_Correct.xml"-"c:\system\test\TestData\Tp43EncodeOutputCollectionData1_Correct.xml"
+"..\databases\landmarks\XML_Files\Tp43EncodeOutputCollectionData2_Correct.xml"-"c:\system\test\TestData\Tp43EncodeOutputCollectionData2_Correct.xml"
+"..\databases\landmarks\XML_Files\Tp43EncodeOutputEmptyCollectionData_Correct.xml"-"c:\system\test\TestData\Tp43EncodeOutputEmptyCollectionData_Correct.xml"
+"..\databases\landmarks\XML_Files\Tp43EncodeOutputEmptyCollectionData2_Correct.xml"-"c:\system\test\TestData\Tp43EncodeOutputEmptyCollectionData2_Correct.xml"
+"..\databases\landmarks\XML_Files\Tp43EncodeOutputLongCollectionField_Correct.xml"-"c:\system\test\TestData\Tp43EncodeOutputLongCollectionField_Correct.xml"
+"..\databases\landmarks\XML_Files\Tp43EncodeOutputErrorScenario4_Correct.xml"-"c:\system\test\TestData\Tp43EncodeOutputErrorScenario4_Correct.xml"
+"..\databases\landmarks\XML_Files\Tp43EncodeOutputErrorScenario5_Correct.xml"-"c:\system\test\TestData\Tp43EncodeOutputErrorScenario5_Correct.xml"
+
+"..\databases\landmarks\XML_Files\Tp43EncodeOutput_Correct.gpx"-"c:\system\test\TestData\Tp43EncodeOutput_Correct.gpx"
+"..\databases\landmarks\XML_Files\Tp43EncodeOutputIncMode_Correct.gpx"-"c:\system\test\TestData\Tp43EncodeOutputIncMode_Correct.gpx"
+"..\databases\landmarks\XML_Files\Tp43EncodeOutputCollectionData1_Correct.gpx"-"c:\system\test\TestData\Tp43EncodeOutputCollectionData1_Correct.gpx"
+"..\databases\landmarks\XML_Files\Tp43EncodeOutputCollectionData2_Correct.gpx"-"c:\system\test\TestData\Tp43EncodeOutputCollectionData2_Correct.gpx"
+"..\databases\landmarks\XML_Files\Tp43EncodeOutputEmptyCollectionData_Correct.gpx"-"c:\system\test\TestData\Tp43EncodeOutputEmptyCollectionData_Correct.gpx"
+"..\databases\landmarks\XML_Files\Tp43EncodeOutputEmptyCollectionData2_Correct.gpx"-"c:\system\test\TestData\Tp43EncodeOutputEmptyCollectionData2_Correct.gpx"
+"..\databases\landmarks\XML_Files\Tp43EncodeOutputLongCollectionField_Correct.gpx"-"c:\system\test\TestData\Tp43EncodeOutputLongCollectionField_Correct.gpx"
+"..\databases\landmarks\XML_Files\Tp43EncodeOutputErrorScenario4_Correct.gpx"-"c:\system\test\TestData\Tp43EncodeOutputErrorScenario4_Correct.gpx"
+"..\databases\landmarks\XML_Files\Tp43EncodeOutputErrorScenario5_Correct.gpx"-"c:\system\test\TestData\Tp43EncodeOutputErrorScenario5_Correct.gpx"
+
+;XML files needed in TP52
+"..\databases\landmarks\XML_Files\Tp52QuotedXMLTag1.xml"-"c:\system\test\TestData\Tp52QuotedXMLTag1.xml"
+"..\databases\landmarks\XML_Files\Tp52QuotedXMLTag1.gpx"-"c:\system\test\TestData\Tp52QuotedXMLTag1.gpx"
+
+;XML files needed in TP45
+"..\databases\landmarks\XML_Files\TP45-DefOptions.xml"-"c:\system\test\TestData\TP45-DefOptions.xml"
+"..\databases\landmarks\XML_Files\TP45-IncCategories.xml"-"c:\system\test\TestData\TP45-IncCategories.xml"
+"..\databases\landmarks\XML_Files\TP45-ExcCategories.xml"-"c:\system\test\TestData\TP45-ExcCategories.xml"
+"..\databases\landmarks\XML_Files\TP45-OneLandmark.xml"-"c:\system\test\TestData\TP45-OneLandmark.xml"
+"..\databases\landmarks\XML_Files\TP45-TwoLandmarks.xml"-"c:\system\test\TestData\TP45-TwoLandmarks.xml"
+"..\databases\landmarks\XML_Files\TP45-TwoLandmarksWithCollData.xml"-"c:\system\test\TestData\TP45-TwoLandmarksWithCollData.xml"
+
+;XML file with all the landmarks in the generated datanase
+"..\databases\landmarks\XML_Files\AllGeneratedLandmarks.xml"-"c:\system\test\TestData\AllGeneratedLandmarks.xml"
+
+;XML file with needed by TP53
+"..\databases\landmarks\XML_Files\TP53-CategoriesNotInDb.xml"-"c:\system\test\TestData\TP53-CategoriesNotInDb.xml"
+"..\databases\landmarks\XML_Files\TP53-OneLandmark.xml"-"c:\system\test\TestData\TP53-OneLandmark.xml"
+"..\databases\landmarks\XML_Files\TP53-Categories.xml"-"c:\system\test\TestData\TP53-Categories.xml"
+"..\databases\landmarks\XML_Files\TP53-Category.xml"-"c:\system\test\TestData\TP53-Category.xml"
+"..\databases\landmarks\XML_Files\TP53-GlobalCategory.xml"-"c:\system\test\TestData\TP53-GlobalCategory.xml"
+"..\databases\landmarks\XML_Files\TP53-LandmarksOneCategory.xml"-"c:\system\test\TestData\TP53-LandmarksOneCategory.xml"
+"..\databases\landmarks\XML_Files\TP53-LandmarkCategories.xml"-"c:\system\test\TestData\TP53-LandmarkCategories.xml"
+"..\databases\landmarks\XML_Files\TP53-LandmarksCategories.xml"-"c:\system\test\TestData\TP53-LandmarksCategories.xml"
+"..\databases\landmarks\XML_Files\TP53-Compact.xml"-"c:\system\test\TestData\TP53-Compact.xml"
+
+;XML files needed in TP49
+"..\databases\landmarks\XML_Files\Tp49ImportInput.xml"-"c:\system\test\TestData\Tp49ImportInput.xml"
+"..\databases\landmarks\XML_Files\Tp49ImportInputSyntaxError.xml"-"c:\system\test\TestData\Tp49ImportInputSyntaxError.xml"
+
+;XML files needed in TP55
+"..\databases\landmarks\XML_Files\TP55-DiskFullDuringExportImport.xml"-"c:\system\test\TestData\TP55-DiskFullDuringExportImport.xml"
+
+;XML files needed in TP56
+"..\databases\landmarks\XML_Files\TP56-LandmarksFromThreeDatabases.xml"-"c:\system\test\TestData\TP56-LandmarksFromThreeDatabases.xml"
+
+;XML files needed in TP76
+"..\databases\landmarks\corrupt_EPOSLMGLOBALCATEGORIES.R06"-"c:\system\test\TestData\corrupt_EPOSLMGLOBALCATEGORIES.R06"
+
+;Invalid database file needed in TP118
+"..\databases\landmarks\TP118HALFLMDB_2.LDB"-"c:\system\test\TestData\TP118HALFLMDB_2.LDB"
+
+;File used in TP100
+"..\databases\landmarks\XML_Files\TP100-LandmarksFromThreeDatabases.xml"-"c:\system\test\TestData\TP100-LandmarksFromThreeDatabases.xml"
+
+;File used in TP80
+;"..\databases\landmarks\01234567890123456789012345678901234567890123456789012345678901234567890123456789_COMPOSITEEPOSLM.LDB"-"c:\system\test\TestData\01234567890123456789012345678901234567890123456789012345678901234567890123456789_COMPOSITEEPOSLM.LDB"
+
+;File used in TP105
+"..\databases\landmarks\tp105_eposlmdefaultdbname.R06"-"c:\system\test\TestData\tp105_eposlmdefaultdbname.R06"
+"..\databases\landmarks\tp105_eposlmdefaultdbname.R01"-"c:\system\test\TestData\tp105_eposlmdefaultdbname.R01"
+
+; Databases used for multi searching
+"..\databases\landmarks\EPOSLM_020.LDB"-"c:\system\test\testdata\EPOSLM_020.LDB"
+"..\databases\landmarks\EPOSLM_040.LDB"-"c:\system\test\testdata\EPOSLM_040.LDB"
+"..\databases\landmarks\EPOSLM_060.LDB"-"c:\system\test\testdata\EPOSLM_060.LDB"
+"..\databases\landmarks\EPOSLM_080.LDB"-"c:\system\test\testdata\EPOSLM_080.LDB"
+"..\databases\landmarks\EPOSLM_105.LDB"-"c:\system\test\testdata\EPOSLM_105.LDB"
+
+"..\databases\landmarks\eposlm_1000_LMs.ldb"-"c:\system\test\testdata\eposlm_1000_LMs.ldb"
+"..\databases\landmarks\eposlm_5000_LMs.ldb"-"c:\system\test\testdata\eposlm_5000_LMs.ldb"
+
+;File used in TP136
+"..\databases\landmarks\XML_Files\TP136.xml"-"c:\system\test\TestData\TP136.xml"
+"..\databases\landmarks\XML_Files\TP136.gpx"-"c:\system\test\TestData\TP136.gpx"
+
+;File used in TP137
+"..\databases\landmarks\XML_Files\TP137.xml"-"c:\system\test\TestData\TP137.xml"
+"..\databases\landmarks\XML_Files\TP137.gpx"-"c:\system\test\TestData\TP137.gpx"
+
+;Files needed for Tp18
+"..\databases\landmarks\TP18Test.ldb"-"c:\system\test\TestData\TP18Test.ldb"
+"..\databases\landmarks\TP18Test1.ldb"-"c:\system\test\TestData\TP18Test1.ldb"
+
+;Files needed for Tp133
+"..\databases\landmarks\TP133Test.ldb"-"c:\system\test\TestData\TP133Test.ldb"
+
+;Files needed for Tp132
+"..\databases\landmarks\TP132Test.ldb"-"c:\system\test\TestData\TP132Test.ldb"
+
+
+;Files needed for Tp161
+"..\databases\landmarks\TP161Test.ldb"-"c:\system\test\TestData\TP161Test.ldb"
+
+;Files needed for Tp162
+"..\databases\landmarks\TP162Test.ldb"-"c:\system\test\TestData\TP162Test.ldb"
+
+;Files needed for Tp163
+"..\databases\landmarks\TP163Test.ldb"-"c:\system\test\TestData\TP163Test.ldb"
+
+;Files needed for Tp164
+"..\databases\landmarks\TP164Test.ldb"-"c:\system\test\TestData\TP164Test.ldb"
+

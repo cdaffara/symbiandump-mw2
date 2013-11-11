@@ -1,0 +1,34 @@
+/*
+* Copyright (c) 2002-2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: Provides information for building localaccess component
+*
+*
+*/
+
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+// Internal APIs
+../inc/epos_cposlmlocaldatabase.h       |../../../inc/epos_cposlmlocaldatabase.h
+../inc/EPos_CPosLmLocalCategoryManager.h |../../../inc/epos_cposlmlocalcategorymanager.h
+../inc/EPos_CPosLmLocalOperation.h       |../../../inc/epos_cposlmlocaloperation.h
+../inc/epos_rposlmlocalnameindex.h       |../../../inc/epos_rposlmlocalnameindex.h
+../inc/epos_rposlmlocalnameindex.inl     |../../../inc/epos_rposlmlocalnameindex.inl
+
+PRJ_MMPFILES
+EPos_LandmarksLocalAccess.mmp
+

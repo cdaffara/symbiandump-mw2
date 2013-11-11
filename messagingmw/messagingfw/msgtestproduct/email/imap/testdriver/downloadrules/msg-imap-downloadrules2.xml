@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>msg-imap-downloadrules2</name>
+	<timeout>6000</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\email\imap\downloadrules\msg-imap-downloadrules2.script</hostPath>
+			<devicePath>c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules2.script</devicePath>
+		</script>
+	</testScripts>
+
+	<testServers>
+		<server>T_MsgCommonServer</server>
+		<server>T_MsgImapServer</server>
+		<server>T_MsgSmtpServer</server>
+	</testServers>
+
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\email\imap\downloadrules\msg-imap-downloadrules2.ini</hostPath>
+			<devicePath>c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules2.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\IMAP_DLRules_ON.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\IMAP_DLRules_ON.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\IMAP_SMTP_ServerIAPSettings.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\IMAP_SMTP_ServerIAPSettings.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test1.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test1.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test3.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test3.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test6.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test6.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test10.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test10.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\100KBody.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\100KBody.txt</devicePath>
+		</data>
+	</dependencies>	
+</testExecuteTest>

@@ -1,0 +1,31 @@
+/*
+* Copyright (c) 2010 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: STS IBY file
+*
+*/
+
+#ifndef MMMWSYSTEMTONESERVICE_IBY
+#define MMMWSYSTEMTONESERVICE_IBY
+
+#include <bldvariant.hrh>
+
+file=ABI_DIR/BUILD_DIR/systemtoneservice.dll         SHARED_LIB_DIR/systemtoneservice.dll
+file=ABI_DIR/BUILD_DIR/stsserver.exe                 SHARED_LIB_DIR/stsserver.exe
+
+//STS_Stub
+data=ZSYSTEM/install/sts_stub.sis                    System/Install/sts_stub.sis
+
+#endif //MMMWSYSTEMTONESERVICE_IBY
+
+//End of File

@@ -1,0 +1,23 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// The iby file for the SUPL Ethernet Connection Starter
+// 
+//
+
+#ifndef __TE_LBSSUPLCONNSTARTER_IBY__
+#define __TE_LBSSUPLCONNSTARTER_IBY__
+
+ECOM_PLUGIN(Te_LbsSuplConnStarter.dll,10283762.rsc)
+
+#endif //__TE_LBSSUPLCONNSTARTER_IBY__

@@ -1,0 +1,28 @@
+EXPORTS
+	_ZN11RLbtManager24GetTriggerManagerUiInfoLER6RArrayI24TLbtTriggerManagerUiInfoE @ 1 NONAME
+	_ZN11RLbtManager26GetTriggeringSystemStatusLER26TLbtTriggeringSystemStatus @ 2 NONAME
+	_ZN11RLbtManager28GetTriggeringSystemSettingsLER28TLbtTriggeringSystemSettings @ 3 NONAME
+	_ZN11RLbtManager28SetTriggeringMechanismStateLE28TLbtTriggeringMechanismState @ 4 NONAME
+	_ZN11RLbtManager28SetTriggeringSystemSettingsLERK38TLbtTriggeringSystemManagementSettingsm @ 5 NONAME
+	_ZN11RLbtManager34NotifyTriggeringSystemStatusChangeER14TRequestStatus @ 6 NONAME
+	_ZN11RLbtManager35NotifyTriggeringSystemSettingChangeER38TLbtTriggeringSystemManagementSettingsR14TRequestStatus @ 7 NONAME
+	_ZN11RLbtManager40CancelNotifyTriggeringSystemStatusChangeEv @ 8 NONAME
+	_ZN11RLbtManager4OpenER10RLbtServer @ 9 NONAME
+	_ZN11RLbtManagerC1Ev @ 10 NONAME
+	_ZN11RLbtManagerC2Ev @ 11 NONAME
+	_ZN11RLbtManagerD1Ev @ 12 NONAME
+	_ZN11RLbtManagerD2Ev @ 13 NONAME
+	_ZN38TLbtTriggeringSystemManagementSettings19SetMaximumUserSpeedEd @ 14 NONAME
+	_ZN38TLbtTriggeringSystemManagementSettings24SetUsedPositioningModuleE4TUid @ 15 NONAME
+	_ZN38TLbtTriggeringSystemManagementSettings32SetMinimumLocationUpdateIntervalEi @ 16 NONAME
+	_ZN38TLbtTriggeringSystemManagementSettings44SetMinimumLocationUpdateIntervalWhenGpsFailsEi @ 17 NONAME
+	_ZN38TLbtTriggeringSystemManagementSettings4TypeEv @ 18 NONAME
+	_ZN38TLbtTriggeringSystemManagementSettingsC1Ev @ 19 NONAME
+	_ZN38TLbtTriggeringSystemManagementSettingsC2Ev @ 20 NONAME
+	_ZNK38TLbtTriggeringSystemManagementSettings16MaximumUserSpeedEv @ 21 NONAME
+	_ZNK38TLbtTriggeringSystemManagementSettings21UsedPositioningModuleEv @ 22 NONAME
+	_ZNK38TLbtTriggeringSystemManagementSettings29MinimumLocationUpdateIntervalEv @ 23 NONAME
+	_ZNK38TLbtTriggeringSystemManagementSettings41MinimumLocationUpdateIntervalWhenGpsFailsEv @ 24 NONAME
+	_ZTI38TLbtTriggeringSystemManagementSettings @ 25 NONAME ; #<TI>#
+	_ZTV38TLbtTriggeringSystemManagementSettings @ 26 NONAME ; #<VT>#
+

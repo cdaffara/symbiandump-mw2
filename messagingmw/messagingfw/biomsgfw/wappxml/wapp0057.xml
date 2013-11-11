@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE CHARACTERISTIC-LIST [
+<!ELEMENT CHARACTERISTIC-LIST (CHARACTERISTIC+)>
+<!ELEMENT CHARACTERISTIC (PARM*)>
+<!ATTLIST CHARACTERISTIC
+	TYPE CDATA #REQUIRED
+	VALUE CDATA #IMPLIED
+>
+<!ELEMENT PARM EMPTY>
+<!ATTLIST PARM
+	NAME CDATA #REQUIRED
+	VALUE CDATA #REQUIRED
+>
+]>
+<CHARACTERISTIC-LIST>
+    <CHARACTERISTIC TYPE="BOOKMARK">
+ 		<PARM NAME="NAME" VALUE=""/>
+		<PARM NAME="URL" VALUE="http://www.somewhere.com/index1.wml"/>
+	</CHARACTERISTIC>
+    <CHARACTERISTIC TYPE="BOOKMARK">
+ 		<PARM NAME="NAME" VALUE="A cool page"/>
+		<PARM NAME="URL" VALUE=""/>
+	</CHARACTERISTIC>
+    <CHARACTERISTIC TYPE="BOOKMARK">
+ 		<PARM NAME="NAME" VALUE="Slick Sid's Big Band Sounds"/>
+		<PARM NAME="URL" VALUE="http://www.SlickSid.com/index3.wml"/>
+        <PARM NAME="NAME" VALUE=""/>
+	</CHARACTERISTIC>
+    <CHARACTERISTIC TYPE="BOOKMARK">
+        <PARM NAME="NAME" VALUE=""/>
+		<PARM NAME="URL" VALUE="http://www.soundsgreat.com/index4.wml"/>
+ 		<PARM NAME="NAME" VALUE="Mega-tastic site"/>
+	</CHARACTERISTIC>
+    <CHARACTERISTIC TYPE="BOOKMARK">
+ 		<PARM NAME="NAME" VALUE="Out to Lunch"/>
+        <PARM NAME="NAME" VALUE=""/>
+        <PARM NAME="URL" VALUE="http://www.foodies.com/index5.wml"/>
+	</CHARACTERISTIC>
+    <CHARACTERISTIC TYPE="BOOKMARK">
+        <PARM NAME="NAME" VALUE=""/>
+ 		<PARM NAME="NAME" VALUE="Big sounds site"/>
+		<PARM NAME="URL" VALUE="http://www.soundsgreat.com/index6.wml"/>
+	</CHARACTERISTIC>
+    <CHARACTERISTIC TYPE="BOOKMARK">
+		<PARM NAME="URL" VALUE="http://www.chilliburgers-r-us.com/index7.wml"/>
+ 		<PARM NAME="URL" VALUE=""/>	
+        <PARM NAME="NAME" VALUE="Hot cuisine"/>
+	</CHARACTERISTIC>
+    <CHARACTERISTIC TYPE="BOOKMARK">
+ 		<PARM NAME="URL" VALUE=""/>
+        <PARM NAME="URL" VALUE="http://www.planetearth.com/index8.wml"/>
+		<PARM NAME="NAME" VALUE="Green pages"/>
+	</CHARACTERISTIC>
+  <CHARACTERISTIC TYPE="BOOKMARK">
+ 		<PARM NAME="URL" VALUE="http://www.rubbercheese.com/index9.wml"/>
+		<PARM NAME="NAME" VALUE="Haute cuisine"/>
+		<PARM NAME="URL" VALUE=""/>
+	</CHARACTERISTIC>
+    <CHARACTERISTIC TYPE="BOOKMARK">
+		<PARM NAME="URL" VALUE=""/>
+ 		<PARM NAME="NAME" VALUE="Web directory"/>
+        <PARM NAME="URL" VALUE="http://www.webdirectory.com/index10.wml"/>
+	</CHARACTERISTIC>
+</CHARACTERISTIC-LIST>

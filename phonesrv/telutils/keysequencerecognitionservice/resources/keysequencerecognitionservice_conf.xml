@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<service>
+  <name>keysequencerecognitionservice</name>
+  <filepath>No path</filepath>
+  <description>Key sequence recognition service</description>
+  <interface>
+     <name>com.nokia.symbian.IKeySequenceRecognition</name>
+     <version>1.0</version>
+     <description>Interface for key sequence recognition</description>
+   </interface>
+</service>

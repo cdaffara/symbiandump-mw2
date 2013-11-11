@@ -1,0 +1,34 @@
+// Copyright (c) 1999-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRJ_PLATFORMS
+
+
+PRJ_EXPORTS
+
+
+PRJ_MMPFILES
+
+
+PRJ_TESTMMPFILES
+pigeonmtm.mmp
+makefile pigmtm.mk
+
+PRJ_TESTEXPORTS
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+../inc/pigeonservermtm.h /epoc32/include/pigeonservermtm.h
+#endif
+
+1000127E.txt z:/private/10202be9/1000127e.txt

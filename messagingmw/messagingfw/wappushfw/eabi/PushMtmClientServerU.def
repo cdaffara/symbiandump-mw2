@@ -1,0 +1,8 @@
+EXPORTS
+	_ZN17CWapPushClientMtm4NewLER17CRegisteredMtmDllR11CMsvSession @ 1 NONAME
+	_ZN17CWapPushServerMtm4NewLER17CRegisteredMtmDllP15CMsvServerEntry @ 2 NONAME
+	_ZTI17CWapPushClientMtm @ 3 NONAME ; #<TI>#
+	_ZTI17CWapPushServerMtm @ 4 NONAME ; #<TI>#
+	_ZTV17CWapPushClientMtm @ 5 NONAME ; #<VT>#
+	_ZTV17CWapPushServerMtm @ 6 NONAME ; #<VT>#
+

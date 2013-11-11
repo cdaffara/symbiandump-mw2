@@ -1,0 +1,7 @@
+EXPORTS
+	_Z9LibEntryLR13CTestModuleIf @ 1 NONAME
+	_ZTI28CTerminalInitiatedRunSession @ 2 NONAME ; #<TI>#
+	_ZTV28CTerminalInitiatedRunSession @ 3 NONAME ; #<VT>#
+	_ZTI16CSessionObserver @ 4 NONAME
+	_ZTV16CSessionObserver @ 5 NONAME
+

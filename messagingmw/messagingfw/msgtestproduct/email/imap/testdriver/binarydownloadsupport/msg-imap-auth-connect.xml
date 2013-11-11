@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>msg-imap-auth-connect</name>
+	<timeout>5000</timeout>
+
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\email\imap\binarydownloadsupport\msg-imap-auth-connect.script</hostPath>
+			<devicePath>c:\msgtest\email\imap\binarydownloadsupport\msg-imap-auth-connect.script</devicePath>
+		</script>
+	</testScripts>
+
+	<testServers>
+		<server>T_MsgCommonServer</server>
+		<server>T_MsgImapServer</server>
+	</testServers>
+
+	<dependencies>
+		
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\email\imap\binarydownloadsupport\msg-imap-auth-connect.ini</hostPath>
+			<devicePath>c:\msgtest\email\imap\binarydownloadsupport\msg-imap-auth-connect.ini</devicePath>
+		</data>
+
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\imap_settings_auth_test001.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\imap_settings_auth_test001.txt</devicePath>
+		</data>
+
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\imap_settings_auth_test002.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\imap_settings_auth_test002.txt</devicePath>
+		</data>
+
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\imap_settings_auth_test003.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\imap_settings_auth_test003.txt</devicePath>
+		</data>
+
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\imap_settings_auth_test004.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\imap_settings_auth_test004.txt</devicePath>
+		</data>
+
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\imap_settings_auth_test005.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\imap_settings_auth_test005.txt</devicePath>
+		</data>
+
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\imap_settings_auth_test006.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\imap_settings_auth_test006.txt</devicePath>
+		</data>
+
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\imap_settings_auth_test007.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\imap_settings_auth_test007.txt</devicePath>
+		</data>
+
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\imap_settings_auth_test008.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\imap_settings_auth_test008.txt</devicePath>
+		</data>
+
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\imap_settings_auth_test009.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\imap_settings_auth_test009.txt</devicePath>
+		</data>
+	
+
+	</dependencies>	
+</testExecuteTest>

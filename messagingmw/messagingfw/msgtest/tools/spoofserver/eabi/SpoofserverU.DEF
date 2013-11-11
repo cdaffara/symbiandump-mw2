@@ -1,0 +1,10 @@
+EXPORTS
+	_ZN12CSpoofServer4NewLER21MImapTestEventHandlerRK7TDesC16 @ 1 NONAME
+	_ZN12CSpoofServer5NewLCER21MImapTestEventHandlerRK7TDesC16 @ 2 NONAME
+	_ZN12CSpoofServer6StartLEi @ 3 NONAME
+	_ZN12CSpoofServer8RunErrorEi @ 4 NONAME
+	_ZTI12CSpoofServer @ 5 NONAME ; #<TI>#
+	_ZTI20CScriptFileProcessor @ 6 NONAME ; #<TI>#
+	_ZTV12CSpoofServer @ 7 NONAME ; #<VT>#
+	_ZTV20CScriptFileProcessor @ 8 NONAME ; #<VT>#
+

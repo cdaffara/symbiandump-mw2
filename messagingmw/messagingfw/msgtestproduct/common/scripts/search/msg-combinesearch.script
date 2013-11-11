@@ -1,0 +1,188 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+LOAD_SUITE 	T_MsgCommonServer 	-SharedData
+LOAD_SUITE 	T_MsgImapServer 	-SharedData
+LOAD_SUITE  	T_MsgSmtpServer 	-SharedData
+
+//! @SYMTestCaseID		MSG-CMBSRCH-0001
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8588, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	Functional Test: Combined/multipart search execution
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//! 	1. Create search-sort query for all the messages in the sent folder where "To" field contains "test003" recipient address and "CC" field contains "test006" and size greater than 10 KB and body contains "share" and sort by date in ascending order
+//! 	2. Perform search-sort operation
+//! 	3. Verify as per the search-sort criteria in Action 1.
+//!
+//! @SYMTestExpectedResults
+//!	Index entries matching as per the search-sort criteria in Action1.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-CMBSRCH-0001
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300 T_MsgCommonServer  	StartUp
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-combinesearch.ini    0001-CombineSearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-combinesearch.ini    0001-CombineSearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-combinesearch.ini    0001-CombineSearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySortResult		c:\msgtest\common\search\msg-combinesearch.ini    0001-CombineSearchSortQuery
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-CMBSRCH-0001
+
+//! @SYMTestCaseID		MSG-CMBSRCH-0002
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8588, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	Functional Test: Combined/multipart search execution
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//! 	1.	Create search-sort query for all the messaging in the sent folder where "From" field contains "test002" senders address and with message as attachments
+//! 	2.	Perform search-sort operation
+//! 	3.	Verify as per the search-sort criteria in Action 1.
+//!
+//! @SYMTestExpectedResults
+//!	Index entries matching as per the search-sort criteria in Action1.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-CMBSRCH-0002
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300 T_MsgCommonServer  	StartUp
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-combinesearch.ini    0002-CombineSearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-combinesearch.ini    0002-CombineSearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-combinesearch.ini    0002-CombineSearchSortQuery
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-CMBSRCH-0002
+
+//! @SYMTestCaseID		MSG-CMBSRCH-0003
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8588, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	Functional Test: Combined/multipart search execution
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//! 	1. Create search-sort query for all the messaged in sent folder where "To" field contains "test011" and priority "normal" and body contains "mile*"
+//! 	2. Perform search-sort operation with iteration flag enabled.
+//! 	3. Verify as per the search-sort criteria in Action 1.
+//!
+//! @SYMTestExpectedResults
+//!	Index entries matching as per the search-sort criteria in Action1.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-CMBSRCH-0003
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300 T_MsgCommonServer  	StartUp
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-combinesearch.ini    0003-CombineSearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-combinesearch.ini    0003-CombineSearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-combinesearch.ini    0003-CombineSearchSortQuery
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-CMBSRCH-0003
+
+//! @SYMTestCaseID		MSG-CMBSRCH-0004
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8588, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	Functional Test: Combined/multipart search execution
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//! 	1. Create search-sort query for all the messaged in sent folder where "To" field contains "test008" and "CC" field contains "test001" as recipient address and date less than "31st Jan 2007" and priority "normal" and body contains "mile*"
+//! 	2. Perform search-sort operation with iteration flag enabled.
+//! 	3. Verify as per the search-sort criteria in Action 1.
+//!
+//! @SYMTestExpectedResults
+//!	Index entries matching as per the search-sort criteria in Action1.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-CMBSRCH-0004
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300 T_MsgCommonServer  	StartUp
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-combinesearch.ini    0004-CombineSearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-combinesearch.ini    0004-CombineSearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	VerifySearchResult		c:\msgtest\common\search\msg-combinesearch.ini    0004-CombineSearchSortQuery
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-CMBSRCH-0004
+
+//! @SYMTestCaseID		MSG-CMBSRCH-0005
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8588, REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	Negative Test: Combined search execution 
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//! 	1.	Create search-sort query for all the messages in sent folder where "To" field contains "test008" and "CC" field contains "test001" 
+//!		as recipient address and date less than "31st Jan 2007" and priority "normal" and size greater than 10KB and body contains "mile*"
+//! 	2.	Verify that during creation of the query mentioned in step 1, the operation leaves with KErrMsvQueryMaxLimit.
+//! 	
+//! @SYMTestExpectedResults
+//!	Leaves with error code KErrMsvQueryMaxLimit.
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-CMBSRCH-0005
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP		300 T_MsgCommonServer  	StartUp
+
+RUN_TEST_STEP	!Error=-61 300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-combinesearch.ini    0005-CombineSearchSortQuery
+
+RUN_TEST_STEP		300 T_MsgCommonServer	ShutDown
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-CMBSRCH-0005

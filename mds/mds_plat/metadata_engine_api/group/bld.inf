@@ -1,0 +1,68 @@
+/*
+* Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Build information file
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+    DEFAULT
+
+PRJ_EXPORTS
+../inc/mdccommon.h    MW_LAYER_PLATFORM_EXPORT_PATH(mdccommon.h)
+../inc/mdeerror.h   MW_LAYER_PLATFORM_EXPORT_PATH(mdeerror.h)
+../inc/mdeinternalerror.h   MW_LAYER_PLATFORM_EXPORT_PATH(mdeinternalerror.h)
+../inc/mdedatabuffer.h    MW_LAYER_PLATFORM_EXPORT_PATH(mdedatabuffer.h)
+../inc/mdequery.h     MW_LAYER_PLATFORM_EXPORT_PATH(mdequery.h)
+../inc/mdesession.h     MW_LAYER_PLATFORM_EXPORT_PATH(mdesession.h)
+../inc/mdeboolpropertycondition.h   MW_LAYER_PLATFORM_EXPORT_PATH(mdeboolpropertycondition.h)
+../inc/mdecondition.h   MW_LAYER_PLATFORM_EXPORT_PATH(mdecondition.h)
+../inc/mdeconstants.h   MW_LAYER_PLATFORM_EXPORT_PATH(mdeconstants.h)
+../inc/mdeevent.h   MW_LAYER_PLATFORM_EXPORT_PATH(mdeevent.h)
+../inc/mdeeventcondition.h   MW_LAYER_PLATFORM_EXPORT_PATH(mdeeventcondition.h)
+../inc/mdeeventdef.h   MW_LAYER_PLATFORM_EXPORT_PATH(mdeeventdef.h)
+../inc/mdeeventquery.h   MW_LAYER_PLATFORM_EXPORT_PATH(mdeeventquery.h)
+../inc/mdeinstanceitem.h   MW_LAYER_PLATFORM_EXPORT_PATH(mdeinstanceitem.h)
+../inc/mdeitem.h   MW_LAYER_PLATFORM_EXPORT_PATH(mdeitem.h)
+../inc/mdelogiccondition.h   MW_LAYER_PLATFORM_EXPORT_PATH(mdelogiccondition.h)
+../inc/mdenamespacedef.h   MW_LAYER_PLATFORM_EXPORT_PATH(mdenamespacedef.h)
+../inc/mdeobject.h   MW_LAYER_PLATFORM_EXPORT_PATH(mdeobject.h)
+../inc/mdeobjectcondition.h   MW_LAYER_PLATFORM_EXPORT_PATH(mdeobjectcondition.h)
+../inc/mdeobjectdef.h   MW_LAYER_PLATFORM_EXPORT_PATH(mdeobjectdef.h)
+../inc/mdeobjectquery.h   MW_LAYER_PLATFORM_EXPORT_PATH(mdeobjectquery.h)
+../inc/mdeorderrule.h   MW_LAYER_PLATFORM_EXPORT_PATH(mdeorderrule.h)
+../inc/mdeproperty.h   MW_LAYER_PLATFORM_EXPORT_PATH(mdeproperty.h)
+../inc/mdepropertycondition.h   MW_LAYER_PLATFORM_EXPORT_PATH(mdepropertycondition.h)
+../inc/mdepropertydef.h   MW_LAYER_PLATFORM_EXPORT_PATH(mdepropertydef.h)
+../inc/mderange.h   MW_LAYER_PLATFORM_EXPORT_PATH(mderange.h)
+../inc/mderange.inl   MW_LAYER_PLATFORM_EXPORT_PATH(mderange.inl)
+../inc/mderangepropertycondition.h   MW_LAYER_PLATFORM_EXPORT_PATH(mderangepropertycondition.h)
+../inc/mderelation.h   MW_LAYER_PLATFORM_EXPORT_PATH(mderelation.h)
+../inc/mderelationcondition.h   MW_LAYER_PLATFORM_EXPORT_PATH(mderelationcondition.h)
+../inc/mderelationdef.h   MW_LAYER_PLATFORM_EXPORT_PATH(mderelationdef.h)
+../inc/mderelationquery.h   MW_LAYER_PLATFORM_EXPORT_PATH(mderelationquery.h)
+../inc/mdetextpropertycondition.h   MW_LAYER_PLATFORM_EXPORT_PATH(mdetextpropertycondition.h)
+../inc/mdetextproperty.h   MW_LAYER_PLATFORM_EXPORT_PATH(mdetextproperty.h)
+../inc/mdetextproperty.inl   MW_LAYER_PLATFORM_EXPORT_PATH(mdetextproperty.inl)
+../inc/mdenumberproperty.h   MW_LAYER_PLATFORM_EXPORT_PATH(mdenumberproperty.h)
+../inc/mdenumberproperty.inl   MW_LAYER_PLATFORM_EXPORT_PATH(mdenumberproperty.inl)
+../inc/mdeversioncenrepkey.h   MW_LAYER_PLATFORM_EXPORT_PATH(mdeversioncenrepkey.h)
+
+PRJ_MMPFILES
+
+PRJ_TESTMMPFILES
+
+PRJ_TESTEXPORTS

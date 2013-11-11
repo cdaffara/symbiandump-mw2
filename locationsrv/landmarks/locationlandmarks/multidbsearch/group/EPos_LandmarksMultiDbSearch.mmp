@@ -1,0 +1,54 @@
+/*
+* Copyright (c) 2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*     This is the project specification file for Landmarks Search Client Library
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET          eposlmmultidbsearch.dll
+TARGETTYPE      dll
+UID             0x1000008d 0x101FE995
+
+VENDORID        VID_DEFAULT
+CAPABILITY      CAP_CLIENT_DLL
+
+SOURCEPATH      ../src
+SOURCE          EPos_CPosLmMultiDbSearch.cpp
+SOURCE          EPos_CPosLmMultiDbSearchItem.cpp
+SOURCE          EPos_CPosLmMultiDbSearchOperation.cpp
+SOURCE          EPos_CPosLmActiveOperation.cpp
+SOURCE          EPos_CPosLmMultiDbSortPref.cpp
+SOURCE          EPos_PosLmCriteriaHelper.cpp
+SOURCE          EPos_CPosLmEmptyIterator.cpp
+
+USERINCLUDE     ../inc
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   ../../../inc
+
+LIBRARY         euser.lib
+LIBRARY         bafl.lib
+LIBRARY         lbs.lib
+LIBRARY         eposlandmarks.lib
+LIBRARY         eposlmsearchlib.lib
+LIBRARY         eposlmlocalaccess.lib
+LIBRARY         eposlmintservices.lib
+
+SMPSAFE
+
+// END OF FILE
+

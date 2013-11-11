@@ -1,0 +1,46 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//********************************
+// Cap_EMsvMoveEntries_004_001.script
+//********************************
+
+PRINT Running  Cap_EMsvMoveEntries_004_001.script : SendProxyServer has Read/Write user data + Network services. 
+PRINT Running  Cap_EMsvMoveEntries_004_001.script : Source entry has same SID as proxy.
+PRINT Running  Cap_EMsvMoveEntries_004_001.script : The capabilities will allow us to move entry. 
+
+//********************************
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_Caps.exe 0003fffe -SID 101F7780 C:\sys\bin\MessagingTestServer.exe
+RUN_PROGRAM -1 setcap c:\sys\bin\SendProxyServer_Caps.exe 0001a000 -SID 101F7780 C:\sys\bin\SendProxyServer.exe
+
+// Clean up
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CleanMessageStore.Script
+
+// Create source
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SetupMoveEntryInDrafts.Script
+
+// Create target
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SetupMoveEntriesInOutbox.Script
+
+// do the move, proxy owns entries
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvMoveSingleEntryPass.script
+
+DELAY 3000
+	// Sleep to allow proxy server to die
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+//********************************

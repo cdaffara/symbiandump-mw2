@@ -1,0 +1,27 @@
+/************************************************************************
+	Test case: Request command using ext-if.
+		
+	1. Send request.
+*************************************************************************/	
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 12.3 Request command to extension interface with non-mapped serviceid
+timeout 15000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+// Request command using wrong service id 15577 (no plugin mapped to it) KErrNotFound(-1)
+// last parameter is expected result (KErrNotFound)
+test RequestExtIfCommand 15577 123 "Test string for CS extension IF" -1
+
+// expect KErrNotFound back
+
+test VerifyTest
+delete test
+[Endtest]

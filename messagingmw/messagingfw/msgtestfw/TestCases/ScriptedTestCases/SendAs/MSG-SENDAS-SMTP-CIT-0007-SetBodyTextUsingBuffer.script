@@ -1,0 +1,61 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+//! @file
+//! @SYMTestCaseID 		CM-SENDAS-SMTP-CIT-0007-HP
+//! @SYMTestCaseDesc 		Create SMTP Message using SendAs API and set its body text from a buffer
+//! @SYMFssID 
+//! @SYMTestStatus 		Defined
+//! @SYMTestPriority 		High
+//! @SYMTestActions	
+//! @SYMTestExpectedResults 	A SMTP message is created in the Drafts folder.  
+//!   				The body text for the message is set successfully, and the verification of the body text contents is successful
+//! @SYMTestType 		CIT
+
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+GetBaseConstants		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0007-SetBodyTextUsingBuffer.ini	GetBaseConstants
+CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0007-SetBodyTextUsingBuffer.ini	CreateSession
+ResetMessageStore		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0007-SetBodyTextUsingBuffer.ini	ResetMessageStore
+CreatePopAccount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0007-SetBodyTextUsingBuffer.ini	CreatePopAccount
+CreateSmtpService		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0007-SetBodyTextUsingBuffer.ini	CreateSmtpService
+CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0007-SetBodyTextUsingBuffer.ini	CreateRegistry
+CreateSmtpMtm			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0007-SetBodyTextUsingBuffer.ini	CreateSmtpMtm
+SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0007-SetBodyTextUsingBuffer.ini	SetDefaultConfiguration0
+SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0007-SetBodyTextUsingBuffer.ini	SetDefaultConfiguration1
+SetSmtpServiceParameters	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0007-SetBodyTextUsingBuffer.ini	SetSmtpServiceParameters
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0007-SetBodyTextUsingBuffer.ini	ChkChildrenCountDraft0
+EXECUTE_TEST_CASE
+ChangeDefaultSmtpService	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0007-SetBodyTextUsingBuffer.ini	ChangeDefaultSmtpService
+ConnectSendAsServer		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0007-SetBodyTextUsingBuffer.ini	ConnectSendAsServer
+GetSMTPMTMUId			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0007-SetBodyTextUsingBuffer.ini	GetSMTPMTMUId
+SendAsCreateMessageofType	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0007-SetBodyTextUsingBuffer.ini	CreateMessageofType
+SendAsSetBodyText		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0007-SetBodyTextUsingBuffer.ini	SendAsSetBodyText
+SendAsSaveMessageAndClose	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0007-SetBodyTextUsingBuffer.ini	SendAsSaveMessageAndClose
+CloseSendAsServerConnection	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0007-SetBodyTextUsingBuffer.ini	CloseSvrConnection
+CHECK_POSTCONDITIONS
+CheckChildrenCount 		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0007-SetBodyTextUsingBuffer.ini	ChkChildrenCountDraft1
+CreateChildrenSelection  	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0007-SetBodyTextUsingBuffer.ini	CreateChildrenSelDraft
+GetMessageAtIndex	 	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0007-SetBodyTextUsingBuffer.ini	GetMessageAtIndex
+GetEntry    			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0007-SetBodyTextUsingBuffer.ini	GetEntry
+VerifyBodyText			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0007-SetBodyTextUsingBuffer.ini	VerifyBodyText
+END_TEST_CASE

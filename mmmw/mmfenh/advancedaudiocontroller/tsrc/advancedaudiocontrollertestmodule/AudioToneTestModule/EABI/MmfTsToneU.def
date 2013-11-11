@@ -1,0 +1,28 @@
+EXPORTS
+	_Z9LibEntryLv @ 1 NONAME
+	_Z15SetRequirementsRP16CTestModuleParamRm @ 2 NONAME
+	_ZTI11CMediaEvent @ 3 NONAME ; #<TI>#
+	_ZTI11CTonePlayer @ 4 NONAME ; #<TI>#
+	_ZTI15CDTMFParameters @ 5 NONAME ; #<TI>#
+	_ZTI15CDes8Parameters @ 6 NONAME ; #<TI>#
+	_ZTI19CFileNameParameters @ 7 NONAME ; #<TI>#
+	_ZTI19CTemplateParametersI11TFixedArrayIxLi2EEE @ 8 NONAME ; #<TI>#
+	_ZTI19CTemplateParametersI11TFixedArrayIxLi3EEE @ 9 NONAME ; #<TI>#
+	_ZTI19CTemplateParametersI4TBufILi256EEE @ 10 NONAME ; #<TI>#
+	_ZTI19CTemplateParametersIP6HBufC8E @ 11 NONAME ; #<TI>#
+	_ZTI19CTemplateParametersIiE @ 12 NONAME ; #<TI>#
+	_ZTI20CImmediateMediaEvent @ 13 NONAME ; #<TI>#
+	_ZTI30CActiveScheduledTestModuleBase @ 14 NONAME ; #<TI>#
+	_ZTV11CMediaEvent @ 15 NONAME ; #<VT>#
+	_ZTV11CTonePlayer @ 16 NONAME ; #<VT>#
+	_ZTV15CDTMFParameters @ 17 NONAME ; #<VT>#
+	_ZTV15CDes8Parameters @ 18 NONAME ; #<VT>#
+	_ZTV19CFileNameParameters @ 19 NONAME ; #<VT>#
+	_ZTV19CTemplateParametersI11TFixedArrayIxLi2EEE @ 20 NONAME ; #<VT>#
+	_ZTV19CTemplateParametersI11TFixedArrayIxLi3EEE @ 21 NONAME ; #<VT>#
+	_ZTV19CTemplateParametersI4TBufILi256EEE @ 22 NONAME ; #<VT>#
+	_ZTV19CTemplateParametersIP6HBufC8E @ 23 NONAME ; #<VT>#
+	_ZTV19CTemplateParametersIiE @ 24 NONAME ; #<VT>#
+	_ZTV20CImmediateMediaEvent @ 25 NONAME ; #<VT>#
+	_ZTV30CActiveScheduledTestModuleBase @ 26 NONAME ; #<VT>#
+

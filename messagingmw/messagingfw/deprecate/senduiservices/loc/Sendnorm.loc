@@ -1,0 +1,113 @@
+/*
+* Copyright (c) 2002-2004 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:   This file contains the localised strings for Sendui.
+*
+*/
+
+
+
+
+// LOCALISATION STRINGS
+
+// d: Query text to confirm if user wants to define new remote mailbox.
+// l: popup_note_window
+//
+#define qtn_mce_conf_no_mailboxes "No Remote mailboxes defined.\nDo you want to define it now?"
+
+// d: Text in wait note.
+// d: Shown when opening message editor.
+// l: popup_note_wait_window
+//
+#define qtn_mail_wait_opening_editor "Opening..."
+
+// d: Text in error note.
+// d: Shown when message cannot be created when settings are missing or incomplete.
+// d: Settings must be defined in message centre.
+// l: popup_note_window
+//
+#define qtn_mce_error_stand_settings "Message can't be created. Settings incomplete. Fill them in in Messages."
+
+//d: Information note
+//d: Note shown when one corrupted object is tried to send.
+//l: popup_note_window
+#define qtn_mms_upload_info_corrupted "Unable to send. Object is corrupted."
+
+//d: Information note
+//d: Note shown when many corrupted objects are tried to send.
+//l: popup_note_window
+#define qtn_mms_upload_info_corrupted_all "Unable to send. Objects are corrupted."
+
+//d: Information note
+//d: Shown when some of the files to be sent are corrupted
+//l: popup_note_window
+#define qtn_mms_upload_info_corrupted_some "Unable to send. Some objects are corrupted."
+
+//d: Information note.
+//d: Note shown when many big objects exceeding the [Maximum MMS size in kB] are
+//d: tried to sent.
+//l: popup_note_window
+#define qtn_mms_info_size_all_not_sent "Message size %N kB exceeded. Unable to send all objects."
+
+//d: Information note.
+//d: Note shown when an object is so big that the insertion
+//d: of the object would exceed the [Maximum MMS size in kB].
+//l: popup_note_window
+#define qtn_mms_info_size_not_sent "Message size %N kB exceeded. Sending not possible."
+
+//d: Information note
+//d: Shown when some of the files are rejected with different error codes
+//l: popup_note_window
+#define qtn_mms_info_only_some_sent "All objects could not be sent."
+
+//d: Information note
+//d: Shown when all of the files are rejected with different error codes
+//l: popup_note_window
+#define qtn_mms_info_cannot_send "Unable to send objects."
+
+//d: Information note
+//d: Note shown when one unsupported object is tried to send.
+//l: popup_note_window
+#define qtn_mms_info_obj_not_supp_send "Unable to send. Object format not supported."
+
+//d: Information note
+//d: Shown when some of the files to be sent are not supported.
+//l: popup_note_window
+#define qtn_mms_info_some_not_supp_send "Unable to send all. Some object formats not supported."
+
+//d: Information note
+//d: Note shown when many unsupported objects are tried to send.
+//l: popup_note_window
+#define qtn_mms_info_objects_not_supp_send  "Unable to send. Object formats not supported."
+
+// d: Text in confirmation query for one protected item.
+// l: popup_note_window
+#define qtn_drm_query_mms_upload_one_sd "Object protected. Protected objects may not be used in the service. Continue?"
+
+// d: Text in confirmation query for several SD protected items.
+// l: popup_note_window
+#define qtn_drm_query_mms_upload_all_sd "Objects protected. Protected objects may not be used in the service. Continue?"
+
+// d: Text in confirmation query for at least one protected item.
+// l: popup_note_window
+#define qtn_drm_query_mms_upload_some "Some objects protected. Protected objects may not be used in the service. Continue?"
+
+//d: Text in error note.
+//d: Shown when messages cannot be created when settings are missing or incomplete.
+//l: popup_note_window
+//w:
+//r:3.0
+//
+#define qtn_mce_error_stand_settings_many "Messages can not be created. Settings incomplete. Fill them in in Messages."
+
+// End of File

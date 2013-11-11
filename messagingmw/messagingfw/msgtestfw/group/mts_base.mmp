@@ -1,0 +1,94 @@
+// Copyright (c) 2004-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+TARGET        		mts_base.lib
+TARGETTYPE    		lib
+UID 0
+VENDORID 			0x70000001
+
+
+USERINCLUDE			../Framework/inc
+USERINCLUDE			../TestActions/Sample/inc 
+USERINCLUDE 		../TestActions/Base/inc 
+USERINCLUDE 		../TestActions/Base/attachments/inc 
+
+USERINCLUDE			../TestActions/Email/Common/inc 
+USERINCLUDE			../TestActions/Framework/inc
+USERINCLUDE			../TestActionUtils/inc
+USERINCLUDE			../TestActions/Pigeon/inc
+USERINCLUDE			../TestCases/NonScriptedTestCases/inc 
+
+USERINCLUDE			../../msgtests/Framework/server/inc
+USERINCLUDE			../../watcherfw/inc
+USERINCLUDE			../../scheduledsendmtm/test/unit/inc
+
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+SOURCEPATH			../TestActions/Base/src 
+SOURCE				CMtfTestActionGetBaseConstants.cpp 
+SOURCE				CMtfTestActionGetEntryPriorityEnums.cpp 
+SOURCE				CMtfTestActionSleep.cpp 
+SOURCE				CMtfTestActionDeleteMessageStore.cpp 
+SOURCE				CMtfTestActionCreateSession.cpp CMtfTestActionDeleteSession.cpp 
+SOURCE				CMtfTestActionResetMessageStore.cpp 
+SOURCE				CMtfTestActionCreateService.cpp CMtfTestActionDeleteService.cpp 
+SOURCE				CMtfTestActionCreateRegistry.cpp CMtfTestActionDeleteRegistry.cpp
+SOURCE				CMtfTestActionCreateMtm.cpp CMtfTestActionDeleteMtm.cpp 
+SOURCE				CMtfTestActionCreateEntry.cpp CMtftestActionDeleteEntry.cpp
+SOURCE				CMtfTestActionCreateMessage.cpp CMtftestActionDeleteMessage.cpp
+SOURCE				CMtfTestActionCopyEntry.cpp CMtftestActionMoveEntry.cpp
+SOURCE				CMtfTestActionFindEntryByName.cpp
+SOURCE				CMtfTestActionCreateFolder.cpp CMtftestActionDeleteFolder.cpp
+SOURCE				CMtfTestActionCreateSelection.cpp CMtfTestActionDeleteSelection.cpp 
+SOURCE				CMtfTestActionAppendToSelection.cpp 
+SOURCE				CMtfTestActionDeleteChildren.cpp 
+SOURCE				CMtfTestActionGetDefaultMtmCommandParameters.cpp CMtfTestActionExecuteMtmCommand.cpp
+SOURCE				CMtfTestActionCheckChildrenCount.cpp 
+SOURCE				CMtfTestActionCheckChildrenCountWithFlagBase.cpp 
+SOURCE				CMtfTestActionCheckChildrenCountWithFlagNew.cpp 
+SOURCE				CMtfTestActionCheckChildrenCountWithFlagComplete.cpp 
+SOURCE				CMtfTestActionCreateChildrenSelection.cpp 
+SOURCE				CMtfTestActionCopySelection.cpp CMtftestActionMoveSelection.cpp
+SOURCE				CMtfTestActionSetDefaultDataFile.cpp
+SOURCE				CMtfTestActionChangeToExternalDrive.cpp
+SOURCE				CMtfTestActionChangeToInternalDrive.cpp
+SOURCE				CMtfTestActionRemoveMedia.cpp
+SOURCE				CMtfTestActionInsertMedia.cpp
+SOURCE				CMtfTestActionDeletePath.cpp
+SOURCE 				CMtfTestActionStartWatchers.cpp
+SOURCE				CMtfTestActionSetDefaultConfiguration.cpp
+SOURCE		     	CMtfTestActionGetArrayCount.cpp
+SOURCE				CMtfTestActionCompareNumbers.cpp
+SOURCE  	 	 	CMtfTestActionGetNumberOfChildren.cpp
+SOURCE				CMtfTestActionInitializeSimTsy.cpp
+SOURCE				CMtfTestActionSetNetRegStatus.cpp
+SOURCE				CMtfTestActionSetSignalStrength.cpp
+SOURCE				CMtfTestActionInstallMtmGroup.cpp
+SOURCE				CMtfTestActionDeleteExistingService.cpp
+SOURCE				CMtfTestActionCheckIfMessagePresent.cpp
+SOURCE				CMtfTestActionFindFile.cpp
+SOURCE				CMtfTestActionRenamePath.cpp
+SOURCE				CMtfTestActionGetEntry.cpp
+SOURCE				CMtfTestActionGetStore.cpp
+
+
+
+
+
+
+EPOCSTACKSIZE	0x6000
+
+SMPSAFE

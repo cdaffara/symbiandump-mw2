@@ -1,0 +1,6 @@
+# lon-melihe01.intra server
+__type__   = Pop3Settings
+
+ServerName = lon-melihe01.intra
+LoginName  = perform3
+Password   = password

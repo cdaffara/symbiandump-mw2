@@ -1,0 +1,51 @@
+// Copyright (c) 2006-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// tpushapphandlerPlugin.mmp
+// tpushapphandlerPlugin.dll Test push app handler plugin
+// 
+//
+
+/**
+ @file
+*/
+
+
+TARGET tpushapphandlerplugin.dll
+TARGETTYPE plugin
+CAPABILITY All -Tcb
+
+
+// ECom Plugin Dll UID followed by the unique UID for this dll
+// Assigned to UID2 and UID3 respectively
+UID 0x10009D8D 0x102822AB
+VENDORID 0x70000001
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+SYSTEMINCLUDE	/epoc32/include/push
+
+USERINCLUDE      ./.
+
+SOURCE		tpushapphandler.cpp
+
+START RESOURCE tpushapphandlerplugin.rss
+#ifdef SYMBIAN_SECURE_ECOM
+TARGET tpushapphandlerplugin.rsc
+#endif
+END
+
+LIBRARY euser.lib 
+LIBRARY estlib.lib 
+LIBRARY ecom.lib 
+LIBRARY wappushutils.lib
+
+SMPSAFE

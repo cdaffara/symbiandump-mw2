@@ -1,0 +1,356 @@
+/***************************************************
+   1. MO/CS and MO/CS calls
+   2. MO/CS and MO/PS calls
+   3. MO/PS and MO/PS calls
+   4. MO/CS and MT/CS calls
+   5. MO/CS and MT/PS calls
+   6. MO/PS and MT/PS calls
+   7. MT/CS and MT/CS calls
+   8. MT/CS and MT/PS calls
+   9. MT/PS and MT/PS calls
+/***************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 8.4 Two call combinations
+timeout 50000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test OpenNewCall 1 0 Recipient@172.23.123.29 1 ECCECallTypeCSVoice ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+test OpenNewCall 2 0 RecipientTwo 1 ECCECallTypeCSVoice ECCELineTypePrimary
+test Dial 2 0 SubAddress Bearer
+test WaitEvent 2 Dialling
+test WaitEvent 2 Connecting
+test WaitEvent 2 Connected
+
+test HangUp 2 0
+test WaitEvent 2 Disconnecting
+test WaitEvent 2 Idle
+test Release 2 0
+
+test Resume 1 0
+test WaitEvents 1 Connected, 1 LocalResume
+
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+test ResetCallArray
+
+// Step 2
+print Step_2
+
+test OpenNewCall 1 0 RecipientTwo 1 ECCECallTypeCSVoice ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+test OpenNewCall 2 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 2 0 SubAddress Bearer
+test WaitEvent 2 Dialling
+test WaitEvent 2 Connecting
+test WaitEvent 2 Connected
+
+test HangUp 2 0
+test WaitEvent 2 Disconnecting
+test WaitEvent 2 Idle
+test Release 2 0
+
+test Resume 1 0
+test WaitEvents 1 Connected, 1 LocalResume
+
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+test ResetCallArray
+
+// Step 3
+print Step_3
+
+test OpenNewCall 1 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+test OpenNewCall 2 0 RecipientTwo 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 2 0 SubAddress Bearer
+test WaitEvent 2 Dialling
+test WaitEvent 2 Connecting
+test WaitEvent 2 Connected
+
+test HangUp 2 0
+test WaitEvent 2 Disconnecting
+test WaitEvent 2 Idle
+test Release 2 0
+
+test Resume 1 0
+test WaitEvents 1 Connected, 1 LocalResume
+
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+test ResetCallArray
+
+// Step 4
+print Step_4
+
+test OpenNewCall 1 0 Recipient@172.23.123.29 1 ECCECallTypeCSVoice ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+// Plugin 2 = CS plugin
+test SendPluginRequest 2 CreateCall 1
+test WaitEvent 0 IncomingCall
+test WaitEvent 2 Queued
+// Answer call
+test Answer 2 0
+test WaitEvent 2 Answering
+test WaitEvent 2 Connected
+
+test HangUp 2 0
+test WaitEvent 2 Disconnecting
+test WaitEvent 2 Idle
+test Release 2 0
+
+test Resume 1 0
+test WaitEvents 1 Connected, 1 LocalResume
+
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+test ResetCallArray
+
+// Step 5
+print Step_5
+
+test OpenNewCall 1 0 Recipient@172.23.123.29 1 ECCECallTypeCSVoice ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+// Releasing and unloading of PS plugin might be still pending...
+test Delay 500
+test InitIncomingCall
+//Wait plugin to initialize:
+test Delay 1000
+
+test SendPluginRequest CreateCall 2
+test WaitEvent 0 IncomingCall
+test WaitEvent 2 Queued
+// Answer call
+test Answer 2 0
+test WaitEvent 2 Answering
+test WaitEvent 2 Connected
+
+test HangUp 2 0
+test WaitEvent 2 Disconnecting
+test WaitEvent 2 Idle
+test Release 2 0
+
+test Resume 1 0
+test WaitEvents 1 Connected, 1 LocalResume
+
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+test ResetCallArray
+
+// Step 6
+print Step_6
+
+test OpenNewCall 1 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+test SendPluginRequest CreateCall 2
+test WaitEvent 0 IncomingCall
+test WaitEvent 2 Queued
+// Answer call
+test Answer 2 0
+test WaitEvent 2 Answering
+test WaitEvent 2 Connected
+
+test HangUp 2 0
+test WaitEvent 2 Disconnecting
+test WaitEvent 2 Idle
+test Release 2 0
+
+test Resume 1 0
+test WaitEvents 1 Connected, 1 LocalResume
+
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+test ResetCallArray
+
+// Step 7
+print Step_7
+
+// Plugin 2 = CS plugin
+test SendPluginRequest 2 CreateCall 1
+test WaitEvent 0 IncomingCall
+test WaitEvent 1 Ringing
+// Answer call
+test Answer 1 0
+test WaitEvent 1 Answering
+test WaitEvent 1 Connected
+
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+// Plugin 2 = CS plugin
+test SendPluginRequest 2 CreateCall 1
+test WaitEvent 0 IncomingCall
+test WaitEvent 2 Queued
+// Answer call
+test Answer 2 0
+test WaitEvent 2 Answering
+test WaitEvent 2 Connected
+
+test HangUp 2 0
+test WaitEvent 2 Disconnecting
+test WaitEvent 2 Idle
+test Release 2 0
+
+test Resume 1 0
+test WaitEvents 1 Connected, 1 LocalResume
+
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+test ResetCallArray
+
+// Step 8
+print Step_8
+
+// Plugin 2 = CS plugin
+test SendPluginRequest 2 CreateCall 1
+test WaitEvent 0 IncomingCall
+test WaitEvent 1 Ringing
+// Answer call
+test Answer 1 0
+test WaitEvent 1 Answering
+test WaitEvent 1 Connected
+
+// Release might be still ongoing on plug-in
+test Delay 500
+test InitIncomingCall
+//Wait plugin to initialize:
+test Delay 1000
+
+test SendPluginRequest CreateCall 2
+test WaitEvent 0 IncomingCall
+test WaitEvent 2 Queued
+
+test Answer 2 0
+
+// Autohold
+test WaitEvents 1 Hold, 2 Answering, 2 Connected, 1 LocalHold
+
+test HangUp 2 0
+test WaitEvent 2 Disconnecting
+test WaitEvent 2 Idle
+test Release 2 0
+
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+// This delay is need for Release to complete
+test Delay 1000
+
+test ResetCallArray
+
+// Step 9
+print Step_9
+
+test InitIncomingCall
+//Wait plugin to initialize:
+test Delay 1000
+
+test SendPluginRequest CreateCall 2
+test WaitEvent 0 IncomingCall
+test WaitEvent 1 Ringing
+// Answer call
+test Answer 1 0
+test WaitEvent 1 Answering
+test WaitEvent 1 Connected
+
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+test SendPluginRequest CreateCall 2
+test WaitEvent 0 IncomingCall
+test WaitEvent 2 Queued
+// Answer call
+test Answer 2 0
+test WaitEvent 2 Answering
+test WaitEvent 2 Connected
+
+test HangUp 2 0
+test WaitEvent 2 Disconnecting
+test WaitEvent 2 Idle
+test Release 2 0
+
+test Resume 1 0
+test WaitEvents 1 Connected, 1 LocalResume
+
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+test VerifyTest
+delete test
+[Endtest]

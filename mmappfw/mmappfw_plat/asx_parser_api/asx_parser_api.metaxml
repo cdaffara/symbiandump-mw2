@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<api id="9d34fc9eb3f77a3ee9ed111059295a55" dataversion="2.0">
+<name>ASX Parser API</name>
+<description>API for parsing Windows Media ASX files</description>
+<type>c++</type>
+<collection>mmappcomponents</collection>
+<libs>
+<lib name="asxparser.lib"/>
+</libs>
+<release category="platform" sinceversion="0"/>
+<attributes>
+<htmldocprovided>no</htmldocprovided>
+<adaptation>no</adaptation>
+</attributes>
+</api>

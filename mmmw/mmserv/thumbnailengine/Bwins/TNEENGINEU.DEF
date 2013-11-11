@@ -1,0 +1,6 @@
+EXPORTS
+	?NewL@CTNEVideoClipInfo@@SAPAV1@ABVTDesC16@@AAVMTNEVideoClipInfoObserver@@@Z @ 1 NONAME ; class CTNEVideoClipInfo * CTNEVideoClipInfo::NewL(class TDesC16 const &, class MTNEVideoClipInfoObserver &)
+	?NewLC@CTNEVideoClipInfo@@SAPAV1@ABVTDesC16@@AAVMTNEVideoClipInfoObserver@@@Z @ 2 NONAME ; class CTNEVideoClipInfo * CTNEVideoClipInfo::NewLC(class TDesC16 const &, class MTNEVideoClipInfoObserver &)
+	?NewL@CTNEVideoClipInfo@@SAPAV1@ABVRFile@@AAVMTNEVideoClipInfoObserver@@@Z @ 3 NONAME ; class CTNEVideoClipInfo * CTNEVideoClipInfo::NewL(class RFile const &, class MTNEVideoClipInfoObserver &)
+	?NewLC@CTNEVideoClipInfo@@SAPAV1@ABVRFile@@AAVMTNEVideoClipInfoObserver@@@Z @ 4 NONAME ; class CTNEVideoClipInfo * CTNEVideoClipInfo::NewLC(class RFile const &, class MTNEVideoClipInfoObserver &)
+

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>msg-smtp-snap1</name>
+	<timeout>6000</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\email\smtp\snap\msg-smtp-snap1.script</hostPath>
+			<devicePath>c:\msgtest\email\smtp\snap\msg-smtp-snap1.script</devicePath>
+		</script>
+	</testScripts>
+
+	<testServers>
+		<server>T_MsgCommonServer</server>
+		<server>T_MsgSmtpServer</server>
+	</testServers>
+
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\email\smtp\snap\msg-smtp-snap1.ini</hostPath>
+			<devicePath>c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\SMTPServerSNAPSettings.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\SMTPServerSNAPSettings.txt</devicePath>
+		</data>
+ 		<data>
+ 			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\SMTP_SNAPID.txt</hostPath>
+ 			<devicePath>c:\msgtest\Config\EmailSettings\SMTP_SNAPID.txt</devicePath>
+ 		</data>
+ 		<data>
+ 			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\SMTPServerSNAPandIAPSettings.txt</hostPath>
+ 			<devicePath>c:\msgtest\Config\EmailSettings\SMTPServerSNAPandIAPSettings.txt</devicePath>
+ 		</data>
+ 		<data>
+ 			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\SMTPServerIAPSettings.txt</hostPath>
+ 			<devicePath>c:\msgtest\Config\EmailSettings\SMTPServerIAPSettings.txt</devicePath>
+ 		</data>
+		<data>
+ 			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\smtp1KBody.txt</hostPath>
+ 			<devicePath>c:\msgtest\Config\EmailMessage\smtp1KBody.txt</devicePath>
+ 		</data>
+	</dependencies>	
+</testExecuteTest>

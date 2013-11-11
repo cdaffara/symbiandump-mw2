@@ -1,0 +1,106 @@
+/*
+ * Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+ * All rights reserved.
+ * This component and the accompanying materials are made available
+ * under the terms of "Eclipse Public License v1.0"
+ * which accompanies this distribution, and is available
+ * at the URL "http://www.eclipse.org/legal/epl-v10.html".
+ *
+ * Initial Contributors:
+ * Nokia Corporation - initial contribution.
+ *
+ * Contributors:
+ *
+ * Description: Telephony Multimedia Service
+ *
+ */
+
+#include <platform_paths.hrh>
+
+TARGET          tmsimpl.dll
+TARGETTYPE      dll
+UID             0x1000008d 0x10207C7A
+CAPABILITY      CAP_GENERAL_DLL
+VENDORID        VID_DEFAULT
+
+#ifndef WINSCW
+EpocAllowDllData
+#endif
+
+USERINCLUDE     ../inc
+USERINCLUDE     ../../inc
+USERINCLUDE     ../../tmsproxy/inc
+
+MW_LAYER_SYSTEMINCLUDE
+OS_LAYER_LIBC_SYSTEMINCLUDE
+OS_LAYER_GLIB_SYSTEMINCLUDE
+OS_LAYER_STDCPP_SYSTEMINCLUDE
+SYSTEMINCLUDE   /epoc32/include/mmf/common
+
+SOURCEPATH      ../src
+SOURCE          tmscallimpl.cpp
+SOURCE          tmsipcallbodyimpl.cpp
+SOURCE          tmscscallbodyimpl.cpp
+SOURCE          tmsstreamimpl.cpp
+SOURCE          tmsstreambodyimpl.cpp
+SOURCE          tmsqueuehandler.cpp
+SOURCE          tmsbufferimpl.cpp
+SOURCE          tmsmembuffer.cpp
+SOURCE          tmssourceimpl.cpp
+SOURCE          tmseffectimpl.cpp
+SOURCE          tmssinkimpl.cpp
+SOURCE          tmsclientsourceimpl.cpp
+SOURCE          tmsclientsourcebodyimpl.cpp
+SOURCE          tmsclientsinkimpl.cpp
+SOURCE          tmsclientsinkbodyimpl.cpp
+SOURCE          tmsglobalgaineffectbodyimpl.cpp
+SOURCE          tmsglobalgaineffectimpl.cpp
+SOURCE          tmsglobalvoleffectbodyimpl.cpp
+SOURCE          tmsglobalvoleffectimpl.cpp
+SOURCE          tmsvolumeeffectimpl.cpp
+SOURCE          tmsvolumeeffectbodyimpl.cpp
+SOURCE          tmsgaineffectimpl.cpp
+SOURCE          tmsgaineffectbodyimpl.cpp
+SOURCE          tmsformatimpl.cpp
+SOURCE          tmsformatbodyimpl.cpp
+SOURCE          tmsglobalroutingimpl.cpp
+SOURCE          tmsglobalroutingbodyimpl.cpp
+SOURCE          tmsamrimpl.cpp
+SOURCE          tmsamrbodyimpl.cpp
+SOURCE          tmsg711impl.cpp
+SOURCE          tmsg711bodyimpl.cpp
+SOURCE          tmsg729impl.cpp
+SOURCE          tmsg729bodyimpl.cpp
+SOURCE          tmsilbcimpl.cpp
+SOURCE          tmsilbcbodyimpl.cpp
+SOURCE          tmspcmimpl.cpp
+SOURCE          tmspcmbodyimpl.cpp
+SOURCE          tmsspeakersinkbodyimpl.cpp
+SOURCE          tmsspeakersinkimpl.cpp
+SOURCE          tmsmodemsinkbodyimpl.cpp
+SOURCE          tmsmodemsinkimpl.cpp
+SOURCE          tmsmicsourcebodyimpl.cpp
+SOURCE          tmsmicsourceimpl.cpp
+SOURCE          tmsmodemsourcebodyimpl.cpp
+SOURCE          tmsmodemsourceimpl.cpp
+SOURCE          tmsringtonebodyimpl.cpp
+SOURCE          tmsringtoneimpl.cpp
+SOURCE          tmsdtmfbodyimpl.cpp
+SOURCE          tmsdtmfimpl.cpp
+SOURCE          tmsinbandtonebodyimpl.cpp
+SOURCE          tmsinbandtoneimpl.cpp
+
+LIBRARY         euser.lib
+LIBRARY         libglib.lib
+LIBRARY         tmsapi.lib
+LIBRARY         tmscallproxy.lib
+LIBRARY         tmsproxy.lib
+LIBRARY         tmsutility.lib
+LIBRARY         libc.lib
+
+DEFFILE         tmsimpl.def
+NOSTRICTDEF
+
+SMPSAFE
+
+// End of file

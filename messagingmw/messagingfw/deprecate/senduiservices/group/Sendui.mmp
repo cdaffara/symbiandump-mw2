@@ -1,0 +1,89 @@
+/*
+* Copyright (c) 2002 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  
+*     This is project specification file for the sendui.
+*
+*/
+
+
+
+#include <platform_paths.hrh>
+#include <data_caging_paths.hrh>
+
+// --- LOGGING ---
+//MACRO           USE_LOGGER         // HW debugging support
+//LIBRARY         Flogger.lib        // RFileLogger, debug logging
+// --- LOGGING ---
+
+TARGET          SENDUI.DLL
+TARGETTYPE      DLL
+UID             0x1000008D 0x100058F0
+VENDORID	VID_DEFAULT
+VERSION 	10.0
+CAPABILITY CAP_GENERAL_DLL
+PAGED
+
+SOURCEPATH      ../group
+START RESOURCE Sendnorm.rss
+HEADER
+TARGETPATH RESOURCE_FILES_DIR
+LANGUAGE_IDS
+END
+
+USERINCLUDE     ../inc ../datautils/inc
+
+SYSTEMINCLUDE   /epoc32/include/ecom
+APP_LAYER_SYSTEMINCLUDE
+
+
+
+#if defined(ARMCC)
+DEFFILE ../eabi/ 
+#elif defined( WINSCW )
+DEFFILE ../bwinscw/ 
+#elif defined( WINS )
+DEFFILE ../bwins/ 
+#else
+DEFFILE ../bmarm/ 
+#endif
+
+SOURCEPATH      ../src
+SOURCE          SendUi.cpp
+SOURCE          SendUiImpl.cpp
+SOURCE          TSendingCapabilities.cpp
+SOURCE          CSendingService.cpp
+SOURCE          CSendingServiceInfo.cpp
+SOURCE          SendingServiceInfoImpl.cpp
+SOURCE          CMessageData.cpp
+SOURCE          CMessageDataImpl.cpp
+SOURCE          CMessageAddress.cpp
+SOURCE          MessageAddressImpl.cpp
+SOURCE          senduiserviceclient.cpp
+SOURCE          propertyobserver.cpp
+SOURCE          senduisingleton.cpp
+SOURCE          SendUiUtils.cpp
+SOURCE          SendUiCapabilityCheck.cpp
+
+
+
+LIBRARY         euser.lib
+LIBRARY         apparc.lib
+
+LIBRARY         eikcoctl.lib
+LIBRARY         eikcore.lib             // appuifactory
+LIBRARY         CommonEngine.lib        // Resource loader
+LIBRARY         centralrepository.lib
+LIBRARY         cone.lib
+
+/* End of File */

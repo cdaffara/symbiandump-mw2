@@ -1,0 +1,64 @@
+//
+// Test Case for DEF036479 contains utf8 strings with 1 byte characters.
+//
+[main]
+bio_test doatstart
+bio_test wapp
+bio_test doattheend
+
+
+// Startup section.
+[doatstart]
+clean_all_bio_msgs
+
+
+// Shutdown section.
+[doattheend]
+
+
+// wapp tests.
+[wapp]
+gen_msg_from_file wapp\DEF036479_charset_tests\wapp_utf8_1byte.bin
+check_used_bif 10005532
+bio_client_parse
+bio_client_process
+dump_parsed_message
+//
+// check commdb tables for correct entries
+bio_commdb DialOutIsp wapp_commdb_dialoutisp_table
+bio_commdb IAP wapp_commdb_iap_table
+bio_commdb WAPAccessPoint wapp_commdb_wapap_table
+bio_commdb WAPIPBearer wapp_commdb_wapip_table
+bio_commdb WAPSMSBearer wapp_commdb_wapsms_table
+
+
+[wapp_commdb_dialoutisp_table]
+commdb_check text IpGateway "192.122.11.100"
+commdb_check text DefaultTelNum "+358508124002"
+commdb_check text LoginName "wapuser"
+commdb_check text IfAuthName "wapuser"
+commdb_check uint BearerProtocol "3"
+commdb_check uint BearerSpeed "1"
+commdb_check text Description "World Access ISP"
+commdb_check text Name "WAP 036479_1-GsmCsd"
+
+
+[wapp_commdb_iap_table]
+commdb_check text Name "WAP 036479_1-GsmCsd"
+
+
+[wapp_commdb_wapap_table]
+commdb_check text StartPage "/startpage/index.wml"
+commdb_check text Name "WAP 036479_1"
+
+
+[wapp_commdb_wapip_table]
+commdb_check text GatewayAddress "192.122.11.100"
+commdb_check uint ProxyPortNumber "9200"
+commdb_check bool WSPOption "false"
+commdb_check bool Security "false"
+
+
+[wapp_commdb_wapsms_table]
+commdb_check text GatewayAddress "0364791"
+commdb_check text ServiceCentreAddress "+36209400400"

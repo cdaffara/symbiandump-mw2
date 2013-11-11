@@ -1,0 +1,32 @@
+EXPORTS
+	??1CMetaDataUtility@@UAE@XZ @ 1 NONAME ; public: virtual __thiscall CMetaDataUtility::~CMetaDataUtility(void)
+	?AppendL@CMetaDataFieldContainer@@QAEXW4TMetaDataFieldId@@ABVTDesC16@@@Z @ 2 NONAME ; public: void __thiscall CMetaDataFieldContainer::AppendL(enum TMetaDataFieldId,class TDesC16 const &)
+	?At@CMetaDataFieldContainer@@QBE?AVTPtrC16@@HAAW4TMetaDataFieldId@@@Z @ 3 NONAME ; public: class TPtrC16  __thiscall CMetaDataFieldContainer::At(int,enum TMetaDataFieldId &)const 
+	?Count@CMetaDataFieldContainer@@QBEHXZ @ 4 NONAME ; public: int __thiscall CMetaDataFieldContainer::Count(void)const 
+	?Field@CMetaDataFieldContainer@@QBE?AVTPtrC16@@W4TMetaDataFieldId@@@Z @ 5 NONAME ; public: class TPtrC16  __thiscall CMetaDataFieldContainer::Field(enum TMetaDataFieldId)const 
+	?MetaDataCount@CMetaDataUtility@@QBEHXZ @ 6 NONAME ; public: int __thiscall CMetaDataUtility::MetaDataCount(void)const 
+	?MetaDataFieldsL@CMetaDataUtility@@QAEABVCMetaDataFieldContainer@@XZ @ 7 NONAME ; public: class CMetaDataFieldContainer const & __thiscall CMetaDataUtility::MetaDataFieldsL(void)
+	?NewL@CMetaDataUtility@@SAPAV1@XZ @ 8 NONAME ; public: static class CMetaDataUtility * __cdecl CMetaDataUtility::NewL(void)
+	?OpenDesL@CMetaDataUtility@@QAEXABVTDesC8@@@Z @ 9 NONAME ; public: void __thiscall CMetaDataUtility::OpenDesL(class TDesC8 const &)
+	?OpenDesL@CMetaDataUtility@@QAEXABVTDesC8@@ABV?$RArray@W4TMetaDataFieldId@@@@@Z @ 10 NONAME ; public: void __thiscall CMetaDataUtility::OpenDesL(class TDesC8 const &,class RArray<enum TMetaDataFieldId> const &)
+	?OpenFileL@CMetaDataUtility@@QAEXABVTDesC16@@@Z @ 11 NONAME ; public: void __thiscall CMetaDataUtility::OpenFileL(class TDesC16 const &)
+	?OpenFileL@CMetaDataUtility@@QAEXABVTDesC16@@ABV?$RArray@W4TMetaDataFieldId@@@@@Z @ 12 NONAME ; public: void __thiscall CMetaDataUtility::OpenFileL(class TDesC16 const &,class RArray<enum TMetaDataFieldId> const &)
+	?ResetL@CMetaDataUtility@@QAEXXZ @ 13 NONAME ; void CMetaDataUtility::ResetL(void)
+	?ID3Version@CMetaDataUtility@@QAE?AW4TID3Version@@XZ @ 14 NONAME ; enum TID3Version CMetaDataUtility::ID3Version(void)
+	?OpenFileL@CMetaDataUtility@@QAEXAAVRFile@@@Z @ 15 NONAME ; void CMetaDataUtility::OpenFileL(class RFile &)
+	?OpenFileL@CMetaDataUtility@@QAEXAAVRFile@@ABV?$RArray@W4TMetaDataFieldId@@@@@Z @ 16 NONAME ; void CMetaDataUtility::OpenFileL(class RFile &, class RArray<enum TMetaDataFieldId> const &)
+	?AppendL@CMetaDataFieldContainer@@QAEXW4TMetaDataFieldId@@ABVTDesC8@@@Z @ 17 NONAME ; void CMetaDataFieldContainer::AppendL(enum TMetaDataFieldId, class TDesC8 const &)
+	?Field8@CMetaDataFieldContainer@@QBE?AVTPtrC8@@W4TMetaDataFieldId@@@Z @ 18 NONAME ; class TPtrC8 CMetaDataFieldContainer::Field8(enum TMetaDataFieldId) const
+	?OpenDesL@CMetaDataUtility@@QAEXABVTDesC8@@0@Z @ 19 NONAME ; void CMetaDataUtility::OpenDesL(class TDesC8 const &, class TDesC8 const &)
+	?OpenDesL@CMetaDataUtility@@QAEXABVTDesC8@@ABV?$RArray@W4TMetaDataFieldId@@@@0@Z @ 20 NONAME ; void CMetaDataUtility::OpenDesL(class TDesC8 const &, class RArray<enum TMetaDataFieldId> const &, class TDesC8 const &)
+	?OpenFileL@CMetaDataUtility@@QAEXAAVRFile@@ABV?$RArray@W4TMetaDataFieldId@@@@ABVTDesC8@@@Z @ 21 NONAME ; void CMetaDataUtility::OpenFileL(class RFile &, class RArray<enum TMetaDataFieldId> const &, class TDesC8 const &)
+	?OpenFileL@CMetaDataUtility@@QAEXAAVRFile@@ABVTDesC8@@@Z @ 22 NONAME ; void CMetaDataUtility::OpenFileL(class RFile &, class TDesC8 const &)
+	?OpenFileL@CMetaDataUtility@@QAEXABVTDesC16@@ABV?$RArray@W4TMetaDataFieldId@@@@ABVTDesC8@@@Z @ 23 NONAME ; void CMetaDataUtility::OpenFileL(class TDesC16 const &, class RArray<enum TMetaDataFieldId> const &, class TDesC8 const &)
+	?OpenFileL@CMetaDataUtility@@QAEXABVTDesC16@@ABVTDesC8@@@Z @ 24 NONAME ; void CMetaDataUtility::OpenFileL(class TDesC16 const &, class TDesC8 const &)
+	?FieldIdAt@CMetaDataFieldContainer@@QBEXHAAW4TMetaDataFieldId@@@Z @ 25 NONAME ; void CMetaDataFieldContainer::FieldIdAt(int, enum TMetaDataFieldId &) const
+	?CloseChunkData@CMetaDataUtility@@QAEXXZ @ 26 NONAME ; void CMetaDataUtility::CloseChunkData(void)
+	?InitChunkData@CMetaDataUtility@@QAEHABVTDesC8@@AAVMMDUChunkDataObserver@@@Z @ 27 NONAME ; int CMetaDataUtility::InitChunkData(class TDesC8 const &, class MMDUChunkDataObserver &)
+	?IsChunkDataMode@CMetaDataUtility@@QAEHXZ @ 28 NONAME ; int CMetaDataUtility::IsChunkDataMode(void)
+	?ParseChunkData@CMetaDataUtility@@QAEHXZ @ 29 NONAME ; int CMetaDataUtility::ParseChunkData(void)
+	?ProcessChunkData@CMetaDataUtility@@QAEHABVTDesC8@@H@Z @ 30 NONAME ; int CMetaDataUtility::ProcessChunkData(class TDesC8 const &, int)
+

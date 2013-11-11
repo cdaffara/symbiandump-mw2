@@ -1,0 +1,26 @@
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 1.2 Create and Delete CCE
+timeout 3000
+
+// CCE contructed within the test module
+create ccetester test
+
+// delete before creating again
+test Delete_CCE
+
+// test NewL()
+test Create_CCE
+test Delete_CCE
+
+// test NewL( MCCEObserver& aObserver )
+test Create_CCE_2
+
+test VerifyTest
+
+// Existing CCE instance is deleted here
+delete test
+[Endtest] 

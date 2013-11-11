@@ -1,0 +1,72 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description:  Pkg file for platform security testcases
+;
+
+
+; Languages
+&EN
+
+; Package header
+#{"lbtplatsecurity"},(0x2001FDC9),0,1,0,TYPE=SA
+
+; Series60 product id for S60 3.0
+[0x101F7961], 0, 0, 0, {"Series60ProductID"}
+
+; Localised Vendor name
+%{"Nokia EN"}
+
+; Unique Vendor name
+:"Nokia"
+
+; Logo
+; None
+
+; Package signature - Optional
+; None
+
+; Start of Package body
+
+; Condition blocks
+; None
+
+; Options list
+; None
+
+; Install files
+
+ "\epoc32\release\armv5\urel\testlbtplatsecurity.dll"-"C:\sys\bin\testlbtplatsecurity.dll"
+ "..\data\testlbtplatsecurity1.exe"-"!:\sys\bin\testlbtplatsecurity1.exe"
+ "..\data\testlbtplatsecurity2.exe"-"C:\sys\bin\testlbtplatsecurity2.exe" 
+ "..\data\testlbtplatsecurity3.exe"-"C:\sys\bin\testlbtplatsecurity3.exe" 
+ "..\data\testlbtplatsecurity4.exe"-"C:\sys\bin\testlbtplatsecurity4.exe" 
+ "..\data\testlbtplatsecurity5.exe"-"C:\sys\bin\testlbtplatsecurity5.exe"   
+ "..\conf\testlbtplatsecurity.cfg"-"C:\TestFramework\testlbtplatsecurity.cfg" 
+ "..\conf\testlbtplatsecurity1.cfg"-"C:\TestFramework\testlbtplatsecurity1.cfg" 
+ "..\conf\testlbtplatsecurity2.cfg"-"C:\TestFramework\testlbtplatsecurity2.cfg" 
+ "..\conf\testlbtplatsecurity3.cfg"-"C:\TestFramework\testlbtplatsecurity3.cfg" 
+ "..\conf\testlbtplatsecurity4.cfg"-"C:\TestFramework\testlbtplatsecurity4.cfg" 
+"..\conf\testlbtplatsecurity5.cfg"-"C:\TestFramework\testlbtplatsecurity5.cfg" 
+"..\init\TestFramework.ini"-"C:\TestFramework\TestFramework.ini" 
+;@"lbtplatsec_exe1.sisx",(0x06B77530)
+; Embedded SIS 
+; None
+
+; End of Package body
+
+; PKG dependencies
+; None
+
+; PKG capabilities
+; None

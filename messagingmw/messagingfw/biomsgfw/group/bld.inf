@@ -1,0 +1,53 @@
+// Copyright (c) 1999-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// BIOMSG.INF
+// 'Smart' messaging (BIO Messaging)
+// 
+//
+
+/**
+ @file
+*/
+
+
+PRJ_PLATFORMS
+DEFAULT
+
+// The following are build for WINC
+#include "../BIFU/bld.inf"
+
+// These lot are not
+#if !defined(WINC)
+
+#include "../BIUT/bld.inf"
+#include "../BDB/bld.inf"
+#include "../BIOC/bld.inf"
+#include "../BIOS/bld.inf"
+#include "../BITS/bld.inf"
+#include "../cbcp/bld.inf"
+#include "../iacp/bld.inf"
+#include "../enp/bld.inf"
+#include "../wapp/bld.inf"
+#include "../gfp/bld.inf"
+#include "../BioWatchers/bld.inf"
+#include "../Rom/bld.inf"
+
+PRJ_EXPORTS
+bioerr.ra                              SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(errors/generic/bioerr.ra)
+bioerr.rls                             SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(errors/generic/bioerr.rls)
+biftool2.rH SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(biftool2.rh)
+
+PRJ_MMPFILES
+
+#endif

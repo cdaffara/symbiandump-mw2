@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<api id="7675e558614bc383983275b8fb1f3c22" dataversion="2.0">
+<name>Location Triggering Management API</name>
+<description>The purpose of the Location Triggering Management API is to provide client
+application (normally system management UI) interface to manage Location Triggering
+service in the system. Client application can use this API to list triggers,
+change triggers state, delete triggers, get/set/monitor triggering system
+settings and get/monitor triggering system status.</description>
+<type>c++</type>
+<collection>locationtriggering</collection>
+<libs><lib name="lbtmanager.lib"/>
+</libs>
+<release category="platform" sinceversion="1"/>
+<attributes>
+<htmldocprovided>no</htmldocprovided>
+<adaptation>no</adaptation>
+</attributes>
+</api>

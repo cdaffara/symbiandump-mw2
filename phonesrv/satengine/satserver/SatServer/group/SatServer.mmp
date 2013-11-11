@@ -1,0 +1,57 @@
+/*
+* Copyright (c) 2003-2008 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file for project SatServer
+*
+*/
+
+
+#include <data_caging_paths.hrh>
+#include <platform_paths.hrh>
+#include "../../inc/SatMacroes.h"
+
+TARGET                  SatServer.exe
+TARGETTYPE              exe
+UID                     0x1000008d 0x1000A833
+SECUREID                0x1000A833
+
+CAPABILITY              CAP_SERVER NetworkControl AllFiles
+VENDORID                VID_DEFAULT
+
+#ifdef ENABLE_SAT_LOGGING
+EPOCSTACKSIZE           0x4000 // Logging needs more stack than default 8 kilos.
+#endif
+
+TARGETPATH              PROGRAMS_DIR
+
+#if defined( EABI )
+deffile                 ../EABI/ 
+#endif
+
+SOURCEPATH              ../src
+SOURCE                  std.cpp
+
+USERINCLUDE             ../inc
+USERINCLUDE             ../../inc
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE           /epoc32/include/ecom
+SYSTEMINCLUDE           ../../../../inc         // Domain telephony
+SYSTEMINCLUDE           ../../../inc            // Subsystem satengine
+
+LIBRARY                 euser.lib
+LIBRARY                 SatEngine.lib
+
+#ifdef ENABLE_SAT_LOGGING
+LIBRARY                 flogger.lib
+#endif

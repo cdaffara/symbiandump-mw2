@@ -1,0 +1,73 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//
+// Note Requires TCB Caps to operate.
+// Must reset the caps after this has been called.
+
+
+
+// Note dependecies on MessagingTestServer
+
+
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+
+
+RUN_TEST_STEP 100 MessagingTestServer GetBaseConstants c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInDrafts.ini GetBaseConstants
+RUN_TEST_STEP 100 MessagingTestServer CreateSession	c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInDrafts.ini CreateSession
+RUN_TEST_STEP 100 MessagingTestServer ResetMessageStore	c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInDrafts.ini ResetMessageStore
+	// Empty message store.
+
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInDrafts.ini CheckChildrenCount0
+	// Check nothing in the inbox.
+
+RUN_TEST_STEP 100 MessagingTestServer CreateImap4Service c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInDrafts.ini CreateImap4Service
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpService	c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInDrafts.ini CreateSmtpService
+
+RUN_TEST_STEP 100 MessagingTestServer CreateRegistry c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInDrafts.ini	CreateRegistry
+
+RUN_TEST_STEP 100 MessagingTestServer SetDefaultConfiguration c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInDrafts.ini	SetDefaultConfiguration0
+RUN_TEST_STEP 100 MessagingTestServer SetDefaultConfiguration c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInDrafts.ini	SetDefaultConfiguration1
+RUN_TEST_STEP 100 MessagingTestServer SetDefaultConfiguration c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInDrafts.ini	SetDefaultConfiguration2
+
+RUN_TEST_STEP 100 MessagingTestServer SetImap4ServiceParameters	c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInDrafts.ini	SetImap4ServiceParameters
+RUN_TEST_STEP 100 MessagingTestServer SetSmtpServiceParameters	c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInDrafts.ini	SetSmtpServiceParameters
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpMessageFromEmailFile c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInDrafts.ini	CreateSmtpMessageFromEmailFile0
+RUN_TEST_STEP 100 MessagingTestServer Sleep c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInDrafts.ini SleepDelay
+
+
+RUN_TEST_STEP 100 MessagingTestServer CreateSmsService c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInDrafts.ini	CreateSmsService
+RUN_TEST_STEP 100 MessagingTestServer GetEntryTypeConstants	c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInDrafts.ini	GetEntryTypeConstants
+RUN_TEST_STEP 100 MessagingTestServer GetSmsConstants c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInDrafts.ini	GetSmsConstants
+
+RUN_TEST_STEP 100 MessagingTestServer CreateEntry c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInDrafts.ini	CreateEntry
+
+RUN_TEST_STEP 100 MessagingTestServer SaveMsvIdParamToFile c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInDrafts.ini	SaveMsvIdParamToFile1
+RUN_TEST_STEP 100 MessagingTestServer SaveMsvIdParamToFile c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInDrafts.ini	SaveMsvIdParamToFile2
+
+
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInDrafts.ini CheckChildrenCount1
+	// Test to see if addition okay
+
+
+RUN_TEST_STEP 100 MessagingTestServer END_TEST_CASE
+
+

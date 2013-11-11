@@ -1,0 +1,16 @@
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 14.1 OOM tests
+timeout 10000
+create ccetester test
+
+test Delay 1000
+
+test OOM_Tests_1
+
+test VerifyTest
+delete test
+[Endtest] 

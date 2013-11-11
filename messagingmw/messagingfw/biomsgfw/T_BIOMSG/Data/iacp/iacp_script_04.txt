@@ -1,0 +1,14 @@
+//SIAP11
+password
+Pname:Lemon
+Ptype:PPPS
+Padd:! Some Script to be add (appended) to 
+! existing Script matching ISP Name (i.e 'Lemon' in this case)... 
+
+protocol:
+    SEND "PPP"+<0x0d>
+    EXIT
+success:
+   EXIT
+failure:
+  EXIT KErrLoginFail$

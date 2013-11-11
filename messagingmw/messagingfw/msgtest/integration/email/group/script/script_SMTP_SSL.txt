@@ -1,0 +1,63 @@
+// *****************************************
+//  
+//  Author:	Stephen Lewis
+//  Date:	13/03/03
+//
+// Tests use of smtp with secure sockets. 
+// 
+// Requirements:
+//   1) Server must have a folder named testmessage.
+//   2) Ensure that the file rfc822test.txt is in the 
+//   emailsmoke directory and has the email address set up
+//   to the one below.
+//
+//   NOTE - THIS TEST WILL NOT WORK ON NOKIA SERVERS - as set
+//   up below - you need to find working server.
+//
+//  Performence Test Script for Case 3
+//  TO run t_email for Case 3 performance testing
+//  rename this file to script.txt and copy it 
+//  to c:\msgtest\emailsmoke 
+//  
+// *****************************************
+
+
+[main]
+email_client_test email
+
+[email]
+smtp_client_test smtp_1
+
+[smtp_1]
+clean_message_folder
+start_client_session
+select_root_folder
+add_comment select smtp service
+smtp_service smtp_service_1
+add_comment select testmessage as destination name
+select_destination_folder testmessage
+select_root_folder
+select_folder local
+select_folder outbox
+add_comment create email in outbox
+create_email_message emailsmoke rfc822test.txt
+select_all_messages
+add_comment Sending the created message
+copy
+check_smtp_error 0
+add_comment *** Test Message Sent ***
+add_comment wait for 1 secs
+wait 1
+// check message received
+reset_client
+
+[smtp_service_1]
+set_alias testmessage
+//NOKIA
+set_server trmai03tls.ioptr05.it.cellulardata.com
+set_email_address kamineni@trmai03tlsa.ioptr05.it.cellulardata.com
+set_reply_address kamineni@trmai03tlsa.ioptr05.it.cellulardata.com
+set_receipt_address kamineni@trmai03tlsa.ioptr05.it.cellulardata.com
+set_tls 0
+set_wrapped_tls 1
+set_port 465

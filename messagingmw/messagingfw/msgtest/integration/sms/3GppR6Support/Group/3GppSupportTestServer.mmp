@@ -1,0 +1,82 @@
+// Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// 3gppsupporttestserver.mmp
+//
+
+		CAPABILITY ALL -TCB
+TARGET			3gppsupporttestserver.exe
+TARGETTYPE		exe
+UID				0x1000007A 0x101F7774
+
+VENDORID 0x70000001
+
+USERINCLUDE	../inc 
+USERINCLUDE	../Utils/inc
+USERINCLUDE	../Steps/inc
+
+SOURCEPATH	../src
+SOURCE 		C3GppSupportTestServer.cpp
+
+// UTILS
+SOURCEPATH	../Utils/src
+SOURCE		CentralRepoUtils.cpp
+SOURCE		CConfigFileParserUtils.cpp
+SOURCE		CSmsScriptUtils.cpp
+SOURCE		CSchSendScriptUtils.cpp
+SOURCE		MsgingUtils.cpp
+SOURCE		CAsyncWaiter.cpp
+SOURCE		CTimerUtils.cpp
+
+// Steps
+SOURCEPATH	../Steps/src
+SOURCE		CBasicTestStep.cpp
+SOURCE		CDeleteChildrenTestStep.cpp
+SOURCE		CCreateSmsMessageTestStep.cpp
+SOURCE		CInitSimTsyTestStep.cpp
+SOURCE		CCloseSimTsyTestStep.cpp
+SOURCE		CAddIndicationTestStep.cpp
+SOURCE		CSendSmsTestStep.cpp
+SOURCE		CVerifyIndicationTestStep.cpp
+SOURCE		CCreateServiceTestStep.cpp
+SOURCE		CCreateReplyTestStep.cpp
+SOURCE		CVerifyRecipientTestStep.cpp
+
+SOURCEPATH		../../../../../../../../app/messaging/mobilemessaging/smsmtm/clientmtm/src
+SOURCE		csmsemailfields.cpp
+SOURCE		SMUTHDR.CPP
+USERINCLUDE   ../../../../testutils/base/inc
+USERINCLUDE   ../../../../testutils/email/inc 
+USERINCLUDE   ../../../../testutils/sms/inc
+USERINCLUDE   ../../../../testutils/server/inc
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+LIBRARY		euser.lib
+LIBRARY		msgs.lib
+LIBRARY		efsrv.lib
+LIBRARY		smcm.lib
+LIBRARY		schsend.lib
+LIBRARY		etel.lib
+LIBRARY		etelmm.lib
+LIBRARY		commsdat.lib
+LIBRARY		gsmu.lib
+LIBRARY		etext.lib
+LIBRARY     bafl.lib //csmsemailfields
+LIBRARY     estor.lib // csmsemailfields
+
+
+//TestExecute And TEF
+LIBRARY		testexecutelogclient.lib
+LIBRARY 	testexecuteutils.lib
+
+SMPSAFE

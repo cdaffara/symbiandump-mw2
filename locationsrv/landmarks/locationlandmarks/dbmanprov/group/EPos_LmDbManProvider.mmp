@@ -1,0 +1,65 @@
+/*
+* Copyright (c) 2002-2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*     This is the project specification file for Landmarks Database Management
+*     Provider.
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET          eposlmdbmanprov.dll
+TARGETTYPE      PLUGIN
+UID             0x10009D8D 0x101fe97b
+
+VENDORID        VID_DEFAULT
+CAPABILITY      CAP_CLIENT_DLL
+
+SOURCEPATH      ../src
+SOURCE          EPos_LmDbManProviderMain.cpp
+SOURCE          EPos_CPosLmDatabaseManagerImpl.cpp
+SOURCE          EPos_CPosLmDbManPluginStore.cpp
+SOURCE          EPos_CPosLmDbManPluginInfo.cpp
+SOURCE          EPos_RPosLmDatabaseEventListener.cpp
+
+START RESOURCE ../data/101fe97b.rss
+TARGET          eposlmdbmanprov.rsc
+END
+
+START RESOURCE  ../data/eposlmdefaultdbname.rss
+TARGETPATH      /resource
+HEADER
+LANGUAGE_IDS
+end
+
+USERINCLUDE     ../inc
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   ../../../inc
+
+LIBRARY         euser.lib
+LIBRARY         ecom.lib
+LIBRARY         bafl.lib
+LIBRARY         efsrv.lib
+LIBRARY         eposlmdbmanlib.lib
+LIBRARY         eposlmintservices.lib
+LIBRARY         eposlmservlib.lib
+
+EXPORTUNFROZEN
+
+SMPSAFE
+
+// END OF FILE
+

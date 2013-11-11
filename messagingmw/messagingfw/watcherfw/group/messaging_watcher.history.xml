@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<relnotes name="Messaging Watcher">
+  <purpose>
+    This component is observed with attention to watch for incoming messages.It also invoke the other watchers like NBS and WAP which available in BIOMSG.
+  </purpose>
+
+  <deliverystep number="1462" name="Splitting mixed header files for Messaging" osproject="SymTB92" revision="008">
+   <preq number="2510" title=" Splitting mixed header files for Messaging">
+    Mixed header files will now contain only published All or published Partner or internal
+   </preq>
+    <milestone project="GT0465" number="3.5"/>
+  </deliverystep>
+
+  <deliverystep number="1472" name="Removal of CDMA support" osproject="Sphinx" revision="007">
+    <preq number="2002" title="Removal of CDMA support">
+    Removed BiowatchersCdma and multimode component.
+    </preq>
+    <milestone project="GT0358" number="3.6"/>
+  </deliverystep>
+
+  <defect number="DEF127119" title="Updating startup domain definitions (added in SSM) as per SM v2 of 9.5" revision="006">
+    The new domain definition KSM2AppServicesDomain3 is added by using SYMBIAN_SYSTEM_STATE_MANAGEMENT micro which is defined only in vFuture build.
+  </defect>
+
+  <defect number="DEF126849" title="[Coverity] - SYMBIAN.CLEANUP -messaging/framework/" revision="005">
+    Initialized the declared variable, removed the double push into the cleanupstack, removed the dead code, checked the function return valure.   
+  </defect>
+
+  <defect number="DEF126851" title="[Coverity]-UNUSED_VALUE,DEADCODE,PASS_BY_VALUE -messaging/framework/" revision="004">
+    Initialized the declared variable, removed the double push into the cleanupstack, removed the dead code, checked the function return valure.  
+  </defect>
+
+  <defect number="DEF118359" title="WIN32 LIBRARY references in wrong case causes build failures on Linux" revision="003">
+     Updated watcher.mmp from User32.lib to user32.lib upper case to lower case - to be used in linux
+    </defect>
+  <defect number="DEF111689" title="Filename Policy non-conformance generates warnings in checksource build " revision="002">
+    Replaced the #ifdef WINS with #ifdef WINSCW 
+  </defect>
+
+  <deliverystep number="694" name="PREQ775:Messaging:Alignment of CBR and System Model" osproject="Oghma" revision="001">
+    <preq number="775" title="Messaging:Alignment of CBR and System Model">
+     It was split off from messaging_framework for reflecting the functionality for each component.
+  </preq>
+    <milestone project="GT0342" number="3.5"/>
+  </deliverystep>
+</relnotes>

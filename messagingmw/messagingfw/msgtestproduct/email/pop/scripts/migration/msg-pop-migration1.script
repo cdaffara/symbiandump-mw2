@@ -1,0 +1,1546 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE T_MsgCommonServer	-SharedData
+LOAD_SUITE T_MsgPopServer	-SharedData
+LOAD_SUITE T_MsgSmtpServer	-SharedData
+
+START_TESTCASE MSG-POP-Migration1-0001
+
+//! @SYMTestCaseID	MSG-POP-Migration1-0001
+//! @SYMTestCaseDesc	Positive: Check bearer migrations during POP refresh operation
+//! @SYMTestPriority	Critical
+//! @SYMTestType	CIT
+//! @SYMREQ		6991, 6992, 6993
+//! @SYMPREQ		1307
+//! @SYMTestStatus	Implemented
+//! @SYMTestActions	1. Reset Message Store and Central Repository to default state.
+//!			2. Create POP account, connect to POP server, and delete all emails from server, disconnect
+//!			3. Send email messages
+//!			4. Add event handlers to simulate bearer migrations
+//!			5. Connect to POP server
+//!			6. Check all migration events have occured
+//!			7. Disconnect from IMAP service.
+//!			8. Repeat test for all migration types
+//!
+//! @SYMTestExpectedResults	See step 6
+//! @SYMAuthor			Robert Heal
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas		c:\msgtest\email\pop\migration\msg-pop-migration1.ini InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountOutbox_2
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage			c:\msgtest\email\pop\migration\msg-pop-migration1.ini SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountSentItems_2
+
+DELAY 2000
+
+PRINT Setup Completed ##################################################
+
+PRINT Start - Refreshing - Downgrade ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Refreshing_Downgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Downgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_2
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - Refreshing - Downgrade ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+
+PRINT Start - Refreshing - Upgrade Immediate ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Refreshing_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Upgrade_Immediate
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_2
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - Refreshing - Upgrade Immediate ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+
+PRINT Start - Refreshing - Upgrade Stop ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Refreshing_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Upgrade_Stop
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Quitting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_2
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - Refreshing - Upgrade Stop ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+
+PRINT Start - Refreshing - Upgrade Complete ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Refreshing_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Upgrade_Complete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Quitting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+
+// Pause to allow migration to complete
+DELAY 2000
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_2
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - Refreshing - Upgrade Complete ###################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+
+END_TESTCASE MSG-POP-Migration1-0001
+
+START_TESTCASE MSG-POP-Migration1-0003
+
+//! @SYMTestCaseID	MSG-POP-Migration1-0003
+//! @SYMTestCaseDesc	Positive: Check bearer migrations during POP finding offline operations during connection
+//! @SYMTestPriority	Critical
+//! @SYMTestType	CIT
+//! @SYMREQ		6991, 6992, 6993
+//! @SYMPREQ		1307
+//! @SYMTestStatus	Implemented
+//! @SYMTestActions	1. Reset Message Store and Central Repository to default state.
+//!			2. Create POP account, connect to POP server, and delete all emails from server, disconnect
+//!			3. Send email messages
+//!			4. Add event handlers to simulate bearer migrations
+//!			5. Connect to POP server
+//!			6. Check all migration events have occured
+//!			7. Disconnect from IMAP service.
+//!			8. Repeat test for all migration types
+//!
+//! @SYMTestExpectedResults	See step 6
+//! @SYMAuthor			Robert Heal
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas		c:\msgtest\email\pop\migration\msg-pop-migration1.ini InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT Setup Completed ##################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount_Disconnected
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountOutbox_2
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage			c:\msgtest\email\pop\migration\msg-pop-migration1.ini SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountSentItems_2
+
+DELAY 2000
+
+PRINT Start - Find Offline (Connecting) - Downgrade ###################################
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+RUN_TEST_STEP 300 T_MsgPopServer 	CopyPopSelection	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CopyPopSelection_Copy
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_FindOfflineConnecting_Downgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Downgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_FindOfflineConnecting_Ignore
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_2
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountInbox_4
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - Find Offline (Connecting) - Downgrade ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount_Disconnected
+
+PRINT Start - Find Offline (Connecting) - Upgrade Immediate ###################################
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+RUN_TEST_STEP 300 T_MsgPopServer 	CopyPopSelection	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CopyPopSelection_Copy
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_FindOfflineConnecting_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Upgrade_Immediate
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_FindOfflineConnecting_Ignore
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_2
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountInbox_4
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - Find Offline (Connecting) - Upgrade Immediate ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount_Disconnected
+
+PRINT Start - Find Offline (Connecting) - Upgrade Stop ###################################
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+RUN_TEST_STEP 300 T_MsgPopServer 	CopyPopSelection	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CopyPopSelection_Copy
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_FindOfflineConnecting_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Upgrade_Stop
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Quitting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - Find Offline (Connecting) - Upgrade Stop ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount_Disconnected
+
+PRINT Start - Find Offline (Connecting) - Upgrade Complete ###################################
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+RUN_TEST_STEP 300 T_MsgPopServer 	CopyPopSelection	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CopyPopSelection_Copy
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_FindOfflineConnecting_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Upgrade_Complete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Quitting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+
+// Pause to allow migration to complete
+DELAY 2000
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_2
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountInbox_4
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - Find Offline (Connecting) - Upgrade Complete ###################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+
+END_TESTCASE MSG-POP-Migration1-0003
+
+START_TESTCASE MSG-POP-Migration1-0004
+
+//! @SYMTestCaseID	MSG-POP-Migration1-0004
+//! @SYMTestCaseDesc	Positive: Check bearer migrations during POP running offline operations during connection
+//! @SYMTestPriority	Critical
+//! @SYMTestType	CIT
+//! @SYMREQ		6991, 6992, 6993
+//! @SYMPREQ		1307
+//! @SYMTestStatus	Implemented
+//! @SYMTestActions	1. Reset Message Store and Central Repository to default state.
+//!			2. Create POP account, connect to POP server, and delete all emails from server, disconnect
+//!			3. Send email messages
+//!			4. Add event handlers to simulate bearer migrations
+//!			5. Connect to POP server
+//!			6. Check all migration events have occured
+//!			7. Disconnect from IMAP service.
+//!			8. Repeat test for all migration types
+//!
+//! @SYMTestExpectedResults	See step 6
+//! @SYMAuthor			Robert Heal
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas		c:\msgtest\email\pop\migration\msg-pop-migration1.ini InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT Setup Completed ##################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount_Disconnected
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountOutbox_3
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage			c:\msgtest\email\pop\migration\msg-pop-migration1.ini SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountSentItems_3
+
+DELAY 2000
+
+PRINT Start - Running Offline (Connecting) - Downgrade ###################################
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+RUN_TEST_STEP 300 T_MsgPopServer 	CopyPopSelection	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CopyPopSelection_Copy
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Downgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Downgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_3
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountInbox_6
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - Running Offline (Connecting) - Downgrade ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount_Disconnected
+
+PRINT Start - Running Offline (Connecting) - Upgrade Immediate ###################################
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+RUN_TEST_STEP 300 T_MsgPopServer 	CopyPopSelection	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CopyPopSelection_Copy
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Upgrade_Immediate
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_3
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountInbox_6
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - Running Offline (Connecting) - Upgrade Immediate ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount_Disconnected
+
+PRINT Start - Running Offline (Connecting) - Upgrade Stop ###################################
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+RUN_TEST_STEP 300 T_MsgPopServer 	CopyPopSelection	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CopyPopSelection_Copy
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Upgrade_Stop
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Quitting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_3
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountInbox_6
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - Running Offline (Connecting) - Upgrade Stop ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount_Disconnected
+
+PRINT Start - Running Offline (Connecting) - Upgrade Complete ###################################
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+RUN_TEST_STEP 300 T_MsgPopServer 	CopyPopSelection	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CopyPopSelection_Copy
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Upgrade_Complete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Quitting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+
+// Pause to allow migration to complete
+DELAY 2000
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_3
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountInbox_6
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - Running Offline (Connecting) - Upgrade Complete ###################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+
+END_TESTCASE MSG-POP-Migration1-0004
+
+START_TESTCASE MSG-POP-Migration1-0005
+
+//! @SYMTestCaseID	MSG-POP-Migration1-0005
+//! @SYMTestCaseDesc	Positive: Check bearer migrations during POP connected and idle
+//! @SYMTestPriority	Critical
+//! @SYMTestType	CIT
+//! @SYMREQ		6991, 6992, 6993
+//! @SYMPREQ		1307
+//! @SYMTestStatus	Implemented
+//! @SYMTestActions	1. Reset Message Store and Central Repository to default state.
+//!			2. Create POP account, connect to POP server, and delete all emails from server, disconnect
+//!			3. Send email messages
+//!			4. Add event handlers to simulate bearer migrations
+//!			5. Connect to POP server
+//!			6. Check all migration events have occured
+//!			7. Disconnect from IMAP service.
+//!			8. Repeat test for all migration types
+//!
+//! @SYMTestExpectedResults	See step 6
+//! @SYMAuthor			Robert Heal
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas		c:\msgtest\email\pop\migration\msg-pop-migration1.ini InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountOutbox_2
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage			c:\msgtest\email\pop\migration\msg-pop-migration1.ini SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountSentItems_2
+
+DELAY 2000
+
+PRINT Setup Completed ##################################################
+
+PRINT Start - ConnectedAndIdle - Downgrade ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_ConnectedAndIdle_Downgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Downgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+
+// Pause to allow migration a chance to take place
+DELAY 2000
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_2
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - ConnectedAndIdle - Downgrade ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+
+PRINT Start - ConnectedAndIdle - Upgrade Immediate ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_ConnectedAndIdle_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Upgrade_Immediate
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+
+// Pause to allow migration a chance to take place
+DELAY 2000
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_2
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - ConnectedAndIdle - Upgrade Immediate ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+
+PRINT Start - ConnectedAndIdle - Upgrade Stop ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_ConnectedAndIdle_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Upgrade_Stop
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Quitting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+
+// Pause to allow migration a chance to take place
+DELAY 2000
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_2
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - ConnectedAndIdle - Upgrade Stop ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+
+PRINT Start - ConnectedAndIdle - Upgrade Complete ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_ConnectedAndIdle_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Upgrade_Complete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Quitting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+
+// Pause to allow migration a chance to take place
+DELAY 2000
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_2
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - ConnectedAndIdle - Upgrade Complete ###################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+
+END_TESTCASE MSG-POP-Migration1-0005
+
+START_TESTCASE MSG-POP-Migration1-0006
+
+//! @SYMTestCaseID	MSG-POP-Migration1-0006
+//! @SYMTestCaseDesc	Positive: Check bearer migrations during POP copy operation
+//! @SYMTestPriority	Critical
+//! @SYMTestType	CIT
+//! @SYMREQ		6991, 6992, 6993
+//! @SYMPREQ		1307
+//! @SYMTestStatus	Implemented
+//! @SYMTestActions	1. Reset Message Store and Central Repository to default state.
+//!			2. Create POP account, connect to POP server, and delete all emails from server, disconnect
+//!			3. Send email messages
+//!			4. Add event handlers to simulate bearer migrations
+//!			5. Connect to POP server. Copy some emails.
+//!			6. Check all migration events have occured
+//!			7. Disconnect from IMAP service.
+//!			8. Repeat test for all migration types
+//!
+//! @SYMTestExpectedResults	See step 6
+//! @SYMAuthor			Robert Heal
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas		c:\msgtest\email\pop\migration\msg-pop-migration1.ini InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountOutbox_3
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage			c:\msgtest\email\pop\migration\msg-pop-migration1.ini SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountSentItems_3
+
+DELAY 2000
+
+PRINT Setup Completed ##################################################
+
+PRINT Start - Copying - Downgrade ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Copying_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Downgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Downgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer 	CopyPopSelection	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CopyPopSelection_Copy
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_3
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountInbox_3
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - Copying - Downgrade ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+
+PRINT Start - Copying - Upgrade Immediate ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Copying_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Upgrade_Immediate
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer 	CopyPopSelection	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CopyPopSelection_Copy
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_3
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountInbox_3
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - Copying - Upgrade Immediate ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+
+PRINT Start - Copying - Upgrade Stop ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Copying_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Upgrade_Stop
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Quitting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer 	CopyPopSelection	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CopyPopSelection_Copy
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_3
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountInbox_3
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - Copying - Upgrade Stop ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+
+PRINT Start - Copying - Upgrade Complete ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Copying_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Upgrade_Complete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Quitting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer 	CopyPopSelection	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CopyPopSelection_Copy
+
+// Pause to allow migration to complete
+DELAY 2000
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_3
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountInbox_3
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - Copying - Upgrade Complete ###################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+
+END_TESTCASE MSG-POP-Migration1-0006
+
+START_TESTCASE MSG-POP-Migration1-0007
+
+//! @SYMTestCaseID	MSG-POP-Migration1-0007
+//! @SYMTestCaseDesc	Positive: Check bearer migrations during POP move operation
+//! @SYMTestPriority	Critical
+//! @SYMTestType	CIT
+//! @SYMREQ		6991, 6992, 6993
+//! @SYMPREQ		1307
+//! @SYMTestStatus	Implemented
+//! @SYMTestActions	1. Reset Message Store and Central Repository to default state.
+//!			2. Create POP account, connect to POP server, and delete all emails from server, disconnect
+//!			3. Send email messages
+//!			4. Add event handlers to simulate bearer migrations
+//!			5. Connect to POP server. Move some emails.
+//!			6. Check all migration events have occured
+//!			7. Disconnect from IMAP service.
+//!			8. Repeat test for all migration types
+//!
+//! @SYMTestExpectedResults	See step 6
+//! @SYMAuthor			Robert Heal
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas		c:\msgtest\email\pop\migration\msg-pop-migration1.ini InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT Setup Completed ##################################################
+
+PRINT Start - Moving - Downgrade ###################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountOutbox_3
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage			c:\msgtest\email\pop\migration\msg-pop-migration1.ini SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountSentItems_3
+
+DELAY 2000
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Moving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Downgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Downgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer 	CopyPopSelection	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CopyPopSelection_Move
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_0
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountInbox_3
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - Moving - Downgrade ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+
+PRINT Start - Moving - Upgrade Immediate ###################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountOutbox_3
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage			c:\msgtest\email\pop\migration\msg-pop-migration1.ini SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountSentItems_3
+
+DELAY 2000
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Moving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Upgrade_Immediate
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer 	CopyPopSelection	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CopyPopSelection_Move
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_0
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountInbox_3
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - Moving - Upgrade Immediate ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+
+PRINT Start - Moving - Upgrade Stop ###################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountOutbox_3
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage			c:\msgtest\email\pop\migration\msg-pop-migration1.ini SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountSentItems_3
+
+DELAY 2000
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Moving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Upgrade_Stop
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Quitting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer 	CopyPopSelection	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CopyPopSelection_Move
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_0
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountInbox_3
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - Moving - Upgrade Stop ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+
+PRINT Start - Moving - Upgrade Complete ###################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountOutbox_3
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage			c:\msgtest\email\pop\migration\msg-pop-migration1.ini SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountSentItems_3
+
+DELAY 2000
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Moving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Upgrade_Complete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Quitting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer 	CopyPopSelection	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CopyPopSelection_Move
+
+// Pause to allow migration to complete
+DELAY 2000
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_0
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountInbox_3
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - Moving - Upgrade Complete ###################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+
+END_TESTCASE MSG-POP-Migration1-0007
+
+START_TESTCASE MSG-POP-Migration1-0008
+
+//! @SYMTestCaseID	MSG-POP-Migration1-0008
+//! @SYMTestCaseDesc	Positive: Check bearer migrations during POP populating operation
+//! @SYMTestPriority	Critical
+//! @SYMTestType	CIT
+//! @SYMREQ		6991, 6992, 6993
+//! @SYMPREQ		1307
+//! @SYMTestStatus	Implemented
+//! @SYMTestActions	1. Reset Message Store and Central Repository to default state.
+//!			2. Create POP account, connect to POP server, and delete all emails from server, disconnect
+//!			3. Send email messages
+//!			4. Add event handlers to simulate bearer migrations
+//!			5. Connect to POP server. Populate some emails.
+//!			6. Check all migration events have occured
+//!			7. Disconnect from IMAP service.
+//!			8. Repeat test for all migration types
+//!
+//! @SYMTestExpectedResults	See step 6
+//! @SYMAuthor			Robert Heal
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas		c:\msgtest\email\pop\migration\msg-pop-migration1.ini InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountOutbox_3
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage			c:\msgtest\email\pop\migration\msg-pop-migration1.ini SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountSentItems_3
+
+DELAY 2000
+
+PRINT Setup Completed ##################################################
+
+PRINT Start - Populating - Downgrade ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Populating_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Downgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Downgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer	PopInvokeAsyncFunction	c:\msgtest\email\pop\migration\msg-pop-migration1.ini PopInvokeAsyncFunction_Populate
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_3
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - Populating - Downgrade ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+
+PRINT Start - Populating - Upgrade Immediate ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Populating_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Upgrade_Immediate
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer	PopInvokeAsyncFunction	c:\msgtest\email\pop\migration\msg-pop-migration1.ini PopInvokeAsyncFunction_Populate
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_3
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - Populating - Upgrade Immediate ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+
+PRINT Start - Populating - Upgrade Stop ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Populating_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Upgrade_Stop
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Quitting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer	PopInvokeAsyncFunction	c:\msgtest\email\pop\migration\msg-pop-migration1.ini PopInvokeAsyncFunction_Populate
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_3
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - Populating - Upgrade Stop ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+
+PRINT Start - Populating - Upgrade Complete ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Populating_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Upgrade_Complete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Quitting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer	PopInvokeAsyncFunction	c:\msgtest\email\pop\migration\msg-pop-migration1.ini PopInvokeAsyncFunction_Populate
+
+// Pause to allow migration to complete
+DELAY 2000
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_3
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - Populating - Upgrade Complete ###################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+
+END_TESTCASE MSG-POP-Migration1-0008
+
+START_TESTCASE MSG-POP-Migration1-0009
+
+//! @SYMTestCaseID	MSG-POP-Migration1-0009
+//! @SYMTestCaseDesc	Positive: Check bearer migrations during POP top populating operation
+//! @SYMTestPriority	Critical
+//! @SYMTestType	CIT
+//! @SYMREQ		6991, 6992, 6993
+//! @SYMPREQ		1307
+//! @SYMTestStatus	Implemented
+//! @SYMTestActions	1. Reset Message Store and Central Repository to default state.
+//!			2. Create POP account, connect to POP server, and delete all emails from server, disconnect
+//!			3. Send email messages
+//!			4. Add event handlers to simulate bearer migrations
+//!			5. Connect to POP server. Top populating some emails.
+//!			6. Check all migration events have occured
+//!			7. Disconnect from IMAP service.
+//!			8. Repeat test for all migration types
+//!
+//! @SYMTestExpectedResults	See step 6
+//! @SYMAuthor			Robert Heal
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas		c:\msgtest\email\pop\migration\msg-pop-migration1.ini InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountOutbox_3
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage			c:\msgtest\email\pop\migration\msg-pop-migration1.ini SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountSentItems_3
+
+DELAY 2000
+
+PRINT Setup Completed ##################################################
+
+PRINT Start - TopPopulating - Downgrade ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_TopPopulating_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Downgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Downgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer	PopInvokeAsyncFunction	c:\msgtest\email\pop\migration\msg-pop-migration1.ini PopInvokeAsyncFunction_TopPopulate
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_3
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - TopPopulating - Downgrade ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+
+PRINT Start - TopPopulating - Upgrade Immediate ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_TopPopulating_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Upgrade_Immediate
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer	PopInvokeAsyncFunction	c:\msgtest\email\pop\migration\msg-pop-migration1.ini PopInvokeAsyncFunction_TopPopulate
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_3
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - TopPopulating - Upgrade Immediate ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+
+PRINT Start - TopPopulating - Upgrade Stop ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_TopPopulating_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Upgrade_Stop
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Quitting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer	PopInvokeAsyncFunction	c:\msgtest\email\pop\migration\msg-pop-migration1.ini PopInvokeAsyncFunction_TopPopulate
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_3
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - TopPopulating - Upgrade Stop ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+
+PRINT Start - TopPopulating - Upgrade Complete ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_TopPopulating_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Upgrade_Complete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Retrieving_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Quitting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer	PopInvokeAsyncFunction	c:\msgtest\email\pop\migration\msg-pop-migration1.ini PopInvokeAsyncFunction_TopPopulate
+
+// Pause to allow migration to complete
+DELAY 2000
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_3
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - TopPopulating - Upgrade Complete ###################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+
+END_TESTCASE MSG-POP-Migration1-0009
+
+START_TESTCASE MSG-POP-Migration1-0010
+
+//! @SYMTestCaseID	MSG-POP-Migration1-0010
+//! @SYMTestCaseDesc	Positive: Check bearer migrations during POP delete operation
+//! @SYMTestPriority	Critical
+//! @SYMTestType	CIT
+//! @SYMREQ		6991, 6992, 6993
+//! @SYMPREQ		1307
+//! @SYMTestStatus	Implemented
+//! @SYMTestActions	1. Reset Message Store and Central Repository to default state.
+//!			2. Create POP account, connect to POP server, and delete all emails from server, disconnect
+//!			3. Send email messages
+//!			4. Add event handlers to simulate bearer migrations
+//!			5. Connect to POP server. Delete some emails.
+//!			6. Check all migration events have occured
+//!			7. Disconnect from IMAP service.
+//!			8. Repeat test for all migration types
+//!
+//! @SYMTestExpectedResults	See step 6
+//! @SYMAuthor			Robert Heal
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas		c:\msgtest\email\pop\migration\msg-pop-migration1.ini InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT Setup Completed ##################################################
+
+PRINT Start - Delete - Downgrade ###################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountOutbox_3
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage			c:\msgtest\email\pop\migration\msg-pop-migration1.ini SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountSentItems_3
+
+DELAY 2000
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Deleting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Deleting_Downgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Downgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Deleting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Deleting_Ignore
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DeleteAllPopChildren_BlockDelete
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_0
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - Delete - Downgrade ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+
+PRINT Start - Delete - Upgrade Immediate ###################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountOutbox_3
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage			c:\msgtest\email\pop\migration\msg-pop-migration1.ini SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountSentItems_3
+
+DELAY 2000
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Deleting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Deleting_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Upgrade_Immediate
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Deleting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Deleting_Ignore
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DeleteAllPopChildren_BlockDelete
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_0
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - Delete - Upgrade Immediate ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+
+PRINT Start - Delete - Upgrade Stop ###################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountOutbox_3
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage			c:\msgtest\email\pop\migration\msg-pop-migration1.ini SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountSentItems_3
+
+DELAY 2000
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Deleting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Deleting_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Upgrade_Stop
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Quitting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Deleting_Ignore
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DeleteAllPopChildren_BlockDelete
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_0
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - Delete - Upgrade Stop ###################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreatePopAccount
+
+PRINT Start - Delete - Upgrade Complete ###################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountOutbox_3
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage			c:\msgtest\email\pop\migration\msg-pop-migration1.ini SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount		c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountSentItems_3
+
+DELAY 2000
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Deleting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Deleting_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Upgrade_Complete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Quitting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerAdd_MigrationComplete
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini ConnectPopServer
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DeleteAllPopChildren_BlockDelete
+
+// Pause to allow migration to complete
+DELAY 2000
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck	c:\msgtest\email\pop\migration\msg-pop-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgPopServer	CheckChildrenCountPop	c:\msgtest\email\pop\migration\msg-pop-migration1.ini CheckChildrenCountPop_0
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server	c:\msgtest\email\pop\migration\msg-pop-migration1.ini DisconnectPopServer
+
+PRINT End - Delete - Upgrade Complete ###################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+
+END_TESTCASE MSG-POP-Migration1-0010

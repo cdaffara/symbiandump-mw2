@@ -1,0 +1,546 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE	T_MsgCommonServer	-SharedData
+LOAD_SUITE	T_MsgImapServer		-SharedData
+LOAD_SUITE	T_MsgSmtpServer		-SharedData
+
+//!	@SYMTestCaseID				MSG-IMAP-DownloadRulesFetch-0033
+//!	@SYMTestCaseDesc			Positive: When download rule options specify "body text only" for synchronising using KIMAP4MTMInboxNewSync then check the downloaded messages meet the rule. (+ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						6987, 6982
+//! @SYMPREQ					1307
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestCaseDependencies	Requires CED tool to be run over c:\ced_default_ras.cfg to set CommDB as required when using NTRAS for connection to Email servers.
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create IMAP account in Central Repository using standard settings from a configuration file.
+//!								3.	Connect and sync to IMAP service using account settings and initialise account on remote IMAP server to default clean state.
+//!								4.	Disconnect from IMAP service.
+//!								5.	Create 2 messages with attachments from file and send using SMTP service to remote INBOX.
+//!								6.	Connect and sync to IMAP service using account settings.
+//!								7.	Check that the 2 message headers are fetched in remote INBOX as normal.
+//!								8.	Disconnect from IMAP service.
+//!								9.	Create further 3 messages with attachments from file and send using SMTP service to remote INBOX.
+//!								10.	Set IMAP service settings to not use IMAP IDLE command.
+//!								11.	Modify the email account settings to specify it will use it's defined per bearer type list of email download rules.
+//!								12.	Define a per bearer type list of email download rules for remote Inbox specifying to download only body texts.
+//!								13.	Connect without sync to IMAP service using account settings.
+//!								14.	Sync down (KIMAP4MTMInboxNewSync) the remote Inbox.
+//!								15.	Check that last 3 messages are fetched in the remote Inbox folder as required according to the download rules defined in step 12, i.e. only headers + body texts are downloaded,  and check that only message headers are still fetched down for the first 2 messages sent in step 5.
+//!								16.	Disconnect from IMAP service.
+//!
+//!	@SYMTestExpectedResults		See step 15.
+//!	@SYMAuthor					Sandip Ahluwalia
+
+START_TESTCASE	MSG-IMAP-DownloadRulesFetch-0033
+
+RUN_TEST_STEP	300	T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer		StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer		StartUp
+
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-ResetMessageStore
+PRINT Setup Completed ##################################################
+PRINT ##################################################################
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-CreateImapAccount
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-ChangeImap4SubAndSyncSettings
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-InitialiseImap4Account
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-DisConnectImapServer
+PRINT ##################################################################
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-CheckChildrenCountOutbox1
+//Only one "Copy from local" function call needed because in addition to the specified messages the SMTP MTM will also attempt to send in the same session any other SMTP messages that appear in the local Outbox folder
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-SendSmtpMessages1
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-CheckChildrenCountSentItems1
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-DisConnectImapServer
+PRINT ##################################################################
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-CreateSmtpMessageFromEmailFile3
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-CreateSmtpMessageFromEmailFile4
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-CreateSmtpMessageFromEmailFile5
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-CheckChildrenCountOutbox2
+//Only one "Copy from local" function call needed because in addition to the specified messages the SMTP MTM will also attempt to send in the same session any other SMTP messages that appear in the local Outbox folder
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-SendSmtpMessages2
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-CheckChildrenCountSentItems2
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-CheckChildrenCountRemoteInbox1
+PRINT ##################################################################
+RUN_TEST_STEP	300	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-TurnImapIdleOFF
+RUN_TEST_STEP	300	T_MsgImapServer		ModifyImapSettings				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-TurnDownloadRulesON
+RUN_TEST_STEP	300	T_MsgImapServer		AddImapSyncDLRules				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-AddPerBearerListOfDLRulesINBOX
+PRINT ##################################################################
+//2nd phase synchronisation using download rules happens below...
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectImap4Server				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		InboxNewEmailsSync				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-InboxNewEmailsSync
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-CheckChildrenCountRemoteInbox2
+RUN_TEST_STEP	300 T_MsgImapServer  	IsImapMessageHeaderOnly 		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-IsImapMessageHeaderOnly1
+RUN_TEST_STEP	300 T_MsgImapServer  	IsImapMessageHeaderOnly 		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-IsImapMessageHeaderOnly2
+RUN_TEST_STEP	300 T_MsgImapServer  	IsImapMessageHeaderOnly 		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-IsImapMessageHeaderOnly3
+RUN_TEST_STEP	300 T_MsgImapServer  	IsImapMessageHeaderOnly 		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-IsImapMessageHeaderOnly4
+RUN_TEST_STEP	300 T_MsgImapServer  	IsImapMessageHeaderOnly 		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-IsImapMessageHeaderOnly5
+RUN_TEST_STEP	300 T_MsgImapServer  	DeleteMessage 					c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-DeleteRemoteMessage1
+RUN_TEST_STEP	300 T_MsgImapServer  	DeleteMessage 					c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-DeleteRemoteMessage2
+RUN_TEST_STEP	300 T_MsgImapServer  	DeleteMessage		 			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-DeleteLocalMessage1
+RUN_TEST_STEP	300 T_MsgImapServer  	DeleteMessage		 			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-DeleteLocalMessage2
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-CheckChildrenCountRemoteInbox3
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-CheckChildrenCountSentItems3
+RUN_TEST_STEP 	300 T_MsgImapServer  	CompareEmailMessages	 		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-CompareEmailMessagesInbox
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0001-DisConnectImapServer
+PRINT ##################################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+END_TESTCASE	MSG-IMAP-DownloadRulesFetch-0033
+
+//!	@SYMTestCaseID				MSG-IMAP-DownloadRulesFetch-0035
+//!	@SYMTestCaseDesc			Positive: When download rule options specify "body text only" for doing a background synchronisation resulting from a new message arriving while in IDLE then check the downloaded messages meet the rule. (+ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						6987, 6982
+//! @SYMPREQ					1307
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestCaseDependencies	Requires CED tool to be run over c:\ced_default_ras.cfg to set CommDB as required when using NTRAS for connection to Email servers.
+//!								This test case should ONLY run aganist IMAP email servers that DO SUPPORT the IMAP IDLE command.
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create IMAP account in Central Repository using standard settings from a configuration file.
+//!								3.	Connect and sync to IMAP service using account settings and initialise account on remote IMAP server to default clean state.
+//!								4.	Disconnect from IMAP service.
+//!								5.	Set IMAP service settings to use IMAP IDLE command.
+//!								6.	Modify the email account settings to specify it will use it's defined per bearer type list of email download rules.
+//!								7.	Define a per bearer type list of email download rules for the remote Inbox folder specifying to download only body texts.
+//!								8.	Connect without sync to IMAP service using account settings.
+//!								9.	Create multiple messages with attachments from file and send using SMTP service to remote INBOX.
+//!								10.	Check that messages are fetched in the remote Inbox folder as required according to the download rules defined in step 7, i.e. only headers + body texts are downloaded.
+//!								11.	Disconnect from IMAP service.
+//!
+//!	@SYMTestExpectedResults		See step 10.
+//!	@SYMAuthor					Sandip Ahluwalia
+
+START_TESTCASE	MSG-IMAP-DownloadRulesFetch-0035
+
+RUN_TEST_STEP	300	T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer		StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer		StartUp
+
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0002-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0002-ResetMessageStore
+PRINT Setup Completed ##################################################
+PRINT ##################################################################
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0002-CreateImapAccount
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0002-ChangeImap4SubAndSyncSettings
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0002-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0002-InitialiseImap4Account
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0002-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0002-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0002-DisConnectImapServer
+PRINT ##################################################################
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0002-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0002-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0002-CheckChildrenCountOutbox
+PRINT ##################################################################
+RUN_TEST_STEP	300	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0002-TurnImapIdleON
+RUN_TEST_STEP	300	T_MsgImapServer		ModifyImapSettings				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0002-TurnDownloadRulesON
+RUN_TEST_STEP	300	T_MsgImapServer		AddImapSyncDLRules				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0002-AddPerBearerListOfDLRulesINBOX
+PRINT ##################################################################
+//2nd phase synchronisation using download rules happens below...
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectImap4Server				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0002-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0002-CheckChildrenCountRemoteInbox0
+//Only one "Copy from local" function call needed because in addition to the specified messages the SMTP MTM will also attempt to send in the same session any other SMTP messages that appear in the local Outbox folder
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0002-SendSmtpMessage
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0002-CheckChildrenCountSentItems
+// Delay to allow the email message to be recieved
+DELAY 30000
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0002-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP 	300 T_MsgImapServer  	CompareEmailMessages 			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0002-CompareEmailMessagesInbox
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0002-DisConnectImapServer
+PRINT ##################################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+END_TESTCASE	MSG-IMAP-DownloadRulesFetch-0035
+
+//!	@SYMTestCaseID				MSG-IMAP-DownloadRulesFetch-0036
+//!	@SYMTestCaseDesc			Positive: When download rule options specify "attachment only" for synchronising using KIMAP4MTMConnectAndSynchronise then check the downloaded messages meet the rule. (+ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						6987, 6982
+//! @SYMPREQ					1307
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestCaseDependencies	Requires CED tool to be run over c:\ced_default_ras.cfg to set CommDB as required when using NTRAS for connection to Email servers.
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create IMAP account in Central Repository using standard settings from configuration file.
+//!								3.	Connect and sync to IMAP service using account settings and initialise account on remote IMAP server to default clean state.
+//!								4.	Disconnect from IMAP service.
+//!								5.	Create multiple messages with attachments from file and send using SMTP service to remote INBOX.
+//!								6.	Create remote root-level personal folder with multiple messages that have attachments (messages copied within service from INBOX using a separate IMAP a/c).
+//!								7.	Set IMAP service settings to not use IMAP IDLE command.
+//!								8.	Modify the email account settings to specify it will use it's defined per bearer type list of email download rules.
+//!								9.	Define a per bearer type list of email download rules for both remote Inbox and the personal folder created in step 6 specifying to download only attachments.
+//!								10.	Connect and sync (KIMAP4MTMConnectAndSynchronise) to IMAP service using account settings and wait for both background and 2nd phase synchronisation using download rules to complete.
+//!								11.	Check that messages are fetched in remote Inbox and the personal folder created in step 6 as required according to the download rules defined in step 9, i.e. only headers and attachments are downloaded.
+//!								12.	Disconnect from IMAP service.
+//!
+//!	@SYMTestExpectedResults		See step 11.
+//!	@SYMAuthor					Sandip Ahluwalia
+
+START_TESTCASE	MSG-IMAP-DownloadRulesFetch-0036
+
+RUN_TEST_STEP	300	T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer		StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer		StartUp
+
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-ResetMessageStore
+PRINT Setup Completed ##################################################
+PRINT ##################################################################
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-CreateImapAccount
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-ChangeImap4SubAndSyncSettings
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-InitialiseImap4Account
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-DisConnectImapServer
+PRINT ##################################################################
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-CheckChildrenCountOutbox
+//Only one "Copy from local" function call needed because in addition to the specified messages the SMTP MTM will also attempt to send in the same session any other SMTP messages that appear in the local Outbox folder
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-SendSmtpMessage
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-CheckChildrenCountSentItems
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-CheckChildrenCountRemoteInbox0
+PRINT ##################################################################
+//Messages copied within service from remote INBOX to remote personal folder using a separate IMAP a/c.
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-CreateImapAccount_B
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-ChangeImap4SubAndSyncSettings_B
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-ConnectAndSyncImapServer_B
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-CheckChildrenCountRemoteInbox_B
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-CreateImap4Folder_B
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-FindEntryByName_B
+RUN_TEST_STEP	300	T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-CopyImapSelectionRemote_B
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-CheckChildrenCountRemoteTestFolder0_B
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-DoFullImap4Synchronisation_B
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-CheckChildrenCountRemoteTestFolder1_B
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-CheckSubscription1_B
+RUN_TEST_STEP	300	T_MsgImapServer		SubscribeImap4Folder			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-SubscribeImap4Folder_TestFolder_B
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-DoFullImap4Synchronisation_B
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-CheckSubscription2_B
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-CheckChildrenCountRemoteTestFolder0_B
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-DisConnectImapServer_B
+PRINT ##################################################################
+RUN_TEST_STEP	300	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-TurnImapIdleOFF
+RUN_TEST_STEP	300	T_MsgImapServer		ModifyImapSettings				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-TurnDownloadRulesON
+RUN_TEST_STEP	300	T_MsgImapServer		AddImapSyncDLRules				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-AddPerBearerListOfDLRulesINBOX
+RUN_TEST_STEP	300	T_MsgImapServer		AddImapSyncDLRules				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-AddPerBearerListOfDLRulesOTHER
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP !Error=-1	300	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-FindEntryByName_TestFolder
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-ChangeImap4SubAndSyncSettings2
+PRINT ##################################################################
+//2nd phase synchronisation using download rules happens below...
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-ConnectAndSyncImapServer
+RUN_TEST_STEP 	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-FindEntryByName_TestFolder
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-CheckSubscription_TestFolder
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-CheckChildrenCountRemoteTestFolder
+RUN_TEST_STEP 	300 T_MsgImapServer  	CompareEmailMessages 			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-CompareEmailMessagesInbox
+RUN_TEST_STEP 	300 T_MsgImapServer  	CompareEmailMessages 			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-CompareEmailMessagesTestFolder
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0003-DisConnectImapServer
+PRINT ##################################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+END_TESTCASE	MSG-IMAP-DownloadRulesFetch-0036
+
+//!	@SYMTestCaseID				MSG-IMAP-DownloadRulesFetch-0038
+//!	@SYMTestCaseDesc			Positive: When download rule options specify "attachment only" for synchronising using KIMAP4MTMFolderFullSync then check the downloaded messages meet the rule. (+ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						6987, 6982
+//! @SYMPREQ					1307
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestCaseDependencies	Requires CED tool to be run over c:\ced_default_ras.cfg to set CommDB as required when using NTRAS for connection to Email servers.
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create IMAP account in Central Repository using standard settings from a configuration file.
+//!								3.	Connect and sync to IMAP service using account settings and initialise account on remote IMAP server to default clean state.
+//!								4.	Create remote root-level personal folder and remotely subscribe to it.
+//!								5.	Disconnect from IMAP service.
+//!								6.	Create multiple messages with attachments from file and send using SMTP service to remote INBOX.
+//!								7.	Populate remote root-level personal folder with multiple messages that have attachments (messages copied within service from remote INBOX using a separate IMAP a/c).
+//!								8.	Set IMAP service settings to not use IMAP IDLE command.
+//!								9.	Modify the email account settings to specify it will use it's defined per bearer type list of email download rules.
+//!								10.	Define a per bearer type list of email download rules for both remote Inbox and the personal folder created in step 4 specifying to download only attachments.
+//!								11.	Connect without sync to IMAP service using account settings.
+//!								12.	Sync down (KIMAP4MTMFolderFullSync) the created personal folder in step 4.
+//!								13.	Check that messages are fetched in the personal folder created in step 4 as required according to the download rules defined in step 10, i.e. only headers + attachments are downloaded, and check that no message headers and content are fetched down in remote Inbox.
+//!								14.	Disconnect from IMAP service.
+//!
+//!	@SYMTestExpectedResults		See step 13.
+//!	@SYMAuthor					Sandip Ahluwalia
+
+START_TESTCASE	MSG-IMAP-DownloadRulesFetch-0038
+
+RUN_TEST_STEP	300	T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer		StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer		StartUp
+
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-ResetMessageStore
+PRINT Setup Completed ##################################################
+PRINT ##################################################################
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-CreateImapAccount
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-ChangeImap4SubAndSyncSettings
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-InitialiseImap4Account
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-CheckChildrenCountRemoteInbox0
+PRINT ##################################################################
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-CreateImap4Folder
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-FindEntryByName_TestFolder
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-CheckSubscription1
+RUN_TEST_STEP	300	T_MsgImapServer		SubscribeImap4Folder			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-SubscribeImap4Folder_TestFolder
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckImap4Subscription			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-CheckSubscription2
+PRINT ##################################################################
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-DisConnectImapServer
+PRINT ##################################################################
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-CheckChildrenCountOutbox
+//Only one "Copy from local" function call needed because in addition to the specified messages the SMTP MTM will also attempt to send in the same session any other SMTP messages that appear in the local Outbox folder
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-SendSmtpMessage
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-CheckChildrenCountSentItems
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-CheckChildrenCountRemoteInbox0
+PRINT ##################################################################
+//Messages copied within service from remote INBOX to remote personal folder using a separate IMAP a/c.
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-CreateImapAccount_B
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-ChangeImap4SubAndSyncSettings_B
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-ConnectAndSyncImapServer_B
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-CheckChildrenCountRemoteInbox_B
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-CheckChildrenCountRemoteTestFolder0_B
+RUN_TEST_STEP	300	T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-CopyImapSelectionRemote_B
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-CheckChildrenCountRemoteTestFolder1_B
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-DoFullImap4Synchronisation_B
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-CheckChildrenCountRemoteTestFolder1_B
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-DisConnectImapServer_B
+PRINT ##################################################################
+RUN_TEST_STEP	300	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-TurnImapIdleOFF
+RUN_TEST_STEP	300	T_MsgImapServer		ModifyImapSettings				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-TurnDownloadRulesON
+RUN_TEST_STEP	300	T_MsgImapServer		AddImapSyncDLRules				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-AddPerBearerListOfDLRulesINBOX
+RUN_TEST_STEP	300	T_MsgImapServer		AddImapSyncDLRules				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-AddPerBearerListOfDLRulesOTHER
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP	300 T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-CheckChildrenCountRemoteTestFolder0
+PRINT ##################################################################
+//2nd phase synchronisation using download rules happens below...
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectImap4Server				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP	300 T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-CheckChildrenCountRemoteTestFolder0
+RUN_TEST_STEP	300	T_MsgImapServer		FolderFullSync					c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-FolderFullSync
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-CheckChildrenCountRemoteTestFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP !Result=Fail 300 T_MsgImapServer  CompareEmailMessages 	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-CompareEmailMessagesInbox
+RUN_TEST_STEP	300 T_MsgImapServer  	CompareEmailMessages 			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-CompareEmailMessagesTestFolder
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0004-DisConnectImapServer
+PRINT ##################################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+END_TESTCASE	MSG-IMAP-DownloadRulesFetch-0038
+
+//!	@SYMTestCaseID				MSG-IMAP-DownloadRulesFetch-0040
+//!	@SYMTestCaseDesc			Positive: When download rule options specify "attachment only" for synchronising using KIMAP4MTMInboxNewSync then check the downloaded messages meet the rule. (+ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						6987, 6982
+//! @SYMPREQ					1307
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestCaseDependencies	Requires CED tool to be run over c:\ced_default_ras.cfg to set CommDB as required when using NTRAS for connection to Email servers.
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create IMAP account in Central Repository using standard settings from a configuration file.
+//!								3.	Connect and sync to IMAP service using account settings and initialise account on remote IMAP server to default clean state.
+//!								4.	Disconnect from IMAP service.
+//!								5.	Create 2 messages with attachments from file and send using SMTP service to remote INBOX.
+//!								6.	Connect and sync to IMAP service using account settings.
+//!								7.	Check that the 2 message headers are fetched in remote INBOX as normal.
+//!								8.	Disconnect from IMAP service.
+//!								9.	Create further 3 messages with attachments from file and send using SMTP service to remote INBOX.
+//!								10.	Set IMAP service settings to not use IMAP IDLE command.
+//!								11.	Modify the email account settings to specify it will use it's defined per bearer type list of email download rules.
+//!								12.	Define a per bearer type list of email download rules for remote Inbox and specifying to download only attachments.
+//!								13.	Connect without sync to IMAP service using account settings.
+//!								14.	Sync down (KIMAP4MTMInboxNewSync) the remote Inbox.
+//!								15.	Check that last 3 messages are fetched in the remote Inbox folder as required according to the download rules defined in step 12, i.e. only headers + attachments are downloaded, and check that only message headers are still fetched down for the first 2 messages sent in step 5.
+//!								16.	Disconnect from IMAP service.
+//!
+//!	@SYMTestExpectedResults		See step 15.
+//!	@SYMAuthor					Sandip Ahluwalia
+
+START_TESTCASE	MSG-IMAP-DownloadRulesFetch-0040
+
+RUN_TEST_STEP	300	T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer		StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer		StartUp
+
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-ResetMessageStore
+PRINT Setup Completed ##################################################
+PRINT ##################################################################
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-CreateImapAccount
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-ChangeImap4SubAndSyncSettings
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-InitialiseImap4Account
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-DisConnectImapServer
+PRINT ##################################################################
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-CheckChildrenCountOutbox1
+//Only one "Copy from local" function call needed because in addition to the specified messages the SMTP MTM will also attempt to send in the same session any other SMTP messages that appear in the local Outbox folder
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-SendSmtpMessages1
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-CheckChildrenCountSentItems1
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-DisConnectImapServer
+PRINT ##################################################################
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-CreateSmtpMessageFromEmailFile3
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-CreateSmtpMessageFromEmailFile4
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-CreateSmtpMessageFromEmailFile5
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-CheckChildrenCountOutbox2
+//Only one "Copy from local" function call needed because in addition to the specified messages the SMTP MTM will also attempt to send in the same session any other SMTP messages that appear in the local Outbox folder
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-SendSmtpMessages2
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-CheckChildrenCountSentItems2
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-CheckChildrenCountRemoteInbox1
+PRINT ##################################################################
+RUN_TEST_STEP	300	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-TurnImapIdleOFF
+RUN_TEST_STEP	300	T_MsgImapServer		ModifyImapSettings				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-TurnDownloadRulesON
+RUN_TEST_STEP	300	T_MsgImapServer		AddImapSyncDLRules				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-AddPerBearerListOfDLRulesINBOX
+PRINT ##################################################################
+//2nd phase synchronisation using download rules happens below...
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectImap4Server				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		InboxNewEmailsSync				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-InboxNewEmailsSync
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-CheckChildrenCountRemoteInbox2
+RUN_TEST_STEP	300 T_MsgImapServer  	IsImapMessageHeaderOnly 		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-IsImapMessageHeaderOnly1
+RUN_TEST_STEP	300 T_MsgImapServer  	IsImapMessageHeaderOnly 		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-IsImapMessageHeaderOnly2
+RUN_TEST_STEP	300 T_MsgImapServer  	IsImapMessageHeaderOnly 		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-IsImapMessageHeaderOnly3
+RUN_TEST_STEP	300 T_MsgImapServer  	IsImapMessageHeaderOnly 		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-IsImapMessageHeaderOnly4
+RUN_TEST_STEP	300 T_MsgImapServer  	IsImapMessageHeaderOnly 		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-IsImapMessageHeaderOnly5
+RUN_TEST_STEP	300 T_MsgImapServer  	DeleteMessage 					c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-DeleteRemoteMessage1
+RUN_TEST_STEP	300 T_MsgImapServer  	DeleteMessage 					c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-DeleteRemoteMessage2
+RUN_TEST_STEP	300 T_MsgImapServer  	DeleteMessage		 			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-DeleteLocalMessage1
+RUN_TEST_STEP	300 T_MsgImapServer  	DeleteMessage		 			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-DeleteLocalMessage2
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-CheckChildrenCountRemoteInbox3
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-CheckChildrenCountSentItems3
+RUN_TEST_STEP 	300 T_MsgImapServer  	CompareEmailMessages	 		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-CompareEmailMessagesInbox
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0005-DisConnectImapServer
+PRINT ##################################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+END_TESTCASE	MSG-IMAP-DownloadRulesFetch-0040
+
+//!	@SYMTestCaseID				MSG-IMAP-DownloadRulesFetch-0042
+//!	@SYMTestCaseDesc			Positive: When download rule options specify "attachment only" for doing a background synchronisation resulting from a new message arriving while in IDLE then check the downloaded messages meet the rule. (+ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						6987, 6982
+//! @SYMPREQ					1307
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestCaseDependencies	Requires CED tool to be run over c:\ced_default_ras.cfg to set CommDB as required when using NTRAS for connection to Email servers.
+//!								This test case should ONLY run aganist IMAP email servers that DO SUPPORT the IMAP IDLE command.
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create IMAP account in Central Repository using standard settings from a configuration file.
+//!								3.	Connect and sync to IMAP service using account settings and initialise account on remote IMAP server to default clean state.
+//!								4.	Disconnect from IMAP service.
+//!								5.	Set IMAP service settings to use IMAP IDLE command.
+//!								6.	Modify the email account settings to specify it will use it's defined per bearer type list of email download rules.
+//!								7.	Define a per bearer type list of email download rules for the remote Inbox folder specifying to download only attachments.
+//!								8.	Connect without sync to IMAP service using account settings.
+//!								9.	Create multiple messages with attachments from file and send using SMTP service to remote INBOX.
+//!								10.	Check that messages are fetched in the remote Inbox folder as required according to the download rules defined in step 7, i.e. only headers + attachments are downloaded.
+//!								11.	Disconnect from IMAP service.
+//!
+//!	@SYMTestExpectedResults		See step 10.
+//!	@SYMAuthor					Sandip Ahluwalia
+
+START_TESTCASE	MSG-IMAP-DownloadRulesFetch-0042
+
+RUN_TEST_STEP	300	T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer		StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer		StartUp
+
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0006-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0006-ResetMessageStore
+PRINT Setup Completed ##################################################
+PRINT ##################################################################
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0006-CreateImapAccount
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0006-ChangeImap4SubAndSyncSettings
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0006-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0006-InitialiseImap4Account
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0006-DoFullImap4Synchronisation
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0006-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0006-DisConnectImapServer
+PRINT ##################################################################
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0006-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0006-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0006-CheckChildrenCountOutbox
+PRINT ##################################################################
+RUN_TEST_STEP	300	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0006-TurnImapIdleON
+RUN_TEST_STEP	300	T_MsgImapServer		ModifyImapSettings				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0006-TurnDownloadRulesON
+RUN_TEST_STEP	300	T_MsgImapServer		AddImapSyncDLRules				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0006-AddPerBearerListOfDLRulesINBOX
+PRINT ##################################################################
+//2nd phase synchronisation using download rules happens below...
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectImap4Server				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0006-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0006-CheckChildrenCountRemoteInbox0
+//Only one "Copy from local" function call needed because in addition to the specified messages the SMTP MTM will also attempt to send in the same session any other SMTP messages that appear in the local Outbox folder
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0006-SendSmtpMessage
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0006-CheckChildrenCountSentItems
+//Delay to allow the email message to be recieved
+DELAY 30000
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0006-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP 	300 T_MsgImapServer  	CompareEmailMessages 			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0006-CompareEmailMessagesInbox
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\downloadrules\msg-imap-downloadrules3.ini	0006-DisConnectImapServer
+PRINT ##################################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+END_TESTCASE	MSG-IMAP-DownloadRulesFetch-0042

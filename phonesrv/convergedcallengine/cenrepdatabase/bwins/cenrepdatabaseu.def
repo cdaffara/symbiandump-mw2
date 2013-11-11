@@ -1,0 +1,28 @@
+EXPORTS
+	??1CCenRepDatabaseProperty@@UAE@XZ @ 1 NONAME ; CCenRepDatabaseProperty::~CCenRepDatabaseProperty(void)
+	??1CCenRepDatabaseUtil@@UAE@XZ @ 2 NONAME ; CCenRepDatabaseUtil::~CCenRepDatabaseUtil(void)
+	??8CCenRepDatabaseProperty@@QBEHABV0@@Z @ 3 NONAME ; int CCenRepDatabaseProperty::operator==(class CCenRepDatabaseProperty const &) const
+	?AddEntryL@CCenRepDatabaseUtil@@QAEXAAHABV?$RPointerArray@VCCenRepDatabaseProperty@@@@@Z @ 4 NONAME ; void CCenRepDatabaseUtil::AddEntryL(int &, class RPointerArray<class CCenRepDatabaseProperty> const &)
+	?AddOrUpdatePropertiesL@CCenRepDatabaseUtil@@QAEHHABV?$RPointerArray@VCCenRepDatabaseProperty@@@@@Z @ 5 NONAME ; int CCenRepDatabaseUtil::AddOrUpdatePropertiesL(int, class RPointerArray<class CCenRepDatabaseProperty> const &)
+	?BeginTransactionL@CCenRepDatabaseUtil@@QAEXXZ @ 6 NONAME ; void CCenRepDatabaseUtil::BeginTransactionL(void)
+	?CommitTransaction@CCenRepDatabaseUtil@@QAEHXZ @ 7 NONAME ; int CCenRepDatabaseUtil::CommitTransaction(void)
+	?DeleteEntryL@CCenRepDatabaseUtil@@QAEHH@Z @ 8 NONAME ; int CCenRepDatabaseUtil::DeleteEntryL(int)
+	?DeletePropertiesL@CCenRepDatabaseUtil@@QAEHHABV?$RArray@K@@@Z @ 9 NONAME ; int CCenRepDatabaseUtil::DeletePropertiesL(int, class RArray<unsigned long> const &)
+	?EntryCountL@CCenRepDatabaseUtil@@QAEHAAH@Z @ 10 NONAME ; int CCenRepDatabaseUtil::EntryCountL(int &)
+	?FindEntryIdsFromPropertiesL@CCenRepDatabaseUtil@@QAEHABV?$RPointerArray@VCCenRepDatabaseProperty@@@@AAV?$RArray@H@@@Z @ 11 NONAME ; int CCenRepDatabaseUtil::FindEntryIdsFromPropertiesL(class RPointerArray<class CCenRepDatabaseProperty> const &, class RArray<int> &)
+	?FindEntryIdsL@CCenRepDatabaseUtil@@QAEHAAV?$RArray@H@@@Z @ 12 NONAME ; int CCenRepDatabaseUtil::FindEntryIdsL(class RArray<int> &)
+	?FindEntryL@CCenRepDatabaseUtil@@QAEHHAAV?$RPointerArray@VCCenRepDatabaseProperty@@@@@Z @ 13 NONAME ; int CCenRepDatabaseUtil::FindEntryL(int, class RPointerArray<class CCenRepDatabaseProperty> &)
+	?FindPropertyL@CCenRepDatabaseUtil@@QAEHHKAAVCCenRepDatabaseProperty@@@Z @ 14 NONAME ; int CCenRepDatabaseUtil::FindPropertyL(int, unsigned long, class CCenRepDatabaseProperty &)
+	?GetDesValue@CCenRepDatabaseProperty@@QBEABVTDesC16@@XZ @ 15 NONAME ; class TDesC16 const & CCenRepDatabaseProperty::GetDesValue(void) const
+	?GetName@CCenRepDatabaseProperty@@QBEKXZ @ 16 NONAME ; unsigned long CCenRepDatabaseProperty::GetName(void) const
+	?GetValue@CCenRepDatabaseProperty@@QBEHAAH@Z @ 17 NONAME ; int CCenRepDatabaseProperty::GetValue(int &) const
+	?NewL@CCenRepDatabaseProperty@@SAPAV1@XZ @ 18 NONAME ; class CCenRepDatabaseProperty * CCenRepDatabaseProperty::NewL(void)
+	?NewL@CCenRepDatabaseUtil@@SAPAV1@VTUid@@KKKKH@Z @ 19 NONAME ; class CCenRepDatabaseUtil * CCenRepDatabaseUtil::NewL(class TUid, unsigned long, unsigned long, unsigned long, unsigned long, int)
+	?NewLC@CCenRepDatabaseProperty@@SAPAV1@XZ @ 20 NONAME ; class CCenRepDatabaseProperty * CCenRepDatabaseProperty::NewLC(void)
+	?NewLC@CCenRepDatabaseUtil@@SAPAV1@VTUid@@KKKKH@Z @ 21 NONAME ; class CCenRepDatabaseUtil * CCenRepDatabaseUtil::NewLC(class TUid, unsigned long, unsigned long, unsigned long, unsigned long, int)
+	?RollbackTransaction@CCenRepDatabaseUtil@@QAEXXZ @ 22 NONAME ; void CCenRepDatabaseUtil::RollbackTransaction(void)
+	?SetName@CCenRepDatabaseProperty@@QAEXK@Z @ 23 NONAME ; void CCenRepDatabaseProperty::SetName(unsigned long)
+	?SetValue@CCenRepDatabaseProperty@@QAEHABVTDesC16@@@Z @ 24 NONAME ; int CCenRepDatabaseProperty::SetValue(class TDesC16 const &)
+	?SetValue@CCenRepDatabaseProperty@@QAEHH@Z @ 25 NONAME ; int CCenRepDatabaseProperty::SetValue(int)
+	?UpdateEntryL@CCenRepDatabaseUtil@@QAEHHABV?$RPointerArray@VCCenRepDatabaseProperty@@@@@Z @ 26 NONAME ; int CCenRepDatabaseUtil::UpdateEntryL(int, class RPointerArray<class CCenRepDatabaseProperty> const &)
+

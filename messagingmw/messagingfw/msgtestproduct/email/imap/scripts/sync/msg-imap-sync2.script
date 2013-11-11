@@ -1,0 +1,2094 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE	T_MsgCommonServer  	-SharedData
+LOAD_SUITE	T_MsgImapServer		-SharedData
+LOAD_SUITE	T_MsgSmtpServer		-SharedData
+
+
+START_TESTCASE	MSG-IMAP-FULLMAILBOX-SYNC-0009
+//!	@SYMTestCaseID			MSG-IMAP-FULLMAILBOX-SYNC-0009
+//!	@SYMTestCaseDesc		To verify the messages downloaded when the fetch size is given.
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented  
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5562
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			1.Startup test steps are called for the different servers to create session,
+//!					  IMAP MTM and SMTP MTM objects.
+//!					2.Initialises the RAS connection
+//!					3.Resets the message store to clean up the central repository
+//!					4.Creates an IMAP account by reading the settings from the file mentioned
+//!					  thus setting the IMAP and SMTP service settings
+//!					5.Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					6.Deletes all mails in the Inbox on the server.
+//!					7.Creates messages from RFC822 file and sends the messages to the same IMAP account.
+//!					8.Sets the full download limits with the Fetch size specified.
+//!					9.Connect to the Server and perform a sync on the INBOX.
+//!					10.Download the mails with IMAP4 KIMAP4MTMPopulate command
+//!					11.Disconnect from the Server.
+//!					12.Verify the messages in the Sent and Received folder.
+//!	@SYMTestExpectedResults		EPass,The message is received along with attachement.
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0001-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0001-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0001-CreateImapAccount 
+RUN_TEST_STEP 	100 	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0001-ChangeSubAndSyncSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0001-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0001-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0001-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0001-DoFullImap4Synchronisation
+RUN_TEST_STEP  	100 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0001-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0001-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0001-CreateSmtpMessageFromEmailFile_9
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0001-SendSmtpMessage_9
+// Set the Fecth size limit to the default value
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4FullDownloadLimits 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0001-SetImap4FullDownloadLimits_9
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0001-ConnectImap4Server
+RUN_TEST_STEP	 100 	T_MsgImapServer		Imap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0001-Imap4Synchronisation_9
+//RUN_TEST_STEP 	100 	T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0001-ImapInvokeAsyncFunction_9
+RUN_TEST_STEP  	100 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0001-CheckChildrenCountRemoteInbox1_9
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0001-DisConnectImap4Server
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-FULLMAILBOX-SYNC-0009
+
+
+START_TESTCASE MSG-IMAP-FULLMAILBOX-SYNC-0010
+//!	@SYMTestCaseID			MSG-IMAP-FULLMAILBOX-SYNC-0010
+//!	@SYMTestCaseDesc		To verify the messages downloaded when the maximum email size, body text limit 
+//!					and attachment size limit is given.
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented  
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5562
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			1.Startup test steps are called for the different servers to create session,
+//!					  IMAP MTM and SMTP MTM objects.
+//!					2.Initialises the RAS connection
+//!					3.Resets the message store to clean up the central repository
+//!					4.Creates an IMAP account by reading the settings from the file mentioned
+//!					  thus setting the IMAP and SMTP service settings
+//!					5.Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					6.Deletes all mails in the Inbox on the server.
+//!					7.Creates messages from RFC822 file and sends the messages to the same IMAP account.
+//!					8.Sets the partial download limits specifying the maximum email size, body text limit,
+//!					  attachment size limt and the ImapPartialMailOption.
+//!					9.Connects to the Server and perform a sync on the INBOX.
+//!					10.Downloads the mails with IMAP4 KIMAP4MTMPopulate command
+//!					11.Disconnects from the Server.
+//!					12.Sets the full download limits with the Fetch size specified.
+//!					13.Connects to the Server and perform a sync on the INBOX.
+//!					14.Download the mails with IMAP4 KIMAP4MTMPopulateMailSelectionWhenAlreadyConnected command
+//!					15.Verify the messages in the Sent and Received folder.
+//!	@SYMTestExpectedResults		EPass,The messages are received along with attachement.
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini      		0002-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini      		0002-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini      		0002-CreateImapAccount 
+RUN_TEST_STEP 	100 	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini       		0002-ChangeSubAndSyncSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini      		0002-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini      		0002-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini      		0002-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini      		0002-DoFullImap4Synchronisation
+RUN_TEST_STEP  	100 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini      		0002-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini      		0002-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini      		0002-CreateSmtpMessageFromEmailFile_10
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini      		0002-SendSmtpMessage_10
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini      		0002-CreateSmtpMessageFromEmailFile1_10
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini      		0002-SendSmtpMessage1_10
+RUN_TEST_STEP  	100 	T_MsgCommonServer  	CheckChildrenCount		c:\msgtest\email\imap\sync\msg-imap-sync2.ini      		0002-CheckChildrenCountSentItems_10
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4PartialDownloadLimits	c:\msgtest\email\imap\sync\msg-imap-sync2.ini      		0002-SetImap4PartialDownloadLimits_10
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini      		0002-ConnectImap4Server
+RUN_TEST_STEP	 100 	T_MsgImapServer		Imap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync2.ini       		0002-Imap4Synchronisation_10
+RUN_TEST_STEP 	100 	T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\sync\msg-imap-sync2.ini      		0002-ImapInvokeAsyncFunction_10
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4FullDownloadLimits 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini      		0002-SetImap4FullDownloadLimits_10
+RUN_TEST_STEP 	100 	T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\sync\msg-imap-sync2.ini      		0002-ImapInvokeAsyncFunction1_10
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini      		0002-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-FULLMAILBOX-SYNC-0010
+
+
+START_TESTCASE	MSG-IMAP-FULLMAILBOX-SYNC-0011
+//!	@SYMTestCaseID			MSG-IMAP-FULLMAILBOX-SYNC-0011
+//!	@SYMTestCaseDesc		To verify the messages synced when the mailbox sync limit is given.
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented  
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5562
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			1.Startup test steps are called for the different servers to create session,
+//!					 IMAP MTM and SMTP MTM objects.
+//!					2.Initialises the RAS connection.
+//!					3.Resets the message store and central repository to default state.
+//!					4.Creates an IMAP account by reading the settings from the file mentioned in the 
+//!					  ini config file thus setting the IMAP and SMTP service settings.
+//!					5.Connects to the IMAP server and performs sync on the Inbox.
+//!					6.Deletes all mails in the Inbox of the IMAP server.
+//!					7.Connects to the server.
+//!					8.Creates a remote folder, verifies its creation.
+//!					9.Creates a message from RFC822 file and sends the message to the IMAP account.
+//!					10.Sets the full download limits, with the mailbox sync limit as -1.
+//!					11.Connects to the IMAP server, performs a sync on the Inbox.
+//!					12.Downloads the mails into INBOX.
+//!					13.Copies the messages from INBOX to the User created folder.
+//!					14.Connects to the IMAP server, subscribes, selects and syncs the folder.
+//!					15.Verifies the count of the messages received in the created remote folder.
+//!					16.Shutdown test steps are called to destroy the session, IMAP and SMTP MTM objects.
+//!	@SYMTestExpectedResults		EPass, All the messages are synchronised in the remote folder created.
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0003-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0003-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0003-CreateImapAccount 
+RUN_TEST_STEP 	100 	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0003-ChangeSubAndSyncSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0003-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0003-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0003-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0003-DoFullImap4Synchronisation
+RUN_TEST_STEP  	100 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0003-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0003-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgSmtpServer    	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0003-CreateSmtpMessageFromEmailFile_11
+RUN_TEST_STEP 	100 	T_MsgSmtpServer    	SendSmtpMessage			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0003-SendSmtpMessage_11
+RUN_TEST_STEP 	100 	T_MsgSmtpServer    	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0003-CreateSmtpMessageFromEmailFile1_11
+RUN_TEST_STEP 	100 	T_MsgSmtpServer    	SendSmtpMessage			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0003-SendSmtpMessage1_11
+// Set mailbox sync limit to 1, to sync recent messages
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4FullDownloadLimits	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0003-SetImap4FullDownloadLimits_11
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0003-ConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		Imap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0003-Imap4SynchronisationInbox_11
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0003-CheckChildrenCountRemoteInbox1_11
+RUN_TEST_STEP 	100 	T_MsgImapServer		ImapInvokeAsyncFunction		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0003-ImapInvokeAsyncFunction_11
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0003-CreateFolder_11
+RUN_TEST_STEP 	100 	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0003-FindEntryByName_11
+// Copy the messages to the user created remote folder.
+RUN_TEST_STEP 	100 	T_MsgImapServer		CopyImapSelectionRemote		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0003-CopyImapSelectionRemote_11
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0003-CheckChildrenCountImap_11
+RUN_TEST_STEP 	100 	T_MsgImapServer		SubscribeImap4Folder		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0003-SubscribeImap4Folder_11
+RUN_TEST_STEP 	100 	T_MsgImapServer		SelectImapFolder		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0003-SelectImapFolder_11
+// Perform a sync, so that the new messages are synced into the user created remote folder
+RUN_TEST_STEP 	100 	T_MsgImapServer		Imap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0003-Imap4SynchronisationFolder_11
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0003-CheckChildrenCountRemoteFolder_11
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0003-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-FULLMAILBOX-SYNC-0011
+
+
+START_TESTCASE	MSG-IMAP-FULLMAILBOX-SYNC-0012
+//!	@SYMTestCaseID			MSG-IMAP-FULLMAILBOX-SYNC-0012
+//!	@SYMTestCaseDesc		Specifying an Invalid folder Id for Select and Syncing a folder.
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented  
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5562
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			1.	Reset Message Store and Central Repository to default state.
+//!					2.	Create 2 IMAP accounts in Central Repository using same settings from a configuration file.
+//!					3.	Connect to IMAP4 service using Account Settings via one of the accounts created in step 2 (called for example AccountB) 
+//!						and initialise account on remote IMAP4 server to default clean state.
+//!					4.	Create remote folder in AccountB and check for successful creation.
+//!					5.	Disconnect from IMAP4 service using AccountB.
+//!					6.	Connect to IMAP4 service using Account Settings via the other account not used step 3 (called for example AccountA).
+//!					7.	Delete the remote folder created in step 4.
+//!					8.	Disconnect from IMAP4 service using AccountA.
+//!					9.	Connect without synchronising to IMAP4 service using AccountB.
+//!					10.	Attempt to Select the deleted folder, expecting the error -207.
+//!					11.	Attempt to Synchronise the deleted folder expecting the test to fail.
+//!					12.	Disconnect from IMAP4 service using AccountB.
+//!	@SYMTestExpectedResults		EPass, Cannot perform a sync on an Invalid folder.
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0004-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0004-ResetMessageStore
+//Account A creation...
+RUN_TEST_STEP	100	T_MsgImapServer		CreateImapAccount		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0004-CreateImapAccount_A
+RUN_TEST_STEP	100	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0004-ChangeImapSettings_A
+RUN_TEST_STEP	100	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0004-ConnectAndSyncImapServer_A
+RUN_TEST_STEP	100	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0004-InitialiseImap4Account_A
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0004-DoFullImap4Synchronisation_A
+RUN_TEST_STEP	100	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0004-CheckChildrenCountRemoteInbox_A
+RUN_TEST_STEP	100	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0004-DisConnectImap4Server_A
+//Account B creation...
+RUN_TEST_STEP	100	T_MsgImapServer		CreateImapAccount		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0004-CreateImapAccount_B
+RUN_TEST_STEP	100	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0004-ConnectAndSyncImapServer_B
+RUN_TEST_STEP	100	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0004-CheckChildrenCountRemoteInbox_B
+RUN_TEST_STEP	100	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0004-DisConnectImap4Server_B
+//Account B execution...
+RUN_TEST_STEP	100	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0004-ConnectAndSyncImapServer_B
+RUN_TEST_STEP	100	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0004-CreateImap4Folder_B
+RUN_TEST_STEP	100	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0004-FindEntryByName_B
+RUN_TEST_STEP	100	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0004-DisConnectImap4Server_B
+//Account A execution...
+RUN_TEST_STEP	100	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0004-ConnectAndSyncImapServer_A
+RUN_TEST_STEP 	100	T_MsgImapServer		DeleteImap4Folder		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0004-DeleteImap4Folder_A
+RUN_TEST_STEP	100	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0004-DisConnectImap4Server_A
+//Account B execution...
+RUN_TEST_STEP	100			T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0004-ConnectAndSyncImapServer_B
+RUN_TEST_STEP 	!Error=-1       100 	T_MsgImapServer		SelectImapFolder		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0004-SelectImapFolder_B
+RUN_TEST_STEP 	100	T_MsgImapServer		Imap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0004-Imap4Synchronisation_B
+RUN_TEST_STEP	100	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0004-DisConnectImap4Server_B
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-FULLMAILBOX-SYNC-0012
+
+
+START_TESTCASE	MSG_IMAP-MAILBOX-SYNC-SETTINGS-0001
+//!	@SYMTestCaseID			MSG_IMAP-MAILBOX-SYNC-SETTINGS-0001
+//!	@SYMTestCaseDesc		The test aims to verify the mail downloaded when the command KIMAP4MTMFolderFullSync used
+//!					on INBOX.
+//!	@SYMTestPriority		High
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5555
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			1.Startup test steps are called for the different servers to create session,
+//!					  IMAP MTM and SMTP MTM objects.
+//!					2. Initialises the RAS connection.
+//!					3. Resets the message store and central repository to default state.
+//!					4. Creates an IMAP account by reading the settings from the file mentioned in the 
+//!					   ini config file thus setting the IMAP and SMTP service settings.
+//!					5. Connects to the IMAP server and performs a full sync.
+//!					6. Deletes all mails in the Inbox of the IMAP server.
+//!					7. Creates a message from RFC822 file and sends the message to the same IMAP account.
+//!					8. Sets the full download limits.
+//!					9. Connects to the IMAP server and performs a full folder sync on INBOX.
+//!					10. Verifies the count of the messages received in the Inbox.
+//!					11. Shutdown test steps are called to destroy the session, IMAP and SMTP MTM objects.
+//!	@SYMTestExpectedResults		EPass, The message synced in Inbox.
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0005-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0005-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0005-CreateImapAccount 
+RUN_TEST_STEP 	100 	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0005-ChangeSubAndSyncSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0005-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0005-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0005-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0005-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0005-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0005-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0005-CreateSmtpMessageFromEmailFile_1
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0005-SendSmtpMessage_1
+RUN_TEST_STEP 	100 	T_MsgCommonServer  	CheckChildrenCount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0005-CheckChildrenCountSentItems_1
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4FullDownloadLimits 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0005-SetImap4FullDownloadLimits_1
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0005-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		FolderFullSync			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0005-FolderFullSync_1
+RUN_TEST_STEP  100 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0005-CheckChildrenCountRemoteInbox1_1
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0005-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG_IMAP-MAILBOX-SYNC-SETTINGS-0001
+
+
+START_TESTCASE	MSG_IMAP-MAILBOX-SYNC-SETTINGS-0002
+//!	@SYMTestCaseID			MSG_IMAP-MAILBOX-SYNC-SETTINGS-0002
+//!	@SYMTestCaseDesc		The test aims to verify the mail downloaded when the command KIMAP4MTMFolderFullSync used
+//!					on Drafts.
+//!	@SYMTestPriority		High
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5555
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			1.Startup test steps are called for the different servers to create session,
+//!					  IMAP MTM and SMTP MTM objects.
+//!					2. Initialises the RAS connection.
+//!					3. Resets the message store and central repository to default state.
+//!					4. Creates an IMAP account by reading the settings from the file mentioned in the 
+//!					   ini config file thus setting the IMAP and SMTP service settings.
+//!					5. Connects to the IMAP server and performs a full sync.
+//!					6. Deletes all mails in the Inbox of the IMAP server.
+//!					7. Creates a message from RFC822 file and sends the message to the same IMAP account.
+//!					8. Sets the full download limits.Populate the mails into Inbox.
+//!					9. Copy the mails from Inbox to the Drafts folder.
+//!					10. Connects to the IMAP server and performs a full folder sync on Drafts.
+//!					11. Verifies the count of the messages received in the Drafts.
+//!					12. Shutdown test steps are called to destroy the session, IMAP and SMTP MTM objects.
+//!	@SYMTestExpectedResults		EPass, The message is synced in Drafts folder.
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0006-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0006-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0006-CreateImapAccount 
+RUN_TEST_STEP 	100 	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0006-ChangeSubAndSyncSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0006-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0006-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0006-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0006-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0006-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0006-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0006-CreateSmtpMessageFromEmailFile_2
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0006-SendSmtpMessage_2
+RUN_TEST_STEP 	100 	T_MsgCommonServer  	CheckChildrenCount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0006-CheckChildrenCountSentItems_2
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4FullDownloadLimits 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0006-SetImap4FullDownloadLimits_2
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0006-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0006-DoFullImap4Synchronisation
+RUN_TEST_STEP	100	T_MsgImapServer		ImapInvokeAsyncFunction		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0006-ImapInvokeAsyncFunction_2
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0006-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0006-ConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CopyImapSelectionRemote		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0006-CopyImapSelectionRemote_2
+RUN_TEST_STEP 	100 	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0006-FindEntryByName_2
+RUN_TEST_STEP	100	T_MsgImapServer		SubscribeImap4Folder		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0006-SubscribeImap4Folder_2
+RUN_TEST_STEP	100	T_MsgImapServer		FolderFullSync			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0006-FolderFullSync_2
+RUN_TEST_STEP  100 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0006-CheckChildrenCountRemoteInbox1_2
+RUN_TEST_STEP 	100 	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0006-FindEntryByName_2
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0006-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG_IMAP-MAILBOX-SYNC-SETTINGS-0002
+
+
+START_TESTCASE	MSG_IMAP-MAILBOX-SYNC-SETTINGS-0003
+//!	@SYMTestCaseID			MSG_IMAP-MAILBOX-SYNC-SETTINGS-0003
+//!	@SYMTestCaseDesc		The test aims to verify the mail downloaded when the command KIMAP4MTMFolderFullSync used
+//!					on Sent Items.
+//!	@SYMTestPriority		High
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5555
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			1.Startup test steps are called for the different servers to create session,
+//!					  IMAP MTM and SMTP MTM objects.
+//!					2. Initialises the RAS connection.
+//!					3. Resets the message store and central repository to default state.
+//!					4. Creates an IMAP account by reading the settings from the file mentioned in the 
+//!					   ini config file thus setting the IMAP and SMTP service settings.
+//!					5. Connects to the IMAP server and performs a full sync.
+//!					6. Deletes all mails in the Inbox of the IMAP server.
+//!					7. Creates a message from RFC822 file and sends the message to the same IMAP account.
+//!					8. Sets the full download limits.
+//!					9. Connects to the IMAP server and performs a full folder sync on Sent Items
+//!					10. Verifies the count of the messages received in the Sent Items
+//!					11. Shutdown test steps are called to destroy the session, IMAP and SMTP MTM objects.
+//!	@SYMTestExpectedResults		EPass, The message synced in Sent Items
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0007-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0007-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0007-CreateImapAccount 
+RUN_TEST_STEP 	100 	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0007-ChangeSubAndSyncSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0007-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0007-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0007-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0007-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0007-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0007-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0007-CreateSmtpMessageFromEmailFile_3
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0007-SendSmtpMessage_3
+RUN_TEST_STEP 	100 	T_MsgCommonServer  	CheckChildrenCount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0007-CheckChildrenCountSentItems_3
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4FullDownloadLimits 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0007-SetImap4FullDownloadLimits_3
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0007-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0007-DoFullImap4Synchronisation
+RUN_TEST_STEP	100	T_MsgImapServer		ImapInvokeAsyncFunction		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0007-ImapInvokeAsyncFunction_3
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0007-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0007-ConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CopyImapSelectionRemote		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0007-CopyImapSelectionRemote_3
+RUN_TEST_STEP 	100 	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0007-FindEntryByName_3
+RUN_TEST_STEP	100	T_MsgImapServer		FolderFullSync			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0007-FolderFullSync_3
+RUN_TEST_STEP  100 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0007-CheckChildrenCountRemoteInbox1_3
+RUN_TEST_STEP 	100 	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0007-FindEntryByName_3
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0007-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG_IMAP-MAILBOX-SYNC-SETTINGS-0003
+
+
+START_TESTCASE	MSG_IMAP-MAILBOX-SYNC-SETTINGS-0004
+//!	@SYMTestCaseID			MSG_IMAP-MAILBOX-SYNC-SETTINGS-0004
+//!	@SYMTestCaseDesc		The test aims to verify the mail downloaded when the command KIMAP4MTMFolderFullSync used
+//!					on User Created folder.
+//!	@SYMTestPriority		High
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5555
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			1.Startup test steps are called for the different servers to create session,
+//!					  IMAP MTM and SMTP MTM objects.
+//!					2. Initialises the RAS connection.
+//!					3. Resets the message store and central repository to default state.
+//!					4. Creates an IMAP account by reading the settings from the file mentioned in the 
+//!					   ini config file thus setting the IMAP and SMTP service settings.
+//!					5. Connects to the IMAP server and performs a full sync.
+//!					6. Deletes all mails in the Inbox of the IMAP server.
+//!					7. Creates a message from RFC822 file and sends the message to the same IMAP account.
+//!					8. Sets the full download limits.
+//!					9. Populates the messages into the Inbox.
+//!					10. Copies the mails from Inbox into the User created folder.
+//!					11. Connects to the IMAP server and performs a full folder sync on User Created folder.
+//!					12. Verifies the count of the messages received in the User Created folder.
+//!					13. Shutdown test steps are called to destroy the session, IMAP and SMTP MTM objects.
+//!	@SYMTestExpectedResults		EPass, The messages are synced in User Created folder.
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0008-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0008-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0008-CreateImapAccount 
+RUN_TEST_STEP 	100 	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0008-ChangeSubAndSyncSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0008-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0008-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0008-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0008-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0008-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0008-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0008-CreateSmtpMessageFromEmailFile_4
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0008-SendSmtpMessage_4
+RUN_TEST_STEP 	100 	T_MsgCommonServer  	CheckChildrenCount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0008-CheckChildrenCountSentItems_4 		
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4FullDownloadLimits 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0008-SetImap4FullDownloadLimits_4
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0008-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0008-DoFullImap4Synchronisation
+// Populate all the mails into inbox
+RUN_TEST_STEP	100	T_MsgImapServer		ImapInvokeAsyncFunction		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0008-ImapInvokeAsyncFunction_4
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0008-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0008-ConnectImap4Server
+// Create a folder
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0008-CreateImap4Folder_4
+RUN_TEST_STEP	100	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0008-FindEntryByName_4
+// Copy the mails to the created sub folder
+RUN_TEST_STEP	100	T_MsgImapServer		CopyImapSelectionRemote		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0008-CopyImapSelectionRemote_4
+RUN_TEST_STEP	100	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0008-FindEntryByName1_4
+// Subscribe the User created sub folder
+RUN_TEST_STEP 	100 	T_MsgImapServer		SubscribeImap4Folder		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0008-SubscribeImap4Folder_4
+RUN_TEST_STEP	100	T_MsgImapServer		FolderFullSync			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0008-FolderFullSync_4
+RUN_TEST_STEP   100 	T_MsgImapServer		FindEntryByName 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0008-FindEntryByName1_4
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0008-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG_IMAP-MAILBOX-SYNC-SETTINGS-0004
+
+
+START_TESTCASE	MSG_IMAP-MAILBOX-SYNC-SETTINGS-0005
+//!	@SYMTestCaseID			MSG_IMAP-MAILBOX-SYNC-SETTINGS-0005
+//!	@SYMTestCaseDesc		The test aims to verify the mail downloaded when the command KIMAP4MTMSynchronise used
+//!					on DRAFTS folder,with mailbox sync limit set to -1.
+//!	@SYMTestPriority		High
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5555
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			1.Startup test steps are called for the different servers to create session,
+//!					  IMAP MTM and SMTP MTM objects.
+//!					2. Initialises the RAS connection.
+//!					3. Resets the message store and central repository to default state.
+//!					4. Creates an IMAP account by reading the settings from the file mentioned in the 
+//!					   ini config file thus setting the IMAP and SMTP service settings.
+//!					5. Connects to the IMAP server and performs a full sync.
+//!					6. Deletes all mails in the Inbox of the IMAP server.
+//!					7. Creates a message from RFC822 file and sends the message to the same IMAP account.
+//!					8. Connects to the IMAP server, downloads the mails into INBOX.
+//!					9. Copies the mails from INBOX to the DRAFTS folder.
+//!					10. Sets the full download limits, with mailbox sync limit set to -1.
+//!					11. Connects to the IMAP server, subscribes,selects the DRAFTS folder and synchronises it.
+//!					12 Verifies the count of the messages received in the DRAFTS  folder.
+//!					13. Shutdown test steps are called to destroy the session, IMAP and SMTP MTM objects.
+//!	@SYMTestExpectedResults		EPass, All The messages are synced in Drafts folder.
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0009-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0009-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0009-CreateImapAccount 
+RUN_TEST_STEP 	100 	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0009-ChangeSubAndSyncSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0009-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0009-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0009-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0009-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0009-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0009-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0009-CreateSmtpMessageFromEmailFile_5
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0009-SendSmtpMessage_5
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0009-CreateSmtpMessageFromEmailFile1_5
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0009-SendSmtpMessage1_5
+RUN_TEST_STEP 	100 	T_MsgCommonServer  	CheckChildrenCount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0009-CheckChildrenCountSentItems_5
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0009-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0009-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		ImapInvokeAsyncFunction		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0009-ImapInvokeAsyncFunction_5
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0009-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4FullDownloadLimits 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0009-SetImap4FullDownloadLimits_5
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0009-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		CopyImapSelectionRemote		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0009-CopyImapSelectionRemote_5
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0009-CheckChildrenCountRemoteDrafts_5
+RUN_TEST_STEP 	100 	T_MsgImapServer		SubscribeImap4Folder		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0009-SubscribeImap4Folder_5
+RUN_TEST_STEP 	100 	T_MsgImapServer		SelectImapFolder		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0009-SelectImapFolder_5
+RUN_TEST_STEP	100	T_MsgImapServer		Imap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0009-Imap4Synchronisation_5
+// Verify if all the messages sent are synced into DRAFTS
+RUN_TEST_STEP  	100 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0009-CheckChildrenCountRemoteInbox1_5
+RUN_TEST_STEP  	100 	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0009-FindEntryByName_5
+RUN_TEST_STEP  	100 	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0009-FindEntryByName1_5
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0009-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG_IMAP-MAILBOX-SYNC-SETTINGS-0005
+
+
+START_TESTCASE	MSG_IMAP-MAILBOX-SYNC-SETTINGS-0006
+//!	@SYMTestCaseID			MSG_IMAP-MAILBOX-SYNC-SETTINGS-0006
+//!	@SYMTestCaseDesc		The test aims to verify the mail downloaded when the command KIMAP4MTMFolderFullSync used
+//!					with the Search string specified for DRAFTS folder. 
+//!	@SYMTestPriority		High
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5555
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			1. Startup test steps are called for the different servers to create session,
+//!					   IMAP MTM and SMTP MTM objects.
+//!					2. Initialises the RAS connection.
+//!					3. Resets the message store and central repository to default state.
+//!					4. Creates an IMAP account by reading the settings from the file mentioned in the 
+//!					   ini config file thus setting the IMAP and SMTP service settings.
+//!					5. Connects to the IMAP server and performs a full sync.
+//!					6. Deletes all mails in the Inbox of the IMAP server.
+//!					7. Creates a message from RFC822 file and sends the message to the same IMAP account.
+//!					8. Sets the full download limits, with Search String specified.
+//!					9. Connects to the IMAP server, subscribes ,selects the DRAFTS folder and synchronises it.
+//!					10. Verifies the count of the messages received in the DRAFTS  folder.
+//!					11. Shutdown test steps are called to destroy the session, IMAP and SMTP MTM objects.
+//!	@SYMTestExpectedResults		EPass, The message matching the Search string is synced in DRAFTS folder.
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0010-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0010-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0010-CreateImapAccount 
+RUN_TEST_STEP 	100 	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0010-ChangeSubAndSyncSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0010-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0010-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0010-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0010-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0010-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0010-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0010-CreateSmtpMessageFromEmailFile_6
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0010-SendSmtpMessage_6
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0010-CreateSmtpMessageFromEmailFile1_6
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0010-SendSmtpMessage1_6
+RUN_TEST_STEP 	100 	T_MsgCommonServer  	CheckChildrenCount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0010-CheckChildrenCountSentItems_6
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4FullDownloadLimits 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0010-SetImap4FullDownloadLimits_6
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0010-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0010-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		ImapInvokeAsyncFunction		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0010-ImapInvokeAsyncFunction_6
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0010-CheckChildrenCountRemoteInbox_6
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0010-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0010-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		CopyImapSelectionRemote		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0010-CopyImapSelectionRemote_6
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0010-CheckChildrenCountRemoteDrafts_6
+RUN_TEST_STEP 	100 	T_MsgImapServer		SubscribeImap4Folder		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0010-SubscribeImap4Folder_6
+RUN_TEST_STEP	100	T_MsgImapServer		FolderFullSync			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0010-FolderFullSync_6
+RUN_TEST_STEP  	100 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0010-CheckChildrenCountRemoteDrafts_6
+RUN_TEST_STEP  	100 	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0010-FindEntryByName_6
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0010-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG_IMAP-MAILBOX-SYNC-SETTINGS-0006
+
+
+START_TESTCASE	MSG_IMAP-MAILBOX-SYNC-SETTINGS-0007
+//!	@SYMTestCaseID			MSG_IMAP-MAILBOX-SYNC-SETTINGS-0007
+//!	@SYMTestCaseDesc		To verify the messages synced when the flag KImap4EmailDeleteEmailsWhenDisconnecting flag is set to EFalse,
+//!					using command KIMAP4MTMFullSync.
+//!	@SYMTestPriority		High
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5555
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			1.Startup test steps are called for the different servers to create session,
+//!					  IMAP MTM and SMTP MTM objects.
+//!					2. Initialises the RAS connection
+//!					3. Resets the message store to clean up the central repository
+//!					4. Creates an IMAP account by reading the settings from the file mentioned
+//!					   thus setting the IMAP and SMTP service settings
+//!					5. Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					6. Deletes all mails in the Inbox on the server.
+//!					7. Creates messages from RFC822 file and sends the messages to the same IMAP account.
+//!					8. Sets the full download limits with the delete flag enabled, on the DRAFTS folder.
+//!					9. Connect to the Server and perform a sync on the DRAFTS folder.
+//!					10. Download the mails with IMAP4 KIMAP4MTMConnectAndPopulateAllMailAndDisconnect command
+//!					11. Delete the message,locally.
+//!					12. Connect to the Imap Server.
+//!					13. Perfrom full synchronisation.
+//!					14. Disconnect from the Server.
+//!					15. Verify the count of the messages in the DRAFTS folder.
+//!	@SYMTestExpectedResults		EPass,The message received has been deleted from the DRAFTS folder.
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-CreateImapAccount 
+RUN_TEST_STEP 	100 	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-ChangeSubAndSyncSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-CreateSmtpMessageFromEmailFile_7
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-SendSmtpMessage_7
+RUN_TEST_STEP 	100 	T_MsgCommonServer  	CheckChildrenCount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-CheckChildrenCountSentItems_7
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4FullDownloadLimits 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-SetImap4FullDownloadLimits_7
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		ImapInvokeAsyncFunction		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-ImapInvokeAsyncFunction_7
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-CheckChildrenCountRemoteInbox_7
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		CopyImapSelectionRemote		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-CopyImapSelectionRemote_7
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-CheckChildrenCountRemoteDrafts_7
+RUN_TEST_STEP	 100 	T_MsgImapServer		FolderFullSync			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-FolderFullSync_7
+RUN_TEST_STEP  	100 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-CheckChildrenCountRemoteDrafts_7
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-DisConnectImap4Server
+// Mark the message for delete while offline
+RUN_TEST_STEP 	100 	T_MsgImapServer		DeleteMessage			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-DeleteMessage_7
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-DoFullImap4Synchronisation
+// Verify if the message is deleted
+RUN_TEST_STEP  	100 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-CheckChildrenCountRemoteDrafts0_7
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0011-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG_IMAP-MAILBOX-SYNC-SETTINGS-0007
+
+
+START_TESTCASE	MSG_IMAP-MAILBOX-SYNC-SETTINGS-0008
+//!	@SYMTestCaseID			MSG_IMAP-MAILBOX-SYNC-SETTINGS-0008
+//!	@SYMTestCaseDesc		To verify the messages synced when using command KIMAP4MTMFolderFullSync on the INBOX folder.
+//!					and check the status of the Seen flag.
+//!	@SYMTestPriority		High
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5555
+//!					1.Startup test steps are called for the different servers to create session,
+//!					  IMAP MTM and SMTP MTM objects.
+//!					2. Initialises the RAS connection
+//!					3. Resets the message store to clean up the central repository
+//!					4. Creates an IMAP account by reading the settings from the file mentioned
+//!					   thus setting the IMAP and SMTP service settings
+//!					5. Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					6. Connects to the IMAP server and deletes all mails in the Inbox on the server.
+//!					7. Creates messages from RFC822 file and sends the messages to the same IMAP account.
+//!					8. Sets the full download limits.
+//!					9. Connects to the IMAP server, performs a sync on the INBOX to sync new emails.
+//!					11.Download the mails with IMAP4 KIMAP4MTMPopulate command.
+//!					   and compares the received messages with sent messages based on the Download limits set.
+//!					12. Sets the full download limits, with the update flag set to ETrue
+//!					    ETrue if the seen flag is to be set on the IMAP4 server 
+//!					    during synchronisation only when the message has been marked as read.
+//!					13.Sets the message unread flag to ETrue.
+//!					14.Performs a syncon INBOX.
+//!					12.Verifies if the seen flag of the message is set after the sync.
+//!	@SYMTestExpectedResults		EPass,The message is sent and received.The seen flag is set after the message is synced.	
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0012-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0012-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0012-CreateImapAccount 
+RUN_TEST_STEP 	100 	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0012-ChangeSubAndSyncSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0012-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0012-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0012-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0012-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0012-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0012-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0012-CreateSmtpMessageFromEmailFile_8
+RUN_TEST_STEP 	100 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0012-CheckChildrenCountOutbox_8
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0012-SendSmtpMessage_8
+RUN_TEST_STEP 	100 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0012-CheckChildrenCountSentItems1_8
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4FullDownloadLimits 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0012-SetImap4FullDownloadLimits0_8
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0012-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		FolderFullSync			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0012-FolderFullSync_8
+RUN_TEST_STEP 	100 	T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0012-ImapInvokeAsyncFunction_8
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0012-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4FullDownloadLimits 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0012-SetImap4FullDownloadLimits1_8
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0012-ConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetUnReadFlag			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0012-SetUnReadFlag_8
+RUN_TEST_STEP	100	T_MsgImapServer		FolderFullSync			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0012-FolderFullSync_8
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0012-DisConnectImap4Server
+RUN_TEST_STEP  	100 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0012-CheckChildrenCountRemoteInbox4_8
+RUN_TEST_STEP  	100 	T_MsgImapServer		CheckChildrenCountFlagBase	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0012-CheckChildrenCountFlagBase1_8
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG_IMAP-MAILBOX-SYNC-SETTINGS-0008
+
+
+START_TESTCASE	MSG_IMAP-MAILBOX-SYNC-SETTINGS-0009
+//!	@SYMTestCaseID			MSG_IMAP-MAILBOX-SYNC-SETTINGS-0009
+//!	@SYMTestCaseDesc		To verify the messages synced when using command KIMAP4MTMFolderFullSync on the INBOX folder.
+//!					with the maximum email size, body text limit and attachment size limit set.				
+//!	@SYMTestPriority		High
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5555
+//!					1.Startup test steps are called for the different servers to create session,
+//!					   IMAP MTM and SMTP MTM objects.
+//!					2. Initialises the RAS connection.
+//!					3. Resets the message store to clean up the central repository
+//!					4. Creates an IMAP account by reading the settings from the file mentioned
+//!					   thus setting the IMAP and SMTP service settings
+//!					5. Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					6. Deletes all mails in the Inbox on the server.
+//!					7. Creates messages from RFC822 file and sends the messages to the same IMAP account.
+//!					8. Sets the full download limits.Performs a full synchronisation.
+//!					9. Connects to the IMAP server, performs a sync on the INBOX to sync new emails.
+//!					10. Download the mails with IMAP4 KIMAP4MTMPopulate command
+//!					    and compares the received messages with sent messages based on the Download limits set.
+//!					11.Verify of the seen flag of the message is set after download.
+//!	@SYMTestExpectedResults		EPass,The message is sent and received.The seen flag is set after the message is downloaded.	
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0013-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0013-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0013-CreateImapAccount 
+RUN_TEST_STEP 	100 	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0013-ChangeSubAndSyncSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0013-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0013-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0013-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0013-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0013-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0013-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	100 	T_MsgSmtpServer    	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0013-CreateSmtpMessageFromEmailFile0_9
+RUN_TEST_STEP 	100 	T_MsgSmtpServer    	SendSmtpMessage			c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0013-SendSmtpMessage0_9
+RUN_TEST_STEP 	100 	T_MsgSmtpServer    	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0013-CreateSmtpMessageFromEmailFile1_9
+RUN_TEST_STEP 	100 	T_MsgSmtpServer    	SendSmtpMessage			c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0013-SendSmtpMessage1_9
+RUN_TEST_STEP 	100 	T_MsgCommonServer  	CheckChildrenCount		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0013-CheckChildrenCountSentItems_9
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4PartialDownloadLimits	c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0013-SetImap4PartialDownloadLimits_9
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0013-ConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		FolderFullSync			c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0013-FolderFullSync_9
+RUN_TEST_STEP 	100 	T_MsgImapServer		ImapInvokeAsyncFunction		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0013-ImapInvokeAsyncFunction0_9
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4FullDownloadLimits	c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0013-SetImap4FullDownloadLimits_9
+RUN_TEST_STEP 	100 	T_MsgImapServer		ImapInvokeAsyncFunction		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0013-ImapInvokeAsyncFunction1_9
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0013-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0013-CheckChildrenCountRemoteInbox1_9
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG_IMAP-MAILBOX-SYNC-SETTINGS-0009
+
+
+START_TESTCASE	MSG_IMAP-MAILBOX-SYNC-SETTINGS-0010
+//!	@SYMTestCaseID			MSG_IMAP-MAILBOX-SYNC-SETTINGS-0010
+//!	@SYMTestCaseDesc		To verify the messages synced when using command KIMAP4MTMInboxNewEmailsSync,
+//!					with the delete flag set to ETrue.				
+//!	@SYMTestPriority		High
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5555
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			1.Startup test steps are called for the different servers to create session,
+//!					   IMAP MTM and SMTP MTM objects.
+//!					2. Initialises the RAS connection
+//!					3. Resets the message store to clean up the central repository
+//!					4. Creates an IMAP account by reading the settings from the file mentioned
+//!					   thus setting the IMAP and SMTP service settings
+//!					5. Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					6. Deletes all mails in the Inbox on the server.
+//!					7. Creates messages from RFC822 file and sends the messages to the same IMAP account.
+//!					8. Sets the full download limits with the delete flag enabled, on the Inbox folder.
+//!					9. Connect to the Server and perform a sync on the Inbox folder.
+//!					10. Download the mails with IMAP4 KIMAP4MTMPopulate command
+//!					11. Delete the message,locally.
+//!					12. Connect to the Imap Server.
+//!					13. Perfrom synchronisation on the Inbox folder
+//!					14. Disconnect from the Server.Verify the count of the messages in the Inbox folder.
+//!	@SYMTestExpectedResults		EPass,The message received has been deleted from the Inbox folder of Imap server also.
+//!					is downloaded.	
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0014-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0014-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0014-CreateImapAccount 
+RUN_TEST_STEP 	100 	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0014-ChangeSubAndSyncSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0014-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0014-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0014-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0014-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0014-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0014-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	100 	T_MsgSmtpServer    	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0014-CreateSmtpMessageFromEmailFile_10
+RUN_TEST_STEP 	100 	T_MsgSmtpServer    	SendSmtpMessage			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0014-SendSmtpMessage_10
+RUN_TEST_STEP 	100 	T_MsgCommonServer  	CheckChildrenCount		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0014-CheckChildrenCountSentItems_10
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4FullDownloadLimits	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0014-SetImap4FullDownloadLimits_10
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0014-ConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		InboxNewEmailsSync		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0014-InboxNewEmailsSync_10
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0014-CheckChildrenCountRemoteInbox1_10
+RUN_TEST_STEP 	100 	T_MsgImapServer		ImapInvokeAsyncFunction		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0014-ImapInvokeAsyncFunction_10
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0014-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		DeleteMessage			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0014-DeleteMessage_10
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0014-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0014-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0014-CheckChildrenCountRemoteInbox0_10
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0014-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG_IMAP-MAILBOX-SYNC-SETTINGS-0010
+
+
+START_TESTCASE	MSG_IMAP-MAILBOX-SYNC-SETTINGS-0011
+//!	@SYMTestCaseID			MSG_IMAP-MAILBOX-SYNC-SETTINGS-0011
+//!	@SYMTestCaseDesc		The test aims to verify the folders synced when the Folder Sync type is EUseCombination
+//!					Merge local and remote folder information, with the command KIMAP4MTMSynchronise.				
+//!	@SYMTestPriority		High
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5555
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			1. Startup test steps are called for the different servers to create session,
+//!					   IMAP MTM and SMTP MTM objects.
+//!					2. Initialises the RAS connection.
+//!					3. Resets the message store and central repository to default state.
+//!					4. Creates an IMAP account by reading the settings from the file mentioned in the 
+//!					  ini config file thus setting the IMAP and SMTP service settings.
+//!					5. Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					6. Deletes all mails in the Inbox of the IMAP server.
+//!					7. Creates a message from RFC822 file and sends the message to the IMAP account.
+//!					8. Sets the full download limits, with the folder sync type set to EUseCombination.
+//!					9. Copy messages into the Drafts folder.
+//!					10. Creates a folder & Copy messages into that folder.
+//!					11. Connects to the IMAP server.
+//!					12. Performs a synchronisation for the user created folder.
+//!					13. Verifies if the locally created folder is updated remotely and the remotely created folder
+//!					   is updated locally.
+//!					14. Shutdown test steps are called to destroy the session, IMAP and SMTP MTM objects.
+//!	@SYMTestExpectedResults		EPass, The local and remote folder information merged.
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0015-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0015-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0015-CreateImapAccount 
+RUN_TEST_STEP	100	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0015-ChangeImap4SubAndSyncSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0015-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0015-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0015-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0015-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0015-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0015-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	100 	T_MsgSmtpServer    	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0015-CreateSmtpMessageFromEmailFile_11
+RUN_TEST_STEP 	100 	T_MsgSmtpServer    	SendSmtpMessage			c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0015-SendSmtpMessage_11
+RUN_TEST_STEP 	100 	T_MsgSmtpServer    	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0015-CreateSmtpMessageFromEmailFile1_11
+RUN_TEST_STEP 	100 	T_MsgSmtpServer    	SendSmtpMessage			c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0015-SendSmtpMessage1_11
+RUN_TEST_STEP 	100 	T_MsgCommonServer  	CheckChildrenCount		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0015-CheckChildrenCountSentItems_11
+// Set the Folder Sync Type to EUseCombination
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4FullDownloadLimits	c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0015-SetImap4FullDownloadLimits_11
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0015-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0015-DoFullImap4Synchronisation
+RUN_TEST_STEP	100	T_MsgImapServer		ImapInvokeAsyncFunction		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0015-ImapInvokeAsyncFunction_11
+RUN_TEST_STEP 	100 	T_MsgImapServer		SubscribeImap4Folder		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0015-SubscribeImap4Folder0_11
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0015-DisConnectImap4Server
+// Copy the mail into the drafts folder
+RUN_TEST_STEP 	100 	T_MsgImapServer		CopyImapSelectionRemote		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0015-CopyImapSelectionRemote0_11
+RUN_TEST_STEP 	100 	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0015-FindEntryByNameRemote0_11
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0015-ConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0015-CreateImap4Folder1_11
+RUN_TEST_STEP 	100 	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0015-FindEntryByNameRemote_11
+RUN_TEST_STEP 	100 	T_MsgImapServer		SubscribeImap4Folder		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0015-SubscribeImap4Folder1_11
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0015-DoFullImap4Synchronisation
+//Checking for Subscription status on Drafts (done few steps above)
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckImap4Subscription		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0015-CheckImap4Subscription0_11
+RUN_TEST_STEP 	100 	T_MsgImapServer		SelectImapFolder		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0015-SelectImapFolder0_11
+RUN_TEST_STEP 	100 	T_MsgImapServer		Imap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0015-Imap4Synchronisation0_11 
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0015-DoFullImap4Synchronisation
+//Checking for Subscription status on "testFolderRemote" folder
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckImap4Subscription		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0015-CheckImap4Subscription1_11
+RUN_TEST_STEP 	100 	T_MsgImapServer		SelectImapFolder		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0015-SelectImapFolder1_11
+RUN_TEST_STEP 	100 	T_MsgImapServer		Imap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0015-Imap4Synchronisation1_11
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0015-CheckChildrenCountRemoteDrafts
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckImap4Subscription		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0015-CheckImap4Subscription1_11
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0015-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG_IMAP-MAILBOX-SYNC-SETTINGS-0011
+
+
+START_TESTCASE	MSG_IMAP-MAILBOX-SYNC-SETTINGS-0012
+//!	@SYMTestCaseID			MSG_IMAP-MAILBOX-SYNC-SETTINGS-0012
+//!	@SYMTestCaseDesc		The test aims to verify the folders subscribed when the folder subscribe type is EUpdateBoth.
+//!					Merge local and remote subscription information, store updated information on the remote server
+//!					and store merged data on the local server, using the command KIMAP4MTMSynchronise. 
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5555
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			1.Startup test steps are called for the different servers to create session,
+//!					  IMAP MTM and SMTP MTM objects.
+//!					2.Initialises the RAS connection.
+//!					3.Resets the message store and central repository to default state.
+//!					4. Creates an IMAP account by reading the settings from the file mentioned in the 
+//!					  ini config file thus setting the IMAP and SMTP service settings.
+//!					5. Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					6. Deletes all mails in the Inbox of the IMAP server.
+//!					7. Creates a message from RFC822 file and sends the message to the IMAP account.
+//!					8. Sets the full download limits, with the folder subscribe type set to EUpdateBoth.
+//!					9. Subscribes the remote OUTBOX folder.
+//!					10. Creates a folder locally.Subscribe the folder.
+//!					11. Connects to the IMAP server,performs a full synchronisation.
+//!					12. Verifies if the remote folder has the updated subscription information.
+//!					13. Verifies if the local OUTBOX folder is updated with the subscription information.
+//!					14.Shutdown test steps are called to destroy the session, IMAP and SMTP MTM objects.
+//!	@SYMTestExpectedResults		EPass, the local OUTBOX folder is updated with the subscription information.
+//!					The remote folder has the updated subscription information.
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0016-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0016-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0016-CreateImapAccount 
+RUN_TEST_STEP 	100 	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0016-ChangeSubAndSyncSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0016-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0016-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0016-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0016-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0016-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0016-CheckChildrenCountRemoteInbox
+// Set the Folder Sync Type to EUseCombination
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4FullDownloadLimits	c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0016-SetImap4FullDownloadLimits_12
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckImap4Subscription		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0016-CheckImap4Subscription0_12
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0016-ConnectImap4Server
+// Subscribe the Drafts folder locally.
+RUN_TEST_STEP 	100 	T_MsgImapServer		SubscribeImap4Folder		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0016-SubscribeImap4Folder_12
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0016-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckImap4Subscription		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0016-CheckImap4Subscription_12
+// Create a folder remotely
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0016-CreateFolderRemote_12
+RUN_TEST_STEP 	100 	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0016-FindEntryByNameRemote_12
+RUN_TEST_STEP 	100 	T_MsgImapServer		SubscribeImap4Folder		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0016-SubscribeImap4Folder1_12
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0016-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckImap4Subscription		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0016-CheckImap4Subscription1_12
+RUN_TEST_STEP 	100 	T_MsgImapServer		SelectImapFolder		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0016-SelectImapFolder_12
+RUN_TEST_STEP 	100 	T_MsgImapServer		Imap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0016-Imap4Synchronisation0_12 
+RUN_TEST_STEP 	100 	T_MsgImapServer		Imap4Synchronisation		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0016-Imap4Synchronisation1_12
+// Check if the subscription flags are updated remotely
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckImap4Subscription		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0016-CheckImap4Subscription_12
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckImap4Subscription		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0016-CheckImap4Subscription1_12
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0016-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG_IMAP-MAILBOX-SYNC-SETTINGS-0012
+
+
+START_TESTCASE	MSG_IMAP-MAILBOX-SYNC-SETTINGS-0013
+//!	@SYMTestCaseID			MSG_IMAP-MAILBOX-SYNC-SETTINGS-0013
+//!	@SYMTestCaseDesc		The test aims to verify the mails synced when an INVALID Search string using 
+//!					the command KIMAP4MTMFolderFullSync.
+//!	@SYMTestPriority		High
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5555
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			1.Startup test steps are called for the different servers to create session,
+//!					  IMAP MTM and SMTP MTM objects.
+//!					2. Initialises the RAS connection.
+//!					3. Resets the message store and central repository to default state.
+//!					4. Creates an IMAP account by reading the settings from the file mentioned in the 
+//!					  ini config file thus setting the IMAP and SMTP service settings.
+//!					5. Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					6. Deletes all mails in the Inbox of the IMAP server.
+//!					7. Connects to the server.
+//!					8. Creates a message from RFC822 file and sends the message to the IMAP account.
+//!					9. Sets the full download limits, with an INVALID Search String specified for INBOX.
+//!					10.Connects to the IMAP server, performs a synchronisation on the specified folder.
+//!					11.Verifies the count of the messages received in INBOX.
+//!					12. Shutdown test steps are called to destroy the session, IMAP and SMTP MTM objects.
+//!	@SYMTestExpectedResults		EFail, No message is synced, due to the INVALID Search String specified.
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0017-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0017-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0017-CreateImapAccount 
+RUN_TEST_STEP 	100 	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0017-ChangeSubAndSyncSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0017-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0017-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0017-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0017-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0017-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0017-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	100 	T_MsgSmtpServer    	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0017-CreateSmtpMessageFromEmailFile_13
+RUN_TEST_STEP 	100 	T_MsgSmtpServer    	SendSmtpMessage			c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0017-SendSmtpMessage_13
+RUN_TEST_STEP 	100 	T_MsgSmtpServer    	CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0017-CreateSmtpMessageFromEmailFile1_13
+RUN_TEST_STEP 	100 	T_MsgSmtpServer    	SendSmtpMessage			c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0017-SendSmtpMessage1_13
+// Set the download limits with an INVALID Search String specified.
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4FullDownloadLimits	c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0017-SetImap4FullDownloadLimits_13
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0017-ConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		FolderFullSync			c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0017-FolderFullSync_13
+// NO mails are synced, due to the INVALID Search String Specified.
+RUN_TEST_STEP_RESULT 106 100 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0017-CheckChildrenCountRemoteInbox1_13
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0017-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG_IMAP-MAILBOX-SYNC-SETTINGS-0013
+
+
+START_TESTCASE	MSG_IMAP-MAILBOX-SYNC-SETTINGS-0014
+//!	@SYMTestCaseID			MSG_IMAP-MAILBOX-SYNC-SETTINGS-0014
+//!	@SYMTestCaseDesc		Specifying an Invalid folder Id for KImapMtmFolderFullSync
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented  
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5555
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			1.	Reset Message Store and Central Repository to default state.
+//!					2.	Create 2 IMAP accounts in Central Repository using same settings from a configuration file.
+//!					3.	Connect to IMAP4 service using Account Settings via one of the accounts created in step 2 (called for example AccountB) 
+//!						and initialise account on remote IMAP4 server to default clean state.
+//!					4.	Create remote folder in AccountB and check for successful creation.
+//!					5.	Disconnect from IMAP4 service using AccountB.
+//!					6.	Connect to IMAP4 service using Account Settings via the other account not used step 3 (called for example AccountA).
+//!					7.	Delete the remote folder created in step 4.
+//!					8.	Disconnect from IMAP4 service using AccountA.
+//!					9.	Connect without synchronising to IMAP4 service using AccountB.
+//!					10.	Attempt to Synchronise the deleted folder expecting the test to fail.
+//!					11.	Disconnect from IMAP4 service using AccountB.
+//!	@SYMTestExpectedResults		EPass, Cannot perform a sync on an Invalid folder.
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0018-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0018-ResetMessageStore
+//Account A creation...
+RUN_TEST_STEP	100	T_MsgImapServer		CreateImapAccount		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0018-CreateImapAccount_A
+RUN_TEST_STEP	100	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0018-ChangeImapSettings_A
+RUN_TEST_STEP	100	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0018-ConnectAndSyncImapServer_A
+RUN_TEST_STEP	100	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0018-InitialiseImap4Account_A
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0018-DoFullImap4Synchronisation_A
+RUN_TEST_STEP	100	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0018-CheckChildrenCountRemoteInbox_A
+RUN_TEST_STEP	100	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0018-DisConnectImap4Server_A
+//Account B creation...
+RUN_TEST_STEP	100	T_MsgImapServer		CreateImapAccount		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0018-CreateImapAccount_B
+RUN_TEST_STEP	100	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0018-ConnectAndSyncImapServer_B
+RUN_TEST_STEP	100	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0018-CheckChildrenCountRemoteInbox_B
+RUN_TEST_STEP	100	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0018-DisConnectImap4Server_B
+//Account B execution...
+RUN_TEST_STEP	100	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0018-ConnectAndSyncImapServer_B
+RUN_TEST_STEP	100	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0018-CreateImap4Folder_B
+RUN_TEST_STEP	100	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0018-FindEntryByName_B
+RUN_TEST_STEP	100	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0018-DisConnectImap4Server_B
+//Account A execution...
+RUN_TEST_STEP	100	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0018-ConnectAndSyncImapServer_A
+RUN_TEST_STEP 	100	T_MsgImapServer		DeleteImap4Folder		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0018-DeleteImap4Folder_A
+RUN_TEST_STEP	100	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0018-DisConnectImap4Server_A
+//Account B execution...
+RUN_TEST_STEP	100	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0018-ConnectAndSyncImapServer_B
+// Attempting to sync an invalid folder.
+RUN_TEST_STEP !Error=-1  100 	T_MsgImapServer		FolderFullSync			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0018-FolderFullsync_B
+RUN_TEST_STEP	100	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0018-DisConnectImap4Server_B
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG_IMAP-MAILBOX-SYNC-SETTINGS-0014
+
+
+START_TESTCASE	MSG-IMAP-MSG-SETTINGS-0002
+//!	@SYMTestCaseID			MSG-IMAP-MSG-SETTINGS-0002
+//!	@SYMTestCaseDesc		Negative:
+//!					The test aims to verify the mails downloaded when invalid get mail options are given.
+//!	@SYMTestPriority		High
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5563
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			1.Startup test steps are called for the different servers to create session,
+//!					  IMAP MTM and SMTP MTM objects.
+//!					2. Initialises the RAS connection.
+//!					3.Resets the message store and central repository to default state.
+//!					4.Creates an IMAP account by reading the settings from the file mentioned in the 
+//!					  ini config file thus setting the IMAP and SMTP service settings.
+//!					5.Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					6.Deletes all mails in the Inbox of the IMAP server.
+//!					7.Creates a message from RFC822 file and sends the message to the same IMAP account.
+//!					8.Sets the full download limits, with the inbox sync limit as 0
+//!					9.Connects to the IMAP server, performs a full synchronisation.
+//!					10.Populates the mails based on the limits set.
+//!					11.Verifies the count of the messages received in the Inbox.
+//!					12.Shutdown test steps are called to destroy the session, IMAP and SMTP MTM objects.
+//!	@SYMTestExpectedResults		EFail, The Message is not downloaded and the count is 0
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0019-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0019-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0019-CreateImapAccount 
+RUN_TEST_STEP 	100 	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0019-ChangeSubAndSyncSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0019-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0019-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0019-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0019-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0019-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0019-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0019-CreateSmtpMessageFromEmailFile_2
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0019-SendSmtpMessage_2
+RUN_TEST_STEP 	100 	T_MsgCommonServer  	CheckChildrenCount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0019-CheckChildrenCountSentItems_2
+//Sync Limit set to 0
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4FullDownloadLimits 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0019-SetImap4FullDownloadLimits_2
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0019-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0019-DoFullImap4Synchronisation
+//Expecting test to Fail with 106
+RUN_TEST_STEP_RESULT 106 100 T_MsgImapServer		ImapInvokeAsyncFunction		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0019-ImapInvokeAsyncFunction_2
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0019-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0019-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-MSG-SETTINGS-0002
+
+
+START_TESTCASE	MSG-IMAP-SYNC-NEW-INBOXEMAILS-0001
+//!	@SYMTestCaseID			MSG-IMAP-SYNC-NEW-INBOXEMAILS-0001
+//!	@SYMTestCaseDesc		Verification:
+//!					The test aims to verify the mails synced when the command KIMAP4MTMInboxNewSync is used.
+//!	@SYMTestPriority		High
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5565
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			1. Startup test steps are called for the different servers to create session,
+//!					   IMAP MTM and SMTP MTM objects.
+//!					2. Initialises the RAS connection.
+//!					3. Resets the message store and central repository to default state.
+//!					4. Creates an IMAP account by reading the settings from the file mentioned in the 
+//!					   ini config file thus setting the IMAP and SMTP service settings.
+//!					5. Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					6. Deletes all mails in the Inbox of the IMAP server.
+//!					7. Creates a message from RFC822 file and sends the message to the same IMAP account.
+//!					8. Sets the full download limits.
+//!					9. Connects to the IMAP server, performs a sync on Inbox for New Emails.
+//!					10. Verifies the count of the messages received in the Inbox.
+//!					11. Shutdown test steps are called to destroy the session, IMAP and SMTP MTM objects.
+//!	@SYMTestExpectedResults		EPass,The  messages sent are synced in INBOX.
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0020-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0020-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0020-CreateImapAccount 
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0020-SetImap4ServiceIdleParamters_Off
+RUN_TEST_STEP 	100 	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0020-ChangeSubAndSyncSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0020-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0020-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0020-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0020-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0020-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0020-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0020-CreateSmtpMessageFromEmailFile_1
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0020-SendSmtpMessage_1
+RUN_TEST_STEP 	100 	T_MsgCommonServer  	CheckChildrenCount		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0020-CheckChildrenCountSentItems_1
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4FullDownloadLimits 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0020-SetImap4FullDownloadLimits_1
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0020-ConnectImap4Server
+//Sync New Mails
+RUN_TEST_STEP 	100 	T_MsgImapServer		InboxNewEmailsSync		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0020-InboxNewEmailsSync
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0020-CheckChildrenCountImap_1
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0020-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-SYNC-NEW-INBOXEMAILS-0001
+
+
+START_TESTCASE	MSG-IMAP-SYNC-NEW-INBOXEMAILS-0002
+//!	@SYMTestCaseID			MSG-IMAP-SYNC-NEW-INBOXEMAILS-0002
+//!	@SYMTestCaseDesc		Verification:
+//!					The test aims to verify the mails synced when the command KIMAP4MTMInboxNewSync is used, with the 
+//!					inbox sync limit set to 1.
+//!	@SYMTestPriority		High
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5565
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			1. Startup test steps are called for the different servers to create session,
+//!					  IMAP MTM and SMTP MTM objects.
+//!					2. Initialises the RAS connection.
+//!					3. Resets the message store and central repository to default state.
+//!					4. Creates an IMAP account by reading the settings from the file mentioned in the 
+//!					  ini config file thus setting the IMAP and SMTP service settings.
+//!					5. Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					6. Deletes all mails in the Inbox of the IMAP server.
+//!					7. Creates a message from RFC822 file and sends the message to the same IMAP account.
+//!					8. Sets the full download limits, with the inbox sync limit as 1.
+//!					9. Connects to the IMAP server, performs a sync on Inbox for New Emails.
+//!					10. Verifies the count of the messages received in the Inbox.
+//!					11. Shutdown test steps are called to destroy the session, IMAP and SMTP MTM objects.
+//!	@SYMTestExpectedResults		EPass, Only ONE message is synced in INBOX.
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0021-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0021-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0021-CreateImapAccount 
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0021-SetImap4ServiceIdleParamters_Off
+RUN_TEST_STEP 	100 	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0021-ChangeSubAndSyncSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0021-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0021-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0021-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0021-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0021-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0021-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0021-CreateSmtpMessageFromEmailFile_2
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0021-SendSmtpMessage_2
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0021-CreateSmtpMessageFromEmailFile1_2
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0021-SendSmtpMessage1_2
+RUN_TEST_STEP 	100 	T_MsgCommonServer  	CheckChildrenCount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0021-CheckChildrenCountSentItems_2
+// Set the INBOX sync limit to 1
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4FullDownloadLimits 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0021-SetImap4FullDownloadLimits_2
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0021-ConnectImap4Server
+//Sync New Mails
+RUN_TEST_STEP	100	T_MsgImapServer		InboxNewEmailsSync		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0021-InboxNewEmailsSync
+// Only ONE message is synced in INBOX.
+RUN_TEST_STEP  	100 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0021-CheckChildrenCountRemoteInbox1_2
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0021-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-SYNC-NEW-INBOXEMAILS-0002
+
+
+START_TESTCASE	MSG-IMAP-SYNC-NEW-INBOXEMAILS-0003
+//!	@SYMTestCaseID			MSG-IMAP-SYNC-NEW-INBOXEMAILS-0003
+//!	@SYMTestCaseDesc		Verification:
+//!					The test aims to verify the mails synced when the command KIMAP4MTMInboxNewSync is used, with the 
+//!					inbox sync limit set to 0.
+//!	@SYMTestPriority		High
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5565
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			1. Startup test steps are called for the different servers to create session,
+//!					  IMAP MTM and SMTP MTM objects.
+//!					2. Initialises the RAS connection.
+//!					3. Resets the message store and central repository to default state.
+//!					4. Creates an IMAP account by reading the settings from the file mentioned in the 
+//!					  ini config file thus setting the IMAP and SMTP service settings.
+//!					5. Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					6. Deletes all mails in the Inbox of the IMAP server.
+//!					7. Creates a message from RFC822 file and sends the message to the same IMAP account.
+//!					8. Sets the full download limits, with the inbox sync limit as 0.
+//!					9. Connects to the IMAP server, performs a full synchronisation.
+//!					10. Verifies the count of the messages received in the Inbox.
+//!					11. Shutdown test steps are called to destroy the session, IMAP and SMTP MTM objects.
+//!	@SYMTestExpectedResults		EPass, No messages are synced in INBOX.
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0022-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0022-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0022-CreateImapAccount 
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0022-SetImap4ServiceIdleParamters_Off
+RUN_TEST_STEP 	100 	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0022-ChangeSubAndSyncSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0022-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0022-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0022-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0022-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0022-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0022-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0022-CreateSmtpMessageFromEmailFile_3
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0022-SendSmtpMessage_3
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0022-CreateSmtpMessageFromEmailFile1_3
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0022-SendSmtpMessage1_3
+RUN_TEST_STEP 	100 	T_MsgCommonServer  	CheckChildrenCount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0022-CheckChildrenCountSentItems_3
+// Set the INBOX sync limit to 0
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4FullDownloadLimits 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0022-SetImap4FullDownloadLimits_3
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0022-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		InboxNewEmailsSync		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0022-InboxNewEmailsSync
+// NO messages are synced in INBOX.
+RUN_TEST_STEP  	100 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0022-CheckChildrenCountRemoteInbox2_3
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0022-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-SYNC-NEW-INBOXEMAILS-0003
+
+
+START_TESTCASE	MSG-IMAP-SYNC-NEW-INBOXEMAILS-0004
+//!	@SYMTestCaseID			MSG-IMAP-SYNC-NEW-INBOXEMAILS-0004
+//!	@SYMTestCaseDesc		Verification:
+//!					The test aims to verify the mails downloaded when the inbox sync limit is set to -1
+//!	@SYMTestPriority		High
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented 
+//!	@SYMPREQ 			1160  
+//!	@SYMREQ				REQ 5565
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			1. Startup test steps are called for the different servers to create session,
+//!					   IMAP MTM and SMTP MTM objects.
+//!					2. Initialises the RAS connection.
+//!					3. Resets the message store and central repository to default state.
+//!					4. Creates an IMAP account by reading the settings from the file mentioned in the 
+//!					  ini config file thus setting the IMAP and SMTP service settings.
+//!					5. Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					6. Deletes all mails in the Inbox of the IMAP server.
+//!					7. Creates a message from RFC822 file and sends the message to the same IMAP account.
+//!					8. Sets the full download limits, with the inbox sync limit as -1.
+//!					9. Connects to the IMAP server, performs a full synchronisation.
+//!					10. Verifies the count of the messages received in the Inbox.
+//!					11. Shutdown test steps are called to destroy the session, IMAP and SMTP MTM objects.
+//!	@SYMTestExpectedResults		EPass, All the messages sent are receievd.
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0023-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0023-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0023-CreateImapAccount 
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0023-SetImap4ServiceIdleParamters_Off
+RUN_TEST_STEP 	100 	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0023-ChangeSubAndSyncSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0023-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0023-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0023-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0023-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0023-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0023-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0023-CreateSmtpMessageFromEmailFile_4
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0023-SendSmtpMessage_4
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0023-CreateSmtpMessageFromEmailFile1_4
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0023-SendSmtpMessage1_4
+RUN_TEST_STEP 	100 	T_MsgCommonServer  	CheckChildrenCount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0023-CheckChildrenCountSentItems_4
+// Set INBOX sync limit to -1
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4FullDownloadLimits 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0023-SetImap4FullDownloadLimits_4
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0023-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		InboxNewEmailsSync		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0023-InboxNewEmailsSync
+// ALL the messages in INBOX are synchronised
+RUN_TEST_STEP  	100 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0023-CheckChildrenCountRemoteInbox3_4
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0023-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-SYNC-NEW-INBOXEMAILS-0004
+
+
+START_TESTCASE	MSG-IMAP-SYNC-NEW-INBOXEMAILS-0005
+//!	@SYMTestCaseID			MSG-IMAP-SYNC-NEW-INBOXEMAILS-0005
+//!	@SYMTestCaseDesc		Verification:
+//!					The test aims to verify the mails synced when the command KIMAP4MTMInboxNewSync is used,
+//!					with the BodyTextSizeLimit specified.
+//!	@SYMTestPriority		High
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5565
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			1. Startup test steps are called for the different servers to creates session,
+//!					IMAP MTM and SMTP MTM objects.
+//!					2. Initialises the RAS connection
+//!					3. Resets the message store and central repository to default state.
+//!					4. Creates an IMAP account by reading the settings from the file mentioned
+//!					   thus setting the IMAP and SMTP service settings
+//!					5. Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					6. Deletes all mails in the Inbox on the server.
+//!					7. Creates a message from RFC822 file and send the message to the same IMAP account.
+//!					8. Sets the partial download limits, with the BodyTextSizeLimit specified.
+//!					9. Connects to the IMAP server and performs a sync on the INBOX to receive new emails.
+//!					10 .Downloads the mails with IMAP4 KIMAP4MTMPopulate command and 
+//!					    compares the received messages with sent messages based on the Download limits set.
+//!					11. Copies the mails from IMAP4 Inbox folder to Local Inbox folder.
+//!					12. Shutdown test steps are called to destroy the session, IMAP and SMTP MTM objects.
+//!	@SYMTestExpectedResults		EPass, The message is sent and received and also present in the local Inbox folder.
+//!					If body text size of email is less than or equal to TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!					All the email should be completely downloaded with no footer string Information.
+//!					If body text size of email is greater than TImImap4GetPartialMailInfo::iBodyTextSizeLimit
+//!					the mail should be downloaded partially containing the footer string information
+//!          				No Attachments will be downloaded.
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0024-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0024-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0024-CreateImapAccount 
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0024-SetImap4ServiceIdleParamters_Off
+RUN_TEST_STEP 	100 	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0024-ChangeSubAndSyncSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0024-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0024-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0024-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0024-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0024-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0024-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0024-CreateSmtpMessageFromEmailFile_5
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0024-SendSmtpMessage_5
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0024-CheckChildrenCountSentItems1_5
+RUN_TEST_STEP 	300 	T_MsgImapServer		SetImap4PartialDownloadLimits 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0024-SetImap4PartialDownloadLimits_5
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0024-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		InboxNewEmailsSync		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0024-InboxNewEmailsSync
+RUN_TEST_STEP 	300 	T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0024-ImapInvokeAsyncFunction_5
+RUN_TEST_STEP 	300 	T_MsgImapServer		CopyImapSelection		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0024-CopyImapSelection_5
+RUN_TEST_STEP 	300 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0024-CheckChildrenCountInbox_5
+RUN_TEST_STEP 	300 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0024-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-SYNC-NEW-INBOXEMAILS-0005
+
+
+START_TESTCASE	MSG-IMAP-SYNC-NEW-INBOXEMAILS-0006
+//!	@SYMTestCaseID			MSG-IMAP-SYNC-NEW-INBOXEMAILS-0006
+//!	@SYMTestCaseDesc		Verification:
+//!					The test aims to verify the mails synced when the command KIMAP4MTMInboxNewSync is used
+//!					with the attachment size limit specified.
+//!	@SYMTestPriority		High
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5565
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			1. Startup test steps are called for the different servers to creates session,
+//!					IMAP MTM and SMTP MTM objects.
+//!					2. Initialises the RAS connection
+//!					3. Resets the message store to clean up the central repository
+//!					4. Creates an IMAP account by reading the settings from the file mentioned
+//!					   thus setting the IMAP and SMTP service settings
+//!					5. Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					6. Deletes all mails in the Inbox on the server.
+//!					7. Creates a message from RFC822 file and send the message to the same IMAP account.
+//!					8. Set the partial download limits, with the attachement size limit specified. .
+//!					9. Connects to the IMAP server and performs a sync on the INBOX to receive new emails.
+//!					10 .Download the mails with IMAP4 KIMAP4MTMPopulate command and 
+//!					    compares the received messages with sent messages based on the Download limits set.
+//!	@SYMTestExpectedResults		EPass, The message is sent and received in the INBOX.
+//!					If the email size is greater than the TImImap4GetPartialMailInfo::iTotalSizeLimit,
+//!					body text size is lesser than iBodyTextSizeLimit and any attachment size is fit 
+//!					within the iAttachmentSizeLimit then complete body text and attachment should be downloaded. 
+//!					No Footer string should appear. 
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0025-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0025-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0025-CreateImapAccount 
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0025-SetImap4ServiceIdleParamters_Off
+RUN_TEST_STEP 	100 	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0025-ChangeSubAndSyncSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0025-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0025-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0025-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0025-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0025-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0025-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0025-CreateSmtpMessageFromEmailFile_6
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0025-SendSmtpMessage_6
+RUN_TEST_STEP 	100 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0025-CheckChildrenCountSentItems_6
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4PartialDownloadLimits 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0025-SetImap4PartialDownloadLimits_6
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0025-ConnectImap4Server
+//Sync New Mails
+RUN_TEST_STEP	100	T_MsgImapServer		InboxNewEmailsSync		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0025-InboxNewEmailsSync
+RUN_TEST_STEP 	100 	T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0025-ImapInvokeAsyncFunction_6
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0025-CheckChildrenCountInbox_6
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0025-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-SYNC-NEW-INBOXEMAILS-0006
+
+
+START_TESTCASE	MSG-IMAP-SYNC-NEW-INBOXEMAILS-0007
+//!	@SYMTestCaseID			MSG-IMAP-SYNC-NEW-INBOXEMAILS-0007
+//!	@SYMTestCaseDesc		Verification:
+//!					The test aims to verify the mails synced when the command KIMAP4MTMInboxNewSync is used
+//!					with the body text and attachement size limit is specified.
+//!	@SYMTestPriority		High
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5565
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			1. Startup test steps are called for the different servers to creates session,
+//!					   IMAP MTM and SMTP MTM objects.
+//!					2. Initialises the RAS connection
+//!					3. Resets the message store and central repository to default state.
+//!					4. Creates an IMAP account by reading the settings from the file mentioned
+//!					   thus setting the IMAP and SMTP service settings
+//!					5. Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					6. Deletes all mails in the Inbox on the server.
+//!					7. Creates a message from RFC822 file and sends the message to the same IMAP account.
+//!					8. Sets the partial download limits with attachment size and body text size specified..
+//!					9. Downloads the mails with IMAP4 KIMAP4MTMPopulate command and 
+//!					   compares the received messages with sent messages based on the Download limits set.
+//!					10. Shutdown test steps are called to destroy the session, IMAP and SMTP MTM objects.
+//! @SYMTestExpectedResults		EPass,The message is sent and received in the INBOX.
+//!					If Body text part is greater than iBodyTextSizeLimit then the body part should 
+//!					be partially downloaded and footer string should appear in the body part, only 
+//!					those attachments should be downloded, which are within the iAttachmentSizeLimit
+//!					and within the remaining part of iTotalSizeLimit. Body part should be 
+//!					completely downloaded if it is lesser than iBodyTextSizeLimit and all attachments 
+//!					should be downloded, which are within the iAttachmentSizeLimit limit.
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0026-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0026-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0026-CreateImapAccount 
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0026-SetImap4ServiceIdleParamters_Off
+RUN_TEST_STEP 	100 	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0026-ChangeSubAndSyncSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0026-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0026-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0026-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0026-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0026-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0026-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0026-CreateSmtpMessageFromEmailFile_7
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage			c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0026-SendSmtpMessage_7
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4PartialDownloadLimits	c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0026-SetImap4PartialDownloadLimits_7
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0026-ConnectImap4Server
+//Sync New Mails
+RUN_TEST_STEP 	100 	T_MsgImapServer		InboxNewEmailsSync		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0026-InboxNewEmailsSync
+RUN_TEST_STEP 	100 	T_MsgImapServer		ImapInvokeAsyncFunction		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0026-ImapInvokeAsyncFunction_7
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0026-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0026-CheckChildrenCountRemoteInbox1_7
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-SYNC-NEW-INBOXEMAILS-0007
+
+
+START_TESTCASE	MSG-IMAP-SYNC-NEW-INBOXEMAILS-0008
+//!	@SYMTestCaseID			MSG-IMAP-SYNC-NEW-INBOXEMAILS-0008
+//!	@SYMTestCaseDesc		Verification:
+//!					The test aims to verify the mails synced when the command KIMAP4MTMInboxNewSync is used
+//!					when the Search String is specified.
+//!	@SYMTestPriority		High
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5565
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			1. Startup test steps are called for the different servers to creates session,
+//!					   IMAP MTM and SMTP MTM objects.
+//!					2. Initialises the RAS connection
+//!					3. Resets the message store and central repository to default state.
+//!					4. Creates an IMAP account by reading the settings from the file mentioned
+//!					   thus setting the IMAP and SMTP service settings
+//!					5. Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					6. Deletes all mails in the Inbox on the server.
+//!					7. Creates a message from RFC822 file and sends the message to the same IMAP account.
+//!					8. Sets the full download limits, with Search String specified.
+//!					9. Verify if the given message is synced into the INBOX.
+//!					10. Shutdown test steps are called to destroy the session, IMAP and SMTP MTM objects.
+//!   @SYMTestExpectedResults		EPass,The message whose subject matches the Search String specfied is synced in to the INBOX.
+//!   @SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0027-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0027-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0027-CreateImapAccount 
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0027-SetImap4ServiceIdleParamters_Off
+RUN_TEST_STEP 	100 	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0027-ChangeSubAndSyncSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0027-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0027-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0027-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0027-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0027-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0027-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0027-CreateSmtpMessageFromEmailFile_8
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage			c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0027-SendSmtpMessage_8
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0027-CreateSmtpMessageFromEmailFile1_8
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage			c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0027-SendSmtpMessage1_8
+//Set Search String
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4FullDownloadLimits	c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0027-SetImap4FullDownloadLimits_8
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0027-ConnectImap4Server
+//Sync New Mails
+RUN_TEST_STEP 	100 	T_MsgImapServer		InboxNewEmailsSync		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0027-InboxNewEmailsSync
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0027-CheckChildrenCountRemoteInbox1_8
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0027-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-SYNC-NEW-INBOXEMAILS-0008
+
+
+START_TESTCASE	MSG-IMAP-SYNC-NEW-INBOXEMAILS-0009
+//!	@SYMTestCaseID			MSG-IMAP-SYNC-NEW-INBOXEMAILS-0009
+//!	@SYMTestCaseDesc		Verification:
+//!					The test aims to verify the mails synced when the command KIMAP4MTMInboxNewSync is used
+//!					with the fetch size specified.
+//!	@SYMTestPriority		High
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5565
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			1. Startup test steps are called for the different servers to creates session,
+//!					   IMAP MTM and SMTP MTM objects.
+//!					2. Initialises the RAS connection
+//!					3. Resets the message store to clean up the central repository
+//!					4. Creates an IMAP account by reading the settings from the file mentioned
+//!					   thus setting the IMAP and SMTP service settings
+//!					5. Connects to the IMAP server and performs full sync with IMAP4 server.
+//!					6. Deletes all mails in the Inbox on the server.
+//!					7. Creates messages from RFC822 file and sends the messages to the same IMAP account.
+//!					8. Sets the full download limits with the Fetch size specified.
+//!					9. Connect to the Server and perform a sync on the INBOX for New Emails.
+//!					10. Download the mails with IMAP4 KIMAP4MTMPopulate command
+//!					    Compares the Sent and Received messages.
+//!					11. Shutdown test steps are called to destroy the session, IMAP and SMTP MTM object.
+//!	@SYMTestExpectedResults		EPass,The message sent is received along with attachment.
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0028-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0028-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0028-CreateImapAccount 
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0028-SetImap4ServiceIdleParamters_Off
+RUN_TEST_STEP 	100 	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0028-ChangeSubAndSyncSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0028-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0028-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0028-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0028-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0028-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0028-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0028-CreateSmtpMessageFromEmailFile_9
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0028-SendSmtpMessage_9
+// Set the Fecth size limit.
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4FullDownloadLimits 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0028-SetImap4FullDownloadLimits_9
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0028-ConnectImap4Server
+//Sync New Mails
+RUN_TEST_STEP	 100 	T_MsgImapServer		InboxNewEmailsSync		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0028-InboxNewEmailsSync
+RUN_TEST_STEP 	100 	T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0028-ImapInvokeAsyncFunction_9
+RUN_TEST_STEP  	100 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0028-CheckChildrenCountRemoteInbox1_9
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   	0028-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-SYNC-NEW-INBOXEMAILS-0009
+
+
+START_TESTCASE	MSG-IMAP-SYNC-NEW-INBOXEMAILS-0010
+//!	@SYMTestCaseID			MSG-IMAP-SYNC-NEW-INBOXEMAILS-0010
+//!	@SYMTestCaseDesc		Verification:
+//!					The test aims to verify the mails synced when the command KIMAP4MTMInboxNewSync is used.
+//!					Download is done with KIMAP4MTMConnectAndPopulateAllMailAndStayOnline.
+//!	@SYMTestPriority		High
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5565
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			1. Startup test steps are called for the different servers to creates session,
+//!					   IMAP MTM and SMTP MTM objects.
+//!					2. Initialises the RAS connection
+//!					3. Resets the message store to clean up the central repository
+//!					4. Creates an IMAP account by reading the settings from the file mentioned
+//!					   thus setting the IMAP and SMTP service settings
+//!					5. Connects to the IMAP server and deletes all mails in the Inbox on the server.
+//!					6. Creates messages from RFC822 file and sends the messages to the same IMAP account.
+//!					7. Sets the full download limits.
+//!					8. Connects to the IMAP server and performs sync on INBOX.
+//!					9. Download the mails with IMAP4 KIMAP4MTMConnectAndPopulateAllMailAndStayOnline command
+//!					  and compares the received messages with sent messages based on the Download limits set.
+//!					10. Shutdown test steps are called to destroy the session, IMAP and SMTP MTM object.
+//!	@SYMTestExpectedResults		EPass,The messages are sent and received with the respective flags set.		
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-CreateImapAccount 
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-SetImap4ServiceIdleParamters_Off
+RUN_TEST_STEP 	100 	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-ChangeSubAndSyncSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0029-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-CreateSmtpMessageFromEmailFile_10
+RUN_TEST_STEP 	100 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-CheckChildrenCountOutbox_10
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-SendSmtpMessage_10
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-CreateSmtpMessageFromEmailFile1_10
+RUN_TEST_STEP 	100 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-CheckChildrenCountOutbox1_10
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-SendSmtpMessage1_10
+RUN_TEST_STEP 	100 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-CheckChildrenCountSentItems1_10
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-ConnectImap4Server
+//Sync New Mails
+RUN_TEST_STEP	100	T_MsgImapServer		InboxNewEmailsSync		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-InboxNewEmailsSync
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-CreateSmtpMessageFromEmailFile_10
+RUN_TEST_STEP 	100 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-CheckChildrenCountOutbox_10
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-SendSmtpMessage_10
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-CreateSmtpMessageFromEmailFile1_10
+RUN_TEST_STEP 	100 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-CheckChildrenCountOutbox1_10
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-SendSmtpMessage1_10
+RUN_TEST_STEP 	100 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-CheckChildrenCountSentItems2_10
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-ConnectImap4Server
+//Sync New Mails
+RUN_TEST_STEP	100	T_MsgImapServer		InboxNewEmailsSync		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-InboxNewEmailsSync
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4FullDownloadLimits 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-SetImap4FullDownloadLimits_10
+RUN_TEST_STEP 	100 	T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-ImapInvokeAsyncFunction_10
+RUN_TEST_STEP  	100 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-CheckChildrenCountRemoteInbox4_10
+RUN_TEST_STEP  	100 	T_MsgImapServer		CheckChildrenCountFlagBase	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-CheckChildrenCountFlagBase1_10
+RUN_TEST_STEP  	100 	T_MsgImapServer		CheckChildrenCountFlagBase	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-CheckChildrenCountFlagBase2_10
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0029-DisConnectImap4Server
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-SYNC-NEW-INBOXEMAILS-0010
+
+
+START_TESTCASE	MSG-IMAP-SYNC-NEW-INBOXEMAILS-0011
+//!	@SYMTestCaseID			MSG-IMAP-SYNC-NEW-INBOXEMAILS-0011
+//!	@SYMTestCaseDesc		Verification:
+//!					The test aims to verify the mails synced when the command KIMAP4MTMInboxNewSync is used, for multiple
+//!					messages.Download is with IMAP4 KIMAP4MTMConnectAndPopulateNewMailAndDisconnect.
+//!	@SYMTestPriority		High
+//!   	@SYMTestType			CIT
+//!  	@SYMTestStatus			Implemented   
+//!	@SYMPREQ 			1160
+//!	@SYMREQ				REQ 5565
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			1. Startup test steps are called for the different servers to creates session,
+//!					   IMAP MTM and SMTP MTM objects.
+//!					2. Initialises the RAS connection
+//!					3. Resets the message store to clean up the central repository
+//!					4. Creates an IMAP account by reading the settings from the file mentioned
+//!					   thus setting the IMAP and SMTP service settings
+//!					5. Connects to the IMAP server and deletes all mails in the Inbox on the server.
+//!					6. Creates messages from RFC822 file and sends the messages to the same IMAP account.
+//!					7. Sets the full download limits.
+//!					8. Connects to the IMAP server and performs sync on INBOX.
+//!					9. Download the mails with IMAP4 KIMAP4MTMConnectAndPopulateNewMailAndDisconnect command
+//!					   and compares the received messages with sent messages based on the Download limits set.
+//!					10. Shutdown test steps are called to destroy the session, IMAP and SMTP MTM object.
+//!	@SYMTestExpectedResults		EPass,The messages are sent and received with the respective flags set.		
+//!	@SYMAuthor			Kavyashree.D
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	100	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-InitNtRas
+RUN_TEST_STEP	100	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-ResetMessageStore
+RUN_TEST_STEP 	100 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-CreateImapAccount 
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4ServiceIdleParamters	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-SetImap4ServiceIdleParamters_Off
+RUN_TEST_STEP 	100 	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-ChangeSubAndSyncSettings
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-InitialiseImap4Account
+RUN_TEST_STEP	100	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-DoFullImap4Synchronisation
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\sync\msg-imap-sync2.ini    		0030-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-CreateSmtpMessageFromEmailFile_11
+RUN_TEST_STEP 	100 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-CheckChildrenCountOutbox_11
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-SendSmtpMessage_11
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-CreateSmtpMessageFromEmailFile1_11
+RUN_TEST_STEP 	100 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-CheckChildrenCountOutbox1_11
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-SendSmtpMessage1_11
+RUN_TEST_STEP 	100 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-CheckChildrenCountSentItems1_11
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-ConnectImap4Server
+RUN_TEST_STEP	100	T_MsgImapServer		InboxNewEmailsSync		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-InboxNewEmailsSync
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-CreateSmtpMessageFromEmailFile_11
+RUN_TEST_STEP 	100 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-CheckChildrenCountOutbox_11
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-SendSmtpMessage_11
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-CreateSmtpMessageFromEmailFile1_11
+RUN_TEST_STEP 	100 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-CheckChildrenCountOutbox1_11
+RUN_TEST_STEP 	100 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-SendSmtpMessage1_11
+RUN_TEST_STEP 	100 	T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-CheckChildrenCountSentItems2_11
+RUN_TEST_STEP 	100 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-ConnectImap4Server
+//Sync New Mails
+RUN_TEST_STEP	100	T_MsgImapServer		InboxNewEmailsSync		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-InboxNewEmailsSync
+RUN_TEST_STEP 	100 	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-DisConnectImap4Server
+RUN_TEST_STEP 	100 	T_MsgImapServer		SetImap4FullDownloadLimits 	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-SetImap4FullDownloadLimits_11
+RUN_TEST_STEP 	100 	T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-ImapInvokeAsyncFunction_11
+RUN_TEST_STEP  	100 	T_MsgImapServer		CheckChildrenCountImap 		c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-CheckChildrenCountRemoteInbox4_11
+RUN_TEST_STEP  	100 	T_MsgImapServer		CheckChildrenCountFlagBase	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-CheckChildrenCountFlagBase1_11
+RUN_TEST_STEP  	100 	T_MsgImapServer		CheckChildrenCountFlagBase	c:\msgtest\email\imap\sync\msg-imap-sync2.ini   		0030-CheckChildrenCountFlagBase2_11
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-SYNC-NEW-INBOXEMAILS-0011
+
+

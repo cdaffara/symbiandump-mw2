@@ -1,0 +1,45 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+#ifndef __LOCATIONSYSUIHELPS_VARIANT_IBY__
+#define __LOCATIONSYSUIHELPS_VARIANT_IBY__
+
+#if defined(FF_S60_HELPS_IN_USE) && defined(__LOCATIONSYSUI)
+    data=LOCALISE(DATAZ_\resource\xhtml\%02d\0x1020690F\contents.zip, RESOURCE_FILES_DIR\xhtml\%02d\0x1020690F\contents.zip)
+    data=LOCALISE(DATAZ_\resource\xhtml\%02d\0x10207462\contents.zip, RESOURCE_FILES_DIR\xhtml\%02d\0x10207462\contents.zip)
+    data=LOCALISE(DATAZ_\resource\xhtml\%02d\0x10275062\contents.zip, RESOURCE_FILES_DIR\xhtml\%02d\0x10275062\contents.zip)
+    data=LOCALISE(DATAZ_\resource\xhtml\%02d\0x10275091\contents.zip, RESOURCE_FILES_DIR\xhtml\%02d\0x10275091\contents.zip)
+    data=LOCALISE(DATAZ_\resource\xhtml\%02d\0x10283139\contents.zip, RESOURCE_FILES_DIR\xhtml\%02d\0x10283139\contents.zip)
+    data=LOCALISE(DATAZ_\resource\xhtml\%02d\0x1020690F\index.xml, RESOURCE_FILES_DIR\xhtml\%02d\0x1020690F\index.xml)
+    data=LOCALISE(DATAZ_\resource\xhtml\%02d\0x10207462\index.xml, RESOURCE_FILES_DIR\xhtml\%02d\0x10207462\index.xml)
+    data=LOCALISE(DATAZ_\resource\xhtml\%02d\0x10275062\index.xml, RESOURCE_FILES_DIR\xhtml\%02d\0x10275062\index.xml)
+    data=LOCALISE(DATAZ_\resource\xhtml\%02d\0x10275091\index.xml, RESOURCE_FILES_DIR\xhtml\%02d\0x10275091\index.xml)
+    data=LOCALISE(DATAZ_\resource\xhtml\%02d\0x10283139\index.xml, RESOURCE_FILES_DIR\xhtml\%02d\0x10283139\index.xml)
+    data=LOCALISE(DATAZ_\resource\xhtml\%02d\0x1020690F\keywords.xml, RESOURCE_FILES_DIR\xhtml\%02d\0x1020690F\keywords.xml)
+    data=LOCALISE(DATAZ_\resource\xhtml\%02d\0x10207462\keywords.xml, RESOURCE_FILES_DIR\xhtml\%02d\0x10207462\keywords.xml)
+    data=LOCALISE(DATAZ_\resource\xhtml\%02d\0x10275062\keywords.xml, RESOURCE_FILES_DIR\xhtml\%02d\0x10275062\keywords.xml)
+    data=LOCALISE(DATAZ_\resource\xhtml\%02d\0x10275091\keywords.xml, RESOURCE_FILES_DIR\xhtml\%02d\0x10275091\keywords.xml)
+    data=LOCALISE(DATAZ_\resource\xhtml\%02d\0x10283139\keywords.xml, RESOURCE_FILES_DIR\xhtml\%02d\0x10283139\keywords.xml)
+    data=LOCALISE(DATAZ_\resource\xhtml\%02d\0x1020690F\meta.xml, RESOURCE_FILES_DIR\xhtml\%02d\0x1020690F\meta.xml)
+    data=LOCALISE(DATAZ_\resource\xhtml\%02d\0x10207462\meta.xml, RESOURCE_FILES_DIR\xhtml\%02d\0x10207462\meta.xml)
+    data=LOCALISE(DATAZ_\resource\xhtml\%02d\0x10275062\meta.xml, RESOURCE_FILES_DIR\xhtml\%02d\0x10275062\meta.xml)
+    data=LOCALISE(DATAZ_\resource\xhtml\%02d\0x10275091\meta.xml, RESOURCE_FILES_DIR\xhtml\%02d\0x10275091\meta.xml)
+    data=LOCALISE(DATAZ_\resource\xhtml\%02d\0x10283139\meta.xml, RESOURCE_FILES_DIR\xhtml\%02d\0x10283139\meta.xml)
+
+#endif
+
+#endif

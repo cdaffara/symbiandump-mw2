@@ -1,0 +1,55 @@
+[main]
+email_client_test email
+
+[email]
+//smtp_client_test smtp_1
+imap_client_test imap_1
+
+[smtp_1]
+clean_message_folder
+start_client_session
+select_root_folder
+smtp_service smtp_service_1
+select_destination_folder test_1
+select_root_folder
+select_folder local
+select_folder outbox
+create_email_message emailsmoke test.txt
+select_all_messages
+copy
+check_smtp_error 0
+//reset_client
+
+[smtp_service_1]
+set_alias test_1
+set_server mail.exchtest.com
+set_email_address keith.de.mendonca@exchtest.com
+set_reply_address keith.de.mendonca@exchtest.com
+set_receipt_address keith.de.mendonca@exchtest.com
+add_iap 9
+
+[imap_1]
+clean_message_folder
+start_client_session
+select_root_folder
+imap_service imap_service_1
+select_root_folder
+select_folder local
+select_folder outbox
+select_root_folder
+//connect
+check_imap_error 0
+//select_all_messages
+//copy
+//check_imap_error 0
+//disconnect
+//check_imap_error 0
+//reset_client
+
+[imap_service_1]
+set_name keith.de.mendonca
+set_server mail.exchtest.com
+set_user keith.de.mendonca
+set_pass password
+add_iap 9
+

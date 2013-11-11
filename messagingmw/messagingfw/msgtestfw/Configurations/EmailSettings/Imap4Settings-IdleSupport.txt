@@ -1,0 +1,39 @@
+# test server
+__type__   = Imap4Settings
+
+EmailAddressExtension = msexchange2k.closedtest.intra
+
+# Server lon-cn-exchng2k.msexchange2k.closedtest.intra is IP 10.22.64.6
+ServerName = 10.22.64.6
+DeleteEmailWhenDisconnected = 1
+# FolderPath =  
+
+# lon-darrenm01.intra server
+__type__   = Imap4Settings
+
+# lon-cn-exchange2k.msexchange2k.msexchange2k.closedtest.intra = 10.22.64.6
+ImapServerAddress = lon-cn-exchng2k.msexchange2k.closedtest.intra
+ImapFolderPath = 
+
+ImapIapList = IMAP001 IMAP002 
+
+IMAP001_ImapIAP = 1
+IMAP001_ImapCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+IMAP001_ImapIAPIndex = 0
+
+IMAP002_ImapIAP = 1
+IMAP002_ImapCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+IMAP002_ImapIAPIndex = 0
+
+SmtpServerAddress = lon-cn-exchng2k.msexchange2k.closedtest.intra
+
+SmtpIapList = SMTP001 SMTP002 
+
+SMTP001_SmtpIAP = 1
+SMTP001_SmtpCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+SMTP001_SmtpIAPIndex = 0
+
+
+SMTP001_SmtpIAP = 1
+SMTP001_SmtpCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+SMTP001_SmtpIAPIndex = 0

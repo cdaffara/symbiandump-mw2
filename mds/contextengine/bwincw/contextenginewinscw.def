@@ -1,0 +1,9 @@
+EXPORTS
+	?ContextSnapshot@CContextEngine@@QAEXAAVMContextSnapshotObserver@@AAV?$RPointerArray@VCHarvesterData@@@@@Z @ 1 NONAME ; void CContextEngine::ContextSnapshot(class MContextSnapshotObserver &, class RPointerArray<class CHarvesterData> &)
+	?ContextSnapshot@CContextEngine@@QAEXAAVMContextSnapshotObserver@@AAVCHarvesterData@@@Z @ 2 NONAME ; void CContextEngine::ContextSnapshot(class MContextSnapshotObserver &, class CHarvesterData &)
+	?Destroy@CContextEngine@@QAEXXZ @ 3 NONAME ; void CContextEngine::Destroy(void)
+	?GetInstanceL@CContextEngine@@SAPAV1@PAVMContextInitializationObserver@@@Z @ 4 NONAME ; class CContextEngine * CContextEngine::GetInstanceL(class MContextInitializationObserver *)
+	?PluginCount@CContextEngine@@QAEHXZ @ 5 NONAME ; int CContextEngine::PluginCount(void)
+	?ReleaseInstance@CContextEngine@@QAEXXZ @ 6 NONAME ; void CContextEngine::ReleaseInstance(void)
+	?SetMdeSession@CContextEngine@@QAEXPAVCMdESession@@@Z @ 7 NONAME ; void CContextEngine::SetMdeSession(class CMdESession *)
+

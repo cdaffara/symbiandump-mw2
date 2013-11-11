@@ -1,0 +1,9 @@
+EXPORTS
+	_ZN11CNbsWatcher4NewLER3RFsR11CWatcherLog @ 1 NONAME
+	_ZTI11CNbsWatcher @ 2 NONAME ; #<TI>#
+	_ZTI20CNbsSmsSocketWatcher @ 3 NONAME ; #<TI>#
+	_ZTI27CSpecialNbsSmsSocketWatcher @ 4 NONAME ; #<TI>#
+	_ZTV11CNbsWatcher @ 5 NONAME ; #<VT>#
+	_ZTV20CNbsSmsSocketWatcher @ 6 NONAME ; #<VT>#
+	_ZTV27CSpecialNbsSmsSocketWatcher @ 7 NONAME ; #<VT>#
+

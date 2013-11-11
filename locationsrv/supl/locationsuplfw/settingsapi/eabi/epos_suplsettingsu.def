@@ -1,0 +1,125 @@
+EXPORTS
+	_ZN13CServerParams3SetERK7TDesC16S2_iiiix @ 1 NONAME
+	_ZN13CServerParams4NewLEv @ 2 NONAME
+	_ZN13CServerParams5NewLCEv @ 3 NONAME
+	_ZN13CServerParamsD0Ev @ 4 NONAME
+	_ZN13CServerParamsD1Ev @ 5 NONAME
+	_ZN13CServerParamsD2Ev @ 6 NONAME
+	_ZN13CSuplSettings10InitializeER14TRequestStatus @ 7 NONAME
+	_ZN13CSuplSettings10SetIapNameExRK7TDesC16 @ 8 NONAME
+	_ZN13CSuplSettings11IsSlpExistsERK7TDesC16 @ 9 NONAME
+	_ZN13CSuplSettings11IsSlpExistsEx @ 10 NONAME
+	_ZN13CSuplSettings11SetFallBackEi @ 11 NONAME
+	_ZN13CSuplSettings12AddNewServerEPK13CServerParamsRx @ 12 NONAME
+	_ZN13CSuplSettings12RemoveServerEx @ 13 NONAME
+	_ZN13CSuplSettings12SetObserverLER21MSuplSettingsObserver @ 14 NONAME
+	_ZN13CSuplSettings12SetSuplUsageENS_18TSuplSettingsUsageE @ 15 NONAME
+	_ZN13CSuplSettings13IsImsiChangedERi @ 16 NONAME
+	_ZN13CSuplSettings14ChangePriorityExii @ 17 NONAME
+	_ZN13CSuplSettings14RemoveObserverEv @ 18 NONAME
+	_ZN13CSuplSettings15SetAllParameterEPK13CServerParams @ 19 NONAME
+	_ZN13CSuplSettings16CancelInitializeEv @ 20 NONAME
+	_ZN13CSuplSettings16SetDefaultServerEPK13CServerParams @ 21 NONAME
+	_ZN13CSuplSettings16SetServerAddressExRK7TDesC16 @ 22 NONAME
+	_ZN13CSuplSettings19SetSessionObserverLER20MSuplSessionObserver @ 23 NONAME
+	_ZN13CSuplSettings20CancelTriggerSessionEx @ 24 NONAME
+	_ZN13CSuplSettings20SetServerEnabledFlagExi @ 25 NONAME
+	_ZN13CSuplSettings20SetUsageInHomwNwFlagExi @ 26 NONAME
+	_ZN13CSuplSettings21RemoveSessionObserverEv @ 27 NONAME
+	_ZN13CSuplSettings21SetNotificationStatusExi @ 28 NONAME
+	_ZN13CSuplSettings22SetSimChangeRemoveFlagExi @ 29 NONAME
+	_ZN13CSuplSettings27GenerateHslpAddressFromImsiER6TDes16 @ 30 NONAME
+	_ZN13CSuplSettings4NewLEv @ 31 NONAME
+	_ZN13CSuplSettings5NewLCEv @ 32 NONAME
+	_ZN13CSuplSettings7GetImsiER6TDes16 @ 33 NONAME
+	_ZN13CSuplSettings8SlpCountERi @ 34 NONAME
+	_ZN13CSuplSettingsD0Ev @ 35 NONAME
+	_ZN13CSuplSettingsD1Ev @ 36 NONAME
+	_ZN13CSuplSettingsD2Ev @ 37 NONAME
+	_ZN14CTriggerParams3SetExRK7TDesC16iiNS_12TTriggerTypeENS_12TRequestTypeEyy @ 38 NONAME
+	_ZN14CTriggerParams4NewLEv @ 39 NONAME
+	_ZN14CTriggerParams5NewLCEv @ 40 NONAME
+	_ZN14CTriggerParamsD0Ev @ 41 NONAME
+	_ZN14CTriggerParamsD1Ev @ 42 NONAME
+	_ZN14CTriggerParamsD2Ev @ 43 NONAME
+	_ZN21CSuplSettingsInternal10SetVersionExii @ 44 NONAME
+	_ZN21CSuplSettingsInternal14SetLastUseTimeEx5TTime @ 45 NONAME
+	_ZN21CSuplSettingsInternal14SetTopPriorityEx @ 46 NONAME
+	_ZN21CSuplSettingsInternal16SetLastTriedTimeEx5TTime @ 47 NONAME
+	_ZN21CSuplSettingsInternal17RemoveOnSimChangeEv @ 48 NONAME
+	_ZN21CSuplSettingsInternal17SetNetInfoLastUseExNS_24TSuplSettingsNetworkTypeEiiii @ 49 NONAME
+	_ZN21CSuplSettingsInternal17SetTlsSupportFlagExi @ 50 NONAME
+	_ZN21CSuplSettingsInternal19DeleteSessionRecordEx @ 51 NONAME
+	_ZN21CSuplSettingsInternal19InsertSessionRecordEPK14CTriggerParams @ 52 NONAME
+	_ZN21CSuplSettingsInternal19SetManufacturerNameExRK7TDesC16 @ 53 NONAME
+	_ZN21CSuplSettingsInternal20SetNetInfoLastSucessExNS_24TSuplSettingsNetworkTypeEiiii @ 54 NONAME
+	_ZN21CSuplSettingsInternal20SetPskTlsSupportFlagExi @ 55 NONAME
+	_ZN21CSuplSettingsInternal21GetFallBackTimerValueERi @ 56 NONAME
+	_ZN21CSuplSettingsInternal21SetFallBackTimerValueEi @ 57 NONAME
+	_ZN21CSuplSettingsInternal22SetOutstandingTriggersExy @ 58 NONAME
+	_ZN21CSuplSettingsInternal23DeleteAllSessionRecordsEv @ 59 NONAME
+	_ZN21CSuplSettingsInternal23SetEmergencySupportFlagExi @ 60 NONAME
+	_ZN21CSuplSettingsInternal4NewLEv @ 61 NONAME
+	_ZN21CSuplSettingsInternal5NewLCEv @ 62 NONAME
+	_ZN21CSuplSettingsInternalD0Ev @ 63 NONAME
+	_ZN21CSuplSettingsInternalD1Ev @ 64 NONAME
+	_ZN21CSuplSettingsInternalD2Ev @ 65 NONAME
+	_ZNK13CServerParams3GetERx6TPtr16S1_RiS2_S2_S2_ @ 66 NONAME
+	_ZNK13CSuplSettings10GetIapNameExR6TDes16 @ 67 NONAME
+	_ZNK13CSuplSettings11GetFallBackERi @ 68 NONAME
+	_ZNK13CSuplSettings12GetSuplUsageERNS_18TSuplSettingsUsageE @ 69 NONAME
+	_ZNK13CSuplSettings15GetEditableFlagExRi @ 70 NONAME
+	_ZNK13CSuplSettings15SetEditableFlagExi @ 71 NONAME
+	_ZNK13CSuplSettings16GetDefaultServerEP13CServerParams @ 72 NONAME
+	_ZNK13CSuplSettings16GetServerAddressExR6TDes16 @ 73 NONAME
+	_ZNK13CSuplSettings16GetSlpInfoFromIdExP13CServerParams @ 74 NONAME
+	_ZNK13CSuplSettings16GetTriggerParamsER13RPointerArrayI14CTriggerParamsE @ 75 NONAME
+	_ZNK13CSuplSettings16GetTriggerParamsExRP14CTriggerParams @ 76 NONAME
+	_ZNK13CSuplSettings17GetSlpInfoAddressERK7TDesC16P13CServerParams @ 77 NONAME
+	_ZNK13CSuplSettings20GetServerEnabledFlagExRi @ 78 NONAME
+	_ZNK13CSuplSettings20GetUsageInHomwNwFlagExRi @ 79 NONAME
+	_ZNK13CSuplSettings22GetSimChangeRemoveFlagExRi @ 80 NONAME
+	_ZNK13CSuplSettings9GetAllSlpER13RPointerArrayI13CServerParamsE @ 81 NONAME
+	_ZNK13CSuplSettings9GetAllSlpER13RPointerArrayI13CServerParamsER14TRequestStatus @ 82 NONAME
+	_ZNK14CTriggerParams3GetERx6TPtr16RiS2_RNS_12TTriggerTypeERNS_12TRequestTypeERyS7_ @ 83 NONAME
+	_ZNK21CSuplSettingsInternal10GetTlsFlagExRi @ 84 NONAME
+	_ZNK21CSuplSettingsInternal10GetVersionExRiS0_ @ 85 NONAME
+	_ZNK21CSuplSettingsInternal13GetPskTlsFlagExRi @ 86 NONAME
+	_ZNK21CSuplSettingsInternal14GetLastUseTimeExR5TTime @ 87 NONAME
+	_ZNK21CSuplSettingsInternal15GetDefaultSlpIdERx @ 88 NONAME
+	_ZNK21CSuplSettingsInternal16GetLastTriedTimeExR5TTime @ 89 NONAME
+	_ZNK21CSuplSettingsInternal17GetNetInfoLastUseExRNS_24TSuplSettingsNetworkTypeERiS2_S2_S2_ @ 90 NONAME
+	_ZNK21CSuplSettingsInternal19GetManufacturerNameExR6TDes16 @ 91 NONAME
+	_ZNK21CSuplSettingsInternal20GetNetInfoLastSucessExRNS_24TSuplSettingsNetworkTypeERiS2_S2_S2_ @ 92 NONAME
+	_ZNK21CSuplSettingsInternal23GetEmergencySupportFlagExRi @ 93 NONAME
+	_ZTI13CServerParams @ 94 NONAME ; #<TI>#
+	_ZTI13CSuplSettings @ 95 NONAME ; #<TI>#
+	_ZTI14CTriggerParams @ 96 NONAME ; #<TI>#
+	_ZTI19CSuplSettingsEngine @ 97 NONAME ; #<TI>#
+	_ZTI21CSuplSettingsInternal @ 98 NONAME ; #<TI>#
+	_ZTI24CSettingsDatabaseHandler @ 99 NONAME ; #<TI>#
+	_ZTV13CServerParams @ 100 NONAME ; #<VT>#
+	_ZTV13CSuplSettings @ 101 NONAME ; #<VT>#
+	_ZTV14CTriggerParams @ 102 NONAME ; #<VT>#
+	_ZTV19CSuplSettingsEngine @ 103 NONAME ; #<VT>#
+	_ZTV21CSuplSettingsInternal @ 104 NONAME ; #<VT>#
+	_ZTV24CSettingsDatabaseHandler @ 105 NONAME ; #<VT>#
+	_ZN21CSuplSettingsInternal24SetServerExtensionParamsExP22CServerExtensionParams @ 106 NONAME
+	_ZN22CServerExtensionParams3SetERK7TDesC16S2_S2_S2_S2_ @ 107 NONAME
+	_ZN22CServerExtensionParams4NewLEv @ 108 NONAME
+	_ZN22CServerExtensionParams5NewLCEv @ 109 NONAME
+	_ZN22CServerExtensionParamsD0Ev @ 110 NONAME
+	_ZN22CServerExtensionParamsD1Ev @ 111 NONAME
+	_ZN22CServerExtensionParamsD2Ev @ 112 NONAME
+	_ZNK21CSuplSettingsInternal24GetServerExtensionParamsExP22CServerExtensionParams @ 113 NONAME
+	_ZNK22CServerExtensionParams3GetE6TPtr16S0_S0_S0_S0_ @ 114 NONAME
+	_ZTI22CServerExtensionParams @ 115 NONAME
+	_ZTV22CServerExtensionParams @ 116 NONAME
+	_ZN13CSuplSettings17GetDefaultIAPNameER6TDes16 @ 117 NONAME
+	_ZN13CServerParams26SetServerConfigurationTypeEi @ 118 NONAME
+	_ZN13CSuplSettings29GetSuplTriggeredServiceStatusERNS_18TSuplTriggerStatusE @ 119 NONAME
+	_ZN13CSuplSettings29SetSuplTriggeredServiceStatusERKNS_18TSuplTriggerStatusE @ 120 NONAME
+	_ZN14CTriggerParams17SetTriggerEndTimeE5TTime @ 121 NONAME
+	_ZNK13CServerParams26GetServerConfigurationTypeERi @ 122 NONAME
+	_ZNK14CTriggerParams17GetTriggerEndTimeER5TTime @ 123 NONAME
+

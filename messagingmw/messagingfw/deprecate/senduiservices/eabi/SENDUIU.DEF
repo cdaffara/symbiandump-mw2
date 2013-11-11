@@ -1,0 +1,124 @@
+EXPORTS
+	_ZN12CMessageData10ConstructLEv @ 1 NONAME
+	_ZN12CMessageData11SetSubjectLEPK7TDesC16 @ 2 NONAME
+	_ZN12CMessageData12SetBodyTextLEPK9CRichText @ 3 NONAME
+	_ZN12CMessageData16AppendCcAddressLERK7TDesC16S2_ @ 4 NONAME
+	_ZN12CMessageData16AppendToAddressLERK7TDesC16S2_ @ 5 NONAME
+	_ZN12CMessageData17AppendAttachmentLERK7TDesC16 @ 6 NONAME
+	_ZN12CMessageData17AppendBccAddressLERK7TDesC16S2_ @ 7 NONAME
+	_ZN12CMessageData20ClearAttachmentArrayEv @ 8 NONAME
+	_ZN12CMessageData23AppendAttachmentHandleLERK5RFile @ 9 NONAME
+	_ZN12CMessageData4NewLEv @ 10 NONAME
+	_ZN12CMessageData5NewLCEv @ 11 NONAME
+	_ZN12CMessageDataC1Ev @ 12 NONAME
+	_ZN12CMessageDataC2Ev @ 13 NONAME
+	_ZN12CMessageDataD0Ev @ 14 NONAME
+	_ZN12CMessageDataD1Ev @ 15 NONAME
+	_ZN12CMessageDataD2Ev @ 16 NONAME
+	_ZN15CMessageAddress11SetAddressLERK7TDesC16 @ 17 NONAME
+	_ZN15CMessageAddress9SetAliasLERK7TDesC16 @ 18 NONAME
+	_ZN15CMessageAddress4NewLEv @ 19 NONAME
+	_ZN15CMessageAddress5NewLCEv @ 20 NONAME
+	_ZN15CMessageAddressD0Ev @ 21 NONAME
+	_ZN15CMessageAddressD1Ev @ 22 NONAME
+	_ZN15CMessageAddressD2Ev @ 23 NONAME
+	_ZN15CSendingService4NewLERK4TUidR7CCoeEnvR16CSendUiSingleton @ 24 NONAME
+	_ZN15CSendingServiceD0Ev @ 25 NONAME
+	_ZN15CSendingServiceD1Ev @ 26 NONAME
+	_ZN15CSendingServiceD2Ev @ 27 NONAME
+	_ZN19CSendingServiceInfo12SetServiceIdE4TUid @ 28 NONAME
+	_ZN19CSendingServiceInfo15SetServiceNameLERK7TDesC16 @ 29 NONAME
+	_ZN19CSendingServiceInfo18SetServiceAddressLERK7TDesC16 @ 30 NONAME
+	_ZN19CSendingServiceInfo19SetServiceMenuNameLERK7TDesC16 @ 31 NONAME
+	_ZN19CSendingServiceInfo20SetServiceProviderIdE4TUid @ 32 NONAME
+	_ZN19CSendingServiceInfo22SetServiceCapabilitiesE20TSendingCapabilities @ 33 NONAME
+	_ZN19CSendingServiceInfo4NewLEv @ 34 NONAME
+	_ZN19CSendingServiceInfo5NewLCEv @ 35 NONAME
+	_ZN19CSendingServiceInfoD0Ev @ 36 NONAME
+	_ZN19CSendingServiceInfoD1Ev @ 37 NONAME
+	_ZN19CSendingServiceInfoD2Ev @ 38 NONAME
+	_ZN20TSendingCapabilitiesC1Eiii @ 39 NONAME
+	_ZN20TSendingCapabilitiesC1Ev @ 40 NONAME
+	_ZN20TSendingCapabilitiesC2Eiii @ 41 NONAME
+	_ZN20TSendingCapabilitiesC2Ev @ 42 NONAME
+	_ZN7CSendUi14ShowSendQueryLEPK12CMessageData20TSendingCapabilitiesP9CArrayFixI4TUidERK7TDesC16 @ 43 NONAME
+	_ZN7CSendUi16AddSendMenuItemLER12CEikMenuPaneii20TSendingCapabilities @ 44 NONAME
+	_ZN7CSendUi16ValidateServiceLE4TUid20TSendingCapabilities @ 45 NONAME
+	_ZN7CSendUi17ShowQueryAndSendLEPK12CMessageData20TSendingCapabilitiesP9CArrayFixI4TUidES5_iRK7TDesC16 @ 46 NONAME
+	_ZN7CSendUi18AvailableServicesLER13RPointerArrayI19CSendingServiceInfoE4TUid @ 47 NONAME
+	_ZN7CSendUi20ServiceCapabilitiesLE4TUidR20TSendingCapabilities @ 48 NONAME
+	_ZN7CSendUi21CreateAndSendMessageLE4TUidPK12CMessageDataS0_i @ 49 NONAME
+	_ZN7CSendUi4NewLEv @ 50 NONAME
+	_ZN7CSendUi5NewLCEv @ 51 NONAME
+	_ZN7CSendUiD0Ev @ 52 NONAME
+	_ZN7CSendUiD1Ev @ 53 NONAME
+	_ZN7CSendUiD2Ev @ 54 NONAME
+	_ZNK12CMessageData14CcAddressArrayEv @ 55 NONAME
+	_ZNK12CMessageData14ToAddressArrayEv @ 56 NONAME
+	_ZNK12CMessageData15AttachmentArrayEv @ 57 NONAME
+	_ZNK12CMessageData15BccAddressArrayEv @ 58 NONAME
+	_ZNK12CMessageData21AttachmentHandleArrayEv @ 59 NONAME
+	_ZNK12CMessageData7SubjectEv @ 60 NONAME
+	_ZNK12CMessageData8BodyTextEv @ 61 NONAME
+	_ZNK12CMessageData8DataTypeEv @ 62 NONAME
+	_ZNK15CMessageAddress5AliasEv @ 63 NONAME
+	_ZNK15CMessageAddress7AddressEv @ 64 NONAME
+	_ZNK19CSendingServiceInfo11ServiceNameEv @ 65 NONAME
+	_ZNK19CSendingServiceInfo14ServiceAddressEv @ 66 NONAME
+	_ZNK19CSendingServiceInfo15ServiceMenuNameEv @ 67 NONAME
+	_ZNK19CSendingServiceInfo17ServiceProviderIdEv @ 68 NONAME
+	_ZNK19CSendingServiceInfo19ServiceCapabilitiesEv @ 69 NONAME
+	_ZNK19CSendingServiceInfo6CopyLCEv @ 70 NONAME
+	_ZNK19CSendingServiceInfo9ServiceIdEv @ 71 NONAME
+	_ZNK20TSendingCapabilitieseqERKS_ @ 72 NONAME
+	_ZNK20TSendingCapabilitiesneERKS_ @ 73 NONAME
+	_ZNK7CSendUi17CanSendBioMessageE4TUid @ 74 NONAME
+	_ZTI11CSendUiImpl @ 75 NONAME ; #<TI>#
+	_ZTI12CMessageData @ 76 NONAME ; #<TI>#
+	_ZTI13CSendNormalUi @ 77 NONAME ABSENT
+	_ZTI15CMessageAddress @ 78 NONAME ; #<TI>#
+	_ZTI15CSendingService @ 79 NONAME ; #<TI>#
+	_ZTI19CMessageAddressImpl @ 80 NONAME ; #<TI>#
+	_ZTI19CSendUiTimedBlanker @ 81 NONAME ABSENT
+	_ZTI19CSendingServiceInfo @ 82 NONAME ; #<TI>#
+	_ZTI20CSendUiIdleMtmLoader @ 83 NONAME ABSENT
+	_ZTI22CSendingServiceFactory @ 84 NONAME ABSENT
+	_ZTI22CSendingServiceManager @ 85 NONAME ABSENT
+	_ZTI23CSendingServiceInfoImpl @ 86 NONAME ; #<TI>#
+	_ZTI7CSendUi @ 87 NONAME ; #<TI>#
+	_ZTV11CSendUiImpl @ 88 NONAME ; #<VT>#
+	_ZTV12CMessageData @ 89 NONAME ; #<VT>#
+	_ZTV13CSendNormalUi @ 90 NONAME ABSENT
+	_ZTV15CMessageAddress @ 91 NONAME ; #<VT>#
+	_ZTV15CSendingService @ 92 NONAME ; #<VT>#
+	_ZTV19CMessageAddressImpl @ 93 NONAME ; #<VT>#
+	_ZTV19CSendUiTimedBlanker @ 94 NONAME ABSENT
+	_ZTV19CSendingServiceInfo @ 95 NONAME ; #<VT>#
+	_ZTV20CSendUiIdleMtmLoader @ 96 NONAME ABSENT
+	_ZTV22CSendingServiceFactory @ 97 NONAME ABSENT
+	_ZTV22CSendingServiceManager @ 98 NONAME ABSENT
+	_ZTV23CSendingServiceInfoImpl @ 99 NONAME ; #<VT>#
+	_ZTV7CSendUi @ 100 NONAME ; #<VT>#
+	_ZN12CMessageData14ClearAddressesEv @ 101 NONAME
+	_ZN7CSendUi15ShowTypedQueryLENS_15TSendUiMenuTypeEPK12CMessageData20TSendingCapabilitiesP9CArrayFixI4TUidERK7TDesC16 @ 102 NONAME
+	_ZN7CSendUi17AddTypedMenuItemLENS_15TSendUiMenuTypeER12CEikMenuPaneii20TSendingCapabilities @ 103 NONAME
+	_ZN7CSendUi22ShowTypedQueryAndSendLENS_15TSendUiMenuTypeEPK12CMessageData20TSendingCapabilitiesP9CArrayFixI4TUidES6_iRK7TDesC16 @ 104 NONAME
+	_ZNK7CSendUi14TechnologyTypeE4TUid @ 105 NONAME
+	_ZN12CMessageData12InternalizeLER11RReadStream @ 106 NONAME
+	_ZN15CMessageAddress12ExternalizeLER12RWriteStream @ 107 NONAME
+	_ZN15CMessageAddress12InternalizeLER11RReadStream @ 108 NONAME
+	_ZN15CSendingService19CreateTemplateDataLEv @ 109 NONAME ABSENT
+	_ZN19CSendingServiceInfo18SetServiceFeaturesEi @ 110 NONAME
+	_ZN19CSendingServiceInfo19SetTechnologyTypeIdE4TUid @ 111 NONAME
+	_ZNK12CMessageData12ExternalizeLER12RWriteStream @ 112 NONAME
+	_ZNK19CSendingServiceInfo15ServiceFeaturesEv @ 113 NONAME
+	_ZNK19CSendingServiceInfo16TechnologyTypeIdEv @ 114 NONAME
+	_ZN15CSendingServiceC2ER7CCoeEnvR16CSendUiSingleton @ 115 NONAME
+	_ZN16CSendUiSingleton11MsvSessionLEv @ 116 NONAME
+	_ZN16CSendUiSingleton14MtmUiRegistryLEv @ 117 NONAME
+	_ZN16CSendUiSingleton18ClientMtmRegistryLEv @ 118 NONAME
+	_ZN16CSendUiSingleton18MtmUiDataRegistryLEv @ 119 NONAME
+	_ZN16CSendUiSingleton4NewLEv @ 120 NONAME
+	_ZN12CMessageData14SetOpaqueDataLEPK6TDesC84TUid @ 121 NONAME
+	_ZNK12CMessageData10OpaqueDataEv @ 122 NONAME
+

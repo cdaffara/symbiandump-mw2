@@ -1,0 +1,86 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+
+#ifndef __LUBBOCK_OBY__
+#define __LUBBOCK_OBY__
+
+define LANGID 01
+define BUILDNO 0
+define VERSION 0.01
+
+DEFAULT_LANGUAGE 01
+
+REM Definitions specific to Lubbock 
+
+#if !defined(_THUMB) && !defined(_ARMI) && !defined(_ARM4)
+#define _THUMB
+#endif
+
+ABI_DOWNGRADE THUMB->ARMI
+
+define LUBBOCK	   0x09080001
+
+define ASSP_DIR    EPOCROOT##epoc32\release\MCOT
+define ASSP        LUBBOCK
+define VARDLL      VCOT
+
+define VARIANT     la
+define VARLETTER   i
+define VARID       LUBBOCK
+define ROMMEGS     32
+
+#define COLOR
+#define LUBBOCK_UARTS
+#define USES_HALDRIVER
+#define NO_POWER_EXTENSION
+#define EUSBC
+#define CUSTOM_ATADRIVER
+#define HAS_PCCD_EPBUS
+#define HAS_MMC_EPBUS
+#define HAS_MMC
+#define USES_EPBUS_VARIANT
+#define USE_VIDEODRIVEREXTENSION
+#define WITH_LFFS
+#define CUSTOM_ESTART
+#define HAS_ETHERNET
+
+REM defines for IrDA options
+REM Uncomment the line below to enable IrDA to use a Jeteye ESI09680 pod with serial card adapter
+REM #define _ENABLE_IRDA_POD_
+
+
+REM The IRPOD_ESK file determines which serial driver is used for IR
+REM transfer. The drivers are numbered EUARTn where n=1,2,3,4 usually 
+REM corresponding to vi_com<n>.cpp source. 
+REM The number after irda_port<x>.esk indicates 1 less than the port
+REM number, hence irda_port1.esk in fact uses EUART2.PDD
+define IRPOD_ESK irda_port1.esk
+
+REM define which serial port Bluetooth protocol uses
+REM The number bt_port<x>.esk means use EUART<x+1> for Bluetooth 
+REM transfers.
+define BLUETOOTH_ESK bt_port2.esk
+
+#ifdef _SERIAL_DOWNLOAD
+ECHO Building image suitable for serial download (Header/RAM based)
+define bootrom	serial_bootrom
+#else
+ECHO Building image suitable for Ethernet download (No header/FLASH based)
+ROMBUILD_OPTION	-no-header
+#endif
+
+#endif

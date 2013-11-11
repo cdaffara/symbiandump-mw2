@@ -1,0 +1,58 @@
+// Copyright (c) 2000-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// wappushutils.dll Utilities for wap push plugins
+// 
+//
+
+/**
+ @file
+*/
+
+
+TARGET          wappushutils.dll  
+TARGETTYPE      DLL
+CAPABILITY ALL -TCB
+
+//		Shared lib uid		PushUtils unique uid
+UID		0x1000008d		0x10009147
+VENDORID 0x70000001
+
+SOURCEPATH      ../src
+SOURCE          PushUtilsdll.cpp
+SOURCE		PushDispatcher.cpp PluginKiller.cpp PushMessage.cpp
+SOURCE		WapDecoder.cpp CWapPushFilterUtils.cpp
+SOURCE		chttpresponse.cpp
+
+USERINCLUDE     ../inc 
+USERINCLUDE	../../pushmtm/inc 
+USERINCLUDE     ../../plugins/inc
+USERINCLUDE     ../../plugins/PushContentHandler
+USERINCLUDE     ../../plugins/PushAppHandler
+USERINCLUDE     ../../plugins/ROAppHandler/src
+USERINCLUDE	../../pushwatcher/inc
+
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+LIBRARY         euser.lib ecom.lib inetprotutil.lib
+
+
+#ifdef WINS
+DEFFILE       ../../bwins/WAPPUSHUTILS.DEF
+#elif defined(GCC32)
+DEFFILE       ../../BMarm/WapPushUtils.def
+#else
+DEFFILE       ../../eabi/WapPushUtils.def
+#endif  
+
+SMPSAFE

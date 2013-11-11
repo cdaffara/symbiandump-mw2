@@ -1,0 +1,55 @@
+// Copyright (c) 1999-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+PRJ_TESTMMPFILES
+t_schsendutils.mmp
+T_schsend.mmp        manual
+t_schsendexe.mmp        manual
+t_schedulesend.mmp
+
+test_schsend_server.mmp	manual
+t_schsend_utc_server.mmp manual
+
+PRJ_TESTEXPORTS
+../script/schsend.script	+/release/winscw/udeb/z/testdata/scripts/schsend.script
+../script/schsend.ini	+/release/winscw/udeb/z/testdata/scripts/schsend.ini
+
+../script/schsend.script	+/release/winscw/urel/z/testdata/scripts/schsend.script
+../script/schsend.ini	+/release/winscw/urel/z/testdata/scripts/schsend.ini
+
+../script/schsend.script	+/release/wins/udeb/z/testdata/scripts/schsend.script
+../script/schsend.ini	+/release/wins/udeb/z/testdata/scripts/schsend.ini
+
+../script/schsend.script	+/release/wins/urel/z/testdata/scripts/schsend.script
+../script/schsend.ini	+/release/wins/urel/z/testdata/scripts/schsend.ini
+
+../script/t_schsend_utc.script	+/release/wins/urel/z/testdata/scripts/t_schsend_utc.script
+../script/t_schsend_utc.ini	+/release/wins/urel/z/testdata/scripts/t_schsend_utc.ini
+
+../script/t_schsend_utc.script	+/release/winscw/udeb/z/testdata/scripts/t_schsend_utc.script
+../script/t_schsend_utc.ini	+/release/winscw/udeb/z/testdata/scripts/t_schsend_utc.ini
+
+../script/t_schsend_utc.script	+/release/winscw/urel/z/testdata/scripts/t_schsend_utc.script
+../script/t_schsend_utc.ini	+/release/winscw/urel/z/testdata/scripts/t_schsend_utc.ini
+
+../script/t_schsend_utc.script	+/release/armv5/udeb/z/testdata/scripts/t_schsend_utc.script
+../script/t_schsend_utc.ini	+/release/armv5/udeb/z/testdata/scripts/t_schsend_utc.ini
+
+../script/t_schsend_utc.script	+/release/armv5/urel/z/testdata/scripts/t_schsend_utc.script
+../script/t_schsend_utc.ini	+/release/armv5/urel/z/testdata/scripts/t_schsend_utc.ini
+
+../group/t_schsend_utc_server.iby   /epoc32/rom/include/t_schsend_utc_server.iby
+

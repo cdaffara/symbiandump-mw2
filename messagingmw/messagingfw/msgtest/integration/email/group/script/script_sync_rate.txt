@@ -1,0 +1,155 @@
+// This test will delete all messages in Inbox
+
+[main]
+email_client_test email
+
+[email]
+imap_client_test init
+smtp_client_test create_message
+imap_client_test imap_cleanup
+imap_client_test connect_imap_sync_1
+smtp_client_test send_message_1
+imap_client_test wait_and_check_1
+imap_client_test disconnect_imap
+imap_client_test connect_imap_sync_2
+smtp_client_test send_message_2
+imap_client_test wait_and_check_2
+imap_client_test disconnect_imap
+
+[init]
+clean_message_folder
+start_client_session
+imap_client_test create_imap_service
+smtp_client_test create_smtp_service
+
+[create_imap_service]
+select_root_folder
+imap_service service_imap
+
+[create_smtp_service]
+select_root_folder
+smtp_service service_smtp
+
+[create_message]
+select_root_folder
+select_folder SmtpService
+use_service
+select_root_folder
+select_folder local
+select_folder outbox
+create_email_message emailsmoke rfc822test.txt 2
+
+[imap_cleanup]
+select_root_folder
+select_folder ImapService
+use_service
+connect
+check_imap_error 0
+sync_tree
+select_folder Inbox
+sync_folder
+select_all_messages
+delete
+sync_folder
+check_remote_folder_size 0
+disconnect
+check_imap_error 0
+
+[connect_imap_sync_1]
+select_root_folder
+select_folder ImapService
+use_service
+set_sync_rate 10
+get_sync_rate 10
+connect_and_periodic_sync
+check_imap_error 0
+
+[send_message_1]
+select_root_folder
+select_folder SmtpService
+use_service
+select_destination_folder SmtpService
+select_root_folder
+select_folder local
+select_folder outbox
+select_all_messages
+select_first_in_selection 1
+add_comment Sending the created message
+copy
+check_smtp_error 0
+
+[wait_and_check_1]
+select_root_folder
+select_folder ImapService
+use_service
+select_folder Inbox
+check_remote_folder_size 0
+wait 33
+select_root_folder
+select_folder ImapService
+use_service
+select_folder Inbox
+check_remote_folder_size 1
+
+[connect_imap_sync_2]
+select_root_folder
+select_folder ImapService
+use_service
+set_sync_rate 60
+get_sync_rate 60
+connect_and_periodic_sync
+check_imap_error 0
+
+[send_message_2]
+select_root_folder
+select_folder SmtpService
+use_service
+select_destination_folder SmtpService
+select_root_folder
+select_folder local
+select_folder outbox
+select_all_messages
+select_last_in_selection 1
+add_comment Sending the created message
+copy
+check_smtp_error 0
+
+[wait_and_check_2]
+wait 44
+select_root_folder
+select_folder ImapService
+use_service
+select_folder Inbox
+check_remote_folder_size 1
+wait 33
+select_root_folder
+select_folder ImapService
+use_service
+select_folder Inbox
+check_remote_folder_size 2
+
+[disconnect_imap]
+select_root_folder
+select_folder ImapService
+use_service
+disconnect
+check_imap_error 0
+
+[service_imap]
+set_name ImapService
+set_server lon-paulr01.intra
+set_user perform3
+set_pass password
+set_tls 0
+set_folder_path Inbox
+
+[service_smtp]
+set_alias SmtpService
+set_server lon-paulr01.intra
+set_email_address perform3@lon-paulr01.intra
+set_reply_address perform3@lon-paulr01.intra
+set_receipt_address perform3@lon-paulr01.intra
+set_tls 0
+set_wrapped_tls 0
+set_port 25
+

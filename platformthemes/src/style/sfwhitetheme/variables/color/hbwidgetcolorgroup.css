@@ -1,0 +1,176 @@
+/* Widget color groups */
+
+
+@variables
+{
+/* Default palette */
+qtc_default_decor_normal:#3C3C3C;
+qtc_default_decor_pressed:#FFFFFF;
+qtc_default_decor_latched:#FFFFFF;
+qtc_default_decor_highlight:#FFFFFF;
+qtc_default_decor_disabled:#9B9B9B; 
+qtc_default_main_pane_normal:#8C8C96;
+qtc_default_main_pane_pressed:#3F89A9;
+qtc_default_main_pane_latched:#009CEF;
+qtc_default_main_pane_highlight:#B27200;
+qtc_default_main_pane_disabled:#9B9B9B; 
+qtc_default_popup_normal:#505050;
+qtc_default_popup_pressed:#FFFFFF;
+qtc_default_popup_latched:#FFFFFF;
+qtc_default_popup_highlight:#FFFFFF;
+qtc_default_popup_disabled:#9B9B9B;
+
+/* Title pane */
+qtc_title_pane_normal:#3C3C3C; /* Modified 26.05.2010 */
+qtc_title_pane_pressed:#FFFFFF;
+qtc_title_pane_highlight:#FFFFFF;
+qtc_title_pane_latched:#000000; /* Modified 26.05.2010 */
+qtc_title_pane_trans_normal:#FFFFFF;
+qtc_title_pane_trans_pressed:#FFFFFF;
+qtc_title_pane_trans_highlight:#FFFFFF;
+qtc_title_pane_trans_latched:#FFFFFF;
+qtc_status_pane:#FFFFFF; /* Added 05.02.2010 */
+qtc_status_pane_trans:#FFFFFF; /* Added 05.02.2010 */
+
+/* Main area - View */
+qtc_view_normal:#000000;
+qtc_view_pressed:#505050;
+qtc_view_line_normal:#A0A0A0;
+qtc_view_link_normal:#33C8FF;
+qtc_view_visited_normal:#B378FF;
+qtc_view_separator_normal:#9B9B9B;
+qtc_view_normal_secondary:#519FB9; /* Modified 26.08.2010 */
+
+/* Main area - View title */
+qtc_viewtitle_normal:#3C3C3C;
+
+/* Main area - Grid */ 
+qtc_grid_normal:#595B5D;
+qtc_grid_pressed:#FFFFFF;
+qtc_grid_highlight:#FFFFFF;
+qtc_grid_latched:#FFFFFF; /* Added 05.02.2010 */
+qtc_grid_disabled:#9B9B9B; /* Modified 01.03.2010 */
+
+/* Main area - List */ 
+qtc_list_item_title_normal:#505050;
+qtc_list_item_title_secondary_normal:#3C3C3C; /* Added 02.09.2010 */
+qtc_list_item_content_normal:#519FB9;
+qtc_list_item_content_secondary_normal:#505050; /* Added 02.09.2010 */
+qtc_list_item_parent_normal:#505050;
+qtc_list_item_pressed:#FFFFFF;
+qtc_list_item_highlight:#FFFFFF;
+qtc_list_item_disabled:#A0A0A0;
+qtc_list_item_latched:#FFFFFF; /* Added 05.02.2010 */
+qtc_list_item_separator:#000000; /* Added 22.02.2010 */
+
+/* Button */
+qtc_button_normal:#3C3C3C;
+qtc_button_pressed:#FFFFFF;
+qtc_button_latched:#FFFFFF;
+qtc_button_highlight:#FFFFFF;
+qtc_button_disabled:#787878;
+
+/* LineEdit */
+qtc_lineedit_normal:#505050;
+qtc_lineedit_selected:#FFFFFF;
+qtc_lineedit_marker_normal:#505050;
+qtc_lineedit_hint_normal:#A0A0A0;
+qtc_lineedit_cursor:#519FB9; /* Added 25.08.2010 */
+
+/* Combobox */ 
+qtc_combobox_normal:#3C3C3C;
+qtc_combobox_pressed:#FFFFFF;
+qtc_combobox_highlight:#3C3C3C;
+qtc_combobox_disabled:#787878;
+qtc_combobox_edit:#3C3C3C;
+qtc_combobox_latched:#FFFFFF; /* Added 05.02.2010 */
+
+/* Tumbler */
+qtc_tumbler_normal:#3C3C3C;
+qtc_tumbler_selected:#FFFFFF;
+qtc_tumbler_highlight:#FFFFFF;
+
+/* Main area - DataForm */
+qtc_dataform_heading:#FFFFFF; /* Modified 10.06.2010 */
+qtc_dataform_heading_link:#8CE0FF; /* Modified 10.06.2010 */
+
+/* Main area - ProgressSlider */
+qtc_progslider_normal:#3C3C3C; /* Added 09.02.2010 */
+qtc_progslider_pressed:#FFFFFF; /* Added 09.02.2010 */
+
+/* Main area - TextEdit */
+qtc_textedit_normal:#505050;
+qtc_textedit_selected:#FFFFFF;
+qtc_textedit_marker_normal:#505050;
+qtc_textedit_hint_normal:#A0A0A0;
+qtc_textedit_cursor:#519FB9; /* Added 25.08.2010 */
+
+/* Main area - Toolbar */
+qtc_toolbar_normal:#3C3C3C;
+qtc_toolbar_pressed:#FFFFFF;
+qtc_toolbar_latched:#FFFFFF;
+qtc_toolbar_disabled:#787878;
+qtc_toolbar_highlight:#FFFFFF;
+qtc_toolbar_trans_normal:#FFFFFF;
+qtc_toolbar_trans_pressed:#FFFFFF;
+qtc_toolbar_trans_latched:#FFFFFF;
+qtc_toolbar_trans_disabled:#FFFFFF;
+qtc_toolbar_trans_highlight:#FFFFFF;
+
+/* Main area - Groupbox */
+qtc_groupbox_normal:#3C3C3C;
+qtc_groupbox_pressed:#FFFFFF;
+qtc_groupbox_highlight:#FFFFFF;
+
+/* Pop-ups - Generic pop-up */ 
+qtc_popup_sk_normal:#3C3C3C;
+qtc_popup_sk_highlight:#FFFFFF;
+qtc_popup_sk_pressed:#FFFFFF;
+qtc_popup_sk_disabled:#787878; /* Added 05.02.2010 */
+qtc_popup_heading_normal:#3C3C3C;
+qtc_popup_normal:#3C3C3C;
+qtc_popup_link:#8CE0FF; /* Added 16.02.2010 */
+
+/* Pop-ups - Preview pop-up */
+qtc_popup_preview_normal:#FFFFFF;
+qtc_popup_preview_pressed:#519FB9;
+qtc_popup_preview_link:#8CE0FF;
+
+/* Pop-ups - Transparent pop-up */
+qtc_popup_trans_normal:#FFFFFF;
+qtc_popup_trans_pressed:#FFFFFF;
+qtc_popup_trans_link:#8CE0FF;
+
+/* Pop-ups - Grid in a pop-up */
+qtc_popup_grid_normal:#3C3C3C;
+qtc_popup_grid_pressed:#FFFFFF; 
+qtc_popup_grid_highlight:#FFFFFF;
+qtc_popup_grid_disabled:#787878;
+qtc_popup_grid_latched:#FFFFFF; /* Added 05.02.2010 */
+qtc_popup_grid_trans_normal:#FFFFFF; /* Added 05.02.2010 */
+
+/* Pop-ups - List in a pop-up */ 
+qtc_popup_list_title_normal:#505050;
+qtc_popup_list_item_content_normal:#519FB9;
+qtc_popup_list_item_parent_normal:#505050;
+qtc_popup_list_item_pressed:#FFFFFF;
+qtc_popup_list_item_highlight:#FFFFFF;
+qtc_popup_list_item_disabled:#787878;
+qtc_popup_list_item_latched:#FFFFFF; /* Added 05.02.2010 */
+qtc_popup_list_item_trans_normal:#FFFFFF; /* Added 12.02.2010 */
+
+/* Virtual inputs */
+qtc_input_button_normal:#505050; /* Modified 19.02.2010 */
+qtc_input_button_accented_normal:#3C3C3C; /* Added 22.02.2010 */
+qtc_input_button_pressed:#FFFFFF; /* Modified 19.02.2010 */
+qtc_input_button_latched:#FFFFFF; /* Modified 19.02.2010 */
+qtc_input_button_disabled:#787878; /* Modified 19.02.2010 */
+qtc_input_function_normal:#FFFFFF; /* Modified 19.02.2010 */
+qtc_input_function_pressed:#FFFFFF; /* Modified 19.02.2010 */
+qtc_input_function_latched:#FFFFFF; /* Modified 19.02.2010 */
+qtc_input_function_disabled:#646464; /* Modified 19.02.2010 */
+qtc_input_preview_normal:#3C3C3C; /* Modified 22.02.2010 */
+qtc_input_hint_normal:#A0A0A0; /* Added 05.03.2010 */
+qtc_input_grid_line:#787878; /* Added 12.03.2010 */
+}
+

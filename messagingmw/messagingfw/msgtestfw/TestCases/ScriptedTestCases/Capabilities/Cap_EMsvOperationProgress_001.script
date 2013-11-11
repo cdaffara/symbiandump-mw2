@@ -1,0 +1,39 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRINT Running  EMsvOperationProgress_001
+
+
+//********************************
+PRINT Running  EMsvOperationProgress : Entry is created in a folder (Drafts which is unprotected). 
+PRINT Running  EMsvOperationProgress : We then check that we can send OperationProgress with out any problems.
+PRINT Running  EMsvOperationProgress : Various combinations of Caps (which should be irrelevant for OperationProgress).
+//********************************
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvOperationProgress_001_001.script
+	// Create an entry in a folder(draft which is unprotected). Has no capabilities (should be irrelevant).
+	// The message is created an owned by the proxy server.
+	// We then check the progress.
+	// Should PASS.
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvOperationProgress_001_002.script
+	// Create an entry in a folder(draft which is unprotected). Has Read/Write user data (should be irrelevant). 
+	// The message is created an owned by the proxy server.
+	// We then check the progress.
+	// Should PASS.
+	
+
+

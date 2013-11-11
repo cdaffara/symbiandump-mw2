@@ -1,0 +1,86 @@
+// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// miscpushmsgutils.dll Utilities for handling multipart wap push messages
+// wappushunknown.rsc Wappush plugin resource file
+// 
+//
+
+/**
+ @file
+*/
+
+
+TARGET          miscpushmsgutils.dll  
+TARGETTYPE      DLL
+CAPABILITY ALL -TCB
+
+//		Shared lib uid	PushUtils unique uid
+UID		0x1000008d		0x101F55FB
+VENDORID 0x70000001
+
+SOURCEPATH      ../src
+SOURCE          CMultipartBinIterator.cpp CMultipartIteratorBase.cpp
+SOURCE		Cmultipartpushmsgentry.cpp  Cunknownpushmsgentry.cpp
+SOURCE		Cmultiparttextiterator.cpp
+#ifdef __MESSAGING_API_V2__
+SOURCE		CAsyncWaiter.cpp
+#endif // __MESSAGING_API_V2__
+
+USERINCLUDE     ../inc 
+USERINCLUDE	../../pushmtm/inc 
+USERINCLUDE	../../pushwatcher/inc
+USERINCLUDE	../../pushutils/inc
+#ifdef SYMBIAN_ENABLE_SPLIT_HEADERS
+USERINCLUDE	../../PushMsgEntry/inc
+#endif	//SYMBIAN_ENABLE_SPLIT_HEADERS
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+LIBRARY		 efsrv.lib euser.lib msgs.lib estor.lib bafl.lib 
+LIBRARY      	wappushutils.lib pushmsgentry.lib
+
+SOURCEPATH	../group
+#ifdef __SECURE_DATA__
+START RESOURCE	WapPushUnknown.rss
+TARGETPATH resource/messaging
+HEADER
+LANG	SC
+END
+#else // __SECURE_DATA__
+SYSTEMRESOURCE          WapPushUnknown.RSS
+LANG                    SC
+#endif // __SECURE_DATA__
+
+#ifdef __MESSAGING_API_V2__
+
+#ifdef WINS
+	DEFFILE     ../../bwins/v2_MISCPUSHMSGUTILS.DEF
+#elif defined X86GCC
+	DEFFILE     ../../bx86gcc/v2_MISCPUSHMSGUTILS.DEF
+#else
+	DEFFILE     ../../eabi/v2_MISCPUSHMSGUTILS.def
+#endif 
+
+#else
+
+#ifdef WINS
+	DEFFILE     ../../BWins/MISCPUSHMSGUTILS.def
+#elif defined X86GCC
+	DEFFILE     ../../bx86gcc/MISCPUSHMSGUTILS.def
+#else
+	DEFFILE     ../../EABI/MISCPUSHMSGUTILS.def
+#endif  
+
+#endif // __MESSAGING_API_V2__
+
+SMPSAFE

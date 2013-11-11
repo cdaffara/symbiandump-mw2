@@ -1,0 +1,55 @@
+EXPORTS
+	_ZN18CBioInfoFileReader4NewLER3RFsRK7TDesC164TUid @ 1 NONAME
+	_ZN18CBioInfoFileReader5NewLCER3RFsRK7TDesC164TUid @ 2 NONAME
+	_ZN18CBioInfoFileReaderD0Ev @ 3 NONAME
+	_ZN18CBioInfoFileReaderD1Ev @ 4 NONAME
+	_ZN18CBioInfoFileReaderD2Ev @ 5 NONAME
+	_ZN18CBioInfoFileWriter14SetDescriptionERK7TPtrC16 @ 6 NONAME ABSENT
+	_ZN18CBioInfoFileWriter14SetZoomLevelsLERK9CArrayFixIsE @ 7 NONAME ABSENT
+	_ZN18CBioInfoFileWriter15SetGeneralData1Es @ 8 NONAME ABSENT
+	_ZN18CBioInfoFileWriter15SetGeneralData2Es @ 9 NONAME ABSENT
+	_ZN18CBioInfoFileWriter15SetGeneralData3Es @ 10 NONAME ABSENT
+	_ZN18CBioInfoFileWriter16SetFileExtensionERK7TPtrC16 @ 11 NONAME ABSENT
+	_ZN18CBioInfoFileWriter16SetIconsFilenameERK4TBufILi256EE @ 12 NONAME ABSENT
+	_ZN18CBioInfoFileWriter16SetMessageAppUidE4TUid @ 13 NONAME ABSENT
+	_ZN18CBioInfoFileWriter17SetMessageTypeUidE4TUid @ 14 NONAME ABSENT
+	_ZN18CBioInfoFileWriter19SetMessageParserUidE4TUid @ 15 NONAME ABSENT
+	_ZN18CBioInfoFileWriter20SetMessageAppCtrlUidE4TUid @ 16 NONAME ABSENT
+	_ZN18CBioInfoFileWriter5NewLCER3RFsRK7TDesC164TUid @ 17 NONAME ABSENT
+	_ZN18CBioInfoFileWriter6AddIdLERK9TBioMsgId @ 18 NONAME ABSENT
+	_ZN18CBioInfoFileWriter6StoreLEv @ 19 NONAME ABSENT
+	_ZN18CBioInfoFileWriterD0Ev @ 20 NONAME ABSENT
+	_ZN18CBioInfoFileWriterD1Ev @ 21 NONAME ABSENT
+	_ZN18CBioInfoFileWriterD2Ev @ 22 NONAME ABSENT
+	_ZNK18CBioInfoFileReader11DescriptionEv @ 23 NONAME
+	_ZNK18CBioInfoFileReader12GeneralData1Ev @ 24 NONAME
+	_ZNK18CBioInfoFileReader12GeneralData2Ev @ 25 NONAME
+	_ZNK18CBioInfoFileReader12GeneralData3Ev @ 26 NONAME
+	_ZNK18CBioInfoFileReader12ZoomLevelsLCEv @ 27 NONAME
+	_ZNK18CBioInfoFileReader13FileExtensionEv @ 28 NONAME
+	_ZNK18CBioInfoFileReader13IconsFilenameEv @ 29 NONAME
+	_ZNK18CBioInfoFileReader13MessageAppUidEv @ 30 NONAME
+	_ZNK18CBioInfoFileReader14MessageTypeUidEv @ 31 NONAME
+	_ZNK18CBioInfoFileReader15ZoomLevelsCountEv @ 32 NONAME
+	_ZNK18CBioInfoFileReader16MessageParserUidEv @ 33 NONAME ABSENT
+	_ZNK18CBioInfoFileReader17MessageAppCtrlUidEv @ 34 NONAME
+	_ZNK18CBioInfoFileReader5IdsLCEv @ 35 NONAME
+	_ZTI12CBioInfoFile @ 36 NONAME ; #<TI>#
+	_ZTI18CBioInfoFileReader @ 37 NONAME ; #<TI>#
+	_ZTI18CBioInfoFileWriter @ 38 NONAME ABSENT ; #<TI>#
+	_ZTIN12CBioInfoFile9CIdHeaderE @ 39 NONAME ; #<TI>#
+	_ZTV12CBioInfoFile @ 40 NONAME ; #<VT>#
+	_ZTV18CBioInfoFileReader @ 41 NONAME ; #<VT>#
+	_ZTV18CBioInfoFileWriter @ 42 NONAME ABSENT ; #<VT>#
+	_ZTVN12CBioInfoFile9CIdHeaderE @ 43 NONAME ; #<VT>#
+	_ZN18CBioInfoFileWriter20SetMessageParserNameERK7TPtrC16 @ 44 NONAME ABSENT
+	_ZNK18CBioInfoFileReader11IsSecureBIFEv @ 45 NONAME ABSENT
+	_ZNK18CBioInfoFileReader17MessageParserNameEv @ 46 NONAME
+	_ZN9CBifEntry4NewLERK6TEntry @ 47 NONAME
+	_ZN9CBifEntry5NewLCERK6TEntry @ 48 NONAME
+	_ZNK18CBioInfoFileReader8BifEntryEv @ 49 NONAME
+	_ZNK9CBifEntryeqERKS_ @ 50 NONAME
+	_ZTI9CBifEntry @ 51 NONAME ; #<TI>#
+	_ZTV9CBifEntry @ 52 NONAME ; #<VT>#
+	_ZNK18CBioInfoFileReader18MessageAppCtrlNameEv @ 53 NONAME
+

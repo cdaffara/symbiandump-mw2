@@ -1,0 +1,21 @@
+/********************************************************
+   This test case should be run first when using
+   EShell, since the ecomserver.exe is loaded when the
+   plugin is loaded the first time and time-out must be 
+   longer. This does not concern normal emulator.
+*********************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 1.1 DoAfterBoot
+timeout 25000
+create ccetester test
+
+test Delay 1000
+
+test VerifyTest
+delete test
+[Endtest] 

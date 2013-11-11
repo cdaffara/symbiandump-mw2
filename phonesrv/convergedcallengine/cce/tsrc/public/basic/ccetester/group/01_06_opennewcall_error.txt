@@ -1,0 +1,19 @@
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 1.6 OpenNewCall, Error
+timeout 10000
+create ccetester test
+test Delay 1000
+
+test OpenNewCall 1 -6 NULL 1 ECCECallTypeCSVoice ECCELineTypePrimary
+test OpenNewCall 1 -6 NULL 2 ECCECallTypePS ECCELineTypePrimary
+test OpenNewCall 1 -1 WrongServiceID 55 ECCECallTypePS ECCELineTypePrimary
+
+test Delay 1000
+
+test VerifyTest
+delete test
+[Endtest] 

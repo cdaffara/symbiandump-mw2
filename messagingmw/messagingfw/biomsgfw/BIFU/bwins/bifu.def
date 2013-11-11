@@ -1,0 +1,41 @@
+EXPORTS
+	??1CBioInfoFileReader@@UAE@XZ @ 1 NONAME ; public: virtual __thiscall CBioInfoFileReader::~CBioInfoFileReader(void)
+	??1CBioInfoFileWriter@@UAE@XZ @ 2 NONAME ABSENT ; public: virtual __thiscall CBioInfoFileWriter::~CBioInfoFileWriter(void)
+	?AddIdL@CBioInfoFileWriter@@QAEXABVTBioMsgId@@@Z @ 3 NONAME ABSENT ; public: void __thiscall CBioInfoFileWriter::AddIdL(class TBioMsgId const &)
+	?Description@CBioInfoFileReader@@QBE?BVTPtrC16@@XZ @ 4 NONAME ; public: class TPtrC16 const  __thiscall CBioInfoFileReader::Description(void)const 
+	?GeneralData1@CBioInfoFileReader@@QBEFXZ @ 5 NONAME ; public: short __thiscall CBioInfoFileReader::GeneralData1(void)const 
+	?GeneralData2@CBioInfoFileReader@@QBEFXZ @ 6 NONAME ; public: short __thiscall CBioInfoFileReader::GeneralData2(void)const 
+	?GeneralData3@CBioInfoFileReader@@QBEFXZ @ 7 NONAME ; public: short __thiscall CBioInfoFileReader::GeneralData3(void)const 
+	?IconsFilename@CBioInfoFileReader@@QBE?BVTPtrC16@@XZ @ 8 NONAME ; public: class TPtrC16 const  __thiscall CBioInfoFileReader::IconsFilename(void)const 
+	?IdsLC@CBioInfoFileReader@@QBEPBV?$CArrayFixFlat@VTBioMsgId@@@@XZ @ 9 NONAME ; public: class CArrayFixFlat<class TBioMsgId> const * __thiscall CBioInfoFileReader::IdsLC(void)const 
+	?MessageAppUid@CBioInfoFileReader@@QBE?AVTUid@@XZ @ 10 NONAME ; public: class TUid  __thiscall CBioInfoFileReader::MessageAppUid(void)const 
+	?MessageParserUid@CBioInfoFileReader@@QBE?AVTUid@@XZ @ 11 NONAME ABSENT ; public: class TUid  __thiscall CBioInfoFileReader::MessageParserUid(void)const 
+	?MessageTypeUid@CBioInfoFileReader@@QBE?AVTUid@@XZ @ 12 NONAME ; public: class TUid  __thiscall CBioInfoFileReader::MessageTypeUid(void)const 
+	?NewL@CBioInfoFileReader@@SAPAV1@AAVRFs@@ABVTDesC16@@VTUid@@@Z @ 13 NONAME ; public: static class CBioInfoFileReader * __cdecl CBioInfoFileReader::NewL(class RFs &,class TDesC16 const &,class TUid)
+	?NewLC@CBioInfoFileReader@@SAPAV1@AAVRFs@@ABVTDesC16@@VTUid@@@Z @ 14 NONAME ; public: static class CBioInfoFileReader * __cdecl CBioInfoFileReader::NewLC(class RFs &,class TDesC16 const &,class TUid)
+	?NewLC@CBioInfoFileWriter@@SAPAV1@AAVRFs@@ABVTDesC16@@VTUid@@@Z @ 15 NONAME ABSENT ; public: static class CBioInfoFileWriter * __cdecl CBioInfoFileWriter::NewLC(class RFs &,class TDesC16 const &,class TUid)
+	?SetDescription@CBioInfoFileWriter@@QAEXABVTPtrC16@@@Z @ 16 NONAME ABSENT ; public: void __thiscall CBioInfoFileWriter::SetDescription(class TPtrC16 const &)
+	?SetGeneralData1@CBioInfoFileWriter@@QAEXF@Z @ 17 NONAME ABSENT ; public: void __thiscall CBioInfoFileWriter::SetGeneralData1(short)
+	?SetGeneralData2@CBioInfoFileWriter@@QAEXF@Z @ 18 NONAME ABSENT ; public: void __thiscall CBioInfoFileWriter::SetGeneralData2(short)
+	?SetGeneralData3@CBioInfoFileWriter@@QAEXF@Z @ 19 NONAME ABSENT ; public: void __thiscall CBioInfoFileWriter::SetGeneralData3(short)
+	?SetIconsFilename@CBioInfoFileWriter@@QAEXABV?$TBuf@$0BAA@@@@Z @ 20 NONAME ABSENT ; public: void __thiscall CBioInfoFileWriter::SetIconsFilename(class TBuf<256> const &)
+	?SetMessageAppUid@CBioInfoFileWriter@@QAEXVTUid@@@Z @ 21 NONAME ABSENT ; public: void __thiscall CBioInfoFileWriter::SetMessageAppUid(class TUid)
+	?SetMessageParserUid@CBioInfoFileWriter@@QAEXVTUid@@@Z @ 22 NONAME ABSENT ; public: void __thiscall CBioInfoFileWriter::SetMessageParserUid(class TUid)
+	?SetMessageTypeUid@CBioInfoFileWriter@@QAEXVTUid@@@Z @ 23 NONAME ABSENT ; public: void __thiscall CBioInfoFileWriter::SetMessageTypeUid(class TUid)
+	?SetZoomLevelsL@CBioInfoFileWriter@@QAEXABV?$CArrayFix@F@@@Z @ 24 NONAME ABSENT ; public: void __thiscall CBioInfoFileWriter::SetZoomLevelsL(class CArrayFix<short> const &)
+	?StoreL@CBioInfoFileWriter@@QAEXXZ @ 25 NONAME ABSENT ; public: void __thiscall CBioInfoFileWriter::StoreL(void)
+	?ZoomLevelsCount@CBioInfoFileReader@@QBEHXZ @ 26 NONAME ; int CBioInfoFileReader::ZoomLevelsCount(void) const
+	?ZoomLevelsLC@CBioInfoFileReader@@QBEPBV?$CArrayFixFlat@F@@XZ @ 27 NONAME ; public: class CArrayFixFlat<short> const * __thiscall CBioInfoFileReader::ZoomLevelsLC(void)const 
+	?MessageAppCtrlUid@CBioInfoFileReader@@QBE?AVTUid@@XZ @ 28 NONAME ; public: class TUid  __thiscall CBioInfoFileReader::MessageAppCtrlUid(void)const 
+	?SetMessageAppCtrlUid@CBioInfoFileWriter@@QAEXVTUid@@@Z @ 29 NONAME ABSENT ; public: void __thiscall CBioInfoFileWriter::SetMessageAppCtrlUid(class TUid)
+	?FileExtension@CBioInfoFileReader@@QBE?BVTPtrC16@@XZ @ 30 NONAME ; public: class TPtrC16 const  __thiscall CBioInfoFileReader::FileExtension(void)const 
+	?SetFileExtension@CBioInfoFileWriter@@QAEXABVTPtrC16@@@Z @ 31 NONAME ABSENT ; public: void __thiscall CBioInfoFileWriter::SetFileExtension(class TPtrC16 const &)
+	?IsSecureBIF@CBioInfoFileReader@@QBEHXZ @ 32 NONAME ABSENT ; int CBioInfoFileReader::IsSecureBIF(void) const
+	?MessageParserName@CBioInfoFileReader@@QBE?BVTPtrC16@@XZ @ 33 NONAME ; class TPtrC16 const CBioInfoFileReader::MessageParserName(void) const
+	?SetMessageParserName@CBioInfoFileWriter@@QAEXABVTPtrC16@@@Z @ 34 NONAME ABSENT ; void CBioInfoFileWriter::SetMessageParserName(class TPtrC16 const &)
+	??8CBifEntry@@QBEHABV0@@Z @ 35 NONAME ; int CBifEntry::operator==(class CBifEntry const &) const
+	?BifEntry@CBioInfoFileReader@@QBEABVCBifEntry@@XZ @ 36 NONAME ; class CBifEntry const & CBioInfoFileReader::BifEntry(void) const
+	?NewL@CBifEntry@@SAPAV1@ABVTEntry@@@Z @ 37 NONAME ; class CBifEntry * CBifEntry::NewL(class TEntry const &)
+	?NewLC@CBifEntry@@SAPAV1@ABVTEntry@@@Z @ 38 NONAME ; class CBifEntry * CBifEntry::NewLC(class TEntry const &)
+	?MessageAppCtrlName@CBioInfoFileReader@@QBE?BVTPtrC16@@XZ @ 39 NONAME ; class TPtrC16 const CBioInfoFileReader::MessageAppCtrlName(void) const
+

@@ -1,0 +1,45 @@
+// Copyright (c) 2001-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// tsmsschemehandler.mmp
+//
+
+TARGET 				tsmsschemehandler.exe
+TARGETTYPE 			EXE		
+
+CAPABILITY All -TCB
+
+// UIDs for loading
+// TestBed Dll recognition UID followed by the unique UID for this exe
+UID 0x101FB5A8 0x10000011
+VENDORID 0x70000001
+
+SOURCEPATH		../src
+SOURCE			SmsSchemeHandlerTest.cpp SmsSchemeHandlerUnitTest.cpp
+
+SOURCEPATH		../../../urlhandler/src
+SOURCE			MSGBASE.CPP MTSCHEME.CPP SMSSCH.CPP msgurlparser.cpp
+
+USERINCLUDE 		../inc ../../../urlhandler/inc
+USERINCLUDE		../../../../msgtest/testutils/base/inc
+USERINCLUDE		../../../../msgtest/testutils/server/inc
+USERINCLUDE		../../../../msgtest/testutils/sms/inc
+USERINCLUDE		../../../../msgtest/testutils/email/inc
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+LIBRARY 			euser.lib efsrv.lib estor.lib
+LIBRARY     	mtur.lib etext.lib inetprotutil.lib
+LIBRARY			rtestbed.lib
+
+LIBRARY sendas2.lib
+
+SMPSAFE

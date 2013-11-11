@@ -1,0 +1,4 @@
+EXPORTS
+	??1CAMRAudioControllerUtility@@UAE@XZ @ 1 NONAME ; CAMRAudioControllerUtility::~CAMRAudioControllerUtility(void)
+	?NewL@CAMRAudioControllerUtility@@SAPAV1@XZ @ 2 NONAME ; class CAMRAudioControllerUtility * CAMRAudioControllerUtility::NewL(void)
+

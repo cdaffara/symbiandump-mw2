@@ -1,0 +1,5 @@
+EXPORTS
+	_ZN24CMPXHarvesterFileHandler4NewLER3RFs @ 1 NONAME
+	_ZTI24CMPXHarvesterFileHandler @ 2 NONAME ; #<TI>#
+	_ZTV24CMPXHarvesterFileHandler @ 3 NONAME ; #<VT>#
+

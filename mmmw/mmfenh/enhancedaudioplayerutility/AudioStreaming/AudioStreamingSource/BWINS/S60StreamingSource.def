@@ -1,0 +1,7 @@
+EXPORTS
+	?ImplementationGroupProxy@@YAPBUTImplementationProxy@@AAH@Z @ 1 NONAME ; struct TImplementationProxy const * ImplementationGroupProxy(int &)
+	?IsRandomSeekingSupported@CS60StreamingSource@@QAEHXZ @ 2 NONAME ; int CS60StreamingSource::IsRandomSeekingSupported(void)
+	?IsSeekingSupported@CS60StreamingSource@@QAEHXZ @ 3 NONAME ; int CS60StreamingSource::IsSeekingSupported(void)
+	?NewL@CS60StreamingSource@@SAPAV1@VTUid@@@Z @ 4 NONAME ; class CS60StreamingSource * CS60StreamingSource::NewL(class TUid)
+	?NewLC@CS60StreamingSource@@SAPAV1@VTUid@@@Z @ 5 NONAME ; class CS60StreamingSource * CS60StreamingSource::NewLC(class TUid)
+

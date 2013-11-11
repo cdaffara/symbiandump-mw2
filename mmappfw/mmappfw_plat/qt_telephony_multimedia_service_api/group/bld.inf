@@ -1,0 +1,54 @@
+/*
+ * Copyright (c) 2010 Nokia Corporation and/or its subsidiary(-ies).
+ * All rights reserved.
+ * This component and the accompanying materials are made available
+ * under the terms of "Eclipse Public License v1.0"
+ * which accompanies this distribution, and is available
+ * at the URL "http://www.eclipse.org/legal/epl-v10.html".
+ *
+ * Initial Contributors:
+ * Nokia Corporation - initial contribution.
+ *
+ * Contributors:
+ *
+ * Description: QT Bindings for TMS
+ *
+ */
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+../inc/qtms.h                    MW_LAYER_PLATFORM_EXPORT_PATH(qtms.h)
+../inc/qtmsver.h                 MW_LAYER_PLATFORM_EXPORT_PATH(qtmsver.h)
+../inc/qtmsamrformat.h           MW_LAYER_PLATFORM_EXPORT_PATH(qtmsamrformat.h)
+../inc/qtmsbuffer.h              MW_LAYER_PLATFORM_EXPORT_PATH(qtmsbuffer.h)
+../inc/qtmscall.h                MW_LAYER_PLATFORM_EXPORT_PATH(qtmscall.h)
+../inc/qtmsclientsink.h          MW_LAYER_PLATFORM_EXPORT_PATH(qtmsclientsink.h)
+../inc/qtmsclientsource.h        MW_LAYER_PLATFORM_EXPORT_PATH(qtmsclientsource.h)
+../inc/qtmsdtmf.h                MW_LAYER_PLATFORM_EXPORT_PATH(qtmsdtmf.h)
+../inc/qtmseffect.h              MW_LAYER_PLATFORM_EXPORT_PATH(qtmseffect.h)
+../inc/qtmsfactory.h             MW_LAYER_PLATFORM_EXPORT_PATH(qtmsfactory.h)
+../inc/qtmsformat.h              MW_LAYER_PLATFORM_EXPORT_PATH(qtmsformat.h)
+../inc/qtmsg711format.h          MW_LAYER_PLATFORM_EXPORT_PATH(qtmsg711format.h)
+../inc/qtmsg729format.h          MW_LAYER_PLATFORM_EXPORT_PATH(qtmsg729format.h)
+../inc/qtmsgaineffect.h          MW_LAYER_PLATFORM_EXPORT_PATH(qtmsgaineffect.h)
+../inc/qtmsglobalgaineffect.h    MW_LAYER_PLATFORM_EXPORT_PATH(qtmsglobalgaineffect.h)
+../inc/qtmsglobalrouting.h       MW_LAYER_PLATFORM_EXPORT_PATH(qtmsglobalrouting.h)
+../inc/qtmsglobalvoleffect.h     MW_LAYER_PLATFORM_EXPORT_PATH(qtmsglobalvoleffect.h)
+../inc/qtmsilbcformat.h          MW_LAYER_PLATFORM_EXPORT_PATH(qtmsilbcformat.h)
+../inc/qtmspcmformat.h           MW_LAYER_PLATFORM_EXPORT_PATH(qtmspcmformat.h)
+../inc/qtmsringtone.h            MW_LAYER_PLATFORM_EXPORT_PATH(qtmsringtone.h)
+../inc/qtmssink.h                MW_LAYER_PLATFORM_EXPORT_PATH(qtmssink.h)
+../inc/qtmssource.h              MW_LAYER_PLATFORM_EXPORT_PATH(qtmssource.h)
+../inc/qtmsstream.h              MW_LAYER_PLATFORM_EXPORT_PATH(qtmsstream.h)
+../inc/qtmsvolumeeffect.h        MW_LAYER_PLATFORM_EXPORT_PATH(qtmsvolumeeffect.h)
+../inc/qtmsmicsource.h           MW_LAYER_PLATFORM_EXPORT_PATH(qtmsmicsource.h)
+../inc/qtmsmodemsink.h           MW_LAYER_PLATFORM_EXPORT_PATH(qtmsmodemsink.h)
+../inc/qtmsmodemsource.h         MW_LAYER_PLATFORM_EXPORT_PATH(qtmsmodemsource.h)
+../inc/qtmsspeakersink.h         MW_LAYER_PLATFORM_EXPORT_PATH(qtmsspeakersink.h)
+../inc/qtmsinbandtone.h          MW_LAYER_PLATFORM_EXPORT_PATH(qtmsinbandtone.h)
+../inc/qtmswrapperexport.h       MW_LAYER_PLATFORM_EXPORT_PATH(qtmswrapperexport.h)

@@ -1,0 +1,48 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// T_UNIT_PLAINTEXTSTORE_SERVER.MMP
+// 
+//
+
+TARGET			t_unit_plaintextstore_server.exe
+TARGETTYPE		exe
+
+CAPABILITY All -TCB
+
+USERINCLUDE		../../../../../msgtest/testutils/base/inc
+USERINCLUDE		../../../../../msgtest/testutils/server/inc
+USERINCLUDE		../../../../../msgtest/testutils/sms/inc
+USERINCLUDE		../../../../../msgtest/testutils/email/inc
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+SOURCEPATH		../src
+USERINCLUDE		../inc ../../../../../../../../app/messaging/email/pop3andsmtpmtm/clientmtms/inc
+USERINCLUDE     ../../../../../../../../app/messaging/email/pop3andsmtpmtm/servermtmutils/inc
+SOURCE			t_unit_plaintextstore_server.cpp 
+SOURCE			t_plaintextstore.cpp cactivewaiter.cpp
+USERINCLUDE		../../../inc
+SOURCEPATH		../../../src
+STATICLIBRARY	tefunit.lib
+
+LIBRARY			euser.lib msgs.lib efsrv.lib estor.lib msvtestutils.lib
+LIBRARY			rfileloggerclient.lib 
+LIBRARY		emailtestutils.lib etext.lib
+LIBRARY 	imut.lib
+LIBRARY  	imcm.lib
+LIBRARY		charconv.lib 
+LIBRARY		testexecuteutils.lib
+LIBRARY		testexecutelogclient.lib sqldb.lib 
+UID    0x1000007a 0x10274028
+VENDORID 0x70000001
+
+SMPSAFE

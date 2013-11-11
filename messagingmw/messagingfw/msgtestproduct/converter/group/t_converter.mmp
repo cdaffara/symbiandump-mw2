@@ -1,0 +1,53 @@
+/*
+* Copyright (c) 2008 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+CAPABILITY 		ALL -TCB
+
+TARGET			t_converter.exe
+TARGETTYPE		exe
+UID				0x1000007A 0xA000953B
+VENDORID		0x70000001
+
+
+SOURCEPATH		../src
+SOURCE			t_converterserver.cpp
+SOURCE			t_converterwrapper.cpp 
+
+
+USERINCLUDE		../inc
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+LIBRARY     smstestutils.lib msvtestutils.lib commsdat.lib sqldb.lib imcm.lib
+LIBRARY		smcm.lib esock.lib smsu.lib c32.lib gsmu.lib  etel.lib etelmm.lib
+
+
+
+LIBRARY 		testexecuteutils.lib
+LIBRARY			testexecutelogclient.lib
+LIBRARY			imut.lib 
+LIBRARY			bafl.lib
+LIBRARY			etext.lib
+LIBRARY			estor.lib 
+LIBRARY			msgs.lib
+LIBRARY			euser.lib
+LIBRARY			efsrv.lib
+LIBRARY			t_msgutilityserver.lib
+
+
+
+SMPSAFE

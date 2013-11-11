@@ -1,0 +1,58 @@
+EXPORTS
+	_ZN15CEmailTestUtils13ListChildrenLER5RFileR4CDirRiS4_ii @ 1 NONAME
+	_ZN15CEmailTestUtils14CreateMessageLERK7TDesC16ll @ 2 NONAME
+	_ZN15CEmailTestUtils15CopyScriptFileLERK7TDesC16S2_ @ 3 NONAME
+	_ZN15CEmailTestUtils15CopyScriptFileLERK7TDesC16S2_S2_ @ 4 NONAME
+	_ZN15CEmailTestUtils15CreateServicesLEv @ 5 NONAME
+	_ZN15CEmailTestUtils15DeleteServicesLEv @ 6 NONAME
+	_ZN15CEmailTestUtils15FindPopServiceLEv @ 7 NONAME
+	_ZN15CEmailTestUtils16FindImapServiceLEv @ 8 NONAME
+	_ZN15CEmailTestUtils16FindSmtpServiceLEv @ 9 NONAME
+	_ZN15CEmailTestUtils16StartConnectionLEm @ 10 NONAME
+	_ZN15CEmailTestUtils17CreatePopServiceLEv @ 11 NONAME
+	_ZN15CEmailTestUtils17DeletePopServiceLEv @ 12 NONAME
+	_ZN15CEmailTestUtils17InstallMtmGroupsLEv @ 13 NONAME
+	_ZN15CEmailTestUtils18CreateImapServiceLEv @ 14 NONAME
+	_ZN15CEmailTestUtils18CreateSmtpServiceLEv @ 15 NONAME
+	_ZN15CEmailTestUtils18DeleteImapServiceLEv @ 16 NONAME
+	_ZN15CEmailTestUtils18DeleteSmtpServiceLEv @ 17 NONAME
+	_ZN15CEmailTestUtils19CreateMessageFilesLEll @ 18 NONAME
+	_ZN15CEmailTestUtils19CreateMessageFilesLEllRK7TDesC16 @ 19 NONAME
+	_ZN15CEmailTestUtils19InstallPopMtmGroupLEv @ 20 NONAME
+	_ZN15CEmailTestUtils20CreateServerMtmRegsLEv @ 21 NONAME
+	_ZN15CEmailTestUtils20InstallImapMtmGroupLEv @ 22 NONAME
+	_ZN15CEmailTestUtils20InstallSmtpMtmGroupLEv @ 23 NONAME
+	_ZN15CEmailTestUtils21FindExistingServicesLEv @ 24 NONAME
+	_ZN15CEmailTestUtils22CreatePopServerMtmRegLEv @ 25 NONAME
+	_ZN15CEmailTestUtils22InstantiateClientMtmsLEv @ 26 NONAME
+	_ZN15CEmailTestUtils22InstantiateServerMtmsLEv @ 27 NONAME
+	_ZN15CEmailTestUtils23CreateImapServerMtmRegLEv @ 28 NONAME
+	_ZN15CEmailTestUtils23CreateSmtpServerMtmRegLEv @ 29 NONAME
+	_ZN15CEmailTestUtils24CreateAllTestDirectoriesEv @ 30 NONAME
+	_ZN15CEmailTestUtils24InstantiatePopClientMtmLEv @ 31 NONAME
+	_ZN15CEmailTestUtils24InstantiatePopServerMtmLEv @ 32 NONAME
+	_ZN15CEmailTestUtils25InstantiateImapClientMtmLEv @ 33 NONAME
+	_ZN15CEmailTestUtils25InstantiateImapServerMtmLEv @ 34 NONAME
+	_ZN15CEmailTestUtils25InstantiateSmtpClientMtmLEv @ 35 NONAME
+	_ZN15CEmailTestUtils25InstantiateSmtpServerMtmLEv @ 36 NONAME
+	_ZN15CEmailTestUtils29DeleteScriptFilesFromLogsDirLEv @ 37 NONAME
+	_ZN15CEmailTestUtils4NewLER5RTestj @ 38 NONAME
+	_ZN15CEmailTestUtils5NewLCER5RTestj @ 39 NONAME
+	_ZN15CEmailTestUtils5ResetEv @ 40 NONAME
+	_ZN15CEmailTestUtilsD0Ev @ 41 NONAME
+	_ZN15CEmailTestUtilsD1Ev @ 42 NONAME
+	_ZN15CEmailTestUtilsD2Ev @ 43 NONAME
+	_ZN16CScriptTestUtils12ErrorActualLEv @ 44 NONAME
+	_ZN16CScriptTestUtils14ErrorExpectedLEv @ 45 NONAME
+	_ZN16CScriptTestUtils15CheckLogOutputLEiRK7TDesC16 @ 46 NONAME
+	_ZN16CScriptTestUtils15ErrorLineNumberEv @ 47 NONAME
+	_ZN16CScriptTestUtils15LogToInputFileLERK7TDesC16S2_i @ 48 NONAME
+	_ZN16CScriptTestUtils16LogToOutputFileLERK7TDesC16S2_i @ 49 NONAME
+	_ZN16CScriptTestUtils5NewLCER15CEmailTestUtils @ 50 NONAME
+	_ZTI15CEmailTestUtils @ 51 NONAME ; #<TI>#
+	_ZTI16CScriptTestUtils @ 52 NONAME ; #<TI>#
+	_ZTV15CEmailTestUtils @ 53 NONAME ; #<VT>#
+	_ZTV16CScriptTestUtils @ 54 NONAME ; #<VT>#
+	_ZN15CEmailTestUtils19ClearEmailAccountsLEv @ 55 NONAME
+	_ZN15CEmailTestUtils11MachineNameEv @ 56 NONAME
+

@@ -1,0 +1,199 @@
+/*
+* Copyright (c) 2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*   ?description_line
+*
+*/
+
+
+//  INCLUDES
+#include <uikon.rh>
+#include <EPos_LmCatDef.rh>
+#include "EPos_LmCatLanguages.hrh"
+
+//  RESOURCE DEFINITIONS
+
+// -----------------------------------------------------------------------------
+//
+// POS_LM_CATEGORY_SPECIFICATION
+// Global category specification. 
+//
+// -----------------------------------------------------------------------------
+//
+
+RESOURCE POS_LM_CATEGORY_SPECIFICATION glcategories
+    {
+    icon_files = 
+        {
+		"c:\\system\\data\\test13_1.mbm",
+        "c:\\system\\data\\test13_2.mbm",
+        "c:\\system\\data\\test13_3.mbm",
+		"c:\\system\\data\\test13_4.mbm",
+		"c:\\system\\data\\test13_5.mbm",
+		"c:\\system\\data\\test13_6.mbm",
+		"c:\\system\\data\\test13_7.mbm",
+		"c:\\system\\data\\test13_8.mbm",
+		"c:\\system\\data\\test13_9.mbm",
+		"c:\\system\\data\\test13_10.mbm",
+		"c:\\system\\data\\test13_11.mbm",
+		"c:\\system\\data\\test13_12.mbm",
+		"c:\\system\\data\\test13_13.mbm",
+		"c:\\system\\data\\test13_14.mbm",
+		"c:\\system\\data\\test13_15.mbm",
+		"c:\\system\\data\\test13_16.mbm"
+        };
+
+    categories = 
+        {
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 3000;
+            category_name = "Hotel";
+            icon_index = 0;
+            icon_mask_index = 0;
+	    icon_file_index = 0;
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 6000;
+            category_name = "Affärer";
+            icon_index = 1;
+            icon_mask_index = 1;
+	    icon_file_index = 1;
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 9000;
+            category_name = "Kommunikationer";
+            icon_index = 2;
+            icon_mask_index = 2;
+	    icon_file_index = 2;
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 12000;
+            category_name = "Läroverks Institut";
+            icon_index = 3;
+            icon_mask_index = 3;
+	    icon_file_index = 3;
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 15000;
+            category_name = "Nöje";
+            icon_index = 4;
+            icon_mask_index = 4;
+	    icon_file_index = 4;
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 18000;
+            category_name = "Mat & Dryck";
+            icon_index = 5;
+            icon_mask_index = 5;
+	    icon_file_index = 5;
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 21000;
+            category_name = "Geografiskt Område";
+            icon_index = 6;
+            icon_mask_index = 6;
+	    icon_file_index = 6;
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 24000;
+            category_name = "Utomhus aktiviteter";
+            icon_index = 7;
+            icon_mask_index = 7;
+	    icon_file_index = 7;
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 27000;
+            category_name = "Människor";
+            icon_index = 8;
+            icon_mask_index = 8;
+	    icon_file_index = 8;
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 30000;
+            category_name = "Kommunala Tjänster";
+            icon_index = 9;
+            icon_mask_index = 9;
+	    icon_file_index = 9;
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 33000;
+            category_name = "Kyrkor";
+            icon_index = 10;
+            icon_mask_index = 10;
+	    icon_file_index = 10;
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 36000;
+            category_name = "Handel";
+            icon_index = 11;
+            icon_mask_index = 11;
+	    icon_file_index = 11;
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 39000;
+            category_name = "Turistande";
+            icon_index = 12;
+            icon_mask_index = 12;
+	    icon_file_index = 12;
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 42000;
+            category_name = "Sport";
+            icon_index = 13;
+            icon_mask_index = 13;
+	    icon_file_index = 13;
+            },
+/* Do not include this one
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 45000;
+            category_name = "Transporter";
+            },
+*/
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 48000;
+            category_name = "Kinarestaurang";
+            icon_index = 14;
+            icon_mask_index = 14;
+	    icon_file_index = 14;
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 51000;
+            category_name = "BallongFärder";
+            icon_index = 15;
+            icon_mask_index = 15;
+	    icon_file_index = 15;
+            }            
+        };
+    }
+
+// End of File
+
+

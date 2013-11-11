@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+#
+# Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies). 
+# All rights reserved.
+# This component and the accompanying materials are made available
+# under the terms of "Eclipse Public License v1.0"
+# which accompanies this distribution, and is available
+# at the URL "http://www.eclipse.org/legal/epl-v10.html".
+#
+# Initial Contributors:
+# Nokia Corporation - initial contribution.
+#
+# Contributors:
+# 
+# Description:
+# 
+#
+-->
+
+<build xmlns="http://symbian.com/xml/build" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symbian.com/xml/build ../../schema/build/2_0.xsd">
+    <interface name="s60.mifconv" extends="Symbian.UserFLM" flm="mifconv.flm">
+
+    <!-- For debugging -->
+    <param name='MIFCONVDEBUG' default='0' />
+    
+    <!-- Tools -->
+    <param name='TOOLCAT' default="$(GNUCAT)"/>
+    <param name='TOOLCOPY' default="$(GNUCP)" />
+    <param name='TOOLMKDIR' default="$(GNUMKDIR) -p"/>
+        
+    <!-- Mifconv user defined variables (please notice use of default attribute) -->
+    <param name='TARGETFILE' default="" />
+    <param name='HEADERFILE' default="" />
+    <param name='SOURCES' default="" />
+    <param name='SOURCEFILE' default="" />
+    <param name='SOURCEDIR' default="" />
+    <param name='SVGENCODINGVERSION' default="" />
+    <param name='SBS_BUILD_DIR' default="" />
+    </interface>
+</build>

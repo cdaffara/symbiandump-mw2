@@ -1,0 +1,268 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+//! @SYMScriptTestEnvironment   Details as in below:-
+//!                                  1. Cyrus IMAP server on Ubuntu Linux
+//!                                  2. After Installation of the server run the messaging.sh shell script which generates
+//!                                     and adds the user profile, and this configures the entire environment for testing
+//!                                  3. The server should be part of closed test network.
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE 	T_MsgCommonServer	-SharedData
+LOAD_SUITE 	T_MsgImapServer		-SharedData
+LOAD_SUITE  	T_MsgSmtpServer 	-SharedData
+
+
+START_TESTCASE MSG-IMAP-BINARY-BASE64-0001
+//!	@file
+//!	@SYMTestCaseID		MSG-IMAP-BINARY-BASE64-0001
+//!	@SYMTestCaseDesc	Check BINARY Capability download for Base64 
+//!
+//!	@SYMTestPriority	Critical
+//!   	@SYMTestType		CIT
+//!  	@SYMTestStatus		Implemented 
+//!
+//!	@SYMPREQ 		PREQ785
+//!	@SYMREQ			REQ 11530 REQ 11531 REQ 11539
+//!
+//!					
+//!	@SYMComponent 		Email ClientMTM 
+//!				
+//!	@SYMTestActions		1. 	Initialise the NT-RAS/Wintap connection.
+//!				2. 	Reset Message Store and Central Repository to default state.
+//!				3.	Create an IMAP4 account for the remote mailbox and clean the contents of remote inbox. 
+//!				4.	Ensure remote inbox is empty.
+//!				5. 	Create an SMTP message in the local folder specified. 
+//!					Body text must be of type plain text and size must be 10KB whose content type is Base64.
+//!					Recipient address should be of the form <Test Machine Name>@<SMTP server name> if not supplied.
+//!				6.	Confirm that the message has been created in the desired folder.
+//!				7.	Do the send and receive operation and check if the reply message is existing.
+//!
+//!	@SYMTestExpectedResults	Message entry should created under the desired folder.
+//!	@SYMAuthor		Manikandan B
+PRINT############ Download BASE 64
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0001-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0001-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0001-CheckChildrenCountOutbox1
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0001-CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0001-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0001-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	DeleteAllImapChildren		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0001-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0001-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0001-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgSmtpServer	SmtpCreateNewMessageWithPlainBodyText	c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0001-SmtpCreateNewMessageWithPlainBodyText
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0001-CheckChildrenCountOutbox2
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0001-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0001-CheckChildrenCountSentItems
+RUN_TEST_STEP 300 T_MsgImapServer	SetImap4FullDownloadLimits	c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0001-SetImap4FullDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0001-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0001-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	ImapInvokeAsyncFunction		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0001-ImapInvokeAsyncFunction1
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0001-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0001-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP 300 T_MsgSmtpServer	RetrievePlainBodyTextAndCompare c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0001-RetrievePlainBodyTextAndCompare
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-BINARY-BASE64-0001
+
+START_TESTCASE MSG-IMAP-BINARY-7BIT-0002
+//!	@file
+//!	@SYMTestCaseID		MSG-IMAP-BINARY-7BIT-0002
+//!	@SYMTestCaseDesc	Check BINARY Capability download for 7BIT
+//!
+//!	@SYMTestPriority	Critical
+//!   	@SYMTestType		CIT
+//!  	@SYMTestStatus		Implemented 
+//!
+//!	@SYMPREQ 		PREQ785
+//!	@SYMREQ			REQ 11530 REQ 11531 REQ 11539
+//!
+//!					
+//!	@SYMComponent 		Email ClientMTM 
+//!				
+//!	@SYMTestActions		1. 	Initialise the NT RAS /Wintap connection.
+//!				2. 	Reset Message Store and Central Repository to default state.
+//!				3.	Create an IMAP4 account for the remote mailbox and clean the contents of remote inbox. 
+//!				4.	Ensure remote inbox is empty.
+//!				5. 	Create an SMTP message in the local folder specified. 
+//!					Body text must be of type plain text and size must be 10KB whose content type is 7 Bit.
+//!					Recipient address should be of the form <Test Machine Name>@<SMTP server name> if not supplied.
+//!				6.	Confirm that the message has been created in the desired folder.
+//!				7.	Do the send and receive operation and check if the reply message is existing.
+//!
+//!	@SYMTestExpectedResults	Message entry should created under the desired folder.
+//!	@SYMAuthor		Manikandan B
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0002-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0002-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0002-CheckChildrenCountOutbox1
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0002-CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0002-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0002-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	DeleteAllImapChildren		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0002-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0002-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0002-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgSmtpServer	SmtpCreateNewMessageWithPlainBodyText	c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 	0002-SmtpCreateNewMessageWithPlainBodyText
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0002-CheckChildrenCountOutbox2
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0002-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0002-CheckChildrenCountSentItems
+RUN_TEST_STEP 300 T_MsgImapServer	SetImap4FullDownloadLimits	c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0002-SetImap4FullDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0002-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0002-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	ImapInvokeAsyncFunction		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0002-ImapInvokeAsyncFunction1
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0002-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0002-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP 300 T_MsgSmtpServer	RetrievePlainBodyTextAndCompare c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0002-RetrievePlainBodyTextAndCompare
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-BINARY-7BIT-0002
+
+START_TESTCASE MSG-IMAP-BINARY-8BIT-0003
+//!	@file
+//!	@SYMTestCaseID		MSG-IMAP-BINARY-8BIT-0003
+//!	@SYMTestCaseDesc	Check BINARY Capability download for 8BIT
+//!
+//!	@SYMTestPriority	Critical
+//!   	@SYMTestType		CIT
+//!  	@SYMTestStatus		Implemented 
+//!
+//!	@SYMPREQ 		PREQ785
+//!	@SYMREQ			REQ 11530 REQ 11531 REQ 11539
+//!
+//!					
+//!	@SYMComponent 		Email ClientMTM 
+//!				
+//!	@SYMTestActions		1. 	Initialise the NT RAS / Wintap connection.
+//!				2. 	Reset Message Store and Central Repository to default state.
+//!				3.	Create an IMAP4 account for the remote mailbox and clean the contents of remote inbox. 
+//!				4.	Ensure remote inbox is empty.
+//!				5. 	Create an SMTP message in the local folder specified. 
+//!					Body text must be of type plain text and size must be 10KB whose content type is 8 Bit.
+//!					Recipient address should be of the form <Test Machine Name>@<SMTP server name> if not supplied.
+//!				6.	Confirm that the message has been created in the desired folder.
+//!				7.	Do the send and receive operation and check if the reply message is existing.
+//!
+//!	@SYMTestExpectedResults	Message entry should created under the desired folder.
+//!	@SYMAuthor		Manikandan B
+PRINT ######## 10KBody with 8bit Content
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0003-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0003-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0003-CheckChildrenCountOutbox1
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0003-CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0003-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0003-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	DeleteAllImapChildren		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0003-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0003-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0003-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgSmtpServer	SmtpCreateNewMessageWithPlainBodyText	c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 	0003-SmtpCreateNewMessageWithPlainBodyText
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0003-CheckChildrenCountOutbox2
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0003-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0003-CheckChildrenCountSentItems
+RUN_TEST_STEP 300 T_MsgImapServer	SetImap4FullDownloadLimits	c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0003-SetImap4FullDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0003-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0003-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	ImapInvokeAsyncFunction		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0003-ImapInvokeAsyncFunction1
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0003-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0003-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP 300 T_MsgSmtpServer	RetrievePlainBodyTextAndCompare c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0003-RetrievePlainBodyTextAndCompare
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-BINARY-8BIT-0003
+
+START_TESTCASE MSG-IMAP-BINARY-NOBODY-0004
+//!	@file
+//!	@SYMTestCaseID		MSG-IMAP-BINARY-NOBODY-0003
+//!	@SYMTestCaseDesc	Check BINARY Capability download for a Message with No body
+//!
+//!	@SYMTestPriority	Critical
+//!   	@SYMTestType		CIT
+//!  	@SYMTestStatus		Implemented 
+//!
+//!	@SYMPREQ 		PREQ785
+//!	@SYMREQ			REQ 11530 REQ 11531 REQ 11539
+//!
+//!					
+//!	@SYMComponent 		Email ClientMTM 
+//!				
+//!	@SYMTestActions		1. 	Initialise the NT RAS /Wintap connection.
+//!				2. 	Reset Message Store and Central Repository to default state.
+//!				3.	Create an IMAP4 account for the remote mailbox and clean the contents of remote inbox. 
+//!				4.	Ensure remote inbox is empty.
+//!				5. 	Create an SMTP message in the local folder specified. 
+//!					Body text must be of type plain text and size must be 10KB whose content type is 8 Bit.
+//!					Recipient address should be of the form <Test Machine Name>@<SMTP server name> if not supplied.
+//!				6.	Confirm that the message has been created in the desired folder.
+//!				7.	Do the send and receive operation and check if the reply message is existing.
+//!
+//!	@SYMTestExpectedResults	Message entry should created under the desired folder.
+//!	@SYMAuthor		Manikandan B
+PRINT ######## 10KBody with NOBODY Content
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0004-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0004-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0004-CheckChildrenCountOutbox1
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0004-CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0004-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0004-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	DeleteAllImapChildren		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0004-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0004-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0004-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgSmtpServer	SmtpCreateNewMessageWithPlainBodyText	c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 	0004-SmtpCreateNewMessageWithPlainBodyText
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0004-CheckChildrenCountOutbox2
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0004-SendSmtpMessage1
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0004-CheckChildrenCountSentItems
+RUN_TEST_STEP 300 T_MsgImapServer	SetImap4FullDownloadLimits	c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0004-SetImap4FullDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0004-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0004-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	ImapInvokeAsyncFunction		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0004-ImapInvokeAsyncFunction1
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0004-DisConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0004-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP 300 T_MsgSmtpServer	RetrievePlainBodyTextAndCompare c:\msgtest\email\imap\binarydownloadsupport\msg-imap-binary-plainbody.ini 		0004-RetrievePlainBodyTextAndCompare
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-BINARY-NOBODY-0004
+

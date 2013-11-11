@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<api id="f316226088b093a08b0a97eb5904d04a" dataversion="2.0">
+  <name>Landmarks API</name>
+  <description>Landmarks API provides basic landmark functionality. It enables opening the default landmark database and perform operations on it. This includes listing, reading, creating, updating and deleting landmarks, managing landmark categories and listening for landmark database events.</description>
+  <type>c++</type>
+  <collection>landmarks</collection>
+  <libs>
+    <lib name="eposlandmarks.lib" />
+  </libs>
+  <release category="public" sinceversion="0"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>no</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

@@ -1,0 +1,38 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Structure definition for MP3 PlayControllerPlugin resource file.
+*
+*/
+
+
+//  INCLUDES
+#include "AdvancedAudioResource.rh"
+
+//  STRUCTURE DEFINITIONS
+
+// -----------------------------------------------------------------------------
+// MP3_DECODER_CONFIG_PARAMS
+// Structure definition for the MP3 decoder configuration parameters.
+// -----------------------------------------------------------------------------
+//
+STRUCT MP3_DECODER_CONFIG_PARAMS
+    {
+    LONG	stereo_to_mono_switch;
+    LONG	decode_left_or_right_channel;
+    LONG	decimation_factor;
+    LONG	concealment_level;
+    LONG	sample_length;
+    LONG	sampling_frequency;
+    }
+// End of File

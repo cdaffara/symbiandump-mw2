@@ -1,0 +1,5 @@
+EXPORTS
+	??1CAACAudioControllerUtility@@UAE@XZ @ 1 NONAME ; CAACAudioControllerUtility::~CAACAudioControllerUtility(void)
+	?NewL@CAACAudioControllerUtility@@SAPAV1@XZ @ 2 NONAME ; class CAACAudioControllerUtility * CAACAudioControllerUtility::NewL(void)
+	?PrependHeader@CAACAudioControllerUtility@@QAEHXZ @ 3 NONAME ; int CAACAudioControllerUtility::PrependHeader(void)
+

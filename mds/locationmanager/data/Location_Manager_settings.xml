@@ -1,0 +1,15 @@
+<!DOCTYPE Feature SYSTEM "CT_XMLData.dtd">
+<Feature Name="Location Manager settings" Plugin="CRPlugin" Group="Location Manager" Desc="">
+	<Settings>
+		<Setting Name="Location manager storing interval" Key="0x1" Type="Int" ref="Variant/Location_Manager/TrailStoreInterval" Desc="Location Manager store Location Trail items to a memory buffer in defined interval.">5</Setting>
+		<Setting Name="Location manager trail length" Key="0x2" Type="Int" ref="Variant/Location_Manager/TrailBufferLength" Desc="Location Manager uses a memory buffer from where the TrackLog file is created. Value is buffer length in seconds.">600</Setting>
+		<Setting Name="Location trail stop delay" Key="0x3" Type="Int" ref="Variant/Location_Manager/TrailStopDelay" Desc="Delay before location trail actually stops after a call to RLocationTrail.StopLocationTrail(). This delay gives time to MdS to remap GPS locations to captured images without coordinates.">180</Setting>
+		<Setting Name="Tracklog buffer size" Key="0x4" Type="Int" ref="Variant/Location_Manager/TrackLogBufferSize" Desc="How many track points Tracklog keeps in phone memory before writing buffer to a file.">10</Setting>
+		<Setting Name="Same location distance" Key="0x5" Type="Int" ref="Variant/Location_Manager/LocationDelta" Desc="Maximum distance for using existing location object for context snapshot.">10</Setting>
+		<Setting Name="Location remapping time" Key="0x6" Type="Int" ref="Variant/Location_Manager/RemappingTime" Desc="Time in seconds for remapping locations after getting GPS fix.">600</Setting>
+    </Settings>
+	<Rules>
+		<CenRepfile Name1="\epoc32\data\z\private\10202BE9\200071BE.txt">1</CenRepfile>
+		<Ibyfile Name1="\epoc32\rom\include\S60Cenrep_variant.iby">1</Ibyfile>
+	</Rules>
+</Feature>

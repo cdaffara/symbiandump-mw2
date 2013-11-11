@@ -1,0 +1,110 @@
+EXPORTS
+	_ZN15PosLmFileFinder13ResourceFileLEP4TBufILi256EER3RFsRK7TDesC16 @ 1 NONAME
+	_ZN17PosLmTrealCompare7IsEqualE6TRealXS0_ @ 2 NONAME
+	_ZN17PosLmTrealCompare7IsEqualEdd @ 3 NONAME
+	_ZN17PosLmTrealCompare7IsEqualEff @ 4 NONAME
+	_ZN19CPosLmDiskUtilities28DiskSpaceBelowCriticalLevelLEi5TChar @ 5 NONAME
+	_ZN19CPosLmDiskUtilities30EstimatedDiskSizeOfLmOperationENS_12TLmOperationERK12CPosLandmark @ 6 NONAME
+	_ZN19CPosLmDiskUtilities30EstimatedDiskSizeOfLmOperationENS_12TLmOperationERK20CPosLandmarkCategory @ 7 NONAME
+	_ZN19CPosLmDiskUtilities30EstimatedDiskSizeOfLmOperationENS_12TLmOperationERK6RArrayImE @ 8 NONAME
+	_ZN19CPosLmDiskUtilities30EstimatedDiskSizeOfLmOperationENS_12TLmOperationERKm @ 9 NONAME
+	_ZN19CPosLmDiskUtilities32EstimatedDiskSizeOfEmptyDatabaseEv @ 10 NONAME
+	_ZN19CPosLmDiskUtilities33EstimatedDiskSizeOfLmCatOperationENS_12TLmOperationERmRK6RArrayImE @ 11 NONAME
+	_ZN19CPosLmDiskUtilities4NewLEv @ 12 NONAME
+	_ZN19CPosLmLocalDbAccess11GetDatabaseER16RDbNamedDatabase @ 13 NONAME
+	_ZN19CPosLmLocalDbAccess11InitFlagPtrEv @ 14 NONAME
+	_ZN19CPosLmLocalDbAccess12SetLanguageLE9TLanguage @ 15 NONAME
+	_ZN19CPosLmLocalDbAccess13OpenDatabaseLERK7TDesC16 @ 16 NONAME
+	_ZN19CPosLmLocalDbAccess13PrepareViewLCENS_16TPreparationTypeER7RDbViewRK7TDesC1617TDbTextComparison @ 17 NONAME
+	_ZN19CPosLmLocalDbAccess13ResetInitFlagEv @ 18 NONAME
+	_ZN19CPosLmLocalDbAccess16BeginTransactionEv @ 19 NONAME
+	_ZN19CPosLmLocalDbAccess16IsCompactNeededLEv @ 20 NONAME
+	_ZN19CPosLmLocalDbAccess17CommitTransactionEv @ 21 NONAME
+	_ZN19CPosLmLocalDbAccess18BeginTransactionLCEv @ 22 NONAME
+	_ZN19CPosLmLocalDbAccess18SetInitializeDoneLEv @ 23 NONAME
+	_ZN19CPosLmLocalDbAccess19IsInitializeNeededLERi @ 24 NONAME
+	_ZN19CPosLmLocalDbAccess19RollbackTransactionEv @ 25 NONAME
+	_ZN19CPosLmLocalDbAccess23IsLanguageChangeNeededLERi @ 26 NONAME
+	_ZN19CPosLmLocalDbAccess24CommitTransactionAndPopLEv @ 27 NONAME
+	_ZN19CPosLmLocalDbAccess4NewLENS_17TCompactLevelTypeE @ 28 NONAME
+	_ZN19CPosLmLocalDbAccess5SizeLEv @ 29 NONAME
+	_ZN19CPosLmLocalDbAccess8ExecuteLERK7TDesC16 @ 30 NONAME
+	_ZN19CPosLmLocalDbAccess9IsDamagedEv @ 31 NONAME
+	_ZN19CPosLmLocalDbAccessD0Ev @ 32 NONAME
+	_ZN19CPosLmLocalDbAccessD1Ev @ 33 NONAME
+	_ZN19CPosLmLocalDbAccessD2Ev @ 34 NONAME
+	_ZN20CPosLmResourceReader10ReadHBufCLEi @ 35 NONAME
+	_ZN20CPosLmResourceReader10ReadInt16LEi @ 36 NONAME
+	_ZN20CPosLmResourceReader10ReadInt32LEi @ 37 NONAME
+	_ZN20CPosLmResourceReader13LoadResourceLEi @ 38 NONAME
+	_ZN20CPosLmResourceReader5NewLCERK7TDesC16 @ 39 NONAME
+	_ZN20CPosLmResourceReaderD0Ev @ 40 NONAME
+	_ZN20CPosLmResourceReaderD1Ev @ 41 NONAME
+	_ZN20CPosLmResourceReaderD2Ev @ 42 NONAME
+	_ZN20PosLmCategoryHandler12AddCategoryLER19CPosLmLocalDbAccessR20CPosLandmarkCategory @ 43 NONAME
+	_ZN20PosLmCategoryHandler13FindCategoryLER19CPosLmLocalDbAccessm @ 44 NONAME
+	_ZN20PosLmCategoryHandler13ReadCategoryLER19CPosLmLocalDbAccessR20CPosLandmarkCategory @ 45 NONAME
+	_ZN20PosLmCategoryHandler15RemoveCategoryLER19CPosLmLocalDbAccessm @ 46 NONAME
+	_ZN20PosLmCategoryHandler15UpdateCategoryLER19CPosLmLocalDbAccessRK20CPosLandmarkCategory @ 47 NONAME
+	_ZN20PosLmCategoryHandler18GetAllCategoryIdsLER19CPosLmLocalDbAccessN21CPosLmCategoryManager17TCategorySortPrefER6RArrayImE @ 48 NONAME
+	_ZN20PosLmCategoryHandler20GetGlobalCategoriesLER19CPosLmLocalDbAccessRK6RArrayIiERS2_ImE @ 49 NONAME
+	_ZN20PosLmCategoryHandler20ResetGlobalCategoryLER19CPosLmLocalDbAccessR20CPosLandmarkCategory @ 50 NONAME
+	_ZN20PosLmCategoryHandler23VerifyCategoryIsProperLER19CPosLmLocalDbAccessRK20CPosLandmarkCategoryRKNS_18TCheckCategoryTypeE @ 51 NONAME
+	_ZN20PosLmCategoryHandler25GetReferencedCategoryIdsLER19CPosLmLocalDbAccessN21CPosLmCategoryManager17TCategorySortPrefER6RArrayImE @ 52 NONAME
+	_ZN20PosLmCategoryHandler25IsGlobalCategoryExistingLER19CPosLmLocalDbAccesstRmRi @ 53 NONAME
+	_ZN20PosLmCategoryHandler25UpdateGlobalCategoryNameLER19CPosLmLocalDbAccessRK20CPosLandmarkCategory @ 54 NONAME
+	_ZN20PosLmCategoryHandler26RemoveAllGlobalCategoriesLER19CPosLmLocalDbAccess @ 55 NONAME
+	_ZN20PosLmCategoryHandler28VerifyCategoryNameNotExistsLER19CPosLmLocalDbAccessRK20CPosLandmarkCategoryRKNS_18TCheckCategoryTypeE @ 56 NONAME
+	_ZN20PosLmCategoryHandler28VerifyCategoryNameNotExistsLER19CPosLmLocalDbAccessRK20CPosLandmarkCategoryRKNS_18TCheckCategoryTypeERm @ 57 NONAME
+	_ZN20PosLmCategoryHandler30VerifyGlobalCategoryUnchangedLER19CPosLmLocalDbAccessRK20CPosLandmarkCategory @ 58 NONAME
+	_ZN20PosLmDatabaseUtility18CreateDatabaseUriLERK7TDesC16 @ 59 NONAME
+	_ZN20PosLmDatabaseUtility19ValidateDatabaseUriERK7TDesC16 @ 60 NONAME
+	_ZN20PosLmDatabaseUtility22RemoveProtocolFromUriLER7TPtrC16 @ 61 NONAME
+	_ZN20PosLmDatabaseUtility28EmbedSingleQuoteCharactersLCERK7TDesC16 @ 62 NONAME
+	_ZN20PosLmLandmarkHandler12AddLandmarkLER19CPosLmLocalDbAccessR12CPosLandmark @ 63 NONAME
+	_ZN20PosLmLandmarkHandler13ReadLandmarkLER19CPosLmLocalDbAccessR12CPosLandmark @ 64 NONAME
+	_ZN20PosLmLandmarkHandler15LandmarkExistsLER19CPosLmLocalDbAccessm @ 65 NONAME
+	_ZN20PosLmLandmarkHandler15RemoveLandmarkLER19CPosLmLocalDbAccessm @ 66 NONAME
+	_ZN20PosLmLandmarkHandler15UpdateLandmarkLER19CPosLmLocalDbAccessRK12CPosLandmark @ 67 NONAME
+	_ZN20PosLmLandmarkHandler18GetAllLandmarkIdsLER19CPosLmLocalDbAccessiiR6RArrayImE @ 68 NONAME
+	_ZN20PosLmLandmarkHandler20ReadPartialLandmarkLER19CPosLmLocalDbAccessR12CPosLandmarkR27CPosLmPartialReadParameters @ 69 NONAME
+	_ZN20PosLmLandmarkHandler24AddCategoriesToLandmarkLER19CPosLmLocalDbAccessRK6RArrayImERKm @ 70 NONAME
+	_ZN20PosLmLandmarkHandler27RemoveCategoryFromLandmarkLER19CPosLmLocalDbAccessmm @ 71 NONAME
+	_ZN20PosLmLandmarkHandler29HasLandmarkSpecifiedCategoryLER19CPosLmLocalDbAccessmm @ 72 NONAME
+	_ZN21CPosLmCompactDatabase4NewLER19CPosLmLocalDbAccess @ 73 NONAME
+	_ZN21CPosLmCompactDatabase5NextLERf @ 74 NONAME
+	_ZN21CPosLmSettingsHandler21NotifySettingsChangedER14TRequestStatus @ 75 NONAME
+	_ZN21CPosLmSettingsHandler22GetDefaultDatabaseUriLEv @ 76 NONAME
+	_ZN21CPosLmSettingsHandler22SetDefaultDatabaseUriLERK7TDesC16 @ 77 NONAME
+	_ZN21CPosLmSettingsHandler27CancelNotifySettingsChangedEv @ 78 NONAME
+	_ZN21CPosLmSettingsHandler4NewLEv @ 79 NONAME
+	_ZN26CPosLmGlobalCategoryReader16GlobalCategoryLCEi @ 80 NONAME
+	_ZN26CPosLmGlobalCategoryReader4NewLEv @ 81 NONAME
+	_ZN26CPosLmGlobalCategoryReader5CountEv @ 82 NONAME
+	_ZNK19CPosLmLocalDbAccess13InTransactionEv @ 83 NONAME
+	_ZNK19CPosLmLocalDbAccess8InitFlagEv @ 84 NONAME
+	_ZTI19CPosLmDiskUtilities @ 85 NONAME ; #<TI>#
+	_ZTI19CPosLmLocalDbAccess @ 86 NONAME ; #<TI>#
+	_ZTI20CPosLmResourceReader @ 87 NONAME ; #<TI>#
+	_ZTI21CPosLmCompactDatabase @ 88 NONAME ; #<TI>#
+	_ZTI21CPosLmSettingsHandler @ 89 NONAME ; #<TI>#
+	_ZTI26CPosLmGlobalCategoryReader @ 90 NONAME ; #<TI>#
+	_ZTV19CPosLmDiskUtilities @ 91 NONAME ; #<VT>#
+	_ZTV19CPosLmLocalDbAccess @ 92 NONAME ; #<VT>#
+	_ZTV20CPosLmResourceReader @ 93 NONAME ; #<VT>#
+	_ZTV21CPosLmCompactDatabase @ 94 NONAME ; #<VT>#
+	_ZTV21CPosLmSettingsHandler @ 95 NONAME ; #<VT>#
+	_ZTV26CPosLmGlobalCategoryReader @ 96 NONAME ; #<VT>#
+	_ZN20PosLmCategoryHandler19TotalCategoryCountLER19CPosLmLocalDbAccess @ 97 NONAME
+	_ZN20PosLmDatabaseUtility17GetTableRowCountLER19CPosLmLocalDbAccessRK7TDesC16 @ 98 NONAME
+	_ZN20PosLmLandmarkHandler19TotalLandmarkCountLER19CPosLmLocalDbAccess @ 99 NONAME
+	_ZN19CPosLmDiskUtilities24EstimatedDiskSizeOfIndexENS_12TLmOperationEi @ 100 NONAME
+	_ZN20PosLmCategoryHandler13ReadCategoryLER9RDbRowSetR19CPosLmLocalDbAccessR20CPosLandmarkCategory @ 101 NONAME
+	_ZN20PosLmDatabaseUtility12IndexExistsLERK16RDbNamedDatabaseRK7TDesC16S5_ @ 102 NONAME
+	_ZN20PosLmLandmarkHandler13ReadLandmarkLER9RDbRowSetR19CPosLmLocalDbAccessR12CPosLandmark @ 103 NONAME
+	_ZN20PosLmLandmarkHandler20ReadPartialLandmarkLER9RDbRowSetR19CPosLmLocalDbAccessR12CPosLandmarkR27CPosLmPartialReadParameters @ 104 NONAME
+	_ZN23PosLmLongTextColHandler22WriteToLongTextColumnLERK7TDesC16R9RDbRowSeti @ 105 NONAME
+	_ZN23PosLmLongTextColHandler23ReadFromLongTextColumnLER6TDes16R9RDbRowSeti @ 106 NONAME
+	_ZN23PosLmLongTextColHandler24ReadFromLongTextColumnLCER9RDbRowSeti @ 107 NONAME
+	_ZNK19CPosLmLocalDbAccess22IsIndexCreationNeededLEv @ 108 NONAME
+

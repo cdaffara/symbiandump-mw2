@@ -1,0 +1,46 @@
+// Copyright (c) 2002-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// Registry file for Push App Handler interface dll
+// Interfaces : CPushHandlerBase
+// 
+//
+
+#include <ecom/registryinfo.rh>
+
+RESOURCE REGISTRY_INFO theInfo
+	{
+	// KUidPushAppHanderPlugin
+	dll_uid = 0x101F3E60; // <-----TODO...Match to same UID as file name
+	interfaces = 
+		{
+		INTERFACE_INFO
+			{
+			// KUidPushHandlerBase - CPushHandlerBase UID
+			interface_uid = 0x101F3E5A;
+			implementations = 
+				{
+				IMPLEMENTATION_INFO
+					{
+					//CPushAppHandlerEx UID
+					implementation_uid = 0x101F3E66; // <-----TODO...Match to same UID in the GroupProxy.cpp file
+					version_no = 1;
+					display_name = "CPushAppHandler||WAP Push Example Application Handler Plug-in";
+					default_data = "0x0000000f";     // <-----TODO...This is nonsense....change it to the app-id you want!!!
+					opaque_data = "";
+					}
+				};
+			}
+		};
+	}
+

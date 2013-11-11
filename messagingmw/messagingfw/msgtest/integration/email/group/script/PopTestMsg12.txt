@@ -1,0 +1,15 @@
+From: Test message <test@msexchange01.closedtest.intra>
+Date: Thu, 20 Jan 2001 11:24:11 GMT
+To: test@msexchange01.closedtest.intra
+Subject: PopTestMsg12
+
+This message contains some temp Text.
+
+....
+...
+..
+.
+
+.This line should contain a "dot" as its first character.
+
+End of message.

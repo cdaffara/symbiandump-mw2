@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SystemDefinition schema="3.0.0" xmlns:qt="http://www.nokia.com/qt">
+ <package id="phonesrv" name="Telephony and SIM Services" levels="utils framework server ui specific">
+  <collection id="phonesrv_plat" name="Telephony and SIM Services Platform Interfaces" level="specific">
+   <component id="string_parser_api" name="String Parser API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/string_parser_api/string_parser_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/string_parser_api/group"/>
+   </component>
+   <component id="cbs_mcn_client_api" name="CBS MCN Client API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/cbs_mcn_client_api/cbs_mcn_client_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/cbs_mcn_client_api/group"/>
+   </component>
+   <component id="converged_call_engine_api" name="Converged Call Engine API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/converged_call_engine_api/converged_call_engine_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/converged_call_engine_api/group"/>
+   </component>
+   <component id="aiw_dial_data_consumer_api" name="AIW Dial Data Consumer API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/aiw_dial_data_consumer_api/aiw_dial_data_consumer_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/aiw_dial_data_consumer_api/group"/>
+   </component>
+   <component id="phone_client_ussd_api" name="Phone Client USSD API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/phone_client_ussd_api/phone_client_ussd_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/phone_client_ussd_api/group"/>
+   </component>
+   <component id="sat_refresh_api" name="SAT Refresh API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/sat_refresh_api/sat_refresh_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/sat_refresh_api/group" filter="!test"/>
+    <unit bldFile="phonesrv_plat/sat_refresh_api/tsrc/group" filter="test,api_test"/>
+   </component>
+   <component id="network_handling_engine_api" name="Network Handling Engine API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/network_handling_engine_api/network_handling_engine_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/network_handling_engine_api/group"/>
+   </component>
+   <component id="phone_client_emergency_call_api" name="Phone Client Emergency Call API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/phone_client_emergency_call_api/phone_client_emergency_call_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/phone_client_emergency_call_api/group"/>
+   </component>
+   <component id="sat_configuration_api" name="SAT Configuration API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/sat_configuration_api/sat_configuration_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/sat_configuration_api/group"/>
+   </component>
+   <component id="phone_client_image_handler_api" name="Phone Client Image Handler API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/phone_client_image_handler_api/phone_client_image_handler_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/phone_client_image_handler_api/group"/>
+   </component>
+   <component id="phone_client_messenger_api" name="Phone Client Messenger API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/phone_client_messenger_api/phone_client_messenger_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/phone_client_messenger_api/group"/>
+   </component>
+   <component id="sat_client_api" name="SAT Client API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/sat_client_api/sat_client_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/sat_client_api/group" filter="!test"/>
+    <unit bldFile="phonesrv_plat/sat_client_api/tsrc/group" filter="test,api_test"/>
+   </component>
+   <component id="phone_client_api" name="Phone Client API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/phone_client_api/phone_client_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/phone_client_api/group"/>
+   </component>
+   <component id="sat_service_api" name="SAT Service API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/sat_service_api/sat_service_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/sat_service_api/group" filter="!test"/>
+    <unit bldFile="phonesrv_plat/sat_service_api/tsrc/group" filter="test,api_test"/>
+   </component>
+   <component id="cbs_message_api" name="CBS Message API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/cbs_message_api/cbs_message_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/cbs_message_api/group"/>
+   </component>
+   <component id="phone_client_server_information_api" name="Phone Client Server Information API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/phone_client_server_information_api/phone_client_server_information_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/phone_client_server_information_api/group"/>
+   </component>
+   <component id="phone_client_ussd_internal_api" name="Phone Client USSD Internal API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/phone_client_ussd_internal_api/phone_client_ussd_internal_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/phone_client_ussd_internal_api/group"/>
+   </component>
+   <component id="phone_client_command_handler_api" name="Phone Client Command Handler API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/phone_client_command_handler_api/phone_client_command_handler_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/phone_client_command_handler_api/group"/>
+   </component>
+   <component id="phone_client_notify_api" name="Phone Client Notify API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/phone_client_notify_api/phone_client_notify_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/phone_client_notify_api/group"/>
+   </component>
+   <component id="phone_client_utility_api" name="Phone Client Utility API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/phone_client_utility_api/phone_client_utility_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/phone_client_utility_api/group"/>
+   </component>
+   <component id="telephony_network_information_api" name="Telephony Network Information API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/telephony_network_information_api/telephony_network_information_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/telephony_network_information_api/group"/>
+   </component>
+   <component id="secondary_display_sat_api" name="Secondary Display SAT API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/secondary_display_sat_api/secondary_display_sat_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/secondary_display_sat_api/group"/>
+   </component>
+   <component id="service_provider_settings_api" name="Service Provider Settings API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/service_provider_settings_api/service_provider_settings_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/service_provider_settings_api/group"/>
+   </component>
+   <component id="converged_call_provider_api" name="Converged Call Provider API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/converged_call_provider_api/converged_call_provider_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/converged_call_provider_api/group"/>
+   </component>
+   <component id="incoming_call_monitor_api" name="Incoming Call Monitor API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/incoming_call_monitor_api/incoming_call_monitor_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/incoming_call_monitor_api/group"/>
+   </component>
+   <component id="default_emergency_numbers_api" name="Default Emergency Numbers API" class="api" filter="s60">
+    <unit bldFile="phonesrv_plat/default_emergency_numbers_api/group"/>
+   </component>
+   <component id="cenrep_database_api" name="Central Repository Database API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/cenrep_database_api/cenrep_database_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/cenrep_database_api/group"/>
+   </component>
+   <component id="ss_settings_api" name="SS Settings API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/ss_settings_api/ss_settings_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/ss_settings_api/group"/>
+   </component>
+   <component id="phone_settings_observer_api" name="Phone Settings Observer API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/phone_settings_observer_api/phone_settings_observer_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/phone_settings_observer_api/group"/>
+   </component>
+   <component id="phone_settings_api" name="Phone Settings API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/phone_settings_api/phone_settings_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/phone_settings_api/group"/>
+   </component>
+   <component id="voice_mailbox_number_api" name="Voice Mailbox Number API" class="api" filter="s60">
+    <unit bldFile="phonesrv_plat/voice_mailbox_number_api/group"/>
+   </component>
+   <component id="voice_mailbox_settings_api" name="Voice Mailbox Settings API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/voice_mailbox_settings_api/voice_mailbox_settings_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/voice_mailbox_settings_api/group"/>
+   </component>
+   <component id="call_information_api" name="Call Information API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/call_information_api/call_information_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/call_information_api/group" filter="!test"/>
+    <unit bldFile="phonesrv_plat/call_information_api/tsrc/group" filter="test,api_test"/>
+   </component>
+   <component id="call_remote_party_information_api" name="Call Remote Party Information API" class="api" filter="s60">
+    <unit bldFile="phonesrv_plat/call_remote_party_information_api/group" filter="!test"/>
+    <unit bldFile="phonesrv_plat/call_remote_party_information_api/tsrc/group" filter="test,api_test"/>
+   </component>
+   <component id="telephony_mediator_api" name="Telephony Mediator API" class="api" filter="s60">
+    <meta rel="Api" href="phonesrv_plat/telephony_mediator_api/telephony_mediator_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/telephony_mediator_api/group" filter="!test"/>
+    <unit bldFile="phonesrv_plat/telephony_mediator_api/tsrc/ut_telephony_mediator_api/group" filter="test,api_test"/>
+   </component>
+   <component id="dialpad_api" name="Dialpad API" class="api" filter="s60" introduced="^4">
+    <unit bldFile="phonesrv_plat/dialpad_api/group"/>
+   </component>
+   <component id="phone_settings_ui_notes_api" name="Phone Settings UI Notes API" class="api" filter="s60" introduced="^4">
+    <meta rel="Api" href="phonesrv_plat/phone_settings_ui_notes_api/phone_settings_ui_notes_api.metaxml"/>
+    <unit bldFile="phonesrv_plat/phone_settings_ui_notes_api/group"/>
+   </component>
+  </collection>
+  <collection id="telutils" name="Telephony Utils" level="utils">
+   <component id="phoneparser" filter="s60" name="Phone Parser">
+    <unit bldFile="telutils/phoneparser/group"/>
+   </component>
+   <component id="telephonyservice" filter="s60" name="Telephony Service">
+    <unit bldFile="telutils/telephonyservice/group"/>
+   </component>
+   <component id="xqtelephonyservice" filter="s60" name="X Qt Telephony Service" introduced="^4">
+    <unit bldFile="telutils/xqtelephonyservice" qt:proFile="xqtelephonyservice.pro"/>
+   </component>
+   <component id="dialpad" filter="s60" name="Dial Pad" introduced="^4">
+    <unit bldFile="telutils/dialpad" qt:proFile="dialpad.pro"/>
+   </component>
+   <component id="keysequencerecognitionservice" filter="s60" name="Key Sequence Recognition Service" introduced="^4">
+    <unit bldFile="telutils/keysequencerecognitionservice" qt:proFile="keysequencerecognitionservice.pro"/>
+   </component>
+  </collection>
+  <collection id="cbs" name="Cellular Baseband Services" level="utils">
+   <component id="cbsserver" filter="s60" name="CBS Server">
+    <unit bldFile="cbs/cbsserver/group"/>
+   </component>
+  </collection>
+  <collection id="cellular" name="Cellular" level="server">
+   <component id="telephonysettings" filter="s60" name="Telephony Settings" purpose="development">
+    <unit bldFile="cellular/telephonysettings/group" filter="!test"/>
+    <unit bldFile="cellular/telephonysettings/tsrc/public/basic/group" filter="test,api_test"/>
+   </component>
+   <component id="psetwrapper" filter="s60" name="Provider Settings Wrapper" introduced="^4">
+	<!-- need to move to own component, not under sssettings -->
+    <unit bldFile="cellular/telephonysettings/xqbindings/psetwrapper" qt:proFile="psetwrapper.pro"/>
+   </component>
+   <component id="sssettings" filter="s60" name="Supplementary Service Settings" purpose="development">
+    <unit bldFile="cellular/sssettings/group" filter="!test"/>
+    <unit bldFile="cellular/SSSettings/tsrc/public/basic/group" filter="test,api_test"/>
+   </component>
+   <component id="sssettingswrapper" filter="s60" name="Supplementary Service Settings Wrapper" introduced="^4">
+	<!-- need to move to own component, not under sssettings -->
+    <unit bldFile="cellular/sssettings/xqbindings/sssettingswrapper" qt:proFile="sssettingswrapper.pro"/>
+   </component>
+   <component id="psuinotes" filter="s60" name="Phone Settings Notes UI" introduced="^4">
+    <unit bldFile="cellular/psuinotes" qt:proFile="psuinotes.pro"/>
+   </component>
+  </collection>
+  <collection id="convergedcallengine" name="Converged Call Engine" level="framework">
+   <component id="callprovider" filter="s60" name="Call Provider">
+    <unit bldFile="convergedcallengine/callprovider/group"/>
+   </component>
+   <component id="cce" filter="s60" name="CCE">
+    <unit bldFile="convergedcallengine/cce/group" filter="!test"/>
+    <unit filter="test,api_test" bldFile="convergedcallengine/cce/tsrc/public/basic/group"/>
+   </component>
+   <component id="spsettings" filter="s60" name="Service Provider Settings">
+    <unit bldFile="convergedcallengine/spsettings/group" filter="!test"/>
+    <unit filter="test,api_test" bldFile="convergedcallengine/spsettings/tsrc/public/basic/group"/>
+   </component>
+   <component id="cenrepdatabase" filter="s60" name="CCE Cenrep Database">
+    <unit bldFile="convergedcallengine/cenrepdatabase/group"/>
+   </component>
+  </collection>
+  <collection id="networkhandling" name="Network Handling" level="framework">
+   <component id="networkhandlingengine" filter="s60" name="Network Handling Engine">
+    <unit bldFile="networkhandling/networkhandlingengine/group"/>
+   </component>
+  </collection>
+  <collection id="phoneclientserver" name="Phone Client/Server" level="server">
+   <component id="enpolicy" filter="s60" name="Emergency Number Policy">
+    <unit bldFile="phoneclientserver/enpolicy/group"/>
+   </component>
+   <component id="aiwdialdata" filter="s60" name="AIW Dial Data">
+    <unit bldFile="phoneclientserver/aiwdialdata/group" filter="!test"/>
+    <unit filter="test,api_test" bldFile="phoneclientserver/aiwdialdata/tsrc/public/basic/group"/>
+   </component>
+   <component id="phoneclient" filter="s60" name="Phone Client">
+    <unit bldFile="phoneclientserver/phoneclient/group" filter="!test"/>
+    <unit filter="test,api_test" bldFile="phoneclientserver/phoneclient/tsrc/public/basic/group"/>
+   </component>
+   <component id="phoneserver" filter="s60" name="Phone Server">
+    <unit bldFile="phoneclientserver/phoneserver/group"/>
+   </component>
+  </collection>
+  <collection id="phonecmdhandler" name="Phone Command Handler" level="generic">
+   <component id="phonecmdhnlr" filter="s60" name="Phone Command Handler">
+    <unit bldFile="phonecmdhandler/phonecmdhnlr/group"/>
+   </component>
+  </collection>
+  <collection id="satengine" name="SAT Engine" level="server">
+   <component id="satserver" filter="s60" name="SAT Server">
+    <unit bldFile="satengine/satserver/group"/>
+   </component>
+  </collection>
+  <collection id="satui" name="SAT UI" level="ui">
+   <component id="satshellcontroller" filter="s60" name="SAT Shell Controller">
+    <unit bldFile="satui/satshellcontroller/group"/>
+   </component>
+   <component id="satapp" filter="s60" name="SAT Application" introduced="^4">
+    <unit bldFile="satui/satapp" qt:proFile="satapp.pro"/>
+   </component>
+  </collection>
+  <collection id="vmbx" name="Voice Mailbox" level="ui">
+   <component id="vmbxcpplugin" filter="s60" name="Voice Mailbox CP Plugin" class="plugin" introduced="^4">
+    <unit bldFile="vmbx/vmbxcpplugin" qt:proFile="vmbxcpplugin.pro"/>
+   </component>
+   <component id="vmbxengine" filter="s60" name="Voice Mailbox Engine"  introduced="^4">
+    <unit bldFile="vmbx/vmbxengine" qt:proFile="vmbxengine.pro"/>
+   </component>
+  </collection>
+ </package>
+</SystemDefinition>

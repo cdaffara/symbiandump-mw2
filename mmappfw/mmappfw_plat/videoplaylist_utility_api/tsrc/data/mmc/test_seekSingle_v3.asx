@@ -1,0 +1,13 @@
+<ASX version = "3.0">   
+	<ABSTRACT>Unknown Abstract Info</ABSTRACT>
+	<TITLE>Unknown Title</TITLE>   
+	<AUTHOR>Unknown Author</AUTHOR>   
+	<COPYRIGHT>2008 by NokiaTest</COPYRIGHT>   
+	<MOREINFO HREF = "http://www.microsoft.com/windows/windowsmedia" />   
+	<ENTRY  ClientSkip="no">      
+		<TITLE>Link 1</TITLE>     
+		<COPYRIGHT>2008 NokiaTest</COPYRIGHT>      
+		<MOREINFO HREF = "http://www.microsoft.com/windows/windowsmedia"></MOREINFO>      
+		<REF HREF = "http://10.48.2.56:443/stream.wmv" />   
+	</ENTRY>
+</ASX>

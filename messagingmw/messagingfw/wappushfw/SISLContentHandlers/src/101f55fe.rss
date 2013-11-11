@@ -1,0 +1,55 @@
+// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// Registry file for SISL Push Content Handler interface dll
+// Interfaces : CContentHandlerBase
+// 
+//
+
+#include <ecom/registryinfo.rh>
+
+RESOURCE REGISTRY_INFO theInfo
+	{
+	// KUidPushContentHandlerPlugin
+	dll_uid = 0x101F55FE;
+	interfaces = 
+		{
+		INTERFACE_INFO
+			{
+			// KUidPushContentHandlerBase - CContentHandlerBase UID
+			interface_uid = 0x101F3E5E;
+			implementations = 
+				{
+				IMPLEMENTATION_INFO
+					{
+					// KUidPushSIContentHandler - CSIContentHandler UID
+					implementation_uid = 0x101F3E61;
+					version_no = 1;
+					display_name = "CSIContentHandler||WAP Push Content Handler Plug-in";
+					default_data = "text/vnd.wap.si||application/vnd.wap.sic";
+					opaque_data = "";
+					},
+				IMPLEMENTATION_INFO
+					{
+					// KUidPushSLContentHandler - CSLContentHandler UID
+					implementation_uid = 0x101F3E63;
+					version_no = 1;
+					display_name = "CSLContentHandler||WAP Push Content Handler Plug-in";
+					default_data = "text/vnd.wap.sl||application/vnd.wap.slc";
+					opaque_data = "";
+					}
+				};
+			}
+		};
+	}
+

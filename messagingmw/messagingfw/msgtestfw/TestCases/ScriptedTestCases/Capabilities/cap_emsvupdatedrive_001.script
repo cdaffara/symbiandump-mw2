@@ -1,0 +1,48 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRINT Running  EMsvUpdateDrive_001
+
+
+//********************************
+PRINT Running  EMsvUpdateDrives_001 : Update the drive 
+PRINT Running  EMsvUpdateDrives_001 : Various combinations of Caps.
+//********************************
+
+LOAD_SERVER t_media  -SharedData
+START_TEST_BLOCK	100	t_media		c:\msgtest\testframework\scriptedtestcases\capabilities\cap_updatedrivepass.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-removedrive-cap.ini		c:\private\1000484b\msgprioritydrivelist.ini
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvUpdateDrive_001_001.script
+	// Change the drives. The Proxy server has WriteUserData capabilities.
+	// Should PASS.
+
+	
+// RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvUpdateDrive_001_002.script
+	// Change the drives. The Proxy server DOES NOT WriteUserData capabilities.
+	// Should FAIL.
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.bak	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgprioritydrivelist.bak
+

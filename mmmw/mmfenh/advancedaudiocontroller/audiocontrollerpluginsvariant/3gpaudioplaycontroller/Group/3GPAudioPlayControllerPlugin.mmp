@@ -1,0 +1,187 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project file for building the ECOM Dll 3GPAudioPlayControllerPlugin.dll
+*
+*/
+
+
+#include <data_caging_paths.hrh>
+#include <platform_paths.hrh>
+
+
+TARGET 		3GPAudioPlayControllerPlugin.dll
+TARGETTYPE 	PLUGIN
+UID 		0x10009D8D 0x101FAFB0
+VENDORID	VID_DEFAULT
+
+TARGETPATH	/System/Libs/Plugins
+
+CAPABILITY CAP_ECOM_PLUGIN
+
+SOURCEPATH	../Src
+
+SOURCE		3GPAudioPlayControllerResource.cpp
+SOURCE		3GPAudioPlayControllerPlugin.cpp
+SOURCE		3GPAudioPlayControllerDecoderBuilder.cpp
+/* Added condition to check WINS flag, so that Software decoder is built for Emulator*/
+#ifdef __USE_AAC_CMMFCODEC
+	SOURCE		../../aacaudioplaycontroller/Src/AACAudioPlayControllerSwDecoder.cpp
+#else
+    #ifdef __USE_EAACPLUS_CMMFCODEC
+		SOURCE		../../aacaudioplaycontroller/Src/AACAudioPlayControllerSwDecoder.cpp
+	#else
+		#if defined(WINS)
+			SOURCE		../../aacaudioplaycontroller/Src/AACAudioPlayControllerSwDecoder.cpp
+		#else
+			SOURCE		../../aacaudioplaycontroller/Src/AACAudioPlayControllerHwDecoder.cpp
+		#endif /*if defined(WINS)*/
+	#endif
+#endif
+	
+#ifdef __USE_AMR_NB_CMMFCODEC
+	SOURCE		../../amraudioplaycontroller/Src/AMRAudioPlayControllerSwDecoder.cpp
+#else
+	#if defined(WINS)
+		SOURCE		../../amraudioplaycontroller/Src/AMRAudioPlayControllerSwDecoder.cpp
+	#else
+		SOURCE		../../amraudioplaycontroller/Src/AMRAudioPlayControllerHwDecoder.cpp
+	#endif /*if defined(WINS)*/
+#endif
+
+#ifdef __USE_AMR_WB_CMMFCODEC
+	SOURCE		../../awbaudioplaycontroller/Src/AWBAudioPlayControllerSwDecoder.cpp
+#else
+	#if defined(WINS)
+		SOURCE		../../awbaudioplaycontroller/Src/AWBAudioPlayControllerSwDecoder.cpp
+	#else
+		SOURCE		../../awbaudioplaycontroller/Src/AWBAudioPlayControllerHwDecoder.cpp
+	#endif/*if defined(WINS)*/
+#endif
+
+	
+/*
+#ifdef __USE_AMR_NB_CMMFCODEC
+SOURCE		3GPAMRAudioPlayControllerSwDecoder.cpp
+#else
+SOURCE		3GPAMRAudioPlayControllerHwDecoder.cpp
+#endif
+
+#ifdef __USE_AAC_CMMFCODEC
+    SOURCE	3GPAACAudioPlayControllerSwDecoder.cpp
+#else
+    #ifdef __USE_EAACPLUS_CMMFCODEC
+        SOURCE	3GPAACAudioPlayControllerSwDecoder.cpp
+    #else
+        SOURCE	3GPAACAudioPlayControllerHwDecoder.cpp
+    #endif
+#endif
+
+#ifdef __USE_AMR_WB_CMMFCODEC
+SOURCE		3GPAWBAudioPlayControllerSwDecoder.cpp
+#else
+SOURCE		3GPAWBAudioPlayControllerHwDecoder.cpp
+#endif
+*/
+
+
+USERINCLUDE	../Inc ../Src
+USERINCLUDE	../../../../inc
+USERINCLUDE	../../AdvancedAudioController/Inc
+USERINCLUDE	../../DevSoundAudioOutput/Inc
+USERINCLUDE	../../DevSoundAudioInput/Inc
+USERINCLUDE	../../FileAudioOutput/Inc
+USERINCLUDE	../../AdvancedAudioControllerUtility/Inc
+USERINCLUDE     ../../DataSourceAdapter/Inc
+USERINCLUDE     ../../3gpDataSourceAdapter/Inc
+USERINCLUDE ../../aacaudioplaycontroller/Src
+USERINCLUDE ../../amraudioplaycontroller/Src
+USERINCLUDE ../../awbaudioplaycontroller/Src
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   /epoc32/include/ecom
+SYSTEMINCLUDE	/epoc32/include/mmf/server
+SYSTEMINCLUDE	/epoc32/include/mmf/common
+SYSTEMINCLUDE	/epoc32/include/mmf/plugin
+SYSTEMINCLUDE	/epoc32/include/libc
+
+SOURCEPATH	../Data
+
+START RESOURCE 101FAFB0.rss 
+TARGET 3GPAudioPlayControllerPlugin.rsc
+END
+
+START RESOURCE 3GPAudioPlayControllerResource.rss
+HEADER
+TARGET 3GPAudioPlayControllerResource.rsc       
+TARGETPATH      RESOURCE_FILES_DIR
+END
+
+LIBRARY 	euser.lib
+LIBRARY		mmfcontrollerframework.lib
+LIBRARY 	mmfstandardcustomcommands.lib
+LIBRARY 	mmfserverbaseclasses.lib
+LIBRARY 	AdvancedAudioController.lib
+LIBRARY         DevSoundAudioOutput.lib
+LIBRARY		FileAudioOutput.lib
+LIBRARY		3gpmp4lib.lib
+LIBRARY         efsrv.lib				// File server session
+LIBRARY		bafl.lib				// Resource file
+LIBRARY		mmfdevsound.lib
+LIBRARY         caf.lib
+LIBRARY         cafutils.lib
+LIBRARY			3gpDataSourceAdapter.lib
+
+#ifndef WINSCW					//to support build on Linux
+LIBRARY		FrameTable.lib			// for CFrameTable
+#else
+LIBRARY		frametable.lib
+#endif 
+
+LIBRARY EAACPlusAudioControllerUtility.lib
+
+LIBRARY AMRAudioControllerUtility.lib
+LIBRARY AWBAudioControllerUtility.lib
+
+#ifndef __USE_AAC_CMMFCODEC
+    #ifndef __USE_EAACPLUS_CMMFCODEC
+        #ifndef __AAC_PLUS_DECODER_PLUGIN
+            LIBRARY	AacDecoderConfig.lib
+        #else
+        	#ifndef WINSCW								//to support build on Linux
+			    LIBRARY EAacPlusUtil.lib							// MMF eAAC+ Utility
+			#else
+				LIBRARY eaacplusutil.lib    
+			#endif	
+            LIBRARY EAacPlusDecoderIntfc.lib
+        #endif
+    #else      
+        #ifndef WINSCW									//to support build on Linux
+			LIBRARY EAacPlusUtil.lib							// MMF eAAC+ Utility
+		#else
+			LIBRARY eaacplusutil.lib    
+		#endif									
+        LIBRARY	AacDecoderConfig.lib
+    #endif
+#else
+    #ifndef WINSCW										//to support build on Linux
+	    LIBRARY EAacPlusUtil.lib							// MMF eAAC+ Utility
+	#else
+		LIBRARY  eaacplusutil.lib    
+	#endif										
+    LIBRARY	AacDecoderConfig.lib
+#endif
+
+#ifdef EABI
+LIBRARY     ecom.lib
+#endif

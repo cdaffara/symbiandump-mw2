@@ -1,0 +1,27 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRINT Run all t_msgs_sql_suite Tests 
+LOAD_SUITE t_msgs_sql_suite
+RUN_TEST_STEP 1000 t_msgs_sql_suite TEFUnit.CTestIndexTableEntry.*
+RUN_TEST_STEP 1000 t_msgs_sql_suite TEFUnit.CTestCacheEntry.*
+RUN_TEST_STEP 1000 t_msgs_sql_suite TEFUnit.CTestEntryFreePool.*
+RUN_TEST_STEP 1000 t_msgs_sql_suite TEFUnit.CTestVisibleFolder.*
+RUN_TEST_STEP 1000 t_msgs_sql_suite TEFUnit.CTestDbAdapter.*
+RUN_TEST_STEP 1000 t_msgs_sql_suite TEFUnit.CTestIndexAdapter.*
+RUN_TEST_STEP 1000 t_msgs_sql_suite TEFUnit.CTestIniData.*
+RUN_TEST_STEP 1000 t_msgs_sql_suite TEFUnit.CTestIndexContext.*
+RUN_TEST_STEP 1000 t_msgs_sql_suite TEFUnit.CTestMsvServerPerformance.*

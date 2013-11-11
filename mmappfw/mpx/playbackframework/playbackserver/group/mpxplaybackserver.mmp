@@ -1,0 +1,56 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Playback server project specification
+*
+*/
+
+
+#include <data_caging_paths.hrh>
+#include <platform_paths.hrh>
+
+TARGET           mpxplaybackserver.exe
+TARGETTYPE       exe
+UID              0 0x101FFC00
+VENDORID         VID_DEFAULT
+CAPABILITY       ALL -TCB
+EPOCHEAPSIZE     0x1000 0x1000000
+
+USERINCLUDE      ../inc
+USERINCLUDE      ../../../inc
+USERINCLUDE      ../../playbackengine/inc
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE    /epoc32/include/kernel
+SYSTEMINCLUDE    /epoc32/include/mmf/common
+
+SOURCEPATH       ../src
+SOURCE           mpxplaybackserver.cpp 
+SOURCE           mpxplaybackserversession.cpp 
+
+LIBRARY          euser.lib  
+LIBRARY          estor.lib 
+LIBRARY          efsrv.lib 
+LIBRARY          bafl.lib
+LIBRARY          mpxplaybackengine.lib 
+LIBRARY          mpxcollectionutility.lib
+LIBRARY          mpxcommon.lib
+
+#ifdef RD_TSP_CLIENT_MAPPER
+LIBRARY          tspclientmapper.lib
+#endif
+
+SMPSAFE
+
+// End of file
+

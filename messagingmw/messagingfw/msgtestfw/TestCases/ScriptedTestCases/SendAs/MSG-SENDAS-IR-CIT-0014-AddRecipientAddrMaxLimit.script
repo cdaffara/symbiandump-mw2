@@ -1,0 +1,54 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+//! @file
+//! @SYMTestCaseID 		CM-SENDAS-CIT-0014-HP
+//! @SYMTestCaseDesc 		Add Recipient Address of type "To" to IR SendAs message where number of recepients added > Number of recipeints supported
+//! @SYMFssID 
+//! @SYMTestStatus 		Defined
+//! @SYMTestPriority 		High
+//! @SYMTestActions 
+//! @SYMTestExpectedResults 	Addition of the second recipeint address fails with KErrAlreadyExists
+//! @SYMTestType 		CIT
+
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+GetBaseConstants		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0014-AddRecipientAddrMaxLimit.ini	GetBaseConstants
+CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0014-AddRecipientAddrMaxLimit.ini	CreateSession
+ResetMessageStore		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0014-AddRecipientAddrMaxLimit.ini	ResetMessageStore
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0014-AddRecipientAddrMaxLimit.ini	ChkChildrenCountDraft0
+CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0014-AddRecipientAddrMaxLimit.ini	CreateRegistry
+GetIRMTMUId			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0014-AddRecipientAddrMaxLimit.ini	GetIrMtmUid
+CreateService			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0014-AddRecipientAddrMaxLimit.ini	CreateIrService
+EXECUTE_TEST_CASE
+ConnectSendAsServer		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0014-AddRecipientAddrMaxLimit.ini	ConnectSendAsServer
+SendAsCreateMessageofType	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0014-AddRecipientAddrMaxLimit.ini	CreateMessageofType
+SendAsAddRecipient		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0014-AddRecipientAddrMaxLimit.ini	SendAsAddRecipient0
+SendAsAddRecipient		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0014-AddRecipientAddrMaxLimit.ini	SendAsAddRecipient1
+SendAsSaveMessageAndClose	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0014-AddRecipientAddrMaxLimit.ini	CloseMessage
+CloseSendAsServerConnection	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0014-AddRecipientAddrMaxLimit.ini	CloseSvrConnection
+CHECK_POSTCONDITIONS
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0014-AddRecipientAddrMaxLimit.ini	ChkChildrenCountDraft1
+CreateChildrenSelection 	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0014-AddRecipientAddrMaxLimit.ini	CreateChildrenSelDraft
+GetMessageAtIndex		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0014-AddRecipientAddrMaxLimit.ini	GetMessageAtIndex
+GetEntry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0014-AddRecipientAddrMaxLimit.ini	GetEntry
+END_TEST_CASE

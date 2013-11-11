@@ -1,0 +1,6 @@
+From: Test message <Brahim@yashar.Demon.co.uk>
+Date: Thu, 20 Jan 2001 11:24:11 GMT
+To: john.nelson@teleca.com
+Subject: testing SMTP send
+
+

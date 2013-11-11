@@ -1,0 +1,26 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+
+#ifndef __T_SCHSEND_UTC_SERVER__
+#define __T_SCHSEND_UTC_SERVER__
+
+file=ABI_DIR\BUILD_DIR\t_schsend_utc_server.exe	System\bin\t_schsend_utc_server.exe
+
+data=ABI_DIR\BUILD_DIR\z\testdata\scripts\t_schsend_utc.script testdata\scripts\t_schsend_utc.script
+data=ABI_DIR\BUILD_DIR\z\testdata\scripts\t_schsend_utc.ini testdata\scripts\t_schsend_utc.ini
+
+#endif

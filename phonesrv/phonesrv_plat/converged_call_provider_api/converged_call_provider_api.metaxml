@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<api id="28e7cbb15d60c569327c233327da1da9" dataversion="1.0">
+  <name>Converged Call Provider API</name>
+  <description>The ECOM interface that must be realized by a 
+call provider of certain technology in order to provide voice services.</description>
+  <type>c++</type>
+  <subsystem>convergedcallengine</subsystem>
+  <libs>
+    <lib name="ecom.lib" />
+  </libs>
+  <release category="domain" sinceversion="5.0"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>yes</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

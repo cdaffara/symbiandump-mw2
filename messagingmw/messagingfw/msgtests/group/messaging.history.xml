@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<relnotes name="INTEGRATIONTEST">
+  <purpose>
+  </purpose>
+
+	<defect number="DEF139515" title="mmssettings-config does not conform to the standard sysdef model" revision="024">
+     messaging_mmssettings-config is made a new component under mmsengine.
+	</defect>
+  <deliverystep number="1365" name="Store Message content in SQL" osproject="SymTB101" revision="024">
+   <preq number="2073" title="Store Message content in SQL">
+    Migration of Email and SMS headers to SQL.
+   </preq>
+    <milestone project="GT0478" number="3.3.2"/>
+  </deliverystep>
+
+
+ <defect number="DEF137694" title="Bld.inf changes for SFTB9.2  " revision="023">
+    made chages for GCCxml paths
+	</defect>
+
+    <deliverystep number="1472" name="Removal of CDMA support" osproject="Sphinx" revision="022">
+    <preq number="2002" title="Removal of CDMA support">
+    Removed BiowatchersCdma and multimode component.
+    </preq>
+    <milestone project="GT0358" number="3.6"/>
+    </deliverystep>
+   
+    <defect number="PDEF133426" title="  SMS - Inbox not sorted by sent time" revision="021">
+    Added a new key to SMS settings cenrep file 1000102C.txt.Key will be set/reset based upon licensees requirement.
+	This is not a defect but a new requirement from the licensees.   
+    </defect>
+
+   <defect number="DEF130505" title=" Coverity: SYMBIAN.CLEANUP_STACK, CHECKED_RETURN, DEADCODE, FORWARD_NULL" revision="020">
+    did minor code changes in framework,email and biomsg components as a part of coverity to remove deadcode,return check etc..
+   </defect>
+
+   <deliverystep number="" name="SMP safe Messaging subsystem" osproject="Diran" revision="019">
+     <preq number="2176" title="SMP safe Messaging subsystem">
+     Add SMPSAFE keyword in Messaging mmp files 
+   </preq>
+    <milestone project="GT0465" number="3.2"/>
+  </deliverystep>
+
+   <defect number="DEF128737" title="SearchSendMessages is failing for st_messaging_fun_ups_send" revision="018">
+    Added code in sms client mtm to search on sms body
+   </defect>
+
+   <defect number="DEF128956" title="PREQ 557 Filename check source errors" revision="017">
+    Changed filename case and slashes in test code.
+   </defect>
+
+   <defect number="DEF127579" title="emailerr.ra and emailerr.rls should be moved to messaging\email tree" revision="016">
+    Moved emailerr.ra and emailerr.rls resource files from messaging/group to messaging_email/group
+   </defect>
+
+   <defect number="DEF122909" title="Error destination value in ups request, when sending Sms using Sms MTM Server" revision="015">
+     Packing of phone numbers has been modified and the numbers are now sent as a list of numbers separated by comma
+   </defect>
+
+   <defect number="DEF126069" title="IPR problems with messaging.mrp  " revision="014">
+     Updated distribution.policy file
+   </defect>
+
+   <defect number="DEF126161" title="Directory can't be shared between components with different OSD" revision="013">
+     Moved msgerr.rls,msgerr.ra and GTMessaging.iby files from messaging/group to messaging_framework/group
+   </defect>
+
+   <defect number="DEF126285" title="Exploratory: Min/Max value for Cache configuration value related info is missing" revision="012">
+     Updated Messaging_How-To_Configure_Messaging_Cache.doc accordingly.
+   </defect>
+
+   <defect number="PDEF124769" title="messaging_email should not require patching" revision="010">
+     Added new messaging_config component to the messaging subsystem
+   </defect>
+
+   <defect number="DEF125443" title="9.5 Coverity Errors " revision="009">
+     Removed Unused variables.  
+   </defect> 
+
+   <defect number="DEF120411" title="MsvServer assumes the C drive is the system drive and that it exists" revision="008">
+     Use GetSystemDriveChar() API to fetch the System Drive.
+   </defect>
+
+   <defect number="PDEF121850" title="E-mail application closes when receiving e-mails with max. 1kB size limit" revision="007">
+      Added new API's in framework/server component which will handle the case when iStore8BitData is set
+   </defect>
+
+   <defect number="PDEF121153" title="OSEV-PPD51.32-SAT-Telefonica: MO SMS sending controlled by SIM fails" revision="006">
+     The error -5252 was not added in the SMSS.rss file, it used to go to default case and try sending the sms 3 times.
+   </defect>
+
+   <defect number="DEF119283" title="Move inclusion of msgcache.ini from GtMessaging.iby to messageserver.iby" revision="005">
+      msgcache.ini inclusion is now moved to messageserver.iby
+   </defect>	
+
+   <defect number="PDEF118809" title="No way to differenciate between some SMS related log events" revision="004">
+      Changed the R_LOG_DEL_FAILED to R_LOG_DEL_NOT_SENT.
+   </defect>
+   
+   <defect number="DEF118359" title="WIN32 LIBRARY references in wrong case causes build failures on Linux" revision="003">
+     Updated SMSS_SWITCH.mmp from User32.lib to user32.lib and Kernel32.lib to kernel32.lib  upper case to lower case - to be used in linux
+   </defect>
+
+   <defect number="DEF117457" title="WIN32_LIBRARY statement shuold specify libraries in lower case" revision="002">
+     Updated smcm_switch.mmp from User32.lib to user32.lib upper case to lower case - to be used in linux
+   </defect>
+
+   <deliverystep number="500" name="Messaging file name changes to support GNU compiler for Linux" osproject="Oghma" revision="001">
+     <preq number="1182" title="GNU Make-based build system">
+     GNU Make-based build system
+   </preq>
+    <milestone project="GT0342" number="3.3"/>
+  </deliverystep>
+</relnotes>

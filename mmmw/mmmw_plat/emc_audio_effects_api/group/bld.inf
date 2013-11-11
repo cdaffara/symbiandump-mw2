@@ -1,0 +1,38 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  File that exports the files belonging to 
+:                EMC Audio Effects API
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+../inc/EqualizerControl.h     		MW_LAYER_PLATFORM_EXPORT_PATH(EqualizerControl.h)
+../inc/ReverbControl.h     			MW_LAYER_PLATFORM_EXPORT_PATH(ReverbControl.h)
+../inc/BassBoostControl.h     		MW_LAYER_PLATFORM_EXPORT_PATH(BassBoostControl.h)
+../inc/LoudnessControl.h     		MW_LAYER_PLATFORM_EXPORT_PATH(LoudnessControl.h)
+../inc/StereoWideningControl.h     	MW_LAYER_PLATFORM_EXPORT_PATH(StereoWideningControl.h)
+../inc/RoomLevelControl.h     		MW_LAYER_PLATFORM_EXPORT_PATH(RoomLevelControl.h)
+../inc/SourceDopplerControl.h     	MW_LAYER_PLATFORM_EXPORT_PATH(SourceDopplerControl.h)
+../inc/ListenerDopplerControl.h     MW_LAYER_PLATFORM_EXPORT_PATH(ListenerDopplerControl.h)
+../inc/SourceLocationControl.h     	MW_LAYER_PLATFORM_EXPORT_PATH(SourceLocationControl.h)
+../inc/ListenerLocationControl.h	MW_LAYER_PLATFORM_EXPORT_PATH(ListenerLocationControl.h)
+../inc/SourceOrientationControl.h	MW_LAYER_PLATFORM_EXPORT_PATH(SourceOrientationControl.h)
+../inc/ListenerOrientationControl.h	MW_LAYER_PLATFORM_EXPORT_PATH(ListenerOrientationControl.h)
+../inc/DistanceAttenuationControl.h	MW_LAYER_PLATFORM_EXPORT_PATH(DistanceAttenuationControl.h)

@@ -1,0 +1,52 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: IBY file for Supl Framework
+*
+*/
+
+#ifndef __LocationSUPLFW_IBY
+#define __LocationSUPLFW_IBY
+
+#include <bldvariant.hrh>
+
+/////////////////////////////////
+// *** Location SUPL FW *** //
+////////////////////////////////
+
+#ifdef __SUPL_FRAMEWORK
+
+// SUPL Terminal Initiation API
+file=ABI_DIR\BUILD_DIR\epos_suplterminitiation.dll                     sys\bin\epos_suplterminitiation.dll
+
+// SUPL Network Initiation API
+file=ABI_DIR\BUILD_DIR\epos_suplnetinitiation.dll                     sys\bin\epos_suplnetinitiation.dll
+
+// SUPL Server
+file=ABI_DIR\BUILD_DIR\epossuplgateway.exe                  PROGRAMS_DIR\epossuplgateway.exe
+data=DATAZ_\private\102073CA\backup_registration.xml    private\102073CA\backup_registration.xml
+
+
+// SUPL Protocol Handler Plug-in API
+file=ABI_DIR\BUILD_DIR\epossuplprotocolhandlerplugin.dll    SHARED_LIB_DIR\epossuplprotocolhandlerplugin.dll
+
+// SUPL Settings API
+file=ABI_DIR\BUILD_DIR\epos_suplsettings.dll    SHARED_LIB_DIR\epos_suplsettings.dll
+
+// SUPL Trace API
+file=ABI_DIR\BUILD_DIR\epos_csuplutils.dll    SHARED_LIB_DIR\epos_csuplutils.dll
+
+#endif // __SUPL_FRAMEWORK
+
+#endif // __LocationSUPLFW_IBY__
+

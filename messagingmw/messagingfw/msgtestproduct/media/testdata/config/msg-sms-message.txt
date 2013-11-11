@@ -1,0 +1,4 @@
+BodyText=TestTextE_1_1
+SentToAddress=+44111111111
+
+// Note extra E in BodyText ensures message is even number of bytes.

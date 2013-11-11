@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/xml" >
+        <file alias="cbs_app.docml">cbs_app.docml</file>
+        <file alias="cbs_topic_view.docml">cbs_topic_view.docml</file>
+        </qresource>
+    <qresource prefix="/icons" >
+        <file>icons/hotmark2.png</file>
+        <file>icons/save.png</file>
+        <file>icons/sub2.png</file>
+        <file>icons/empty.png</file>
+        <file>icons/qgn_menu_cb.svg</file>
+    </qresource>
+    <qresource prefix="/translations" >
+        <file alias="cbsui_en">cbsui_en.qm</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>msg-searchsort-performance1</name>
+	<timeout>600</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\common\search\msg-searchsort-performance1.script</hostPath>
+			<devicePath>c:\msgtest\common\search\msg-searchsort-performance1.script</devicePath>
+		</script>
+	</testScripts>
+
+	<testServers>
+		<server>T_MsgCommonServer</server>
+	</testServers>
+
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\common\search\msg-searchsort-performance.ini</hostPath>
+			<devicePath>c:\msgtest\common\search\msg-searchsort-performance.ini</devicePath>
+		</data>
+	</dependencies>	
+</testExecuteTest>

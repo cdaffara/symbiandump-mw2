@@ -1,0 +1,50 @@
+/*
+* Copyright (c) 2002 - 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Scripted Tests for MPX Playback Plugin
+*
+*/
+
+#include <platform_paths.hrh>
+
+TARGET          playbackplugintest.dll
+TARGETTYPE      dll
+UID             0x1000008D 0x101FB3E3
+
+CAPABILITY      ALL -TCB
+
+SOURCEPATH      ../src
+SOURCE          playbackplugintest.cpp
+SOURCE          playbackplugintestBlocks.cpp
+
+USERINCLUDE     ../inc 
+USERINCLUDE     ../../common/inc
+USERINCLUDE     ../../common/testplugins/inc
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY         euser.lib
+LIBRARY         stiftestinterface.lib
+LIBRARY         stiftestengine.lib
+LIBRARY         efsrv.lib
+LIBRARY         charconv.lib 
+LIBRARY         mpxplaybackutility.lib
+LIBRARY         mpxcommon.lib
+LIBRARY         bafl.lib
+LIBRARY         estor.lib
+LIBRARY         basetest.lib
+
+#if defined(ARMCC)
+#elif defined(WINSCW)
+deffile ../bwinscw/ 
+#endif

@@ -1,0 +1,3 @@
+EXPORTS
+	?Debug@@YAXV?$TRefByValue@$$CBVTDesC16@@@@ZZ @ 1 NONAME ; void Debug(class TRefByValue<class TDesC16 const >, ...)
+

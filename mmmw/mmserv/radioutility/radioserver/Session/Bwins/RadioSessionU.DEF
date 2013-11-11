@@ -1,0 +1,71 @@
+EXPORTS
+	??0RRadioSession@@QAE@XZ @ 1 NONAME ; RRadioSession::RRadioSession(void)
+	?CancelAFSearch@RRadioSession@@QAEXXZ @ 2 NONAME ; void RRadioSession::CancelAFSearch(void)
+	?CancelGetFreqByPTY@RRadioSession@@QAEXXZ @ 3 NONAME ; void RRadioSession::CancelGetFreqByPTY(void)
+	?CancelGetFreqByTA@RRadioSession@@QAEXXZ @ 4 NONAME ; void RRadioSession::CancelGetFreqByTA(void)
+	?CancelGetPSByPTY@RRadioSession@@QAEXXZ @ 5 NONAME ; void RRadioSession::CancelGetPSByPTY(void)
+	?CancelGetPSByTA@RRadioSession@@QAEXXZ @ 6 NONAME ; void RRadioSession::CancelGetPSByTA(void)
+	?CancelNotifyRadioTextPlusChange@RRadioSession@@QAEXXZ @ 7 NONAME ; void RRadioSession::CancelNotifyRadioTextPlusChange(void)
+	?CancelNotifyRdsDataChange@RRadioSession@@QAEXXZ @ 8 NONAME ; void RRadioSession::CancelNotifyRdsDataChange(void)
+	?CancelRdsStationSeek@RRadioSession@@QAEXXZ @ 9 NONAME ; void RRadioSession::CancelRdsStationSeek(void)
+	?CancelSetFrequency@RRadioSession@@QAEXXZ @ 10 NONAME ; void RRadioSession::CancelSetFrequency(void)
+	?CancelSetFrequencyRange@RRadioSession@@QAEXXZ @ 11 NONAME ; void RRadioSession::CancelSetFrequencyRange(void)
+	?CancelStationSeek@RRadioSession@@QAEXXZ @ 12 NONAME ; void RRadioSession::CancelStationSeek(void)
+	?Close@RRadioSession@@QAEXXZ @ 13 NONAME ; void RRadioSession::Close(void)
+	?Connect@RRadioSession@@QAEHAAVMRadioObserver@@H@Z @ 14 NONAME ; int RRadioSession::Connect(class MRadioObserver &, int)
+	?CustomCommandAsync@RRadioSession@@UAEXABV?$TPckgBuf@VTMMFMessageDestination@@@@HABVTDesC8@@1AAVTDes8@@AAVTRequestStatus@@@Z @ 15 NONAME ; void RRadioSession::CustomCommandAsync(class TPckgBuf<class TMMFMessageDestination> const &, int, class TDesC8 const &, class TDesC8 const &, class TDes8 &, class TRequestStatus &)
+	?CustomCommandAsync@RRadioSession@@UAEXABV?$TPckgBuf@VTMMFMessageDestination@@@@HABVTDesC8@@1AAVTRequestStatus@@@Z @ 16 NONAME ; void RRadioSession::CustomCommandAsync(class TPckgBuf<class TMMFMessageDestination> const &, int, class TDesC8 const &, class TDesC8 const &, class TRequestStatus &)
+	?CustomCommandSync@RRadioSession@@UAEHABV?$TPckgBuf@VTMMFMessageDestination@@@@HABVTDesC8@@1@Z @ 17 NONAME ; int RRadioSession::CustomCommandSync(class TPckgBuf<class TMMFMessageDestination> const &, int, class TDesC8 const &, class TDesC8 const &)
+	?CustomCommandSync@RRadioSession@@UAEHABV?$TPckgBuf@VTMMFMessageDestination@@@@HABVTDesC8@@1AAVTDes8@@@Z @ 18 NONAME ; int RRadioSession::CustomCommandSync(class TPckgBuf<class TMMFMessageDestination> const &, int, class TDesC8 const &, class TDesC8 const &, class TDes8 &)
+	?EnableTunerInOfflineMode@RRadioSession@@QAEHH@Z @ 19 NONAME ; int RRadioSession::EnableTunerInOfflineMode(int)
+	?ForceMonoReception@RRadioSession@@QAEHH@Z @ 20 NONAME ; int RRadioSession::ForceMonoReception(int)
+	?GetAutomaticSwitching@RRadioSession@@QAEHAAH@Z @ 21 NONAME ; int RRadioSession::GetAutomaticSwitching(int &)
+	?GetAutomaticTrafficAnnouncement@RRadioSession@@QAEHAAH@Z @ 22 NONAME ; int RRadioSession::GetAutomaticTrafficAnnouncement(int &)
+	?GetBalance@RRadioSession@@QBEHAAH0@Z @ 23 NONAME ; int RRadioSession::GetBalance(int &, int &) const
+	?GetClockTime@RRadioSession@@QAEHAAVTDateTime@@@Z @ 24 NONAME ; int RRadioSession::GetClockTime(class TDateTime &)
+	?GetForceMonoReception@RRadioSession@@QBEHAAH@Z @ 25 NONAME ; int RRadioSession::GetForceMonoReception(int &) const
+	?GetFreqByPTY@RRadioSession@@QAEXH@Z @ 26 NONAME ; void RRadioSession::GetFreqByPTY(int)
+	?GetFreqByTA@RRadioSession@@QAEXXZ @ 27 NONAME ; void RRadioSession::GetFreqByTA(void)
+	?GetFrequency@RRadioSession@@QBEHAAH@Z @ 28 NONAME ; int RRadioSession::GetFrequency(int &) const
+	?GetFrequencyRange@RRadioSession@@QBEHAAW4TRsFrequencyRange@@AAH1@Z @ 29 NONAME ; int RRadioSession::GetFrequencyRange(enum TRsFrequencyRange &, int &, int &) const
+	?GetMaxSignalStrength@RRadioSession@@QBEHAAH@Z @ 30 NONAME ; int RRadioSession::GetMaxSignalStrength(int &) const
+	?GetMaxVolume@RRadioSession@@QBEHAAH@Z @ 31 NONAME ; int RRadioSession::GetMaxVolume(int &) const
+	?GetMuteStatus@RRadioSession@@QBEHAAH@Z @ 32 NONAME ; int RRadioSession::GetMuteStatus(int &) const
+	?GetPSByPTY@RRadioSession@@QAEXH@Z @ 33 NONAME ; void RRadioSession::GetPSByPTY(int)
+	?GetPSByTA@RRadioSession@@QAEXXZ @ 34 NONAME ; void RRadioSession::GetPSByTA(void)
+	?GetProgrammeIdentification@RRadioSession@@QAEHAAH@Z @ 35 NONAME ; int RRadioSession::GetProgrammeIdentification(int &)
+	?GetProgrammeService@RRadioSession@@QAEHAAV?$TBuf16@$07@@@Z @ 36 NONAME ; int RRadioSession::GetProgrammeService(class TBuf16<8> &)
+	?GetProgrammeType@RRadioSession@@QAEHAAH@Z @ 37 NONAME ; int RRadioSession::GetProgrammeType(int &)
+	?GetRadioText@RRadioSession@@QAEHAAV?$TBuf16@$0EA@@@@Z @ 38 NONAME ; int RRadioSession::GetRadioText(class TBuf16<64> &)
+	?GetRadioTextPlus@RRadioSession@@QAEHW4TRsRdsRTplusClass@@AAV?$TBuf16@$0EA@@@@Z @ 39 NONAME ; int RRadioSession::GetRadioTextPlus(enum TRsRdsRTplusClass, class TBuf16<64> &)
+	?GetRdsCapabilities@RRadioSession@@QBEHAAVTRsRdsCapabilities@@@Z @ 40 NONAME ; int RRadioSession::GetRdsCapabilities(class TRsRdsCapabilities &) const
+	?GetRdsSignalStatus@RRadioSession@@QBEHAAH@Z @ 41 NONAME ; int RRadioSession::GetRdsSignalStatus(int &) const
+	?GetSignalStrength@RRadioSession@@QBEHAAH@Z @ 42 NONAME ; int RRadioSession::GetSignalStrength(int &) const
+	?GetSquelch@RRadioSession@@QBEHAAH@Z @ 43 NONAME ; int RRadioSession::GetSquelch(int &) const
+	?GetStereoMode@RRadioSession@@QBEHAAH@Z @ 44 NONAME ; int RRadioSession::GetStereoMode(int &) const
+	?GetTrafficAnnouncementStatus@RRadioSession@@QAEHAAH@Z @ 45 NONAME ; int RRadioSession::GetTrafficAnnouncementStatus(int &)
+	?GetTrafficProgrammeStatus@RRadioSession@@QAEHAAH@Z @ 46 NONAME ; int RRadioSession::GetTrafficProgrammeStatus(int &)
+	?GetTunerCapabilities@RRadioSession@@QBEHAAVTRsTunerCapabilities@@@Z @ 47 NONAME ; int RRadioSession::GetTunerCapabilities(class TRsTunerCapabilities &) const
+	?GetVolume@RRadioSession@@QBEHAAH@Z @ 48 NONAME ; int RRadioSession::GetVolume(int &) const
+	?Mute@RRadioSession@@QAEHH@Z @ 49 NONAME ; int RRadioSession::Mute(int)
+	?NotifyRadioTextPlusChange@RRadioSession@@QAEHAAV?$RArray@H@@@Z @ 50 NONAME ; int RRadioSession::NotifyRadioTextPlusChange(class RArray<int> &)
+	?NotifyRdsDataChange@RRadioSession@@QAEHVTRsRdsData@@@Z @ 51 NONAME ; int RRadioSession::NotifyRdsDataChange(class TRsRdsData)
+	?Play@RRadioSession@@QAEXXZ @ 52 NONAME ; void RRadioSession::Play(void)
+	?PlayerState@RRadioSession@@QBEHAAW4TRsPlayerState@@@Z @ 53 NONAME ; int RRadioSession::PlayerState(enum TRsPlayerState &) const
+	?RequestTunerControl@RRadioSession@@QAEXW4TRsTuner@@@Z @ 54 NONAME ; void RRadioSession::RequestTunerControl(enum TRsTuner)
+	?SetAutomaticSwitching@RRadioSession@@QAEHH@Z @ 55 NONAME ; int RRadioSession::SetAutomaticSwitching(int)
+	?SetAutomaticTrafficAnnouncement@RRadioSession@@QAEHH@Z @ 56 NONAME ; int RRadioSession::SetAutomaticTrafficAnnouncement(int)
+	?SetBalance@RRadioSession@@QAEHHH@Z @ 57 NONAME ; int RRadioSession::SetBalance(int, int)
+	?SetFrequency@RRadioSession@@QAEXH@Z @ 58 NONAME ; void RRadioSession::SetFrequency(int)
+	?SetFrequencyRange@RRadioSession@@QAEXW4TRsFrequencyRange@@@Z @ 59 NONAME ; void RRadioSession::SetFrequencyRange(enum TRsFrequencyRange)
+	?SetSquelch@RRadioSession@@QAEHH@Z @ 60 NONAME ; int RRadioSession::SetSquelch(int)
+	?SetVolume@RRadioSession@@QAEHH@Z @ 61 NONAME ; int RRadioSession::SetVolume(int)
+	?SetVolumeRamp@RRadioSession@@QAEHABVTTimeIntervalMicroSeconds@@@Z @ 62 NONAME ; int RRadioSession::SetVolumeRamp(class TTimeIntervalMicroSeconds const &)
+	?StationSeek@RRadioSession@@QAEXH@Z @ 63 NONAME ; void RRadioSession::StationSeek(int)
+	?StationSeekByPTY@RRadioSession@@QAEXHH@Z @ 64 NONAME ; void RRadioSession::StationSeekByPTY(int, int)
+	?StationSeekByTA@RRadioSession@@QAEXH@Z @ 65 NONAME ; void RRadioSession::StationSeekByTA(int)
+	?StationSeekByTP@RRadioSession@@QAEXH@Z @ 66 NONAME ; void RRadioSession::StationSeekByTP(int)
+	?Stop@RRadioSession@@QAEXH@Z @ 67 NONAME ; void RRadioSession::Stop(int)
+	?Version@RRadioSession@@QBE?AVTVersion@@XZ @ 68 NONAME ; class TVersion RRadioSession::Version(void) const
+	?NewL@RRadioSession@@SAPAV1@XZ @ 69 NONAME ; class RRadioSession * RRadioSession::NewL(void)
+

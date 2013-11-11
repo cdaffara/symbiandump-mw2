@@ -1,0 +1,343 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+//! @file
+//! @SYMScriptTestEnvironment   Details as in below:-
+//!                                    1. Dovecot IMAP server on Ubuntu 
+//!                                    2. Cyrus IMAP server on Ubuntu  
+//!                                    3. msexchange server
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE 	T_MsgCommonServer -SharedData
+LOAD_SUITE 	T_MsgPopServer 	-SharedData
+LOAD_SUITE 	T_MsgSmtpServer 	-SharedData
+
+
+START_TESTCASE MSG-POP3-AUTH-CONNECT-0001
+//! @SYMTestCaseID				MSG-POP3-AUTH-CONNECT-0001
+//! @SYMTestType				CIT
+//! @SYMTestPriority			Medium
+//! @SYMTestStatus 				Implemented
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			    1.Initialises the NT RAS connection
+//!                             2.Reads the configuration data from the configuration file msg-pop-auth-connect.ini
+//!                             3.Based on the value of Pop3Auth and Pop3FallBack flags the user account is validated.
+//!                             4.In this test the Pop3Auth is set to EFalse and Pop3FallBack flags is set to ETrue
+//!                             5.Create an POP account as specified in the msg-pop-auth-connect.ini
+//!							    6.Connect to the POP server that Supports CRAM-MD5 and perform a synchronisation
+//!							    7.Checks that the Inbox exists
+//!							    8.Disconnects from the server
+//!	@SYMTestExpectedResults		               EPass- The connection is established to the server . The authentication mechanism used for validating user 
+//!                                                     accounts is APOP.
+//!	@SYMAuthor				Manikandan B
+
+PRINT Setup Begins MSG-POP3-AUTH-CONNECT-0001 #####################################################
+PRINT AUTH=FALSE FALLBACK=TRUE APOP #################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer        StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0001-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0001-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0001-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0001-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0001-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-AUTH-CONNECT-0001
+
+
+
+START_TESTCASE	MSG-POP3-AUTH-CONNECT-0002
+
+//!	@SYMTestCaseID			    MSG-POP3-AUTH-CONNECT-0002
+//!	@SYMTestCaseDesc			This test checks the authentication mechanism that would be used for Logging in POP3 server.
+//! @SYMTestPriority			Critical
+//! @SYMTestType				CIT
+//! @SYMTestStatus				Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			    1.Initialises the NT RAS connection
+//!                             2.Reads the configuration data from the configuration file msg-pop-auth-connect.ini
+//!                             3.Based on the value of Pop3Auth and Pop3FallBack flags the user account is validated.
+//!                             4.In this test the Pop3Auth and Pop3FallBack flags is set to ETrue
+//!                             5.Create an POP3 account as per the ini file configuration
+//!							    6.Connect to the POP3 server that Supports CRAM-MD5 capability and perform a synchronisation
+//!							    7.Checks that the Inbox exists
+//!							    8.  Disconnects from the server
+//!	@SYMTestExpectedResults		               EPass- The connection is established to the server . The authentication mechanism used for validating user 
+//!                                                     accounts is CRAM-MD5.
+//!	@SYMAuthor				Manikandan B
+
+
+PRINT Setup Begins #####################################################
+PRINT AUTH=TRUE FALLBACK=TRUE CRAM-MD5 #################################
+
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer        StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0002-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0002-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0002-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0002-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0002-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-AUTH-CONNECT-0002
+
+START_TESTCASE	MSG-POP3-AUTH-CONNECT-0003
+
+//!	@SYMTestCaseID			MSG-POP3-AUTH-CONNECT-0003
+//!	@SYMTestCaseDesc			This test checks the authentication mechanism that would be used for Logging in POP3 server.
+//! @SYMTestPriority			Critical
+//! @SYMTestType				CIT
+//! @SYMTestStatus				Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			    1.Initialises the NT RAS connection
+//!                             2.Reads the configuration data from the configuration file msg-pop-auth-connect.ini
+//!                             3.Based on the value of Pop3Auth and Pop3FallBack flags the user account is validated.
+//!                             4.In this test the Pop3Auth and Pop3FallBack flags is set to ETrue
+//!                             5.Create an POP3 account
+//!							    6.Connect to the POP3 server that does not Supports CRAM-MD5 but a lower authentication mechanism and 
+//!                               perform a synchronisation
+//!							    7.Checks that the Inbox exists
+//!							    8.Disconnects from the server
+//!	@SYMTestExpectedResults		               EPass- The connection is established to the server . The authentication mechanism used for validating user 
+//!                                                     accounts is APOP.
+//!	@SYMAuthor				Manikandan B
+
+PRINT Setup Begins #####################################################
+PRINT AUTH=TRUE FALLBACK=TRUE APOP #################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer        StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0003-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0003-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0003-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0003-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0003-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-AUTH-CONNECT-0003
+
+START_TESTCASE	MSG-POP3-AUTH-CONNECT-0004
+
+//!	@SYMTestCaseID		    	MSG-POP3-AUTH-CONNECT-0004
+//!	@SYMTestCaseDesc			This test checks the authentication mechanism that would be used for Logging in POP3 server.
+//! @SYMTestPriority			Critical
+//! @SYMTestType				CIT
+//! @SYMTestStatus				Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			   1.Initialises the NT RAS connection
+//!                            2.Reads the configuration data from the configuration file msg-pop-auth-connect.ini
+//!                            3.Based on the value of Pop3Auth and Pop3FallBack flags the user account is validated.
+//!                            4.In this test the Pop3Auth and Pop3FallBack flags is set to ETrue
+//!                            5.Create an POP3 account
+//!							   6.Connects to the POP3 server that does not Supports CRAM-MD5,APOP or PLAIN but a lower authentication mechanism like LOGIN and 
+//!                              perform a synchronisation
+//!							   7.Checks that the Inbox exists
+//!							   8.Disconnects from the server
+//!	@SYMTestExpectedResults	   EPass- The connection is established to the server . The authentication mechanism used for validating user 
+//!                                                     accounts is LOGIN.
+//!	@SYMAuthor				   Manikandan B
+
+
+
+PRINT Setup Begins #####################################################
+PRINT AUTH=TRUE FALLBACK=TRUE LOGIN #################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer        StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0004-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0004-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0004-CreatePopAccount
+RUN_TEST_STEP !Error=-177 300  T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0004-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0004-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-AUTH-CONNECT-0004
+
+START_TESTCASE	MSG-POP3-AUTH-CONNECT-0005
+
+//!	@SYMTestCaseID			    MSG-POP3-AUTH-CONNECT-0005
+//!	@SYMTestCaseDesc			This test checks the authentication mechanism that would be used for Logging in POP3 server.
+//! @SYMTestPriority			Critical
+//! @SYMTestType				CIT
+//! @SYMTestStatus				Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			    1.Initialises the NT RAS connection
+//!                             2.Reads the configuration data from the configuration file msg-pop-auth-connect.ini
+//!                             3.Based on the value of Pop3Auth and Pop3FallBack flags the user account is validated.
+//!                             4.In this test the Pop3Auth is set to EFalse and Pop3FallBack flags is set to ETrue
+//!                             5.Create an POP3 account
+//!							    6.Connect to the POP3 server Supports CRAM-MD5 and perform a synchronisation
+//!							    7.Checks that the Inbox exists
+//!							    8.Disconnects from the server
+//!	@SYMTestExpectedResults		               EPass- The connection is established to the server . The authentication mechanism used for validating user 
+//!                                                     accounts is APOP.
+//!	@SYMAuthor				Manikandan B
+
+
+PRINT Setup Begins #####################################################
+PRINT AUTH=FALSE FALLBACK=TRUE APOP #################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer        StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0005-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0005-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0005-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0005-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0005-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-AUTH-CONNECT-0005
+
+
+START_TESTCASE	MSG-POP3-AUTH-CONNECT-0006
+
+//!	@SYMTestCaseID			    MSG-POP3-AUTH-CONNECT-0006
+//!	@SYMTestCaseDesc			This test checks the authentication mechanism that would be used for Logging in POP3 server.
+//! @SYMTestPriority			Critical
+//! @SYMTestType				CIT
+//! @SYMTestStatus				Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			    1.Initialises the NT RAS connection
+//!                             2.Reads the configuration data from the configuration file msg-pop-auth-connect.ini
+//!                             3.Based on the value of Pop3Auth and Pop3FallBack flags the user account is validated.
+//!                             4.In this test the Pop3Auth is set to ETrue and Pop3FallBack flags is set to EFalse
+//!                             5.Creates an POP3 account
+//!							    6.Connect to the POP3 server that does not Supports CRAM-MD5.
+//!	@SYMTestExpectedResults		                EPass- The connection is not established to the server . Instead an error is validating for 
+//!                                                     Capability not supported.
+//!	@SYMAuthor				Manikandan B
+
+PRINT Setup Begins #####################################################
+PRINT AUTH=TRUE FALLBACK=FALSE NO CONNECTION #################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer        StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0006-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0006-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0006-CreatePopAccount
+RUN_TEST_STEP !Error=-178 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0006-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0006-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-AUTH-CONNECT-0006
+
+
+START_TESTCASE	MSG-POP3-AUTH-CONNECT-0007
+
+//!	@SYMTestCaseID		        MSG-POP3-AUTH-CONNECT-0007
+//!	@SYMTestCaseDesc			This test checks the authentication mechanism that would be used for Logging in POP3 server.
+//! @SYMTestPriority			Critical
+//! @SYMTestType				CIT
+//! @SYMTestStatus				Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			    1.Initialises the NT RAS connection
+//!                             2.Reads the configuration data from the configuration file msg-pop-auth-connect.ini
+//!                             3.Based on the value of Pop3Auth and Pop3FallBack flags the user account is validated.
+//!                             4.In this test the Pop3Auth is set to ETrue and Pop3FallBack flags is set to EFalse
+//!                             5.Create an POP3 account
+//!							    6.Connect to the POP3 server that Supports CRAM-MD5.
+//!	@SYMTestExpectedResults		                EPass- The connection is established to the server validation is done using CRAM-MD5 Authentication mechanism.
+//!	@SYMAuthor				Manikandan B
+
+
+PRINT Setup Begins #####################################################
+PRINT AUTH=TRUE FALLBACK=FALSE CRAM-MD5 #################################
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer        StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0007-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0007-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0007-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0007-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0007-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-AUTH-CONNECT-0007
+
+START_TESTCASE	MSG-POP3-AUTH-CONNECT-0008
+
+//!	@SYMTestCaseID			MSG-POP3-AUTH-CONNECT-0008
+//!	@SYMTestCaseDesc			This test checks the authentication mechanism that would be used for Logging in POP3 server.
+//! @SYMTestPriority			Critical
+//! @SYMTestType				CIT
+//! @SYMTestStatus				Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			    1.Initialises the NT RAS connection
+//!                             2.Reads the configuration data from the configuration file msg-pop-auth-connect.ini
+//!                             3.Based on the value of ImapAuth and ImapFallBack flags the user account is validated.
+//!                             4.In this test the po3auth is set to ETrue and pop3fallback flags is set to ETrue
+//!                             5.Creates an POP account
+//!							Connect to the POP server that Supports CRAM-MD5 with invalid username and passwd 
+//!	@SYMTestExpectedResults		                EPass- The connection is not established to the server instead a invalid login message is returned.
+//!	@SYMAuthor				Manikandan B
+
+PRINT Setup Begins #####################################################
+PRINT AUTH=TRUE FALLBACK=TRUE CRAM-MD5 #################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer    StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0008-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0008-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0008-CreatePopAccount
+RUN_TEST_STEP !Error=-172 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0008-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\AuthConnect\msg-pop-auth-connect.ini	0008-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-AUTH-CONNECT-0008
+
+START_TESTCASE	MSG-POP3-AUTH-CONNECT-0009
+

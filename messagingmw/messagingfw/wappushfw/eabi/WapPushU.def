@@ -1,0 +1,13 @@
+EXPORTS
+	_ZN12CPushWatcher4NewLER3RFsR11CWatcherLog @ 1 NONAME
+	_ZTI12CPushWatcher @ 2 NONAME ; #<TI>#
+	_ZTI14CCLWatcherBase @ 3 NONAME ; #<TI>#
+	_ZTI16CCLSecureWatcher @ 4 NONAME ; #<TI>#
+	_ZTI18CCLUnsecureWatcher @ 5 NONAME ; #<TI>#
+	_ZTI18CConnectionManager @ 6 NONAME ; #<TI>#
+	_ZTV12CPushWatcher @ 7 NONAME ; #<VT>#
+	_ZTV14CCLWatcherBase @ 8 NONAME ; #<VT>#
+	_ZTV16CCLSecureWatcher @ 9 NONAME ; #<VT>#
+	_ZTV18CCLUnsecureWatcher @ 10 NONAME ; #<VT>#
+	_ZTV18CConnectionManager @ 11 NONAME ; #<VT>#
+

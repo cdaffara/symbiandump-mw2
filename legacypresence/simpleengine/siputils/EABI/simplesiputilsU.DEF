@@ -1,0 +1,25 @@
+EXPORTS
+	_ZN20CSimpleSipConnection12DispatchReqLER20MSimpleEngineRequest @ 1 NONAME
+	_ZN20CSimpleSipConnection19CurrentSIPIdentityLEv @ 2 NONAME
+	_ZN20CSimpleSipConnection4NewLEv @ 3 NONAME
+	_ZN20CSimpleSipConnection8SIPStateEv @ 4 NONAME
+	_ZN20CSimpleSipConnection9SIPStatusEiRi @ 5 NONAME
+	_ZN20CSimpleSipConnectionD0Ev @ 6 NONAME
+	_ZN20CSimpleSipConnectionD1Ev @ 7 NONAME
+	_ZN20CSimpleSipConnectionD2Ev @ 8 NONAME
+	_ZTI14CSimpleRequest @ 9 NONAME ; #<TI>#
+	_ZTI18CSimpleExpiryTimer @ 10 NONAME ; #<TI>#
+	_ZTI18CSimpleSettingFile @ 11 NONAME ; #<TI>#
+	_ZTI19CSimpleRefreshTimer @ 12 NONAME ; #<TI>#
+	_ZTI20CSimpleSipConnection @ 13 NONAME ; #<TI>#
+	_ZTI25CSimpleSipProfileObserver @ 14 NONAME ; #<TI>#
+	_ZTI28CSimpleSipConnectionObserver @ 15 NONAME ; #<TI>#
+	_ZTV14CSimpleRequest @ 16 NONAME ; #<VT>#
+	_ZTV18CSimpleExpiryTimer @ 17 NONAME ; #<VT>#
+	_ZTV18CSimpleSettingFile @ 18 NONAME ; #<VT>#
+	_ZTV19CSimpleRefreshTimer @ 19 NONAME ; #<VT>#
+	_ZTV20CSimpleSipConnection @ 20 NONAME ; #<VT>#
+	_ZTV25CSimpleSipProfileObserver @ 21 NONAME ; #<VT>#
+	_ZTV28CSimpleSipConnectionObserver @ 22 NONAME ; #<VT>#
+	_ZN20CSimpleSipConnection20SipSubscriptionStateER20MSimpleEngineRequest @ 23 NONAME
+

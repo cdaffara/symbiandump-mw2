@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<api id="9555a94f3da3c949de8bcafcabcb1ce4" dataversion="2.0">
+<name>context engine plugin api</name>
+<description>Context engine plugin api</description>
+<type>c++</type>
+<collection>contextengine</collection>
+<libs><lib name="contextplugininterface.lib"/>
+<lib name="contextengine.lib"/>
+</libs>
+<release category="platform" sinceversion=""/>
+<attributes>
+<htmldocprovided>no</htmldocprovided>
+<adaptation>no</adaptation>
+</attributes>
+</api>

@@ -1,0 +1,18 @@
+header
+Business Card
+surname firstname
+company
+title
+tel 
+tel 01
+tel (GSM) 02
+fax 01234 56788
+fax 
+email@server.com
+address1
+address2
+address3
+address4
+address5
+address6
+

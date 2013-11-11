@@ -1,0 +1,70 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file for project ?myapp
+*
+*/
+
+
+#include <data_caging_paths.hrh>
+#include <platform_paths.hrh>
+
+TARGET                  mpxcollectionhelper.dll
+TARGETTYPE              dll
+UID                     0x1000006C 0x101FFCAB
+
+CAPABILITY              CAP_GENERAL_DLL
+VENDORID                VID_DEFAULT
+
+MACRO RD_MPX_TNM_INTEGRATION
+#define RD_MPX_TNM_INTEGRATION
+
+MACRO ABSTRACTAUDIOALBUM_INCLUDED
+#define ABSTRACTAUDIOALBUM_INCLUDED
+//MACRO RD_MPX_COLLECTION_CACHE
+SOURCEPATH              ../src
+SOURCE                  mpxcollectionhelperfactory.cpp
+SOURCE                  mpxcollectionhelperimp.cpp
+SOURCE                  mpxcollectionuihelperimp.cpp
+SOURCE                  mpxcollectionhelpercommon.cpp
+SOURCE                  mpxdeletehelper.cpp
+SOURCE                  mpxcollectioncachedhelper.cpp
+
+USERINCLUDE             ../inc
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY                 euser.lib
+LIBRARY                 estor.lib 
+LIBRARY                 efsrv.lib
+LIBRARY                 bafl.lib
+LIBRARY                 mpxcommon.lib
+LIBRARY                 mpxcollectionmediator.lib
+LIBRARY                 mpxcollectionutility.lib
+LIBRARY                 mpxharvesterutility.lib
+LIBRARY                 mpxplaybackutility.lib
+LIBRARY                 usbman.lib
+LIBRARY                 apgrfx.lib
+LIBRARY                 mpxmetadataextractor.lib
+
+LIBRARY                 metadatautility.lib
+
+#ifdef RD_MPX_TNM_INTEGRATION
+LIBRARY                 thumbnailmanager.lib
+#endif //RD_MPX_TNM_INTEGRATION
+
+#if defined(ARMCC)
+deffile ../eabi/ 
+#elif defined(WINSCW)
+deffile ../bwinscw/ 
+#endif

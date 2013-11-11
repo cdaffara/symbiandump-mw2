@@ -1,0 +1,7 @@
+EXPORTS
+	??1C3GPExtParser@@UAE@XZ @ 1 NONAME ; C3GPExtParser::~C3GPExtParser(void)
+	?GetilstBoxesL@C3GPExtParser@@QAEXABVTDesC8@@W4TMetaDataFieldId@@PAPAVHBufC16@@@Z @ 2 NONAME ; void C3GPExtParser::GetilstBoxesL(class TDesC8 const &, enum TMetaDataFieldId, class HBufC16 * *)
+	?Is3GPExtMetadataL@C3GPExtParser@@QAEHXZ @ 3 NONAME ; int C3GPExtParser::Is3GPExtMetadataL(void)
+	?NewL@C3GPExtParser@@SAPAV1@AAPAJ@Z @ 4 NONAME ; class C3GPExtParser * C3GPExtParser::NewL(long * &)
+	?GetilstBoxesL@C3GPExtParser@@QAEXABVTDesC8@@W4TMetaDataFieldId@@PAPAVHBufC8@@@Z @ 5 NONAME ; void C3GPExtParser::GetilstBoxesL(class TDesC8 const &, enum TMetaDataFieldId, class HBufC8 * *)
+

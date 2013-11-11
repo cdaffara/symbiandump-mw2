@@ -1,0 +1,41 @@
+/*
+* Copyright (c) 2006-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  File that exports the files belonging to 
+:                Content Listing Framework API
+*
+*/
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+../inc/MCLFPostFilter.h     MW_LAYER_PUBLIC_EXPORT_PATH(MCLFPostFilter.h)
+../inc/MCLFCustomSorter.h     MW_LAYER_PUBLIC_EXPORT_PATH(MCLFCustomSorter.h)
+../inc/CLFContentListing.rh     MW_LAYER_PUBLIC_EXPORT_PATH(CLFContentListing.rh)
+../inc/CLFContentListing.h     MW_LAYER_PUBLIC_EXPORT_PATH(CLFContentListing.h)
+../inc/MCLFProcessObserver.h     MW_LAYER_PUBLIC_EXPORT_PATH(MCLFProcessObserver.h)
+../inc/CLFContentListing.hrh     MW_LAYER_PUBLIC_EXPORT_PATH(CLFContentListing.hrh)
+../inc/ContentListingFactory.h     MW_LAYER_PUBLIC_EXPORT_PATH(ContentListingFactory.h)
+../inc/MCLFSortingStyle.h     MW_LAYER_PUBLIC_EXPORT_PATH(MCLFSortingStyle.h)
+../inc/MCLFOperationObserver.h     MW_LAYER_PUBLIC_EXPORT_PATH(MCLFOperationObserver.h)
+../inc/MCLFContentListingEngine.h     MW_LAYER_PUBLIC_EXPORT_PATH(MCLFContentListingEngine.h)
+../inc/MCLFCustomGrouper.h     MW_LAYER_PUBLIC_EXPORT_PATH(MCLFCustomGrouper.h)
+../inc/MCLFModifiableItem.h     MW_LAYER_PUBLIC_EXPORT_PATH(MCLFModifiableItem.h)
+../inc/MCLFChangedItemObserver.h     MW_LAYER_PUBLIC_EXPORT_PATH(MCLFChangedItemObserver.h)
+../inc/MCLFItemListModel.h     MW_LAYER_PUBLIC_EXPORT_PATH(MCLFItemListModel.h)
+../inc/MCLFItem.h     MW_LAYER_PUBLIC_EXPORT_PATH(MCLFItem.h)
+

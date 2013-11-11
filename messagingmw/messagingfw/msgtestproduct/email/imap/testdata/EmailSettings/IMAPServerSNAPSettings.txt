@@ -1,0 +1,4 @@
+ImapServerAddress =  msexchange2k.closedtest.intra
+ImapPathSeperator = /
+
+ImapSNAPId = 1

@@ -1,0 +1,36 @@
+// Copyright (c) 2000-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// WapPushPlugins Bld.inf
+// 
+//
+
+PRJ_PLATFORMS
+
+
+PRJ_EXPORTS
+../../plugins/inc/CContentHandlerBase.h 	SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(push/ccontenthandlerbase.h)
+../../plugins/inc/CContentHandlerBase.inl 	SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(push/ccontenthandlerbase.inl)
+../../plugins/inc/CPushHandlerBase.h 		SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(push/cpushhandlerbase.h)
+../../plugins/inc/CPushHandlerBase.inl 		SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(push/cpushhandlerbase.inl)
+PRJ_MMPFILES
+../../plugins/group/PushContentHandler.mmp
+../../plugins/group/PushAppHandler.mmp
+../../plugins/group/PushSecurity.mmp
+../../plugins/group/Sl1_0StringDict00.mmp
+../../plugins/ROAppHandler/group/DRMStringDict00.mmp
+../../plugins/ROAppHandler/group/ROAppHandler.mmp
+
+PRJ_TESTMMPFILES
+
+PRJ_TESTEXPORTS

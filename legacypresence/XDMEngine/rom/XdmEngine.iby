@@ -1,0 +1,31 @@
+/*
+* Copyright (c) 2005 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:   XDM Engine rom file
+*
+*/
+
+
+
+
+#ifndef __XDMENGINE_IBY__
+#define __XDMENGINE_IBY__
+
+#ifdef __XDM
+    file=ABI_DIR\BUILD_DIR\XdmSettingsApi.dll                   SHARED_LIB_DIR\XdmSettingsApi.dll
+    ECOM_PLUGIN(                                                XdmDeviceManagementAdapter.dll, 10275112.rsc) 
+    ECOM_PLUGIN(                                                XdmProvisioning.dll, 1028237A.rsc) 
+#endif //__XDM
+
+#endif //__XDMENGINE_IBY__
+

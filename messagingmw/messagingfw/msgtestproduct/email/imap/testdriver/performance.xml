@@ -1,0 +1,60 @@
+<?xml version="1.0" ?> 
+<!DOCTYPE testSuite SYSTEM "file:///c:/program files/common files/symbian/testSuite.dtd" [ ]>
+
+<testSuite>
+	<name>performance</name> 
+
+	<testItems>
+		<test>msg-imap-cache1</test>
+	<!--	<test>msg-imap-performance1_1kb</test>
+		<test>msg-imap-performance1_5kb</test>
+		<test>msg-imap-performance1_10kb</test>
+		<test>msg-imap-performance1_100kb</test>
+		<test>msg-imap-performance1_200kb</test>
+		<test>msg-imap-performance1_500kb</test>
+		<test>msg-imap-performance1_1000kb</test>
+		<test>msg-imap-performance10_1kb</test>
+		<test>msg-imap-performance10_5kb</test>
+		<test>msg-imap-performance10_10kb</test>
+		<test>msg-imap-performance10_100kb</test>
+		<test>msg-imap-performance10_200kb</test>
+		<test>msg-imap-performance10_500kb</test>
+		<test>msg-imap-performance10_1000kb</test>
+		<test>msg-imap-performance50_1kb</test>
+		<test>msg-imap-performance50_5kb</test>
+		<test>msg-imap-performance50_10kb</test>
+		<test>msg-imap-performance50_100kb</test>
+		<test>msg-imap-performance50_200kb</test>
+		<test>msg-imap-performance50_500kb</test>
+		<test>msg-imap-performance50_1000kb</test>
+		<test>msg-imap-performance100_1kb</test>
+		<test>msg-imap-performance100_5kb</test>
+		<test>msg-imap-performance100_10kb</test>
+		<test>msg-imap-performance100_100kb</test>
+		<test>msg-imap-performance100_200kb</test>
+		<test>msg-imap-performance100_500kb</test>
+		<test>msg-imap-performance100_1000kb</test>
+		<test>msg-imap-performance200_1kb</test>
+		<test>msg-imap-performance200_5kb</test>
+		<test>msg-imap-performance200_10kb</test>
+		<test>msg-imap-performance200_100kb</test>
+		<test>msg-imap-performance200_200kb</test>
+		<test>msg-imap-performance200_500kb</test>
+		<test>msg-imap-performance200_1000kb</test>
+		<test>msg-imap-performance500_1kb</test>
+		<test>msg-imap-performance500_5kb</test>
+		<test>msg-imap-performance500_10kb</test>
+		<test>msg-imap-performance500_100kb</test>
+		<test>msg-imap-performance500_200kb</test>
+		<test>msg-imap-performance500_500kb</test>
+		<test>msg-imap-performance500_1000kb</test>
+		<test>msg-imap-performance1000_1kb</test>
+		<test>msg-imap-performance1000_5kb</test>
+		<test>msg-imap-performance1000_10kb</test>
+		<test>msg-imap-performance1000_100kb</test>
+		<test>msg-imap-performance1000_200kb</test>
+		<test>msg-imap-performance1000_500kb</test>
+		<test>msg-imap-performance1000_1000kb</test> -->
+	</testItems>
+
+</testSuite>

@@ -1,0 +1,38 @@
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 13.3 MCCPCall leave/return value
+timeout 5000
+create ccetester test
+test Delay 1000
+
+
+//////////////////////////////////////////
+// MCCPCall
+//////////////////////////////////////////
+
+// Test forward + transfer provider get with not supported (=return NULL)
+test ConfigurePlugin 2 ID=MCCPCall::ForwardProviderL RETURN=0 TYPE=TInt
+test ConfigurePlugin 2 ID=MCCPCall::TransferProviderL RETURN=0 TYPE=TInt
+test OpenNewCall 1 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+test Release 1 0
+
+// Test forward + transfer provider get when both leave
+// leave with KErrNoMemory 
+test ConfigurePlugin 2 ID=MCCPCall::ForwardProviderL LEAVE=-6 TYPE=TInt 
+// leave with KErrNoMemory 
+test ConfigurePlugin 2 ID=MCCPCall::TransferProviderL LEAVE=-6 TYPE=TInt 
+test OpenNewCall 2 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+test Release 2 0
+
+
+// leave with KErrGeneral. AddObserverL is not called by CCE at the moment, SetObserver is instead.
+/////test ConfigurePlugin 2 ID=MCCPCall::AddObserverL  LEAVE=-2 TYPE=TInt
+/////test OpenNewCall 3 -2 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+/////test Release 3 0
+
+test VerifyTest
+delete test
+[Endtest]

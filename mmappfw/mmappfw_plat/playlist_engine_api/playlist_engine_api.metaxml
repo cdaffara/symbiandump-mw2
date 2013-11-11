@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<api id="985a7dece839551a922cd1898a3fd2f9" dataversion="2.0">
+<name>Playlist Engine API</name>
+<description>Provides engine APIs for the playlist framework</description>
+<type>c++</type>
+<collection>mmappcomponents</collection>
+<libs>
+<lib name="mpxplaylistengine.lib"/>
+</libs>
+<release category="platform" sinceversion=""/>
+<attributes>
+<htmldocprovided>no</htmldocprovided>
+<adaptation>no</adaptation>
+</attributes>
+</api>

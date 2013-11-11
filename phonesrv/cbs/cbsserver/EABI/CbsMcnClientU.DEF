@@ -1,0 +1,19 @@
+EXPORTS
+	_ZN14CMcnTopicArray11AddCbTopicLEt @ 1 NONAME
+	_ZN14CMcnTopicArray4NewLEv @ 2 NONAME
+	_ZN4CMcn10UnregisterEP15MCbsMcnObserver @ 3 NONAME
+	_ZN4CMcn4NewLEv @ 4 NONAME
+	_ZN4CMcn9RegisterLEP15MCbsMcnObserverRK14CMcnTopicArray @ 5 NONAME
+	_ZN4CMcnD0Ev @ 6 NONAME
+	_ZN4CMcnD1Ev @ 7 NONAME
+	_ZN4CMcnD2Ev @ 8 NONAME
+	_ZNK14CMcnTopicArray14GetTopicNumberERKjRj @ 9 NONAME
+	_ZNK4CMcn11GetCellInfoER6TDes16 @ 10 NONAME
+	_ZNK4CMcn14GetInfoMessageER6TDes16i @ 11 NONAME
+	_ZTI14CMcnTopicArray @ 12 NONAME ; #<TI>#
+	_ZTI15CCbsMcnListener @ 13 NONAME ; #<TI>#
+	_ZTI4CMcn @ 14 NONAME ; #<TI>#
+	_ZTV14CMcnTopicArray @ 15 NONAME ; #<VT>#
+	_ZTV15CCbsMcnListener @ 16 NONAME ; #<VT>#
+	_ZTV4CMcn @ 17 NONAME ; #<VT>#
+

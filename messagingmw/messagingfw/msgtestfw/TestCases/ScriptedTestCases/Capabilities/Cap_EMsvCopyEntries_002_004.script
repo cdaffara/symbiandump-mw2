@@ -1,0 +1,38 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//********************************
+// Cap_EMsvCopyEntries_002_004.script
+//********************************
+
+PRINT Running  Cap_EMsvCopyEntries_002_004.script : SendProxyServer needs Read/Write user data + Network services capabilities to copy entries to Outbox. 
+PRINT Running  Cap_EMsvCopyEntries_002_004.script : SID's are the same for the folders and the proxy (Although the From folders SID should not matter). 
+
+//********************************
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_Caps.exe 0003fffe -SID 101F7780 C:\sys\bin\MessagingTestServer.exe
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateMultipleEntryInDrafts.Script
+
+// Using ECapabilityNetworkServices, ECapabilityWriteUserData
+RUN_PROGRAM -1 setcap c:\sys\bin\SendProxyServer_Caps.exe  00012000 -SID 101F7780 C:\sys\bin\SendProxyServer.exe
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CopySingleEntryToOutboxFail.script
+
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+//********************************

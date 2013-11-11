@@ -1,0 +1,82 @@
+/*
+* Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file
+*
+*/
+
+
+#include <platform_paths.hrh>
+#include <data_caging_paths.hrh>
+
+VERSION           10.0
+TARGET            harvesterserver.exe
+TARGETTYPE        exe
+UID               0x0 0x200009F5
+
+EPOCSTACKSIZE     0x14000
+#ifdef WINS
+EPOCHEAPSIZE      0x200 0x1400000
+#else
+EPOCHEAPSIZE      0x400 0x2800000
+#endif
+
+CAPABILITY        CAP_SERVER DiskAdmin AllFiles WriteDeviceData
+VENDORID          VID_DEFAULT
+
+SYSTEMINCLUDE     /epoc32/include/ecom
+SYSTEMINCLUDE     /epoc32/include/connect
+
+USERINCLUDE       ../../../inc
+USERINCLUDE       ../../common/inc
+USERINCLUDE       ../inc
+USERINCLUDE       ../../monitorplugins/inc
+USERINCLUDE       ../traces
+
+SOURCEPATH        ../src
+SOURCE		harvesterserver.cpp
+SOURCE      harvesterserversession.cpp
+SOURCE      harvesterqueue.cpp
+SOURCE      harvesterao.cpp
+SOURCE      reharvesterao.cpp
+SOURCE		backupsubscriber.cpp
+SOURCE		ondemandao.cpp
+SOURCE		mdsactivescheduler.cpp
+SOURCE		mdeobjecthandler.cpp
+SOURCE		unmounthandlerao.cpp
+SOURCE 		restorewatcher.cpp
+SOURCE      harvesteroomao.cpp
+SOURCE      pauseobserverao.cpp
+SOURCE    harvestershutdownobserver.cpp
+SOURCE    harvesterdiskspaceobserver.cpp
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY           euser.lib
+LIBRARY           ecom.lib
+LIBRARY		      efsrv.lib
+LIBRARY           contextengine.lib
+LIBRARY           mdeclient.lib
+LIBRARY           monitorplugininterface.lib
+LIBRARY           composerplugininterface.lib
+LIBRARY		      harvesterdata.lib
+LIBRARY           harvestercommon.lib
+LIBRARY		      locationmanager.lib
+LIBRARY           platformenv.lib 
+LIBRARY           bafl.lib
+
+UNPAGED
+
+OPTION ARMCC -O3 -OTime
+
+EPOCPROCESSPRIORITY background

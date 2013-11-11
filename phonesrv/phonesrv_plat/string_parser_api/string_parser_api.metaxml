@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<api id="1e1a107647b914713ca8c6c601ecbec5" dataversion="1.0">
+  <name>String Parser API</name>
+  <description>An interface for identifying MMI strings (phone number, SS code etc).</description>
+  <type>c++</type>
+  <subsystem>phoneengine</subsystem>
+  <libs>
+    <lib name="phoneparser.lib" />
+  </libs>
+  <release category="domain"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>yes</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

@@ -1,0 +1,73 @@
+// Copyright (c) 2004-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+TARGET        		mts_utils.lib
+TARGETTYPE    		lib
+UID 0
+VENDORID 			0x70000001
+
+USERINCLUDE			../Framework/inc
+USERINCLUDE			../TestActions/Sample/inc 
+USERINCLUDE 		../TestActions/Base/inc 
+USERINCLUDE			../TestActions/Email/Common/inc 
+USERINCLUDE			../TestActions/Email/Imap4/inc 
+USERINCLUDE			../TestActions/Email/Pop3/inc 
+USERINCLUDE			../TestActions/Email/Smtp/inc
+USERINCLUDE			../TestActions/Sms/inc 
+USERINCLUDE			../TestActions/Mms/inc
+USERINCLUDE			../TestActions/Framework/inc
+USERINCLUDE			../TestActionUtils/inc
+USERINCLUDE	../TestActions/Base/Attachments/inc
+
+
+
+USERINCLUDE			../TestActions/Pigeon/inc
+USERINCLUDE			../TestCases/NonScriptedTestCases/inc 
+
+USERINCLUDE			../../msgtests/Framework/server/inc
+USERINCLUDE			../../watcherfw/inc
+USERINCLUDE			../../scheduledsendmtm/test/unit/inc
+
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+
+
+SOURCEPATH			../TestActionUtils/src
+SOURCE				CMtfTestActionUtilsTimer.cpp 
+SOURCE				CMtfTestActionUtilsDeleteAllChildren.cpp 
+SOURCE				CMtfTestActionUtilsConfigFileParser.cpp 
+SOURCE				MtfTestActionUtilsUser.cpp
+SOURCE				CMtfTestActionUtilsSmsScripts.cpp
+SOURCE				TestFrameworkActionsUtils.cpp
+SOURCE				TMtfTestActionUtilsSchSendScripts.cpp
+SOURCE				CMtfTestActionUtils.cpp
+SOURCE				CMtfTestActionUtilsEmailMessage.cpp
+
+
+
+
+
+SOURCEPATH			../TestActions/Pigeon/src
+SOURCE				CMtfTestActionCreatePigeonMessage.cpp
+SOURCE				CMtfTestActionGetPigeonMtmConstant.cpp
+SOURCE				CMtfTestActionSchedulePigeonMessage.cpp
+SOURCE				CMtfTestActionLaunchSchSendExe.cpp
+SOURCE				CMtfTestActionCheckIfMessageScheduleDateExpired.cpp
+SOURCE				CMtfTestActionLaunchScheduleMessageExe.cpp
+
+
+
+
+SMPSAFE

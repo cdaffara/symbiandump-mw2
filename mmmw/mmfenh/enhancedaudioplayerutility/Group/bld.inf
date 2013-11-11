@@ -1,0 +1,35 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Build file for Streaming API projects that
+*                are needed to be built.
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+../rom/S60Audio.iby         CORE_MW_LAYER_IBY_EXPORT_PATH(S60Audio.iby)
+
+
+PRJ_MMPFILES
+../S60AudioUtility/group/S60AudioUtility.mmp
+../S60AudioSource/group/S60AudioSource.mmp
+../AudioStreaming/AudioClientStreamSource/group/S60AudioClientStreamSource.mmp
+../AudioPlayer/group/S60AudioPlayer.mmp
+../AudioStreaming/AudioStreamingSource/group/S60StreamingSource.mmp
+../S60AudioSourceFactory/group/S60AudioSourceFactory.mmp

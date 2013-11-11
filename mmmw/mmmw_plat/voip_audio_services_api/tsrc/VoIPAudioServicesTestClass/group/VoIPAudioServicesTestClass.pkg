@@ -1,0 +1,40 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: VoIP Audio Service - STIF Test
+;
+
+;languages
+&EN
+
+;Header
+#{"VoIPAudioServicesTestClass"},(0x10005942),1,0,0
+
+;Localised Vendor name
+%{"VoIPAudioServicesTestClass"}
+
+;Unique Vendor name
+:"Nokia"
+
+;Files to install
+
+"/epoc32/release/armv5/urel/VoIPAudioServicesTestClass.dll"-"c:/Sys/Bin/VoIPAudioServicesTestClass.dll"
+
+; Including testframework.ini in the package may cause installation failure if another
+; copy of this file is already found in the destination folder. If this happens, remove
+; this file from the package and copy it manually.
+;"../../init/TestFramework.ini"-"c:/Testframework/TestFramework.ini"
+"../../init/VoIPAudioServicesTestClass.ini"-"c:/Testframework/VoIPAudioServicesTestClass.ini"
+"../../conf/VoIPAudioServicesTestClass.cfg"-"c:/Testframework/VoIPAudioServicesTestClass.cfg"
+"../../data/NokiaTest.aac"-"c:/data/sounds/digital/NokiaTest.aac"
+

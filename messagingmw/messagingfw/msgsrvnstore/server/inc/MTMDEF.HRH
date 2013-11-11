@@ -1,0 +1,56 @@
+// Copyright (c) 1998-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// MTMDEF.HRH
+//
+
+/**
+ @file
+ @publishedAll
+ @released
+*/
+
+#if !defined(__MTMDEF_HRH__)
+#define __MTMDEF_HRH__
+
+#ifndef SYMBIAN_ENABLE_SPLIT_HEADERS
+#include <mtmuidsdef.hrh>
+#endif
+
+// body types
+/**
+* 7-bit text. 
+* @publishedAll
+* @released
+*/
+#define KMtm7BitBody 	0x01	
+/**
+* 8-bit text
+* @publishedAll
+* @released
+*/
+#define KMtm8BitBody 	0x02
+/**
+* 16-bit text
+* @publishedAll
+* @released
+*/
+#define KMtm16BitBody 	0x04
+/**
+* Binary
+* @publishedAll
+* @released
+*/
+#define KMtmBinaryBody 	0x08
+
+#endif

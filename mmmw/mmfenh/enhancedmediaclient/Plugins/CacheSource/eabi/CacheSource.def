@@ -1,0 +1,11 @@
+EXPORTS
+	_ZN12CCacheSource4NewLEP21CMultimediaDataSourceP22CDataSourceConfigIntfc @ 1 NONAME
+	_ZTI12CCacheSource @ 2 NONAME ; #<TI>#
+	_ZTI14CSinkQueueItem @ 3 NONAME ; #<TI>#
+	_ZTI19CReadWriteRequestAO @ 4 NONAME ; #<TI>#
+	_ZTI20CMDataSourceObserver @ 5 NONAME ; #<TI>#
+	_ZTV12CCacheSource @ 6 NONAME ; #<VT>#
+	_ZTV14CSinkQueueItem @ 7 NONAME ; #<VT>#
+	_ZTV19CReadWriteRequestAO @ 8 NONAME ; #<VT>#
+	_ZTV20CMDataSourceObserver @ 9 NONAME ; #<VT>#
+

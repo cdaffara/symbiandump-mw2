@@ -1,0 +1,6 @@
+EXPORTS
+	_ZN22CMsvSysProgressTestMtm4NewLER17CRegisteredMtmDllR15CMsvServerEntry @ 1 NONAME
+	_ZN22CMsvSysProgressTestMtm10Extension_EjRPvS0_ @ 2 NONAME
+	_ZTI22CMsvSysProgressTestMtm @ 3 NONAME ; #<TI>#
+	_ZTV22CMsvSysProgressTestMtm @ 4 NONAME ; #<VT>#
+

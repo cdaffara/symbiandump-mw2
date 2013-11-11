@@ -1,0 +1,88 @@
+EXPORTS
+	_ZN18ReferenceTestAgent10CDrmRights11RightsCountEv @ 1 NONAME
+	_ZN18ReferenceTestAgent10CDrmRights6RemoveEi @ 2 NONAME
+	_ZN18ReferenceTestAgent10CDrmRights6RightsEi @ 3 NONAME
+	_ZN18ReferenceTestAgent13CRightsObject12ExternalizeLER12RWriteStream @ 4 NONAME
+	_ZN18ReferenceTestAgent13CRightsObject13SetDeleteKeyLERK6TDesC8 @ 5 NONAME
+	_ZN18ReferenceTestAgent13CRightsObject14EvaluateIntentEN13ContentAccess7TIntentE @ 6 NONAME
+	_ZN18ReferenceTestAgent13CRightsObject14ExecuteIntentLEN13ContentAccess7TIntentE @ 7 NONAME
+	_ZN18ReferenceTestAgent13CRightsObject16WriteDescriptionER5RFile @ 8 NONAME
+	_ZN18ReferenceTestAgent13CRightsObject3CidEv @ 9 NONAME
+	_ZN18ReferenceTestAgent13CRightsObject4NewLER11RReadStreami @ 10 NONAME
+	_ZN18ReferenceTestAgent13CRightsObject6MergeLERS0_ @ 11 NONAME
+	_ZN18ReferenceTestAgent13CRightsObject9DeleteKeyEv @ 12 NONAME
+	_ZN18ReferenceTestAgent15CDrmFileContent12GetAttributeEiRi @ 13 NONAME
+	_ZN18ReferenceTestAgent15CDrmFileContent15GetAttributeSetERN13ContentAccess13RAttributeSetE @ 14 NONAME
+	_ZN18ReferenceTestAgent15CDrmFileContent18GetStringAttributeEiR6TDes16 @ 15 NONAME
+	_ZN18ReferenceTestAgent15CDrmFileContent20SetCommonSourceFileLER5RFileR10RSemaphoreii @ 16 NONAME
+	_ZN18ReferenceTestAgent15CDrmFileContent21GetStringAttributeSetERN13ContentAccess19RStringAttributeSetE @ 17 NONAME
+	_ZN18ReferenceTestAgent15CDrmFileContent3CidEv @ 18 NONAME
+	_ZN18ReferenceTestAgent15CDrmFileContent4ReadER5TDes8i @ 19 NONAME
+	_ZN18ReferenceTestAgent15CDrmFileContent4ReadEiR5TDes8i @ 20 NONAME
+	_ZN18ReferenceTestAgent15CDrmFileContent4SeekE5TSeekRi @ 21 NONAME
+	_ZN18ReferenceTestAgent15CDrmFileContent4SizeERi @ 22 NONAME
+	_ZN18ReferenceTestAgent15CDrmFileContent8MimeTypeEv @ 23 NONAME
+	_ZN18ReferenceTestAgent15CDrmFilesParser4NewLERNS_12CVirtualFileE @ 24 NONAME
+	_ZN18ReferenceTestAgent15CDrmFilesParser9DrmFilesLEv @ 25 NONAME
+	_ZN18ReferenceTestAgent16CDrmRightsParser10DrmRightsLEv @ 26 NONAME
+	_ZN18ReferenceTestAgent16CDrmRightsParser4NewLERNS_12CVirtualFileE @ 27 NONAME
+	_ZN18ReferenceTestAgent16CDrmRightsParser4NewLEv @ 28 NONAME
+	_ZN18ReferenceTestAgent16CDrmRightsParser6ParseLERK6TDesC8 @ 29 NONAME
+	_ZN18ReferenceTestAgent17CDrmFileContainer19GetEmbeddedObjectsLERN13ContentAccess19RStreamablePtrArrayINS1_15CEmbeddedObjectEEE @ 30 NONAME
+	_ZN18ReferenceTestAgent17CDrmFileContainer19GetEmbeddedObjectsLERN13ContentAccess19RStreamablePtrArrayINS1_15CEmbeddedObjectEEENS1_13TEmbeddedTypeE @ 31 NONAME
+	_ZN18ReferenceTestAgent17CDrmFileContainer7SearchLERN13ContentAccess19RStreamablePtrArrayINS1_15CEmbeddedObjectEEERK6TDesC8i @ 32 NONAME
+	_ZN18ReferenceTestAgent9CDrmFiles12ContentCountEv @ 33 NONAME
+	_ZN18ReferenceTestAgent9CDrmFiles13OpenContainerERK7TDesC16 @ 34 NONAME
+	_ZN18ReferenceTestAgent9CDrmFiles14CloseContainerEv @ 35 NONAME
+	_ZN18ReferenceTestAgent9CDrmFiles14SetEntireFileLER5RFileR10RSemaphoreii @ 36 NONAME
+	_ZN18ReferenceTestAgent9CDrmFiles16CurrentContainerEv @ 37 NONAME
+	_ZN18ReferenceTestAgent9CDrmFiles5FindLERK6TDesC8 @ 38 NONAME
+	_ZN18ReferenceTestAgent9CDrmFiles5FindLERK7TDesC16 @ 39 NONAME
+	_ZN18ReferenceTestAgent9CDrmFiles7ContentEi @ 40 NONAME
+	_ZTIN18ReferenceTestAgent10CDrmRightsE @ 41 NONAME ; #<TI>#
+	_ZTIN18ReferenceTestAgent13CExpiryParserE @ 42 NONAME ; #<TI>#
+	_ZTIN18ReferenceTestAgent13CIntentParserE @ 43 NONAME ; #<TI>#
+	_ZTIN18ReferenceTestAgent13CRightsObjectE @ 44 NONAME ; #<TI>#
+	_ZTIN18ReferenceTestAgent13CRightsParserE @ 45 NONAME ; #<TI>#
+	_ZTIN18ReferenceTestAgent13CStringParserE @ 46 NONAME ; #<TI>#
+	_ZTIN18ReferenceTestAgent14CContentParserE @ 47 NONAME ; #<TI>#
+	_ZTIN18ReferenceTestAgent14CContextparserE @ 48 NONAME ; #<TI>#
+	_ZTIN18ReferenceTestAgent14CRoapKeyParserE @ 49 NONAME ; #<TI>#
+	_ZTIN18ReferenceTestAgent15CDrmFileContentE @ 50 NONAME ; #<TI>#
+	_ZTIN18ReferenceTestAgent15CDrmFilesParserE @ 51 NONAME ; #<TI>#
+	_ZTIN18ReferenceTestAgent16CAgreementParserE @ 52 NONAME ; #<TI>#
+	_ZTIN18ReferenceTestAgent16CAttributeParserE @ 53 NONAME ; #<TI>#
+	_ZTIN18ReferenceTestAgent16CContainerParserE @ 54 NONAME ; #<TI>#
+	_ZTIN18ReferenceTestAgent16CDrmRightsParserE @ 55 NONAME ; #<TI>#
+	_ZTIN18ReferenceTestAgent17CDrmFileContainerE @ 56 NONAME ; #<TI>#
+	_ZTIN18ReferenceTestAgent17CParseHandlerBaseE @ 57 NONAME ; #<TI>#
+	_ZTIN18ReferenceTestAgent20CRightsCriteriaCountE @ 58 NONAME ; #<TI>#
+	_ZTIN18ReferenceTestAgent21CRightsCriteriaExpiryE @ 59 NONAME ; #<TI>#
+	_ZTIN18ReferenceTestAgent22CStringAttributeParserE @ 60 NONAME ; #<TI>#
+	_ZTIN18ReferenceTestAgent7CIntentE @ 61 NONAME ; #<TI>#
+	_ZTIN18ReferenceTestAgent9CDrmFilesE @ 62 NONAME ; #<TI>#
+	_ZTIN18ReferenceTestAgent9MCriteriaE @ 63 NONAME ; #<TI>#
+	_ZTVN18ReferenceTestAgent10CDrmRightsE @ 64 NONAME ; #<VT>#
+	_ZTVN18ReferenceTestAgent13CExpiryParserE @ 65 NONAME ; #<VT>#
+	_ZTVN18ReferenceTestAgent13CIntentParserE @ 66 NONAME ; #<VT>#
+	_ZTVN18ReferenceTestAgent13CRightsObjectE @ 67 NONAME ; #<VT>#
+	_ZTVN18ReferenceTestAgent13CRightsParserE @ 68 NONAME ; #<VT>#
+	_ZTVN18ReferenceTestAgent13CStringParserE @ 69 NONAME ; #<VT>#
+	_ZTVN18ReferenceTestAgent14CContentParserE @ 70 NONAME ; #<VT>#
+	_ZTVN18ReferenceTestAgent14CContextparserE @ 71 NONAME ; #<VT>#
+	_ZTVN18ReferenceTestAgent14CRoapKeyParserE @ 72 NONAME ; #<VT>#
+	_ZTVN18ReferenceTestAgent15CDrmFileContentE @ 73 NONAME ; #<VT>#
+	_ZTVN18ReferenceTestAgent15CDrmFilesParserE @ 74 NONAME ; #<VT>#
+	_ZTVN18ReferenceTestAgent16CAgreementParserE @ 75 NONAME ; #<VT>#
+	_ZTVN18ReferenceTestAgent16CAttributeParserE @ 76 NONAME ; #<VT>#
+	_ZTVN18ReferenceTestAgent16CContainerParserE @ 77 NONAME ; #<VT>#
+	_ZTVN18ReferenceTestAgent16CDrmRightsParserE @ 78 NONAME ; #<VT>#
+	_ZTVN18ReferenceTestAgent17CDrmFileContainerE @ 79 NONAME ; #<VT>#
+	_ZTVN18ReferenceTestAgent17CParseHandlerBaseE @ 80 NONAME ; #<VT>#
+	_ZTVN18ReferenceTestAgent20CRightsCriteriaCountE @ 81 NONAME ; #<VT>#
+	_ZTVN18ReferenceTestAgent21CRightsCriteriaExpiryE @ 82 NONAME ; #<VT>#
+	_ZTVN18ReferenceTestAgent22CStringAttributeParserE @ 83 NONAME ; #<VT>#
+	_ZTVN18ReferenceTestAgent7CIntentE @ 84 NONAME ; #<VT>#
+	_ZTVN18ReferenceTestAgent9CDrmFilesE @ 85 NONAME ; #<VT>#
+	_ZTVN18ReferenceTestAgent9MCriteriaE @ 86 NONAME ; #<VT>#
+

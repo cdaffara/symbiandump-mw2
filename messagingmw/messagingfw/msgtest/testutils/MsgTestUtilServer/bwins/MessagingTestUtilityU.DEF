@@ -1,0 +1,11 @@
+EXPORTS
+	?Connect@RMessagingTestUtilityServer@@QAEHXZ @ 1 NONAME ; int RMessagingTestUtilityServer::Connect(void)
+	?CopyFile@RMessagingTestUtilityServer@@QAEHABVTDesC16@@0@Z @ 2 NONAME ; int RMessagingTestUtilityServer::CopyFile(class TDesC16 const &, class TDesC16 const &)
+	?DeleteFile@RMessagingTestUtilityServer@@QAEHABVTDesC16@@@Z @ 3 NONAME ; int RMessagingTestUtilityServer::DeleteFile(class TDesC16 const &)
+	?DeleteMessageStore@RMessagingTestUtilityServer@@QAEHJ@Z @ 4 NONAME ; int RMessagingTestUtilityServer::DeleteMessageStore(long)
+	?FileExists@RMessagingTestUtilityServer@@QAEHABVTDesC16@@@Z @ 5 NONAME ; int RMessagingTestUtilityServer::FileExists(class TDesC16 const &)
+	?GetDirL@RMessagingTestUtilityServer@@QAEHABVTDesC16@@IIAAPAVCDir@@@Z @ 6 NONAME ; int RMessagingTestUtilityServer::GetDirL(class TDesC16 const &, unsigned int, unsigned int, class CDir * &)
+	?KillProcess@RMessagingTestUtilityServer@@QAEHVTProcessId@@@Z @ 7 NONAME ; int RMessagingTestUtilityServer::KillProcess(class TProcessId)
+	?MkDir@RMessagingTestUtilityServer@@QAEHABVTDesC16@@@Z @ 8 NONAME ; int RMessagingTestUtilityServer::MkDir(class TDesC16 const &)
+	?RmDir@RMessagingTestUtilityServer@@QAEHABVTDesC16@@@Z @ 9 NONAME ; int RMessagingTestUtilityServer::RmDir(class TDesC16 const &)
+

@@ -1,0 +1,40 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  service provider settings backup helper project file
+*
+*/
+
+#include <platform_paths.hrh>
+
+TARGET      spsbackuphelper.exe
+TARGETTYPE  exe
+UID         0x100039CE 0x200286D2
+CAPABILITY  WriteDeviceData ReadDeviceData
+VERSION     10.0
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE /epoc32/include/connect
+
+USERINCLUDE   ../inc
+USERINCLUDE   ../../inc
+SOURCEPATH    ../src
+SOURCE        spsbackuphelpermain.cpp
+SOURCE        spsbackuphelperperformer.cpp
+SOURCE        spsbackuphelpermonitor.cpp
+
+LIBRARY      euser.lib
+LIBRARY      serviceprovidersettings.lib
+LIBRARY      centralrepository.lib
+LIBRARY      abclient.lib
+

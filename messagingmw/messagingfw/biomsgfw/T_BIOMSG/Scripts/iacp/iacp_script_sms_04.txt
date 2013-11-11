@@ -1,0 +1,30 @@
+[main]
+bio_test doatstart
+bio_test sms_04
+bio_test doattheend
+
+
+// Startup section.
+[doatstart]
+clean_all_bio_msgs
+
+
+// Shutdown section.
+[doattheend]
+
+
+// wapp tests.
+[sms_04]
+gen_msg_from_file iacp\iacp_sms_04.txt
+check_used_bif 1000552f
+bio_client_parse
+bio_client_process
+dump_parsed_message
+//
+// check sms settings in msg store
+check_sms sms_centre_04
+
+
+[sms_centre_04]
+chk_messagecentrenumber test_04 0
+// can't test for null number, so don't do check_sms

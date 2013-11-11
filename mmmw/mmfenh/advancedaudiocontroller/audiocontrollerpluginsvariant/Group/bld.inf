@@ -1,0 +1,87 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Build file for AdvancedAudioController including the projects that
+*                are needed to be built.
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+
+PRJ_EXPORTS
+../Data/AudioControllerPluginsVariant_Stub.SIS   /epoc32/data/z/system/install/AudioControllerPluginsVariant_Stub.SIS
+../rom/AudioControllerPluginsVariant.iby         CORE_MW_LAYER_IBY_EXPORT_PATH(AudioControllerPluginsVariant.iby)
+
+../PlaylistRecognizer/sis/playlistrecognizer_stub.sis   /epoc32/data/z/system/install/playlistrecognizer_stub.sis
+
+../PlaylistRecognizer/rom/playlistrecognizer.iby        CORE_MW_LAYER_IBY_EXPORT_PATH( playlistrecognizer.iby )
+
+#ifdef RD_3GP_Write_Extention
+#include "../3GPAudioRecordController/Group/exports.inc"
+#endif
+
+PRJ_MMPFILES
+../DataSourceAdapter/Group/DataSourceAdapter.mmp
+../3gpDataSourceAdapter/Group/3gpDataSourceAdapter.mmp
+
+../AdvancedAudioController/Group/AdvancedAudioController.mmp
+../DevSoundAudioOutput/Group/DevSoundAudioOutput.mmp
+../DevSoundAudioInput/Group/DevSoundAudioInput.mmp
+../FileAudioOutput/Group/FileAudioOutput.mmp
+
+// for MP4MetaDataWrite
+../MetaDataWrite/Group/MetaDataWrite.mmp
+
+// only EAACPlusAudioControllerUtility support AAC optimization
+//#ifdef __AAC_PLUS_DECODER_PLUGIN
+../AdvancedAudioControllerUtility/Group/EAACPlusAudioControllerUtility.mmp
+/*
+#else
+../AdvancedAudioControllerUtility/Group/AACAudioControllerUtility.mmp
+#endif
+*/
+
+../AdvancedAudioControllerUtility/Group/AMRAudioControllerUtility.mmp
+../AdvancedAudioControllerUtility/Group/AWBAudioControllerUtility.mmp
+../AdvancedAudioControllerUtility/Group/MP3AudioControllerUtility.mmp
+
+../3gpaudioplaycontroller/Group/3GPAudioPlayControllerPlugin.mmp
+../3gpaudioplaycontroller/Group/3GPAudioPlayControllerRecognizer.mmp
+../3gpaudiorecordcontroller/Group/3GPAudioRecordControllerPlugin.mmp
+
+../aacaudioplaycontroller/Group/AACAudioPlayControllerPlugin.mmp
+../aacaudioplaycontroller/Group/AACAudioPlayControllerRecognizer.mmp
+
+../amraudioplaycontroller/Group/AMRAudioPlayControllerPlugin.mmp
+../amraudiorecordcontroller/Group/AMRAudioRecordControllerPlugin.mmp
+
+../awbaudioplaycontroller/Group/AWBAudioPlayControllerPlugin.mmp
+
+../mp3audioplaycontroller/Group/MP3AudioPlayControllerPlugin.mmp
+../mp3audioplaycontroller/Group/MP3AudioPlayControllerRecognizer.mmp
+
+../HXAudioRecognizer/Group/HXAudioPlayControllerRecognizer.mmp
+../PlaylistRecognizer/group/playlistrecognizer.mmp
+
+PRJ_TESTMMPFILES
+
+PRJ_TESTEXPORTS
+
+////////////////////////////////////////////////////////////////////////////////
+//                                END OF FILE                                 //
+////////////////////////////////////////////////////////////////////////////////

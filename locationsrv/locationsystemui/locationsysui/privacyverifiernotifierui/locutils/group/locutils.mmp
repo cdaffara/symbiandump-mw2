@@ -1,0 +1,68 @@
+/*
+* Copyright (c) 2010 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: Project definition file for Location Utils
+*
+*/
+
+
+// INCLUDES
+#include "../inc/locutilsuid.hrh"
+
+#include <data_caging_paths.hrh>
+#include <bldvariant.hrh>
+#include <platform_paths.hrh> // For the MW_LAYER_SYSTEMINCLUDE
+
+TARGET  			locutils.dll
+TARGETTYPE  		dll
+UID  				0x0 0x101F84FB
+
+VENDORID	 		VID_DEFAULT
+CAPABILITY 			CAP_GENERAL_DLL
+
+SOURCEPATH 			../src
+
+#ifdef LOC_ENABLE_DEBUG_PRINT
+SOURCE              locutilsdebug.cpp
+#else
+SOURCE              locutilsdebugdummy.cpp
+#endif
+
+// System Include
+MW_LAYER_SYSTEMINCLUDE
+
+USERINCLUDE 		.
+USERINCLUDE			../inc
+
+LIBRARY 			euser.lib 
+LIBRARY 			bafl.lib
+LIBRARY 			efsrv.lib
+LIBRARY 			sysutil.lib
+LIBRARY 			eposprvtyp.lib
+
+#ifdef LOC_ENABLE_DEBUG_PRINT
+LIBRARY 			flogger.lib
+#endif
+
+LIBRARY             CenRepNotifHandler.lib
+LIBRARY             CentralRepository.lib
+
+#if defined(WINS)
+deffile   ../bwins/locutils_32.def
+#elif defined(EABI)
+deffile   ../eabi/locutils_32.def
+#endif 
+
+// End of file
+
+

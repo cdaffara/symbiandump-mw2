@@ -1,0 +1,81 @@
+/*
+* Copyright (c) 2002 - 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  mpxbaseviewpluginstest mmp file
+*
+*/
+
+
+#include <platform_paths.hrh>
+TARGET          ui_mpxbaseviewpluginstest.dll
+TARGETTYPE      dll
+UID             0x1000008D 0x101FB3E3
+
+CAPABILITY      ALL -TCB
+/* Remove comments and replace 0x00000000 with correct vendor id */
+VENDORID     	VID_DEFAULT
+/* Remove comments and replace 0x00000000 with correct secure id */
+// SECUREID     0x00000000
+
+//TARGETPATH      ?target_path
+DEFFILE         mpxbaseviewpluginstest.def
+
+SOURCEPATH      ../src
+
+SOURCE          mpxbaseviewpluginstest.cpp
+SOURCE          mpxbaseviewpluginstestBlocks.cpp 
+SOURCE          dummyMPXViewPlugin.cpp
+
+//RESOURCE        resource_file
+//RESOURCE        resource_file2
+
+USERINCLUDE     ../inc 
+APP_LAYER_SYSTEMINCLUDE
+
+LIBRARY         euser.lib
+LIBRARY         stiftestinterface.lib
+LIBRARY         stiftestengine.lib 
+LIBRARY         mpxviewplugin.lib  
+LIBRARY         mpxcommon.lib
+LIBRARY         efsrv.lib
+LIBRARY         bafl.lib
+LIBRARY         estor.lib    // RWriteStream
+LIBRARY         ecom.lib //REComSession
+LIBRARY         mpxviewutility.lib
+
+LANG            SC
+
+/*
+START WINS      
+?wins_specific_information
+END
+
+START MARM
+?marm_specific_information
+END
+*/
+// Other possible keywords:
+ 
+// DOCUMENT     ?file, that is not compiled, but added to MSVC project workspace (i.e. release notes)
+/*
+START BITMAP ?target
+TARGETPATH   ?emulated_path_on_target_machine
+HEADER
+SOURCE       ?color_depth ?source_bitmap
+END
+*/
+// DEFFILE ?filename
+// AIF ?filename
+
+// End of File
+

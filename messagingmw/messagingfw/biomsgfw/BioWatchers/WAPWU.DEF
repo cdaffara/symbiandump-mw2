@@ -1,0 +1,3 @@
+EXPORTS
+	?NewL@CWapWatcher@@SAPAVCActive@@AAVRFs@@AAVCWatcherLog@@@Z @ 1 NONAME ; public: static class CActive * __cdecl CWapWatcher::NewL(class RFs &,class CWatcherLog &)
+

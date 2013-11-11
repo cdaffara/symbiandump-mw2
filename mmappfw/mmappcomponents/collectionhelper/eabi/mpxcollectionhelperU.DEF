@@ -1,0 +1,5 @@
+EXPORTS
+	_ZN27CMPXCollectionHelperFactory20NewCollectionHelperLEv @ 1 NONAME
+	_ZN27CMPXCollectionHelperFactory22NewCollectionUiHelperLERK4TUid @ 2 NONAME
+	_ZN27CMPXCollectionHelperFactory26NewCollectionCachedHelperLEv @ 3 NONAME
+

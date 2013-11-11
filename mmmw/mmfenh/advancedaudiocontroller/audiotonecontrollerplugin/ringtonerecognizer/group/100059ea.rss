@@ -1,0 +1,44 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Registry info
+ *
+*/
+
+
+#include <registryinfo.rh>
+
+RESOURCE REGISTRY_INFO r_registry
+{
+    dll_uid = 0x100059EA; // should match name of this file
+    interfaces =
+    {
+        INTERFACE_INFO
+        {
+            interface_uid = 0x101F7D87;  // const for all Data Recognizers
+            implementations =
+            {
+                IMPLEMENTATION_INFO
+                {
+                    implementation_uid = 0x101F8828;
+                    version_no = 1;
+                    display_name = "RingToneRecognizer";
+                    default_data = "";
+                    opaque_data = "";
+                }
+            };
+        }
+    };
+}
+
+// End of File

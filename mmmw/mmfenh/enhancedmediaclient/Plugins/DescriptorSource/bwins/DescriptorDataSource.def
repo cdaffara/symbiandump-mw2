@@ -1,0 +1,4 @@
+EXPORTS
+	?ImplementationGroupProxy@@YAPBUTImplementationProxy@@AAH@Z @ 1 NONAME ; struct TImplementationProxy const * ImplementationGroupProxy(int &)
+	?NewL@CDescriptorDataMultimediaSource@@SAPAV1@AAVMDataSource@@@Z @ 2 NONAME ; class CDescriptorDataMultimediaSource * CDescriptorDataMultimediaSource::NewL(class MDataSource &)
+

@@ -1,0 +1,29 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: For packing phonesettings component.
+;
+; Languages
+&EN
+
+; Header
+#{"PhoneSettings"}, (0x100058e3), 10, 1, 0, TYPE=SA
+
+; Localised Vendor name
+%{"Nokia"}
+
+; Unique Vendor name
+:"Nokia"
+
+;Files
+"\epoc32\RELEASE\armv5\UREL\phonesettings.dll"-"z:\sys\bin\phonesettings.dll"

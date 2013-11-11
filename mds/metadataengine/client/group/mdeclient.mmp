@@ -1,0 +1,87 @@
+/*
+* Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file
+*
+*/
+
+#include <platform_paths.hrh>
+#include <data_caging_paths.hrh>
+
+VERSION         10.0
+TARGET          mdeclient.dll
+TARGETTYPE      dll
+TARGETPATH	    /sys/bin
+UID             0x1000008d 0x200009F1	
+
+CAPABILITY	    CAP_CLIENT_DLL
+VENDORID        VID_DEFAULT
+
+USERINCLUDE     ../../../inc
+USERINCLUDE     ../inc
+
+#if defined(WINSCW)
+    deffile ../bwincw/mdeclientu.def
+#elif defined(EABI)
+    deffile ../eabi/mdeclientu.def
+#endif
+nostrictdef
+
+SOURCEPATH      		../src
+SOURCE          		mde.cpp
+SOURCE          		mdepanic.cpp
+SOURCE	    		mdedatabuffer.cpp
+SOURCE	    		mdesession.cpp
+SOURCE	    		mdeharvestersession.cpp
+SOURCE	    		mdeitem.cpp
+SOURCE	    		mdepropertydef.cpp
+SOURCE	    		mdeobjectdef.cpp
+SOURCE	    		mderelationdef.cpp
+SOURCE	    		mdeeventdef.cpp
+SOURCE			mdeinstanceitem.cpp
+SOURCE			mdeobject.cpp
+SOURCE			mdeproperty.cpp
+SOURCE			mderelation.cpp
+SOURCE			mdeevent.cpp
+SOURCE			mdequery.cpp
+SOURCE			mdeobjectquery.cpp
+SOURCE			mderelationquery.cpp
+SOURCE			mdeeventquery.cpp
+SOURCE			mdeorderrule.cpp
+SOURCE			mdecondition.cpp
+SOURCE			mdelogiccondition.cpp
+SOURCE			mdeobjectcondition.cpp
+SOURCE			mdepropertycondition.cpp
+SOURCE			mdetextpropertycondition.cpp
+SOURCE			mdeboolpropertycondition.cpp
+SOURCE			mderelationcondition.cpp
+SOURCE			mdeeventcondition.cpp
+SOURCE			mdequerycriteriaserialization.cpp
+SOURCE          		mdenamespacedef.cpp
+SOURCE          		mderange.cpp
+SOURCE          		mderangepropertycondition.cpp
+SOURCE          		mdesessionstartupao.cpp
+SOURCE	    		mdesessionimpl.cpp
+SOURCE	    		mdeenginesession.cpp
+SOURCE          		mdequeryimpl.cpp
+SOURCE          		mdeasynchronousfindao.cpp
+SOURCE          		mdenotifierao.cpp
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY         	euser.lib
+LIBRARY         	bafl.lib
+LIBRARY     	mdccommon.lib
+
+DEBUGLIBRARY    flogger.lib
+

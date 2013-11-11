@@ -1,0 +1,16 @@
+EXPORTS
+	_Z9LibEntryLv @ 1 NONAME
+	_Z15SetRequirementsRP16CTestModuleParamRm @ 2 NONAME
+	_ZTI11CMediaEvent @ 3 NONAME ; #<TI>#
+	_ZTI13CStreamerBase @ 4 NONAME ; #<TI>#
+	_ZTI14CInputStreamer @ 5 NONAME ; #<TI>#
+	_ZTI15COutputStreamer @ 6 NONAME ; #<TI>#
+	_ZTI20CImmediateMediaEvent @ 7 NONAME ; #<TI>#
+	_ZTI24CAudioDataSettingsParams @ 8 NONAME ; #<TI>#
+	_ZTV11CMediaEvent @ 9 NONAME ; #<VT>#
+	_ZTV13CStreamerBase @ 10 NONAME ; #<VT>#
+	_ZTV14CInputStreamer @ 11 NONAME ; #<VT>#
+	_ZTV15COutputStreamer @ 12 NONAME ; #<VT>#
+	_ZTV20CImmediateMediaEvent @ 13 NONAME ; #<VT>#
+	_ZTV24CAudioDataSettingsParams @ 14 NONAME ; #<VT>#
+

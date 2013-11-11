@@ -1,0 +1,31 @@
+EXPORTS
+	??1CMPXCollectionEngine@@UAE@XZ @ 1 NONAME ; CMPXCollectionEngine::~CMPXCollectionEngine(void)
+	?AddClientL@CMPXCollectionClientContext@@QAEXVTThreadId@@PAVCMPXMessageQueue@@@Z @ 2 NONAME ; void CMPXCollectionClientContext::AddClientL(class TThreadId, class CMPXMessageQueue *)
+	?AddL@CMPXCollectionClientContext@@QAEXABVCMPXMedia@@@Z @ 3 NONAME ; void CMPXCollectionClientContext::AddL(class CMPXMedia const &)
+	?BackL@CMPXCollectionClientContext@@QAEXPAVMMPXCollectionEngineObserver@@@Z @ 4 NONAME ; void CMPXCollectionClientContext::BackL(class MMPXCollectionEngineObserver *)
+	?CancelRequest@CMPXCollectionClientContext@@QAEXPAVMMPXCollectionEngineObserver@@@Z @ 5 NONAME ; void CMPXCollectionClientContext::CancelRequest(class MMPXCollectionEngineObserver *)
+	?CommandL@CMPXCollectionClientContext@@QAEXABVCMPXMedia@@PAVMMPXCollectionEngineObserver@@ABVCMPXMessageQueue@@@Z @ 6 NONAME ; void CMPXCollectionClientContext::CommandL(class CMPXMedia const &, class MMPXCollectionEngineObserver *, class CMPXMessageQueue const &)
+	?CommandL@CMPXCollectionClientContext@@QAEXW4TMPXCollectionCommand@@H@Z @ 7 NONAME ; void CMPXCollectionClientContext::CommandL(enum TMPXCollectionCommand, int)
+	?Filter@CMPXCollectionClientContext@@QBEPBVCMPXMedia@@XZ @ 8 NONAME ; class CMPXMedia const * CMPXCollectionClientContext::Filter(void) const
+	?FindAllL@CMPXCollectionClientContext@@QAEXABVCMPXMedia@@PAVCBufBase@@PAVMMPXCollectionEngineObserver@@@Z @ 9 NONAME ; void CMPXCollectionClientContext::FindAllL(class CMPXMedia const &, class CBufBase *, class MMPXCollectionEngineObserver *)
+	?FindAllSyncL@CMPXCollectionClientContext@@QAEPAVCMPXMedia@@ABV2@ABVCBufBase@@@Z @ 10 NONAME ; class CMPXMedia * CMPXCollectionClientContext::FindAllSyncL(class CMPXMedia const &, class CBufBase const &)
+	?GetCapabilities@CMPXCollectionClientContext@@QAEHXZ @ 11 NONAME ; int CMPXCollectionClientContext::GetCapabilities(void)
+	?GetSupportedTypesL@CMPXCollectionEngine@@QAEXAAV?$RPointerArray@VCMPXCollectionType@@@@@Z @ 12 NONAME ; void CMPXCollectionEngine::GetSupportedTypesL(class RPointerArray<class CMPXCollectionType> &)
+	?LookupCollectionPluginID@CMPXCollectionEngine@@QAE?AVTUid@@V2@@Z @ 13 NONAME ; class TUid CMPXCollectionEngine::LookupCollectionPluginID(class TUid)
+	?MediaL@CMPXCollectionClientContext@@QAEXABVCMPXMedia@@PAVMMPXCollectionEngineObserver@@@Z @ 14 NONAME ; void CMPXCollectionClientContext::MediaL(class CMPXMedia const &, class MMPXCollectionEngineObserver *)
+	?NewL@CMPXCollectionEngine@@SAPAV1@XZ @ 15 NONAME ; class CMPXCollectionEngine * CMPXCollectionEngine::NewL(void)
+	?NotifyL@CMPXCollectionEngine@@QAEXW4TMPXCollectionBroadCastMsg@@H@Z @ 16 NONAME ; void CMPXCollectionEngine::NotifyL(enum TMPXCollectionBroadCastMsg, int)
+	?OpenL@CMPXCollectionClientContext@@QAEXABV?$TArray@VTUid@@@@HPAVMMPXCollectionEngineObserver@@@Z @ 17 NONAME ; void CMPXCollectionClientContext::OpenL(class TArray<class TUid> const &, int, class MMPXCollectionEngineObserver *)
+	?OpenL@CMPXCollectionClientContext@@QAEXHHABV?$TArray@VTMPXAttribute@@@@PAVMMPXCollectionEngineObserver@@@Z @ 18 NONAME ; void CMPXCollectionClientContext::OpenL(int, int, class TArray<class TMPXAttribute> const &, class MMPXCollectionEngineObserver *)
+	?OpenL@CMPXCollectionClientContext@@QAEXHPAVMMPXCollectionEngineObserver@@@Z @ 19 NONAME ; void CMPXCollectionClientContext::OpenL(int, class MMPXCollectionEngineObserver *)
+	?OpenL@CMPXCollectionClientContext@@QAEXPAVCMPXCollectionPath@@HPAVMMPXCollectionEngineObserver@@@Z @ 20 NONAME ; void CMPXCollectionClientContext::OpenL(class CMPXCollectionPath *, int, class MMPXCollectionEngineObserver *)
+	?Path@CMPXCollectionClientContext@@QBEABVCMPXCollectionPath@@XZ @ 21 NONAME ; class CMPXCollectionPath const & CMPXCollectionClientContext::Path(void) const
+	?PluginId@CMPXCollectionClientContext@@QBE?AVTUid@@XZ @ 22 NONAME ; class TUid CMPXCollectionClientContext::PluginId(void) const
+	?RemoveClient@CMPXCollectionClientContext@@QAEXABVCMPXMessageQueue@@@Z @ 23 NONAME ; void CMPXCollectionClientContext::RemoveClient(class CMPXMessageQueue const &)
+	?RemoveL@CMPXCollectionClientContext@@QAEXABVCMPXMedia@@@Z @ 24 NONAME ; void CMPXCollectionClientContext::RemoveL(class CMPXMedia const &)
+	?RemoveL@CMPXCollectionClientContext@@QAEXPAVCMPXCollectionPath@@PAVMMPXCollectionEngineObserver@@@Z @ 25 NONAME ; void CMPXCollectionClientContext::RemoveL(class CMPXCollectionPath *, class MMPXCollectionEngineObserver *)
+	?ResolvePluginUid@CMPXCollectionEngine@@QAE?AVTUid@@ABV?$TArray@VTUid@@@@@Z @ 26 NONAME ; class TUid CMPXCollectionEngine::ResolvePluginUid(class TArray<class TUid> const &)
+	?SessionInitL@CMPXCollectionEngine@@QAEAAVCMPXCollectionClientContext@@ABVTUid@@VTThreadId@@PAVCMPXMessageQueue@@@Z @ 27 NONAME ; class CMPXCollectionClientContext & CMPXCollectionEngine::SessionInitL(class TUid const &, class TThreadId, class CMPXMessageQueue *)
+	?SetFilterL@CMPXCollectionClientContext@@QAEXPBVCMPXMedia@@@Z @ 28 NONAME ; void CMPXCollectionClientContext::SetFilterL(class CMPXMedia const *)
+	?SetL@CMPXCollectionClientContext@@QAEXABVCMPXMedia@@@Z @ 29 NONAME ; void CMPXCollectionClientContext::SetL(class CMPXMedia const &)
+

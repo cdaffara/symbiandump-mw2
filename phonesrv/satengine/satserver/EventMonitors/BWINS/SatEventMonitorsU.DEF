@@ -1,0 +1,6 @@
+EXPORTS
+	?CancelMonitor@CSatEventMonitorHandler@@UAEXXZ @ 1 NONAME ; void CSatEventMonitorHandler::CancelMonitor(void)
+	?CreateEventMonitorsL@TSatEventMonitorFactory@@SAPAV?$CArrayPtrFlat@VMSatEventMonitor@@@@AAVMSatEventMonitorUtils@@@Z @ 2 NONAME ; class CArrayPtrFlat<class MSatEventMonitor> * TSatEventMonitorFactory::CreateEventMonitorsL(class MSatEventMonitorUtils &)
+	?UpdateMonitor@CSatEventMonitorHandler@@UAEHI@Z @ 3 NONAME ; int CSatEventMonitorHandler::UpdateMonitor(unsigned int)
+	?IsMonitoringEvent@CSatEventMonitorHandler@@UAEHH@Z @ 4 NONAME ; int CSatEventMonitorHandler::IsMonitoringEvent(int)
+

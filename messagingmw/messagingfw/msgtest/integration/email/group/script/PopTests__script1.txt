@@ -1,0 +1,556 @@
+// *****************************************
+//  Test Script 
+//  
+//  Author:	Nick Black
+//  Date:	13/8/01
+//
+// *****************************************
+
+[main]
+email_client_test email
+
+[email]
+//----------------------------------
+// Initialise the Tests
+//----------------------------------
+pop3_client_test initialise_tests
+//
+//----------------------------------
+// Run the Tests
+//----------------------------------
+pop3_client_test pop_use_case_SA_1
+pop3_client_test pop_use_case_SA_2
+pop3_client_test pop_use_case_SA_3
+pop3_client_test pop_use_case_SA_4
+pop3_client_test pop_use_case_SA_5
+
+// ********************************************************************************
+// Initialise the Tests (ie Clean the Msg Server, start Session & create Accounts)
+// ********************************************************************************
+[initialise_tests]
+//--------------------------------------
+//  Clean Message Server & Start Session
+//--------------------------------------
+clean_message_folder
+start_client_session
+//--------------------------------------
+// Create the Services
+//--------------------------------------
+pop3_client_test create_pop_service
+pop3_client_test create_temp_pop_service
+smtp_client_test create_smtp_service
+//
+add_comment
+add_comment
+
+
+
+// ****************************************************************
+// Use case SA-1: Sync-to-all, with empty local and remote mailbox
+// ****************************************************************
+[pop_use_case_SA_1]
+//---------------------------------------
+//  Delete all Remote Messages
+//---------------------------------------
+pop3_client_test delete_all_remote_messages
+//
+//----------------------------------------------------
+//  Connect, Sync-to-all & Count the Synched messages 
+//-----------------------------------------------------
+add_comment *** Connect to POP service ***
+select_root_folder
+select_folder Pop3_Service
+use_service
+set_sync_limits -1
+connect
+check_pop3_error 0
+//
+add_comment *** Check there are 0 Synched Messages ***
+select_all_messages
+check_selection_count 0
+//
+add_comment *** Disconnect ***
+disconnect
+check_pop3_error 0
+add_comment
+add_comment
+
+
+
+// ****************************************************************
+// Use case SA-2: Sync-to-all, with 1 mail in remote mailbox
+// ****************************************************************
+[pop_use_case_SA_2]
+//-------------------------------------
+//  Send a Message to the Remote server
+//-------------------------------------
+smtp_client_test send_1_message
+//
+//-------------------------------------------------------------
+//  Connect, Sync-to-all & Check if the Synched Message is New
+//-------------------------------------------------------------
+add_comment *** Connect to POP service ***
+select_root_folder
+select_folder Pop3_Service
+set_sync_limits -1
+connect
+check_pop3_error 0
+//
+// Check if the first selected Entry is New
+add_comment *** Check Synched Message is New ***
+select_all_messages
+check_selection_count 1
+check_new_flag 0 1
+//
+add_comment *** Disconnect ***
+disconnect
+check_pop3_error 0
+//
+//------------------------------------------------
+//  Connect & Check if the Synched Message is Old
+//------------------------------------------------
+add_comment *** Connect to POP service ***
+connect
+check_pop3_error 0
+//
+// Check if the first selected Entry is NOT New
+add_comment *** Checked Synched Message is Old ***
+select_all_messages
+check_selection_count 1
+check_new_flag 0 0
+//
+add_comment *** Disconnect ***
+disconnect
+check_pop3_error 0
+add_comment
+add_comment
+
+
+// ****************************************************************************
+// Use case SA-3: Sync-to-all, where mail has been deleted from remote mailbox
+// ****************************************************************************
+[pop_use_case_SA_3]
+//---------------------------------------
+//  Delete all Remote Messages
+//---------------------------------------
+pop3_client_test delete_all_remote_messages
+//
+//----------------------------------------------------------------------------------
+//  Connect to POP3 service, Sync-to-all & check sync removes the Local Message
+//----------------------------------------------------------------------------------
+add_comment *** Before Connect & Sync, check Local folder still has 1 Message
+select_root_folder
+select_folder Pop3_Service
+use_service
+select_all_messages
+check_selection_count 1
+//
+add_comment *** Connect to POP service ***
+set_sync_limits -1
+connect
+check_pop3_error 0
+//
+add_comment *** Disconnect ***
+disconnect
+check_pop3_error 0
+//
+add_comment *** After Sync, check Local folder has 0 Messages
+select_all_messages
+check_selection_count 0
+//
+add_comment
+add_comment
+
+
+
+// ****************************************************************
+// Use case SA-4: Sync-to-all, with some new mail in remote mailbox
+// ****************************************************************
+[pop_use_case_SA_4]
+//---------------------------------------
+//  Send 5 Messages to the Remote server
+//---------------------------------------
+smtp_client_test send_5_messages
+//
+//-------------------------------------------------------------
+//  Connect, Sync-to-all & Check if the Synched Message is New
+//-------------------------------------------------------------
+add_comment *** Connect to POP service ***
+select_root_folder
+select_folder Pop3_Service
+set_sync_limits -1
+connect
+check_pop3_error 0
+//
+add_comment *** Check the 5 Synched Messages are New ***
+select_all_messages
+check_selection_count 5
+check_new_flag 0 1
+check_new_flag 1 1
+check_new_flag 2 1
+check_new_flag 3 1
+check_new_flag 4 1
+//
+add_comment *** Disconnect ***
+disconnect
+check_pop3_error 0
+add_comment
+add_comment
+
+
+
+
+// **************************************************************************************************
+// Use case SA-5: Sync-to-all, with some new and old mail in the remote inbox, and some mail deleted
+// **************************************************************************************************
+[pop_use_case_SA_5]
+//---------------------------------------
+//  Send 5 Messages to the Remote server
+//---------------------------------------
+smtp_client_test send_2_messages
+//
+//----------------------------------------------------------------
+//  Connect to Temp Pop service, Delete No 2 Message & Disconnect
+//----------------------------------------------------------------
+add_comment *** Connect to Temp POP service ***
+select_root_folder
+select_folder Temp_Pop3_service
+connect
+check_pop3_error 0
+//
+add_comment *** Delete 2nd Message ***
+select_entry PopTestMsg2
+delete
+check_pop3_error 0
+//
+add_comment *** Disconnect ***
+disconnect
+check_pop3_error 0
+//
+//--------------------------------------------------------------------
+//  Connect, sync-to-all & Check there are Old & New Synched Messages
+//--------------------------------------------------------------------
+add_comment *** Connect to POP service ***
+select_root_folder
+select_folder Pop3_Service
+set_sync_limits -1
+connect
+check_pop3_error 0
+//
+add_comment *** Check there are only 6 Messages (as 1 has been deleted) ***
+select_all_messages
+check_selection_count 6
+//
+add_comment *** Check the first 2 Messages are New ***
+check_new_flag 0 1
+check_new_flag 1 1
+//
+add_comment *** Check the next 4 Messages are Old ***
+check_new_flag 2 0
+check_new_flag 3 0
+check_new_flag 4 0
+check_new_flag 5 0
+//
+add_comment *** Disconnect ***
+disconnect
+check_pop3_error 0
+//
+//
+//----------------------------------------------------------------
+//  Connect, sync-to-all & Check there are 6 Old Synched Messages
+//----------------------------------------------------------------
+add_comment *** Connect to POP service ***
+select_root_folder
+select_folder Pop3_Service
+set_sync_limits -1
+connect
+check_pop3_error 0
+//
+add_comment *** Check there are 6 Messages ***
+select_all_messages
+check_selection_count 6
+//
+add_comment *** Check the 6 Messages are Old ***
+check_new_flag 0 0
+check_new_flag 1 0
+check_new_flag 2 0
+check_new_flag 3 0
+check_new_flag 4 0
+check_new_flag 5 0
+//
+add_comment *** Disconnect ***
+disconnect
+check_pop3_error 0
+//
+add_comment
+add_comment
+
+// ****************************************************************
+//  Create Pop Service 
+// ****************************************************************
+[create_pop_service]
+add_comment *** Creating Pop Service ***
+select_root_folder
+pop3_service Pop_service
+
+
+// ****************************************************************
+//  Create Temp Pop Service 
+// ****************************************************************
+[create_temp_pop_service]
+add_comment *** Creating Temp Pop Service ***
+select_root_folder
+pop3_service Temp_pop_service
+
+
+// ****************************************************************
+//  Create Smtp Service 
+// ****************************************************************
+[create_smtp_service]
+select_root_folder
+add_comment *** Creating Smtp Service ***
+smtp_service Smtp_service_1
+
+
+
+//--------------------------------------------------------------------------------------------
+
+
+
+// ***************************************************************
+//		Delete All Remote Messages
+// ***************************************************************
+[delete_all_remote_messages]
+//----------------------------------------------------------------
+//  Connect to Temp Pop service, Delete all Messages & Disconnect
+//----------------------------------------------------------------
+add_comment *** Connect to Temp POP service ***
+select_root_folder
+select_folder Temp_Pop3_service
+use_service
+connect
+check_pop3_error 0
+//
+add_comment *** Delete all Remote messages ***
+select_all_messages
+delete
+check_pop3_error 0
+//
+add_comment *** Disconnect ***
+disconnect
+check_pop3_error 0
+
+
+// ***************************************************************
+//		Delete All local Inbox Messages
+// ***************************************************************
+[delete_local_inbox_messages]
+//----------------------------------------------------------------
+//  Delete all Local Inbox Messages
+//----------------------------------------------------------------
+add_comment *** Delete all Local Inbox messages ***
+select_root_folder
+select_folder local
+select_folder inbox
+add_comment *** Select all messages ***
+select_all_messages
+add_comment *** About to delete ***
+delete
+add_comment *** Delete ***
+//
+
+
+
+//--------------------------------------------------------------------------------------------
+
+
+
+// ****************************************************************
+//  Create Smtp Service & Send a New Message to the Remote Folder
+// ****************************************************************
+[send_1_message]	
+//-------------------------------------------
+//  Use the current Smtp Service 
+//-------------------------------------------
+add_comment *** Select Smtp Service ***
+select_root_folder
+select_folder Smtp_Service
+use_service
+//-------------------------------------------
+//  Create a test message and send it
+//-------------------------------------------
+select_destination_folder Smtp_Service
+select_root_folder
+select_folder local
+select_folder outbox
+add_comment *** Creating Test Message ***
+create_email_message emailsmoke PopTestMsg1.txt
+select_all_messages
+//
+add_comment *** Sending Test Message ***
+copy
+add_comment *** Test Message Sent ***
+check_smtp_error 0
+//
+//---------------------------------------
+//  Wait, to give the Msg time to arrive
+//---------------------------------------
+wait 10
+
+
+// ****************************************************************
+//  Create Smtp Service & Send 5 New Messages to the Remote Folder
+// ****************************************************************
+[send_5_messages]	
+//-------------------------------------------
+//  Use the current Smtp Service 
+//-------------------------------------------
+add_comment *** Select Smtp Service ***
+select_root_folder
+select_folder Smtp_Service
+use_service
+//-------------------------------------------
+//  Create 5 test messages and send them
+//-------------------------------------------
+add_comment *** Select Destination folder ***
+select_root_folder
+select_destination_folder Smtp_Service
+add_comment *** Select Outbox folder ***
+select_root_folder
+select_folder local
+select_folder outbox
+add_comment *** Creating 5 Test Messages ***
+create_email_message emailsmoke PopTestMsg1.txt
+create_email_message emailsmoke PopTestMsg2.txt
+create_email_message emailsmoke PopTestMsg3.txt
+create_email_message emailsmoke PopTestMsg4.txt
+create_email_message emailsmoke PopTestMsg5.txt
+//
+add_comment *** Select All 5 Messages
+select_all_messages
+//
+add_comment *** Sending 5 Test Messages ***
+copy
+add_comment *** 5 Test Messages Sent ***
+check_smtp_error 0
+//
+//---------------------------------------
+//  Wait, to give the Msg time to arrive
+//---------------------------------------
+wait 20
+
+
+
+// ****************************************************************
+//  Create Smtp Service & Send 2 New Messages to the Remote Folder
+// ****************************************************************
+[send_2_messages]	
+//-------------------------------------------
+//  Use the current Smtp Service 
+//-------------------------------------------
+add_comment *** Select Smtp Service ***
+select_root_folder
+select_folder Smtp_Service
+use_service
+//-------------------------------------------
+//  Create a test message and send it
+//-------------------------------------------
+select_destination_folder Smtp_Service
+select_root_folder
+select_folder local
+select_folder outbox
+add_comment *** Creating 2 Test Messages ***
+create_email_message emailsmoke PopTestMsg6.txt
+create_email_message emailsmoke PopTestMsg7.txt
+select_all_messages
+add_comment *** Sending 2 Test Messages ***
+copy
+add_comment *** 2 Test Messages Sent ***
+check_smtp_error 0
+//
+//---------------------------------------
+//  Wait, to give the Msg time to arrive
+//---------------------------------------
+wait 10
+
+
+// ****************************************************************
+//  Create Smtp Service & Send 6 New Messages to the Remote Folder
+// ****************************************************************
+[send_6_messages]	
+//-------------------------------------------
+//  Use the current Smtp Service 
+//-------------------------------------------
+add_comment *** Select Smtp Service ***
+select_root_folder
+select_folder Smtp_Service
+use_service
+//-------------------------------------------
+//  Create 6 test messages and send them
+//-------------------------------------------
+select_destination_folder Smtp_Service
+select_root_folder
+select_folder local
+select_folder outbox
+add_comment *** Creating 6 Test Messages ***
+create_email_message emailsmoke PopTestMsg8.txt
+create_email_message emailsmoke PopTestMsg9.txt
+create_email_message emailsmoke PopTestMsg10.txt
+create_email_message emailsmoke PopTestMsg11.txt
+create_email_message emailsmoke PopTestMsg12.txt
+create_email_message emailsmoke PopTestMsg13.txt
+//
+add_comment *** Select All 6 Messages
+select_all_messages
+//
+add_comment *** Sending 6 Test Messages ***
+copy
+add_comment *** 6 Test Messages Sent ***
+check_smtp_error 0
+//
+//---------------------------------------
+//  Wait, to give the Msg time to arrive
+//---------------------------------------
+wait 20
+
+
+
+
+//--------------------------------------------------------------------------------------------
+
+// *****************************************
+//  POP3 Service Settings 			
+// *****************************************
+[Pop_service]
+set_name Pop3_Service
+set_server msexchange01.closedtest.intra
+set_user test
+set_pass test
+
+// *****************************************
+//  Temp POP3 Service Settings 			
+// *****************************************
+[Temp_pop_service]
+set_name Temp_Pop3_service
+set_server msexchange01.closedtest.intra
+set_user test
+set_pass test				
+
+
+// *****************************************
+//  Smtp Service Settings 1
+// *****************************************
+[Smtp_service_1]
+// Use Symbian SMTP sever to pass onto Pipex acocount	
+set_alias Smtp_Service
+set_server msexchange01.closedtest.intra
+set_email_address test@msexchange01.closedtest.intra
+set_reply_address test@msexchange01.closedtest.intra
+set_receipt_address test@msexchange01.closedtest.intra
+add_iap 9
+
+
+
+
+
+

@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<api id="38aae95b9db64a2a76ffdedafb8bd93c" dataversion="1.0">
+  <name>Central Repository Database API</name>
+  <description>Utility class to accessing tables in central repository database.</description>
+  <type>c++</type>
+  <subsystem>convergedcallengine</subsystem>
+  <libs>
+    <lib name="cenrepdatabase.lib" />
+  </libs>
+  <release category="domain" sinceversion="5.0"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsure then the value is "no" -->
+     <htmldocprovided>yes</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

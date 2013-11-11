@@ -1,0 +1,77 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+//CED c:\msgtest\TestFramework\Configurations\CommDbSettings\NtRasLongIdleTimeout.cfg
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE
+
+
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer GetBaseConstants					c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini GetBaseConstants
+RUN_TEST_STEP 100 MessagingTestServer InitNtRas							c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini InitNtRas
+RUN_TEST_STEP 100 MessagingTestServer CreateSession						c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini CreateSession
+RUN_TEST_STEP 100 MessagingTestServer ResetMessageStore					c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini ResetMessageStore
+
+RUN_TEST_STEP 100 MessagingTestServer CreatePop3Service					c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini CreatePop3Service
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpService					c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini CreateSmtpService
+
+RUN_TEST_STEP 100 MessagingTestServer CreateRegistry					c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini CreateRegistry
+RUN_TEST_STEP 100 MessagingTestServer SetPop3ServiceParameters			c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini SetPop3ServiceParameters
+
+RUN_TEST_STEP 100 MessagingTestServer CreatePop3Mtm						c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini CreatePop3Mtm
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpMtm						c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini CreateSmtpMtm
+
+RUN_TEST_STEP 100 MessagingTestServer GetDefaultSmtpService					c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini GetDefaultSmtpService
+RUN_TEST_STEP 100 MessagingTestServer SetSmtpServiceParameters			c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini SetSmtpServiceParameters
+
+RUN_TEST_STEP 100 MessagingTestServer ConnectPop3Server   				c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini ConnectPop3Server
+RUN_TEST_STEP 100 MessagingTestServer DeleteChildren					c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini	DeleteChildren
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount				c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini CheckChildrenCount0
+RUN_TEST_STEP 100 MessagingTestServer DisconnectPop3Server				c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini DisconnectPop3Server
+
+
+RUN_TEST_STEP 100 MessagingTestServer CreatePop3MailInfo				c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini CreatePop3MailInfo
+RUN_TEST_STEP 100 MessagingTestServer CreateExpPop3MailInfo				c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini CreateExpPop3MailInfo0
+RUN_TEST_STEP 100 MessagingTestServer CreateExpPop3MailInfo				c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini CreateExpPop3MailInfo1
+RUN_TEST_STEP 100 MessagingTestServer CreateExpPop3MailInfo				c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini CreateExpPop3MailInfo2
+RUN_TEST_STEP 100 MessagingTestServer CreateExpPop3MailInfo				c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini CreateExpPop3MailInfo3
+RUN_TEST_STEP 100 MessagingTestServer SetDefaultConfiguration			c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini	SetDefaultConfiguration
+
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpMessageFromEmailFile	c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini	CreateSmtpMessageFromEmailFile0
+RUN_TEST_STEP 100 MessagingTestServer CopyEntry							c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini CopyEntry
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpMessageFromEmailFile	c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini	CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 100 MessagingTestServer CopyEntry							c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini CopyEntry
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpMessageFromEmailFile	c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini	CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 100 MessagingTestServer CopyEntry							c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini CopyEntry
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpMessageFromEmailFile	c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini	CreateSmtpMessageFromEmailFile3
+RUN_TEST_STEP 100 MessagingTestServer CopyEntry							c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini CopyEntry
+
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount				c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini CheckChildrenCount_sent4
+RUN_TEST_STEP 100 MessagingTestServer ConnectPop3Server	   				c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini ConnectPop3Server
+RUN_TEST_STEP 100 MessagingTestServer CreateChildrenSelection			c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini	CreateChildrenSelectionPop3
+RUN_TEST_STEP 100 MessagingTestServer Pop3TopPopulate					c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini Pop3TopPopulate
+RUN_TEST_STEP 100 MessagingTestServer DisconnectPop3Server				c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini DisconnectPop3Server
+
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+RUN_TEST_STEP 100 MessagingTestServer CreateChildrenSelection			c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini	CreateChildrenSelectionPop3
+RUN_TEST_STEP 100 MessagingTestServer CreateChildrenSelection			c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini	CreateChildrenSentItems
+RUN_TEST_STEP 100 MessagingTestServer VerifyEmail						c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest1.ini VerifyEmail
+
+RUN_TEST_STEP 100 MessagingTestServer END_TEST_CASE

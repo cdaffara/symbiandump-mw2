@@ -1,0 +1,8 @@
+#  lon-cn-exchng2k.msexchange2k.closedtest.intra
+__type__   = SmtpSettings
+
+EmailAddressExtension = msexchange2k.closedtest.intra
+
+#ServerName   = lon-cn-exchng2k.msexchange2k.closedtest.intra
+ServerName   = 10.22.64.6
+EmailAddress = Pop3Top@msexchange2k.closedtest.intra

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api id="64481ad6d77f2f35acf280ac96e35472" dataversion="2.0">
+  <name>Call Audio Control API</name>
+  <description>An API that provides basic controls for call audio.</description>
+  <type>c++</type>
+  <collection>mmserv</collection>
+  <libs>
+    <lib name="CallAudioControl.lib"/>
+  </libs>
+  <release category="platform" sinceversion="5.1"/>
+  <attributes>
+    <htmldocprovided>no</htmldocprovided>
+    <adaptation>no</adaptation>
+  </attributes>
+</api>

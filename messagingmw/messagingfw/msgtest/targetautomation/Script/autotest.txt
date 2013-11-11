@@ -1,0 +1,157 @@
+# Copyright (c) 1997-2009 Nokia Corporation and/or its subsidiary(-ies).
+# All rights reserved.
+# This component and the accompanying materials are made available
+# under the terms of "Eclipse Public License v1.0"
+# which accompanies this distribution, and is available
+# at the URL "http://www.eclipse.org/legal/epl-v10.html".
+#
+#Initial Contributors:
+# Nokia Corporation - initial contribution.
+#
+# Contributors:
+#
+# Description:
+# Usage: <required> [optional]
+# COMPONENT	<componentname>
+# <testharnessname>		[UREL]	[UDEB] 
+# IMCM
+# 
+#
+
+COMPONENT IMCM		
+
+T_MIUT01				UREL 	UDEB
+T_MIUT02 				UREL 	UDEB
+T_MIUT03 				UREL 	UDEB
+T_MIUT04				UREL 	UDEB
+T_MIUT05 				UREL 	UDEB
+T_MIUT06 				UREL 	UDEB
+T_MIUT07 				UREL 	UDEB
+T_MIUT09 				UREL 	UDEB
+T_MIUT10 				UREL 	UDEB
+T_IMCM01 				UREL 	UDEB
+T_IMCM02A 				UREL		UDEB
+T_IMCM02B 				UREL		UDEB
+T_IMCM02B1				UREL	 	UDEB 
+T_IMCM02B2 				UREL	 	UDEB
+T_IMCM02C 				UREL		UDEB
+T_IMCM02C1				UREL	 	UDEB
+T_IMCM02C2 				UREL	 	UDEB
+T_IMCM02D 				UREL		UDEB
+T_IMCM02D1 				UREL	 	UDEB
+T_IMCM02D2 				UREL	 	UDEB
+T_IMCM02E 				UREL		UDEB
+T_IMCM02E1 				UREL	 	UDEB
+T_IMCM02E2 				UREL		UDEB
+T_IMCM02_HEAP 	  		UREL 	UDEB
+T_IMCM03 				UREL 	UDEB
+T_IMCM03_HEAP 	  		UREL 	UDEB
+T_IMCM05 				UREL 	UDEB
+T_IMCM06 				UREL 	UDEB
+####T_IMCM07 				UREL 	UDEB run manually
+####T_POPC	 				UREL 	UDEB hardcoded server, will not work with mobile
+#T_IMPC   				UREL 	UDEB hangs
+####T_IMPC01   				UREL 	UDEB hardcoded server, will not work with mobile
+####T_SMTC	 				UREL 	UDEB hardcoded server, will not work with mobile
+T_SMTSND 				UREL 	UDEB
+####T_IMCM_ASYNCHRONOUS_OPERATION_CANCELLATION_TEST UREL
+
+#
+# IMUT 
+#
+COMPONENT IMUT
+
+####T_IMUT_PARSE			UREL	remove spaces in directory names and files
+T_IMCV_TRANSFORM_SEND		UREL
+T_IMCV_TRANSFORM_RECEIVE	UREL
+#####T_MSGCONNTEST		   	UREL  run manually
+
+
+#
+# SMTS 
+#
+##COMPONENT SMTS
+
+##T_SMTS00				UREL
+####T_SMTS01				UREL run manually
+####T_SMTS02				UREL run manually
+###T_SMTSSECURESOCKETS		UREL
+####T_SMTSSMTPAUTH			UREL run manually
+
+#
+# POPS 
+#
+COMPONENT POPS
+
+T_POPSECURESOCKETS		UREL
+T_POPS5					UREL
+####T_POPS6					UREL hardcoded server, will not work with mobile
+T_POPS_SYNCHRONISE		UREL
+
+
+#
+# IMPS 
+#
+####COMPONENT IMPS
+
+####T_IMPSSECURESOCKET		UREL run manually
+####T_IMPS01				UREL run manually
+
+
+#
+# SMCM 
+#
+COMPONENT SMCM
+
+T_SMCM1					UREL
+T_SMCM2					UREL
+####T_SMCMFAIL				UREL run manually
+####T_SMSCANCEL				UREL run manually
+####T_SMSSENDRECV			UREL run manually
+####T_SMSBIOFICATION		UREL run manually
+
+
+#
+# SEND 
+#
+COMPONENT SEND
+
+T_SEND					UREL
+T_SEND_FAIL				UREL
+
+#
+# MSGS
+#
+COMPONENT MSGS
+
+T_MSGS_BASIC			UREL	UDEB
+T_MSGS_STORE			UREL	UDEB
+T_MSGS_REGISTRY			UREL
+T_MSGS_SORT				UREL
+T_MSGS_INDEX			UREL
+T_MSGS_INDEX_HEAP		UREL
+####T_MSGS_INDEX_FILE		UREL crashing eshell
+T_MSGS_SERVER_ENTRY		UREL
+T_MSGS_SERVER_FAIL		UREL
+T_MSGS_LOCAL			UREL
+T_MSGS_REBUILD			UREL
+T_MSGS_NOTIFY			UREL
+T_MSGS_SERVER_REGISTRY	UREL
+T_MSGS_SERVER			UREL
+T_MSGS_CLOSE   			UREL
+T_MSGS_CLIENT0			UREL
+T_MSGS_CLIENT1 			UREL
+T_MSGS_CLIENT2			UREL
+T_MSGS_CLIENT_REGISTRY	UREL
+T_MSGS_CLIENT3 			UREL
+T_MSGS_GLOBAL_FIND		UREL
+T_MSGS_FIND_TEXT		UREL
+####T_MSGS_DEFECT  			UREL crashing eshell
+
+#
+# SMOKE
+#
+
+####COMPONENT	TEST
+####T_EMAIL				UREL	run manually
+####T_SMS				UREL	run manually

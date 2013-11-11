@@ -1,0 +1,78 @@
+// Copyright (c) 2000-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// pushwatcher.dll Receives wap push messages from the wap stack
+// 
+//
+
+/**
+ @file
+*/
+
+
+TARGET		pushwatcher.dll
+#ifdef __WATCHER_API_V2__
+TARGETTYPE	PLUGIN
+
+// UIDs - 2nd UID specifies an ECom dll, 3rd UID is unique identifier
+UID				0x10009D8D 0x10009145
+
+SOURCEPATH		../src
+
+start resource 10009145.rss
+#ifdef SYMBIAN_SECURE_ECOM
+target pushwatcher.rsc
+#endif
+end
+#else
+TARGETPATH 		/system/libs/watchers
+TARGETTYPE		dll
+
+UID      0x1027433D 0x10009145
+#endif	// __WATCHER_API_V2__
+
+CAPABILITY ReadDeviceData WriteDeviceData NetworkServices LocalServices ReadUserData WriteUserData
+VENDORID 0x70000001
+
+SOURCEPATH      ../src
+USERINCLUDE     ../inc
+USERINCLUDE     ../../plugins/inc
+USERINCLUDE     ../../pushutils/inc
+USERINCLUDE     ../../plugins/PushAppHandler
+USERINCLUDE     ../../plugins/PushSecurity
+USERINCLUDE     ../../plugins/ROAppHandler/src
+USERINCLUDE     ../../plugins/WapUriLookup/inc
+
+// MW_LAYER_SYSTEMINCLUDE_SYMBIAN depenancy on iapprefs.h
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+SOURCE          pushdll.cpp 
+SOURCE          CLWatcher.cpp ConnMan.cpp 
+SOURCE			pushwatcher.cpp
+
+LIBRARY     euser.lib wappushutils.lib ecom.lib
+LIBRARY	    watcher.lib wapmsgcli.lib
+
+#ifndef __WATCHER_API_V2__
+
+#ifdef WINS
+DEFFILE       ../../BWins/WapPushW.def
+#elif defined(GCC32)
+DEFFILE       ../../BMarm/WapPushM.def
+#else
+DEFFILE       ../../EABI/WapPush.def
+#endif  
+
+#endif	// __WATCHER_API_V2__
+
+SMPSAFE

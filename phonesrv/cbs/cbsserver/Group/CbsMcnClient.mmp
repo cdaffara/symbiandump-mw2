@@ -1,0 +1,48 @@
+/*
+* Copyright (c) 2003-2008 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  This is project specification file for CbsMcnClient.
+*                This file is used to generate makefile with MAKMAKE utility.
+*
+*/
+
+#include <platform_paths.hrh>
+
+VENDORID        VID_DEFAULT
+TARGET          CbsMcnClient.dll
+TARGETTYPE      dll
+UID             0x1000008d 0x1000A85B
+
+CAPABILITY      CAP_CLIENT_DLL
+
+LANGUAGE_IDS
+
+SOURCEPATH      ../Group
+SOURCEPATH      ../McnClientInc
+SOURCEPATH      ../McnClientSrc
+
+SOURCE          CMcn.cpp 
+SOURCE          Rcbsmcnsession.cpp 
+SOURCE          CCbsMcnListener.cpp 
+SOURCE          CMcnTopicArray.cpp 
+SOURCE          CbsMcnPanic.cpp 
+SOURCE          Rmcnsubsession.cpp
+
+USERINCLUDE     ../McnClientInc 
+USERINCLUDE     ../McnClientSrc 
+USERINCLUDE     ../ServerInc 
+USERINCLUDE     ../ClientInc
+APP_LAYER_SYSTEMINCLUDE
+
+LIBRARY         euser.lib 
+LIBRARY        flogger.lib

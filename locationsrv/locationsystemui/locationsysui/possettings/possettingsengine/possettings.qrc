@@ -1,0 +1,7 @@
+<RCC>    
+    <qresource prefix="/data" >
+        <file alias="pushbuttoncustomviewitem.css">resources/pushbuttoncustomviewitem.css</file>
+        <file alias="groupboxcustomviewitem.css">resources/groupboxcustomviewitem.css</file>        
+        <file alias="checkcustomviewitem.css">resources/checkcustomviewitem.css</file>
+    </qresource>  
+</RCC>

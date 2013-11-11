@@ -1,0 +1,49 @@
+/*
+* Copyright (c) 2010 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: Project definition file for server
+*
+*/
+
+#include <platform_paths.hrh>
+
+TARGET          locnotificationserver.exe
+EPOCSTACKSIZE   0x5000
+TARGETTYPE      exe
+UID             0x00000000 0x101f7a86
+
+VENDORID        VID_DEFAULT
+CAPABILITY      CAP_SERVER
+
+SOURCEPATH      ../src
+SOURCE          locprivacyserverstartup.cpp
+SOURCE          locprivacyserver.cpp
+SOURCE          locprivacyserversession.cpp
+
+
+USERINCLUDE     ../inc
+USERINCLUDE     ../../inc
+USERINCLUDE     ../../locnotificationengine/inc
+
+MW_LAYER_SYSTEMINCLUDE 
+
+LIBRARY         bafl.lib
+LIBRARY         euser.lib
+LIBRARY         eposprvtyp.lib
+LIBRARY         eposutils.lib
+LIBRARY         efsrv.lib
+LIBRARY         estor.lib
+LIBRARY         locnotificationengine.lib
+LIBRARY			locutils.lib
+
+// End of file

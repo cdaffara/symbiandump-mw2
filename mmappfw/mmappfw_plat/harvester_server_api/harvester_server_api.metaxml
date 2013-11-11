@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<api id="af05112b2f6914a874089f32d39b3b69" dataversion="2.0">
+<name>Harvester Server API</name>
+<description>Harvester  Server Common Declarations  And Definitions</description>
+<type>c++</type>
+<collection>mmappcomponents</collection>
+<libs>
+</libs>
+<release category="platform" sinceversion=""/>
+<attributes>
+<htmldocprovided>no</htmldocprovided>
+<adaptation>no</adaptation>
+</attributes>
+</api>

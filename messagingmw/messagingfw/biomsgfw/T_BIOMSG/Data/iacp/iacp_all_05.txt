@@ -1,0 +1,12 @@
+//SIAP11
+Mname:Home
+Muid:pop628812
+Mpwd:uiqtest
+Madr:uiqtest@home.se
+Mrcv:pop.home.se
+Msnd:smtp.home.se
+Mpro:PO
+Iname:Home
+Itel:+46187000100
+Iuid:pop628812
+Ipwd:uiqtest

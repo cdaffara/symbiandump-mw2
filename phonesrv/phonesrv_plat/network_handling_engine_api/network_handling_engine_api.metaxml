@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<api id="4b94b66b45e4ccdabcb5ce8113b0c535" dataversion="1.0">
+  <name>Network Handling Engine API</name>
+  <description>Network Handling Engine provides an interface for accessing network and operator related information.</description>
+  <type>c++</type>
+  <subsystem>networkhandling</subsystem>
+  <libs>
+    <lib name="networkhandling.lib" />
+  </libs>
+  <release category="domain"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>yes</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<api id="1531c6f68bbaa965c4756002ad20e9a8" dataversion="1.0">
+  <name>XDM API</name>
+  <description>Protocol agnostig XML Document Management API. This is the API that is used in handling the documents and directory listings locally.
+This API contains 
+- Methods to read documents directory listings
+- Methods to modify documents
+- Methods to delete documents
+- Methods to read documents listed in directory listing</description>
+  <type>c++</type>
+  <subsystem>XDMEngine</subsystem>
+  <libs>
+    <lib name="XdmEngine.lib" />
+  </libs>
+  <release category="domain"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>yes</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

@@ -1,0 +1,10 @@
+IntervalType= TIntervalType::EHourly
+Latency= 10000
+LongInterVal= 1000
+ShortInterval= 10
+VariableIntervalCount= 3
+VariableIntervals1= 10
+VariableIntervals2= 100
+VariableIntervals3= 1000
+Priority= 1
+ValidityPeriod= 10

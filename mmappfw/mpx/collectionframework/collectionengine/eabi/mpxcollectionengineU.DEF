@@ -1,0 +1,37 @@
+EXPORTS
+	_ZN20CMPXCollectionEngine12SessionInitLERK4TUid9TThreadIdP16CMPXMessageQueue @ 1 NONAME
+	_ZN20CMPXCollectionEngine16ResolvePluginUidERK6TArrayI4TUidE @ 2 NONAME
+	_ZN20CMPXCollectionEngine18GetSupportedTypesLER13RPointerArrayI18CMPXCollectionTypeE @ 3 NONAME
+	_ZN20CMPXCollectionEngine24LookupCollectionPluginIDE4TUid @ 4 NONAME
+	_ZN20CMPXCollectionEngine4NewLEv @ 5 NONAME
+	_ZN20CMPXCollectionEngine7NotifyLE26TMPXCollectionBroadCastMsgi @ 6 NONAME
+	_ZN20CMPXCollectionEngineD0Ev @ 7 NONAME
+	_ZN20CMPXCollectionEngineD1Ev @ 8 NONAME
+	_ZN20CMPXCollectionEngineD2Ev @ 9 NONAME
+	_ZN27CMPXCollectionClientContext10AddClientLE9TThreadIdP16CMPXMessageQueue @ 10 NONAME
+	_ZN27CMPXCollectionClientContext10SetFilterLEPK9CMPXMedia @ 11 NONAME
+	_ZN27CMPXCollectionClientContext12FindAllSyncLERK9CMPXMediaRK8CBufBase @ 12 NONAME
+	_ZN27CMPXCollectionClientContext12RemoveClientERK16CMPXMessageQueue @ 13 NONAME
+	_ZN27CMPXCollectionClientContext13CancelRequestEP28MMPXCollectionEngineObserver @ 14 NONAME
+	_ZN27CMPXCollectionClientContext15GetCapabilitiesEv @ 15 NONAME
+	_ZN27CMPXCollectionClientContext4AddLERK9CMPXMedia @ 16 NONAME
+	_ZN27CMPXCollectionClientContext4SetLERK9CMPXMedia @ 17 NONAME
+	_ZN27CMPXCollectionClientContext5BackLEP28MMPXCollectionEngineObserver @ 18 NONAME
+	_ZN27CMPXCollectionClientContext5OpenLEP18CMPXCollectionPathiP28MMPXCollectionEngineObserver @ 19 NONAME
+	_ZN27CMPXCollectionClientContext5OpenLERK6TArrayI4TUidEiP28MMPXCollectionEngineObserver @ 20 NONAME
+	_ZN27CMPXCollectionClientContext5OpenLEiP28MMPXCollectionEngineObserver @ 21 NONAME
+	_ZN27CMPXCollectionClientContext5OpenLEiiRK6TArrayI13TMPXAttributeEP28MMPXCollectionEngineObserver @ 22 NONAME
+	_ZN27CMPXCollectionClientContext6MediaLERK9CMPXMediaP28MMPXCollectionEngineObserver @ 23 NONAME
+	_ZN27CMPXCollectionClientContext7RemoveLEP18CMPXCollectionPathP28MMPXCollectionEngineObserver @ 24 NONAME
+	_ZN27CMPXCollectionClientContext7RemoveLERK9CMPXMedia @ 25 NONAME
+	_ZN27CMPXCollectionClientContext8CommandLE21TMPXCollectionCommandi @ 26 NONAME
+	_ZN27CMPXCollectionClientContext8CommandLERK9CMPXMediaP28MMPXCollectionEngineObserverRK16CMPXMessageQueue @ 27 NONAME
+	_ZN27CMPXCollectionClientContext8FindAllLERK9CMPXMediaP8CBufBaseP28MMPXCollectionEngineObserver @ 28 NONAME
+	_ZNK27CMPXCollectionClientContext4PathEv @ 29 NONAME
+	_ZNK27CMPXCollectionClientContext6FilterEv @ 30 NONAME
+	_ZNK27CMPXCollectionClientContext8PluginIdEv @ 31 NONAME
+	_ZTI20CMPXCollectionEngine @ 32 NONAME ; #<TI>#
+	_ZTI27CMPXCollectionClientContext @ 33 NONAME ; #<TI>#
+	_ZTV20CMPXCollectionEngine @ 34 NONAME ; #<VT>#
+	_ZTV27CMPXCollectionClientContext @ 35 NONAME ; #<VT>#
+

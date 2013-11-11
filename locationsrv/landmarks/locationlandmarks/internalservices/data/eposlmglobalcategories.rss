@@ -1,0 +1,166 @@
+/*
+* Copyright (c) 2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: Resource file  defining global categories
+*
+*
+*/
+
+
+#include <uikon.rh>
+#include <EPos_LmCatDef.rh>
+#include <eposlmglobalcategories_en.loc>
+#include <eposlmglcategories.mbg>
+
+// -----------------------------------------------------------------------------
+//
+// POS_LM_CATEGORY_SPECIFICATION
+// Global category specification.
+//
+// -----------------------------------------------------------------------------
+//
+
+RESOURCE POS_LM_CATEGORY_SPECIFICATION glcategories
+    {
+    icon_files =
+        {
+        "\\resource\\apps\\eposlmglcategories.mif"
+        };
+
+    categories =
+        {
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 3000;
+            category_name = qtn_poslm_category_lvl1_1;
+            icon_index = EMbmEposlmglcategoriesQgn_prop_lm_hotel;
+            icon_mask_index = EMbmEposlmglcategoriesQgn_prop_lm_hotel_mask;
+            icon_file_index = 0;
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 6000;
+            category_name = qtn_poslm_category_lvl1_2;
+            icon_index = EMbmEposlmglcategoriesQgn_prop_lm_business;
+            icon_mask_index = EMbmEposlmglcategoriesQgn_prop_lm_business_mask;
+            icon_file_index = 0;
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 9000;
+            category_name = qtn_poslm_category_lvl1_3;
+            icon_index = EMbmEposlmglcategoriesQgn_prop_lm_communication;
+            icon_mask_index = EMbmEposlmglcategoriesQgn_prop_lm_communication_mask;
+            icon_file_index = 0;
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 12000;
+            category_name = qtn_poslm_category_lvl1_4;
+            icon_index = EMbmEposlmglcategoriesQgn_prop_lm_education;
+            icon_mask_index = EMbmEposlmglcategoriesQgn_prop_lm_education_mask;
+            icon_file_index = 0;
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 15000;
+            category_name = qtn_poslm_category_lvl1_5;
+            icon_index = EMbmEposlmglcategoriesQgn_prop_lm_fun;
+            icon_mask_index = EMbmEposlmglcategoriesQgn_prop_lm_fun_mask;
+            icon_file_index = 0;
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 18000;
+            category_name = qtn_poslm_category_lvl1_6;
+            icon_index = EMbmEposlmglcategoriesQgn_prop_lm_restaurant;
+            icon_mask_index = EMbmEposlmglcategoriesQgn_prop_lm_restaurant_mask;
+            icon_file_index = 0;
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 21000;
+            category_name = qtn_poslm_category_lvl1_7;
+            icon_index = EMbmEposlmglcategoriesQgn_prop_lm_area;
+            icon_mask_index = EMbmEposlmglcategoriesQgn_prop_lm_area_mask;
+            icon_file_index = 0;
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 24000;
+            category_name = qtn_poslm_category_lvl1_8;
+            icon_index = EMbmEposlmglcategoriesQgn_prop_lm_outdoor;
+            icon_mask_index = EMbmEposlmglcategoriesQgn_prop_lm_outdoor_mask;
+            icon_file_index = 0;
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 27000;
+            category_name = qtn_poslm_category_lvl1_9;
+            icon_index = EMbmEposlmglcategoriesQgn_prop_lm_people;
+            icon_mask_index = EMbmEposlmglcategoriesQgn_prop_lm_people_mask;
+            icon_file_index = 0;
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 30000;
+            category_name = qtn_poslm_category_lvl1_10;
+            icon_index = EMbmEposlmglcategoriesQgn_prop_lm_public;
+            icon_mask_index = EMbmEposlmglcategoriesQgn_prop_lm_public_mask;
+            icon_file_index = 0;
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 33000;
+            category_name = qtn_poslm_category_lvl1_11;
+            icon_index = EMbmEposlmglcategoriesQgn_prop_lm_church;
+            icon_mask_index = EMbmEposlmglcategoriesQgn_prop_lm_church_mask;
+            icon_file_index = 0;
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 36000;
+            category_name = qtn_poslm_category_lvl1_12;
+            icon_index = EMbmEposlmglcategoriesQgn_prop_lm_shopping;
+            icon_mask_index = EMbmEposlmglcategoriesQgn_prop_lm_shopping_mask;
+            icon_file_index = 0;
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 39000;
+            category_name = qtn_poslm_category_lvl1_13;
+            icon_index = EMbmEposlmglcategoriesQgn_prop_lm_sightseeing;
+            icon_mask_index = EMbmEposlmglcategoriesQgn_prop_lm_sightseeing_mask;
+            icon_file_index = 0;
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 42000;
+            category_name = qtn_poslm_category_lvl1_14;
+            icon_index = EMbmEposlmglcategoriesQgn_prop_lm_sport;
+            icon_mask_index = EMbmEposlmglcategoriesQgn_prop_lm_sport_mask;
+            icon_file_index = 0;
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 45000;
+            category_name = qtn_poslm_category_lvl1_15;
+            icon_index = EMbmEposlmglcategoriesQgn_prop_lm_transport;
+            icon_mask_index = EMbmEposlmglcategoriesQgn_prop_lm_transport_mask;
+            icon_file_index = 0;
+            }
+        };
+    }
+
+
+

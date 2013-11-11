@@ -1,0 +1,21 @@
+EXPORTS
+	"_._19CDevSoundAudioInput" @ 1 NONAME R3UNUSED ; CDevSoundAudioInput::~CDevSoundAudioInput(void)
+	CapabilitiesChannelsL__19CDevSoundAudioInputRt6RArray1ZUi @ 2 NONAME R3UNUSED ; CDevSoundAudioInput::CapabilitiesChannelsL(RArray<unsigned int> &)
+	CapabilitiesDataTypesL__19CDevSoundAudioInputRt6RArray1Z7TFourCC @ 3 NONAME R3UNUSED ; CDevSoundAudioInput::CapabilitiesDataTypesL(RArray<TFourCC> &)
+	CapabilitiesRatesL__19CDevSoundAudioInputRt6RArray1ZUi @ 4 NONAME R3UNUSED ; CDevSoundAudioInput::CapabilitiesRatesL(RArray<unsigned int> &)
+	ConfigChannelsL__19CDevSoundAudioInputRt6RArray1ZUi @ 5 NONAME R3UNUSED ; CDevSoundAudioInput::ConfigChannelsL(RArray<unsigned int> &)
+	ConfigDataTypesL__19CDevSoundAudioInputRt6RArray1Z7TFourCC @ 6 NONAME R3UNUSED ; CDevSoundAudioInput::ConfigDataTypesL(RArray<TFourCC> &)
+	ConfigRatesL__19CDevSoundAudioInputRt6RArray1ZUi @ 7 NONAME R3UNUSED ; CDevSoundAudioInput::ConfigRatesL(RArray<unsigned int> &)
+	ConfigureL__19CDevSoundAudioInputUiUiG7TFourCCRCt6RArray1Zi @ 8 NONAME ; CDevSoundAudioInput::ConfigureL(unsigned int, unsigned int, TFourCC, RArray<int> const &)
+	GainL__19CDevSoundAudioInput @ 9 NONAME R3UNUSED ; CDevSoundAudioInput::GainL(void)
+	MaxGainL__19CDevSoundAudioInput @ 10 NONAME R3UNUSED ; CDevSoundAudioInput::MaxGainL(void)
+	NewL__19CDevSoundAudioInputRC20TMMFPrioritySettingsR27MAdvancedAudioInputObserver @ 11 NONAME R3UNUSED ; CDevSoundAudioInput::NewL(TMMFPrioritySettings const &, MAdvancedAudioInputObserver &)
+	PauseL__19CDevSoundAudioInput @ 12 NONAME R3UNUSED ; CDevSoundAudioInput::PauseL(void)
+	PrimeL__19CDevSoundAudioInput @ 13 NONAME R3UNUSED ; CDevSoundAudioInput::PrimeL(void)
+	RecordL__19CDevSoundAudioInputPv @ 14 NONAME R3UNUSED ; CDevSoundAudioInput::RecordL(void *)
+	SetEncoder__19CDevSoundAudioInputP21CAdvancedAudioEncoder @ 15 NONAME R3UNUSED ; CDevSoundAudioInput::SetEncoder(CAdvancedAudioEncoder *)
+	SetGainL__19CDevSoundAudioInputi @ 16 NONAME R3UNUSED ; CDevSoundAudioInput::SetGainL(int)
+	SetPrioritySettingsL__19CDevSoundAudioInputRC20TMMFPrioritySettings @ 17 NONAME R3UNUSED ; CDevSoundAudioInput::SetPrioritySettingsL(TMMFPrioritySettings const &)
+	StopL__19CDevSoundAudioInput @ 18 NONAME R3UNUSED ; CDevSoundAudioInput::StopL(void)
+	CalculateAudioInputPositionL__C19CDevSoundAudioInput @ 19 NONAME R3UNUSED ; CDevSoundAudioInput::CalculateAudioInputPositionL(void) const
+

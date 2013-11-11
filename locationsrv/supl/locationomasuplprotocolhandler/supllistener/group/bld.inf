@@ -1,0 +1,29 @@
+/*
+* Copyright (c)  Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:   This file provides the information required for building the 
+*				 OMA SUPL SMS Listener
+*
+*/
+
+
+
+PRJ_PLATFORMS
+WINSCW ARMV5 GCCE
+
+PRJ_MMPFILES
+./epos_omasupllistener.mmp
+// for backup restore 
+PRJ_EXPORTS
+../data/backup_registration.xml     z:/private/1027509E/backup_registration.xml
+../inc/epos_comasuplproductconfigcrkeys.h  |../../../inc/epos_comasuplproductconfigcrkeys.h

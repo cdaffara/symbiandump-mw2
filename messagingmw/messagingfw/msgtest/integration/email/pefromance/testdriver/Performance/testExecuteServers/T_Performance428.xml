@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteServer SYSTEM "c:\program files\common files\symbian\testExecuteServer.dtd" [ ]>
+
+<testExecuteServer>
+
+  <name>T_Performance428</name>
+
+  <mmpFile>T_Performance428.mmp</mmpFile>
+
+  <bldInfPath>messaging\email\imapservermtm\test\group\bld.inf</bldInfPath>
+
+</testExecuteServer>

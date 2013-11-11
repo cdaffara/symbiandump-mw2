@@ -1,0 +1,6 @@
+EXPORTS
+	_ZN19MMPXPlaybackUtility4NewLERK4TUidP20MMPXPlaybackObserver @ 1 NONAME
+	_ZN19MMPXPlaybackUtility8UtilityLERK4TUid @ 2 NONAME
+	_ZN19MMPXPlaybackUtility4NewLE12TMPXCategoryRK4TUidP20MMPXPlaybackObserver @ 3 NONAME
+	_ZN19MMPXPlaybackUtility8UtilityLE12TMPXCategoryRK4TUid @ 4 NONAME
+

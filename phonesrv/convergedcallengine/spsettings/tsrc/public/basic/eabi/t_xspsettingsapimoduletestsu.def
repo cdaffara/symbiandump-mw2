@@ -1,0 +1,5 @@
+EXPORTS
+	_Z16CreateTestSuiteLv @ 1 NONAME
+	_ZTI13CStubObserver @ 2 NONAME ; #<TI>#
+	_ZTV13CStubObserver @ 3 NONAME ; #<VT>#
+

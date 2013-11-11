@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<api id="9d06e7ef2d22e4bd4dd5d2563243c7eb" dataversion="2.0">
+<name>mpx albumart utility api</name>
+<description>mpx albumart utility api (Domain API) in MPX Frameworks.</description>
+<type>c++</type>
+<collection>mmappcomponents</collection>
+<libs>
+<lib name="mpxalbumartutility.lib"/>
+</libs>
+<release category="platform" sinceversion="0"/>
+<attributes>
+<htmldocprovided>no</htmldocprovided>
+<adaptation>no</adaptation>
+</attributes>
+</api>

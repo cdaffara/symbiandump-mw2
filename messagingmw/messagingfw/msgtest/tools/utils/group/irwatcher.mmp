@@ -1,0 +1,43 @@
+// Copyright (c) 2004-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// irwatcher.mmp
+//
+
+TARGET			irwatcher.dll
+TARGETTYPE		PLUGIN
+
+// UIDs - 2nd UID specifies an ECom dll, 3rd UID is unique identifier
+UID				0x10009D8D 0x10008C68
+
+SYSTEMINCLUDE	/epoc32/include/ecom
+
+LIBRARY         ecom.lib
+
+SOURCEPATH		../src
+
+start resource 10008C68.rss
+target irwatcher.rsc
+end
+CAPABILITY READDEVICEDATA WRITEDEVICEDATA NETWORKSERVICES LOCALSERVICES READUSERDATA WRITEUSERDATA
+
+VENDORID 0x70000001
+SOURCEPATH		../src
+SOURCE        irwatcher.cpp
+USERINCLUDE   ../inc
+USERINCLUDE ../../../testutils/base/inc
+USERINCLUDE ../../../testutils/email/inc
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+LIBRARY       euser.lib watcher.lib msvtestutils.lib
+
+SMPSAFE

@@ -1,0 +1,30 @@
+/*
+ * Copyright (c) 2010 Nokia Corporation and/or its subsidiary(-ies).
+ * All rights reserved.
+ * This component and the accompanying materials are made available
+ * under the terms of "Eclipse Public License v1.0"
+ * which accompanies this distribution, and is available
+ * at the URL "http://www.eclipse.org/legal/epl-v10.html".
+ *
+ * Initial Contributors:
+ * Nokia Corporation - initial contribution.
+ *
+ * Contributors:
+ *
+ * Description: voip audio service - Stif Test
+ *
+ */
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_TESTMMPFILES
+VoIPAudioServicesTestClass.mmp
+
+PRJ_TESTEXPORTS
+//VoIPAudioServicesTest.iby CORE_MW_LAYER_IBY_EXPORT_PATH(VoIPAudioServicesTest.iby)
+//../../conf/VoIPAudioServicesTestClass.cfg  /epoc32/winscw/c/TestFramework/VoIPAudioServicesTestClass.cfg
+//../../init/VoIPAudioServicesTestClass.ini  /epoc32/winscw/c/TestFramework/VoIPAudioServicesTestClass.ini
+//../../init/testframework.ini               /epoc32/data/z/system/data/TestFramework.ini
+//../../data/test_8khz.wav                   /epoc32/winscw/c/testing/data/test_8khz.wav
+

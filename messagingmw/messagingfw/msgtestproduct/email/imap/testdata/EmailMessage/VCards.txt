@@ -1,0 +1,216 @@
+Return-Path: <ban-mrudulp02@10.192.196.219>
+Received: from [10.192.196.219] (HELO BANMRUDULP02)
+  by BAN-MRUDULP02.intra (CommuniGate Pro SMTP 4.0.5)
+  with SMTP id 400008 for ban-mrudulp02@ban-mrudulp02.intra; Thu, 11 May 2006 16:29:28 +0530
+Message-ID: <009801c674e9$f997b970$dbc4c00a@intra>
+Reply-To: "ban-mrudulp02" <ban-mrudulp02@10.192.196.219>
+From: "ban-mrudulp02" <ban-mrudulp02@10.192.196.219>
+To: <ban-mrudulp02@ban-mrudulp02.intra>
+Subject: VCards
+Date: Thu, 11 May 2006 16:29:29 +0530
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+	boundary="----=_NextPart_000_0094_01C67518.134B3A80"
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2800.1807
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1807
+
+*This message was transferred with a trial version of CommuniGate(tm) Pro*
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0094_01C67518.134B3A80
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_001_0095_01C67518.134B3A80"
+
+
+------=_NextPart_001_0095_01C67518.134B3A80
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+
+------=_NextPart_001_0095_01C67518.134B3A80
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Diso-8859-1">
+<META content=3D"MSHTML 6.00.2800.1543" name=3DGENERATOR>
+<STYLE></STYLE>
+</HEAD>
+<BODY bgColor=3D#ffffff>
+<DIV><FONT size=3D2></FONT>&nbsp;</DIV></BODY></HTML>
+
+------=_NextPart_001_0095_01C67518.134B3A80--
+
+------=_NextPart_000_0094_01C67518.134B3A80
+Content-Type: text/x-vcard;
+	name="Accounts Technology.vcf"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+	filename="Accounts Technology.vcf"
+
+BEGIN:VCARD
+VERSION:2.1
+N:Technology;Accounts
+FN:Accounts Technology
+EMAIL;PREF;INTERNET:Accounts.Technology@mphasis.com
+REV:20060511T105344Z
+END:VCARD
+
+------=_NextPart_000_0094_01C67518.134B3A80
+Content-Type: text/x-vcard;
+	name="Arvind Rangnath Kulkarni.vcf"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+	filename="Arvind Rangnath Kulkarni.vcf"
+
+BEGIN:VCARD
+VERSION:2.1
+N:Kulkarni;Arvind;Rangnath
+FN:Arvind Rangnath Kulkarni
+EMAIL;PREF;INTERNET:Arvind.Kulkarni@mphasis.com
+REV:20060511T105400Z
+END:VCARD
+
+------=_NextPart_000_0094_01C67518.134B3A80
+Content-Type: text/x-vcard;
+	name="Arvind.Kulkarni@mphasis.com.vcf"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+	filename="Arvind.Kulkarni@mphasis.com.vcf"
+
+BEGIN:VCARD
+VERSION:2.1
+N:;Arvind.Kulkarni@mphasis.com
+FN:Arvind.Kulkarni@mphasis.com
+EMAIL;PREF;INTERNET:Arvind.Kulkarni@mphasis.com
+REV:20060511T105400Z
+END:VCARD
+
+------=_NextPart_000_0094_01C67518.134B3A80
+Content-Type: text/x-vcard;
+	name="Mediclaim.vcf"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+	filename="Mediclaim.vcf"
+
+BEGIN:VCARD
+VERSION:2.1
+N:;Mediclaim
+FN:Mediclaim
+EMAIL;PREF;INTERNET:mphasis@medimanage.com
+REV:20060511T105421Z
+END:VCARD
+
+------=_NextPart_000_0094_01C67518.134B3A80
+Content-Type: text/x-vcard;
+	name="Mansur.vcf"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+	filename="Mansur.vcf"
+
+BEGIN:VCARD
+VERSION:2.1
+N:;Mansur
+FN:Mansur
+EMAIL;PREF;INTERNET:Mansur.Milky@mphasis.com
+REV:20060511T105428Z
+END:VCARD
+
+------=_NextPart_000_0094_01C67518.134B3A80
+Content-Type: text/x-vcard;
+	name="Olle.Eriksson@uiq.com.vcf"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+	filename="Olle.Eriksson@uiq.com.vcf"
+
+BEGIN:VCARD
+VERSION:2.1
+N:;Olle.Eriksson@uiq.com
+FN:Olle.Eriksson@uiq.com
+EMAIL;PREF;INTERNET:Olle.Eriksson@uiq.com
+REV:20060511T105452Z
+END:VCARD
+
+------=_NextPart_000_0094_01C67518.134B3A80
+Content-Type: text/x-vcard;
+	name="par.synnerbjork@uiq.com.vcf"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+	filename="par.synnerbjork@uiq.com.vcf"
+
+BEGIN:VCARD
+VERSION:2.1
+N:;par.synnerbjork@uiq.com
+FN:par.synnerbjork@uiq.com
+EMAIL;PREF;INTERNET:par.synnerbjork@uiq.com
+REV:20060511T105510Z
+END:VCARD
+
+------=_NextPart_000_0094_01C67518.134B3A80
+Content-Type: text/x-vcard;
+	name="sssavairam@kanbay.com.vcf"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+	filename="sssavairam@kanbay.com.vcf"
+
+BEGIN:VCARD
+VERSION:2.1
+N:;sssavairam@kanbay.com
+FN:sssavairam@kanbay.com
+EMAIL;PREF;INTERNET:sssavairam@kanbay.com
+REV:20060511T105553Z
+END:VCARD
+
+------=_NextPart_000_0094_01C67518.134B3A80
+Content-Type: text/x-vcard;
+	name="Symbian-ODC.vcf"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+	filename="Symbian-ODC.vcf"
+
+BEGIN:VCARD
+VERSION:2.1
+N:;Symbian-ODC
+FN:Symbian-ODC
+EMAIL;PREF;INTERNET:Symbian-ODC@mphasis.com
+REV:20060511T105609Z
+END:VCARD
+
+------=_NextPart_000_0094_01C67518.134B3A80
+Content-Type: text/x-vcard;
+	name="UIQ_Kshema_Consultants%UIQEX.vcf"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+	filename="UIQ_Kshema_Consultants%UIQEX.vcf"
+
+BEGIN:VCARD
+VERSION:2.1
+N:;UIQ_Kshema_Consultants%UIQEXT@ban.uiq.intra
+FN:UIQ_Kshema_Consultants%UIQEXT@ban.uiq.intra
+EMAIL;PREF;INTERNET:UIQ_Kshema_Consultants%UIQEXT@ban.uiq.intra
+REV:20060511T105646Z
+END:VCARD
+
+------=_NextPart_000_0094_01C67518.134B3A80
+Content-Type: text/x-vcard;
+	name="Venkatesh.Kulkarni@mphasis.com.vcf"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+	filename="Venkatesh.Kulkarni@mphasis.com.vcf"
+
+BEGIN:VCARD
+VERSION:2.1
+N:;Venkatesh.Kulkarni@mphasis.com
+FN:Venkatesh.Kulkarni@mphasis.com
+EMAIL;PREF;INTERNET:Venkatesh.Kulkarni@mphasis.com
+REV:20060511T105659Z
+END:VCARD
+
+------=_NextPart_000_0094_01C67518.134B3A80--
+

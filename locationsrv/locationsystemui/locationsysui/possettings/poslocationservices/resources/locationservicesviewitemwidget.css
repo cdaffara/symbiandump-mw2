@@ -1,0 +1,5 @@
+LocationServicesCustomViewItem::dataItem_ContentWidget
+{
+    left: -var(hb-param-margin-gene-left);
+    right: var(hb-param-margin-gene-right);
+}

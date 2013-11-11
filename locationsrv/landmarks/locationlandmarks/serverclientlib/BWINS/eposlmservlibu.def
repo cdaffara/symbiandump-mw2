@@ -1,0 +1,13 @@
+EXPORTS
+	??0RPosLandmarkServer@@QAE@XZ @ 1 NONAME ; RPosLandmarkServer::RPosLandmarkServer(void)
+	?Close@RPosLandmarkServer@@QAEXXZ @ 2 NONAME ; void RPosLandmarkServer::Close(void)
+	?Connect@RPosLandmarkServer@@QAEHXZ @ 3 NONAME ; int RPosLandmarkServer::Connect(void)
+	?GetDatabaseInfo@RPosLandmarkServer@@QAEHAAVHPosLmDatabaseInfo@@@Z @ 4 NONAME ; int RPosLandmarkServer::GetDatabaseInfo(class HPosLmDatabaseInfo &)
+	?ListDatabasesL@RPosLandmarkServer@@QAEXAAV?$RPointerArray@VHPosLmDatabaseInfo@@@@ABVTDesC16@@@Z @ 5 NONAME ; void RPosLandmarkServer::ListDatabasesL(class RPointerArray<class HPosLmDatabaseInfo> &, class TDesC16 const &)
+	?ListDatabasesLC@RPosLandmarkServer@@QAEPAVCDesC16Array@@ABVTDesC16@@@Z @ 6 NONAME ; class CDesC16Array * RPosLandmarkServer::ListDatabasesLC(class TDesC16 const &)
+	?ModifyDatabaseSettings@RPosLandmarkServer@@QAEHABVTDesC16@@ABVTPosLmDatabaseSettings@@VTChar@@@Z @ 7 NONAME ; int RPosLandmarkServer::ModifyDatabaseSettings(class TDesC16 const &, class TPosLmDatabaseSettings const &, class TChar)
+	?RegisterDatabase@RPosLandmarkServer@@QAEHAAVHPosLmDatabaseInfo@@@Z @ 8 NONAME ; int RPosLandmarkServer::RegisterDatabase(class HPosLmDatabaseInfo &)
+	?ReportEvent@RPosLandmarkServer@@QAEHABUTPosLmDatabaseEvent@@ABVTDesC16@@@Z @ 9 NONAME ; int RPosLandmarkServer::ReportEvent(struct TPosLmDatabaseEvent const &, class TDesC16 const &)
+	?UnregisterAllDatabases@RPosLandmarkServer@@QAEHABVTDesC16@@@Z @ 10 NONAME ; int RPosLandmarkServer::UnregisterAllDatabases(class TDesC16 const &)
+	?UnregisterDatabase@RPosLandmarkServer@@QAEHABVTDesC16@@VTChar@@@Z @ 11 NONAME ; int RPosLandmarkServer::UnregisterDatabase(class TDesC16 const &, class TChar)
+

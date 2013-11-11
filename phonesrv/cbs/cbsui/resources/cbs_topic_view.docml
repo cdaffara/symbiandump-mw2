@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hbdocument version="0.8">
+    <object name="action" type="HbAction">
+        <string name="text" value="&lt;&lt; Previous"/>
+    </object>
+    <object name="action_1" type="HbAction">
+        <string name="text" value="Next &gt;&gt;"/>
+    </object>
+    <object name="action_2" type="HbAction">
+        <string name="text" value="Back"/>
+    </object>
+    <widget name="t:view2" type="CbsUiTopicView">
+        <widget name="content" role="HbView:widget" type="HbWidget">
+            <widget name="listWidget2" type="HbListWidget">
+                <real name="z" value="3"/>
+                <sizehint height="9.85075un" type="PREFERRED" width="53.43284un"/>
+            </widget>
+            <widget name="treeView" type="HbTreeView">
+                <real name="z" value="4"/>
+                <sizehint height="70.59702un" type="PREFERRED" width="53.43284un"/>
+            </widget>
+            <layout type="anchor">
+                <anchoritem dst="listWidget2" dstEdge="LEFT" spacing="0un" src="" srcEdge="LEFT"/>
+                <anchoritem dst="listWidget2" dstEdge="TOP" spacing="0un" src="" srcEdge="TOP"/>
+                <anchoritem dst="treeView" dstEdge="LEFT" spacing="0.14925un" src="" srcEdge="LEFT"/>
+                <anchoritem dst="treeView" dstEdge="TOP" spacing="9.70149un" src="" srcEdge="TOP"/>
+            </layout>
+        </widget>
+        <widget name="viewMenu" role="HbView:menu" type="HbMenu"/>
+        <widget name="viewToolbar" role="HbView:toolBar" type="HbToolBar">
+            <ref object="action" role="HbToolBar:addAction"/>
+            <ref object="action_2" role="HbToolBar:addAction"/>
+        </widget>
+        <string locid="txt_cbs_title" name="title" value="Operator Messages"/>
+    </widget>
+    <metadata activeUIState="Common ui state" display="QHD portrait" unit="un">
+        <uistate name="Common ui state" sections="#common"/>
+    </metadata>
+</hbdocument>

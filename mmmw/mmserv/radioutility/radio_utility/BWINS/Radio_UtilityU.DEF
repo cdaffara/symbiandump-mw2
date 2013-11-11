@@ -1,0 +1,76 @@
+EXPORTS
+	??1CRadioFmTunerUtility@@EAE@XZ @ 1 NONAME ; CRadioFmTunerUtility::~CRadioFmTunerUtility(void)
+	??1CRadioMonitor@@UAE@XZ @ 2 NONAME ; CRadioMonitor::~CRadioMonitor(void)
+	??1CRadioPlayerUtility@@EAE@XZ @ 3 NONAME ; CRadioPlayerUtility::~CRadioPlayerUtility(void)
+	??1CRadioUtility@@UAE@XZ @ 4 NONAME ; CRadioUtility::~CRadioUtility(void)
+	?CancelAFSearch@CRadioRdsUtility@@QAEXXZ @ 5 NONAME ; void CRadioRdsUtility::CancelAFSearch(void)
+	?CancelGetFreqByPTY@CRadioRdsUtility@@QAEXXZ @ 6 NONAME ; void CRadioRdsUtility::CancelGetFreqByPTY(void)
+	?CancelGetFreqByTA@CRadioRdsUtility@@QAEXXZ @ 7 NONAME ; void CRadioRdsUtility::CancelGetFreqByTA(void)
+	?CancelGetPSByPTY@CRadioRdsUtility@@QAEXXZ @ 8 NONAME ; void CRadioRdsUtility::CancelGetPSByPTY(void)
+	?CancelGetPSByTA@CRadioRdsUtility@@QAEXXZ @ 9 NONAME ; void CRadioRdsUtility::CancelGetPSByTA(void)
+	?CancelNotifyRdsDataChange@CRadioRdsUtility@@QAEXXZ @ 10 NONAME ; void CRadioRdsUtility::CancelNotifyRdsDataChange(void)
+	?CancelRdsStationSeek@CRadioRdsUtility@@QAEXXZ @ 11 NONAME ; void CRadioRdsUtility::CancelRdsStationSeek(void)
+	?CancelSetFrequency@CRadioFmTunerUtility@@QAEXXZ @ 12 NONAME ; void CRadioFmTunerUtility::CancelSetFrequency(void)
+	?CancelSetFrequencyRange@CRadioFmTunerUtility@@QAEXXZ @ 13 NONAME ; void CRadioFmTunerUtility::CancelSetFrequencyRange(void)
+	?CancelStationSeek@CRadioFmTunerUtility@@QAEXXZ @ 14 NONAME ; void CRadioFmTunerUtility::CancelStationSeek(void)
+	?Close@CRadioFmTunerUtility@@QAEXXZ @ 15 NONAME ; void CRadioFmTunerUtility::Close(void)
+	?Close@CRadioPlayerUtility@@QAEXXZ @ 16 NONAME ; void CRadioPlayerUtility::Close(void)
+	?Close@CRadioRdsUtility@@QAEXXZ @ 17 NONAME ; void CRadioRdsUtility::Close(void)
+	?CustomInterface@CRadioPlayerUtility@@UAEPAXVTUid@@@Z @ 18 NONAME ; void * CRadioPlayerUtility::CustomInterface(class TUid)
+	?EnableTunerInOfflineMode@CRadioFmTunerUtility@@QAEHH@Z @ 19 NONAME ; int CRadioFmTunerUtility::EnableTunerInOfflineMode(int)
+	?ForceMonoReception@CRadioFmTunerUtility@@QAEHH@Z @ 20 NONAME ; int CRadioFmTunerUtility::ForceMonoReception(int)
+	?GetAutomaticSwitching@CRadioRdsUtility@@QAEHAAH@Z @ 21 NONAME ; int CRadioRdsUtility::GetAutomaticSwitching(int &)
+	?GetAutomaticTrafficAnnouncement@CBody@CRadioRdsUtility@@QAEHAAH@Z @ 22 NONAME ; int CRadioRdsUtility::CBody::GetAutomaticTrafficAnnouncement(int &)
+	?GetAutomaticTrafficAnnouncement@CRadioRdsUtility@@QAEHAAH@Z @ 23 NONAME ; int CRadioRdsUtility::GetAutomaticTrafficAnnouncement(int &)
+	?GetBalance@CRadioPlayerUtility@@QBEHAAH0@Z @ 24 NONAME ; int CRadioPlayerUtility::GetBalance(int &, int &) const
+	?GetCapabilities@CRadioFmTunerUtility@@QAEHAAVTFmTunerCapabilities@@@Z @ 25 NONAME ; int CRadioFmTunerUtility::GetCapabilities(class TFmTunerCapabilities &)
+	?GetCapabilities@CRadioRdsUtility@@QBEHAAVTRdsCapabilities@@@Z @ 26 NONAME ; int CRadioRdsUtility::GetCapabilities(class TRdsCapabilities &) const
+	?GetClockTime@CRadioRdsUtility@@QAEHAAVTDateTime@@@Z @ 27 NONAME ; int CRadioRdsUtility::GetClockTime(class TDateTime &)
+	?GetForcedMonoReception@CRadioFmTunerUtility@@QBEHAAH@Z @ 28 NONAME ; int CRadioFmTunerUtility::GetForcedMonoReception(int &) const
+	?GetFreqByPTY@CRadioRdsUtility@@QAEXH@Z @ 29 NONAME ; void CRadioRdsUtility::GetFreqByPTY(int)
+	?GetFreqByTA@CRadioRdsUtility@@QAEXXZ @ 30 NONAME ; void CRadioRdsUtility::GetFreqByTA(void)
+	?GetFrequency@CRadioFmTunerUtility@@QBEHAAH@Z @ 31 NONAME ; int CRadioFmTunerUtility::GetFrequency(int &) const
+	?GetFrequencyRange@CRadioFmTunerUtility@@QBEHAAW4TFmRadioFrequencyRange@@AAH1@Z @ 32 NONAME ; int CRadioFmTunerUtility::GetFrequencyRange(enum TFmRadioFrequencyRange &, int &, int &) const
+	?GetMaxSignalStrength@CRadioFmTunerUtility@@QBEHAAH@Z @ 33 NONAME ; int CRadioFmTunerUtility::GetMaxSignalStrength(int &) const
+	?GetMaxVolume@CRadioPlayerUtility@@QBEHAAH@Z @ 34 NONAME ; int CRadioPlayerUtility::GetMaxVolume(int &) const
+	?GetPSByPTY@CRadioRdsUtility@@QAEXH@Z @ 35 NONAME ; void CRadioRdsUtility::GetPSByPTY(int)
+	?GetPSByTA@CRadioRdsUtility@@QAEXXZ @ 36 NONAME ; void CRadioRdsUtility::GetPSByTA(void)
+	?GetProgrammeIdentification@CRadioRdsUtility@@QAEHAAH@Z @ 37 NONAME ; int CRadioRdsUtility::GetProgrammeIdentification(int &)
+	?GetProgrammeService@CRadioRdsUtility@@QAEHAAV?$TBuf16@$07@@@Z @ 38 NONAME ; int CRadioRdsUtility::GetProgrammeService(class TBuf16<8> &)
+	?GetProgrammeType@CRadioRdsUtility@@QAEHAAH@Z @ 39 NONAME ; int CRadioRdsUtility::GetProgrammeType(int &)
+	?GetRadioText@CRadioRdsUtility@@QAEHAAV?$TBuf16@$0EA@@@@Z @ 40 NONAME ; int CRadioRdsUtility::GetRadioText(class TBuf16<64> &)
+	?GetRadioTextPlus@CRadioRdsUtility@@QAEHW4TRdsRTplusClass@@AAV?$TBuf16@$0EA@@@@Z @ 41 NONAME ; int CRadioRdsUtility::GetRadioTextPlus(enum TRdsRTplusClass, class TBuf16<64> &)
+	?GetRdsSignalStatus@CRadioRdsUtility@@QBEHAAH@Z @ 42 NONAME ; int CRadioRdsUtility::GetRdsSignalStatus(int &) const
+	?GetSignalStrength@CRadioFmTunerUtility@@QBEHAAH@Z @ 43 NONAME ; int CRadioFmTunerUtility::GetSignalStrength(int &) const
+	?GetSquelch@CRadioFmTunerUtility@@QBEHAAH@Z @ 44 NONAME ; int CRadioFmTunerUtility::GetSquelch(int &) const
+	?GetStereoMode@CRadioFmTunerUtility@@QBEHAAH@Z @ 45 NONAME ; int CRadioFmTunerUtility::GetStereoMode(int &) const
+	?GetTrafficAnnouncementStatus@CRadioRdsUtility@@QAEHAAH@Z @ 46 NONAME ; int CRadioRdsUtility::GetTrafficAnnouncementStatus(int &)
+	?GetTrafficProgrammeStatus@CRadioRdsUtility@@QAEHAAH@Z @ 47 NONAME ; int CRadioRdsUtility::GetTrafficProgrammeStatus(int &)
+	?GetVolume@CRadioPlayerUtility@@QBEHAAH@Z @ 48 NONAME ; int CRadioPlayerUtility::GetVolume(int &) const
+	?IsMute@CRadioPlayerUtility@@QAEHXZ @ 49 NONAME ; int CRadioPlayerUtility::IsMute(void)
+	?IsRadioOn@CRadioMonitor@@QBEHXZ @ 50 NONAME ; int CRadioMonitor::IsRadioOn(void) const
+	?Mute@CRadioPlayerUtility@@QAEHH@Z @ 51 NONAME ; int CRadioPlayerUtility::Mute(int)
+	?NewL@CRadioMonitor@@SAPAV1@AAVMRadioMonitorObserver@@@Z @ 52 NONAME ; class CRadioMonitor * CRadioMonitor::NewL(class MRadioMonitorObserver &)
+	?NewL@CRadioUtility@@SAPAV1@H@Z @ 53 NONAME ; class CRadioUtility * CRadioUtility::NewL(int)
+	?NotifyRdsDataChange@CRadioRdsUtility@@QAEHVTRdsData@@@Z @ 54 NONAME ; int CRadioRdsUtility::NotifyRdsDataChange(class TRdsData)
+	?Play@CRadioPlayerUtility@@QAEXXZ @ 55 NONAME ; void CRadioPlayerUtility::Play(void)
+	?PlayerState@CRadioPlayerUtility@@QBE?AW4TPlayerState@@XZ @ 56 NONAME ; enum TPlayerState CRadioPlayerUtility::PlayerState(void) const
+	?RadioFmTunerUtilityL@CRadioUtility@@QAEAAVCRadioFmTunerUtility@@AAVMRadioFmTunerObserver@@@Z @ 57 NONAME ; class CRadioFmTunerUtility & CRadioUtility::RadioFmTunerUtilityL(class MRadioFmTunerObserver &)
+	?RadioPlayerUtilityL@CRadioUtility@@QAEAAVCRadioPlayerUtility@@AAVMRadioPlayerObserver@@@Z @ 58 NONAME ; class CRadioPlayerUtility & CRadioUtility::RadioPlayerUtilityL(class MRadioPlayerObserver &)
+	?RadioRdsUtilityL@CRadioUtility@@QAEAAVCRadioRdsUtility@@AAVMRadioRdsObserver@@@Z @ 59 NONAME ; class CRadioRdsUtility & CRadioUtility::RadioRdsUtilityL(class MRadioRdsObserver &)
+	?RequestTunerControl@CRadioFmTunerUtility@@QAEXXZ @ 60 NONAME ; void CRadioFmTunerUtility::RequestTunerControl(void)
+	?SetAutomaticSwitching@CRadioRdsUtility@@QAEHH@Z @ 61 NONAME ; int CRadioRdsUtility::SetAutomaticSwitching(int)
+	?SetAutomaticTrafficAnnouncement@CRadioRdsUtility@@QAEHH@Z @ 62 NONAME ; int CRadioRdsUtility::SetAutomaticTrafficAnnouncement(int)
+	?SetBalance@CRadioPlayerUtility@@QAEHHH@Z @ 63 NONAME ; int CRadioPlayerUtility::SetBalance(int, int)
+	?SetFrequency@CRadioFmTunerUtility@@QAEXH@Z @ 64 NONAME ; void CRadioFmTunerUtility::SetFrequency(int)
+	?SetFrequencyRange@CRadioFmTunerUtility@@QAEXW4TFmRadioFrequencyRange@@@Z @ 65 NONAME ; void CRadioFmTunerUtility::SetFrequencyRange(enum TFmRadioFrequencyRange)
+	?SetSquelch@CRadioFmTunerUtility@@QAEHH@Z @ 66 NONAME ; int CRadioFmTunerUtility::SetSquelch(int)
+	?SetVolume@CRadioPlayerUtility@@QAEHH@Z @ 67 NONAME ; int CRadioPlayerUtility::SetVolume(int)
+	?SetVolumeRamp@CRadioPlayerUtility@@QAEHABVTTimeIntervalMicroSeconds@@@Z @ 68 NONAME ; int CRadioPlayerUtility::SetVolumeRamp(class TTimeIntervalMicroSeconds const &)
+	?StationSeek@CRadioFmTunerUtility@@QAEXH@Z @ 69 NONAME ; void CRadioFmTunerUtility::StationSeek(int)
+	?StationSeekByPTY@CBody@CRadioRdsUtility@@QAEXHH@Z @ 70 NONAME ; void CRadioRdsUtility::CBody::StationSeekByPTY(int, int)
+	?StationSeekByPTY@CRadioRdsUtility@@QAEXHH@Z @ 71 NONAME ; void CRadioRdsUtility::StationSeekByPTY(int, int)
+	?StationSeekByTA@CRadioRdsUtility@@QAEXH@Z @ 72 NONAME ; void CRadioRdsUtility::StationSeekByTA(int)
+	?StationSeekByTP@CRadioRdsUtility@@QAEXH@Z @ 73 NONAME ; void CRadioRdsUtility::StationSeekByTP(int)
+	?Stop@CRadioPlayerUtility@@QAEXXZ @ 74 NONAME ; void CRadioPlayerUtility::Stop(void)
+

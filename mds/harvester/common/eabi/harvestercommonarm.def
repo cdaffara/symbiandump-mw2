@@ -1,0 +1,91 @@
+EXPORTS
+	_ZN16CPropertyWatcher12GetInstanceLEv @ 1 NONAME
+	_ZN16CPropertyWatcher17ListenKeyChangesLE4TUidjPK12MKeyObserver @ 2 NONAME
+	_ZN16CPropertyWatcher23StopListeningKeyChangesE4TUidjPK12MKeyObserver @ 3 NONAME
+	_ZN16CPropertyWatcher26ListenKeyAndStatusChangesLE4TUidjPK21MKeyAndStatusObserver @ 4 NONAME
+	_ZN16CPropertyWatcher32StopListeningKeyAndStatusChangesE4TUidjP21MKeyAndStatusObserver @ 5 NONAME
+	_ZN16CPropertyWatcher6DeleteEv @ 6 NONAME
+	_ZN17CMdeObjectWrapper21HandleObjectPropertyLER10CMdEObjectRK7TDesC16Pvi @ 7 NONAME
+	_ZN17CMdeObjectWrapper4NewLEv @ 8 NONAME
+	_ZN17CMdeObjectWrapper5NewLCEv @ 9 NONAME
+	_ZN18CHarvesterExifUtil10SetSessionEP11CMdESession @ 10 NONAME
+	_ZN18CHarvesterExifUtil13ReadExifDataLER12CHarvestDataR9CFileData @ 11 NONAME
+	_ZN18CHarvesterExifUtil15IsValidExifDataE5TPtr8 @ 12 NONAME
+	_ZN18CHarvesterExifUtil16ComposeExifDataLER10CMdEObject5TPtr8RP6HBufC8 @ 13 NONAME
+	_ZN18CHarvesterExifUtil16ComposeLocationLEP10CMdEObject5TPtr8RP6HBufC8 @ 14 NONAME
+	_ZN18CHarvesterExifUtil33ConvertExifDateTimeToSymbianTimeLERK6TDesC8 @ 15 NONAME
+	_ZN18CHarvesterExifUtil4NewLEv @ 16 NONAME
+	_ZN18CHarvesterExifUtil5NewLCEv @ 17 NONAME
+	_ZN19CHarvesterBlacklist10RemoveFileERK7TDesC16m @ 18 NONAME
+	_ZN19CHarvesterBlacklist12OpenDatabaseEv @ 19 NONAME
+	_ZN19CHarvesterBlacklist13CloseDatabaseEv @ 20 NONAME
+	_ZN19CHarvesterBlacklist13IsBlacklistedERK7TDesC16m5TTime @ 21 NONAME
+	_ZN19CHarvesterBlacklist4NewLEv @ 22 NONAME
+	_ZN19CHarvesterBlacklist7AddFileERK7TDesC16m5TTime @ 23 NONAME
+	_ZN19CHarvesterBlacklistD0Ev @ 24 NONAME
+	_ZN19CHarvesterBlacklistD1Ev @ 25 NONAME
+	_ZN19CHarvesterBlacklistD2Ev @ 26 NONAME
+	_ZN20CHarvesterCenRepUtil13GetScanItemsLER13RPointerArrayI9TScanItemE @ 27 NONAME
+	_ZN20CHarvesterCenRepUtil14GetIgnorePathLER13RPointerArrayI7HBufC16E @ 28 NONAME
+	_ZN20CHarvesterCenRepUtil20AddIgnorePathsToFspLERK7TDesC16 @ 29 NONAME
+	_ZN20CHarvesterCenRepUtil20AddIgnorePathsToFspLERK7TDesC16S2_ @ 30 NONAME
+	_ZN20CHarvesterCenRepUtil20GetIgnoredScanPathsLER13RPointerArrayI7HBufC16E @ 31 NONAME
+	_ZN20CHarvesterCenRepUtil23GetPartialRestorePathsLER13RPointerArrayI9TScanItemE @ 32 NONAME
+	_ZN20CHarvesterCenRepUtil25RemoveIgnorePathsFromFspLERK7TDesC16 @ 33 NONAME
+	_ZN20CHarvesterCenRepUtil30GetIgnoredPartialRestorePathsLER13RPointerArrayI7HBufC16E @ 34 NONAME
+	_ZN20CHarvesterCenRepUtil4NewLEv @ 35 NONAME
+	_ZN20CHarvesterCenRepUtil5NewLCEv @ 36 NONAME
+	_ZN20CHarvesterCenRepUtil9FspEngineEv @ 37 NONAME
+	_ZN20CHarvesterCenRepUtilD0Ev @ 38 NONAME
+	_ZN20CHarvesterCenRepUtilD1Ev @ 39 NONAME
+	_ZN20CHarvesterCenRepUtilD2Ev @ 40 NONAME
+	_ZN22CHarvesterEventManager10SendEventLE26HarvesterEventObserverType19HarvesterEventStatej @ 41 NONAME
+	_ZN22CHarvesterEventManager12CurrentStateE26HarvesterEventObserverType @ 42 NONAME
+	_ZN22CHarvesterEventManager12GetInstanceLEv @ 43 NONAME
+	_ZN22CHarvesterEventManager15GetLastClientIdEv @ 44 NONAME
+	_ZN22CHarvesterEventManager15ReleaseInstanceEv @ 45 NONAME
+	_ZN22CHarvesterEventManager17IncreaseItemCountE26HarvesterEventObserverTypej @ 46 NONAME
+	_ZN22CHarvesterEventManager18DecreaseItemCountLE26HarvesterEventObserverTypej @ 47 NONAME
+	_ZN22CHarvesterEventManager20RegisterHEClientInfoERK9RMessage2 @ 48 NONAME ABSENT
+	_ZN22CHarvesterEventManager22UnregisterHEClientInfoEi @ 49 NONAME ABSENT
+	_ZN22CHarvesterEventManager9ItemCountE26HarvesterEventObserverType @ 50 NONAME
+	_ZN23CHarvesterPluginFactory11GetMimeTypeERK7TDesC16R6TDes16 @ 51 NONAME
+	_ZN23CHarvesterPluginFactory12SetBlacklistER19CHarvesterBlacklist @ 52 NONAME
+	_ZN23CHarvesterPluginFactory13GetObjectDefLER14CHarvesterDataR6TDes16 @ 53 NONAME
+	_ZN23CHarvesterPluginFactory14GetPluginInfosEv @ 54 NONAME
+	_ZN23CHarvesterPluginFactory16IsContainerFileLERK7TDesC16 @ 55 NONAME
+	_ZN23CHarvesterPluginFactory24IsSupportedFileExtensionERK7TDesC16 @ 56 NONAME
+	_ZN23CHarvesterPluginFactory4NewLEv @ 57 NONAME
+	_ZN23CHarvesterPluginFactory8HarvestLEP14CHarvesterData @ 58 NONAME
+	_ZTI17CMdeObjectWrapper @ 59 NONAME ABSENT ; #<TI>#
+	_ZTI18CHarvesterExifUtil @ 60 NONAME ABSENT ; #<TI>#
+	_ZTI19CHarvesterBlacklist @ 61 NONAME ABSENT ; #<TI>#
+	_ZTI20CHarvesterCenRepUtil @ 62 NONAME ABSENT ; #<TI>#
+	_ZTI22CHarvesterEventManager @ 63 NONAME ABSENT ; #<TI>#
+	_ZTI23CHarvesterPluginFactory @ 64 NONAME ABSENT ; #<TI>#
+	_ZTV17CMdeObjectWrapper @ 65 NONAME ABSENT ; #<VT>#
+	_ZTV18CHarvesterExifUtil @ 66 NONAME ABSENT ; #<VT>#
+	_ZTV19CHarvesterBlacklist @ 67 NONAME ABSENT ; #<VT>#
+	_ZTV20CHarvesterCenRepUtil @ 68 NONAME ABSENT ; #<VT>#
+	_ZTV22CHarvesterEventManager @ 69 NONAME ABSENT ; #<VT>#
+	_ZTV23CHarvesterPluginFactory @ 70 NONAME ABSENT ; #<VT>#
+	_ZN12RMediaIdUtil12GetInstanceLEv @ 71 NONAME
+	_ZN12RMediaIdUtil15ReleaseInstanceEv @ 72 NONAME
+	_ZN21CHarvesterMediaIdUtil10GetMediaIdERK7TDesC16Rm @ 73 NONAME
+	_ZN21CHarvesterMediaIdUtil13RemoveMediaIdEm @ 74 NONAME
+	_ZN21CHarvesterMediaIdUtil14GetDriveLetterEmR5TChar @ 75 NONAME
+	_ZTI21CHarvesterMediaIdUtil @ 76 NONAME ; #<TI>#
+	_ZTV21CHarvesterMediaIdUtil @ 77 NONAME ; #<VT>#
+	_ZN20CHarvesterCenRepUtil17IsRomScanEnabledLERi @ 78 NONAME
+	_ZN20CHarvesterCenRepUtil25IsThumbnailDaemonEnabledLERi @ 79 NONAME
+	_ZN22CHarvesterEventManager22RegisterEventObserverLERK9RMessage2 @ 80 NONAME
+	_ZN22CHarvesterEventManager23UnregisterEventObserverERK9RMessage2 @ 81 NONAME
+	_ZN17CMdeObjectWrapper21HandleObjectPropertyLER10CMdEObjectR15CMdEPropertyDefPvi @ 82 NONAME
+	_ZN23CHarvesterPluginFactory26SendHarvestingStatusEventLEi @ 83 NONAME
+	_ZN18CHarvesterExifUtilD0Ev @ 84 NONAME
+	_ZN18CHarvesterExifUtilD1Ev @ 85 NONAME
+	_ZN18CHarvesterExifUtilD2Ev @ 86 NONAME
+	_ZN23CHarvesterPluginFactory14PauseHarvesterEi @ 87 NONAME
+	_ZN23CHarvesterPluginFactory13GetObjectDefLEP14CHarvesterDataR6TDes16 @ 88 NONAME
+	_ZN20CHarvesterCenRepUtil25GetAlwaysScanOnBootPathsLER13RPointerArrayI9TScanItemE @ 89 NONAME
+

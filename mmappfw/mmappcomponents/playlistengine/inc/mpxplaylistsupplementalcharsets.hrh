@@ -1,0 +1,89 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  supplemental character set IDs are included here
+*
+*/
+
+
+#ifndef __MPXPLAYLISTSUPPLEMENTALCHARSET_HRH__
+#define __MPXPLAYLISTSUPPLEMENTALCHARSET_HRH__
+
+// copied from MetadataUtility's SupplementalCharSets.hrh version 1
+
+/** 
+EucJpDirectmap
+*/
+#define KCharacterSetIdentifierEucJpDirectmap 0x10207353
+/** 
+ShiftJisDirectmap
+*/
+#define KCharacterSetIdentifierShiftJisDirectmap 0x10207354 
+/** 
+KOI8-R
+*/
+#define KCharacterSetIdentifierKOI8R 0x10207401 
+/** 
+KOI8-U
+*/
+#define KCharacterSetIdentifierKOI8U 0x10207402 
+/** 
+TIS_620
+*/
+#define KCharacterSetIdentifierTIS620 0x10207403 
+/** 
+Windows-1250
+*/
+#define KCharacterSetIdentifierCp1250 0x10207404 
+/** 
+Windows-1251
+*/
+#define KCharacterSetIdentifierCp1251 0x10207405 
+/** 
+Windows-1252
+*/
+#define KCharacterSetIdentifierCp1252 0x10207406 
+/** 
+Windows-1253
+*/
+#define KCharacterSetIdentifierCp1253 0x10207407 
+/** 
+Windows-1254
+*/
+#define KCharacterSetIdentifierCp1254 0x10207408 
+/** 
+Windows-1255
+*/
+#define KCharacterSetIdentifierCp1255 0x10207409 
+/** 
+Windows-1256
+*/
+#define KCharacterSetIdentifierCp1256 0x1020740A 
+/** 
+Windows-1257
+*/
+#define KCharacterSetIdentifierCp1257 0x1020740B 
+/** 
+Windows-1258
+*/
+#define KCharacterSetIdentifierCp1258 0x1020740C 
+/** 
+Windows-874
+*/
+#define KCharacterSetIdentifierCp874 0x1020740D 
+/** 
+ISCII
+*/
+#define KCharacterSetIdentifierISCII 0x1027508D 
+
+#endif // __MPXPLAYLISTSUPPLEMENTALCHARSET_HRH__

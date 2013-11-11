@@ -1,0 +1,560 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRINT Running  EMsvOpenAttachmentForWrite
+
+///////////////////////////////////
+// **** Service entry tests ****
+///////////////////////////////////
+
+//******************************************
+// Entry is a service entry.
+// Need WriteDeviceData to access the entry.
+//******************************************
+
+PRINT Running  EMsvOpenAttachmentForWrite : Read Caps = WriteDeviceData. Same SID. Should Pass.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap MessagingTestServer_caps.exe 0003fffe -SID 101F7776 MessagingTestServer.exe
+
+// First we need to set proxy to same SID as test server, so we can create an entry we own with this SID.
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 00000020 -SID 101F7776 SendProxyServer.exe
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateServiceEntry.script
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvCreateAttachmentForWrite_Pass.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvOpenAttachmentForWritePass.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+//******************************************
+// Entry is a service entry.
+// Need WriteDeviceData to access the entry.
+//******************************************
+
+PRINT Running  EMsvOpenAttachmentForWrite : Read Caps = WriteUserData. Same SID. Should Fail.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap MessagingTestServer_caps.exe 0003fffe -SID 101F7776 MessagingTestServer.exe
+
+// First we need to set proxy to WriteDeviceData so we can create the attachment.
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 00000020 -SID 101F7776 SendProxyServer.exe
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateServiceEntry.script
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvCreateAttachmentForWrite_Pass.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 00010000 -SID 101F7776 SendProxyServer.exe
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvOpenAttachmentForWriteFail.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+//******************************************
+// Entry is a service entry.
+// Need WriteDeviceData to access the entry.
+//******************************************
+
+PRINT Running  EMsvOpenAttachmentForWrite : Read Caps = 0. Same SID. Should Fail.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap MessagingTestServer_caps.exe 0003fffe -SID 101F7776 MessagingTestServer.exe
+
+// First we need to set proxy to WriteDeviceData so we can create the attachment.
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 00000020 -SID 101F7776 SendProxyServer.exe
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateServiceEntry.script
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvCreateAttachmentForWrite_Pass.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+
+// Next we need to set proxy to lesser capability so we can test deleting the attachment.
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 00000000 -SID 101F7776 SendProxyServer.exe
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvOpenAttachmentForWriteFail.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+
+
+//////////////////////////////////////////
+// **** Outbox tests (Protected folder) ****
+//////////////////////////////////////////
+
+//******************************************
+// Entry is in Outbox (protected folder).
+// Need ReadUserData + WriteUserData + NetworkServices to access the entry.
+//******************************************
+
+PRINT Running  EMsvOpenAttachmentForWrite : Read Caps = ReadUserData + WriteUserData + NetworkServices. Different SID. Should Pass.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap MessagingTestServer_caps.exe 0003fffe -SID 101F7776 MessagingTestServer.exe
+
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 0001a000 -SID 101F7776 SendProxyServer.exe
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateSingleEntryOutbox.script
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvCreateAttachmentForWrite_Pass.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvOpenAttachmentForWritePass.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+//******************************************
+// Entry is in Outbox (protected folder).
+// Need ReadUserData + WriteUserData + NetworkServices to access the entry.
+//******************************************
+
+PRINT Running  EMsvOpenAttachmentForWrite : Read Caps = ReadUserData + WriteUserData. Different SID. Should Fail.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap MessagingTestServer_caps.exe 0003fffe -SID 101F7776 MessagingTestServer.exe
+
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 0001e000 -SID 101F7776 SendProxyServer.exe
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateSingleEntryOutbox.script
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvCreateAttachmentForWrite_Pass.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 00018000 -SID 101F7776 SendProxyServer.exe
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvOpenAttachmentForWriteFail.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+//******************************************
+// Entry is in Outbox (protected folder).
+// Need ReadUserData + WriteUserData + NetworkServices to access the entry.
+//******************************************
+
+PRINT Running  EMsvOpenAttachmentForWrite : Read Caps = ReadUserData + NetworkServices. Different SID. Should Fail.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap MessagingTestServer_caps.exe 0003fffe -SID 101F7776 MessagingTestServer.exe
+
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 0001e000 -SID 101F7776 SendProxyServer.exe
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateSingleEntryOutbox.script
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvCreateAttachmentForWrite_Pass.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 0000a000 -SID 101F7776 SendProxyServer.exe
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvOpenAttachmentForWriteFail.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+//******************************************
+// Entry is in Outbox (protected folder).
+// Need ReadUserData + WriteUserData + NetworkServices to access the entry.
+//******************************************
+
+PRINT Running  EMsvOpenAttachmentForWrite : Read Caps = WriteUserData + NetworkServices. Different SID. Should Fail.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap MessagingTestServer_caps.exe 0003fffe -SID 101F7776 MessagingTestServer.exe
+
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 0001e000 -SID 101F7776 SendProxyServer.exe
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateSingleEntryOutbox.script
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvCreateAttachmentForWrite_Pass.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 00012000 -SID 101F7776 SendProxyServer.exe
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvOpenAttachmentForWriteFail.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+
+//******************************************
+// Entry is in Outbox (protected folder).
+// Need ReadUserData + WriteUserData + NetworkServices to access the entry.
+//******************************************
+
+PRINT Running  EMsvOpenAttachmentForWrite : Read Caps = 0. Different SID. Should Fail.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap MessagingTestServer_caps.exe 0003fffe -SID 101F7776 MessagingTestServer.exe
+
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 0001e000 -SID 101F7776 SendProxyServer.exe
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateSingleEntryOutbox.script
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvCreateAttachmentForWrite_Pass.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 00000000 -SID 101F7776 SendProxyServer.exe
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvOpenAttachmentForWriteFail.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+
+
+
+//////////////////////////////////////////
+// **** Unprotected folder tests ****
+//////////////////////////////////////////
+
+//******************************************
+// Entry is in unprotected folder and is not owned by us.
+// Need ReadUserData + WriteUserData to access the entry.
+//******************************************
+
+PRINT Running  EMsvOpenAttachmentForWrite : Read Caps = ReadUserData + WriteUserData. Different SID. Should Pass.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap MessagingTestServer_caps.exe 0003fffe -SID 101F7776 MessagingTestServer.exe
+
+// First we need to set proxy to same SID as test server, so we can create an entry we own with this SID.
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 00000000 -SID 101F7776 SendProxyServer.exe
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateSingleEntryInDrafts.script
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvCreateAttachmentForWrite_Pass.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 00018000 -SID 101F7777 SendProxyServer.exe
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvOpenAttachmentForWritePass.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+//******************************************
+// Entry is in unprotected folder and is not owned by us.
+// Need ReadUserData + WriteUserData to access the entry.
+//******************************************
+
+PRINT Running  EMsvOpenAttachmentForWrite : Read Caps = ReadUserData. Different SID. Should Fail.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap MessagingTestServer_caps.exe 0003fffe -SID 101F7776 MessagingTestServer.exe
+
+// First we need to set proxy to same SID as test server, so we can create an entry we own with this SID.
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 00000000 -SID 101F7776 SendProxyServer.exe
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateSingleEntryInDrafts.script
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvCreateAttachmentForWrite_Pass.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 00008000 -SID 101F7777 SendProxyServer.exe
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvOpenAttachmentForWriteFail.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+//******************************************
+// Entry is in unprotected folder and is not owned by us.
+// Need ReadUserData + WriteUserData to access the entry.
+//******************************************
+
+PRINT Running  EMsvOpenAttachmentForWrite : Read Caps = WriteUserData. Different SID. Should Fail.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap MessagingTestServer_caps.exe 0003fffe -SID 101F7776 MessagingTestServer.exe
+
+// First we need to set proxy to same SID as test server, so we can create an entry we own with this SID.
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 00000000 -SID 101F7776 SendProxyServer.exe
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateSingleEntryInDrafts.script
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvCreateAttachmentForWrite_Pass.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 00010000 -SID 101F7777 SendProxyServer.exe
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvOpenAttachmentForWriteFail.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+//******************************************
+// Entry is in unprotected folder and is not owned by us.
+// Need ReadUserData + WriteUserData to access the entry.
+//******************************************
+
+PRINT Running  EMsvOpenAttachmentForWrite : Read Caps = 0. Different SID. Should Fail.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap MessagingTestServer_caps.exe 0003fffe -SID 101F7776 MessagingTestServer.exe
+
+// First we need to set proxy to same SID as test server, so we can create an entry we own with this SID.
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 00000000 -SID 101F7776 SendProxyServer.exe
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateSingleEntryInDrafts.script
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvCreateAttachmentForWrite_Pass.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 00000000 -SID 101F7777 SendProxyServer.exe
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvOpenAttachmentForWriteFail.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+//******************************************
+// Entry is in unprotected folder and is owned by us.
+// Need no capabilities to access the entry.
+//******************************************
+
+PRINT Running  EMsvOpenAttachmentForWrite : Read Caps = 0. Same SID. Should Pass.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap MessagingTestServer_caps.exe 0003fffe -SID 101F7776 MessagingTestServer.exe
+
+// First we need to set proxy to same SID as test server, so we can create an entry we own with this SID.
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 00000000 -SID 101F7776 SendProxyServer.exe
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateSingleEntryInDrafts.script
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvCreateAttachmentForWrite_Pass.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvOpenAttachmentForWritePass.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+
+
+//////////////////////////////////////////
+// **** Remote Service tests ****
+//////////////////////////////////////////
+
+//******************************************
+// Entry is in remote service.
+// Need ReadUserData + WriteUserData + MTM specific caps to access the entry.
+//******************************************
+
+PRINT Running  EMsvOpenAttachmentForWrite : Read Caps = ReadUserData + WriteUserData + LocalServices + NetworkServices. Same SID. Should Pass.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap MessagingTestServer_caps.exe 0003fffe -SID 101F7776 MessagingTestServer.exe
+
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 0001e000 -SID 101F7776 SendProxyServer.exe
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateRemoteEntry.script
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvCreateAttachmentForWrite_Pass.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvOpenAttachmentForWritePass.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+//******************************************
+// Entry is in remote service.
+// Need ReadUserData + WriteUserData + MTM specific caps to access the entry.
+//******************************************
+
+PRINT Running  EMsvOpenAttachmentForWrite : Read Caps = ReadUserData + WriteUserData + NetworkServices. Same SID. Should Fail.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap MessagingTestServer_caps.exe 0003fffe -SID 101F7776 MessagingTestServer.exe
+
+// First we need to set proxy to enough caps to create the entry and attachment.
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 0003fffe -SID 101F7776 SendProxyServer.exe
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateRemoteEntry.script
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvCreateAttachmentForWrite_Pass.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 0001a000 -SID 101F7776 SendProxyServer.exe
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvOpenAttachmentForWriteFail.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+//******************************************
+// Entry is in remote service.
+// Need ReadUserData + WriteUserData + MTM specific caps to access the entry.
+//******************************************
+
+PRINT Running  EMsvOpenAttachmentForWrite : Read Caps = ReadUserData + WriteUserData + LocalServices. Same SID. Should Fail.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap MessagingTestServer_caps.exe 0003fffe -SID 101F7776 MessagingTestServer.exe
+
+// First we need to set proxy to enough caps to create the entry and attachment.
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 0003fffe -SID 101F7776 SendProxyServer.exe
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateRemoteEntry.script
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvCreateAttachmentForWrite_Pass.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 0001c000 -SID 101F7776 SendProxyServer.exe
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvOpenAttachmentForWriteFail.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+//******************************************
+// Entry is in remote service.
+// Need ReadUserData + WriteUserData + MTM specific caps to access the entry.
+//******************************************
+
+PRINT Running  EMsvOpenAttachmentForWrite : Read Caps = ReadUserData + NetworkServices + LocalServices. Same SID. Should Fail.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap MessagingTestServer_caps.exe 0003fffe -SID 101F7776 MessagingTestServer.exe
+
+// First we need to set proxy to enough caps to create the entry and attachment.
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 0003fffe -SID 101F7776 SendProxyServer.exe
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateRemoteEntry.script
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvCreateAttachmentForWrite_Pass.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 0000e000 -SID 101F7776 SendProxyServer.exe
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvOpenAttachmentForWriteFail.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+//******************************************
+// Entry is in remote service.
+// Need ReadUserData + WriteUserData + MTM specific caps to access the entry.
+//******************************************
+
+PRINT Running  EMsvOpenAttachmentForWrite : Read Caps = WriteUserData + NetworkServices + LocalServices. Same SID. Should Fail.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap MessagingTestServer_caps.exe 0003fffe -SID 101F7776 MessagingTestServer.exe
+
+// First we need to set proxy to enough caps to create the entry and attachment.
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 0003fffe -SID 101F7776 SendProxyServer.exe
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateRemoteEntry.script
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvCreateAttachmentForWrite_Pass.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 00016000 -SID 101F7776 SendProxyServer.exe
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvOpenAttachmentForWriteFail.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+//******************************************
+// Entry is in remote service.
+// Need ReadUserData + WriteUserData + MTM specific caps to access the entry.
+//******************************************
+
+PRINT Running  EMsvOpenAttachmentForWrite : Read Caps = 0. Same SID. Should Fail.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap MessagingTestServer_caps.exe 0003fffe -SID 101F7776 MessagingTestServer.exe
+
+// First we need to set proxy to enough caps to create the entry and attachment.
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 0003fffe -SID 101F7776 SendProxyServer.exe
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateRemoteEntry.script
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvCreateAttachmentForWrite_Pass.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+
+RUN_PROGRAM -1 setcap SendProxyServer_caps.exe 00000000 -SID 101F7776 SendProxyServer.exe
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvOpenAttachmentForWriteFail.script
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script

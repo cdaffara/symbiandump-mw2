@@ -1,0 +1,56 @@
+// Copyright (c) 2004-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// schsendexe.exe Executable that launches sending server MTM
+// 
+//
+/**
+ @file
+*/
+
+
+#include "../../../msgtests/group/msgopt.mph"
+
+	target          schsendexe.exe
+	targettype      exe
+
+CAPABILITY ReadDeviceData NetworkServices LocalServices ReadUserData WriteUserData WriteDeviceData
+
+
+	UID      0x1000008C 0x100056A1
+
+SOURCEPATH	../src
+userinclude     ../inc
+// MW_LAYER_SYSTEMINCLUDE_SYMBIAN Illegal dependency on miutset.h in App layer. Needs to be fixed
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+source          SchSendExe.cpp SchSendExeActive.cpp
+library         euser.lib
+library         msgs.lib
+library         schsvr.lib
+library         efsrv.lib estor.lib
+library			schsend.lib
+LIBRARY		centralrepository.lib
+
+// if we have no logging in release mode then flogger.lib is a debug only
+// library, otherwise it is used in release and debug
+#ifdef _MSG_NO_LOGGING_DEFINE
+DEBUGLIBRARY		flogger.lib
+#else
+LIBRARY		flogger.lib
+#endif
+
+VENDORID 0x70000001
+
+
+SMPSAFE

@@ -1,0 +1,69 @@
+/*******************************************************
+   1. Create CS call and release
+   2. Create empty CS conference from plug-in
+   3. Release conference
+   4. Create new PS call and release
+   5. Create empty PS conference from plug-in
+   6. Hangup call
+*******************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 9.13.5 Conference Call, exceptions
+timeout 5000
+create ccetester test
+test Delay 1000
+
+print Step_1
+
+test OpenNewCall 1 0 5050505355 1 ECCECallTypeCSVoice ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+// Wait Release to complete
+test Delay 1000
+
+print Step_2
+
+test SendPluginRequest 2 CreateConferenceCall
+test WaitEvent ConferenceCallCreated
+test ReleaseConference 0
+
+print Step_3
+
+test OpenNewCall 2 0 CallTwo 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 2 0 SubAddress Bearer
+test WaitEvent 2 Dialling
+test WaitEvent 2 Connecting
+test WaitEvent 2 Connected
+
+test HangUp 2 0
+test WaitEvent 2 Disconnecting
+test WaitEvent 2 Idle
+test Release 2 0
+
+// If there is no delay, Release will complete after Conference is created and PS plugin is unloaded
+// if there is delay, SendPluginRequest does not work because plug-in is unloaded
+
+print Step_4
+
+test SendPluginRequest 1 CreateConferenceCall
+test WaitEvent ConferenceCallCreated
+// Because of Release, the ConferenceCall pointer is now invalid in CCE
+test ReleaseConference 0
+
+print Step_5
+
+test VerifyTest
+delete test
+[Endtest]

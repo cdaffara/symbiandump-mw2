@@ -1,0 +1,77 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+//! @file
+//! @SYMTestCaseID MSG-SENDAS-CIT-0030-HP
+//! @SYMTestCaseDesc Confirmed Send
+//! @SYMFssID 
+//! @SYMTestStatus Defined
+//! @SYMTestPriority High
+//! @SYMTestActions xxxxxxxx
+//! @SYMTestExpectedResults yyyyyyyyy
+//! @SYMTestType CIT
+
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+GetBaseConstants		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	GetBaseConstants
+InitNtRas			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	InitNtRas
+GetSMTPMTMUId			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	SMTPMTMUId
+CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	CreateSession
+ResetMessageStore		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	ResetMessageStore
+CreateImap4Service		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	CreateImap4Service
+CreateSmtpService		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	CreateSmtpService
+CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	CreateRegistry
+CreateSmtpMtm			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	CreateSmtpMtm
+SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	SetDefaultConfiguration0
+SetSmtpServiceParameters	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	SetSmtpServiceParams
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	ChkChildrenCountDraft0
+CreateImap4Mtm			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	CreateImap4Mtm
+SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	SetDefaultConfigurationIMAP
+SetImap4ServiceParameters	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	SetImap4ServiceParameters
+ConnectImap4Server		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	ConnectImap4Server
+DoFullImap4Synchronisation	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	DoFullImap4Synchronisation
+FindEntryByName			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	FindEntryByName0
+DeleteChildren			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	DeleteChildren
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	CheckChildrenCount0
+DisconnectImap4Server		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	DisconnectImap4Server
+EXECUTE_TEST_CASE
+ChangeDefaultSmtpService	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	ChangeDefaultSmtpService
+ConnectSendAsServer		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	ConnectSendAsServer
+SendAsCreateMessageofType	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	CreateMessageofType
+SendAsAddLinkedAttachment	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	SendAsAddLinkedAttachment
+SendAsSetSubject		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	SendAsSetSubject
+SendAsAddRecipient		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	SendAsAddRecipient
+SetUserResponse			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	SetUserResponse
+SendAsSendMessage		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	SendAsSendMessage
+SendAsCloseMessage		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	CloseMessage
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	ChkChildrenCountSent0
+CreateChildrenSelection		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	CreateChildrenSentItems
+SetImap4FullDownloadLimits	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	SetImap4FullDownloadLimits
+ConnectImap4Server		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	ConnectImap4Server
+DoFullImap4Synchronisation	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	DoFullImap4Synchronisation
+CreateChildrenSelection		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	CreateChildrenSelection
+DoImap4Populate			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	DoImap4Populate
+DisconnectImap4Server		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	DisconnectImap4Server
+CloseSendAsServerConnection	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	CloseSvrConnection
+CHECK_POSTCONDITIONS
+CompareEmailMessages		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMTP-CIT-0025-ConfirmedSend_IMAP.ini	CompareEmailMessages
+END_TEST_CASE

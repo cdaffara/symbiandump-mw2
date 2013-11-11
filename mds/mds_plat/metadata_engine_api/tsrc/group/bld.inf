@@ -1,0 +1,44 @@
+/*
+* Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Build information file
+*
+*/
+
+
+PRJ_PLATFORMS
+    DEFAULT
+
+PRJ_EXPORTS
+
+PRJ_MMPFILES
+
+PRJ_TESTMMPFILES
+MdETestScripter.mmp
+
+PRJ_TESTEXPORTS
+../conf/MdETestScripter.cfg /epoc32/winscw/c/TestFramework/MdETestScripter.cfg
+../init/MdETestScripter.ini /epoc32/winscw/c/TestFramework/MdETestScripter.ini
+../data/mmc/MdETestScripterImportMetadata.mde /epoc32/winscw/c/data/MdETestScripterImportMetadata.mde
+../data/mmc/MdETestScripterSchema.mde /epoc32/winscw/c/data/MdETestScripterSchema.mde
+../data/mmc/MdETestScripterSchema2.mde /epoc32/winscw/c/data/MdETestScripterSchema2.mde
+
+../data/mmc/test2video1.3gp /epoc32/winscw/c/Data/test2video1.3gp
+../data/mmc/test2video2.mp4 /epoc32/winscw/c/Data/test2video2.mp4
+../data/mmc/test3video1.3gp /epoc32/winscw/c/Data/test3video1.3gp
+../data/mmc/test3video2.mp4 /epoc32/winscw/c/Data/test3video2.mp4
+../data/mmc/test4video1.3gp /epoc32/winscw/c/Data/test4video1.3gp
+../data/mmc/test4video2 /epoc32/winscw/c/Data/test4video2
+../data/mmc/test26video1.3gp /epoc32/winscw/c/Data/test26video1.3gp
+../data/mmc/testvideo1.3gp /epoc32/winscw/c/Data/testvideo1.3gp
+../data/mmc/testvideo2.mp4 /epoc32/winscw/c/Data/testvideo2.mp4

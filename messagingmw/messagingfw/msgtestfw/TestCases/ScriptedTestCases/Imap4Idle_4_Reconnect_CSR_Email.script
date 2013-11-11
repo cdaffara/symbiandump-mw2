@@ -1,0 +1,69 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer GetBaseConstants			c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini GetBaseConstants
+RUN_TEST_STEP 100 MessagingTestServer InitNtRas				c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini InitNtRas
+RUN_TEST_STEP 100 MessagingTestServer CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini CreateSession
+RUN_TEST_STEP 100 MessagingTestServer ResetMessageStore			c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini ResetMessageStore
+RUN_TEST_STEP 100 MessagingTestServer CreateImap4Service		c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini CreateImap4Service
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpService			c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini CreateSmtpService
+RUN_TEST_STEP 100 MessagingTestServer CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini CreateRegistry
+RUN_TEST_STEP 100 MessagingTestServer CreateImap4Mtm			c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini CreateImap4Mtm
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpMtm			c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini CreateSmtpMtm
+RUN_TEST_STEP 100 MessagingTestServer GetDefaultSmtpService		c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini GetDefaultSmtpService
+RUN_TEST_STEP 100 MessagingTestServer SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini setImap4IdleConf
+RUN_TEST_STEP 100 MessagingTestServer SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini SetDefaultEmail
+
+RUN_TEST_STEP 100 MessagingTestServer SetImap4ServiceParameters		c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini SetImap4ServiceParameters
+RUN_TEST_STEP 100 MessagingTestServer SetImap4ServiceIdleParameters	c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini SetImap4ServiceIdleParameters
+RUN_TEST_STEP 100 MessagingTestServer SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini setSmtpIdleConf
+RUN_TEST_STEP 100 MessagingTestServer SetSmtpServiceParameters		c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini SetSmtpServiceParameters
+RUN_TEST_STEP 100 MessagingTestServer ConnectAndSyncImap4Server   	c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini ConnectImap4Server0
+RUN_TEST_STEP 100 MessagingTestServer Sleep				c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini Sleep1mins
+RUN_TEST_STEP 100 MessagingTestServer DoFullImap4Synchronisation	c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini DoFullImap4Synchronisation0
+RUN_TEST_STEP 100 MessagingTestServer FindEntryByName			c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini FindEntryByName0
+RUN_TEST_STEP 100 MessagingTestServer DeleteChildren			c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini DeleteChildren
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini CheckChildrenCount0
+RUN_TEST_STEP 100 MessagingTestServer DisconnectImap4Server		c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini DisconnectImap4Server0
+
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer ConnectAndSyncImap4Server		c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini ConnectImap4Server1
+
+RUN_TEST_STEP 100 MessagingTestServer Sleep								c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini Sleep31mins
+
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpMessageFromEmailFile				c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini CreateSmtpMessageFromEmailFile0
+
+RUN_TEST_STEP 100 MessagingTestServer CopyEntry				c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini CopyEntry
+RUN_TEST_STEP 100 MessagingTestServer Sleep				c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini Sleep1mins
+RUN_TEST_STEP 100 MessagingTestServer CreateChildrenSelection	   	c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini CreateChildrenSelection
+RUN_TEST_STEP 100 MessagingTestServer CopySelection			c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini CopySelection
+RUN_TEST_STEP 100 MessagingTestServer DisconnectImap4Server		c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini DisconnectImap4Server1
+
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini CheckChildrenCount1
+RUN_TEST_STEP 100 MessagingTestServer FindEntryByName			c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini FindEntryByName1
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini CheckChildrenCount2
+RUN_TEST_STEP 100 MessagingTestServer FindEntryByName			c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini FindEntryByName2
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini CheckChildrenCount3
+RUN_TEST_STEP 100 MessagingTestServer FindEntryByName			c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle.ini FindEntryByName3
+
+RUN_TEST_STEP -1  MessagingTestServer END_TEST_CASE

@@ -1,0 +1,83 @@
+r/**********************************************************
+	1. Create conference of 2 calls
+	2. Create 3rd call and Add to conference
+	3. Go one-to-one with call 2
+	4. Add 2nd call back to conference
+	5. Disconnect calls
+***********************************************************/
+
+// After Go 1-to-1, hold the privated call, activate conference,
+// and hangup the call in conference
+// ==> will conf go active???
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 9.10.4 Conference Call, Go Private 4
+timeout 30000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test OpenNewCall 1 0 Conf_A@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+test OpenNewCall 2 0 RecipientTwo 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 2 0 SubAddress Bearer
+test WaitEvent 2 Dialling
+test WaitEvent 2 Connecting
+test WaitEvent 2 Connected
+
+test AddToConference 1 0
+test WaitEvent ConferenceCallAdded 1
+
+test AddToConference 2 0
+// Plugin sets call to match conference state (connected)
+test WaitEvents ConferenceCallAdded 2, ConferenceActive, 1 Connected
+
+// Step 2
+print Step_2
+
+test OpenNewCall 3 0 RecipientThree 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 3 0 SubAddress Bearer
+// Plugin changes call states to match conference:
+test WaitEvents 1 Hold, 2 Hold, ConferenceHold, 3 Dialling, 3 Connecting, 3 Connected, ConferenceCallSwapped
+
+test AddToConference 3 0
+// Conference goes automatically to Hold, added call to hold:
+// Conference becomes Active, plugin changes states to Connected:
+test WaitEvents ConferenceCallAdded 3, 3 Hold, 1 Connected, 2 Connected, 3 Connected, ConferenceActive, ConferenceCallSwapped
+
+// Step 3
+print Step_3
+
+test GoOneToOne 2 0
+test WaitEvents ConferenceCallRemoved 2, 1 Hold, 3 Hold, ConferenceHold, ConferenceCallSwapped
+
+// Step 4
+print Step_4
+
+test AddToConference 2 0
+// Call is added in Hold state
+// Conference becomes Active again
+test WaitEvents ConferenceCallAdded 2, 2 Hold, 1 Connected, 3 Connected, 2 Connected, ConferenceActive, ConferenceCallSwapped
+
+// Step 5
+print Step_5
+
+test HangupConference 0
+
+test WaitEvents ConferenceCallRemoved 1, ConferenceCallRemoved 2, ConferenceCallRemoved 3, ConferenceIdle, 1 Disconnecting, 1 Idle, 2 Disconnecting, 2 Idle, 3 Disconnecting, 3 Idle
+
+test VerifyTest
+delete test
+[Endtest]

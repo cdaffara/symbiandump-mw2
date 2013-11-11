@@ -1,0 +1,48 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+//! @SYMTestCaseID <SMS-MSG-007>
+//! @SYMTestType CIT
+//! @SYMTestPriority <High>
+//! @SYMFssID <@SYMPREQ 1121>
+//! @SYMTestCaseDesc <Tests the sms For Multiple Message Indications>
+//! @SYMTestActions <VerifyIndications>
+//! @SYMTestExpectedResults <%d Messages Waiting>
+
+RUN_UTILS  CopyFile c:\msgtest\TestFramework\ScriptedTestCases\PREQ1121\3GppConfigMixedIndication.txt c:\config.txt
+
+RUN_UTILS  MakeReadWrite c:\config.txt
+
+LOAD_SUITE 3GppSupportTestServer -SharedData
+
+START_TESTCASE MixedIndicationTest
+//SetUp
+RUN_TEST_STEP 100 3GppSupportTestServer DeleteChildren	c:\msgtest\TestFramework\ScriptedTestCases\PREQ1121\3GppMixedIndicationTest.ini DeleteInbox
+RUN_TEST_STEP 100 3GppSupportTestServer DeleteChildren	c:\msgtest\TestFramework\ScriptedTestCases\PREQ1121\3GppMixedIndicationTest.ini DeleteDraft
+RUN_TEST_STEP 100 3GppSupportTestServer DeleteChildren	c:\msgtest\TestFramework\ScriptedTestCases\PREQ1121\3GppMixedIndicationTest.ini DeleteSent
+RUN_TEST_STEP 100 3GppSupportTestServer DeleteChildren	c:\msgtest\TestFramework\ScriptedTestCases\PREQ1121\3GppMixedIndicationTest.ini DeleteOutbox
+RUN_TEST_STEP 100 3GppSupportTestServer DeleteChildren	c:\msgtest\TestFramework\ScriptedTestCases\PREQ1121\3GppMixedIndicationTest.ini DeleteRoot
+RUN_TEST_STEP 100 3GppSupportTestServer CreateService	c:\msgtest\TestFramework\ScriptedTestCases\PREQ1121\3GppMixedIndicationTest.ini CreateService
+RUN_TEST_STEP 100 3GppSupportTestServer InitSimTsy	c:\msgtest\TestFramework\ScriptedTestCases\PREQ1121\3GppMixedIndicationTest.ini Init
+//Main Execution
+RUN_TEST_STEP 100 3GppSupportTestServer CreateSmsMessage c:\msgtest\TestFramework\ScriptedTestCases\PREQ1121\3GppMixedIndicationTest.ini SmsMessageOutbox
+RUN_TEST_STEP 100 3GppSupportTestServer AddIndication	c:\msgtest\TestFramework\ScriptedTestCases\PREQ1121\3GppMixedIndicationTest.ini AddIndication
+RUN_TEST_STEP 100 3GppSupportTestServer SendSms c:\msgtest\TestFramework\ScriptedTestCases\PREQ1121\3GppMixedIndicationTest.ini Send
+//Chk PostConditions
+RUN_TEST_STEP 100 3GppSupportTestServer VerifyIndications c:\msgtest\TestFramework\ScriptedTestCases\PREQ1121\3GppMixedIndicationTest.ini VerifyIndication
+RUN_TEST_STEP 100 3GppSupportTestServer CloseSimTsy
+
+END_TESTCASE MixedIndicationTest

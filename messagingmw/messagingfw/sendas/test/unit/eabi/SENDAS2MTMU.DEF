@@ -1,0 +1,5 @@
+EXPORTS
+	_ZN8CSendMtm4NewLER17CRegisteredMtmDllR11CMsvSession @ 1 NONAME
+	_ZTI8CSendMtm @ 2 NONAME ; #<TI>#
+	_ZTV8CSendMtm @ 3 NONAME ; #<VT>#
+

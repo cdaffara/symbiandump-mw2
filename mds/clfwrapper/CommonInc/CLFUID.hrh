@@ -1,0 +1,30 @@
+/*
+* Copyright (c) 2002-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*
+*/
+
+
+#ifndef CLFUID_HRH
+#define CLFUID_HRH
+
+// CONSTANTS
+#define CLF_FRAMEWORK_UID3 0x101F8858
+#define CLF_MEDIA_COLLECTION_MANAGER_IMPL 0x1028283D
+
+#define CLF_DRM_PLAY_SERVER_SID 0x1020381D
+
+#endif  // CLFUID_HRH
+
+// End of File

@@ -1,0 +1,5 @@
+EXPORTS
+	_ZN13CBIOServerMtm4NewLER17CRegisteredMtmDllP15CMsvServerEntry @ 1 NONAME
+	_ZTI13CBIOServerMtm @ 2 NONAME ; #<TI>#
+	_ZTV13CBIOServerMtm @ 3 NONAME ; #<VT>#
+

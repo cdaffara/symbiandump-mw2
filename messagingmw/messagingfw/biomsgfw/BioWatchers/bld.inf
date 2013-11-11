@@ -1,0 +1,37 @@
+// Copyright (c) 1999-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// BioWatchers
+// 
+//
+
+PRJ_PLATFORMS
+
+
+PRJ_EXPORTS
+Inc/csmsclass0base.h	 SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(csmsclass0base.h)
+
+PRJ_MMPFILES
+BioWatcher.mmp
+NbsWatcher.mmp
+WapWatcher.mmp
+class0sms.mmp
+
+PRJ_TESTMMPFILES
+///BioMsg/BioWatchers/test/T_WapWatcher.mmp	manual
+///BioMsg/BioWatchers/test/T_NbsWatcher.mmp	manual
+
+PRJ_TESTEXPORTS
+// This is used by SMCM/test/t_smssendrecv Test Harness That both sends and recieves
+Test/sendrecv.script	/epoc32/wins/c/test/sms/sendrecv.script
+Test/sendrecv.script	/epoc32/winscw/c/test/sms/sendrecv.script

@@ -1,0 +1,84 @@
+EXPORTS
+	?ClientMtmRegistryL@CSendUiSingleton@@QAEAAVCClientMtmRegistry@@XZ @ 1 NONAME ; class CClientMtmRegistry & CSendUiSingleton::ClientMtmRegistryL(void)
+	?ShowQueryAndSendL@CSendUi@@QAEXPBVCMessageData@@VTSendingCapabilities@@PAV?$CArrayFix@VTUid@@@@VTUid@@HABVTDesC16@@@Z @ 2 NONAME ; void CSendUi::ShowQueryAndSendL(class CMessageData const *, class TSendingCapabilities, class CArrayFix<class TUid> *, class TUid, int, class TDesC16 const &)
+	?SetOpaqueDataL@CMessageData@@QAEXPBVTDesC8@@VTUid@@@Z @ 3 NONAME ; void CMessageData::SetOpaqueDataL(class TDesC8 const *, class TUid)
+	?InternalizeL@CMessageData@@QAEXAAVRReadStream@@@Z @ 4 NONAME ; void CMessageData::InternalizeL(class RReadStream &)
+	?CcAddressArray@CMessageData@@QBEABV?$CArrayPtrFlat@VCMessageAddress@@@@XZ @ 5 NONAME ; class CArrayPtrFlat<class CMessageAddress> const & CMessageData::CcAddressArray(void) const
+	?SetServiceCapabilities@CSendingServiceInfo@@QAEXVTSendingCapabilities@@@Z @ 6 NONAME ; void CSendingServiceInfo::SetServiceCapabilities(class TSendingCapabilities)
+	?ServiceCapabilitiesL@CSendUi@@QAEHVTUid@@AAVTSendingCapabilities@@@Z @ 7 NONAME ; int CSendUi::ServiceCapabilitiesL(class TUid, class TSendingCapabilities &)
+	?SetAddressL@CMessageAddress@@QAEXABVTDesC16@@@Z @ 8 NONAME ; void CMessageAddress::SetAddressL(class TDesC16 const &)
+	??1CMessageData@@UAE@XZ @ 9 NONAME ; CMessageData::~CMessageData(void)
+	?NewL@CMessageAddress@@SAPAV1@XZ @ 10 NONAME ; class CMessageAddress * CMessageAddress::NewL(void)
+	?ValidateServiceL@CSendUi@@QAEHVTUid@@VTSendingCapabilities@@@Z @ 11 NONAME ; int CSendUi::ValidateServiceL(class TUid, class TSendingCapabilities)
+	?SetServiceNameL@CSendingServiceInfo@@QAEXABVTDesC16@@@Z @ 12 NONAME ; void CSendingServiceInfo::SetServiceNameL(class TDesC16 const &)
+	??8TSendingCapabilities@@QBEHABV0@@Z @ 13 NONAME ; int TSendingCapabilities::operator==(class TSendingCapabilities const &) const
+	?SetServiceMenuNameL@CSendingServiceInfo@@QAEXABVTDesC16@@@Z @ 14 NONAME ; void CSendingServiceInfo::SetServiceMenuNameL(class TDesC16 const &)
+	?ServiceCapabilities@CSendingServiceInfo@@QBE?AVTSendingCapabilities@@XZ @ 15 NONAME ; class TSendingCapabilities CSendingServiceInfo::ServiceCapabilities(void) const
+	?ConstructL@CMessageData@@IAEXXZ @ 16 NONAME ; void CMessageData::ConstructL(void)
+	?NewL@CSendingService@@SAPAV1@ABVTUid@@AAVCCoeEnv@@AAVCSendUiSingleton@@@Z @ 17 NONAME ; class CSendingService * CSendingService::NewL(class TUid const &, class CCoeEnv &, class CSendUiSingleton &)
+	?InternalizeL@CMessageAddress@@QAEXAAVRReadStream@@@Z @ 18 NONAME ; void CMessageAddress::InternalizeL(class RReadStream &)
+	?NewL@CSendUiSingleton@@SAPAV1@XZ @ 19 NONAME ; class CSendUiSingleton * CSendUiSingleton::NewL(void)
+	??1CSendingService@@UAE@XZ @ 20 NONAME ; CSendingService::~CSendingService(void)
+	?NewL@CMessageData@@SAPAV1@XZ @ 21 NONAME ; class CMessageData * CMessageData::NewL(void)
+	?AddTypedMenuItemL@CSendUi@@QAEXW4TSendUiMenuType@1@AAVCEikMenuPane@@HHVTSendingCapabilities@@@Z @ 22 NONAME ; void CSendUi::AddTypedMenuItemL(enum CSendUi::TSendUiMenuType, class CEikMenuPane &, int, int, class TSendingCapabilities)
+	?AppendBccAddressL@CMessageData@@QAEXABVTDesC16@@0@Z @ 23 NONAME ; void CMessageData::AppendBccAddressL(class TDesC16 const &, class TDesC16 const &)
+	?ServiceProviderId@CSendingServiceInfo@@QBE?AVTUid@@XZ @ 24 NONAME ; class TUid CSendingServiceInfo::ServiceProviderId(void) const
+	?ExternalizeL@CMessageAddress@@QAEXAAVRWriteStream@@@Z @ 25 NONAME ; void CMessageAddress::ExternalizeL(class RWriteStream &)
+	??0TSendingCapabilities@@QAE@XZ @ 26 NONAME ; TSendingCapabilities::TSendingCapabilities(void)
+	?CopyLC@CSendingServiceInfo@@QBEPAV1@XZ @ 27 NONAME ; class CSendingServiceInfo * CSendingServiceInfo::CopyLC(void) const
+	?Alias@CMessageAddress@@QBE?BVTPtrC16@@XZ @ 28 NONAME ; class TPtrC16 const CMessageAddress::Alias(void) const
+	?BodyText@CMessageData@@QBEPBVCRichText@@XZ @ 29 NONAME ; class CRichText const * CMessageData::BodyText(void) const
+	?TechnologyType@CSendUi@@QBE?AVTUid@@V2@@Z @ 30 NONAME ; class TUid CSendUi::TechnologyType(class TUid) const
+	?CanSendBioMessage@CSendUi@@QBEHVTUid@@@Z @ 31 NONAME ; int CSendUi::CanSendBioMessage(class TUid) const
+	?ServiceMenuName@CSendingServiceInfo@@QBE?BVTPtrC16@@XZ @ 32 NONAME ; class TPtrC16 const CSendingServiceInfo::ServiceMenuName(void) const
+	?AppendCcAddressL@CMessageData@@QAEXABVTDesC16@@0@Z @ 33 NONAME ; void CMessageData::AppendCcAddressL(class TDesC16 const &, class TDesC16 const &)
+	?TechnologyTypeId@CSendingServiceInfo@@QBE?AVTUid@@XZ @ 34 NONAME ; class TUid CSendingServiceInfo::TechnologyTypeId(void) const
+	?MsvSessionL@CSendUiSingleton@@QAEAAVCMsvSession@@XZ @ 35 NONAME ; class CMsvSession & CSendUiSingleton::MsvSessionL(void)
+	?NewL@CSendUi@@SAPAV1@XZ @ 36 NONAME ; class CSendUi * CSendUi::NewL(void)
+	?MtmUiDataRegistryL@CSendUiSingleton@@QAEAAVCMtmUiDataRegistry@@XZ @ 37 NONAME ; class CMtmUiDataRegistry & CSendUiSingleton::MtmUiDataRegistryL(void)
+	?AvailableServicesL@CSendUi@@QAEXAAV?$RPointerArray@VCSendingServiceInfo@@@@VTUid@@@Z @ 38 NONAME ; void CSendUi::AvailableServicesL(class RPointerArray<class CSendingServiceInfo> &, class TUid)
+	?NewLC@CMessageAddress@@SAPAV1@XZ @ 39 NONAME ; class CMessageAddress * CMessageAddress::NewLC(void)
+	?ToAddressArray@CMessageData@@QBEABV?$CArrayPtrFlat@VCMessageAddress@@@@XZ @ 40 NONAME ; class CArrayPtrFlat<class CMessageAddress> const & CMessageData::ToAddressArray(void) const
+	?SetServiceId@CSendingServiceInfo@@QAEXVTUid@@@Z @ 41 NONAME ; void CSendingServiceInfo::SetServiceId(class TUid)
+	?CreateAndSendMessageL@CSendUi@@QAEXVTUid@@PBVCMessageData@@0H@Z @ 42 NONAME ; void CSendUi::CreateAndSendMessageL(class TUid, class CMessageData const *, class TUid, int)
+	?Address@CMessageAddress@@QBE?BVTPtrC16@@XZ @ 43 NONAME ; class TPtrC16 const CMessageAddress::Address(void) const
+	?ExternalizeL@CMessageData@@QBEXAAVRWriteStream@@@Z @ 44 NONAME ; void CMessageData::ExternalizeL(class RWriteStream &) const
+	?SetServiceAddressL@CSendingServiceInfo@@QAEXABVTDesC16@@@Z @ 45 NONAME ; void CSendingServiceInfo::SetServiceAddressL(class TDesC16 const &)
+	?NewLC@CSendingServiceInfo@@SAPAV1@XZ @ 46 NONAME ; class CSendingServiceInfo * CSendingServiceInfo::NewLC(void)
+	?DataType@CMessageData@@QBE?AVTUid@@XZ @ 47 NONAME ; class TUid CMessageData::DataType(void) const
+	?NewLC@CSendUi@@SAPAV1@XZ @ 48 NONAME ; class CSendUi * CSendUi::NewLC(void)
+	?ServiceFeatures@CSendingServiceInfo@@QBEHXZ @ 49 NONAME ; int CSendingServiceInfo::ServiceFeatures(void) const
+	?AttachmentHandleArray@CMessageData@@QBEABV?$RArray@VRFile@@@@XZ @ 50 NONAME ; class RArray<class RFile> const & CMessageData::AttachmentHandleArray(void) const
+	?NewL@CSendingServiceInfo@@SAPAV1@XZ @ 51 NONAME ; class CSendingServiceInfo * CSendingServiceInfo::NewL(void)
+	?AddSendMenuItemL@CSendUi@@QAEXAAVCEikMenuPane@@HHVTSendingCapabilities@@@Z @ 52 NONAME ; void CSendUi::AddSendMenuItemL(class CEikMenuPane &, int, int, class TSendingCapabilities)
+	?SetServiceFeatures@CSendingServiceInfo@@QAEXH@Z @ 53 NONAME ; void CSendingServiceInfo::SetServiceFeatures(int)
+	??9TSendingCapabilities@@QBEHABV0@@Z @ 54 NONAME ; int TSendingCapabilities::operator!=(class TSendingCapabilities const &) const
+	?AppendAttachmentHandleL@CMessageData@@QAEXABVRFile@@@Z @ 55 NONAME ; void CMessageData::AppendAttachmentHandleL(class RFile const &)
+	?ClearAttachmentArray@CMessageData@@QAEXXZ @ 56 NONAME ; void CMessageData::ClearAttachmentArray(void)
+	?SetSubjectL@CMessageData@@QAEXPBVTDesC16@@@Z @ 57 NONAME ; void CMessageData::SetSubjectL(class TDesC16 const *)
+	?SetTechnologyTypeId@CSendingServiceInfo@@QAEXVTUid@@@Z @ 58 NONAME ; void CSendingServiceInfo::SetTechnologyTypeId(class TUid)
+	??0TSendingCapabilities@@QAE@HHH@Z @ 59 NONAME ; TSendingCapabilities::TSendingCapabilities(int, int, int)
+	?ShowTypedQueryAndSendL@CSendUi@@QAEXW4TSendUiMenuType@1@PBVCMessageData@@VTSendingCapabilities@@PAV?$CArrayFix@VTUid@@@@VTUid@@HABVTDesC16@@@Z @ 60 NONAME ; void CSendUi::ShowTypedQueryAndSendL(enum CSendUi::TSendUiMenuType, class CMessageData const *, class TSendingCapabilities, class CArrayFix<class TUid> *, class TUid, int, class TDesC16 const &)
+	?SetServiceProviderId@CSendingServiceInfo@@QAEXVTUid@@@Z @ 61 NONAME ; void CSendingServiceInfo::SetServiceProviderId(class TUid)
+	??1CSendingServiceInfo@@UAE@XZ @ 62 NONAME ; CSendingServiceInfo::~CSendingServiceInfo(void)
+	?AppendAttachmentL@CMessageData@@QAEXABVTDesC16@@@Z @ 63 NONAME ; void CMessageData::AppendAttachmentL(class TDesC16 const &)
+	?Subject@CMessageData@@QBE?BVTPtrC16@@XZ @ 64 NONAME ; class TPtrC16 const CMessageData::Subject(void) const
+	?ClearAddresses@CMessageData@@QAEXXZ @ 65 NONAME ; void CMessageData::ClearAddresses(void)
+	?MtmUiRegistryL@CSendUiSingleton@@QAEAAVCMtmUiRegistry@@XZ @ 66 NONAME ; class CMtmUiRegistry & CSendUiSingleton::MtmUiRegistryL(void)
+	?OpaqueData@CMessageData@@QBE?BVTPtrC8@@XZ @ 67 NONAME ; class TPtrC8 const CMessageData::OpaqueData(void) const
+	?SetBodyTextL@CMessageData@@QAEXPBVCRichText@@@Z @ 68 NONAME ; void CMessageData::SetBodyTextL(class CRichText const *)
+	?AppendToAddressL@CMessageData@@QAEXABVTDesC16@@0@Z @ 69 NONAME ; void CMessageData::AppendToAddressL(class TDesC16 const &, class TDesC16 const &)
+	??1CMessageAddress@@UAE@XZ @ 70 NONAME ; CMessageAddress::~CMessageAddress(void)
+	??1CSendUi@@UAE@XZ @ 71 NONAME ; CSendUi::~CSendUi(void)
+	?NewLC@CMessageData@@SAPAV1@XZ @ 72 NONAME ; class CMessageData * CMessageData::NewLC(void)
+	?SetAliasL@CMessageAddress@@QAEXABVTDesC16@@@Z @ 73 NONAME ; void CMessageAddress::SetAliasL(class TDesC16 const &)
+	?ShowSendQueryL@CSendUi@@QAE?AVTUid@@PBVCMessageData@@VTSendingCapabilities@@PAV?$CArrayFix@VTUid@@@@ABVTDesC16@@@Z @ 74 NONAME ; class TUid CSendUi::ShowSendQueryL(class CMessageData const *, class TSendingCapabilities, class CArrayFix<class TUid> *, class TDesC16 const &)
+	?ServiceName@CSendingServiceInfo@@QBE?BVTPtrC16@@XZ @ 75 NONAME ; class TPtrC16 const CSendingServiceInfo::ServiceName(void) const
+	?ShowTypedQueryL@CSendUi@@QAE?AVTUid@@W4TSendUiMenuType@1@PBVCMessageData@@VTSendingCapabilities@@PAV?$CArrayFix@VTUid@@@@ABVTDesC16@@@Z @ 76 NONAME ; class TUid CSendUi::ShowTypedQueryL(enum CSendUi::TSendUiMenuType, class CMessageData const *, class TSendingCapabilities, class CArrayFix<class TUid> *, class TDesC16 const &)
+	?ServiceAddress@CSendingServiceInfo@@QBE?BVTPtrC16@@XZ @ 77 NONAME ; class TPtrC16 const CSendingServiceInfo::ServiceAddress(void) const
+	??0CMessageData@@IAE@XZ @ 78 NONAME ; CMessageData::CMessageData(void)
+	??0CSendingService@@IAE@AAVCCoeEnv@@AAVCSendUiSingleton@@@Z @ 79 NONAME ; CSendingService::CSendingService(class CCoeEnv &, class CSendUiSingleton &)
+	?AttachmentArray@CMessageData@@QBEABVCDesC16Array@@XZ @ 80 NONAME ; class CDesC16Array const & CMessageData::AttachmentArray(void) const
+	?BccAddressArray@CMessageData@@QBEABV?$CArrayPtrFlat@VCMessageAddress@@@@XZ @ 81 NONAME ; class CArrayPtrFlat<class CMessageAddress> const & CMessageData::BccAddressArray(void) const
+	?ServiceId@CSendingServiceInfo@@QBE?AVTUid@@XZ @ 82 NONAME ; class TUid CSendingServiceInfo::ServiceId(void) const
+

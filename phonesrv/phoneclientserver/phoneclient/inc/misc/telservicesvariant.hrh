@@ -1,0 +1,87 @@
+/*
+* Copyright (c) 2003-2007 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  This file contains values for CenRep keys specifying
+*                Telephony Services specific software settings. 
+*
+*
+*/
+
+
+#ifndef TELSERVICESVARIANT_HRH
+#define TELSERVICESVARIANT_HRH
+
+/**
+* KTelSrvLVFlagAdvancedENCheck defines if advanced emergency number check
+* is enabled. 
+* When the flag is set, the advanced emergency number check feature is enabled.
+* @since S60 2.6
+*/
+#define KTelSrvLVFlagAdvancedENCheck 0x00000001
+
+/**
+* KTelSrvLVFlagUssdTone defines if the USSD tone play functionality is 
+* enabled.
+* When the flag is set, tone is played when USSD message is received. 
+* @since S60 2.6
+*/
+#define KTelSrvLVFlagUssdTone 0x00000002
+
+/** 
+* KTelSrvLVFlagZeroDial is on/off setting for zero dialling.
+* When it is set on in KTelSrvVariationFlags zero dialling is enabled
+* (0 considered as a phone number), if not GSM standards are followed.
+*/
+#define KTelSrvLVFlagZeroDial 0x00000004
+
+/** 
+* KTelSrvLVFlagTwoDigitDial is on/off setting for 2-digit dial.
+* When it is set on in KTelSrvVariationFlags the feature is enabled.
+* Note: in addition to the value of the key, DOS side variable is read. Two
+* digit calling is enabled if both variables indicate that the feature
+* should be enabled.
+*/
+#define KTelSrvLVFlagTwoDigitDial 0x00000008
+
+/**
+* KTelSrvLVFlagLifeTimer defines if life timer functionality is enabled. 
+* When the flag is set, the life timer feature is enabled.
+*/
+#define KTelSrvLVFlagLifeTimer 0x00000010
+
+/** 
+* KTelephonyLVFlagStandardCugIndexing defines the range of CUG indexes
+* that is in use.
+*
+* When the flag is set implementation is GSM 04.80 compliant.
+*    Default CUG index : 0xFFFF
+*    CUG index range   : 0 - 32767 (decimal)
+*
+* When the flag is NOT set legacy implementation is followed.
+*    Default CUG index : 0
+*    CUG index range   : 1 - 32767 (decimal)
+*
+*/
+#define KTelephonyLVFlagStandardCugIndexing 0x00000020
+
+/**
+* KTelephonyLVFlagDivertDualAffect defines special dual activation/deactivation
+* funtionality. If flag is enabled phonesettings component checks SIM and
+* if used SIM supports this feature phonesettings assumes that every CFU
+* activation/deactivation request affect to both lines.
+* @since Series 60 5.1
+*/
+#define KTelephonyLVFlagDivertDualAffect 0x00000040
+
+#endif // TELSERVICESVARIANT_HRH
+// End of File

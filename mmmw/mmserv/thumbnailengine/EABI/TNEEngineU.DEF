@@ -1,0 +1,32 @@
+EXPORTS
+	_ZN17CTNEVideoClipInfo4NewLERK5RFileR25MTNEVideoClipInfoObserver @ 1 NONAME
+	_ZN17CTNEVideoClipInfo4NewLERK7TDesC16R25MTNEVideoClipInfoObserver @ 2 NONAME
+	_ZN17CTNEVideoClipInfo5NewLCERK5RFileR25MTNEVideoClipInfoObserver @ 3 NONAME
+	_ZN17CTNEVideoClipInfo5NewLCERK7TDesC16R25MTNEVideoClipInfoObserver @ 4 NONAME
+	_ZTI10CYuv2Rgb12 @ 5 NONAME ; #<TI>#
+	_ZTI10CYuv2Rgb16 @ 6 NONAME ; #<TI>#
+	_ZTI10CYuv2Rgb24 @ 7 NONAME ; #<TI>#
+	_ZTI12CDCDithering @ 8 NONAME ; #<TI>#
+	_ZTI12DCSharpening @ 9 NONAME ; #<TI>#
+	_ZTI13CDisplayChain @ 10 NONAME ; #<TI>#
+	_ZTI14CDCDigitalZoom @ 11 NONAME ; #<TI>#
+	_ZTI18CDCColorManagement @ 12 NONAME ; #<TI>#
+	_ZTI22CHXTNEVideoClipInfoImp @ 13 NONAME ; #<TI>#
+	_ZTI7CDCIetd @ 14 NONAME ; #<TI>#
+	_ZTV10CYuv2Rgb12 @ 15 NONAME ; #<VT>#
+	_ZTV10CYuv2Rgb16 @ 16 NONAME ; #<VT>#
+	_ZTV10CYuv2Rgb24 @ 17 NONAME ; #<VT>#
+	_ZTV12CDCDithering @ 18 NONAME ; #<VT>#
+	_ZTV12DCSharpening @ 19 NONAME ; #<VT>#
+	_ZTV13CDisplayChain @ 20 NONAME ; #<VT>#
+	_ZTV14CDCDigitalZoom @ 21 NONAME ; #<VT>#
+	_ZTV18CDCColorManagement @ 22 NONAME ; #<VT>#
+	_ZTV22CHXTNEVideoClipInfoImp @ 23 NONAME ; #<VT>#
+	_ZTV7CDCIetd @ 24 NONAME ; #<VT>#
+	_ZTI10CTneServer @ 25 NONAME ; #<TI>#
+	_ZTI11CTneSession @ 26 NONAME ; #<TI>#
+	_ZTI18CTNEClientObserver @ 27 NONAME ; #<TI>#
+	_ZTV10CTneServer @ 28 NONAME ; #<VT>#
+	_ZTV11CTneSession @ 29 NONAME ; #<VT>#
+	_ZTV18CTNEClientObserver @ 30 NONAME ; #<VT>#
+

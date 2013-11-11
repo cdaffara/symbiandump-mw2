@@ -1,0 +1,42 @@
+/*
+* Copyright (c) 2002-2004 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+* Project definition file for Radio Utility.
+*
+*/
+#include <platform_paths.hrh>
+
+TARGET          TR.exe
+TARGETTYPE      exe
+UID             0x1000008d 0x100058e6
+
+SOURCEPATH      ../src
+
+SOURCE          TFMRadioUtility.cpp
+
+USERINCLUDE     ../inc
+USERINCLUDE     ../../inc
+USERINCLUDE     ../../../inc
+
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY	Radio_Utility.lib
+LIBRARY RadioSession.lib
+LIBRARY euser.lib 
+LIBRARY flogger.lib
+LIBRARY commonengine.lib
+
+
+// End of File
+

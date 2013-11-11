@@ -1,0 +1,80 @@
+EXPORTS
+	_Z9LibEntryLv @ 1 NONAME
+	_Z15SetRequirementsRP16CTestModuleParamRm @ 2 NONAME
+	_ZTI11CMediaEvent @ 3 NONAME ; #<TI>#
+	_ZTI11CPlayVolume @ 4 NONAME ; #<TI>#
+	_ZTI11CPlayWindow @ 5 NONAME ; #<TI>#
+	_ZTI11CRecordClip @ 6 NONAME ; #<TI>#
+	_ZTI11CRecordOpen @ 7 NONAME ; #<TI>#
+	_ZTI12CPlayBalance @ 8 NONAME ; #<TI>#
+	_ZTI13CRecordBySize @ 9 NONAME ; #<TI>#
+	_ZTI13CTestCaseBase @ 10 NONAME ; #<TI>#
+	_ZTI14CCustomCommand @ 11 NONAME ; #<TI>#
+	_ZTI14CMetaDataEntry @ 12 NONAME ; #<TI>#
+	_ZTI14CRecordBalance @ 13 NONAME ; #<TI>#
+	_ZTI14CRecordBitRate @ 14 NONAME ; #<TI>#
+	_ZTI14CRecordChannel @ 15 NONAME ; #<TI>#
+	_ZTI14CRecordFormats @ 16 NONAME ; #<TI>#
+	_ZTI14CRecordMicGain @ 17 NONAME ; #<TI>#
+	_ZTI14CRecordingBase @ 18 NONAME ; #<TI>#
+	_ZTI15CRecordCropClip @ 19 NONAME ; #<TI>#
+	_ZTI15CRecordDataType @ 20 NONAME ; #<TI>#
+	_ZTI15CRecordMetaData @ 21 NONAME ; #<TI>#
+	_ZTI15CRecordPriority @ 22 NONAME ; #<TI>#
+	_ZTI15CThreadPriority @ 23 NONAME ; #<TI>#
+	_ZTI16CRecPositionClip @ 24 NONAME ; #<TI>#
+	_ZTI16CRecordMaxLength @ 25 NONAME ; #<TI>#
+	_ZTI17CRecordDataFormat @ 26 NONAME ; #<TI>#
+	_ZTI17CRecordSampleRate @ 27 NONAME ; #<TI>#
+	_ZTI18CCropFromBeginning @ 28 NONAME ; #<TI>#
+	_ZTI19CCustomCommandAsync @ 29 NONAME ; #<TI>#
+	_ZTI20CRecordTimeAvailable @ 30 NONAME ; #<TI>#
+	_ZTI21CAudioLoadingProgress @ 31 NONAME ; #<TI>#
+	_ZTI26CAudioResourceNotification @ 32 NONAME ; #<TI>#
+	_ZTI9COpenClip @ 33 NONAME ; #<TI>#
+	_ZTI9CPlayClip @ 34 NONAME ; #<TI>#
+	_ZTI9CPlayRamp @ 35 NONAME ; #<TI>#
+	_ZTV11CMediaEvent @ 36 NONAME ; #<VT>#
+	_ZTV11CPlayVolume @ 37 NONAME ; #<VT>#
+	_ZTV11CPlayWindow @ 38 NONAME ; #<VT>#
+	_ZTV11CRecordClip @ 39 NONAME ; #<VT>#
+	_ZTV11CRecordOpen @ 40 NONAME ; #<VT>#
+	_ZTV12CPlayBalance @ 41 NONAME ; #<VT>#
+	_ZTV13CRecordBySize @ 42 NONAME ; #<VT>#
+	_ZTV13CTestCaseBase @ 43 NONAME ; #<VT>#
+	_ZTV14CCustomCommand @ 44 NONAME ; #<VT>#
+	_ZTV14CMetaDataEntry @ 45 NONAME ; #<VT>#
+	_ZTV14CRecordBalance @ 46 NONAME ; #<VT>#
+	_ZTV14CRecordBitRate @ 47 NONAME ; #<VT>#
+	_ZTV14CRecordChannel @ 48 NONAME ; #<VT>#
+	_ZTV14CRecordFormats @ 49 NONAME ; #<VT>#
+	_ZTV14CRecordMicGain @ 50 NONAME ; #<VT>#
+	_ZTV14CRecordingBase @ 51 NONAME ; #<VT>#
+	_ZTV15CRecordCropClip @ 52 NONAME ; #<VT>#
+	_ZTV15CRecordDataType @ 53 NONAME ; #<VT>#
+	_ZTV15CRecordMetaData @ 54 NONAME ; #<VT>#
+	_ZTV15CRecordPriority @ 55 NONAME ; #<VT>#
+	_ZTV15CThreadPriority @ 56 NONAME ; #<VT>#
+	_ZTV16CRecPositionClip @ 57 NONAME ; #<VT>#
+	_ZTV16CRecordMaxLength @ 58 NONAME ; #<VT>#
+	_ZTV17CRecordDataFormat @ 59 NONAME ; #<VT>#
+	_ZTV17CRecordSampleRate @ 60 NONAME ; #<VT>#
+	_ZTV18CCropFromBeginning @ 61 NONAME ; #<VT>#
+	_ZTV19CCustomCommandAsync @ 62 NONAME ; #<VT>#
+	_ZTV20CRecordTimeAvailable @ 63 NONAME ; #<VT>#
+	_ZTV21CAudioLoadingProgress @ 64 NONAME ; #<VT>#
+	_ZTV26CAudioResourceNotification @ 65 NONAME ; #<VT>#
+	_ZTV9COpenClip @ 66 NONAME ; #<VT>#
+	_ZTV9CPlayClip @ 67 NONAME ; #<VT>#
+	_ZTV9CPlayRamp @ 68 NONAME ; #<VT>#
+	_ZTI19CAudioPreEmptionARN @ 69 NONAME
+	_ZTI22CAudioPreEmptionARN235 @ 70 NONAME
+	_ZTI22CAudioPreEmptionARN236 @ 71 NONAME
+	_ZTI22CAudioPreEmptionARN237 @ 72 NONAME
+	_ZTI29CPreEmptionARNCallbackSupport @ 73 NONAME
+	_ZTV19CAudioPreEmptionARN @ 74 NONAME
+	_ZTV22CAudioPreEmptionARN235 @ 75 NONAME
+	_ZTV22CAudioPreEmptionARN236 @ 76 NONAME
+	_ZTV22CAudioPreEmptionARN237 @ 77 NONAME
+	_ZTV29CPreEmptionARNCallbackSupport @ 78 NONAME
+

@@ -1,0 +1,60 @@
+/*
+* Copyright (c) 2002-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  mmp file
+*
+*/
+
+
+#if defined(__S60_)
+        // To get the MW_LAYER_SYSTEMINCLUDE-definition
+        #include <platform_paths.hrh>
+#endif
+
+TARGET          BCBlidTest.dll
+TARGETTYPE      dll
+UID             0x1000008D 0x101FB3E3
+
+CAPABILITY      ALL -TCB
+
+DEFFILE         BCBlidTest.def
+
+SOURCEPATH      ../src
+SOURCE          BCBlidTest.cpp
+SOURCE          BCBlidTestBlocks.cpp
+
+
+USERINCLUDE     ../inc 
+
+#if defined(__S60_)
+    MW_LAYER_SYSTEMINCLUDE
+#else
+    SYSTEMINCLUDE   /epoc32/include 
+    SYSTEMINCLUDE   /epoc32/include/internal
+#endif
+
+SYSTEMINCLUDE   /epoc32/include/applications
+
+
+LIBRARY         euser.lib
+LIBRARY         stiftestinterface.lib
+LIBRARY         stiftestengine.lib
+LIBRARY	 		satinfo.lib
+LIBRARY			cone.lib 
+LIBRARY			ws32.lib 
+
+
+LANG            SC
+
+
+// End of File

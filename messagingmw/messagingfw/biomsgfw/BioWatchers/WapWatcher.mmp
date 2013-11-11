@@ -1,0 +1,50 @@
+// Copyright (c) 2004-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// wapwatcher.dll Watcher for receiving WDP/WSP BIO messages
+// 
+//
+
+/**
+ @file
+*/
+
+#include	"../group/biomsgopt.mph"
+
+TARGET			wapwatcher.dll
+TARGETTYPE		PLUGIN
+
+// UIDs - 2nd UID specifies an ECom dll, 3rd UID is unique identifier
+UID				0x10009D8D 0x10008C67
+
+//MW_LAYER_SYSTEMINCLUDE_SYMBIAN -- should be this but has dependency on APP layer
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+LIBRARY         ecom.lib
+
+SOURCEPATH		Src
+
+start resource 10008C67.rss
+target wapwatcher.rsc
+end
+
+CAPABILITY ReadDeviceData WriteDeviceData NetworkServices LocalServices ReadUserData WriteUserData
+VENDORID 0x70000001
+SOURCEPATH	Src
+USERINCLUDE     Inc ../BIUTINC ../../watcherfw/inc 
+SOURCE          WapWatcher.cpp WapSocketWatcher.cpp WdpPortWatcher.cpp WspPortWatcher.cpp
+LIBRARY         euser.lib gsmu.lib biowatcher.lib watcher.lib 
+LIBRARY			wapmsgcli.lib
+
+
+SMPSAFE

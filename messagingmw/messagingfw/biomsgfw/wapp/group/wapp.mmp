@@ -1,0 +1,73 @@
+// Copyright (c) 2000-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// wapp.dll BIO Nokia Ericsson Over The Air parser
+// wapp.mbm BIO WAP Over The Air bitmap for UI
+// wapp.rsc BIO WAP Over The Air parser resource file
+// wappstr.rsc BIO WAP Over The Air parser string resource file
+// 
+//
+
+/**
+ @file
+*/
+
+
+TARGET          wapp.dll
+
+
+TARGETTYPE      dll
+
+CAPABILITY All -TCB
+UID      0x10001251 0x1000526C 
+VENDORID 0x70000001
+SOURCEPATH      ../../wappsrc
+USERINCLUDE     ../../wappinc ../../BIUTINC
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+SOURCE          wappdll.cpp wapp.cpp 
+SOURCE			CWappBookmark.cpp IspTableData.cpp         
+SOURCE          IpBearerData.cpp SmsBearerData.cpp GprsBearerData.cpp
+
+//SUBPROJECT      wapp
+//SYSTEMRESOURCE  wapp.rss
+//LANG            SC
+//LANG            SC
+
+START RESOURCE	../wappbif/wapp.rss
+TARGETPATH      resource/messaging/bif
+LANG		SC
+END
+START BITMAP	wapp.mbm
+TARGETPATH      resource/messaging/bif
+SOURCEPATH	../../wappbif
+SOURCE		2 wapp.bmp 
+END
+
+SOURCEPATH              .
+START RESOURCE	wappstr.rss
+TARGETPATH resource/messaging
+LANG	SC
+HEADER
+END
+
+LIBRARY         euser.lib msgs.lib efsrv.lib  biut.lib commsdat.lib
+LIBRARY			charconv.lib
+LIBRARY			ecom.lib
+LIBRARY			bafl.lib
+#ifdef SYMBIAN_BOOKMARK_DATABASE
+LIBRARY			bookmarkdb.lib
+#endif // SYMBIAN_BOOKMARK_DATABASE
+
+DEFFILE		wapp.def
+
+SMPSAFE

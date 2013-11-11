@@ -1,0 +1,55 @@
+// Copyright (c) 1999-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// Messaging engine and services including Email, Fax & SMS MTMs
+// This check is for chosing which IMAP version to use.
+// As SYMBIAN_CENTREP_NOC is only defined in Symbian OS 9.3 and above
+// version 2 of the IMAP component will be built.
+// 
+//
+
+/**
+ @file
+*/
+#ifdef SYMBIAN_CENTREP_NOC
+#define USE_IMAP_V2
+#endif
+
+PRJ_PLATFORMS
+DEFAULT
+
+// These lot are not
+#if !defined(WINC)
+#include "../../msgconf/group/bld.inf"
+#include "../../biomsgfw/group/bld.inf"
+#include "../../biomsgfw/T_BIOMSG/Group/bld.inf"
+#include "../../msgsrvnstore/group/bld.inf"
+#include "../../watcherfw/group/bld.inf"
+#include "../../scheduledsendmtm/group/bld.inf"
+#include "../../sendas/group/bld.inf"
+#include "../../../../../app/messaging/email/pop3andsmtpmtm/group/bld.inf"
+#ifdef USE_IMAP_V2
+#include "../../../../../app/messaging/email/imap4mtm/group/bld.inf"
+#else
+#include "../../../../../app/messaging/email/pop3andsmtpmtm/imapservermtm/group/bld.inf"
+#endif
+#include "../../../../../app/messaging/mobilemessaging/smsmtm/group/bld.inf"
+#include "../../../../../app/messaging/messagingappbase/obexmtms/Group/bld.inf"
+#include "../../../../../app/messaging/messagingappbase/smilparser/GROUP/bld.inf"
+#include "../../msgurlhandler/group/bld.inf"
+#include "../../../../../app/messaging/mmsengine/mmssettings/group/bld.inf"
+#include "../../../../../app/messaging/mmsengine/mmsconf/bld.inf"
+#include "../../msgtest/group/bld.inf"
+#include "../../msgtestfw/group/bld.inf"
+#include "../../watcherfw/test/group/bld.inf"
+#endif

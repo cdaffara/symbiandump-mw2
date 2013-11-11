@@ -1,0 +1,66 @@
+/*
+* Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Metadata system iby file (for ROM image creation)
+*
+*/
+
+#ifndef __METADATATESTERS_IBY__
+#define __METADATATESTERS_IBY__
+
+rem - !!! TEST APPLICATIONS !!!
+S60_APP_EXE(mdeexample)
+S60_APP_AIF_RSC(mdeexample)
+S60_APP_RESOURCE(mdeexample)
+
+//S60_APP_EXE(HarvesterPluginTester)
+//S60_APP_AIF_RSC(HarvesterPluginTester)
+//S60_APP_RESOURCE(HarvesterPluginTester)
+
+S60_APP_EXE(HarvesterClientTest)
+S60_APP_AIF_RSC(HarvesterClientTest)
+S60_APP_RESOURCE(HarvesterClientTest)
+
+//S60_APP_EXE(MonitorPluginTester)
+//S60_APP_AIF_RSC(MonitorPluginTester)
+//S60_APP_RESOURCE(MonitorPluginTester)
+
+//S60_APP_EXE(ComposerPluginTester)
+//S60_APP_AIF_RSC(ComposerPluginTester)
+//S60_APP_RESOURCE(ComposerPluginTester)
+
+//S60_APP_EXE(mdsfsplugintest)
+//S60_APP_AIF_RSC(mdsfsplugintest)
+//S60_APP_RESOURCE(mdsfsplugintest)
+
+S60_APP_EXE(locationtest)
+S60_APP_AIF_RSC(locationtest)
+S60_APP_RESOURCE(locationtest)
+
+S60_APP_EXE(HarvesterEventTest_0xE1642415)
+S60_APP_AIF_RSC(HarvesterEventTest_0xE1642415)
+S60_APP_RESOURCE(HarvesterEventTest_0xE1642415)
+
+S60_APP_EXE(HarvesterEventTest2_0xE1642416)
+S60_APP_AIF_RSC(HarvesterEventTest2_0xE1642416)
+S60_APP_RESOURCE(HarvesterEventTest2_0xE1642416)
+
+//S60_APP_EXE(LocationPluginTest)
+file=ABI_DIR\BUILD_DIR\locationplugintest.exe	PROGRAMS_DIR\locationplugintest.exe
+file=ABI_DIR\BUILD_DIR\blacklisttest.exe		PROGRAMS_DIR\blacklisttest.exe
+
+rem - Test Application data
+data=EPOCROOT##epoc32\data\z\Private\200009FD\mdeexampleimportmetadata.mde  Data\Others\mdeexampleimportmetadata.mde
+data=EPOCROOT##epoc32\data\z\Private\200009FD\test_schema.mde               Data\Others\test_schema.mde
+
+#endif //__METADATATESTERS_IBY__

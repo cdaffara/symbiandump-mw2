@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<api id="997bf7c50b3aa382036c75a97379a2b2" dataversion="1.0">
+  <name>Phone Settings observer API</name>
+  <description>Virtual base classes for SS observers</description>
+  <type>c++</type>
+  <subsystem>phonesettings</subsystem>
+  <libs>
+    <lib name="phonesettings.lib" />
+  </libs>
+  <release category="domain"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>yes</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

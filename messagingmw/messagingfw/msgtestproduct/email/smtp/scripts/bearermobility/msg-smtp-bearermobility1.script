@@ -1,0 +1,63 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE	T_MsgCommonServer	-SharedData
+LOAD_SUITE	T_MsgSmtpServer		-SharedData
+
+
+
+//!	@SYMTestCaseID				MSG-SMTP-BMSupport-0001
+//!	@SYMTestCaseDesc			Positive: Create an SMTP email account to use bearer mobility (+ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						6979, 6977
+//! @SYMPREQ					1307
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create SMTP account in Central Repository using settings from a configuration file that specifies support for bearer mobility and a SNAP.
+//!								3.	Check for success of step 2.
+//!								4.	Modify the settings in step 2 to not support bearer mobility and a SNAP.
+//!								5.	Check for success of step 4.
+//!								6.	Modify the settings set in step 4 again to re-support bearer mobility and SNAP.
+//!								7.	Check for success of step 6.
+//!
+//!	@SYMTestExpectedResults		Steps 2, 4 and 6 to pass.
+//!	@SYMAuthor					Sandip Ahluwalia
+
+START_TESTCASE	MSG-SMTP-BMSupport-0001
+
+RUN_TEST_STEP	300	T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer		StartUp
+
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\smtp\bearermobility\msg-smtp-bearermobility1.ini	0001-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\smtp\bearermobility\msg-smtp-bearermobility1.ini	0001-ResetMessageStore
+PRINT Setup Completed ##################################################
+
+RUN_TEST_STEP	300	T_MsgSmtpServer		CreateSmtpAccount		c:\msgtest\email\smtp\bearermobility\msg-smtp-bearermobility1.ini	0001-CreateSmtpAccount
+RUN_TEST_STEP	300	T_MsgSmtpServer		CheckSmtpBMSetting		c:\msgtest\email\smtp\bearermobility\msg-smtp-bearermobility1.ini	0001-CheckSmtpBMSetting0
+RUN_TEST_STEP	300	T_MsgSmtpServer		ModifySmtpSettings		c:\msgtest\email\smtp\bearermobility\msg-smtp-bearermobility1.ini	0001-TurnBearerMobilityOFF
+RUN_TEST_STEP	300	T_MsgSmtpServer		CheckSmtpBMSetting		c:\msgtest\email\smtp\bearermobility\msg-smtp-bearermobility1.ini	0001-CheckSmtpBMSetting1
+RUN_TEST_STEP	300	T_MsgSmtpServer		ModifySmtpSettings		c:\msgtest\email\smtp\bearermobility\msg-smtp-bearermobility1.ini	0001-TurnBearerMobilityON
+RUN_TEST_STEP	300	T_MsgSmtpServer		CheckSmtpBMSetting		c:\msgtest\email\smtp\bearermobility\msg-smtp-bearermobility1.ini	0001-CheckSmtpBMSetting2
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+END_TESTCASE	MSG-SMTP-BMSupport-0001

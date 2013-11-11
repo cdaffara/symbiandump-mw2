@@ -1,0 +1,61 @@
+/*
+* Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file
+*
+*/
+
+
+#include <platform_paths.hrh>
+#include <data_caging_paths.hrh>
+
+VERSION					        10.0
+TARGET                  harvesterwmvplugin.dll
+TARGETTYPE              PLUGIN
+UID                     0x10009D8D 0x2000B431
+
+CAPABILITY              CAP_ECOM_PLUGIN
+VENDORID                VID_DEFAULT
+
+SOURCEPATH              ../src
+SOURCE                  harvesterwmvproxy.cpp
+SOURCE                  harvesterwmvplugin.cpp
+
+START RESOURCE ../data/2000B431.rss
+TARGET harvesterwmvplugin.rsc
+END
+
+USERINCLUDE   ../../../../inc
+USERINCLUDE   ../../../../harvester/server/inc
+USERINCLUDE   ../../../../harvester/common/inc
+USERINCLUDE    ../inc
+
+MW_LAYER_SYSTEMINCLUDE
+
+SYSTEMINCLUDE /epoc32/include/ecom
+
+LIBRARY       caf.lib
+LIBRARY       cafutils.lib
+LIBRARY       euser.lib
+LIBRARY       efsrv.lib
+LIBRARY       harvestercommon.lib
+LIBRARY       harvesterplugininterface.lib
+LIBRARY       mdeclient.lib
+LIBRARY	      harvesterdata.lib
+LIBRARY       platformenv.lib 
+
+PAGED
+BYTEPAIRCOMPRESSTARGET
+OPTION ARMCC -O3 -OTime
+
+

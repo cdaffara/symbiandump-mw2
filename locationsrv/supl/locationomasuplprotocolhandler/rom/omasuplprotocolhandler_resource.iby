@@ -1,0 +1,36 @@
+/*
+* Copyright (c) 2005-2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:   Image description file for project locationomasuplprotocolhandler
+*
+*/
+
+
+
+#ifndef  OMASUPLPROTOCOLHANDLER_RESOURCE_IBY
+#define OMASUPLPROTOCOLHANDLER_RESOURCE_IBY
+
+#include <bldvariant.hrh>
+
+////////////////////////////////////////
+// *** OMA SUPL Protocol Handler Resource File *** //
+//////////////////////////////////////
+
+#ifdef __OMA_SUPL_PLUGINS   
+
+//Resource file for notifier
+//data=DATAZ_\resource\epos_omasuplnotifier.rsc      	    resource\epos_omasuplnotifier.rsc
+#endif  //__OMA_SUPL_PLUGINS 
+
+#endif // OMASUPLPROTOCOLHANDLER_RESOURCE_IBY
+

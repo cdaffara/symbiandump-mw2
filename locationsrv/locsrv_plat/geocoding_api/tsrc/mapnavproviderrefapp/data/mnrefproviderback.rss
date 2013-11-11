@@ -1,0 +1,95 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Resource definition file for MnRefProviderBack
+*
+*/
+
+
+NAME MNRG
+
+#include <eikon.rsg>
+#include <eikon.rh>
+#include <avkon.rsg>
+#include <avkon.mbg>
+#include <avkon.rh>
+
+#include <appinfo.rh>
+
+RESOURCE RSS_SIGNATURE {  }
+
+RESOURCE TBUF { buf="MnRefProviderBack"; }
+
+RESOURCE EIK_APP_INFO
+    {
+    menubar = r_mnrefgeocoder_menubar;
+    cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+    }
+
+RESOURCE LOCALISABLE_APP_INFO r_mnrefgeocoder_localisable_app_info
+    {
+    short_caption = "MnRefProvider";
+    caption_and_icon =
+        CAPTION_AND_ICON_INFO
+            {
+            caption = "MnRefProvider";
+            };
+    view_list = {};
+    }
+
+RESOURCE CONTEXT_PANE r_mnrefgeocoder_app_icon
+    {
+    }
+
+RESOURCE MENU_BAR r_mnrefgeocoder_menubar
+    {
+    titles =
+        {
+        MENU_TITLE
+            {
+            menu_pane = r_mnrefgeocoder_menu;
+            }
+        };
+    }
+
+RESOURCE MENU_PANE r_mnrefgeocoder_menu
+    {
+    items =
+        {
+        MENU_ITEM
+            {
+            command = EAknSoftkeyExit;
+            txt = "Exit";
+            }
+        };
+    }
+
+RESOURCE AVKON_LIST_QUERY r_mnrefgeocoder_list_query
+    {
+    flags = EGeneralQueryFlags;
+    softkeys = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items =
+        {
+        AVKON_LIST_QUERY_DLG_LINE
+            {
+            control = AVKON_LIST_QUERY_CONTROL
+                {
+                listtype = EAknCtSinglePopupMenuListBox;
+                listbox = AVKON_LIST_QUERY_LIST
+                    {
+                    };
+                heading = "Select best match";
+                };
+            }
+        };
+    }

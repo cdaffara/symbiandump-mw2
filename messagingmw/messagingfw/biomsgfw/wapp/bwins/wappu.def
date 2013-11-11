@@ -1,0 +1,3 @@
+EXPORTS
+	?NewL@CMsvBIOWapAccessParser@@SAPAV1@AAVCRegisteredParserDll@@AAVCMsvEntry@@AAVRFs@@@Z @ 1 NONAME ; class CMsvBIOWapAccessParser * CMsvBIOWapAccessParser::NewL(class CRegisteredParserDll &, class CMsvEntry &, class RFs &)
+

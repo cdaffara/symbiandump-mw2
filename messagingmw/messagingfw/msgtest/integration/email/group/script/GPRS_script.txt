@@ -1,0 +1,462 @@
+// *****************************************
+//  Test Script 
+//  
+//  Author:	Kashif Nadeem
+//  Date:	8/3/02
+//
+//TO run t_email for GPRS testing follow the instructions below:
+// 1) rename this file to script.txt and copy it 
+//    to c:\msgtest\emailsmoke
+// 2) Make sure that you have the following files in 
+//    emailsmoke folder:
+//		GPRSPopTestMsg1.txt
+//		GPRSPopTestMsg2.txt
+//		GPRSPopTestMsg3.txt
+//		GPRSPopTestMsg4.txt
+//		GPRSPopTestMsg5.txt
+// these files are setup to use msg_gprs_test@yahoo.co.uk
+// account. If you change set_server, make sure that you 
+// change the email address in these files as well
+// *****************************************
+
+[main]
+email_client_test GPRS_email
+
+[GPRS_email]
+//----------------------------------
+// Initialise the Tests
+//----------------------------------
+pop3_client_test initialise_tests
+//
+//----------------------------------
+// Run the Tests
+//----------------------------------
+pop3_client_test cleanup
+pop3_client_test GPRS_test_1
+pop3_client_test GPRS_test_2
+
+
+// ********************************************************************************
+// Initialise the Tests (ie Clean the Msg Server, start Session & create Accounts)
+// ********************************************************************************
+[initialise_tests]
+//--------------------------------------
+//  Clean Message Server & Start Session
+//--------------------------------------
+clean_message_folder
+start_client_session
+//--------------------------------------
+// Create the Services
+//--------------------------------------
+pop3_client_test create_pop_service
+pop3_client_test create_temp_pop_service
+smtp_client_test create_smtp_service
+//
+add_comment
+add_comment
+
+
+// ****************************************************************
+// Sync-to-all, with empty local and remote mailbox
+// ****************************************************************
+[cleanup]
+//---------------------------------------
+//  Delete all Remote Messages
+//---------------------------------------
+pop3_client_test delete_all_remote_messages
+//
+//----------------------------------------------------
+//  Connect, Sync-to-all & Count the Synched messages 
+//-----------------------------------------------------
+add_comment *** Connect to POP service ***
+select_root_folder
+select_folder Pop3_Service
+use_service
+set_sync_limits -1
+connect
+check_pop3_error 0
+//
+add_comment *** Check there are 0 Synched Messages ***
+select_all_messages
+check_selection_count 0
+//
+add_comment *** Disconnect ***
+disconnect
+check_pop3_error 0
+add_comment
+add_comment
+
+
+// *******************************************************************
+// Test 1: Copy a Message to Local Inbox
+// *******************************************************************
+[GPRS_test_1]
+//---------------------------------------
+//  Delete all Remote Messages
+//---------------------------------------
+pop3_client_test delete_all_remote_messages
+//
+//---------------------------------------
+//  Delete all Local Messages
+//---------------------------------------
+pop3_client_test delete_local_inbox_messages
+//
+//---------------------------------------
+//  Send 1 Message to the Remote server
+//---------------------------------------
+smtp_client_test send_1_message
+//
+//---------------------------------------------------------------
+//  Connect to POP3 service, Copy 1 Message & Check its Details
+//---------------------------------------------------------------
+add_comment *** Connect to POP service ***
+select_root_folder
+select_folder Pop3_service
+connect
+check_pop3_error 0
+//
+add_comment *** Copy the Msg to Local Inbox ***
+select_root_folder
+select_folder local 
+select_destination_folder inbox
+select_root_folder
+select_folder Pop3_Service
+select_all_messages
+copy
+check_pop3_error 0
+//
+add_comment *** Disconnect ***
+disconnect
+check_pop3_error 0
+//
+select_root_folder
+select_folder local
+select_folder inbox
+select_all_messages
+check_selection_count 1
+//
+add_comment *** Check Message has priority 1 (Medium) ***
+check_priority 0 1
+check_pop3_error 0
+//
+add_comment *** Check Message has an Attachment ***
+check_attachment 0 1
+check_pop3_error 0
+//
+add_comment *** Check Message Body Text ***
+check_body_text 0 Testing_sending_an_email_with_an_attachment
+check_pop3_error 0
+//
+add_comment 
+add_comment 
+
+
+
+// *******************************************************************
+// Test 2: Copy a Selection of Messages to Local Inbox
+// *******************************************************************
+[GPRS_test_2]
+//---------------------------------------
+//  Delete all Remote Messages
+//---------------------------------------
+pop3_client_test delete_all_remote_messages
+//
+//---------------------------------------
+//  Delete all Local Inbox Messages
+//---------------------------------------
+pop3_client_test delete_local_inbox_messages
+//
+//---------------------------------------
+//  Send 1 Message to the Remote server
+//---------------------------------------
+smtp_client_test send_5_messages
+//
+//-----------------------------------------------------------------
+//  Connect to POP3 service, Copy 5 Messages & Check their Details
+//-----------------------------------------------------------------
+add_comment *** Connect to POP service ***
+select_root_folder
+select_folder Pop3_service
+connect
+check_pop3_error 0
+//
+add_comment *** Copy the Messages to Local Inbox ***
+select_root_folder
+select_folder local
+select_destination_folder inbox
+select_root_folder
+select_folder Pop3_Service
+select_all_messages
+copy
+check_pop3_error 0
+//
+add_comment *** Disconnect ***
+disconnect
+check_pop3_error 0
+//
+select_root_folder
+select_folder local
+select_folder inbox
+select_all_messages
+check_selection_count 5
+//
+add_comment *** Check Details for Entry GPRSPopTestMsg1 *** 
+select_entry GPRSPopTestMsg1
+check_priority 0 1
+check_attachment 0 1
+check_body_text 0 Testing_sending_an_email_with_an_attachment
+check_pop3_error 0
+//
+add_comment *** Check Details for Entry GPRSPopTestMsg2 *** 
+select_entry GPRSPopTestMsg2
+check_priority 0 1
+check_attachment 0 0
+check_body_text 0 Msg_has_body_text_without_attachments
+check_pop3_error 0
+//
+add_comment *** Check Details for Entry GPRSPopTestMsg3 *** 
+select_entry GPRSPopTestMsg3
+check_priority 0 0
+check_attachment 0 0
+check_body_text 0 Message_is_High_Priority
+check_pop3_error 0
+//
+add_comment *** Check Details for Entry GPRSPopTestMsg4 *** 
+select_entry GPRSPopTestMsg4
+check_priority 0 2
+check_attachment 0 0
+check_body_text 0 Message_is_Low_Priority
+check_pop3_error 0
+//
+add_comment *** Check Details for Entry GPRSPopTestMsg5 ***
+select_entry GPRSPopTestMsg5
+check_priority 0 0
+check_attachment 0 1
+check_body_text 0 Msg_is_High_priority_with_an_attachment
+check_pop3_error 0
+//
+add_comment 
+add_comment 
+
+
+//--------------------------------------------------------------------------------------------
+
+
+// ****************************************************************
+//  Create Pop Service 
+// ****************************************************************
+[create_pop_service]
+add_comment *** Creating Pop Service ***
+select_root_folder
+pop3_service Pop_service
+
+
+// ****************************************************************
+//  Create Temp Pop Service 
+// ****************************************************************
+[create_temp_pop_service]
+add_comment *** Creating Temp Pop Service ***
+select_root_folder
+pop3_service Temp_pop_service
+
+
+// ****************************************************************
+//  Create Smtp Service 
+// ****************************************************************
+[create_smtp_service]
+select_root_folder
+add_comment *** Creating Smtp Service ***
+smtp_service Smtp_service_1
+
+
+//--------------------------------------------------------------------------------------------
+
+
+// ***************************************************************
+//		Delete All Remote Messages
+// ***************************************************************
+[delete_all_remote_messages]
+//----------------------------------------------------------------
+//  Connect to Temp Pop service, Delete all Messages & Disconnect
+//----------------------------------------------------------------
+add_comment *** Connect to Temp POP service ***
+select_root_folder
+select_folder Temp_Pop3_service
+use_service
+connect
+check_pop3_error 0
+//
+add_comment *** Delete all Remote messages ***
+select_all_messages
+delete
+check_pop3_error 0
+//
+add_comment *** Disconnect ***
+disconnect
+check_pop3_error 0
+
+
+// ***************************************************************
+//		Delete All local Inbox Messages
+// ***************************************************************
+[delete_local_inbox_messages]
+//----------------------------------------------------------------
+//  Delete all Local Inbox Messages
+//----------------------------------------------------------------
+add_comment *** Delete all Local Inbox messages ***
+select_root_folder
+select_folder local
+select_folder inbox
+add_comment *** Select all messages ***
+select_all_messages
+add_comment *** About to delete ***
+delete
+add_comment *** Delete ***
+//
+
+
+//--------------------------------------------------------------------------------------------
+
+
+// ****************************************************************
+//  Create Smtp Service & Send a New Message to the Remote Folder
+// ****************************************************************
+[send_1_message]	
+//-------------------------------------------
+//  Use the current Smtp Service 
+//-------------------------------------------
+add_comment *** Select Smtp Service ***
+select_root_folder
+select_folder Smtp_Service
+use_service
+//-------------------------------------------
+//  Create a test message and send it
+//-------------------------------------------
+select_destination_folder Smtp_Service
+select_root_folder
+select_folder local
+select_folder outbox
+add_comment *** Creating Test Message ***
+create_email_message emailsmoke GPRSPopTestMsg1.txt
+select_all_messages
+//
+add_comment *** Sending Test Message ***
+copy
+add_comment *** Test Message Sent ***
+check_smtp_error 0
+//
+//---------------------------------------
+//  Wait, to give the Msg time to arrive
+//---------------------------------------
+wait 30
+
+
+// ****************************************************************
+//  Create Smtp Service & Send 5 New Messages to the Remote Folder
+// ****************************************************************
+[send_5_messages]	
+//-------------------------------------------
+//  Use the current Smtp Service 
+//-------------------------------------------
+add_comment *** Select Smtp Service ***
+select_root_folder
+select_folder Smtp_Service
+use_service
+//-------------------------------------------
+//  Create 5 test messages and send them
+//-------------------------------------------
+add_comment *** Select Destination folder ***
+select_root_folder
+select_destination_folder Smtp_Service
+add_comment *** Select Outbox folder ***
+select_root_folder
+select_folder local
+select_folder outbox
+add_comment *** Creating 5 Test Messages ***
+create_email_message emailsmoke GPRSPopTestMsg1.txt
+create_email_message emailsmoke GPRSPopTestMsg2.txt
+create_email_message emailsmoke GPRSPopTestMsg3.txt
+create_email_message emailsmoke GPRSPopTestMsg4.txt
+create_email_message emailsmoke GPRSPopTestMsg5.txt
+//
+add_comment *** Select All 5 Messages
+select_all_messages
+//
+add_comment *** Sending 5 Test Messages ***
+copy
+add_comment *** 5 Test Messages Sent ***
+check_smtp_error 0
+//
+//---------------------------------------
+//  Wait, to give the Msg time to arrive
+//---------------------------------------
+wait 60
+
+
+
+// ****************************************************************
+//  Create Smtp Service & Send 2 New Messages to the Remote Folder
+// ****************************************************************
+[send_2_messages]	
+//-------------------------------------------
+//  Use the current Smtp Service 
+//-------------------------------------------
+add_comment *** Select Smtp Service ***
+select_root_folder
+select_folder Smtp_Service
+use_service
+//-------------------------------------------
+//  Create a test message and send it
+//-------------------------------------------
+select_destination_folder Smtp_Service
+select_root_folder
+select_folder local
+select_folder outbox
+add_comment *** Creating 2 Test Messages ***
+create_email_message emailsmoke PopTestMsg6.txt
+create_email_message emailsmoke PopTestMsg7.txt
+select_all_messages
+add_comment *** Sending 2 Test Messages ***
+copy
+add_comment *** 2 Test Messages Sent ***
+check_smtp_error 0
+//
+//---------------------------------------
+//  Wait, to give the Msg time to arrive
+//---------------------------------------
+wait 30
+
+//--------------------------------------------------------------------------------------------
+
+// *****************************************
+//  POP3 Service Settings 			
+// *****************************************
+[Pop_service]
+set_name Pop3_Service
+// If you change set_server setting, make sure that you 
+// update the GPRSPopTestMsg1.txt files with new email addresss
+set_server pop.mail.yahoo.co.uk
+set_user msg_gprs_test
+set_pass password
+
+// *****************************************
+//  Temp POP3 Service Settings 			
+// *****************************************
+[Temp_pop_service]
+set_name Temp_Pop3_service
+set_server pop.mail.yahoo.co.uk
+set_user msg_gprs_test
+set_pass password
+
+// *****************************************
+//  Smtp Service Settings 1
+// *****************************************
+[Smtp_service_1]
+set_alias Smtp_Service
+set_server smtp.orange.net
+set_email_address msg_gprs_test@yahoo.co.uk
+set_reply_address msg_gprs_test@yahoo.co.uk
+set_receipt_address msg_gprs_test@yahoo.co.uk 
+add_iap 9
+
+

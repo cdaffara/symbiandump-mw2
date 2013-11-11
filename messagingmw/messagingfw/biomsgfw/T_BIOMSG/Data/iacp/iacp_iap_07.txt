@@ -1,0 +1,13 @@
+//SIAP11
+password
+Iname:iap_07
+Itel:+44123456 07
+Iuid:user_iap_07
+Ipwp:Y
+IPwd:pass_iap_07
+Iini:modem init iap_07
+Iip:10.0.0.7
+Idns1:123.124.125.127
+Idns2:124.125.126.127
+Imsk:255.255.255.0
+Idgw:10.0.0.17

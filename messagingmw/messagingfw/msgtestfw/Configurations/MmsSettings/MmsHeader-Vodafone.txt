@@ -1,0 +1,8 @@
+# Vodafone +447765222313 phone
+__type__   = MmsHeader
+
+From    = +447765222313
+To	    = +447765222313
+Cc      =
+Bcc     = 
+Subject = Mms Test Message

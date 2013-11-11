@@ -1,0 +1,791 @@
+EXPORTS
+	_ZN11COMASuplEnd10ConstructLEv @ 1 NONAME
+	_ZN11COMASuplEnd11SetPositionEP16COMASuplPosition @ 2 NONAME
+	_ZN11COMASuplEnd13SetStatusCodeENS_18TOMASuplStatusCodeE @ 3 NONAME
+	_ZN11COMASuplEnd4NewLEv @ 4 NONAME
+	_ZN11COMASuplEnd5CloneEPK22COMASuplAsnMessageBaseRi @ 5 NONAME
+	_ZN11COMASuplEnd6SetVerER6TDesC8 @ 6 NONAME
+	_ZN11COMASuplEndC1Ev @ 7 NONAME
+	_ZN11COMASuplEndC2Ev @ 8 NONAME
+	_ZN11COMASuplEndD0Ev @ 9 NONAME
+	_ZN11COMASuplEndD1Ev @ 10 NONAME
+	_ZN11COMASuplEndD2Ev @ 11 NONAME
+	_ZN11COMASuplPos10ConstructLEv @ 12 NONAME
+	_ZN11COMASuplPos10SetSuplPosEP18COMASuplPosPayload @ 13 NONAME
+	_ZN11COMASuplPos11SetVelocityEP16COMASuplVelocity @ 14 NONAME
+	_ZN11COMASuplPos4NewLEv @ 15 NONAME
+	_ZN11COMASuplPos5CloneEPK22COMASuplAsnMessageBaseRi @ 16 NONAME
+	_ZN11COMASuplPosC1Ev @ 17 NONAME
+	_ZN11COMASuplPosC2Ev @ 18 NONAME
+	_ZN11COMASuplPosD0Ev @ 19 NONAME
+	_ZN11COMASuplPosD1Ev @ 20 NONAME
+	_ZN11COMASuplPosD2Ev @ 21 NONAME
+	_ZN11TOMASuplQop10SetSuplQopEi @ 22 NONAME
+	_ZN11TOMASuplQop17SetMaxLocationAgeEi @ 23 NONAME
+	_ZN11TOMASuplQop19SetVerticalAccuracyEi @ 24 NONAME
+	_ZN11TOMASuplQop8SetDelayEi @ 25 NONAME
+	_ZN11TOMASuplQopC1Ev @ 26 NONAME
+	_ZN11TOMASuplQopC2Ev @ 27 NONAME
+	_ZN12COMASuplInit10ConstructLEv @ 28 NONAME
+	_ZN12COMASuplInit11SetSuplInitE17TOMASuplPosMethodNS_15TOMASuplSLPModeE @ 29 NONAME
+	_ZN12COMASuplInit13SetSLPAddressEP18COMASuplSLPAddress @ 30 NONAME
+	_ZN12COMASuplInit15SetNotificationEP20COMASuplNotification @ 31 NONAME
+	_ZN12COMASuplInit4NewLEv @ 32 NONAME
+	_ZN12COMASuplInit5CloneEPK22COMASuplAsnMessageBaseRi @ 33 NONAME
+	_ZN12COMASuplInit6SetQopER11TOMASuplQop @ 34 NONAME
+	_ZN12COMASuplInitC1Ev @ 35 NONAME
+	_ZN12COMASuplInitC2Ev @ 36 NONAME
+	_ZN12COMASuplInitD0Ev @ 37 NONAME
+	_ZN12COMASuplInitD1Ev @ 38 NONAME
+	_ZN12COMASuplInitD2Ev @ 39 NONAME
+	_ZN13COMASuplStart10ConstructLEv @ 40 NONAME
+	_ZN13COMASuplStart10SetECellIdER17TOMASuplECellInfo @ 41 NONAME
+	_ZN13COMASuplStart12SetSuplStartEP23COMASuplSETCapabilitiesP18COMASuplLocationIdi @ 42 NONAME
+	_ZN13COMASuplStart4NewLEv @ 43 NONAME
+	_ZN13COMASuplStart5CloneEPK22COMASuplAsnMessageBaseRi @ 44 NONAME
+	_ZN13COMASuplStart6SetQopER11TOMASuplQop @ 45 NONAME
+	_ZN13COMASuplStartC1Ev @ 46 NONAME
+	_ZN13COMASuplStartC2Ev @ 47 NONAME
+	_ZN13COMASuplStartD0Ev @ 48 NONAME
+	_ZN13COMASuplStartD1Ev @ 49 NONAME
+	_ZN13COMASuplStartD2Ev @ 50 NONAME
+	_ZN14COMASuplReport14SetSessionListERK13RPointerArrayI17COMASuplSessionIDE @ 51 NONAME
+	_ZN14COMASuplReport17SetReportDataListERK13RPointerArrayI18COMASuplReportDataE @ 52 NONAME
+	_ZN14COMASuplReport18SetSetCapabilitiesEP27COMASuplSETCapabilitiesVer2 @ 53 NONAME
+	_ZN14COMASuplReport4NewLEv @ 54 NONAME
+	_ZN14COMASuplReport5CloneEPK22COMASuplAsnMessageBaseRi @ 55 NONAME
+	_ZN14COMASuplReport5NewLCEv @ 56 NONAME
+	_ZN14COMASuplReport6SetVerERK6TDesC8 @ 57 NONAME
+	_ZN14COMASuplReportC1Ev @ 58 NONAME
+	_ZN14COMASuplReportC2Ev @ 59 NONAME
+	_ZN14COMASuplReportD0Ev @ 60 NONAME
+	_ZN14COMASuplReportD1Ev @ 61 NONAME
+	_ZN14COMASuplReportD2Ev @ 62 NONAME
+	_ZN14COMASuplSPCTID4NewLEv @ 63 NONAME
+	_ZN14COMASuplSPCTID6CloneLEv @ 64 NONAME
+	_ZN14COMASuplSPCTID7SetFqdnEP6HBufC8 @ 65 NONAME
+	_ZN14COMASuplSPCTID7SetRANDERK6TDesC8 @ 66 NONAME
+	_ZN14COMASuplSPCTIDD0Ev @ 67 NONAME
+	_ZN14COMASuplSPCTIDD1Ev @ 68 NONAME
+	_ZN14COMASuplSPCTIDD2Ev @ 69 NONAME
+	_ZN15COMASuplEndVer210ConstructLEv @ 70 NONAME
+	_ZN15COMASuplEndVer218SetSETCapabilitiesEP23COMASuplSETCapabilities @ 71 NONAME
+	_ZN15COMASuplEndVer24NewLEv @ 72 NONAME
+	_ZN15COMASuplEndVer25CloneEPK22COMASuplAsnMessageBaseRi @ 73 NONAME
+	_ZN15COMASuplEndVer2C1Ev @ 74 NONAME
+	_ZN15COMASuplEndVer2C2Ev @ 75 NONAME
+	_ZN15COMASuplEndVer2D0Ev @ 76 NONAME
+	_ZN15COMASuplEndVer2D1Ev @ 77 NONAME
+	_ZN15COMASuplEndVer2D2Ev @ 78 NONAME
+	_ZN15COMASuplPosInit10ConstructLEv @ 79 NONAME
+	_ZN15COMASuplPosInit10SetECellIdER17TOMASuplECellInfo @ 80 NONAME
+	_ZN15COMASuplPosInit11SetPositionEP16COMASuplPosition @ 81 NONAME
+	_ZN15COMASuplPosInit11SetVelocityEP16COMASuplVelocity @ 82 NONAME
+	_ZN15COMASuplPosInit14SetSuplPosInitEP23COMASuplSETCapabilitiesP18COMASuplLocationIdi @ 83 NONAME
+	_ZN15COMASuplPosInit17SetSuplPosPayloadEP18COMASuplPosPayload @ 84 NONAME
+	_ZN15COMASuplPosInit24SetRequestAssistanceDataEP19COMASuplReqAsstData @ 85 NONAME
+	_ZN15COMASuplPosInit4NewLEv @ 86 NONAME
+	_ZN15COMASuplPosInit5CloneEPK22COMASuplAsnMessageBaseRi @ 87 NONAME
+	_ZN15COMASuplPosInit6SetVerER6TDesC8 @ 88 NONAME
+	_ZN15COMASuplPosInitC1Ev @ 89 NONAME
+	_ZN15COMASuplPosInitC2Ev @ 90 NONAME
+	_ZN15COMASuplPosInitD0Ev @ 91 NONAME
+	_ZN15COMASuplPosInitD1Ev @ 92 NONAME
+	_ZN15COMASuplPosInitD2Ev @ 93 NONAME
+	_ZN15TOMASuplVersion14SetSuplVersionEiii @ 94 NONAME
+	_ZN15TOMASuplVersionC1Ev @ 95 NONAME
+	_ZN15TOMASuplVersionC2Ev @ 96 NONAME
+	_ZN16COMASuplCellInfo15SetSuplCellInfoEiii @ 97 NONAME
+	_ZN16COMASuplCellInfo4NewLEv @ 98 NONAME
+	_ZN16COMASuplCellInfo9GetCellIdEv @ 99 NONAME
+	_ZN16COMASuplCellInfoC1Ev @ 100 NONAME
+	_ZN16COMASuplCellInfoC2Ev @ 101 NONAME
+	_ZN16COMASuplCellInfoD0Ev @ 102 NONAME
+	_ZN16COMASuplCellInfoD1Ev @ 103 NONAME
+	_ZN16COMASuplCellInfoD2Ev @ 104 NONAME
+	_ZN16COMASuplInitVer210ConstructLEv @ 105 NONAME
+	_ZN16COMASuplInitVer216CloneInitV2ExtnLEPS_ @ 106 NONAME
+	_ZN16COMASuplInitVer219GetVer2SuplInitExtnERP24COMASuplVer2SuplInitExtn @ 107 NONAME
+	_ZN16COMASuplInitVer219SetVer2NotificationEP24COMASuplNotificationVer2 @ 108 NONAME
+	_ZN16COMASuplInitVer219SetVer2SuplInitExtnEP24COMASuplVer2SuplInitExtn @ 109 NONAME
+	_ZN16COMASuplInitVer24NewLEv @ 110 NONAME
+	_ZN16COMASuplInitVer25CloneEPK22COMASuplAsnMessageBaseRi @ 111 NONAME
+	_ZN16COMASuplInitVer2C1Ev @ 112 NONAME
+	_ZN16COMASuplInitVer2C2Ev @ 113 NONAME
+	_ZN16COMASuplInitVer2D0Ev @ 114 NONAME
+	_ZN16COMASuplInitVer2D1Ev @ 115 NONAME
+	_ZN16COMASuplInitVer2D2Ev @ 116 NONAME
+	_ZN16COMASuplResponse10ConstructLEv @ 117 NONAME
+	_ZN16COMASuplResponse13SetSLPAddressEP18COMASuplSLPAddress @ 118 NONAME
+	_ZN16COMASuplResponse15SetSuplResponseE17TOMASuplPosMethod @ 119 NONAME
+	_ZN16COMASuplResponse4NewLEv @ 120 NONAME
+	_ZN16COMASuplResponse5CloneEPK22COMASuplAsnMessageBaseRi @ 121 NONAME
+	_ZN16COMASuplResponseC1Ev @ 122 NONAME
+	_ZN16COMASuplResponseC2Ev @ 123 NONAME
+	_ZN16COMASuplResponseD0Ev @ 124 NONAME
+	_ZN16COMASuplResponseD1Ev @ 125 NONAME
+	_ZN16COMASuplResponseD2Ev @ 126 NONAME
+	_ZN17COMASuplSessionID15SetSETSessionIDEP20COMASuplSETSessionID @ 127 NONAME
+	_ZN17COMASuplSessionID15SetSLPSessionIDEP20COMASuplSLPSessionID @ 128 NONAME
+	_ZN17COMASuplSessionID4NewLEv @ 129 NONAME
+	_ZN17COMASuplSessionID6CloneLEv @ 130 NONAME
+	_ZN17COMASuplSessionIDD0Ev @ 131 NONAME
+	_ZN17COMASuplSessionIDD1Ev @ 132 NONAME
+	_ZN17COMASuplSessionIDD2Ev @ 133 NONAME
+	_ZN17COMASuplStartVer210ConstructLEv @ 134 NONAME
+	_ZN17COMASuplStartVer212SetSuplStartEP27COMASuplSETCapabilitiesVer2P22COMASuplLocationIdVer2i @ 135 NONAME
+	_ZN17COMASuplStartVer217IsVer2ExtnPresentEv @ 136 NONAME
+	_ZN17COMASuplStartVer220GetVer2SuplStartExtnERP25COMASuplVer2SuplStartExtn @ 137 NONAME
+	_ZN17COMASuplStartVer220SetVer2SuplStartExtnEP25COMASuplVer2SuplStartExtn @ 138 NONAME
+	_ZN17COMASuplStartVer24NewLEv @ 139 NONAME
+	_ZN17COMASuplStartVer25CloneEPK22COMASuplAsnMessageBaseRi @ 140 NONAME
+	_ZN17COMASuplStartVer2C1Ev @ 141 NONAME
+	_ZN17COMASuplStartVer2C2Ev @ 142 NONAME
+	_ZN17COMASuplStartVer2D0Ev @ 143 NONAME
+	_ZN17COMASuplStartVer2D1Ev @ 144 NONAME
+	_ZN17COMASuplStartVer2D2Ev @ 145 NONAME
+	_ZN17TOMASuplECellInfo14SetGSMCellInfoER19TOMASuplGSMCellinfo @ 146 NONAME
+	_ZN17TOMASuplECellInfo16SetWCDMACellInfoER21TOMASuplWCDMACellinfo @ 147 NONAME
+	_ZN17TOMASuplECellInfoC1Ev @ 148 NONAME
+	_ZN17TOMASuplECellInfoC2Ev @ 149 NONAME
+	_ZN17TOMASuplSPCSETKey16SetSuplSPCSetKeyER5TDes8 @ 150 NONAME
+	_ZN17TOMASuplSPCSETKeyC1Ev @ 151 NONAME
+	_ZN17TOMASuplSPCSETKeyC2Ev @ 152 NONAME
+	_ZN18COMASuplLocationId17SetSuplLocationIdEP16COMASuplCellInfoRNS_14TOMASuplStatusE @ 153 NONAME
+	_ZN18COMASuplLocationId17SetSuplLocationIdEP19COMASuplGSMCellInfoRNS_14TOMASuplStatusE @ 154 NONAME
+	_ZN18COMASuplLocationId4NewLEv @ 155 NONAME
+	_ZN18COMASuplLocationId6CloneLEv @ 156 NONAME
+	_ZN18COMASuplLocationId9GetCellIdEv @ 157 NONAME
+	_ZN18COMASuplLocationIdC1Ev @ 158 NONAME
+	_ZN18COMASuplLocationIdC2Ev @ 159 NONAME
+	_ZN18COMASuplLocationIdD0Ev @ 160 NONAME
+	_ZN18COMASuplLocationIdD1Ev @ 161 NONAME
+	_ZN18COMASuplLocationIdD2Ev @ 162 NONAME
+	_ZN18COMASuplReportData10SetPosDataEP20COMASuplPositionData @ 163 NONAME
+	_ZN18COMASuplReportData12SetTimeStampE17TOMASuplTimeStamp @ 164 NONAME
+	_ZN18COMASuplReportData13SetResultCodeENS_28TOMASuplReportDataResultCodeE @ 165 NONAME
+	_ZN18COMASuplReportData15SetMutipleLocIdEP22COMASuplMultipleLocIds @ 166 NONAME
+	_ZN18COMASuplReportData4NewLEv @ 167 NONAME
+	_ZN18COMASuplReportData5NewLCEv @ 168 NONAME
+	_ZN18COMASuplReportData6CloneLEv @ 169 NONAME
+	_ZN18COMASuplReportDataD0Ev @ 170 NONAME
+	_ZN18COMASuplReportDataD1Ev @ 171 NONAME
+	_ZN18COMASuplReportDataD2Ev @ 172 NONAME
+	_ZN18COMASuplSLPAddress14SetIPv4AddressERK6TDesC8 @ 173 NONAME
+	_ZN18COMASuplSLPAddress14SetIPv6AddressERK6TDesC8 @ 174 NONAME
+	_ZN18COMASuplSLPAddress17SetSLPAddressTypeENS_19TSuplSLPAddressTypeE @ 175 NONAME
+	_ZN18COMASuplSLPAddress4NewLEv @ 176 NONAME
+	_ZN18COMASuplSLPAddress6CloneLEv @ 177 NONAME
+	_ZN18COMASuplSLPAddress7SetFqdnEP6HBufC8 @ 178 NONAME
+	_ZN18COMASuplSLPAddressD0Ev @ 179 NONAME
+	_ZN18COMASuplSLPAddressD1Ev @ 180 NONAME
+	_ZN18COMASuplSLPAddressD2Ev @ 181 NONAME
+	_ZN18COMASuplSLPAddresseqERKS_ @ 182 NONAME
+	_ZN18TOMASuplReportMode11SetRealTimeEi @ 183 NONAME
+	_ZN18TOMASuplReportMode16SetQuasiRealTimeEi @ 184 NONAME
+	_ZN18TOMASuplReportMode8SetBatchEi @ 185 NONAME
+	_ZN18TOMASuplReportModeC1Ev @ 186 NONAME
+	_ZN18TOMASuplReportModeC2Ev @ 187 NONAME
+	_ZN18TOMASuplTimeWindow13GetTimeWindowERlS0_ @ 188 NONAME
+	_ZN18TOMASuplTimeWindow13SetTimeWindowEll @ 189 NONAME
+	_ZN18TOMASuplTimeWindowC1Ev @ 190 NONAME
+	_ZN18TOMASuplTimeWindowC2Ev @ 191 NONAME
+	_ZN18TOMAVer2SetCapExtn14SetServiceCapsE23TOMAServiceCapabilities @ 192 NONAME
+	_ZN18TOMAVer2SetCapExtnC1Ev @ 193 NONAME
+	_ZN18TOMAVer2SetCapExtnC2Ev @ 194 NONAME
+	_ZN19COMASuplAuthRequest10ConstructLEv @ 195 NONAME
+	_ZN19COMASuplAuthRequest12SetSETNounceER6TDesC8 @ 196 NONAME
+	_ZN19COMASuplAuthRequest14SetKeyIdentityER6TDesC8 @ 197 NONAME
+	_ZN19COMASuplAuthRequest4NewLEv @ 198 NONAME
+	_ZN19COMASuplAuthRequest5CloneEPK22COMASuplAsnMessageBaseRi @ 199 NONAME
+	_ZN19COMASuplAuthRequestC1Ev @ 200 NONAME
+	_ZN19COMASuplAuthRequestC2Ev @ 201 NONAME
+	_ZN19COMASuplAuthRequestD0Ev @ 202 NONAME
+	_ZN19COMASuplAuthRequestD1Ev @ 203 NONAME
+	_ZN19COMASuplAuthRequestD2Ev @ 204 NONAME
+	_ZN19COMASuplGSMCellInfo18SetSuplGSMCellInfoEiiii @ 205 NONAME
+	_ZN19COMASuplGSMCellInfo4NewLEv @ 206 NONAME
+	_ZN19COMASuplGSMCellInfoC1Ev @ 207 NONAME
+	_ZN19COMASuplGSMCellInfoC2Ev @ 208 NONAME
+	_ZN19COMASuplGSMCellInfoD0Ev @ 209 NONAME
+	_ZN19COMASuplGSMCellInfoD1Ev @ 210 NONAME
+	_ZN19COMASuplGSMCellInfoD2Ev @ 211 NONAME
+	_ZN19COMASuplPosInitVer210ConstructLEv @ 212 NONAME
+	_ZN19COMASuplPosInitVer214SetLocationId2EP22COMASuplLocationIdVer2 @ 213 NONAME
+	_ZN19COMASuplPosInitVer219SetSETCapabilities2EP27COMASuplSETCapabilitiesVer2 @ 214 NONAME
+	_ZN19COMASuplPosInitVer24NewLEv @ 215 NONAME
+	_ZN19COMASuplPosInitVer25CloneEPK22COMASuplAsnMessageBaseRi @ 216 NONAME
+	_ZN19COMASuplPosInitVer2C1Ev @ 217 NONAME
+	_ZN19COMASuplPosInitVer2C2Ev @ 218 NONAME
+	_ZN19COMASuplPosInitVer2D0Ev @ 219 NONAME
+	_ZN19COMASuplPosInitVer2D1Ev @ 220 NONAME
+	_ZN19COMASuplPosInitVer2D2Ev @ 221 NONAME
+	_ZN20COMASuplAuthResponse10ConstructLEv @ 222 NONAME
+	_ZN20COMASuplAuthResponse13SetLongSPCKeyER6TDesC8 @ 223 NONAME
+	_ZN20COMASuplAuthResponse14SetShortSPCKeyER6TDesC8 @ 224 NONAME
+	_ZN20COMASuplAuthResponse15SetKeyIdentity3ER6TDesC8 @ 225 NONAME
+	_ZN20COMASuplAuthResponse4NewLEv @ 226 NONAME
+	_ZN20COMASuplAuthResponse5CloneEPK22COMASuplAsnMessageBaseRi @ 227 NONAME
+	_ZN20COMASuplAuthResponseC1Ev @ 228 NONAME
+	_ZN20COMASuplAuthResponseC2Ev @ 229 NONAME
+	_ZN20COMASuplAuthResponseD0Ev @ 230 NONAME
+	_ZN20COMASuplAuthResponseD1Ev @ 231 NONAME
+	_ZN20COMASuplAuthResponseD2Ev @ 232 NONAME
+	_ZN20COMASuplNotification13SetClientNameEP6HBufC8NS_23TOMASuplFormatIndicatorE @ 233 NONAME
+	_ZN20COMASuplNotification14SetRequestorIdEP6HBufC8NS_23TOMASuplFormatIndicatorE @ 234 NONAME
+	_ZN20COMASuplNotification15SetEncodingTypeENS_20TOMASuplEncodingTypeE @ 235 NONAME
+	_ZN20COMASuplNotification19SetSuplNotificationENS_24TOMASuplNotificationTypeE @ 236 NONAME
+	_ZN20COMASuplNotification4NewLEv @ 237 NONAME
+	_ZN20COMASuplNotificationD0Ev @ 238 NONAME
+	_ZN20COMASuplNotificationD1Ev @ 239 NONAME
+	_ZN20COMASuplNotificationD2Ev @ 240 NONAME
+	_ZN20COMASuplPositionData11SetPositionEP16COMASuplPosition @ 241 NONAME
+	_ZN20COMASuplPositionData12SetPosMethodE17TOMASuplPosMethod @ 242 NONAME
+	_ZN20COMASuplPositionData4NewLEv @ 243 NONAME
+	_ZN20COMASuplPositionData5NewLCEv @ 244 NONAME
+	_ZN20COMASuplPositionData6CloneLEv @ 245 NONAME
+	_ZN20COMASuplPositionDataD0Ev @ 246 NONAME
+	_ZN20COMASuplPositionDataD1Ev @ 247 NONAME
+	_ZN20COMASuplPositionDataD2Ev @ 248 NONAME
+	_ZN20COMASuplResponseVer217GetResponseV2ExtnERP22COMASuplResponseV2Extn @ 249 NONAME
+	_ZN20COMASuplResponseVer217SetResponseV2ExtnEP22COMASuplResponseV2Extn @ 250 NONAME
+	_ZN20COMASuplResponseVer24NewLEv @ 251 NONAME
+	_ZN20COMASuplResponseVer25CloneEPK22COMASuplAsnMessageBaseRi @ 252 NONAME
+	_ZN20COMASuplResponseVer2C1Ev @ 253 NONAME
+	_ZN20COMASuplResponseVer2C2Ev @ 254 NONAME
+	_ZN20COMASuplResponseVer2D0Ev @ 255 NONAME
+	_ZN20COMASuplResponseVer2D1Ev @ 256 NONAME
+	_ZN20COMASuplResponseVer2D2Ev @ 257 NONAME
+	_ZN20COMASuplSETSessionID16SetSuplSETIDTypeENS_14TSuplSETIDTypeE @ 258 NONAME
+	_ZN20COMASuplSETSessionID23SetSuplSETSessionIDIMSIEiRK6TDesC8 @ 259 NONAME
+	_ZN20COMASuplSETSessionID23SetSuplSETSessionIDIPv4EiRK6TDesC8 @ 260 NONAME
+	_ZN20COMASuplSETSessionID23SetSuplSETSessionIDIPv6EiRK6TDesC8 @ 261 NONAME
+	_ZN20COMASuplSETSessionID4NewLEv @ 262 NONAME
+	_ZN20COMASuplSETSessionID6CloneLEv @ 263 NONAME
+	_ZN20COMASuplSETSessionIDD0Ev @ 264 NONAME
+	_ZN20COMASuplSETSessionIDD1Ev @ 265 NONAME
+	_ZN20COMASuplSETSessionIDD2Ev @ 266 NONAME
+	_ZN20COMASuplSETSessionIDeqERKS_ @ 267 NONAME
+	_ZN20COMASuplSLPSessionID19SetSuplSLPSessionIDERK6TDesC8P18COMASuplSLPAddress @ 268 NONAME
+	_ZN20COMASuplSLPSessionID4NewLEv @ 269 NONAME
+	_ZN20COMASuplSLPSessionID6CloneLEv @ 270 NONAME
+	_ZN20COMASuplSLPSessionIDD0Ev @ 271 NONAME
+	_ZN20COMASuplSLPSessionIDD1Ev @ 272 NONAME
+	_ZN20COMASuplSLPSessionIDD2Ev @ 273 NONAME
+	_ZN20COMASuplSLPSessionIDeqERKS_ @ 274 NONAME
+	_ZN20COMASuplThirdpartyId14GetIMSPublicIdER5TDes8 @ 275 NONAME
+	_ZN20COMASuplThirdpartyId14GetLogicalNameER6TDes16 @ 276 NONAME
+	_ZN20COMASuplThirdpartyId14SetIMSPublicIdERK6TDesC8 @ 277 NONAME
+	_ZN20COMASuplThirdpartyId14SetLogicalNameERK7TDesC16 @ 278 NONAME
+	_ZN20COMASuplThirdpartyId15GetEmailAddressER6TDes16 @ 279 NONAME
+	_ZN20COMASuplThirdpartyId15SetEmailAddressERK7TDesC16 @ 280 NONAME
+	_ZN20COMASuplThirdpartyId18GetMdnThirdPartyIdER5TDes8 @ 281 NONAME
+	_ZN20COMASuplThirdpartyId18GetMinThirdPartyIdER5TDes8 @ 282 NONAME
+	_ZN20COMASuplThirdpartyId18SetMdnThirdPartyIdERK6TDesC8 @ 283 NONAME
+	_ZN20COMASuplThirdpartyId18SetMinThirdPartyIdERK6TDesC8 @ 284 NONAME
+	_ZN20COMASuplThirdpartyId4NewLEv @ 285 NONAME
+	_ZN20COMASuplThirdpartyId6CloneLEv @ 286 NONAME
+	_ZN20COMASuplThirdpartyId6GetURIER5TDes8 @ 287 NONAME
+	_ZN20COMASuplThirdpartyId6SetURIERK6TDesC8 @ 288 NONAME
+	_ZN20COMASuplThirdpartyId7GetTypeEv @ 289 NONAME
+	_ZN20COMASuplThirdpartyId9GetMSISDNER5TDes8 @ 290 NONAME
+	_ZN20COMASuplThirdpartyId9GetSipUriER5TDes8 @ 291 NONAME
+	_ZN20COMASuplThirdpartyId9SetMSISDNERK6TDesC8 @ 292 NONAME
+	_ZN20COMASuplThirdpartyId9SetSipUriERK6TDesC8 @ 293 NONAME
+	_ZN20COMASuplThirdpartyIdD0Ev @ 294 NONAME
+	_ZN20COMASuplThirdpartyIdD1Ev @ 295 NONAME
+	_ZN20COMASuplThirdpartyIdD2Ev @ 296 NONAME
+	_ZN20TOMASuplBatchRepType10SetDiscOldEi @ 297 NONAME
+	_ZN20TOMASuplBatchRepType10SetRepMeasEi @ 298 NONAME
+	_ZN20TOMASuplBatchRepType11SetInterRepEi @ 299 NONAME
+	_ZN20TOMASuplBatchRepType15GetBatchRepTypeERiS0_S0_S0_ @ 300 NONAME
+	_ZN20TOMASuplBatchRepType9SetRepPosEi @ 301 NONAME
+	_ZN20TOMASuplLocationData16SetLocationValueER5TDes8 @ 302 NONAME
+	_ZN20TOMASuplLocationData19SetLocationAccuracyEi @ 303 NONAME
+	_ZN20TOMASuplLocationDataC1Ev @ 304 NONAME
+	_ZN20TOMASuplLocationDataC2Ev @ 305 NONAME
+	_ZN20TOMASuplPosProtocol219SetVer2PosProtoExtnE23TOMASuplVer2ProtocolExt @ 306 NONAME
+	_ZN20TOMASuplPosProtocol2C1Ev @ 307 NONAME
+	_ZN20TOMASuplPosProtocol2C2Ev @ 308 NONAME
+	_ZN20TOMASuplReportingCap13SetReportModeE18TOMASuplReportMode @ 309 NONAME
+	_ZN20TOMASuplReportingCap18SetBatchReportModeE23TOMASuplBatchReportMode @ 310 NONAME
+	_ZN20TOMASuplReportingCapC1Ev @ 311 NONAME
+	_ZN20TOMASuplReportingCapC2Ev @ 312 NONAME
+	_ZN21COMASuplThirdPartyIds15AddThirdPartyIdEP20COMASuplThirdpartyId @ 313 NONAME
+	_ZN21COMASuplThirdPartyIds4NewLEv @ 314 NONAME
+	_ZN21COMASuplThirdPartyIds6CloneLEv @ 315 NONAME
+	_ZN21COMASuplThirdPartyIdsD0Ev @ 316 NONAME
+	_ZN21COMASuplThirdPartyIdsD1Ev @ 317 NONAME
+	_ZN21COMASuplThirdPartyIdsD2Ev @ 318 NONAME
+	_ZN21COMASuplTriggeredStop10ConstructLEv @ 319 NONAME
+	_ZN21COMASuplTriggeredStop17SetSuplStatusCodeEN11COMASuplEnd18TOMASuplStatusCodeE @ 320 NONAME
+	_ZN21COMASuplTriggeredStop4NewLEv @ 321 NONAME
+	_ZN21COMASuplTriggeredStop5CloneEPK22COMASuplAsnMessageBaseRi @ 322 NONAME
+	_ZN21COMASuplTriggeredStopC1Ev @ 323 NONAME
+	_ZN21COMASuplTriggeredStopC2Ev @ 324 NONAME
+	_ZN21COMASuplTriggeredStopD0Ev @ 325 NONAME
+	_ZN21COMASuplTriggeredStopD1Ev @ 326 NONAME
+	_ZN21COMASuplTriggeredStopD2Ev @ 327 NONAME
+	_ZN21TOMASuplReportingMode10GetRepModeERNS_15TOMASuplRepModeE @ 328 NONAME
+	_ZN21TOMASuplReportingMode10SetRepModeENS_15TOMASuplRepModeE @ 329 NONAME
+	_ZN21TOMASuplReportingMode15GetBatchRepCondER26TOMASuplBatchRepConditions @ 330 NONAME
+	_ZN21TOMASuplReportingMode15GetBatchRepTypeER20TOMASuplBatchRepType @ 331 NONAME
+	_ZN21TOMASuplReportingMode15SetBatchRepCondE26TOMASuplBatchRepConditions @ 332 NONAME
+	_ZN21TOMASuplReportingMode15SetBatchRepTypeE20TOMASuplBatchRepType @ 333 NONAME
+	_ZN21TOMASuplSuppWCDMAInfo6GetMRLEv @ 334 NONAME
+	_ZN21TOMASuplSuppWCDMAInfo6SetMRLEi @ 335 NONAME
+	_ZN21TOMASuplTriggerParams17SetPeriodicParamsE22TOMASuplPeriodicParams @ 336 NONAME
+	_ZN21TOMASuplTriggerParams18SetAreaEventParamsE23TOMASuplAreaEventParams @ 337 NONAME
+	_ZN21TOMASuplTriggerParamsC1Ev @ 338 NONAME
+	_ZN21TOMASuplTriggerParamsC2Ev @ 339 NONAME
+	_ZN22COMASuplAsnHandlerBase10ConstructLERK4TUidi @ 340 NONAME
+	_ZN22COMASuplAsnHandlerBase4NewLERKi @ 341 NONAME
+	_ZN22COMASuplAsnHandlerBaseC2Ev @ 342 NONAME
+	_ZN22COMASuplAsnHandlerBaseD0Ev @ 343 NONAME
+	_ZN22COMASuplAsnHandlerBaseD1Ev @ 344 NONAME
+	_ZN22COMASuplAsnHandlerBaseD2Ev @ 345 NONAME
+	_ZN22COMASuplAsnMessageBase10CloneBaseLEPKS_Ri @ 346 NONAME
+	_ZN22COMASuplAsnMessageBase14SetMessageBaseERK15TOMASuplVersionP17COMASuplSessionID @ 347 NONAME
+	_ZN22COMASuplAsnMessageBase14SetMessageTypeENS_16TSuplMessageTypeE @ 348 NONAME
+	_ZN22COMASuplAsnMessageBase16SetMessageLengthEi @ 349 NONAME
+	_ZN22COMASuplAsnMessageBase7EncodeLERi @ 350 NONAME
+	_ZN22COMASuplAsnMessageBaseD0Ev @ 351 NONAME
+	_ZN22COMASuplAsnMessageBaseD1Ev @ 352 NONAME
+	_ZN22COMASuplAsnMessageBaseD2Ev @ 353 NONAME
+	_ZN22COMASuplLocationIdData12SetECellInfoE17TOMASuplECellInfo @ 354 NONAME
+	_ZN22COMASuplLocationIdData12SetTimeStampEl @ 355 NONAME
+	_ZN22COMASuplLocationIdData13SetLocationIdEP22COMASuplLocationIdVer2 @ 356 NONAME
+	_ZN22COMASuplLocationIdData14SetServingFlagEi @ 357 NONAME
+	_ZN22COMASuplLocationIdData4NewLEv @ 358 NONAME
+	_ZN22COMASuplLocationIdData6CloneLEv @ 359 NONAME
+	_ZN22COMASuplLocationIdDataD0Ev @ 360 NONAME
+	_ZN22COMASuplLocationIdDataD1Ev @ 361 NONAME
+	_ZN22COMASuplLocationIdDataD2Ev @ 362 NONAME
+	_ZN22COMASuplLocationIdVer215SetVer2CellInfoE24TOMASuplVer2CellInfoExtn @ 363 NONAME
+	_ZN22COMASuplLocationIdVer24NewLEv @ 364 NONAME
+	_ZN22COMASuplLocationIdVer26CloneLEv @ 365 NONAME
+	_ZN22COMASuplLocationIdVer2C1Ev @ 366 NONAME
+	_ZN22COMASuplLocationIdVer2C2Ev @ 367 NONAME
+	_ZN22COMASuplLocationIdVer2D0Ev @ 368 NONAME
+	_ZN22COMASuplLocationIdVer2D1Ev @ 369 NONAME
+	_ZN22COMASuplLocationIdVer2D2Ev @ 370 NONAME
+	_ZN22COMASuplMultipleLocIds16AddNextLocIdDataEP22COMASuplLocationIdData @ 371 NONAME
+	_ZN22COMASuplMultipleLocIds17GetLocIdDataArrayER13RPointerArrayI22COMASuplLocationIdDataE @ 372 NONAME
+	_ZN22COMASuplMultipleLocIds4NewLEv @ 373 NONAME
+	_ZN22COMASuplMultipleLocIds6CloneLEv @ 374 NONAME
+	_ZN22COMASuplMultipleLocIdsD0Ev @ 375 NONAME
+	_ZN22COMASuplMultipleLocIdsD1Ev @ 376 NONAME
+	_ZN22COMASuplMultipleLocIdsD2Ev @ 377 NONAME
+	_ZN22COMASuplResponseV2Extn10ConstructLEv @ 378 NONAME
+	_ZN22COMASuplResponseV2Extn10GetSuplPosERP16COMASuplPosition @ 379 NONAME
+	_ZN22COMASuplResponseV2Extn10SetSuplPosEP16COMASuplPosition @ 380 NONAME
+	_ZN22COMASuplResponseV2Extn12GetSPCSETKeyER17TOMASuplSPCSETKey @ 381 NONAME
+	_ZN22COMASuplResponseV2Extn12SetSPCSETKeyE17TOMASuplSPCSETKey @ 382 NONAME
+	_ZN22COMASuplResponseV2Extn14GetSPCLifetimeERa @ 383 NONAME
+	_ZN22COMASuplResponseV2Extn14SetSPCLifetimeEa @ 384 NONAME
+	_ZN22COMASuplResponseV2Extn17GetSupNetworkInfoER30TOMASuplSuppNetworkInformation @ 385 NONAME
+	_ZN22COMASuplResponseV2Extn17SetSupNetworkInfoE30TOMASuplSuppNetworkInformation @ 386 NONAME
+	_ZN22COMASuplResponseV2Extn4NewLEv @ 387 NONAME
+	_ZN22COMASuplResponseV2Extn6CloneLEv @ 388 NONAME
+	_ZN22COMASuplResponseV2Extn9GetSPCTIdERP14COMASuplSPCTID @ 389 NONAME
+	_ZN22COMASuplResponseV2Extn9SetSPCTIdEP14COMASuplSPCTID @ 390 NONAME
+	_ZN22COMASuplResponseV2ExtnC1Ev @ 391 NONAME
+	_ZN22COMASuplResponseV2ExtnC2Ev @ 392 NONAME
+	_ZN22COMASuplResponseV2ExtnD0Ev @ 393 NONAME
+	_ZN22COMASuplResponseV2ExtnD1Ev @ 394 NONAME
+	_ZN22COMASuplResponseV2ExtnD2Ev @ 395 NONAME
+	_ZN22COMASuplTriggeredStart10ConstructLEv @ 396 NONAME
+	_ZN22COMASuplTriggeredStart10GetECellIdER17TOMASuplECellInfo @ 397 NONAME
+	_ZN22COMASuplTriggeredStart10SetECellIdER17TOMASuplECellInfo @ 398 NONAME
+	_ZN22COMASuplTriggeredStart11SetPositionEP16COMASuplPosition @ 399 NONAME
+	_ZN22COMASuplTriggeredStart12SetCauseCodeENS_26TOMASuplTrigStartCauseCodeE @ 400 NONAME
+	_ZN22COMASuplTriggeredStart13SetLocationIdEP22COMASuplLocationIdVer2 @ 401 NONAME
+	_ZN22COMASuplTriggeredStart13SetThirdPartyEP21COMASuplThirdPartyIds @ 402 NONAME
+	_ZN22COMASuplTriggeredStart14SetTriggerTypeENS_16TOMASuplTrigTypeE @ 403 NONAME
+	_ZN22COMASuplTriggeredStart16SetReportingCapsE20TOMASuplReportingCap @ 404 NONAME
+	_ZN22COMASuplTriggeredStart16SetTriggerParamsE21TOMASuplTriggerParams @ 405 NONAME
+	_ZN22COMASuplTriggeredStart17SetMultipleLocIdsEP22COMASuplMultipleLocIds @ 406 NONAME
+	_ZN22COMASuplTriggeredStart18SetSETCapabilitiesEP27COMASuplSETCapabilitiesVer2 @ 407 NONAME
+	_ZN22COMASuplTriggeredStart21SetSuplTriggeredStartEP27COMASuplSETCapabilitiesVer2P22COMASuplLocationIdVer2i @ 408 NONAME
+	_ZN22COMASuplTriggeredStart4NewLEv @ 409 NONAME
+	_ZN22COMASuplTriggeredStart5CloneEPK22COMASuplAsnMessageBaseRi @ 410 NONAME
+	_ZN22COMASuplTriggeredStart5NewLCEv @ 411 NONAME
+	_ZN22COMASuplTriggeredStart6SetQopE11TOMASuplQop @ 412 NONAME
+	_ZN22COMASuplTriggeredStart6SetVerER5TDes8 @ 413 NONAME
+	_ZN22COMASuplTriggeredStartC1Ev @ 414 NONAME
+	_ZN22COMASuplTriggeredStartC2Ev @ 415 NONAME
+	_ZN22COMASuplTriggeredStartD0Ev @ 416 NONAME
+	_ZN22COMASuplTriggeredStartD1Ev @ 417 NONAME
+	_ZN22COMASuplTriggeredStartD2Ev @ 418 NONAME
+	_ZN22TOMASuplPeriodicParams15SetStartTimeSetEl @ 419 NONAME
+	_ZN22TOMASuplPeriodicParams21SetSuplPeriodicParamsEll @ 420 NONAME
+	_ZN22TOMASuplPeriodicParamsC1Ev @ 421 NONAME
+	_ZN22TOMASuplPeriodicParamsC2Ev @ 422 NONAME
+	_ZN22TOMASuplPosTechnology214SetVer2PosExtnE22TOMASuplVer2PosTechExt @ 423 NONAME
+	_ZN22TOMASuplPosTechnology2C1Ev @ 424 NONAME
+	_ZN22TOMASuplPosTechnology2C2Ev @ 425 NONAME
+	_ZN22TOMASuplVer2PosTechExtC1Ev @ 426 NONAME
+	_ZN22TOMASuplVer2PosTechExtC2Ev @ 427 NONAME
+	_ZN23TOMAServiceCapabilities19SetSuplReportingCapE20TOMASuplReportingCap @ 428 NONAME
+	_ZN23TOMAServiceCapabilities23SetSuplServiceSupportedE24TOMASuplServiceSupported @ 429 NONAME
+	_ZN23TOMAServiceCapabilities26SetSuplSessionCapabilitiesE27TOMASuplSessionCapabilities @ 430 NONAME
+	_ZN23TOMAServiceCapabilities27SetEventTriggerCapabilitiesE32TOMASuplEventTriggerCapabilities @ 431 NONAME
+	_ZN23TOMAServiceCapabilitiesC1Ev @ 432 NONAME
+	_ZN23TOMAServiceCapabilitiesC2Ev @ 433 NONAME
+	_ZN23TOMASuplBatchReportMode15SetMaxPositionsEi @ 434 NONAME
+	_ZN23TOMASuplBatchReportMode17SetReportPositionEi @ 435 NONAME
+	_ZN23TOMASuplBatchReportMode18SetMaxMeasurementsEi @ 436 NONAME
+	_ZN23TOMASuplBatchReportMode20SetReportMeasurementEi @ 437 NONAME
+	_ZN23TOMASuplBatchReportModeC1Ev @ 438 NONAME
+	_ZN23TOMASuplBatchReportModeC2Ev @ 439 NONAME
+	_ZN23TOMASuplProtectionLevel12GetProtLevelERNS_21TOMASuplProtLevelTypeE @ 440 NONAME
+	_ZN23TOMASuplProtectionLevel12SetProtLevelENS_21TOMASuplProtLevelTypeE @ 441 NONAME
+	_ZN23TOMASuplProtectionLevel13GetProtParamsER29TOMASuplBasicProtectionParams @ 442 NONAME
+	_ZN23TOMASuplProtectionLevel13SetProtParamsE29TOMASuplBasicProtectionParams @ 443 NONAME
+	_ZN23TOMASuplProtectionLevelC1Ev @ 444 NONAME
+	_ZN23TOMASuplProtectionLevelC2Ev @ 445 NONAME
+	_ZN23TOMASuplVer2ProtocolExt26SetTOMASuplVer2ProtocolExtE26TOMASuplPosProtocolVersionS0_31TOMASuplPosProtocolVersion3GPP2 @ 446 NONAME
+	_ZN23TOMASuplVer2ProtocolExtC1Ev @ 447 NONAME
+	_ZN23TOMASuplVer2ProtocolExtC2Ev @ 448 NONAME
+	_ZN24COMASuplNotificationVer215GetV2NotifyExtnERP26COMASuplNotificationExtnV2 @ 449 NONAME
+	_ZN24COMASuplNotificationVer215SetV2NotifyExtnEP26COMASuplNotificationExtnV2 @ 450 NONAME
+	_ZN24COMASuplNotificationVer24NewLEv @ 451 NONAME
+	_ZN24COMASuplNotificationVer2D0Ev @ 452 NONAME
+	_ZN24COMASuplNotificationVer2D1Ev @ 453 NONAME
+	_ZN24COMASuplNotificationVer2D2Ev @ 454 NONAME
+	_ZN24COMASuplVer2SuplInitExtn11GetTrigTypeERN22COMASuplTriggeredStart16TOMASuplTrigTypeE @ 455 NONAME
+	_ZN24COMASuplVer2SuplInitExtn11SetTrigTypeEN22COMASuplTriggeredStart16TOMASuplTrigTypeE @ 456 NONAME
+	_ZN24COMASuplVer2SuplInitExtn12GetProtLevelER23TOMASuplProtectionLevel @ 457 NONAME
+	_ZN24COMASuplVer2SuplInitExtn12GetSupNwInfoER30TOMASuplSuppNetworkInformation @ 458 NONAME
+	_ZN24COMASuplVer2SuplInitExtn12SetProtLevelE23TOMASuplProtectionLevel @ 459 NONAME
+	_ZN24COMASuplVer2SuplInitExtn12SetSupNwInfoE30TOMASuplSuppNetworkInformation @ 460 NONAME
+	_ZN24COMASuplVer2SuplInitExtn14GetHSLPAddressERP18COMASuplSLPAddress @ 461 NONAME
+	_ZN24COMASuplVer2SuplInitExtn14GetHistoricRepER25TOMASuplHistoricReporting @ 462 NONAME
+	_ZN24COMASuplVer2SuplInitExtn14GetMinMajorVerERi @ 463 NONAME
+	_ZN24COMASuplVer2SuplInitExtn14SetHSLPAddressEP18COMASuplSLPAddress @ 464 NONAME
+	_ZN24COMASuplVer2SuplInitExtn14SetHistoricRepE25TOMASuplHistoricReporting @ 465 NONAME
+	_ZN24COMASuplVer2SuplInitExtn14SetMinMajorVerEi @ 466 NONAME
+	_ZN24COMASuplVer2SuplInitExtn19GetNotificationModeERNS_24TOMASuplNotificationModeE @ 467 NONAME
+	_ZN24COMASuplVer2SuplInitExtn19SetNotificationModeENS_24TOMASuplNotificationModeE @ 468 NONAME
+	_ZN24COMASuplVer2SuplInitExtn4NewLEv @ 469 NONAME
+	_ZN24COMASuplVer2SuplInitExtnD0Ev @ 470 NONAME
+	_ZN24COMASuplVer2SuplInitExtnD1Ev @ 471 NONAME
+	_ZN24COMASuplVer2SuplInitExtnD2Ev @ 472 NONAME
+	_ZN24TOMASuplReportedLocation15SetLocationDataE20TOMASuplLocationData @ 473 NONAME
+	_ZN24TOMASuplReportedLocation24SetLocationEncDescriptorENS_24TOMASuplLocEncDescriptorE @ 474 NONAME
+	_ZN24TOMASuplServiceSupported18SetPeriodicTriggerEi @ 475 NONAME
+	_ZN24TOMASuplServiceSupported19SetAreaEventTriggerEi @ 476 NONAME
+	_ZN24TOMASuplVer2CellInfoExtn19SetCellInfoExtnTypeENS_24TOMASuplCellInfoExtnTypeE @ 477 NONAME
+	_ZN24TOMASuplVer2CellInfoExtnC1Ev @ 478 NONAME
+	_ZN24TOMASuplVer2CellInfoExtnC2Ev @ 479 NONAME
+	_ZN25COMASuplTriggeredResponse10ConstructLEv @ 480 NONAME
+	_ZN25COMASuplTriggeredResponse12SetPosMethodE17TOMASuplPosMethod @ 481 NONAME
+	_ZN25COMASuplTriggeredResponse12SetSPCSETKeyE17TOMASuplSPCSETKey @ 482 NONAME
+	_ZN25COMASuplTriggeredResponse13SetReportModeE21TOMASuplReportingMode @ 483 NONAME
+	_ZN25COMASuplTriggeredResponse13SetSLPAddressEP18COMASuplSLPAddress @ 484 NONAME
+	_ZN25COMASuplTriggeredResponse16SetTriggerParamsE21TOMASuplTriggerParams @ 485 NONAME
+	_ZN25COMASuplTriggeredResponse17SetSupNetworkInfoE30TOMASuplSuppNetworkInformation @ 486 NONAME
+	_ZN25COMASuplTriggeredResponse18SetSPCTKeyLifeTimeEi @ 487 NONAME
+	_ZN25COMASuplTriggeredResponse4NewLEv @ 488 NONAME
+	_ZN25COMASuplTriggeredResponse5CloneEPK22COMASuplAsnMessageBaseRi @ 489 NONAME
+	_ZN25COMASuplTriggeredResponse5NewLCEv @ 490 NONAME
+	_ZN25COMASuplTriggeredResponse9SetSPCTIdEP14COMASuplSPCTID @ 491 NONAME
+	_ZN25COMASuplTriggeredResponseC1Ev @ 492 NONAME
+	_ZN25COMASuplTriggeredResponseC2Ev @ 493 NONAME
+	_ZN25COMASuplTriggeredResponseD0Ev @ 494 NONAME
+	_ZN25COMASuplTriggeredResponseD1Ev @ 495 NONAME
+	_ZN25COMASuplTriggeredResponseD2Ev @ 496 NONAME
+	_ZN25COMASuplVer2SuplStartExtn11SetPositionEP16COMASuplPosition @ 497 NONAME
+	_ZN25COMASuplVer2SuplStartExtn13SetThirdPartyEP21COMASuplThirdPartyIds @ 498 NONAME
+	_ZN25COMASuplVer2SuplStartExtn17SetMultipleLocIdsEP22COMASuplMultipleLocIds @ 499 NONAME
+	_ZN25COMASuplVer2SuplStartExtn4NewLEv @ 500 NONAME
+	_ZN25COMASuplVer2SuplStartExtn6CloneLEv @ 501 NONAME
+	_ZN25COMASuplVer2SuplStartExtnD0Ev @ 502 NONAME
+	_ZN25COMASuplVer2SuplStartExtnD1Ev @ 503 NONAME
+	_ZN25COMASuplVer2SuplStartExtnD2Ev @ 504 NONAME
+	_ZN25TOMASuplHistoricReporting14GetRepCriteriaER25TOMASuplReportingCriteria @ 505 NONAME
+	_ZN25TOMASuplHistoricReporting14SetRepCriteriaE25TOMASuplReportingCriteria @ 506 NONAME
+	_ZN25TOMASuplHistoricReporting17GetAllowedRepTypeERNS_28TOMASuplAllowedReportingTypeE @ 507 NONAME
+	_ZN25TOMASuplHistoricReporting17SetAllowedRepTypeENS_28TOMASuplAllowedReportingTypeE @ 508 NONAME
+	_ZN25TOMASuplHistoricReportingC1Ev @ 509 NONAME
+	_ZN25TOMASuplHistoricReportingC2Ev @ 510 NONAME
+	_ZN25TOMASuplReportingCriteria13GetTimeWindowER18TOMASuplTimeWindow @ 511 NONAME
+	_ZN25TOMASuplReportingCriteria13GrtMinTimeIntEv @ 512 NONAME
+	_ZN25TOMASuplReportingCriteria13SetMinTimeIntEl @ 513 NONAME
+	_ZN25TOMASuplReportingCriteria13SetTimeWindowE18TOMASuplTimeWindow @ 514 NONAME
+	_ZN25TOMASuplReportingCriteria15GetNumOfreportsEv @ 515 NONAME
+	_ZN25TOMASuplReportingCriteria15SetNumOfreportsEl @ 516 NONAME
+	_ZN25TOMASuplReportingCriteriaC1Ev @ 517 NONAME
+	_ZN25TOMASuplReportingCriteriaC2Ev @ 518 NONAME
+	_ZN26COMASuplNotificationExtnV24NewLEv @ 519 NONAME
+	_ZN26COMASuplNotificationExtnV2D0Ev @ 520 NONAME
+	_ZN26COMASuplNotificationExtnV2D1Ev @ 521 NONAME
+	_ZN26COMASuplNotificationExtnV2D2Ev @ 522 NONAME
+	_ZN26TOMASuplBatchRepConditions12SetNumOfMinsEi @ 523 NONAME
+	_ZN26TOMASuplBatchRepConditions14NumOfIntervalsEv @ 524 NONAME
+	_ZN26TOMASuplBatchRepConditions15GetBatchRepTypeEv @ 525 NONAME
+	_ZN26TOMASuplBatchRepConditions15SetBatchRepTypeENS_20TOMABatchRepCondTypeE @ 526 NONAME
+	_ZN26TOMASuplBatchRepConditions17SetNumOfIntervalsEi @ 527 NONAME
+	_ZN26TOMASuplBatchRepConditions9NumOfMinsEv @ 528 NONAME
+	_ZN27COMASuplSETCapabilitiesVer210ConstructLEv @ 529 NONAME
+	_ZN27COMASuplSETCapabilitiesVer217SetVer2SetCapExtnE18TOMAVer2SetCapExtn @ 530 NONAME
+	_ZN27COMASuplSETCapabilitiesVer218SetSETCapabilitiesERK22TOMASuplPosTechnology2RKNS_19TOMASuplPrefMethod2ERK20TOMASuplPosProtocol2 @ 531 NONAME
+	_ZN27COMASuplSETCapabilitiesVer24NewLEv @ 532 NONAME
+	_ZN27COMASuplSETCapabilitiesVer26CloneLEv @ 533 NONAME
+	_ZN27COMASuplSETCapabilitiesVer2C1Ev @ 534 NONAME
+	_ZN27COMASuplSETCapabilitiesVer2C2Ev @ 535 NONAME
+	_ZN27COMASuplSETCapabilitiesVer2D1Ev @ 536 NONAME
+	_ZN27COMASuplSETCapabilitiesVer2D2Ev @ 537 NONAME
+	_ZN27TOMASuplSessionCapabilities25SetMaxNumberTotalSessionsEi @ 538 NONAME
+	_ZN27TOMASuplSessionCapabilities28SetMaxNumberPeriodicSessionsEa @ 539 NONAME
+	_ZN27TOMASuplSessionCapabilities29SetMaxNumberTriggeredSessionsEa @ 540 NONAME
+	_ZN27TOMASuplSessionCapabilitiesC1Ev @ 541 NONAME
+	_ZN27TOMASuplSessionCapabilitiesC2Ev @ 542 NONAME
+	_ZN29TOMASuplBasicProtectionParams11GetBasicMacER5TDes8 @ 543 NONAME
+	_ZN29TOMASuplBasicProtectionParams11SetBasicMacER5TDes8 @ 544 NONAME
+	_ZN29TOMASuplBasicProtectionParams16GetKeyIdentifierER5TDes8 @ 545 NONAME
+	_ZN29TOMASuplBasicProtectionParams16GetReplayCounterEv @ 546 NONAME
+	_ZN29TOMASuplBasicProtectionParams16SetKeyIdentifierER5TDes8 @ 547 NONAME
+	_ZN29TOMASuplBasicProtectionParams16SetReplayCounterEl @ 548 NONAME
+	_ZN30TOMASuplSuppNetworkInformation11GetHistoricEv @ 549 NONAME
+	_ZN30TOMASuplSuppNetworkInformation11SetHistoricEi @ 550 NONAME
+	_ZN30TOMASuplSuppNetworkInformation13GetNonServingEv @ 551 NONAME
+	_ZN30TOMASuplSuppNetworkInformation13SetNonServingEi @ 552 NONAME
+	_ZN30TOMASuplSuppNetworkInformation15GetSupWCDMAInfoER21TOMASuplSuppWCDMAInfo @ 553 NONAME
+	_ZN30TOMASuplSuppNetworkInformation15SetSupWCDMAInfoE21TOMASuplSuppWCDMAInfo @ 554 NONAME
+	_ZN30TOMASuplSuppNetworkInformation18GetUTRANGPSRefTimeEv @ 555 NONAME
+	_ZN30TOMASuplSuppNetworkInformation18SetUTRANGPSRefTimeEi @ 556 NONAME
+	_ZN30TOMASuplSuppNetworkInformation20GetUTRANGANSSRefTimeEv @ 557 NONAME
+	_ZN30TOMASuplSuppNetworkInformation20SetUTRANGANSSRefTimeEi @ 558 NONAME
+	_ZN30TOMASuplSuppNetworkInformation6GetGSMEv @ 559 NONAME
+	_ZN30TOMASuplSuppNetworkInformation6SetGSMEi @ 560 NONAME
+	_ZN30TOMASuplSuppNetworkInformation7GetCDMAEv @ 561 NONAME
+	_ZN30TOMASuplSuppNetworkInformation7SetCDMAEi @ 562 NONAME
+	_ZN30TOMASuplSuppNetworkInformation8GetWCDMAEv @ 563 NONAME
+	_ZN30TOMASuplSuppNetworkInformation8SetWCDMAEi @ 564 NONAME
+	_ZN30TOMASuplSuppNetworkInformationC1Ev @ 565 NONAME
+	_ZN30TOMASuplSuppNetworkInformationC2Ev @ 566 NONAME
+	_ZN31TOMASuplPosProtocolVersion3GPP234SetTOMASuplPosProtocolVersion3GPP2E33TOMASuplSupported3GPP2PosProtoVer @ 567 NONAME
+	_ZN31TOMASuplPosProtocolVersion3GPP2C1Ev @ 568 NONAME
+	_ZN31TOMASuplPosProtocolVersion3GPP2C2Ev @ 569 NONAME
+	_ZN33TOMASuplSupported3GPP2PosProtoVer36SetTOMASuplSupported3GPP2PosProtoVerEtii @ 570 NONAME
+	_ZN33TOMASuplSupported3GPP2PosProtoVerC1Ev @ 571 NONAME
+	_ZN33TOMASuplSupported3GPP2PosProtoVerC2Ev @ 572 NONAME
+	_ZNK11COMASuplEnd10StatusCodeERNS_18TOMASuplStatusCodeE @ 573 NONAME
+	_ZNK11COMASuplEnd3VerER5TDes8 @ 574 NONAME
+	_ZNK11COMASuplEnd8PositionERP16COMASuplPosition @ 575 NONAME
+	_ZNK11COMASuplPos7SuplPosEv @ 576 NONAME
+	_ZNK11COMASuplPos8VelocityERP16COMASuplVelocity @ 577 NONAME
+	_ZNK11TOMASuplQop14MaxLocationAgeERi @ 578 NONAME
+	_ZNK11TOMASuplQop16VerticalAccuracyERi @ 579 NONAME
+	_ZNK11TOMASuplQop5DelayERi @ 580 NONAME
+	_ZNK11TOMASuplQop7SuplQopEv @ 581 NONAME
+	_ZNK12COMASuplInit10SLPAddressERP18COMASuplSLPAddress @ 582 NONAME
+	_ZNK12COMASuplInit12NotificationERP20COMASuplNotification @ 583 NONAME
+	_ZNK12COMASuplInit3QopER11TOMASuplQop @ 584 NONAME
+	_ZNK12COMASuplInit8SuplInitER17TOMASuplPosMethodRNS_15TOMASuplSLPModeE @ 585 NONAME
+	_ZNK13COMASuplStart3QopER11TOMASuplQop @ 586 NONAME
+	_ZNK14COMASuplReport14GetSessionListER13RPointerArrayI17COMASuplSessionIDE @ 587 NONAME
+	_ZNK14COMASuplReport17GetReportDataListER13RPointerArrayI18COMASuplReportDataE @ 588 NONAME
+	_ZNK14COMASuplReport18GetSetCapabilitiesERP27COMASuplSETCapabilitiesVer2 @ 589 NONAME
+	_ZNK14COMASuplReport6GetVerER5TDes8 @ 590 NONAME
+	_ZNK14COMASuplSPCTID7GetFqdnERP6HBufC8 @ 591 NONAME
+	_ZNK14COMASuplSPCTID7GetRANDER5TDes8 @ 592 NONAME
+	_ZNK15COMASuplEndVer215SETCapabilitiesERP23COMASuplSETCapabilities @ 593 NONAME
+	_ZNK15COMASuplPosInit14SuplPosPayloadERP18COMASuplPosPayload @ 594 NONAME
+	_ZNK15COMASuplPosInit21RequestAssistanceDataERP19COMASuplReqAsstData @ 595 NONAME
+	_ZNK15COMASuplPosInit3VerER5TDes8 @ 596 NONAME
+	_ZNK15COMASuplPosInit8PositionERP16COMASuplPosition @ 597 NONAME
+	_ZNK15COMASuplPosInit8VelocityERP16COMASuplVelocity @ 598 NONAME
+	_ZNK15TOMASuplVersion11SuplVersionERiS0_S0_ @ 599 NONAME
+	_ZNK16COMASuplCellInfo12SuplCellInfoERiS0_S0_ @ 600 NONAME
+	_ZNK16COMASuplInitVer219GetVer2NotificationERP24COMASuplNotificationVer2 @ 601 NONAME
+	_ZNK16COMASuplResponse10SLPAddressERP18COMASuplSLPAddress @ 602 NONAME
+	_ZNK16COMASuplResponse12SuplResponseEv @ 603 NONAME
+	_ZNK17COMASuplSessionID12SETSessionIDERP20COMASuplSETSessionID @ 604 NONAME
+	_ZNK17COMASuplSessionID12SLPSessionIDERP20COMASuplSLPSessionID @ 605 NONAME
+	_ZNK17COMASuplStartVer29SuplStartERP27COMASuplSETCapabilitiesVer2RP22COMASuplLocationIdVer2Ri @ 606 NONAME
+	_ZNK17TOMASuplECellInfo11GSMCellInfoER19TOMASuplGSMCellinfo @ 607 NONAME
+	_ZNK17TOMASuplECellInfo11NetworkModeEv @ 608 NONAME
+	_ZNK17TOMASuplECellInfo13WCDMACellInfoER21TOMASuplWCDMACellinfo @ 609 NONAME
+	_ZNK17TOMASuplSPCSETKey16GetSuplSPCSetKeyER5TDes8 @ 610 NONAME
+	_ZNK18COMASuplLocationId14SuplLocationIdERP16COMASuplCellInfoRNS_14TOMASuplStatusE @ 611 NONAME
+	_ZNK18COMASuplLocationId14SuplLocationIdERP19COMASuplGSMCellInfoRNS_14TOMASuplStatusE @ 612 NONAME
+	_ZNK18COMASuplLocationId16SuplCellInfoTypeEv @ 613 NONAME
+	_ZNK18COMASuplReportData10GetPosDataERP20COMASuplPositionData @ 614 NONAME
+	_ZNK18COMASuplReportData12GetTimeStampER17TOMASuplTimeStamp @ 615 NONAME
+	_ZNK18COMASuplReportData13GetResultCodeERNS_28TOMASuplReportDataResultCodeE @ 616 NONAME
+	_ZNK18COMASuplReportData15GetMutipleLocIdERP22COMASuplMultipleLocIds @ 617 NONAME
+	_ZNK18COMASuplSLPAddress10IPvAddressER5TDes8 @ 618 NONAME
+	_ZNK18COMASuplSLPAddress14SLPAddressTypeEv @ 619 NONAME
+	_ZNK18COMASuplSLPAddress4FqdnERP6HBufC8 @ 620 NONAME
+	_ZNK18TOMASuplReportMode11GetRealTimeERi @ 621 NONAME
+	_ZNK18TOMASuplReportMode16GetQuasiRealTimeERi @ 622 NONAME
+	_ZNK18TOMASuplReportMode8GetBatchERi @ 623 NONAME
+	_ZNK18TOMAVer2SetCapExtn14GetServiceCapsER23TOMAServiceCapabilities @ 624 NONAME
+	_ZNK19COMASuplGSMCellInfo15SuplGSMCellInfoERiS0_S0_S0_ @ 625 NONAME
+	_ZNK20COMASuplAuthResponse10LongSPCKeyER5TDes8 @ 626 NONAME
+	_ZNK20COMASuplAuthResponse11ShortSPCKeyER5TDes8 @ 627 NONAME
+	_ZNK20COMASuplAuthResponse12KeyIdentity3ER5TDes8 @ 628 NONAME
+	_ZNK20COMASuplNotification10ClientNameERP6HBufC8RNS_23TOMASuplFormatIndicatorE @ 629 NONAME
+	_ZNK20COMASuplNotification11RequestorIdERP6HBufC8RNS_23TOMASuplFormatIndicatorE @ 630 NONAME
+	_ZNK20COMASuplNotification12EncodingTypeERNS_20TOMASuplEncodingTypeE @ 631 NONAME
+	_ZNK20COMASuplNotification16SuplNotificationEv @ 632 NONAME
+	_ZNK20COMASuplPositionData11GetPositionERP16COMASuplPosition @ 633 NONAME
+	_ZNK20COMASuplPositionData12GetPosMethodER17TOMASuplPosMethod @ 634 NONAME
+	_ZNK20COMASuplSETSessionID13SuplSETIDTypeEv @ 635 NONAME
+	_ZNK20COMASuplSETSessionID16SuplSETSessionIDERiR5TDes8 @ 636 NONAME
+	_ZNK20COMASuplSLPSessionID16SuplSLPSessionIDER5TDes8RP18COMASuplSLPAddress @ 637 NONAME
+	_ZNK20TOMASuplLocationData16GetLocationValueER5TDes8 @ 638 NONAME
+	_ZNK20TOMASuplLocationData19GetLocationAccuracyERi @ 639 NONAME
+	_ZNK20TOMASuplPosProtocol222GetVer2PosProtocolExtnER23TOMASuplVer2ProtocolExt @ 640 NONAME
+	_ZNK20TOMASuplReportingCap13GetReportModeER18TOMASuplReportMode @ 641 NONAME
+	_ZNK20TOMASuplReportingCap18GetBatchReportModeER23TOMASuplBatchReportMode @ 642 NONAME
+	_ZNK21COMASuplThirdPartyIds16GetThirdPartyIdsER13RPointerArrayI20COMASuplThirdpartyIdE @ 643 NONAME
+	_ZNK21COMASuplTriggeredStop17GetSuplStatusCodeERN11COMASuplEnd18TOMASuplStatusCodeE @ 644 NONAME
+	_ZNK21TOMASuplTriggerParams12GetEventTypeERNS_25TOMASuplTriggerParamsTypeE @ 645 NONAME
+	_ZNK21TOMASuplTriggerParams17GetPeriodicParamsER22TOMASuplPeriodicParams @ 646 NONAME
+	_ZNK21TOMASuplTriggerParams18GetAreaEventParamsER23TOMASuplAreaEventParams @ 647 NONAME
+	_ZNK22COMASuplAsnHandlerBase17ImplementationUidEv @ 648 NONAME
+	_ZNK22COMASuplAsnHandlerBase7VersionEv @ 649 NONAME
+	_ZNK22COMASuplAsnMessageBase11MessageBaseER15TOMASuplVersionRP17COMASuplSessionID @ 650 NONAME
+	_ZNK22COMASuplAsnMessageBase11MessageTypeEv @ 651 NONAME
+	_ZNK22COMASuplAsnMessageBase13MessageLengthEv @ 652 NONAME
+	_ZNK22COMASuplAsnMessageBase9SessionIdERP17COMASuplSessionID @ 653 NONAME
+	_ZNK22COMASuplLocationIdData12GetECellInfoER17TOMASuplECellInfo @ 654 NONAME
+	_ZNK22COMASuplLocationIdData12GetTimeStampERl @ 655 NONAME
+	_ZNK22COMASuplLocationIdData13GetLocationIdERP22COMASuplLocationIdVer2 @ 656 NONAME
+	_ZNK22COMASuplLocationIdData14GetServingFlagERi @ 657 NONAME
+	_ZNK22COMASuplLocationIdVer212Ver2CellInfoER24TOMASuplVer2CellInfoExtn @ 658 NONAME
+	_ZNK22COMASuplTriggeredStart11GetPositionERP16COMASuplPosition @ 659 NONAME
+	_ZNK22COMASuplTriggeredStart12GetCauseCodeERNS_26TOMASuplTrigStartCauseCodeE @ 660 NONAME
+	_ZNK22COMASuplTriggeredStart13GetLocationIdERP22COMASuplLocationIdVer2 @ 661 NONAME
+	_ZNK22COMASuplTriggeredStart13GetThirdPartyERP21COMASuplThirdPartyIds @ 662 NONAME
+	_ZNK22COMASuplTriggeredStart14GetTriggerTypeERNS_16TOMASuplTrigTypeE @ 663 NONAME
+	_ZNK22COMASuplTriggeredStart16GetReportingCapsER20TOMASuplReportingCap @ 664 NONAME
+	_ZNK22COMASuplTriggeredStart16GetTriggerParamsER21TOMASuplTriggerParams @ 665 NONAME
+	_ZNK22COMASuplTriggeredStart17GetMultipleLocIdsERP22COMASuplMultipleLocIds @ 666 NONAME
+	_ZNK22COMASuplTriggeredStart18GetSETCapabilitiesERP27COMASuplSETCapabilitiesVer2 @ 667 NONAME
+	_ZNK22COMASuplTriggeredStart6GetQopER11TOMASuplQop @ 668 NONAME
+	_ZNK22COMASuplTriggeredStart6GetVerER5TDes8 @ 669 NONAME
+	_ZNK22TOMASuplPeriodicParams15GetStartTimeSetERl @ 670 NONAME
+	_ZNK22TOMASuplPeriodicParams21GetSuplPeriodicParamsERlS0_ @ 671 NONAME
+	_ZNK22TOMASuplPosTechnology214GetVer2PosExtnER22TOMASuplVer2PosTechExt @ 672 NONAME
+	_ZNK23TOMAServiceCapabilities19GetSuplReportingCapER20TOMASuplReportingCap @ 673 NONAME
+	_ZNK23TOMAServiceCapabilities23GetSuplServiceSupportedER24TOMASuplServiceSupported @ 674 NONAME
+	_ZNK23TOMAServiceCapabilities26GetSuplSessionCapabilitiesER27TOMASuplSessionCapabilities @ 675 NONAME
+	_ZNK23TOMAServiceCapabilities27GetEventTriggerCapabilitiesER32TOMASuplEventTriggerCapabilities @ 676 NONAME
+	_ZNK23TOMASuplBatchReportMode15GetMaxPositionsERi @ 677 NONAME
+	_ZNK23TOMASuplBatchReportMode17GetReportPositionERi @ 678 NONAME
+	_ZNK23TOMASuplBatchReportMode18GetMaxMeasurementsERi @ 679 NONAME
+	_ZNK23TOMASuplBatchReportMode20GetReportMeasurementERi @ 680 NONAME
+	_ZNK23TOMASuplVer2ProtocolExt26GetTOMASuplVer2ProtocolExtER26TOMASuplPosProtocolVersionS1_R31TOMASuplPosProtocolVersion3GPP2 @ 681 NONAME
+	_ZNK24TOMASuplReportedLocation15GetLocationDataER20TOMASuplLocationData @ 682 NONAME
+	_ZNK24TOMASuplReportedLocation24GetLocationEncDescriptorERNS_24TOMASuplLocEncDescriptorE @ 683 NONAME
+	_ZNK24TOMASuplServiceSupported18GetPeriodicTriggerERi @ 684 NONAME
+	_ZNK24TOMASuplServiceSupported19GetAreaEventTriggerERi @ 685 NONAME
+	_ZNK24TOMASuplVer2CellInfoExtn19GetCellInfoExtnTypeERNS_24TOMASuplCellInfoExtnTypeE @ 686 NONAME
+	_ZNK25COMASuplTriggeredResponse12GetPosMethodER17TOMASuplPosMethod @ 687 NONAME
+	_ZNK25COMASuplTriggeredResponse12GetSPCSETKeyER17TOMASuplSPCSETKey @ 688 NONAME
+	_ZNK25COMASuplTriggeredResponse13GetReportModeER21TOMASuplReportingMode @ 689 NONAME
+	_ZNK25COMASuplTriggeredResponse13GetSLPAddressERP18COMASuplSLPAddress @ 690 NONAME
+	_ZNK25COMASuplTriggeredResponse16GetTriggerParamsER21TOMASuplTriggerParams @ 691 NONAME
+	_ZNK25COMASuplTriggeredResponse17GetSupNetworkInfoER30TOMASuplSuppNetworkInformation @ 692 NONAME
+	_ZNK25COMASuplTriggeredResponse18GetSPCTKeyLifeTimeERi @ 693 NONAME
+	_ZNK25COMASuplTriggeredResponse9GetSPCTIdERP14COMASuplSPCTID @ 694 NONAME
+	_ZNK25COMASuplVer2SuplStartExtn11GetPositionERP16COMASuplPosition @ 695 NONAME
+	_ZNK25COMASuplVer2SuplStartExtn13GetThirdPartyERP21COMASuplThirdPartyIds @ 696 NONAME
+	_ZNK25COMASuplVer2SuplStartExtn17GetMultipleLocIdsERP22COMASuplMultipleLocIds @ 697 NONAME
+	_ZNK27COMASuplSETCapabilitiesVer217GetVer2SetCapExtnER18TOMAVer2SetCapExtn @ 698 NONAME
+	_ZNK27COMASuplSETCapabilitiesVer218GetSETCapabilitiesER22TOMASuplPosTechnology2RNS_19TOMASuplPrefMethod2ER20TOMASuplPosProtocol2 @ 699 NONAME
+	_ZNK27COMASuplSETCapabilitiesVer223IsVer2SetCapExtnPresentEv @ 700 NONAME
+	_ZNK27TOMASuplSessionCapabilities25GetMaxNumberTotalSessionsERi @ 701 NONAME
+	_ZNK27TOMASuplSessionCapabilities28GetMaxNumberPeriodicSessionsERa @ 702 NONAME
+	_ZNK27TOMASuplSessionCapabilities29GetMaxNumberTriggeredSessionsERa @ 703 NONAME
+	_ZNK31TOMASuplPosProtocolVersion3GPP234GetTOMASuplPosProtocolVersion3GPP2ER6RArrayI33TOMASuplSupported3GPP2PosProtoVerE @ 704 NONAME
+	_ZNK33TOMASuplSupported3GPP2PosProtoVer36GetTOMASuplSupported3GPP2PosProtoVerERtRiS1_ @ 705 NONAME
+	_ZTI11COMASuplEnd @ 706 NONAME ; #<TI>#
+	_ZTI11COMASuplPos @ 707 NONAME ; #<TI>#
+	_ZTI12COMASuplInit @ 708 NONAME ; #<TI>#
+	_ZTI13COMASuplStart @ 709 NONAME ; #<TI>#
+	_ZTI14COMASuplReport @ 710 NONAME ; #<TI>#
+	_ZTI14COMASuplSPCTID @ 711 NONAME ; #<TI>#
+	_ZTI15COMASuplEndVer2 @ 712 NONAME ; #<TI>#
+	_ZTI15COMASuplPosInit @ 713 NONAME ; #<TI>#
+	_ZTI16COMASuplCellInfo @ 714 NONAME ; #<TI>#
+	_ZTI16COMASuplInitVer2 @ 715 NONAME ; #<TI>#
+	_ZTI16COMASuplResponse @ 716 NONAME ; #<TI>#
+	_ZTI17COMASuplSessionID @ 717 NONAME ; #<TI>#
+	_ZTI17COMASuplStartVer2 @ 718 NONAME ; #<TI>#
+	_ZTI18COMASuplLocationId @ 719 NONAME ; #<TI>#
+	_ZTI18COMASuplReportData @ 720 NONAME ; #<TI>#
+	_ZTI18COMASuplSLPAddress @ 721 NONAME ; #<TI>#
+	_ZTI19COMASuplAuthRequest @ 722 NONAME ; #<TI>#
+	_ZTI19COMASuplGSMCellInfo @ 723 NONAME ; #<TI>#
+	_ZTI19COMASuplPosInitVer2 @ 724 NONAME ; #<TI>#
+	_ZTI20COMASuplAuthResponse @ 725 NONAME ; #<TI>#
+	_ZTI20COMASuplNotification @ 726 NONAME ; #<TI>#
+	_ZTI20COMASuplPositionData @ 727 NONAME ; #<TI>#
+	_ZTI20COMASuplResponseVer2 @ 728 NONAME ; #<TI>#
+	_ZTI20COMASuplSETSessionID @ 729 NONAME ; #<TI>#
+	_ZTI20COMASuplSLPSessionID @ 730 NONAME ; #<TI>#
+	_ZTI20COMASuplThirdpartyId @ 731 NONAME ; #<TI>#
+	_ZTI21COMASuplThirdPartyIds @ 732 NONAME ; #<TI>#
+	_ZTI21COMASuplTriggeredStop @ 733 NONAME ; #<TI>#
+	_ZTI22COMASuplAsnHandlerBase @ 734 NONAME ; #<TI>#
+	_ZTI22COMASuplAsnMessageBase @ 735 NONAME ; #<TI>#
+	_ZTI22COMASuplLocationIdData @ 736 NONAME ; #<TI>#
+	_ZTI22COMASuplLocationIdVer2 @ 737 NONAME ; #<TI>#
+	_ZTI22COMASuplMultipleLocIds @ 738 NONAME ; #<TI>#
+	_ZTI22COMASuplResponseV2Extn @ 739 NONAME ; #<TI>#
+	_ZTI22COMASuplTriggeredStart @ 740 NONAME ; #<TI>#
+	_ZTI24COMASuplNotificationVer2 @ 741 NONAME ; #<TI>#
+	_ZTI24COMASuplVer2SuplInitExtn @ 742 NONAME ; #<TI>#
+	_ZTI25COMASuplTriggeredResponse @ 743 NONAME ; #<TI>#
+	_ZTI25COMASuplVer2SuplStartExtn @ 744 NONAME ; #<TI>#
+	_ZTI26COMASuplNotificationExtnV2 @ 745 NONAME ; #<TI>#
+	_ZTV11COMASuplEnd @ 746 NONAME ; #<VT>#
+	_ZTV11COMASuplPos @ 747 NONAME ; #<VT>#
+	_ZTV12COMASuplInit @ 748 NONAME ; #<VT>#
+	_ZTV13COMASuplStart @ 749 NONAME ; #<VT>#
+	_ZTV14COMASuplReport @ 750 NONAME ; #<VT>#
+	_ZTV14COMASuplSPCTID @ 751 NONAME ; #<VT>#
+	_ZTV15COMASuplEndVer2 @ 752 NONAME ; #<VT>#
+	_ZTV15COMASuplPosInit @ 753 NONAME ; #<VT>#
+	_ZTV16COMASuplCellInfo @ 754 NONAME ; #<VT>#
+	_ZTV16COMASuplInitVer2 @ 755 NONAME ; #<VT>#
+	_ZTV16COMASuplResponse @ 756 NONAME ; #<VT>#
+	_ZTV17COMASuplSessionID @ 757 NONAME ; #<VT>#
+	_ZTV17COMASuplStartVer2 @ 758 NONAME ; #<VT>#
+	_ZTV18COMASuplLocationId @ 759 NONAME ; #<VT>#
+	_ZTV18COMASuplReportData @ 760 NONAME ; #<VT>#
+	_ZTV18COMASuplSLPAddress @ 761 NONAME ; #<VT>#
+	_ZTV19COMASuplAuthRequest @ 762 NONAME ; #<VT>#
+	_ZTV19COMASuplGSMCellInfo @ 763 NONAME ; #<VT>#
+	_ZTV19COMASuplPosInitVer2 @ 764 NONAME ; #<VT>#
+	_ZTV20COMASuplAuthResponse @ 765 NONAME ; #<VT>#
+	_ZTV20COMASuplNotification @ 766 NONAME ; #<VT>#
+	_ZTV20COMASuplPositionData @ 767 NONAME ; #<VT>#
+	_ZTV20COMASuplResponseVer2 @ 768 NONAME ; #<VT>#
+	_ZTV20COMASuplSETSessionID @ 769 NONAME ; #<VT>#
+	_ZTV20COMASuplSLPSessionID @ 770 NONAME ; #<VT>#
+	_ZTV20COMASuplThirdpartyId @ 771 NONAME ; #<VT>#
+	_ZTV21COMASuplThirdPartyIds @ 772 NONAME ; #<VT>#
+	_ZTV21COMASuplTriggeredStop @ 773 NONAME ; #<VT>#
+	_ZTV22COMASuplAsnHandlerBase @ 774 NONAME ; #<VT>#
+	_ZTV22COMASuplAsnMessageBase @ 775 NONAME ; #<VT>#
+	_ZTV22COMASuplLocationIdData @ 776 NONAME ; #<VT>#
+	_ZTV22COMASuplLocationIdVer2 @ 777 NONAME ; #<VT>#
+	_ZTV22COMASuplMultipleLocIds @ 778 NONAME ; #<VT>#
+	_ZTV22COMASuplResponseV2Extn @ 779 NONAME ; #<VT>#
+	_ZTV22COMASuplTriggeredStart @ 780 NONAME ; #<VT>#
+	_ZTV24COMASuplNotificationVer2 @ 781 NONAME ; #<VT>#
+	_ZTV24COMASuplVer2SuplInitExtn @ 782 NONAME ; #<VT>#
+	_ZTV25COMASuplTriggeredResponse @ 783 NONAME ; #<VT>#
+	_ZTV25COMASuplVer2SuplStartExtn @ 784 NONAME ; #<VT>#
+	_ZTV26COMASuplNotificationExtnV2 @ 785 NONAME ; #<VT>#
+	_ZN27COMASuplSETCapabilitiesVer2D0Ev @ 786 NONAME
+	_ZTI27COMASuplSETCapabilitiesVer2 @ 787 NONAME ; #<TI>#
+	_ZTV27COMASuplSETCapabilitiesVer2 @ 788 NONAME ; #<VT>#
+	_ZN24COMASuplVer2SuplInitExtn6CloneLEPS_ @ 789 NONAME
+

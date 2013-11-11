@@ -1,0 +1,11 @@
+EXPORTS
+	_ZN11CWapWatcher4NewLER3RFsR11CWatcherLog @ 1 NONAME
+	_ZTI11CWapWatcher @ 2 NONAME ; #<TI>#
+	_ZTI15CWapPortWatcher @ 3 NONAME ; #<TI>#
+	_ZTI15CWdpPortWatcher @ 4 NONAME ; #<TI>#
+	_ZTI15CWspPortWatcher @ 5 NONAME ; #<TI>#
+	_ZTV11CWapWatcher @ 6 NONAME ; #<VT>#
+	_ZTV15CWapPortWatcher @ 7 NONAME ; #<VT>#
+	_ZTV15CWdpPortWatcher @ 8 NONAME ; #<VT>#
+	_ZTV15CWspPortWatcher @ 9 NONAME ; #<VT>#
+

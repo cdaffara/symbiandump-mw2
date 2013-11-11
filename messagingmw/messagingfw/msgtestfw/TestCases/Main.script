@@ -1,0 +1,27 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+LOAD_SUITE MessagingTestServer
+
+RUN_SCRIPT c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle_1_Poll_CSR_Email.script
+RUN_SCRIPT c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle_2_NotSupported_CSR_Email.script
+RUN_SCRIPT c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle_3_Supported_CSR_Email.script
+RUN_SCRIPT c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle_4_Reconnect_CSR_Email.script
+RUN_SCRIPT c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle_5_DisableReconn_CSR_Email.script
+RUN_SCRIPT c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle_6_ExpireReconn_CSR_Email.script
+RUN_SCRIPT c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle_7_CSR_LargeEmail.script
+RUN_SCRIPT c:\msgtest\TestFramework\ScriptedTestCases\Imap4Idle_8_CSR_ManyEmail.script
+

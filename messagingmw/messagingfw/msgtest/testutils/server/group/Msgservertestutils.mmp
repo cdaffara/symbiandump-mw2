@@ -1,0 +1,41 @@
+// Copyright (c) 1999-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// msgservertestutils.mmp
+//
+
+
+TARGET			msgservertestutils.dll
+TARGETTYPE		dll
+
+CAPABILITY All -TCB
+UID		0x1000008d 0x10009564
+VENDORID 0x70000001
+
+SOURCEPATH	../src
+SOURCE			Msgservertestutils.cpp
+USERINCLUDE		../inc ../../../../../../../app/messaging/email/pop3andsmtpmtm/clientmtms/inc
+USERINCLUDE		../../base/inc ../../../../msgsrvnstore/server/inc
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+//LIBRARY       imcm.lib imut.lib etext.lib
+LIBRARY			euser.lib msvtestutils.lib estor.lib efsrv.lib msgs.lib 
+LIBRARY       sqldb.lib
+
+DEFFILE			v2_MsgServerTestUtils.def
+
+START WINS
+	baseaddress     0x4AD60000
+END
+
+
+SMPSAFE

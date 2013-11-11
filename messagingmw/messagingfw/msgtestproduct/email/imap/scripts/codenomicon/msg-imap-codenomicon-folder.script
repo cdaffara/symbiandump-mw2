@@ -1,0 +1,756 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE	T_MsgCommonServer  	-SharedData
+LOAD_SUITE	T_MsgImapServer	-SharedData
+LOAD_SUITE	T_MsgSmtpServer	-SharedData
+
+// Test script for testing IMAP commands using codenomicon test tool
+
+START_TESTCASE	MSG-IMAP-CREATE-FOLDER-0001
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder1.ini 		0001-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder1.ini 		0001-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini 		0001-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\folder\msg-imap-folder1.ini 		0001-ConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini 		0001-CreateImap4Folder
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-CREATE-FOLDER-0001
+
+
+
+START_TESTCASE	MSG-IMAP-CREATE-FOLDER-0002
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0002-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0002-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0002-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0002-ConnectImap4Server
+RUN_TEST_STEP  	300 	T_MsgImapServer		DeleteAllImapChildren 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0002-DeleteAllImapChildren
+
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0002-CreateImap4Folder
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-CREATE-FOLDER-0002
+
+
+
+
+START_TESTCASE	MSG-IMAP-CREATE-FOLDER-0003
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0003-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0003-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0003-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0003-ConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0003-CreateImap4Folder
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-CREATE-FOLDER-0003
+
+
+
+
+START_TESTCASE	MSG-IMAP-CREATE-FOLDER-0004
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0004-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0004-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0004-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0004-ConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0004-CreateImap4Folder1
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0004-CreateImap4Folder2
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0004-CreateImap4Folder3
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0004-CreateImap4Folder4
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0004-CreateImap4Folder5
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-CREATE-FOLDER-0004
+
+
+
+
+START_TESTCASE	MSG-IMAP-CREATE-FOLDER-0005
+
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0005-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0005-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0005-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0005-ConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0005-CreateImap4Folder1
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0005-CreateImap4Folder2
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0005-CreateImap4Folder3
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0005-CreateImap4Folder4
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0005-CreateImap4Folder5
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-CREATE-FOLDER-0005
+
+
+
+
+START_TESTCASE	MSG-IMAP-CREATE-FOLDER-0006
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0006-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0006-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0006-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0006-ConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0006-CreateImap4Folder1
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0006-CreateImap4Folder2
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0006-CreateImap4Folder3
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0006-CreateImap4Folder4
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0006-CreateImap4Folder5
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-CREATE-FOLDER-0006
+
+
+START_TESTCASE	MSG-IMAP-CREATE-FOLDER-0007
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0007-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0007-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0007-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0007-ConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0007-CreateImap4Folder1
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0007-CreateImap4Folder2
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0007-CreateImap4Folder3
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0007-CreateImap4Folder4
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0007-CreateImap4Folder5
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0007-CreateImap4Folder6
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0007-CreateImap4Folder7
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-CREATE-FOLDER-0007
+
+
+START_TESTCASE	MSG-IMAP-CREATE-FOLDER-0008
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0008-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0008-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0008-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0008-ConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0008-CreateImap4Folder
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-CREATE-FOLDER-0008
+
+
+START_TESTCASE	MSG-IMAP-CREATE-FOLDER-0009
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0009-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0009-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0009-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0009-ConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0009-CreateImap4Folder
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-CREATE-FOLDER-0009
+
+
+START_TESTCASE	MSG-IMAP-CREATE-FOLDER-0010
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0010-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0010-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0010-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0010-ConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0010-CreateImap4Folder
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-CREATE-FOLDER-0010
+
+
+START_TESTCASE	MSG-IMAP-CREATE-FOLDER-0011
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0011-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0011-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0011-CreateImapAccount 
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0011-CreateImap4Folder
+
+END_TESTCASE	MSG-IMAP-CREATE-FOLDER-0011
+
+
+START_TESTCASE	MSG-IMAP-CREATE-FOLDER-0012
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0012-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0012-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0012-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0012-ConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0012-CreateImap4Folder
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-CREATE-FOLDER-0012
+
+
+START_TESTCASE	MSG-IMAP-CREATE-FOLDER-0013
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0013-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0013-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0013-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0013-ConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0013-CreateImap4Folder
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0013-CreateImap4SubFolder
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-CREATE-FOLDER-0013
+
+
+START_TESTCASE	MSG-IMAP-CREATE-FOLDER-0014
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0014-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0014-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0014-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0014-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0014-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		DeleteAllImapChildren 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0014-DeleteAllImapChildren
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0014-CreateImap4Folder
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-CREATE-FOLDER-0014
+
+
+START_TESTCASE	MSG-IMAP-CREATE-FOLDER-0015
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0015-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0015-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0015-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0015-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0015-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		DeleteAllImapChildren 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0015-DeleteAllImapChildren
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0015-CreateImap4Folder
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-CREATE-FOLDER-0015
+
+
+START_TESTCASE	MSG-IMAP-CREATE-FOLDER-0016
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0016-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0016-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0016-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0016-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0016-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		DeleteAllImapChildren 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0016-DeleteAllImapChildren
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0016-CreateImap4Folder
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0016-CreateImap4SubFolder
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-CREATE-FOLDER-0016
+
+
+START_TESTCASE	MSG-IMAP-CREATE-FOLDER-0017
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0017-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0017-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0017-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0017-ConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0017-CreateImap4Folder1
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0017-CreateImap4Folder2
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0017-CreateImap4Folder3
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0017-CreateImap4Folder4
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0017-CreateImap4Folder5
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-CREATE-FOLDER-0017
+
+
+START_TESTCASE	MSG-IMAP-CREATE-FOLDER-0018
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0018-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0018-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0018-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0018-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0018-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		DeleteAllImapChildren 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0018-DeleteAllImapChildren
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0018-CreateImap4Folder1
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0018-CreateImap4Folder2
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0018-CreateImap4Folder3
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0018-CreateImap4Folder4
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0018-CreateImap4Folder5
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-CREATE-FOLDER-0018
+
+
+START_TESTCASE	MSG-IMAP-CREATE-FOLDER-0019
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0019-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0019-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0019-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0019-ConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0019-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0019-DoFullImap4Synchronisation
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0019-CreateImap4Folder1
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0019-CreateImap4Folder2
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0019-CreateImap4Folder3
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0019-CreateImap4Folder4
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0019-CreateImap4Folder5
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-CREATE-FOLDER-0019
+
+
+START_TESTCASE	MSG-IMAP-CREATE-FOLDER-0020
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0020-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0020-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0020-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0020-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0020-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		DeleteAllImapChildren 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0020-DeleteAllImapChildren
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0020-CreateImap4Folder1
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0020-CreateImap4Folder2
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0020-CreateImap4Folder3
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0020-CreateImap4Folder4
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0020-CreateImap4Folder5
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0020-CreateImap4Folder6
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0020-CreateImap4Folder7
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-CREATE-FOLDER-0020
+
+
+START_TESTCASE	MSG-IMAP-CREATE-FOLDER-0021
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0021-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0021-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0021-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0021-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0021-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		DeleteAllImapChildren 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0021-DeleteAllImapChildren
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0021-CreateImap4Folder
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-CREATE-FOLDER-0021
+
+
+START_TESTCASE	MSG-IMAP-CREATE-FOLDER-0022
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0022-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0022-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0022-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0022-ConnectImap4Server
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0022-DoFullImap4Synchronisation
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0022-CreateImap4Folder
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-CREATE-FOLDER-0022
+
+
+
+START_TESTCASE	MSG-IMAP-CREATE-FOLDER-0023
+
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0023-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0023-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0023-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0023-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0023-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		DeleteAllImapChildren 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0023-DeleteAllImapChildren
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0023-CreateImap4Folder
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-CREATE-FOLDER-0023
+
+
+START_TESTCASE	MSG-IMAP-CREATE-FOLDER-0024
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0024-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0024-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0024-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0024-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0024-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		DeleteAllImapChildren 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0024-DeleteAllImapChildren
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0024-CreateImap4Folder
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-CREATE-FOLDER-0024
+
+
+START_TESTCASE	MSG-IMAP-CREATE-FOLDER-0025
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0025-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0025-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0025-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0025-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0025-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		DeleteAllImapChildren 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0025-DeleteAllImapChildren
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0025-CreateImap4Folder
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-CREATE-FOLDER-0025
+
+
+START_TESTCASE	MSG-IMAP-CREATE-FOLDER-0026
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0026-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer  	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0026-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImapAccount 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0026-CreateImapAccount 
+RUN_TEST_STEP 	300 	T_MsgImapServer		ConnectImap4Server		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0026-ConnectImap4Server
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0026-DoFullImap4Synchronisation
+RUN_TEST_STEP  	300 	T_MsgImapServer		DeleteAllImapChildren 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0026-DeleteAllImapChildren
+PRINT Setup Completed
+PRINT Execute begins
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0026-CreateImap4Folder
+RUN_TEST_STEP 	300 	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  		0026-CreateImap4SubFolder
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-CREATE-FOLDER-0026
+
+
+START_TESTCASE	MSG-IMAP-DeleteFolder-0001
+
+
+PRINT Setup Begins #####################################################
+
+//RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+//RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+//RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+//RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0027-InitNtRas
+//RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0027-ResetMessageStore
+//RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0027-CreateImapAccount
+//RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0027-ChangeImapSettings
+//RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0027-ConnectAndSyncImapServer
+//RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0027-InitialiseImap4Account
+//RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0027-DoFullImap4Synchronisation
+//RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0027-CheckChildrenCountRemoteInbox
+//RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0027-DisConnectImap4Server
+PRINT Setup Completed ##################################################
+PRINT Sub-Setup Begins #################################################
+//Following set of test steps create multiple messages from file and send it using SMTP to remote INBOX
+//RUN_TEST_STEP 	300 T_MsgImapServer		SetImap4FullDownloadLimits 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0027-SetImap4FullDownloadLimits
+//Sending first message
+//RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0027-CreateSmtpMessageFromEmailFile1
+//RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0027-CheckChildrenCountOutbox
+//RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0027-SendSmtpMessage1
+//RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0027-ConnectAndSyncImapServer
+//RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0027-DisConnectImap4Server
+//Sending second message
+//RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0027-CreateSmtpMessageFromEmailFile2
+//RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0027-CheckChildrenCountOutbox
+//RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0027-SendSmtpMessage2
+//RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0027-ConnectAndSyncImapServer
+//RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0027-DisConnectImap4Server
+//ConnectAndPopulateAllMailAndStayOnline
+//RUN_TEST_STEP 	300 T_MsgImapServer		ImapInvokeAsyncFunction      	c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0027-ImapInvokeAsyncFunction
+//RUN_TEST_STEP  	300 T_MsgImapServer		CheckChildrenCountImap 			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0027-CheckChildrenCountRemoteInbox1
+//RUN_TEST_STEP 	300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0027-DisConnectImap4Server
+PRINT Sub-Setup Completed ##############################################
+PRINT Execute Begins ###################################################
+//RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0027-ConnectAndSyncImapServer
+//RUN_TEST_STEP	!Error=-212		300	T_MsgImapServer		DeleteImap4Folder	c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0027-DeleteFolder
+//RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0027-CheckChildrenCountRemoteInbox
+//RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0027-DisConnectImap4Server
+
+//RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+//RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+//RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-DeleteFolder-0001
+
+
+START_TESTCASE	MSG-IMAP-DeleteFolder-0002
+
+PRINT Setup Begins #################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0028-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0028-ResetMessageStore
+//Account A creation...
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0028-CreateImapAccount_A
+//RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0028-ChangeImapSettings_A
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0028-ConnectAndSyncImapServer_A
+PRINT ##################################
+//Account B creation...
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0028-CreateImapAccount_B
+PRINT Setup Completed ##############################################
+PRINT Execute Begins ###############################################
+//Account B execution...
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0028-CreateImap4Folder_B
+PRINT ##################################
+//Account A execution...
+RUN_TEST_STEP 	300	T_MsgImapServer		DeleteImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0028-DeleteImap4Folder_A//RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0028-DisConnectImap4Server_A
+PRINT ##################################
+//Account B execution...
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectImap4Server				c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0028-ConnectImap4Server_B
+RUN_TEST_STEP	!Error=-212 300	T_MsgImapServer		DeleteImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0028-DeleteImap4Folder_B
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-DeleteFolder-0002
+
+
+START_TESTCASE	MSG-IMAP-DeleteFolder-0003
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0029-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0029-ResetMessageStore
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0029-CreateImapAccount
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0029-ConnectAndSyncImapServer
+PRINT Setup Completed ##################################################
+PRINT Sub-Setup Begins #################################################
+//Following set of test steps create multiple messages from file and send it using SMTP to remote INBOX
+RUN_TEST_STEP 	300 T_MsgImapServer		SetImap4FullDownloadLimits 		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0029-SetImap4FullDownloadLimits
+//Sending first message
+//Sending second message
+PRINT Sub-Setup Completed ##############################################
+PRINT Execute Begins ###################################################
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0029-CreateFolder
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0029-FindEntryByName
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0029-CopyImapSelectionRemote
+RUN_TEST_STEP	300	T_MsgImapServer		DeleteImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0029-DeleteFolder
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-DeleteFolder-0003
+
+
+START_TESTCASE	MSG-IMAP-DeleteFolder-0004
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0030-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0030-ResetMessageStore
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount				c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0030-CreateImapAccount
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0030-ConnectAndSyncImapServer
+PRINT Setup Completed ##################################################
+PRINT Sub-Setup Begins #################################################
+//Following set of test steps create multiple messages from file and send it using SMTP to remote INBOX
+PRINT Sub-Setup Completed ##############################################
+PRINT Execute Begins ###################################################
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0030-ConnectAndSyncImapServer
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0030-CreateFolder1
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName					c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0030-FindEntryByName1
+RUN_TEST_STEP 	300 T_MsgImapServer		CopyImapSelectionRemote			c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0030-CopyImapSelectionRemote1
+RUN_TEST_STEP	300	T_MsgImapServer		DeleteImap4Folder				c:\msgtest\email\imap\folder\msg-imap-folder1.ini  	0030-DeleteFolder
+// Need to subscribe to sub folder for its contents to be synchronised!
+
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-IMAP-DeleteFolder-0004
+
+
+

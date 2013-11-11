@@ -1,0 +1,69 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  MMP file for cce tester.
+*
+*/
+
+
+// To get the OS_LAYER_SYSTEMINCLUDE-definition
+#include <platform_paths.hrh>
+
+TARGET          ccetester.dll
+TARGETTYPE      dll
+
+DEFFILE         ccetester.def
+UID             0x1000008D 0x101FB3E3
+
+CAPABILITY      ALL -TCB
+
+SOURCEPATH      ../src
+SOURCE          cccetester.cpp
+SOURCE          cccetesterblocks.cpp
+SOURCE          ctestobserver.cpp
+SOURCE          ctestcallobserver.cpp
+SOURCE          ctestdtmfobserver.cpp
+SOURCE          ctestconfcallobserver.cpp
+SOURCE          ctestssobserver.cpp
+SOURCE          ctestextobserver.cpp
+SOURCE          cdelay.cpp
+SOURCE          ceventstorage.cpp
+SOURCE          ccetesterutility.cpp
+SOURCE			ctestmediator.cpp
+
+USERINCLUDE     ../inc
+
+MW_LAYER_SYSTEMINCLUDE
+
+LANG            SC
+
+LIBRARY         euser.lib
+LIBRARY         flogger.lib             // For logging
+LIBRARY         estor.lib				// RDesWriteStream
+LIBRARY         bafl.lib				// CDesCArrayFlat
+LIBRARY         efsrv.lib				// RFile
+LIBRARY         centralrepository.lib
+LIBRARY         cenrepnotifhandler.lib  // Cenrep notifier
+LIBRARY         ecom.lib                // For signaling IF
+LIBRARY         customapi.lib
+LIBRARY         etelmm.lib
+LIBRARY         etel.lib
+LIBRARY         stiftestinterface.lib
+LIBRARY         cce.lib
+LIBRARY         serviceprovidersettings.lib // Service ID handling
+LIBRARY         inetprotutil.lib	// for string converting 
+LIBRARY         callprovider.lib
+LIBRARY	        MediatorClient.lib
+
+
+// End of File

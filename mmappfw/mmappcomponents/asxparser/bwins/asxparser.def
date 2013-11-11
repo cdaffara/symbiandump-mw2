@@ -1,0 +1,10 @@
+EXPORTS
+	??1CAsxParser@@UAE@XZ @ 1 NONAME ; CAsxParser::~CAsxParser(void)
+	?FileVersion@CAsxParser@@QAEHXZ @ 2 NONAME ; int CAsxParser::FileVersion(void)
+	?GetUrl@CAsxParser@@QAEHIAAVTPtrC8@@@Z @ 3 NONAME ; int CAsxParser::GetUrl(unsigned int, class TPtrC8 &)
+	?GetUrlCount@CAsxParser@@QAEXAAI@Z @ 4 NONAME ; void CAsxParser::GetUrlCount(unsigned int &)
+	?NewL@CAsxParser@@SAPAV1@ABVTDesC16@@@Z @ 5 NONAME ; class CAsxParser * CAsxParser::NewL(class TDesC16 const &)
+	?NewL@CAsxParser@@SAPAV1@AAVRFile@@@Z @ 6 NONAME ; class CAsxParser * CAsxParser::NewL(class RFile &)
+	?PrintUrl@CAsxParser@@QAEXAAVTPtrC8@@AAVTPtr16@@@Z @ 7 NONAME ; void CAsxParser::PrintUrl(class TPtrC8 &, class TPtr16 &)
+	?GetUrl@CAsxParser@@QAEPAUAsxStruct@@I@Z @ 8 NONAME ; struct AsxStruct * CAsxParser::GetUrl(unsigned int)
+

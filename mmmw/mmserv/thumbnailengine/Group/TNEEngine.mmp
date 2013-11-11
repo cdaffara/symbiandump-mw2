@@ -1,0 +1,75 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  
+*      Project specification file for the Video Editor
+*
+*/
+
+
+
+
+#include <platform_paths.hrh>
+
+
+CAPABILITY      CAP_GENERAL_DLL
+TARGET          TNEEngine.dll
+TARGETTYPE      dll
+UID             0x1000006C 0x102824B9
+VENDORID        VID_DEFAULT
+
+
+MACRO		__TNEENGINE__ 
+#define		__TNEENGINE__
+
+
+SOURCEPATH      ../TneAPISrc
+SOURCE          TNEVideoClipInfoImp.cpp
+
+SOURCEPATH      ../TneProcessorSrc
+SOURCE          TNEDecoderWrap.cpp
+SOURCE          TNEProcessorImpl.cpp
+SOURCE          TNEProcessor.cpp 
+SOURCE          yuv2rgb12.cpp
+SOURCE          yuv2rgb16.cpp
+SOURCE          yuv2rgb24.cpp
+SOURCE          mp4parser.cpp
+
+SOURCEPATH      ../ImaamiSrc
+SOURCE          DCColorManagement.cpp
+SOURCE          DCDigitalZoom.cpp
+SOURCE          DCDithering.cpp
+SOURCE          DCIetd.cpp
+SOURCE          DCSharpening.cpp
+SOURCE          DisplayChain.cpp
+
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   /epoc32/include/libc 
+SYSTEMINCLUDE   /epoc32/include/mmf/common
+SYSTEMINCLUDE   /epoc32/include/mmf/devvideo
+
+USERINCLUDE	../../Inc
+USERINCLUDE     ../TneAPIInc
+USERINCLUDE     ../TneProcessorInc
+USERINCLUDE     ../ImaamiInc
+
+LIBRARY			euser.lib efsrv.lib
+LIBRARY			fbscli.lib
+LIBRARY			gdi.lib
+LIBRARY			3gpmp4lib.lib
+LIBRARY			ecom.lib
+LIBRARY			devvideo.lib
+
+
+// End of File

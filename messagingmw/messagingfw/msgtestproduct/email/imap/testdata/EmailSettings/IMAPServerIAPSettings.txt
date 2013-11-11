@@ -1,0 +1,12 @@
+ImapServerAddress =  msexchange2k.closedtest.intra
+ImapPathSeperator = /
+
+ImapIapList = IMAP001 IMAP002 
+
+IMAP001_ImapIAP = 1
+IMAP001_ImapCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+IMAP001_ImapIAPIndex = 0
+
+IMAP002_ImapIAP = 1
+IMAP002_ImapCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+IMAP002_ImapIAPIndex = 0

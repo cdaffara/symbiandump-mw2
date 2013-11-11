@@ -1,0 +1,33 @@
+#  ban-mrudulp01 server
+__type__   = Pop3Settings
+
+EmailAddressExtension = msexchange2k.closedtest.intra
+
+#ServerName = ban-mrudulp01
+PopServerAddress = lon-cn-exchng2k.msexchange2k.closedtest.intra
+
+PopIapList = POP001 POP002
+#PopIAP = 1
+#PopCommDbDialogPref 
+#PopIAPIndex = 0
+
+POP001_PopIAP = 1
+POP001_PopCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+POP001_PopIAPIndex = 0
+
+POP002_PopIAP = 1
+POP002_PopCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+POP002_PopIAPIndex = 0
+
+SmtpServerAddress = lon-cn-exchng2k.msexchange2k.closedtest.intra
+
+SmtpIapList = SMTP001 SMTP002 
+
+SMTP001_SmtpIAP = 1
+SMTP001_SmtpCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+SMTP001_SmtpIAPIndex = 0
+
+
+SMTP001_SmtpIAP = 1
+SMTP001_SmtpCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+SMTP001_SmtpIAPIndex = 0

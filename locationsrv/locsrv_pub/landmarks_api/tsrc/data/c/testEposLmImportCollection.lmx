@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lm:lmx xmlns:lm="http://www.nokia.com/schemas/location/landmarks/1/0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.nokia.com/schemas/location/landmarks/1/0/ lmx.xsd">
+	<lm:landmarkCollection>
+		<lm:name>A_Collection_Name</lm:name>
+		<lm:description>A_Collection_Description</lm:description>
+		<lm:landmark>
+			<lm:name>A Test Landmark</lm:name>
+			<lm:category>
+				<lm:name>A Category Name</lm:name>
+			</lm:category>
+		</lm:landmark>
+	</lm:landmarkCollection>
+</lm:lmx>

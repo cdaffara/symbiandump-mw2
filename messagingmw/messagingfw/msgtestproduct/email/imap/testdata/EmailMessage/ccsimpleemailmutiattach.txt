@@ -1,0 +1,1635 @@
+From: "test" <test908@msexchange2k.closedtest.intra>
+To: <test908@msexchange2k.closedtest.intra>
+Cc: <test908@msexchange2k.closedtest.intra>
+Subject: cc email with mutiattachments
+Date: Thu, 30 Mar 2006 12:41:22 +0100
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+	boundary="----=_NextPart_000_01D5_01C653F7.409238F0"
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2800.1506
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1506
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_01D5_01C653F7.409238F0
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: 8bit
+
+
+Hi all,
+This mail is  contains body text and multiple attachments
+Lets talk about coding  symbian style here....
+All programs should check for out-of-resource errors
+In any application, an error may occur at run time due to a lack of
+resources: for example, the machine running out of memory, or a
+communication port being unavailable. This type of error is known as an
+exception. --!! An exception should be distinguished from a
+programming error: a programming error can be addressed by fixing the
+program, +++
+but it is impossible to make a program free from the possibility of an
+exception occurring.
+Therefore, programs should be able to recover from exceptions when they
+occur. This is particularly important in SYMBIAN OS, for the following
+reasons:
+· SYMBIAN OS applications are designed to run for long periods (months or
+even years) without interruption or system re-boot.
+· SYMBIAN OS applications are designed to run on machines that have limited
+resources, particularly memory. Therefore, an out-of-resource error is more
+likely to occur than in a desktop application.
+
+Conventional error-checking methods
+
+In a conventional C or C++ program an if statement might typically be used
+to check for an out-of-resource error.
+
+For example:
+
+    if ((myObject = new CSomeObject() == NULL)
+    PerformSomeErrorCode();
+
+Problems with conventional methods
+
+There are two problems with this conventional approach: =
+
+1. It requires many extra lines of code to put such error checking round
+every single function that might cause an out-of-resource error. This
+increases code size and reduces readability.
+
+
+2. If a constructor fails to allocate resources, there is no way to return
+an error code, because constructors have no return value. The result would
+be an incompletely allocated object, which could cause a program crash.
+C++ exception handling (try, catch and throw) provides solutions to these
+problems, but it is not used in SYMBIAN OS, because of its large overheads
+in code size. Instead, SYMBIAN OS provides its own system of exception
+handling.
+
+SYMBIAN OS solutions
+
+SYMBIAN OS applications can achieve efficient exception handling by
+following the rules below:
+
+
+Rule 1: Instead of returning an error code when an out-of-resource error
+occurs, by convention SYMBIAN OS functions should leave, and all leaves
+should be trapped by a trap harness.
+
+
+Rule 2: If you allocate memory on the heap, and the pointer to it is an
+automatic variable (i.e. not a member variable), it should be pushed to the
+cleanup stack so that it can be deleted when a leave occurs. All objects
+pushed to the cleanup stack should be popped before they are destroyed.
+
+
+Rule 3: A C++ constructor must not leave or fail. Therefore, if construction
+of an object can fail with an out-of-resource error, all the instructions
+that might fail should be taken out of the C++ constructor and put in a
+ConstructL() function, which should be called after the C++ constructor has
+completed.
+
+
+Rule 1: functions that leave, and trap harnesses
+
+Functions that leave
+
+Instead of returning an error code, functions in SYMBIAN OS should leave
+whenever an out-of-resource error occurs. A leave is a call to
+User::Leave(), and it causes program execution to return immediately to the
+trap harness within which the function was executed.
+
+All functions that can leave should have the suffix "L". This enables
+programmers to know that the function might leave and therefore to ensure
+that it is executed within a trap harness.
+
+So
+
+    error=doExample()
+    if (error!=KErrNone)
+
+    {
+
+    // Do some error code
+
+    }
+
+becomes
+
+    TRAPD(error,doExampleL());
+    if(error!=KErrNone)
+
+    {
+
+    // Do some error code
+
+    }
+
+In the above example the benefits of using a trap harness are not obvious in
+either efficiency or readability of the code. However, if the doExample()
+function were to call another function, which in turn called another, and so
+on (as is likely to be the case in a real application), the benefits would
+be considerable: there would be no need to check return values for errors at
+each level, and this would save many lines of code.
+
+new (ELeave)
+
+The possibility of new failing arises so often that in SYMBIAN OS the new
+operator has been overridden to take a parameter, ELeave. When called with
+this parameter, the overridden new operator will leave if it fails to
+allocate the required memory. This is implemented globally, so any class can
+use new (ELeave).
+
+So,
+
+    CSomeObject* myObject = new CSomeObject;
+    if (!myObject) User::Leave(KErrNoMemory);
+
+can be replaced by
+
+    CSomeObject* myObject = new (ELeave) CSomeObject;
+in SYMBIAN OS programs.
+
+The NewL() and NewLC() conventions
+
+By convention, SYMBIAN OS classes often implement the functions NewL() and
+NewLC().
+
+NewL() creates the object on the heap and leaves if an out-of-memory error
+occurs.
+
+For simple objects this simply involves a call to new (ELeave). However, for
+compound objects it can incorporate two-phase construction: see "Rule 3"
+below.
+
+NewLC() creates the object on the heap, leaving if an out-of-memory error
+occurs, and pushes the object to the cleanup stack: see "Rule 2" below.
+
+In general, when creating C-class objects, programs should use NewL() if a
+member variable will point to the object, and NewLC() if an automatic
+variable will point to it.
+
+However, it is not always advisable to implement NewL() and NewLC() for
+every class. If NewL() or NewLC() are called from only one place in the
+application, implementing them will actually use more lines of code than it
+saves. It is a good idea to assess the need for NewL() and NewLC() for each
+individual class.
+
+Note: NewL() and NewLC() must be declared as static functions in the class
+definition. This allows them to be called before an instance of the class
+exists. They are invoked using the class name. For example:
+
+    CSomeObject* myObject=CSomeObject::NewL();
+Using a trap harness: TRAP and TRAPD
+
+SYMBIAN OS provides two trap harness macros, TRAP and TRAPD, which are both
+very similar. Whenever a leave occurs within code executed inside the
+harness, program control returns immediately to the trap harness macro. The
+macro then returns an error code which can be used by the calling function.
+
+To execute a function within a trap harness, use TRAPD as follows:
+
+    TRAPD(error,doExampleL());
+    if (error !=KErrNone)
+
+    {
+
+    // Do some error code
+
+    }
+
+TRAP differs from TRAPD only in that the program code must declare the leave
+code variable. TRAPD is more convenient to use as it declares it inside the
+macro. So, using TRAP, the above example would become:
+
+    TInt error;
+    TRAP(error,doExampleL());
+
+    if (error !=KErrNone)
+
+    {
+
+    // Do some error code
+
+    }
+
+Any functions called by doExampleL() are also executed within the trap
+harness, as are any functions called by them, and so on: a leave occurring
+in any function nested within doExampleL() will return to this trap harness.
+Another trap harness can be used within the first, so that errors are
+checked at different levels within the application.
+
+Rule 2: using a cleanup stack
+
+Why a cleanup stack is needed
+
+If a function leaves, control returns immediately to the trap harness within
+which it was called. This means that any automatic variables within
+functions called inside the trap harness are destroyed. A problem arises if
+any of these automatic variables are pointers to objects allocated on the
+heap: when the leave occurs and the pointer is destroyed, the object it
+pointed to is orphaned and a memory leak occurs.
+
+Example:
+
+    TRAPD(error,doExampleL());
+    .
+
+    void doExampleL()
+
+    {
+
+    CSomeObject* myObject1=new (ELeave) CSomeObject;
+
+    CSomeObject* myObject2=new (ELeave) CSomeObject; // WRONG
+
+    }
+
+In this example, if myObject1 was new'ed successfully, but there was
+insufficient memory to allocate myObject2, myObject1 would be orphaned on
+the heap.
+
+Thus, we need some mechanism for retaining any such pointers, so that the
+memory they point to can be freed after a leave. SYMBIAN OS mechanism for
+this is the cleanup stack.
+
+Using a cleanup stack
+
+The cleanup stack is a stack containing pointers to all the objects that
+need to be freed when a leave occurs. This means all C-class objects pointed
+to by automatic variables rather than instance data.
+
+When a leave occurs, the TRAP or TRAPD macro pops and destroys everything on
+the cleanup stack that was pushed to it since the beginning of the trap.
+
+All applications have their own cleanup stack, which they must create. (In
+an EIKON application, this is done for you by the EIKON framework.)
+Typically, all programs will have at least one object to push to the cleanup
+stack.
+
+Objects are pushed to the cleanup stack using CleanupStack::PushL() and
+popped using CleanupStack::Pop(). Objects on the cleanup stack should be
+popped when there is no longer a chance that they could be orphaned by a
+leave, which is usually just before they are deleted. PopAndDestroy() is
+normally used instead of Pop(), as this ensures the object is deleted as
+soon as it is popped, avoiding the possibility that a leave might occur
+before it has been deleted, causing a memory leak.
+
+A compound object that owns pointers to other C-class objects should delete
+those objects in its destructor. Therefore any object which is pointed to by
+member data of another object (rather than by an automatic variable) does
+not need to be pushed to the cleanup stack. In fact, it must not be pushed
+to the cleanup stack, or it will be destroyed twice if a leave occurs: once
+by the destructor and once by the TRAP macro.
+
+Rule 3: Two-phase construction
+
+Sometimes, a constructor will need to allocate resources, such as memory.
+The most ubiquitous case is that of a compound C-class: if a compound class
+contains a pointer to another C-class, it will need to allocate memory for
+that class during its own construction.
+
+(Note: C-classes in SYMBIAN OS are always allocated on the heap, and always
+have CBase as their ultimate base class)
+
+In the following example, CMyCompoundClass has a data member which is a
+pointer to a CMySimpleClass.
+
+Here's the definition for CMySimpleClass:
+
+    class CMySimpleClass : public CBase
+    {
+
+    public:
+
+    CMySimpleClass();
+
+    ~CMySimpleClass();
+
+    .
+
+    private:
+
+    TInt iSomeData;
+
+    };
+
+Here's the definition for CMyCompoundClass:
+
+    class CMyCompoundClass : public CBase
+    {
+
+    public:
+
+    CMyCompoundClass();
+
+    ~CMyCompoundClass();
+
+    .
+
+    private:
+
+    CMySimpleClass * iSimpleClass; // owns another C-class
+
+    };
+
+Consider what you might be tempted to write as the constructor for
+CMyCompoundClass:
+
+    CMyCompoundClass::CMyCompoundClass()
+    {
+
+    iSimpleClass=new CMySimpleClass; // WRONG
+
+    }
+
+Now consider what happens when you new a CMyCompoundClass, e.g.:
+
+    CMyCompoundClass* myCompoundClass=new (ELeave) CMyCompoundClass;
+With the above constructor, the following sequence of events occurs:
+
+1. Memory is allocated for the CMyCompoundClass
+2. CMyCompoundClass's constructor is called
+3. The constructor news a CMySimpleClass and stores a pointer to it in
+iSimpleClass
+4. The constructor completes
+But, if stage 3 fails due to insufficient memory, what happens? There is no
+way to return an error code from the constructor to indicate that the
+construction was only half complete. new will return a pointer to the memory
+that was allocated for the CMyCompoundClass, but it will point to a
+partially-constructed object.
+
+If we make the constructor leave, we can detect when the object was not
+fully constructed, as follows:
+
+    CMyCompoundClass::CMyCompoundClass() // WRONG
+    {
+
+    iSimpleClass=new (ELeave) CMySimpleClass;
+
+    }
+
+However, this is not a viable method for indicating that an error has
+occurred, because we have already allocated memory for the CMyCompoundClass.
+A leave would destroy the pointer (this) to the allocated memory, and there
+would be no way to free it, resulting in a memory leak.
+
+The solution is to allocate all the memory for the components of the object,
+after the compound object has been initialized by the C++ constructor. By
+convention, in SYMBIAN OS this is done in a ConstructL() function.
+
+Example
+
+    void CMyCompoundClass::ConstructL() // RIGHT
+    {
+
+    iSimpleClass=new (ELeave) CMySimpleClass;
+
+    }
+
+The C++ constructor should contain only initialization that cannot leave (if
+any):
+
+    CMyCompoundClass::CMyCompoundClass() // RIGHT
+    {
+
+    . // Initialization that cannot leave
+
+    }
+
+The object is now constructed as follows:
+
+    CMyCompoundClass* myCompoundClass=new (ELeave) CMyCompoundClass;
+    CleanupStack::PushL(myCompoundClass);
+
+    myCompoundClass->ConstructL(); // RIGHT
+
+This can be encapsulated in a NewL() or NewLC() function for convenience.
+
+Implementing two-phase contruction in NewL() and NewLC()
+
+If a compound object has a NewL() function (or NewLC()), this should contain
+both stages of construction. After the first stage, the object should be
+pushed to the cleanup stack before ConstructL() is called, in case
+ConstructL() leaves.
+
+Example:
+
+    CMyCompoundClass* CMyCompoundClass::NewLC()
+    {
+
+    CMyCompoundClass* self=new (ELeave) CMyCompoundClass;
+
+    CleanupStack::PushL(self);
+
+    self->ConstructL();
+
+    return self;
+
+    }
+
+    CMyCompoundClass* CMyCompoundClass::NewL()
+
+    {
+
+    CMyCompoundClass* self=new (ELeave) CMyCompoundClass;
+
+    CleanupStack::PushL(self);
+
+    self->ConstructL();
+
+    CleanupStack::Pop(); // self
+
+    return self;
+
+    }
+
+    Extra notes
+
+There is a separate cleanup stack for each thread - if your application
+creates additional threads then you will probably need to have each new
+thread create its own cleanup stack. See the SDK documentation on
+CTrapCleanup::New(). The usual symptom of failing to create a cleanup stack
+is a panic - but this will only occur when the thread executes code which
+attempts to use a TRAP() harness, for example some of the file system APIs.
+
+
+Also note that having "C-classes always allocated on the heap" is an in
+house coding standard, but there is no absolute constraint to this effect.
+C-Classes were changed so that it is possible to have them inline within
+another C-Class. In this case they don't need to be allocated, but their
+ConstructL should be called form the ConstructL of the owning class.
+
+
+
+
+------=_NextPart_000_01D5_01C653F7.409238F0
+Content-Type: image/gif;
+	name="Sample.gif"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+	filename="Sample.gif"
+
+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
+
+------=_NextPart_000_01D5_01C653F7.409238F0
+Content-Type: text/plain;
+	name="Newsample text.txt"
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: attachment;
+	filename="Newsample text.txt"
+
+Hi all,
+this mail is a simple email with zero length attachment size.
+letstalk obout coding  symbian style here....
+All programs should check for out-of-resource errors
+In any application, an error may occur at run time due to a lack of
+resources: for example, the machine running out of memory, or a
+communication port being unavailable. This type of error is known as an
+exception. --!! An exception should be distinguished from a
+programming error: a programming error can be addressed by fixing the
+program, +++
+but it is impossible to make a program free from the possibility of an
+exception occurring.
+Therefore, programs should be able to recover from exceptions when they
+occur. T
+his is particularly important in SYMBIAN OS, for the following reasons:
+=B7 SYMBIAN OS applications are designed to run for long periods (months =
+or
+even years) without interruption or system re-boot.
+=B7 SYMBIAN OS applications are designed to run on machines that have =
+limited
+resources, particularly memory. Therefore, an out-of-resource error is =
+more
+likely to occur than in a desktop application.
+
+Conventional error-checking methods
+
+In a conventional C or C++ program an if statement might typically be =
+used
+to check for an out-of-resource error.
+
+For example:
+
+    if ((myObject =3D new CSomeObject() =3D=3D NULL)
+    PerformSomeErrorCode();
+
+Problems with conventional methods
+
+There are two problems with this conventional approach: =3D
+
+1. It requires many extra lines of code to put such error checking round
+every single function that might cause an out-of-resource error. This
+increases code size and reduces readability.
+
+
+2. If a constructor fails to allocate resources, there is no way to =
+return
+an error code, because constructors have no return value. The result =
+would
+be an incompletely allocated object, which could cause a program crash.
+C++ exception handling (try, catch and throw) provides solutions to =
+these
+problems, but it is not used in SYMBIAN OS, because of its large =
+overheads
+in code size. Instead, SYMBIAN OS provides its own system of exception
+handling.
+
+SYMBIAN OS solutions
+
+SYMBIAN OS applications can achieve efficient exception handling by
+following the rules below:
+
+
+Rule 1: Instead of returning an error code when an out-of-resource error
+occurs, by convention SYMBIAN OS functions should leave, and all leaves
+should be trapped by a trap harness.
+
+
+Rule 2: If you allocate memory on the heap, and the pointer to it is an
+automatic variable (i.e. not a member variable), it should be pushed to =
+the
+cleanup stack so that it can be deleted when a leave occurs. All objects
+pushed to the cleanup stack should be popped before they are destroyed.
+
+
+Rule 3: A C++ constructor must not leave or fail. Therefore, if =
+construction
+of an object can fail with an out-of-resource error, all the =
+instructions
+that might fail should be taken out of the C++ constructor and put in a
+ConstructL() function, which should be called after the C++ constructor =
+has
+completed.
+
+
+Rule 1: functions that leave, and trap harnesses
+
+Functions that leave
+
+Instead of returning an error code, functions in SYMBIAN OS should leave
+whenever an out-of-resource error occurs. A leave is a call to
+User::Leave(), and it causes program execution to return immediately to =
+the
+trap harness within which the function was executed.
+
+All functions that can leave should have the suffix "L". This enables
+programmers to know that the function might leave and therefore to =
+ensure
+that it is executed within a trap harness.
+
+So
+
+    error=3DdoExample()
+    if (error!=3DKErrNone)
+
+    {
+
+    // Do some error code
+
+    }
+
+becomes
+
+    TRAPD(error,doExampleL());
+    if(error!=3DKErrNone)
+
+    {
+
+    // Do some error code
+
+    }
+
+In the above example the benefits of using a trap harness are not =
+obvious in
+either efficiency or readability of the code. However, if the =
+doExample()
+function were to call another function, which in turn called another, =
+and so
+on (as is likely to be the case in a real application), the benefits =
+would
+be considerable: there would be no need to check return values for =
+errors at
+each level, and this would save many lines of code.
+
+new (ELeave)
+
+The possibility of new failing arises so often that in SYMBIAN OS the =
+new
+operator has been overridden to take a parameter, ELeave. When called =
+with
+this parameter, the overridden new operator will leave if it fails to
+allocate the required memory. This is implemented globally, so any class =
+can
+use new (ELeave).
+
+So,
+
+    CSomeObject* myObject =3D new CSomeObject;
+    if (!myObject) User::Leave(KErrNoMemory);
+
+can be replaced by
+
+    CSomeObject* myObject =3D new (ELeave) CSomeObject;
+in SYMBIAN OS programs.
+
+The NewL() and NewLC() conventions
+
+By convention, SYMBIAN OS classes often implement the functions NewL() =
+and
+NewLC().
+
+NewL() creates the object on the heap and leaves if an out-of-memory =
+error
+occurs.
+
+For simple objects this simply involves a call to new (ELeave). However, =
+for
+compound objects it can incorporate two-phase construction: see "Rule 3"
+below.
+
+NewLC() creates the object on the heap, leaving if an out-of-memory =
+error
+occurs, and pushes the object to the cleanup stack: see "Rule 2" below.
+
+In general, when creating C-class objects, programs should use NewL() if =
+a
+member variable will point to the object, and NewLC() if an automatic
+variable will point to it.
+
+However, it is not always advisable to implement NewL() and NewLC() for
+every class. If NewL() or NewLC() are called from only one place in the
+application, implementing them will actually use more lines of code than =
+it
+saves. It is a good idea to assess the need for NewL() and NewLC() for =
+each
+individual class.
+
+Note: NewL() and NewLC() must be declared as static functions in the =
+class
+definition. This allows them to be called before an instance of the =
+class
+exists. They are invoked using the class name. For example:
+
+    CSomeObject* myObject=3DCSomeObject::NewL();
+Using a trap harness: TRAP and TRAPD
+
+SYMBIAN OS provides two trap harness macros, TRAP and TRAPD, which are =
+both
+very similar. Whenever a leave occurs within code executed inside the
+harness, program control returns immediately to the trap harness macro. =
+The
+macro then returns an error code which can be used by the calling =
+function.
+
+To execute a function within a trap harness, use TRAPD as follows:
+
+    TRAPD(error,doExampleL());
+    if (error !=3DKErrNone)
+
+    {
+
+    // Do some error code
+
+    }
+
+TRAP differs from TRAPD only in that the program code must declare the =
+leave
+code variable. TRAPD is more convenient to use as it declares it inside =
+the
+macro. So, using TRAP, the above example would become:
+
+    TInt error;
+    TRAP(error,doExampleL());
+
+    if (error !=3DKErrNone)
+
+    {
+
+    // Do some error code
+
+    }
+
+Any functions called by doExampleL() are also executed within the trap
+harness, as are any functions called by them, and so on: a leave =
+occurring
+in any function nested within doExampleL() will return to this trap =
+harness.
+Another trap harness can be used within the first, so that errors are
+checked at different levels within the application.
+
+Rule 2: using a cleanup stack
+
+Why a cleanup stack is needed
+
+If a function leaves, control returns immediately to the trap harness =
+within
+which it was called. This means that any automatic variables within
+functions called inside the trap harness are destroyed. A problem arises =
+if
+any of these automatic variables are pointers to objects allocated on =
+the
+heap: when the leave occurs and the pointer is destroyed, the object it
+pointed to is orphaned and a memory leak occurs.
+
+Example:
+
+    TRAPD(error,doExampleL());
+    .
+
+    void doExampleL()
+
+    {
+
+    CSomeObject* myObject1=3Dnew (ELeave) CSomeObject;
+
+    CSomeObject* myObject2=3Dnew (ELeave) CSomeObject; // WRONG
+
+    }
+
+In this example, if myObject1 was new'ed successfully, but there was
+insufficient memory to allocate myObject2, myObject1 would be orphaned =
+on
+the heap.
+
+Thus, we need some mechanism for retaining any such pointers, so that =
+the
+memory they point to can be freed after a leave. SYMBIAN OS mechanism =
+for
+this is the cleanup stack.
+
+Using a cleanup stack
+
+The cleanup stack is a stack containing pointers to all the objects that
+need to be freed when a leave occurs. This means all C-class objects =
+pointed
+to by automatic variables rather than instance data.
+
+When a leave occurs, the TRAP or TRAPD macro pops and destroys =
+everything on
+the cleanup stack that was pushed to it since the beginning of the trap.
+
+All applications have their own cleanup stack, which they must create. =
+(In
+an EIKON application, this is done for you by the EIKON framework.)
+Typically, all programs will have at least one object to push to the =
+cleanup
+stack.
+
+Objects are pushed to the cleanup stack using CleanupStack::PushL() and
+popped using CleanupStack::Pop(). Objects on the cleanup stack should be
+popped when there is no longer a chance that they could be orphaned by a
+leave, which is usually just before they are deleted. PopAndDestroy() is
+normally used instead of Pop(), as this ensures the object is deleted as
+soon as it is popped, avoiding the possibility that a leave might occur
+before it has been deleted, causing a memory leak.
+
+A compound object that owns pointers to other C-class objects should =
+delete
+those objects in its destructor. Therefore any object which is pointed =
+to by
+member data of another object (rather than by an automatic variable) =
+does
+not need to be pushed to the cleanup stack. In fact, it must not be =
+pushed
+to the cleanup stack, or it will be destroyed twice if a leave occurs: =
+once
+by the destructor and once by the TRAP macro.
+
+Rule 3: Two-phase construction
+
+Sometimes, a constructor will need to allocate resources, such as =
+memory.
+The most ubiquitous case is that of a compound C-class: if a compound =
+class
+contains a pointer to another C-class, it will need to allocate memory =
+for
+that class during its own construction.
+
+(Note: C-classes in SYMBIAN OS are always allocated on the heap, and =
+always
+have CBase as their ultimate base class)
+
+In the following example, CMyCompoundClass has a data member which is a
+pointer to a CMySimpleClass.
+
+Here's the definition for CMySimpleClass:
+
+    class CMySimpleClass : public CBase
+    {
+
+    public:
+
+    CMySimpleClass();
+
+    ~CMySimpleClass();
+
+    .
+
+    private:
+
+    TInt iSomeData;
+
+    };
+
+Here's the definition for CMyCompoundClass:
+
+    class CMyCompoundClass : public CBase
+    {
+
+    public:
+
+    CMyCompoundClass();
+
+    ~CMyCompoundClass();
+
+    .
+
+    private:
+
+    CMySimpleClass * iSimpleClass; // owns another C-class
+
+    };
+
+Consider what you might be tempted to write as the constructor for
+CMyCompoundClass:
+
+    CMyCompoundClass::CMyCompoundClass()
+    {
+
+    iSimpleClass=3Dnew CMySimpleClass; // WRONG
+
+    }
+
+Now consider what happens when you new a CMyCompoundClass, e.g.:
+
+    CMyCompoundClass* myCompoundClass=3Dnew (ELeave) CMyCompoundClass;
+With the above constructor, the following sequence of events occurs:
+
+1. Memory is allocated for the CMyCompoundClass
+2. CMyCompoundClass's constructor is called
+3. The constructor news a CMySimpleClass and stores a pointer to it in
+iSimpleClass
+4. The constructor completes
+But, if stage 3 fails due to insufficient memory, what happens? There is =
+no
+way to return an error code from the constructor to indicate that the
+construction was only half complete. new will return a pointer to the =
+memory
+that was allocated for the CMyCompoundClass, but it will point to a
+partially-constructed object.
+
+If we make the constructor leave, we can detect when the object was not
+fully constructed, as follows:
+
+    CMyCompoundClass::CMyCompoundClass() // WRONG
+    {
+
+    iSimpleClass=3Dnew (ELeave) CMySimpleClass;
+
+    }
+
+However, this is not a viable method for indicating that an error has
+occurred, because we have already allocated memory for the =
+CMyCompoundClass.
+A leave would destroy the pointer (this) to the allocated memory, and =
+there
+would be no way to free it, resulting in a memory leak.
+
+The solution is to allocate all the memory for the components of the =
+object,
+after the compound object has been initialized by the C++ constructor. =
+By
+convention, in SYMBIAN OS this is done in a ConstructL() function.
+
+Example
+
+    void CMyCompoundClass::ConstructL() // RIGHT
+    {
+
+    iSimpleClass=3Dnew (ELeave) CMySimpleClass;
+
+    }
+
+The C++ constructor should contain only initialization that cannot leave =
+(if
+any):
+
+    CMyCompoundClass::CMyCompoundClass() // RIGHT
+    {
+
+    . // Initialization that cannot leave
+
+    }
+
+The object is now constructed as follows:
+
+    CMyCompoundClass* myCompoundClass=3Dnew (ELeave) CMyCompoundClass;
+    CleanupStack::PushL(myCompoundClass);
+
+    myCompoundClass->ConstructL(); // RIGHT
+
+This can be encapsulated in a NewL() or NewLC() function for =
+convenience.
+
+Implementing two-phase contruction in NewL() and NewLC()
+
+If a compound object has a NewL() function (or NewLC()), this should =
+contain
+both stages of construction. After the first stage, the object should be
+pushed to the cleanup stack before ConstructL() is called, in case
+ConstructL() leaves.
+
+Example:
+
+    CMyCompoundClass* CMyCompoundClass::NewLC()
+    {
+
+    CMyCompoundClass* self=3Dnew (ELeave) CMyCompoundClass;
+
+    CleanupStack::PushL(self);
+
+    self->ConstructL();
+
+    return self;
+
+    }
+
+    CMyCompoundClass* CMyCompoundClass::NewL()
+
+    {
+
+    CMyCompoundClass* self=3Dnew (ELeave) CMyCompoundClass;
+
+    CleanupStack::PushL(self);
+
+    self->ConstructL();
+
+    CleanupStack::Pop(); // self
+
+    return self;
+
+    }
+
+    Extra notes
+
+There is a separate cleanup stack for each thread - if your application
+creates additional threads then you will probably need to have each new
+thread create its own cleanup stack. See the SDK documentation on
+CTrapCleanup::New(). The usual symptom of failing to create a cleanup =
+stack
+is a panic - but this will only occur when the thread executes code =
+which
+attempts to use a TRAP() harness, for example some of the file system =
+APIs.
+
+
+Also note that having "C-classes always allocated on the heap" is an in
+house coding standard, but there is no absolute constraint to this =
+effect.
+C-Classes were changed so that it is possible to have them inline within
+another C-Class. In this case they don't need to be allocated, but their
+ConstructL should be called form the ConstructL of the owning class.
+
+
+
+
+------=_NextPart_000_01D5_01C653F7.409238F0
+Content-Type: image/jpeg;
+	name="fourkbyte.jpg"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+	filename="fourkbyte.jpg"
+
+/9j/4AAQSkZJRgABAQEBLAEsAAD/2wBDACYaHSEdGCYhHyErKCYtOV8+OTQ0OXVTWEVfinmRj4h5
+hYOYq9u6mKLPpIOFvv/Bz+Lp9fj1lLf////u/9vw9ez/2wBDASgrKzkyOXA+PnDsnYWd7Ozs7Ozs
+7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Oz/wAARCACyAQwDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCcCl5p
+aWsbmggYiniSm4oxT5hWJRIKcHBqDFJg0+YVi1uBpwIqmGIpwlIqroVi3mlzVYTU8Sj1pgT5oqMO
+KcGoAdSGkzSZoAWikzRmgANJRS0AJS0mKKADFJTqMetAhtLg07A9KWmA3aKcKKKAEopcUlMAoooo
+BhRSUUCCiiigZUopM0tc5oKM91x9Dml49fzFOxyaMD61QhvHqPzowfSlK0zbg8CloAuKTFKd1Jkj
+tRYYhWjHpTtw9DSZX1oATLCnCVhSceoox7UXYrDxNS+ZURFIRVcwWJ949aPMFQYIpMkUcwrFkPS7
+6rpk96mUVaESgk04CkWnCmIU0mPelooAMUUE4GaY0gBHH1NAD6Sk3HI44pruVIAUnNAD6Sm7uDRm
+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
+BKKKKAEooopgJ3ooopAf/9k=
+
+------=_NextPart_000_01D5_01C653F7.409238F0--

@@ -1,0 +1,115 @@
+EXPORTS
+	??0CMsvOffPeakTimes@@QAE@XZ @ 1 NONAME ; public: __thiscall CMsvOffPeakTimes::CMsvOffPeakTimes(void)
+	??0CMsvScheduleSend@@IAE@AAVCMsvServerEntry@@@Z @ 2 NONAME ; protected: __thiscall CMsvScheduleSend::CMsvScheduleSend(class CMsvServerEntry &)
+	??0CMsvScheduledEntry@@IAE@ABVTMsvEntry@@@Z @ 3 NONAME ; protected: __thiscall CMsvScheduledEntry::CMsvScheduledEntry(class TMsvEntry const &)
+	??0CMsvSysAgentActions@@QAE@XZ @ 4 NONAME ; public: __thiscall CMsvSysAgentActions::CMsvSysAgentActions(void)
+	??0CScheduleBaseServerMtm@@IAE@AAVCRegisteredMtmDll@@PAVCMsvServerEntry@@@Z @ 5 NONAME ; protected: __thiscall CScheduleBaseServerMtm::CScheduleBaseServerMtm(class CRegisteredMtmDll &,class CMsvServerEntry *)
+	??0TMsvEntryScheduleData@@QAE@XZ @ 6 NONAME ; public: __thiscall TMsvEntryScheduleData::TMsvEntryScheduleData(void)
+	??0TMsvOffPeakTime@@QAE@W4TDay@@HHVTTimeIntervalMinutes@@@Z @ 7 NONAME ; public: __thiscall TMsvOffPeakTime::TMsvOffPeakTime(enum TDay,int,int,class TTimeIntervalMinutes)
+	??0TMsvOffPeakTime@@QAE@XZ @ 8 NONAME ; public: __thiscall TMsvOffPeakTime::TMsvOffPeakTime(void)
+	??0TMsvSchedulePackage@@QAE@XZ @ 9 NONAME ; public: __thiscall TMsvSchedulePackage::TMsvSchedulePackage(void)
+	??0TMsvSendErrorAction@@QAE@XZ @ 10 NONAME ; public: __thiscall TMsvSendErrorAction::TMsvSendErrorAction(void)
+	??0TMsvSysAgentConditionAction@@QAE@XZ @ 11 NONAME ; public: __thiscall TMsvSysAgentConditionAction::TMsvSysAgentConditionAction(void)
+	??1CMsvScheduleSend@@UAE@XZ @ 12 NONAME ; public: virtual __thiscall CMsvScheduleSend::~CMsvScheduleSend(void)
+	??1CMsvScheduleSettings@@UAE@XZ @ 13 NONAME ; public: virtual __thiscall CMsvScheduleSettings::~CMsvScheduleSettings(void)
+	??1CMsvSendErrorActions@@UAE@XZ @ 14 NONAME ; public: virtual __thiscall CMsvSendErrorActions::~CMsvSendErrorActions(void)
+	??1CMsvSysAgentActions@@UAE@XZ @ 15 NONAME ; public: virtual __thiscall CMsvSysAgentActions::~CMsvSysAgentActions(void)
+	?AddSendErrorActionL@CMsvSendErrorActions@@QAEXABVTMsvSendErrorAction@@@Z @ 16 NONAME ; public: void __thiscall CMsvSendErrorActions::AddSendErrorActionL(class TMsvSendErrorAction const &)
+	?CheckScheduleL@CMsvScheduleSend@@QAEXABVCMsvEntrySelection@@@Z @ 17 NONAME ; public: void __thiscall CMsvScheduleSend::CheckScheduleL(class CMsvEntrySelection const &)
+	?ConditionsMetL@CMsvSysAgentActions@@QAEHAAVTMsvSendErrorAction@@@Z @ 18 NONAME ; public: int __thiscall CMsvSysAgentActions::ConditionsMetL(class TMsvSendErrorAction &)
+	?ConstructL@CMsvScheduleSend@@MAEXXZ @ 19 NONAME ; protected: virtual void __thiscall CMsvScheduleSend::ConstructL(void)
+	?ConstructL@CScheduleBaseServerMtm@@MAEXXZ @ 20 NONAME ; protected: virtual void __thiscall CScheduleBaseServerMtm::ConstructL(void)
+	?Day@TMsvOffPeakTime@@QBE?AW4TDay@@XZ @ 21 NONAME ; enum TDay TMsvOffPeakTime::Day(void) const
+	?Default@CMsvSendErrorActions@@QBEABVTMsvSendErrorAction@@XZ @ 22 NONAME ; public: class TMsvSendErrorAction const & __thiscall CMsvSendErrorActions::Default(void)const 
+	?DeleteScheduleL@CMsvScheduleSend@@QAEXABVCMsvEntrySelection@@@Z @ 23 NONAME ; public: void __thiscall CMsvScheduleSend::DeleteScheduleL(class CMsvEntrySelection const &)
+	?Entry@CMsvScheduledEntry@@QBEXAAVTMsvEntry@@@Z @ 24 NONAME ; public: void __thiscall CMsvScheduledEntry::Entry(class TMsvEntry &)const 
+	?Errors@CMsvSendErrorActions@@QBEABV?$CArrayFixFlat@VTMsvSendErrorAction@@@@XZ @ 25 NONAME ; public: class CArrayFixFlat<class TMsvSendErrorAction> const & __thiscall CMsvSendErrorActions::Errors(void)const 
+	?ExternalizeL@TMsvOffPeakTime@@QBEXAAVRWriteStream@@@Z @ 26 NONAME ; public: void __thiscall TMsvOffPeakTime::ExternalizeL(class RWriteStream &)const 
+	?ExternalizeL@TMsvSendErrorAction@@QBEXAAVRWriteStream@@@Z @ 27 NONAME ; public: void __thiscall TMsvSendErrorAction::ExternalizeL(class RWriteStream &)const 
+	?ExternalizeL@TMsvSysAgentConditionAction@@QBEXAAVRWriteStream@@@Z @ 28 NONAME ; public: void __thiscall TMsvSysAgentConditionAction::ExternalizeL(class RWriteStream &)const 
+	?GetNextOffPeakTime@CMsvOffPeakTimes@@QBEHABVTTime@@AAVTMsvOffPeakTime@@AAV2@@Z @ 29 NONAME ; int CMsvOffPeakTimes::GetNextOffPeakTime(class TTime const &, class TMsvOffPeakTime &, class TTime &) const
+	?GetSendErrorAction@CMsvSendErrorActions@@QBEHHAAVTMsvSendErrorAction@@@Z @ 30 NONAME ; int CMsvSendErrorActions::GetSendErrorAction(int, class TMsvSendErrorAction &) const
+	?Hour@TMsvOffPeakTime@@QBEHXZ @ 31 NONAME ; int TMsvOffPeakTime::Hour(void) const
+	?IncreaseRetries@TMsvEntryScheduleData@@QAEXXZ @ 32 NONAME ; public: void __thiscall TMsvEntryScheduleData::IncreaseRetries(void)
+	?InternalizeL@TMsvOffPeakTime@@QAEXAAVRReadStream@@@Z @ 33 NONAME ; public: void __thiscall TMsvOffPeakTime::InternalizeL(class RReadStream &)
+	?InternalizeL@TMsvSendErrorAction@@QAEXAAVRReadStream@@@Z @ 34 NONAME ; public: void __thiscall TMsvSendErrorAction::InternalizeL(class RReadStream &)
+	?InternalizeL@TMsvSysAgentConditionAction@@QAEXAAVRReadStream@@@Z @ 35 NONAME ; public: void __thiscall TMsvSysAgentConditionAction::InternalizeL(class RReadStream &)
+	?IntervalType@CMsvScheduleSettings@@QBE?AW4TIntervalType@@XZ @ 36 NONAME ; enum TIntervalType CMsvScheduleSettings::IntervalType(void) const
+	?IsReset@TMsvEntryScheduleData@@QBEHXZ @ 37 NONAME ; public: int __thiscall TMsvEntryScheduleData::IsReset(void)const 
+	?Latency@CMsvScheduleSettings@@QBEABVTTimeIntervalMicroSeconds32@@XZ @ 38 NONAME ; public: class TTimeIntervalMicroSeconds32 const & __thiscall CMsvScheduleSettings::Latency(void)const 
+	?LoadResourceFileL@CScheduleBaseServerMtm@@IAEXABVTDesC16@@@Z @ 39 NONAME ; protected: void __thiscall CScheduleBaseServerMtm::LoadResourceFileL(class TDesC16 const &)
+	?LongInterval@CMsvScheduleSettings@@QBEABVTTimeIntervalSeconds@@XZ @ 40 NONAME ; public: class TTimeIntervalSeconds const & __thiscall CMsvScheduleSettings::LongInterval(void)const 
+	?MaxRetries@TMsvSendErrorAction@@QBEFXZ @ 41 NONAME ; public: short __thiscall TMsvSendErrorAction::MaxRetries(void)const 
+	?Minute@TMsvOffPeakTime@@QBEHXZ @ 42 NONAME ; int TMsvOffPeakTime::Minute(void) const
+	?NewL@CMsvScheduleSettings@@SAPAV1@XZ @ 43 NONAME ; public: static class CMsvScheduleSettings * __cdecl CMsvScheduleSettings::NewL(void)
+	?NewL@CMsvSendErrorActions@@SAPAV1@XZ @ 44 NONAME ; public: static class CMsvSendErrorActions * __cdecl CMsvSendErrorActions::NewL(void)
+	?NextTimeInclusive@TMsvOffPeakTime@@QBE?BVTTime@@ABV2@@Z @ 45 NONAME ; public: class TTime const  __thiscall TMsvOffPeakTime::NextTimeInclusive(class TTime const &)const 
+	?Priority@CMsvScheduleSettings@@QBEHXZ @ 46 NONAME ; int CMsvScheduleSettings::Priority(void) const
+	?Queue@CScheduleBaseServerMtm@@IAEXAAVTRequestStatus@@@Z @ 47 NONAME ; protected: void __thiscall CScheduleBaseServerMtm::Queue(class TRequestStatus &)
+	?ReScheduleL@CMsvScheduleSend@@QAEXABVCMsvEntrySelection@@ABVTMsvSchedulePackage@@PBVTMsvSendErrorAction@@@Z @ 48 NONAME ; public: void __thiscall CMsvScheduleSend::ReScheduleL(class CMsvEntrySelection const &,class TMsvSchedulePackage const &,class TMsvSendErrorAction const *)
+	?RemoveL@TMsvEntryScheduleData@@QBEXAAVCMsvStore@@@Z @ 49 NONAME ; public: void __thiscall TMsvEntryScheduleData::RemoveL(class CMsvStore &)const 
+	?RemoveSendErrorAction@CMsvSendErrorActions@@QAEHH@Z @ 50 NONAME ; int CMsvSendErrorActions::RemoveSendErrorAction(int)
+	?Reset@CMsvScheduleSettings@@QAEXXZ @ 51 NONAME ; public: void __thiscall CMsvScheduleSettings::Reset(void)
+	?Reset@TMsvEntryScheduleData@@QAEXXZ @ 52 NONAME ; public: void __thiscall TMsvEntryScheduleData::Reset(void)
+	?Reset@TMsvOffPeakTime@@QAEXXZ @ 53 NONAME ; public: void __thiscall TMsvOffPeakTime::Reset(void)
+	?Reset@TMsvSendErrorAction@@QAEXXZ @ 54 NONAME ; public: void __thiscall TMsvSendErrorAction::Reset(void)
+	?ResetRetries@TMsvEntryScheduleData@@QAEXXZ @ 55 NONAME ; public: void __thiscall TMsvEntryScheduleData::ResetRetries(void)
+	?RestoreFromResourceL@CMsvSendErrorActions@@QAEXAAVTResourceReader@@@Z @ 56 NONAME ; public: void __thiscall CMsvSendErrorActions::RestoreFromResourceL(class TResourceReader &)
+	?RestoreL@CMsvOffPeakTimes@@QAEXAAVCMsvStore@@@Z @ 57 NONAME ; public: void __thiscall CMsvOffPeakTimes::RestoreL(class CMsvStore &)
+	?RestoreL@CMsvScheduleSend@@UAEXAAVCMsvStore@@@Z @ 58 NONAME ; public: virtual void __thiscall CMsvScheduleSend::RestoreL(class CMsvStore &)
+	?RestoreL@CMsvScheduleSettings@@QAEXAAVCMsvStore@@@Z @ 59 NONAME ; public: void __thiscall CMsvScheduleSettings::RestoreL(class CMsvStore &)
+	?RestoreL@CMsvScheduledEntry@@UAEXAAVCMsvStore@@@Z @ 60 NONAME ; public: virtual void __thiscall CMsvScheduledEntry::RestoreL(class CMsvStore &)
+	?RestoreL@CMsvSendErrorActions@@QAEXAAVCMsvStore@@@Z @ 61 NONAME ; public: void __thiscall CMsvSendErrorActions::RestoreL(class CMsvStore &)
+	?RestoreL@CMsvSysAgentActions@@QAEXAAVCMsvStore@@@Z @ 62 NONAME ; public: void __thiscall CMsvSysAgentActions::RestoreL(class CMsvStore &)
+	?RestoreL@TMsvEntryScheduleData@@QAEXAAVCMsvStore@@@Z @ 63 NONAME ; public: void __thiscall TMsvEntryScheduleData::RestoreL(class CMsvStore &)
+	?RestoreScheduleSettingsL@CScheduleBaseServerMtm@@MAEXHH@Z @ 64 NONAME ; protected: virtual void __thiscall CScheduleBaseServerMtm::RestoreScheduleSettingsL(int,int)
+	?Retries@TMsvEntryScheduleData@@QBEHXZ @ 65 NONAME ; public: int __thiscall TMsvEntryScheduleData::Retries(void)const 
+	?ScheduleL@CMsvScheduleSend@@QAEXABVCMsvEntrySelection@@ABVTMsvSchedulePackage@@@Z @ 66 NONAME ; public: void __thiscall CMsvScheduleSend::ScheduleL(class CMsvEntrySelection const &,class TMsvSchedulePackage const &)
+	?ScheduleL@CScheduleBaseServerMtm@@MAEXAAVCMsvEntrySelection@@HABVTDesC8@@AAVTRequestStatus@@@Z @ 67 NONAME ; protected: virtual void __thiscall CScheduleBaseServerMtm::ScheduleL(class CMsvEntrySelection &,int,class TDesC8 const &,class TRequestStatus &)
+	?SendExe@CMsvScheduleSettings@@QBEABVTDesC16@@XZ @ 68 NONAME ; public: class TDesC16 const & __thiscall CMsvScheduleSettings::SendExe(void)const 
+	?SendScheduledL@CScheduleBaseServerMtm@@MAEXAAVCMsvEntrySelection@@HABVTDesC8@@AAVTRequestStatus@@@Z @ 69 NONAME ; protected: virtual void __thiscall CScheduleBaseServerMtm::SendScheduledL(class CMsvEntrySelection &,int,class TDesC8 const &,class TRequestStatus &)
+	?SendingCompleteL@CMsvScheduleSend@@QAEXAAVTMsvEntry@@H@Z @ 70 NONAME ; public: void __thiscall CMsvScheduleSend::SendingCompleteL(class TMsvEntry &,int)
+	?SendingCompleteL@CMsvScheduleSend@@QAEXABVCMsvEntrySelection@@@Z @ 71 NONAME ; public: void __thiscall CMsvScheduleSend::SendingCompleteL(class CMsvEntrySelection const &)
+	?SetDay@TMsvOffPeakTime@@QAEXW4TDay@@@Z @ 72 NONAME ; public: void __thiscall TMsvOffPeakTime::SetDay(enum TDay)
+	?SetDefault@CMsvSendErrorActions@@QAEXABVTMsvSendErrorAction@@@Z @ 73 NONAME ; public: void __thiscall CMsvSendErrorActions::SetDefault(class TMsvSendErrorAction const &)
+	?SetErrorsL@CMsvSendErrorActions@@QAEXABV?$CArrayFixFlat@VTMsvSendErrorAction@@@@@Z @ 74 NONAME ; public: void __thiscall CMsvSendErrorActions::SetErrorsL(class CArrayFixFlat<class TMsvSendErrorAction> const &)
+	?SetHour@TMsvOffPeakTime@@QAEXH@Z @ 75 NONAME ; public: void __thiscall TMsvOffPeakTime::SetHour(int)
+	?SetIntervalType@CMsvScheduleSettings@@QAEXW4TIntervalType@@@Z @ 76 NONAME ; public: void __thiscall CMsvScheduleSettings::SetIntervalType(enum TIntervalType)
+	?SetLatency@CMsvScheduleSettings@@QAEXABVTTimeIntervalMicroSeconds32@@@Z @ 77 NONAME ; public: void __thiscall CMsvScheduleSettings::SetLatency(class TTimeIntervalMicroSeconds32 const &)
+	?SetLongInterval@CMsvScheduleSettings@@QAEXABVTTimeIntervalSeconds@@@Z @ 78 NONAME ; public: void __thiscall CMsvScheduleSettings::SetLongInterval(class TTimeIntervalSeconds const &)
+	?SetMaxRetries@TMsvSendErrorAction@@QAEXF@Z @ 79 NONAME ; public: void __thiscall TMsvSendErrorAction::SetMaxRetries(short)
+	?SetMinute@TMsvOffPeakTime@@QAEXH@Z @ 80 NONAME ; public: void __thiscall TMsvOffPeakTime::SetMinute(int)
+	?SetPriority@CMsvScheduleSettings@@QAEXH@Z @ 81 NONAME ; public: void __thiscall CMsvScheduleSettings::SetPriority(int)
+	?SetSendExe@CMsvScheduleSettings@@QAEXABVTDesC16@@@Z @ 82 NONAME ; public: void __thiscall CMsvScheduleSettings::SetSendExe(class TDesC16 const &)
+	?SetShortInterval@CMsvScheduleSettings@@QAEXABVTTimeIntervalSeconds@@@Z @ 83 NONAME ; public: void __thiscall CMsvScheduleSettings::SetShortInterval(class TTimeIntervalSeconds const &)
+	?SetValidityPeriod@CMsvScheduleSettings@@QAEXABVTTimeIntervalMinutes@@@Z @ 84 NONAME ; public: void __thiscall CMsvScheduleSettings::SetValidityPeriod(class TTimeIntervalMinutes const &)
+	?SetValidityPeriod@TMsvOffPeakTime@@QAEXVTTimeIntervalMinutes@@@Z @ 85 NONAME ; public: void __thiscall TMsvOffPeakTime::SetValidityPeriod(class TTimeIntervalMinutes)
+	?SetVariableIntervalsL@CMsvScheduleSettings@@QAEXABV?$CArrayFixFlat@VTTimeIntervalSeconds@@@@@Z @ 86 NONAME ; public: void __thiscall CMsvScheduleSettings::SetVariableIntervalsL(class CArrayFixFlat<class TTimeIntervalSeconds> const &)
+	?ShortInterval@CMsvScheduleSettings@@QBEABVTTimeIntervalSeconds@@XZ @ 87 NONAME ; public: class TTimeIntervalSeconds const & __thiscall CMsvScheduleSettings::ShortInterval(void)const 
+	?StoreL@CMsvOffPeakTimes@@QBEXAAVCMsvStore@@@Z @ 88 NONAME ; public: void __thiscall CMsvOffPeakTimes::StoreL(class CMsvStore &)const 
+	?StoreL@CMsvScheduleSettings@@QBEXAAVCMsvStore@@@Z @ 89 NONAME ; public: void __thiscall CMsvScheduleSettings::StoreL(class CMsvStore &)const 
+	?StoreL@CMsvScheduledEntry@@UBEXAAVCMsvStore@@@Z @ 90 NONAME ; public: virtual void __thiscall CMsvScheduledEntry::StoreL(class CMsvStore &)const 
+	?StoreL@CMsvSendErrorActions@@QBEXAAVCMsvStore@@@Z @ 91 NONAME ; public: void __thiscall CMsvSendErrorActions::StoreL(class CMsvStore &)const 
+	?StoreL@CMsvSysAgentActions@@QBEXAAVCMsvStore@@@Z @ 92 NONAME ; public: void __thiscall CMsvSysAgentActions::StoreL(class CMsvStore &)const 
+	?StoreL@TMsvEntryScheduleData@@QBEXAAVCMsvStore@@@Z @ 93 NONAME ; public: void __thiscall TMsvEntryScheduleData::StoreL(class CMsvStore &)const 
+	?ValidityPeriod@CMsvScheduleSettings@@QBEABVTTimeIntervalMinutes@@XZ @ 94 NONAME ; public: class TTimeIntervalMinutes const & __thiscall CMsvScheduleSettings::ValidityPeriod(void)const 
+	?ValidityPeriod@TMsvOffPeakTime@@QBE?BVTTimeIntervalMinutes@@XZ @ 95 NONAME ; public: class TTimeIntervalMinutes const  __thiscall TMsvOffPeakTime::ValidityPeriod(void)const 
+	?VariableIntervals@CMsvScheduleSettings@@QBEABV?$CArrayFixFlat@VTTimeIntervalSeconds@@@@XZ @ 96 NONAME ; public: class CArrayFixFlat<class TTimeIntervalSeconds> const & __thiscall CMsvScheduleSettings::VariableIntervals(void)const 
+	?CheckScheduleL@CScheduleBaseServerMtm@@MAEXABVCMsvEntrySelection@@ABVTDesC8@@AAVTRequestStatus@@@Z @ 97 NONAME ; protected: virtual void __thiscall CScheduleBaseServerMtm::CheckScheduleL(class CMsvEntrySelection const &,class TDesC8 const &,class TRequestStatus &)
+	?DeleteScheduleL@CScheduleBaseServerMtm@@MAEXABVCMsvEntrySelection@@ABVTDesC8@@AAVTRequestStatus@@@Z @ 98 NONAME ; protected: virtual void __thiscall CScheduleBaseServerMtm::DeleteScheduleL(class CMsvEntrySelection const &,class TDesC8 const &,class TRequestStatus &)
+	??1CScheduleBaseServerMtm@@MAE@XZ @ 99 NONAME ; protected: virtual __thiscall CScheduleBaseServerMtm::~CScheduleBaseServerMtm(void)
+	?PackLC@TMsvSchedulePackage@@QBEXAAVTTaskInfo@@AAPAVHBufC16@@@Z @ 100 NONAME ; public: void __thiscall TMsvSchedulePackage::PackLC(class TTaskInfo &,class HBufC16 * &)const 
+	?UnpackL@TMsvSchedulePackage@@QAEXABVTTaskInfo@@ABVTDesC16@@@Z @ 101 NONAME ; public: void __thiscall TMsvSchedulePackage::UnpackL(class TTaskInfo const &,class TDesC16 const &)
+	?ConnectAndRegisterL@CMsvScheduleSend@@SAXAAVRScheduler@@ABVCMsvScheduleSettings@@@Z @ 102 NONAME ; public: static void __cdecl CMsvScheduleSend::ConnectAndRegisterL(class RScheduler &,class CMsvScheduleSettings const &)
+	?CreateScheduleL@CMsvScheduleSend@@SAXAAVRScheduler@@ABVCMsvScheduleSettings@@ABVTTime@@ABVTTimeIntervalMinutes@@AAVTSchedulerItemRef@@@Z @ 103 NONAME ; public: static void __cdecl CMsvScheduleSend::CreateScheduleL(class RScheduler &,class CMsvScheduleSettings const &,class TTime const &,class TTimeIntervalMinutes const &,class TSchedulerItemRef &)
+	?FindScheduleL@CMsvScheduleSend@@SAXAAVRScheduler@@ABVTTime@@AAVTSchedulerItemRef@@@Z @ 104 NONAME ; public: static void __cdecl CMsvScheduleSend::FindScheduleL(class RScheduler &,class TTime const &,class TSchedulerItemRef &)
+	?RoundUpToMinute@CMsvScheduleSend@@SAXAAVTTime@@@Z @ 105 NONAME ; public: static void __cdecl CMsvScheduleSend::RoundUpToMinute(class TTime &)
+	?ScheduleEntryL@CMsvScheduleSend@@SAXAAVRScheduler@@ABVTSchedulerItemRef@@ABVTMsvSchedulePackage@@AAVTTaskInfo@@@Z @ 106 NONAME ; public: static void __cdecl CMsvScheduleSend::ScheduleEntryL(class RScheduler &,class TSchedulerItemRef const &,class TMsvSchedulePackage const &,class TTaskInfo &)
+	?UpdateEntryAfterSchedule@CMsvScheduleSend@@SAXABVTSchedulerItemRef@@ABVTTaskInfo@@ABVTTime@@HAAVTMsvEntry@@AAVTMsvEntryScheduleData@@@Z @ 107 NONAME ; public: static void __cdecl CMsvScheduleSend::UpdateEntryAfterSchedule(class TSchedulerItemRef const &,class TTaskInfo const &,class TTime const &,int,class TMsvEntry &,class TMsvEntryScheduleData &)
+	?DummyExport_1@@YAXXZ @ 108 NONAME ; void DummyExport_1(void)
+	?DummyExport_2@@YAXXZ @ 109 NONAME ; void DummyExport_2(void)
+	?DummyExport_3@@YAXXZ @ 110 NONAME ; void DummyExport_3(void)
+	?DummyExport_4@@YAXXZ @ 111 NONAME ; void DummyExport_4(void)
+	?DummyExport_5@@YAXXZ @ 112 NONAME ; void DummyExport_5(void)
+	?DummyExport_6@@YAXXZ @ 113 NONAME ; void DummyExport_6(void)
+

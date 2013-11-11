@@ -1,0 +1,21 @@
+EXPORTS
+	??1CDevSoundAudioInput@@UAE@XZ @ 1 NONAME ; public: virtual __thiscall CDevSoundAudioInput::~CDevSoundAudioInput(void)
+	?CalculateAudioInputPositionL@CDevSoundAudioInput@@UBEHXZ @ 2 NONAME ; public: virtual int __thiscall CDevSoundAudioInput::CalculateAudioInputPositionL(void)const 
+	?CapabilitiesChannelsL@CDevSoundAudioInput@@UAEXAAV?$RArray@I@@@Z @ 3 NONAME ; public: virtual void __thiscall CDevSoundAudioInput::CapabilitiesChannelsL(class RArray<unsigned int> &)
+	?CapabilitiesDataTypesL@CDevSoundAudioInput@@UAEXAAV?$RArray@VTFourCC@@@@@Z @ 4 NONAME ; public: virtual void __thiscall CDevSoundAudioInput::CapabilitiesDataTypesL(class RArray<class TFourCC> &)
+	?CapabilitiesRatesL@CDevSoundAudioInput@@UAEXAAV?$RArray@I@@@Z @ 5 NONAME ; public: virtual void __thiscall CDevSoundAudioInput::CapabilitiesRatesL(class RArray<unsigned int> &)
+	?ConfigChannelsL@CDevSoundAudioInput@@UAEXAAV?$RArray@I@@@Z @ 6 NONAME ; public: virtual void __thiscall CDevSoundAudioInput::ConfigChannelsL(class RArray<unsigned int> &)
+	?ConfigDataTypesL@CDevSoundAudioInput@@UAEXAAV?$RArray@VTFourCC@@@@@Z @ 7 NONAME ; public: virtual void __thiscall CDevSoundAudioInput::ConfigDataTypesL(class RArray<class TFourCC> &)
+	?ConfigRatesL@CDevSoundAudioInput@@UAEXAAV?$RArray@I@@@Z @ 8 NONAME ; public: virtual void __thiscall CDevSoundAudioInput::ConfigRatesL(class RArray<unsigned int> &)
+	?ConfigureL@CDevSoundAudioInput@@UAEXIIVTFourCC@@ABV?$RArray@H@@@Z @ 9 NONAME ; public: virtual void __thiscall CDevSoundAudioInput::ConfigureL(unsigned int,unsigned int,class TFourCC,class RArray<int> const &)
+	?GainL@CDevSoundAudioInput@@UAEHXZ @ 10 NONAME ; public: virtual int __thiscall CDevSoundAudioInput::GainL(void)
+	?MaxGainL@CDevSoundAudioInput@@UAEHXZ @ 11 NONAME ; public: virtual int __thiscall CDevSoundAudioInput::MaxGainL(void)
+	?NewL@CDevSoundAudioInput@@SAPAV1@ABVTMMFPrioritySettings@@AAVMAdvancedAudioInputObserver@@AAVCMMFDevSound@@@Z @ 12 NONAME ; public: static class CDevSoundAudioInput * __cdecl CDevSoundAudioInput::NewL(class TMMFPrioritySettings const &,class MAdvancedAudioInputObserver &,class CMMFDevSound &)
+	?PauseL@CDevSoundAudioInput@@UAEXXZ @ 13 NONAME ; public: virtual void __thiscall CDevSoundAudioInput::PauseL(void)
+	?PrimeL@CDevSoundAudioInput@@UAEXXZ @ 14 NONAME ; public: virtual void __thiscall CDevSoundAudioInput::PrimeL(void)
+	?RecordL@CDevSoundAudioInput@@UAEXPAX@Z @ 15 NONAME ; public: virtual void __thiscall CDevSoundAudioInput::RecordL(void *)
+	?SetEncoder@CDevSoundAudioInput@@UAEXPAVCAdvancedAudioEncoder@@@Z @ 16 NONAME ; public: virtual void __thiscall CDevSoundAudioInput::SetEncoder(class CAdvancedAudioEncoder *)
+	?SetGainL@CDevSoundAudioInput@@UAEXH@Z @ 17 NONAME ; public: virtual void __thiscall CDevSoundAudioInput::SetGainL(int)
+	?SetPrioritySettingsL@CDevSoundAudioInput@@UAEXABVTMMFPrioritySettings@@@Z @ 18 NONAME ; public: virtual void __thiscall CDevSoundAudioInput::SetPrioritySettingsL(class TMMFPrioritySettings const &)
+	?StopL@CDevSoundAudioInput@@UAEXXZ @ 19 NONAME ; public: virtual void __thiscall CDevSoundAudioInput::StopL(void)
+

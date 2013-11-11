@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SystemDefinition schema="3.0.0" xmlns:qt="http://www.nokia.com/qt">
+ <package id="platformthemes" name="Platform Themes" levels="framework generic ui">
+   <collection id="platformthemes_info" name="Platform Themes Info">
+    <component id="platformthemes_build" name="Platform Themes Build" filter="s60">
+		<!-- no real structure in this package. Should break into collections / components -->
+      <unit bldFile="." qt:proFile="platformthemes.pro"/>
+     </component>
+   </collection>
+ </package>
+</SystemDefinition>

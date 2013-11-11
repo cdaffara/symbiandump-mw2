@@ -1,0 +1,47 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project specification for mmappfw projects.
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_TESTEXPORTS
+
+PRJ_EXPORTS
+
+PRJ_TESTMMPFILES
+#include "../../mmappfw_plat/asx_parser_api/tsrc/group/bld.inf"
+#include "../../mmappfw_plat/collection_helper_api/tsrc/group/bld.inf"
+#include "../../mmappfw_plat/harvester_utility_api/tsrc/group/bld.inf"
+#include "../../mmappfw_plat/media_player_settings_engine_api/tsrc/group/bld.inf"
+//#include "../../mmappfw_plat/mpx_base_view_plugins_api/tsrc/group/bld.inf"
+#include "../../mmappfw_plat/mpx_collection_utility_api/tsrc/group/bld.inf"
+#include "../../mmappfw_plat/mpx_common_api/tsrc/group/bld.inf"
+#include "../../mmappfw_plat/mpx_playback_utility_api/tsrc/group/bld.inf"
+#include "../../mmappfw_plat/mpx_view_utility_api/tsrc/group/bld.inf"
+#include "../../mmappfw_plat/playlist_engine_api/tsrc/group/bld.inf"
+#include "../../mmappfw_plat/harvester_metadata_extractor_api/tsrc/group/bld.inf"
+#include "../../mmappfw_plat/harvester_collection_mediator_api/tsrc/group/bld.inf"
+#include "../../mmappfw_plat/mpx_albumart_utility_api/tsrc/group/bld.inf"
+#include "../../mmappfw_plat/playback_helper_api/tsrc/group/bld.inf"
+#include "../../mmappfw_plat/videoplaylist_utility_api/tsrc/group/bld.inf"
+
+PRJ_MMPFILES
+
+//  End of File

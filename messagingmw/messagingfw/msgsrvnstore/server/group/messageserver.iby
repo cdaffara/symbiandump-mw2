@@ -1,0 +1,43 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+
+#ifndef __MESSAGESERVER_IBY__
+#define __MESSAGESERVER_IBY__
+
+#include <flogger.iby>
+
+REM The Message Server
+
+#ifndef MSGHEAPMAX
+#define MSGHEAPMAX  0x400000
+#endif
+
+file=ABI_DIR\BUILD_DIR\msexe.exe	System\Programs\MSexe.exe	heapmax=MSGHEAPMAX
+file=ABI_DIR\BUILD_DIR\msgs.dll		System\Libs\MSGS.dll
+
+data=EPOCROOT##epoc32\data\z\private\1000484b\backup_registration.xml		private\1000484b\backup_registration.xml
+
+#include "messageserver.hby"
+
+data=EPOCROOT##epoc32\data\z\private\1000484b\msgcache.ini 					private\1000484b\msgcache.ini
+
+#ifdef SYMBIAN_MSGS_ENHANCED_REMOVABLE_MEDIA_SUPPORT
+data=EPOCROOT##epoc32\data\z\private\1000484b\msgprioritydriveList.ini 		private\1000484b\msgprioritydrivelist.ini
+data=EPOCROOT##epoc32\data\z\private\10202BE9\10286a26.txt					private\10202BE9\10286a26.txt
+#endif
+
+#endif

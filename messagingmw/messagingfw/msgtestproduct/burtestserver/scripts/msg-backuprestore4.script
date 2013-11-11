@@ -1,0 +1,182 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description: 
+//
+//! @file
+
+RUN_UTILS DeleteDirectory c:\backuparchive\
+
+LOAD_SUITE burtestserver -SharedData
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE T_MsgCommonServer 	-SharedData
+LOAD_SUITE T_MsgImapServer 	-SharedData
+LOAD_SUITE T_MsgSmtpServer 	-SharedData
+
+START_TESTCASE MSG-FULL-BASE-BACKUPRESTORE-0001
+//! @SYMTestCaseID MSG-FULL-BASE-BACKUPRESTORE-0001
+//! @SYMTestCaseDesc 		Backup and restore messages to/from MMC.
+//! @SYMPREQ 			PREQ2073
+//! @SYMREQ 			REQ11159
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		High
+//! @SYMTestActions   		Specify ini file for base and partial backup and restore
+//! @SYMTestExpectedResults 	no error
+//! @SYMTestType 		CIT
+
+RUN_TEST_STEP -1 burtestserver TestBackup c:\msgtest\backup\msg-backuprestore4.ini msg_full_base
+RUN_TEST_STEP -1 burtestserver TestRestore c:\msgtest\backup\msg-backuprestore4.ini msg_full_base
+
+END_TESTCASE MSG-FULL-BASE-BACKUPRESTORE-0001
+
+START_TESTCASE MSG-FULL-BASE-BACKUPRESTORE-0003
+//! @SYMTestCaseID MSG-FULL-BASE-BACKUPRESTORE-0003
+//! @SYMTestCaseDesc 		Copy messages when backing up/restoring message store
+//! @SYMPREQ 			PREQ2073
+//! @SYMREQ 			REQ11159
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		High
+//! @SYMTestActions		Initialize the NT-RAS
+//!				Reset the message store in a cleanup state
+//!				Create a IMAP account A 
+//!				Connect and Synchronize the IMAP server using IMAP account A
+//!				Initialize IMAP account in a cleanup state
+//!				Disconnect IMAP server
+//!				Create fifty messages with Body Text Size of 10KB with attachment
+//!				Send the messages
+//!				Connect to the IMAP server
+//!				Download the messages using IMAP client MTM populate command 
+//!				Create a folder of named test folder1
+//!				Copy messages from Inbox to test folder1 when backing up/restoring message store
+//!				Check that fifty messages are there in Inbox and test folder1 as well
+//!				Disconnect IMAP server
+//! @SYMTestExpectedResults 	
+//!				Copy message should return with -7003(KMsvIndexBackup) error when backing message store
+//!				Copy message should return with -7004(KMsvIndexRestore) error when restoring message store
+//! @SYMAuthor			Rajat Bal
+//! @SYMTestType 		CIT
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer 	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	InitNtRas			c:\msgtest\backup\msg-backuprestore4.ini 	0003-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer 	ResetMessageStore		c:\msgtest\backup\msg-backuprestore4.ini 	0003-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer 	CreateImapAccount		c:\msgtest\backup\msg-backuprestore4.ini 	0003-CreateImapAccount
+
+START_REPEAT	c:\msgtest\backup\msg-backuprestore4.ini	0001-SectionOne	RepeatParam
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\backup\msg-backuprestore4.ini 	0003-CreateSmtpMessageFromEmailFile1
+END_REPEAT
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer 	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer 	ShutDown
+
+END_TESTCASE MSG-FULL-BASE-BACKUPRESTORE-0003
+
+RUN_SCRIPT c:\msgtest\backup\msg-concurrent-bur-copy-oprs3.script
+
+START_TESTCASE MSG-FULL-BASE-BACKUPRESTORE-0004
+//! @SYMTestCaseID MSG-FULL-BASE-BACKUPRESTORE-0004
+//! @SYMTestCaseDesc 		Move messages when backing up/restoring message store
+//! @SYMPREQ 			PREQ2073
+//! @SYMREQ 			REQ11159
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		High
+//! @SYMTestActions		Initialize the NT-RAS
+//!				Reset the message store in a cleanup state
+//!				Create a IMAP account A 
+//!				Connect and Synchronize the IMAP server using IMAP account A
+//!				Initialize IMAP account in a cleanup state
+//!				Disconnect IMAP server
+//!				Create fifty messages with Body Text Size of 10KB with attachment
+//!				Send the messages
+//!				Connect to the IMAP server
+//!				Download the messages using IMAP client MTM populate command 
+//!				Create a folder of named test folder2
+//!				Move messages from inbox to test folder2 when backing up/restoring message store
+//!				Check that there is no message in Inbox but fifty messages are there in test folder2
+//!				Disconnect IMAP server
+//! @SYMTestExpectedResults 	
+//!				Move message should return with -7003(KMsvIndexBackup) error when backing message store
+//!				Move message should return with -7004(KMsvIndexRestore) error when restoring message store
+//! @SYMAuthor			Rajat Bal
+//! @SYMTestType 		CIT
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer 	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	InitNtRas			c:\msgtest\backup\msg-backuprestore4.ini 	0004-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer 	ResetMessageStore		c:\msgtest\backup\msg-backuprestore4.ini 	0004-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer 	CreateImapAccount		c:\msgtest\backup\msg-backuprestore4.ini 	0004-CreateImapAccount
+
+START_REPEAT	c:\msgtest\backup\msg-backuprestore4.ini	0001-SectionOne	RepeatParam
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\backup\msg-backuprestore4.ini 	0004-CreateSmtpMessageFromEmailFile1
+END_REPEAT
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer 	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer 	ShutDown
+
+END_TESTCASE MSG-FULL-BASE-BACKUPRESTORE-0004
+
+RUN_SCRIPT c:\msgtest\backup\msg-concurrent-bur-move-oprs3.script
+
+START_TESTCASE MSG-FULL-BASE-BACKUPRESTORE-0005
+//! @SYMTestCaseID MSG-FULL-BASE-BACKUPRESTORE-0005
+//! @SYMTestCaseDesc 		Delete messages when backing up/restoring message store
+//! @SYMPREQ 			PREQ2073
+//! @SYMREQ 			REQ11159
+//! @SYMTestStatus 		Implemented
+//! @SYMTestPriority 		High
+//! @SYMTestActions		Initialize the NT-RAS
+//!				Reset the message store in a cleanup state
+//!				Create a IMAP account A 
+//!				Connect and Synchronize the IMAP server using IMAP account A
+//!				Initialize IMAP account in a cleanup state
+//!				Disconnect IMAP server
+//!				Create fifty messages with Body Text Size of 10KB with attachment
+//!				Send the messages
+//!				Connect to the IMAP server
+//!				Download the messages using IMAP client MTM populate command 
+//!				Delete message from test folder2 when backing up/restoring message store
+//!				Check that there is no message in test folder2
+//!				Disconnect IMAP server
+//! @SYMTestExpectedResults 	
+//!				Delete message should return with -7003(KMsvIndexBackup) error when backing message store
+//!				Delete message should return with -7004(KMsvIndexRestore) error when restoring message store
+//! @SYMAuthor			Rajat Bal
+//! @SYMTestType 		CIT
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer 	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	InitNtRas			c:\msgtest\backup\msg-backuprestore4.ini 	0005-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer 	ResetMessageStore		c:\msgtest\backup\msg-backuprestore4.ini 	0005-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer 	CreateImapAccount		c:\msgtest\backup\msg-backuprestore4.ini 	0005-CreateImapAccount
+
+START_REPEAT	c:\msgtest\backup\msg-backuprestore4.ini	0001-SectionOne	RepeatParam
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\backup\msg-backuprestore4.ini 	0005-CreateSmtpMessageFromEmailFile1
+END_REPEAT
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer 	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer 	ShutDown
+
+END_TESTCASE MSG-FULL-BASE-BACKUPRESTORE-0005
+
+RUN_SCRIPT c:\msgtest\backup\msg-concurrent-bur-delete-oprs3.script

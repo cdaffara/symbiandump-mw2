@@ -1,0 +1,13 @@
+EXPORTS
+	_Z24ImplementationGroupProxyRi @ 1 NONAME
+	_ZN19CS60StreamingSource18IsSeekingSupportedEv @ 2 NONAME
+	_ZN19CS60StreamingSource24IsRandomSeekingSupportedEv @ 3 NONAME
+	_ZN19CS60StreamingSource4NewLE4TUid @ 4 NONAME
+	_ZN19CS60StreamingSource5NewLCE4TUid @ 5 NONAME
+	_ZTI12CReadRequest @ 6 NONAME ; #<TI>#
+	_ZTI19CS60StreamingSource @ 7 NONAME ; #<TI>#
+	_ZTI20CDataBufferQueueItem @ 8 NONAME ; #<TI>#
+	_ZTV12CReadRequest @ 9 NONAME ; #<VT>#
+	_ZTV19CS60StreamingSource @ 10 NONAME ; #<VT>#
+	_ZTV20CDataBufferQueueItem @ 11 NONAME ; #<VT>#
+

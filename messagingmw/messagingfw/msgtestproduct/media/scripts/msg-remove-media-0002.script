@@ -1,0 +1,84 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+LOAD_SERVER t_media  -SharedData
+LOAD_SUITE 	T_MsgCommonServer	-SharedData
+
+//! @file							
+//! @SYMTestSuiteName			MSG-REMOVE-MEDIA-0002
+//! @SYMScriptTestEnvironment   Details as in below:-
+//!				1. nt-ras connection or winpcap
+//!				2. email servers ( communigatePro or ms exchange)
+//!				3. test driver
+//!				4. testexecute framework(TEF3.0)
+//!				
+//! @SYMScriptPurpose		Integration testing of PREQ557-"Improved support in Messaging for removable media"
+
+START_TEST_BLOCK	100	t_media		c:\msgtest\media\MSG-REMOVE-MEDIA.ini
+	CREATE_OBJECT	CenRepTestWrapper	0100_obj
+	COMMAND		0100_obj		ResetCentralRepository	0100_ResetCentralRepository
+END_TEST_BLOCK
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\media\MSG-REMOVE-MEDIA.ini 		0001-ResetMessageStore
+
+//! Create a Prefered Drive List 
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+
+START_TESTCASE  MSG-REMOVE-MEDIA-0002
+//! @SYMTestCaseID			MSG-REMOVE-MEDIA-0002
+//! @SYMPREQ				PREQ557
+//! @SYMTestActions                 
+//!                 1: Update Priority of the Drive C ,Create Sms
+//!                 2: Verify Count
+//!                 3: Update Priority of the Drive E ,Create Sms
+//! 		    4: Verify Count
+//!                 5: Delete Messages from the standard folder specified
+//!                 6: Search TMsvId from the Draft folder specified
+//! @SYMTestExpectedResults		Should return KErrNotFound 	
+
+
+	START_TEST_BLOCK	100	t_media		c:\msgtest\media\MSG-REMOVE-MEDIA.ini
+		CREATE_OBJECT	MediaTestWrapper	0001_obj_1
+		COMMAND		0001_obj_1		UpdateDrive				UpdateDriveC				
+		COMMAND		0001_obj_1		DeleteMsg				
+		COMMAND		0001_obj_1		UpdateDrive				UpdateDriveD				
+		COMMAND		0001_obj_1		DeleteMsg				
+		COMMAND		0001_obj_1		UpdateDrive				UpdateDriveE
+		COMMAND		0001_obj_1		DeleteMsg
+
+		COMMAND		0001_obj_1		UpdateDrive				UpdateDriveC				
+		COMMAND		0001_obj_1		CreateSMSAccount		
+		COMMAND		0001_obj_1		CreateSMS				
+		COMMAND		0001_obj_1		VerifyCount				smsCount1
+
+		COMMAND		0001_obj_1		UpdateDrive				UpdateDriveE
+		COMMAND		0001_obj_1		CreateSMSAccount		
+		COMMAND		0001_obj_1		CreateSMS				
+		COMMAND		0001_obj_1		VerifyCount				smsCount2
+		COMMAND		0001_obj_1		DeleteMsg
+
+		COMMAND		0001_obj_1		UpdateDrive				UpdateDriveC				
+		COMMAND		0001_obj_1		DeleteMsg				
+		
+		COMMAND		0001_obj_1		SearchMessages			SearchFolder
+	END_TEST_BLOCK
+END_TESTCASE   MSG-REMOVE-MEDIA-0002
+
+
+
+

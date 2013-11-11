@@ -1,0 +1,10 @@
+<?xml version="1.0" standalone="yes"?>
+<!-- Copyright (c) 2004, Symbian Software Ltd. All Rights Reserved -->
+
+<backup_registration version="1.0">    
+
+    <active_backup process_name="locationutilityserver" requires_delay_to_prepare_data="no" supports_selective="no" supports_incremental="no">
+    </active_backup>
+    <restore requires_reboot = "no"/>
+
+</backup_registration>

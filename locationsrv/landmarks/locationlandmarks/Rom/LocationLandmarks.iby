@@ -1,0 +1,100 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: Image description file for locationlandmarks
+*
+*/
+#ifndef __Landmarks_IBY__
+#define __Landmarks_IBY__
+
+#include <bldvariant.hrh>
+
+///////////////////////
+// *** Landmarks *** //
+///////////////////////
+
+
+// Landmarks
+// Client Library
+file=ABI_DIR\BUILD_DIR\eposlandmarks.dll                   SHARED_LIB_DIR\eposlandmarks.dll
+data=DATAZ_\private\100012a5\policy\101fe978.spd           private\100012a5\policy\101fe978.spd
+
+// Landmarks
+// Landmarks Search Library
+file=ABI_DIR\BUILD_DIR\eposlmsearchlib.dll                 SHARED_LIB_DIR\eposlmsearchlib.dll
+file=ABI_DIR\BUILD_DIR\eposlmmultidbsearch.dll             SHARED_LIB_DIR\eposlmmultidbsearch.dll
+
+// Landmarks
+// Landmarks Database Management Client Library
+file=ABI_DIR\BUILD_DIR\eposlmdbmanlib.dll                  SHARED_LIB_DIR\eposlmdbmanlib.dll
+
+#ifdef __LANDMARKS
+
+// Landmarks
+// Landmarks Local Access
+file=ABI_DIR\BUILD_DIR\eposlmlocalaccess.dll               SHARED_LIB_DIR\eposlmlocalaccess.dll
+data=DATAZ_\RESOURCE_FILES_DIR\eposlmasyncops.rsc          RESOURCE_FILES_DIR\eposlmasyncops.rsc
+
+// Landmarks
+// Landmarks Server
+file=ABI_DIR\BUILD_DIR\eposlmserver.exe                    PROGRAMS_DIR\eposlmserver.exe
+data=DATAZ_\private\101fdf81\eposlmserver.rsc              private\101fdf81\eposlmserver.rsc
+data=DATAZ_\private\101fdf81\backup_registration.xml       private\101fdf81\backup_registration.xml
+
+// Landmarks
+// Landmarks Internal Services
+file=ABI_DIR\BUILD_DIR\eposlmintservices.dll               SHARED_LIB_DIR\eposlmintservices.dll
+data=DATAZ_\RESOURCE_FILES_DIR\eposlmcompactdblevel.rsc    RESOURCE_FILES_DIR\eposlmcompactdblevel.rsc
+data=DATAZ_\RESOURCE_FILES_DIR\apps\eposlmglcategories.mif      RESOURCE_FILES_DIR\apps\eposlmglcategories.mif
+
+// Landmarks
+// Landmarks Local Access Provider
+ECOM_PLUGIN(eposlmlocalaccessprovider.dll, eposlmlocalaccessprovider.rsc)
+
+// Landmarks
+// Landmarks Local Search Provider
+ECOM_PLUGIN(eposlmlocalsearchprovider.dll, eposlmlocalsearchprovider.rsc)
+
+// Landmarks
+// Landmarks Local DB Management Provider
+ECOM_PLUGIN(eposlmlocaldbmanprovider.dll, eposlmlocaldbmanprovider.rsc)
+
+// Landmarks
+// Landmarks Database Management Provider
+ECOM_PLUGIN(eposlmdbmanprov.dll, eposlmdbmanprov.rsc)
+
+// Landmarks
+// Landmarks Database Registry
+file=ABI_DIR\BUILD_DIR\eposlmdbreg.dll                     SHARED_LIB_DIR\eposlmdbreg.dll
+
+// Landmarks
+// Landmarks Server Client Library
+file=ABI_DIR\BUILD_DIR\eposlmservlib.dll                   SHARED_LIB_DIR\eposlmservlib.dll
+
+#endif // __LANDMARKS
+
+#ifdef __LANDMARKS_CONVERTER
+
+// Landmarks
+// Landmarks Recognizer
+ECOM_PLUGIN(eposlmrecognizer.dll, eposlmrecognizer.rsc)
+
+// Landmarks
+// Landmarks Converter
+ECOM_PLUGIN(eposlmconverter.dll, eposlmconverter.rsc)
+
+#endif // __LANDMARKSCONVERTER
+
+#endif // __Landmarks_IBY__
+
+

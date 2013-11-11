@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<relnotes name="Subsystem Tests">
+  <purpose>
+  </purpose>
+  
+
+
+  <defect number="DEF141568" title="msg-imap-sync4-ic is failing on winscw " revision="027">
+   Updated the  txt email.
+  </defect>
+
+  <defect number="DEF141505" title="Missing distribution.S60.policy files in MSF00161 vtb92sf build" revision="026">
+    Added missing distribution files as specified in the defect
+  </defect>	
+
+  <defect number="DEF140738" title="Few CMsvEntry API (Count(), Operator[]) does not work properly on std entries" revision="025">
+   Fetching childrens from all available drives.
+  </defect>
+
+  <defect number="DEF140608" title="Message Server doesn't support changedrive to a drive not present in drive list" revision="024">
+   Message Server adds the target drive to the drive list if it's not already there in the drive list.
+  </defect>
+
+<defect number="DEF140102" title="warnings by the new build tools " revision="023">
+    Modifed the bld.inf file for msgtestproduct imap, pop,smtp
+  </defect>
+
+  <deliverystep number="1462" name="Splitting mixed header files for Messaging" osproject="SymTB92" revision="022">
+   <preq number="2510" title=" Splitting mixed header files for Messaging">
+    Mixed header files will now contain only published All or published Partner or internal
+   </preq>
+    <milestone project="GT0465" number="3.5"/>
+  </deliverystep>
+
+  <deliverystep number="1472" name="Removal of CDMA support" osproject="Sphinx" revision="021">
+    <preq number="2002" title="Removal of CDMA support">
+    Removed BiowatchersCdma and multimode component.
+    </preq>
+    <milestone project="GT0358" number="3.6"/>
+  </deliverystep>
+
+  <defect number="DEF133379" title="Test case msg-imap-folder1.script is failing on 9.6 winscw udeb" revision="020">
+    Modifed the folder names using backward slash and forward slash
+  </defect>
+
+  <deliverystep number="1397" name="To prevent sending username and password in readable or easily de-cryptable form during authentication" osproject="Emin" revision="019">
+   <preq number="1119" title=" Secure IMAP4 and POP3 Authentication using CRAM-MD5 as specified in RFC 2195">
+    To prevent sending username and password in readable or easily de-cryptable form during authentication
+   </preq>
+    <milestone project="GT0478" number="3.2"/>
+  </deliverystep>
+  
+  <deliverystep number="1394" name="To improve performance, processing power and memory usage while downloading body of the message" osproject="Emin" revision="018">
+   <preq number="758" title="IMAP4 Binary Content Extension">
+    To improve performance, processing power and memory usage while downloading body of the message
+   </preq>
+    <milestone project="GT0478" number="3.1"/>
+  </deliverystep>
+  
+  <defect number="DEF131289" title="Tests added for Preq557 fail on NaviEngine board." revision="017">
+    An alternate script is added for NaviEngine that creates D drive on the hardware.
+  </defect>
+
+  <defect number="DEF127925" title="RCA: POP3 tests are failing for 8-bit storage mechanism" revision="016">
+    Then condition is added to check for paragraphdelimiter and for \x0046 when store_8bit_body_text is set 1 in the IMCM.rss,
+  </defect>
+
+  <defect number="DEF127187" title="ICC Codenomicon: NotEnoughMemory error for every excution of around 300 testcase" revision="015">
+    Changed Testcode.
+  </defect>
+
+  <defect number="PDEF125292" title="Filename Case Check errors most of them from PREQ1881" revision="014">
+    Changed according to the filename case check policy.
+  </defect>
+
+  <defect number="PDEF122944" title="V=?? string in subject field crash MMS application when receiving MMS notification" revision="013">
+    Added checks for EOS condition before incrementing the variable
+  </defect>
+
+  <deliverystep number="835" name="Messaging: New advanced APIs for searching and sorting for Message store" osproject="Sphinx" revision="012">
+   <preq number="1667" title="Enhanced search capabilities for message store">
+    New advanced APIs for searching and sorting for Message store
+   </preq>
+    <milestone project="GT0358" number="3.2.2"/>
+  </deliverystep>  
+
+  <deliverystep number="919" name="Submit PREQ2107 to MCL" osproject="Sphinx" revision="011">
+    <preq number="2107" title="Messaging TLS/SSL certificate validation">
+    Maintain the current behaviour of validating the domain name in the received certificate.
+    </preq>
+    <milestone project="GT0358" number="3.3"/>
+  </deliverystep>
+
+  <defect number="DEF116053" title="ERROR Duplicate file for upsrefdialogcreator.dll on" revision="010">
+   Rename the .dll and resource file which is using in messaging_ups_test.iby file.
+  </defect>
+
+  <defect number="DEF109763" title="Warnings generated with checksource build for PREQ1678" revision="009">
+    Fixed according to filename policy to be consistent for linux platform.
+  </defect>
+
+  <defect number="DEF109554" title="PREQ1678: Some sendas tests are failing because of  use SetUserPromptResponse" revision="008">
+    Fix for SendAs failing tests because of SetUserPromptResponse utility unavailability in 9.4
+  </defect>
+  
+  <deliverystep number="602" name="Submit PREQ1307 to MCL" osproject="Oghma" revision="007">
+    <preq number="1307" title="Non-Seamless Network Bearer Mobility for Messaging">
+    Non-Seamless Network Bearer Mobility for Messaging
+    </preq>
+    <milestone project="GT0342" number="3.2.1"/>
+  </deliverystep>
+
+  <deliverystep number="601" name="Implemented user prompting while sending/recieving the messages" osproject="Oghma" revision="006">
+    <preq number="1678" title="Messaging User Prompting">
+    Messaging User Prompting
+  </preq>
+    <milestone project="GT0342" number="3.4"/>
+  </deliverystep>
+
+  <deliverystep number="603" name="Only Download IMAP4 Personal Folders when Requested" osproject="Oghma" revision="005">
+    <preq number="1120" title="Synchronising the IMAP4 Folder Tree">
+    Synchronising the IMAP4 Folder Tree
+  </preq>
+    <milestone project="GT0342" number="3.2.2"/>
+  </deliverystep>
+
+  <deliverystep number="501" name="RAM improvement" osproject="Oghma" revision="004">
+    <preq number="1432" title="Improve Messaging Subsystem RAM Usage">
+    Improve messaging subsystem RAM usage.
+  </preq>
+    <milestone project="GT0342" number="3.1"/>
+  </deliverystep>
+
+  <minorchange revision="003">
+    Use correct test case to fix ONB test "INCONCLUSIVE" error.
+  </minorchange>
+
+  <defect number="DEF101481" title="New IMAP: Use of EXPUNGE to delete messages should be optional" revision="002">
+    use the CLOSE command instead of EXPUNGE for deletion. The classes effected are updated with a new flag to allow different state machines.
+  </defect>
+
+  <defect number="PDEF100750" title="DP: MSG-IMAP-IdleBkSyncComplete-0008 and 0009 failing on default DP config" revision="001">
+    Increased the timeouts, so that the scripts do not fail on default DP config
+  </defect>
+</relnotes>

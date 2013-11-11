@@ -1,0 +1,66 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRINT Running  EMsvMoveEntries
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvMoveEntries_002.script
+	// Move an entry from protected folder under local service (Outbox) to an entry, which is part of
+	// an entry and not owned by the proxy, in an unprotected folder (Drafts).
+	// Source entry requires Read/Write user data + MTM specified caps.
+	// Target entry requires Read/Write user data.
+	// Target entry has different SID from proxy.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvMoveEntries_003.script
+	// Move an entry, not owned by the proxy, from unprotected folder (Drafts) to an entry, which is
+	// part of an entry, in a protected folder under the local service (Outbox).
+	// Source entry requires Read/Write user data.
+	// Target entry requires Read/Write user data + MTM specified caps.
+	// Source entry has different SID from proxy.
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvMoveEntries_004.script
+	// Move an entry, owned by the proxy, from an unprotected folder (Drafts) to a protected folder under
+	// local service (Outbox).
+	// Source entry requires no caps.
+	// Target entry requires Read/Write user data + MTM specified caps.
+	// Source entry has same SID as proxy.
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvMoveEntries_005.script
+	// Move an entry from a protected remote folder (remote Outbox) to an entry, which is part of an
+	// entry owned by the proxy, in an unprotected folder (Drafts).
+	// Source entry requires Read/Write user data + MTM specified caps (remote MTM).
+	// Target entry requires no caps.
+	// Target entry has same SID as proxy.
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvMoveEntries_006.script
+	// Move an entry, not owned by the proxy, from an unprotected folder (Drafts) to an entry, which
+	// is part of an entry, in a remote protected folder (remote Outbox).
+	// Source entry requires Read/Write user data.
+	// Target entry requires Read/Write user data + MTM specified caps (remote MTM).
+	// Source entry has different SID from proxy.
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvMoveEntries_007.script
+	// Move an entry from a protected folder under local service (Outbox) to an unprotected folder
+	// (Drafts).
+	// Source entry requires Read/Write user data + MTM specified caps.
+	// Target entry requiers no caps.
+	// The SID of either entry does not matter.
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvMoveEntries_008.script
+	// Move an entry, owned by the proxy, from an unprotected folder (Drafts) to a protected remote
+	// folder (remote Outbox).
+	// Source entry requires no caps.
+	// Target entry requires Read/Write user data + MTM specified caps (remote MTM).
+	// Source entry has same SID as proxy.

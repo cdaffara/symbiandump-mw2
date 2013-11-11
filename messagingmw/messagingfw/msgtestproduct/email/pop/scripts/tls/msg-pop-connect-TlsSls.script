@@ -1,0 +1,56 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+LOAD_SUITE	T_MsgCommonServer	-SharedData
+LOAD_SUITE	T_MsgPopServer		-SharedData
+
+
+START_TESTCASE	MSG-POP-CONNECT-TLSSLS-0001
+
+//!	@SYMTestCaseID			MSG-POP-CONNECT-TLSSLS-0001
+//!	@SYMTestCaseDesc			This test checks that we can connect to an pop server and that
+//!                                     		a folder called "Inbox" is created.
+//!	@SYMTestPriority			Critical
+//!   	@SYMTestType				CIT
+//!  	@SYMTestStatus				Implemented   
+//!	@SYMTestCaseDependencies	requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			Initialises the RAS connection
+//!							Resets the message store to clean up the central repository
+//!							Creates an pop account
+//!							Connects to the pop server and performs a synchronisation
+//!							Checks that the Inbox exists
+//!							Disconnects from the server
+//!	@SYMTestExpectedResults		EPass - Connection made and Inbox found
+//!	@SYMAuthor				Avinash
+
+PRINT Setup Begins #####################################################
+PRINT **** msg-pop-connect-tlssls-0001 ****
+
+RUN_TEST_STEP	300	T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300	T_MsgPopServer		StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\tls\msg-pop-connect-TlsSls.ini 	0001-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\tls\msg-pop-connect-TlsSls.ini 	0001-ResetMessageStore
+RUN_TEST_STEP 	300 	T_MsgPopServer		CreatePopAccount 		c:\msgtest\email\pop\tls\msg-pop-connect-TlsSls.ini 	0001-CreatePopAccount 
+RUN_TEST_STEP 	300 	T_MsgPopServer		ConnectPop3Server		c:\msgtest\email\pop\tls\msg-pop-connect-TlsSls.ini 	0001-ConnectPop3Server
+RUN_TEST_STEP 	300 	T_MsgPopServer		DisConnectPop3Server		c:\msgtest\email\pop\tls\msg-pop-connect-TlsSls.ini 	0001-DisConnectPop3Server
+
+RUN_TEST_STEP	300	T_MsgPopServer		ShutDown
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE	MSG-POP-CONNECT-TLSSLS-0001

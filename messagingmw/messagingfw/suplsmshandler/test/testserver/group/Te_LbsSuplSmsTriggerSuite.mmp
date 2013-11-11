@@ -1,0 +1,57 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// The mmp file for the SUPL SMS Trigger Unit Test Suite
+// 
+//
+
+
+TARGET      te_lbssuplsmstriggersuite.exe
+TARGETTYPE  exe
+UID         0x1000007A 0x10283755
+
+CAPABILITY ALL -TCB
+
+MACRO	ENABLE_LBS_DEV_LOGGER
+MACRO	SUPPORT_IP_BEARER_TYPE
+MACRO	TE_UNITTESTMODE_ON
+
+USERINCLUDE		.
+USERINCLUDE		../../../../../../../os/lbs/lbstest/lbstestproduct/internal/lbstestutils/inc
+USERINCLUDE		../../../inc
+USERINCLUDE		../../../src
+USERINCLUDE		../../../../../../../os/lbs/locationmgmt/locationcore/lbsrootapi/inc
+USERINCLUDE	  	../../../../../../../os/lbs/locationmgmt/locationcore/lbsroot/inc
+USERINCLUDE	  	../../../../../../../os/lbs/locationmgmt/locationcore/LbsPartnerCommon/inc
+
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+
+SOURCEPATH   ../src
+
+SOURCE	Te_LbsSuplPush.cpp
+SOURCE	Te_WapBoundDatagramService.cpp
+SOURCE	Te_WatcherLog.cpp
+SOURCE	Te_SuplWdpWatcher.cpp
+
+SOURCE	Te_LbsSuplSmsTriggerServer.cpp
+SOURCE	Te_LbsSuplSmsTriggerSender.cpp
+SOURCE	Te_LbsSuplSmsTriggerIntegStep.cpp
+
+
+LIBRARY     euser.lib testexecuteutils.lib testexecutelogclient.lib insock.lib esock.lib ecom.lib
+LIBRARY		lbssuplpush.lib wappushutils.lib watcher.lib lbspartnercommon.lib wapmsgcli.lib lbsrootapi.lib
+LIBRARY		te_lbstestutils.lib lbsadmin.lib centralrepository.lib 
+
+
+SMPSAFE

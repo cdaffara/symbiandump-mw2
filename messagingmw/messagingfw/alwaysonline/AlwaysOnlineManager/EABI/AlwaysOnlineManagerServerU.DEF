@@ -1,0 +1,20 @@
+EXPORTS
+	_Z8WinsMainv @ 1 NONAME
+	_ZN26CAlwaysOnlineManagerServer14ThreadFunctionEPv @ 2 NONAME
+	_ZN26CAlwaysOnlineManagerServer4NewLEv @ 3 NONAME
+	_ZTI20CAlwaysOnlineManager @ 4 NONAME ; #<TI>#
+	_ZTI23CAOServerCommandHandler @ 5 NONAME ; #<TI>#
+	_ZTI26CAlwaysOnlineManagerServer @ 6 NONAME ; #<TI>#
+	_ZTI30CAlwaysOnlineDiskSpaceObserver @ 7 NONAME ; #<TI>#
+	_ZTI33CAlwaysOnlineManagerServerSession @ 8 NONAME ; #<TI>#
+	_ZTV20CAlwaysOnlineManager @ 9 NONAME ; #<VT>#
+	_ZTV23CAOServerCommandHandler @ 10 NONAME ; #<VT>#
+	_ZTV26CAlwaysOnlineManagerServer @ 11 NONAME ; #<VT>#
+	_ZTV30CAlwaysOnlineDiskSpaceObserver @ 12 NONAME ; #<VT>#
+	_ZTV33CAlwaysOnlineManagerServerSession @ 13 NONAME ; #<VT>#
+	_ZTI16CAOCenRepControl @ 14 NONAME ; #<TI>#
+	_ZTI16CAOCommandParser @ 15 NONAME ; #<TI>#
+	_ZTV16CAOCenRepControl @ 16 NONAME ; #<VT>#
+	_ZTV16CAOCommandParser @ 17 NONAME ; #<VT>#
+	_ZN26CAlwaysOnlineManagerServer20HandleClientCommandLE30TAlwaysOnlineServerAPICommandsR5TDes8 @ 18 NONAME
+

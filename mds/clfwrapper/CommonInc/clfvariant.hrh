@@ -1,0 +1,43 @@
+/*
+* Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*      This file contains all the declarations to variate locally
+*      Content Listing Framework
+*
+*
+*/
+
+
+#ifndef CLFVARIANT_HRH
+#define CLFVARIANT_HRH
+
+// CLFVariant related values are in CenRep under
+// KCRUidContentListingFramework key KCLFLocalVariation
+
+// Flag to enable parsing meta data from music files. If feature is enabled then
+// CLF returns possible meta data from music files.
+// This feature has effect to performance of the CLF, if feature is enabled
+// then CLF might be slow if there are lots of music files.
+// By default this feature is enabled.
+#define KCLFMusicMetadata      0x01
+
+// Flag to enable parsing meta data from video files. If feature is enabled then
+// CLF returns possible meta data from video files.
+// This feature has effect to performance of the CLF, if feature is enabled
+// then CLF might be slow if there are lots of video files.
+// By default this feature is disabled.
+#define KCLFVideoMetadata      0x02
+
+
+#endif // CLFVARIANT_HRH

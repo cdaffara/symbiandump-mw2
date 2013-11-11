@@ -1,0 +1,51 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description: 
+//
+
+LOAD_SUITE burtestserver
+LOAD_SERVER t_emailtestserver
+
+START_TESTCASE	MSG-TEST-0004
+
+CONCURRENT
+RUN_TEST_STEP -1 burtestserver TestRestore c:\msgtest\backup\msg-backuprestore4.ini msg_full_base
+START_TEST_BLOCK	300	t_emailtestserver		c:\msgtest\backup\msg-backuprestore4.ini
+	CREATE_OBJECT	ImapTestWrapper		0004_obj
+	COMMAND		0004_obj		MoveMessage	0004-MoveMessage1
+	COMMAND		0004_obj		MoveMessage	0004-MoveMessage1
+	COMMAND		0004_obj		MoveMessage	0004-MoveMessage1
+	COMMAND		0004_obj		MoveMessage	0004-MoveMessage1
+	COMMAND		0004_obj		MoveMessage	0004-MoveMessage1
+	COMMAND		0004_obj		MoveMessage	0004-MoveMessage1
+	COMMAND		0004_obj		MoveMessage	0004-MoveMessage1
+	COMMAND		0004_obj		MoveMessage	0004-MoveMessage1
+	COMMAND		0004_obj		MoveMessage	0004-MoveMessage1
+	COMMAND		0004_obj		MoveMessage	0004-MoveMessage1
+	COMMAND		0004_obj		MoveMessage	0004-MoveMessage1
+	COMMAND		0004_obj		MoveMessage	0004-MoveMessage1
+	COMMAND		0004_obj		MoveMessage	0004-MoveMessage1
+	COMMAND		0004_obj		MoveMessage	0004-MoveMessage1
+	COMMAND		0004_obj		MoveMessage	0004-MoveMessage1
+	COMMAND		0004_obj		MoveMessage	0004-MoveMessage1
+	COMMAND		0004_obj		MoveMessage	0004-MoveMessage1
+	COMMAND		0004_obj		MoveMessage	0004-MoveMessage1
+	COMMAND		0004_obj		MoveMessage	0004-MoveMessage1
+	COMMAND		0004_obj		MoveMessage	0004-MoveMessage1	
+END_TEST_BLOCK	!PanicCode=47
+CONSECUTIVE
+
+
+END_TESTCASE MSG-TEST-0004
+

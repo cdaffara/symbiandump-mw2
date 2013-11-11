@@ -1,0 +1,581 @@
+EXPORTS
+	?SetTOMASuplSupported3GPP2PosProtoVer@TOMASuplSupported3GPP2PosProtoVer@@QAEXGHH@Z @ 1 NONAME ; void TOMASuplSupported3GPP2PosProtoVer::SetTOMASuplSupported3GPP2PosProtoVer(unsigned short, int, int)
+	?SetNotification@COMASuplInit@@QAEXPAVCOMASuplNotification@@@Z @ 2 NONAME ; void COMASuplInit::SetNotification(class COMASuplNotification *)
+	?NumOfMins@TOMASuplBatchRepConditions@@QAEHXZ @ 3 NONAME ; int TOMASuplBatchRepConditions::NumOfMins(void)
+	?SetVelocity@COMASuplPos@@QAEXPAVCOMASuplVelocity@@@Z @ 4 NONAME ; void COMASuplPos::SetVelocity(class COMASuplVelocity *)
+	??1COMASuplStartVer2@@UAE@XZ @ 5 NONAME ; COMASuplStartVer2::~COMASuplStartVer2(void)
+	?SessionId@COMASuplAsnMessageBase@@QBEXAAPAVCOMASuplSessionID@@@Z @ 6 NONAME ; void COMASuplAsnMessageBase::SessionId(class COMASuplSessionID * &) const
+	??1COMASuplAsnMessageBase@@UAE@XZ @ 7 NONAME ; COMASuplAsnMessageBase::~COMASuplAsnMessageBase(void)
+	?SetLongSPCKey@COMASuplAuthResponse@@QAEHAAVTDesC8@@@Z @ 8 NONAME ; int COMASuplAuthResponse::SetLongSPCKey(class TDesC8 &)
+	?GetReportMeasurement@TOMASuplBatchReportMode@@QBEHAAH@Z @ 9 NONAME ; int TOMASuplBatchReportMode::GetReportMeasurement(int &) const
+	?GetRAND@COMASuplSPCTID@@QBEHAAVTDes8@@@Z @ 10 NONAME ; int COMASuplSPCTID::GetRAND(class TDes8 &) const
+	?SetSuplSETSessionIDIPv6@COMASuplSETSessionID@@QAEXHABVTDesC8@@@Z @ 11 NONAME ; void COMASuplSETSessionID::SetSuplSETSessionIDIPv6(int, class TDesC8 const &)
+	?ConstructL@COMASuplTriggeredStop@@IAEXXZ @ 12 NONAME ; void COMASuplTriggeredStop::ConstructL(void)
+	?GetTOMASuplSupported3GPP2PosProtoVer@TOMASuplSupported3GPP2PosProtoVer@@QBEXAAGAAH1@Z @ 13 NONAME ; void TOMASuplSupported3GPP2PosProtoVer::GetTOMASuplSupported3GPP2PosProtoVer(unsigned short &, int &, int &) const
+	?SetSETNounce@COMASuplAuthRequest@@QAEHAAVTDesC8@@@Z @ 14 NONAME ; int COMASuplAuthRequest::SetSETNounce(class TDesC8 &)
+	?SetLocationId2@COMASuplPosInitVer2@@QAEXPAVCOMASuplLocationIdVer2@@@Z @ 15 NONAME ; void COMASuplPosInitVer2::SetLocationId2(class COMASuplLocationIdVer2 *)
+	?GetThirdParty@COMASuplTriggeredStart@@QBEXAAPAVCOMASuplThirdPartyIds@@@Z @ 16 NONAME ; void COMASuplTriggeredStart::GetThirdParty(class COMASuplThirdPartyIds * &) const
+	?GetPosMethod@COMASuplTriggeredResponse@@QBEXAAW4TOMASuplPosMethod@@@Z @ 17 NONAME ; void COMASuplTriggeredResponse::GetPosMethod(enum TOMASuplPosMethod &) const
+	?GetQuasiRealTime@TOMASuplReportMode@@QBEXAAH@Z @ 18 NONAME ; void TOMASuplReportMode::GetQuasiRealTime(int &) const
+	??0TOMASuplPosProtocolVersion3GPP2@@QAE@XZ @ 19 NONAME ; TOMASuplPosProtocolVersion3GPP2::TOMASuplPosProtocolVersion3GPP2(void)
+	?GetTOMASuplVer2ProtocolExt@TOMASuplVer2ProtocolExt@@QBEXAAVTOMASuplPosProtocolVersion@@0AAVTOMASuplPosProtocolVersion3GPP2@@@Z @ 20 NONAME ; void TOMASuplVer2ProtocolExt::GetTOMASuplVer2ProtocolExt(class TOMASuplPosProtocolVersion &, class TOMASuplPosProtocolVersion &, class TOMASuplPosProtocolVersion3GPP2 &) const
+	?GetTimeWindow@TOMASuplTimeWindow@@QAEHAAJ0@Z @ 21 NONAME ; int TOMASuplTimeWindow::GetTimeWindow(long &, long &)
+	??1COMASuplPos@@UAE@XZ @ 22 NONAME ; COMASuplPos::~COMASuplPos(void)
+	?SetRepPos@TOMASuplBatchRepType@@QAEXH@Z @ 23 NONAME ; void TOMASuplBatchRepType::SetRepPos(int)
+	?NewL@COMASuplVer2SuplInitExtn@@SAPAV1@XZ @ 24 NONAME ; class COMASuplVer2SuplInitExtn * COMASuplVer2SuplInitExtn::NewL(void)
+	?Delay@TOMASuplQop@@QBEHAAH@Z @ 25 NONAME ; int TOMASuplQop::Delay(int &) const
+	?SetPeriodicTrigger@TOMASuplServiceSupported@@QAEXH@Z @ 26 NONAME ; void TOMASuplServiceSupported::SetPeriodicTrigger(int)
+	?SetMaxNumberPeriodicSessions@TOMASuplSessionCapabilities@@QAEXC@Z @ 27 NONAME ; void TOMASuplSessionCapabilities::SetMaxNumberPeriodicSessions(signed char)
+	?SetBatchReportMode@TOMASuplReportingCap@@QAEXVTOMASuplBatchReportMode@@@Z @ 28 NONAME ; void TOMASuplReportingCap::SetBatchReportMode(class TOMASuplBatchReportMode)
+	?NewL@COMASuplThirdPartyIds@@SAPAV1@XZ @ 29 NONAME ; class COMASuplThirdPartyIds * COMASuplThirdPartyIds::NewL(void)
+	?SetLocationData@TOMASuplReportedLocation@@QAEXVTOMASuplLocationData@@@Z @ 30 NONAME ; void TOMASuplReportedLocation::SetLocationData(class TOMASuplLocationData)
+	?Version@COMASuplAsnHandlerBase@@QBEHXZ @ 31 NONAME ; int COMASuplAsnHandlerBase::Version(void) const
+	?SetMessageLength@COMASuplAsnMessageBase@@QAEXH@Z @ 32 NONAME ; void COMASuplAsnMessageBase::SetMessageLength(int)
+	?CloneL@COMASuplMultipleLocIds@@QAEPAV1@XZ @ 33 NONAME ; class COMASuplMultipleLocIds * COMASuplMultipleLocIds::CloneL(void)
+	?SetProtParams@TOMASuplProtectionLevel@@QAEXVTOMASuplBasicProtectionParams@@@Z @ 34 NONAME ; void TOMASuplProtectionLevel::SetProtParams(class TOMASuplBasicProtectionParams)
+	?SetMutipleLocId@COMASuplReportData@@QAEXPAVCOMASuplMultipleLocIds@@@Z @ 35 NONAME ; void COMASuplReportData::SetMutipleLocId(class COMASuplMultipleLocIds *)
+	?SetHSLPAddress@COMASuplVer2SuplInitExtn@@QAEXPAVCOMASuplSLPAddress@@@Z @ 36 NONAME ; void COMASuplVer2SuplInitExtn::SetHSLPAddress(class COMASuplSLPAddress *)
+	??1COMASuplEndVer2@@UAE@XZ @ 37 NONAME ; COMASuplEndVer2::~COMASuplEndVer2(void)
+	?SetSuplSETSessionIDIMSI@COMASuplSETSessionID@@QAEXHABVTDesC8@@@Z @ 38 NONAME ; void COMASuplSETSessionID::SetSuplSETSessionIDIMSI(int, class TDesC8 const &)
+	??0COMASuplLocationIdVer2@@AAE@XZ @ 39 NONAME ; COMASuplLocationIdVer2::COMASuplLocationIdVer2(void)
+	?GetHistoricRep@COMASuplVer2SuplInitExtn@@QAEHAAVTOMASuplHistoricReporting@@@Z @ 40 NONAME ; int COMASuplVer2SuplInitExtn::GetHistoricRep(class TOMASuplHistoricReporting &)
+	?SetNonServing@TOMASuplSuppNetworkInformation@@QAEXH@Z @ 41 NONAME ; void TOMASuplSuppNetworkInformation::SetNonServing(int)
+	?SetSuplTriggeredStart@COMASuplTriggeredStart@@QAEXPAVCOMASuplSETCapabilitiesVer2@@PAVCOMASuplLocationIdVer2@@H@Z @ 42 NONAME ; void COMASuplTriggeredStart::SetSuplTriggeredStart(class COMASuplSETCapabilitiesVer2 *, class COMASuplLocationIdVer2 *, int)
+	?KeyIdentity3@COMASuplAuthResponse@@QBEHAAVTDes8@@@Z @ 43 NONAME ; int COMASuplAuthResponse::KeyIdentity3(class TDes8 &) const
+	?NewL@COMASuplAsnHandlerBase@@SAPAV1@ABH@Z @ 44 NONAME ; class COMASuplAsnHandlerBase * COMASuplAsnHandlerBase::NewL(int const &)
+	?GetMaxNumberTriggeredSessions@TOMASuplSessionCapabilities@@QBEHAAC@Z @ 45 NONAME ; int TOMASuplSessionCapabilities::GetMaxNumberTriggeredSessions(signed char &) const
+	?GetSupWCDMAInfo@TOMASuplSuppNetworkInformation@@QAEHAAVTOMASuplSuppWCDMAInfo@@@Z @ 46 NONAME ; int TOMASuplSuppNetworkInformation::GetSupWCDMAInfo(class TOMASuplSuppWCDMAInfo &)
+	??0TOMASuplReportingCap@@QAE@XZ @ 47 NONAME ; TOMASuplReportingCap::TOMASuplReportingCap(void)
+	?GetVer2PosProtocolExtn@TOMASuplPosProtocol2@@QBEHAAVTOMASuplVer2ProtocolExt@@@Z @ 48 NONAME ; int TOMASuplPosProtocol2::GetVer2PosProtocolExtn(class TOMASuplVer2ProtocolExt &) const
+	?SetSLPSessionID@COMASuplSessionID@@QAEXPAVCOMASuplSLPSessionID@@@Z @ 49 NONAME ; void COMASuplSessionID::SetSLPSessionID(class COMASuplSLPSessionID *)
+	?SetReportMode@TOMASuplReportingCap@@QAEXVTOMASuplReportMode@@@Z @ 50 NONAME ; void TOMASuplReportingCap::SetReportMode(class TOMASuplReportMode)
+	?NewL@COMASuplTriggeredStart@@SAPAV1@XZ @ 51 NONAME ; class COMASuplTriggeredStart * COMASuplTriggeredStart::NewL(void)
+	?SLPAddress@COMASuplInit@@QBEHAAPAVCOMASuplSLPAddress@@@Z @ 52 NONAME ; int COMASuplInit::SLPAddress(class COMASuplSLPAddress * &) const
+	?SuplLocationId@COMASuplLocationId@@QBEHAAPAVCOMASuplGSMCellInfo@@AAW4TOMASuplStatus@1@@Z @ 53 NONAME ; int COMASuplLocationId::SuplLocationId(class COMASuplGSMCellInfo * &, enum COMASuplLocationId::TOMASuplStatus &) const
+	?SetWCDMA@TOMASuplSuppNetworkInformation@@QAEXH@Z @ 54 NONAME ; void TOMASuplSuppNetworkInformation::SetWCDMA(int)
+	?SetSuplSLPSessionID@COMASuplSLPSessionID@@QAEXABVTDesC8@@PAVCOMASuplSLPAddress@@@Z @ 55 NONAME ; void COMASuplSLPSessionID::SetSuplSLPSessionID(class TDesC8 const &, class COMASuplSLPAddress *)
+	?ConstructL@COMASuplStartVer2@@IAEXXZ @ 56 NONAME ; void COMASuplStartVer2::ConstructL(void)
+	?Clone@COMASuplTriggeredResponse@@UAEXPBVCOMASuplAsnMessageBase@@AAH@Z @ 57 NONAME ; void COMASuplTriggeredResponse::Clone(class COMASuplAsnMessageBase const *, int &)
+	?NewL@COMASuplEndVer2@@SAPAV1@XZ @ 58 NONAME ; class COMASuplEndVer2 * COMASuplEndVer2::NewL(void)
+	?Clone@COMASuplPosInitVer2@@UAEXPBVCOMASuplAsnMessageBase@@AAH@Z @ 59 NONAME ; void COMASuplPosInitVer2::Clone(class COMASuplAsnMessageBase const *, int &)
+	??1COMASuplSETSessionID@@UAE@XZ @ 60 NONAME ; COMASuplSETSessionID::~COMASuplSETSessionID(void)
+	??0COMASuplAsnHandlerBase@@QAE@XZ @ 61 NONAME ; COMASuplAsnHandlerBase::COMASuplAsnHandlerBase(void)
+	?NewL@COMASuplReportData@@SAPAV1@XZ @ 62 NONAME ; class COMASuplReportData * COMASuplReportData::NewL(void)
+	?StatusCode@COMASuplEnd@@QBEHAAW4TOMASuplStatusCode@1@@Z @ 63 NONAME ; int COMASuplEnd::StatusCode(enum COMASuplEnd::TOMASuplStatusCode &) const
+	?SetSuplSETSessionIDIPv4@COMASuplSETSessionID@@QAEXHABVTDesC8@@@Z @ 64 NONAME ; void COMASuplSETSessionID::SetSuplSETSessionIDIPv4(int, class TDesC8 const &)
+	??1COMASuplStart@@UAE@XZ @ 65 NONAME ; COMASuplStart::~COMASuplStart(void)
+	??0COMASuplStartVer2@@IAE@XZ @ 66 NONAME ; COMASuplStartVer2::COMASuplStartVer2(void)
+	?Notification@COMASuplInit@@QBEHAAPAVCOMASuplNotification@@@Z @ 67 NONAME ; int COMASuplInit::Notification(class COMASuplNotification * &) const
+	?SetMRL@TOMASuplSuppWCDMAInfo@@QAEXH@Z @ 68 NONAME ; void TOMASuplSuppWCDMAInfo::SetMRL(int)
+	?GetBasicMac@TOMASuplBasicProtectionParams@@QAEXAAVTDes8@@@Z @ 69 NONAME ; void TOMASuplBasicProtectionParams::GetBasicMac(class TDes8 &)
+	?SLPAddress@COMASuplResponse@@QBEHAAPAVCOMASuplSLPAddress@@@Z @ 70 NONAME ; int COMASuplResponse::SLPAddress(class COMASuplSLPAddress * &) const
+	??1COMASuplLocationIdVer2@@UAE@XZ @ 71 NONAME ; COMASuplLocationIdVer2::~COMASuplLocationIdVer2(void)
+	?SetProtLevel@COMASuplVer2SuplInitExtn@@QAEXVTOMASuplProtectionLevel@@@Z @ 72 NONAME ; void COMASuplVer2SuplInitExtn::SetProtLevel(class TOMASuplProtectionLevel)
+	?GetGSM@TOMASuplSuppNetworkInformation@@QAEHXZ @ 73 NONAME ; int TOMASuplSuppNetworkInformation::GetGSM(void)
+	?ConstructL@COMASuplResponseV2Extn@@AAEXXZ @ 74 NONAME ; void COMASuplResponseV2Extn::ConstructL(void)
+	?Clone@COMASuplAuthResponse@@UAEXPBVCOMASuplAsnMessageBase@@AAH@Z @ 75 NONAME ; void COMASuplAuthResponse::Clone(class COMASuplAsnMessageBase const *, int &)
+	?SetSuplSETIDType@COMASuplSETSessionID@@QAEXW4TSuplSETIDType@1@@Z @ 76 NONAME ; void COMASuplSETSessionID::SetSuplSETIDType(enum COMASuplSETSessionID::TSuplSETIDType)
+	?NewL@COMASuplLocationId@@SAPAV1@XZ @ 77 NONAME ; class COMASuplLocationId * COMASuplLocationId::NewL(void)
+	?GetSupNetworkInfo@COMASuplResponseV2Extn@@QAEXAAVTOMASuplSuppNetworkInformation@@@Z @ 78 NONAME ; void COMASuplResponseV2Extn::GetSupNetworkInfo(class TOMASuplSuppNetworkInformation &)
+	?GetSuplReportingCap@TOMAServiceCapabilities@@QBEHAAVTOMASuplReportingCap@@@Z @ 79 NONAME ; int TOMAServiceCapabilities::GetSuplReportingCap(class TOMASuplReportingCap &) const
+	?GetTOMASuplPosProtocolVersion3GPP2@TOMASuplPosProtocolVersion3GPP2@@QBEXAAV?$RArray@VTOMASuplSupported3GPP2PosProtoVer@@@@@Z @ 80 NONAME ; void TOMASuplPosProtocolVersion3GPP2::GetTOMASuplPosProtocolVersion3GPP2(class RArray<class TOMASuplSupported3GPP2PosProtoVer> &) const
+	?SetVer2SuplInitExtn@COMASuplInitVer2@@QAEXPAVCOMASuplVer2SuplInitExtn@@@Z @ 81 NONAME ; void COMASuplInitVer2::SetVer2SuplInitExtn(class COMASuplVer2SuplInitExtn *)
+	?GetPosMethod@COMASuplPositionData@@QBEXAAW4TOMASuplPosMethod@@@Z @ 82 NONAME ; void COMASuplPositionData::GetPosMethod(enum TOMASuplPosMethod &) const
+	?ConstructL@COMASuplTriggeredStart@@IAEXXZ @ 83 NONAME ; void COMASuplTriggeredStart::ConstructL(void)
+	??0COMASuplAuthRequest@@IAE@XZ @ 84 NONAME ; COMASuplAuthRequest::COMASuplAuthRequest(void)
+	??0COMASuplInitVer2@@IAE@XZ @ 85 NONAME ; COMASuplInitVer2::COMASuplInitVer2(void)
+	?CloneBaseL@COMASuplAsnMessageBase@@QAEXPBV1@AAH@Z @ 86 NONAME ; void COMASuplAsnMessageBase::CloneBaseL(class COMASuplAsnMessageBase const *, int &)
+	?SetUTRANGANSSRefTime@TOMASuplSuppNetworkInformation@@QAEXH@Z @ 87 NONAME ; void TOMASuplSuppNetworkInformation::SetUTRANGANSSRefTime(int)
+	?SetReportMode@COMASuplTriggeredResponse@@QAEXVTOMASuplReportingMode@@@Z @ 88 NONAME ; void COMASuplTriggeredResponse::SetReportMode(class TOMASuplReportingMode)
+	?SetSessionList@COMASuplReport@@QAEXABV?$RPointerArray@VCOMASuplSessionID@@@@@Z @ 89 NONAME ; void COMASuplReport::SetSessionList(class RPointerArray<class COMASuplSessionID> const &)
+	?Clone@COMASuplStartVer2@@UAEXPBVCOMASuplAsnMessageBase@@AAH@Z @ 90 NONAME ; void COMASuplStartVer2::Clone(class COMASuplAsnMessageBase const *, int &)
+	?SetSuplSPCSetKey@TOMASuplSPCSETKey@@QAEXAAVTDes8@@@Z @ 91 NONAME ; void TOMASuplSPCSETKey::SetSuplSPCSetKey(class TDes8 &)
+	?ConstructL@COMASuplPos@@IAEXXZ @ 92 NONAME ; void COMASuplPos::ConstructL(void)
+	?SetSupNetworkInfo@COMASuplTriggeredResponse@@QAEXVTOMASuplSuppNetworkInformation@@@Z @ 93 NONAME ; void COMASuplTriggeredResponse::SetSupNetworkInfo(class TOMASuplSuppNetworkInformation)
+	?SetEncodingType@COMASuplNotification@@QAEXW4TOMASuplEncodingType@1@@Z @ 94 NONAME ; void COMASuplNotification::SetEncodingType(enum COMASuplNotification::TOMASuplEncodingType)
+	?SetBatchRepCond@TOMASuplReportingMode@@QAEXVTOMASuplBatchRepConditions@@@Z @ 95 NONAME ; void TOMASuplReportingMode::SetBatchRepCond(class TOMASuplBatchRepConditions)
+	?SetMinTimeInt@TOMASuplReportingCriteria@@QAEXJ@Z @ 96 NONAME ; void TOMASuplReportingCriteria::SetMinTimeInt(long)
+	?GetMRL@TOMASuplSuppWCDMAInfo@@QAEHXZ @ 97 NONAME ; int TOMASuplSuppWCDMAInfo::GetMRL(void)
+	??0COMASuplStart@@IAE@XZ @ 98 NONAME ; COMASuplStart::COMASuplStart(void)
+	?SuplCellInfo@COMASuplCellInfo@@QBEXAAH00@Z @ 99 NONAME ; void COMASuplCellInfo::SuplCellInfo(int &, int &, int &) const
+	?GetSPCSETKey@COMASuplResponseV2Extn@@QAEXAAVTOMASuplSPCSETKey@@@Z @ 100 NONAME ; void COMASuplResponseV2Extn::GetSPCSETKey(class TOMASuplSPCSETKey &)
+	??1COMASuplVer2SuplInitExtn@@UAE@XZ @ 101 NONAME ; COMASuplVer2SuplInitExtn::~COMASuplVer2SuplInitExtn(void)
+	??0TOMASuplSessionCapabilities@@QAE@XZ @ 102 NONAME ; TOMASuplSessionCapabilities::TOMASuplSessionCapabilities(void)
+	?SetVer@COMASuplTriggeredStart@@QAEXAAVTDes8@@@Z @ 103 NONAME ; void COMASuplTriggeredStart::SetVer(class TDes8 &)
+	??0TOMASuplVer2ProtocolExt@@QAE@XZ @ 104 NONAME ; TOMASuplVer2ProtocolExt::TOMASuplVer2ProtocolExt(void)
+	?SetMaxNumberTriggeredSessions@TOMASuplSessionCapabilities@@QAEXC@Z @ 105 NONAME ; void TOMASuplSessionCapabilities::SetMaxNumberTriggeredSessions(signed char)
+	?GetCauseCode@COMASuplTriggeredStart@@QBEHAAW4TOMASuplTrigStartCauseCode@1@@Z @ 106 NONAME ; int COMASuplTriggeredStart::GetCauseCode(enum COMASuplTriggeredStart::TOMASuplTrigStartCauseCode &) const
+	?SetIPv6Address@COMASuplSLPAddress@@QAEXABVTDesC8@@@Z @ 107 NONAME ; void COMASuplSLPAddress::SetIPv6Address(class TDesC8 const &)
+	?SetSipUri@COMASuplThirdpartyId@@QAEXABVTDesC8@@@Z @ 108 NONAME ; void COMASuplThirdpartyId::SetSipUri(class TDesC8 const &)
+	?Position@COMASuplEnd@@QBEHAAPAVCOMASuplPosition@@@Z @ 109 NONAME ; int COMASuplEnd::Position(class COMASuplPosition * &) const
+	?GetECellInfo@COMASuplLocationIdData@@QBEHAAVTOMASuplECellInfo@@@Z @ 110 NONAME ; int COMASuplLocationIdData::GetECellInfo(class TOMASuplECellInfo &) const
+	?NewL@COMASuplThirdpartyId@@SAPAV1@XZ @ 111 NONAME ; class COMASuplThirdpartyId * COMASuplThirdpartyId::NewL(void)
+	?SetThirdParty@COMASuplTriggeredStart@@QAEXPAVCOMASuplThirdPartyIds@@@Z @ 112 NONAME ; void COMASuplTriggeredStart::SetThirdParty(class COMASuplThirdPartyIds *)
+	?GetHistoric@TOMASuplSuppNetworkInformation@@QAEHXZ @ 113 NONAME ; int TOMASuplSuppNetworkInformation::GetHistoric(void)
+	?AddNextLocIdData@COMASuplMultipleLocIds@@QAEXPAVCOMASuplLocationIdData@@@Z @ 114 NONAME ; void COMASuplMultipleLocIds::AddNextLocIdData(class COMASuplLocationIdData *)
+	?SetSPCTId@COMASuplResponseV2Extn@@QAEXPAVCOMASuplSPCTID@@@Z @ 115 NONAME ; void COMASuplResponseV2Extn::SetSPCTId(class COMASuplSPCTID *)
+	?Clone@COMASuplTriggeredStop@@UAEXPBVCOMASuplAsnMessageBase@@AAH@Z @ 116 NONAME ; void COMASuplTriggeredStop::Clone(class COMASuplAsnMessageBase const *, int &)
+	?GetTimeStamp@COMASuplLocationIdData@@QBEXAAJ@Z @ 117 NONAME ; void COMASuplLocationIdData::GetTimeStamp(long &) const
+	?SetSLPAddressType@COMASuplSLPAddress@@QAEXW4TSuplSLPAddressType@1@@Z @ 118 NONAME ; void COMASuplSLPAddress::SetSLPAddressType(enum COMASuplSLPAddress::TSuplSLPAddressType)
+	??0TOMAVer2SetCapExtn@@QAE@XZ @ 119 NONAME ; TOMAVer2SetCapExtn::TOMAVer2SetCapExtn(void)
+	?GetThirdParty@COMASuplVer2SuplStartExtn@@QBEXAAPAVCOMASuplThirdPartyIds@@@Z @ 120 NONAME ; void COMASuplVer2SuplStartExtn::GetThirdParty(class COMASuplThirdPartyIds * &) const
+	?NewL@COMASuplResponseV2Extn@@SAPAV1@XZ @ 121 NONAME ; class COMASuplResponseV2Extn * COMASuplResponseV2Extn::NewL(void)
+	?GetPeriodicParams@TOMASuplTriggerParams@@QBEHAAVTOMASuplPeriodicParams@@@Z @ 122 NONAME ; int TOMASuplTriggerParams::GetPeriodicParams(class TOMASuplPeriodicParams &) const
+	??0TOMASuplReportingCriteria@@QAE@XZ @ 123 NONAME ; TOMASuplReportingCriteria::TOMASuplReportingCriteria(void)
+	?SetSuplPos@COMASuplPos@@QAEXPAVCOMASuplPosPayload@@@Z @ 124 NONAME ; void COMASuplPos::SetSuplPos(class COMASuplPosPayload *)
+	?ConstructL@COMASuplInit@@IAEXXZ @ 125 NONAME ; void COMASuplInit::ConstructL(void)
+	?SetLocationAccuracy@TOMASuplLocationData@@QAEXH@Z @ 126 NONAME ; void TOMASuplLocationData::SetLocationAccuracy(int)
+	??0COMASuplGSMCellInfo@@AAE@XZ @ 127 NONAME ; COMASuplGSMCellInfo::COMASuplGSMCellInfo(void)
+	?GetQop@COMASuplTriggeredStart@@QBEHAAVTOMASuplQop@@@Z @ 128 NONAME ; int COMASuplTriggeredStart::GetQop(class TOMASuplQop &) const
+	?SetSuplLocationId@COMASuplLocationId@@QAEXPAVCOMASuplGSMCellInfo@@AAW4TOMASuplStatus@1@@Z @ 129 NONAME ; void COMASuplLocationId::SetSuplLocationId(class COMASuplGSMCellInfo *, enum COMASuplLocationId::TOMASuplStatus &)
+	??1COMASuplInitVer2@@UAE@XZ @ 130 NONAME ; COMASuplInitVer2::~COMASuplInitVer2(void)
+	??0TOMASuplVer2PosTechExt@@QAE@XZ @ 131 NONAME ; TOMASuplVer2PosTechExt::TOMASuplVer2PosTechExt(void)
+	?GetResultCode@COMASuplReportData@@QBEXAAW4TOMASuplReportDataResultCode@1@@Z @ 132 NONAME ; void COMASuplReportData::GetResultCode(enum COMASuplReportData::TOMASuplReportDataResultCode &) const
+	?SetAreaEventTrigger@TOMASuplServiceSupported@@QAEXH@Z @ 133 NONAME ; void TOMASuplServiceSupported::SetAreaEventTrigger(int)
+	??0TOMASuplBatchReportMode@@QAE@XZ @ 134 NONAME ; TOMASuplBatchReportMode::TOMASuplBatchReportMode(void)
+	?CloneL@COMASuplPositionData@@QAEPAV1@XZ @ 135 NONAME ; class COMASuplPositionData * COMASuplPositionData::CloneL(void)
+	?SetTimeWindow@TOMASuplReportingCriteria@@QAEXVTOMASuplTimeWindow@@@Z @ 136 NONAME ; void TOMASuplReportingCriteria::SetTimeWindow(class TOMASuplTimeWindow)
+	?SetURI@COMASuplThirdpartyId@@QAEXABVTDesC8@@@Z @ 137 NONAME ; void COMASuplThirdpartyId::SetURI(class TDesC8 const &)
+	?SetCauseCode@COMASuplTriggeredStart@@QAEXW4TOMASuplTrigStartCauseCode@1@@Z @ 138 NONAME ; void COMASuplTriggeredStart::SetCauseCode(enum COMASuplTriggeredStart::TOMASuplTrigStartCauseCode)
+	?NewL@COMASuplNotificationExtnV2@@SAPAV1@XZ @ 139 NONAME ; class COMASuplNotificationExtnV2 * COMASuplNotificationExtnV2::NewL(void)
+	?SuplGSMCellInfo@COMASuplGSMCellInfo@@QBEXAAH000@Z @ 140 NONAME ; void COMASuplGSMCellInfo::SuplGSMCellInfo(int &, int &, int &, int &) const
+	??0COMASuplResponseV2Extn@@AAE@XZ @ 141 NONAME ; COMASuplResponseV2Extn::COMASuplResponseV2Extn(void)
+	?NewL@COMASuplSETCapabilitiesVer2@@SAPAV1@XZ @ 142 NONAME ; class COMASuplSETCapabilitiesVer2 * COMASuplSETCapabilitiesVer2::NewL(void)
+	??0TOMASuplTriggerParams@@QAE@XZ @ 143 NONAME ; TOMASuplTriggerParams::TOMASuplTriggerParams(void)
+	?GetLocationId@COMASuplLocationIdData@@QBEXAAPAVCOMASuplLocationIdVer2@@@Z @ 144 NONAME ; void COMASuplLocationIdData::GetLocationId(class COMASuplLocationIdVer2 * &) const
+	?GetNonServing@TOMASuplSuppNetworkInformation@@QAEHXZ @ 145 NONAME ; int TOMASuplSuppNetworkInformation::GetNonServing(void)
+	?GetLogicalName@COMASuplThirdpartyId@@QAEXAAVTDes16@@@Z @ 146 NONAME ; void COMASuplThirdpartyId::GetLogicalName(class TDes16 &)
+	?SetSETCapabilities@COMASuplEndVer2@@QAEXPAVCOMASuplSETCapabilities@@@Z @ 147 NONAME ; void COMASuplEndVer2::SetSETCapabilities(class COMASuplSETCapabilities *)
+	?NewL@COMASuplAuthRequest@@SAPAV1@XZ @ 148 NONAME ; class COMASuplAuthRequest * COMASuplAuthRequest::NewL(void)
+	?GetUTRANGPSRefTime@TOMASuplSuppNetworkInformation@@QAEHXZ @ 149 NONAME ; int TOMASuplSuppNetworkInformation::GetUTRANGPSRefTime(void)
+	?GetSuplStatusCode@COMASuplTriggeredStop@@QBEHAAW4TOMASuplStatusCode@COMASuplEnd@@@Z @ 150 NONAME ; int COMASuplTriggeredStop::GetSuplStatusCode(enum COMASuplEnd::TOMASuplStatusCode &) const
+	?SetAreaEventParams@TOMASuplTriggerParams@@QAEXUTOMASuplAreaEventParams@@@Z @ 151 NONAME ; void TOMASuplTriggerParams::SetAreaEventParams(struct TOMASuplAreaEventParams)
+	?GetEventTriggerCapabilities@TOMAServiceCapabilities@@QBEHAAVTOMASuplEventTriggerCapabilities@@@Z @ 152 NONAME ; int TOMAServiceCapabilities::GetEventTriggerCapabilities(class TOMASuplEventTriggerCapabilities &) const
+	??0COMASuplPosInit@@IAE@XZ @ 153 NONAME ; COMASuplPosInit::COMASuplPosInit(void)
+	?SetSuplPosInit@COMASuplPosInit@@QAEXPAVCOMASuplSETCapabilities@@PAVCOMASuplLocationId@@H@Z @ 154 NONAME ; void COMASuplPosInit::SetSuplPosInit(class COMASuplSETCapabilities *, class COMASuplLocationId *, int)
+	?GetMinThirdPartyId@COMASuplThirdpartyId@@QAEXAAVTDes8@@@Z @ 155 NONAME ; void COMASuplThirdpartyId::GetMinThirdPartyId(class TDes8 &)
+	??0COMASuplTriggeredStart@@IAE@XZ @ 156 NONAME ; COMASuplTriggeredStart::COMASuplTriggeredStart(void)
+	?GetReportingCaps@COMASuplTriggeredStart@@QBEHAAVTOMASuplReportingCap@@@Z @ 157 NONAME ; int COMASuplTriggeredStart::GetReportingCaps(class TOMASuplReportingCap &) const
+	?SetResponseV2Extn@COMASuplResponseVer2@@QAEXPAVCOMASuplResponseV2Extn@@@Z @ 158 NONAME ; void COMASuplResponseVer2::SetResponseV2Extn(class COMASuplResponseV2Extn *)
+	?ImplementationUid@COMASuplAsnHandlerBase@@QBE?AVTUid@@XZ @ 159 NONAME ; class TUid COMASuplAsnHandlerBase::ImplementationUid(void) const
+	??0TOMASuplPosTechnology2@@QAE@XZ @ 160 NONAME ; TOMASuplPosTechnology2::TOMASuplPosTechnology2(void)
+	?MaxLocationAge@TOMASuplQop@@QBEHAAH@Z @ 161 NONAME ; int TOMASuplQop::MaxLocationAge(int &) const
+	?SetSuplStart@COMASuplStartVer2@@QAEXPAVCOMASuplSETCapabilitiesVer2@@PAVCOMASuplLocationIdVer2@@H@Z @ 162 NONAME ; void COMASuplStartVer2::SetSuplStart(class COMASuplSETCapabilitiesVer2 *, class COMASuplLocationIdVer2 *, int)
+	?SetReportDataList@COMASuplReport@@QAEXABV?$RPointerArray@VCOMASuplReportData@@@@@Z @ 163 NONAME ; void COMASuplReport::SetReportDataList(class RPointerArray<class COMASuplReportData> const &)
+	?GetCDMA@TOMASuplSuppNetworkInformation@@QAEHXZ @ 164 NONAME ; int TOMASuplSuppNetworkInformation::GetCDMA(void)
+	?ConstructL@COMASuplSETCapabilitiesVer2@@IAEXXZ @ 165 NONAME ; void COMASuplSETCapabilitiesVer2::ConstructL(void)
+	?ClientName@COMASuplNotification@@QBEHAAPAVHBufC8@@AAW4TOMASuplFormatIndicator@1@@Z @ 166 NONAME ; int COMASuplNotification::ClientName(class HBufC8 * &, enum COMASuplNotification::TOMASuplFormatIndicator &) const
+	??0COMASuplPosInitVer2@@IAE@XZ @ 167 NONAME ; COMASuplPosInitVer2::COMASuplPosInitVer2(void)
+	?SetFqdn@COMASuplSLPAddress@@QAEXPAVHBufC8@@@Z @ 168 NONAME ; void COMASuplSLPAddress::SetFqdn(class HBufC8 *)
+	?SetVer2CellInfo@COMASuplLocationIdVer2@@QAEXVTOMASuplVer2CellInfoExtn@@@Z @ 169 NONAME ; void COMASuplLocationIdVer2::SetVer2CellInfo(class TOMASuplVer2CellInfoExtn)
+	?GetLocationData@TOMASuplReportedLocation@@QBEXAAVTOMASuplLocationData@@@Z @ 170 NONAME ; void TOMASuplReportedLocation::GetLocationData(class TOMASuplLocationData &) const
+	?GetPosData@COMASuplReportData@@QBEXAAPAVCOMASuplPositionData@@@Z @ 171 NONAME ; void COMASuplReportData::GetPosData(class COMASuplPositionData * &) const
+	?IPvAddress@COMASuplSLPAddress@@QBEHAAVTDes8@@@Z @ 172 NONAME ; int COMASuplSLPAddress::IPvAddress(class TDes8 &) const
+	??0TOMASuplSuppNetworkInformation@@QAE@XZ @ 173 NONAME ; TOMASuplSuppNetworkInformation::TOMASuplSuppNetworkInformation(void)
+	?ConstructL@COMASuplAuthResponse@@IAEXXZ @ 174 NONAME ; void COMASuplAuthResponse::ConstructL(void)
+	?GetLocationAccuracy@TOMASuplLocationData@@QBEHAAH@Z @ 175 NONAME ; int TOMASuplLocationData::GetLocationAccuracy(int &) const
+	?SuplPosPayload@COMASuplPosInit@@QBEHAAPAVCOMASuplPosPayload@@@Z @ 176 NONAME ; int COMASuplPosInit::SuplPosPayload(class COMASuplPosPayload * &) const
+	??1COMASuplResponseV2Extn@@UAE@XZ @ 177 NONAME ; COMASuplResponseV2Extn::~COMASuplResponseV2Extn(void)
+	?MessageLength@COMASuplAsnMessageBase@@QBEHXZ @ 178 NONAME ; int COMASuplAsnMessageBase::MessageLength(void) const
+	?SetSuplInit@COMASuplInit@@QAEXW4TOMASuplPosMethod@@W4TOMASuplSLPMode@1@@Z @ 179 NONAME ; void COMASuplInit::SetSuplInit(enum TOMASuplPosMethod, enum COMASuplInit::TOMASuplSLPMode)
+	?SetPosition@COMASuplPosInit@@QAEXPAVCOMASuplPosition@@@Z @ 180 NONAME ; void COMASuplPosInit::SetPosition(class COMASuplPosition *)
+	?SetSuplSessionCapabilities@TOMAServiceCapabilities@@QAEXVTOMASuplSessionCapabilities@@@Z @ 181 NONAME ; void TOMAServiceCapabilities::SetSuplSessionCapabilities(class TOMASuplSessionCapabilities)
+	?GetRepCriteria@TOMASuplHistoricReporting@@QAEHAAVTOMASuplReportingCriteria@@@Z @ 182 NONAME ; int TOMASuplHistoricReporting::GetRepCriteria(class TOMASuplReportingCriteria &)
+	?SetKeyIdentity3@COMASuplAuthResponse@@QAEHAAVTDesC8@@@Z @ 183 NONAME ; int COMASuplAuthResponse::SetKeyIdentity3(class TDesC8 &)
+	?SetProtLevel@TOMASuplProtectionLevel@@QAEXW4TOMASuplProtLevelType@1@@Z @ 184 NONAME ; void TOMASuplProtectionLevel::SetProtLevel(enum TOMASuplProtectionLevel::TOMASuplProtLevelType)
+	?SetFqdn@COMASuplSPCTID@@QAEXPAVHBufC8@@@Z @ 185 NONAME ; void COMASuplSPCTID::SetFqdn(class HBufC8 *)
+	?SetVer2SetCapExtn@COMASuplSETCapabilitiesVer2@@QAEXVTOMAVer2SetCapExtn@@@Z @ 186 NONAME ; void COMASuplSETCapabilitiesVer2::SetVer2SetCapExtn(class TOMAVer2SetCapExtn)
+	?GetTrigType@COMASuplVer2SuplInitExtn@@QAEHAAW4TOMASuplTrigType@COMASuplTriggeredStart@@@Z @ 187 NONAME ; int COMASuplVer2SuplInitExtn::GetTrigType(enum COMASuplTriggeredStart::TOMASuplTrigType &)
+	?CloneL@COMASuplLocationIdData@@QAEPAV1@XZ @ 188 NONAME ; class COMASuplLocationIdData * COMASuplLocationIdData::CloneL(void)
+	?SetRealTime@TOMASuplReportMode@@QAEXH@Z @ 189 NONAME ; void TOMASuplReportMode::SetRealTime(int)
+	?NewL@COMASuplSETSessionID@@SAPAV1@XZ @ 190 NONAME ; class COMASuplSETSessionID * COMASuplSETSessionID::NewL(void)
+	?SetVer@COMASuplPosInit@@QAEXAAVTDesC8@@@Z @ 191 NONAME ; void COMASuplPosInit::SetVer(class TDesC8 &)
+	?SetMaxLocationAge@TOMASuplQop@@QAEXH@Z @ 192 NONAME ; void TOMASuplQop::SetMaxLocationAge(int)
+	?CloneL@COMASuplSPCTID@@QAEPAV1@XZ @ 193 NONAME ; class COMASuplSPCTID * COMASuplSPCTID::CloneL(void)
+	??0TOMASuplSupported3GPP2PosProtoVer@@QAE@XZ @ 194 NONAME ; TOMASuplSupported3GPP2PosProtoVer::TOMASuplSupported3GPP2PosProtoVer(void)
+	??0TOMASuplTimeWindow@@QAE@XZ @ 195 NONAME ; TOMASuplTimeWindow::TOMASuplTimeWindow(void)
+	?SetQuasiRealTime@TOMASuplReportMode@@QAEXH@Z @ 196 NONAME ; void TOMASuplReportMode::SetQuasiRealTime(int)
+	?GrtMinTimeInt@TOMASuplReportingCriteria@@QAEJXZ @ 197 NONAME ; long TOMASuplReportingCriteria::GrtMinTimeInt(void)
+	?SetSuplQop@TOMASuplQop@@QAEXH@Z @ 198 NONAME ; void TOMASuplQop::SetSuplQop(int)
+	?SetSETSessionID@COMASuplSessionID@@QAEXPAVCOMASuplSETSessionID@@@Z @ 199 NONAME ; void COMASuplSessionID::SetSETSessionID(class COMASuplSETSessionID *)
+	?SetSuplLocationId@COMASuplLocationId@@QAEXPAVCOMASuplCellInfo@@AAW4TOMASuplStatus@1@@Z @ 200 NONAME ; void COMASuplLocationId::SetSuplLocationId(class COMASuplCellInfo *, enum COMASuplLocationId::TOMASuplStatus &)
+	?CloneL@COMASuplVer2SuplInitExtn@@QAEXPAV1@@Z @ 201 NONAME ; void COMASuplVer2SuplInitExtn::CloneL(class COMASuplVer2SuplInitExtn *)
+	?SuplLocationId@COMASuplLocationId@@QBEHAAPAVCOMASuplCellInfo@@AAW4TOMASuplStatus@1@@Z @ 202 NONAME ; int COMASuplLocationId::SuplLocationId(class COMASuplCellInfo * &, enum COMASuplLocationId::TOMASuplStatus &) const
+	?SetVer@COMASuplEnd@@QAEXAAVTDesC8@@@Z @ 203 NONAME ; void COMASuplEnd::SetVer(class TDesC8 &)
+	?GetTriggerType@COMASuplTriggeredStart@@QBEHAAW4TOMASuplTrigType@1@@Z @ 204 NONAME ; int COMASuplTriggeredStart::GetTriggerType(enum COMASuplTriggeredStart::TOMASuplTrigType &) const
+	?GetSPCLifetime@COMASuplResponseV2Extn@@QAEXAAC@Z @ 205 NONAME ; void COMASuplResponseV2Extn::GetSPCLifetime(signed char &)
+	?GetVer@COMASuplTriggeredStart@@QBEHAAVTDes8@@@Z @ 206 NONAME ; int COMASuplTriggeredStart::GetVer(class TDes8 &) const
+	?GetVer@COMASuplReport@@QBEHAAVTDes8@@@Z @ 207 NONAME ; int COMASuplReport::GetVer(class TDes8 &) const
+	?GetReportMode@COMASuplTriggeredResponse@@QBEHAAVTOMASuplReportingMode@@@Z @ 208 NONAME ; int COMASuplTriggeredResponse::GetReportMode(class TOMASuplReportingMode &) const
+	?ConstructL@COMASuplTriggeredResponse@@IAEXXZ @ 209 NONAME ; void COMASuplTriggeredResponse::ConstructL(void)
+	?SetRepMode@TOMASuplReportingMode@@QAEXW4TOMASuplRepMode@1@@Z @ 210 NONAME ; void TOMASuplReportingMode::SetRepMode(enum TOMASuplReportingMode::TOMASuplRepMode)
+	?NewL@COMASuplPosInit@@SAPAV1@XZ @ 211 NONAME ; class COMASuplPosInit * COMASuplPosInit::NewL(void)
+	?IsVer2SetCapExtnPresent@COMASuplSETCapabilitiesVer2@@QBEHXZ @ 212 NONAME ; int COMASuplSETCapabilitiesVer2::IsVer2SetCapExtnPresent(void) const
+	?SetSPCSETKey@COMASuplResponseV2Extn@@QAEXVTOMASuplSPCSETKey@@@Z @ 213 NONAME ; void COMASuplResponseV2Extn::SetSPCSETKey(class TOMASuplSPCSETKey)
+	?NetworkMode@TOMASuplECellInfo@@QBE?AW4TOMASuplNwMode@@XZ @ 214 NONAME ; enum TOMASuplNwMode TOMASuplECellInfo::NetworkMode(void) const
+	?GetFqdn@COMASuplSPCTID@@QBEHAAPAVHBufC8@@@Z @ 215 NONAME ; int COMASuplSPCTID::GetFqdn(class HBufC8 * &) const
+	?GetServingFlag@COMASuplLocationIdData@@QBEXAAH@Z @ 216 NONAME ; void COMASuplLocationIdData::GetServingFlag(int &) const
+	?NewL@COMASuplSLPAddress@@SAPAV1@XZ @ 217 NONAME ; class COMASuplSLPAddress * COMASuplSLPAddress::NewL(void)
+	?SetUTRANGPSRefTime@TOMASuplSuppNetworkInformation@@QAEXH@Z @ 218 NONAME ; void TOMASuplSuppNetworkInformation::SetUTRANGPSRefTime(int)
+	?SetAllowedRepType@TOMASuplHistoricReporting@@QAEXW4TOMASuplAllowedReportingType@1@@Z @ 219 NONAME ; void TOMASuplHistoricReporting::SetAllowedRepType(enum TOMASuplHistoricReporting::TOMASuplAllowedReportingType)
+	?GetBatchRepCond@TOMASuplReportingMode@@QAEXAAVTOMASuplBatchRepConditions@@@Z @ 220 NONAME ; void TOMASuplReportingMode::GetBatchRepCond(class TOMASuplBatchRepConditions &)
+	?SetVer2PosExtn@TOMASuplPosTechnology2@@QAEXVTOMASuplVer2PosTechExt@@@Z @ 221 NONAME ; void TOMASuplPosTechnology2::SetVer2PosExtn(class TOMASuplVer2PosTechExt)
+	?SuplCellInfoType@COMASuplLocationId@@QBE?AW4TOMASuplCellInfoType@1@XZ @ 222 NONAME ; enum COMASuplLocationId::TOMASuplCellInfoType COMASuplLocationId::SuplCellInfoType(void) const
+	?GetCellId@COMASuplLocationId@@QAEHXZ @ 223 NONAME ; int COMASuplLocationId::GetCellId(void)
+	??0COMASuplAuthResponse@@IAE@XZ @ 224 NONAME ; COMASuplAuthResponse::COMASuplAuthResponse(void)
+	?GetProtLevel@COMASuplVer2SuplInitExtn@@QAEHAAVTOMASuplProtectionLevel@@@Z @ 225 NONAME ; int COMASuplVer2SuplInitExtn::GetProtLevel(class TOMASuplProtectionLevel &)
+	??0COMASuplPos@@IAE@XZ @ 226 NONAME ; COMASuplPos::COMASuplPos(void)
+	?SuplStart@COMASuplStartVer2@@QBEXAAPAVCOMASuplSETCapabilitiesVer2@@AAPAVCOMASuplLocationIdVer2@@AAH@Z @ 227 NONAME ; void COMASuplStartVer2::SuplStart(class COMASuplSETCapabilitiesVer2 * &, class COMASuplLocationIdVer2 * &, int &) const
+	?SetTimeStamp@COMASuplLocationIdData@@QAEXJ@Z @ 228 NONAME ; void COMASuplLocationIdData::SetTimeStamp(long)
+	??1COMASuplSPCTID@@UAE@XZ @ 229 NONAME ; COMASuplSPCTID::~COMASuplSPCTID(void)
+	?ConstructL@COMASuplEndVer2@@IAEXXZ @ 230 NONAME ; void COMASuplEndVer2::ConstructL(void)
+	?Clone@COMASuplInit@@UAEXPBVCOMASuplAsnMessageBase@@AAH@Z @ 231 NONAME ; void COMASuplInit::Clone(class COMASuplAsnMessageBase const *, int &)
+	?EncodeL@COMASuplAsnMessageBase@@UAEPAVHBufC8@@AAH@Z @ 232 NONAME ; class HBufC8 * COMASuplAsnMessageBase::EncodeL(int &)
+	?NewL@COMASuplPosInitVer2@@SAPAV1@XZ @ 233 NONAME ; class COMASuplPosInitVer2 * COMASuplPosInitVer2::NewL(void)
+	?SetSLPAddress@COMASuplResponse@@QAEXPAVCOMASuplSLPAddress@@@Z @ 234 NONAME ; void COMASuplResponse::SetSLPAddress(class COMASuplSLPAddress *)
+	?GetSuplSPCSetKey@TOMASuplSPCSETKey@@QBEHAAVTDes8@@@Z @ 235 NONAME ; int TOMASuplSPCSETKey::GetSuplSPCSetKey(class TDes8 &) const
+	?GetCellInfoExtnType@TOMASuplVer2CellInfoExtn@@QBEXAAW4TOMASuplCellInfoExtnType@1@@Z @ 236 NONAME ; void TOMASuplVer2CellInfoExtn::GetCellInfoExtnType(enum TOMASuplVer2CellInfoExtn::TOMASuplCellInfoExtnType &) const
+	?NewL@COMASuplInit@@SAPAV1@XZ @ 237 NONAME ; class COMASuplInit * COMASuplInit::NewL(void)
+	?SetWCDMACellInfo@TOMASuplECellInfo@@QAEXAAUTOMASuplWCDMACellinfo@@@Z @ 238 NONAME ; void TOMASuplECellInfo::SetWCDMACellInfo(struct TOMASuplWCDMACellinfo &)
+	?SetTOMASuplVer2ProtocolExt@TOMASuplVer2ProtocolExt@@QAEXVTOMASuplPosProtocolVersion@@0VTOMASuplPosProtocolVersion3GPP2@@@Z @ 239 NONAME ; void TOMASuplVer2ProtocolExt::SetTOMASuplVer2ProtocolExt(class TOMASuplPosProtocolVersion, class TOMASuplPosProtocolVersion, class TOMASuplPosProtocolVersion3GPP2)
+	??1COMASuplSETCapabilitiesVer2@@UAE@XZ @ 240 NONAME ; COMASuplSETCapabilitiesVer2::~COMASuplSETCapabilitiesVer2(void)
+	?GetSLPAddress@COMASuplTriggeredResponse@@QBEHAAPAVCOMASuplSLPAddress@@@Z @ 241 NONAME ; int COMASuplTriggeredResponse::GetSLPAddress(class COMASuplSLPAddress * &) const
+	??1COMASuplLocationId@@UAE@XZ @ 242 NONAME ; COMASuplLocationId::~COMASuplLocationId(void)
+	?GetBatchRepType@TOMASuplReportingMode@@QAEXAAVTOMASuplBatchRepType@@@Z @ 243 NONAME ; void TOMASuplReportingMode::GetBatchRepType(class TOMASuplBatchRepType &)
+	?GetServiceCaps@TOMAVer2SetCapExtn@@QBEHAAVTOMAServiceCapabilities@@@Z @ 244 NONAME ; int TOMAVer2SetCapExtn::GetServiceCaps(class TOMAServiceCapabilities &) const
+	??0TOMASuplPosProtocol2@@QAE@XZ @ 245 NONAME ; TOMASuplPosProtocol2::TOMASuplPosProtocol2(void)
+	?SetSuplGSMCellInfo@COMASuplGSMCellInfo@@QAEXHHHH@Z @ 246 NONAME ; void COMASuplGSMCellInfo::SetSuplGSMCellInfo(int, int, int, int)
+	?ShortSPCKey@COMASuplAuthResponse@@QBEHAAVTDes8@@@Z @ 247 NONAME ; int COMASuplAuthResponse::ShortSPCKey(class TDes8 &) const
+	??1COMASuplMultipleLocIds@@UAE@XZ @ 248 NONAME ; COMASuplMultipleLocIds::~COMASuplMultipleLocIds(void)
+	?SetIPv4Address@COMASuplSLPAddress@@QAEXABVTDesC8@@@Z @ 249 NONAME ; void COMASuplSLPAddress::SetIPv4Address(class TDesC8 const &)
+	?CloneL@COMASuplLocationIdVer2@@QAEPAV1@XZ @ 250 NONAME ; class COMASuplLocationIdVer2 * COMASuplLocationIdVer2::CloneL(void)
+	?CloneL@COMASuplSLPSessionID@@QAEPAV1@XZ @ 251 NONAME ; class COMASuplSLPSessionID * COMASuplSLPSessionID::CloneL(void)
+	??1COMASuplThirdpartyId@@UAE@XZ @ 252 NONAME ; COMASuplThirdpartyId::~COMASuplThirdpartyId(void)
+	?SetCellInfoExtnType@TOMASuplVer2CellInfoExtn@@QAEXW4TOMASuplCellInfoExtnType@1@@Z @ 253 NONAME ; void TOMASuplVer2CellInfoExtn::SetCellInfoExtnType(enum TOMASuplVer2CellInfoExtn::TOMASuplCellInfoExtnType)
+	??0COMASuplResponseVer2@@IAE@XZ @ 254 NONAME ; COMASuplResponseVer2::COMASuplResponseVer2(void)
+	?SetBasicMac@TOMASuplBasicProtectionParams@@QAEXAAVTDes8@@@Z @ 255 NONAME ; void TOMASuplBasicProtectionParams::SetBasicMac(class TDes8 &)
+	?IsVer2ExtnPresent@COMASuplStartVer2@@QAEHXZ @ 256 NONAME ; int COMASuplStartVer2::IsVer2ExtnPresent(void)
+	?GetWCDMA@TOMASuplSuppNetworkInformation@@QAEHXZ @ 257 NONAME ; int TOMASuplSuppNetworkInformation::GetWCDMA(void)
+	?GetTriggerParams@COMASuplTriggeredStart@@QBEHAAVTOMASuplTriggerParams@@@Z @ 258 NONAME ; int COMASuplTriggeredStart::GetTriggerParams(class TOMASuplTriggerParams &) const
+	?GetMaxNumberTotalSessions@TOMASuplSessionCapabilities@@QBEHAAH@Z @ 259 NONAME ; int TOMASuplSessionCapabilities::GetMaxNumberTotalSessions(int &) const
+	??1COMASuplVer2SuplStartExtn@@UAE@XZ @ 260 NONAME ; COMASuplVer2SuplStartExtn::~COMASuplVer2SuplStartExtn(void)
+	?GetMutipleLocId@COMASuplReportData@@QBEXAAPAVCOMASuplMultipleLocIds@@@Z @ 261 NONAME ; void COMASuplReportData::GetMutipleLocId(class COMASuplMultipleLocIds * &) const
+	??0TOMASuplLocationData@@QAE@XZ @ 262 NONAME ; TOMASuplLocationData::TOMASuplLocationData(void)
+	?NewL@COMASuplPos@@SAPAV1@XZ @ 263 NONAME ; class COMASuplPos * COMASuplPos::NewL(void)
+	?SetTriggerType@COMASuplTriggeredStart@@QAEXW4TOMASuplTrigType@1@@Z @ 264 NONAME ; void COMASuplTriggeredStart::SetTriggerType(enum COMASuplTriggeredStart::TOMASuplTrigType)
+	?MessageBase@COMASuplAsnMessageBase@@QBEXAAVTOMASuplVersion@@AAPAVCOMASuplSessionID@@@Z @ 265 NONAME ; void COMASuplAsnMessageBase::MessageBase(class TOMASuplVersion &, class COMASuplSessionID * &) const
+	??1COMASuplSLPSessionID@@UAE@XZ @ 266 NONAME ; COMASuplSLPSessionID::~COMASuplSLPSessionID(void)
+	?SetHistoricRep@COMASuplVer2SuplInitExtn@@QAEXVTOMASuplHistoricReporting@@@Z @ 267 NONAME ; void COMASuplVer2SuplInitExtn::SetHistoricRep(class TOMASuplHistoricReporting)
+	?GetSETCapabilities@COMASuplSETCapabilitiesVer2@@QBEXAAVTOMASuplPosTechnology2@@AAW4TOMASuplPrefMethod2@1@AAVTOMASuplPosProtocol2@@@Z @ 268 NONAME ; void COMASuplSETCapabilitiesVer2::GetSETCapabilities(class TOMASuplPosTechnology2 &, enum COMASuplSETCapabilitiesVer2::TOMASuplPrefMethod2 &, class TOMASuplPosProtocol2 &) const
+	?SetVer2SuplStartExtn@COMASuplStartVer2@@QAEXPAVCOMASuplVer2SuplStartExtn@@@Z @ 269 NONAME ; void COMASuplStartVer2::SetVer2SuplStartExtn(class COMASuplVer2SuplStartExtn *)
+	?SetMessageBase@COMASuplAsnMessageBase@@QAEXABVTOMASuplVersion@@PAVCOMASuplSessionID@@@Z @ 270 NONAME ; void COMASuplAsnMessageBase::SetMessageBase(class TOMASuplVersion const &, class COMASuplSessionID *)
+	?NewL@COMASuplEnd@@SAPAV1@XZ @ 271 NONAME ; class COMASuplEnd * COMASuplEnd::NewL(void)
+	?SetRequestorId@COMASuplNotification@@QAEXPAVHBufC8@@W4TOMASuplFormatIndicator@1@@Z @ 272 NONAME ; void COMASuplNotification::SetRequestorId(class HBufC8 *, enum COMASuplNotification::TOMASuplFormatIndicator)
+	?SetQop@COMASuplInit@@QAEXAAVTOMASuplQop@@@Z @ 273 NONAME ; void COMASuplInit::SetQop(class TOMASuplQop &)
+	?Clone@COMASuplStart@@UAEXPBVCOMASuplAsnMessageBase@@AAH@Z @ 274 NONAME ; void COMASuplStart::Clone(class COMASuplAsnMessageBase const *, int &)
+	?GetHSLPAddress@COMASuplVer2SuplInitExtn@@QAEHAAPAVCOMASuplSLPAddress@@@Z @ 275 NONAME ; int COMASuplVer2SuplInitExtn::GetHSLPAddress(class COMASuplSLPAddress * &)
+	?GetMaxNumberPeriodicSessions@TOMASuplSessionCapabilities@@QBEHAAC@Z @ 276 NONAME ; int TOMASuplSessionCapabilities::GetMaxNumberPeriodicSessions(signed char &) const
+	?SetTimeStamp@COMASuplReportData@@QAEXUTOMASuplTimeStamp@@@Z @ 277 NONAME ; void COMASuplReportData::SetTimeStamp(struct TOMASuplTimeStamp)
+	?SetRAND@COMASuplSPCTID@@QAEXABVTDesC8@@@Z @ 278 NONAME ; void COMASuplSPCTID::SetRAND(class TDesC8 const &)
+	?EncodingType@COMASuplNotification@@QBEHAAW4TOMASuplEncodingType@1@@Z @ 279 NONAME ; int COMASuplNotification::EncodingType(enum COMASuplNotification::TOMASuplEncodingType &) const
+	?SetECellInfo@COMASuplLocationIdData@@QAEXVTOMASuplECellInfo@@@Z @ 280 NONAME ; void COMASuplLocationIdData::SetECellInfo(class TOMASuplECellInfo)
+	?SetECellId@COMASuplStart@@QAEXAAVTOMASuplECellInfo@@@Z @ 281 NONAME ; void COMASuplStart::SetECellId(class TOMASuplECellInfo &)
+	?GetPeriodicTrigger@TOMASuplServiceSupported@@QBEXAAH@Z @ 282 NONAME ; void TOMASuplServiceSupported::GetPeriodicTrigger(int &) const
+	?GetSPCTId@COMASuplTriggeredResponse@@QBEHAAPAVCOMASuplSPCTID@@@Z @ 283 NONAME ; int COMASuplTriggeredResponse::GetSPCTId(class COMASuplSPCTID * &) const
+	?SetQop@COMASuplTriggeredStart@@QAEXVTOMASuplQop@@@Z @ 284 NONAME ; void COMASuplTriggeredStart::SetQop(class TOMASuplQop)
+	?ConstructL@COMASuplReport@@IAEXXZ @ 285 NONAME ; void COMASuplReport::ConstructL(void)
+	?SetResultCode@COMASuplReportData@@QAEXW4TOMASuplReportDataResultCode@1@@Z @ 286 NONAME ; void COMASuplReportData::SetResultCode(enum COMASuplReportData::TOMASuplReportDataResultCode)
+	?GetSuplPeriodicParams@TOMASuplPeriodicParams@@QBEXAAJ0@Z @ 287 NONAME ; void TOMASuplPeriodicParams::GetSuplPeriodicParams(long &, long &) const
+	?GetSupNwInfo@COMASuplVer2SuplInitExtn@@QAEHAAVTOMASuplSuppNetworkInformation@@@Z @ 288 NONAME ; int COMASuplVer2SuplInitExtn::GetSupNwInfo(class TOMASuplSuppNetworkInformation &)
+	?GetLocationValue@TOMASuplLocationData@@QBEXAAVTDes8@@@Z @ 289 NONAME ; void TOMASuplLocationData::GetLocationValue(class TDes8 &) const
+	?SetNumOfreports@TOMASuplReportingCriteria@@QAEXJ@Z @ 290 NONAME ; void TOMASuplReportingCriteria::SetNumOfreports(long)
+	?GetBatchRepType@TOMASuplBatchRepConditions@@QAE?AW4TOMABatchRepCondType@1@XZ @ 291 NONAME ; enum TOMASuplBatchRepConditions::TOMABatchRepCondType TOMASuplBatchRepConditions::GetBatchRepType(void)
+	?SetShortSPCKey@COMASuplAuthResponse@@QAEHAAVTDesC8@@@Z @ 292 NONAME ; int COMASuplAuthResponse::SetShortSPCKey(class TDesC8 &)
+	?CloneL@COMASuplResponseV2Extn@@QAEPAV1@XZ @ 293 NONAME ; class COMASuplResponseV2Extn * COMASuplResponseV2Extn::CloneL(void)
+	?Ver2CellInfo@COMASuplLocationIdVer2@@QBEHAAVTOMASuplVer2CellInfoExtn@@@Z @ 294 NONAME ; int COMASuplLocationIdVer2::Ver2CellInfo(class TOMASuplVer2CellInfoExtn &) const
+	?GetVer2PosExtn@TOMASuplPosTechnology2@@QBEHAAVTOMASuplVer2PosTechExt@@@Z @ 295 NONAME ; int TOMASuplPosTechnology2::GetVer2PosExtn(class TOMASuplVer2PosTechExt &) const
+	??1COMASuplReport@@UAE@XZ @ 296 NONAME ; COMASuplReport::~COMASuplReport(void)
+	?NewL@COMASuplResponseVer2@@SAPAV1@XZ @ 297 NONAME ; class COMASuplResponseVer2 * COMASuplResponseVer2::NewL(void)
+	?SuplVersion@TOMASuplVersion@@QBEXAAH00@Z @ 298 NONAME ; void TOMASuplVersion::SuplVersion(int &, int &, int &) const
+	??0TOMASuplSPCSETKey@@QAE@XZ @ 299 NONAME ; TOMASuplSPCSETKey::TOMASuplSPCSETKey(void)
+	?NewL@COMASuplVer2SuplStartExtn@@SAPAV1@XZ @ 300 NONAME ; class COMASuplVer2SuplStartExtn * COMASuplVer2SuplStartExtn::NewL(void)
+	?SetPosMethod@COMASuplPositionData@@QAEXW4TOMASuplPosMethod@@@Z @ 301 NONAME ; void COMASuplPositionData::SetPosMethod(enum TOMASuplPosMethod)
+	?GetAllowedRepType@TOMASuplHistoricReporting@@QAEHAAW4TOMASuplAllowedReportingType@1@@Z @ 302 NONAME ; int TOMASuplHistoricReporting::GetAllowedRepType(enum TOMASuplHistoricReporting::TOMASuplAllowedReportingType &)
+	?GetPosition@COMASuplPositionData@@QBEXAAPAVCOMASuplPosition@@@Z @ 303 NONAME ; void COMASuplPositionData::GetPosition(class COMASuplPosition * &) const
+	?SuplPos@COMASuplPos@@QBEPAVCOMASuplPosPayload@@XZ @ 304 NONAME ; class COMASuplPosPayload * COMASuplPos::SuplPos(void) const
+	?GetUTRANGANSSRefTime@TOMASuplSuppNetworkInformation@@QAEHXZ @ 305 NONAME ; int TOMASuplSuppNetworkInformation::GetUTRANGANSSRefTime(void)
+	?SetKeyIdentifier@TOMASuplBasicProtectionParams@@QAEXAAVTDes8@@@Z @ 306 NONAME ; void TOMASuplBasicProtectionParams::SetKeyIdentifier(class TDes8 &)
+	?NumOfIntervals@TOMASuplBatchRepConditions@@QAEHXZ @ 307 NONAME ; int TOMASuplBatchRepConditions::NumOfIntervals(void)
+	?SetMultipleLocIds@COMASuplVer2SuplStartExtn@@QAEXPAVCOMASuplMultipleLocIds@@@Z @ 308 NONAME ; void COMASuplVer2SuplStartExtn::SetMultipleLocIds(class COMASuplMultipleLocIds *)
+	??1COMASuplSessionID@@UAE@XZ @ 309 NONAME ; COMASuplSessionID::~COMASuplSessionID(void)
+	?GetSuplPos@COMASuplResponseV2Extn@@QAEXAAPAVCOMASuplPosition@@@Z @ 310 NONAME ; void COMASuplResponseV2Extn::GetSuplPos(class COMASuplPosition * &)
+	?Position@COMASuplPosInit@@QBEHAAPAVCOMASuplPosition@@@Z @ 311 NONAME ; int COMASuplPosInit::Position(class COMASuplPosition * &) const
+	?Qop@COMASuplInit@@QBEHAAVTOMASuplQop@@@Z @ 312 NONAME ; int COMASuplInit::Qop(class TOMASuplQop &) const
+	??8COMASuplSLPAddress@@QAEHABV0@@Z @ 313 NONAME ; int COMASuplSLPAddress::operator==(class COMASuplSLPAddress const &)
+	?GetLocationEncDescriptor@TOMASuplReportedLocation@@QBEXAAW4TOMASuplLocEncDescriptor@1@@Z @ 314 NONAME ; void TOMASuplReportedLocation::GetLocationEncDescriptor(enum TOMASuplReportedLocation::TOMASuplLocEncDescriptor &) const
+	??1COMASuplPositionData@@UAE@XZ @ 315 NONAME ; COMASuplPositionData::~COMASuplPositionData(void)
+	??1COMASuplTriggeredStart@@UAE@XZ @ 316 NONAME ; COMASuplTriggeredStart::~COMASuplTriggeredStart(void)
+	?GetResponseV2Extn@COMASuplResponseVer2@@QAEHAAPAVCOMASuplResponseV2Extn@@@Z @ 317 NONAME ; int COMASuplResponseVer2::GetResponseV2Extn(class COMASuplResponseV2Extn * &)
+	?GetSuplSessionCapabilities@TOMAServiceCapabilities@@QBEHAAVTOMASuplSessionCapabilities@@@Z @ 318 NONAME ; int TOMAServiceCapabilities::GetSuplSessionCapabilities(class TOMASuplSessionCapabilities &) const
+	??0TOMAServiceCapabilities@@QAE@XZ @ 319 NONAME ; TOMAServiceCapabilities::TOMAServiceCapabilities(void)
+	?RequestAssistanceData@COMASuplPosInit@@QBEHAAPAVCOMASuplReqAsstData@@@Z @ 320 NONAME ; int COMASuplPosInit::RequestAssistanceData(class COMASuplReqAsstData * &) const
+	?SetMaxNumberTotalSessions@TOMASuplSessionCapabilities@@QAEXH@Z @ 321 NONAME ; void TOMASuplSessionCapabilities::SetMaxNumberTotalSessions(int)
+	?SetSLPAddress@COMASuplTriggeredResponse@@QAEXPAVCOMASuplSLPAddress@@@Z @ 322 NONAME ; void COMASuplTriggeredResponse::SetSLPAddress(class COMASuplSLPAddress *)
+	?SLPSessionID@COMASuplSessionID@@QBEHAAPAVCOMASuplSLPSessionID@@@Z @ 323 NONAME ; int COMASuplSessionID::SLPSessionID(class COMASuplSLPSessionID * &) const
+	?CloneL@COMASuplSETCapabilitiesVer2@@QAEPAV1@XZ @ 324 NONAME ; class COMASuplSETCapabilitiesVer2 * COMASuplSETCapabilitiesVer2::CloneL(void)
+	?GetSetCapabilities@COMASuplReport@@QBEHAAPAVCOMASuplSETCapabilitiesVer2@@@Z @ 325 NONAME ; int COMASuplReport::GetSetCapabilities(class COMASuplSETCapabilitiesVer2 * &) const
+	?Clone@COMASuplResponseVer2@@UAEXPBVCOMASuplAsnMessageBase@@AAH@Z @ 326 NONAME ; void COMASuplResponseVer2::Clone(class COMASuplAsnMessageBase const *, int &)
+	?NewL@COMASuplLocationIdData@@SAPAV1@XZ @ 327 NONAME ; class COMASuplLocationIdData * COMASuplLocationIdData::NewL(void)
+	?SetSETCapabilities2@COMASuplPosInitVer2@@QAEXPAVCOMASuplSETCapabilitiesVer2@@@Z @ 328 NONAME ; void COMASuplPosInitVer2::SetSETCapabilities2(class COMASuplSETCapabilitiesVer2 *)
+	??8COMASuplSLPSessionID@@QAEHABV0@@Z @ 329 NONAME ; int COMASuplSLPSessionID::operator==(class COMASuplSLPSessionID const &)
+	?GetECellId@COMASuplTriggeredStart@@QAEXAAVTOMASuplECellInfo@@@Z @ 330 NONAME ; void COMASuplTriggeredStart::GetECellId(class TOMASuplECellInfo &)
+	?SetHistoric@TOMASuplSuppNetworkInformation@@QAEXH@Z @ 331 NONAME ; void TOMASuplSuppNetworkInformation::SetHistoric(int)
+	?SetV2NotifyExtn@COMASuplNotificationVer2@@QAEXPAVCOMASuplNotificationExtnV2@@@Z @ 332 NONAME ; void COMASuplNotificationVer2::SetV2NotifyExtn(class COMASuplNotificationExtnV2 *)
+	?GetBatch@TOMASuplReportMode@@QBEXAAH@Z @ 333 NONAME ; void TOMASuplReportMode::GetBatch(int &) const
+	?GetEmailAddress@COMASuplThirdpartyId@@QAEXAAVTDes16@@@Z @ 334 NONAME ; void COMASuplThirdpartyId::GetEmailAddress(class TDes16 &)
+	?NewL@COMASuplAuthResponse@@SAPAV1@XZ @ 335 NONAME ; class COMASuplAuthResponse * COMASuplAuthResponse::NewL(void)
+	?GetThirdPartyIds@COMASuplThirdPartyIds@@QBEXAAV?$RPointerArray@VCOMASuplThirdpartyId@@@@@Z @ 336 NONAME ; void COMASuplThirdPartyIds::GetThirdPartyIds(class RPointerArray<class COMASuplThirdpartyId> &) const
+	?CloneL@COMASuplSLPAddress@@QAEPAV1@XZ @ 337 NONAME ; class COMASuplSLPAddress * COMASuplSLPAddress::CloneL(void)
+	??0COMASuplInit@@IAE@XZ @ 338 NONAME ; COMASuplInit::COMASuplInit(void)
+	?GetMaxMeasurements@TOMASuplBatchReportMode@@QBEHAAH@Z @ 339 NONAME ; int TOMASuplBatchReportMode::GetMaxMeasurements(int &) const
+	?NewL@COMASuplSessionID@@SAPAV1@XZ @ 340 NONAME ; class COMASuplSessionID * COMASuplSessionID::NewL(void)
+	??1COMASuplGSMCellInfo@@UAE@XZ @ 341 NONAME ; COMASuplGSMCellInfo::~COMASuplGSMCellInfo(void)
+	?Clone@COMASuplReport@@UAEXPBVCOMASuplAsnMessageBase@@AAH@Z @ 342 NONAME ; void COMASuplReport::Clone(class COMASuplAsnMessageBase const *, int &)
+	?NewL@COMASuplSPCTID@@SAPAV1@XZ @ 343 NONAME ; class COMASuplSPCTID * COMASuplSPCTID::NewL(void)
+	?SetSuplStatusCode@COMASuplTriggeredStop@@QAEXW4TOMASuplStatusCode@COMASuplEnd@@@Z @ 344 NONAME ; void COMASuplTriggeredStop::SetSuplStatusCode(enum COMASuplEnd::TOMASuplStatusCode)
+	?Velocity@COMASuplPos@@QBEHAAPAVCOMASuplVelocity@@@Z @ 345 NONAME ; int COMASuplPos::Velocity(class COMASuplVelocity * &) const
+	?SetRepMeas@TOMASuplBatchRepType@@QAEXH@Z @ 346 NONAME ; void TOMASuplBatchRepType::SetRepMeas(int)
+	??1COMASuplAsnHandlerBase@@UAE@XZ @ 347 NONAME ; COMASuplAsnHandlerBase::~COMASuplAsnHandlerBase(void)
+	?GetReportPosition@TOMASuplBatchReportMode@@QBEHAAH@Z @ 348 NONAME ; int TOMASuplBatchReportMode::GetReportPosition(int &) const
+	?SetInterRep@TOMASuplBatchRepType@@QAEXH@Z @ 349 NONAME ; void TOMASuplBatchRepType::SetInterRep(int)
+	?SetSPCSETKey@COMASuplTriggeredResponse@@QAEXVTOMASuplSPCSETKey@@@Z @ 350 NONAME ; void COMASuplTriggeredResponse::SetSPCSETKey(class TOMASuplSPCSETKey)
+	?GetStartTimeSet@TOMASuplPeriodicParams@@QBEHAAJ@Z @ 351 NONAME ; int TOMASuplPeriodicParams::GetStartTimeSet(long &) const
+	?GetTriggerParams@COMASuplTriggeredResponse@@QBEHAAVTOMASuplTriggerParams@@@Z @ 352 NONAME ; int COMASuplTriggeredResponse::GetTriggerParams(class TOMASuplTriggerParams &) const
+	?NewLC@COMASuplPositionData@@SAPAV1@XZ @ 353 NONAME ; class COMASuplPositionData * COMASuplPositionData::NewLC(void)
+	?SetLogicalName@COMASuplThirdpartyId@@QAEXABVTDesC16@@@Z @ 354 NONAME ; void COMASuplThirdpartyId::SetLogicalName(class TDesC16 const &)
+	??1COMASuplEnd@@UAE@XZ @ 355 NONAME ; COMASuplEnd::~COMASuplEnd(void)
+	?Clone@COMASuplPos@@UAEXPBVCOMASuplAsnMessageBase@@AAH@Z @ 356 NONAME ; void COMASuplPos::Clone(class COMASuplAsnMessageBase const *, int &)
+	?GetPosition@COMASuplVer2SuplStartExtn@@QBEXAAPAVCOMASuplPosition@@@Z @ 357 NONAME ; void COMASuplVer2SuplStartExtn::GetPosition(class COMASuplPosition * &) const
+	?SetSLPAddress@COMASuplInit@@QAEXPAVCOMASuplSLPAddress@@@Z @ 358 NONAME ; void COMASuplInit::SetSLPAddress(class COMASuplSLPAddress *)
+	?GetReplayCounter@TOMASuplBasicProtectionParams@@QAEJXZ @ 359 NONAME ; long TOMASuplBasicProtectionParams::GetReplayCounter(void)
+	?GetVer2SuplInitExtn@COMASuplInitVer2@@QAEHAAPAVCOMASuplVer2SuplInitExtn@@@Z @ 360 NONAME ; int COMASuplInitVer2::GetVer2SuplInitExtn(class COMASuplVer2SuplInitExtn * &)
+	?SetDiscOld@TOMASuplBatchRepType@@QAEXH@Z @ 361 NONAME ; void TOMASuplBatchRepType::SetDiscOld(int)
+	?SetVelocity@COMASuplPosInit@@QAEXPAVCOMASuplVelocity@@@Z @ 362 NONAME ; void COMASuplPosInit::SetVelocity(class COMASuplVelocity *)
+	?SetTOMASuplPosProtocolVersion3GPP2@TOMASuplPosProtocolVersion3GPP2@@QAEXVTOMASuplSupported3GPP2PosProtoVer@@@Z @ 363 NONAME ; void TOMASuplPosProtocolVersion3GPP2::SetTOMASuplPosProtocolVersion3GPP2(class TOMASuplSupported3GPP2PosProtoVer)
+	?NewL@COMASuplInitVer2@@SAPAV1@XZ @ 364 NONAME ; class COMASuplInitVer2 * COMASuplInitVer2::NewL(void)
+	?NewL@COMASuplStart@@SAPAV1@XZ @ 365 NONAME ; class COMASuplStart * COMASuplStart::NewL(void)
+	?SetTimeWindow@TOMASuplTimeWindow@@QAEXJJ@Z @ 366 NONAME ; void TOMASuplTimeWindow::SetTimeWindow(long, long)
+	?ConstructL@COMASuplResponse@@IAEXXZ @ 367 NONAME ; void COMASuplResponse::ConstructL(void)
+	?SetPosMethod@COMASuplTriggeredResponse@@QAEXW4TOMASuplPosMethod@@@Z @ 368 NONAME ; void COMASuplTriggeredResponse::SetPosMethod(enum TOMASuplPosMethod)
+	?CloneInitV2ExtnL@COMASuplInitVer2@@QAEXPAV1@@Z @ 369 NONAME ; void COMASuplInitVer2::CloneInitV2ExtnL(class COMASuplInitVer2 *)
+	?SetEventTriggerCapabilities@TOMAServiceCapabilities@@QAEXVTOMASuplEventTriggerCapabilities@@@Z @ 370 NONAME ; void TOMAServiceCapabilities::SetEventTriggerCapabilities(class TOMASuplEventTriggerCapabilities)
+	?SetMSISDN@COMASuplThirdpartyId@@QAEXABVTDesC8@@@Z @ 371 NONAME ; void COMASuplThirdpartyId::SetMSISDN(class TDesC8 const &)
+	?SetPosition@COMASuplTriggeredStart@@QAEXPAVCOMASuplPosition@@@Z @ 372 NONAME ; void COMASuplTriggeredStart::SetPosition(class COMASuplPosition *)
+	??0COMASuplTriggeredResponse@@IAE@XZ @ 373 NONAME ; COMASuplTriggeredResponse::COMASuplTriggeredResponse(void)
+	?GetPosition@COMASuplTriggeredStart@@QBEXAAPAVCOMASuplPosition@@@Z @ 374 NONAME ; void COMASuplTriggeredStart::GetPosition(class COMASuplPosition * &) const
+	??1COMASuplNotification@@UAE@XZ @ 375 NONAME ; COMASuplNotification::~COMASuplNotification(void)
+	?NewL@COMASuplTriggeredStop@@SAPAV1@XZ @ 376 NONAME ; class COMASuplTriggeredStop * COMASuplTriggeredStop::NewL(void)
+	?SetClientName@COMASuplNotification@@QAEXPAVHBufC8@@W4TOMASuplFormatIndicator@1@@Z @ 377 NONAME ; void COMASuplNotification::SetClientName(class HBufC8 *, enum COMASuplNotification::TOMASuplFormatIndicator)
+	??1COMASuplPosInit@@UAE@XZ @ 378 NONAME ; COMASuplPosInit::~COMASuplPosInit(void)
+	?GetURI@COMASuplThirdpartyId@@QAEXAAVTDes8@@@Z @ 379 NONAME ; void COMASuplThirdpartyId::GetURI(class TDes8 &)
+	?NewL@COMASuplPositionData@@SAPAV1@XZ @ 380 NONAME ; class COMASuplPositionData * COMASuplPositionData::NewL(void)
+	?SetServingFlag@COMASuplLocationIdData@@QAEXH@Z @ 381 NONAME ; void COMASuplLocationIdData::SetServingFlag(int)
+	?SetReportMeasurement@TOMASuplBatchReportMode@@QAEXH@Z @ 382 NONAME ; void TOMASuplBatchReportMode::SetReportMeasurement(int)
+	??0TOMASuplProtectionLevel@@QAE@XZ @ 383 NONAME ; TOMASuplProtectionLevel::TOMASuplProtectionLevel(void)
+	?GetMultipleLocIds@COMASuplVer2SuplStartExtn@@QBEXAAPAVCOMASuplMultipleLocIds@@@Z @ 384 NONAME ; void COMASuplVer2SuplStartExtn::GetMultipleLocIds(class COMASuplMultipleLocIds * &) const
+	?NewL@COMASuplResponse@@SAPAV1@XZ @ 385 NONAME ; class COMASuplResponse * COMASuplResponse::NewL(void)
+	?RequestorId@COMASuplNotification@@QBEHAAPAVHBufC8@@AAW4TOMASuplFormatIndicator@1@@Z @ 386 NONAME ; int COMASuplNotification::RequestorId(class HBufC8 * &, enum COMASuplNotification::TOMASuplFormatIndicator &) const
+	?CloneL@COMASuplThirdpartyId@@QAEPAV1@XZ @ 387 NONAME ; class COMASuplThirdpartyId * COMASuplThirdpartyId::CloneL(void)
+	??0TOMASuplReportMode@@QAE@XZ @ 388 NONAME ; TOMASuplReportMode::TOMASuplReportMode(void)
+	??0COMASuplCellInfo@@IAE@XZ @ 389 NONAME ; COMASuplCellInfo::COMASuplCellInfo(void)
+	?SetBatch@TOMASuplReportMode@@QAEXH@Z @ 390 NONAME ; void TOMASuplReportMode::SetBatch(int)
+	?SetCDMA@TOMASuplSuppNetworkInformation@@QAEXH@Z @ 391 NONAME ; void TOMASuplSuppNetworkInformation::SetCDMA(int)
+	?SetThirdParty@COMASuplVer2SuplStartExtn@@QAEXPAVCOMASuplThirdPartyIds@@@Z @ 392 NONAME ; void COMASuplVer2SuplStartExtn::SetThirdParty(class COMASuplThirdPartyIds *)
+	??0COMASuplTriggeredStop@@IAE@XZ @ 393 NONAME ; COMASuplTriggeredStop::COMASuplTriggeredStop(void)
+	?GetMaxPositions@TOMASuplBatchReportMode@@QBEHAAH@Z @ 394 NONAME ; int TOMASuplBatchReportMode::GetMaxPositions(int &) const
+	?SetPosition@COMASuplVer2SuplStartExtn@@QAEXPAVCOMASuplPosition@@@Z @ 395 NONAME ; void COMASuplVer2SuplStartExtn::SetPosition(class COMASuplPosition *)
+	?SuplNotification@COMASuplNotification@@QBE?AW4TOMASuplNotificationType@1@XZ @ 396 NONAME ; enum COMASuplNotification::TOMASuplNotificationType COMASuplNotification::SuplNotification(void) const
+	?Clone@COMASuplResponse@@UAEXPBVCOMASuplAsnMessageBase@@AAH@Z @ 397 NONAME ; void COMASuplResponse::Clone(class COMASuplAsnMessageBase const *, int &)
+	??0TOMASuplVer2CellInfoExtn@@QAE@XZ @ 398 NONAME ; TOMASuplVer2CellInfoExtn::TOMASuplVer2CellInfoExtn(void)
+	?CloneNotificationV2L@COMASuplInitVer2@@QAEXPBV1@@Z @ 399 NONAME ; void COMASuplInitVer2::CloneNotificationV2L(class COMASuplInitVer2 const *)
+	?GetNotificationMode@COMASuplVer2SuplInitExtn@@QAEHAAW4TOMASuplNotificationMode@1@@Z @ 400 NONAME ; int COMASuplVer2SuplInitExtn::GetNotificationMode(enum COMASuplVer2SuplInitExtn::TOMASuplNotificationMode &)
+	?SetLocationId@COMASuplTriggeredStart@@QAEXPAVCOMASuplLocationIdVer2@@@Z @ 401 NONAME ; void COMASuplTriggeredStart::SetLocationId(class COMASuplLocationIdVer2 *)
+	?SetPosition@COMASuplPositionData@@QAEXPAVCOMASuplPosition@@@Z @ 402 NONAME ; void COMASuplPositionData::SetPosition(class COMASuplPosition *)
+	?Velocity@COMASuplPosInit@@QBEHAAPAVCOMASuplVelocity@@@Z @ 403 NONAME ; int COMASuplPosInit::Velocity(class COMASuplVelocity * &) const
+	?SetECellId@COMASuplTriggeredStart@@QAEXAAVTOMASuplECellInfo@@@Z @ 404 NONAME ; void COMASuplTriggeredStart::SetECellId(class TOMASuplECellInfo &)
+	??0TOMASuplECellInfo@@QAE@XZ @ 405 NONAME ; TOMASuplECellInfo::TOMASuplECellInfo(void)
+	??0TOMASuplQop@@QAE@XZ @ 406 NONAME ; TOMASuplQop::TOMASuplQop(void)
+	?SetPeriodicParams@TOMASuplTriggerParams@@QAEXVTOMASuplPeriodicParams@@@Z @ 407 NONAME ; void TOMASuplTriggerParams::SetPeriodicParams(class TOMASuplPeriodicParams)
+	??0COMASuplReport@@QAE@XZ @ 408 NONAME ; COMASuplReport::COMASuplReport(void)
+	?MessageType@COMASuplAsnMessageBase@@QBE?AW4TSuplMessageType@1@XZ @ 409 NONAME ; enum COMASuplAsnMessageBase::TSuplMessageType COMASuplAsnMessageBase::MessageType(void) const
+	?SetReportingCaps@COMASuplTriggeredStart@@QAEXVTOMASuplReportingCap@@@Z @ 410 NONAME ; void COMASuplTriggeredStart::SetReportingCaps(class TOMASuplReportingCap)
+	?SetSPCLifetime@COMASuplResponseV2Extn@@QAEXC@Z @ 411 NONAME ; void COMASuplResponseV2Extn::SetSPCLifetime(signed char)
+	??1COMASuplReportData@@UAE@XZ @ 412 NONAME ; COMASuplReportData::~COMASuplReportData(void)
+	?GetTimeWindow@TOMASuplReportingCriteria@@QAEHAAVTOMASuplTimeWindow@@@Z @ 413 NONAME ; int TOMASuplReportingCriteria::GetTimeWindow(class TOMASuplTimeWindow &)
+	?SetStartTimeSet@TOMASuplPeriodicParams@@QAEXJ@Z @ 414 NONAME ; void TOMASuplPeriodicParams::SetStartTimeSet(long)
+	?Fqdn@COMASuplSLPAddress@@QBEHAAPAVHBufC8@@@Z @ 415 NONAME ; int COMASuplSLPAddress::Fqdn(class HBufC8 * &) const
+	?GetLocIdDataArray@COMASuplMultipleLocIds@@QAEXAAV?$RPointerArray@VCOMASuplLocationIdData@@@@@Z @ 416 NONAME ; void COMASuplMultipleLocIds::GetLocIdDataArray(class RPointerArray<class COMASuplLocationIdData> &)
+	??1COMASuplAuthRequest@@UAE@XZ @ 417 NONAME ; COMASuplAuthRequest::~COMASuplAuthRequest(void)
+	?GetReportMode@TOMASuplReportingCap@@QBEHAAVTOMASuplReportMode@@@Z @ 418 NONAME ; int TOMASuplReportingCap::GetReportMode(class TOMASuplReportMode &) const
+	?GetV2NotifyExtn@COMASuplNotificationVer2@@QAEXAAPAVCOMASuplNotificationExtnV2@@@Z @ 419 NONAME ; void COMASuplNotificationVer2::GetV2NotifyExtn(class COMASuplNotificationExtnV2 * &)
+	?NewL@COMASuplSLPSessionID@@SAPAV1@XZ @ 420 NONAME ; class COMASuplSLPSessionID * COMASuplSLPSessionID::NewL(void)
+	?GetSPCTKeyLifeTime@COMASuplTriggeredResponse@@QBEHAAH@Z @ 421 NONAME ; int COMASuplTriggeredResponse::GetSPCTKeyLifeTime(int &) const
+	?GetSPCTId@COMASuplResponseV2Extn@@QAEXAAPAVCOMASuplSPCTID@@@Z @ 422 NONAME ; void COMASuplResponseV2Extn::GetSPCTId(class COMASuplSPCTID * &)
+	?SuplSETIDType@COMASuplSETSessionID@@QBE?AW4TSuplSETIDType@1@XZ @ 423 NONAME ; enum COMASuplSETSessionID::TSuplSETIDType COMASuplSETSessionID::SuplSETIDType(void) const
+	?VerticalAccuracy@TOMASuplQop@@QBEHAAH@Z @ 424 NONAME ; int TOMASuplQop::VerticalAccuracy(int &) const
+	?SetTriggerParams@COMASuplTriggeredStart@@QAEXVTOMASuplTriggerParams@@@Z @ 425 NONAME ; void COMASuplTriggeredStart::SetTriggerParams(class TOMASuplTriggerParams)
+	?SetSuplStart@COMASuplStart@@QAEXPAVCOMASuplSETCapabilities@@PAVCOMASuplLocationId@@H@Z @ 426 NONAME ; void COMASuplStart::SetSuplStart(class COMASuplSETCapabilities *, class COMASuplLocationId *, int)
+	?SetVer2Notification@COMASuplInitVer2@@QAEXPAVCOMASuplNotificationVer2@@@Z @ 427 NONAME ; void COMASuplInitVer2::SetVer2Notification(class COMASuplNotificationVer2 *)
+	?SetSuplPos@COMASuplResponseV2Extn@@QAEXPAVCOMASuplPosition@@@Z @ 428 NONAME ; void COMASuplResponseV2Extn::SetSuplPos(class COMASuplPosition *)
+	?CloneL@COMASuplVer2SuplStartExtn@@QAEPAV1@XZ @ 429 NONAME ; class COMASuplVer2SuplStartExtn * COMASuplVer2SuplStartExtn::CloneL(void)
+	?ConstructL@COMASuplAuthRequest@@IAEXXZ @ 430 NONAME ; void COMASuplAuthRequest::ConstructL(void)
+	?SetECellId@COMASuplPosInit@@QAEXAAVTOMASuplECellInfo@@@Z @ 431 NONAME ; void COMASuplPosInit::SetECellId(class TOMASuplECellInfo &)
+	?GetMdnThirdPartyId@COMASuplThirdpartyId@@QAEXAAVTDes8@@@Z @ 432 NONAME ; void COMASuplThirdpartyId::GetMdnThirdPartyId(class TDes8 &)
+	?NewLC@COMASuplTriggeredStart@@KAPAV1@XZ @ 433 NONAME ; class COMASuplTriggeredStart * COMASuplTriggeredStart::NewLC(void)
+	??0COMASuplLocationId@@IAE@XZ @ 434 NONAME ; COMASuplLocationId::COMASuplLocationId(void)
+	?SetLocationValue@TOMASuplLocationData@@QAEXAAVTDes8@@@Z @ 435 NONAME ; void TOMASuplLocationData::SetLocationValue(class TDes8 &)
+	?GetMultipleLocIds@COMASuplTriggeredStart@@QBEXAAPAVCOMASuplMultipleLocIds@@@Z @ 436 NONAME ; void COMASuplTriggeredStart::GetMultipleLocIds(class COMASuplMultipleLocIds * &) const
+	??0COMASuplEndVer2@@IAE@XZ @ 437 NONAME ; COMASuplEndVer2::COMASuplEndVer2(void)
+	?GetAreaEventParams@TOMASuplTriggerParams@@QBEHAAUTOMASuplAreaEventParams@@@Z @ 438 NONAME ; int TOMASuplTriggerParams::GetAreaEventParams(struct TOMASuplAreaEventParams &) const
+	?ConstructL@COMASuplEnd@@IAEXXZ @ 439 NONAME ; void COMASuplEnd::ConstructL(void)
+	?NewL@COMASuplMultipleLocIds@@SAPAV1@XZ @ 440 NONAME ; class COMASuplMultipleLocIds * COMASuplMultipleLocIds::NewL(void)
+	?SetNumOfIntervals@TOMASuplBatchRepConditions@@QAEXH@Z @ 441 NONAME ; void TOMASuplBatchRepConditions::SetNumOfIntervals(int)
+	?GetRealTime@TOMASuplReportMode@@QBEXAAH@Z @ 442 NONAME ; void TOMASuplReportMode::GetRealTime(int &) const
+	?SetSPCTKeyLifeTime@COMASuplTriggeredResponse@@QAEXH@Z @ 443 NONAME ; void COMASuplTriggeredResponse::SetSPCTKeyLifeTime(int)
+	?Clone@COMASuplAuthRequest@@UAEXPBVCOMASuplAsnMessageBase@@AAH@Z @ 444 NONAME ; void COMASuplAuthRequest::Clone(class COMASuplAsnMessageBase const *, int &)
+	??8COMASuplSETSessionID@@QAEHABV0@@Z @ 445 NONAME ; int COMASuplSETSessionID::operator==(class COMASuplSETSessionID const &)
+	??1COMASuplCellInfo@@UAE@XZ @ 446 NONAME ; COMASuplCellInfo::~COMASuplCellInfo(void)
+	?NewLC@COMASuplReportData@@SAPAV1@XZ @ 447 NONAME ; class COMASuplReportData * COMASuplReportData::NewLC(void)
+	?GetProtParams@TOMASuplProtectionLevel@@QAEHAAVTOMASuplBasicProtectionParams@@@Z @ 448 NONAME ; int TOMASuplProtectionLevel::GetProtParams(class TOMASuplBasicProtectionParams &)
+	?SetLocationId@COMASuplLocationIdData@@QAEXPAVCOMASuplLocationIdVer2@@@Z @ 449 NONAME ; void COMASuplLocationIdData::SetLocationId(class COMASuplLocationIdVer2 *)
+	?Ver@COMASuplPosInit@@QBEHAAVTDes8@@@Z @ 450 NONAME ; int COMASuplPosInit::Ver(class TDes8 &) const
+	?CloneL@COMASuplSessionID@@QAEPAV1@XZ @ 451 NONAME ; class COMASuplSessionID * COMASuplSessionID::CloneL(void)
+	?Clone@COMASuplEndVer2@@UAEXPBVCOMASuplAsnMessageBase@@AAH@Z @ 452 NONAME ; void COMASuplEndVer2::Clone(class COMASuplAsnMessageBase const *, int &)
+	?SetSuplServiceSupported@TOMAServiceCapabilities@@QAEXVTOMASuplServiceSupported@@@Z @ 453 NONAME ; void TOMAServiceCapabilities::SetSuplServiceSupported(class TOMASuplServiceSupported)
+	?GetLocationId@COMASuplTriggeredStart@@QBEXAAPAVCOMASuplLocationIdVer2@@@Z @ 454 NONAME ; void COMASuplTriggeredStart::GetLocationId(class COMASuplLocationIdVer2 * &) const
+	?SetSupWCDMAInfo@TOMASuplSuppNetworkInformation@@QAEXVTOMASuplSuppWCDMAInfo@@@Z @ 455 NONAME ; void TOMASuplSuppNetworkInformation::SetSupWCDMAInfo(class TOMASuplSuppWCDMAInfo)
+	?GetNumOfreports@TOMASuplReportingCriteria@@QAEJXZ @ 456 NONAME ; long TOMASuplReportingCriteria::GetNumOfreports(void)
+	?SLPAddressType@COMASuplSLPAddress@@QBE?AW4TSuplSLPAddressType@1@XZ @ 457 NONAME ; enum COMASuplSLPAddress::TSuplSLPAddressType COMASuplSLPAddress::SLPAddressType(void) const
+	?GetMSISDN@COMASuplThirdpartyId@@QAEXAAVTDes8@@@Z @ 458 NONAME ; void COMASuplThirdpartyId::GetMSISDN(class TDes8 &)
+	?GetKeyIdentifier@TOMASuplBasicProtectionParams@@QAEXAAVTDes8@@@Z @ 459 NONAME ; void TOMASuplBasicProtectionParams::GetKeyIdentifier(class TDes8 &)
+	?SetSuplPeriodicParams@TOMASuplPeriodicParams@@QAEXJJ@Z @ 460 NONAME ; void TOMASuplPeriodicParams::SetSuplPeriodicParams(long, long)
+	?GetProtLevel@TOMASuplProtectionLevel@@QAEHAAW4TOMASuplProtLevelType@1@@Z @ 461 NONAME ; int TOMASuplProtectionLevel::GetProtLevel(enum TOMASuplProtectionLevel::TOMASuplProtLevelType &)
+	??0TOMASuplVersion@@QAE@XZ @ 462 NONAME ; TOMASuplVersion::TOMASuplVersion(void)
+	?GetVer2Notification@COMASuplInitVer2@@QBEHAAPAVCOMASuplNotificationVer2@@@Z @ 463 NONAME ; int COMASuplInitVer2::GetVer2Notification(class COMASuplNotificationVer2 * &) const
+	?CloneL@COMASuplLocationId@@QAEPAV1@XZ @ 464 NONAME ; class COMASuplLocationId * COMASuplLocationId::CloneL(void)
+	??1COMASuplNotificationVer2@@UAE@XZ @ 465 NONAME ; COMASuplNotificationVer2::~COMASuplNotificationVer2(void)
+	?NewL@COMASuplStartVer2@@SAPAV1@XZ @ 466 NONAME ; class COMASuplStartVer2 * COMASuplStartVer2::NewL(void)
+	?SetMinThirdPartyId@COMASuplThirdpartyId@@QAEXABVTDesC8@@@Z @ 467 NONAME ; void COMASuplThirdpartyId::SetMinThirdPartyId(class TDesC8 const &)
+	?SuplResponse@COMASuplResponse@@QBE?AW4TOMASuplPosMethod@@XZ @ 468 NONAME ; enum TOMASuplPosMethod COMASuplResponse::SuplResponse(void) const
+	?ConstructL@COMASuplStart@@IAEXXZ @ 469 NONAME ; void COMASuplStart::ConstructL(void)
+	?SetGSM@TOMASuplSuppNetworkInformation@@QAEXH@Z @ 470 NONAME ; void TOMASuplSuppNetworkInformation::SetGSM(int)
+	?GetVer2SuplStartExtn@COMASuplStartVer2@@QAEXAAPAVCOMASuplVer2SuplStartExtn@@@Z @ 471 NONAME ; void COMASuplStartVer2::GetVer2SuplStartExtn(class COMASuplVer2SuplStartExtn * &)
+	?GetMinMajorVer@COMASuplVer2SuplInitExtn@@QAEHAAH@Z @ 472 NONAME ; int COMASuplVer2SuplInitExtn::GetMinMajorVer(int &)
+	?GetSupNetworkInfo@COMASuplTriggeredResponse@@QBEHAAVTOMASuplSuppNetworkInformation@@@Z @ 473 NONAME ; int COMASuplTriggeredResponse::GetSupNetworkInfo(class TOMASuplSuppNetworkInformation &) const
+	??1COMASuplAuthResponse@@UAE@XZ @ 474 NONAME ; COMASuplAuthResponse::~COMASuplAuthResponse(void)
+	?SetServiceCaps@TOMAVer2SetCapExtn@@QAEXVTOMAServiceCapabilities@@@Z @ 475 NONAME ; void TOMAVer2SetCapExtn::SetServiceCaps(class TOMAServiceCapabilities)
+	?WCDMACellInfo@TOMASuplECellInfo@@QBEXAAUTOMASuplWCDMACellinfo@@@Z @ 476 NONAME ; void TOMASuplECellInfo::WCDMACellInfo(struct TOMASuplWCDMACellinfo &) const
+	?SetSuplVersion@TOMASuplVersion@@QAEXHHH@Z @ 477 NONAME ; void TOMASuplVersion::SetSuplVersion(int, int, int)
+	?NewLC@COMASuplTriggeredResponse@@KAPAV1@XZ @ 478 NONAME ; class COMASuplTriggeredResponse * COMASuplTriggeredResponse::NewLC(void)
+	?GetSipUri@COMASuplThirdpartyId@@QAEXAAVTDes8@@@Z @ 479 NONAME ; void COMASuplThirdpartyId::GetSipUri(class TDes8 &)
+	?SetSuplReportingCap@TOMAServiceCapabilities@@QAEXVTOMASuplReportingCap@@@Z @ 480 NONAME ; void TOMAServiceCapabilities::SetSuplReportingCap(class TOMASuplReportingCap)
+	??0COMASuplResponse@@IAE@XZ @ 481 NONAME ; COMASuplResponse::COMASuplResponse(void)
+	?SetEmailAddress@COMASuplThirdpartyId@@QAEXABVTDesC16@@@Z @ 482 NONAME ; void COMASuplThirdpartyId::SetEmailAddress(class TDesC16 const &)
+	?SetQop@COMASuplStart@@QAEXAAVTOMASuplQop@@@Z @ 483 NONAME ; void COMASuplStart::SetQop(class TOMASuplQop &)
+	??1COMASuplSLPAddress@@UAE@XZ @ 484 NONAME ; COMASuplSLPAddress::~COMASuplSLPAddress(void)
+	?SetLocationEncDescriptor@TOMASuplReportedLocation@@QAEXW4TOMASuplLocEncDescriptor@1@@Z @ 485 NONAME ; void TOMASuplReportedLocation::SetLocationEncDescriptor(enum TOMASuplReportedLocation::TOMASuplLocEncDescriptor)
+	?LongSPCKey@COMASuplAuthResponse@@QBEHAAVTDes8@@@Z @ 486 NONAME ; int COMASuplAuthResponse::LongSPCKey(class TDes8 &) const
+	?SuplInit@COMASuplInit@@QBEXAAW4TOMASuplPosMethod@@AAW4TOMASuplSLPMode@1@@Z @ 487 NONAME ; void COMASuplInit::SuplInit(enum TOMASuplPosMethod &, enum COMASuplInit::TOMASuplSLPMode &) const
+	?Clone@COMASuplPosInit@@UAEXPBVCOMASuplAsnMessageBase@@AAH@Z @ 488 NONAME ; void COMASuplPosInit::Clone(class COMASuplAsnMessageBase const *, int &)
+	?GetReportDataList@COMASuplReport@@QBEHAAV?$RPointerArray@VCOMASuplReportData@@@@@Z @ 489 NONAME ; int COMASuplReport::GetReportDataList(class RPointerArray<class COMASuplReportData> &) const
+	?SetReplayCounter@TOMASuplBasicProtectionParams@@QAEXJ@Z @ 490 NONAME ; void TOMASuplBasicProtectionParams::SetReplayCounter(long)
+	?SetSuplNotification@COMASuplNotification@@QAEXW4TOMASuplNotificationType@1@@Z @ 491 NONAME ; void COMASuplNotification::SetSuplNotification(enum COMASuplNotification::TOMASuplNotificationType)
+	?SetNumOfMins@TOMASuplBatchRepConditions@@QAEXH@Z @ 492 NONAME ; void TOMASuplBatchRepConditions::SetNumOfMins(int)
+	?CloneL@COMASuplThirdPartyIds@@QAEPAV1@XZ @ 493 NONAME ; class COMASuplThirdPartyIds * COMASuplThirdPartyIds::CloneL(void)
+	?SETSessionID@COMASuplSessionID@@QBEHAAPAVCOMASuplSETSessionID@@@Z @ 494 NONAME ; int COMASuplSessionID::SETSessionID(class COMASuplSETSessionID * &) const
+	?SuplSETSessionID@COMASuplSETSessionID@@QBEXAAHAAVTDes8@@@Z @ 495 NONAME ; void COMASuplSETSessionID::SuplSETSessionID(int &, class TDes8 &) const
+	?SetVer2PosProtoExtn@TOMASuplPosProtocol2@@QAEXVTOMASuplVer2ProtocolExt@@@Z @ 496 NONAME ; void TOMASuplPosProtocol2::SetVer2PosProtoExtn(class TOMASuplVer2ProtocolExt)
+	?SetMessageType@COMASuplAsnMessageBase@@IAEXW4TSuplMessageType@1@@Z @ 497 NONAME ; void COMASuplAsnMessageBase::SetMessageType(enum COMASuplAsnMessageBase::TSuplMessageType)
+	??1COMASuplPosInitVer2@@UAE@XZ @ 498 NONAME ; COMASuplPosInitVer2::~COMASuplPosInitVer2(void)
+	??1COMASuplInit@@UAE@XZ @ 499 NONAME ; COMASuplInit::~COMASuplInit(void)
+	?GetTimeStamp@COMASuplReportData@@QBEXAAUTOMASuplTimeStamp@@@Z @ 500 NONAME ; void COMASuplReportData::GetTimeStamp(struct TOMASuplTimeStamp &) const
+	?NewL@COMASuplGSMCellInfo@@SAPAV1@XZ @ 501 NONAME ; class COMASuplGSMCellInfo * COMASuplGSMCellInfo::NewL(void)
+	?SetSETCapabilities@COMASuplTriggeredStart@@QAEXPAVCOMASuplSETCapabilitiesVer2@@@Z @ 502 NONAME ; void COMASuplTriggeredStart::SetSETCapabilities(class COMASuplSETCapabilitiesVer2 *)
+	?SETCapabilities@COMASuplEndVer2@@QBEHAAPAVCOMASuplSETCapabilities@@@Z @ 503 NONAME ; int COMASuplEndVer2::SETCapabilities(class COMASuplSETCapabilities * &) const
+	?SetNotificationMode@COMASuplVer2SuplInitExtn@@QAEXW4TOMASuplNotificationMode@1@@Z @ 504 NONAME ; void COMASuplVer2SuplInitExtn::SetNotificationMode(enum COMASuplVer2SuplInitExtn::TOMASuplNotificationMode)
+	??1COMASuplResponseVer2@@UAE@XZ @ 505 NONAME ; COMASuplResponseVer2::~COMASuplResponseVer2(void)
+	?ConstructL@COMASuplPosInitVer2@@IAEXXZ @ 506 NONAME ; void COMASuplPosInitVer2::ConstructL(void)
+	?SetSETCapabilities@COMASuplSETCapabilitiesVer2@@QAEXABVTOMASuplPosTechnology2@@ABW4TOMASuplPrefMethod2@1@ABVTOMASuplPosProtocol2@@@Z @ 507 NONAME ; void COMASuplSETCapabilitiesVer2::SetSETCapabilities(class TOMASuplPosTechnology2 const &, enum COMASuplSETCapabilitiesVer2::TOMASuplPrefMethod2 const &, class TOMASuplPosProtocol2 const &)
+	?SetSuplCellInfo@COMASuplCellInfo@@QAEXHHH@Z @ 508 NONAME ; void COMASuplCellInfo::SetSuplCellInfo(int, int, int)
+	?SetMultipleLocIds@COMASuplTriggeredStart@@QAEXPAVCOMASuplMultipleLocIds@@@Z @ 509 NONAME ; void COMASuplTriggeredStart::SetMultipleLocIds(class COMASuplMultipleLocIds *)
+	?GetBatchRepType@TOMASuplBatchRepType@@QAEXAAH000@Z @ 510 NONAME ; void TOMASuplBatchRepType::GetBatchRepType(int &, int &, int &, int &)
+	?GetBatchReportMode@TOMASuplReportingCap@@QBEHAAVTOMASuplBatchReportMode@@@Z @ 511 NONAME ; int TOMASuplReportingCap::GetBatchReportMode(class TOMASuplBatchReportMode &) const
+	?GetCellId@COMASuplCellInfo@@QAEHXZ @ 512 NONAME ; int COMASuplCellInfo::GetCellId(void)
+	?SetMaxPositions@TOMASuplBatchReportMode@@QAEXH@Z @ 513 NONAME ; void TOMASuplBatchReportMode::SetMaxPositions(int)
+	?GSMCellInfo@TOMASuplECellInfo@@QBEXAAUTOMASuplGSMCellinfo@@@Z @ 514 NONAME ; void TOMASuplECellInfo::GSMCellInfo(struct TOMASuplGSMCellinfo &) const
+	?NewL@COMASuplReport@@SAPAV1@XZ @ 515 NONAME ; class COMASuplReport * COMASuplReport::NewL(void)
+	?GetSessionList@COMASuplReport@@QBEHAAV?$RPointerArray@VCOMASuplSessionID@@@@@Z @ 516 NONAME ; int COMASuplReport::GetSessionList(class RPointerArray<class COMASuplSessionID> &) const
+	?SetIMSPublicId@COMASuplThirdpartyId@@QAEXABVTDesC8@@@Z @ 517 NONAME ; void COMASuplThirdpartyId::SetIMSPublicId(class TDesC8 const &)
+	??0TOMASuplHistoricReporting@@QAE@XZ @ 518 NONAME ; TOMASuplHistoricReporting::TOMASuplHistoricReporting(void)
+	?GetEventType@TOMASuplTriggerParams@@QBEXAAW4TOMASuplTriggerParamsType@1@@Z @ 519 NONAME ; void TOMASuplTriggerParams::GetEventType(enum TOMASuplTriggerParams::TOMASuplTriggerParamsType &) const
+	??1COMASuplTriggeredResponse@@UAE@XZ @ 520 NONAME ; COMASuplTriggeredResponse::~COMASuplTriggeredResponse(void)
+	?SetRequestAssistanceData@COMASuplPosInit@@QAEXPAVCOMASuplReqAsstData@@@Z @ 521 NONAME ; void COMASuplPosInit::SetRequestAssistanceData(class COMASuplReqAsstData *)
+	?SetMaxMeasurements@TOMASuplBatchReportMode@@QAEXH@Z @ 522 NONAME ; void TOMASuplBatchReportMode::SetMaxMeasurements(int)
+	?GetSPCSETKey@COMASuplTriggeredResponse@@QBEHAAVTOMASuplSPCSETKey@@@Z @ 523 NONAME ; int COMASuplTriggeredResponse::GetSPCSETKey(class TOMASuplSPCSETKey &) const
+	?SetTrigType@COMASuplVer2SuplInitExtn@@QAEXW4TOMASuplTrigType@COMASuplTriggeredStart@@@Z @ 524 NONAME ; void COMASuplVer2SuplInitExtn::SetTrigType(enum COMASuplTriggeredStart::TOMASuplTrigType)
+	?SetStatusCode@COMASuplEnd@@QAEXW4TOMASuplStatusCode@1@@Z @ 525 NONAME ; void COMASuplEnd::SetStatusCode(enum COMASuplEnd::TOMASuplStatusCode)
+	?CloneL@COMASuplSETSessionID@@QAEPAV1@XZ @ 526 NONAME ; class COMASuplSETSessionID * COMASuplSETSessionID::CloneL(void)
+	?GetSETCapabilities@COMASuplTriggeredStart@@QBEXAAPAVCOMASuplSETCapabilitiesVer2@@@Z @ 527 NONAME ; void COMASuplTriggeredStart::GetSETCapabilities(class COMASuplSETCapabilitiesVer2 * &) const
+	?NewL@COMASuplTriggeredResponse@@SAPAV1@XZ @ 528 NONAME ; class COMASuplTriggeredResponse * COMASuplTriggeredResponse::NewL(void)
+	??0TOMASuplPeriodicParams@@QAE@XZ @ 529 NONAME ; TOMASuplPeriodicParams::TOMASuplPeriodicParams(void)
+	?SetRepCriteria@TOMASuplHistoricReporting@@QAEXVTOMASuplReportingCriteria@@@Z @ 530 NONAME ; void TOMASuplHistoricReporting::SetRepCriteria(class TOMASuplReportingCriteria)
+	?NewL@COMASuplNotification@@SAPAV1@XZ @ 531 NONAME ; class COMASuplNotification * COMASuplNotification::NewL(void)
+	?SetGSMCellInfo@TOMASuplECellInfo@@QAEXAAUTOMASuplGSMCellinfo@@@Z @ 532 NONAME ; void TOMASuplECellInfo::SetGSMCellInfo(struct TOMASuplGSMCellinfo &)
+	??1COMASuplThirdPartyIds@@UAE@XZ @ 533 NONAME ; COMASuplThirdPartyIds::~COMASuplThirdPartyIds(void)
+	?SetMinMajorVer@COMASuplVer2SuplInitExtn@@QAEXH@Z @ 534 NONAME ; void COMASuplVer2SuplInitExtn::SetMinMajorVer(int)
+	?SetPosData@COMASuplReportData@@QAEXPAVCOMASuplPositionData@@@Z @ 535 NONAME ; void COMASuplReportData::SetPosData(class COMASuplPositionData *)
+	??1COMASuplResponse@@UAE@XZ @ 536 NONAME ; COMASuplResponse::~COMASuplResponse(void)
+	?NewL@COMASuplCellInfo@@SAPAV1@XZ @ 537 NONAME ; class COMASuplCellInfo * COMASuplCellInfo::NewL(void)
+	?SetSupNetworkInfo@COMASuplResponseV2Extn@@QAEXVTOMASuplSuppNetworkInformation@@@Z @ 538 NONAME ; void COMASuplResponseV2Extn::SetSupNetworkInfo(class TOMASuplSuppNetworkInformation)
+	?NewLC@COMASuplReport@@SAPAV1@XZ @ 539 NONAME ; class COMASuplReport * COMASuplReport::NewLC(void)
+	?SetReportPosition@TOMASuplBatchReportMode@@QAEXH@Z @ 540 NONAME ; void TOMASuplBatchReportMode::SetReportPosition(int)
+	?NewL@COMASuplLocationIdVer2@@SAPAV1@XZ @ 541 NONAME ; class COMASuplLocationIdVer2 * COMASuplLocationIdVer2::NewL(void)
+	?SetSupNwInfo@COMASuplVer2SuplInitExtn@@QAEXVTOMASuplSuppNetworkInformation@@@Z @ 542 NONAME ; void COMASuplVer2SuplInitExtn::SetSupNwInfo(class TOMASuplSuppNetworkInformation)
+	?GetSuplServiceSupported@TOMAServiceCapabilities@@QBEHAAVTOMASuplServiceSupported@@@Z @ 543 NONAME ; int TOMAServiceCapabilities::GetSuplServiceSupported(class TOMASuplServiceSupported &) const
+	?AddThirdPartyId@COMASuplThirdPartyIds@@QAEXPAVCOMASuplThirdpartyId@@@Z @ 544 NONAME ; void COMASuplThirdPartyIds::AddThirdPartyId(class COMASuplThirdpartyId *)
+	?SetMdnThirdPartyId@COMASuplThirdpartyId@@QAEXABVTDesC8@@@Z @ 545 NONAME ; void COMASuplThirdpartyId::SetMdnThirdPartyId(class TDesC8 const &)
+	?SetBatchRepType@TOMASuplBatchRepConditions@@QAEXW4TOMABatchRepCondType@1@@Z @ 546 NONAME ; void TOMASuplBatchRepConditions::SetBatchRepType(enum TOMASuplBatchRepConditions::TOMABatchRepCondType)
+	?GetVer2SetCapExtn@COMASuplSETCapabilitiesVer2@@QBEHAAVTOMAVer2SetCapExtn@@@Z @ 547 NONAME ; int COMASuplSETCapabilitiesVer2::GetVer2SetCapExtn(class TOMAVer2SetCapExtn &) const
+	?SetVerticalAccuracy@TOMASuplQop@@QAEXH@Z @ 548 NONAME ; void TOMASuplQop::SetVerticalAccuracy(int)
+	??0COMASuplEnd@@IAE@XZ @ 549 NONAME ; COMASuplEnd::COMASuplEnd(void)
+	?SetSPCTId@COMASuplTriggeredResponse@@QAEXPAVCOMASuplSPCTID@@@Z @ 550 NONAME ; void COMASuplTriggeredResponse::SetSPCTId(class COMASuplSPCTID *)
+	?SuplQop@TOMASuplQop@@QBEHXZ @ 551 NONAME ; int TOMASuplQop::SuplQop(void) const
+	?ConstructL@COMASuplPosInit@@IAEXXZ @ 552 NONAME ; void COMASuplPosInit::ConstructL(void)
+	?Clone@COMASuplEnd@@UAEXPBVCOMASuplAsnMessageBase@@AAH@Z @ 553 NONAME ; void COMASuplEnd::Clone(class COMASuplAsnMessageBase const *, int &)
+	?ConstructL@COMASuplInitVer2@@IAEXXZ @ 554 NONAME ; void COMASuplInitVer2::ConstructL(void)
+	?GetAreaEventTrigger@TOMASuplServiceSupported@@QBEXAAH@Z @ 555 NONAME ; void TOMASuplServiceSupported::GetAreaEventTrigger(int &) const
+	?SuplSLPSessionID@COMASuplSLPSessionID@@QBEXAAVTDes8@@AAPAVCOMASuplSLPAddress@@@Z @ 556 NONAME ; void COMASuplSLPSessionID::SuplSLPSessionID(class TDes8 &, class COMASuplSLPAddress * &) const
+	?ConstructL@COMASuplAsnHandlerBase@@UAEXABVTUid@@H@Z @ 557 NONAME ; void COMASuplAsnHandlerBase::ConstructL(class TUid const &, int)
+	?SetPosition@COMASuplEnd@@QAEXPAVCOMASuplPosition@@@Z @ 558 NONAME ; void COMASuplEnd::SetPosition(class COMASuplPosition *)
+	?SetSuplResponse@COMASuplResponse@@QAEXW4TOMASuplPosMethod@@@Z @ 559 NONAME ; void COMASuplResponse::SetSuplResponse(enum TOMASuplPosMethod)
+	?Clone@COMASuplTriggeredStart@@UAEXPBVCOMASuplAsnMessageBase@@AAH@Z @ 560 NONAME ; void COMASuplTriggeredStart::Clone(class COMASuplAsnMessageBase const *, int &)
+	?GetRepMode@TOMASuplReportingMode@@QAEXAAW4TOMASuplRepMode@1@@Z @ 561 NONAME ; void TOMASuplReportingMode::GetRepMode(enum TOMASuplReportingMode::TOMASuplRepMode &)
+	?SetTriggerParams@COMASuplTriggeredResponse@@QAEXVTOMASuplTriggerParams@@@Z @ 562 NONAME ; void COMASuplTriggeredResponse::SetTriggerParams(class TOMASuplTriggerParams)
+	?SetSuplPosPayload@COMASuplPosInit@@QAEXPAVCOMASuplPosPayload@@@Z @ 563 NONAME ; void COMASuplPosInit::SetSuplPosPayload(class COMASuplPosPayload *)
+	?Qop@COMASuplStart@@QBEHAAVTOMASuplQop@@@Z @ 564 NONAME ; int COMASuplStart::Qop(class TOMASuplQop &) const
+	??1COMASuplTriggeredStop@@UAE@XZ @ 565 NONAME ; COMASuplTriggeredStop::~COMASuplTriggeredStop(void)
+	?SetBatchRepType@TOMASuplReportingMode@@QAEXVTOMASuplBatchRepType@@@Z @ 566 NONAME ; void TOMASuplReportingMode::SetBatchRepType(class TOMASuplBatchRepType)
+	?SetKeyIdentity@COMASuplAuthRequest@@QAEHAAVTDesC8@@@Z @ 567 NONAME ; int COMASuplAuthRequest::SetKeyIdentity(class TDesC8 &)
+	?SetDelay@TOMASuplQop@@QAEXH@Z @ 568 NONAME ; void TOMASuplQop::SetDelay(int)
+	?GetType@COMASuplThirdpartyId@@QAE?AW4TOMASuplThirdPartyInfoType@1@XZ @ 569 NONAME ; enum COMASuplThirdpartyId::TOMASuplThirdPartyInfoType COMASuplThirdpartyId::GetType(void)
+	?Ver@COMASuplEnd@@QBEHAAVTDes8@@@Z @ 570 NONAME ; int COMASuplEnd::Ver(class TDes8 &) const
+	??1COMASuplNotificationExtnV2@@UAE@XZ @ 571 NONAME ; COMASuplNotificationExtnV2::~COMASuplNotificationExtnV2(void)
+	??0COMASuplSETCapabilitiesVer2@@IAE@XZ @ 572 NONAME ; COMASuplSETCapabilitiesVer2::COMASuplSETCapabilitiesVer2(void)
+	?GetIMSPublicId@COMASuplThirdpartyId@@QAEXAAVTDes8@@@Z @ 573 NONAME ; void COMASuplThirdpartyId::GetIMSPublicId(class TDes8 &)
+	?Clone@COMASuplInitVer2@@UAEXPBVCOMASuplAsnMessageBase@@AAH@Z @ 574 NONAME ; void COMASuplInitVer2::Clone(class COMASuplAsnMessageBase const *, int &)
+	?SetSetCapabilities@COMASuplReport@@QAEXPAVCOMASuplSETCapabilitiesVer2@@@Z @ 575 NONAME ; void COMASuplReport::SetSetCapabilities(class COMASuplSETCapabilitiesVer2 *)
+	?NewL@COMASuplNotificationVer2@@SAPAV1@XZ @ 576 NONAME ; class COMASuplNotificationVer2 * COMASuplNotificationVer2::NewL(void)
+	?CloneL@COMASuplReportData@@QAEPAV1@XZ @ 577 NONAME ; class COMASuplReportData * COMASuplReportData::CloneL(void)
+	?SetVer@COMASuplReport@@QAEXABVTDesC8@@@Z @ 578 NONAME ; void COMASuplReport::SetVer(class TDesC8 const &)
+	??1COMASuplLocationIdData@@UAE@XZ @ 579 NONAME ; COMASuplLocationIdData::~COMASuplLocationIdData(void)
+

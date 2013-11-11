@@ -1,0 +1,57 @@
+[main]
+bio_test doatstart
+bio_test wapp0026
+bio_test doattheend
+
+
+// Startup section.
+[doatstart]
+clean_all_bio_msgs
+
+
+// Shutdown section.
+[doattheend]
+
+
+// wapp tests.
+[wapp0026]
+gen_msg_from_file wapp\wapp0026.bin
+check_used_bif 10005532
+bio_client_parse
+bio_client_process
+dump_parsed_message
+//
+// check commdb tables for correct entries
+bio_commdb DialOutIsp wapp0026_commdb_dialoutisp_table
+bio_commdb IAP wapp0026_commdb_iap_table
+bio_commdb WAPAccessPoint wapp0026_commdb_wapap_table
+bio_commdb WAPIPBearer wapp0026_commdb_wapip_table
+
+
+[wapp0026_commdb_dialoutisp_table]
+commdb_check text IpGateway "195.134.200.26"
+commdb_check text DefaultTelNum "+35833151001"
+commdb_check text LoginName "username"
+commdb_check text IfAuthName "username"
+commdb_check uint BearerProtocol "3"
+commdb_check uint BearerSpeed "1"
+commdb_check text Description "Everybodys ISP"
+commdb_check text Name "WAPP 0026-GsmCsd"
+
+
+[wapp0026_commdb_iap_table]
+commdb_check text Name "WAPP 0026-GsmCsd"
+
+
+[wapp0026_commdb_wapap_table]
+commdb_check text StartPage "http://mmm.wirelessfuture.com/extindex11.wml"
+commdb_check text Name "WAPP 0026"
+
+
+[wapp0026_commdb_wapip_table]
+commdb_check text GatewayAddress "195.134.200.26"
+commdb_check uint ProxyPortNumber "9203"
+commdb_check bool WSPOption "true"
+commdb_check bool Security "true"
+commdb_check text ProxyLogin "wapuser"
+commdb_check text ProxyPassword "wappswrd"

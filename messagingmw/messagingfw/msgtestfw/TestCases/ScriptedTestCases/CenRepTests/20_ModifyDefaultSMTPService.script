@@ -1,0 +1,54 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE
+
+
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer CreateSession C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\20_ModifyDefaultSMTPService.ini CreateSession
+
+RUN_TEST_STEP 100 MessagingTestServer CreatePopAccount C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\20_ModifyDefaultSMTPService.ini CreatePopAccount1
+
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpService C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\20_ModifyDefaultSMTPService.ini CreateSmtpService1
+
+RUN_TEST_STEP 100 MessagingTestServer CreateRegistry C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\20_ModifyDefaultSMTPService.ini CreateRegistry
+
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpMtm C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\20_ModifyDefaultSMTPService.ini CreateSmtpMtm
+
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer ChangeDefaultSmtpService C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\20_ModifyDefaultSMTPService.ini ChangeDefaultSmtpService1
+
+RUN_TEST_STEP 100 MessagingTestServer GetDefaultSmtpService C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\20_ModifyDefaultSMTPService.ini GetDefaultSmtpService1
+
+RUN_TEST_STEP 100 MessagingTestServer CompareNumbers C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\20_ModifyDefaultSMTPService.ini CompareNumbers1
+
+RUN_TEST_STEP 100 MessagingTestServer CreatePopAccount C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\20_ModifyDefaultSMTPService.ini CreatePopAccount1
+
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpService C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\20_ModifyDefaultSMTPService.ini CreateSmtpService2
+
+RUN_TEST_STEP 100 MessagingTestServer ChangeDefaultSmtpService C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\20_ModifyDefaultSMTPService.ini ChangeDefaultSmtpService2
+
+RUN_TEST_STEP 100 MessagingTestServer GetDefaultSmtpService C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\20_ModifyDefaultSMTPService.ini GetDefaultSmtpService2
+
+RUN_TEST_STEP 100 MessagingTestServer CompareNumbers C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\20_ModifyDefaultSMTPService.ini CompareNumbers2
+
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+
+RUN_TEST_STEP 100 MessagingTestServer END_TEST_CASE

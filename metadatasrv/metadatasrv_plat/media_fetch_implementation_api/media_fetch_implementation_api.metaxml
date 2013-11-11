@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<api id="d55750aed396c56154bd57b8cfdb0fcd" dataversion="2.0">
+  <name>Media Fetch Implementation API</name>
+  <description>An ECom plug-in interface for implementing Media Fetch plug-ins</description>
+  <type>c++</type>
+  <collection>mediamanagementutilities</collection>
+  <libs>
+  </libs>
+  <release category="platform"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>no</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

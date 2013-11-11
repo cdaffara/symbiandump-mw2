@@ -1,0 +1,57 @@
+EXPORTS
+	??0PosIndicatorInfo@@QAE@XZ @ 1 NONAME ; PosIndicatorInfo::PosIndicatorInfo(void)
+	?requestPosInfo@PosIndicatorInfo@@QAEXXZ @ 2 NONAME ; void PosIndicatorInfo::requestPosInfo(void)
+	?zip@PosGeoAddress@@QBE?AVQString@@XZ @ 3 NONAME ; class QString PosGeoAddress::zip(void) const
+	?city@PosGeoAddress@@QBE?AVQString@@XZ @ 4 NONAME ; class QString PosGeoAddress::city(void) const
+	??_EPosGeoAddress@@UAE@I@Z @ 5 NONAME ; PosGeoAddress::~PosGeoAddress(unsigned int)
+	?trUtf8@PosIndicatorInfo@@SA?AVQString@@PBD0@Z @ 6 NONAME ; class QString PosIndicatorInfo::trUtf8(char const *, char const *)
+	?district@PosGeoAddress@@QBE?AVQString@@XZ @ 7 NONAME ; class QString PosGeoAddress::district(void) const
+	?country@PosGeoAddress@@QBE?AVQString@@XZ @ 8 NONAME ; class QString PosGeoAddress::country(void) const
+	?setState@PosGeoAddress@@QAEXVQString@@@Z @ 9 NONAME ; void PosGeoAddress::setState(class QString)
+	?d_func@PosGeoAddress@@ABEPBVPosGeoAddressPrivate@@XZ @ 10 NONAME ; class PosGeoAddressPrivate const * PosGeoAddress::d_func(void) const
+	?staticMetaObject@PosIndicatorInfo@@2UQMetaObject@@B @ 11 NONAME ; struct QMetaObject const PosIndicatorInfo::staticMetaObject
+	?staticMetaObject@PosGeoAddress@@2UQMetaObject@@B @ 12 NONAME ; struct QMetaObject const PosGeoAddress::staticMetaObject
+	?trUtf8@PosGeoAddress@@SA?AVQString@@PBD0@Z @ 13 NONAME ; class QString PosGeoAddress::trUtf8(char const *, char const *)
+	?metaObject@PosGeoAddress@@UBEPBUQMetaObject@@XZ @ 14 NONAME ; struct QMetaObject const * PosGeoAddress::metaObject(void) const
+	?altitude@PosGeoAddress@@QBEMXZ @ 15 NONAME ; float PosGeoAddress::altitude(void) const
+	?tr@PosIndicatorInfo@@SA?AVQString@@PBD0H@Z @ 16 NONAME ; class QString PosIndicatorInfo::tr(char const *, char const *, int)
+	?setCountry@PosGeoAddress@@QAEXVQString@@@Z @ 17 NONAME ; void PosGeoAddress::setCountry(class QString)
+	?qt_metacast@PosGeoAddress@@UAEPAXPBD@Z @ 18 NONAME ; void * PosGeoAddress::qt_metacast(char const *)
+	??_EPosIndicatorInfo@@UAE@I@Z @ 19 NONAME ; PosIndicatorInfo::~PosIndicatorInfo(unsigned int)
+	??0PosGeoAddress@@QAE@XZ @ 20 NONAME ; PosGeoAddress::PosGeoAddress(void)
+	?qt_metacall@PosGeoAddress@@UAEHW4Call@QMetaObject@@HPAPAX@Z @ 21 NONAME ; int PosGeoAddress::qt_metacall(enum QMetaObject::Call, int, void * *)
+	?longitude@PosGeoAddress@@QBENXZ @ 22 NONAME ; double PosGeoAddress::longitude(void) const
+	?d_func@PosIndicatorInfo@@ABEPBVPosIndicatorInfoPrivate@@XZ @ 23 NONAME ; class PosIndicatorInfoPrivate const * PosIndicatorInfo::d_func(void) const
+	?qt_metacall@PosIndicatorInfo@@UAEHW4Call@QMetaObject@@HPAPAX@Z @ 24 NONAME ; int PosIndicatorInfo::qt_metacall(enum QMetaObject::Call, int, void * *)
+	?latitude@PosGeoAddress@@QBENXZ @ 25 NONAME ; double PosGeoAddress::latitude(void) const
+	?d_func@PosIndicatorInfo@@AAEPAVPosIndicatorInfoPrivate@@XZ @ 26 NONAME ; class PosIndicatorInfoPrivate * PosIndicatorInfo::d_func(void)
+	?trUtf8@PosGeoAddress@@SA?AVQString@@PBD0H@Z @ 27 NONAME ; class QString PosGeoAddress::trUtf8(char const *, char const *, int)
+	?tr@PosIndicatorInfo@@SA?AVQString@@PBD0@Z @ 28 NONAME ; class QString PosIndicatorInfo::tr(char const *, char const *)
+	?getStaticMetaObject@PosGeoAddress@@SAABUQMetaObject@@XZ @ 29 NONAME ; struct QMetaObject const & PosGeoAddress::getStaticMetaObject(void)
+	?getStaticMetaObject@PosIndicatorInfo@@SAABUQMetaObject@@XZ @ 30 NONAME ; struct QMetaObject const & PosIndicatorInfo::getStaticMetaObject(void)
+	?metaObject@PosIndicatorInfo@@UBEPBUQMetaObject@@XZ @ 31 NONAME ; struct QMetaObject const * PosIndicatorInfo::metaObject(void) const
+	?setLatitude@PosGeoAddress@@QAEXN@Z @ 32 NONAME ; void PosGeoAddress::setLatitude(double)
+	?number@PosGeoAddress@@QBE?AVQString@@XZ @ 33 NONAME ; class QString PosGeoAddress::number(void) const
+	?state@PosGeoAddress@@QBE?AVQString@@XZ @ 34 NONAME ; class QString PosGeoAddress::state(void) const
+	??1PosGeoAddress@@UAE@XZ @ 35 NONAME ; PosGeoAddress::~PosGeoAddress(void)
+	?setStreet@PosGeoAddress@@QAEXVQString@@@Z @ 36 NONAME ; void PosGeoAddress::setStreet(class QString)
+	?setCity@PosGeoAddress@@QAEXVQString@@@Z @ 37 NONAME ; void PosGeoAddress::setCity(class QString)
+	?street@PosGeoAddress@@QBE?AVQString@@XZ @ 38 NONAME ; class QString PosGeoAddress::street(void) const
+	?setDistrict@PosGeoAddress@@QAEXVQString@@@Z @ 39 NONAME ; void PosGeoAddress::setDistrict(class QString)
+	?tr@PosGeoAddress@@SA?AVQString@@PBD0H@Z @ 40 NONAME ; class QString PosGeoAddress::tr(char const *, char const *, int)
+	?vAccuracy@PosGeoAddress@@QBEMXZ @ 41 NONAME ; float PosGeoAddress::vAccuracy(void) const
+	?setNumber@PosGeoAddress@@QAEXVQString@@@Z @ 42 NONAME ; void PosGeoAddress::setNumber(class QString)
+	??1PosIndicatorInfo@@UAE@XZ @ 43 NONAME ; PosIndicatorInfo::~PosIndicatorInfo(void)
+	?posInfoUpdated@PosIndicatorInfo@@IAEXAAVPosGeoAddress@@H@Z @ 44 NONAME ; void PosIndicatorInfo::posInfoUpdated(class PosGeoAddress &, int)
+	?setAltitude@PosGeoAddress@@QAEXM@Z @ 45 NONAME ; void PosGeoAddress::setAltitude(float)
+	?d_func@PosGeoAddress@@AAEPAVPosGeoAddressPrivate@@XZ @ 46 NONAME ; class PosGeoAddressPrivate * PosGeoAddress::d_func(void)
+	?hAccuracy@PosGeoAddress@@QBEMXZ @ 47 NONAME ; float PosGeoAddress::hAccuracy(void) const
+	?setLongitude@PosGeoAddress@@QAEXN@Z @ 48 NONAME ; void PosGeoAddress::setLongitude(double)
+	?qt_metacast@PosIndicatorInfo@@UAEPAXPBD@Z @ 49 NONAME ; void * PosIndicatorInfo::qt_metacast(char const *)
+	?cancelPosInfo@PosIndicatorInfo@@QAEXXZ @ 50 NONAME ; void PosIndicatorInfo::cancelPosInfo(void)
+	?trUtf8@PosIndicatorInfo@@SA?AVQString@@PBD0H@Z @ 51 NONAME ; class QString PosIndicatorInfo::trUtf8(char const *, char const *, int)
+	?setZip@PosGeoAddress@@QAEXVQString@@@Z @ 52 NONAME ; void PosGeoAddress::setZip(class QString)
+	?tr@PosGeoAddress@@SA?AVQString@@PBD0@Z @ 53 NONAME ; class QString PosGeoAddress::tr(char const *, char const *)
+	?setvAccuracy@PosGeoAddress@@QAEXM@Z @ 54 NONAME ; void PosGeoAddress::setvAccuracy(float)
+	?sethAccuracy@PosGeoAddress@@QAEXM@Z @ 55 NONAME ; void PosGeoAddress::sethAccuracy(float)
+

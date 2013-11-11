@@ -1,0 +1,37 @@
+/*
+* Copyright (c) 2002-2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  This file provides the information required for building the
+*                SSSettings.
+*
+*/
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT ARMV5
+
+PRJ_EXPORTS
+
+../inc/csssettingsrefreshcontainer.h  |../../../inc/csssettingsrefreshcontainer.h
+../inc/msssettingsrefreshhandler.h    |../../../inc/msssettingsrefreshhandler.h
+
+../rom/sssettings_stub.sis          /epoc32/data/z/system/install/sssettings_stub.sis
+
+// IBY files
+../rom/sssettings.iby                 CORE_APP_LAYER_IBY_EXPORT_PATH(sssettings.iby)
+
+PRJ_MMPFILES
+../group/sssettings.mmp
+
+//End of file

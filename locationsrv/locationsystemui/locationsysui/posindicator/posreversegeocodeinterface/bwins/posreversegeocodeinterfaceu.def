@@ -1,0 +1,4 @@
+EXPORTS
+	?NewL@CPosReverseGeocodeInterface@@SAPAV1@AAVMPosReverseGeocodeObserver@@@Z @ 1 NONAME ; class CPosReverseGeocodeInterface * CPosReverseGeocodeInterface::NewL(class MPosReverseGeocodeObserver &)
+	??1CPosReverseGeocodeInterface@@UAE@XZ @ 2 NONAME ; CPosReverseGeocodeInterface::~CPosReverseGeocodeInterface(void)
+

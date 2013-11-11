@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
+<svg baseProfile="tiny" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="80" viewBox="0 0 60 80">
+<linearGradient id="XMLID_68_" gradientUnits="userSpaceOnUse" x1="26.0703" y1="-2273.4072" x2="31.9835" y2="-2285.0527" gradientTransform="matrix(1 0 0 -1 0.2632 -2209.7959)">
+<stop offset="0" style="stop-color:#A2C2DD"/>
+<stop offset="0.1" style="stop-color:#A2C2DD"/>
+<stop offset="0.7135" style="stop-color:#6C83BB"/>
+<stop offset="0.9888" style="stop-color:#003D6D"/>
+</linearGradient>
+<circle fill="url(#XMLID_68_)" cx="29.29" cy="69.434" r="6.529"/>
+<g>
+<rect fill="none" width="60" height="80"/>
+</g>
+<linearGradient id="XMLID_69_" gradientUnits="userSpaceOnUse" x1="30.415" y1="1559.0273" x2="40.6636" y2="1579.2108" gradientTransform="matrix(1 0 0 1 0.1504 -1525.8203)">
+<stop offset="0" style="stop-color:#A2C2DD"/>
+<stop offset="0.1" style="stop-color:#A2C2DD"/>
+<stop offset="0.7135" style="stop-color:#6C83BB"/>
+<stop offset="0.9888" style="stop-color:#003D6D"/>
+</linearGradient>
+<path fill="url(#XMLID_69_)" d="M19.666,13.492c-0.396,0.462-0.428,0.882-0.385,1.153l4.14,39.044 c0.198,1.199,0.643,2.05,1.402,2.69c1.008,1.083,2.547,1.694,4.421,1.739c1.117,0,2.189-0.212,3.107-0.613 c1.604-0.646,2.549-1.824,2.775-3.511l3.584-39.309c0.061-0.329,0.016-0.752-0.396-1.216c-1.232-1.409-5.063-2.393-9.311-2.393 C24.722,11.083,20.878,12.073,19.666,13.492z"/>
+<g>
+<g>
+<linearGradient id="XMLID_70_" gradientUnits="userSpaceOnUse" x1="14.7363" y1="776.8535" x2="33.5391" y2="801.0286" gradientTransform="matrix(1 0 0 1 0.0752 -762.9102)">
+<stop offset="0" style="stop-color:#FFFFFF"/>
+<stop offset="0.05" style="stop-color:#FFFFFF"/>
+<stop offset="1" style="stop-color:#A2C2DD"/>
+</linearGradient>
+<path fill="url(#XMLID_70_)" d="M37.949,14.62l-3.178,39.271c-0.277,2.805-3.086,3.885-5.521,3.885 c-2.58-0.063-4.746-1.237-5.355-3.849l-4.029-38.819C23.36,17.514,33.879,18.064,37.949,14.62z"/>
+<linearGradient id="XMLID_71_" gradientUnits="userSpaceOnUse" x1="37.4512" y1="796.1699" x2="-11.1774" y2="805.2171" gradientTransform="matrix(1 0 0 1 0.0752 -762.9102)">
+<stop offset="0" style="stop-color:#FFFFFF"/>
+<stop offset="0.35" style="stop-color:#A2C2DD"/>
+<stop offset="0.7" style="stop-color:#6C83BB"/>
+<stop offset="1" style="stop-color:#003D6D"/>
+</linearGradient>
+<path fill="url(#XMLID_71_)" d="M25.46,17.253l1.585,40.042c-1.518-0.785-2.883-1.27-3.276-3.645L19.64,14.501 C20.06,14.847,24.262,16.785,25.46,17.253z"/>
+<linearGradient id="XMLID_72_" gradientUnits="userSpaceOnUse" x1="25.5776" y1="799.0352" x2="53.4279" y2="798.3287" gradientTransform="matrix(1 0 0 1 0.0752 -762.9102)">
+<stop offset="0" style="stop-color:#FFFFFF"/>
+<stop offset="0.35" style="stop-color:#A2C2DD"/>
+<stop offset="0.7" style="stop-color:#6C83BB"/>
+<stop offset="1" style="stop-color:#003D6D"/>
+</linearGradient>
+<path fill="url(#XMLID_72_)" d="M32.047,57.261c1.309-0.479,2.479-1.429,2.738-3.308l3.597-39.45c0,0-3.825,1.754-4.456,2.15 L32.047,57.261z"/>
+<linearGradient id="XMLID_73_" gradientUnits="userSpaceOnUse" x1="19.8716" y1="772.9834" x2="42.9158" y2="784.152" gradientTransform="matrix(1 0 0 1 0.0752 -762.9102)">
+<stop offset="0" style="stop-color:#FFFFFF"/>
+<stop offset="0.05" style="stop-color:#FFFFFF"/>
+<stop offset="1" style="stop-color:#A2C2DD"/>
+</linearGradient>
+<path fill="url(#XMLID_73_)" d="M38.389,14.591c-0.209,1.578-4.394,2.859-9.345,2.859c-4.952,0-9.167-1.281-9.417-2.859 c-0.248-1.579,3.976-3.158,9.385-3.158C34.42,11.433,38.596,13.012,38.389,14.591z"/>
+</g>
+</g>
+<g>
+<g>
+<radialGradient id="XMLID_74_" cx="26.4556" cy="-2274.9688" r="6.3101" gradientTransform="matrix(1 0 0 -1 0.2632 -2209.7959)" gradientUnits="userSpaceOnUse">
+<stop offset="0" style="stop-color:#E3DFE4"/>
+<stop offset="1" style="stop-color:#C03A3A"/>
+</radialGradient>
+<circle fill="url(#XMLID_74_)" cx="29.271" cy="69.457" r="6.171"/>
+</g>
+</g>
+<rect fill="none" width="60" height="80"/>
+</svg>

@@ -1,0 +1,47 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRINT Running  EMsvCopyEntries_001
+
+
+//********************************
+PRINT Running  EMsvCopyEntries : Entry is created in a folder (Drafts which is unprotected). 
+PRINT Running  EMsvCopyEntries : Various combinations of Caps and SID's.
+//********************************
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCopyEntries_001_001.script
+	// Note : The proxy, FolderFrom, and FolderTo all have the SID. 
+	// Create an entry in a folder(draft which is unprotected). The proxy has various caps.
+	// A message is created in the from folder.
+	// The message is then copied.
+	
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCopyEntries_001_002.script
+	// Note : proxy, FolderFrom have the same SID, and FolderTo is different.
+	// Create an entry in a folder(drafts which is unprotected).
+	// A message is created in the from folder.
+	// The message is then copied.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCopyEntries_001_003.script
+	// Create an entry in a folder(draft which is unprotected). 
+	// A message is created in the from folder.
+	// The message is then copied.
+	
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCopyEntries_001_004.script
+	// Create an entry in a folder(draft which is unprotected). 
+	// A message is created in the from folder.
+	// The message is then copied.
+

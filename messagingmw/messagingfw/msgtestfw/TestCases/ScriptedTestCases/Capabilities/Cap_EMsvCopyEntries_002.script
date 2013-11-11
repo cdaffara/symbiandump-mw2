@@ -1,0 +1,44 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRINT Running  EMsvCopyEntries_002
+
+
+//********************************
+PRINT Running  EMsvCopyEntries : Entry is copied to a folder (Outbox which is protected). 
+PRINT Running  EMsvCopyEntries : Various combinations of Caps and SID's.
+//********************************
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCopyEntries_002_001.script
+	// Copy an entry to a folder(Outbox which is protected). Proxy has Read/Write user data + Network services.
+	// Should PASS.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCopyEntries_002_002.script
+	// Copy an entry to a folder(Outbox which is protected). Proxy has Read/Write user data.
+	// Should FAIL.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCopyEntries_002_003.script
+	// Copy an entry to a folder(Outbox which is protected). Proxy has Read user data + Network services.
+	// Should FAIL.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCopyEntries_002_004.script
+	// Copy an entry to a folder(Outbox which is protected). Proxy has Write user data + Network services.
+	// Should FAIL.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCopyEntries_002_005.script
+	// Copy an entry to a folder(Outbox which is protected). Proxy has no caps.
+	// Should FAIL.
+

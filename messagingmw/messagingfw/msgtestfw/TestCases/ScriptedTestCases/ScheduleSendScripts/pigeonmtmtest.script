@@ -1,0 +1,43 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @SYMTestCaseID PREQ694-Int-1
+//! @SYMTestCaseDesc Sending an SMS message when sending conditions are met.
+//! It first sets the schedule send settings from the configuration file, and sets the sending conditions as met.  
+//! It then creates an SMS message and schedules it for sending.  Finally, it waits for the message to be marked as "sent".
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+
+PREFIX RUN_TEST_STEP 10000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+	GetBaseConstants 	c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\pigeonmtmtest.ini GetBaseConstants
+	GetPigeonMtmConstant	c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\pigeonmtmtest.ini GetPigeonMtmConstant
+	SetDefaultSmsSettings 	c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\pigeonmtmtest.ini SetSettingsFile
+	CreateSession 		c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\pigeonmtmtest.ini CreateSession
+	DeleteExistingService 	c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\pigeonmtmtest.ini DeleteExistingService
+	CreateService		c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\pigeonmtmtest.ini CreateService
+	SetSchSendSettings 	c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\pigeonmtmtest.ini SetSchSendSettings
+EXECUTE_TEST_CASE
+	DeleteChildren 		c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\pigeonmtmtest.ini EmptyOutbox
+	DeleteChildren 		c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\pigeonmtmtest.ini EmptySent
+	CreatePigeonMessage	c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\pigeonmtmtest.ini CreatePigeonMessage
+	SchedulePigeonMessage	c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\pigeonmtmtest.ini SchedulePigeonMessage
+	Sleep 			c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\pigeonmtmtest.ini Sleep
+CHECK_POSTCONDITIONS
+	CheckChildrenCount	c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\pigeonmtmtest.ini CheckChildrenCount
+END_TEST_CASE

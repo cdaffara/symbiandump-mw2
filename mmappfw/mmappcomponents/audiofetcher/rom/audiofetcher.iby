@@ -1,0 +1,28 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: AudioFetcher iby file.
+*
+*/
+
+#ifndef AUDIOFETCHER_IBY
+#define AUDIOFETCHER_IBY
+
+
+ECOM_PLUGIN( audiofetcher.dll, audiofetcher.rsc )
+
+data=DATAZ_\BITMAP_DIR\audiofetcher.mif         BITMAP_DIR\audiofetcher.mif
+
+#endif // AUDIOFETCHER_IBY
+
+//  End of File

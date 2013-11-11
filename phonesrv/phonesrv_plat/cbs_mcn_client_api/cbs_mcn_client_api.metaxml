@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<api id="a65318deffa4aa00a613e90c0320bcaf" dataversion="1.0">
+  <name>CBS MCN Client API</name>
+  <description>Used by CBS MCN Clients. This API offers a way to receive CB messages to other applications than the CBS UI application.</description>
+  <type>c++</type>
+  <subsystem>cbs</subsystem>
+  <libs>
+    <lib name="CbsMcnClient.lib" />
+  </libs>
+  <release category="domain"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>yes</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

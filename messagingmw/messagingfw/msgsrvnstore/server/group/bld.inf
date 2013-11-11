@@ -1,0 +1,131 @@
+// Copyright (c) 1999-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// bld.inf
+//
+
+#include <platform_paths.hrh>
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+../inc/MSVSTD.H SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(msvstd.h)
+../inc/MSVSTD.INL SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(msvstd.inl)
+../inc/MSVSTORE.H SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(msvstore.h)
+../inc/MSVIPC.H SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(msvipc.h)
+../inc/MSVIPC.INL SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(msvipc.inl)
+../inc/MSVREG.H SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(msvreg.h)
+../inc/MSVREG.INL SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(msvreg.inl)
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+../inc/MSVREGIP.H /epoc32/include/msvregip.h
+#endif
+../inc/MSVSTD.HRH /epoc32/include/msvstd.hrh
+../inc/MENTACT.H SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(mentact.h)
+../inc/MSVRCPT.H SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(msvrcpt.h)
+../inc/MSVRCPT.INL SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(msvrcpt.inl)
+../inc/MSVARRAY.H SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(msvarray.h)
+../inc/MSVIDS.H SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(msvids.h)
+../inc/MSVUIDS.H SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(msvuids.h)
+../inc/MSVRUIDS.H SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(msvruids.h)
+../inc/MSVENTRY.H SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(msventry.h)
+../inc/MSVENTRY.INL SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(msventry.inl)
+../inc/MTSR.H SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(mtsr.h)
+../inc/MSVAPI.H SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(msvapi.h)
+../inc/MSVAPI.INL SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(msvapi.inl)
+../inc/MCLIENT.H SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(mclient.h)
+../inc/MTCLBASE.H SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(mtclbase.h)
+../inc/MTCLREG.H SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(mtclreg.h)
+../inc/MTMDEF.H SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(mtmdef.h)
+../inc/MTMDEF.HRH /epoc32/include/mtmdef.hrh
+../inc/MTMUIDS.H SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(mtmuids.h)
+../inc/MSVFIND.H SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(msvfind.h)
+../inc/MSVFIND.INL SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(msvfind.inl)
+../inc/MSVFTEXT.H SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(msvftext.h)
+../inc/MSVFTEXT.INL SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(msvftext.inl)
+../inc/MSVUTILS.H SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(msvutils.h)
+../inc/mtmconfig.rh SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(mtmconfig.rh)
+../inc/CMsvBodyText.h SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(cmsvbodytext.h)
+../inc/CMsvPlainBodyText.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(cmsvplainbodytext.h)
+../inc/MMsvAttachmentManager.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(mmsvattachmentmanager.h)
+../inc/mmsvattachmentmanagersync.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(mmsvattachmentmanagersync.h)
+../inc/CMsvAttachment.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(cmsvattachment.h)
+../inc/MMsvStoreManager.h SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(mmsvstoremanager.h)
+../inc/CMsvMimeHeaders.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(cmsvmimeheaders.h)
+../inc/cmsvcopystoreoperation.h SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(cmsvcopystoreoperation.h)
+../inc/cmsvrecipientlist.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(cmsvrecipientlist.h)
+../inc/TMsvPackedNotifierRequest.h SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(tmsvpackednotifierrequest.h)
+../inc/cmsvtechnologytypedefaultmtmsettings.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(cmsvtechnologytypedefaultmtmsettings.h)
+../inc/tmsvsystemprogress.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(tmsvsystemprogress.h)
+../inc/tnonoperationmtmdata.h SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(tnonoperationmtmdata.h)
+
+../inc/msgerr.h SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(msgerr.h)
+../inc/msvsearchsortquery.h SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(msvsearchsortquery.h)
+../inc/msvsearchsortoperation.h SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(msvsearchsortoperation.h)
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+../inc/msvsearchsortcacheentry.h /epoc32/include/msvsearchsortcacheentry.h
+#endif
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+../inc/msvsearchsortcache.inl /epoc32/include/msvsearchsortcache.inl
+#endif
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+../inc/msvsearchsortcachemanager.h /epoc32/include/msvsearchsortcachemanager.h
+#endif
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+../inc/msvsearchsortdeltacache.h /epoc32/include/msvsearchsortdeltacache.h
+#endif
+../inc/msvenhancesearchsortutil.h SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(msvenhancesearchsortutil.h)
+
+../inc/mtmuidsdef.hrh /epoc32/include/mtmuidsdef.hrh
+#ifndef SYMBIAN_ENABLE_SPLIT_HEADERS
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+../inc/msvconsts.h /epoc32/include/msvconsts.h
+#endif
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+../inc/msvsearchsortconstants.h /epoc32/include/msvsearchsortconstants.h
+#endif
+#ifdef SYMBIAN_OLD_EXPORT_LOCATION
+../inc/cinstalledmtmgroup.h /epoc32/include/cinstalledmtmgroup.h
+#endif
+#endif
+
+// Note: this cenrep file is exported for testing and techview only. Not used in a device
+10274556.txt z:/private/10202be9/10274556.txt
+
+// ConfML files
+../conf/msgsrvnstore.confml          MW_LAYER_EXPORTS_CONFML(msgsrvnstore.confml)
+../conf/msgsrvnstore_10274556.crml   MW_LAYER_EXPORTS_CRML(msgsrvnstore_10274556.crml)
+
+messageserver.hby /epoc32/rom/include/messageserver.hby
+messageserver.iby /epoc32/rom/include/messageserver.iby
+
+backup_registration.xml z:/private/1000484b/backup_registration.xml
+msgcache.ini z:/private/1000484b/msgcache.ini
+
+#if (defined SYMBIAN_MSGS_ENHANCED_REMOVABLE_MEDIA_SUPPORT)
+10286a26.txt z:/private/10202be9/10286a26.txt
+msgPriorityDriveList.ini z:/private/1000484b/msgprioritydrivelist.ini
+#endif		// #if (defined SYMBIAN_MSGS_ENHANCED_REMOVABLE_MEDIA_SUPPORT)
+
+//IBY exports
+../rom/messageserver_rsc.iby  LANGUAGE_OS_LAYER_IBY_EXPORT_PATH(messageserver_rsc.iby)
+../rom/messageserver.hby  CORE_OS_LAYER_IBY_EXPORT_PATH(messageserver.hby)
+
+
+../loc/msgs.loc OS_LAYER_LOC_EXPORT_PATH(msgs.loc)
+PRJ_MMPFILES
+MSGS.mmp
+MSGS_AutoShutdown.mmp
+
+// Test code
+#include "../test/group/bld.inf"
+

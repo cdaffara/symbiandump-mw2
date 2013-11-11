@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>msg-imap-connect1</name>
+	<timeout>5000</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\email\imap\connect\msg-imap-connect1.script</hostPath>
+			<devicePath>c:\msgtest\email\imap\connect\msg-imap-connect1.script</devicePath>
+		</script>
+		
+		
+	</testScripts>
+
+	<testServers>
+		<server>T_MsgCommonServer</server>
+		<server>T_MsgImapServer</server>
+	</testServers>
+
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\email\imap\connect\msg-imap-connect1.ini</hostPath>
+			<devicePath>c:\msgtest\email\imap\connect\msg-imap-connect1.ini</devicePath>
+		</data>
+		
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\IMAPSettings_test908.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\IMAPSettings_test908.txt</devicePath>
+		</data>
+	
+
+	</dependencies>	
+</testExecuteTest>

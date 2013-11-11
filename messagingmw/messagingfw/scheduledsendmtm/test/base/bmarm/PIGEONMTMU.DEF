@@ -1,0 +1,5 @@
+EXPORTS
+	NewL__20CPigeonScheduledSendR15CMsvServerEntry @ 1 NONAME ; CPigeonScheduledSend::NewL(CMsvServerEntry &)
+	NewL__21CPigeonScheduledEntryRC9TMsvEntry @ 2 NONAME ; CPigeonScheduledEntry::NewL(TMsvEntry const &)
+	NewL__16CPigeonServerMtmR17CRegisteredMtmDllR15CMsvServerEntry @ 3 NONAME ; CPigeonServerMtm::NewL(CRegisteredMtmDll &, CMsvServerEntry &)
+

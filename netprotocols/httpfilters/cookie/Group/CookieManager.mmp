@@ -1,0 +1,85 @@
+/*
+* Copyright (c) 2001 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET		cookiemanager.dll
+TARGETTYPE	DLL
+
+UID	0x1000008D 	0x101F852F
+
+CAPABILITY	CAP_GENERAL_DLL
+
+
+
+MW_LAYER_SYSTEMINCLUDE
+
+USERINCLUDE    ../ManagerInc
+// USERINCLUDE    ../../HttpFilterCommon/inc
+
+SOURCEPATH		../ManagerSrc
+
+SOURCE			Cookie.cpp
+SOURCE			CookieArray.cpp
+SOURCE			CookieIPC.cpp
+SOURCE			CookieLogger.cpp
+SOURCE			CookieManagerMain.cpp
+SOURCE			CookieManagerServer.cpp
+SOURCE			CookieManagerSession.cpp
+SOURCE			CookieManagerClient.cpp
+SOURCE			CookieManagerStart.cpp
+SOURCE			CookieServerPanic.cpp  
+SOURCE          CookieGroupData.cpp CookieGroupDataArray.cpp GroupIdInfoArray.cpp
+SOURCE          CookieClientDataArray.cpp CookieClientData.cpp
+
+
+// IMPORTED LIBRARIES
+
+LIBRARY		EUSER.LIB HTTP.LIB BAFL.LIB
+LIBRARY		INETPROTUTIL.LIB efsrv.lib 
+LIBRARY		SysUtil.lib
+LIBRARY         XmlEngineDOM.lib
+
+#if defined(ARMCC)
+        DEFFILE ../EABI/COOKIEMANAGERU_EKA2.def
+#elif defined( WINSCW )
+        DEFFILE ../BWinsCw/COOKIEMANAGERU_EKA2.def
+#elif defined( WINS )
+        DEFFILE ../BWins/COOKIEMANAGERU_EKA2.def
+#else
+    DEFFILE ../BMarm/COOKIEMANAGERU_EKA2.def
+#endif
+
+
+
+// MACROS
+
+// Define this macro is you wish to extend the feature-list this DLL supports
+//#define __TEST_COOKIE_ENABLED
+
+#ifdef __TEST_COOKIE_ENABLED
+	MACRO __TEST_COOKIE__
+#endif	// __TEST_COOKIE_ENABLED
+
+// Define this macro is you wish to enable logging
+//#define __TEST_COOKIE_LOG_ENABLED
+
+#ifdef __TEST_COOKIE_LOG_ENABLED
+	MACRO __TEST_COOKIE_LOG__
+	DEBUGLIBRARY flogger.lib
+#endif	// __TEST_COOKIE_LOG_ENABLED

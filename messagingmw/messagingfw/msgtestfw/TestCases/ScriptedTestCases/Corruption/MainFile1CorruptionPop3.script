@@ -1,0 +1,64 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer GetBaseConstants					c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini GetBaseConstants
+RUN_TEST_STEP 100 MessagingTestServer InitNtRas						c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini InitNtRas
+RUN_TEST_STEP 100 MessagingTestServer CreateSession					c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini SessionId
+RUN_TEST_STEP 100 MessagingTestServer ResetMessageStore					c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini ResetMessageStore
+RUN_TEST_STEP 100 MessagingTestServer CreatePopAccount 					C:\msgtest\TestFrameWork\ScriptedTestCases\Corruption\Corruption.ini CreatePopAccount1
+RUN_TEST_STEP 100 MessagingTestServer CreatePop3Service					c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini CreatePop3Service
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpService					c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini CreateSmtpService
+RUN_TEST_STEP 100 MessagingTestServer SetDefaultConfiguration				c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini SetDefaultConfiguration2
+RUN_TEST_STEP 100 MessagingTestServer CreateRegistry					c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini CreateRegistry
+RUN_TEST_STEP 100 MessagingTestServer CreatePop3Mtm					c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini CreatePop3Mtm
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpMtm					c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini CreateSmtpMtm
+RUN_TEST_STEP 100 MessagingTestServer SetPop3ServiceParameters				c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini SetPop3ServiceParameters
+RUN_TEST_STEP 300 MessagingTestServer GetDefaultSmtpService						c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini GetDefaultSmtpService
+RUN_TEST_STEP 100 MessagingTestServer SetSmtpServiceParameters				c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini SetSmtpServiceParameters
+
+RUN_TEST_STEP 100 MessagingTestServer ConnectPop3Server   				c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini ConnectPop3Server0
+RUN_TEST_STEP 100 MessagingTestServer DeleteChildren					c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini DeleteChildren
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount				c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini CheckChildrenCount0
+RUN_TEST_STEP 100 MessagingTestServer DisconnectPop3Server				c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini DisconnectPop3Server0
+
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+
+
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpMessageFromEmailFile			c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 100 MessagingTestServer CopyEntry						c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini CopyEntry
+RUN_TEST_STEP 100 MessagingTestServer ConnectPop3Server		   		c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini ConnectPop3Server1
+RUN_TEST_STEP 100 MessagingTestServer CreateChildrenSelection	   			c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini CreateChildrenSelection
+RUN_TEST_STEP 100 MessagingTestServer CopySelection					c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini CopySelection
+RUN_TEST_STEP 100 MessagingTestServer DisconnectPop3Server				c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini DisconnectPop3Server1
+
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount		   		c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini CheckChildrenCount1
+RUN_TEST_STEP 100 MessagingTestServer FindEntryByName			   		c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini FindEntryByName0
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount		   		c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini CheckChildrenCount2
+RUN_TEST_STEP 100 MessagingTestServer FindEntryByName			   		c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini FindEntryByName1
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount		   		c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini CheckChildrenCount3
+RUN_TEST_STEP 100 MessagingTestServer FindEntryByName			   		c:\msgtest\TestFramework\ScriptedTestCases\Corruption\Corruption.ini FindEntryByName2
+
+RUN_TEST_STEP 100 MessagingTestServer END_TEST_CASE

@@ -1,0 +1,38 @@
+/*
+ * Copyright (c) 2008 Nokia Corporation and/or its subsidiary(-ies).
+ * All rights reserved.
+ * This component and the accompanying materials are made available
+ * under the terms of "Eclipse Public License v1.0"
+ * which accompanies this distribution, and is available
+ * at the URL "http://www.eclipse.org/legal/epl-v10.html".
+ *
+ * Initial Contributors:
+ * Nokia Corporation - initial contribution.
+ *
+ * Contributors:
+ *
+ * Description:  Exports headers belonging to VoIPAudioServices API.
+ *
+ */
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+../inc/voipaudiocommon.h       MW_LAYER_PLATFORM_EXPORT_PATH(voipaudiocommon.h)
+../inc/voipdownlinkstream.h    MW_LAYER_PLATFORM_EXPORT_PATH(voipdownlinkstream.h)
+../inc/voipdtmftoneplayer.h    MW_LAYER_PLATFORM_EXPORT_PATH(voipdtmftoneplayer.h)
+../inc/voipformatintfc.h       MW_LAYER_PLATFORM_EXPORT_PATH(voipformatintfc.h)
+../inc/voipg711decoderintfc.h  MW_LAYER_PLATFORM_EXPORT_PATH(voipg711decoderintfc.h)
+../inc/voipg711encoderintfc.h  MW_LAYER_PLATFORM_EXPORT_PATH(voipg711encoderintfc.h)
+../inc/voipg729decoderintfc.h  MW_LAYER_PLATFORM_EXPORT_PATH(voipg729decoderintfc.h)
+../inc/voipilbcdecoderintfc.h  MW_LAYER_PLATFORM_EXPORT_PATH(voipilbcdecoderintfc.h)
+../inc/voipilbcencoderintfc.h  MW_LAYER_PLATFORM_EXPORT_PATH(voipilbcencoderintfc.h)
+../inc/voipringtonefactory.h   MW_LAYER_PLATFORM_EXPORT_PATH(voipringtonefactory.h)
+../inc/voipringtoneplayer.h    MW_LAYER_PLATFORM_EXPORT_PATH(voipringtoneplayer.h)
+../inc/voipuplinkstream.h      MW_LAYER_PLATFORM_EXPORT_PATH(voipuplinkstream.h)
+../inc/voiputilityfactory.h    MW_LAYER_PLATFORM_EXPORT_PATH(voiputilityfactory.h)
+../inc/voipdatabuffer.h        MW_LAYER_PLATFORM_EXPORT_PATH(voipdatabuffer.h)
+../inc/voipjitterbufferintfc.h MW_LAYER_PLATFORM_EXPORT_PATH(voipjitterbufferintfc.h)

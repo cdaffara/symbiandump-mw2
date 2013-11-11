@@ -1,0 +1,814 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE T_MsgCommonServer	-SharedData
+LOAD_SUITE T_MsgImapServer	-SharedData
+LOAD_SUITE T_MsgSmtpServer	-SharedData
+
+START_TESTCASE MSG-SMTP-Migration1-0001
+
+//! @SYMTestCaseID	MSG-SMTP-Migration1-0001
+//! @SYMTestCaseDesc	Positive: Check bearer migrations during initial connection while sending email
+//! @SYMTestPriority	Critical
+//! @SYMTestType	CIT
+//! @SYMREQ		6991, 6992, 6993
+//! @SYMPREQ		1307
+//! @SYMTestStatus	Implemented
+//! @SYMTestActions	1. Reset Message Store and Central Repository to default state.
+//!			2. Create IMAP account in Central Repository using standard settings from a configuration file.
+//!			3. Connect, sync, initialise, disconnect IMAP service.
+//!			4. Disconnect from IMAP service.
+//!			5. Create single message with 1K body text in outbox
+//!			6. Install bearer mobility test framework event handlers to simulate switchover 
+//!			7. Send email to SMTP server
+//!			8. Check message sent
+//!			9. Repeat steps 5 - 9 for each of bearer upgrade / downgrade types
+//!			10. Connect and sync to IMAP service
+//!			11. Check all sent emails are in the IMAP inbox
+//!			12. Disconnect from IMAP service.
+//!
+//! @SYMTestExpectedResults	See step 8 & 11
+//! @SYMAuthor			Robert Heal
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ChangeImap4SubAndSyncSettings
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectAndSyncImapServer	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ConnectAndSyncImapServer
+RUN_TEST_STEP 300 T_MsgImapServer	InitialiseImap4Account		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini InitialiseImap4Account
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountRemoteInbox_0
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini DisConnectImapServer
+
+PRINT Setup Completed ##################################################
+
+PRINT Start - Connecting - Downgrade ###################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountOutbox_1
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Connecting_Downgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Downgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Sending_Ignore
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini SendSmtpMessage
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountSentItems_1
+
+PRINT End - Connecting - Downgrade #####################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ChangeImap4SubAndSyncSettings
+
+PRINT Start - Connecting - Upgrade Immediate ###########################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountOutbox_1
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Connecting_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Upgrade_Immediate
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Sending_Ignore
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini SendSmtpMessage
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountSentItems_1
+
+PRINT End - Connecting - Upgrade Immediate #############################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ChangeImap4SubAndSyncSettings
+
+PRINT Start - Connecting - Upgrade Stop ################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountOutbox_1
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Connecting_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Upgrade_Stop
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_MigrationComplete
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini SendSmtpMessage
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountSentItems_1
+
+PRINT End - Connecting - Upgrade Stop ##################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ChangeImap4SubAndSyncSettings
+
+PRINT Start - Connecting - Upgrade Complete ############################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountOutbox_1
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Connecting_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Upgrade_Complete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_MigrationComplete
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini SendSmtpMessage
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountSentItems_1
+
+PRINT End - Connecting - Upgrade Complete ##############################
+
+DELAY 5000
+
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountRemoteInbox_4
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini DisConnectImapServer
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer	ShutDown
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+
+END_TESTCASE MSG-SMTP-Migration1-0001
+
+START_TESTCASE MSG-SMTP-Migration1-0002
+
+//! @SYMTestCaseID	MSG-SMTP-Migration1-0002
+//! @SYMTestCaseDesc	Positive: Check bearer migrations while waiting for reply while sending email
+//! @SYMTestPriority	Critical
+//! @SYMTestType	CIT
+//! @SYMREQ		6991, 6992, 6993
+//! @SYMPREQ		1307
+//! @SYMTestStatus	Implemented
+//! @SYMTestActions	1. Reset Message Store and Central Repository to default state.
+//!			2. Create IMAP account in Central Repository using standard settings from a configuration file.
+//!			3. Connect, sync, initialise, disconnect IMAP service.
+//!			4. Disconnect from IMAP service.
+//!			5. Create single message with 1K body text in outbox
+//!			6. Install bearer mobility test framework event handlers to simulate switchover 
+//!			7. Send email to SMTP server
+//!			8. Check message sent
+//!			9. Repeat steps 5 - 9 for each of bearer upgrade / downgrade types
+//!			10. Connect and sync to IMAP service
+//!			11. Check all sent emails are in the IMAP inbox
+//!			12. Disconnect from IMAP service.
+//!
+//! @SYMTestExpectedResults	See step 8 & 11
+//! @SYMAuthor			Robert Heal
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ChangeImap4SubAndSyncSettings
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectAndSyncImapServer	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ConnectAndSyncImapServer
+RUN_TEST_STEP 300 T_MsgImapServer	InitialiseImap4Account		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini InitialiseImap4Account
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountRemoteInbox_0
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini DisConnectImapServer
+
+PRINT Setup Completed ##################################################
+
+PRINT Start - Waiting - Downgrade ######################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountOutbox_1
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Waiting_Downgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Downgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Sending_Ignore
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini SendSmtpMessage
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountSentItems_1
+
+PRINT End - Waiting - Downgrade #####################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ChangeImap4SubAndSyncSettings
+
+PRINT Start - Waiting - Upgrade Immediate ###########################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountOutbox_1
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Waiting_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Upgrade_Immediate
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Sending_Ignore
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini SendSmtpMessage
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountSentItems_1
+
+PRINT End - Waiting - Upgrade Immediate #############################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ChangeImap4SubAndSyncSettings
+
+PRINT Start - Waiting - Upgrade Stop ################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountOutbox_1
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Waiting_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Upgrade_Stop
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_MigrationComplete
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini SendSmtpMessage
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountSentItems_1
+
+PRINT End - Waiting - Upgrade Stop ##################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ChangeImap4SubAndSyncSettings
+
+PRINT Start - Waiting - Upgrade Complete ############################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountOutbox_1
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Waiting_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Upgrade_Complete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_MigrationComplete
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini SendSmtpMessage
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountSentItems_1
+
+PRINT End - Waiting - Upgrade Complete ##############################
+
+DELAY 5000
+
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountRemoteInbox_4
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini DisConnectImapServer
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer	ShutDown
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+
+END_TESTCASE MSG-SMTP-Migration1-0002
+
+START_TESTCASE MSG-SMTP-Migration1-0003
+
+//! @SYMTestCaseID	MSG-SMTP-Migration1-0003
+//! @SYMTestCaseDesc	Positive: Check bearer migrations while authorising SMTP while sending email
+//! @SYMTestPriority	Critical
+//! @SYMTestType	CIT
+//! @SYMREQ		6991, 6992, 6993
+//! @SYMPREQ		1307
+//! @SYMTestStatus	Implemented
+//! @SYMTestActions	1. Reset Message Store and Central Repository to default state.
+//!			2. Create IMAP account in Central Repository using standard settings from a configuration file.
+//!			3. Connect, sync, initialise, disconnect IMAP service.
+//!			4. Disconnect from IMAP service.
+//!			5. Create single message with 1K body text in outbox
+//!			6. Install bearer mobility test framework event handlers to simulate switchover 
+//!			7. Send email to SMTP server
+//!			8. Check message sent
+//!			9. Repeat steps 5 - 9 for each of bearer upgrade / downgrade types
+//!			10. Connect and sync to IMAP service
+//!			11. Check all sent emails are in the IMAP inbox
+//!			12. Disconnect from IMAP service.
+//!
+//! @SYMTestExpectedResults	See step 8 & 11
+//! @SYMAuthor			Robert Heal
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ChangeImap4SubAndSyncSettings
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectAndSyncImapServer	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ConnectAndSyncImapServer
+RUN_TEST_STEP 300 T_MsgImapServer	InitialiseImap4Account		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini InitialiseImap4Account
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountRemoteInbox_0
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini DisConnectImapServer
+
+PRINT Setup Completed ##################################################
+
+PRINT Start - Authorising - Downgrade ######################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountOutbox_1
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Authorising_Downgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Downgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Sending_Ignore
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini SendSmtpMessage
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountSentItems_1
+
+PRINT End - Authorising - Downgrade #####################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ChangeImap4SubAndSyncSettings
+
+PRINT Start - Authorising - Upgrade Immediate ###########################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountOutbox_1
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Authorising_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Upgrade_Immediate
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Sending_Ignore
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini SendSmtpMessage
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountSentItems_1
+
+PRINT End - Authorising - Upgrade Immediate #############################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ChangeImap4SubAndSyncSettings
+
+PRINT Start - Authorising - Upgrade Stop ################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountOutbox_1
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Authorising_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Upgrade_Stop
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_MigrationComplete
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini SendSmtpMessage
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountSentItems_1
+
+PRINT End - Authorising - Upgrade Stop ##################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ChangeImap4SubAndSyncSettings
+
+PRINT Start - Authorising - Upgrade Complete ############################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountOutbox_1
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Authorising_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Upgrade_Complete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_MigrationComplete
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini SendSmtpMessage
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountSentItems_1
+
+PRINT End - Authorising - Upgrade Complete ##############################
+
+DELAY 5000
+
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountRemoteInbox_4
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini DisConnectImapServer
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer	ShutDown
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+
+END_TESTCASE MSG-SMTP-Migration1-0003
+
+START_TESTCASE MSG-SMTP-Migration1-0004
+
+//! @SYMTestCaseID	MSG-SMTP-Migration1-0004
+//! @SYMTestCaseDesc	Positive: Check bearer migrations while sending file while sending email
+//! @SYMTestPriority	Critical
+//! @SYMTestType	CIT
+//! @SYMREQ		6991, 6992, 6993
+//! @SYMPREQ		1307
+//! @SYMTestStatus	Implemented
+//! @SYMTestActions	1. Reset Message Store and Central Repository to default state.
+//!			2. Create IMAP account in Central Repository using standard settings from a configuration file.
+//!			3. Connect, sync, initialise, disconnect IMAP service.
+//!			4. Disconnect from IMAP service.
+//!			5. Create single message with 1K body text in outbox
+//!			6. Install bearer mobility test framework event handlers to simulate switchover 
+//!			7. Send email to SMTP server
+//!			8. Check message sent
+//!			9. Repeat steps 5 - 9 for each of bearer upgrade / downgrade types
+//!			10. Connect and sync to IMAP service
+//!			11. Check all sent emails are in the IMAP inbox
+//!			12. Disconnect from IMAP service.
+//!
+//! @SYMTestExpectedResults	See step 8 & 11
+//! @SYMAuthor			Robert Heal
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ChangeImap4SubAndSyncSettings
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectAndSyncImapServer	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ConnectAndSyncImapServer
+RUN_TEST_STEP 300 T_MsgImapServer	InitialiseImap4Account		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini InitialiseImap4Account
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountRemoteInbox_0
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini DisConnectImapServer
+
+PRINT Setup Completed ##################################################
+
+PRINT Start - Sending - Downgrade ######################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountOutbox_1
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Sending_Downgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Downgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Sending_Ignore
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini SendSmtpMessage
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountSentItems_1
+
+PRINT End - Sending - Downgrade #####################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ChangeImap4SubAndSyncSettings
+
+PRINT Start - Sending - Upgrade Immediate ###########################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountOutbox_1
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Sending_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Upgrade_Immediate
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Sending_Ignore
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini SendSmtpMessage
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountSentItems_1
+
+PRINT End - Sending - Upgrade Immediate #############################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ChangeImap4SubAndSyncSettings
+
+PRINT Start - Sending - Upgrade Stop - 1 message ################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountOutbox_1
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Sending_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Upgrade_Stop
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Closing_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Migrate_Ignore
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini SendSmtpMessage
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountSentItems_1
+
+PRINT End - Sending - Upgrade Stop - 1 message ##################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ChangeImap4SubAndSyncSettings
+
+PRINT Start - Sending - Upgrade Stop - 2 messages ################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountOutbox_2
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Sending_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Upgrade_Stop
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Closing_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Migrate_NewCarrierActive
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Connecting_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_NewCarrierAccepted
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_MigrationComplete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Sending_Ignore
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini SendSmtpMessage
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountSentItems_2
+
+PRINT End - Sending - Upgrade Stop - 2 messages ##################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ChangeImap4SubAndSyncSettings
+
+PRINT Start - Sending - Upgrade Complete ############################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountOutbox_1
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Sending_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Upgrade_Complete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Closing_Ignore
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Migrate_Ignore
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini SendSmtpMessage
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountSentItems_1
+
+PRINT End - Sending - Upgrade Complete ##############################
+
+DELAY 5000
+
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountRemoteInbox_6
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountRemoteInbox_Subject1_5
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountRemoteInbox_Subject2_1
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini DisConnectImapServer
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer	ShutDown
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+
+END_TESTCASE MSG-SMTP-Migration1-0004
+
+START_TESTCASE MSG-SMTP-Migration1-0005
+
+//! @SYMTestCaseID	MSG-SMTP-Migration1-0005
+//! @SYMTestCaseDesc	Positive: Check bearer migrations while closing after sending email
+//! @SYMTestPriority	Critical
+//! @SYMTestType	CIT
+//! @SYMREQ		6991, 6992, 6993
+//! @SYMPREQ		1307
+//! @SYMTestStatus	Implemented
+//! @SYMTestActions	1. Reset Message Store and Central Repository to default state.
+//!			2. Create IMAP account in Central Repository using standard settings from a configuration file.
+//!			3. Connect, sync, initialise, disconnect IMAP service.
+//!			4. Disconnect from IMAP service.
+//!			5. Create single message with 1K body text in outbox
+//!			6. Install bearer mobility test framework event handlers to simulate switchover 
+//!			7. Send email to SMTP server
+//!			8. Check message sent
+//!			9. Repeat steps 5 - 9 for each of bearer upgrade / downgrade types
+//!			10. Connect and sync to IMAP service
+//!			11. Check all sent emails are in the IMAP inbox
+//!			12. Disconnect from IMAP service.
+//!
+//! @SYMTestExpectedResults	See step 8 & 11
+//! @SYMAuthor			Robert Heal
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ChangeImap4SubAndSyncSettings
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectAndSyncImapServer	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ConnectAndSyncImapServer
+RUN_TEST_STEP 300 T_MsgImapServer	InitialiseImap4Account		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini InitialiseImap4Account
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountRemoteInbox_0
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini DisConnectImapServer
+
+PRINT Setup Completed ##################################################
+
+PRINT Start - Closing - Downgrade ######################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountOutbox_1
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Closing_Downgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Downgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Migrate_Ignore
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini SendSmtpMessage
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountSentItems_1
+
+PRINT End - Closing - Downgrade #####################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ChangeImap4SubAndSyncSettings
+
+PRINT Start - Closing - Upgrade Immediate ###########################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountOutbox_1
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Closing_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Upgrade_Immediate
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Migrate_Ignore
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini SendSmtpMessage
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountSentItems_1
+
+PRINT End - Closing - Upgrade Immediate #############################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ChangeImap4SubAndSyncSettings
+
+PRINT Start - Closing - Upgrade Stop ################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountOutbox_1
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Closing_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Upgrade_Stop
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Migrate_Ignore
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini SendSmtpMessage
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountSentItems_1
+
+PRINT End - Closing - Upgrade Stop ##################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ChangeImap4SubAndSyncSettings
+
+PRINT Start - Closing - Upgrade Complete ############################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountOutbox_1
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerInit		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerInit
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Closing_Upgrade
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Upgrade_Complete
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerAdd		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerAdd_Migrate_Ignore
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini SendSmtpMessage
+
+RUN_TEST_STEP 300 T_MsgCommonServer	EventHandlerCheck		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini EventHandlerCheck
+
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountSentItems_1
+
+PRINT End - Closing - Upgrade Complete ##############################
+
+DELAY 5000
+
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini CheckChildrenCountRemoteInbox_4
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\smtp\migration\msg-smtp-migration1.ini DisConnectImapServer
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer	ShutDown
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+
+END_TESTCASE MSG-SMTP-Migration1-0005

@@ -1,0 +1,58 @@
+// Copyright (c) 2006-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// rocontenthandler.dll Handlers for Rights Objects
+// 20002246.rsc Registry file for RO Push Content Handler interface ROContentHandler.dll
+// 
+//
+
+/**
+ @file
+*/
+
+TARGET			rocontenthandler.dll  
+TARGETTYPE		PLUGIN
+CAPABILITY ALL -TCB
+
+// UIDs - 2nd UID specifies an ECom dll, 3rd UID is unique identifier (KUidROContentHandlerPlugin)
+UID				0x10009D8D			0x10282760
+VENDORID 0x70000001
+
+SOURCEPATH      ../src
+SOURCE			ROContentHandler.cpp
+SOURCE			ROContentHandlerGroupProxy.cpp
+SOURCE			ROCHCAFInterface.cpp
+SOURCE			MessageComposer.cpp
+
+USERINCLUDE     ../inc ../../pushmtm/inc 
+USERINCLUDE		../../pushwatcher/inc
+USERINCLUDE		../../pushutils/inc
+USERINCLUDE		../../SISLPushMsgUtils/inc
+
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+LIBRARY         euser.lib ecom.lib 
+LIBRARY			wappushutils.lib
+LIBRARY			efsrv.lib inetprotutil.lib
+LIBRARY			caf.lib cafutils.lib xmlframework.lib bafl.lib
+
+
+DEFFILE rocontenthandler.def
+
+start resource 10282760.rss
+#ifdef SYMBIAN_SECURE_ECOM
+TARGET rocontenthandler.rsc  
+#endif
+end
+
+SMPSAFE

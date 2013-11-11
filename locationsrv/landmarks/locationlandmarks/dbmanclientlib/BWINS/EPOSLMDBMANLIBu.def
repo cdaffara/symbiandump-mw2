@@ -1,0 +1,29 @@
+EXPORTS
+	??0CPosLmDatabaseManager@@IAE@XZ @ 1 NONAME ; CPosLmDatabaseManager::CPosLmDatabaseManager(void)
+	??0CPosLmDatabaseManagerPluginBase@@IAE@XZ @ 2 NONAME ; CPosLmDatabaseManagerPluginBase::CPosLmDatabaseManagerPluginBase(void)
+	??0TPosLmDatabaseSettings@@QAE@XZ @ 3 NONAME ; TPosLmDatabaseSettings::TPosLmDatabaseSettings(void)
+	??1CPosLmDatabaseManager@@UAE@XZ @ 4 NONAME ; CPosLmDatabaseManager::~CPosLmDatabaseManager(void)
+	??1CPosLmDatabaseManagerPluginBase@@UAE@XZ @ 5 NONAME ; CPosLmDatabaseManagerPluginBase::~CPosLmDatabaseManagerPluginBase(void)
+	?BaseConstructL@CPosLmDatabaseManagerPluginBase@@IAEXPAX@Z @ 6 NONAME ; void CPosLmDatabaseManagerPluginBase::BaseConstructL(void *)
+	?DatabaseDrive@HPosLmDatabaseInfo@@QBE?AVTChar@@XZ @ 7 NONAME ; class TChar HPosLmDatabaseInfo::DatabaseDrive(void) const
+	?DatabaseMedia@HPosLmDatabaseInfo@@QBE?AW4TMediaType@@XZ @ 8 NONAME ; enum TMediaType HPosLmDatabaseInfo::DatabaseMedia(void) const
+	?DatabaseName@TPosLmDatabaseSettings@@QBE?AVTPtrC16@@XZ @ 9 NONAME ; class TPtrC16 TPosLmDatabaseSettings::DatabaseName(void) const
+	?DatabaseUri@HPosLmDatabaseInfo@@QBE?AVTPtrC16@@XZ @ 10 NONAME ; class TPtrC16 HPosLmDatabaseInfo::DatabaseUri(void) const
+	?IsAttributeSet@TPosLmDatabaseSettings@@QBEHW4TAttribute@1@@Z @ 11 NONAME ; int TPosLmDatabaseSettings::IsAttributeSet(enum TPosLmDatabaseSettings::TAttribute) const
+	?IsDefault@HPosLmDatabaseInfo@@QBEHXZ @ 12 NONAME ; int HPosLmDatabaseInfo::IsDefault(void) const
+	?NewL@CPosLmDatabaseManager@@SAPAV1@XZ @ 13 NONAME ; class CPosLmDatabaseManager * CPosLmDatabaseManager::NewL(void)
+	?NewL@HPosLmDatabaseInfo@@SAPAV1@ABV1@@Z @ 14 NONAME ; class HPosLmDatabaseInfo * HPosLmDatabaseInfo::NewL(class HPosLmDatabaseInfo const &)
+	?NewL@HPosLmDatabaseInfo@@SAPAV1@ABVTDesC16@@@Z @ 15 NONAME ; class HPosLmDatabaseInfo * HPosLmDatabaseInfo::NewL(class TDesC16 const &)
+	?NewLC@HPosLmDatabaseInfo@@SAPAV1@ABV1@@Z @ 16 NONAME ; class HPosLmDatabaseInfo * HPosLmDatabaseInfo::NewLC(class HPosLmDatabaseInfo const &)
+	?NewLC@HPosLmDatabaseInfo@@SAPAV1@ABVTDesC16@@@Z @ 17 NONAME ; class HPosLmDatabaseInfo * HPosLmDatabaseInfo::NewLC(class TDesC16 const &)
+	?Protocol@HPosLmDatabaseInfo@@QBE?AVTPtrC16@@XZ @ 18 NONAME ; class TPtrC16 HPosLmDatabaseInfo::Protocol(void) const
+	?Session@CPosLmDatabaseManagerPluginBase@@IBEAAVRPosLandmarkServer@@XZ @ 19 NONAME ; class RPosLandmarkServer & CPosLmDatabaseManagerPluginBase::Session(void) const
+	?SetDatabaseDrive@PosLmDbInfoExtension@@SAXAAVHPosLmDatabaseInfo@@VTChar@@@Z @ 20 NONAME ; void PosLmDbInfoExtension::SetDatabaseDrive(class HPosLmDatabaseInfo &, class TChar)
+	?SetDatabaseName@TPosLmDatabaseSettings@@QAEXABV?$TBuf@$0EA@@@@Z @ 21 NONAME ; void TPosLmDatabaseSettings::SetDatabaseName(class TBuf<64> const &)
+	?SetDefault@PosLmDbInfoExtension@@SAXAAVHPosLmDatabaseInfo@@H@Z @ 22 NONAME ; void PosLmDbInfoExtension::SetDefault(class HPosLmDatabaseInfo &, int)
+	?SetMediaType@PosLmDbInfoExtension@@SAXAAVHPosLmDatabaseInfo@@W4TMediaType@@@Z @ 23 NONAME ; void PosLmDbInfoExtension::SetMediaType(class HPosLmDatabaseInfo &, enum TMediaType)
+	?Settings@HPosLmDatabaseInfo@@QAEAAVTPosLmDatabaseSettings@@XZ @ 24 NONAME ; class TPosLmDatabaseSettings & HPosLmDatabaseInfo::Settings(void)
+	?Settings@HPosLmDatabaseInfo@@QBEABVTPosLmDatabaseSettings@@XZ @ 25 NONAME ; class TPosLmDatabaseSettings const & HPosLmDatabaseInfo::Settings(void) const
+	?Size@HPosLmDatabaseInfo@@QBEHXZ @ 26 NONAME ; int HPosLmDatabaseInfo::Size(void) const
+	?UnsetAttribute@TPosLmDatabaseSettings@@QAEXW4TAttribute@1@@Z @ 27 NONAME ; void TPosLmDatabaseSettings::UnsetAttribute(enum TPosLmDatabaseSettings::TAttribute)
+

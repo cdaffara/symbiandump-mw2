@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE SystemDefinition SYSTEM "sysdef_1_5_1.dtd" [
+  <!ENTITY layer_real_source_path "sf/mw/platformthemes" >
+]>
+
+<SystemDefinition name="platformthemes" schema="1.5.1">
+	<systemModel>
+      	<layer name="mw_layer">
+    		<module name="platformthemes">
+    			<unit name="platformthemes" unitID="qtdo.platformthemes" bldFile="&layer_real_source_path;" mrp="" proFile="platformthemes.pro"/>
+    		</module>
+        </layer>
+    </systemModel>
+</SystemDefinition>

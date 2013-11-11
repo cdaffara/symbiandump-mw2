@@ -1,0 +1,27 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: Dialpad iby file.
+*
+*/
+
+
+#ifndef __DIALPAD_IBY__
+#define __DIALPAD_IBY__
+
+#include <data_caging_paths_for_iby.hrh>
+
+file=ABI_DIR\BUILD_DIR\dialpad.dll          SHARED_LIB_DIR\dialpad.dll
+data=ZSYSTEM\install\dialpad_stub.sis       System\Install\dialpad_stub.sis
+
+#endif // __DIALPAD_IBY__

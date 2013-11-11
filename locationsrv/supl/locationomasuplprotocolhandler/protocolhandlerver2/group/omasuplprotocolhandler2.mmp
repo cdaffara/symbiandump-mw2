@@ -1,0 +1,118 @@
+/*
+* Copyright (c) 2002-2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:   Project definition file for project OMASUPLProtocolHandler implementation
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET 			eposomasuplprotocolhandler2.dll
+TARGETTYPE  	PLUGIN
+
+// ECom Dll recognition UID followed by the unique UID for this dll
+UID 			0x10009d8d 0x200255D8
+
+CAPABILITY      CAP_ECOM_PLUGIN CommDD
+VENDORID        VID_DEFAULT
+//#define  USE_E_CELL_ID_STUB_FILES  1 
+
+#if USE_E_CELL_ID_STUB_FILES
+MACRO USE_E_CELL_ID_STUB
+#endif	
+
+SOURCEPATH  	../src
+SOURCE      epos_omaprotocolhandlermain2.cpp
+SOURCE      epos_comasuplprotocolmanager2.cpp
+SOURCE      epos_comasuplsession2.cpp
+SOURCE      epos_comasupltimeouttimer.cpp
+SOURCE      epos_comasuplconnrequestor.cpp
+SOURCE      epos_comasupletel.cpp 
+SOURCE      epos_comasupletelnotifier.cpp 
+SOURCE      epos_comasupliapchangenotifier.cpp 
+SOURCE      epos_comasuplcompleteselfrequestor.cpp
+SOURCE      epos_comasuplsettings.cpp
+SOURCE      epos_comasuplstate.cpp
+SOURCE      epos_comasuplstartstate.cpp
+SOURCE      epos_comasuplposinitstate.cpp
+SOURCE      epos_comasuplendstate.cpp
+SOURCE      epos_comasuplresponsestate.cpp
+SOURCE      epos_comasuplposstate.cpp
+SOURCE      epos_comasuplinitstate.cpp
+SOURCE      epos_comasuplposrequestor.cpp
+SOURCE	    epos_comasuplecomeventwatcher.cpp
+SOURCE      epos_comasupltrace.cpp
+SOURCE      epos_comasupldialogtimer.cpp
+SOURCE      epos_comasuplfallbackhandler.cpp
+SOURCE      epos_comasupltriggerstartstate.cpp
+SOURCE      epos_comasupltriggerresponsestate.cpp
+SOURCE      epos_comasupltriggerstopstate.cpp
+SOURCE      epos_comasuplreportstate.cpp
+
+
+#ifdef 		USE_E_CELL_ID_STUB_FILES
+SOURCE      epos_rsuplmmcustomapi.cpp
+#endif
+
+USERINCLUDE     . ../inc
+USERINCLUDE     ../../../inc
+USERINCLUDE     ../../inc
+
+MW_LAYER_SYSTEMINCLUDE
+
+START RESOURCE    ../data/200255D8.rss  // same as second UID above 
+		TARGET eposomasuplprotocolhandler2.rsc 
+END
+
+LIBRARY commdb.lib 
+LIBRARY centralrepository.lib
+LIBRARY charconv.lib
+LIBRARY ecom.lib
+LIBRARY epos_csuplutils.lib
+LIBRARY esock.lib 
+LIBRARY etel.lib 
+LIBRARY etelmm.lib
+LIBRARY euser.lib
+LIBRARY insock.lib
+LIBRARY lbs.lib
+LIBRARY eposnwprv.lib
+//LIBRARY locsettingsuiclient.lib
+LIBRARY hash.lib
+LIBRARY bafl.lib  //logging
+LIBRARY flogger.lib
+LIBRARY efsrv.lib 
+LIBRARY aknnotify.lib 
+LIBRARY commonengine.lib 
+//LIBRARY agentdialog.lib
+
+LIBRARY epossuplprotocolhandlerplugin.lib
+LIBRARY epos_comasuplasnplugin.lib
+LIBRARY eposomasuplposmessageplugin.lib
+LIBRARY epos_suplsettings.lib
+LIBRARY epos_suplterminitiation.lib
+LIBRARY eposomasuplprotocolhandler.lib
+LIBRARY	featmgr.lib
+
+#if USE_E_CELL_ID_STUB_FILES
+LIBRARY estor.lib 
+#else
+LIBRARY customapi.lib
+#endif
+
+
+#if defined(WINS)
+deffile ../bwins/eposomasuplprotocolhandler2.def
+#else
+deffile ../eabi/eposomasuplprotocolhandler2.def
+#endif

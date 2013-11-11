@@ -1,0 +1,33 @@
+/*
+* Copyright (c) 2006-2008 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  File that exports the files belonging to 
+:                Service Provider Settings API
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+../inc/spnotifychange.h     MW_LAYER_PLATFORM_EXPORT_PATH(spnotifychange.h)
+../inc/spproperty.h     MW_LAYER_PLATFORM_EXPORT_PATH(spproperty.h)
+../inc/mspnotifychangeobserver.h     MW_LAYER_PLATFORM_EXPORT_PATH(mspnotifychangeobserver.h)
+../inc/spdefinitions.h     MW_LAYER_PLATFORM_EXPORT_PATH(spdefinitions.h)
+../inc/spsettings.h     MW_LAYER_PLATFORM_EXPORT_PATH(spsettings.h)
+../inc/spentry.h     MW_LAYER_PLATFORM_EXPORT_PATH(spentry.h)
+../inc/spsettingsvoiputils.h     MW_LAYER_PLATFORM_EXPORT_PATH(spsettingsvoiputils.h)

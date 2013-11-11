@@ -1,0 +1,71 @@
+// ------------------------------------------------------------
+//  
+//  Author:	Senthil Ganesan
+//  Date:	09/08/02
+//
+// Smtp auth Test Script for Stalker CommunicatePro mail server 
+// TO run t_email for CommunicatePro mail server testing rename 
+// this file to script.txt and copy it to c:\msgtest\emailsmoke
+// ------------------------------------------------------------
+
+[main]
+email_client_test email
+
+[email]
+smtp_client_test smtp_auth_1
+
+[smtp_auth_1]
+clean_message_folder
+add_comment message folder cleaned
+
+add_comment start client session
+start_client_session
+add_comment client session started
+
+select_root_folder
+
+add_comment creating smtp service settings 
+smtp_service smtp_service_1
+add_comment trmai02.it.cellulardata.com settings created 
+
+select_destination_folder test_1
+select_root_folder
+select_folder local
+select_folder outbox
+
+add_comment creating an email message
+create_email_message emailsmoke test.txt
+add_comment Email message created 
+
+select_all_messages
+
+add_comment Sending the created message
+copy
+add_comment message sent
+
+check_smtp_error 0
+reset_client
+
+add_comment client reseted
+
+[smtp_service_1]
+set_alias SMTP_AUTH
+set_server trmai03w2k.it.cellulardata.com
+set_email_address mailtst1@trmai03w2k.it.cellulardata.com
+set_reply_address mailtst1@trmai03w2k.it.cellulardata.com
+set_receipt_address mailtst1@trmai03w2k.it.cellulardata.com
+set_tls 0
+set_smtp_auth 1
+set_user mailtst1
+set_pass mailtest1
+add_iap 2
+
+// trmai03w2k.it.cellulardata.com
+// alternate username: mailtst2
+// alternate password: mailtest1
+//
+// Any of the following No can be used to access this server
+// +358 3 31520 777
+// +358 3 31520 111
+// +358 3 31520 222
+// ------------------------------------------------------------

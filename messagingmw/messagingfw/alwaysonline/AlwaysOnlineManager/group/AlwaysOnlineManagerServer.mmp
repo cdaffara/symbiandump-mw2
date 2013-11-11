@@ -1,0 +1,53 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: AlwaysOnline server mmp
+*		
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET          AlwaysOnlineManagerServer.dll
+TARGETTYPE      dll
+UID             0x1000008d 0x101F85EB
+VENDORID        VID_DEFAULT
+
+SOURCEPATH      ../src
+USERINCLUDE     ../../inc
+SOURCE          AlwaysOnlineManagerServer.cpp
+SOURCE          AlwaysOnlineManagerServerSession.cpp
+SOURCE          AlwaysOnlineManager.cpp
+SOURCE          AlwaysOnlineManagerDiskSpaceObserver.cpp
+SOURCE          HandleServerCommandOperation.cpp
+SOURCE          AOCommandParser.cpp
+SOURCE          AOCenRepControl.cpp
+
+
+USERINCLUDE     ../inc
+SYSTEMINCLUDE   ../../../../inc
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY         euser.lib
+LIBRARY         CommonEngine.lib
+LIBRARY         ECom.lib
+LIBRARY         connmon.lib
+LIBRARY         efsrv.lib               // RFs
+LIBRARY         msgs.lib                // Message Server
+LIBRARY         muiuutils.lib             
+LIBRARY         CentralRepository.lib   // Central Repository
+LIBRARY         CenRepNotifHandler.lib  // CenRep Notify Handler
+DEBUGLIBRARY    flogger.lib
+
+CAPABILITY      CAP_GENERAL_DLL

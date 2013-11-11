@@ -1,0 +1,37 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: Definitions for plugin command keywords.
+*
+*/
+
+#ifndef __CCPCOMMANDS_H__
+#define __CCPCOMMANDS_H__
+
+// Plugin commands
+_LIT( KPluginCmdCreateCall, "createcall" );
+_LIT( KPluginCmdHangUpCall, "hangupcall" );
+_LIT( KPluginCmdTransferRequest, "transferrequest" );
+_LIT( KPluginCmdRemoteHold, "remotehold" );
+_LIT( KPluginCmdRemoteResume, "remoteresume" );
+_LIT( KPluginCmdReportCallCount, "reportcallcount" );
+_LIT( KPluginCmdSendTestEvents, "sendtestevents" );
+_LIT( KPluginCmdErrorOccurred, "erroroccurred" );
+_LIT( KPluginCmdSetState, "setstate" );
+_LIT( KPluginCmdPluginInitCsMoCall, "plugininitiatedcsmocall" );
+_LIT( KPluginCmdCreateConferenceCall, "createconferencecall" );
+
+_LIT( KPluginCmdCancel, "cancel" ); // not implemented
+_LIT( KPluginCmdSetAsyncMode, "setasyncmode" );
+
+#endif // __CCPCOMMANDS_H__

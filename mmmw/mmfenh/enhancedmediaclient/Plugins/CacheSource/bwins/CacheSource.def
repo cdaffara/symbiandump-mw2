@@ -1,0 +1,3 @@
+EXPORTS
+	?NewL@CCacheSource@@SAPAV1@PAVCMultimediaDataSource@@PAVCDataSourceConfigIntfc@@@Z @ 1 NONAME ; class CCacheSource * CCacheSource::NewL(class CMultimediaDataSource *, class CDataSourceConfigIntfc *)
+

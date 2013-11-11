@@ -1,0 +1,4 @@
+EXPORTS
+	??1CAudioOutputControlUtilityProxy@@UAE@XZ @ 1 NONAME ; CAudioOutputControlUtilityProxy::~CAudioOutputControlUtilityProxy(void)
+	?NewL@CAudioOutputControlUtilityProxy@@SAPAV1@XZ @ 2 NONAME ; class CAudioOutputControlUtilityProxy * CAudioOutputControlUtilityProxy::NewL(void)
+

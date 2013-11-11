@@ -1,0 +1,56 @@
+/*
+* Copyright (c) 2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: Project definition file for internalservices component
+*
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+../../loc/eposlmglobalcategories_en.loc     MW_LAYER_LOC_EXPORT_PATH(eposlmglobalcategories_en.loc)
+
+// Domain APIs
+
+// Internal APIs
+../inc/EPos_CPosLmGlobalCategoryReader.h    |../../../inc/epos_cposlmglobalcategoryreader.h
+../inc/EPos_CPosLmDiskUtilities.h           |../../../inc/epos_cposlmdiskutilities.h
+../inc/EPos_CPosLmResourceReader.h          |../../../inc/epos_cposlmresourcereader.h
+../inc/EPos_CPosLmLocalDbAccess.h           |../../../inc/epos_cposlmlocaldbaccess.h
+../inc/EPos_LandmarkDatabaseStructure.h     |../../../inc/epos_landmarkdatabasestructure.h
+../inc/EPos_PosLmCategoryHandler.h          |../../../inc/epos_poslmcategoryhandler.h
+../inc/EPos_PosLmLandmarkHandler.h          |../../../inc/epos_poslmlandmarkhandler.h
+../inc/EPos_CPosLmCompactDatabase.h         |../../../inc/epos_cposlmcompactdatabase.h
+../inc/EPos_PosLmTrealCompare.h             |../../../inc/epos_poslmtrealcompare.h
+../inc/EPos_PosLmDatabaseUtility.h          |../../../inc/epos_poslmdatabaseutility.h
+../inc/EPos_PosLmFileFinder.h               |../../../inc/epos_poslmfilefinder.h
+../inc/EPos_CPosLmSettingsHandler.h         |../../../inc/epos_cposlmsettingshandler.h
+../inc/EPos_PosLmLongTextColHandler.h       |../../../inc/epos_poslmlongtextcolhandler.h
+
+
+PRJ_MMPFILES
+EPos_LmInternalServices.mmp
+EPos_LandmarksGlobalCategories.mmp
+
+PRJ_EXTENSIONS
+START EXTENSION s60/mifconv
+OPTION TARGETFILE eposlmglcategories.mif
+OPTION HEADERFILE eposlmglcategories.mbg
+OPTION SOURCES -c8,1 qgn_prop_lm_hotel.svg -c8,1 qgn_prop_lm_business.svg -c8,1 qgn_prop_lm_communication.svg -c8,1 qgn_prop_lm_education.svg -c8,1 qgn_prop_lm_fun.svg -c8,1 qgn_prop_lm_restaurant.svg -c8,1 qgn_prop_lm_area.svg -c8,1 qgn_prop_lm_outdoor.svg -c8,1 qgn_prop_lm_people.svg -c8,1 qgn_prop_lm_public.svg -c8,1 qgn_prop_lm_church.svg -c8,1 qgn_prop_lm_shopping.svg -c8,1 qgn_prop_lm_sightseeing.svg -c8,1 qgn_prop_lm_sport.svg -c8,1 qgn_prop_lm_transport.svg
+END

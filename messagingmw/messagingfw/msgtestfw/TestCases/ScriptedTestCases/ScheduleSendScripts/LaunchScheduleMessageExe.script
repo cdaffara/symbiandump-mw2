@@ -1,0 +1,105 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+// Test Case Name:
+//	 LaunchScheduleMessageExe.script
+// ------------------------------------------
+// Component Under Test:
+//	Schedule Send
+// ------------------------------------------
+// API function under test:
+//	
+//	
+// ------------------------------------------
+// Requirement/Use Case/Functional Spec:
+//	 
+// ------------------------------------------
+// Polarity: Negative
+//	
+// ------------------------------------------
+// Test Type (unit, integration, panic, performance, conformance, stress, or interoperability):
+//	Integration
+// ------------------------------------------
+// Expected Panic ID (if a panic test, only for non-scripted test cases):
+//	n/a
+// ------------------------------------------
+// Interface Dependencies (does it require connection, which subsystems does it require):
+// 	Requires connection to Messaging Server
+// ------------------------------------------
+// Importance (critical, high, or low):
+//	High
+// ------------------------------------------
+// Execution Time (fast, medium, or slow):
+//	medium
+// ------------------------------------------
+// Pre-condition description:
+//	1.  Create a session with the Message Server
+//  2.	Cleanout sent folder and outbox.
+//
+// ------------------------------------------
+// Action Description:
+// 
+//	1.Create a pigeon message.
+//	2.Launch the process LaunchScheduleMessage.exe to scheduler pigeon messages.
+//		
+// ------------------------------------------
+// Post-condition description (i.e., expected outcome):
+//
+//	1. Check that message has expired - implies message not sent.
+//  2. Check number of messages in outbox is 1 - implies not sent.
+//  3. Check number of messages in sent folder is zero.
+//	
+// ------------------------------------------
+// Reference to a review document:
+//
+// ------------------------------------------
+// Full pathname of an epoc.ini (if there are special epoc.ini requirements)
+// 	For emulator, an epoc.ini that creates an emulated external drive (drive letter 
+//	between D: and Y:) is required. Optionally, an environment variable can be defined.
+// ------------------------------------------
+// Any CommDb restrictions:
+//	None
+// ------------------------------------------
+// Build Requirements (e.g., no watchers):
+//	None
+// ------------------------------------------
+// Hardware Requirements
+//	None
+// ------------------------------------------
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+	GetBaseConstants 			c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\LaunchScheduleMessageExe.ini		GetBaseConstants
+	GetPigeonMtmConstant			c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\LaunchScheduleMessageExe.ini		GetPigeonMtmConstant
+	SetDefaultSmsSettings 			c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\LaunchScheduleMessageExe.ini		SetSettingsFile
+	CreateSession 				c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\LaunchScheduleMessageExe.ini		CreateSession
+	DeleteExistingService 			c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\LaunchScheduleMessageExe.ini		DeleteExistingService
+	CreateService				c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\LaunchScheduleMessageExe.ini		CreateService
+	SetSchSendSettings 			c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\LaunchScheduleMessageExe.ini		SetSchSendSettings
+	DeleteChildren 				c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\LaunchScheduleMessageExe.ini		EmptyOutbox
+	DeleteChildren 				c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\LaunchScheduleMessageExe.ini		EmptySent
+EXECUTE_TEST_CASE
+	CreatePigeonMessage			c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\LaunchScheduleMessageExe.ini		CreatePigeonMessage
+	LaunchScheduleMessageExe		c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\LaunchScheduleMessageExe.ini		LaunchScheduleMessageExe
+	Sleep 					c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\LaunchScheduleMessageExe.ini	Sleep
+CHECK_POSTCONDITIONS
+	CheckIfMessageScheduleDateExpired 	c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\LaunchScheduleMessageExe.ini		ScheduleDateExpired
+	CheckChildrenCount			c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\LaunchScheduleMessageExe.ini		CheckOutboxChildrenCount
+	CheckChildrenCount			c:\msgtest\TestFramework\ScriptedTestCases\ScheduleSendScripts\LaunchScheduleMessageExe.ini		CheckSentItemsChildrenCount
+END_TEST_CASE

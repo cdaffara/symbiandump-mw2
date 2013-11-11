@@ -1,0 +1,84 @@
+# TEXT	TextCriteria	Attributes (bitmask)	PositionFields	Comment		
+# AREA	SouthLat	NorthLat	WestLong	EastLong	ErrorCode	Comment
+# CATEGORY	CategoryName	Category Id	Comment			
+# NEAREST	Index	Latitude	Longitude	UseCoverageRadius	MaxDistance	Comment
+# IDLIST	Ids	Comment				
+# RESULT	LmSearchResultIds	Redefined search	Comment			
+# SEPARATOR	Separates a composite search					
+#						
+#>>>>>>>>>>>>>>1<<<<<<<<<<<<<						
+AREA	-90	90	-180	180		
+TEXT	*					
+CATEGORY	Taxi	10				
+RESULT	79-83					
+SEPARATOR						
+#>>>>>>>>>>>>>>2<<<<<<<<<<<<<						
+AREA	-90	90	-180	180		
+TEXT	Te*					
+IDLIST	33,35,37,38,48-54					
+RESULT	33,35,37,38,54					
+SEPARATOR						
+#>>>>>>>>>>>>>>3<<<<<<<<<<<<<						
+AREA	-80	80	-180	180		
+NEAREST	-45,5	-44,5	0	300		
+TEXT	*					
+RESULT	4					
+SEPARATOR						
+#>>>>>>>>>>>>>>4<<<<<<<<<<<<<						
+AREA	-80	80	-180	180	 	 
+NEAREST	-45,5	-44,5	1	10		
+TEXT	*					
+RESULT	4					
+SEPARATOR						
+#>>>>>>>>>>>>>>5<<<<<<<<<<<<<					
+TEXT	*				
+# Search for uncatetegorized landmarks					
+CATEGORY					
+RESULT	11,32,36,39,43,56,88,92,103				
+SEPARATOR					
+#>>>>>>>>>>>>>>6<<<<<<<<<<<<<					
+NEAREST	45	45	0	300	 
+TEXT	*				
+RESULT	3				
+SEPARATOR					
+#>>>>>>>>>>>>>>7<<<<<<<<<<<<<					
+IDLIST	82-95,105				
+TEXT	*				
+CATEGORY	Taxi	10			
+RESULT	82,83				
+SEPARATOR			
+#>>>>>>>>>>>>>>8<<<<<<<<<<<<<			
+TEXT	*		
+CATEGORY	Taxi	10	
+RESULT	79-83		
+SEPARATOR			
+#>>>>>>>>>>>>>>9<<<<<<<<<<<<<			
+TEXT	Sv*	0x0021	401,404,406,408,409
+IDLIST	1-85		
+RESULT	83	1	
+SEPARATOR			
+#>>>>>>>>>>>>>>10<<<<<<<<<<<<<			
+IDLIST	1-24,45		
+TEXT	Pelle*	0x0021	
+RESULT			
+SEPARATOR			
+#>>>>>>>>>>>>>>11<<<<<<<<<<<<< Note that La* also founds Lä, Lå					
+IDLIST	1-105				
+TEXT	La*	0x0021			
+RESULT	72,74,75,81,84,93				
+SEPARATOR					
+#					
+#>>>>>>>>>>>>>>12<<<<<<<<<<<<<					
+IDLIST	1-105				
+TEXT	*	0x0021			
+CATEGORY		26			
+AREA	-90	10	-180	180	 
+NEAREST	-84,2	-2,67	1	10	
+RESULT	35				
+SEPARATOR					
+#					
+#>>>>>>>>>>>>>>13<<<<<<<<<<<<<					
+TEXT	vegetariskt	0x0021
+RESULT	4	
+SEPARATOR		
+#		

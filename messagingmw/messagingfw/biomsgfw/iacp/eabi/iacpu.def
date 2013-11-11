@@ -1,0 +1,23 @@
+EXPORTS
+	_ZN18CIacSettingsParser4NewLER20CRegisteredParserDllR9CMsvEntryR3RFs @ 1 NONAME
+	_ZTI10CIspParser @ 2 NONAME ; #<TI>#
+	_ZTI10CSmsParser @ 3 NONAME ; #<TI>#
+	_ZTI11CGprsParser @ 4 NONAME ; #<TI>#
+	_ZTI11CMailParser @ 5 NONAME ; #<TI>#
+	_ZTI13CScriptParser @ 6 NONAME ; #<TI>#
+	_ZTI15CWWWHotlistItem @ 7 NONAME ; #<TI>#
+	_ZTI17CWWWHotlistParser @ 8 NONAME ; #<TI>#
+	_ZTI18CIacSettingsParser @ 9 NONAME ; #<TI>#
+	_ZTI22CTelVoiceMailboxParser @ 10 NONAME ; #<TI>#
+	_ZTI9CSafeFile @ 11 NONAME ABSENT ; #<TI>#
+	_ZTV10CIspParser @ 12 NONAME ; #<VT>#
+	_ZTV10CSmsParser @ 13 NONAME ; #<VT>#
+	_ZTV11CGprsParser @ 14 NONAME ; #<VT>#
+	_ZTV11CMailParser @ 15 NONAME ; #<VT>#
+	_ZTV13CScriptParser @ 16 NONAME ; #<VT>#
+	_ZTV15CWWWHotlistItem @ 17 NONAME ; #<VT>#
+	_ZTV17CWWWHotlistParser @ 18 NONAME ; #<VT>#
+	_ZTV18CIacSettingsParser @ 19 NONAME ; #<VT>#
+	_ZTV22CTelVoiceMailboxParser @ 20 NONAME ; #<VT>#
+	_ZTV9CSafeFile @ 21 NONAME ABSENT ; #<VT>#
+

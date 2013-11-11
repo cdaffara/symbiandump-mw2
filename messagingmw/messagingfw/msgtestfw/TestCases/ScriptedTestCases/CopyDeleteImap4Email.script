@@ -1,0 +1,122 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+// Test Case Name:
+//	CopyDeleteImap4Email.script
+// ------------------------------------------
+// Component Under Test:
+//	email-imap4servermtm
+// ------------------------------------------
+// API function under test:
+//	CImImap4Compound::DeleteL()
+// ------------------------------------------
+// Requirement/Use Case/Functional Spec:
+//	n/a
+// ------------------------------------------
+// Test Type (unit, integration, panic, performance, conformance, stress, or interoperability):
+//	Integration
+// ------------------------------------------
+// Expected Panic ID (if a panic test, only for non-scripted test cases):
+//	n/a
+// ------------------------------------------
+// Interface Dependencies (does it require connection, which subsystems does it require):
+// 	None
+// ------------------------------------------
+// Importance (critical, high, or low):
+//	Low
+// ------------------------------------------
+// Execution Time (fast, medium, or slow):
+//	Fast
+// ------------------------------------------
+// Pre-condition description:
+//	NTRAS server should be configured and running,
+//	An email account should be crated,
+//	Use the same email account for sending email.
+//      Flag "DeleteEmailWhenDisconnected" should be set to 1.
+// ------------------------------------------
+// Action Description:
+//	Moving a message from local drafts folder to remote imap4 server inbox folder	
+//
+// 	1. Connect to imap4 server
+//	2. Synchronize local folder with that of remote
+//	3. Delete all the existing mails
+//	4. Send a new message to the same email address
+// 	5. Copy the email from Inbox to other personal folder say "Mail"
+// 	6. Disconnect imap4 connection
+//	7. Delete both the mails
+//	8. Connect to imap4 server
+//	9. Check the child count in inbox and mail folder, it should be one each
+//	9. Disconnect
+//	10. Verify the delete by counting the no. of children, should be zero.
+//	
+// ------------------------------------------
+// Post-condition description (i.e., expected outcome):
+//	See above
+// ------------------------------------------
+// Any CommDb restrictions:
+//	NTRAS commDb is required
+// ------------------------------------------
+// Build Requirements (e.g., no watchers):
+//	No watchers
+// ------------------------------------------
+// Hardware Requirements
+//
+// ------------------------------------------
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+CED c:\msgtest\TestFramework\Configurations\CommDbSettings\NtRasLongIdleTimeout.cfg
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer GetBaseConstants					c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini GetBaseConstants
+RUN_TEST_STEP 100 MessagingTestServer InitNtRas							c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini InitNtRas
+RUN_TEST_STEP 100 MessagingTestServer CreateSession						c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini CreateSession
+RUN_TEST_STEP 100 MessagingTestServer ResetMessageStore					c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini ResetMessageStore
+RUN_TEST_STEP 100 MessagingTestServer CreateImap4Service				c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini CreateImap4Service
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpService					c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini CreateSmtpService
+RUN_TEST_STEP 100 MessagingTestServer CreateRegistry					c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini CreateRegistry
+RUN_TEST_STEP 100 MessagingTestServer CreateImap4Mtm					c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini CreateImap4Mtm
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpMtm						c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini CreateSmtpMtm
+RUN_TEST_STEP 100 MessagingTestServer SetImap4ServiceParameters			c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini SetImap4ServiceParameters
+RUN_TEST_STEP 100 MessagingTestServer SetSmtpServiceParameters			c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini SetSmtpServiceParameters
+RUN_TEST_STEP 100 MessagingTestServer ConnectImap4Server   				c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini ConnectImap4Server0
+RUN_TEST_STEP 100 MessagingTestServer DoFullImap4Synchronisation		c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini DoFullImap4Synchronisation0
+RUN_TEST_STEP 100 MessagingTestServer FindEntryByName					c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini FindEntryByName0
+RUN_TEST_STEP 100 MessagingTestServer FindEntryByName					c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini FindEntryByName1
+RUN_TEST_STEP 100 MessagingTestServer DeleteChildren					c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini DeleteChildren0
+RUN_TEST_STEP 100 MessagingTestServer DeleteChildren					c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini DeleteChildren1
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount				c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini CheckChildrenCount0
+RUN_TEST_STEP 100 MessagingTestServer DisconnectImap4Server				c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini DisconnectImap4Server0
+
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpMessageFromEmailFile	c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 100 MessagingTestServer CopyEntry					c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini CopyEntry
+RUN_TEST_STEP 100 MessagingTestServer ConnectImap4Server		   		c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini ConnectImap4Server1
+RUN_TEST_STEP 100 MessagingTestServer CopyEntry						c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini CopyEntry1
+RUN_TEST_STEP 100 MessagingTestServer DoFullImap4Synchronisation   		c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini DoFullImap4Synchronisation1
+RUN_TEST_STEP 100 MessagingTestServer DisconnectImap4Server				c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini DisconnectImap4Server1
+RUN_TEST_STEP 100 MessagingTestServer DeleteChildren					c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini DeleteChildren2
+RUN_TEST_STEP 100 MessagingTestServer DeleteChildren					c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini DeleteChildren3
+RUN_TEST_STEP 100 MessagingTestServer ConnectImap4Server		   		c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini ConnectImap4Server2
+RUN_TEST_STEP 100 MessagingTestServer DoFullImap4Synchronisation   		c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini DoFullImap4Synchronisation2
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount		   		c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini CheckChildrenCount1
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount		   		c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini CheckChildrenCount2
+RUN_TEST_STEP 100 MessagingTestServer DisconnectImap4Server				c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini DisconnectImap4Server2
+
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount		   		c:\msgtest\TestFramework\ScriptedTestCases\CopyDeleteImap4Email.ini CheckChildrenCount3
+RUN_TEST_STEP 100 MessagingTestServer END_TEST_CASE

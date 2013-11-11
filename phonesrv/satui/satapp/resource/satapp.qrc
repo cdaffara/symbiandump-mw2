@@ -1,0 +1,9 @@
+<RCC>
+    <!-- application xml -->
+    <qresource prefix="/xml" >
+        <file alias="satapp.docml">satapp.docml</file>
+    </qresource>
+    <qresource prefix="/translations" >
+        <file alias="satapp">satapp.qm</file>
+    </qresource>
+</RCC>

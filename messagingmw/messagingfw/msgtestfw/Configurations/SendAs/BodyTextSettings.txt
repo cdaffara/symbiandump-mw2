@@ -1,0 +1,1 @@
+This exercise should introduce you to the CBR release tools, how to run CBR Tool commands and how to configure the tool.

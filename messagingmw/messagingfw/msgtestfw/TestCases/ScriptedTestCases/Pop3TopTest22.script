@@ -1,0 +1,89 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+//CED c:\msgtest\TestFramework\Configurations\CommDbSettings\NtRasLongIdleTimeout.cfg
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE
+
+
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+// intial setup, constants, ntras, a session, clean the mail store,
+// create services, registry, mtms, etc.
+RUN_TEST_STEP 100 MessagingTestServer GetBaseConstants					c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini GetBaseConstants
+RUN_TEST_STEP 100 MessagingTestServer InitNtRas							c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini InitNtRas
+RUN_TEST_STEP 100 MessagingTestServer CreateSession						c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini CreateSession
+RUN_TEST_STEP 100 MessagingTestServer ResetMessageStore					c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini ResetMessageStore
+RUN_TEST_STEP 100 MessagingTestServer CreatePop3Service					c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini CreatePop3Service
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpService					c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini CreateSmtpService
+RUN_TEST_STEP 100 MessagingTestServer CreateRegistry					c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini CreateRegistry
+RUN_TEST_STEP 100 MessagingTestServer CreatePop3Mtm						c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini CreatePop3Mtm
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpMtm						c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini CreateSmtpMtm
+RUN_TEST_STEP 100 MessagingTestServer GetDefaultSmtpService			c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini GetDefaultSmtpService
+RUN_TEST_STEP 100 MessagingTestServer SetPop3ServiceParameters			c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini SetPop3ServiceParameters
+RUN_TEST_STEP 100 MessagingTestServer SetSmtpServiceParameters			c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini SetSmtpServiceParameters
+
+//create a pop populate object that downloads 5 lines
+RUN_TEST_STEP 100 MessagingTestServer CreatePop3MailInfo				c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini CreatePop3MailInfo
+//create a pop populate object that downloads all the message
+RUN_TEST_STEP 100 MessagingTestServer CreatePop3MailInfo				c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini CreatePop3MailInfo2
+
+//create an object containing what we expect the downloaded email to have
+RUN_TEST_STEP 100 MessagingTestServer CreateExpPop3MailInfo				c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini CreateExpPop3MailInfo0
+
+//?default settings?
+RUN_TEST_STEP 100 MessagingTestServer SetDefaultConfiguration			c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini	SetDefaultConfiguration_1
+
+// clean out the mail box
+// connect to the pop server, delete everything and disconnect
+RUN_TEST_STEP 100 MessagingTestServer ConnectPop3Server   				c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini ConnectPop3Server0
+RUN_TEST_STEP 100 MessagingTestServer DeleteChildren					c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini DeleteChildren
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount				c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini CheckChildrenCount0
+RUN_TEST_STEP 100 MessagingTestServer DisconnectPop3Server				c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini DisconnectPop3Server0
+// send one message to the mail box, sleep to ensure it gets there, check the sent folder
+// has one message in it.
+RUN_TEST_STEP 100 MessagingTestServer CreateSmtpMessageFromEmailFile	c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini	CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 100 MessagingTestServer CopyEntry							c:\msgtest\TestFramework\ScriptedTestCases\CreateSendReceivePop3Email.ini CopyEntry
+RUN_TEST_STEP 100 MessagingTestServer Sleep								c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini Sleep10
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount				c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini CheckChildrenCount_sent4
+
+// connect to pop3 server and partially populate the one message there then disconnect
+RUN_TEST_STEP 100 MessagingTestServer ConnectPop3Server	   				c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini ConnectPop3Server1
+RUN_TEST_STEP 100 MessagingTestServer CreateChildrenSelection			c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini	CreateChildrenSelectionPop3
+RUN_TEST_STEP 100 MessagingTestServer Pop3TopPopulate					c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini Pop3TopPopulate
+RUN_TEST_STEP 100 MessagingTestServer DisconnectPop3Server				c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini DisconnectPop3Server1
+
+// The test:
+//			connect to pop3 server with one message one it that has already been partially
+//			populated populate the message with limit set to all the message
+//			disconect
+
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer ConnectPop3Server	   				c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini ConnectPop3Server1
+RUN_TEST_STEP 100 MessagingTestServer CreateChildrenSelection			c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini	CreateChildrenSelectionPop3_2
+RUN_TEST_STEP 100 MessagingTestServer Pop3TopPopulate					c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini Pop3TopPopulate2
+RUN_TEST_STEP 100 MessagingTestServer DisconnectPop3Server				c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini DisconnectPop3Server1
+
+// Expected result:
+//			message is fully downloaded (no footer just some body text).
+
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+RUN_TEST_STEP 100 MessagingTestServer CreateChildrenSelection			c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini	CreateChildrenSelectionPop3
+RUN_TEST_STEP 100 MessagingTestServer CreateChildrenSelection			c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini CreateChildrenSentItems
+RUN_TEST_STEP 100 MessagingTestServer VerifyEmail						c:\msgtest\TestFramework\ScriptedTestCases\Pop3TopTest22.ini VerifyEmail
+
+RUN_TEST_STEP 100 MessagingTestServer END_TEST_CASE

@@ -1,0 +1,33 @@
+/*
+* Copyright (c) 2006-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Build file for converged call engine.
+*
+*/
+
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+PRJ_MMPFILES
+#include "../callprovider/group/bld.inf"
+#include "../cce/group/bld.inf"
+#include "../spsettings/group/bld.inf"
+#include "../cenrepdatabase/group/bld.inf"
+
+
+PRJ_TESTMMPFILES
+
+//  End of File  

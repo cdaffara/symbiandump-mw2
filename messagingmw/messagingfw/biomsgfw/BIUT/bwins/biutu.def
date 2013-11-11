@@ -1,0 +1,44 @@
+EXPORTS
+	??0CBaseScriptParser@@QAE@AAVCRegisteredParserDll@@AAVCMsvServerEntry@@AAVRFs@@@Z @ 1 NONAME ABSENT ; public: __thiscall CBaseScriptParser::CBaseScriptParser(class CRegisteredParserDll &,class CMsvServerEntry &,class RFs &)
+	??0CParsedField@@QAE@XZ @ 2 NONAME ; public: __thiscall CParsedField::CParsedField(void)
+	??1CBaseScriptParser@@UAE@XZ @ 3 NONAME ABSENT ; public: virtual __thiscall CBaseScriptParser::~CBaseScriptParser(void)
+	??1CParsedField@@UAE@XZ @ 4 NONAME ; public: virtual __thiscall CParsedField::~CParsedField(void)
+	??1CRegisteredParserDll@@UAE@XZ @ 5 NONAME ; public: virtual __thiscall CRegisteredParserDll::~CRegisteredParserDll(void)
+	?ExternalizeL@CParsedField@@QBEXAAVRWriteStream@@@Z @ 6 NONAME ; public: void __thiscall CParsedField::ExternalizeL(class RWriteStream &)const 
+	?FieldName@CParsedField@@QBE?AVTPtrC16@@XZ @ 7 NONAME ; public: class TPtrC16  __thiscall CParsedField::FieldName(void)const 
+	?FieldValue@CParsedField@@QBE?AVTPtrC16@@XZ @ 8 NONAME ; public: class TPtrC16  __thiscall CParsedField::FieldValue(void)const 
+	?GetLibrary@CRegisteredParserDll@@QAEHAAVRFs@@AAVRLibrary@@@Z @ 9 NONAME ; public: int __thiscall CRegisteredParserDll::GetLibrary(class RFs &,class RLibrary &)
+	?InternalizeL@CParsedField@@QAEXAAVRReadStream@@@Z @ 10 NONAME ; public: void __thiscall CParsedField::InternalizeL(class RReadStream &)
+	?MandatoryField@CParsedField@@QBEHXZ @ 11 NONAME ; public: int __thiscall CParsedField::MandatoryField(void)const 
+	?NewL@CRegisteredParserDll@@SAPAV1@AAVTUidType@@@Z @ 12 NONAME ABSENT ; public: static class CRegisteredParserDll * __cdecl CRegisteredParserDll::NewL(class TUidType &)
+	?ParserUid@CBaseScriptParser@@QAE?AVTUid@@XZ @ 13 NONAME ABSENT ; public: class TUid  __thiscall CBaseScriptParser::ParserUid(void)
+	?ReleaseLibrary@CRegisteredParserDll@@QAEXXZ @ 14 NONAME ; public: void __thiscall CRegisteredParserDll::ReleaseLibrary(void)
+	?ResetL@CBaseScriptParser@@QAEXXZ @ 15 NONAME ABSENT ; public: void __thiscall CBaseScriptParser::ResetL(void)
+	?RestoreL@CBaseScriptParser@@QAEXAAVCMsvStore@@@Z @ 16 NONAME ABSENT ; public: void __thiscall CBaseScriptParser::RestoreL(class CMsvStore &)
+	?RestoreL@CBaseScriptParser@@QAEXABV?$TBuf@$0BAA@@@@Z @ 17 NONAME ABSENT ; public: void __thiscall CBaseScriptParser::RestoreL(class TBuf<256> const &)
+	?SetFieldNameL@CParsedField@@QAEXABVTDesC16@@@Z @ 18 NONAME ; public: void __thiscall CParsedField::SetFieldNameL(class TDesC16 const &)
+	?SetFieldValueL@CParsedField@@QAEXABVTDesC16@@@Z @ 19 NONAME ; public: void __thiscall CParsedField::SetFieldValueL(class TDesC16 const &)
+	?SetMandatoryField@CParsedField@@QAEXH@Z @ 20 NONAME ; public: void __thiscall CParsedField::SetMandatoryField(int)
+	?StoreL@CBaseScriptParser@@QBEXAAVCMsvStore@@@Z @ 21 NONAME ABSENT ; public: void __thiscall CBaseScriptParser::StoreL(class CMsvStore &)const 
+	?StoreL@CBaseScriptParser@@QBEXABV?$TBuf@$0BAA@@@@Z @ 22 NONAME ABSENT ; public: void __thiscall CBaseScriptParser::StoreL(class TBuf<256> const &)const 
+	?UnfoldMessageL@CBaseScriptParser@@IAEXXZ @ 23 NONAME ABSENT ; protected: void __thiscall CBaseScriptParser::UnfoldMessageL(void)
+	??1CIpAddress@@UAE@XZ @ 24 NONAME ; public: virtual __thiscall CIpAddress::~CIpAddress(void)
+	?Addr@CIpAddress@@QBEABVTDesC16@@XZ @ 25 NONAME ; public: class TDesC16 const & __thiscall CIpAddress::Addr(void)const 
+	?NewL@CIpAddress@@SAPAV1@ABVTDesC16@@@Z @ 26 NONAME ; public: static class CIpAddress * __cdecl CIpAddress::NewL(class TDesC16 const &)
+	?NewLC@CIpAddress@@SAPAV1@ABVTDesC16@@@Z @ 27 NONAME ; public: static class CIpAddress * __cdecl CIpAddress::NewLC(class TDesC16 const &)
+	?SetAddrL@CIpAddress@@QAEXABVTDesC16@@@Z @ 28 NONAME ; public: void __thiscall CIpAddress::SetAddrL(class TDesC16 const &)
+	??0CBaseScriptParser2@@QAE@AAVCRegisteredParserDll@@AAVCMsvEntry@@AAVRFs@@@Z @ 29 NONAME ; CBaseScriptParser2::CBaseScriptParser2(class CRegisteredParserDll &, class CMsvEntry &, class RFs &)
+	??1CBaseScriptParser2@@UAE@XZ @ 30 NONAME ; CBaseScriptParser2::~CBaseScriptParser2(void)
+	?NewL@CRegisteredParserDll@@SAPAV1@AAVTDesC16@@@Z @ 31 NONAME ; class CRegisteredParserDll * CRegisteredParserDll::NewL(class TDesC16 &)
+	?ParserUid@CBaseScriptParser2@@QAE?AVTUid@@XZ @ 32 NONAME ; class TUid CBaseScriptParser2::ParserUid(void)
+	?ResetL@CBaseScriptParser2@@QAEXXZ @ 33 NONAME ; void CBaseScriptParser2::ResetL(void)
+	?RestoreL@CBaseScriptParser2@@QAEXAAVCMsvStore@@@Z @ 34 NONAME ; void CBaseScriptParser2::RestoreL(class CMsvStore &)
+	?RestoreL@CBaseScriptParser2@@QAEXABV?$TBuf@$0BAA@@@@Z @ 35 NONAME ; void CBaseScriptParser2::RestoreL(class TBuf<256> const &)
+	?StoreL@CBaseScriptParser2@@QBEXAAVCMsvStore@@@Z @ 36 NONAME ; void CBaseScriptParser2::StoreL(class CMsvStore &) const
+	?StoreL@CBaseScriptParser2@@QBEXABV?$TBuf@$0BAA@@@@Z @ 37 NONAME ; void CBaseScriptParser2::StoreL(class TBuf<256> const &) const
+	?UnfoldMessageL@CBaseScriptParser2@@IAEXXZ @ 38 NONAME ; void CBaseScriptParser2::UnfoldMessageL(void)
+	??1CBioAsyncWaiter@@UAE@XZ @ 39 NONAME ; CBioAsyncWaiter::~CBioAsyncWaiter(void)
+	?NewLC@CBioAsyncWaiter@@SAPAV1@XZ @ 40 NONAME ; class CBioAsyncWaiter * CBioAsyncWaiter::NewLC(void)
+	?Result@CBioAsyncWaiter@@QBEHXZ @ 41 NONAME ; int CBioAsyncWaiter::Result(void) const
+	?StartAndWait@CBioAsyncWaiter@@QAEXXZ @ 42 NONAME ; void CBioAsyncWaiter::StartAndWait(void)
+

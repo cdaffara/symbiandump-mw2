@@ -1,0 +1,34 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Build information file for MPX Framework.
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+#include "../commonframework/group/bld.inf"
+#include "../playbackframework/group/bld.inf"
+#include "../collectionframework/group/bld.inf"
+#include "../viewframework/group/bld.inf"
+
+PRJ_EXPORTS
+../rom/mpx.iby                      CORE_MW_LAYER_IBY_EXPORT_PATH(mpx.iby)
+
+// Generic configuration interface for component cenrep settings  
+// mpx_101FFC03 implementation specifics for cenrep data
+// mpx_101FFCD2 implementation specifics for cenrep data
+../Conf/mpx.confml               MW_LAYER_CONFML(mpx.confml)
+../Conf/mpx_101FFC03.crml 	 MW_LAYER_CRML(mpx_101FFC03.crml)
+../Conf/mpx_101FFCD2.crml 	 MW_LAYER_CRML(mpx_101FFCD2.crml)

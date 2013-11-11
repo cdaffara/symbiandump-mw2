@@ -1,0 +1,49 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRINT Running  EMsvCreateEntry_004
+
+
+//********************************
+PRINT Running  EMsvCreateEntry : Entry is created as part of an entry in a folder (Outbox which is protected). 
+PRINT Running  EMsvCreateEntry : Various combinations of Caps.
+//********************************
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCreateEntry_004_001.script
+	// Create an entry as part of an entry in a folder(Outbox which is protected). Has Read/Write user data + Network services. 
+	// The message is created and owned by the proxy server.
+	// Should PASS.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCreateEntry_004_004.script
+	// Create an entry as part of an entry in a folder(Outbox which is protected). Has Read/Write user data. 
+	// The message is created and owned by the proxy server.
+	// Should FAIL.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCreateEntry_004_005.script
+	// Create an entry as part of an entry in a folder(Outbox which is protected). Has Read user data + Network. 
+	// The message is created and owned by the proxy server.
+	// Should FAIL.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCreateEntry_004_006.script
+	// Create an entry as part of an entry in a folder(Outbox which is protected). Has Write user data + Network. 
+	// The message is created and owned by the proxy server.
+	// Should FAIL.
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvCreateEntry_004_007.script
+	// Create an entry as part of an entry in a folder(Outbox which is protected). Has no caps. 
+	// The message is created and owned by the proxy server.
+	// Should FAIL.
+

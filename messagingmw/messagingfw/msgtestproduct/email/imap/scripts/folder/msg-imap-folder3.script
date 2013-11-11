@@ -1,0 +1,1022 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE	T_MsgCommonServer  	-SharedData
+LOAD_SUITE	T_MsgImapServer		-SharedData
+LOAD_SUITE	T_MsgSmtpServer		-SharedData
+
+
+
+//! ===============================================================
+//! @SYMTestCaseID		MSG-IMAP-FOLDER-SYNC-0001
+//! @SYMTestCaseDesc		Confirm that folder tree is not synchronised when folder sync is disabled 
+//!
+//! @SYMTestActions		
+//!				ACCOUNT A
+//!				1.	Create an IMAP4 email account “A” with all default setting
+//!				2.	Change the IMAP4 subscription setting to TFolderSubscribeType:: EUpdateLocal and 
+//!					synchronisation setting to TFolderSyncType:: EUseCombination
+//!				3.	Change the IMAP4 email account “A” setting with the folder sync flag is  DISABLE
+//!				4.	Connect to the IMAP server and then synchronize the content of the INBOX  and any other subscribe folder
+//!				5.	Create an email message and then send to the server
+//!				6.	Verify that the email exists under the inbox 
+//!				7.	Disconnect the server 
+//!				ACCOUNT B
+//!				8.	Create an IMAP4 email account “B” with all default setting
+//!				9.	Change the IMAP4 email account “B” setting with the folder sync flag is ENABLE
+//!				10.	Change the IMAP4 subscription setting to TFolderSubscribeType:: EUpdateRemote and 
+//!					synchronisation setting to TFolderSyncType:: EUseCombination
+//!				11.	Connect to the IMAP server and then synchronize the content of the INBOX  and any other subscribe folder
+//!				12.	Create a folder using IMAP4 email account “B”
+//!				13.	Verify, both INBOX and new folder are there
+//!				14.	Disconnect the server
+//!				ACCOUNT A
+//!				15.	Connect to the IMAP server using IMAP4 email account “A” and then synchronize the content of 
+//!					the INBOX  and any other subscribe folder
+//!				16.	Verify that no other folder entries exist (i.e. that the folder tree has not been synchronised)
+//!				17.	Disconnect the server
+//!
+//! @SYMTestExpectedResults	There is no other folder entries exist except INBOX in Account A
+//! ===============================================================
+//!
+//! ===============================
+//! @SYMTestPriority	Critical
+//! @SYMTestType	CIT
+//! @SYMTestStatus	Implemented
+//!
+//! @SYMREQ		REQ7292
+//! @SYMPREQ		PREQ1120
+//!
+//! @SYMAuthor		Rajat Bal
+//! ===============================
+
+START_TESTCASE	MSG-IMAP-FOLDER-SYNC-0001
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer		StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer		StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0001-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0001-ResetMessageStore
+
+PRINT ##### ACCOUNT "A" under test Begins #####
+//Account A creation & cleanup ...
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0001-CreateImapAccount_A
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0001-ChangeImapSettings_A
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4FolderSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0001-ChangeImap4FolderSyncSettings_A
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0001-ConnectAndSyncImapServer_A
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0001-InitialiseImap4Account_A
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0001-DoFullImap4Synchronisation_A
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0001-CheckChildrenCountRemoteInbox_A
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0001-DisConnectImap4Server_A
+PRINT ##### Test ACCOUNT "A" completed #########
+
+PRINT ##### Control ACCOUNT "B" Begins #########
+//Account B creation...
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0001-CreateImapAccount_B
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4FolderSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0001-ChangeImap4FolderSyncSettings_B
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0001-ChangeImapSettings_B
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0001-ConnectAndSyncImapServer_B
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0001-CheckChildrenCountRemoteInbox_B
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0001-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0001-SendSmtpMessage
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0001-CreateImap4Folder_B
+RUN_TEST_STEP	300	T_MsgImapServer		SubscribeImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0001-SubscribeImap4Folder_B
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0001-FindEntryByName_B
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0001-CheckChildrenCountRemoteInbox1_B
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0001-DisConnectImap4Server_B
+PRINT ##### Control ACCOUNT "B" completed ######
+
+PRINT ##### ACCOUNT "A" under test Verifys #####
+//Account A execution...
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0001-ConnectAndSyncImapServer_A
+RUN_TEST_STEP	!Error=-1 300	T_MsgImapServer	FindEntryByName			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0001-FindEntryByName_A
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0001-CheckChildrenCountRemoteInbox1_A
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0001-DisConnectImap4Server_A
+PRINT ##### Test ACCOUNT "A" completed #########
+
+RUN_TEST_STEP	300	T_MsgCommonServer   	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+END_TESTCASE	MSG-IMAP-FOLDER-SYNC-0001
+
+
+//! ===============================================================
+//! @SYMTestCaseID		MSG-IMAP-FOLDER-SYNC-0004
+//! @SYMTestCaseDesc		Synchronise an account with many locally subscribed folders – one of them no longer exists on the remote server
+//!
+//! @SYMTestActions		
+//!				ACCOUNT A
+//!				1.	Create an IMAP4 email account “A” with all default setting
+//!				2.	Change the IMAP4 subscription setting to TFolderSubscribeType:: EUpdateNeither and 
+//!					synchronisation setting to TFolderSyncType:: EUseLocal
+//!				3.	Change the IMAP4 email account “A” setting with the folder sync flag is  DISABLE
+//!				4.	Connect to the IMAP server and synchronise the account using ConnectAndSync server MTM command.
+//!				5.	Create a new folder “TestFolder” under the IMAP service and subscribed it
+//!				6.	Create a new folder “TestFolder1” under the IMAP service and subscribed it
+//!				7.	Create a new folder “TestFolder2” under the IMAP service and subscribed it
+//!				8.	Disconnect the server 
+//!				ACCOUNT B
+//!				9.	Create an IMAP4 email account “B” with all default settings
+//!				10.	Change the IMAP4 email account “B” setting with the folder sync flag is ENABLED
+//!				11.	Connect to the IMAP server and synchronise the account using ConnectAndSync server MTM command
+//!				12.	Verify that an entry exists for remote folder “TestFolder”
+//!				13.	Unsubscribe & then delete the folder “TestFolder”
+//!				14.	Disconnect the server
+//!				ACCOUNT A
+//!				15.	Connect to the IMAP server and synchronise the account using ConnectAndSync server MTM command
+//!				16.	Attempt to synchronise the “TestFolder” folder
+//!				17.	Verify that the IMAP progress reports error KErrNotFound, and that  “TestFolder”  folder entry does not exist
+//!				18.	Disconnect the server
+//!
+//! @SYMTestExpectedResults	The attempt to synchronise the account with none exist subscribed folder should complete with 
+//!				IMAP Progress error code KErrNotFound.
+//! ===============================================================
+//!
+//! ===============================
+//! @SYMTestPriority	Critical
+//! @SYMTestType	CIT
+//! @SYMTestStatus	Implemented
+//!
+//! @SYMREQ		REQ7292
+//! @SYMPREQ		PREQ1120
+//!
+//! @SYMAuthor		Rajat Bal
+//! ===============================
+
+START_TESTCASE	MSG-IMAP-FOLDER-SYNC-0004
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer		StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer		StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-ResetMessageStore
+
+PRINT ##### ACCOUNT "A" under test Begins #####
+//Account A creation & cleanup ...
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-CreateImapAccount_A
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-ChangeImapSettings_A
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4FolderSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-ChangeImap4FolderSyncSettings_A
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-ConnectAndSyncImapServer_A
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-InitialiseImap4Account_A
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-DoFullImap4Synchronisation_A
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-CheckChildrenCountRemoteInbox_A
+
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-CreateImap4Folder_A
+RUN_TEST_STEP	300	T_MsgImapServer		SubscribeImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-SubscribeImap4Folder_A
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-FindEntryByName_A
+
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-CreateImap4Folder_A1
+RUN_TEST_STEP	300	T_MsgImapServer		SubscribeImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-SubscribeImap4Folder_A1
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-FindEntryByName_A1
+
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-CreateImap4Folder_A2
+RUN_TEST_STEP	300	T_MsgImapServer		SubscribeImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-SubscribeImap4Folder_A2
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-FindEntryByName_A2
+
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-DisConnectImap4Server_A
+PRINT ##### Test ACCOUNT "A" completed #########
+
+PRINT ##### Control ACCOUNT "B" Begins #########
+//Account B creation...
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-CreateImapAccount_B
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4FolderSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-ChangeImap4FolderSyncSettings_B
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-ChangeImapSettings_B
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-ConnectAndSyncImapServer_B
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-CheckChildrenCountRemoteInbox_B
+
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-FindEntryByName_B
+RUN_TEST_STEP	300	T_MsgImapServer		UnsubscribeImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-UnSubscribeImap4Folder_B
+RUN_TEST_STEP	300	T_MsgImapServer		DeleteImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-DeleteFolder_B
+
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-DisConnectImap4Server_B
+PRINT ##### Control ACCOUNT "B" completed ######
+
+PRINT ##### ACCOUNT "A" under test Verifys #####
+//Account A execution...
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4FolderSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-ChangeImap4FolderSyncSettings_A1
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-ConnectAndSyncImapServer_A
+RUN_TEST_STEP !Error=-1 300 T_MsgImapServer	FolderFullSync			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-FolderFullSync_A
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0004-DisConnectImap4Server_A
+PRINT ##### Test ACCOUNT "A" completed #########
+
+RUN_TEST_STEP	300	T_MsgCommonServer   	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+END_TESTCASE	MSG-IMAP-FOLDER-SYNC-0004
+
+
+
+
+//! ===============================================================
+//! @SYMTestCaseID		MSG-IMAP-FOLDER-SYNC-0006
+//! @SYMTestCaseDesc		CopyFromLocal – destination folder does not exist
+//!
+//! @SYMTestActions		
+//!				ACCOUNT A 
+//!				1.	Create an IMAP4 email account “A” with all default setting
+//!				2.	Change the IMAP4 subscription setting to TFolderSubscribeType:: EUpdateNeither and 
+//!					synchronisation setting to TFolderSyncType:: EUseLocal
+//!				3.	Change the IMAP4 email account “A” setting with the folder sync flag is  DISABLED
+//!				4.	Connect to the IMAP server and synchronise the account using ConnectAndSync server MTM command.
+//!				5.	Create a new folder “TestFolder” under the IMAP service
+//!				6.	Disconnect the server 
+//!				ACCOUNT B
+//!				7.	Create an IMAP4 email account “B” with all default settings
+//!				8.	Change the IMAP4 email account “B” setting with the folder sync flag is ENABLED
+//!				9.	Connect to the IMAP server and synchronise the account using ConnectAndSync server MTM command
+//!				10.	Verify that an entry exists for remote folder “TestFolder”
+//!				11.	Delete the folder “TestFolder”
+//!				12.	Create an email message and then save it in Drafts folder
+//!				13.	Verify that the email exists under the Drafts
+//!				14.	Disconnect the server
+//!				ACCOUNT A
+//!				15.	Connect to the IMAP server and synchronise the account using ConnectAndSync server MTM command
+//!				16.	Verify that an entry exists for remote folder “TestFolder” (i.e. that the folder tree has not been synchronised)
+//!				17.	Attempt to copy message from local Drafts to the folder “TestFolder”. 
+//!				18.	Verify that the IMAP progress reports error KErrNotFound, and that no messages appear under 
+//!					the folder entry “TestFolder”
+//!				19.	Disconnect the server
+//!
+//! @SYMTestExpectedResults	The attempt to copy messages from the local Drafts to the remote folder “TestFolder” should complete with 
+//!				the IMAP Progress object reporting the error code KErrNotFound. No messages should appear to exist under 
+//!				the local entry for the folder “TestFolder”
+//! ===============================================================
+//!
+//! ===============================
+//! @SYMTestPriority	Critical
+//! @SYMTestType	CIT
+//! @SYMTestStatus	Implemented
+//!
+//! @SYMREQ		REQ7292
+//! @SYMPREQ		PREQ1120
+//!
+//! @SYMAuthor		Rajat Bal
+//! ===============================
+
+START_TESTCASE	MSG-IMAP-FOLDER-SYNC-0006
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer		StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer		StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0006-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0006-ResetMessageStore
+
+PRINT ##### ACCOUNT "A" under test Begins #####
+//Account A creation & cleanup ...
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0006-CreateImapAccount_A
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0006-ChangeImapSettings_A
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4FolderSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0006-ChangeImap4FolderSyncSettings_A
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0006-ConnectAndSyncImapServer_A
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0006-InitialiseImap4Account_A
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0006-DoFullImap4Synchronisation_A
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0006-CheckChildrenCountRemoteInbox_A
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0006-DisConnectImap4Server_A
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0006-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0006-ConnectAndSyncImapServer_A
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0006-CreateImap4Folder_A
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0006-DisConnectImap4Server_A
+
+
+PRINT ##### Test ACCOUNT "A" completed #########
+
+PRINT ##### Control ACCOUNT "B" Begins #########
+//Account B creation...
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0006-CreateImapAccount_B
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4FolderSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0006-ChangeImap4FolderSyncSettings_B
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0006-ChangeImapSettings_B
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0006-ConnectAndSyncImapServer_B
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0006-CheckChildrenCountRemoteInbox_B
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0006-FindEntryByName_B
+RUN_TEST_STEP	300	T_MsgImapServer		DeleteImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0006-DeleteFolder_B
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0006-DisConnectImap4Server_B
+PRINT ##### Control ACCOUNT "B" completed ######
+
+PRINT ##### ACCOUNT "A" under test Verifys #####
+//Account A execution...
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0006-ConnectAndSyncImapServer_A
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0006-FindEntryByName_A
+RUN_TEST_STEP	300	T_MsgImapServer		CopyMessage			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0006-CopyMessage_A
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0006-DisConnectImap4Server_A
+PRINT ##### Test ACCOUNT "A" completed #########
+
+RUN_TEST_STEP	300	T_MsgCommonServer   	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+END_TESTCASE	MSG-IMAP-FOLDER-SYNC-0006
+
+
+
+
+//! ===============================================================
+//! @SYMTestCaseID		MSG-IMAP-FOLDER-SYNC-0007
+//! @SYMTestCaseDesc		CopyToLocal – source folder does not exist.
+//!
+//! @SYMTestActions		
+//!				ACCOUNT A 
+//!				1.	Create an IMAP4 email account “A” with all default setting
+//!				2.	Change the IMAP4 subscription setting to TFolderSubscribeType:: EUpdateNeither and 
+//!					synchronisation setting to TFolderSyncType:: EUseLocal
+//!				3.	Change the IMAP4 email account “A” setting with the folder sync flag is  DISABLED
+//!				4.	Connect to the IMAP server and synchronise the account using ConnectAndSync server MTM command.
+//!				5.	Create a new folder “TestFolder” under the IMAP service
+//!				6.	Create an email message and then send to the server
+//!				7.	Verify that the email exists under the inbox
+//!				8.	Copy message from inbox to the folder “TestFolder”
+//!				9.	Disconnect the server 
+//!				ACCOUNT B
+//!				10.	Create an IMAP4 email account “B” with all default settings
+//!				11.	Change the IMAP4 email account “B” setting with the folder sync flag is ENABLED
+//!				12.	Connect to the IMAP server and synchronise the account using ConnectAndSync server MTM command
+//!				13.	Verify that an entry exists for remote folder “TestFolder”
+//!				14.	Delete the folder “TestFolder”
+//!				15.	Disconnect the server
+//!				ACCOUNT A
+//!				16.	Connect to the IMAP server and synchronise the account using ConnectAndSync server MTM command
+//!				17.	Verify that an entry exists for remote folder “TestFolder” (i.e. that the folder tree has not been synchronised)
+//!				18.	Attempt to copy message from the folder “TestFolder” to local Drafts. 
+//!				19.	Verify that the IMAP progress reports error KErrNotFound, and that no messages appear under 
+//!					the folder entry “TestFolder”
+//!				20.	Disconnect the server
+//!
+//! @SYMTestExpectedResults	The attempt to copy messages from the remote folder “TestFolder”  to the local Drafts should complete with 
+//!				the IMAP Progress object reporting the error code KErrNotFound. 
+//! ===============================================================
+//!
+//! ===============================
+//! @SYMTestPriority	Critical
+//! @SYMTestType	CIT
+//! @SYMTestStatus	Implemented
+//!
+//! @SYMREQ		REQ7292
+//! @SYMPREQ		PREQ1120
+//!
+//! @SYMAuthor		Rajat Bal
+//! ===============================
+
+START_TESTCASE	MSG-IMAP-FOLDER-SYNC-0007
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer		StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer		StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-ResetMessageStore
+
+PRINT ##### ACCOUNT "A" under test Begins #####
+//Account A creation & cleanup ...
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-CreateImapAccount_A
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-ChangeImapSettings_A
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4FolderSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-ChangeImap4FolderSyncSettings_A
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-ConnectAndSyncImapServer_A
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-InitialiseImap4Account_A
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-DoFullImap4Synchronisation_A
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-CheckChildrenCountRemoteInbox_A
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-CreateImap4Folder_A
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-DisConnectImap4Server_A
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-SendSmtpMessage
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-ConnectAndSyncImapServer_A
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-CheckChildrenCountRemoteInbox1_A
+RUN_TEST_STEP	300	T_MsgImapServer		CopyMessage			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-CopyMessage_A
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-DisConnectImap4Server_A
+PRINT ##### Test ACCOUNT "A" completed #########
+
+PRINT ##### Control ACCOUNT "B" Begins #########
+//Account B creation...
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-CreateImapAccount_B
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4FolderSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-ChangeImap4FolderSyncSettings_B
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-ChangeImapSettings_B
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-ConnectAndSyncImapServer_B
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-CheckChildrenCountRemoteInbox_B
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-FindEntryByName_B
+RUN_TEST_STEP	300	T_MsgImapServer		DeleteImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-DeleteFolder_B
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-DisConnectImap4Server_B
+PRINT ##### Control ACCOUNT "B" completed ######
+
+PRINT ##### ACCOUNT "A" under test Verifys #####
+//Account A execution...
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-ConnectAndSyncImapServer_A
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-FindEntryByName_A
+RUN_TEST_STEP !Result=FAIL 300	T_MsgImapServer		CopyMessage			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-CopyMessage_A1
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0007-DisConnectImap4Server_A
+PRINT ##### Test ACCOUNT "A" completed #########
+
+RUN_TEST_STEP	300	T_MsgCommonServer   	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+END_TESTCASE	MSG-IMAP-FOLDER-SYNC-0007
+
+
+
+
+
+//! ===============================================================
+//! @SYMTestCaseID		MSG-IMAP-FOLDER-SYNC-0008
+//! @SYMTestCaseDesc		Populate a message from a folder that does not exist on the remote folder
+//!
+//! @SYMTestActions		
+//!				ACCOUNT A 
+//!				1.	Create an IMAP4 email account “A” with all default setting
+//!				2.	Change the IMAP4 subscription setting to TFolderSubscribeType:: EUpdateNeither and 
+//!					synchronisation setting to TFolderSyncType:: EUseLocal
+//!				3.	Change the IMAP4 email account “A” setting with the folder sync flag is  DISABLED
+//!				4.	Connect to the IMAP server and synchronise the account using ConnectAndSync server MTM command.
+//!				5.	Create a new folder “TestFolder” under the IMAP service
+//!				6.	Create an email message and then send to the server
+//!				7.	Verify that the email exists under the inbox
+//!				8.	Copy message from inbox to the folder “TestFolder”
+//!				9.	Disconnect the server 
+//!				ACCOUNT B
+//!				10.	Create an IMAP4 email account “B” with all default settings
+//!				11.	Change the IMAP4 email account “B” setting with the folder sync flag is ENABLED
+//!				12.	Connect to the IMAP server and synchronise the account using ConnectAndSync server MTM command
+//!				13.	Verify that an entry exists for remote folder “TestFolder”
+//!				14.	Delete the folder “TestFolder”
+//!				15.	Disconnect the server
+//!				ACCOUNT A
+//!				16.	Connect to the IMAP server and synchronise the account using ConnectAndSync server MTM command
+//!				17.	Verify that an entry exists for remote folder “TestFolder” (i.e. that the folder tree has not been synchronised)
+//!				18.	Attempt to populate a message from the folder  “TestFolder” 
+//!				19.	Verify that the IMAP progress reports error KErrNotFound, and attempted populate message entry does not exist
+//!				20.	Disconnect the server
+//!
+//! @SYMTestExpectedResults	The attempt to populate a message from a folder “TestFolder” that exists in the local folder tree but 
+//!				no longer exists on the remote server should complete with IMAP Progress object reporting the error code KErrNotFound.
+//! ===============================================================
+//!
+//! ===============================
+//! @SYMTestPriority	Critical
+//! @SYMTestType	CIT
+//! @SYMTestStatus	Implemented
+//!
+//! @SYMREQ		REQ7292
+//! @SYMPREQ		PREQ1120
+//!
+//! @SYMAuthor		Rajat Bal
+//! ===============================
+
+START_TESTCASE	MSG-IMAP-FOLDER-SYNC-0008
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer		StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer		StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-ResetMessageStore
+
+PRINT ##### ACCOUNT "A" under test Begins #####
+//Account A creation & cleanup ...
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-CreateImapAccount_A
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-ChangeImapSettings_A
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4FolderSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-ChangeImap4FolderSyncSettings_A
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-ConnectAndSyncImapServer_A
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-InitialiseImap4Account_A
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-DoFullImap4Synchronisation_A
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-CheckChildrenCountRemoteInbox_A
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-DisConnectImap4Server_A
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-SendSmtpMessage
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-ConnectAndSyncImapServer_A
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-CreateImap4Folder_A
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-CheckChildrenCountRemoteInbox_A1
+RUN_TEST_STEP	300	T_MsgImapServer		CopyMessage			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-CopyMessage_A
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-DisConnectImap4Server_A
+PRINT ##### Test ACCOUNT "A" completed #########
+
+PRINT ##### Control ACCOUNT "B" Begins #########
+//Account B creation...
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-CreateImapAccount_B
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4FolderSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-ChangeImap4FolderSyncSettings_B
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-ChangeImapSettings_B
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-ConnectAndSyncImapServer_B
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-CheckChildrenCountRemoteInbox_B
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-FindEntryByName_B
+RUN_TEST_STEP	300	T_MsgImapServer		DeleteImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-DeleteFolder_B
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-DisConnectImap4Server_B
+PRINT ##### Control ACCOUNT "B" completed ######
+
+PRINT ##### ACCOUNT "A" under test Verifys #####
+//Account A execution...
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-ConnectAndSyncImapServer_A
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-FindEntryByName_A
+RUN_TEST_STEP	300	T_MsgImapServer		Imap4Synchronisation		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-Imap4Synchronisation_A
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-CheckChildrenCountTestFolder_A
+RUN_TEST_STEP !Error=-1 300	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-FindEntryByName_A1
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0008-DisConnectImap4Server_A
+PRINT ##### Test ACCOUNT "A" completed #########
+
+RUN_TEST_STEP	300	T_MsgCommonServer   	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+END_TESTCASE	MSG-IMAP-FOLDER-SYNC-0008
+
+
+
+
+//! ===============================================================
+//! @SYMTestCaseID		MSG-IMAP-FOLDER-SYNC-0009
+//! @SYMTestCaseDesc		Delete a message from a folder that does not exist on the remote folder
+//!
+//! @SYMTestActions		
+//!				ACCOUNT A 
+//!				1.	Create an IMAP4 email account “A” with all default setting
+//!				2.	Change the IMAP4 subscription setting to TFolderSubscribeType:: EUpdateNeither and 
+//!					synchronisation setting to TFolderSyncType:: EUseLocal
+//!				3.	Change the IMAP4 email account “A” setting with the folder sync flag is  DISABLED
+//!				4.	Connect to the IMAP server and synchronise the account using ConnectAndSync server MTM command.
+//!				5.	Create a new folder “TestFolder” under the IMAP service
+//!				6.	Create an email message and then send to the server
+//!				7.	Verify that the email exists under the inbox
+//!				8.	Copy message from inbox to the folder “TestFolder”
+//!				9.	Disconnect the server 
+//!				ACCOUNT B
+//!				10.	Create an IMAP4 email account “B” with all default settings
+//!				11.	Change the IMAP4 email account “B” setting with the folder sync flag is ENABLED
+//!				12.	Connect to the IMAP server and synchronise the account using ConnectAndSync server MTM command
+//!				13.	Verify that an entry exists for remote folder “TestFolder”
+//!				14.	Delete the folder “TestFolder”
+//!				15.	Disconnect the server
+//!				ACCOUNT A
+//!				16.	Connect to the IMAP server and synchronise the account using ConnectAndSync server MTM command
+//!				17.	Verify that an entry exists for remote folder “TestFolder” (i.e. that the folder tree has not been synchronised)
+//!				18.	Attempt to delete a message from the folder  “TestFolder” 
+//!				19.	Verify that the IMAP progress reports error KErrNotFound, and that  attempted delete message entry does not exist
+//!				20.	Disconnect the server
+//!
+//! @SYMTestExpectedResults	The attempt to delete a message from a folder “TestFolder” that exists in the local folder tree but 
+//!				no longer exists on the remote server should complete with IMAP Progress object reporting the error code KErrNotFound
+//! ===============================================================
+//!
+//! ===============================
+//! @SYMTestPriority	Critical
+//! @SYMTestType	CIT
+//! @SYMTestStatus	Implemented
+//!
+//! @SYMREQ		REQ7292
+//! @SYMPREQ		PREQ1120
+//!
+//! @SYMAuthor		Rajat Bal
+//! ===============================
+
+START_TESTCASE	MSG-IMAP-FOLDER-SYNC-0009
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer		StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer		StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-ResetMessageStore
+
+PRINT ##### ACCOUNT "A" under test Begins #####
+//Account A creation & cleanup ...
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-CreateImapAccount_A
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-ChangeImapSettings_A
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4FolderSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-ChangeImap4FolderSyncSettings_A
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-ConnectAndSyncImapServer_A
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-InitialiseImap4Account_A
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-DoFullImap4Synchronisation_A
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-CheckChildrenCountRemoteInbox_A
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-CreateImap4Folder_A
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-DisConnectImap4Server_A
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-SendSmtpMessage
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-ConnectAndSyncImapServer_A
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-CheckChildrenCountRemoteInbox_A1
+RUN_TEST_STEP	300	T_MsgImapServer		CopyMessage			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-CopyMessage_A
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-DisConnectImap4Server_A
+PRINT ##### Test ACCOUNT "A" completed #########
+
+PRINT ##### Control ACCOUNT "B" Begins #########
+//Account B creation...
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-CreateImapAccount_B
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4FolderSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-ChangeImap4FolderSyncSettings_B
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-ChangeImapSettings_B
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-ConnectAndSyncImapServer_B
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-CheckChildrenCountRemoteInbox_B
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-FindEntryByName_B
+RUN_TEST_STEP	300	T_MsgImapServer		DeleteImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-DeleteFolder_B
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-DisConnectImap4Server_B
+PRINT ##### Control ACCOUNT "B" completed ######
+
+PRINT ##### ACCOUNT "A" under test Verifys #####
+//Account A execution...
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-ConnectAndSyncImapServer_A
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-FindEntryByName_A
+RUN_TEST_STEP !Result=FAIL 300	T_MsgImapServer		DeleteMessage			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-DeleteMessage_A
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-CheckChildrenCountTestFolder_A
+RUN_TEST_STEP !Result=FAIL 300	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-FindEntryByName_A1
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0009-DisConnectImap4Server_A
+PRINT ##### Test ACCOUNT "A" completed #########
+
+RUN_TEST_STEP	300	T_MsgCommonServer   	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+END_TESTCASE	MSG-IMAP-FOLDER-SYNC-0009
+
+
+
+
+//! ===============================================================
+//! @SYMTestCaseID		MSG-IMAP-FOLDER-SYNC-0010
+//! @SYMTestCaseDesc		Rename a folder that does not  exist on the remote server
+//!
+//! @SYMTestActions		
+//!				ACCOUNT A 
+//!				1.	Create an IMAP4 email account “A” with all default setting
+//!				2.	Change the IMAP4 subscription setting to TFolderSubscribeType:: EUpdateNeither and 
+//!					synchronisation setting to TFolderSyncType:: EUseLocal
+//!				3.	Change the IMAP4 email account “A” setting with the folder sync flag is  DISABLED
+//!				4.	Connect to the IMAP server and synchronise the account using ConnectAndSync server MTM command.
+//!				5.	Create a new folder “TestFolder” under the IMAP service
+//!				6.	Disconnect the server 
+//!				ACCOUNT B
+//!				7.	Create an IMAP4 email account “B” with all default settings
+//!				8.	Change the IMAP4 email account “B” setting with the folder sync flag is ENABLED
+//!				9.	Connect to the IMAP server and synchronise the account using ConnectAndSync server MTM command
+//!				10.	Verify that an entry exists for remote folder “TestFolder”
+//!				11.	Delete the folder “TestFolder”
+//!				12.	Disconnect the server
+//!				ACCOUNT A
+//!				13.	Connect to the IMAP server and synchronise the account using ConnectAndSync server MTM command
+//!				14.	Verify that an entry exists for remote folder “TestFolder” (i.e. that the folder tree has not been synchronised)
+//!				15.	Attempt to rename  the folder “TestFolder” 
+//!				16.	Verify that the IMAP progress reports error KErrNotFound, and that the rename should 
+//!					fail – entry for  “TestFolder”  folder still exist
+//!				17.	Disconnect the server
+//!
+//! @SYMTestExpectedResults	The attempt to rename “TestFolder” folder that exists in the local folder tree but no longer exists on 
+//!				the remote server should complete with IMAP Progress object reporting the error code KErrNotFound.
+//! ===============================================================
+//!
+//! ===============================
+//! @SYMTestPriority	Critical
+//! @SYMTestType	CIT
+//! @SYMTestStatus	Implemented
+//!
+//! @SYMREQ		REQ7292
+//! @SYMPREQ		PREQ1120
+//!
+//! @SYMAuthor		Rajat Bal
+//! ===============================
+
+START_TESTCASE	MSG-IMAP-FOLDER-SYNC-0010
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer		StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer		StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0010-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0010-ResetMessageStore
+
+PRINT ##### ACCOUNT "A" under test Begins #####
+//Account A creation & cleanup ...
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0010-CreateImapAccount_A
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0010-ChangeImapSettings_A
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4FolderSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0010-ChangeImap4FolderSyncSettings_A
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0010-ConnectAndSyncImapServer_A
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0010-InitialiseImap4Account_A
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0010-DoFullImap4Synchronisation_A
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0010-CreateImap4Folder_A
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0010-DisConnectImap4Server_A
+PRINT ##### Test ACCOUNT "A" completed #########
+
+PRINT ##### Control ACCOUNT "B" Begins #########
+//Account B creation...
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0010-CreateImapAccount_B
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4FolderSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0010-ChangeImap4FolderSyncSettings_B
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0010-ChangeImapSettings_B
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0010-ConnectAndSyncImapServer_B
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0010-FindEntryByName_B
+RUN_TEST_STEP	300	T_MsgImapServer		DeleteImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0010-DeleteFolder_B
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0010-DisConnectImap4Server_B
+PRINT ##### Control ACCOUNT "B" completed ######
+
+PRINT ##### ACCOUNT "A" under test Verifys #####
+//Account A execution...
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0010-ConnectAndSyncImapServer_A
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0010-FindEntryByName_A
+RUN_TEST_STEP !Result=FAIL 300	T_MsgImapServer	RenameImapFolder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0010-RenameImapFolder_A
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0010-DisConnectImap4Server_A
+PRINT ##### Test ACCOUNT "A" completed #########
+
+RUN_TEST_STEP	300	T_MsgCommonServer   	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+END_TESTCASE	MSG-IMAP-FOLDER-SYNC-0010
+
+
+
+
+//! ===============================================================
+//! @SYMTestCaseID		MSG-IMAP-FOLDER-SYNC-0011
+//! @SYMTestCaseDesc		Select a folder that does not  exist on the remote server
+//!
+//! @SYMTestActions		
+//!				ACCOUNT A 
+//!				1.	Create an IMAP4 email account “A” with all default setting
+//!				2.	Change the IMAP4 subscription setting to TFolderSubscribeType:: EUpdateNeither and 
+//!					synchronisation setting to TFolderSyncType:: EUseLocal
+//!				3.	Change the IMAP4 email account “A” setting with the folder sync flag is  DISABLED
+//!				4.	Connect to the IMAP server and synchronise the account using ConnectAndSync server MTM command.
+//!				5.	Create a new folder “TestFolder” under the IMAP service
+//!				6.	Disconnect the server 
+//!				ACCOUNT B
+//!				7.	Create an IMAP4 email account “B” with all default settings
+//!				8.	Change the IMAP4 email account “B” setting with the folder sync flag is ENABLED
+//!				9.	Connect to the IMAP server and synchronise the account using ConnectAndSync server MTM command
+//!				10.	Verify that an entry exists for remote folder “TestFolder”
+//!				11.	Delete the folder “TestFolder”
+//!				12.	Disconnect the server
+//!				ACCOUNT A
+//!				13.	Connect to the IMAP server and synchronise the account using ConnectAndSync server MTM command
+//!				14.	Verify that an entry exists for remote folder “TestFolder” (i.e. that the folder tree has not been synchronised)
+//!				15.	Attempt to select  the folder “TestFolder” 
+//!				16.	Verify that the IMAP progress reports error KErrNotFound, and that the entry for  “TestFolder”  
+//!					folder still exist
+//!				17.	Disconnect the server
+//!
+//! @SYMTestExpectedResults	The attempt to select “TestFolder” folder that exists in the local folder tree but no longer exists on 
+//!				the remote server should complete with IMAP Progress object reporting the error code KErrNotFound.
+//! ===============================================================
+//!
+//! ===============================
+//! @SYMTestPriority	Critical
+//! @SYMTestType	CIT
+//! @SYMTestStatus	Implemented
+//!
+//! @SYMREQ		REQ7292
+//! @SYMPREQ		PREQ1120
+//!
+//! @SYMAuthor		Rajat Bal
+//! ===============================
+
+START_TESTCASE	MSG-IMAP-FOLDER-SYNC-0011
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer		StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer		StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0011-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0011-ResetMessageStore
+
+PRINT ##### ACCOUNT "A" under test Begins #####
+//Account A creation & cleanup ...
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0011-CreateImapAccount_A
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0011-ChangeImapSettings_A
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4FolderSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0011-ChangeImap4FolderSyncSettings_A
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0011-ConnectAndSyncImapServer_A
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0011-InitialiseImap4Account_A
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0011-DoFullImap4Synchronisation_A
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0011-CreateImap4Folder_A
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0011-DisConnectImap4Server_A
+PRINT ##### Test ACCOUNT "A" completed #########
+
+PRINT ##### Control ACCOUNT "B" Begins #########
+//Account B creation...
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0011-CreateImapAccount_B
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4FolderSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0011-ChangeImap4FolderSyncSettings_B
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0011-ChangeImapSettings_B
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0011-ConnectAndSyncImapServer_B
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0011-FindEntryByName_B
+RUN_TEST_STEP	300	T_MsgImapServer		DeleteImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0011-DeleteFolder_B
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0011-DisConnectImap4Server_B
+PRINT ##### Control ACCOUNT "B" completed ######
+
+PRINT ##### ACCOUNT "A" under test Verifys #####
+//Account A execution...
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0011-ConnectAndSyncImapServer_A
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0011-FindEntryByName_A
+RUN_TEST_STEP !Result=FAIL 300	T_MsgImapServer	SelectImapFolder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0011-SelectImapFolder_A
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0011-DisConnectImap4Server_A
+PRINT ##### Test ACCOUNT "A" completed #########
+
+
+RUN_TEST_STEP	300	T_MsgCommonServer   	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+END_TESTCASE	MSG-IMAP-FOLDER-SYNC-0011
+
+
+
+
+
+//! ===============================================================
+//! @SYMTestCaseID		MSG-IMAP-FOLDER-SYNC-0002
+//! @SYMTestCaseDesc		CopyWithinService – destination folder does not exist.
+//!
+//! @SYMTestActions		
+//!				ACCOUNT A 
+//!				1.	Create an IMAP4 email account “A” with all default setting
+//!				2.	Change the IMAP4 subscription setting to TFolderSubscribeType:: EUpdateNeither and 
+//!					synchronisation setting to TFolderSyncType:: EUseLocal
+//!				3.	Change the IMAP4 email account “A” setting with the folder sync flag is  DISABLED
+//!				4.	Connect to the IMAP server and synchronise the account using ConnectAndSync server MTM command.
+//!				5.	Create a new folder “TestFolder” under the IMAP service
+//!				6.	Disconnect the server 
+//!				ACCOUNT B
+//!				7.	Create an IMAP4 email account “B” with all default settings
+//!				8.	Change the IMAP4 email account “B” setting with the folder sync flag is ENABLED
+//!				9.	Connect to the IMAP server and synchronise the account using ConnectAndSync server MTM command
+//!				10.	Verify that an entry exists for remote folder “TestFolder”
+//!				11.	Delete the folder “TestFolder”
+//!				12.	Create an email message and then send to the server
+//!				13.	Verify that the email exists under the inbox
+//!				14.	Disconnect the server
+//!				ACCOUNT A
+//!				15.	Connect to the IMAP server and synchronise the account using ConnectAndSync server MTM command
+//!				16.	Verify that an entry exists for remote folder “TestFolder” (i.e. that the folder tree has not been synchronised)
+//!				17.	Attempt to copy message from the INBOX to the folder “TestFolder”. 
+//!				18.	Verify that the IMAP progress reports error KErrNotFound, and that no messages appear under the folder entry “TestFolder”
+//!				19.	Disconnect the server
+//!
+//! @SYMTestExpectedResults	The attempt to copy messages within service from the INBOX to the remote folder “TestFolder” should complete with 
+//!				the IMAP Progress object reporting the error code KErrNotFound. No messages should appear to exist under 
+//!				the local entry for the folder “TestFolder”
+//! ===============================================================
+//!
+//! ===============================
+//! @SYMTestPriority	Critical
+//! @SYMTestType	CIT
+//! @SYMTestStatus	Implemented
+//!
+//! @SYMREQ		REQ7292
+//! @SYMPREQ		PREQ1120
+//!
+//! @SYMAuthor		Rajat Bal
+//! ===============================
+
+START_TESTCASE	MSG-IMAP-FOLDER-SYNC-0002
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer		StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer		StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0002-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0002-ResetMessageStore
+
+PRINT ##### ACCOUNT "A" under test Begins #####
+//Account A creation & cleanup ...
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0002-CreateImapAccount_A
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0002-ChangeImapSettings_A
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4FolderSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0002-ChangeImap4FolderSyncSettings_A
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0002-ConnectAndSyncImapServer_A
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0002-InitialiseImap4Account_A
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0002-DoFullImap4Synchronisation_A
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0002-CheckChildrenCountRemoteInbox_A
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0002-DisConnectImap4Server_A
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0002-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 	300 	T_MsgSmtpServer		SendSmtpMessage 		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0002-SendSmtpMessage
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0002-ConnectAndSyncImapServer_A
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0002-CreateImap4Folder_A
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0002-CheckChildrenCountRemoteInbox_A1
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0002-DisConnectImap4Server_A
+
+
+PRINT ##### Test ACCOUNT "A" completed #########
+
+
+PRINT ##### Control ACCOUNT "B" Begins #########
+//Account B creation...
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0002-CreateImapAccount_B
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4FolderSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0002-ChangeImap4FolderSyncSettings_B
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0002-ChangeImapSettings_B
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0002-ConnectAndSyncImapServer_B
+RUN_TEST_STEP	300	T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0002-CheckChildrenCountRemoteInbox_B
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0002-FindEntryByName_B
+RUN_TEST_STEP	300	T_MsgImapServer		DeleteImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0002-DeleteFolder_B
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0002-DisConnectImap4Server_B
+PRINT ##### Control ACCOUNT "B" completed ######
+
+PRINT ##### ACCOUNT "A" under test Verifys #####
+//Account A execution...
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0002-ConnectAndSyncImapServer_A
+RUN_TEST_STEP !Error=-1 300	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0002-FindEntryByName_A
+RUN_TEST_STEP !Result=FAIL 300 	T_MsgImapServer		CopyMessage			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0002-CopyMessage_A
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0002-DisConnectImap4Server_A
+PRINT ##### Test ACCOUNT "A" completed #########
+
+RUN_TEST_STEP	300	T_MsgCommonServer   	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+END_TESTCASE	MSG-IMAP-FOLDER-SYNC-0002
+
+
+
+
+//! ===============================================================
+//! @SYMTestCaseID		MSG-IMAP-FOLDER-SYNC-0003
+//! @SYMTestCaseDesc		Delete a folder that does not  exist on the remote server
+//!
+//! @SYMTestActions	
+//!				ACCOUNT A 
+//!				1.	Create an IMAP4 email account “A” with all default setting
+//!				2.	Change the IMAP4 subscription setting to TFolderSubscribeType:: EUpdateNeither and 
+//!					synchronisation setting to TFolderSyncType:: EUseLocal
+//!				3.	Change the IMAP4 email account “A” setting with the folder sync flag is  DISABLED
+//!				4.	Connect to the IMAP server and synchronise the account using ConnectAndSync server MTM command.
+//!				5.	Create a new folder “TestFolder” under the IMAP service
+//!				6.	Disconnect the server 
+//!				ACCOUNT B
+//!				7.	Create an IMAP4 email account “B” with all default settings
+//!				8.	Change the IMAP4 email account “B” setting with the folder sync flag is ENABLED
+//!				9.	Connect to the IMAP server and synchronise the account using ConnectAndSync server MTM command
+//!				10.	Verify that an entry exists for remote folder “TestFolder”
+//!				11.	Delete the folder “TestFolder”
+//!				12.	Disconnect the server
+//!				ACCOUNT A
+//!				13.	Connect to the IMAP server and synchronise the account using ConnectAndSync server MTM command
+//!				14.	Verify that an entry exists for remote folder “TestFolder” (i.e. that the folder tree has not been synchronised)
+//!				15.	Attempt to delete the “TestFolder” folder
+//!				16.	Verify that the IMAP progress reports error KErrNotFound, and that “TestFolder”  folder entry does not exist
+//!				17.	Disconnect the server
+//!
+//! @SYMTestExpectedResults	The attempt to delete “TestFolder” folder that exists in the local folder tree but no longer exists on 
+//!				the remote server should complete with IMAP Progress object reporting the error code KErrNotFound.
+//! ===============================================================
+//!
+//! ===============================
+//! @SYMTestPriority	Critical
+//! @SYMTestType	CIT
+//! @SYMTestStatus	Implemented
+//!
+//! @SYMREQ		REQ7292
+//! @SYMPREQ		PREQ1120
+//!
+//! @SYMAuthor		Rajat Bal
+//! ===============================
+
+START_TESTCASE	MSG-IMAP-FOLDER-SYNC-0003
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300	T_MsgImapServer		StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer		StartUp
+
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0003-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0003-ResetMessageStore
+
+PRINT ##### ACCOUNT "A" under test Begins #####
+//Account A creation & cleanup ...
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0003-CreateImapAccount_A
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0003-ChangeImapSettings_A
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4FolderSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0003-ChangeImap4FolderSyncSettings_A
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0003-ConnectAndSyncImapServer_A
+RUN_TEST_STEP	300	T_MsgImapServer		InitialiseImap4Account		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0003-InitialiseImap4Account_A
+RUN_TEST_STEP	300	T_MsgImapServer		DoFullImap4Synchronisation	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0003-DoFullImap4Synchronisation_A
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0003-CreateImap4Folder_A
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0003-DisConnectImap4Server_A
+PRINT ##### Test ACCOUNT "A" completed #########
+
+PRINT ##### Control ACCOUNT "B" Begins #########
+//Account B creation...
+RUN_TEST_STEP	300	T_MsgImapServer		CreateImapAccount		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0003-CreateImapAccount_B
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4FolderSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0003-ChangeImap4FolderSyncSettings_B
+RUN_TEST_STEP	300	T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0003-ChangeImapSettings_B
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0003-ConnectAndSyncImapServer_B
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0003-FindEntryByName_B
+RUN_TEST_STEP	300	T_MsgImapServer		DeleteImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0003-DeleteFolder_B
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0003-DisConnectImap4Server_B
+PRINT ##### Control ACCOUNT "B" completed ######
+
+PRINT ##### ACCOUNT "A" under test Verifys #####
+//Account A execution...
+RUN_TEST_STEP	300	T_MsgImapServer		ConnectAndSyncImapServer	c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0003-ConnectAndSyncImapServer_A
+RUN_TEST_STEP	300	T_MsgImapServer		FindEntryByName			c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0003-FindEntryByName_A
+RUN_TEST_STEP !Result=FAIL 300	T_MsgImapServer	DeleteImap4Folder		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0003-DeleteFolder_A
+RUN_TEST_STEP	300	T_MsgImapServer		DisConnectImapServer		c:\msgtest\email\imap\folder\msg-imap-folder3.ini	0003-DisConnectImap4Server_A
+PRINT ##### Test ACCOUNT "A" completed #########
+
+RUN_TEST_STEP	300	T_MsgCommonServer   	ShutDown
+RUN_TEST_STEP	300	T_MsgImapServer		ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+END_TESTCASE	MSG-IMAP-FOLDER-SYNC-0003
+
+

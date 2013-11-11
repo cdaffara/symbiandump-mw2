@@ -1,0 +1,46 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// wapurilookup.dll Query the WAP Push URIs against white/black list
+// 
+//
+
+/**
+ @file
+*/
+
+
+TARGET			wapurilookup.dll
+TARGETTYPE		plugin
+CAPABILITY		ALL -TCB
+
+// UIDs - 2nd UID => static DLL, 3rd UID => wapurilookup.dll
+UID				0x10009D8D	0x20009D3D
+
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+SOURCEPATH		../src
+SOURCE			CUriListLookup.cpp
+SOURCE			UriListLookupMain.cpp
+
+USERINCLUDE		../inc
+
+LIBRARY			euser.lib 
+LIBRARY			ecom.lib
+LIBRARY			ineturilist.lib
+
+start resource 20009D3D.rss
+TARGET wapurilookup.rsc  
+end
+
+SMPSAFE

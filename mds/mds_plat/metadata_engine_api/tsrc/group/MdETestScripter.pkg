@@ -1,0 +1,47 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description:
+;
+; Installation file for API test
+
+; Languages
+&EN
+
+; Header
+#{"MdETestScripter"},(0x101FB3E3),1,0,1,TYPE=SA
+
+; Localised Vendor name
+%{"Nokia-EN"}
+
+; Unique Vendor name
+:"Nokia"
+
+; Files
+"\epoc32\release\armv5\urel\MdETestScripter.dll"      -"C:\sys\bin\MdETestScripter.dll"
+"..\init\MdETestScripter.ini"      -"C:\testframework\MdETestScripter.ini"
+"..\conf\MdETestScripter.cfg"      -"C:\testframework\MdETestScripter.cfg"
+
+"..\data\mmc\MdETestScripterImportMetadata.mde"      -"E:\testing\data\MdETestScripterImportMetadata.mde"
+"..\data\mmc\MdETestScripterSchema.mde"      -"E:\testing\data\MdETestScripterSchema.mde"
+"..\data\mmc\MdETestScripterSchema2.mde"      -"E:\testing\data\MdETestScripterSchema2.mde"
+
+"..\data\mmc\test2video1.3gp"      -"E:\testing\data\test2video1.3gp"
+"..\data\mmc\test2video2.mp4"      -"E:\testing\data\test2video2.mp4"
+"..\data\mmc\test3video1.3gp"      -"E:\testing\data\test3video1.3gp"
+"..\data\mmc\test3video2.mp4"      -"E:\testing\data\test3video2.mp4"
+"..\data\mmc\test4video1.3gp"      -"E:\testing\data\test4video1.3gp"
+"..\data\mmc\test4video2"      -"E:\testing\data\test4video2"
+"..\data\mmc\test26video1.3gp"      -"E:\testing\data\test26video1.3gp"
+"..\data\mmc\testvideo1.3gp"      -"E:\testing\data\testvideo1.3gp"
+"..\data\mmc\testvideo2.mp4"      -"E:\testing\data\testvideo2.mp4"

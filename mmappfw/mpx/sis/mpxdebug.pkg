@@ -1,0 +1,74 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description:	Package file for MPX debug.
+;
+;Languages
+&EN
+
+;packet-header (name, uid, major, minor, build, type)
+#{"MPX"},(0x101FFC63),0,0,0,TYPE=PU
+
+; Supports Series 60 v3.0
+[0x101F7961], 0, 0, 0, {"Series60ProductID"}
+
+;Localised Vendor Name
+%{"Nokia"}
+
+;Unique Vendor Name
+:"Nokia"
+
+; From Common Framework
+"\epoc32\release\armv5\UDEB\mpxcommon.dll"                      -"!:\sys\bin\mpxcommon.dll"
+
+; From Collection Framework
+"\epoc32\release\armv5\UDEB\mpxcollectionutility.dll"           -"!:\sys\bin\mpxcollectionutility.dll"
+"\epoc32\release\armv5\UDEB\mpxcollectionserver.exe"            -"!:\sys\bin\mpxcollectionserver.exe"
+"\epoc32\release\armv5\UDEB\mpxcollectionengine.dll"            -"!:\sys\bin\mpxcollectionengine.dll"
+
+; From Playback Framework
+"\epoc32\release\armv5\UDEB\mpxplaybackengine.dll"              -"!:\sys\bin\mpxplaybackengine.dll"
+"\epoc32\release\armv5\UDEB\mpxplaybackserver.exe"              -"!:\sys\bin\mpxplaybackserver.exe"
+"\epoc32\release\armv5\UDEB\mpxplaybackutility.dll"             -"!:\sys\bin\mpxplaybackutility.dll"
+
+; From Harvester
+"\epoc32\release\armv5\UDEB\mpxharvesterserver.exe"             -"!:\sys\bin\mpxharvesterserver.exe"
+"\epoc32\release\armv5\UDEB\mpxfilehandler.dll"                 -"!:\sys\bin\mpxfilehandler.dll"
+"\epoc32\release\armv5\UDEB\mpxharvesterutility.dll"            -"!:\sys\bin\mpxharvesterutility.dll"
+"\epoc32\release\armv5\UDEB\mpxcollectionmediator.dll"          -"!:\sys\bin\mpxcollectionmediator.dll"
+"\epoc32\release\armv5\UDEB\mpxmetadataextractor.dll"           -"!:\sys\bin\mpxmetadataextractor.dll"
+"\epoc32\data\Z\resource\apps\mpxmediator.rsc"                  -"!:\resource\apps\mpxmediator.rsc"
+
+; From Playlist Engine
+"\epoc32\release\armv5\UDEB\mpxplaylistengine.dll"              -"!:\sys\bin\mpxplaylistengine.dll"
+"\epoc32\release\armv5\UDEB\mpxplaylistrecognizer.dll"          -"!:\sys\bin\mpxplaylistrecognizer.dll"
+"\epoc32\data\Z\resource\plugins\mpxplaylistrecognizer.rsc"     -"!:\resource\plugins\mpxplaylistrecognizer.rsc"
+
+; From View Framework
+"\epoc32\release\armv5\UDEB\mpxviewutility.dll"                 -"!:\sys\bin\mpxviewutility.dll"
+"\epoc32\release\armv5\UDEB\mpxviewplugin.dll"                  -"!:\sys\bin\mpxviewplugin.dll"
+
+; Other pieces
+"\epoc32\release\armv5\UDEB\mpxalbumartutility.dll"             -"!:\sys\bin\mpxalbumartutility.dll"
+"\epoc32\release\armv5\UDEB\mpxcollectionhelper.dll"            -"!:\sys\bin\mpxcollectionhelper.dll"
+
+; Add missing dll files
+"\epoc32\release\armv5\UDEB\MPSettEngine.dll"             -"!:\sys\bin\MPSettEngine.dll"
+"\epoc32\release\armv5\UDEB\audiofetcher.dll"             -"!:\sys\bin\audiofetcher.dll"
+
+;add missing resource files
+"\epoc32\data\Z\resource\apps\audiofetcher.mif"                 -"!:\resource\apps\audiofetcher.mif"
+"\epoc32\data\Z\resource\plugins\audiofetcher.rsc"           -"!:\resource\plugins\audiofetcher.rsc"
+"\epoc32\data\Z\resource\apps\audiofetcherdialog.rsc"           -"!:\resource\apps\audiofetcherdialog.rsc"
+
+@"mpxcenrep.sisx",(0x10202BE9)

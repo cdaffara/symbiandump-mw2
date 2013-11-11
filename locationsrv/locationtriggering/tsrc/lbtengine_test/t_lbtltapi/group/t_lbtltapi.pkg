@@ -1,0 +1,83 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description:Test module to implement Test cases for C,T Classes
+;
+ 
+;
+
+/*
+* ==============================================================================
+*  Name        : t_lbtltapi.pkg
+*  Part of     : LBT FW Test module/ t_lbtltapi
+*
+*  Description : Test module to implement Test cases for C,T Classes
+*  Version:   
+*
+*  Copyright (C) 2002 - 2007 Nokia Corporation.
+*  This material, including documentation and any related 
+*  computer programs, is protected by copyright controlled by 
+*  Nokia Corporation. All rights are reserved. Copying, 
+*  including reproducing, storing,  adapting or translating, any 
+*  or all of this material requires the prior written consent of 
+*  Nokia Corporation. This material also contains confidential 
+*  information which may not be disclosed to others without the 
+*  prior written consent of Nokia Corporation.
+*
+* ============================================================================
+*/
+
+; Languages
+&EN
+
+; Package header
+#{"t_lbtltapi"},(0x2001FDCB),0,1,0,TYPE=SA
+
+; Series60 product id for S60 3.0
+[0x101F7961], 0, 0, 0, {"Series60ProductID"}
+
+; Localised Vendor name
+%{"Nokia EN"}
+
+; Unique Vendor name
+:"Nokia"
+
+; Logo
+; None
+
+; Package signature - Optional
+; None
+
+; Start of Package body
+
+; Condition blocks
+; None
+
+; Options list
+; None
+
+; Install files
+
+ "\epoc32\release\armv5\urel\t_lbtltapi.dll"-"C:\sys\bin\t_lbtltapi.dll" 
+"..\conf\t_lbtltapi.cfg"-"C:\TestFramework\t_lbtltapi.cfg" 
+"..\init\TestFramework.ini"-"C:\TestFramework\TestFramework.ini" 
+; Embedded SIS 
+; None
+
+; End of Package body
+
+; PKG dependencies
+; None
+
+; PKG capabilities
+; None

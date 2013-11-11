@@ -1,0 +1,31 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer SampleActionA c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSample002.ini SampleActionA
+RUN_TEST_STEP 100 MessagingTestServer SampleActionB c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSample002.ini SampleActionB
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer SampleActionC c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSample002.ini SampleActionC
+RUN_TEST_STEP 100 MessagingTestServer SampleActionD c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSample002.ini SampleActionD
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+RUN_TEST_STEP 100 MessagingTestServer SampleActionE c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSample002.ini SampleActionE
+RUN_TEST_STEP 100 MessagingTestServer SampleActionF c:\msgtest\TestFramework\ScriptedTestCases\TestCaseSample002.ini SampleActionF
+RUN_TEST_STEP 100 MessagingTestServer END_TEST_CASE
+

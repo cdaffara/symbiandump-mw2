@@ -1,0 +1,50 @@
+/*
+* Copyright (c) 2006-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file for project contentlistingframework
+*
+*/
+
+
+#include <platform_paths.hrh>
+#include <data_caging_paths.hrh>
+#include <../CommonInc/CLFUID.hrh>
+
+VERSION         10.0
+TARGET          MediaCollectionManager.dll
+TARGETTYPE      DLL
+UID             0x1000008d CLF_FRAMEWORK_UID3
+VENDORID        VID_DEFAULT
+CAPABILITY      CAP_GENERAL_DLL
+
+SOURCEPATH      ../mediacollectionmanagersrc
+
+SOURCE          mediacollectionmanagerfactory.cpp
+SOURCE          mediacollectionmanagerimpl.cpp
+
+// Default system include paths for application layer modules.
+MW_LAYER_SYSTEMINCLUDE
+USERINCLUDE     ../CommonInc
+SYSTEMINCLUDE   /epoc32/include/ecom
+
+LIBRARY         euser.lib
+LIBRARY         estor.lib
+LIBRARY         efsrv.lib
+LIBRARY         bafl.lib
+
+BYTEPAIRCOMPRESSTARGET
+PAGED
+OPTION ARMCC -O3 -OSpace
+
+// End of File
+

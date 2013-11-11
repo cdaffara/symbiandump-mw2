@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<api id="5b1b65eec8664815ed8f1329a560137a" dataversion="2.0">
+<name>Location Triggering API</name>
+<description>Location Triggering API enables client application to use location triggering
+service. Location triggering service provides notification to client applications based
+on the location of the mobile phone. Client applications can be notified when
+the mobile phone leaves or enters a specified geographical area.</description>
+<type>c++</type>
+<collection>locationtriggering</collection>
+<libs><lib name="lbt.lib"/>
+</libs>
+<release category="public" sinceversion="1"/>
+<attributes>
+<htmldocprovided>no</htmldocprovided>
+<adaptation>no</adaptation>
+</attributes>
+</api>

@@ -1,0 +1,82 @@
+/***************************************************
+   1. Create MO CS call
+   2. Init MT call (Ringing)
+   3. Replace active call with ringing one
+***************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 2.3.6 Replace active call with queued call
+timeout 15000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+// Dialling first call
+test ExpectMediatorEvent 1 ECCECallTypeCSVoice Dialling 1 MoCall
+test ExpectMediatorEvent 1 ECCECallTypeCSVoice Connecting 1 MoCall
+test ExpectMediatorEvent 1 ECCECallTypeCSVoice Connected 1 MoCall
+
+// MT call arriving event
+test ExpectMediatorEvent 1 ECCECallTypeCSVoice Connected 1 MoCall
+test ExpectMediatorEvent 2 ECCECallTypePS Queued 2 MtCall
+
+// Replace active done
+test ExpectMediatorEvent 1 ECCECallTypeCSVoice Disconnecting 1 MoCall
+test ExpectMediatorEvent 2 ECCECallTypePS Queued 2 MtCall
+
+test ExpectMediatorEvent 2 ECCECallTypePS Answering 2 MtCall
+
+test ExpectMediatorEvent 2 ECCECallTypePS Connected 2 MtCall
+
+test ExpectMediatorEvent 2 ECCECallTypePS Connected 2 MtCall
+
+test ExpectMediatorEvent 2 ECCECallTypePS Disconnecting 2 MtCall
+
+test OpenNewCall 1 0 Recipient@172.23.123.29 1 ECCECallTypeCSVoice ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+// Step 2
+print Step_2
+
+// Trigger ICM
+test InitIncomingCall
+// Wait plugin to initialize
+test Delay 1000
+
+// Send plugin command, MT call with CallID 2 is created
+test SendPluginRequest CreateCall 2
+test WaitEvent 0 IncomingCall
+test WaitEvent 2 Queued
+
+// Step 3
+print Step_3
+test ReplaceActive 2 0
+
+test WaitEvents 1 Disconnecting, 1 Idle, 2 Answering, 2 Connected
+test Release 1 0
+
+// Step 4
+print Step_4
+
+test Delay 200
+
+// hang up call
+test HangUp 2 0
+test WaitEvent 2 Disconnecting
+test WaitEvent 2 Idle
+test Release 2 0
+
+test VerifyTest
+test Delay 3000
+test VerifyMediatorEvents
+delete test
+[Endtest]

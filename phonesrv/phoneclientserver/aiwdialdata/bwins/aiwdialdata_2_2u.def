@@ -1,0 +1,65 @@
+EXPORTS
+	?AllowMatch@CAiwInternalDialData@@QBEHXZ @ 1 NONAME ; int CAiwInternalDialData::AllowMatch(void) const
+	?Bearer@CAiwInternalDialData@@QBEABVTDesC8@@XZ @ 2 NONAME ; class TDesC8 const & CAiwInternalDialData::Bearer(void) const
+	?CallType@CAiwDialData@@QBE?AW4TCallType@1@XZ @ 3 NONAME ; enum CAiwDialData::TCallType CAiwDialData::CallType(void) const
+	?CallType@CAiwDialDataExt@@QBE?AW4TCallType@CAiwDialData@@XZ @ 4 NONAME ; enum CAiwDialData::TCallType CAiwDialDataExt::CallType(void) const
+	?CallType@CAiwInternalDialData@@QBE?AW4TCallType@CAiwDialData@@XZ @ 5 NONAME ; enum CAiwDialData::TCallType CAiwInternalDialData::CallType(void) const
+	?ContactLink@CAiwDialDataExt@@QBEABVTDesC8@@XZ @ 6 NONAME ; class TDesC8 const & CAiwDialDataExt::ContactLink(void) const
+	?ContactLink@CAiwInternalDialData@@QBEABVTDesC8@@XZ @ 7 NONAME ; class TDesC8 const & CAiwInternalDialData::ContactLink(void) const
+	?EndOtherCalls@CAiwInternalDialData@@QBEHXZ @ 8 NONAME ; int CAiwInternalDialData::EndOtherCalls(void) const
+	?FillInParamListL@CAiwDialData@@QAEXAAVCAiwGenericParamList@@@Z @ 9 NONAME ; void CAiwDialData::FillInParamListL(class CAiwGenericParamList &)
+	?FillInParamListL@CAiwDialDataExt@@QAEXAAVCAiwGenericParamList@@@Z @ 10 NONAME ; void CAiwDialDataExt::FillInParamListL(class CAiwGenericParamList &)
+	?FillInParamListL@CAiwInternalDialData@@QAEXAAVCAiwGenericParamList@@@Z @ 11 NONAME ; void CAiwInternalDialData::FillInParamListL(class CAiwGenericParamList &)
+	?InitiateCall@CAiwDialDataExt@@QBEHXZ @ 12 NONAME ; int CAiwDialDataExt::InitiateCall(void) const
+	?InitiateCall@CAiwInternalDialData@@QBEHXZ @ 13 NONAME ; int CAiwInternalDialData::InitiateCall(void) const
+	?Name@CAiwDialDataExt@@QBEABVTDesC16@@XZ @ 14 NONAME ; class TDesC16 const & CAiwDialDataExt::Name(void) const
+	?Name@CAiwInternalDialData@@QBEABVTDesC16@@XZ @ 15 NONAME ; class TDesC16 const & CAiwInternalDialData::Name(void) const
+	?NewL@CAiwDialData@@SAPAV1@XZ @ 16 NONAME ; class CAiwDialData * CAiwDialData::NewL(void)
+	?NewL@CAiwDialDataExt@@SAPAV1@XZ @ 17 NONAME ; class CAiwDialDataExt * CAiwDialDataExt::NewL(void)
+	?NewL@CAiwInternalDialData@@SAPAV1@ABVTDesC8@@@Z @ 18 NONAME ; class CAiwInternalDialData * CAiwInternalDialData::NewL(class TDesC8 const &)
+	?NewL@CAiwInternalDialData@@SAPAV1@XZ @ 19 NONAME ; class CAiwInternalDialData * CAiwInternalDialData::NewL(void)
+	?NewLC@CAiwDialData@@SAPAV1@XZ @ 20 NONAME ; class CAiwDialData * CAiwDialData::NewLC(void)
+	?NewLC@CAiwDialDataExt@@SAPAV1@XZ @ 21 NONAME ; class CAiwDialDataExt * CAiwDialDataExt::NewLC(void)
+	?NewLC@CAiwInternalDialData@@SAPAV1@ABVTDesC8@@@Z @ 22 NONAME ; class CAiwInternalDialData * CAiwInternalDialData::NewLC(class TDesC8 const &)
+	?NewLC@CAiwInternalDialData@@SAPAV1@XZ @ 23 NONAME ; class CAiwInternalDialData * CAiwInternalDialData::NewLC(void)
+	?PhoneNumber@CAiwDialData@@QBEABVTDesC16@@XZ @ 24 NONAME ; class TDesC16 const & CAiwDialData::PhoneNumber(void) const
+	?PhoneNumber@CAiwDialDataExt@@QBEABVTDesC16@@XZ @ 25 NONAME ; class TDesC16 const & CAiwDialDataExt::PhoneNumber(void) const
+	?PhoneNumber@CAiwInternalDialData@@QBEABVTDesC16@@XZ @ 26 NONAME ; class TDesC16 const & CAiwInternalDialData::PhoneNumber(void) const
+	?Redial@CAiwDialDataExt@@QBEHXZ @ 27 NONAME ; int CAiwDialDataExt::Redial(void) const
+	?Redial@CAiwInternalDialData@@QBEHXZ @ 28 NONAME ; int CAiwInternalDialData::Redial(void) const
+	?RedialMaximumDuration@CAiwInternalDialData@@QBE?BVTTimeIntervalSeconds@@XZ @ 29 NONAME ; class TTimeIntervalSeconds const CAiwInternalDialData::RedialMaximumDuration(void) const
+	?SATCall@CAiwInternalDialData@@QBEHXZ @ 30 NONAME ; int CAiwInternalDialData::SATCall(void) const
+	?SetAllowMatch@CAiwInternalDialData@@QAEXH@Z @ 31 NONAME ; void CAiwInternalDialData::SetAllowMatch(int)
+	?SetBearerL@CAiwInternalDialData@@QAEXABVTDesC8@@@Z @ 32 NONAME ; void CAiwInternalDialData::SetBearerL(class TDesC8 const &)
+	?SetCallType@CAiwDialData@@QAEXW4TCallType@1@@Z @ 33 NONAME ; void CAiwDialData::SetCallType(enum CAiwDialData::TCallType)
+	?SetCallType@CAiwDialDataExt@@QAEXW4TCallType@CAiwDialData@@@Z @ 34 NONAME ; void CAiwDialDataExt::SetCallType(enum CAiwDialData::TCallType)
+	?SetCallType@CAiwInternalDialData@@QAEXW4TCallType@CAiwDialData@@@Z @ 35 NONAME ; void CAiwInternalDialData::SetCallType(enum CAiwDialData::TCallType)
+	?SetContactLinkL@CAiwDialDataExt@@QAEXABVTDesC8@@@Z @ 36 NONAME ; void CAiwDialDataExt::SetContactLinkL(class TDesC8 const &)
+	?SetContactLinkL@CAiwInternalDialData@@QAEXABVTDesC8@@@Z @ 37 NONAME ; void CAiwInternalDialData::SetContactLinkL(class TDesC8 const &)
+	?SetEndOtherCalls@CAiwInternalDialData@@QAEXH@Z @ 38 NONAME ; void CAiwInternalDialData::SetEndOtherCalls(int)
+	?SetInitiateCall@CAiwDialDataExt@@QAEXH@Z @ 39 NONAME ; void CAiwDialDataExt::SetInitiateCall(int)
+	?SetInitiateCall@CAiwInternalDialData@@QAEXH@Z @ 40 NONAME ; void CAiwInternalDialData::SetInitiateCall(int)
+	?SetNameL@CAiwDialDataExt@@QAEXABVTDesC16@@@Z @ 41 NONAME ; void CAiwDialDataExt::SetNameL(class TDesC16 const &)
+	?SetNameL@CAiwInternalDialData@@QAEXABVTDesC16@@@Z @ 42 NONAME ; void CAiwInternalDialData::SetNameL(class TDesC16 const &)
+	?SetPhoneNumberL@CAiwDialData@@QAEXABVTDesC16@@@Z @ 43 NONAME ; void CAiwDialData::SetPhoneNumberL(class TDesC16 const &)
+	?SetPhoneNumberL@CAiwDialDataExt@@QAEXABVTDesC16@@@Z @ 44 NONAME ; void CAiwDialDataExt::SetPhoneNumberL(class TDesC16 const &)
+	?SetPhoneNumberL@CAiwInternalDialData@@QAEXABVTDesC16@@@Z @ 45 NONAME ; void CAiwInternalDialData::SetPhoneNumberL(class TDesC16 const &)
+	?SetRedial@CAiwDialDataExt@@QAEXH@Z @ 46 NONAME ; void CAiwDialDataExt::SetRedial(int)
+	?SetRedial@CAiwInternalDialData@@QAEXH@Z @ 47 NONAME ; void CAiwInternalDialData::SetRedial(int)
+	?SetRedialMaximumDuration@CAiwInternalDialData@@QAEXVTTimeIntervalSeconds@@@Z @ 48 NONAME ; void CAiwInternalDialData::SetRedialMaximumDuration(class TTimeIntervalSeconds)
+	?SetSATCall@CAiwInternalDialData@@QAEXH@Z @ 49 NONAME ; void CAiwInternalDialData::SetSATCall(int)
+	?SetShowNumber@CAiwDialDataExt@@QAEXH@Z @ 50 NONAME ; void CAiwDialDataExt::SetShowNumber(int)
+	?SetShowNumber@CAiwInternalDialData@@QAEXH@Z @ 51 NONAME ; void CAiwInternalDialData::SetShowNumber(int)
+	?SetSubAddressL@CAiwInternalDialData@@QAEXABVTDesC16@@@Z @ 52 NONAME ; void CAiwInternalDialData::SetSubAddressL(class TDesC16 const &)
+	?SetWindowGroup@CAiwDialData@@QAEXH@Z @ 53 NONAME ; void CAiwDialData::SetWindowGroup(int)
+	?SetWindowGroup@CAiwDialDataExt@@QAEXH@Z @ 54 NONAME ; void CAiwDialDataExt::SetWindowGroup(int)
+	?SetWindowGroup@CAiwInternalDialData@@QAEXH@Z @ 55 NONAME ; void CAiwInternalDialData::SetWindowGroup(int)
+	?ShowNumber@CAiwDialDataExt@@QBEHXZ @ 56 NONAME ; int CAiwDialDataExt::ShowNumber(void) const
+	?ShowNumber@CAiwInternalDialData@@QBEHXZ @ 57 NONAME ; int CAiwInternalDialData::ShowNumber(void) const
+	?SubAddress@CAiwInternalDialData@@QBEABVTDesC16@@XZ @ 58 NONAME ; class TDesC16 const & CAiwInternalDialData::SubAddress(void) const
+	?WindowGroup@CAiwDialData@@QBEHXZ @ 59 NONAME ; int CAiwDialData::WindowGroup(void) const
+	?WindowGroup@CAiwDialDataExt@@QBEHXZ @ 60 NONAME ; int CAiwDialDataExt::WindowGroup(void) const
+	?WindowGroup@CAiwInternalDialData@@QBEHXZ @ 61 NONAME ; int CAiwInternalDialData::WindowGroup(void) const
+	?ServiceId@CAiwInternalDialData@@QBEKXZ @ 62 NONAME ; unsigned long CAiwInternalDialData::ServiceId(void) const
+	?SetServiceId@CAiwInternalDialData@@QAEXK@Z @ 63 NONAME ; void CAiwInternalDialData::SetServiceId(unsigned long)
+

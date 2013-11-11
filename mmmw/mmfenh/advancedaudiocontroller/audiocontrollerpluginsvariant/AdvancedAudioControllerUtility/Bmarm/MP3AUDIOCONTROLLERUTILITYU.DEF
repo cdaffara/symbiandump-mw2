@@ -1,0 +1,4 @@
+EXPORTS
+	NewL__26CMP3AudioControllerUtility @ 1 NONAME R3UNUSED ; CMP3AudioControllerUtility::NewL(void)
+	"_._26CMP3AudioControllerUtility" @ 2 NONAME R3UNUSED ; CMP3AudioControllerUtility::~CMP3AudioControllerUtility(void)
+

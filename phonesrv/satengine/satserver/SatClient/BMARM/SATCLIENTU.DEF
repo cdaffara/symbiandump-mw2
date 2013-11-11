@@ -1,0 +1,25 @@
+EXPORTS
+	__13RSatUiSession @ 1 NONAME R3UNUSED ; RSatUiSession::RSatUiSession(void)
+	Cancel__C11RSatRefresh @ 2 NONAME R3UNUSED ; RSatRefresh::Cancel(void) const
+	Close__11RSatRefresh @ 3 NONAME R3UNUSED ; RSatRefresh::Close(void)
+	Close__13RSatUiSession @ 4 NONAME R3UNUSED ; RSatUiSession::Close(void)
+	ConnectL__11RSatSession @ 5 NONAME R3UNUSED ; RSatSession::ConnectL(void)
+	KillServer__C13RSatUiSession @ 6 NONAME R3UNUSED ; RSatUiSession::KillServer(void) const
+	NotifyFileChangeL__11RSatRefresh @ 7 NONAME R3UNUSED ; RSatRefresh::NotifyFileChangeL(void)
+	OpenL__11RSatRefreshR11RSatSession @ 8 NONAME R3UNUSED ; RSatRefresh::OpenL(RSatSession &)
+	Panic__C13RSatUiSession15TSatClientPanic @ 9 NONAME R3UNUSED ; RSatUiSession::Panic(TSatClientPanic) const
+	RegisterL__13RSatUiSessionR11RSatSessionP14MSatUiObserver @ 10 NONAME R3UNUSED ; RSatUiSession::RegisterL(RSatSession &, MSatUiObserver *)
+	Unregister__13RSatUiSession @ 11 NONAME R3UNUSED ; RSatUiSession::Unregister(void)
+	Version__C11RSatSession @ 12 NONAME R3UNUSED ; RSatSession::Version(void) const
+	Version__C13RSatUiSession @ 13 NONAME R3UNUSED ; RSatUiSession::Version(void) const
+	__11RSatRefreshR19MSatRefreshObserver @ 14 NONAME R3UNUSED ; RSatRefresh::RSatRefresh(MSatRefreshObserver &)
+	__11RSatSession @ 15 NONAME R3UNUSED ; RSatSession::RSatSession(void)
+	Adapter__C13RSatUiSession @ 16 NONAME R3UNUSED ; RSatUiSession::Adapter(void) const
+	__8RSatIcon @ 17 NONAME R3UNUSED ; RSatIcon::RSatIcon(void)
+	Close__8RSatIcon @ 18 NONAME R3UNUSED ; RSatIcon::Close(void)
+	CodingScheme__C12TSatIconInfo @ 19 NONAME R3UNUSED ; TSatIconInfo::CodingScheme(void) const
+	GetIconInfoL__C8RSatIconUcRt6RArray1Z12TSatIconInfo @ 20 NONAME R3UNUSED ; RSatIcon::GetIconInfoL(unsigned char, RArray<TSatIconInfo> &) const
+	GetIconL__C8RSatIconRC12TSatIconInfo @ 21 NONAME R3UNUSED ; RSatIcon::GetIconL(TSatIconInfo const &) const
+	IconSize__C12TSatIconInfo @ 22 NONAME R3UNUSED ; TSatIconInfo::IconSize(void) const
+	OpenL__8RSatIconR11RSatSession @ 23 NONAME R3UNUSED ; RSatIcon::OpenL(RSatSession &)
+

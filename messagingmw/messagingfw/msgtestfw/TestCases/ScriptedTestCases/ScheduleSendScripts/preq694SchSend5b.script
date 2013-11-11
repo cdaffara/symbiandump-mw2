@@ -1,0 +1,61 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @SYMTestCaseID PREQ694-Int-5b
+//! @SYMTestCaseDesc Sending an SMS message when sending conditions are temporarily met and then not met 
+//! (one condition variable met and one not met) for a prolonged time.
+//! It first sets the schedule send settings from the configuration file, and sets the sending conditions as met.  It instructs 
+//! SIM TSY to fail the first send attempt.  Next, it creates an SMS message and schedules it for sending.  
+//! It waits for the message to be marked as Resend + Scheduled + PendingConditionsMet.  Then it sets the conditions as not met 
+//! (only network registration status condition is met) and waits until the message marked as Failed after it reaches the pending condition time out.
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_UTILS CopyFile Z:\testdata\scripts\config.txt C:\config.txt
+RUN_UTILS MakeReadWrite C:\config.txt
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+	InitializeSimTsy z:\testdata\scripts\preq694SchSend.ini Init2
+	StartWatchers z:\testdata\scripts\preq694SchSend.ini StartWatchers
+	Sleep z:\testdata\scripts\preq694SchSend.ini Sleep10
+	GetBaseConstants z:\testdata\scripts\preq694SchSend.ini GetBaseConstants
+	SetDefaultSmsSettings z:\testdata\scripts\preq694SchSend.ini SetSettingsFile
+	SetDefaultConfiguration z:\testdata\scripts\preq694SchSend.ini SetSmsMessageConfigFile
+	CreateSession z:\testdata\scripts\preq694SchSend.ini CreateSession
+	CreateRegistry z:\testdata\scripts\preq694SchSend.ini CreateRegistry
+	CreateSmsService z:\testdata\scripts\preq694SchSend.ini CreateSmsService
+	SetSmsServiceSettings z:\testdata\scripts\preq694SchSend.ini SetSmsSettings
+	SetSchSendSettings z:\testdata\scripts\preq694SchSend.ini SetSchSendSettings
+	CreateMtm z:\testdata\scripts\preq694SchSend.ini CreateMtm
+EXECUTE_TEST_CASE
+	DeleteChildren z:\testdata\scripts\preq694SchSend.ini EmptyOutbox
+	DeleteChildren z:\testdata\scripts\preq694SchSend.ini EmptySent
+	GetSmsConstants z:\testdata\scripts\preq694SchSend.ini GetSmsConstants
+	CreateSmsMessage z:\testdata\scripts\preq694SchSend.ini CreateMessage
+	CreateSelection z:\testdata\scripts\preq694SchSend.ini CreateSelection
+	GetDefaultAppendToSelection z:\testdata\scripts\preq694SchSend.ini AppendToSelection
+	SetNetworkRegistrationStatus z:\testdata\scripts\preq694SchSend.ini NetAvailable
+	SetSignalStrength z:\testdata\scripts\preq694SchSend.ini NetStrengthHigh
+	Sleep z:\testdata\scripts\preq694SchSend.ini Sleep3
+	ExecuteMtmCommand z:\testdata\scripts\preq694SchSend.ini ScheduleMessage
+	CheckMessageSendingState z:\testdata\scripts\preq694SchSend.ini MsgScheduleForPendingCondition3
+	SetSignalStrength z:\testdata\scripts\preq694SchSend.ini NetStrengthNone
+	CheckMessageSendingState z:\testdata\scripts\preq694SchSend.ini MsgScheduleForResend
+	UnloadPhoneModule z:\testdata\scripts\preq694SchSend.ini UnloadPhoneModule
+CHECK_POSTCONDITIONS 
+END_TEST_CASE

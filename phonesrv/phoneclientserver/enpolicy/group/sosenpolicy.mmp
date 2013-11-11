@@ -1,0 +1,54 @@
+/*
+* Copyright (c) 2004-2008 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: MMP file for SosEnPolicy component.
+*
+*/
+
+#include <platform_paths.hrh>
+
+// Capability assignment.
+CAPABILITY CAP_GENERAL_DLL
+
+// Assign Vendor ID.
+VENDORID VID_DEFAULT
+
+TARGET          sosenpolicy.dll
+TARGETTYPE      DLL
+UID             0x101F86D1 0x101F86D3
+VERSION         10.0
+
+SOURCEPATH      ../src/sosenpolicy 
+SOURCE          csosemergencynumberpolicymanager.cpp 
+SOURCE          csosemergencynumberpolicyhandler.cpp 
+SOURCE          csosenpolicyenlisthandler.cpp 
+SOURCE          csosenpolicysimstatusmonitor.cpp 
+SOURCE          csosenpolicysatrefresh.cpp 
+
+USERINCLUDE     . ../inc 
+USERINCLUDE     ../inc/sosenpolicy 
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   ../../../inc
+SYSTEMINCLUDE   ../../inc // for rphcltemergencycall.h 
+
+LIBRARY         euser.lib
+LIBRARY         etel.lib
+LIBRARY         etelmm.lib 
+LIBRARY         commonengine.lib
+LIBRARY         featmgr.lib
+LIBRARY         satclient.lib   // for sat refresh
+LIBRARY         centralrepository.lib
+LIBRARY         cenrepnotifhandler.lib
+
+// End of File

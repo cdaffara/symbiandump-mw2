@@ -1,0 +1,21 @@
+//SIAP11
+password
+Mname:Demonic
+Muid:diskono
+Mpwd:sprocket
+Madr:mal@sprocket.co.uk
+Mrcv:pop3.demon.co.uk
+Mpro:PO
+Msnd:post.demon.co.uk
+Iname:Demonic
+Iuid:diskono
+Ipwd:sprattler
+Itel:+44 845 2121666
+Idns1:158.152.1.58
+Idns2:158.152.1.43
+//Inop:10.11.12.13; 100.101.102.103
+//Isrx:111.222.333.444
+//Ispo:54321
+//Ilgn:1
+//Icmp:N
+

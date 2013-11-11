@@ -1,0 +1,58 @@
+[main]
+bio_test doatstart
+bio_test wapp0081
+bio_test doattheend
+
+
+// Startup section.
+[doatstart]
+clean_all_bio_msgs
+
+
+// Shutdown section.
+[doattheend]
+
+
+// wapp tests.
+[wapp0081]
+gen_msg_from_file wapp\wapp0081.bin
+check_used_bif 10005532
+bio_client_parse
+bio_client_process
+dump_parsed_message
+chk_file_in_msg_dir_with_ext
+//
+// check commdb tables for correct entries
+bio_commdb DialOutIsp wapp0081_commdb_dialoutisp_table
+bio_commdb IAP wapp0081_commdb_iap_table
+bio_commdb WAPAccessPoint wapp0081_commdb_wapap_table
+bio_commdb WAPIPBearer wapp0081_commdb_wapip_table
+
+
+[wapp0081_commdb_dialoutisp_table]
+commdb_check text IpGateway "111.128.110.81"
+commdb_check text DefaultTelNum "+4499119922"
+commdb_check text LoginName "user3"
+commdb_check text IfAuthName "user3"
+commdb_check uint BearerProtocol "4"
+commdb_check uint BearerSpeed "12"
+commdb_check text Description "Little ISP"
+commdb_check text Name "WAPP 0081-GsmCsd"
+
+
+[wapp0081_commdb_iap_table]
+commdb_check text Name "WAPP 0081-GsmCsd"
+
+
+[wapp0081_commdb_wapap_table]
+commdb_check text StartPage "/index1.wml"
+commdb_check text Name "WAPP 0081"
+
+
+[wapp0081_commdb_wapip_table]
+commdb_check text GatewayAddress "111.128.110.81"
+commdb_check uint ProxyPortNumber "9202"
+commdb_check bool WSPOption "false"
+commdb_check bool Security "true"
+commdb_check text ProxyLogin "proxy3"
+commdb_check text ProxyPassword "proxy3"

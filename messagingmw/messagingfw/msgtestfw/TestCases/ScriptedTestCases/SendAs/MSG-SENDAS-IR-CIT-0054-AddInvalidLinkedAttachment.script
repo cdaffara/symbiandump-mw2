@@ -1,0 +1,59 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+//! @SYMTestCaseID		CM-SENDAS-IR-CIT-0054-HP
+//! @SYMTestCaseDesc		Negative Test - Add a link for an invalid file attachment
+//! @SYMTestStatus		Implemented
+//! @SYMTestPriority		High
+//! @SYMTestActions		Get base constants & IR MTM Uid
+//!				Create a session
+//!				Reset the Message store for cleanup
+//!				Create Registry & Service
+//!				Connect to SendAs2 server
+//!				Create a IR Message
+//!				Add a recipitent
+//!				Attach a invalid text file
+//!				Save and close the server
+//!				Disconnect the server
+//!
+//! @SYMTestExpectedResults	Error code: -1 (The Attachment should not be added to Message with proper information)
+//! @SYMTestType		CIT
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+GetBaseConstants		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0054-AddInvalidLinkedAttachment.ini	GetBaseConstants
+CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0054-AddInvalidLinkedAttachment.ini	CreateSession
+ResetMessageStore		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0054-AddInvalidLinkedAttachment.ini	ResetMessageStore
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0054-AddInvalidLinkedAttachment.ini	ChkChildrenCountDraft0
+CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0054-AddInvalidLinkedAttachment.ini	CreateRegistry
+GetIRMTMUId			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0054-AddInvalidLinkedAttachment.ini	GetIRMtmUid
+CreateService			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0054-AddInvalidLinkedAttachment.ini	CreateIRService
+EXECUTE_TEST_CASE
+ConnectSendAsServer		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0054-AddInvalidLinkedAttachment.ini	ConnectSendAsServer
+SendAsCreateMessageofType	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0054-AddInvalidLinkedAttachment.ini	CreateMessageofType
+SendAsAddRecipient		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0054-AddInvalidLinkedAttachment.ini	SendAsAddRecipient
+SendAsAddLinkedAttachment	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0054-AddInvalidLinkedAttachment.ini	AddLinkedAttachment
+SendAsSaveMessageAndClose	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0054-AddInvalidLinkedAttachment.ini	CloseMessage
+CloseSendAsServerConnection	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0054-AddInvalidLinkedAttachment.ini	CloseSvrConnection
+CHECK_POSTCONDITIONS
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0054-AddInvalidLinkedAttachment.ini	ChkChildrenCountDraft1
+CheckErrorCode			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-IR-CIT-0054-AddInvalidLinkedAttachment.ini	CheckErrorCode
+END_TEST_CASE

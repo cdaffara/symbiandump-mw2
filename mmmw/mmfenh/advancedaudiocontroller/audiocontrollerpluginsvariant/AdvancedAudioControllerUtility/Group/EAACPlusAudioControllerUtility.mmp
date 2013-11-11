@@ -1,0 +1,55 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project file for EAACPlusAudioControllerUtility
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET          EAACPlusAudioControllerUtility.dll
+TARGETTYPE      DLL
+UID             0x1000008D 0x10207AAD
+VENDORID        VID_DEFAULT
+
+CAPABILITY      CAP_GENERAL_DLL
+
+SOURCEPATH      ../Src
+SOURCE          EAACPlusAudioControllerUtility.cpp 
+
+USERINCLUDE     ../Inc ../Src
+USERINCLUDE     ../../../../inc
+USERINCLUDE     ../../AdvancedAudioController/Inc
+USERINCLUDE     ../../DevSoundAudioOutput/Inc
+USERINCLUDE     ../../DevSoundAudioInput/Inc
+USERINCLUDE     ../../FileAudioOutput/Inc
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   /epoc32/include/mmf/server
+SYSTEMINCLUDE   /epoc32/include/mmf/common
+SYSTEMINCLUDE   /epoc32/include/mmf/plugin
+
+LIBRARY         euser.lib
+LIBRARY         AdvancedAudioController.lib
+#ifndef WINSCW						//to support build on Linux
+LIBRARY         EAacPlusUtil.lib	// MMF eAAC+ Utility - Kirit
+#else
+LIBRARY         eaacplusutil.lib
+#endif
+																
+LIBRARY         mmfserverbaseclasses.lib
+
+#ifdef EABI
+LIBRARY         ecom.lib
+#endif

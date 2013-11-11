@@ -1,0 +1,43 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//
+// Cap_DeleteSingleEntryInDraftsPass.script
+//
+
+
+LOAD_SUITE MessagingTestServer -SharedData
+
+
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer GetBaseConstants c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_DeleteSingleEntryInDraftsFail.ini GetBaseConstants
+RUN_TEST_STEP 100 MessagingTestServer CreateSession	c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_DeleteSingleEntryInDraftsFail.ini CreateSession
+//RUN_TEST_STEP 100 MessagingTestServer CreateSmtpService	c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_DeleteSingleEntryInDraftsFail.ini CreateSmtpService
+
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_DeleteSingleEntryInDraftsFail.ini CheckChildrenCount1
+	// Check something in the drafts folder that we can modify.
+	
+RUN_TEST_STEP 100 MessagingTestServer LoadMsvIdParamToFile c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_DeleteSingleEntryInDraftsFail.ini	LoadMsvIdParamToFile
+RUN_TEST_STEP 100 MessagingTestServer SendEMsvDeleteEntries c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_DeleteSingleEntryInDraftsFail.ini EMsvDeleteEntriesParams
+
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+RUN_TEST_STEP 100 MessagingTestServer CheckChildrenCount c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_DeleteSingleEntryInDraftsFail.ini CheckChildrenCount1
+	// Check something still in the drafts folder.
+
+RUN_TEST_STEP 100 MessagingTestServer END_TEST_CASE
+

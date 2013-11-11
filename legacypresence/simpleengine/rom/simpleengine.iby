@@ -1,0 +1,41 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:   
+*    This file provides the information of creating ROM image.
+*
+*/
+
+
+
+
+#ifndef __SIMPLEENGINE_IBY__
+#define __SIMPLEENGINE_IBY__
+
+#ifdef __SIP_SIMPLE_PRESENCE_PROTOCOL
+
+file=ABI_DIR\BUILD_DIR\simpleengine.dll         SHARED_LIB_DIR\simpleengine.dll
+file=ABI_DIR\BUILD_DIR\simplesiputils.dll       SHARED_LIB_DIR\simplesiputils.dll
+file=ABI_DIR\BUILD_DIR\simplexmlutils.dll       SHARED_LIB_DIR\simplexmlutils.dll
+file=ABI_DIR\BUILD_DIR\rlspresxdm.dll               SHARED_LIB_DIR\rlspresxdm.dll
+file=ABI_DIR\BUILD_DIR\presencesettingsapi.dll      SHARED_LIB_DIR\presencesettingsapi.dll
+
+ECOM_PLUGIN(PresenceDM.dll, 10282415.rsc) 
+ECOM_PLUGIN(PresenceProvisioning.dll, 10282417.rsc)  
+
+// backup registry
+data=DATAZ_\private\10281EEB\backup_registration.xml  private\10281EEB\backup_registration.xml
+
+#endif // __SIP_SIMPLE_PRESENCE_PROTOCOL
+#endif
+

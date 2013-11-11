@@ -1,0 +1,32 @@
+EXPORTS
+	_ZN19CCenRepDatabaseUtil10FindEntryLEiR13RPointerArrayI23CCenRepDatabasePropertyE @ 1 NONAME
+	_ZN19CCenRepDatabaseUtil11EntryCountLERi @ 2 NONAME
+	_ZN19CCenRepDatabaseUtil12DeleteEntryLEi @ 3 NONAME
+	_ZN19CCenRepDatabaseUtil12UpdateEntryLEiRK13RPointerArrayI23CCenRepDatabasePropertyE @ 4 NONAME
+	_ZN19CCenRepDatabaseUtil13FindEntryIdsLER6RArrayIiE @ 5 NONAME
+	_ZN19CCenRepDatabaseUtil13FindPropertyLEimR23CCenRepDatabaseProperty @ 6 NONAME
+	_ZN19CCenRepDatabaseUtil17BeginTransactionLEv @ 7 NONAME
+	_ZN19CCenRepDatabaseUtil17CommitTransactionEv @ 8 NONAME
+	_ZN19CCenRepDatabaseUtil17DeletePropertiesLEiRK6RArrayImE @ 9 NONAME
+	_ZN19CCenRepDatabaseUtil19RollbackTransactionEv @ 10 NONAME
+	_ZN19CCenRepDatabaseUtil22AddOrUpdatePropertiesLEiRK13RPointerArrayI23CCenRepDatabasePropertyE @ 11 NONAME
+	_ZN19CCenRepDatabaseUtil27FindEntryIdsFromPropertiesLERK13RPointerArrayI23CCenRepDatabasePropertyER6RArrayIiE @ 12 NONAME
+	_ZN19CCenRepDatabaseUtil4NewLE4TUidmmmmi @ 13 NONAME
+	_ZN19CCenRepDatabaseUtil5NewLCE4TUidmmmmi @ 14 NONAME
+	_ZN19CCenRepDatabaseUtil9AddEntryLERiRK13RPointerArrayI23CCenRepDatabasePropertyE @ 15 NONAME
+	_ZN19CCenRepDatabaseUtilD0Ev @ 16 NONAME
+	_ZN19CCenRepDatabaseUtilD1Ev @ 17 NONAME
+	_ZN19CCenRepDatabaseUtilD2Ev @ 18 NONAME
+	_ZN23CCenRepDatabaseProperty4NewLEv @ 19 NONAME
+	_ZN23CCenRepDatabaseProperty5NewLCEv @ 20 NONAME
+	_ZN23CCenRepDatabaseProperty7SetNameEm @ 21 NONAME
+	_ZN23CCenRepDatabaseProperty8SetValueERK7TDesC16 @ 22 NONAME
+	_ZN23CCenRepDatabaseProperty8SetValueEi @ 23 NONAME
+	_ZN23CCenRepDatabasePropertyD0Ev @ 24 NONAME
+	_ZN23CCenRepDatabasePropertyD1Ev @ 25 NONAME
+	_ZN23CCenRepDatabasePropertyD2Ev @ 26 NONAME
+	_ZNK23CCenRepDatabaseProperty11GetDesValueEv @ 27 NONAME
+	_ZNK23CCenRepDatabaseProperty7GetNameEv @ 28 NONAME
+	_ZNK23CCenRepDatabaseProperty8GetValueERi @ 29 NONAME
+	_ZNK23CCenRepDatabasePropertyeqERKS_ @ 30 NONAME
+

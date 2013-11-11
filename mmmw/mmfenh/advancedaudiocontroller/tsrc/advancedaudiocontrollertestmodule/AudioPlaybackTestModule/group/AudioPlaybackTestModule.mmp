@@ -1,0 +1,101 @@
+/*
+* Copyright (c) 2002 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  mmp file for mmftsplay test component
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET          AudioPlaybackTestModule.dll
+TARGETTYPE      dll
+UID             0x1000008D 0x101FB3E7
+
+#if defined(EKA2)
+CAPABILITY      ALL -TCB
+/* Remove comments and replace 0x00000000 with correct vendor id */
+// VENDORID     0x00000000
+/* Remove comments and replace 0x00000000 with correct secure id */
+// SECUREID     0x00000000
+#endif
+
+DEFFILE         MmfTsPlay.def
+//TARGETPATH      ?target_path
+
+SOURCEPATH      ../src
+SOURCE          MmfTsPlay.cpp
+SOURCE          MmfTsPlay_core.cpp
+SOURCE          SimpleSoundPlayer.cpp
+SOURCE          MediaEvent.cpp
+SOURCE          Parameters.cpp
+SOURCE          EventTarget.cpp
+SOURCE          MmfTsPlay_work.cpp
+SOURCE          FileNameParameters.cpp
+SOURCE          Des8Parameters.cpp
+SOURCE          ObjectCountDown.cpp
+SOURCE          UrlParameters.cpp
+//SOURCE          RecordFormats.cpp
+//SOURCE          TestCaseBase.cpp
+//SOURCE          MmfTsPlay_FilePlay.cpp
+//SOURCE          MmfTsPlay_DesPlay.cpp
+
+//RESOURCE        resource_file
+//RESOURCE        resource_file2
+
+USERINCLUDE     ../inc 
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   /epoc32/include/ecom
+SYSTEMINCLUDE   /epoc32/include/mmf/common
+SYSTEMINCLUDE   /epoc32/include/platform
+
+LIBRARY         euser.lib
+LIBRARY         stiftestinterface.lib
+//LIBRARY	    parser.lib
+//LIBRARY	    logger.lib
+LIBRARY	    efsrv.lib
+LIBRARY     mediaclientaudio.lib
+LIBRARY     mmfcontrollerframework.lib
+LIBRARY     ecom.lib
+LIBRARY     mmcommon.lib
+//LIBRARY     estor.lib
+LIBRARY     AudioOutputRouting.lib
+
+LANG            SC
+
+/*
+START WINS      
+?wins_specific_information
+END
+
+START MARM
+?marm_specific_information
+END
+*/
+// Other possible keywords:
+ 
+// DOCUMENT     ?file, that is not compiled, but added to MSVC project workspace (i.e. release notes)
+/*
+START BITMAP ?target
+TARGETPATH   ?emulated_path_on_target_machine
+HEADER
+SOURCEPATH   ?source_path
+SOURCE       ?color_depth ?source_bitmap
+END
+*/
+// AIF ?filename
+
+
+
+// End of File

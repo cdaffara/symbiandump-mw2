@@ -1,0 +1,347 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE 	T_MsgCommonServer 	-SharedData
+LOAD_SUITE 	T_MsgPopServer 		-SharedData
+LOAD_SUITE  	T_MsgSmtpServer 	-SharedData
+
+LOAD_SUITE	EventLogServer		-SharedData
+
+START_TESTCASE MSG-POP3-CACHETEST-0001
+//! 	@SYMTestCaseID		MSG-POP3-CACHETEST-0001
+//! 	@SYMTestCaseDesc	A simple Message operation test  with low RAM cache configuration
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ 1189
+//!	@SYMREQ			REQ 6748
+//!				
+//! 	@SYMTestActions		Change the RAM cache configuration by replacing the msgcache.ini file with the following values:
+//!				MsvMaximumCacheSize = 500KB
+//!				MsvInitialCacheCreation = 20
+//!				MsvCacheIncrement = 5
+//!				MsvCacheThreshold = 70
+//!				1.	Initialize the NT-RAS
+//!				2.	Reset the Message Store in a cleanup state
+//!				3.	Create a POP account A 
+//!				4.	Connect and Synchronize the POP server using POP account A
+//!				5.	Initialize POP account in a cleanup state
+//!				6.	Disconnect POP server
+//!				7.	Record the time before creating the Messages
+//!				8.	Create 2000 Messages with Body Text Size of 1KB with attachment
+//!				9.	Record the time after creating the Messages
+//!				10.	Record the time before sending the Messages
+//!				11.	Send the Messages
+//!				12.	Record the time after sending the Messages
+//!				13.	Connect to the POP server
+//!				14.	Record the time before downloading the Messages
+//!				15.	Download the Messages using POP client MTM populate command 
+//!				16.	Record the time after downloading the Messages
+//!				17.	Check that there are 2000 Messages in Inbox
+//!				18.	Print the time logs for creation, sent and download operations
+//!				19.	Disconnect POP server
+//!				Analysis for any speed degradation would be done by the PC side analysis tool and then will upload in to the SYMSYM database
+//!				
+//! 	@SYMTestExpectedResults Step 17 to pass.
+//!	@SYMAuthor		Rajat Bal
+
+PRINT ==================================================================
+PRINT ### Change the msgcache.ini file with  ################################
+PRINT ### the LOW RAM cache configuration value   ######################
+PRINT ==================================================================
+
+
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgcache.ini c:\private\1000484b\msgcache.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgcache.ini
+RUN_UTILS  CopyFile   		c:\msgtest\email\pop\performance\msgcache_low.ini c:\private\1000484b\msgcache.ini
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0001-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0001-ResetMessageStore
+
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0001-CreatePopAccount
+RUN_TEST_STEP 3000 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0001-ConnectPop3Server
+RUN_TEST_STEP 3000 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0001-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0001-DisConnectPop3Server
+RUN_TEST_STEP 300 EventLogServer	Clear				c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	
+RUN_TEST_STEP 300 EventLogServer 	Start				c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0001-EventLog
+
+PRINT ############ Create 2000 Messages #################################
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0001-StartEventCode_Create
+START_REPEAT	c:\msgtest\email\pop\performance\msg-pop-cache1.ini	0001-SectionOne	RepeatParam
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0001-CreateSmtpMessageFromEmailFile
+END_REPEAT
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0001-StopEventCode_Create
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0001-CheckChildrenCountOutbox
+
+PRINT ############ Send 2000 Messages ###################################
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0001-StartEventCode_Send
+RUN_TEST_STEP 3000 T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0001-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0001-StopEventCode_Send
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0001-CheckChildrenCountSentItem
+
+PRINT ############ Download/Fetch 2000 Messages #########################
+RUN_TEST_STEP 3000 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0001-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0001-StartEventCode_Download
+RUN_TEST_STEP 30000 T_MsgPopServer 	PopInvokeAsyncFunction		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0001-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0001-StopEventCode_Download
+
+RUN_TEST_STEP 300 EventLogServer 	Stop				c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0001-EventLog
+RUN_TEST_STEP 300 EventLogServer 	GetRecordCount			c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0001-EventLog
+RUN_TEST_STEP 300 EventLogServer 	PrintEventLog			c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0001-EventLog
+
+RUN_TEST_STEP 300 T_MsgPopServer 	CheckChildrenCountPop		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0001-CheckChildrenCountRemote
+
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0001-DisConnectPop3Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgcache.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgcache.bak c:\private\1000484b\msgcache.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgcache.bak
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-CACHETEST-0001
+
+
+
+START_TESTCASE MSG-POP3-CACHETEST-0002
+//! 	@SYMTestCaseID		MSG-POP3-CACHETEST-0002
+//! 	@SYMTestCaseDesc	A simple Message operation test  with high RAM cache configuration
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ 1189
+//!	@SYMREQ			REQ 6748
+//!				
+//! 	@SYMTestActions		
+//!				Change the RAM cache configuration by replacing the msgcache.ini file with the following values:
+//!				MsvMaximumCacheSize = 500KB
+//!				MsvInitialCacheCreation = 40
+//!				MsvCacheIncrement = 30
+//!				MsvCacheThreshold = 80
+//!				1.	Initialize the NT-RAS
+//!				2.	Reset the Message Store in a cleanup state
+//!				3.	Create a POP account A 
+//!				4.	Connect and Synchronize the POP server using POP account A
+//!				5.	Initialize POP account in a cleanup state
+//!				6.	Disconnect POP server
+//!				7.	Record the time before creating the Messages
+//!				8.	Create 2000 Messages with Body Text Size of 1KB with attachment
+//!				9.	Record the time after creating the Messages
+//!				10.	Record the time before sending the Messages
+//!				11.	Send the Messages
+//!				12.	Record the time after sending the Messages
+//!				13.	Connect to the POP server
+//!				14.	Record the time before downloading the Messages
+//!				15.	Download the Messages using POP client MTM populate command 
+//!				16.	Record the time after downloading the Messages
+//!				17.	Check that there are 2000 Messages in Inbox
+//!				18.	Print the time logs for creation, sent and download operations
+//!				19.	Disconnect POP server
+//!				Analysis for any speed degradation would be done by the PC side analysis tool and then will upload in to the SYMSYM database
+//!				
+//! 	@SYMTestExpectedResults Step 17 to pass.
+//!	@SYMAuthor		Rajat Bal
+
+PRINT ==================================================================
+PRINT ### Change the msgcache.ini file with  ################################
+PRINT ### the HIGH RAM cache configuration value   #####################
+PRINT ==================================================================
+
+
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgcache.ini c:\private\1000484b\msgcache.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgcache.ini
+RUN_UTILS  CopyFile   		c:\msgtest\email\pop\performance\msgcache_high.ini c:\private\1000484b\msgcache.ini
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0002-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0002-ResetMessageStore
+
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0002-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0002-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0002-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0002-DisConnectPop3Server
+RUN_TEST_STEP 300 EventLogServer	Clear				c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	
+RUN_TEST_STEP 300 EventLogServer 	Start				c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0002-EventLog
+
+PRINT ############ Create 2000 Messages #################################
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0002-StartEventCode_Create
+START_REPEAT	c:\msgtest\email\pop\performance\msg-pop-cache1.ini	0002-SectionOne	RepeatParam
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0002-CreateSmtpMessageFromEmailFile
+END_REPEAT
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0002-StopEventCode_Create
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0002-CheckChildrenCountOutbox
+
+PRINT ############ Send 2000 Messages ###################################
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0002-StartEventCode_Send
+RUN_TEST_STEP 3000 T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0002-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0002-StopEventCode_Send
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0002-CheckChildrenCountSentItem
+
+PRINT ############ Download/Fetch 2000 Messages #########################
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0002-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0002-StartEventCode_Download
+RUN_TEST_STEP 3000 T_MsgPopServer 	PopInvokeAsyncFunction		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0002-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0002-StopEventCode_Download
+
+RUN_TEST_STEP 300 EventLogServer 	Stop				c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0002-EventLog
+RUN_TEST_STEP 300 EventLogServer 	GetRecordCount			c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0002-EventLog
+RUN_TEST_STEP 300 EventLogServer 	PrintEventLog			c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0002-EventLog
+
+RUN_TEST_STEP 300 T_MsgPopServer 	CheckChildrenCountPop		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0002-CheckChildrenCountRemote
+
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0002-DisConnectPop3Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgcache.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgcache.bak c:\private\1000484b\msgcache.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgcache.bak
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-CACHETEST-0002
+
+
+
+START_TESTCASE MSG-POP3-CACHETEST-0003
+//! 	@SYMTestCaseID		MSG-POP3-CACHETEST-0003
+//! 	@SYMTestCaseDesc	A simple Message operation test  with default RAM cache configuration
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ 1189
+//!	@SYMREQ			REQ 6748
+//!				
+//! 	@SYMTestActions		Change the RAM cache configuration by replacing the msgcache.ini file with the following values:
+//!				MsvMaximumCacheSize = 500KB
+//!				MsvInitialCacheCreation = 40
+//!				MsvCacheIncrement = 30
+//!				MsvCacheThreshold = 70
+//!				1.	Initialize the NT-RAS
+//!				2.	Reset the Message Store in a cleanup state
+//!				3.	Create a POP account A 
+//!				4.	Connect and Synchronize the POP server using POP account A
+//!				5.	Initialize POP account in a cleanup state
+//!				6.	Disconnect POP server
+//!				7.	Record the time before creating the Messages
+//!				8.	Create 2000 Messages with Body Text Size of 1KB with attachment
+//!				9.	Record the time after creating the Messages
+//!				10.	Record the time before sending the Messages
+//!				11.	Send the Messages
+//!				12.	Record the time after sending the Messages
+//!				13.	Connect to the POP server
+//!				14.	Record the time before downloading the Messages
+//!				15.	Download the Messages using POP client MTM populate command 
+//!				16.	Record the time after downloading the Messages
+//!				17.	Check that there are 2000 Messages in Inbox
+//!				18.	Print the time logs for creation, sent and download operations
+//!				19.	Disconnect POP server
+//!				Analysis for any speed degradation would be done by the PC side analysis tool and then will upload in to the SYMSYM database
+//!				
+//! 	@SYMTestExpectedResults Step 17 to pass.
+//!	@SYMAuthor		Rajat Bal
+
+PRINT ==================================================================
+PRINT ### Change the msgcache.ini file with  ################################
+PRINT ### the DEFAULT RAM cache configuration value   ##################
+PRINT ==================================================================
+
+
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgcache.ini c:\private\1000484b\msgcache.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgcache.ini
+RUN_UTILS  CopyFile   		c:\msgtest\email\pop\performance\msgcache_default.ini c:\private\1000484b\msgcache.ini
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0003-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0003-ResetMessageStore
+
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0003-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0003-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0003-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0003-DisConnectPop3Server
+RUN_TEST_STEP 300 EventLogServer	Clear				c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	
+RUN_TEST_STEP 300 EventLogServer 	Start				c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0003-EventLog
+
+PRINT ############ Create 2000 Messages #################################
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0003-StartEventCode_Create
+START_REPEAT	c:\msgtest\email\pop\performance\msg-pop-cache1.ini	0003-SectionOne	RepeatParam
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0003-CreateSmtpMessageFromEmailFile
+END_REPEAT
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0003-StopEventCode_Create
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0003-CheckChildrenCountOutbox
+
+PRINT ############ Send 2000 Messages ###################################
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0003-StartEventCode_Send
+RUN_TEST_STEP 3000 T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0003-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0003-StopEventCode_Send
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0003-CheckChildrenCountSentItem
+
+PRINT ############ Download/Fetch 2000 Messages #########################
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0003-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0003-StartEventCode_Download
+RUN_TEST_STEP 3000 T_MsgPopServer 	PopInvokeAsyncFunction		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0003-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgSmtpServer	RecordCurrentTime		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0003-StopEventCode_Download
+
+RUN_TEST_STEP 300 EventLogServer 	Stop				c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0003-EventLog
+RUN_TEST_STEP 300 EventLogServer 	GetRecordCount			c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0003-EventLog
+RUN_TEST_STEP 300 EventLogServer 	PrintEventLog			c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0003-EventLog
+
+RUN_TEST_STEP 300 T_MsgPopServer 	CheckChildrenCountPop		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0003-CheckChildrenCountRemote
+
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\performance\msg-pop-cache1.ini 	0003-DisConnectPop3Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgcache.ini
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgcache.bak c:\private\1000484b\msgcache.ini
+RUN_UTILS  DeleteFile		c:\private\1000484b\msgcache.bak
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-CACHETEST-0003

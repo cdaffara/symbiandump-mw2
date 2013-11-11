@@ -1,0 +1,26 @@
+EXPORTS
+	?SetRenamedByUser@TPreset@@QAEXH@Z @ 1 NONAME ; void TPreset::SetRenamedByUser(int)
+	?Name@TPreset@@QBE?AVTPtrC16@@XZ @ 2 NONAME ; class TPtrC16 TPreset::Name(void) const
+	??1CPresetUtility@@UAE@XZ @ 3 NONAME ; CPresetUtility::~CPresetUtility(void)
+	?SetFavorite@TPreset@@QAEXH@Z @ 4 NONAME ; void TPreset::SetFavorite(int)
+	?SetFrequency@TPreset@@QAEXI@Z @ 5 NONAME ; void TPreset::SetFrequency(unsigned int)
+	?PiCode@TPreset@@QBEHXZ @ 6 NONAME ; int TPreset::PiCode(void) const
+	?MyExternalizedDataSize@TPreset@@UBEIXZ @ 7 NONAME ; unsigned int TPreset::MyExternalizedDataSize(void) const
+	?LocalStation@TPreset@@QBEHXZ @ 8 NONAME ; int TPreset::LocalStation(void) const
+	?ExternalizeL@TPreset@@UBEXAAVRWriteStream@@@Z @ 9 NONAME ; void TPreset::ExternalizeL(class RWriteStream &) const
+	?SetGenre@TPreset@@QAEXH@Z @ 10 NONAME ; void TPreset::SetGenre(int)
+	?Genre@TPreset@@QBEHXZ @ 11 NONAME ; int TPreset::Genre(void) const
+	?Favorite@TPreset@@QBEHXZ @ 12 NONAME ; int TPreset::Favorite(void) const
+	?SetName@TPreset@@QAEXABV?$TBuf@$0CA@@@@Z @ 13 NONAME ; void TPreset::SetName(class TBuf<32> const &)
+	?Frequency@TPreset@@QBEIXZ @ 14 NONAME ; unsigned int TPreset::Frequency(void) const
+	?NewL@CPresetUtilityBody@@SAPAV1@XZ @ 15 NONAME ; class CPresetUtilityBody * CPresetUtilityBody::NewL(void)
+	?SetPiCode@TPreset@@QAEXH@Z @ 16 NONAME ; void TPreset::SetPiCode(int)
+	?SetLocalStation@TPreset@@QAEXH@Z @ 17 NONAME ; void TPreset::SetLocalStation(int)
+	??1CPresetUtilityBody@@UAE@XZ @ 18 NONAME ; CPresetUtilityBody::~CPresetUtilityBody(void)
+	?RenamedByUser@TPreset@@QBEHXZ @ 19 NONAME ; int TPreset::RenamedByUser(void) const
+	??0TPreset@@QAE@XZ @ 20 NONAME ; TPreset::TPreset(void)
+	?Url@TPreset@@QBE?AVTPtrC16@@XZ @ 21 NONAME ; class TPtrC16 TPreset::Url(void) const
+	?InternalizeL@TPreset@@UAEXAAVRReadStream@@@Z @ 22 NONAME ; void TPreset::InternalizeL(class RReadStream &)
+	?NewL@CPresetUtility@@SAPAV1@XZ @ 23 NONAME ; class CPresetUtility * CPresetUtility::NewL(void)
+	?SetUrl@TPreset@@QAEXABV?$TBuf@$0DC@@@@Z @ 24 NONAME ; void TPreset::SetUrl(class TBuf<50> const &)
+

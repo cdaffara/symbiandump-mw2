@@ -1,0 +1,47 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+//! @file
+//! @SYMTestCaseID		MSG-SENDAS-CIT-0046-HP
+//! @SYMTestCaseDesc		Abandon Message
+//! @SYMFssID 
+//! @SYMTestStatus		Defined
+//! @SYMTestPriority		High
+//! @SYMTestActions		
+//! @SYMTestExpectedResults
+//! @SYMTestType 		CIT
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+GetBaseConstants		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0046-AbandonMsg.ini	GetBaseConstants
+CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0046-AbandonMsg.ini	CreateSession
+ResetMessageStore		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0046-AbandonMsg.ini	ResetMessageStore
+CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0046-AbandonMsg.ini	CreateRegistry
+CreateSmsService		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0046-AbandonMsg.ini	CreateSmsService
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0046-AbandonMsg.ini	ChkChildrenCountDraft0
+EXECUTE_TEST_CASE
+ConnectSendAsServer		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0046-AbandonMsg.ini	ConnectSendAsServer
+GetSmsConstants			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0046-AbandonMsg.ini	GetSmsConstants
+SendAsCreateMessageofType	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0046-AbandonMsg.ini	CreateMessageofType
+SendAsCloseMessage		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0046-AbandonMsg.ini	SendAsCloseMessage
+CloseSendAsServerConnection	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0046-AbandonMsg.ini	CloseSvrConnection
+CHECK_POSTCONDITIONS
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0046-AbandonMsg.ini	ChkChildrenCountDraft0
+END_TEST_CASE

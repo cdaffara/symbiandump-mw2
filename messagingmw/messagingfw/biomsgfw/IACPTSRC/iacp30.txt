@@ -1,0 +1,17 @@
+//SIAP11
+password
+Gname:Harry
+GApn:wibble
+Gpdpt:2
+Gpdp:bibble
+Gifn:pop
+Guid:Emily
+Gpwp:Yes
+Gpwd:passwd
+Gip:0:0:0:0:0:0:123.45.67.89
+Gsdns:No
+Gdns1:0:0:0:0:0:0:158.152.1.58
+Gdns2:0:0:0:0:0:0:158.152.1.43
+Gmsk:0:0:0:0:0:0:255.0.0.0
+Gdgw:666.66.66.66
+Gdpta:No

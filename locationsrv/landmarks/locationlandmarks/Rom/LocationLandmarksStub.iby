@@ -1,0 +1,33 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: Image description file for locationlandmarks to include stub 
+*							 sis file
+*
+*/
+#ifndef __LandmarksStub_IBY__
+#define __LandmarksStub_IBY__
+
+#include <bldvariant.hrh>
+
+///////////////////////
+// *** Landmarks *** //
+///////////////////////
+
+// Landmarks
+// LocationLandmarks Stub SIS package
+data=ZSYSTEM\install\locationlandmarksstub.sis             system\install\locationlandmarksstub.sis
+
+#endif // __LandmarksStub_IBY__
+
+

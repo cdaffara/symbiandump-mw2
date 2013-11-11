@@ -1,0 +1,438 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+// For UPS interaction Testservers should reside on non protected (C: drive of Emulator/Hardware)
+// area. upsupport_setup.script and restore__setup.script ensures that testservers are picked from
+// c: before test UPS test execution and the environment is restored after the test completion.
+// For hardware test, testservers should go to the RAM drive during ROM image creation.
+
+// NOTE: The utility(CAPUTILS) used in the above mentioned sripts is a part of TestFramework and need
+//	 to be migrated in future. So before running the these test ensure that this utility is required to be built.
+
+RUN_SCRIPT  c:\msgtest\email\pop\UpsSupport\upssupport_setup.script
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE 	T_MsgCommonServer 	-SharedData
+LOAD_SUITE 	T_MsgImapServer 	-SharedData
+LOAD_SUITE  	T_MsgSmtpServer 	-SharedData
+LOAD_SUITE  	T_MsgPopServer		-SharedData
+
+
+START_TESTCASE MSG-IMAP-ALLOWONCE-0001
+//! 	@SYMTestCaseID		MSG-IMAP-ALLOWONCE-0001
+//! 	@SYMTestCaseDesc	For IMAP download request user should be prompted for his response if he has 
+//!				selected Allow once option in the previous prompt.
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ1678
+//!	@SYMREQ			REQ7011
+//!				
+//! 	@SYMTestActions		1.	Clean local mail store and remote mailbox.
+//!				2.	Create a new SMTP message and send it.
+//!				3.	Download the message using IMAP. If user is prompted for response set the user response as Allow Once.
+//!				4.	Create another SMTP message and send it.
+//!				5.	Download the message using IMAP. If user is prompted for response, set the user response as Don’t Allow.
+//!				6.	Check if the children count on inbox of remote service is one.
+//!				
+//! 	@SYMTestExpectedResults User should be prompted during the second download operation
+//!				and children count on inbox of remote service should be one.
+//!	@SYMAuthor		Pramod Das
+
+PRINT Setup Begins #####################################################
+
+RUN_UTILS	  DeleteFile		c:\private\10283558\database\ups.db
+RUN_TEST_STEP 300 T_MsgCommonServer 	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer 	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	InitNtRas			c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0001-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer 	ResetMessageStore		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0001-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer 	CreateImapAccount		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0001-CreateImapAccount
+
+RUN_PROGRAM   300 SetUserPromptResponse Yes
+RUN_TEST_STEP 300 T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0001-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0001-DoFullImap4Synchronisation0
+RUN_TEST_STEP 300 T_MsgImapServer 	DeleteAllImapChildren		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0001-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer 	CheckChildrenCountImap		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0001-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0001-DisConnectImap4Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0001-CreateSmtpMessageFromEmailFile0
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0001-SendSmtpMessage0
+
+RUN_TEST_STEP 300 T_MsgImapServer 	SetImap4FullDownloadLimits	c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0001-SetImap4FullDownloadLimits0
+RUN_TEST_STEP 300 T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0001-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0001-DoFullImap4Synchronisation1
+RUN_TEST_STEP 300 T_MsgImapServer 	ImapInvokeAsyncFunction		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0001-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0001-DisConnectImap4Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0001-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0001-SendSmtpMessage1
+
+RUN_TEST_STEP 300 T_MsgImapServer 	SetImap4FullDownloadLimits	c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0001-SetImap4FullDownloadLimits1
+RUN_PROGRAM   300 SetUserPromptResponse No
+RUN_TEST_STEP !Error=-46 300 T_MsgImapServer 	ConnectImap4Server	c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0001-ConnectImap4Server
+
+RUN_TEST_STEP 300 T_MsgImapServer 	CheckChildrenCountImap		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0001-CheckChildrenCountRemoteInbox1
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer 	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer 	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-ALLOWONCE-0001
+
+
+START_TESTCASE MSG-IMAP-ALLOWALWAYS-0002
+//! 	@SYMTestCaseID		MSG-IMAP-ALLOWALWAYS-0002
+//! 	@SYMTestCaseDesc	For IMAP download request user should not be prompted for his response 
+//!				if he has selected Allow Always option in the previous prompt.
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ1678
+//!	@SYMREQ			REQ7011
+//!				
+//! 	@SYMTestActions		1.	Clean local mail store and remote mailbox.
+//!				2.	Create a new SMTP message and send it.
+//!				3.	Download the message using IMAP. If user is prompted for response set
+//!					the user response as Allow Always.
+//!				4.	Create another SMTP message and send it.
+//!				5.	Download the message using IMAP. User shouldn't be prompted for response at this time.
+//!				6.	Check if the children count on inbox of remote service is two.
+//!
+//!				
+//! 	@SYMTestExpectedResults User should not be prompted during the second download
+//!				children count on inbox of remote service should be two.
+//!	@SYMAuthor		Pramod Das
+
+PRINT Setup Begins #####################################################
+
+RUN_UTILS	  DeleteFile		c:\private\10283558\database\ups.db
+RUN_TEST_STEP 300 T_MsgCommonServer 	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer 	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	InitNtRas			c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0002-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer 	ResetMessageStore		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0002-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer 	CreateImapAccount		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0002-CreateImapAccount
+
+RUN_PROGRAM   300 SetUserPromptResponse Always
+RUN_TEST_STEP 300 T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0002-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0002-DoFullImap4Synchronisation0
+RUN_TEST_STEP 300 T_MsgImapServer 	DeleteAllImapChildren		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0002-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer 	CheckChildrenCountImap		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0002-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0002-DisConnectImap4Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0002-CreateSmtpMessageFromEmailFile0
+RUN_PROGRAM   300 SetUserPromptResponse Yes
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0002-SendSmtpMessage0
+
+RUN_TEST_STEP 300 T_MsgImapServer 	SetImap4FullDownloadLimits	c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0002-SetImap4FullDownloadLimits0
+RUN_UTILS	  DeleteFile		c:\UserResponse.txt
+RUN_TEST_STEP 300 T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0002-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0002-DoFullImap4Synchronisation1
+RUN_TEST_STEP 300 T_MsgImapServer 	ImapInvokeAsyncFunction		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0002-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0002-DisConnectImap4Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0002-CreateSmtpMessageFromEmailFile1
+RUN_PROGRAM   300 SetUserPromptResponse Yes
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0002-SendSmtpMessage1
+
+RUN_TEST_STEP 300 T_MsgImapServer 	SetImap4FullDownloadLimits	c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0002-SetImap4FullDownloadLimits1
+RUN_UTILS	  DeleteFile		c:\UserResponse.txt
+RUN_TEST_STEP 300 T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0002-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0002-DoFullImap4Synchronisation2
+RUN_TEST_STEP 300 T_MsgImapServer 	ImapInvokeAsyncFunction		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0002-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0002-DisConnectImap4Server
+
+RUN_TEST_STEP 300 T_MsgImapServer 	CheckChildrenCountImap		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0002-CheckChildrenCountRemoteInbox1
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer 	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer 	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-ALLOWALWAYS-0002
+
+
+START_TESTCASE MSG-POP-ALLOWONCE-0003
+//! 	@SYMTestCaseID		MSG-POP-ALLOWONCE-0003
+//! 	@SYMTestCaseDesc	For POP3 download request user should be prompted for his response if he  
+//!				has selected Allow once option in the previous prompt.
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ1678
+//!	@SYMREQ			REQ7010
+//!				
+//! 	@SYMTestActions		1.	Clean local mail store and remote mailbox.
+//!				2.	Create a new SMTP message and send it.
+//!				3.	Download the message using POP3. If user is prompted for response, set the user response as Allow Once.
+//!				4.	Create another SMTP message and send it.
+//!				5.	Download the message using POP3. If user is prompted for response, set the user response as Don't Allow.
+//!				6.	Check if the children count on remote service is one
+//!				
+//! 	@SYMTestExpectedResults User should be prompted during the second download operation and
+//!				children count on remote service should be one.
+//!	@SYMAuthor		Pramod Das
+
+PRINT Setup Begins #####################################################
+
+RUN_UTILS	  DeleteFile		c:\private\10283558\database\ups.db
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0003-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0003-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0003-CreatePopAccount
+
+RUN_PROGRAM   300 SetUserPromptResponse Yes
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0003-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0003-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0003-DisConnectPop3Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0003-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0003-SendSmtpMessage1
+
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0003-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	PopInvokeAsyncFunction		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0003-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0003-DisConnectPop3Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0003-CreateSmtpMessageFromEmailFile2
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0003-SendSmtpMessage2
+
+RUN_PROGRAM   300 SetUserPromptResponse No
+RUN_TEST_STEP !Error=-46 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0003-ConnectPop3Server
+
+RUN_TEST_STEP 300 T_MsgPopServer 	CheckChildrenCountPop		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 	0003-CheckChildrenCountRemote
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP-ALLOWONCE-0003
+
+
+START_TESTCASE MSG-POP-ALLOWALWAYS-0004
+//! 	@SYMTestCaseID		MSG-POP-ALLOWALWAYS-0004
+//! 	@SYMTestCaseDesc	For POP3 download request user should not be prompted for his response
+//!				if he has selected Allow Always option in the previous prompt.
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ1678
+//!	@SYMREQ			REQ7010
+//!				
+//! 	@SYMTestActions		1.	Clean local mail store and remote mailbox.
+//!				2.	Create a new SMTP message and send it.
+//!				3.	Download the message using POP3. If user is prompted for response set the user response as Allow Always.
+//!				4.	Create another SMTP message and send it.
+//!				5.	Download the message using POP3. User shouldn't be prompted for response set this time.
+//!				6.	Check if the children count on remote service is two.
+//!				
+//! 	@SYMTestExpectedResults User should not be prompted during the second download operation and
+//!				children count on remote service should be two.
+//!	@SYMAuthor		Pramod Das
+
+PRINT Setup Begins #####################################################
+
+RUN_UTILS	  DeleteFile		c:\private\10283558\database\ups.db
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0004-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0004-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0004-CreatePopAccount
+
+RUN_PROGRAM   300 SetUserPromptResponse Yes
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0004-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0004-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0004-DisConnectPop3Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0004-CreateSmtpMessageFromEmailFile1
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0004-SendSmtpMessage1
+
+RUN_PROGRAM   300 SetUserPromptResponse Always
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0004-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	PopInvokeAsyncFunction		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0004-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0004-DisConnectPop3Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0004-CreateSmtpMessageFromEmailFile2
+RUN_PROGRAM   300 SetUserPromptResponse Yes
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0004-SendSmtpMessage2
+
+RUN_UTILS	  DeleteFile		c:\UserResponse.txt
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0004-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	PopInvokeAsyncFunction		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0004-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0004-DisConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	CheckChildrenCountPop		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 	0004-CheckChildrenCountRemote
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP-ALLOWALWAYS-0004
+
+
+START_TESTCASE MSG-SMTP-ALLOWONCE-0005
+//! 	@SYMTestCaseID		MSG-SMTP-ALLOWONCE-0005
+//! 	@SYMTestCaseDesc	For SMTP send request user should be prompted for his response if 
+//!				he has selected Allow Once option in the previous prompt.
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ1678
+//!	@SYMREQ			REQ7009
+//!				
+//! 	@SYMTestActions		1.	Clean local mail store and remote mailbox.
+//!				2.	Create an SMTP message and send it to the intended recipient.
+//!					Set Allow Once for the user response. 
+//!				3.	Create another SMTP message and send it to the same recipient.
+//!					If the user is prompted for response, set the user response as Don't Allow.
+//!				4.	Download the messages(Use POP3).
+//!				5.	Check if the children count on sent item of local service and children
+//!					count on inbox of remote service have the value as one.
+//!				
+//! 	@SYMTestExpectedResults User should be prompted during the second send operation.
+//!				Children count on sent item of local service and inbox of remote service should be one.
+//!	@SYMAuthor		Pramod Das
+
+PRINT Setup Begins #####################################################
+
+RUN_UTILS	  DeleteFile		c:\private\10283558\database\ups.db
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0005-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0005-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0005-CreatePopAccount
+
+RUN_PROGRAM   300 SetUserPromptResponse Yes
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0005-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0005-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0005-DisConnectPop3Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0005-CreateSmtpMessageFromEmailFile1
+RUN_PROGRAM   300 SetUserPromptResponse Yes
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0005-SendSmtpMessage1
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0005-CreateSmtpMessageFromEmailFile2
+RUN_PROGRAM   300 SetUserPromptResponse No
+RUN_TEST_STEP !Error=-46 300 T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0005-SendSmtpMessage2
+
+RUN_PROGRAM   300 SetUserPromptResponse Yes
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0005-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer 	PopInvokeAsyncFunction		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0005-PopInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini	0005-DisConnectPop3Server
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	CheckChildrenCount		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 	0005-CheckChildrenCountSentItems
+RUN_TEST_STEP 300 T_MsgPopServer 	CheckChildrenCountPop		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 	0005-CheckChildrenCountRemote
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-SMTP-ALLOWONCE-0005
+
+
+START_TESTCASE MSG-SMTP-ALLOWALWAYS-0006
+//! 	@SYMTestCaseID		MSG-SMTP-ALLOWALWAYS-0006
+//! 	@SYMTestCaseDesc	For SMTP send request user should not be prompted for his response if he
+//!				has selected Allow Always option in the previous prompt.
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ1678
+//!	@SYMREQ			REQ7009
+//!				
+//! 	@SYMTestActions		1.	Clean local mail store and remote mailbox.
+//!				2.	Create an SMTP message and send it to the intended recipient.
+//!					Set Allow Always for the user response. 
+//!				3.	Create another SMTP message and send it to the same recipient.
+//!					If the user is prompted for response, set the user response as Don't Allow.
+//!				4.	Download the messages(Use IMAP4).
+//!				5.	Check if the children count on sent item of local service and children
+//!					count on inbox of remote service have the values as two.
+//!				
+//! 	@SYMTestExpectedResults User should be prompted during the second send operation.
+//!				Children count on sent item of local service and inbox of remote service should be two.
+//!	@SYMAuthor		Pramod Das
+
+PRINT Setup Begins #####################################################
+
+RUN_UTILS	  DeleteFile		c:\private\10283558\database\ups.db
+RUN_TEST_STEP 300 T_MsgCommonServer 	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer 	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	InitNtRas			c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0006-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer 	ResetMessageStore		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0006-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer 	CreateImapAccount		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0006-CreateImapAccount
+
+RUN_PROGRAM   300 SetUserPromptResponse Yes
+RUN_TEST_STEP 300 T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0006-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0006-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer 	DeleteAllImapChildren		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0006-DeleteAllImapChildren
+RUN_TEST_STEP 300 T_MsgImapServer 	CheckChildrenCountImap		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0006-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0006-DisConnectImap4Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0006-CreateSmtpMessageFromEmailFile0
+RUN_PROGRAM   300 SetUserPromptResponse Always
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0006-SendSmtpMessage0
+
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0006-CreateSmtpMessageFromEmailFile1
+RUN_UTILS	  DeleteFile		c:\UserResponse.txt
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage			c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0006-SendSmtpMessage1
+
+RUN_TEST_STEP 300 T_MsgImapServer 	SetImap4FullDownloadLimits	c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0006-SetImap4FullDownloadLimits0
+RUN_PROGRAM   300 SetUserPromptResponse Yes
+RUN_TEST_STEP 300 T_MsgImapServer 	ConnectImap4Server		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0006-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer 	DoFullImap4Synchronisation	c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0006-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer 	ImapInvokeAsyncFunction		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0006-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer 	DisConnectImapServer		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0006-DisConnectImap4Server
+
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0006-CheckChildrenCountSentItems
+RUN_TEST_STEP 300 T_MsgImapServer 	CheckChildrenCountImap		c:\msgtest\email\pop\UpsSupport\msg-email-upssupport.ini 		0006-CheckChildrenCountRemoteInbox1
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer 	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer 	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-SMTP-ALLOWALWAYS-0006
+
+RUN_SCRIPT  c:\msgtest\email\pop\UpsSupport\restore_setup.script
+RUN_PROGRAM   300 SetUserPromptResponse Yes

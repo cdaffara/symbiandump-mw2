@@ -1,0 +1,98 @@
+/*********************************
+	1. Create MO call
+	2. Hold call
+	3. Create 2nd call
+	4. Try Swap to 1st call (KErrNotReady)
+	5. Swap to 2nd call
+	6. Hold 2nd call
+	7. Try Swap to 2nd call (KErrNotReady)
+	8. Hang up 1st call
+	9. Try Swap to 1st (disconnected) call
+ 10. Hang up call 2 and release both
+**********************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 2.3.5 Swap, Error
+timeout 10000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test OpenNewCall 1 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+// Step 2
+print Step_2
+
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+// Step 3
+print Step_3
+
+// Make 2nd call
+test OpenNewCall 2 0 RecipientTwo 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 2 0 SubAddress Bearer
+test WaitEvent 2 Dialling
+test WaitEvent 2 Connecting
+test WaitEvent 2 Connected
+
+// Step 4
+print Step_4
+
+//Swap to hold call, not allowed
+test Swap 1 -18
+
+// Step 5
+print Step_5
+
+test Swap 2 0
+
+// Step 6
+print Step_6
+
+test WaitEvents 2 Hold, 1 Connected, 1 LocalResume, 2 LocalHold
+
+// Step 7
+print Step_7
+
+//Swap to hold call, not allowed
+test Swap 2 -18
+
+// Step 8
+print Step_8
+
+test HangUp 1 0
+
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+
+
+// Step 9
+print Step_9
+
+test Swap 1 -18
+
+test Release 1 0
+
+// Step 1
+print Step_10
+
+test HangUp 2 0
+
+test WaitEvent 2 Disconnecting
+test WaitEvent 2 Idle
+test Release 2 0
+
+test VerifyTest
+delete test
+[Endtest]

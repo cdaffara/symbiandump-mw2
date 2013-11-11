@@ -1,0 +1,123 @@
+/*
+* Copyright (c) 2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*   ?description_line
+*
+*/
+
+
+//  INCLUDES
+#include <uikon.rh>
+#include <EPos_LmCatDef.rh>
+#include "EPos_LmCatLanguages.hrh"
+
+//  RESOURCE DEFINITIONS
+
+// -----------------------------------------------------------------------------
+//
+// POS_LM_CATEGORY_SPECIFICATION
+// Global category specification. 
+//
+// -----------------------------------------------------------------------------
+//
+
+RESOURCE POS_LM_CATEGORY_SPECIFICATION glcategories
+    {
+    icon_files = 
+        {
+        };
+
+    categories = 
+        {
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 3000;
+            category_name = "Accommodation";
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 6000;
+            category_name = "Business";
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 9000;
+            category_name = "Communication";
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 12000;
+            category_name = "Educational institute";
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 15000;
+            category_name = "Entertainment";
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 18000;
+            category_name = "Food & Beverage";
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 21000;
+            category_name = "Geographical Area";
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 24000;
+            category_name = "Outdoor activities";
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 27000;
+            category_name = "People";
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 30000;
+            category_name = "Public service";
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 33000;
+            category_name = "Religious places";
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 36000;
+            category_name = "Shopping";
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 39000;
+            category_name = "Sightseeing";
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 42000;
+            category_name = "Sports";
+            },
+        POS_LM_CATEGORY_INFO
+            {
+            category_id = 45000;
+            category_name = "Transport";
+            }
+        };
+    }
+
+// End of File
+
+

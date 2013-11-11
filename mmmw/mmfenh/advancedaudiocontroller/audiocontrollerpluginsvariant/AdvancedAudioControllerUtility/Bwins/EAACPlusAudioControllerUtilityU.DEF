@@ -1,0 +1,5 @@
+EXPORTS
+	??1CEAACPlusAudioControllerUtility@@UAE@XZ @ 1 NONAME ; CEAACPlusAudioControllerUtility::~CEAACPlusAudioControllerUtility(void)
+	?NewL@CEAACPlusAudioControllerUtility@@SAPAV1@XZ @ 2 NONAME ; class CEAACPlusAudioControllerUtility * CEAACPlusAudioControllerUtility::NewL(void)
+	?PrependHeader@CEAACPlusAudioControllerUtility@@QAEHXZ @ 3 NONAME ; int CEAACPlusAudioControllerUtility::PrependHeader(void)
+

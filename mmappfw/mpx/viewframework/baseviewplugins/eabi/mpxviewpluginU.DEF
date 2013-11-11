@@ -1,0 +1,29 @@
+EXPORTS
+	_ZN14CMPXViewPlugin11SetObserverEP25MMPXCustomCommandObserver @ 1 NONAME
+	_ZN14CMPXViewPlugin4NewLERK4TUidP25MMPXCustomCommandObserver @ 2 NONAME
+	_ZN14CMPXViewPluginD0Ev @ 3 NONAME
+	_ZN14CMPXViewPluginD1Ev @ 4 NONAME
+	_ZN14CMPXViewPluginD2Ev @ 5 NONAME
+	_ZN17CMPXAknViewPlugin11CreateViewLEv @ 6 NONAME
+	_ZN17CMPXAknViewPlugin11DestroyViewEv @ 7 NONAME
+	_ZN17CMPXAknViewPlugin13ActivateViewLEPK7TDesC16 @ 8 NONAME
+	_ZN17CMPXAknViewPlugin14DeactivateViewEv @ 9 NONAME
+	_ZN17CMPXAknViewPlugin17SetAsDefaultViewLEv @ 10 NONAME
+	_ZN17CMPXAknViewPluginD0Ev @ 11 NONAME
+	_ZN17CMPXAknViewPluginD1Ev @ 12 NONAME
+	_ZN17CMPXAknViewPluginD2Ev @ 13 NONAME
+	_ZN19CMPXAknDialogPlugin11CreateViewLEv @ 14 NONAME
+	_ZN19CMPXAknDialogPlugin11DestroyViewEv @ 15 NONAME
+	_ZN19CMPXAknDialogPlugin13ActivateViewLEPK7TDesC16 @ 16 NONAME
+	_ZN19CMPXAknDialogPlugin14DeactivateViewEv @ 17 NONAME
+	_ZN19CMPXAknDialogPlugin17SetAsDefaultViewLEv @ 18 NONAME
+	_ZN19CMPXAknDialogPluginD0Ev @ 19 NONAME
+	_ZN19CMPXAknDialogPluginD1Ev @ 20 NONAME
+	_ZN19CMPXAknDialogPluginD2Ev @ 21 NONAME
+	_ZTI14CMPXViewPlugin @ 22 NONAME ; #<TI>#
+	_ZTI17CMPXAknViewPlugin @ 23 NONAME ; #<TI>#
+	_ZTI19CMPXAknDialogPlugin @ 24 NONAME ; #<TI>#
+	_ZTV14CMPXViewPlugin @ 25 NONAME ; #<VT>#
+	_ZTV17CMPXAknViewPlugin @ 26 NONAME ; #<VT>#
+	_ZTV19CMPXAknDialogPlugin @ 27 NONAME ; #<VT>#
+

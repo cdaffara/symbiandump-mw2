@@ -1,0 +1,49 @@
+/*
+* Copyright (c) 2002 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  
+*	 This file provides the information required for building the
+*    whole of a Messagingfw/senduiservices library.
+*
+*/
+
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+../conf/sendui.confml              MW_LAYER_CONFML(sendui.confml)
+../conf/sendui_10282823.crml       MW_LAYER_CRML(sendui_10282823.crml)
+
+../rom/Senduiservices.iby                      CORE_MW_LAYER_IBY_EXPORT_PATH(Senduiservices.iby)
+../rom/SenduiservicesResources.iby           LANGUAGE_MW_LAYER_IBY_EXPORT_PATH(SenduiservicesResources.iby)
+
+../loc/Sendnorm.loc                  MW_LAYER_LOC_EXPORT_PATH(sendnorm.loc)
+//Stub Sis
+../stub_sis/stub_senduiserviceresolver.sis 		/epoc32/data/z/system/install/stub_senduiserviceresolver.sis
+../stub_sis/stub_senduilauncher.sis 		/epoc32/data/z/system/install/stub_senduilauncher.sis
+
+PRJ_MMPFILES
+
+// SendUI
+//../datautils/group/senduidatautils.mmp
+./Sendui.mmp
+//../launcher/group/senduilauncher.mmp
+//../serviceresolver/group/senduiserviceresolver.mmp
+../watcher/group/SendUiWatcher.mmp
+
+/* End of File */

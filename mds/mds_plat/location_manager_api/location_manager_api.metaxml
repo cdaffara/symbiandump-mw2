@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<api id="7d59f9853e37a9240848507a1fc9562d" dataversion="2.0">
+<name>location_manager_api</name>
+<description>location manager api</description>
+<type>c++</type>
+<collection>locationmanager</collection>
+<libs><lib name="locationmanager.lib"/>
+</libs>
+<release category="platform" sinceversion=""/>
+<attributes>
+<htmldocprovided>no</htmldocprovided>
+<adaptation>no</adaptation>
+</attributes>
+</api>

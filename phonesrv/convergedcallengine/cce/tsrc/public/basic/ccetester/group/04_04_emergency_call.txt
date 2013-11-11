@@ -1,0 +1,181 @@
+/***********************************************************
+	1. Create Conference of 3 PS calls
+	2. Create Emergency call
+	   Expected: Conference is disconnected
+	3. Disconnect emergency call
+	4. Create Conference of 5 CS calls
+	5. Create MT PS call
+	6. Create Emergency call
+	   Expected: MT call and Conference are disconnected
+	7. Disconnect emergency call
+************************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 4.4 Emergency Call during Conference
+timeout 20000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+//Create call and put on Hold
+test OpenNewCall 1 0 ConfcallOne 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+// Call [2]
+test OpenNewCall 2 0 ConfcallTwo 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 2 0 SubAddress Bearer
+test WaitEvent 2 Dialling
+test WaitEvent 2 Connecting
+test WaitEvent 2 Connected
+
+test AddToConference 1 0
+test WaitEvent ConferenceCallAdded 1
+test AddToConference 2 0
+test WaitEvent ConferenceCallAdded 2	//event 10
+test WaitEvent ConferenceActive
+// Plugin sets call to match conference state:
+test WaitEvent 1 Connected
+
+// Call [3]
+test OpenNewCall 3 0 ConfcallThree 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 3 0 SubAddress Bearer
+// Plugin changes call states to match conference:
+test WaitEvents 1 Hold, 2 Hold, ConferenceHold, 3 Dialling, 3 Connecting, 3 Connected, ConferenceCallSwapped	//13-19
+
+test AddToConference 3 0
+// Conference goes automatically to Hold, so plugin changes state. After that
+// conference becomes Active and plugin changes states to Connected:
+test WaitEvents 3 Hold, 1 Connected, 2 Connected, 3 Connected, ConferenceActive, ConferenceCallSwapped, ConferenceCallAdded 3 //21-26
+
+// Step 2
+print Step_2
+
+test InitializeEmergencyCall 4 0
+
+test DialEmergencyCall 4 EmergencyNumber
+//test WaitEvent ConferenceIdle
+
+test WaitEvents ConferenceCallRemoved 1, ConferenceCallRemoved 2, ConferenceCallRemoved 3, ConferenceIdle //27-30
+
+test WaitEvents 4 Dialling, 1 Disconnecting, 1 Idle, 2 Disconnecting, 2 Idle, 3 Disconnecting, 3 Idle, 4 Connecting, 4 Connected //31-39
+
+test ReleaseConference 0
+
+test Release 1 0
+test Release 2 0
+test Release 3 0
+
+// Step 3
+print Step_3
+
+test HangUp 4 0
+test WaitEvent 4 Disconnecting	//40
+test WaitEvent 4 Idle
+test Release 4 0
+
+// Step 4
+print Step_4
+
+// Calls [1] and [2]
+test OpenNewCall 5 0 ConfcallOne 1 ECCECallTypeCSVoice ECCELineTypePrimary
+test Dial 5 0 SubAddress Bearer
+test WaitEvent 5 Dialling
+test WaitEvent 5 Connecting
+test WaitEvent 5 Connected
+// Hold call
+test Hold 5 0
+test WaitEvents 5 Hold, 5 LocalHold
+// New call
+test OpenNewCall 6 0 ConfcallTwo 1 ECCECallTypeCSVoice ECCELineTypePrimary
+test Dial 6 0 SubAddress Bearer
+test WaitEvent 6 Dialling
+test WaitEvent 6 Connecting
+test WaitEvent 6 Connected
+// Add calls to conference
+test AddToConference 5 0
+test WaitEvent ConferenceCallAdded 5	//50
+test AddToConference 6 0
+// Plugin sets call to match conference state (connected)
+test WaitEvents ConferenceCallAdded 6, ConferenceActive, 5 Connected
+
+// Call [3]
+test OpenNewCall 7 0 ConfcallThree 1 ECCECallTypeCSVoice ECCELineTypePrimary
+test Dial 7 0 SubAddress Bearer
+// Conference autohold, plugin changes states to match conference
+test WaitEvents 5 Hold, 6 Hold, ConferenceHold, 7 Dialling, 7 Connecting, 7 Connected, ConferenceCallSwapped, 
+// Add call to conference
+test AddToConference 7 0
+// Plugin changes added call's state to match conference
+test WaitEvents ConferenceCallAdded 7, 7 Hold
+
+// Call [4]
+test OpenNewCall 8 0 ConfcallFour 1 ECCECallTypeCSVoice ECCELineTypePrimary
+test Dial 8 0 SubAddress Bearer
+test WaitEvent 8 Dialling
+test WaitEvent 8 Connecting
+test WaitEvent 8 Connected
+// Add call to conference
+test AddToConference 8 0
+// Plugin changes added call's state to match conference
+test WaitEvents ConferenceCallAdded 8, 8 Hold
+
+// Call [5]
+test OpenNewCall 9 0 ConfCallFive 1 ECCECallTypeCSVoice ECCELineTypePrimary
+test Dial 9 0 SubAddress Bearer
+test WaitEvent 9 Dialling
+test WaitEvent 9 Connecting
+test WaitEvent 9 Connected	//70
+test AddToConference 9 0
+// Plugin changes added call's state to match conference
+test WaitEvents ConferenceCallAdded 9, 9 Hold
+
+// Step 5
+print Step_5
+
+// Releasing and unloading of PS plugin might be still pending...
+test Delay 500
+
+// Trigger ICM and wait for plugin to initialize
+test InitIncomingCall
+test Delay 500
+
+// Send plugin command (PS), MT call with CallID 6 is created
+test SendPluginRequest CreateCall 2
+test WaitEvent 0 IncomingCall
+test WaitEvent 10 Queued
+
+test Answer 10 0
+test WaitEvent 10 Answering
+test WaitEvent 10 Connected
+
+// Step 6
+print Step_6
+
+test InitializeEmergencyCall 11 0
+
+test DialEmergencyCall 11 EmergencyNumber
+// Emergency call disconnects all calls, call [11] connects
+test WaitEvents 10 Disconnecting, 10 Idle, ConferenceCallRemoved 5, ConferenceCallRemoved 6, ConferenceCallRemoved 7, ConferenceCallRemoved 8, ConferenceCallRemoved 9, ConferenceIdle, 5 Disconnecting, 5 Idle, 6 Disconnecting, 6 Idle, 7 Disconnecting, 7 Idle, 8 Disconnecting, 8 Idle, 9 Disconnecting, 9 Idle, 11 Dialling, 11 Connecting, 11 Connected
+
+// Step 7
+print Step_7
+
+test HangUp 11 0
+test WaitEvent 11 Disconnecting
+test WaitEvent 11 Idle
+test Release 11 0
+
+test VerifyTest
+delete test
+[Endtest]

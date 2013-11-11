@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE SystemDefinition SYSTEM "sysdef_1_4_0.dtd" [
+  <!ENTITY layer_real_source_path "sf/mw/mds" >
+]>
+
+<SystemDefinition name="mds" schema="1.4.0">
+  <systemModel>
+    <layer name="mw_layer">
+      <module name="mds">
+        <unit unitID="imm.mds" mrp="" bldFile="&layer_real_source_path;/group" name="mds" />
+      </module>
+    </layer>
+    
+    <layer name="api_test_layer">
+      <module name="mds_api_tests">
+        <unit unitID="imm.mds.content_listing_framework_collection_manager_api" mrp="" bldFile="sf/mw/mds/mds_plat/content_listing_framework_collection_manager_api/tsrc/group"  name="content_listing_framework_collection_manager_api"  />
+      	<unit unitID="imm.mds.context_engine_plugin_api" mrp="" bldFile="sf/mw/mds/mds_plat/context_engine_plugin_api/tsrc/group"  name="context_engine_plugin_api"  />
+      	<unit unitID="imm.mds.harvester_framework_api.composerplugin" mrp="" bldFile="sf/mw/mds/mds_plat/harvester_framework_api/tsrc/ComposerPluginTest/group"  name="harvester_framework_api.composerplugin"  />
+      	<unit unitID="imm.mds.harvester_framework_api.harvesterclient" mrp="" bldFile="sf/mw/mds/mds_plat/harvester_framework_api/tsrc/HarvesterClientTest/group"  name="harvester_framework_api.harvesterclient"  />
+      	<unit unitID="imm.mds.harvester_framework_api.harvesterdata" mrp="" bldFile="sf/mw/mds/mds_plat/harvester_framework_api/tsrc/HarvesterDataTest/group"  name="harvester_framework_api.harvesterdata"  />
+      	<unit unitID="imm.mds.harvester_framework_api.harvesterplugin" mrp="" bldFile="sf/mw/mds/mds_plat/harvester_framework_api/tsrc/HarvesterPluginTest/group"  name="harvester_framework_api.harvesterplugin"  />
+      	<unit unitID="imm.mds.harvester_framework_api.monitorplugin" mrp="" bldFile="sf/mw/mds/mds_plat/harvester_framework_api/tsrc/MonitorPluginTest/group"  name="harvester_framework_api.monitorplugin"  />
+        <unit unitID="imm.mds.location_manager_api" mrp="" bldFile="sf/mw/mds/mds_plat/location_manager_api/tsrc/group"  name="location_manager_api"  />
+        <unit unitID="imm.mds.metadata_engine_api" mrp="" bldFile="sf/mw/mds/mds_plat/metadata_engine_api/tsrc/group"  name="metadata_engine_api"  />
+        
+        <unit unitID="imm.mds.content_listing_framework" mrp="" bldFile="sf/mw/mds/mds_pub/content_listing_framework_api/tsrc/group"  name="content_listing_framework_api"  />   
+      </module>
+    </layer>
+    
+    <layer name="unit_test_layer">
+      <module name="mds_unit_tests">
+      </module>
+    </layer>
+    
+  </systemModel>
+</SystemDefinition>

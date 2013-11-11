@@ -1,0 +1,59 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+
+//! @file
+//! @SYMTestCaseID 		CM-SENDAS-SMS-CIT-0004-HP
+//! @SYMTestCaseDesc 		Create SMS Message using SendAs API
+//! @SYMFssID 
+//! @SYMTestStatus 		Defined
+//! @SYMTestPriority 		High
+//! @SYMTestActions		
+//! @SYMTestExpectedResults 	A SMS Message is created in the Drafts folder, and is successfully modified & deleted from the message store using Message Server APIs
+//! @SYMTestType 		CIT
+
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+GetBaseConstants		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0004-ModifyMsgUsingMsgSrvAPI.ini	GetBaseConstants
+CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0004-ModifyMsgUsingMsgSrvAPI.ini	CreateSession
+ResetMessageStore		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0004-ModifyMsgUsingMsgSrvAPI.ini	ResetMessageStore
+CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0004-ModifyMsgUsingMsgSrvAPI.ini	CreateRegistry
+CreateSmsService		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0004-ModifyMsgUsingMsgSrvAPI.ini	CreateSmsService
+CreateMtm			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0004-ModifyMsgUsingMsgSrvAPI.ini	CreateMtm
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0004-ModifyMsgUsingMsgSrvAPI.ini	ChkChildrenCountDraft0
+EXECUTE_TEST_CASE
+ConnectSendAsServer		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0004-ModifyMsgUsingMsgSrvAPI.ini	ConnectSendAsServer
+GetSmsConstants			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0004-ModifyMsgUsingMsgSrvAPI.ini	GetSmsConstants
+SendAsCreateMessageofType	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0004-ModifyMsgUsingMsgSrvAPI.ini	CreateMessageofType
+SendAsSaveMessageAndClose	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0004-ModifyMsgUsingMsgSrvAPI.ini	SendAsSaveMessageAndClose
+CloseSendAsServerConnection	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0004-ModifyMsgUsingMsgSrvAPI.ini	CloseSvrConnection
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0004-ModifyMsgUsingMsgSrvAPI.ini	ChkChildrenCountDraft1
+CreateChildrenSelection  	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0004-ModifyMsgUsingMsgSrvAPI.ini	CreateChildrenSelDraft
+GetMessageAtIndex	 	c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0004-ModifyMsgUsingMsgSrvAPI.ini	GetMessageAtIndex
+GetEntry    			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0004-ModifyMsgUsingMsgSrvAPI.ini	GetEntry
+GetStore    			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0004-ModifyMsgUsingMsgSrvAPI.ini	GetStore
+AddRecipient			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0004-ModifyMsgUsingMsgSrvAPI.ini	AddRecipient
+SetBodyText			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0004-ModifyMsgUsingMsgSrvAPI.ini	SetBodyText
+DeleteStore			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0004-ModifyMsgUsingMsgSrvAPI.ini	DeleteStore
+DeleteMessage			c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0004-ModifyMsgUsingMsgSrvAPI.ini	DeleteMessage
+CHECK_POSTCONDITIONS
+CheckChildrenCount 		c:\msgtest\TestFramework\ScriptedTestCases\SendAs\MSG-SENDAS-SMS-CIT-0004-ModifyMsgUsingMsgSrvAPI.ini	ChkChildrenCountDraft0
+END_TEST_CASE

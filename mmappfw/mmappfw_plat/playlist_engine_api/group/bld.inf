@@ -1,0 +1,35 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  File that exports the files belonging to 
+:                playlist engine API
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS          
+../inc/mpxplaylistengine.h                       MW_LAYER_PLATFORM_EXPORT_PATH(mpxplaylistengine.h)                
+../inc/mpxplaylistenginedefs.h                   MW_LAYER_PLATFORM_EXPORT_PATH(mpxplaylistenginedefs.h)      
+../inc/mpxplaylistenginedefs.hrh                 MW_LAYER_PLATFORM_EXPORT_PATH(mpxplaylistenginedefs.hrh)              
+../inc/mpxplaylistengineobserver.h               MW_LAYER_PLATFORM_EXPORT_PATH(mpxplaylistengineobserver.h)                    
+../inc/mpxplaylistplugin.h                       MW_LAYER_PLATFORM_EXPORT_PATH(mpxplaylistplugin.h)                  
+../inc/mpxplaylistplugin.inl                     MW_LAYER_PLATFORM_EXPORT_PATH(mpxplaylistplugin.inl)                
+../inc/mpxplaylistpluginhandler.h                MW_LAYER_PLATFORM_EXPORT_PATH(mpxplaylistpluginhandler.h)      
+../inc/mpxplaylistpluginhandler.inl              MW_LAYER_PLATFORM_EXPORT_PATH(mpxplaylistpluginhandler.inl)              
+../inc/mpxplaylistpluginobserver.h               MW_LAYER_PLATFORM_EXPORT_PATH(mpxplaylistpluginobserver.h)                    
+                    

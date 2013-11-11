@@ -1,0 +1,64 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file for MnRefProviderEngine
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET              mnrefproviderengine.dll
+TARGETTYPE          dll
+UID                 0x1000008D 0x03132015
+
+VENDORID            VID_DEFAULT
+CAPABILITY          ReadUserData WriteUserData Location
+
+SOURCEPATH          ../src
+
+SOURCE              mnrpengine.cpp
+SOURCE              mnrpmapmodel.cpp
+SOURCE              mnrppositionrequest.cpp
+SOURCE              mnrputils.cpp
+
+USERINCLUDE         ../inc
+MW_LAYER_SYSTEMINCLUDE
+
+LIBRARY             euser.lib efsrv.lib estor.lib bafl.lib
+LIBRARY             eikcore.lib
+LIBRARY             aknicon.lib egul.lib gdi.lib bitgdi.lib
+
+LIBRARY             eposlandmarks.lib
+LIBRARY             lbs.lib
+LIBRARY             mnclientlib.lib mnservicelib.lib
+
+DEBUGLIBRARY        flogger.lib
+
+START RESOURCE      ../data/mnrefproviderengine.rss
+HEADER
+TARGETPATH          /resource
+END
+
+#ifdef RD_MAPNAV_BITMAP_ACCESS
+#ifdef WINS
+DEFFILE         ../bwins/mnrefproviderengine.50.def
+#else
+DEFFILE         ../eabi/mnrefproviderengine.50.def
+#endif
+#endif
+
+SMPSAFE
+
+// END OF FILE
+

@@ -1,0 +1,76 @@
+#  lon-cn-exchng2k.msexchange2k.closedtest.intra server
+__type__   = Pop3Settings
+
+EmailAddressExtension = msexchange2k.closedtest.intra
+
+#ServerName = lon-cn-exchng2k.msexchange2k.closedtest.intra
+# note these setting are for testing the central repository
+# they may not work for sending email
+
+
+PopServerAddress = 10.22.64.6
+PopLoginName = danb
+PopPassword = danbea
+PopMaxEmailSize = 4096
+PopPort = 110
+PopInboxSynchronisationLimit = 10
+PopUserAddress = 1.1.1.1
+PopSecureSockets = 1
+PopSSLWrapper = 0
+#PopGetMailOptions = 0
+PopPopulationLimit = 999
+PopAutoSendOnConnect = 1 
+PopDeleteEmailsWhenDisconnecting = 0
+PopAcknowledgeReceipts = 1
+PopDisconnectedUserMode = 1
+PopAPOPEncryption = 0
+
+PopIapList = POP001 POP002
+#PopIAP = 1
+#PopCommDbDialogPref 
+#PopIAPIndex = 0
+
+POP001_PopIAP = 1
+POP001_PopCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+POP001_PopIAPIndex = 0
+
+POP002_PopIAP = 1
+POP002_PopCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+POP002_PopIAPIndex = 0
+
+
+
+
+// SMTP settings
+SmtpServerAddress = 10.22.64.6
+SmtpEmailAddress = danb@msexchange.closedtest.intra
+SmtpBodyEncoding = TMsgOutboxBodyEncoding::EMsgOutboxMHTMLAlternativeAsMIME
+SmtpReceiptAddress = danb@msexchange.closedtest.intra
+SmtpRequestReceipts = 1
+SmtpSendMessageOption = TImSMTPSendMessageOption::ESendMessageOnRequest
+SmtpSetPort = 25
+SmtpEmailAlias = danb@msexchange.closedtest.intra
+SmtpMsgCharSet = 1
+SmtpUserAddress = danb@msexchange.closedtest.intra
+SmtpSetReplyToAddress = danb@msexchange.closedtest.intra
+SmtpSetAddVCardToEmail = 1
+SmtpSetAddSignatureToEmail = 1
+SmtpSetSendCopyToSelf = TImSMTPSendCopyToSelf::ESendCopyAsBccRecipient
+SmtpSetLoginName = danb
+SmtpSetPassword = danbea
+SmtpSetSMTPAuth = 1
+SmtpSetInboxLoginDetails = 1
+SmtpSetSecureSockets = 1
+SmtpSetSSLWrapper = 1
+
+
+SmtpIapList = SMTP001 SMTP002 
+
+SMTP001_SmtpIAP = 1
+SMTP001_SmtpCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+SMTP001_SmtpIAPIndex = 0
+
+
+SMTP001_SmtpIAP = 1
+SMTP001_SmtpCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+SMTP001_SmtpIAPIndex = 0

@@ -1,0 +1,112 @@
+// Copyright (c) 2008-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// @file
+// 
+//
+
+
+
+PRJ_TESTMMPFILES
+t_media.mmp
+
+PRJ_TESTEXPORTS
+
+#ifdef SYMBIAN_MESSAGING_ON_NAVIENGINE
+../scripts/msg-createdrive-naviengine.script			/epoc32/winscw/c/msgtest/media/msg-createdrive.script
+../testdata/msg-createdrive-naviengine.ini			/epoc32/winscw/c/msgtest/media/msg-createdrive.ini
+#else
+../scripts/msg-createdrive.script			/epoc32/winscw/c/msgtest/media/msg-createdrive.script
+../testdata/msg-createdrive.ini			/epoc32/winscw/c/msgtest/media/msg-createdrive.ini
+#endif
+
+../scripts/msg-deletedrive.script			/epoc32/winscw/c/msgtest/media/msg-deletedrive.script
+../testdata/msg-deletedrive.ini			/epoc32/winscw/c/msgtest/media/msg-deletedrive.ini
+
+
+// PREQ 557
+// test scripts
+../scripts/msg-drivefull-ops.script				/epoc32/winscw/c/msgtest/media/msg-drivefull-ops.script
+../scripts/msg-dynamicview-ops.script			/epoc32/winscw/c/msgtest/media/msg-dynamicview-ops.script
+../scripts/msg-media-compatible-ops.script		/epoc32/winscw/c/msgtest/media/msg-media-compatible-ops.script
+../scripts/msg-media-ops.script					/epoc32/winscw/c/msgtest/media/msg-media-ops.script
+../scripts/msg-preferred-drivelist-ops.script	/epoc32/winscw/c/msgtest/media/msg-preferred-drivelist-ops.script
+../scripts/msg-oomtest-drive-ops.script			/epoc32/winscw/c/msgtest/media/msg-oomtest-drive-ops.script
+../scripts/msg-sms-message.script				/epoc32/winscw/c/msgtest/media/msg-sms-message.script
+../scripts/msg-remove-media-0001.script			/epoc32/winscw/c/msgtest/media/msg-remove-media-0001.script
+../scripts/msg-remove-media-0002.script			/epoc32/winscw/c/msgtest/media/msg-remove-media-0002.script
+../scripts/msg-remove-media-0003.script			/epoc32/winscw/c/msgtest/media/msg-remove-media-0003.script
+../scripts/msg-remove-media-0004.script			/epoc32/winscw/c/msgtest/media/msg-remove-media-0004.script
+../scripts/msg-remove-media-0005.script			/epoc32/winscw/c/msgtest/media/msg-remove-media-0005.script
+../scripts/msg-remove-media-0006.script			/epoc32/winscw/c/msgtest/media/msg-remove-media-0006.script
+../scripts/msg-remove-media-0007.script			/epoc32/winscw/c/msgtest/media/msg-remove-media-0007.script
+
+../scripts/msg-changedrive-drivelist-ops.script 	/epoc32/winscw/c/msgtest/media/msg-changedrive-drivelist-ops.script
+
+
+// test INI files
+../testdata/msg-drivefull-ops.ini				/epoc32/winscw/c/msgtest/media/msg-drivefull-ops.ini
+../testdata/msg-dynamicview-ops.ini				/epoc32/winscw/c/msgtest/media/msg-dynamicview-ops.ini
+../testdata/msg-media-compatible-ops.ini		/epoc32/winscw/c/msgtest/media/msg-media-compatible-ops.ini
+../testdata/msg-media-ops.ini					/epoc32/winscw/c/msgtest/media/msg-media-ops.ini
+../testdata/msg-preferred-drivelist-ops.ini		/epoc32/winscw/c/msgtest/media/msg-preferred-drivelist-ops.ini
+../testdata/msg-oomtest-drive-ops.ini			/epoc32/winscw/c/msgtest/media/msg-oomtest-drive-ops.ini
+../testdata/msg-sms-message.ini					/epoc32/winscw/c/msgtest/media/msg-sms-message.ini
+../testdata/msg-remove-media.ini				/epoc32/winscw/c/msgtest/media/msg-remove-media.ini
+
+../testdata/msg-changedrive-drivelist-ops.ini		/epoc32/winscw/c/msgtest/media/msg-changedrive-drivelist-ops.ini
+
+// preferred drivelist config files
+../testdata/config/msg-compatible-0001.ini		/epoc32/winscw/c/msgtest/media/msg-compatible-0001.ini
+../testdata/config/msg-compatible-0002.ini		/epoc32/winscw/c/msgtest/media/msg-compatible-0002.ini
+../testdata/config/msg-compatible-0003.ini		/epoc32/winscw/c/msgtest/media/msg-compatible-0003.ini
+../testdata/config/msg-compatible-0004.ini		/epoc32/winscw/c/msgtest/media/msg-compatible-0004.ini
+../testdata/config/msg-compatible-0005.ini		/epoc32/winscw/c/msgtest/media/msg-compatible-0005.ini
+../testdata/config/msg-compatible-0006.ini		/epoc32/winscw/c/msgtest/media/msg-compatible-0006.ini
+../testdata/config/msg-compatible-0007.ini		/epoc32/winscw/c/msgtest/media/msg-compatible-0007.ini
+../testdata/config/msg-compatible-0008.ini		/epoc32/winscw/c/msgtest/media/msg-compatible-0008.ini
+../testdata/config/msg-drivefull-0001.ini		/epoc32/winscw/c/msgtest/media/msg-drivefull-0001.ini
+../testdata/config/msg-drivefull-0002.ini		/epoc32/winscw/c/msgtest/media/msg-drivefull-0002.ini
+../testdata/config/msg-dynamicview-0001.ini		/epoc32/winscw/c/msgtest/media/msg-dynamicview-0001.ini
+../testdata/config/msg-dynamicview-0002.ini		/epoc32/winscw/c/msgtest/media/msg-dynamicview-0002.ini
+../testdata/config/msg-media-0001.ini			/epoc32/winscw/c/msgtest/media/msg-media-0001.ini
+../testdata/config/msg-media-0002.ini			/epoc32/winscw/c/msgtest/media/msg-media-0002.ini
+../testdata/config/msg-media-0003.ini			/epoc32/winscw/c/msgtest/media/msg-media-0003.ini
+../testdata/config/msg-media-0004.ini			/epoc32/winscw/c/msgtest/media/msg-media-0004.ini
+../testdata/config/msg-preferred-0001.ini		/epoc32/winscw/c/msgtest/media/msg-preferred-0001.ini
+../testdata/config/msg-preferred-0002.ini		/epoc32/winscw/c/msgtest/media/msg-preferred-0002.ini
+../testdata/config/msg-preferred-0003.ini		/epoc32/winscw/c/msgtest/media/msg-preferred-0003.ini
+../testdata/config/msg-preferred-0004.ini		/epoc32/winscw/c/msgtest/media/msg-preferred-0004.ini
+../testdata/config/msg-preferred-0005.ini		/epoc32/winscw/c/msgtest/media/msg-preferred-0005.ini
+../testdata/config/msg-preferred-0006.ini		/epoc32/winscw/c/msgtest/media/msg-preferred-0006.ini
+../testdata/config/msg-preferred-0007.ini		/epoc32/winscw/c/msgtest/media/msg-preferred-0007.ini
+../testdata/config/msg-preferred-0008.ini		/epoc32/winscw/c/msgtest/media/msg-preferred-0008.ini
+../testdata/config/msg-preferred-0009.ini		/epoc32/winscw/c/msgtest/media/msg-preferred-0009.ini
+../testdata/config/msg-preferred-0010.ini		/epoc32/winscw/c/msgtest/media/msg-preferred-0010.ini
+../testdata/config/msg-oom-0001.ini				/epoc32/winscw/c/msgtest/media/msg-oom-0001.ini
+../testdata/config/msg-sms-config.txt			/epoc32/winscw/c/msgtest/media/msg-sms-config.txt
+../testdata/config/msg-sms-settings.txt			/epoc32/winscw/c/msgtest/media/msg-sms-settings.txt
+../testdata/config/msg-sms-message.txt			/epoc32/winscw/c/msgtest/media/msg-sms-message.txt
+
+../testdata/config/msg-adddrive-cap.ini			/epoc32/winscw/c/msgtest/media/msg-adddrive-cap.ini
+../testdata/config/msg-removedrive-cap.ini		/epoc32/winscw/c/msgtest/media/msg-removedrive-cap.ini
+
+../testdata/config/msg-preferred-0011.ini		/epoc32/winscw/c/msgtest/media/msg-preferred-0011.ini
+
+// SQLlite db files
+../testdata/corrupt.db							/epoc32/winscw/c/msgtest/media/corrupt.db
+#if (defined SYMBIAN_MESSAGESTORE_HEADER_BODY_USING_SQLDB)
+../testdata/compatible_2073.db						/epoc32/winscw/c/msgtest/media/compatible.db
+#else
+../testdata/compatible.db						/epoc32/winscw/c/msgtest/media/compatible.db
+#endif

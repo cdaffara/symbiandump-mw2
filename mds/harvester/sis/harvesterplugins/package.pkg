@@ -1,0 +1,42 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description:
+;
+;Languages
+&EN
+
+;packet-header (name, uid, major, minor, build, type)
+#{"Harvester Plugins Patch"},(0x2001116A), 2, 0, 0, TYPE=SA, RU
+
+; Localised vendor name
+%{"Nokia"}
+
+; Unique vendor name
+:"Nokia"
+
+;Files
+"\epoc32\RELEASE\armv5\UREL\harvesteraudioplugin.dll"-"c:\sys\bin\harvesteraudioplugin.dll"
+"\epoc32\data\z\resource\plugins\harvesteraudioplugin.rsc"-"c:\resource\plugins\harvesteraudioplugin.rsc"
+"\epoc32\RELEASE\armv5\UREL\harvesterimageplugin.dll"-"c:\sys\bin\harvesterimageplugin.dll"
+"\epoc32\data\z\resource\plugins\harvesterimageplugin.rsc"-"c:\resource\plugins\harvesterimageplugin.rsc"
+"\epoc32\RELEASE\armv5\UREL\harvestermessageplugin.dll"-"c:\sys\bin\harvestermessageplugin.dll"
+"\epoc32\data\z\resource\plugins\harvestermessageplugin.rsc"-"c:\resource\plugins\harvestermessageplugin.rsc"
+"\epoc32\RELEASE\armv5\UREL\harvesteromadrmplugin.dll"-"c:\sys\bin\harvesteromadrmplugin.dll"
+"\epoc32\data\z\resource\plugins\harvesteromadrmplugin.rsc"-"c:\resource\plugins\harvesteromadrmplugin.rsc"
+"\epoc32\RELEASE\armv5\UREL\harvesterrtpplugin.dll"-"c:\sys\bin\harvesterrtpplugin.dll"
+"\epoc32\data\z\resource\plugins\harvesterrtpplugin.rsc"-"c:\resource\plugins\harvesterrtpplugin.rsc"
+"\epoc32\RELEASE\armv5\UREL\harvestervideoplugin.dll"-"c:\sys\bin\harvestervideoplugin.dll"
+"\epoc32\data\z\resource\plugins\harvestervideoplugin.rsc"-"c:\resource\plugins\harvestervideoplugin.rsc"
+"\epoc32\RELEASE\armv5\UREL\harvesterwmvplugin.dll"-"c:\sys\bin\harvesterwmvplugin.dll"
+"\epoc32\data\z\resource\plugins\harvesterwmvplugin.rsc"-"c:\resource\plugins\harvesterwmvplugin.rsc"

@@ -1,0 +1,80 @@
+/*
+* Copyright (c) 2002 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: MMP file for phonesettings test.
+*
+*/
+
+#include <platform_paths.hrh>
+#include "../inc/PhoneSettingsTestVariation.h"
+
+TARGET          PhoneSettingsTest.dll
+TARGETTYPE      dll
+UID             0x1000008D 0x101FB3E7
+
+CAPABILITY      CAP_GENERAL_DLL
+VENDORID        VID_DEFAULT
+
+DEFFILE         PhoneSettingsTest.def
+
+SOURCEPATH      ../src
+SOURCE          PhoneSettingsTest.cpp
+SOURCE          PhoneSettingsTestCases.cpp
+SOURCE          PhoneSettingsTestParser.cpp
+SOURCE          PhoneSettingsTestCallBarring.cpp
+SOURCE          PhoneSettingsTestCallBarringObserver.cpp
+SOURCE          PhoneSettingsTestCallDiverting.cpp
+SOURCE          PhoneSettingsTestCallDivertingObserver.cpp
+SOURCE          PhoneSettingsTestCallWaiting.cpp
+SOURCE          PhoneSettingsTestCallWaitingObserver.cpp
+SOURCE          PhoneSettingsTestCli.cpp
+SOURCE          PhoneSettingsTestCliObserver.cpp
+SOURCE          PhoneSettingsTestNetwork.cpp
+SOURCE          PhoneSettingsTestNetworkInfoObserver.cpp
+SOURCE          PhoneSettingsTestNetworkModeObserver.cpp
+SOURCE          PhoneSettingsTestCSP.cpp
+SOURCE          PhoneSettingsTestSAObserver.cpp
+SOURCE          PhoneSettingsTestSettingsContainer.cpp
+SOURCE          PhoneSettingsTestPsetRequestObserver.cpp
+SOURCE          PhoneSettingsTestUtilities.cpp
+
+MW_LAYER_SYSTEMINCLUDE
+USERINCLUDE     ../inc 
+
+// Sources, libraries and headers included for testing public functions
+// not accessible via library file: 
+USERINCLUDE     ../../../../../inc
+USERINCLUDE     ../../../../../Logger
+#ifndef PHONESETTINGSTEST_LIBRARY_ONLY	
+SOURCEPATH      ../../../../../src
+SOURCE          PsetCallBarring.cpp
+SOURCE          PsetTelephony.cpp
+SOURCE          PSetUtility.cpp
+SOURCE          PsetCSP.cpp
+#endif // PHONESETTINGSTEST_LIBRARY_ONLY	
+LIBRARY         etel.lib 
+LIBRARY         SSSettings.lib  
+LIBRARY         flogger.lib  
+
+// Other libraries
+LIBRARY         euser.lib
+LIBRARY         stiftestinterface.lib
+LIBRARY         estor.lib
+LIBRARY         etelmm.lib 
+LIBRARY         bafl.lib 
+
+// Test target library
+LIBRARY         phonesettings.lib
+
+LANG            SC
+

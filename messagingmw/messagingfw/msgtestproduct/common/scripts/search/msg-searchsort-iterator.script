@@ -1,0 +1,55 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+LOAD_SUITE 	T_MsgCommonServer 	-SharedData
+LOAD_SUITE 	T_MsgImapServer 	-SharedData
+LOAD_SUITE  	T_MsgSmtpServer 	-SharedData
+
+//! @SYMTestCaseID		MSG-PREQ1667-ITER0001
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8589, REQ8592
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	Negative Test: Iterator mechanism is not supported for search-sort on header, body part.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//! 	1. Create search-sort query searching for "test002" sender address in "FROM" field of local service and sort by "FROM" field in ascending order.
+//! 	2. Perform search-sort operation with iteration flag enabled.
+//! 	3. Verify search-sort operation leaves with KErrNotSupported error code.
+//! 	
+//! @SYMTestExpectedResults
+//!	Leaves with KErrNotSupported error code.
+//!	
+//! @SYMAuthor			Pramod Das
+
+// Create different accounts for different services and creates messages satisfying different search criteria.
+// RUN_SCRIPT c:\msgtest\searchsort\search_entry.script
+
+START_TESTCASE MSG-PREQ1667-ITER-0001
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer  	StartUp
+
+RUN_TEST_STEP		300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort-iterator.ini    0001-IterationQuery
+RUN_TEST_STEP !Error=-5 300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort-iterator.ini    0001-IterationQuery
+
+RUN_TEST_STEP		300 T_MsgCommonServer	ShutDown
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-PREQ1667-ITER-0001
+

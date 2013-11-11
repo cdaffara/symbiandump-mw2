@@ -1,0 +1,791 @@
+
+(object Petal
+    version    	43
+    _written   	"Rose 6.1.9113.5"
+    charSet    	0)
+
+(object Design "Logical View"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"38C3E2AD002B"
+    defaults   	(object defaults
+	rightMargin 	0.250000
+	leftMargin 	0.250000
+	topMargin  	0.250000
+	bottomMargin 	0.500000
+	pageOverlap 	0.250000
+	clipIconLabels 	TRUE
+	autoResize 	TRUE
+	snapToGrid 	TRUE
+	gridX      	16
+	gridY      	16
+	defaultFont 	(object Font
+	    size       	10
+	    face       	"Arial"
+	    bold       	FALSE
+	    italics    	FALSE
+	    underline  	FALSE
+	    strike     	FALSE
+	    color      	0
+	    default_color 	TRUE)
+	showMessageNum 	1
+	showClassOfObject 	TRUE
+	notation   	"Unified")
+    root_usecase_package 	(object Class_Category "Use Case View"
+	quid       	"38C3E2AD002D"
+	exportControl 	"Public"
+	global     	TRUE
+	logical_models 	(list unit_reference_list)
+	logical_presentations 	(list unit_reference_list
+	    (object UseCaseDiagram "Main"
+		quid       	"38C3E2AD004A"
+		title      	"Main"
+		zoom       	100
+		max_height 	28350
+		max_width  	21600
+		origin_x   	0
+		origin_y   	0
+		items      	(list diagram_item_list))))
+    root_category 	(object Class_Category "Logical View"
+	quid       	"38C3E2AD002C"
+	exportControl 	"Public"
+	global     	TRUE
+	subsystem  	"Component View"
+	quidu      	"38C3E2AD002E"
+	logical_models 	(list unit_reference_list
+	    (object Class_Category "E32"
+		quid       	"38C3E3140188"
+		exportControl 	"Public"
+		logical_models 	(list unit_reference_list
+		    (object Class "CActive"
+			quid       	"38C3E31A01EA")
+		    (object Class "CTimer"
+			quid       	"38C3E3230360")
+		    (object Class "CBase"
+			quid       	"38C3E32B03C6"))
+		logical_presentations 	(list unit_reference_list))
+	    (object Class_Category "Msg"
+		quid       	"38C3E3350103"
+		exportControl 	"Public"
+		logical_models 	(list unit_reference_list
+		    (object Class_Category "TestUtils"
+			quid       	"38C3E33A039F"
+			exportControl 	"Public"
+			logical_models 	(list unit_reference_list
+			    (object Class "CTestUtils"
+				quid       	"38C3E2B70116"
+				superclasses 	(list inheritance_relationship_list
+				    (object Inheritance_Relationship
+					quid       	"38C3E3C30161"
+					supplier   	"Logical View::E32::CBase"
+					quidu      	"38C3E32B03C6"))
+				operations 	(list Operations
+				    (object Operation "Printf"
+					quid       	"38C3E3DE01A6"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "DefaultLogFileName"
+					quid       	"38C3E527019F"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "CreateFlogger"
+					quid       	"38C3E52D032E"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "CloseFlogger"
+					quid       	"38C3E5360183"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "TestStart"
+					quid       	"38C3E53C00A5"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "TestFinish"
+					quid       	"38C3E5410052"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "TestHarnessCompleted"
+					quid       	"38C3E54703CC"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "TestHarnessFailed"
+					quid       	"38C3E5510330"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "WriteComment"
+					quid       	"38C3E55A00A8"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "CreateAllTestDirectories"
+					quid       	"38C3E5610149"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "DisplayLogL"
+					quid       	"38C3E56A00C9"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "AppendEol"
+					quid       	"38C3E57402C2"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "DisplayFile"
+					quid       	"38C3E57D03D4"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "FileSession"
+					quid       	"38C3E58201C8"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "DisplayMenu"
+					quid       	"38C3E58B0199"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "ResetMenu"
+					quid       	"38C3E59B00AC"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "AppendToMenuL"
+					quid       	"38C3E5A300E9"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "MenuCount"
+					quid       	"38C3E5AB000E"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "ClearScreen"
+					quid       	"38C3E5B400BC"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "SetLogToConsole"
+					quid       	"38C3E5BB033D"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "SetLogToFile"
+					quid       	"38C3E5C40191"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "Test"
+					quid       	"38C3E5CD02B6"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "RunAuto"
+					quid       	"38C3E5D201FF"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "SetRunAuto"
+					quid       	"38C3E5D70008"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0))
+				class_attributes 	(list class_attribute_list
+				    (object ClassAttribute "iMenu"
+					quid       	"38C3E5DF003B"
+					exportControl 	"Protected")
+				    (object ClassAttribute "iFs"
+					quid       	"38C3E5E501A2"
+					exportControl 	"Protected")
+				    (object ClassAttribute "iRTest"
+					quid       	"38C3E5E802E7"
+					exportControl 	"Protected")
+				    (object ClassAttribute "iTestLogFile"
+					quid       	"38C3E5EE03A4"
+					exportControl 	"Protected")
+				    (object ClassAttribute "iLogToConsole"
+					quid       	"38C3E5F70036"
+					exportControl 	"Protected")
+				    (object ClassAttribute "iLogToFile"
+					quid       	"38C3E5FE02C1"
+					exportControl 	"Protected")
+				    (object ClassAttribute "iFlogger"
+					quid       	"38C3E60502CB"
+					exportControl 	"Protected")
+				    (object ClassAttribute "iRunAuto"
+					quid       	"38C3E60C00EA"
+					exportControl 	"Protected")))
+			    (object Class "CTestActive"
+				quid       	"38C3E2F30220")
+			    (object Class "CTestTimer"
+				quid       	"38C3E2FA022B")
+			    (object Class "CFaxTestUtils"
+				quid       	"38C3E2EB026F"
+				superclasses 	(list inheritance_relationship_list
+				    (object Inheritance_Relationship
+					quid       	"38C3E3B80206"
+					supplier   	"Logical View::Msg::TestUtils::CMsvTestUtils"
+					quidu      	"38C3E2C1014C")))
+			    (object Class "CSmsTestUtils"
+				quid       	"38C3E2D10037"
+				superclasses 	(list inheritance_relationship_list
+				    (object Inheritance_Relationship
+					quid       	"38C3E3BC03D8"
+					supplier   	"Logical View::Msg::TestUtils::CMsvTestUtils"
+					quidu      	"38C3E2C1014C")))
+			    (object Class "CEmailTestUtils"
+				quid       	"38C3E2C80201"
+				superclasses 	(list inheritance_relationship_list
+				    (object Inheritance_Relationship
+					quid       	"38C3E3BA02F9"
+					supplier   	"Logical View::Msg::TestUtils::CMsvTestUtils"
+					quidu      	"38C3E2C1014C")))
+			    (object Class "CMsvTestUtils"
+				quid       	"38C3E2C1014C"
+				superclasses 	(list inheritance_relationship_list
+				    (object Inheritance_Relationship
+					quid       	"38C3E3C001D5"
+					supplier   	"Logical View::Msg::TestUtils::CTestUtils"
+					quidu      	"38C3E2B70116"))
+				operations 	(list Operations
+				    (object Operation "GoServerSideL"
+					quid       	"38C3EA6700E4"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "GoClientSideL"
+					quid       	"38C3EA6D0313"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "Reset"
+					quid       	"38C3EA7301D1"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "CreateRegistryObjectAndControlL"
+					quid       	"38C3EA790248"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "InstallMtmGroupL"
+					quid       	"38C3EA9000BA"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "CleanMessageFolderL"
+					quid       	"38C3EA9A02BE"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "CreateAllTestDirectories"
+					quid       	"38C3EAA802E6"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "CreateServerMtmRegL"
+					quid       	"38C3EAB20146"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "CreateServiceL"
+					quid       	"38C3EABC021C"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "DeleteServiceL"
+					quid       	"38C3EAC303B7"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "FindChildrenL"
+					quid       	"38C3EACA010E"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "SetEntryL"
+					quid       	"38C3EAD602C4"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "ChangeEntryL"
+					quid       	"38C3EADF0303"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "CreateEntryL"
+					quid       	"38C3EAE900FF"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "CreateAndSetEntryL"
+					quid       	"38C3EAEE0084"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "DeleteEntryL"
+					quid       	"38C3EAF60202"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "Entry"
+					quid       	"38C3EB000116"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "EditStoreL"
+					quid       	"38C3EB07035B"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "ReadStoreL"
+					quid       	"38C3EB0E012A"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "ChildrenWithTypeLC"
+					quid       	"38C3EB140395"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "SetSortTypeL"
+					quid       	"38C3EB1C009E"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "InstantiateClientMtmsL"
+					quid       	"38C3EB2F014F"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "InstantiateServerMtmsL"
+					quid       	"38C3EB39024E"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "DeleteServicesL"
+					quid       	"38C3EB420355"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "CreateServicesL"
+					quid       	"38C3EB4D006C"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "FindExistingServicesL"
+					quid       	"38C3EB550321"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "CreateServerMtmRegsL"
+					quid       	"38C3EB5C0353"
+					concurrency 	"Sequential"
+					opExportControl 	"Public"
+					uid        	0)
+				    (object Operation "CMsvTestUtils"
+					quid       	"38C3EB6A00BE"
+					concurrency 	"Sequential"
+					opExportControl 	"Protected"
+					uid        	0)
+				    (object Operation "ConstructL"
+					quid       	"38C3EB7501A0"
+					concurrency 	"Sequential"
+					opExportControl 	"Protected"
+					uid        	0)
+				    (object Operation "InstantiateClientMtmL"
+					quid       	"38C3EB8D0032"
+					concurrency 	"Sequential"
+					opExportControl 	"Protected"
+					uid        	0)
+				    (object Operation "InstantiateServerMtmL"
+					quid       	"38C3EB9502DD"
+					concurrency 	"Sequential"
+					opExportControl 	"Protected"
+					uid        	0)
+				    (object Operation "ServiceIdL"
+					quid       	"38C3EBA40176"
+					concurrency 	"Sequential"
+					opExportControl 	"Protected"
+					uid        	0)
+				    (object Operation "WriteBodyDataL"
+					quid       	"38C3EBAF0334"
+					concurrency 	"Sequential"
+					opExportControl 	"Protected"
+					uid        	0)
+				    (object Operation "ListChildrenL"
+					quid       	"38C3EBB80160"
+					concurrency 	"Sequential"
+					opExportControl 	"Protected"
+					uid        	0))
+				class_attributes 	(list class_attribute_list
+				    (object ClassAttribute "iMsvSession"
+					quid       	"38C3EBC503C2"
+					exportControl 	"Public")
+				    (object ClassAttribute "iMsvEntry"
+					quid       	"38C3EBCC01AF"
+					exportControl 	"Public")
+				    (object ClassAttribute "iServerEntry"
+					quid       	"38C3EBD20063"
+					exportControl 	"Public")
+				    (object ClassAttribute "iClientMtmRegistry"
+					quid       	"38C3EBD801B6"
+					exportControl 	"Public"))))
+			logical_presentations 	(list unit_reference_list
+			    (object ClassDiagram "TestUtils"
+				quid       	"38C3E38B014D"
+				title      	"TestUtils"
+				zoom       	100
+				max_height 	28350
+				max_width  	21600
+				origin_x   	0
+				origin_y   	0
+				items      	(list diagram_item_list
+				    (object ClassView "Class" "Logical View::Msg::TestUtils::CTestUtils" @1
+					ShowCompartmentStereotypes 	TRUE
+					IncludeAttribute 	TRUE
+					IncludeOperation 	TRUE
+					location   	(368, 1216)
+					label      	(object ItemLabel
+					    Parent_View 	@1
+					    location   	(111, 360)
+					    fill_color 	13434879
+					    nlines     	1
+					    max_width  	514
+					    justify    	0
+					    label      	"CTestUtils")
+					icon_style 	"Icon"
+					line_color 	3342489
+					fill_color 	13434879
+					quidu      	"38C3E2B70116"
+					compartment 	(object Compartment
+					    Parent_View 	@1
+					    location   	(111, 421)
+					    icon_style 	"Icon"
+					    fill_color 	13434879
+					    anchor     	2
+					    nlines     	33
+					    max_width  	512)
+					width      	532
+					height     	1736
+					annotation 	8
+					autoResize 	TRUE)
+				    (object ClassView "Class" "Logical View::Msg::TestUtils::CFaxTestUtils" @2
+					ShowCompartmentStereotypes 	TRUE
+					IncludeAttribute 	TRUE
+					IncludeOperation 	TRUE
+					location   	(1840, 1488)
+					label      	(object ItemLabel
+					    Parent_View 	@2
+					    location   	(1696, 1437)
+					    fill_color 	13434879
+					    nlines     	1
+					    max_width  	288
+					    justify    	0
+					    label      	"CFaxTestUtils")
+					icon_style 	"Icon"
+					line_color 	3342489
+					fill_color 	13434879
+					quidu      	"38C3E2EB026F"
+					width      	306
+					height     	126
+					annotation 	8
+					autoResize 	TRUE)
+				    (object ClassView "Class" "Logical View::Msg::TestUtils::CEmailTestUtils" @3
+					ShowCompartmentStereotypes 	TRUE
+					IncludeAttribute 	TRUE
+					IncludeOperation 	TRUE
+					location   	(1840, 1216)
+					label      	(object ItemLabel
+					    Parent_View 	@3
+					    location   	(1681, 1165)
+					    fill_color 	13434879
+					    nlines     	1
+					    max_width  	318
+					    justify    	0
+					    label      	"CEmailTestUtils")
+					icon_style 	"Icon"
+					line_color 	3342489
+					fill_color 	13434879
+					quidu      	"38C3E2C80201"
+					width      	336
+					height     	126
+					annotation 	8
+					autoResize 	TRUE)
+				    (object ClassView "Class" "Logical View::Msg::TestUtils::CMsvTestUtils" @4
+					ShowCompartmentStereotypes 	TRUE
+					IncludeAttribute 	TRUE
+					IncludeOperation 	TRUE
+					location   	(1104, 1216)
+					label      	(object ItemLabel
+					    Parent_View 	@4
+					    location   	(761, 210)
+					    fill_color 	13434879
+					    nlines     	1
+					    max_width  	686
+					    justify    	0
+					    label      	"CMsvTestUtils")
+					icon_style 	"Icon"
+					line_color 	3342489
+					fill_color 	13434879
+					quidu      	"38C3E2C1014C"
+					compartment 	(object Compartment
+					    Parent_View 	@4
+					    location   	(761, 271)
+					    icon_style 	"Icon"
+					    fill_color 	13434879
+					    anchor     	2
+					    nlines     	39
+					    max_width  	684)
+					width      	704
+					height     	2036
+					annotation 	8
+					autoResize 	TRUE)
+				    (object ClassView "Class" "Logical View::Msg::TestUtils::CSmsTestUtils" @5
+					ShowCompartmentStereotypes 	TRUE
+					IncludeAttribute 	TRUE
+					IncludeOperation 	TRUE
+					location   	(1840, 944)
+					label      	(object ItemLabel
+					    Parent_View 	@5
+					    location   	(1689, 893)
+					    fill_color 	13434879
+					    nlines     	1
+					    max_width  	302
+					    justify    	0
+					    label      	"CSmsTestUtils")
+					icon_style 	"Icon"
+					line_color 	3342489
+					fill_color 	13434879
+					quidu      	"38C3E2D10037"
+					width      	320
+					height     	126
+					annotation 	8
+					autoResize 	TRUE)
+				    (object ClassView "Class" "Logical View::E32::CBase" @6
+					ShowCompartmentStereotypes 	TRUE
+					IncludeAttribute 	TRUE
+					IncludeOperation 	TRUE
+					location   	(352, 144)
+					label      	(object ItemLabel
+					    Parent_View 	@6
+					    location   	(271, 70)
+					    fill_color 	13434879
+					    nlines     	1
+					    max_width  	162
+					    justify    	0
+					    label      	"CBase")
+					icon_style 	"Icon"
+					line_color 	3342489
+					fill_color 	13434879
+					quidu      	"38C3E32B03C6"
+					height     	172
+					annotation 	8
+					autoResize 	TRUE)
+				    (object InheritView "" @7
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"38C3E3B80206"
+					client     	@2
+					supplier   	@4
+					line_style 	0)
+				    (object InheritView "" @8
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"38C3E3BA02F9"
+					client     	@3
+					supplier   	@4
+					line_style 	0)
+				    (object InheritView "" @9
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"38C3E3BC03D8"
+					client     	@5
+					supplier   	@4
+					line_style 	0)
+				    (object InheritView "" @10
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"38C3E3C001D5"
+					client     	@4
+					supplier   	@1
+					line_style 	0)
+				    (object InheritView "" @11
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"38C3E3C30161"
+					client     	@1
+					supplier   	@6
+					line_style 	0)))))
+		    (object Class_Category "MSGS"
+			quid       	"38C3E3420057"
+			exportControl 	"Public"
+			logical_models 	(list unit_reference_list
+			    (object Class "MMsvSessionObserver"
+				quid       	"38C3E3470004"))
+			logical_presentations 	(list unit_reference_list)))
+		logical_presentations 	(list unit_reference_list)))
+	logical_presentations 	(list unit_reference_list
+	    (object ClassDiagram "Main"
+		quid       	"38C3E2AD0032"
+		title      	"Main"
+		zoom       	100
+		max_height 	28350
+		max_width  	21600
+		origin_x   	0
+		origin_y   	0
+		items      	(list diagram_item_list))))
+    root_subsystem 	(object SubSystem "Component View"
+	quid       	"38C3E2AD002E"
+	physical_models 	(list unit_reference_list)
+	physical_presentations 	(list unit_reference_list
+	    (object Module_Diagram "Main"
+		quid       	"38C3E2AD0049"
+		title      	"Main"
+		zoom       	100
+		max_height 	28350
+		max_width  	21600
+		origin_x   	0
+		origin_y   	0
+		items      	(list diagram_item_list))))
+    process_structure 	(object Processes
+	quid       	"38C3E2AD002F"
+	ProcsNDevs 	(list
+	    (object Process_Diagram "Deployment View"
+		quid       	"38C3E2AD0031"
+		title      	"Deployment View"
+		zoom       	100
+		max_height 	28350
+		max_width  	21600
+		origin_x   	0
+		origin_y   	0
+		items      	(list diagram_item_list))))
+    properties 	(object Properties
+	attributes 	(list Attribute_Set
+	    (object Attribute
+		tool       	"DDL"
+		name       	"propertyId"
+		value      	"809135966")
+	    (object Attribute
+		tool       	"DDL"
+		name       	"default__Project"
+		value      	(list Attribute_Set
+		    (object Attribute
+			tool       	"DDL"
+			name       	"Directory"
+			value      	"AUTO GENERATE")
+		    (object Attribute
+			tool       	"DDL"
+			name       	"DataBase"
+			value      	("DataBaseSet" 800))
+		    (object Attribute
+			tool       	"DDL"
+			name       	"DataBaseSet"
+			value      	(list Attribute_Set
+			    (object Attribute
+				tool       	"DDL"
+				name       	"ANSI"
+				value      	800)
+			    (object Attribute
+				tool       	"DDL"
+				name       	"Oracle"
+				value      	801)
+			    (object Attribute
+				tool       	"DDL"
+				name       	"SQLServer"
+				value      	802)
+			    (object Attribute
+				tool       	"DDL"
+				name       	"Sybase"
+				value      	803)
+			    (object Attribute
+				tool       	"DDL"
+				name       	"Watcom"
+				value      	804)))
+		    (object Attribute
+			tool       	"DDL"
+			name       	"PrimaryKeyColumnName"
+			value      	"Id")
+		    (object Attribute
+			tool       	"DDL"
+			name       	"PrimaryKeyColumnType"
+			value      	"NUMBER(5)")
+		    (object Attribute
+			tool       	"DDL"
+			name       	"ViewName"
+			value      	"V_")
+		    (object Attribute
+			tool       	"DDL"
+			name       	"TableName"
+			value      	"T_")
+		    (object Attribute
+			tool       	"DDL"
+			name       	"InheritSuffix"
+			value      	"_V")
+		    (object Attribute
+			tool       	"DDL"
+			name       	"DropClause"
+			value      	FALSE)
+		    (object Attribute
+			tool       	"DDL"
+			name       	"BaseViews"
+			value      	FALSE)
+		    (object Attribute
+			tool       	"DDL"
+			name       	"DDLScriptFilename"
+			value      	"DDL1.SQL")))
+	    (object Attribute
+		tool       	"DDL"
+		name       	"default__Attribute"
+		value      	(list Attribute_Set
+		    (object Attribute
+			tool       	"DDL"
+			name       	"ColumnType"
+			value      	"VARCHAR")
+		    (object Attribute
+			tool       	"DDL"
+			name       	"Length"
+			value      	"")
+		    (object Attribute
+			tool       	"DDL"
+			name       	"NullsOK"
+			value      	TRUE)
+		    (object Attribute
+			tool       	"DDL"
+			name       	"PrimaryKey"
+			value      	FALSE)
+		    (object Attribute
+			tool       	"DDL"
+			name       	"Unique"
+			value      	FALSE)
+		    (object Attribute
+			tool       	"DDL"
+			name       	"CompositeUnique"
+			value      	FALSE)
+		    (object Attribute
+			tool       	"DDL"
+			name       	"CheckConstraint"
+			value      	"")))
+	    (object Attribute
+		tool       	"DDL"
+		name       	"HiddenTool"
+		value      	FALSE)
+	    (object Attribute
+		tool       	"Rose Model Integrator"
+		name       	"HiddenTool"
+		value      	FALSE)
+	    (object Attribute
+		tool       	"Version Control"
+		name       	"HiddenTool"
+		value      	FALSE))
+	quid       	"38C3E2AD0030"))

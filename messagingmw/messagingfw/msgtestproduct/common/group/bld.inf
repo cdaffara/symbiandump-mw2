@@ -1,0 +1,133 @@
+// Copyright (c) 2006-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// bld.inf file for the Common Server
+// 
+//
+
+/**
+ @file
+*/
+ 
+
+
+PRJ_TESTMMPFILES
+T_MsgCommonServer.mmp
+
+
+PRJ_TESTEXPORTS
+
+// preq1667 test setup scripts and .ini files
+../scripts/search/search_entry.script				/epoc32/winscw/c/msgtest/common/search/search_entry.script
+../testdata/search/msg-search-setup.ini				/epoc32/winscw/c/msgtest/common/search/msg-search-setup.ini
+../scripts/search/sms_searchsort_setup.script			/epoc32/winscw/c/msgtest/common/search/setup/sms_searchsort_setup.script
+../testdata/search/sms_searchsort_setup.ini			/epoc32/winscw/c/msgtest/common/search/setup/sms_searchsort_setup.ini
+
+// preq1667 test scripts and .ini for new search-sort feature
+../scripts/search/msg-searchsort1.script			/epoc32/winscw/c/msgtest/common/search/msg-searchsort1.script
+../testdata/search/msg-searchsort1.ini 				/epoc32/winscw/c/msgtest/common/search/msg-searchsort1.ini
+../scripts/search/msg-searchsort2.script			/epoc32/winscw/c/msgtest/common/search/msg-searchsort2.script
+../testdata/search/msg-searchsort2.ini 				/epoc32/winscw/c/msgtest/common/search/msg-searchsort2.ini
+../scripts/search/msg-combinesearch.script			/epoc32/winscw/c/msgtest/common/search/msg-combinesearch.script
+../scripts/search/msg-searchsort-iterator.script		/epoc32/winscw/c/msgtest/common/search/msg-searchsort-iterator.script
+../scripts/search/msg-searchsort-performance.script		/epoc32/winscw/c/msgtest/common/search/msg-searchsort-performance.script
+../scripts/search/msg-searchsort-performance1.script		/epoc32/winscw/c/msgtest/common/search/msg-searchsort-performance1.script
+../scripts/search/msg-sort-operation1.script			/epoc32/winscw/c/msgtest/common/search/msg-sort-operation1.script
+../testdata/search/msg-combinesearch.ini			/epoc32/winscw/c/msgtest/common/search/msg-combinesearch.ini
+../testdata/search/msg-searchsort-iterator.ini			/epoc32/winscw/c/msgtest/common/search/msg-searchsort-iterator.ini
+../testdata/search/msg-searchsort-performance.ini		/epoc32/winscw/c/msgtest/common/search/msg-searchsort-performance.ini
+../testdata/search/msg-sort-operation1.ini			/epoc32/winscw/c/msgtest/common/search/msg-sort-operation1.ini
+
+// preq1667 test scripts and .ini files for searching in existing framework
+../scripts/search/msg-imap-search-to.script			/epoc32/winscw/c/msgtest/common/search/msg-imap-search-to.script
+../testdata/search/msg-imap-search-to.ini			/epoc32/winscw/c/msgtest/common/search/msg-imap-search-to.ini
+../scripts/search/msg-imap-client-search.script			/epoc32/winscw/c/msgtest/common/search/msg-imap-client-search.script
+../testdata/search/msg-imap-client-search.ini			/epoc32/winscw/c/msgtest/common/search/msg-imap-client-search.ini
+
+../scripts/search/msg-imap-search-performance.script		/epoc32/winscw/c/msgtest/common/search/msg-imap-search-performance.script
+../scripts/search/msg-perf-search-using-existing.script		/epoc32/winscw/c/msgtest/common/search/msg-perf-search-using-existing.script
+../testdata/search/msg-perf-search-using-existing.ini		/epoc32/winscw/c/msgtest/common/search/msg-perf-search-using-existing.ini
+../scripts/search/msg-perf-advanced-search-using-1667qo.script	/epoc32/winscw/c/msgtest/common/search/msg-perf-advanced-search-using-1667qo.script
+../testdata/search/msg-perf-advanced-search-using-1667qo.ini	/epoc32/winscw/c/msgtest/common/search/msg-perf-advanced-search-using-1667qo.ini
+
+../scripts/search/msg-perf-index-search-using-1667qo.script	/epoc32/winscw/c/msgtest/common/search/msg-perf-index-search-using-1667qo.script
+../testdata/search/msg-perf-index-search-using-1667qo.ini	/epoc32/winscw/c/msgtest/common/search/msg-perf-index-search-using-1667qo.ini
+
+../scripts/search/msg-perf-search-using-1667qi-bcc.script	/epoc32/winscw/c/msgtest/common/search/msg-perf-search-using-1667qi-bcc.script
+../scripts/search/msg-perf-search-using-1667qi-body.script	/epoc32/winscw/c/msgtest/common/search/msg-perf-search-using-1667qi-body.script
+../scripts/search/msg-perf-search-using-1667qi-cc.script	/epoc32/winscw/c/msgtest/common/search/msg-perf-search-using-1667qi-cc.script
+../scripts/search/msg-perf-search-using-1667qi-subj.script	/epoc32/winscw/c/msgtest/common/search/msg-perf-search-using-1667qi-subj.script
+../scripts/search/msg-perf-search-using-1667qi-to.script	/epoc32/winscw/c/msgtest/common/search/msg-perf-search-using-1667qi-to.script
+../testdata/search/msg-perf-search-using-1667qi.ini		/epoc32/winscw/c/msgtest/common/search/msg-perf-search-using-1667qi.ini
+
+../scripts/search/msg-perf-search-using-1667qo.script		/epoc32/winscw/c/msgtest/common/search/msg-perf-search-using-1667qo.script
+../scripts/search/msg-perf-search-using-1667qo-bcc.script	/epoc32/winscw/c/msgtest/common/search/msg-perf-search-using-1667qo-bcc.script
+../scripts/search/msg-perf-search-using-1667qo-body.script	/epoc32/winscw/c/msgtest/common/search/msg-perf-search-using-1667qo-body.script
+../scripts/search/msg-perf-search-using-1667qo-cc.script	/epoc32/winscw/c/msgtest/common/search/msg-perf-search-using-1667qo-cc.script
+../scripts/search/msg-perf-search-using-1667qo-subj.script	/epoc32/winscw/c/msgtest/common/search/msg-perf-search-using-1667qo-subj.script
+../scripts/search/msg-perf-search-using-1667qo-to.script	/epoc32/winscw/c/msgtest/common/search/msg-perf-search-using-1667qo-to.script
+../testdata/search/msg-perf-search-using-1667qo.ini		/epoc32/winscw/c/msgtest/common/search/msg-perf-search-using-1667qo.ini
+
+../scripts/search/msg-perf-sort-using-1667qo.script		/epoc32/winscw/c/msgtest/common/search/msg-perf-sort-using-1667qo.script
+../testdata/search/msg-perf-sort-using-1667qo.ini		/epoc32/winscw/c/msgtest/common/search/msg-perf-sort-using-1667qo.ini
+
+//Unit test for cmsvsession class code coverage.
+../scripts/unit/msg-fw-cmsvsession.script			/epoc32/winscw/c/msgtest/common/unit/msg-fw-cmsvsession.script
+../scripts/unit/msg-fw-cmsventry.script				/epoc32/winscw/c/msgtest/common/unit/msg-fw-cmsventry.script
+
+// Email Message files
+../testdata/emailmessage/message1.txt				/epoc32/winscw/c/msgtest/config/emailmessage/message1.txt
+../testdata/emailmessage/message2.txt				/epoc32/winscw/c/msgtest/config/emailmessage/message2.txt
+../testdata/emailmessage/message3.txt				/epoc32/winscw/c/msgtest/config/emailmessage/message3.txt
+../testdata/emailmessage/message4.txt				/epoc32/winscw/c/msgtest/config/emailmessage/message4.txt
+../testdata/emailmessage/message5.txt				/epoc32/winscw/c/msgtest/config/emailmessage/message5.txt
+../testdata/emailmessage/message6.txt				/epoc32/winscw/c/msgtest/config/emailmessage/message6.txt
+../testdata/emailmessage/message7.txt				/epoc32/winscw/c/msgtest/config/emailmessage/message7.txt
+../testdata/emailmessage/message8.txt				/epoc32/winscw/c/msgtest/config/emailmessage/message8.txt
+../testdata/emailmessage/message9.txt				/epoc32/winscw/c/msgtest/config/emailmessage/message9.txt
+../testdata/emailmessage/message10.txt				/epoc32/winscw/c/msgtest/config/emailmessage/message10.txt
+../testdata/emailmessage/message11.txt				/epoc32/winscw/c/msgtest/config/emailmessage/message11.txt
+../testdata/emailmessage/message12.txt				/epoc32/winscw/c/msgtest/config/emailmessage/message12.txt
+../testdata/emailmessage/message13.txt				/epoc32/winscw/c/msgtest/config/emailmessage/message13.txt
+../testdata/emailmessage/message14.txt				/epoc32/winscw/c/msgtest/config/emailmessage/message14.txt
+../testdata/emailmessage/message15.txt				/epoc32/winscw/c/msgtest/config/emailmessage/message15.txt
+../testdata/emailmessage/message16.txt				/epoc32/winscw/c/msgtest/config/emailmessage/message16.txt
+../testdata/emailmessage/message17.txt				/epoc32/winscw/c/msgtest/config/emailmessage/message17.txt
+../testdata/emailmessage/message18.txt				/epoc32/winscw/c/msgtest/config/emailmessage/message18.txt
+../testdata/emailmessage/message19.txt				/epoc32/winscw/c/msgtest/config/emailmessage/message19.txt
+
+../testdata/emailmessage/msgtext1.txt				/epoc32/winscw/c/msgtest/config/emailmessage/msgtext1.txt
+../testdata/emailmessage/msgtext2.txt				/epoc32/winscw/c/msgtest/config/emailmessage/msgtext2.txt
+
+
+// SMS Message files
+../testdata/smsmessage/message_singlesms_0001.txt		/epoc32/winscw/c/msgtest/config/smsmessage/message_singlesms_0001.txt
+
+
+// Email Setting files
+../testdata/emailsettings/imapsettings_test001.txt		/epoc32/winscw/c/msgtest/config/emailsettings/imapsettings_test001.txt
+../testdata/emailsettings/imapsettings_test002.txt		/epoc32/winscw/c/msgtest/config/emailsettings/imapsettings_test002.txt
+../testdata/emailsettings/imapsettings_test003.txt		/epoc32/winscw/c/msgtest/config/emailsettings/imapsettings_test003.txt
+../testdata/emailsettings/imapsettings_test004.txt		/epoc32/winscw/c/msgtest/config/emailsettings/imapsettings_test004.txt
+../testdata/emailsettings/imapsettings_test005.txt		/epoc32/winscw/c/msgtest/config/emailsettings/imapsettings_test005.txt
+../testdata/emailsettings/imapsettings_test006.txt		/epoc32/winscw/c/msgtest/config/emailsettings/imapsettings_test006.txt
+../testdata/emailsettings/imapsettings_test007.txt		/epoc32/winscw/c/msgtest/config/emailsettings/imapsettings_test007.txt
+../testdata/emailsettings/imapsettings_test008.txt		/epoc32/winscw/c/msgtest/config/emailsettings/imapsettings_test008.txt
+../testdata/emailsettings/imapsettings_test009.txt		/epoc32/winscw/c/msgtest/config/emailsettings/imapsettings_test009.txt
+../testdata/emailsettings/imapsettings_test010.txt		/epoc32/winscw/c/msgtest/config/emailsettings/imapsettings_test010.txt
+../testdata/emailsettings/imapsettings_test011.txt		/epoc32/winscw/c/msgtest/config/emailsettings/imapsettings_test011.txt
+../testdata/emailsettings/popsettings_test001.txt		/epoc32/winscw/c/msgtest/config/emailsettings/popsettings_test001.txt
+
+// SMS Setting files
+../testdata/smssettings/smssettings.txt				/epoc32/winscw/c/msgtest/config/smssettings/smssettings.txt
+../testdata/smssettings/sendsinglesmsconfig.txt			/epoc32/winscw/c/msgtest/config/smssettings/sendsinglesmsconfig.txt

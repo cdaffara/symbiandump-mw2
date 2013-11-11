@@ -1,0 +1,26 @@
+// Copyright (c) 2006-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+rls_string CHINESE_UNICODE_SERVICE_NAME <0x591A><0x5A92><0x9AD4><0x4FE1><0x606F>
+
+STRUCT LBUF
+	{
+	LTEXT buffer;
+	}
+
+RESOURCE LBUF r_chinese_unicode_service_name
+	{
+	buffer = CHINESE_UNICODE_SERVICE_NAME;
+	}

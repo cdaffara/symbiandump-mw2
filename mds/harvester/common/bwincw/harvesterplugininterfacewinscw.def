@@ -1,0 +1,17 @@
+EXPORTS
+	??0CHarvesterPlugin@@IAE@XZ @ 1 NONAME ; CHarvesterPlugin::CHarvesterPlugin(void)
+	??1CHarvesterPlugin@@UAE@XZ @ 2 NONAME ; CHarvesterPlugin::~CHarvesterPlugin(void)
+	?DoCancel@CHarvesterPlugin@@MAEXXZ @ 3 NONAME ; void CHarvesterPlugin::DoCancel(void)
+	?GetObjectType@CHarvesterPlugin@@UAEXABVTDesC16@@AAVTDes16@@@Z @ 4 NONAME ; void CHarvesterPlugin::GetObjectType(class TDesC16 const &, class TDes16 &)
+	?ListImplementationsL@CHarvesterPlugin@@SAXAAV?$RPointerArray@VCImplementationInformation@@@@@Z @ 5 NONAME ; void CHarvesterPlugin::ListImplementationsL(class RPointerArray<class CImplementationInformation> &)
+	?NewL@CHarvesterPlugin@@SAPAV1@ABVTUid@@@Z @ 6 NONAME ; class CHarvesterPlugin * CHarvesterPlugin::NewL(class TUid const &)
+	?RunError@CHarvesterPlugin@@MAEHH@Z @ 7 NONAME ; int CHarvesterPlugin::RunError(int)
+	?RunL@CHarvesterPlugin@@MAEXXZ @ 8 NONAME ; void CHarvesterPlugin::RunL(void)
+	?SetQueue@CHarvesterPlugin@@UAEXAAV?$RPointerArray@VCHarvesterData@@@@@Z @ 9 NONAME ; void CHarvesterPlugin::SetQueue(class RPointerArray<class CHarvesterData> &)
+	?StartHarvest@CHarvesterPlugin@@UAEXXZ @ 10 NONAME ; void CHarvesterPlugin::StartHarvest(void)
+	?SetBlacklist@CHarvesterPlugin@@UAEXAAVCHarvesterBlacklist@@@Z @ 11 NONAME ; void CHarvesterPlugin::SetBlacklist(class CHarvesterBlacklist &)
+	?GetMimeType@CHarvesterPlugin@@UAEXABVTDesC16@@AAVTDes16@@@Z @ 12 NONAME ; void CHarvesterPlugin::GetMimeType(class TDesC16 const &, class TDes16 &)
+	?SetHarvesterPluginFactory@CHarvesterPlugin@@QAEXAAVCHarvesterPluginFactory@@@Z @ 13 NONAME ; void CHarvesterPlugin::SetHarvesterPluginFactory(class CHarvesterPluginFactory &)
+	?PluginInIdleState@CHarvesterPlugin@@QAEHXZ @ 14 NONAME ; int CHarvesterPlugin::PluginInIdleState(void)
+	?StopHarvest@CHarvesterPlugin@@UAEXXZ @ 15 NONAME ; void CHarvesterPlugin::StopHarvest(void)
+

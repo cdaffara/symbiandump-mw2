@@ -1,0 +1,64 @@
+EXPORTS
+	_ZN11CMnrpEngine12KnownPlacesLEv @ 1 NONAME
+	_ZN11CMnrpEngine15AddressToCoordLERK12CPosLandmark @ 2 NONAME
+	_ZN11CMnrpEngine15AddressToCoordLERK7TDesC16 @ 3 NONAME
+	_ZN11CMnrpEngine16AddressToCoordLCERK12CPosLandmark @ 4 NONAME
+	_ZN11CMnrpEngine16AddressToCoordLCERK7TDesC16 @ 5 NONAME
+	_ZN11CMnrpEngine16CoordToAddressLCERK11TCoordinate @ 6 NONAME
+	_ZN11CMnrpEngine16FindClosestPoisLERK12CPosLandmarkR6RArrayINS_14TDistanceToPoiEEi @ 7 NONAME
+	_ZN11CMnrpEngine17FindResourceFileLERK7TDesC16R4TBufILi256EE @ 8 NONAME
+	_ZN11CMnrpEngine24DistanceBetweenLandmarksERK12CPosLandmarkS2_ @ 9 NONAME
+	_ZN11CMnrpEngine26BestCoordToAddressMatchesLERK11TCoordinateR13RPointerArrayI12CPosLandmarkEi @ 10 NONAME
+	_ZN11CMnrpEngine2FsEv @ 11 NONAME
+	_ZN11CMnrpEngine4NewLEv @ 12 NONAME
+	_ZN11CMnrpEngineD0Ev @ 13 NONAME
+	_ZN11CMnrpEngineD1Ev @ 14 NONAME
+	_ZN11CMnrpEngineD2Ev @ 15 NONAME
+	_ZN13CMnrpMapModel11UpdateModelERK17TMnMapImageParams @ 16 NONAME
+	_ZN13CMnrpMapModel12UpdateModelLER19CMnrpMapViewService @ 17 NONAME
+	_ZN13CMnrpMapModel12UpdateModelLERK20CMnrpMapImageService @ 18 NONAME
+	_ZN13CMnrpMapModel13SetScreenSizeE5TSize @ 19 NONAME
+	_ZN13CMnrpMapModel19NumIgnoredLandmarksEv @ 20 NONAME
+	_ZN13CMnrpMapModel4NewLER11CMnrpEngine @ 21 NONAME
+	_ZN13CMnrpMapModel4NewLER17MMapModelObserverR11CMnrpEngine @ 22 NONAME
+	_ZN13CMnrpMapModel4ZoomEd @ 23 NONAME
+	_ZN13CMnrpMapModel6MoveToE11TCoordinate @ 24 NONAME
+	_ZN13CMnrpMapModel8GoCenterEv @ 25 NONAME
+	_ZN20CMnrpPositionRequest11GetPositionER13TPositionInfo @ 26 NONAME
+	_ZN20CMnrpPositionRequest11SetOptionsLERK26TPositionUpdateOptionsBase @ 27 NONAME
+	_ZN20CMnrpPositionRequest14MagneticCourseEv @ 28 NONAME
+	_ZN20CMnrpPositionRequest15MagneticHeadingEv @ 29 NONAME
+	_ZN20CMnrpPositionRequest16FetchNewPositionEi @ 30 NONAME
+	_ZN20CMnrpPositionRequest4NewLERK7TDesC16R21MMnrpPositionObserver @ 31 NONAME
+	_ZN20CMnrpPositionRequest5SpeedEv @ 32 NONAME
+	_ZN20CMnrpPositionRequest6CourseEv @ 33 NONAME
+	_ZN20CMnrpPositionRequest7HeadingEv @ 34 NONAME
+	_ZN20CMnrpPositionRequestD0Ev @ 35 NONAME
+	_ZN20CMnrpPositionRequestD1Ev @ 36 NONAME
+	_ZN20CMnrpPositionRequestD2Ev @ 37 NONAME
+	_ZN9MnrpUtils13AngleToStringEdR6TDes16 @ 38 NONAME
+	_ZN9MnrpUtils13SpeedToStringEdR6TDes16 @ 39 NONAME
+	_ZN9MnrpUtils16DistanceToStringEdR6TDes16 @ 40 NONAME
+	_ZN9MnrpUtils17PrintableStringLCERK7TDesC16 @ 41 NONAME
+	_ZN9MnrpUtils18CoordinateToStringEdR6TDes16ii @ 42 NONAME
+	_ZNK13CMnrpMapModel16AbsoluteToScreenE11TCoordinate @ 43 NONAME
+	_ZNK13CMnrpMapModel16ScreenToAbsoluteE6TPoint @ 44 NONAME
+	_ZNK13CMnrpMapModel16ScreenToAbsoluteEi @ 45 NONAME
+	_ZNK13CMnrpMapModel3TopEv @ 46 NONAME
+	_ZNK13CMnrpMapModel4LeftEv @ 47 NONAME
+	_ZNK13CMnrpMapModel5RightEv @ 48 NONAME
+	_ZNK13CMnrpMapModel5WidthEv @ 49 NONAME
+	_ZNK13CMnrpMapModel6BottomEv @ 50 NONAME
+	_ZNK13CMnrpMapModel6CenterEv @ 51 NONAME
+	_ZNK13CMnrpMapModel6HeightEv @ 52 NONAME
+	_ZNK13CMnrpMapModel7GetGridERNS_5TGridE @ 53 NONAME
+	_ZNK13CMnrpMapModel7RenderLER10CFbsBitmap5TRectP5CFontS4_ @ 54 NONAME
+	_ZTI11CMnrpEngine @ 55 NONAME ; #<TI>#
+	_ZTI13CMnrpMapModel @ 56 NONAME ; #<TI>#
+	_ZTI20CMnrpPositionRequest @ 57 NONAME ; #<TI>#
+	_ZTIN13CMnrpMapModel9CDrawItemE @ 58 NONAME ; #<TI>#
+	_ZTV11CMnrpEngine @ 59 NONAME ; #<VT>#
+	_ZTV13CMnrpMapModel @ 60 NONAME ; #<VT>#
+	_ZTV20CMnrpPositionRequest @ 61 NONAME ; #<VT>#
+	_ZTVN13CMnrpMapModel9CDrawItemE @ 62 NONAME ; #<VT>#
+

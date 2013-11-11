@@ -1,0 +1,78 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//!	@file
+//! 	@SYMTestCaseID		MSG-SENDAS-SMTP-ALLOWONCE-0003
+//! 	@SYMTestCaseDesc	For sending SMTP message using SendAs server user should be prompted for his 
+//!				response and message should be sent for the Allow Once response of user.
+//!				
+//!				
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ1678
+//!	@SYMREQ			REQ7007
+//!				
+//! 	@SYMTestActions		1.	Clean the message store.
+//!				2.	Create an IMAP account.
+//!				3.	Connect to the SendAs server and create a SendAsmessage against the SMTP UID.
+//!				4.	Set user response to Allow Once against the user prompt for SendAs server.
+//!				5.	Send the message using SendAs server and then close the server connection.
+//! 				6.	Check if only one message is sent.
+//!	@SYMTestExpectedResults	Children count on sent item should be one.
+//!				
+//!	@SYMAuthor		Pramod Das
+
+RUN_SCRIPT  c:\msgtest\testframework\scriptedtestcases\upssupport\upssupport_setup.script
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+RUN_PROGRAM   100 SetUserPromptResponse Yes
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+GetBaseConstants		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-allowonce-0003.ini	GetBaseConstants
+InitNtRas			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-allowonce-0003.ini	InitNtRas
+GetSMTPMTMUId			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-allowonce-0003.ini	SMTPMTMUId
+CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-allowonce-0003.ini	CreateSession
+ResetMessageStore		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-allowonce-0003.ini	ResetMessageStore
+CreateImap4Service		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-allowonce-0003.ini	CreateImap4Service
+CreateSmtpService		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-allowonce-0003.ini	CreateSmtpService
+CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-allowonce-0003.ini	CreateRegistry
+CreateSmtpMtm			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-allowonce-0003.ini	CreateSmtpMtm
+SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-allowonce-0003.ini	SetDefaultConfiguration0
+SetSmtpServiceParameters	c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-allowonce-0003.ini	SetSmtpServiceParams
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-allowonce-0003.ini	ChkChildrenCountDraft0
+CreateImap4Mtm			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-allowonce-0003.ini	CreateImap4Mtm
+SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-allowonce-0003.ini	SetDefaultConfigurationIMAP
+SetImap4ServiceParameters	c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-allowonce-0003.ini	SetImap4ServiceParameters
+EXECUTE_TEST_CASE
+ChangeDefaultSmtpService	c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-allowonce-0003.ini	ChangeDefaultSmtpService
+ConnectSendAsServer		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-allowonce-0003.ini	ConnectSendAsServer
+SendAsCreateMessageofType	c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-allowonce-0003.ini	CreateMessageofType
+SendAsAddLinkedAttachment	c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-allowonce-0003.ini	SendAsAddLinkedAttachment
+SendAsSetSubject		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-allowonce-0003.ini	SendAsSetSubject
+SendAsAddRecipient		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-allowonce-0003.ini	SendAsAddRecipient
+SendAsSendMessage		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-allowonce-0003.ini	SendAsSendMessage
+SendAsCloseMessage		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-allowonce-0003.ini	CloseMessage
+CloseSendAsServerConnection	c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-allowonce-0003.ini	CloseSvrConnection
+CHECK_POSTCONDITIONS
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-allowonce-0003.ini	ChkChildrenCountSent0
+END_TEST_CASE
+REMOVE_PREFIX
+RUN_SCRIPT  c:\msgtest\testframework\scriptedtestcases\upssupport\restore_setup.script

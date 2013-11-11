@@ -1,0 +1,482 @@
+/******************************************************
+        Description: Test basic operations with different 
+        - plugins: ps, cs
+        - call type: ECCECallTypePS, ECCECallTypeCSVoice, ECCECallTypeVideo, ECCECallTypeFax, ECCECallTypeData
+        - type configurations: ECCELineTypePrimary, ECCELineTypeAux
+   					 
+        1. PS plugin / primary
+        2. PS plugin / aux
+        3. CS plugin / primary
+        4. CS plugin / aux
+******************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 11.7 Misc, Basic Operations 2
+timeout 80000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+// PS test plugin
+
+test OpenNewCall 1 0 Recipient1 2 ECCECallTypePS ECCELineTypePrimary
+// dial
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+// hold & resume
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+test Resume 1 0
+test WaitEvents 1 Connected, 1 LocalResume
+// dtmf
+test StartDtmfTone 0 3
+test WaitEvent DtmfManualStart 0 3
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+// hangup
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+test OpenNewCall 2 0 Recipient2 2 ECCECallTypeCSVoice ECCELineTypePrimary
+// dial
+test Dial 2 0 SubAddress Bearer
+test WaitEvent 2 Dialling
+test WaitEvent 2 Connecting
+test WaitEvent 2 Connected
+// hold & resume
+test Hold 2 0
+test WaitEvents 2 Hold, 2 LocalHold
+test Resume 2 0
+test WaitEvents 2 Connected, 2 LocalResume
+// dtmf
+test StartDtmfTone 0 3
+test WaitEvent DtmfManualStart 0 3
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+// hangup
+test HangUp 2 0
+test WaitEvent 2 Disconnecting
+test WaitEvent 2 Idle
+test Release 2 0
+
+test OpenNewCall 3 0 Recipient3 2 ECCECallTypeVideo ECCELineTypePrimary
+// dial
+test Dial 3 0 SubAddress Bearer
+test WaitEvent 3 Dialling
+test WaitEvent 3 Connecting
+test WaitEvent 3 Connected
+// hold & resume
+test Hold 3 0
+test WaitEvents 3 Hold, 3 LocalHold
+test Resume 3 0
+test WaitEvents 3 Connected, 3 LocalResume
+// dtmf
+test StartDtmfTone 0 3
+test WaitEvent DtmfManualStart 0 3
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+// hangup
+test HangUp 3 0
+test WaitEvent 3 Disconnecting
+test WaitEvent 3 Idle
+test Release 3 0
+
+test OpenNewCall 4 0 Recipient4 2 ECCECallTypeFax ECCELineTypePrimary
+// dial
+test Dial 4 0 SubAddress Bearer
+test WaitEvent 4 Dialling
+test WaitEvent 4 Connecting
+test WaitEvent 4 Connected
+// hold & resume
+test Hold 4 0
+test WaitEvents 4 Hold, 4 LocalHold
+test Resume 4 0
+test WaitEvents 4 Connected, 4 LocalResume
+// dtmf
+test StartDtmfTone 0 3
+test WaitEvent DtmfManualStart 0 3
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+// hangup
+test HangUp 4 0
+test WaitEvent 4 Disconnecting
+test WaitEvent 4 Idle
+test Release 4 0
+
+test OpenNewCall 5 0 Recipient5 2 ECCECallTypeData ECCELineTypePrimary
+// dial
+test Dial 5 0 SubAddress Bearer
+test WaitEvent 5 Dialling
+test WaitEvent 5 Connecting
+test WaitEvent 5 Connected
+// hold & resume
+test Hold 5 0
+test WaitEvents 5 Hold, 5 LocalHold
+test Resume 5 0
+test WaitEvents 5 Connected, 5 LocalResume
+// dtmf
+test StartDtmfTone 0 3
+test WaitEvent DtmfManualStart 0 3
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+// hangup
+test HangUp 5 0
+test WaitEvent 5 Disconnecting
+test WaitEvent 5 Idle
+test Release 5 0
+
+// Step 2
+print Step_2
+
+test OpenNewCall 6 0 Recipient6 2 ECCECallTypePS ECCELineTypeAux
+// dial
+test Dial 6 0 SubAddress Bearer
+test WaitEvent 6 Dialling
+test WaitEvent 6 Connecting
+test WaitEvent 6 Connected
+// hold & resume
+test Hold 6 0
+test WaitEvents 6 Hold, 6 LocalHold
+test Resume 6 0
+test WaitEvents 6 Connected, 6 LocalResume
+// dtmf
+test StartDtmfTone 0 3
+test WaitEvent DtmfManualStart 0 3
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+// hangup
+test HangUp 6 0
+test WaitEvent 6 Disconnecting
+test WaitEvent 6 Idle
+test Release 6 0
+
+test OpenNewCall 7 0 Recipient7 2 ECCECallTypeCSVoice ECCELineTypeAux
+// dial
+test Dial 7 0 SubAddress Bearer
+test WaitEvent 7 Dialling
+test WaitEvent 7 Connecting
+test WaitEvent 7 Connected
+// hold & resume
+test Hold 7 0
+test WaitEvents 7 Hold, 7 LocalHold
+test Resume 7 0
+test WaitEvents 7 Connected, 7 LocalResume
+// dtmf
+test StartDtmfTone 0 3
+test WaitEvent DtmfManualStart 0 3
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+// hangup
+test HangUp 7 0
+test WaitEvent 7 Disconnecting
+test WaitEvent 7 Idle
+test Release 7 0
+
+test OpenNewCall 8 0 Recipient8 2 ECCECallTypeVideo ECCELineTypeAux
+// dial
+test Dial 8 0 SubAddress Bearer
+test WaitEvent 8 Dialling
+test WaitEvent 8 Connecting
+test WaitEvent 8 Connected
+// hold & resume
+test Hold 8 0
+test WaitEvents 8 Hold, 8 LocalHold
+test Resume 8 0
+test WaitEvents 8 Connected, 8 LocalResume
+// dtmf
+test StartDtmfTone 0 3
+test WaitEvent DtmfManualStart 0 3
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+// hangup
+test HangUp 8 0
+test WaitEvent 8 Disconnecting
+test WaitEvent 8 Idle
+test Release 8 0
+
+test OpenNewCall 9 0 Recipient9 2 ECCECallTypeFax ECCELineTypeAux
+// dial
+test Dial 9 0 SubAddress Bearer
+test WaitEvent 9 Dialling
+test WaitEvent 9 Connecting
+test WaitEvent 9 Connected
+// hold & resume
+test Hold 9 0
+test WaitEvents 9 Hold, 9 LocalHold
+test Resume 9 0
+test WaitEvents 9 Connected, 9 LocalResume
+// dtmf
+test StartDtmfTone 0 3
+test WaitEvent DtmfManualStart 0 3
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+// hangup
+test HangUp 9 0
+test WaitEvent 9 Disconnecting
+test WaitEvent 9 Idle
+test Release 9 0
+
+test OpenNewCall 10 0 Recipient10 2 ECCECallTypeData ECCELineTypeAux
+// dial
+test Dial 10 0 SubAddress Bearer
+test WaitEvent 10 Dialling
+test WaitEvent 10 Connecting
+test WaitEvent 10 Connected
+// hold & resume
+test Hold 10 0
+test WaitEvents 10 Hold, 10 LocalHold
+test Resume 10 0
+test WaitEvents 10 Connected, 10 LocalResume
+// dtmf
+test StartDtmfTone 0 3
+test WaitEvent DtmfManualStart 0 3
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+// hangup
+test HangUp 10 0
+test WaitEvent 10 Disconnecting
+test WaitEvent 10 Idle
+test Release 10 0
+
+// Step 3
+print Step_3
+
+// CS test plugin
+
+test OpenNewCall 11 0 Recipient1 1 ECCECallTypePS ECCELineTypePrimary
+// dial
+test Dial 11 0 SubAddress Bearer
+test WaitEvent 11 Dialling
+test WaitEvent 11 Connecting
+test WaitEvent 11 Connected
+// hold & resume
+test Hold 11 0
+test WaitEvents 11 Hold, 11 LocalHold
+test Resume 11 0
+test WaitEvents 11 Connected, 11 LocalResume
+// dtmf
+test StartDtmfTone 0 3
+test WaitEvent DtmfManualStart 0 3
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+// hangup
+test HangUp 11 0
+test WaitEvent 11 Disconnecting
+test WaitEvent 11 Idle
+test Release 11 0
+
+test OpenNewCall 12 0 Recipient2 1 ECCECallTypeCSVoice ECCELineTypePrimary
+// dial
+test Dial 12 0 SubAddress Bearer
+test WaitEvent 12 Dialling
+test WaitEvent 12 Connecting
+test WaitEvent 12 Connected
+// hold & resume
+test Hold 12 0
+test WaitEvents 12 Hold, 12 LocalHold
+test Resume 12 0
+test WaitEvents 12 Connected, 12 LocalResume
+// dtmf
+test StartDtmfTone 0 3
+test WaitEvent DtmfManualStart 0 3
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+// hangup
+test HangUp 12 0
+test WaitEvent 12 Disconnecting
+test WaitEvent 12 Idle
+test Release 12 0
+
+test OpenNewCall 13 0 Recipient3 1 ECCECallTypeVideo ECCELineTypePrimary
+// dial
+test Dial 13 0 SubAddress Bearer
+test WaitEvent 13 Dialling
+test WaitEvent 13 Connecting
+test WaitEvent 13 Connected
+// hold & resume
+test Hold 13 0
+test WaitEvents 13 Hold, 13 LocalHold
+test Resume 13 0
+test WaitEvents 13 Connected, 13 LocalResume
+// dtmf
+test StartDtmfTone 0 3
+test WaitEvent DtmfManualStart 0 3
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+// hangup
+test HangUp 13 0
+test WaitEvent 13 Disconnecting
+test WaitEvent 13 Idle
+test Release 13 0
+
+test OpenNewCall 14 0 Recipient4 1 ECCECallTypeFax ECCELineTypePrimary
+// dial
+test Dial 14 0 SubAddress Bearer
+test WaitEvent 14 Dialling
+test WaitEvent 14 Connecting
+test WaitEvent 14 Connected
+// hold & resume
+test Hold 14 0
+test WaitEvents 14 Hold, 14 LocalHold
+test Resume 14 0
+test WaitEvents 14 Connected, 14 LocalResume
+// dtmf
+test StartDtmfTone 0 3
+test WaitEvent DtmfManualStart 0 3
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+// hangup
+test HangUp 14 0
+test WaitEvent 14 Disconnecting
+test WaitEvent 14 Idle
+test Release 14 0
+
+test OpenNewCall 15 0 Recipient5 1 ECCECallTypeData ECCELineTypePrimary
+// dial
+test Dial 15 0 SubAddress Bearer
+test WaitEvent 15 Dialling
+test WaitEvent 15 Connecting
+test WaitEvent 15 Connected
+// hold & resume
+test Hold 15 0
+test WaitEvents 15 Hold, 15 LocalHold
+test Resume 15 0
+test WaitEvents 15 Connected, 15 LocalResume
+// dtmf
+test StartDtmfTone 0 3
+test WaitEvent DtmfManualStart 0 3
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+// hangup
+test HangUp 15 0
+test WaitEvent 15 Disconnecting
+test WaitEvent 15 Idle
+test Release 15 0
+
+// Step 4
+print Step_4
+
+test OpenNewCall 16 0 Recipient6 1 ECCECallTypePS ECCELineTypeAux
+// dial
+test Dial 16 0 SubAddress Bearer
+test WaitEvent 16 Dialling
+test WaitEvent 16 Connecting
+test WaitEvent 16 Connected
+// hold & resume
+test Hold 16 0
+test WaitEvents 16 Hold, 16 LocalHold
+test Resume 16 0
+test WaitEvents 16 Connected, 16 LocalResume
+// dtmf
+test StartDtmfTone 0 3
+test WaitEvent DtmfManualStart 0 3
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+// hangup
+test HangUp 16 0
+test WaitEvent 16 Disconnecting
+test WaitEvent 16 Idle
+test Release 16 0
+
+test OpenNewCall 17 0 Recipient7 1 ECCECallTypeCSVoice ECCELineTypeAux
+// dial
+test Dial 17 0 SubAddress Bearer
+test WaitEvent 17 Dialling
+test WaitEvent 17 Connecting
+test WaitEvent 17 Connected
+// hold & resume
+test Hold 17 0
+test WaitEvents 17 Hold, 17 LocalHold
+test Resume 17 0
+test WaitEvents 17 Connected, 17 LocalResume
+// dtmf
+test StartDtmfTone 0 3
+test WaitEvent DtmfManualStart 0 3
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+// hangup
+test HangUp 17 0
+test WaitEvent 17 Disconnecting
+test WaitEvent 17 Idle
+test Release 17 0
+
+test OpenNewCall 18 0 Recipient8 1 ECCECallTypeVideo ECCELineTypeAux
+// dial
+test Dial 18 0 SubAddress Bearer
+test WaitEvent 18 Dialling
+test WaitEvent 18 Connecting
+test WaitEvent 18 Connected
+// hold & resume
+test Hold 18 0
+test WaitEvents 18 Hold, 18 LocalHold
+test Resume 18 0
+test WaitEvents 18 Connected, 18 LocalResume
+// dtmf
+test StartDtmfTone 0 3
+test WaitEvent DtmfManualStart 0 3
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+// hangup
+test HangUp 18 0
+test WaitEvent 18 Disconnecting
+test WaitEvent 18 Idle
+test Release 18 0
+
+test OpenNewCall 19 0 Recipient9 1 ECCECallTypeFax ECCELineTypeAux
+// dial
+test Dial 19 0 SubAddress Bearer
+test WaitEvent 19 Dialling
+test WaitEvent 19 Connecting
+test WaitEvent 19 Connected
+// hold & resume
+test Hold 19 0
+test WaitEvents 19 Hold, 19 LocalHold
+test Resume 19 0
+test WaitEvents 19 Connected, 19 LocalResume
+// dtmf
+test StartDtmfTone 0 3
+test WaitEvent DtmfManualStart 0 3
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+// hangup
+test HangUp 19 0
+test WaitEvent 19 Disconnecting
+test WaitEvent 19 Idle
+test Release 19 0
+
+test OpenNewCall 20 0 Recipient10 1 ECCECallTypeData ECCELineTypeAux
+// dial
+test Dial 20 0 SubAddress Bearer
+test WaitEvent 20 Dialling
+test WaitEvent 20 Connecting
+test WaitEvent 20 Connected
+// hold & resume
+test Hold 20 0
+test WaitEvents 20 Hold, 20 LocalHold
+test Resume 20 0
+test WaitEvents 20 Connected, 20 LocalResume
+// dtmf
+test StartDtmfTone 0 3
+test WaitEvent DtmfManualStart 0 3
+test StopDtmfTone 0
+test WaitEvent DtmfManualStop 0 0
+// hangup
+test HangUp 20 0
+test WaitEvent 20 Disconnecting
+test WaitEvent 20 Idle
+test Release 20 0
+
+test VerifyTest
+delete test
+[Endtest] 

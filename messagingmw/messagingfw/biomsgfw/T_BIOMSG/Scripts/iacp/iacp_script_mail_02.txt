@@ -1,0 +1,38 @@
+[main]
+bio_test doatstart
+bio_test mail_02
+bio_test doattheend
+
+
+// Startup section.
+[doatstart]
+clean_all_bio_msgs
+
+
+// Shutdown section.
+[doattheend]
+
+
+// wapp tests.
+[mail_02]
+gen_msg_from_file iacp\iacp_mail_02.txt
+check_used_bif 1000552f
+bio_client_parse
+bio_client_process
+dump_parsed_message
+//
+// check mail settings in msg store
+check_pop3_named mail_02_pop3 Lemon02
+check_smtp_named mail_02_smtp Lemon02
+
+
+[mail_02_pop3]
+chk_pop3_loginname yashar
+chk_pop3_password dig23ler
+chk_pop3_serveraddress pop3.lemon.co.uk
+chk_pop3_useraddress fruity@yashar.Demon.co.uk
+
+
+[mail_02_smtp]
+chk_smtp_serveraddress post.lemon.co.uk
+chk_smtp_emailaddress fruity@yashar.Demon.co.uk

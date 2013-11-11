@@ -1,0 +1,34 @@
+#  msexchange2k.closedtest.intra server
+__type__   = Pop3Settings
+
+#ServerName = msexchange2k.closedtest.intra
+PopServerAddress = msexchange2k.closedtest.intra
+
+PopIapList = POP001 POP002
+#PopIAP = 1
+#PopCommDbDialogPref 
+#PopIAPIndex = 0
+
+POP001_PopIAP = 1
+POP001_PopCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+POP001_PopIAPIndex = 0
+PopLoginName = mo
+PopPort = 110
+POP002_PopIAP = 1
+POP002_PopCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+POP002_PopIAPIndex = 0
+
+SmtpServerAddress = msexchange2k.closedtest.intra
+SmtpEmailAddress = mo@msexchange2k.closedtest.intra
+SmtpReplyToAddress= mo@msexchange2k.closedtest.intra
+
+SmtpIapList = SMTP001 SMTP002 
+
+SMTP001_SmtpIAP = 1
+SMTP001_SmtpCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+SMTP001_SmtpIAPIndex = 0
+
+
+SMTP001_SmtpIAP = 1
+SMTP001_SmtpCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+SMTP001_SmtpIAPIndex = 0

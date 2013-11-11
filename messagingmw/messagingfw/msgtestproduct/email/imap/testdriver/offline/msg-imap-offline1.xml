@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>msg-imap-offline1</name>
+	<timeout>82000</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\email\imap\offline\msg-imap-offline1.script</hostPath>
+			<devicePath>c:\msgtest\email\imap\offline\msg-imap-offline1.script</devicePath>
+		</script>
+	
+	</testScripts>
+
+	<testServers>
+		<server>T_MsgCommonServer</server>
+		<server>T_MsgImapServer</server>
+		<server>T_MsgSmtpServer</server>
+	</testServers>
+
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\email\imap\offline\msg-imap-offline1.ini</hostPath>
+			<devicePath>c:\msgtest\email\imap\offline\msg-imap-offline1.ini</devicePath>
+		</data>
+
+                 <data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test6.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test6.txt</devicePath>
+                 </data>
+		     
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test4_mail.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test4_mail.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test3.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test3.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test2_mail.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test2_mail.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test1.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test1.txt</devicePath>
+		</data>
+		
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\4kbodyhtm.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\4kbodyhtm.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\TestCase13_1_3KBAttcmnt.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\TestCase13_1_3KBAttcmnt.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test20_3.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test20_3.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test21_2.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test21_2.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\TestCase13_Bdy7KBn3KBAtchmnt.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\TestCase13_Bdy7KBn3KBAtchmnt.txt</devicePath>
+		</data>
+                      
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\ZeroByte_Attachment.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\ZeroByte_Attachment.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\MessageWith_V_Card.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\MessageWith_V_Card.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\MessageWithAttchmntAndNoBody.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\MessageWithAttchmntAndNoBody.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test15_1.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test15_1.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test14_1.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test14_1.txt</devicePath>
+		</data>
+                     		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test_9.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test_9.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test13_1.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test13_1.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test14_2.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test14_2.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test15_1.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test15_1.txt</devicePath>
+		</data>
+
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test10.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test10.txt</devicePath>
+		</data>
+
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\TCase_11_6KBAttchmnt.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\TCase_11_6KBAttchmnt.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test22.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test22.txt</devicePath>
+		</data>
+
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test23.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test23.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\test24.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\test24.txt</devicePath>
+		</data>
+
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\IMAPSettings_test908.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\IMAPSettings_test908.txt</devicePath>
+		</data>
+	
+		
+
+	</dependencies>	
+</testExecuteTest>

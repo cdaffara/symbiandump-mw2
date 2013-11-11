@@ -1,0 +1,94 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+//! @SYMTestCaseID CM-DRM-CIT-0005-HP
+//! @SYMTestType CIT
+//! @SYMTestPriority High
+//! @SYMPREQ 776, 778
+//! @SYMTestCaseDesc Full successful download of an POP message containing one complete DRM object
+//! @SYMTestActions :
+//!	1. Send email message using SMTP
+//!	2. Download the email message to local Inbox via POP3
+//! 3. Verify receipt was added to message body
+//! 4. Verify that message meta data written to file by test agent is correct
+//! 5. Verify message store integrity
+//! @SYMTestExpectedResults :
+//!	1. A DRM receipt string shall have been added to body text of message
+//!	2. Meta data file was written and content is correct
+//! 3. Message store was successfully traversed, all entries correct and accessible
+// ------------------------------------------
+// Component Under Test:
+//	CAF Email enhancement
+// ------------------------------------------
+// API function under test:
+//	***CImPop3Session
+// ------------------------------------------
+// Requirement/Use Case/Functional Spec:
+//	SGL.GT0231.xxx  CAF Email Enhancement Design Document (2.3.4)
+// ------------------------------------------
+// Polarity:
+//	Positive
+// ------------------------------------------
+// Test Type (unit, integration, panic, performance, conformance, stress, or interoperability):
+//	Unit
+// ------------------------------------------
+// Expected Panic ID (if a panic test, only for non-scripted test cases):
+//	N/A
+// ------------------------------------------
+// Interface Dependencies (does it require connection, which subsystems does it require):
+// 	Requires connection to Messaging Server
+// ------------------------------------------
+// Importance (critical, high, or low):
+//	High
+// ------------------------------------------
+// Execution Time (fast, medium, or slow):
+//	Medium
+// ------------------------------------------
+// Pre-condition description:
+//	1. Email body with DRM content available in a text file
+//	2. Connection to test mail servers on closedtest.intra
+// ------------------------------------------
+// Reference to a review document:
+//	SGL.GT0231.205 Secure Handling of DRM Messages Test Specification
+// ------------------------------------------
+// Full pathname of an epoc.ini (if there are special epoc.ini requirements)
+// 	N/A
+// ------------------------------------------
+// Any CommDb restrictions:
+//	WinTap CommDb
+// ------------------------------------------
+// Build Requirements (e.g., no watchers):
+//	N/A
+// ------------------------------------------
+// Hardware Requirements
+//	H2 Board
+// ------------------------------------------
+
+PRINT Running Test Case CM-DRM-CIT-0005-HP...
+
+// First clean up remote inbox and reset message store
+RUN_SCRIPT c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_POP3_CleanInbox.script
+
+// Send the email
+RUN_SCRIPT c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_SendCompleteDrmEmail.script
+
+// download POP3 message
+RUN_SCRIPT c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_POP3_DownloadDrmMessage.script
+
+// check the DRM handling
+RUN_SCRIPT c:\msgtest\TestFramework\ScriptedTestCases\DrmHandling\Drm_CheckDrmHandling_1.script
+
+PRINT Test Case CM-DRM-CIT-0005-HP Finished

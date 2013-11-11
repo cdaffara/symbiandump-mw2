@@ -1,0 +1,9 @@
+EXPORTS
+	_ZN13CGeoConverter4NewLER21MGeoConverterObserver @ 1 NONAME
+	_ZN13CGeoConverter8ConvertLERKN10CTelephony14TNetworkInfoV1E @ 2 NONAME
+	_ZN13CGeoConverterD0Ev @ 3 NONAME
+	_ZN13CGeoConverterD1Ev @ 4 NONAME
+	_ZN13CGeoConverterD2Ev @ 5 NONAME
+	_ZTI13CGeoConverter @ 6 NONAME
+	_ZTV13CGeoConverter @ 7 NONAME
+

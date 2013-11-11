@@ -1,0 +1,14 @@
+
+PRINT Running  EMsvNotifySession_001
+
+
+//********************************
+PRINT Running  EMsvNotifySession :  
+//********************************
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvNotifySession_001_001.script
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvNotifySession_001_002.script
+
+
+

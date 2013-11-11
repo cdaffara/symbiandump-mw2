@@ -1,0 +1,44 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: Package file for PlaybackHelper STIF component
+;
+; Version : %version: 4 %
+;
+; Installation file for STIF MPEngine test Application in Platform Security Environments
+;
+
+; Languages
+&EN
+
+; Package header
+#{"PlaybackHelper STIF Test Application"}, (0x101FB3E3), 1, 0, 1, TYPE=SA, RU
+
+; *Unique (Non-Localized) Vendor name
+; This is used in combination with signing to prevent the unauthroized
+; upgrade of a a package by someone other than the rightful vendor.
+:"Nokia"
+
+; Localised Vendor name
+%{"Nokia Test EN"}
+
+; Install files
+"\epoc32\release\armv5\urel\playbackhelpertest.dll" - "c:\sys\bin\playbackhelpertest.dll"
+"..\..\conf\playbackhelpertest.cfg" - "c:\testframework\playbackhelpertest.cfg"
+"..\..\init\TestFramework.ini" - "c:\testframework\TestFramework.ini"
+
+"..\..\data\mmc\asx_v2.asx" - "e:\data\videos\asx_v2.asx"
+"..\..\data\mmc\asx_v3.asx" - "e:\data\videos\asx_v3.asx"
+"..\..\data\mmc\test.3gp" - "e:\data\videos\test.3gp"
+"..\..\data\mmc\multiple_streaming_link.ram" - "e:\data\videos\multiple_streaming_link.ram"
+"..\..\data\mmc\asx_seek_v3.asx" - "e:\data\videos\asx_seek_v3.asx"

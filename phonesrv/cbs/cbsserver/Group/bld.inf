@@ -1,0 +1,63 @@
+/*
+* Copyright (c) 2003-2008 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  This file provides information required for building the CBS 
+*                module with BLDMAKE utility.
+*
+*/
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_MMPFILES
+./CbsServer.mmp
+./CbsClient.mmp
+./CbsMcnClient.mmp
+
+PRJ_EXPORTS
+
+
+
+// Internal
+// UI CLIENT API
+../ClientInc/RCbs.h                     |../../../inc/RCbs.h
+../ClientInc/RCbsSettings.h             |../../../inc/RCbsSettings.h
+../ClientInc/RCbsTopicList.h            |../../../inc/RCbsTopicList.h
+../ClientInc/RCbsTopicMessages.h        |../../../inc/RCbsTopicMessages.h
+../ClientInc/RCbsTopicCollection.h      |../../../inc/RCbsTopicCollection.h
+../ClientInc/CbsCommon.h                |../../../inc/CbsCommon.h
+../ServerInc/CbsServerInternalPSKeys.h  |../../../inc/CbsServerInternalPSKeys.h
+
+// Backup registration file
+backup_registration.xml  /epoc32/data/z/private/1000A859/backup_registration.xml  
+backup_registration.xml  /epoc32/release/winscw/udeb/z/private/1000A859/backup_registration.xml 
+backup_registration.xml  /epoc32/release/winscw/urel/z/private/1000A859/backup_registration.xml 
+
+// SIS stubs
+../Data/cbsserver_stub.sis      /epoc32/data/z/system/install/cbsserver_stub.sis
+../Data/cbsclient_stub.sis      /epoc32/data/z/system/install/cbsclient_stub.sis
+../Data/cbsmcnclient_stub.sis   /epoc32/data/z/system/install/cbsmcnclient_stub.sis
+
+// IBY files
+../Rom/cbsserver.iby            CORE_MW_LAYER_IBY_EXPORT_PATH(cbsserver.iby)
+../Rom/CbsServerResources.iby   LANGUAGE_MW_LAYER_IBY_EXPORT_PATH(CbsServerResources.iby)
+
+// LOC files
+../loc/CbsServer.loc            MW_LAYER_LOC_EXPORT_PATH(cbsserver.loc)
+
+// Generic configuration interface for component cenrep settings  
+../conf/cbsserver.confml                        MW_LAYER_CONFML(cbsserver.confml)
+../conf/cbsserver_102078EE.crml 	        MW_LAYER_CRML(cbsserver_102078EE.crml)
+../conf/cbsserver_1020298F.crml 	        MW_LAYER_CRML(cbsserver_1020298F.crml)

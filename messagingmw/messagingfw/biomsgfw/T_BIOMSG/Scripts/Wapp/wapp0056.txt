@@ -1,0 +1,25 @@
+[main]
+bio_test doatstart
+bio_test wapp0056
+bio_test doattheend
+
+
+// Startup section.
+[doatstart]
+clean_all_bio_msgs
+
+
+// Shutdown section.
+[doattheend]
+
+
+// wapp tests.
+[wapp0056]
+gen_msg_from_file wapp\wapp0056.bin
+check_used_bif 10005532
+bio_client_parse
+bio_client_process
+dump_parsed_message
+chk_file_in_msg_dir_with_ext
+//
+// check commdb tables for correct entries

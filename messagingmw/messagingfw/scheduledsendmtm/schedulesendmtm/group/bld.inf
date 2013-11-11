@@ -1,0 +1,39 @@
+// Copyright (c) 1999-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRJ_PLATFORMS
+
+
+PRJ_EXPORTS
+
+../inc/MsvScheduleSend.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(msvschedulesend.h)
+../inc/MsvScheduleSend.inl SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(msvschedulesend.inl)
+../inc/MsvScheduleSettings.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(msvschedulesettings.h)
+../inc/MsvScheduledEntry.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(msvscheduledentry.h)
+../inc/MsvScheduledEntry.inl SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(msvscheduledentry.inl)
+../inc/MsvEntryScheduleData.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(msventryscheduledata.h)
+../inc/MsvOffPeakTime.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(msvoffpeaktime.h)
+../inc/schsend.hrh /epoc32/include/schsend.hrh
+../inc/schsend.rh SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(schsend.rh)
+../inc/MsvSendErrorAction.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(msvsenderroraction.h)
+../inc/MsvSchedulePackage.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(msvschedulepackage.h)
+../inc/ScheduleBaseServerMtm.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(schedulebaseservermtm.h)
+../inc/schsend_panic.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(schsend_panic.h)
+../inc/msvsysagentaction.h SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(msvsysagentaction.h)
+../inc/tmsvschedulesettingsutils.h SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(tmsvschedulesettingsutils.h)
+
+PRJ_MMPFILES
+
+schsend.mmp

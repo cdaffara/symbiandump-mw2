@@ -1,0 +1,8 @@
+#ifndef __THEME_THEME_IBY__
+#define __THEME_THEME_IBY__
+
+#include <bldvariant.hrh>
+
+data=ZRESOURCE/hb/themes/theme.theme	RESOURCE_FILES_DIR/hb/themes/theme.theme
+
+#endif __THEME_THEME_IBY__

@@ -1,0 +1,69 @@
+/*
+* Copyright (c) 2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: 
+*     This is the project specification file for Landmarks Internal Services
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET          eposlmintservices.dll
+TARGETTYPE      dll
+UID             0x1000008d 0x101fdf82
+
+VENDORID        VID_DEFAULT
+CAPABILITY      CAP_CLIENT_DLL
+
+SOURCEPATH      ../src
+SOURCE          EPos_LandmarksInternalServicesPanic.cpp
+SOURCE          EPos_CPosLmGlobalCategoryData.cpp
+SOURCE          EPos_CPosLmGlobalCategoryReader.cpp
+SOURCE          EPos_CPosLmDiskUtilities.cpp
+SOURCE          EPos_CPosLmResourceReader.cpp
+SOURCE          EPos_CPosLmLocalDbAccess.cpp
+SOURCE          EPos_PosLmLongTextColHandler.cpp
+SOURCE          EPos_PosLmIconHandler.cpp
+SOURCE          EPos_PosLmCategoryHandler.cpp
+SOURCE          EPos_PosLmLandmarkHandler.cpp
+SOURCE          EPos_CPosLmCompactDatabase.cpp
+SOURCE          EPos_PosLmTrealCompare.cpp
+SOURCE          EPos_PosLmDatabaseUtility.cpp
+SOURCE          EPos_PosLmFileFinder.cpp
+SOURCE          EPos_CPosLmSettingsHandler.cpp
+
+USERINCLUDE     ../inc
+
+START RESOURCE  ../data/eposlmcompactdblevel.rss
+HEADER
+TARGETPATH      /resource
+END
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   ../../../inc
+
+LIBRARY         euser.lib
+LIBRARY         efsrv.lib
+LIBRARY         estor.lib
+LIBRARY         edbms.lib
+LIBRARY         bafl.lib
+LIBRARY         lbs.lib
+LIBRARY         eposlandmarks.lib
+LIBRARY         eposlmsearchlib.lib
+LIBRARY         centralrepository.lib
+
+
+SMPSAFE
+
+// End of File

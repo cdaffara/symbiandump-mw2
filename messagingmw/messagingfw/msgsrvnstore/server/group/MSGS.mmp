@@ -1,0 +1,184 @@
+// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// msgs.dll The message server, and framework utilties
+// msgs.rsc Messaging server resource file
+// 
+//
+/**
+ @file
+*/
+
+#include <platform_paths.hrh>
+TARGET        msgs.dll
+TARGETTYPE    dll
+
+CAPABILITY All -TCB
+UID           0x1000008d 0x10004E66
+VENDORID 0x70000001
+
+SOURCEPATH    ../src
+SOURCE        MSVSTD.CPP MSVIPC.CPP MSVSTORE.CPP MSVREG.CPP MSVREGIP.CPP 
+SOURCE        MENTACT.CPP MSVARRAY.CPP
+SOURCE        MSVSERV.CPP MSVSESS.CPP MSVLOCAL.CPP MSVOPERT.CPP 
+SOURCE        MSVENTRY.CPP MSVSTART.CPP MSVRBLD.CPP
+SOURCE        MSVCMBSE.CPP MSVMOVE.CPP MSVCOPY.CPP MTSR.CPP MTSRUT.CPP MSVDELET.CPP
+SOURCE        MCLIENT.CPP MCLENTRY.CPP MCLSESS.CPP MCLOPERT.CPP
+SOURCE        MTCLBASE.CPP MTCLREG.CPP OBSVREG.CPP MSVUTILS.CPP
+SOURCE        MSVFIND.CPP MSVFTEXT.CPP MSVTIME.CPP indexcontext.cpp
+SOURCE        CCopyFiles.cpp CCopyOneFile.cpp
+SOURCE        CMsvCachedStore.cpp CMsvBackupHandler.cpp 
+SOURCE        CMsvChangeBuffer.cpp
+SOURCE        CMsvBodyText.cpp
+SOURCE        MsvSecurityCapabilitySet.cpp
+SOURCE		CMsvAttachment.cpp
+SOURCE		CMsvAttachmentManager.cpp
+SOURCE		CMsvAttachmentRename.cpp
+SOURCE		CMsvAttributeManager.cpp
+SOURCE		CMsvAttachmentWaiter.cpp
+SOURCE		CMsvMimeHeaders.cpp
+SOURCE		TMsvServerStoreManager.cpp
+SOURCE		cmsvmailinitwaiter.cpp
+SOURCE      CMsvCopyStoreOperation.cpp
+SOURCE      CMsvDeleteStoreOperation.cpp
+SOURCE		cmsvrecipientlist.cpp
+SOURCE      TMsvPackedNotifierRequest.cpp
+SOURCE		cmsvtechnologytypedefaultmtmsettings.cpp
+SOURCE		tmsvsystemprogress.cpp
+SOURCE		CMsvPlainBodyText.cpp
+SOURCE		msvindexadapter.cpp
+SOURCE		msvdbadapter.cpp
+SOURCE		msvcacheentry.cpp
+SOURCE		msventryfreepool.cpp
+SOURCE		msvcacheindextableentry.Cpp
+SOURCE		msvcachevisiblefolder.Cpp
+SOURCE		msvinifile.cpp
+
+//Preq 1667
+SOURCE		msvsearchsortcacheentry.cpp
+SOURCE		msvsearchsortquery.cpp
+SOURCE		msvsearchsortoponheaderbody.cpp
+SOURCE		msvsearchsortoperation.cpp
+SOURCE 		msvsearchsortcachemanager.cpp
+SOURCE 		msvsearchsortdeltacache.cpp
+SOURCE		msvsearchsortdbwrapper.cpp
+SOURCE		msvenhancesearchsortutil.cpp
+
+#if (defined SYMBIAN_MSGS_ENHANCED_REMOVABLE_MEDIA_SUPPORT)
+	SOURCE		cmsvdiskchangenotifier.cpp
+	SOURCE		msvpreferreddrivelist.cpp
+#else
+	SOURCE		diskchange.cpp
+#endif
+
+#if (defined SYMBIAN_MESSAGESTORE_HEADER_BODY_USING_SQLDB)
+	SOURCE		msvmessagedbadapter.cpp
+	SOURCE 		msvheaderfields.cpp
+	SOURCE      cmsvconverterwaiter.cpp
+	SOURCE      cmessageconvertermanager.cpp
+	SOURCE      cmsvversion0version1converter.cpp
+	SOURCE      cmsvversion1version2converter.cpp
+#endif
+
+
+
+USERINCLUDE    ../inc
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+LIBRARY        euser.lib estor.lib efsrv.lib bafl.lib etext.lib charconv.lib centralrepository.lib sqldb.lib
+
+SOURCEPATH     .
+
+START RESOURCE	MSGS.rss
+TARGETPATH resource/messaging
+TARGET MSGS.rsc
+HEADER
+LANGUAGE_IDS
+END
+
+#include "../../../msgtests/group/msgopt.mph"
+
+// no logging for WINC platform
+#ifdef WINC
+#define  _MSG_NO_LOGGING_DEFINE
+#endif
+
+
+// no logging if we have _MSG_NO_LOGGING defined
+// in msg group mph file
+
+#ifdef _MSG_NO_LOGGING_DEFINE
+MACRO _NO_SESSION_LOGGING_
+MACRO _NO_SERVER_LOGGING_
+DEBUGLIBRARY flogger.lib
+#else
+LIBRARY flogger.lib
+#endif
+
+
+
+// This is the final version of the def-file - removed methods have been
+// replaced by panicking stub-functions.
+#if (defined SYMBIAN_MSGS_ENHANCED_REMOVABLE_MEDIA_SUPPORT)
+	#ifdef WINSCW
+		#if (defined SYMBIAN_MESSAGESTORE_HEADER_BODY_USING_SQLDB)
+			#if (defined SYMBIAN_MESSAGESTORE_UNIT_TESTCODE)
+				DEFFILE		v6_MSGS.DEF
+			#else
+				DEFFILE		v5_MSGS.DEF
+			#endif
+		#else		// #if (defined SYMBIAN_MESSAGESTORE_HEADER_BODY_USING_SQLDB)
+			#if (defined SYMBIAN_MESSAGESTORE_UNIT_TESTCODE)
+				DEFFILE		v4_MSGS.DEF
+			#else
+				DEFFILE		v3_MSGS.DEF
+			#endif
+		#endif		// #if (defined SYMBIAN_MESSAGESTORE_HEADER_BODY_USING_SQLDB)
+	
+	#else			// #ifdef WINSCW
+	
+		#if (defined SYMBIAN_MESSAGESTORE_HEADER_BODY_USING_SQLDB)
+			#if (defined SYMBIAN_MESSAGESTORE_UNIT_TESTCODE)
+				DEFFILE		v6_msgs.def
+			#else
+				DEFFILE		v5_msgs.def
+			#endif
+		#else		// #if (defined SYMBIAN_MESSAGESTORE_HEADER_BODY_USING_SQLDB)
+			#if (defined SYMBIAN_MESSAGESTORE_UNIT_TESTCODE)
+				DEFFILE		v4_msgs.def
+			#else
+				DEFFILE		v3_msgs.def
+			#endif
+		#endif		// #if (defined SYMBIAN_MESSAGESTORE_HEADER_BODY_USING_SQLDB)
+	#endif
+#else
+	#ifdef WINSCW
+		DEFFILE		v2_MSGS.DEF
+	#else
+		DEFFILE		v2_msgs.def
+	#endif
+#endif
+
+OS_LAYER_SYSTEMINCLUDE
+
+
+
+START WINS
+   BASEADDRESS 0x4A740000
+	win32_library	kernel32.lib
+END
+
+#ifndef WINS
+EPOCALLOWDLLDATA
+#endif
+
+SMPSAFE

@@ -1,0 +1,63 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description:  Pkg file for Management settings testcases
+;
+
+; Languages
+&EN
+
+; Package header
+#{"t_mgmtsettings"},(0x2001FDD0),0,1,0,TYPE=SA
+
+; Series60 product id for S60 3.0
+[0x101F7961], 0, 0, 0, {"Series60ProductID"}
+
+; Localised Vendor name
+%{"Nokia EN"}
+
+; Unique Vendor name
+:"Nokia"
+
+; Logo
+; None
+
+; Package signature - Optional
+; None
+
+; Start of Package body
+
+; Condition blocks
+; None
+
+; Options list
+; None
+
+; Install files
+
+ "\epoc32\release\armv5\urel\t_mgmtsettings.dll"-"C:\sys\bin\t_mgmtsettings.dll" 
+"..\conf\t_mgmtsettings.cfg"-"C:\TestFramework\t_mgmtsettings.cfg" 
+ "..\init\TestFramework.ini"-"C:\TestFramework\TestFramework.ini"
+ "..\data\simu_move.sps"-"C:\system\data\simu_move.sps"
+  "\epoc32\release\armv5\urel\CreateTest.exe"-"C:\sys\bin\CreateTest.exe" 
+
+; Embedded SIS 
+; None
+
+; End of Package body
+
+; PKG dependencies
+; None
+
+; PKG capabilities
+; None

@@ -1,0 +1,13 @@
+<!DOCTYPE Feature SYSTEM "CT_XMLData.dtd">
+<Feature Name="Harvester settings" Plugin="CRPlugin" Group="Harvester" Desc="">
+	<Settings>
+		<Setting Name="Ignore directory private" Key="0x1" Type="string" ref="Variant/Harvester/IgnorePrivate" Desc="Directory which is ignored by Harvester">\private\</Setting>
+		<Setting Name="Ignore directory system" Key="0x2" Type="string" ref="Variant/Harvester/IgnoreSystem" Desc="Directory which is ignored by Harvester">\system\</Setting>
+		<Setting Name="Ignore directory activenotes" Key="0x3" Type="string" ref="Variant/Harvester/IgnoreActiveNotes" Desc="Directory which is ignored by Harvester">\activenotes\</Setting>
+		<Setting Name="Ignore directory data\activenotes" Key="0x4" Type="string" ref="Variant/Harvester/IgnoreDataActiveNotes" Desc="Directory which is ignored by Harvester">\Data\activenotes\</Setting>
+	</Settings>
+	<Rules>
+		<CenRepfile Name1="\epoc32\data\z\private\10202BE9\200009FE.txt">1</CenRepfile>
+		<Ibyfile Name1="\epoc32\rom\include\S60Cenrep_variant.iby">1</Ibyfile>
+	</Rules>
+</Feature>

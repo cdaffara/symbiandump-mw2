@@ -1,0 +1,27 @@
+EXPORTS
+	?CreateTestSuiteL@@YAPAVMEUnitTest@@XZ @ 1 NONAME ; class MEUnitTest * CreateTestSuiteL(void)
+	?SetValue@CSPProperty@@QAEHABVTDesC16@@@Z @ 2 NONAME ; int CSPProperty::SetValue(class TDesC16 const &)
+	?NewLC@CSPSettingsVoIPUtils@@SAPAV1@XZ @ 3 NONAME ; class CSPSettingsVoIPUtils * CSPSettingsVoIPUtils::NewLC(void)
+	?VoIPProfilesExistL@CSPSettingsVoIPUtils@@QBEHXZ @ 4 NONAME ; int CSPSettingsVoIPUtils::VoIPProfilesExistL(void) const
+	?GetValue@CSPProperty@@QBEHAAW4TOnOff@@@Z @ 5 NONAME ; int CSPProperty::GetValue(enum TOnOff &) const
+	?SetName@CSPProperty@@QAEHW4TServicePropertyName@@@Z @ 6 NONAME ; int CSPProperty::SetName(enum TServicePropertyName)
+	?NewL@CSPSettingsVoIPUtils@@SAPAV1@XZ @ 7 NONAME ; class CSPSettingsVoIPUtils * CSPSettingsVoIPUtils::NewL(void)
+	?NewLC@CSPProperty@@SAPAV1@XZ @ 8 NONAME ; class CSPProperty * CSPProperty::NewLC(void)
+	?NewL@CSPProperty@@SAPAV1@XZ @ 9 NONAME ; class CSPProperty * CSPProperty::NewL(void)
+	?DataType@CSPProperty@@SA?AW4TPropertyDataType@@W4TServicePropertyName@@@Z @ 10 NONAME ; enum TPropertyDataType CSPProperty::DataType(enum TServicePropertyName)
+	?PropertyType@CSPProperty@@SA?AW4TSPItemType@@W4TServicePropertyName@@@Z @ 11 NONAME ; enum TSPItemType CSPProperty::PropertyType(enum TServicePropertyName)
+	?GetDataType@CSPProperty@@QBE?AW4TPropertyDataType@@XZ @ 12 NONAME ; enum TPropertyDataType CSPProperty::GetDataType(void) const
+	??8CSPProperty@@QBEHABV0@@Z @ 13 NONAME ; int CSPProperty::operator==(class CSPProperty const &) const
+	?GetPreferredService@CSPSettingsVoIPUtils@@QBEHAAI@Z @ 14 NONAME ; int CSPSettingsVoIPUtils::GetPreferredService(unsigned int &) const
+	?IsVoIPSupported@CSPSettingsVoIPUtils@@QBEHXZ @ 15 NONAME ; int CSPSettingsVoIPUtils::IsVoIPSupported(void) const
+	?GetPropertyType@CSPProperty@@QBE?AW4TSPItemType@@XZ @ 16 NONAME ; enum TSPItemType CSPProperty::GetPropertyType(void) const
+	?SetValue@CSPProperty@@QAEHW4TOnOff@@@Z @ 17 NONAME ; int CSPProperty::SetValue(enum TOnOff)
+	??1CSPSettingsVoIPUtils@@UAE@XZ @ 18 NONAME ; CSPSettingsVoIPUtils::~CSPSettingsVoIPUtils(void)
+	?SetValue@CSPProperty@@QAEHH@Z @ 19 NONAME ; int CSPProperty::SetValue(int)
+	?GetValue@CSPProperty@@QBEHAAH@Z @ 20 NONAME ; int CSPProperty::GetValue(int &) const
+	?GetName@CSPProperty@@QBE?AW4TServicePropertyName@@XZ @ 21 NONAME ; enum TServicePropertyName CSPProperty::GetName(void) const
+	?CopyL@CSPProperty@@QAEXABV1@@Z @ 22 NONAME ; void CSPProperty::CopyL(class CSPProperty const &)
+	??1CSPProperty@@UAE@XZ @ 23 NONAME ; CSPProperty::~CSPProperty(void)
+	?GetValue@CSPProperty@@QBEHAAVTDes16@@@Z @ 24 NONAME ; int CSPProperty::GetValue(class TDes16 &) const
+	?IsPreferredTelephonyVoIP@CSPSettingsVoIPUtils@@QBEHXZ @ 25 NONAME ; int CSPSettingsVoIPUtils::IsPreferredTelephonyVoIP(void) const
+

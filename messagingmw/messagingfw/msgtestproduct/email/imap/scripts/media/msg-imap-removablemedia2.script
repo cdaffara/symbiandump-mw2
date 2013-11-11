@@ -1,0 +1,102 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+//! Should run this script manually on H4 board
+
+RUN_UTILS DeleteFile c:\messaging.db
+RUN_UTILS DeleteFile e:\messaging.db
+
+LOAD_SUITE 	T_MsgCommonServer 	-SharedData
+LOAD_SUITE 	T_MsgImapServer 	-SharedData
+LOAD_SUITE  	T_MsgSmtpServer 	-SharedData
+
+START_TESTCASE MSG-IMAP-DRIVETEST-0003
+//! 	@SYMTestCaseID		MSG-IMAP-DRIVETEST-0003
+//! 	@SYMTestCaseDesc	Send/Receive operation on external drive
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ 557
+//!				
+//! 	@SYMTestActions		1.	Initialize the NT-RAS
+//!				2.	Reset the Message Store in a cleanup state
+//!				3.	Create a IMAP account A 
+//!				4.	Connect and Synchronize the IMAP server using IMAP account A
+//!				5.	Initialize IMAP account in a cleanup state
+//!				6.	Disconnect IMAP server
+//!				
+//!				7.	Create a Message with Body Text Size of 100KB with attachment
+//!				8.	Send the Message				
+//!				9.	Connect to the IMAP server
+//!				10.	Download the Message using IMAP client MTM populate command 
+//!				11.	Check that there is a Message in Inbox
+//!				
+//!				12.	Update drive to E
+//!				
+//! 	@SYMTestExpectedResults - update drive should pass
+PRINT Setup Begins #####################################################
+
+RUN_UTILS  CopyFile   		c:\private\1000484b\msgprioritydrivelist.ini	c:\private\1000484b\msgprioritydrivelist.bak
+RUN_UTILS  MakeReadWrite  	c:\private\1000484b\msgprioritydrivelist.ini
+RUN_UTILS  CopyFile   		c:\msgtest\media\msg-preferred-0008.ini		c:\private\1000484b\msgprioritydrivelist.ini
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer		StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer		StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	InitNtRas				c:\msgtest\email\imap\media\msg-imap-removablemedia1.ini 	0001-InitNtRas
+
+RUN_TEST_STEP 300 T_MsgCommonServer 	ResetMessageStore		c:\msgtest\email\imap\media\msg-imap-removablemedia1.ini 	0001-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer 		CreateImapAccount		c:\msgtest\email\imap\media\msg-imap-removablemedia1.ini 	0001-CreateImapAccount
+
+RUN_TEST_STEP 300 T_MsgImapServer		ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\media\msg-imap-removablemedia1.ini 	0001-ChangeImapSettings
+RUN_TEST_STEP 300 T_MsgImapServer		ConnectAndSyncImapServer		c:\msgtest\email\imap\media\msg-imap-removablemedia1.ini 	0001-ConnectAndSyncImapServer
+RUN_TEST_STEP 300 T_MsgImapServer		InitialiseImap4Account			c:\msgtest\email\imap\media\msg-imap-removablemedia1.ini 	0001-InitialiseImap4Account
+RUN_TEST_STEP 300 T_MsgImapServer		DoFullImap4Synchronisation		c:\msgtest\email\imap\media\msg-imap-removablemedia1.ini 	0001-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer		CheckChildrenCountImap			c:\msgtest\email\imap\media\msg-imap-removablemedia1.ini 	0001-CheckChildrenCountRemoteInbox
+RUN_TEST_STEP 300 T_MsgImapServer		DisConnectImapServer			c:\msgtest\email\imap\media\msg-imap-removablemedia1.ini 	0001-DisConnectImap4Server
+
+PRINT ############ Create 1 Messages #################################
+RUN_TEST_STEP 300 T_MsgSmtpServer 		CreateSmtpMessageFromEmailFile	c:\msgtest\email\imap\media\msg-imap-removablemedia1.ini 	0001-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer 	CheckChildrenCount 			c:\msgtest\email\imap\media\msg-imap-removablemedia1.ini 	0001-CheckChildrenCountOutbox
+RUN_TEST_STEP 3000 T_MsgSmtpServer		SendSmtpMessage				c:\msgtest\email\imap\media\msg-imap-removablemedia1.ini 	0001-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgCommonServer 	CheckChildrenCount 			c:\msgtest\email\imap\media\msg-imap-removablemedia1.ini 	0001-CheckChildrenCountSentItems
+RUN_TEST_STEP 300 T_MsgImapServer		SetImap4FullDownloadLimits	c:\msgtest\email\imap\media\msg-imap-removablemedia1.ini 	0001-SetImap4FullDownloadLimits
+RUN_TEST_STEP 300 T_MsgImapServer 		ConnectImap4Server			c:\msgtest\email\imap\media\msg-imap-removablemedia1.ini 	0001-ConnectImap4Server
+RUN_TEST_STEP 3000 T_MsgImapServer 		DoFullImap4Synchronisation	c:\msgtest\email\imap\media\msg-imap-removablemedia1.ini 	0001-DoFullImap4Synchronisation
+
+PRINT ############ Dowload 1 Messages ################################
+RUN_TEST_STEP 3000 T_MsgImapServer 		ImapInvokeAsyncFunction		c:\msgtest\email\imap\media\msg-imap-removablemedia1.ini 	0001-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer		CheckChildrenCountImap		c:\msgtest\email\imap\media\msg-imap-removablemedia1.ini 	0001-CheckChildrenCountRemoteInbox_1
+
+PRINT ############ Update to EDrive ################################
+RUN_TEST_STEP 300 T_MsgImapServer 		UpdateToExternalDrive		c:\msgtest\email\imap\media\msg-imap-removablemedia1.ini 	0001-UpdateDriveE
+
+PRINT ############ RESET ################################
+RUN_TEST_STEP 300 T_MsgImapServer 		UpdateToExternalDrive		c:\msgtest\email\imap\media\msg-imap-removablemedia1.ini 	0001-UpdateDriveC
+
+RUN_TEST_STEP 300 T_MsgSmtpServer		ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer 		ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer 	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-IMAP-DRIVETEST-0003
+
+
+
+

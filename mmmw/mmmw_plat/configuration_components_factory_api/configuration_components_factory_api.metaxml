@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api id="0100a16c42f978b201b8ab27f7d4f94a" dataversion="2.0">
+  <name>Configuration Components Factory API</name>
+  <description>API for a factory that will be used for creating new MMF Enhancements.</description>
+  <type>c++</type>
+  <collection>mmfenh</collection>
+  <libs>
+    <lib name="ConfigurationComponentsFactory.lib"/>
+  </libs>
+  <release category="platform" sinceversion="5.1"/>
+  <attributes>
+    <htmldocprovided>no</htmldocprovided>
+    <adaptation>no</adaptation>
+  </attributes>
+</api>

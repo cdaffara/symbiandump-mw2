@@ -1,0 +1,56 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description:  Installation file for API test
+;
+
+; Languages
+&EN
+
+; Header
+#{"ComposerPluginTest"},(0x101FB3E3),1,0,0,TYPE=SA
+
+; Localised Vendor name
+%{"Nokia"}
+
+; Unique Vendor name
+:"Nokia"
+
+; Install files
+"\epoc32\release\armv5\urel\ComposerPluginTest.dll" - "c:\sys\bin\ComposerPluginTest.dll"
+"..\conf\ComposerPluginTest.cfg" - "c:\TestFramework\ComposerPluginTest.cfg"
+"..\init\ComposerPluginTest.ini" - "c:\TestFramework\ComposerPluginTest.ini"
+
+"..\..\data\mmc\HarvesterTest\Jpg.jpg"      -"E:\testing\data\Jpg.jpg"
+"..\..\data\mmc\HarvesterTest\Animated.gif"      -"E:\testing\data\Animated.gif"
+"..\..\data\mmc\HarvesterTest\Temp1.jpg"      -"E:\testing\data\Temp1.jpg"
+"..\..\data\mmc\HarvesterTest\Temp2.jpg"      -"E:\testing\data\Temp2.jpg"
+"..\..\data\mmc\HarvesterTest\Temp3.jpg"      -"E:\testing\data\Temp3.jpg"
+"..\..\data\mmc\HarvesterTest\H263.3gp"      -"E:\testing\data\H263.3gp"
+"..\..\data\mmc\HarvesterTest\bmp_burst.bmp"      -"E:\testing\data\bmp_burst.bmp"
+"..\..\data\mmc\HarvesterTest\GIF87testimage.gif"      -"E:\testing\data\GIF87testimage.gif"
+"..\..\data\mmc\HarvesterTest\gif89a_onemeg.gif"      -"E:\testing\data\gif89a_onemeg.gif"
+"..\..\data\mmc\HarvesterTest\Liverpool.jpg"      -"E:\testing\data\Liverpool.jpg"
+"..\..\data\mmc\HarvesterTest\MBMtestimage.mbm"      -"E:\testing\data\MBMtestimage.mbm"
+"..\..\data\mmc\HarvesterTest\wbmp_skull.wbmp"      -"E:\testing\data\wbmp_skull.wbmp"
+"..\..\data\mmc\HarvesterTest\ota_bmpiso.ota"      -"E:\testing\data\ota_bmpiso.ota"
+"..\..\data\mmc\HarvesterTest\PNGtestimage.png"      -"E:\testing\data\PNGtestimage.png"
+"..\..\data\mmc\HarvesterTest\G4.TIF"      -"E:\testing\data\G4.TIF"
+"..\..\data\mmc\HarvesterTest\G31D.TIF"      -"E:\testing\data\G31D.TIF"
+"..\..\data\mmc\HarvesterTest\PSRETRO.WMF"      -"E:\testing\data\PSRETRO.WMF"
+"..\..\data\mmc\HarvesterTest\Animated.gif"      -"E:\testing\data\Animated.gif"
+"..\..\data\mmc\HarvesterTest\Mbm.mbm"      -"E:\testing\data\Mbm.mbm"
+"..\..\data\mmc\HarvesterTest\MPEG4.3gp"      -"E:\testing\data\MPEG4.3gp"
+"..\..\data\mmc\HarvesterTest\MPEG4.mp4"      -"E:\testing\data\MPEG4.mp4"
+"..\..\data\mmc\HarvesterTest\00001.mp3"      -"E:\testing\data\00001.mp3"
+

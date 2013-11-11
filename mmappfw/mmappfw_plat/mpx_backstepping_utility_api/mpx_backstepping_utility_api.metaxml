@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<api id="2d17c6cf96e0d717e9755ae77070954a" dataversion="2.0">
+<name>mpx backstepping utility api</name>
+<description>MPX Backstepping Utility API (Domain API) in MPX Frameworks</description>
+<type>c++</type>
+<collection>mmappcomponents</collection>
+<libs>
+<lib name="mpxbacksteppingutility.lib"/>
+</libs>
+<release category="platform" sinceversion="0"/>
+<attributes>
+<htmldocprovided>no</htmldocprovided>
+<adaptation>no</adaptation>
+</attributes>
+</api>

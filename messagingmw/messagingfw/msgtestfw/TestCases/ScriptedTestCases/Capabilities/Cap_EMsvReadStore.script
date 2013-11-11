@@ -1,0 +1,106 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRINT Running  EMsvReadStore
+
+//******************************************
+// Since we own this store we don't need any capabilities.
+// The SID when attempting to read the store must be same as the creator of the store.
+//******************************************
+
+PRINT Running  EMsvReadStore : Read Caps = 0. Same SID. Should Pass.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_caps.exe 0003fffe -SID 101F7776 C:\sys\bin\MessagingTestServer.exe
+
+RUN_PROGRAM -1 setcap c:\sys\bin\SendProxyServer_caps.exe 00000000 -SID 101F7776 C:\sys\bin\SendProxyServer.exe
+
+//RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateFolder.script
+// Commented out deliberatly defect raised against test. Causes all other following tests to fail if in.
+
+//RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvReadStore_Pass.script
+// Commented out deliberatly defect raised against test. Causes all other following tests to fail if in.
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+//******************************************
+// Since we own this store we don't need any capabilities.
+// The SID when attempting to read the store must be same as the creator of the store, 
+// in this case it is not and so we fail and panic.
+//******************************************
+
+PRINT Running  EMsvReadStore : Read Caps = 0. Different SID. Should Fail.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_caps.exe 0003fffe -SID 101F7776 C:\sys\bin\MessagingTestServer.exe
+
+RUN_PROGRAM -1 setcap c:\sys\bin\SendProxyServer_caps.exe 00000000 -SID 101F7777 C:\sys\bin\SendProxyServer.exe
+
+//RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateFolder.script
+//??? Put back in should run, but does not.
+
+//RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvReadStore_Fail.script
+// Commented out deliberatly defect raised against test. Causes all other following tests to fail if in.
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+//******************************************
+// We need ReadUserData to read the store since we don't own it.
+// The SID does not matter in this case all we need is ReadUserCaps.
+//******************************************
+
+PRINT Running  EMsvReadStore : Read Caps = ReadUserData. Same SID. Should Pass.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_caps.exe 0003fffe -SID 101F7776 C:\sys\bin\MessagingTestServer.exe
+
+RUN_PROGRAM -1 setcap c:\sys\bin\SendProxyServer_caps.exe 00008000 -SID 101F7776 C:\sys\bin\SendProxyServer.exe
+
+//RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateFolder.script
+//??? Put back in should run, but does not.
+
+//RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvReadStore_Pass1.script
+// Commented out deliberatly defect raised against test. Causes all other following tests to fail if in.
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script
+
+//******************************************
+// We need ReadUserData to read the store since we don't own it.
+// In this case we do not have ReadUserData caps so should fail.
+//******************************************
+
+PRINT Running  EMsvReadStore :  Read Caps = 0. Same SID. Should Fail.
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Setup.script
+
+RUN_PROGRAM -1 setcap c:\sys\bin\MessagingTestServer_caps.exe 0003fffe -SID 101F7776 C:\sys\bin\MessagingTestServer.exe
+
+RUN_PROGRAM -1 setcap c:\sys\bin\SendProxyServer_caps.exe 00000000 -SID 101F7777 C:\sys\bin\SendProxyServer.exe
+
+//RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_CreateFolder.script
+//??? Put back in should run, but does not.
+
+//RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_SendEMsvReadStore_Fail1.script
+// Commented out deliberatly defect raised against test. Causes all other following tests to fail if in.
+
+// Need delay to allow SendProxyServer shutting down
+DELAY 3000
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_Restore.script

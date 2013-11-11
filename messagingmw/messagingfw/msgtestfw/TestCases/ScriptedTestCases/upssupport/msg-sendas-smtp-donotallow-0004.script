@@ -1,0 +1,79 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//!	@file
+//! 	@SYMTestCaseID		MSG-SENDAS-SMTP-DONOTALLOW-0004
+//! 	@SYMTestCaseDesc	For sending SMTP message using SendAs server user should be prompted for his 
+//!				response and message should not be sent for the don't Allow response of user.
+//!				
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ1678
+//!	@SYMREQ			REQ7007
+//!				
+//! 	@SYMTestActions		1.	Clean the message store.
+//!				2.	Create a POP account.
+//!				3.	Connect to the SendAs server and create a SendAsmessage against the SMTP UID.
+//!				4.	Set user response to Allow Always against the user prompt for SendAs server.
+//!				5.	Send the message using SendAs server and then close the server connection.
+//! 				6.	Check if no message is sent.
+//!	@SYMTestExpectedResults	Children count on sent item should be zero.
+//!				
+//!	@SYMAuthor		Pramod Das
+
+RUN_SCRIPT  c:\msgtest\testframework\scriptedtestcases\upssupport\upssupport_setup.script
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+RUN_PROGRAM   100 SetUserPromptResponse No
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+GetBaseConstants		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-donotallow-0004.ini	GetBaseConstants
+InitNtRas			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-donotallow-0004.ini	InitNtRas
+GetSMTPMTMUId			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-donotallow-0004.ini	SMTPMTMUId
+CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-donotallow-0004.ini	CreateSession
+ResetMessageStore		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-donotallow-0004.ini	ResetMessageStore
+CreateImap4Service		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-donotallow-0004.ini	CreateImap4Service
+CreateSmtpService		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-donotallow-0004.ini	CreateSmtpService
+CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-donotallow-0004.ini	CreateRegistry
+CreateSmtpMtm			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-donotallow-0004.ini	CreateSmtpMtm
+SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-donotallow-0004.ini	SetDefaultConfiguration0
+SetSmtpServiceParameters	c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-donotallow-0004.ini	SetSmtpServiceParams
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-donotallow-0004.ini	ChkChildrenCountDraft0
+CreateImap4Mtm			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-donotallow-0004.ini	CreateImap4Mtm
+SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-donotallow-0004.ini	SetDefaultConfigurationIMAP
+SetImap4ServiceParameters	c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-donotallow-0004.ini	SetImap4ServiceParameters
+EXECUTE_TEST_CASE
+ChangeDefaultSmtpService	c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-donotallow-0004.ini	ChangeDefaultSmtpService
+ConnectSendAsServer		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-donotallow-0004.ini	ConnectSendAsServer
+SendAsCreateMessageofType	c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-donotallow-0004.ini	CreateMessageofType
+SendAsAddLinkedAttachment	c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-donotallow-0004.ini	SendAsAddLinkedAttachment
+SendAsSetSubject		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-donotallow-0004.ini	SendAsSetSubject
+SendAsAddRecipient		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-donotallow-0004.ini	SendAsAddRecipient
+SetUserResponse			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-donotallow-0004.ini	SetUserResponse
+SendAsSendMessage		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-donotallow-0004.ini	SendAsSendMessage
+SendAsCloseMessage		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-donotallow-0004.ini	CloseMessage
+CloseSendAsServerConnection	c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-donotallow-0004.ini	CloseSvrConnection
+CHECK_POSTCONDITIONS
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-donotallow-0004.ini	ChkChildrenCountSent0
+CheckErrorCode			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-smtp-donotallow-0004.ini	CheckErrorCode
+END_TEST_CASE
+REMOVE_PREFIX
+RUN_SCRIPT  c:\msgtest\testframework\scriptedtestcases\upssupport\restore_setup.script

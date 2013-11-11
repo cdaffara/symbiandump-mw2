@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<api id="9c1560d08ce93b2026b2ab230fad84db" dataversion="1.0">
+  <name>Voice Mailbox Settings API</name>
+  <description>Mailbox settings</description>
+  <type>c++</type>
+  <subsystem>phoneuis</subsystem>
+  <libs>
+  </libs>
+  <release category="domain"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>yes</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

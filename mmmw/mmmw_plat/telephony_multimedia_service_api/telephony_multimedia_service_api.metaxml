@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api id="669ee9af541c05ed4c1e0db47234d819" dataversion="2.0">
+  <name>Telephony Multimedia Service API</name>
+  <description>API for controlling both CS and IP based telephony streams on the device.  Specifically this API allows for the control of capturing the uplink data and playing out the downlink data.</description>
+  <type>c++</type>
+  <collection>mmserv</collection>
+  <libs>
+    <lib name="tmsapi.lib"/>
+    <lib name="tmsfactory.lib"/>
+  </libs>
+  <release category="platform" sinceversion="5.2"/>
+  <attributes>
+    <htmldocprovided>no</htmldocprovided>
+    <adaptation>no</adaptation>
+  </attributes>
+</api>

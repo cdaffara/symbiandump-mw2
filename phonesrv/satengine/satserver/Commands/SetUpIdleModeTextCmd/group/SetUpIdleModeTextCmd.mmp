@@ -1,0 +1,54 @@
+/*
+* Copyright (c) 2002-2008 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file for project SetUpIdleModeText plug-in
+*
+*/
+
+
+#include <data_caging_paths.hrh>
+#include <platform_paths.hrh>
+#include "../../../inc/SatMacroes.h"
+
+TARGET                  SetUpIdleModeTextCmd.dll
+TARGETTYPE              PLUGIN
+UID                     0x10009D8D 0x1000A88A
+
+CAPABILITY              CAP_ECOM_PLUGIN
+VENDORID                VID_DEFAULT
+
+SOURCEPATH              ../src
+SOURCE                  std.cpp
+SOURCE                  CSetUpIdleModeTextHandler.cpp
+
+START RESOURCE          1000A88A.rss
+TARGET                  SetUpIdleModeTextCmd.rsc
+END
+
+USERINCLUDE             ../../../inc
+USERINCLUDE             ../inc
+
+// Application layer system include path needed due networkhandling's P&S keys
+APP_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE           /epoc32/include/ecom
+SYSTEMINCLUDE           ../../../../../inc      // Domain telephony
+SYSTEMINCLUDE           ../../../../inc         // Subsystem satengine
+
+LIBRARY                 euser.lib
+LIBRARY                 etelsat.lib
+LIBRARY                 SatEngine.lib
+LIBRARY                 centralrepository.lib
+
+#ifdef ENABLE_SAT_LOGGING
+LIBRARY                 flogger.lib
+#endif

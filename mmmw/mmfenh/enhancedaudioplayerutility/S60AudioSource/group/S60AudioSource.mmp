@@ -1,0 +1,53 @@
+/*
+* Copyright (c) 2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project file for S60AudioSource
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET       S60AudioSource.dll
+TARGETTYPE   DLL
+
+DEFFILE	     S60AudioSource.def
+NOSTRICTDEF
+
+
+
+UID  0x10207AF6
+
+CAPABILITY ALL -Tcb
+
+USERINCLUDE     ../inc ../src
+USERINCLUDE	../../../../inc
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE	/epoc32/include/mmf/server
+SYSTEMINCLUDE	/epoc32/include/kernel
+SYSTEMINCLUDE	/epoc32/include/mmf/common
+
+
+SOURCEPATH   	../src
+SOURCE		S60AudioSource.cpp
+
+
+
+LIBRARY		euser.lib   
+LIBRARY 	efsrv.lib  
+LIBRARY		mmfcontrollerframework.lib 
+LIBRARY		mmfstandardcustomcommands.lib 
+
+  
+

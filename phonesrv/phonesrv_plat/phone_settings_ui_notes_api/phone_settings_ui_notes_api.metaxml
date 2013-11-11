@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api id="bb4622107e68f568ff4f711d62cc837b" dataversion="2.0">
+  <name>Phone Settings UI Notes API</name>
+  <description>Provides common interface for showing phone settings specific notes. Contains interface classes for showing supplementary services specific notes.</description>
+  <type>c++</type>
+  <collection>domain</collection>
+  <libs/>
+  <release category="platform" sinceversion=""/>
+  <attributes>
+    <htmldocprovided>yes</htmldocprovided>
+    <adaptation>no</adaptation>
+  </attributes>
+</api>

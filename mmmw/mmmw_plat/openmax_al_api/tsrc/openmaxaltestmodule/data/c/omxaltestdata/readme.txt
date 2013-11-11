@@ -1,0 +1,2 @@
+test.3gp - http://10.48.2.51/Copyright_Free_Test_Content/Clips/Video/3GP/176x144/h263/index_http.html - 15fps_384kbps_AAC-LC_128kbps_stereo_32kHz.3gp
+test.mp3 - http://10.48.2.51/Copyright_Free_Test_Content/Clips/Audio/Complete_Clips/Content/MP3/MPEG2.5/index_tmp.html - MP3_MPEG2.5_96kbps_11.025khz_stereo.mp3

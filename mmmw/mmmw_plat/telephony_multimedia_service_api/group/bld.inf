@@ -1,0 +1,62 @@
+/*
+ * Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies). 
+ * All rights reserved.
+ * This component and the accompanying materials are made available
+ * under the terms of "Eclipse Public License v1.0"
+ * which accompanies this distribution, and is available
+ * at the URL "http://www.eclipse.org/legal/epl-v10.html".
+ *
+ * Initial Contributors:
+ * Nokia Corporation - initial contribution.
+ *
+ * Contributors:
+ *
+ * Description:  Telephony mutlimedia services API
+ *
+ */
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+../inc/tms.h                    MW_LAYER_PLATFORM_EXPORT_PATH(tms.h)
+../inc/tmsver.h                 MW_LAYER_PLATFORM_EXPORT_PATH(tmsver.h)
+../inc/tmsamrformat.h           MW_LAYER_PLATFORM_EXPORT_PATH(tmsamrformat.h)
+../inc/tmsbuffer.h              MW_LAYER_PLATFORM_EXPORT_PATH(tmsbuffer.h)
+../inc/tmscall.h                MW_LAYER_PLATFORM_EXPORT_PATH(tmscall.h)
+../inc/tmsclientsink.h          MW_LAYER_PLATFORM_EXPORT_PATH(tmsclientsink.h)
+../inc/tmsclientsinkobsrvr.h    MW_LAYER_PLATFORM_EXPORT_PATH(tmsclientsinkobsrvr.h)
+../inc/tmsclientsource.h        MW_LAYER_PLATFORM_EXPORT_PATH(tmsclientsource.h)
+../inc/tmsclientsourceobsrvr.h  MW_LAYER_PLATFORM_EXPORT_PATH(tmsclientsourceobsrvr.h)
+../inc/tmsdtmf.h                MW_LAYER_PLATFORM_EXPORT_PATH(tmsdtmf.h)
+../inc/tmsdtmfobsrvr.h          MW_LAYER_PLATFORM_EXPORT_PATH(tmsdtmfobsrvr.h)
+../inc/tmseffect.h              MW_LAYER_PLATFORM_EXPORT_PATH(tmseffect.h)
+../inc/tmseffectobsrvr.h        MW_LAYER_PLATFORM_EXPORT_PATH(tmseffectobsrvr.h)
+../inc/tmsfactory.h             MW_LAYER_PLATFORM_EXPORT_PATH(tmsfactory.h)
+../inc/tmsformat.h              MW_LAYER_PLATFORM_EXPORT_PATH(tmsformat.h)
+../inc/tmsg711format.h          MW_LAYER_PLATFORM_EXPORT_PATH(tmsg711format.h)
+../inc/tmsg729format.h          MW_LAYER_PLATFORM_EXPORT_PATH(tmsg729format.h)
+../inc/tmsgaineffect.h          MW_LAYER_PLATFORM_EXPORT_PATH(tmsgaineffect.h)
+../inc/tmsglobalgaineffect.h    MW_LAYER_PLATFORM_EXPORT_PATH(tmsglobalgaineffect.h)
+../inc/tmsglobalrouting.h       MW_LAYER_PLATFORM_EXPORT_PATH(tmsglobalrouting.h)
+../inc/tmsglobalroutingobsrvr.h MW_LAYER_PLATFORM_EXPORT_PATH(tmsglobalroutingobsrvr.h)
+../inc/tmsglobalvoleffect.h     MW_LAYER_PLATFORM_EXPORT_PATH(tmsglobalvoleffect.h)
+../inc/tmsilbcformat.h          MW_LAYER_PLATFORM_EXPORT_PATH(tmsilbcformat.h)
+../inc/tmspcmformat.h           MW_LAYER_PLATFORM_EXPORT_PATH(tmspcmformat.h)
+../inc/tmsringtone.h            MW_LAYER_PLATFORM_EXPORT_PATH(tmsringtone.h)
+../inc/tmsringtoneobsrvr.h      MW_LAYER_PLATFORM_EXPORT_PATH(tmsringtoneobsrvr.h)
+../inc/tmssink.h                MW_LAYER_PLATFORM_EXPORT_PATH(tmssink.h)
+../inc/tmssource.h              MW_LAYER_PLATFORM_EXPORT_PATH(tmssource.h)
+../inc/tmsstream.h              MW_LAYER_PLATFORM_EXPORT_PATH(tmsstream.h)
+../inc/tmsstreamobsrvr.h        MW_LAYER_PLATFORM_EXPORT_PATH(tmsstreamobsrvr.h)
+../inc/tmsvolumeeffect.h        MW_LAYER_PLATFORM_EXPORT_PATH(tmsvolumeeffect.h)
+../inc/tmsmicsource.h           MW_LAYER_PLATFORM_EXPORT_PATH(tmsmicsource.h)
+../inc/tmsmodemsink.h           MW_LAYER_PLATFORM_EXPORT_PATH(tmsmodemsink.h)
+../inc/tmsmodemsource.h         MW_LAYER_PLATFORM_EXPORT_PATH(tmsmodemsource.h)
+../inc/tmsspeakersink.h         MW_LAYER_PLATFORM_EXPORT_PATH(tmsspeakersink.h)
+../inc/tmsinbandtone.h          MW_LAYER_PLATFORM_EXPORT_PATH(tmsinbandtone.h)
+../inc/tmsinbandtoneobsrvr.h    MW_LAYER_PLATFORM_EXPORT_PATH(tmsinbandtoneobsrvr.h)
+

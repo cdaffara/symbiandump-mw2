@@ -1,0 +1,55 @@
+// Copyright (c) 1999-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// BIOC.INF
+// 
+//
+
+PRJ_PLATFORMS
+
+
+PRJ_EXPORTS
+../BIOCINC/BIOSCMDS.H SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(bioscmds.h)
+../BIOCINC/BIOCMTM.H SYMBIAN_MW_LAYER_PUBLIC_EXPORT_PATH(biocmtm.h)
+
+PRJ_TESTEXPORTS
+../BITSTSRC/ENP1.TXT /epoc32/winscw/c/test/bio/tbiogen/enp1.txt
+../BITSTSRC/iacp1.txt /epoc32/winscw/c/test/bio/tbiogen/iacp1.txt
+../BITSTSRC/iacp2.txt /epoc32/winscw/c/test/bio/tbiogen/iacp2.txt
+../BITSTSRC/iacp3.txt /epoc32/winscw/c/test/bio/tbiogen/iacp3.txt
+../BITSTSRC/iacp4.txt /epoc32/winscw/c/test/bio/tbiogen/iacp4.txt
+../BITSTSRC/iacp5.txt /epoc32/winscw/c/test/bio/tbiogen/iacp5.txt
+../BITSTSRC/iacp6.txt /epoc32/winscw/c/test/bio/tbiogen/iacp6.txt
+../BITSTSRC/iacp7.txt /epoc32/winscw/c/test/bio/tbiogen/iacp7.txt
+../BITSTSRC/IAP1.TXT /epoc32/winscw/c/test/bio/tbiogen/iap1.txt
+../BITSTSRC/IAP2.TXT /epoc32/winscw/c/test/bio/tbiogen/iap2.txt
+../BITSTSRC/IAP3.TXT /epoc32/winscw/c/test/bio/tbiogen/iap3.txt
+../BITSTSRC/IAP4.TXT /epoc32/winscw/c/test/bio/tbiogen/iap4.txt
+../BITSTSRC/IAP5.TXT /epoc32/winscw/c/test/bio/tbiogen/iap5.txt
+../BITSTSRC/IAP6.TXT /epoc32/winscw/c/test/bio/tbiogen/iap6.txt
+../BITSTSRC/IAP7.TXT /epoc32/winscw/c/test/bio/tbiogen/iap7.txt
+../BITSTSRC/IAP8.TXT /epoc32/winscw/c/test/bio/tbiogen/iap8.txt
+../BITSTSRC/IAP9.TXT /epoc32/winscw/c/test/bio/tbiogen/iap9.txt
+../BITSTSRC/OPLOGO1.TXT /epoc32/winscw/c/test/bio/tbiogen/oplogo1.txt
+../BITSTSRC/RTONE1.TXT /epoc32/winscw/c/test/bio/tbiogen/rtone1.txt
+../BITSTSRC/RTONE2.TXT /epoc32/winscw/c/test/bio/tbiogen/rtone2.txt
+../BITSTSRC/SMS1.TXT /epoc32/winscw/c/test/bio/tbiogen/sms1.txt
+../BITSTSRC/SMS2.TXT /epoc32/winscw/c/test/bio/tbiogen/sms2.txt
+../BITSTSRC/VCAL1.TXT /epoc32/winscw/c/test/bio/tbiogen/vcal1.txt
+../BITSTSRC/VCARD1.TXT /epoc32/winscw/c/test/bio/tbiogen/vcard1.txt
+
+PRJ_MMPFILES
+group/BIOC.MMP
+
+PRJ_TESTMMPFILES
+../BIOCTSRC/T_BIOC.MMP	manual

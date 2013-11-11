@@ -1,0 +1,47 @@
+// Copyright (c) 1998-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// Function flags - for TMtmUiFunction::iFunctionType
+// 
+//
+
+/**
+ @file
+ @publishedAll
+ @released
+*/
+
+#define	EMtudContextSpecific			0x01
+#define	EMtudAsynchronous				0x02
+#define EMtudRemoteOnly 				0x04
+
+//
+// Function types - for TMtmUiFunction::iFlags
+
+#define	EMtudCommandTransferSend		0x1000
+#define	EMtudCommandTransferReceive		0x2000
+#define EMtudCommandSendAs				0x4000
+
+//
+// Key flags - for TMtmUiFunction::iPreferredHotKeyModifiers
+
+#define	EMtudShift						0x01
+#define	EMtudCtrl						0x02
+
+//
+// State flags for ContextIcon
+
+#define EMtudEntryStateOpen				0x0001
+#define EMtudEntryStateSubFolder		0x0002
+
+

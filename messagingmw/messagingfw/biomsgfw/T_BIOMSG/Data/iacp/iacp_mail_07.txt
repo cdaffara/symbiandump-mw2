@@ -1,0 +1,11 @@
+//SIAP11
+password
+Mname:mail_07
+Muid:user_07
+Mpwd:pass_07
+Madr:email@mail_07.com
+Mrcv:imap.mail_07.net
+Mdummy:
+Msnd:smtp.mail_07.net
+dummy1
+Mpro:IM

@@ -1,0 +1,10 @@
+EXPORTS
+	_ZN31CAudioOutputControlUtilityProxy4NewLEv @ 1 NONAME
+	_ZN31CAudioOutputControlUtilityProxyD0Ev @ 2 NONAME
+	_ZN31CAudioOutputControlUtilityProxyD1Ev @ 3 NONAME
+	_ZN31CAudioOutputControlUtilityProxyD2Ev @ 4 NONAME
+	_ZTI31CAudioOutputControlUtilityProxy @ 5 NONAME ; #<TI>#
+	_ZTI35CAudioOutputControlUtilityProxyImpl @ 6 NONAME ; #<TI>#
+	_ZTV31CAudioOutputControlUtilityProxy @ 7 NONAME ; #<VT>#
+	_ZTV35CAudioOutputControlUtilityProxyImpl @ 8 NONAME ; #<VT>#
+

@@ -1,0 +1,95 @@
+# test server
+
+EmailAddressExtension = msexchange2k.closedtest.intra
+
+ImapServerAddress = 10.22.64.6
+ImapPort = 143
+ImapSecureSockets = 0 
+ImapSSLWrapper = 0
+ImapFolderPath  = ""
+ImapSubscribe = TFolderSubscribeType::EUpdateNeither
+
+#ImapGetMailOptions = TImap4GetMailOptions::EGetImap4EmailBodyTextAndAttachments
+#ImapGetMailOptions = TImap4GetMailOptions::EGetImap4EmailAttachments
+#ImapGetMailOptions = TImap4GetMailOptions::EGetImap4EmailBodyText
+#ImapGetMailOptions = TImap4GetMailOptions::EGetImap4EmailHeaders
+
+#ImapPartialMailOptions = TImImap4PartialMailOptions::ENoSizeLimits
+#ImapPartialMailOptions = TImImap4PartialMailOptions::EBodyTextOnly
+#ImapPartialMailOptions = TImImap4PartialMailOptions::EAttachmentsOnly
+#ImapPartialMailOptions = TImImap4PartialMailOptions::EBodyTextAndAttachments
+#ImapPartialMailOptions = TImImap4PartialMailOptions::ECumulative
+
+
+
+#ImapAutoSendOnConnect = 0
+#ImapDeleteEmailsWhenDisconnecting = 1
+#ImapAcknowledgeReceipts = 1
+#ImapDisconnectedUserMode = 0
+#ImapIdleTimeout = 60
+#ImapInboxSynchronisationLimit = -1
+#ImapMailSynchronisationLimit = -1
+#ImapIdle = 1
+#ImapSyncRate = 300
+#ImapSynchronise = TFolderSyncType::EUseCombination
+
+#ImapBodyTextSizeLimit = 55000
+#ImapAttachmentSizeLimit = 55000
+#ImapPathSeperator = \
+#ImapFetchSize = 55000
+#ImapMaxEmailSize = 55000
+
+
+
+ImapIapList = IMAP001 IMAP002
+
+IMAP001_ImapIAP = 1
+IMAP001_ImapCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+IMAP001_ImapIAPIndex = 0
+
+IMAP002_ImapIAP = 1
+IMAP002_ImapCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+IMAP002_ImapIAPIndex = 0
+
+
+// SMTP settings
+SmtpServerAddress = 10.22.64.6
+SmtpEmailAddress = Pop3Top@msexchange.closedtest.intra
+
+
+#SmtpBodyEncoding = TMsgOutboxBodyEncoding::EMsgOutboxDefault
+#SmtpBodyEncoding = TMsgOutboxBodyEncoding::EMsgOutboxNoAlgorithm
+SmtpBodyEncoding = TMsgOutboxBodyEncoding::EMsgOutboxMIME
+#SmtpBodyEncoding = TMsgOutboxBodyEncoding::EMsgOutboxMHTMLAsMIME
+#SmtpBodyEncoding = TMsgOutboxBodyEncoding::EMsgOutboxMHTMLAlternativeAsMIME
+
+
+SmtpReceiptAddress = Pop3Top@msexchange.closedtest.intra
+SmtpRequestReceipts = 0
+SmtpSendMessageOption = TImSMTPSendMessageOption::ESendMessageOnRequest
+SmtpSetPort = 25
+SmtpEmailAlias = Pop3Top@msexchange.closedtest.intra
+#SmtpMsgCharSet = 268450576   # This is iso-8859-1 ( 0x10003B10 ) the default
+SmtpUserAddress = Pop3Top@msexchange.closedtest.intra
+SmtpSetReplyToAddress = Pop3Top@msexchange.closedtest.intra
+SmtpSetAddVCardToEmail = 0
+SmtpSetAddSignatureToEmail = 1
+SmtpSetSendCopyToSelf = TImSMTPSendCopyToSelf::ESendNoCopy
+SmtpSetLoginName = Pop3Top
+SmtpSetPassword = Pop3Top
+SmtpSetSMTPAuth = 0
+SmtpSetInboxLoginDetails = 0
+SmtpSetSecureSockets = 0
+SmtpSetSSLWrapper = 0
+
+
+SmtpIapList = SMTP001 SMTP002 
+
+SMTP001_SmtpIAP = 1
+SMTP001_SmtpCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+SMTP001_SmtpIAPIndex = 0
+
+
+SMTP001_SmtpIAP = 1
+SMTP001_SmtpCommDbDialogPref = TCommDbDialogPref::ECommDbDialogPrefDoNotPrompt
+SMTP001_SmtpIAPIndex = 0

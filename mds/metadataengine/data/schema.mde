@@ -1,0 +1,264 @@
+//
+// NOTES:
+// 1. "//" at the beginning means a comment for the rest of the line
+// 2. There is the difference between using small and capital letters
+//    so it means that "Video" and "video" are not the same
+// 3. Layout of schema should looks like this:
+//    namespace_1
+//       ...
+//    namespace_n
+//     object_1
+//      property_1
+//        ...
+//      property_n
+//     object_2
+//      property_1
+//        ...
+//      property_n
+//    namespace_n+1
+//       ...
+//    namespace_n+n
+//     object_1
+//      property_1
+//        ...
+//      property_n
+//     object_2
+//      property_1
+//        ...
+//      property_n
+//    namespace_n+n+n .........
+//
+// VERSION: (OPTIONAL)
+// version <number>
+//    <number>   = version number in format major_version.minor_version
+//
+// NAMESPACE:
+// ----------------
+// namespace   <name> <readonly>
+//    <name>     = any string
+//    <readonly> = if true, it is prohibited to add new items into this namespace
+//
+//
+// OBJECT DEF:
+// ----------------
+// object   <namespace> <name> <parent> <flags>
+//    <namespace> = name of namespace
+//    <name>      = any string
+//    <parent>    = name of the parent
+//    <flags>     = object definition's flags
+//                  0 = no flags
+//                  1 = removable, object is removed when all relations pointing to it are removed
+//
+//
+// PROPERTY DEF:
+// ----------------
+// property   <name> <readonly> <mandatory> <type> <minv> <maxv> [<indexed>]
+//    <name>      = any string
+//    <readonly>  = if true, users are not allowed to modify this value once written
+//    <mandatory> = if true, this property is mandatory
+//    <type>      = datatype of the property, numeric value (see table below)
+//    <minv>      = minimum value of the property (format depends on type)
+//    <maxv>      = maximum value of the property (format depends on type)
+//	  <indexed>   = flag indicating should this property be indexed (optional, only for text properties)
+//                  1 = create an index for this property
+//
+//    THERE ARE DEFINED min AND max VALUE, WHICH ALWAYS SET CORRECT VALUE FOR ITS TYPE
+//
+//    EPropertyBool     = 0,   min/max = no effect (always set internal to 0 and 1)
+//    EPropertyInt8     = 1,   min/max = numeric values
+//    EPropertyUint8    = 2,   min/max = numeric values
+//    EPropertyInt16    = 3,   min/max = numeric values
+//    EPropertyUint16   = 4,   min/max = numeric values
+//    EPropertyInt32    = 5,   min/max = numeric values
+//    EPropertyUint32   = 6,   min/max = numeric values
+//    EPropertyInt64    = 7,   min/max = numeric values
+//    EPropertyReal32   = 8,   min/max = numeric values
+//    EPropertyReal64   = 9,   min/max = numeric values
+//    EPropertyTime     = 10,  min/max = Time format: YYYYMMDDhhmmss (for instance 20050629163021)
+//    EPropertyText     = 11,  min/max = numeric values, indicating minimum and maximum length of string 
+//                                       (minimum and maximum values must be between 1 and 65535)
+//
+// RELATION DEF:
+// ----------------
+// relationdef <namespace> <name>
+//    <namespace> = name of namespace
+//    <name>      = any string
+//
+// EVENT DEF:
+// ----------------
+// eventdef <namespace> <name> <priority>
+//    <namespace> = name of namespace
+//    <name>      = any string
+//    <priority>  = event priority, numeric value
+//
+//
+
+version 3.0
+
+
+namespace http://sw.nokia.com/MdE 0
+
+
+object http://sw.nokia.com/MdE Location Object 1
+property   CellID                         0    0        6    min   max
+property   LocationAreaCode               0    0        6    min   max
+property   Speed                          0    0        8    min   max
+property   Direction                      0    0        8    min   max
+property   Quality                        0    0        8    min   max
+property   Latitude                       0    0        9    min   max
+property   Longitude                      0    0        9    min   max
+property   Altitude                       0    0        9    min   max
+property   CountryCodeStr                 0    0        11   min   max
+property   NetworkCodeStr                 0    0        11   min   max
+property   Satellites                     0    0        11   min   max
+property   Country                        0    0        11   min   max
+property   CellName                       0    0        11   min   max
+
+
+object http://sw.nokia.com/MdE Calendar Object 1
+property   CalendarType                   0    0        2    min   max
+property   LocalUid                       0    0        6    min   max
+property   StartTime                      0    0        10   min   max
+property   EndTime                        0    0        10   min   max
+property   Location                       0    0        11   min   max
+property   vCalendar                      0    0        11   min   max
+
+
+object http://sw.nokia.com/MdE Contact Object 1
+property   Number                         0    0        11   min   max
+property   EmailAddress                   0    0        11   min   max
+property   Company                        0    0        11   min   max
+property   JobTitle                       0    0        11   min   max
+property   Address                        0    0        11   min   max
+property   ContactURL                     0    0        11   min   max
+property   vCard                          0    0        11   min   max
+
+
+object http://sw.nokia.com/MdE Message Object 0
+property   Received                       0    0        0    min   max
+property   ToWhom                         0    0        11   min   max
+property   Sender                         0    0        11   min   max
+
+
+object http://sw.nokia.com/MdE Album Object 0
+property   Ordered                        0    0        0    min   max
+property   Type                           0    0        4    min   max
+
+
+object http://sw.nokia.com/MdE Tag Object 0
+
+
+object http://sw.nokia.com/MdE MediaObject Object 0
+property   Protected                      0    0        0    min   max
+property   DRM                            0    0        0    min   max
+property   ThumbnailPresent               0    0        0    min   max
+property   Resized                        0    0        0    min   max
+property   Sample                         0    0        0    min   max
+property   Rating                         0    0        2    min   max
+property   Privacy                        0    0        4    min   max
+property   ResolutionUnit                 0    0        4    min   max
+property   Bitrate                        0    0        4    min   max
+property   Width                          0    0        4    min   max
+property   Height                         0    0        4    min   max
+property   Preinstalled                   0    0        5    min   max
+property   AccessCount                    0    0        6    min   max
+property   DownloadID                     0    0        6    min   max
+property   Duration                       0    0        8    min   max
+property   ReleaseDate                    0    0        10   min   max
+property   CaptureDate                    0    0        10   min   max
+property   Artist                         0    0        11   min   max 
+property   Author                         0    0        11   min   max
+property   Copyright                      0    0        11   min   max
+property   Legal                          0    0        11   min   max
+property   Description                    0    0        11   min   max
+property   Comment                        0    0        11   min   max
+property   Genre                          0    0        11   min   max 
+property   Track                          0    0        4    min   max
+property   AudioFourCC                    0    0        6    min   max
+
+
+object http://sw.nokia.com/MdE Video MediaObject 0
+property   AgeProfile                     0    0        5    min   max
+property   RecordingFlags                 0    0        6    min   max
+property   LastPlayPosition               0    0        8    min   max
+property   Framerate                      0    0        8    min   max
+property   AudioLanguage                  0    0        11   min   max
+
+
+object http://sw.nokia.com/MdE Image MediaObject 0
+property   Draft                          0    0        0    min   max
+property   FocalPlaneResolutionUnit       0    0        4    min   max
+property   ExposureProgram                0    0        4    min   max
+property   FocalLengthIn35mmFilm          0    0        4    min   max
+property   ISOSpeedRatings                0    0        4    min   max
+property   MeteringMode                   0    0        4    min   max
+property   WhiteBalance                   0    0        4    min   max
+property   Flash                          0    0        4    min   max
+property   ColourSpace                    0    0        4    min   max
+property   Orientation                    0    0        4    min   max
+property   SamplesPerPixel                0    0        4    min   max
+property   BitsPerSample                  0    0        4    min   max
+property   YCbCrPositioning               0    0        4    min   max
+property   ThumbCompression               0    0        4    min   max
+property   ThumbResolutionUnit            0    0        4    min   max
+property   ThumbOrientation               0    0        4    min   max
+property   FrameCount                     0    0        5    min   max
+property   PixelXDimension                0    0        6    min   max
+property   PixelYDimension                0    0        6    min   max
+property   ExifVersion                    0    0        6    min   max
+property   ComponentsConfiguration        0    0        6    min   max
+property   FlashPixVersion                0    0        6    min   max
+property   ThumbXResolution               0    0        6    min   max
+property   ThumbYResolution               0    0        6    min   max
+property   FocalPlaneXResolution          0    0        8    min   max
+property   FocalPlaneYResolution          0    0        8    min   max
+property   ExposureTime                   0    0        8    min   max
+property   ExposureBiasValue              0    0        8    min   max
+property   FNumber                        0    0        8    min   max
+property   FocalLength                    0    0        8    min   max
+property   ApertureValue                  0    0        8    min   max
+property   MaxAperture                    0    0        8    min   max
+property   ShutterSpeedValue              0    0        8    min   max
+property   XResolution                    0    0        8    min   max
+property   YResolution                    0    0        8    min   max
+property   DateTime                       0    0        10   min   max
+property   DateTimeDigitized              0    0        10   min   max
+property   DateTimeOriginal               0    0        10   min   max
+property   Model                          0    0        11   min   max
+property   Make                           0    0        11   min   max
+property   RelatedSoundFile               0    0        11   min   max
+
+
+object http://sw.nokia.com/MdE Audio MediaObject 0
+property   SamplingFrequency              0    0        8    min   max
+property   Album                          0    0        11   min   max 
+property   Composer                       0    0        11   min   max 
+property   OriginalArtist                 0    0        11   min   max
+property   AlbumArtist                    0    0        11   min   max
+
+
+object http://sw.nokia.com/MdE TrackLog Object 0
+property   Length                         0    0        6    min   max
+property   StartTime                      0    0        10   min   max
+property   StopTime                       0    0        10   min   max
+
+
+
+eventdef    http://sw.nokia.com/MdE   Created        1
+eventdef    http://sw.nokia.com/MdE   Deleted        1
+eventdef    http://sw.nokia.com/MdE   Opened         2
+eventdef    http://sw.nokia.com/MdE   Played         2
+eventdef    http://sw.nokia.com/MdE   Edited         2
+eventdef    http://sw.nokia.com/MdE   Sent           2
+eventdef    http://sw.nokia.com/MdE   Received       2
+
+
+
+relationdef    http://sw.nokia.com/MdE    Contains
+relationdef    http://sw.nokia.com/MdE    Replaces
+relationdef    http://sw.nokia.com/MdE    IsVersionOf
+relationdef    http://sw.nokia.com/MdE    Requires
+relationdef    http://sw.nokia.com/MdE    Uses
+relationdef    http://sw.nokia.com/MdE    References
+relationdef    http://sw.nokia.com/MdE    Summarises
+relationdef    http://sw.nokia.com/MdE    ContainsLocation

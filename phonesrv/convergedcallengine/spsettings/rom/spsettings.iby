@@ -1,0 +1,30 @@
+/*
+* Copyright (c) 2006-2009 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  SPSettings ROM definition file
+*
+*/
+
+#ifndef SPSETTINGS_IBY
+#define SPSETTINGS_IBY
+
+file=ABI_DIR\BUILD_DIR\spsbackuphelper.exe          PROGRAMS_DIR\spsbackuphelper.exe
+file=ABI_DIR\BUILD_DIR\serviceprovidersettings.dll  SHARED_LIB_DIR\serviceprovidersettings.dll
+data=ZPRIVATE\10282E7E\backup_registration.xml      private\10282E7E\backup_registration.xml
+data=ZPRIVATE\200286D2\backup_registration.xml      private\200286D2\backup_registration.xml
+data=ZSYSTEM\install\spsbackuphelper_stub.sis       System\Install\spsbackuphelper_stub.sis
+data=ZSYSTEM\install\spsettings_stub.sis            System\Install\spsettings_stub.sis
+
+#endif // SPSETTINGS_IBY
+
+//  End of File

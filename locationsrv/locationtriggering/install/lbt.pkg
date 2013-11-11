@@ -1,0 +1,56 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: Package file for location triggering subsystem
+;
+
+; Installation file for Location Triggering
+
+; Languages, (English only)
+&EN
+
+; UID is the app's UID
+#{"LBT"},(0x1028312B),1,0,0,TYPE = SA, RU
+;Series 60 v3.0
+[0x102752AE], 0, 0, 0, {"Series60ProductID"} ; S60 3.2 and varients
+[0x1028315F], 0, 0, 0, {"Series60ProductID"} ; S60 5.0
+
+; Localised Vendor name
+%{"Nokia"}
+
+; Unique Vendor name
+:"Nokia"
+
+;
+; Files to install
+;
+"\Epoc32\release\armv5\urel\lbt.dll"-"!:\sys\bin\lbt.dll"
+"\Epoc32\release\armv5\urel\lbtlogger.dll"-"!:\sys\bin\lbtlogger.dll"
+"\Epoc32\release\armv5\urel\lbtmanager.dll"-"!:\sys\bin\lbtmanager.dll"
+"\Epoc32\data\Z\Resource\Plugins\lbtserverlogic.rsc"-"!:\resource\plugins\lbtserverlogic.rsc"
+"\Epoc32\release\armv5\urel\lbtserverlogic.dll"-"!:\sys\bin\lbtserverlogic.dll"
+"\Epoc32\release\armv5\urel\lbtserverlogicbase.dll"-"!:\sys\bin\lbtserverlogicbase.dll"
+"\Epoc32\release\armv5\urel\lbtcontainer.dll"-"!:\sys\bin\lbtcontainer.dll"
+"\Epoc32\release\armv5\urel\lbtstrategy.dll"-"!:\sys\bin\lbtstrategy.dll"
+"\Epoc32\release\armv5\urel\lbtstrategypluginapi.dll"-"!:\sys\bin\lbtstrategypluginapi.dll"
+"\Epoc32\data\Z\Resource\Plugins\lbtstrategy.rsc"-"!:\resource\plugins\lbtstrategy.rsc"
+"\Epoc32\release\armv5\urel\ltmvmtdetapi.dll"-"!:\sys\bin\ltmvmtdetapi.dll"
+"\Epoc32\release\armv5\urel\ltcellidmovdet.dll"-"!:\sys\bin\ltcellidmovdet.dll"
+"\Epoc32\data\Z\Resource\Plugins\ltcellidmovdet.rsc"-"!:\resource\plugins\ltcellidmovdet.rsc"
+"\Epoc32\release\armv5\urel\lbtserver.exe"-"!:\sys\bin\lbtserver.exe",FR,RI
+"\Epoc32\data\z\private\1028312B\backup_registration.xml" -"!:\private\1028312B\backup_registration.xml"
+"\Epoc32\data\1028312B.rsc"-"C:\private\101f875a\import\[1028312B].rsc"
+
+;@"lbt_cenrep.sisx",(0x10202BE9)
+
+; End of File

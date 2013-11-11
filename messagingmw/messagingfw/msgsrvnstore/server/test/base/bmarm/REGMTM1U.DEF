@@ -1,0 +1,3 @@
+EXPORTS
+	NewL__10CMyClntMtmR17CRegisteredMtmDllR11CMsvSession @ 1 NONAME ; CMyClntMtm::NewL(CRegisteredMtmDll &, CMsvSession &)
+

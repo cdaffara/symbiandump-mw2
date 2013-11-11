@@ -1,0 +1,31 @@
+// Copyright (c) 2000-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// WapPush
+// 
+//
+
+PRJ_PLATFORMS
+
+
+PRJ_EXPORTS
+../../pushwatcher/inc/pushlog.h SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(push/pushlog.h)
+	
+
+PRJ_MMPFILES
+../../pushwatcher/group/pushwatcher.mmp
+
+PRJ_TESTMMPFILES
+../../pushwatcher/test/t_pushwatcherfinalclose.mmp	manual
+
+PRJ_TESTEXPORTS

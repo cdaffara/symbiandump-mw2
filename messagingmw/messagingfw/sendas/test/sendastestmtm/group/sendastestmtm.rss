@@ -1,0 +1,71 @@
+// Copyright (c) 2004-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+#include <mtmconfig.rh>
+
+RESOURCE MTM_INFO_FILE
+	{
+	mtm_type_uid = 0x10204287;
+	technology_type_uid = 0x1000127D;
+	components = 
+		{
+		MTM_COMPONENT_V2
+			{
+			human_readable_name = "SendAs Test Mtm Server";
+			component_uid = KUidMtmServerComponentVal;
+			entry_point = 2;
+			version = VERSION_V2 {};
+			filename = "z:\\system\\libs\\sendastestmtm.dll";
+			},
+		MTM_COMPONENT_V2
+			{
+			human_readable_name = "SendAs Test Mtm Client";
+			component_uid = KUidMtmClientComponentVal;
+			entry_point = 1;
+			version = VERSION_V2 {};
+			filename = "z:\\system\\libs\\sendastestmtm.dll"; // not used
+			},
+		MTM_COMPONENT_V2
+			{
+			human_readable_name = "SendAs Test Mtm UI";
+			component_uid = KUidMtmUiComponentVal;
+			entry_point = 3;
+			version = VERSION_V2 {};
+			filename = "z:\\system\\libs\\sendastestmtm.dll"; // not used
+			},
+		MTM_COMPONENT_V2
+			{
+			human_readable_name = "SendAs Test Mtm Server";
+			component_uid = KUidMtmUiDataComponentVal;
+			entry_point = 3;
+			version = VERSION_V2 {};
+			filename = ""; // not used
+			}
+
+		};
+	}
+
+
+RESOURCE MTM_CAPABILITIES
+	{
+	send_capability=1;
+        body_capability=1;
+	}
+	
+RESOURCE MTM_SECURITY_CAPABILITY_SET
+	{
+	capabilities = { ECapabilityLocalServices };
+	}
+

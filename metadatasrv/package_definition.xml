@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SystemDefinition schema="3.0.0">
+ <package id="metadatasrv" name="Legacy Metadata Services" version="2.0.0" levels="plugin framework server generic specific">
+  <collection id="metadatasrv_pub" name="Legacy Metadata Services Public Interfaces" level="specific">
+   <component id="media_fetch_api" name="Media Fetch API" class="api" filter="s60">
+    <meta rel="Api" href="metadatasrv_pub/media_fetch_api/media_fetch_api.metaxml"/>
+    <unit bldFile="metadatasrv_pub/media_fetch_api/group"/>
+   </component>
+  </collection>
+  <collection id="metadatasrv_plat" name="Legacy Metadata Services Platform Interfaces" level="specific">
+   <component id="media_fetch_implementation_api" name="Media Fetch Implementation API" class="api" filter="s60">
+    <meta rel="Api" href="metadatasrv_plat/media_fetch_implementation_api/media_fetch_implementation_api.metaxml"/>
+    <unit bldFile="metadatasrv_plat/media_fetch_implementation_api/group"/>
+   </component>
+  </collection>
+  <collection id="mediamanagementutilities" name="Media Management Utilities" level="generic">
+   <component id="mediafetch" filter="s60" name="Media Fetch">
+    <unit bldFile="mediamanagementutilities/mediafetch/group"/>
+   </component>
+  </collection>
+ </package>
+</SystemDefinition>

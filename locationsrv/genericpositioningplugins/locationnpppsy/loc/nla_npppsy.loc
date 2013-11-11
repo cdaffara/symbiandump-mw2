@@ -1,0 +1,31 @@
+CHARACTER_SET UTF8/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Defines the localised name for the NPP PSY
+*
+*/
+
+
+// LOCALISATION STRINGS
+
+//d: Name of the NPP PSY represented to the user
+//d: The is the location technology name for network based positioning method.
+//d: 
+//l: list_set_graphic_pane_t1
+//w:
+//r: 3.1
+//
+#define qtn_loc_psy_int_npppsy "Network Based"
+
+
+// End of File

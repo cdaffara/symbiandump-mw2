@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>MSG_IMAP_CreateReplyMessage_0001</name>
+	<timeout>1000</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\Scripts\PlainBodyTextOps\MSG_IMAP_CreateReplyMessage_0001.script</hostPath>
+			<devicePath>c:\msgtest\Scripts\PlainBodyTextOps\MSG_IMAP_CreateReplyMessage_0001.script</devicePath>
+		</script>
+	</testScripts>
+
+	<testServers>
+		<server>T_MsgImapServer</server>
+		<server>T_MsgSmtpServer</server>		
+		<server>T_MsgCommonServer</server>
+	</testServers>
+
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Ini\PlainBodyTextOps\MSG_IMAP_CreateReplyMessage_0001.ini</hostPath>
+			<devicePath>c:\msgtest\Ini\PlainBodyTextOps\MSG_IMAP_CreateReplyMessage_0001.ini</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailSettings\IMAPSettings_test908.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailSettings\IMAPSettings_test908.txt</devicePath>
+		</data>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\Config\EmailMessage\10KBody.txt</hostPath>
+			<devicePath>c:\msgtest\Config\EmailMessage\10KBody.txt</devicePath>
+		</data>
+	</dependencies>	
+</testExecuteTest>
+

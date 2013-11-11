@@ -1,0 +1,102 @@
+// *****************************************
+//  
+//  Author:	Stephen Lewis
+//  Date:	13/03/03
+//
+// Setup Pop3 connection with a connect and monitor command to 
+// check connection progress. 
+//
+// Performence Test Script for Case 3
+// TO run this test rename this file to script.txt and copy it 
+// to c:\msgtest\emailsmoke
+//
+// 
+// *****************************************
+
+[main]
+email_client_test email
+
+[email]
+pop3_client_test initialise_tests
+pop3_client_test Test_POP3_Case
+// 
+// Initialise the Tests (ie Clean the Msg Server, start Session & create Accounts)
+// 
+[initialise_tests]
+//--------------------------------------
+//  Clean Message Server & Start Session
+//--------------------------------------
+clean_message_folder
+start_client_session
+//--------------------------------------
+// Create the Services
+//--------------------------------------
+pop3_client_test create_pop_service
+
+
+[Test_POP3_Case]
+select_root_folder
+add_comment *** Connect to POP service ***
+select_root_folder
+select_folder Pop3_service
+add_comment Connect and monitor
+connect_and_monitor
+check_pop3_error 0
+select_all_messages
+select_first_in_selection 1
+select_root_folder
+select_folder local
+select_destination_folder drafts
+select_root_folder
+select_folder Pop3_service
+add_comment  copy 1 Email to local drafts folder 
+copy
+check_pop3_error 0
+add_comment message downloaded
+disconnect
+check_pop3_error 0
+select_root_folder
+select_folder local
+select_folder drafts
+select_all_messages
+check_selection_count 1
+
+
+// ****************************************************************
+//  Create Pop Service 
+// ****************************************************************
+[create_pop_service]
+add_comment Creating Pop Service
+select_root_folder
+pop3_service Pop_service
+
+
+// *****************************************
+//  POP3 Service Settings 			
+// *****************************************
+[Pop_service]
+set_name Pop3_Service
+// NOKIA
+//set_server avavir.it.cellulardata.com
+//set_user mailtst1
+//set_pass mailtest1
+// DARREN
+set_server lon-darrenm01.intra
+set_user slewis
+set_pass slewis
+set_tls 0
+set_wrapped_tls 0
+set_port 110
+
+//
+// Any of the following No can be used to access this server
+// +358 3 3617 770
+// +358 3 31520 444
+// +358 3 31520 111
+// +358 3 31520 999
+// *****************************************
+
+
+
+
+

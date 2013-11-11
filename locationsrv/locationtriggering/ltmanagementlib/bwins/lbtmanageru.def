@@ -1,0 +1,23 @@
+EXPORTS
+	??0RLbtManager@@QAE@XZ @ 1 NONAME ; RLbtManager::RLbtManager(void)
+	??0TLbtTriggeringSystemManagementSettings@@QAE@XZ @ 2 NONAME ; TLbtTriggeringSystemManagementSettings::TLbtTriggeringSystemManagementSettings(void)
+	??1RLbtManager@@QAE@XZ @ 3 NONAME ; RLbtManager::~RLbtManager(void)
+	?CancelNotifyTriggeringSystemStatusChange@RLbtManager@@QAEXXZ @ 4 NONAME ; void RLbtManager::CancelNotifyTriggeringSystemStatusChange(void)
+	?GetTriggerManagerUiInfoL@RLbtManager@@QAEXAAV?$RArray@UTLbtTriggerManagerUiInfo@@@@@Z @ 5 NONAME ; void RLbtManager::GetTriggerManagerUiInfoL(class RArray<struct TLbtTriggerManagerUiInfo> &)
+	?GetTriggeringSystemSettingsL@RLbtManager@@QAEXAAVTLbtTriggeringSystemSettings@@@Z @ 6 NONAME ; void RLbtManager::GetTriggeringSystemSettingsL(class TLbtTriggeringSystemSettings &)
+	?GetTriggeringSystemStatusL@RLbtManager@@QAEXAAUTLbtTriggeringSystemStatus@@@Z @ 7 NONAME ; void RLbtManager::GetTriggeringSystemStatusL(struct TLbtTriggeringSystemStatus &)
+	?MaximumUserSpeed@TLbtTriggeringSystemManagementSettings@@QBENXZ @ 8 NONAME ; double TLbtTriggeringSystemManagementSettings::MaximumUserSpeed(void) const
+	?MinimumLocationUpdateInterval@TLbtTriggeringSystemManagementSettings@@QBEHXZ @ 9 NONAME ; int TLbtTriggeringSystemManagementSettings::MinimumLocationUpdateInterval(void) const
+	?MinimumLocationUpdateIntervalWhenGpsFails@TLbtTriggeringSystemManagementSettings@@QBEHXZ @ 10 NONAME ; int TLbtTriggeringSystemManagementSettings::MinimumLocationUpdateIntervalWhenGpsFails(void) const
+	?NotifyTriggeringSystemSettingChange@RLbtManager@@QAEXAAVTLbtTriggeringSystemManagementSettings@@AAVTRequestStatus@@@Z @ 11 NONAME ; void RLbtManager::NotifyTriggeringSystemSettingChange(class TLbtTriggeringSystemManagementSettings &, class TRequestStatus &)
+	?NotifyTriggeringSystemStatusChange@RLbtManager@@QAEXAAVTRequestStatus@@@Z @ 12 NONAME ; void RLbtManager::NotifyTriggeringSystemStatusChange(class TRequestStatus &)
+	?Open@RLbtManager@@QAEHAAVRLbtServer@@@Z @ 13 NONAME ; int RLbtManager::Open(class RLbtServer &)
+	?SetMaximumUserSpeed@TLbtTriggeringSystemManagementSettings@@QAEXN@Z @ 14 NONAME ; void TLbtTriggeringSystemManagementSettings::SetMaximumUserSpeed(double)
+	?SetMinimumLocationUpdateInterval@TLbtTriggeringSystemManagementSettings@@QAEXH@Z @ 15 NONAME ; void TLbtTriggeringSystemManagementSettings::SetMinimumLocationUpdateInterval(int)
+	?SetMinimumLocationUpdateIntervalWhenGpsFails@TLbtTriggeringSystemManagementSettings@@QAEXH@Z @ 16 NONAME ; void TLbtTriggeringSystemManagementSettings::SetMinimumLocationUpdateIntervalWhenGpsFails(int)
+	?SetTriggeringMechanismStateL@RLbtManager@@QAEXW4TLbtTriggeringMechanismState@@@Z @ 17 NONAME ; void RLbtManager::SetTriggeringMechanismStateL(enum TLbtTriggeringMechanismState)
+	?SetTriggeringSystemSettingsL@RLbtManager@@QAEXABVTLbtTriggeringSystemManagementSettings@@K@Z @ 18 NONAME ; void RLbtManager::SetTriggeringSystemSettingsL(class TLbtTriggeringSystemManagementSettings const &, unsigned long)
+	?SetUsedPositioningModule@TLbtTriggeringSystemManagementSettings@@QAEXVTUid@@@Z @ 19 NONAME ; void TLbtTriggeringSystemManagementSettings::SetUsedPositioningModule(class TUid)
+	?Type@TLbtTriggeringSystemManagementSettings@@UAE?AW4TType@TLbtTriggeringSystemSettings@@XZ @ 20 NONAME ; enum TLbtTriggeringSystemSettings::TType TLbtTriggeringSystemManagementSettings::Type(void)
+	?UsedPositioningModule@TLbtTriggeringSystemManagementSettings@@QBE?AVTUid@@XZ @ 21 NONAME ; class TUid TLbtTriggeringSystemManagementSettings::UsedPositioningModule(void) const
+

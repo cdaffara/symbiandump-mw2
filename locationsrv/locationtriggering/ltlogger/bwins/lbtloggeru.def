@@ -1,0 +1,5 @@
+EXPORTS
+	?CreateLogger@CLbtLoggerImpl@@SAPAV1@XZ @ 1 NONAME ; class CLbtLoggerImpl * CLbtLoggerImpl::CreateLogger(void)
+	?Destroy@CLbtLoggerImpl@@SAXXZ @ 2 NONAME ; void CLbtLoggerImpl::Destroy(void)
+	?GetFileLogger@CLbtLoggerImpl@@QAEAAVRFileLogger@@XZ @ 3 NONAME ; class RFileLogger & CLbtLoggerImpl::GetFileLogger(void)
+

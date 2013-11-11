@@ -1,0 +1,40 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  File that exports the files belonging to 
+:                Enhanced Media Client API
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+../inc/StreamControlObserver.h     MW_LAYER_PLATFORM_EXPORT_PATH(StreamControlObserver.h)
+../inc/SourceControl.h     MW_LAYER_PLATFORM_EXPORT_PATH(SourceControl.h)
+../inc/MMControlFactory.h     MW_LAYER_PLATFORM_EXPORT_PATH(MMControlFactory.h)
+../inc/EffectControl.h     MW_LAYER_PLATFORM_EXPORT_PATH(EffectControl.h)
+../inc/ControlObserver.h     MW_LAYER_PLATFORM_EXPORT_PATH(ControlObserver.h)
+../inc/MimeTypes.h     MW_LAYER_PLATFORM_EXPORT_PATH(MimeTypes.h)
+../inc/SourceControlObserver.h     MW_LAYER_PLATFORM_EXPORT_PATH(SourceControlObserver.h)
+../inc/SinkControl.h     MW_LAYER_PLATFORM_EXPORT_PATH(SinkControl.h)
+../inc/StreamControl.h     MW_LAYER_PLATFORM_EXPORT_PATH(StreamControl.h)
+../inc/Control.h     MW_LAYER_PLATFORM_EXPORT_PATH(Control.h)
+../inc/Events.h     MW_LAYER_PLATFORM_EXPORT_PATH(Events.h)
+../inc/SinkControlObserver.h     MW_LAYER_PLATFORM_EXPORT_PATH(SinkControlObserver.h)
+../inc/SCCustomInterfaceUIDs.h     MW_LAYER_PLATFORM_EXPORT_PATH(SCCustomInterfaceUIDs.h)
+../inc/AudioEffectControl.h     MW_LAYER_PLATFORM_EXPORT_PATH(AudioEffectControl.h)

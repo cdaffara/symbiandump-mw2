@@ -1,0 +1,13 @@
+//SIAP11
+password
+Gname:Out
+Gapn:Test
+GPdpt:0
+Gpdp:www.wid.com
+Guid:Mike
+Gpwp:true
+Gip:194.72.6.50
+Gpwd:Mike
+Gdns1:194.72.6.51
+Gdns2:194.72.6.52
+Gmsk:255.255.255.0

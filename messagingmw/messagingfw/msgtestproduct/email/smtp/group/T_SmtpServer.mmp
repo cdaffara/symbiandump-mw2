@@ -1,0 +1,76 @@
+// Copyright (c) 2005-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// Project definition file for Smtp test Server
+// 
+//
+
+	CAPABILITY 		ALL -TCB
+	TARGET			t_msgsmtpserver.exe
+	TARGETTYPE		exe
+	UID			0x1000007A 0x10274070
+	VENDORID 		0x70000001
+	EPOCHEAPSIZE 0x4000 0x1200000
+
+// Include the Framework 
+#include "../../../framework/group/T_MsgFramework.mph"
+
+
+APP_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+USERINCLUDE 	../inc 
+USERINCLUDE     ../../../../../../../app/messaging/email/pop3andsmtpmtm/clientmtms/inc
+USERINCLUDE		../../../../../../../app/messaging/email/pop3andsmtpmtm/servermtmutils/inc
+SOURCEPATH	../src
+SOURCE		T_SmtpServer.cpp
+SOURCE		T_MsgAsyncStepSMTP.cpp
+SOURCE		T_MsgSyncStepSMTP.cpp
+SOURCE		T_MsgSharedDataSmtp.cpp
+SOURCE		T_SendSmtpMessage.cpp
+SOURCE		T_UtilsSendEmail.cpp
+SOURCE		T_CreateSmtpMessageFromEmailFile.cpp
+SOURCE		T_SmtpSendEmail.cpp
+SOURCE		ImCltCvRecv.cpp
+SOURCE		Local_imcvrecv.cpp
+SOURCE		Local_imutdll.cpp
+SOURCE		T_StartRamUsageTimer.cpp
+SOURCE		T_StopRamUsageTimer.cpp
+SOURCE		T_RetrievePlainBodyTextAndCompare.cpp
+SOURCE		T_SmtpCreateNewMessageWithPlainBodyText.cpp
+SOURCE		T_SmtpCreateForwardMessage.cpp
+SOURCE		T_SmtpCreateReplyMessage.cpp
+SOURCE		T_CreateSmtpMobilityAccount.cpp
+SOURCE		T_CreateSmtpAccount.cpp
+SOURCE		T_CheckSmtpSNAPSetting.cpp
+SOURCE		T_ModifySmtpSettings.cpp
+SOURCE		T_RemoveSmtpSNAPSetting.cpp
+SOURCE		T_CheckSmtpBMSetting.cpp
+
+LIBRARY 	testexecuteutils.lib
+LIBRARY		testexecutelogclient.lib
+LIBRARY		imut.lib 
+LIBRARY		bafl.lib
+LIBRARY		etext.lib
+LIBRARY		msgs.lib
+LIBRARY		euser.lib
+LIBRARY		imcm.lib
+LIBRARY		efsrv.lib
+LIBRARY		charconv.lib
+LIBRARY		estor.lib
+LIBRARY		t_msgutilityserver.lib
+LIBRARY		hal.lib
+LIBRARY		instrumentationhandler.lib
+LIBRARY		netmeta.lib
+
+EPOCHEAPSIZE 0x1000 0x800000
+SMPSAFE

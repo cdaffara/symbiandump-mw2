@@ -1,0 +1,34 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+
+#ifndef __WATCHER_IBY__
+#define __WATCHER_IBY__
+
+#include <flogger.iby>
+
+REM The Watcher Framework
+
+REM 'buildrom lubbock -D__NOWATCHER__' will place watcher.exe in z:\
+REM so that it never runs
+
+#ifndef __NOWATCHER__
+file=ABI_DIR\BUILD_DIR\watcher.exe	System\Libs\watcher.exe
+#else
+file=ABI_DIR\BUILD_DIR\watcher.exe watcher.exe
+#endif
+
+#endif

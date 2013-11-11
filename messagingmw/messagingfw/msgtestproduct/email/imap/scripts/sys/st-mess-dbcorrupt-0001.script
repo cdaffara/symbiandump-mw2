@@ -1,0 +1,55 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+LOAD_SUITE 	T_MsgImapServer 	-SharedData
+
+START_TESTCASE ST-MESS-DBCORRUPT-0001
+
+//!	@SYMTestCaseID			ST-MESS-DBCORRUPT-0001
+//!	@SYMTestCaseDesc		Start message server when messaging database is corrupted
+//!                                     	
+//!	@SYMTestPriority		Critical
+//!   	@SYMTestType			ST
+//!  	@SYMTestStatus			Implemented
+//!	@SYMPREQ 			PREQ1189   
+//!	@SYMTestCaseDependencies	Requires ced -i c:\ced_default_ras.cfg to set comms.
+//!	@SYMTestActions			Create a corrupted messaging database
+//!					Start the message server
+//!					
+//!	@SYMTestExpectedResults		A new messaging database should be created
+//!	@SYMAuthor			Rajat Bal
+
+PRINT ################## set corrupt db ###
+RUN_UTILS  CopyFile   		c:\messaging.db c:\messaging.db.bak
+RUN_UTILS  MakeReadWrite  	c:\messaging.db
+RUN_UTILS  CopyFile   		c:\msgtest\sys\CorruptDb.db c:\messaging.db
+PRINT ##################
+
+RUN_TEST_STEP 300 T_MsgImapServer 	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer 	ShutDown
+
+PRINT ################## back to messaging db ###
+RUN_UTILS  MakeReadWrite  	c:\messaging.db
+RUN_UTILS  CopyFile   		c:\messaging.db.bak c:\messaging.db
+RUN_UTILS  MakeReadWrite  	c:\messaging.db.bak
+RUN_UTILS  DeleteFile		c:\messaging.db.bak
+PRINT ##################
+
+PRINT Execute Completed ################################################
+END_TESTCASE ST-MESS-DBCORRUPT-0001
+
+

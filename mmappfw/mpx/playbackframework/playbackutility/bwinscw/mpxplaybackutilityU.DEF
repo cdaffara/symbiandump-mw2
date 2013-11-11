@@ -1,0 +1,6 @@
+EXPORTS
+	?NewL@MMPXPlaybackUtility@@SAPAV1@ABVTUid@@PAVMMPXPlaybackObserver@@@Z @ 1 NONAME ; class MMPXPlaybackUtility * MMPXPlaybackUtility::NewL(class TUid const &, class MMPXPlaybackObserver *)
+	?UtilityL@MMPXPlaybackUtility@@SAPAV1@ABVTUid@@@Z @ 2 NONAME ; class MMPXPlaybackUtility * MMPXPlaybackUtility::UtilityL(class TUid const &)
+	?NewL@MMPXPlaybackUtility@@SAPAV1@W4TMPXCategory@@ABVTUid@@PAVMMPXPlaybackObserver@@@Z @ 3 NONAME ; class MMPXPlaybackUtility * MMPXPlaybackUtility::NewL(enum TMPXCategory, class TUid const &, class MMPXPlaybackObserver *)
+	?UtilityL@MMPXPlaybackUtility@@SAPAV1@W4TMPXCategory@@ABVTUid@@@Z @ 4 NONAME ; class MMPXPlaybackUtility * MMPXPlaybackUtility::UtilityL(enum TMPXCategory, class TUid const &)
+

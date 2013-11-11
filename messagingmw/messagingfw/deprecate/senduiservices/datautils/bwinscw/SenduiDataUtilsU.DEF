@@ -1,0 +1,23 @@
+EXPORTS
+	?CalculateTotalSizeOfFiles@CSendUiFileRightsEngine@@QAEHPAV?$CArrayPtrFlat@VCSendUiAttachment@@@@H@Z @ 1 NONAME ; int CSendUiFileRightsEngine::CalculateTotalSizeOfFiles(class CArrayPtrFlat<class CSendUiAttachment> *, int)
+	?ClearValidationCounters@CSendUiFileRightsEngine@@QAEXXZ @ 2 NONAME ; void CSendUiFileRightsEngine::ClearValidationCounters(void)
+	?ConfirmDrmFileRightsL@CSendUiFileRightsEngine@@QAEXPAV?$CArrayPtrFlat@VCSendUiAttachment@@@@@Z @ 3 NONAME ; void CSendUiFileRightsEngine::ConfirmDrmFileRightsL(class CArrayPtrFlat<class CSendUiAttachment> *)
+	?ConfirmMmsValidityL@CSendUiFileRightsEngine@@QAEXPAV?$CArrayPtrFlat@VCSendUiAttachment@@@@VTUid@@@Z @ 4 NONAME ; void CSendUiFileRightsEngine::ConfirmMmsValidityL(class CArrayPtrFlat<class CSendUiAttachment> *, class TUid)
+	?CreateTempPathL@CSendUiAttachment@@SAXAAVTDes16@@AAV?$TBuf@$0BAA@@@AAVRFs@@@Z @ 5 NONAME ; void CSendUiAttachment::CreateTempPathL(class TDes16 &, class TBuf<256> &, class RFs &)
+	?InitAttachmentArrayLCC@CSendUiAttachment@@SAPAV?$CArrayPtrFlat@VCSendUiAttachment@@@@ABVCDesC16Array@@ABV?$RArray@VRFile@@@@AAVRFs@@@Z @ 6 NONAME ; class CArrayPtrFlat<class CSendUiAttachment> * CSendUiAttachment::InitAttachmentArrayLCC(class CDesC16Array const &, class RArray<class RFile> const &, class RFs &)
+	?NewL@CSendUiDataUtils@@SAPAV1@AAVRFs@@@Z @ 7 NONAME ; class CSendUiDataUtils * CSendUiDataUtils::NewL(class RFs &)
+	?NewL@CSendUiFileRightsEngine@@SAPAV1@AAVRFs@@@Z @ 8 NONAME ; class CSendUiFileRightsEngine * CSendUiFileRightsEngine::NewL(class RFs &)
+	?NewLC@CSendUiAttachment@@SAPAV1@ABVCRichText@@AAVRFs@@@Z @ 9 NONAME ; class CSendUiAttachment * CSendUiAttachment::NewLC(class CRichText const &, class RFs &)
+	?NewLC@CSendUiAttachment@@SAPAV1@PBVRFile@@@Z @ 10 NONAME ; class CSendUiAttachment * CSendUiAttachment::NewLC(class RFile const *)
+	?NewLC@CSendUiAttachment@@SAPAV1@PBVTDesC16@@AAVRFs@@@Z @ 11 NONAME ; class CSendUiAttachment * CSendUiAttachment::NewLC(class TDesC16 const *, class RFs &)
+	?NewLC@CSendUiFileRightsEngine@@SAPAV1@AAVRFs@@@Z @ 12 NONAME ; class CSendUiFileRightsEngine * CSendUiFileRightsEngine::NewLC(class RFs &)
+	?NewLC@CSendUiOperationWait@@SAPAV1@H@Z @ 13 NONAME ; class CSendUiOperationWait * CSendUiOperationWait::NewLC(int)
+	?ResolveFileMimeTypeL@CSendUiDataUtils@@QAEXABVRFile@@AAVTDataType@@@Z @ 14 NONAME ; void CSendUiDataUtils::ResolveFileMimeTypeL(class RFile const &, class TDataType &)
+	?ResolveFileMimeTypeL@CSendUiDataUtils@@QAEXABVTDesC16@@AAVTDataType@@@Z @ 15 NONAME ; void CSendUiDataUtils::ResolveFileMimeTypeL(class TDesC16 const &, class TDataType &)
+	?ShowDrmAndMmsInfoL@CSendUiFileRightsEngine@@QAEHVTUid@@@Z @ 16 NONAME ; int CSendUiFileRightsEngine::ShowDrmAndMmsInfoL(class TUid)
+	?ShowInformationNoteL@CSendUiFileRightsEngine@@QBEXI@Z @ 17 NONAME ; void CSendUiFileRightsEngine::ShowInformationNoteL(unsigned int) const
+	?Start@CSendUiOperationWait@@QAEHPAVCActive@@@Z @ 18 NONAME ; int CSendUiOperationWait::Start(class CActive *)
+	?Start@CSendUiOperationWait@@QAEHPAVCBaseMtm@@@Z @ 19 NONAME ; int CSendUiOperationWait::Start(class CBaseMtm *)
+	?Start@CSendUiOperationWait@@QAEHXZ @ 20 NONAME ; int CSendUiOperationWait::Start(void)
+	?Type@CSendUiAttachment@@QAEHXZ @ 21 NONAME ; int CSendUiAttachment::Type(void)
+

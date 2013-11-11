@@ -1,0 +1,88 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE 	T_MsgCommonServer 	-SharedData
+LOAD_SUITE 	T_MsgPopServer 		-SharedData
+LOAD_SUITE  	T_MsgSmtpServer 	-SharedData
+
+START_TESTCASE MSG-POP3-OOMTEST-0001
+//! 	@SYMTestCaseID		MSG-POP3-OOMTEST-0001
+//! 	@SYMTestCaseDesc	A OOM test for Message downloading
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ 1189
+//!	@SYMREQ			REQ 6745
+//!				
+//! 	@SYMTestActions		1.	Initialize the NT-RAS
+//!				2.	Reset the Message Store in a cleanup state
+//!				3.	Create a POP account A 
+//!				4.	Connect and Synchronize the POP server using POP account A
+//!				5.	Initialize POP account in a cleanup state
+//!				6.	Disconnect POP server
+//!				
+//!				7.	Create 100 Messages with Body Text Size of 1KB with attachment
+//!				8.	Send the Messages
+//!				
+//!				9.	Connect to the POP server
+//!				10.	Download the Messages using POP client MTM populate command in the OOM condition
+//!				11.	Disconnect POP server
+//!				
+//! 	@SYMTestExpectedResults Step 10 to pass.
+//!	@SYMAuthor		Rajat Bal
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgPopServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\pop\oom\msg-pop-oomtest1.ini 	0001-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\pop\oom\msg-pop-oomtest1.ini 	0001-ResetMessageStore
+
+RUN_TEST_STEP 300 T_MsgPopServer	CreatePopAccount		c:\msgtest\email\pop\oom\msg-pop-oomtest1.ini 	0001-CreatePopAccount
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\oom\msg-pop-oomtest1.ini 	0001-ConnectPop3Server
+RUN_TEST_STEP 300 T_MsgPopServer	DeleteAllPopChildren		c:\msgtest\email\pop\oom\msg-pop-oomtest1.ini 	0001-DeleteAllPopChildren
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\oom\msg-pop-oomtest1.ini 	0001-DisConnectPop3Server
+
+PRINT ############ Create 1 Messages #################################
+START_REPEAT	c:\msgtest\email\pop\oom\msg-pop-oomtest1.ini	0001-SectionOne	RepeatParam
+RUN_TEST_STEP 300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\pop\oom\msg-pop-oomtest1.ini 	0001-CreateSmtpMessageFromEmailFile
+END_REPEAT
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\oom\msg-pop-oomtest1.ini 	0001-CheckChildrenCountOutbox
+
+PRINT ############ Send 1 Messages ###################################
+RUN_TEST_STEP 300 T_MsgSmtpServer 	SendSmtpMessage 		c:\msgtest\email\pop\oom\msg-pop-oomtest1.ini 	0001-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\pop\oom\msg-pop-oomtest1.ini 	0001-CheckChildrenCountSentItem
+
+PRINT ############ Download/Fetch 1 Messages #########################
+RUN_TEST_STEP 300 T_MsgPopServer 	ConnectPop3Server		c:\msgtest\email\pop\oom\msg-pop-oomtest1.ini 	0001-ConnectPop3Server
+RUN_TEST_STEP !OOM 300 T_MsgPopServer 	PopInvokeAsyncFunction		c:\msgtest\email\pop\oom\msg-pop-oomtest1.ini 	0001-PopInvokeAsyncFunction
+
+RUN_TEST_STEP 300 T_MsgPopServer 	CheckChildrenCountPop		c:\msgtest\email\pop\oom\msg-pop-oomtest1.ini 	0001-CheckChildrenCountRemote
+RUN_TEST_STEP 300 T_MsgPopServer 	DisConnectPop3Server 		c:\msgtest\email\pop\oom\msg-pop-oomtest1.ini 	0001-DisConnectPop3Server
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP 300 T_MsgPopServer	ShutDown
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-POP3-OOMTEST-0001

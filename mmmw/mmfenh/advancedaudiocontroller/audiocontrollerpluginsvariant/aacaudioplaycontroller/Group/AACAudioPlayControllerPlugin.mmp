@@ -1,0 +1,125 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project file for building the ECOM Dll AACAudioPlayControllerPlugin.dll
+*
+*/
+
+
+#include <data_caging_paths.hrh>
+#include <platform_paths.hrh>
+
+TARGET          AACAudioPlayControllerPlugin.dll
+TARGETTYPE      PLUGIN
+UID             0x10009D8D 0x101FAFB3
+VENDORID        VID_DEFAULT
+
+TARGETPATH      /System/Libs/Plugins
+
+CAPABILITY      CAP_ECOM_PLUGIN
+
+SOURCEPATH	../Src
+SOURCE		AACAudioPlayControllerPlugin.cpp
+SOURCE		AACAudioPlayControllerResource.cpp
+
+/*
+* Added condition to check WINS flag, so that Software decoder is built for Emulator
+*/
+#ifdef __USE_AAC_CMMFCODEC
+    SOURCE  AACAudioPlayControllerSwDecoder.cpp
+#else
+    #ifdef __USE_EAACPLUS_CMMFCODEC
+        SOURCE  AACAudioPlayControllerSwDecoder.cpp
+    #else
+    	#if defined(WINS)
+    		SOURCE  AACAudioPlayControllerSwDecoder.cpp    	
+    	#else
+        	SOURCE  AACAudioPlayControllerHwDecoder.cpp
+        #endif
+    #endif
+#endif
+
+SOURCE		AACAudioPlayControllerDecoderBuilder.cpp
+
+USERINCLUDE     ../Inc ../Src
+USERINCLUDE     ../../../../inc
+USERINCLUDE     ../../AdvancedAudioController/Inc
+USERINCLUDE     ../../DevSoundAudioOutput/Inc
+USERINCLUDE     ../../DevSoundAudioInput/Inc
+USERINCLUDE     ../../FileAudioOutput/Inc
+USERINCLUDE     ../../AdvancedAudioControllerUtility/Inc
+USERINCLUDE     ../../DataSourceAdapter/Inc
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   /epoc32/include/ecom
+SYSTEMINCLUDE	/epoc32/include/mmf/server
+SYSTEMINCLUDE	/epoc32/include/mmf/common
+SYSTEMINCLUDE	/epoc32/include/mmf/plugin
+
+SOURCEPATH      ../Data
+START RESOURCE  101FAFB3.rss 
+TARGET          AACAudioPlayControllerPlugin.rsc
+END
+
+START RESOURCE  AACAudioPlayControllerResource.rss
+HEADER
+TARGET          AACAudioPlayControllerResource.rsc       
+TARGETPATH      RESOURCE_FILES_DIR
+END
+
+LIBRARY         euser.lib
+LIBRARY         mmfcontrollerframework.lib
+LIBRARY         mmfstandardcustomcommands.lib
+LIBRARY         mmfserverbaseclasses.lib
+LIBRARY         AdvancedAudioController.lib
+LIBRARY         DevSoundAudioOutput.lib
+LIBRARY         FileAudioOutput.lib
+LIBRARY         bafl.lib                        // Resource file
+LIBRARY         mmfdevsound.lib
+LIBRARY         efsrv.lib
+
+#ifndef WINSCW					//to support build on Linux
+LIBRARY		FrameTable.lib			// for CFrameTable
+#else
+LIBRARY		frametable.lib
+#endif            
+
+#ifndef __USE_AAC_CMMFCODEC
+    #ifndef __USE_EAACPLUS_CMMFCODEC
+        #ifndef __AAC_PLUS_DECODER_PLUGIN
+// only EAACPlusAudioControllerUtility support AAC optimization
+//            LIBRARY AACAudioControllerUtility.lib
+            LIBRARY EAACPlusAudioControllerUtility.lib
+            LIBRARY AacDecoderConfig.lib   
+        #else
+            LIBRARY EAACPlusAudioControllerUtility.lib
+            LIBRARY EAacPlusDecoderIntfc.lib
+//            LIBRARY EAacPlusFrameParser.lib
+			#ifndef WINSCW								//to support build on Linux
+				LIBRARY         EAacPlusUtil.lib		// MMF eAAC+ Utility
+			#else
+				LIBRARY         eaacplusutil.lib
+			#endif
+        #endif
+    #else
+        LIBRARY EAACPlusAudioControllerUtility.lib    
+        LIBRARY AacDecoderConfig.lib   
+    #endif
+#else    
+    LIBRARY EAACPlusAudioControllerUtility.lib    
+    LIBRARY AacDecoderConfig.lib   
+#endif
+
+#ifdef EABI
+LIBRARY     ecom.lib
+#endif

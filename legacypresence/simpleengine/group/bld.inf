@@ -1,0 +1,56 @@
+/*
+* Copyright (c) 2006-2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:    Build information file for project simpleengine
+*
+*/
+
+
+
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+
+// CenRep config files
+../Conf/simple.confml                    MW_LAYER_CONFML(simple.confml)
+../Conf/simple_10281EEE.crml	         MW_LAYER_CRML(simple_10281eee.crml)
+../Conf/simple_10281EEF.crml	         MW_LAYER_CRML(simple_10281eef.crml)
+
+
+// backup registry file
+../cenrep/backup_registration.xml   z:/private/10281eeb/backup_registration.xml
+
+// IBYs
+../rom/simpleengine.iby CORE_MW_LAYER_IBY_EXPORT_PATH(simpleengine.iby)
+../rom/simpleengineresources.iby LANGUAGE_MW_LAYER_IBY_EXPORT_PATH(simpleengineresources.iby)
+
+// LOC (note: This would be better in presenceprovisioning's bld.inf, but since it is not used, it is here.)
+../presenceprovisioning/loc/presenceprovadapter.loc MW_LAYER_LOC_EXPORT_PATH(presenceprovadapter.loc)
+
+PRJ_MMPFILES
+../presencesettingsapi/group/presencesettingsapi.mmp
+../siputils/group/simplesiputils.mmp
+../xmlutils/group/simplexmlutils.mmp
+../engine/group/simpleengine.mmp
+../xdmrlspres/group/rlspresxdm.mmp
+../presencedm/group/presencedmadapter.mmp
+../presenceprovisioning/group/presenceprovisioning.mmp
+
+PRJ_TESTMMPFILES
+
+PRJ_TESTEXPORTS

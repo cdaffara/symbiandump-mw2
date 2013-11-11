@@ -1,0 +1,18 @@
+EXPORTS
+	??1CLocationRecord@@UAE@XZ @ 1 NONAME ; CLocationRecord::~CLocationRecord(void)
+	??1CNetworkInfo@@UAE@XZ @ 2 NONAME ; CNetworkInfo::~CNetworkInfo(void)
+	??1CPositionInfo@@UAE@XZ @ 3 NONAME ; CPositionInfo::~CPositionInfo(void)
+	?CancelLocationRequest@CLocationRecord@@QAEXXZ @ 4 NONAME ; void CLocationRecord::CancelLocationRequest(void)
+	?GetLocationByTimeL@CLocationRecord@@QAEXVTTime@@AAUTLocationData@RLocationManager@@AAW4TTrailState@RLocationTrail@@@Z @ 5 NONAME ; void CLocationRecord::GetLocationByTimeL(class TTime, struct RLocationManager::TLocationData &, enum RLocationTrail::TTrailState &)
+	?GetNetworkInfo@CLocationRecord@@QAEXAAVTNetworkInfoV1@CTelephony@@@Z @ 6 NONAME ; void CLocationRecord::GetNetworkInfo(class CTelephony::TNetworkInfoV1 &)
+	?LocationTrailState@CLocationRecord@@QAEXAAW4TTrailState@RLocationTrail@@@Z @ 7 NONAME ; void CLocationRecord::LocationTrailState(enum RLocationTrail::TTrailState &)
+	?NewL@CLocationRecord@@SAPAV1@XZ @ 8 NONAME ; class CLocationRecord * CLocationRecord::NewL(void)
+	?NewL@CNetworkInfo@@SAPAV1@PAVMNetworkInfoObserver@@@Z @ 9 NONAME ; class CNetworkInfo * CNetworkInfo::NewL(class MNetworkInfoObserver *)
+	?NewL@CPositionInfo@@SAPAV1@PAVMPositionInfoObserver@@@Z @ 10 NONAME ; class CPositionInfo * CPositionInfo::NewL(class MPositionInfoObserver *)
+	?RequestLocationL@CLocationRecord@@QAEXXZ @ 11 NONAME ; void CLocationRecord::RequestLocationL(void)
+	?SetObserver@CLocationRecord@@QAEXPAVMLocationTrailObserver@@@Z @ 12 NONAME ; void CLocationRecord::SetObserver(class MLocationTrailObserver *)
+	?StartL@CLocationRecord@@QAEXW4TTrailCaptureSetting@RLocationTrail@@@Z @ 13 NONAME ; void CLocationRecord::StartL(enum RLocationTrail::TTrailCaptureSetting)
+	?Stop@CLocationRecord@@QAEXXZ @ 14 NONAME ; void CLocationRecord::Stop(void)
+	??1CTrackLog@@UAE@XZ @ 15 NONAME ; CTrackLog::~CTrackLog(void)
+	?NewL@CTrackLog@@SAPAV1@XZ @ 16 NONAME ; class CTrackLog * CTrackLog::NewL(void)
+

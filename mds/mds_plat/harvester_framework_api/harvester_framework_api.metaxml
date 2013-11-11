@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<api id="172c24dcf2b83d8b9c0cb5cec106cd7d" dataversion="2.0">
+<name>harvester_framework_api</name>
+<description>harvester framework api</description>
+<type>c++</type>
+<collection>harvester</collection>
+<libs><lib name="harvesterclient.lib"/>
+<lib name="harvesterdata.lib"/>
+<lib name="harvesterplugininterface.lib"/>
+<lib name="monitorplugininterface.lib"/>
+</libs>
+<release category="platform" sinceversion=""/>
+<attributes>
+<htmldocprovided>no</htmldocprovided>
+<adaptation>no</adaptation>
+</attributes>
+</api>

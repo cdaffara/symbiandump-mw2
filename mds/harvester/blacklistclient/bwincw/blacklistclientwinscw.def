@@ -1,0 +1,11 @@
+EXPORTS
+	??0RBlacklistClient@@QAE@XZ @ 1 NONAME ; RBlacklistClient::RBlacklistClient(void)
+	??1RBlacklistClient@@QAE@XZ @ 2 NONAME ; RBlacklistClient::~RBlacklistClient(void)
+	?AddL@RBlacklistClient@@QBEXABVTDesC16@@KVTTime@@@Z @ 3 NONAME ; void RBlacklistClient::AddL(class TDesC16 const &, unsigned long, class TTime) const
+	?CloseDBL@RBlacklistClient@@QAEXXZ @ 4 NONAME ; void RBlacklistClient::CloseDBL(void)
+	?Connect@RBlacklistClient@@QAEHXZ @ 5 NONAME ; int RBlacklistClient::Connect(void)
+	?IsBlacklistedL@RBlacklistClient@@QAEHABVTDesC16@@KVTTime@@@Z @ 6 NONAME ; int RBlacklistClient::IsBlacklistedL(class TDesC16 const &, unsigned long, class TTime)
+	?LoadBlacklistL@RBlacklistClient@@QAEXXZ @ 7 NONAME ; void RBlacklistClient::LoadBlacklistL(void)
+	?RemoveL@RBlacklistClient@@QBEXABVTDesC16@@K@Z @ 8 NONAME ; void RBlacklistClient::RemoveL(class TDesC16 const &, unsigned long) const
+	?Close@RBlacklistClient@@QAEXXZ @ 9 NONAME ; void RBlacklistClient::Close(void)
+

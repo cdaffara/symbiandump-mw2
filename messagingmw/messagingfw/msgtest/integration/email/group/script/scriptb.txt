@@ -1,0 +1,26 @@
+[main]
+email_client_test email
+
+[email]
+smtp_client_test smtp_1
+
+[smtp_1]
+clean_message_folder
+start_client_session
+select_root_folder
+smtp_service smtp_service_1
+select_destination_folder test_1
+select_root_folder
+select_folder local
+select_folder outbox
+create_email_message emailsmoke test.txt
+select_all_messages
+reset_client
+
+[smtp_service_1]
+set_alias test_1
+set_server post.demon.co.uk
+set_email_address emlyn.howell@symbian.com
+set_reply_address emlyn.howell@symbian.com
+set_receipt_address emlyn.howell@symbian.com
+add_iap 3

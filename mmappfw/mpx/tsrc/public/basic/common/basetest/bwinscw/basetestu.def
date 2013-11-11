@@ -1,0 +1,14 @@
+EXPORTS
+	?EventName@CBaseTest@@MAE?AVTPtrC16@@H@Z @ 1 NONAME ; class TPtrC16 CBaseTest::EventName(int)
+	?ConstructL@CBaseTest@@UAEXXZ @ 2 NONAME ; void CBaseTest::ConstructL(void)
+	?RemoveExpectedEvent@CBaseTest@@MAEHW4TExpectedEvent@1@@Z @ 3 NONAME ; int CBaseTest::RemoveExpectedEvent(enum CBaseTest::TExpectedEvent)
+	??1CBaseTest@@UAE@XZ @ 4 NONAME ; CBaseTest::~CBaseTest(void)
+	?RemoveAllExpectedEvents@CBaseTest@@MAEXXZ @ 5 NONAME ; void CBaseTest::RemoveAllExpectedEvents(void)
+	?ProcessEvent@CBaseTest@@MAEXW4TExpectedEvent@1@H@Z @ 6 NONAME ; void CBaseTest::ProcessEvent(enum CBaseTest::TExpectedEvent, int)
+	?HandleTimeout@CBaseTest@@UAEXH@Z @ 7 NONAME ; void CBaseTest::HandleTimeout(int)
+	?SetTimeout@CBaseTest@@MAEHAAVCStifItemParser@@@Z @ 8 NONAME ; int CBaseTest::SetTimeout(class CStifItemParser &)
+	??0CBaseTest@@QAE@AAVCTestModuleIf@@@Z @ 9 NONAME ; CBaseTest::CBaseTest(class CTestModuleIf &)
+	?AddExpectedEvent@CBaseTest@@MAEXW4TExpectedEvent@1@H@Z @ 10 NONAME ; void CBaseTest::AddExpectedEvent(enum CBaseTest::TExpectedEvent, int)
+	?SetAllowedPanic@CBaseTest@@MAEHAAVCStifItemParser@@@Z @ 11 NONAME ; int CBaseTest::SetAllowedPanic(class CStifItemParser &)
+	?SetExpectedEvents@CBaseTest@@MAEHAAVCStifItemParser@@@Z @ 12 NONAME ; int CBaseTest::SetExpectedEvents(class CStifItemParser &)
+

@@ -1,0 +1,79 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_TESTEXPORTS
+../conf/openmaxaltestmodule_common.cfg              /epoc32/winscw/c/testframework/openmaxaltestmodule_common.cfg
+../conf/openmaxaltestmodule_common_noklinvolitf.cfg /epoc32/winscw/c/testframework/openmaxaltestmodule_common_noklinvolitf.cfg
+../conf/openmaxaltestmodule_common_nokvolextitf.cfg /epoc32/winscw/c/testframework/openmaxaltestmodule_common_nokvolextitf.cfg
+../conf/openmaxaltestmodule_common_volumeitf.cfg    /epoc32/winscw/c/testframework/openmaxaltestmodule_common_volumeitf.cfg
+../conf/openmaxaltestmodule_common_videoppitf.cfg    /epoc32/winscw/c/testframework/openmaxaltestmodule_common_videoppitf.cfg
+../conf/xa_mp_videoppitf_cc.cfg                             /epoc32/winscw/c/testframework/xa_mp_videoppitf_cc.cfg
+../conf/openmaxaltestmodule_objectitf.cfg           /epoc32/winscw/c/testframework/openmaxaltestmodule_objectitf.cfg
+../conf/openmaxaltestmodule_mr.cfg                      /epoc32/winscw/c/testframework/openmaxaltestmodule_mr.cfg
+../conf/openmaxaltestmodule_mr_mdinsertionitf.cfg       /epoc32/winscw/c/testframework/openmaxaltestmodule_mr_mdinsertionitf.cfg
+../conf/openmaxaltestmodule_mr_audioencoderitf.cfg      /epoc32/winscw/c/testframework/openmaxaltestmodule_mr_audioencoderitf.cfg
+../conf/openmaxaltestmodule_engine_audenccapitf.cfg /epoc32/winscw/c/testframework/openmaxaltestmodule_engine_audenccapitf.cfg
+../conf/openmaxaltestmodule_global.cfg              /epoc32/winscw/c/testframework/openmaxaltestmodule_global.cfg
+../conf/openmaxaltestmodule_engine_engineitf.cfg    /epoc32/winscw/c/testframework/openmaxaltestmodule_engine_engineitf.cfg
+../conf/openmaxaltestmodule_engine_aiodcitf.cfg     /epoc32/winscw/c/testframework/openmaxaltestmodule_engine_aiodcitf.cfg
+../conf/openmaxaltestmodule_mp.cfg          /epoc32/winscw/c/testframework/openmaxaltestmodule_mp.cfg
+../conf/openmaxaltestmodule_mo.cfg          /epoc32/winscw/c/testframework/openmaxaltestmodule_mo.cfg
+../conf/openmaxaltestmodule_mp_objectitf.cfg        /epoc32/winscw/c/testframework/openmaxaltestmodule_mp_objectitf.cfg
+../conf/openmaxaltestmodule_mp_playitf.cfg      /epoc32/winscw/c/testframework/openmaxaltestmodule_mp_playitf.cfg
+../conf/openmaxaltestmodule_mp_seekitf.cfg      /epoc32/winscw/c/testframework/openmaxaltestmodule_mp_seekitf.cfg
+../conf/openmaxaltestmodule_mp_variousformats.cfg   /epoc32/winscw/c/testframework/openmaxaltestmodule_mp_variousformats.cfg
+../conf/openmaxaltestmodule_common_dynsrcitf.cfg    /epoc32/winscw/c/testframework/openmaxaltestmodule_common_dynsrcitf.cfg
+../conf/openmaxaltestmodule_mp_strminfoitf.cfg      /epoc32/winscw/c/testframework/openmaxaltestmodule_mp_strminfoitf.cfg
+../conf/openmaxaltestmodule_mp_preemption.cfg       /epoc32/winscw/c/testframework/openmaxaltestmodule_mp_preemption.cfg
+../conf/openmaxaltestmodule_mo_mdextractionitf.cfg  /epoc32/winscw/c/testframework/openmaxaltestmodule_mo_mdextractionitf.cfg
+../conf/openmaxaltestmodule_mp_mdextractionitf.cfg  /epoc32/winscw/c/testframework/openmaxaltestmodule_mp_mdextractionitf.cfg
+../conf/openmaxaltestmodule_mp_prefetchstatusitf.cfg /epoc32/winscw/c/testframework/openmaxaltestmodule_mp_prefetchstatusitf.cfg
+../conf/openmaxaltestmodule_radioitf.cfg        /epoc32/winscw/c/testframework/openmaxaltestmodule_radioitf.cfg
+../conf/openmaxaltestmodule_mp_streaming.cfg        /epoc32/winscw/c/testframework/openmaxaltestmodule_mp_streaming.cfg
+../conf/openmaxaltestmodule_mp_playbackrateitf.cfg        /epoc32/winscw/c/testframework/openmaxaltestmodule_mp_playbackrateitf.cfg
+../conf/openmaxaltestmodule_mr_recorditf.cfg        /epoc32/winscw/c/testframework/openmaxaltestmodule_mr_recorditf.cfg
+../conf/openmaxaltestmodule_mr_recorditf_part2.cfg        /epoc32/winscw/c/testframework/openmaxaltestmodule_mr_recorditf_part2.cfg
+../conf/openmaxaltestmodule_mr_recorditf_part3.cfg        /epoc32/winscw/c/testframework/openmaxaltestmodule_mr_recorditf_part3.cfg
+../conf/openmaxaltestmodule_mr_recorditf_aac_auto.cfg       /epoc32/winscw/c/testframework/openmaxaltestmodule_mr_recorditf_aac_auto.cfg
+../conf/openmaxaltestmodule_mr_recorditf_aac_he.cfg       /epoc32/winscw/c/testframework/openmaxaltestmodule_mr_recorditf_aac_he.cfg
+../conf/openmaxaltestmodule_mr_recorditf_incall.cfg        /epoc32/winscw/c/testframework/openmaxaltestmodule_mr_recorditf_incall.cfg
+../conf/openmaxaltestmodule_mr_recorditf_fmrx.cfg        /epoc32/winscw/c/testframework/openmaxaltestmodule_mr_recorditf_fmrx.cfg
+
+../conf/openmaxaltestmodule_mr_cc.cfg                       /epoc32/winscw/c/testframework/openmaxaltestmodule_mr_cc.cfg
+../conf/openmaxaltestmodule_mr_recorditf_cc.cfg        /epoc32/winscw/c/testframework/openmaxaltestmodule_mr_recorditf_cc.cfg
+../conf/openmaxaltestmodule_mr_mdinsertionitf_cc.cfg    /epoc32/winscw/c/testframework/openmaxaltestmodule_mr_mdinsertionitf_cc.cfg
+../conf/openmaxaltestmodule_mr_audioencoderitf_cc.cfg   /epoc32/winscw/c/testframework/openmaxaltestmodule_mr_audioencoderitf_cc.cfg
+
+../data/c/omxaltestdata/test.wav                    /epoc32/winscw/c/testing/data/omxaltestdata/test.wav
+../data/c/omxaltestdata/test.mp3                    /epoc32/winscw/c/testing/data/omxaltestdata/test.mp3
+../data/c/omxaltestdata/test.3gp                    /epoc32/winscw/c/testing/data/omxaltestdata/test.3gp
+../data/c/omxaltestdata/JapJap.mp3                  /epoc32/winscw/c/testing/data/omxaltestdata/JapJap.mp3
+../data/c/omxaltestdata/testmp4.mp4                 /epoc32/winscw/c/testing/data/omxaltestdata/testmp4.mp4
+../data/c/omxaltestdata/test_video.3gp                          /epoc32/winscw/c/testing/data/omxaltestdata/test_video.3gp
+../init/testframework.ini                           /epoc32/winscw/c/testframework/testframework.ini
+
+PRJ_EXPORTS
+
+PRJ_TESTMMPFILES
+openmaxaltestmodule.mmp
+
+PRJ_MMPFILES
+
+//  End of File

@@ -1,0 +1,45 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//
+//	This script connects over POP3 and downloads 101 emails
+//	It measures the time to set a given entry to the current entry
+//
+//
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+//CED c:\msgtest\TestFramework\Configurations\CommDbSettings\NtRasLongIdleTimeout.cfg
+RUN_TEST_STEP -1 MessagingTestServer BEGIN_TEST_CASE
+RUN_TEST_STEP -1 MessagingTestServer SETUP_TEST_CASE
+RUN_TEST_STEP -1 MessagingTestServer GetBaseConstants			c:\perf\pop3.ini GetBaseConstants
+RUN_TEST_STEP -1 MessagingTestServer InitNtRas					c:\perf\pop3.ini InitNtRas
+RUN_TEST_STEP -1 MessagingTestServer CreateSession				c:\perf\pop3.ini CreateSession
+RUN_TEST_STEP -1 MessagingTestServer ResetMessageStore			c:\perf\pop3.ini ResetMessageStore
+RUN_TEST_STEP -1 MessagingTestServer CreateRegistry				c:\perf\pop3.ini CreateRegistry
+RUN_TEST_STEP -1 MessagingTestServer SetDefaultConfiguration	c:\perf\pop3.ini SetDefaultConfigurationPOP3
+RUN_TEST_STEP -1 MessagingTestServer CreatePop3Service			c:\perf\pop3.ini CreatePop3Service
+RUN_TEST_STEP -1 MessagingTestServer CreatePop3Mtm				c:\perf\pop3.ini CreatePop3Mtm
+RUN_TEST_STEP -1 MessagingTestServer SetPop3ServiceParameters	c:\perf\pop3.ini SetPop3ServiceParameters
+RUN_TEST_STEP -1 MessagingTestServer EXECUTE_TEST_CASE
+RUN_TEST_STEP -1 MessagingTestServer ConnectPop3Server 			c:\perf\pop3.ini ConnectPop3Server
+RUN_TEST_STEP -1 MessagingTestServer CreateChildrenSelection	c:\perf\pop3.ini CreateChildrenSelection
+RUN_TEST_STEP -1 MessagingTestServer CopySelection				c:\perf\pop3.ini CopySelection
+RUN_TEST_STEP -1 MessagingTestServer DisconnectPop3Server		c:\perf\pop3.ini DisconnectPop3Server
+RUN_TEST_STEP -1 MessagingTestServer FindEntryByName			c:\perf\pop3.ini FindEntryByName
+RUN_TEST_STEP -1 MessagingTestServer StartTimer					c:\perf\pop3.ini StartTimer
+RUN_TEST_STEP -1 MessagingTestServer GetEntry					c:\perf\pop3.ini GetEntry
+RUN_TEST_STEP -1 MessagingTestServer StopTimer					c:\perf\pop3.ini StopTimer
+RUN_TEST_STEP -1 MessagingTestServer CHECK_POSTCONDITIONS
+RUN_TEST_STEP -1 MessagingTestServer END_TEST_CASE

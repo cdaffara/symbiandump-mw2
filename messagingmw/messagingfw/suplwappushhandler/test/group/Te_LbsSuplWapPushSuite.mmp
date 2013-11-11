@@ -1,0 +1,48 @@
+// Copyright (c) 2007-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+// The mmp file for the SUPL WAP Push unit test suite 
+// 
+//
+
+
+TARGET      te_lbssuplwappushsuite.exe
+TARGETTYPE  exe
+UID         0x1000007A 0x10283759
+
+CAPABILITY ALL -TCB
+
+MACRO	ENABLE_LBS_DEV_LOGGER
+MACRO	TE_UNITTESTMODE_ON
+
+USERINCLUDE	  ../src
+USERINCLUDE	  ../../inc	
+USERINCLUDE	  ../../src
+USERINCLUDE	  ../../../../../../os/lbs/lbstest/lbstestproduct/internal/lbstestutils/inc
+USERINCLUDE	  ../../../../../../os/lbs/locationmgmt/locationcore/lbsrootapi/inc
+USERINCLUDE	  ../../../../../../os/lbs/locationmgmt/locationcore/lbsroot/inc
+USERINCLUDE	  ../../../../../../os/lbs/locationmgmt/locationcore/LbsPartnerCommon/inc
+
+MW_LAYER_SYSTEMINCLUDE_SYMBIAN
+
+SOURCEPATH   ../src
+SOURCE		Te_LbsSuplPush.cpp
+SOURCE		Te_LbsSuplWapPushServer.cpp
+SOURCE		Te_LbsSuplWapPushStep.cpp
+SOURCE		Te_LbsSuplWapPush.cpp
+
+LIBRARY     	euser.lib testexecuteutils.lib testexecutelogclient.lib lbssuplpush.lib te_lbstestutils.lib
+LIBRARY		lbspartnercommon.lib lbsrootapi.lib wappushutils.lib ecom.lib lbsadmin.lib
+
+
+SMPSAFE

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api id="45c92b615dd278c2bd3747727ec92434" dataversion="2.0">
+  <name>OpenMAX AL API</name>
+  <description>OpenMAX AL is a standard cross platform API for capturing and/or rendering audio, video, and images on embedded and mobile devices. http://www.khronos.org/openmax/.
+The current AL implementation not a complete implementation and it is not compliant to Khronos OpenMAX AL API v1.0.1 specification.</description>
+  <type>c</type>
+  <collection>khronosfws</collection>
+  <libs>
+    <lib name="openmaxal.lib"/>
+  </libs>
+  <release category="platform" sinceversion="^4"/>
+  <attributes>
+    <htmldocprovided>no</htmldocprovided>
+    <adaptation>no</adaptation>
+  </attributes>
+</api>

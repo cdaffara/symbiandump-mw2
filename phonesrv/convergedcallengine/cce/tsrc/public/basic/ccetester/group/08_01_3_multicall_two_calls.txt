@@ -1,0 +1,69 @@
+/***************************************************
+   1. Create MO PS call
+   2. Put call on Hold
+   3. Create 2nd MO PS call
+   4. Hang up 2nd call (Call 1 stays on Hold)
+   5. Resume 1st call
+   6. Hang up 1st call
+   
+   Note: Release for call 2 is not called in step 4
+         after Idle.
+/***************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 8.1.3 Two calls, MO/PS and MO/PS
+timeout 8000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test OpenNewCall 1 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+// Step 2
+print Step_2
+
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+// Step 3
+print Step_3
+
+test OpenNewCall 2 0 RecipientTwo 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 2 0 SubAddress Bearer
+test WaitEvent 2 Dialling
+test WaitEvent 2 Connecting
+test WaitEvent 2 Connected
+
+// Step 4
+print Step_4
+
+test HangUp 2 0
+test WaitEvent 2 Disconnecting
+test WaitEvent 2 Idle
+//test Release 2 0
+
+// Step 5
+print Step_5
+
+test Resume 1 0
+test WaitEvents 1 Connected, 1 LocalResume
+
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+test Release 2 0
+
+test VerifyTest
+delete test
+[Endtest]

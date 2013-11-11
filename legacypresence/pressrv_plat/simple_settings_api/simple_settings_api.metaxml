@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<api id="ccfc5f6cbedd2e8d6f0ec39854a3e7c3" dataversion="1.0">
+  <name>SIMPLE Settings API</name>
+  <description>This API is used for managing SIP/SIMPLE settings in Central Repository.</description>
+  <type>c++</type>
+  <subsystem>simpleengine</subsystem>
+  <libs>
+    <lib name="presencesettingsapi.lib" />
+  </libs>
+  <release category="domain"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>yes</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

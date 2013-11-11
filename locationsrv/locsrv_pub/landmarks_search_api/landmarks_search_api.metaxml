@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<api id="7fa0e737ca222cea92bf28bab312337b" dataversion="2.0">
+  <name>Landmarks Search API</name>
+  <description>Landmarks Search API enables searching for landmarks. Searching is performed according to criterias defined by the client. Criterias can be based on position, landmark category or other landmark content.</description>
+  <type>c++</type>
+  <collection>landmarks</collection>
+  <libs>
+    <lib name="eposlmmultidbsearch.lib" />
+    <lib name="eposlmsearchlib.lib" />
+  </libs>
+  <release category="public" sinceversion="0"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>no</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

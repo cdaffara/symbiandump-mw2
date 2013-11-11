@@ -1,0 +1,5 @@
+EXPORTS
+	NewL__26CAACAudioControllerUtility @ 1 NONAME R3UNUSED ; CAACAudioControllerUtility::NewL(void)
+	PrependHeader__26CAACAudioControllerUtility @ 2 NONAME R3UNUSED ; CAACAudioControllerUtility::PrependHeader(void)
+	"_._26CAACAudioControllerUtility" @ 3 NONAME R3UNUSED ; CAACAudioControllerUtility::~CAACAudioControllerUtility(void)
+

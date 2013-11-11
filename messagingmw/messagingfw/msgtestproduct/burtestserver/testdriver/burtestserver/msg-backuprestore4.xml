@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteTest SYSTEM "file:///c:/program files/common files/symbian/testExecuteTest.dtd" [ ]>
+
+<testExecuteTest>
+
+	<name>msg-backuprestore4</name>
+	<timeout>6000</timeout>
+	<testScripts>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\backup\msg-backuprestore4.script</hostPath>
+			<devicePath>c:\msgtest\backup\msg-backuprestore4.script</devicePath>
+		</script>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\backup\msg-concurrent-bur-copy-oprs3.script</hostPath>
+			<devicePath>c:\msgtest\backup\msg-concurrent-bur-copy-oprs3.script</devicePath>
+		</script>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\backup\msg-concurrent-bur-move-oprs3.script</hostPath>
+			<devicePath>c:\msgtest\backup\msg-concurrent-bur-move-oprs3.script</devicePath>
+		</script>
+		<script>
+			<hostPath>\epoc32\winscw\c\msgtest\backup\msg-concurrent-bur-delete-oprs3.script</hostPath>
+			<devicePath>c:\msgtest\backup\msg-concurrent-bur-delete-oprs3.script</devicePath>
+		</script>
+		
+	</testScripts>
+
+	<testServers>
+		<server>burtestserver</server>
+		<server>T_MsgCommonServer</server>
+		<server>T_MsgImapServer</server>
+		<server>T_MsgSmtpServer</server>		
+		<server>t_emailtestserver</server>		
+	</testServers>
+
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\winscw\c\msgtest\backup\msg-backuprestore4.ini</hostPath>
+			<devicePath>c:\msgtest\backup\msg-backuprestore4.ini</devicePath>	
+		</data>
+		<data>
+			<hostpath>\epoc32\winscw\c\msgtest\config\emailsettings\imapsettings_test908.txt</hostpath>
+			<devicepath>c:\msgtest\config\emailsettings\imapsettings_test908.txt</devicepath>	
+		</data>
+		<data>
+			<hostpath>\epoc32\winscw\c\msgtest\config\emailmessage\1kbody.txt</hostpath>
+			<devicepath>c:\msgtest\config\emailmessage\1kbody.txt</devicepath>	
+		</data>
+	</dependencies>	
+</testExecuteTest>

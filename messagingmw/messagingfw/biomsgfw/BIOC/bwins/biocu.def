@@ -1,0 +1,3 @@
+EXPORTS
+	?NewL@CBIOClientMtm@@SAPAV1@AAVCRegisteredMtmDll@@AAVCMsvSession@@@Z @ 1 NONAME ; public: static class CBIOClientMtm * __cdecl CBIOClientMtm::NewL(class CRegisteredMtmDll &,class CMsvSession &)
+

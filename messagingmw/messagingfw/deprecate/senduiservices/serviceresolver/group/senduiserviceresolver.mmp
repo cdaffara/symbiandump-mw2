@@ -1,0 +1,74 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:   Project definition file for project SendUiServiceResolver
+*
+*/
+
+
+
+#include <data_caging_paths.hrh>
+#include <platform_paths.hrh>
+
+// --- LOGGING ---
+//MACRO           USE_LOGGER         // HW debugging support
+//LIBRARY         Flogger.lib        // RFileLogger, debug logging
+// --- LOGGING ---
+
+TARGET                  SendUiServiceResolver.exe
+TARGETTYPE              exe
+UID                     0x100039CE 0x102823b5
+VERSION 		10.0
+CAPABILITY              NetworkServices LocalServices ReadUserData WriteUserData UserEnvironment NetworkControl ReadDeviceData WriteDeviceData
+VENDORID                VID_DEFAULT
+PAGED
+
+SOURCEPATH              ../src
+SOURCE                  senduisr.cpp
+SOURCE                  senduisrapp.cpp
+SOURCE                  senduisrappui.cpp
+SOURCE                  senduisrdoc.cpp
+SOURCEPATH              ../../src
+SOURCE                  SendingServiceInfoImpl.cpp
+
+
+USERINCLUDE             ../inc
+USERINCLUDE             ../../inc
+USERINCLUDE             ../../watcher/inc
+
+SYSTEMINCLUDE           /epoc32/include/ecom
+APP_LAYER_SYSTEMINCLUDE
+
+
+LIBRARY         euser.lib
+LIBRARY         apparc.lib
+LIBRARY         cone.lib 
+LIBRARY         eikcore.lib  
+LIBRARY         avkon.lib  
+LIBRARY         apgrfx.lib 
+LIBRARY         centralrepository.lib
+LIBRARY         ecom.lib
+LIBRARY         sendui.lib
+LIBRARY         ws32.lib
+
+SOURCEPATH              ../group
+START RESOURCE          SendUiServiceResolver_reg.rss
+// Do not change the UID 10003a3f below.
+TARGETPATH              /private/10003a3f/apps
+END
+
+START RESOURCE  senduiserviceresolver.rss
+HEADER
+targetpath  RESOURCE_FILES_DIR
+LANGUAGE_IDS
+end

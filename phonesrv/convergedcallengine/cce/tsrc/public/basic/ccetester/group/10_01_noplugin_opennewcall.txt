@@ -1,0 +1,40 @@
+/***************************************************
+   Precondition: No plug-ins are available
+     
+   1. Dial emergency call
+   2. Hangup call
+***************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 10.1 No Plugins Available
+timeout 15000
+create ccetester test
+
+// DoAfterBoot
+test Delay 1000
+
+// PS test plugin
+test OpenNewCall 1 -1 RecipientPS 2 ECCECallTypePS ECCELineTypePrimary
+
+// CS test plugin
+test OpenNewCall 1 -1 RecipientCS 1 ECCECallTypeCSVoice ECCELineTypePrimary
+
+test InitializeEmergencyCall 1 0
+test DialEmergencyCall 1 EmergencyNumber
+
+// CCE always sets dialling state
+// -> behaviour changed, dialling state not set anymore
+// test WaitEvent 1 Dialling
+
+// ECCPEmergencyFailed = -140,
+test WaitEvent 1 ErrorOccurred -140
+
+test WaitEvent 1 Idle
+
+test VerifyTest
+delete test
+[Endtest]

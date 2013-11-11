@@ -1,0 +1,29 @@
+/*
+* Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:
+*
+*/
+
+#ifndef __t_msgs_sql_perf_IBY__
+#define __t_msgs_sql_perf_IBY__
+
+#include <testexecute.iby>
+
+file=ABI_DIR\BUILD_DIR\tmsgsqlunitserver.exe		sys\bin\tmsgsqlunitserver.exe
+data=EPOCROOT##Epoc32\winscw\c\msgtest\t_msgs_sql_perf.script msgtest\t_msgs_sql_perf.script
+data=EPOCROOT##Epoc32\winscw\c\msgtest\t_msgs_sql_perf2.script msgtest\t_msgs_sql_perf2.script
+data=EPOCROOT##Epoc32\winscw\c\msgtest\t_msgs_sql_perf3.script msgtest\t_msgs_sql_perf3.script
+data=EPOCROOT##Epoc32\winscw\c\msgtest\t_msgs_sql_perf4.script msgtest\t_msgs_sql_perf4.script
+data=EPOCROOT##Epoc32\winscw\c\msgtest\t_msgs_sql_perf5.script msgtest\t_msgs_sql_perf5.script
+#endif

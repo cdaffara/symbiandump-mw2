@@ -1,0 +1,220 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE 	T_MsgCommonServer 	-SharedData
+LOAD_SUITE 	T_MsgImapServer 	-SharedData
+LOAD_SUITE  	T_MsgSmtpServer 	-SharedData
+
+START_TESTCASE MSG-IMAP-BufferSizes-0007
+
+//! @SYMTestCaseID		MSG-IMAP-BufferSizes-0007
+//! @SYMTestCaseDesc		Positive: Check that if we have no bearer types in the list that downloading just uses the defaults in IMAP account settings.
+//! @SYMTestPriority		Critical
+//! @SYMTestType		CIT
+//! @SYMREQ			6988
+//! @SYMPREQ			1307
+//! @SYMTestStatus		Implemented
+//! @SYMTestActions		1.	Reset Message Store and Central Repository to default state.
+//!				2.	Create IMAP account in Central Repository using standard settings from a configuration file.
+//!				3.	Connect and sync to IMAP service using account settings and initialise account on remote IMAP server to default clean state.
+//!				4.	Disconnect from IMAP service.
+//!				5.	Create single message with 100K body text and send using SMTP service to remote INBOX.
+//!				6.	Add empty transport buffer sizes to IMAP account
+//!				7.	Connect and sync to IMAP service
+//!				8.	Check 1 email header is fetched
+//!				9.	Fetch the email from the server
+//!				10.	Check that email is correctly fetched
+//!				11.	Disconnect from IMAP service.
+//!
+//! @SYMTestExpectedResults	See step 10
+//! @SYMAuthor			Robert Heal
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0007-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0007-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0007-CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0007-ChangeImap4SubAndSyncSettings
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectAndSyncImapServer	c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0007-ConnectAndSyncImapServer
+RUN_TEST_STEP 300 T_MsgImapServer	InitialiseImap4Account		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0007-InitialiseImap4Account
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0007-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0007-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0007-DisConnectImapServer
+
+PRINT Setup Completed ##################################################
+
+PRINT Sending Email ####################################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0007-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0007-CheckChildrenCountOutbox
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0007-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0007-CheckChildrenCountSentItems
+
+PRINT Fetching Email ###################################################
+
+RUN_TEST_STEP 300 T_MsgImapServer	AddImap4TransportBufferSizes	c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0007-AddImap4TransportBufferSizes
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0007-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0007-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	ImapInvokeAsyncFunction		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0007-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0007-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0007-DisConnectImapServer
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer	ShutDown
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+
+END_TESTCASE MSG-IMAP-BufferSizes-0007
+
+START_TESTCASE MSG-IMAP-BufferSizes-0008
+
+//! @SYMTestCaseID		MSG-IMAP-BufferSizes-0008
+//! @SYMTestCaseDesc		Positive: Check that if we have no bearer types in the list that downloading just uses the defaults in IMAP account settings.
+//! @SYMTestPriority		Critical
+//! @SYMTestType		CIT
+//! @SYMREQ			6988
+//! @SYMPREQ			1307
+//! @SYMTestStatus		Implemented
+//! @SYMTestActions		1.	Reset Message Store and Central Repository to default state.
+//!				2.	Create IMAP account in Central Repository using standard settings from a configuration file.
+//!				3.	Connect and sync to IMAP service using account settings and initialise account on remote IMAP server to default clean state.
+//!				4.	Disconnect from IMAP service.
+//!				5.	Create single message with 100K body text and send using SMTP service to remote INBOX.
+//!				6.	Add transport buffer sizes to IMAP account specifying a large fetch request size
+//!				7.	Connect and sync to IMAP service
+//!				8.	Check 1 email header is fetched
+//!				9.	Fetch the email from the server
+//!				10.	Check that email is correctly fetched
+//!				11.	Disconnect from IMAP service.
+//!
+//! @SYMTestExpectedResults	See step 10
+//! @SYMAuthor			Robert Heal
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0008-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0008-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0008-CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0008-ChangeImap4SubAndSyncSettings
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectAndSyncImapServer	c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0008-ConnectAndSyncImapServer
+RUN_TEST_STEP 300 T_MsgImapServer	InitialiseImap4Account		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0008-InitialiseImap4Account
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0008-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0008-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0008-DisConnectImapServer
+
+PRINT Setup Completed ##################################################
+
+PRINT Sending Email ####################################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0008-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0008-CheckChildrenCountOutbox
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0008-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0008-CheckChildrenCountSentItems
+
+PRINT Fetching Email ###################################################
+
+RUN_TEST_STEP 300 T_MsgImapServer	AddImap4TransportBufferSizes	c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0008-AddImap4TransportBufferSizes
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0008-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0008-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	ImapInvokeAsyncFunction		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0008-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0008-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0008-DisConnectImapServer
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer	ShutDown
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+
+END_TESTCASE MSG-IMAP-BufferSizes-0008
+
+START_TESTCASE MSG-IMAP-BufferSizes-0009
+
+//! @SYMTestCaseID		MSG-IMAP-BufferSizes-0009
+//! @SYMTestCaseDesc		Positive: Check that if we have no bearer types in the list that downloading just uses the defaults in IMAP account settings.
+//! @SYMTestPriority		Critical
+//! @SYMTestType		CIT
+//! @SYMREQ			6988
+//! @SYMPREQ			1307
+//! @SYMTestStatus		Implemented
+//! @SYMTestActions		1.	Reset Message Store and Central Repository to default state.
+//!				2.	Create IMAP account in Central Repository using standard settings from a configuration file.
+//!				3.	Connect and sync to IMAP service using account settings and initialise account on remote IMAP server to default clean state.
+//!				4.	Disconnect from IMAP service.
+//!				5.	Create single message with 100K body text and send using SMTP service to remote INBOX.
+//!				6.	Add transport buffer sizes to IMAP account specifying the maximum number of outstanding requests possible
+//!				7.	Connect and sync to IMAP service
+//!				8.	Check 1 email header is fetched
+//!				9.	Fetch the email from the server
+//!				10.	Check that email is correctly fetched
+//!				11.	Disconnect from IMAP service.
+//!
+//! @SYMTestExpectedResults	See step 10
+//! @SYMAuthor			Robert Heal
+
+RUN_TEST_STEP 300 T_MsgCommonServer	StartUp
+RUN_TEST_STEP 300 T_MsgImapServer	StartUp
+RUN_TEST_STEP 300 T_MsgSmtpServer	StartUp
+
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP 300 T_MsgCommonServer	InitNtRas			c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0009-InitNtRas
+RUN_TEST_STEP 300 T_MsgCommonServer	ResetMessageStore		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0009-ResetMessageStore
+RUN_TEST_STEP 300 T_MsgImapServer	CreateImapAccount		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0009-CreateImapAccount
+RUN_TEST_STEP 300 T_MsgImapServer	ChangeImap4SubAndSyncSettings	c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0009-ChangeImap4SubAndSyncSettings
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectAndSyncImapServer	c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0009-ConnectAndSyncImapServer
+RUN_TEST_STEP 300 T_MsgImapServer	InitialiseImap4Account		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0009-InitialiseImap4Account
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0009-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0009-CheckChildrenCountRemoteInbox0
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0009-DisConnectImapServer
+
+PRINT Setup Completed ##################################################
+
+PRINT Sending Email ####################################################
+
+RUN_TEST_STEP 300 T_MsgSmtpServer	CreateSmtpMessageFromEmailFile 	c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0009-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0009-CheckChildrenCountOutbox
+RUN_TEST_STEP 300 T_MsgSmtpServer	SendSmtpMessage 		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0009-SendSmtpMessage
+RUN_TEST_STEP 300 T_MsgCommonServer	CheckChildrenCount 		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0009-CheckChildrenCountSentItems
+
+PRINT Fetching Email ###################################################
+
+RUN_TEST_STEP 300 T_MsgImapServer	AddImap4TransportBufferSizes	c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0009-AddImap4TransportBufferSizes
+RUN_TEST_STEP 300 T_MsgImapServer	ConnectImap4Server		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0009-ConnectImap4Server
+RUN_TEST_STEP 300 T_MsgImapServer	DoFullImap4Synchronisation	c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0009-DoFullImap4Synchronisation
+RUN_TEST_STEP 300 T_MsgImapServer	ImapInvokeAsyncFunction		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0009-ImapInvokeAsyncFunction
+RUN_TEST_STEP 300 T_MsgImapServer	CheckChildrenCountImap		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0009-CheckChildrenCountRemoteInbox1
+RUN_TEST_STEP 300 T_MsgImapServer	DisConnectImapServer		c:\msgtest\email\imap\transportbuffersizes\msg-imap-transportbuffersizes1.ini 0009-DisConnectImapServer
+
+RUN_TEST_STEP 300 T_MsgCommonServer	ShutDown
+RUN_TEST_STEP 300 T_MsgImapServer	ShutDown
+RUN_TEST_STEP 300 T_MsgSmtpServer	ShutDown
+
+PRINT Execute Completed ################################################
+
+END_TESTCASE MSG-IMAP-BufferSizes-0009

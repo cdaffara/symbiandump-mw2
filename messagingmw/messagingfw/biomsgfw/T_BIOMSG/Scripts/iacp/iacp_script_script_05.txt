@@ -1,0 +1,22 @@
+[main]
+bio_test doatstart
+bio_test script_05
+bio_test doattheend
+
+
+// Startup section.
+[doatstart]
+clean_all_bio_msgs
+
+
+// Shutdown section.
+[doattheend]
+
+
+// wapp tests.
+[script_05]
+gen_msg_from_file iacp\iacp_script_05.txt
+check_used_bif 1000552f
+bio_client_parse
+bio_client_process -518
+dump_parsed_message

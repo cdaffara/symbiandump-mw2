@@ -1,0 +1,44 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Includes all the Domain API specific bld.inf files, which
+*                export files.
+*
+*/
+
+
+
+#include "../multimedia_data_source_api/group/bld.inf"
+#include "../enhanced_media_client_api/group/bld.inf"
+#include "../stream_control_custom_command_api/group/bld.inf"
+#include "../emc_buffer_source_api/group/bld.inf"
+#include "../emc_file_source_api/group/bld.inf"
+#include "../audio_metadata_reader_api/group/bld.inf"
+#include "../emc_volume_effect_api/group/bld.inf"
+#include "../emc_balance_effect_api/group/bld.inf"
+#include "../emc_descriptor_source_api/group/bld.inf"
+#include "../emc_drm_config_intfc_api/group/bld.inf"
+#include "../voip_audio_services_api/group/bld.inf"
+#include "../configuration_components_factory_api/group/bld.inf"
+#include "../audio_output_control_utility_api/group/bld.inf"
+#include "../audio_output_control_utility_proxy_api/group/bld.inf"
+#include "../emc_audio_effects_api/group/bld.inf"
+#include "../call_audio_control_api/group/bld.inf"
+#include "../radio_utilities_api/group/bld.inf"
+#include "../radio_preset_utilities_api/group/bld.inf"
+#include "../radio_monitor_api/group/bld.inf"
+#include "../thumbnail_engine_api/group/bld.inf"
+#include "../telephony_multimedia_service_api/group/bld.inf"
+#include "../openmax_al_api/group/bld.inf"
+#include "../system_tone_service_api/group/bld.inf"
+#include "../openmax_al_ext_api/group/bld.inf"

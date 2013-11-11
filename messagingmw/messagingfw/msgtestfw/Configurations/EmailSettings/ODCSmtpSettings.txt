@@ -1,0 +1,7 @@
+# ban-sudhay01.intra server
+__type__   = SmtpSettings
+
+EmailAddressExtension = msexchange2k.closedtest.intra
+
+# Server lon-cn-exchng2k.msexchange2k.closedtest.intra is IP 10.22.64.6
+ServerName = lon-cn-exchng2k.msexchange2k.closedtest.intra

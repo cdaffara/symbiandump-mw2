@@ -1,0 +1,78 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//!	@file
+//! 	@SYMTestCaseID		MSG-SENDAS-SMS-ALLOWONCE-0005
+//! 	@SYMTestCaseDesc	For sending SMS message using SendAs server, user should be prompted for his
+//!				response and message should be sent for the Allow Once response of user.
+//!				
+//! 	@SYMTestType		CIT
+//! 	@SYMTestPriority	High
+//! 	@SYMTestStatus 		Implemented
+//!				
+//!	@SYMPREQ 		PREQ1678
+//!	@SYMREQ			REQ7007
+//!				
+//! 	@SYMTestActions		1.	Clean the message store.
+//!				2.	Create an SMS service.
+//!				3.	Connect to the SendAs server and create a SendAsmessage against the SMS UID. 
+//!				4.	Set user response to Allow Once against the user prompt for SendAs server.
+//!				5.	Send the message using SendAs server and then close the server connection.
+//! 				6.	Check if only one message is sent.Message should be sent properly and children count on sent item should be one.
+//!	@SYMTestExpectedResults	Children count on sent item should be one.
+//!				
+//!	@SYMAuthor		Pramod Das
+
+RUN_SCRIPT  c:\msgtest\testframework\scriptedtestcases\upssupport\upssupport_setup.script
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_UTILS CopyFile c:\msgtest\TestFramework\Configurations\SmsSettings\config.txt C:\config.txt
+RUN_UTILS MakeReadWrite C:\config.txt
+RUN_PROGRAM   100 SetUserPromptResponse Yes
+
+PREFIX RUN_TEST_STEP 1000 MessagingTestServer
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+InitializeSimTsy		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-sms-allowonce-0005.ini	InitializeSimTsy
+GetBaseConstants		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-sms-allowonce-0005.ini	GetBaseConstants
+GetSmsConstants			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-sms-allowonce-0005.ini	GetSmsConstants
+CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-sms-allowonce-0005.ini	CreateSession
+ResetMessageStore		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-sms-allowonce-0005.ini	ResetMessageStore
+SetDefaultSmsSettings		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-sms-allowonce-0005.ini	SetDefaultSmsSettings
+SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-sms-allowonce-0005.ini	SetDefaultConfiguration
+SetDefaultConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-sms-allowonce-0005.ini	SetDefaultConfigurationBodyTxt
+CreateSmsService		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-sms-allowonce-0005.ini	CreateSmsService
+SetSmsServiceSettings		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-sms-allowonce-0005.ini	SetSmsServiceSettings
+CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-sms-allowonce-0005.ini	CreateRegistry
+CreateMtm			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-sms-allowonce-0005.ini	CreateSmsMtm
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-sms-allowonce-0005.ini	ChkChildrenCountDraft0
+EXECUTE_TEST_CASE
+ConnectSendAsServer		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-sms-allowonce-0005.ini	ConnectSendAsServer
+SendAsCreateMessageofType	c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-sms-allowonce-0005.ini	SendAsCreateMessageofType
+SendAsAddRecipient		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-sms-allowonce-0005.ini	SendAsAddRecipient
+SendAsSetBodyText		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-sms-allowonce-0005.ini	SendAsSetBodyText
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-sms-allowonce-0005.ini	ChkChildrenCountDraft1
+SetUserResponse			c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-sms-allowonce-0005.ini	SetUserResponse
+SendAsSendMessage		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-sms-allowonce-0005.ini	SendAsSendMessage
+SendAsCloseMessage		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-sms-allowonce-0005.ini	CloseMessage
+Sleep				c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-sms-allowonce-0005.ini	Sleep
+CloseSendAsServerConnection	c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-sms-allowonce-0005.ini	CloseSvrConnection
+CHECK_POSTCONDITIONS
+CheckChildrenCount		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-sms-allowonce-0005.ini	ChkChildrenCountSent0
+UnloadPhoneModule		c:\msgtest\TestFramework\ScriptedTestCases\UpsSupport\msg-sendas-sms-allowonce-0005.ini	UnloadPhoneModule
+END_TEST_CASE
+REMOVE_PREFIX
+RUN_SCRIPT  c:\msgtest\testframework\scriptedtestcases\upssupport\restore_setup.script

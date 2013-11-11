@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SystemDefinition schema="3.0.0">
+ <package id="messagingmw" name="Messaging Middleware" levels="stack support fw api">
+  <collection id="msgfw_plat" name="Messaging Middleware Platform Interfaces" level="api">
+   <component id="always_online_plugin_api" name="Always Online Plugin API" class="api" filter="s60">
+    <meta rel="Api" href="msgfw_plat/always_online_plugin_api/always_online_plugin_api.metaxml"/>
+    <unit bldFile="msgfw_plat/always_online_plugin_api/group"/>
+   </component>
+   <component id="always_online_client_api" name="Always Online Client API" class="api" filter="s60">
+    <meta rel="Api" href="msgfw_plat/always_online_client_api/always_online_client_api.metaxml"/>
+    <unit bldFile="msgfw_plat/always_online_client_api/group"/>
+   </component>
+   <component id="msg_common_utils_api" name="Messaging Common Utils API" class="api" filter="s60">
+    <meta rel="Api" href="msgfw_plat/msg_common_utils_api/msg_common_utils_api.metaxml"/>
+    <unit bldFile="msgfw_plat/msg_common_utils_api/group"/>
+   </component>
+   <component id="muiu_utils_api" name="Messaging Center UI Utilities API" class="api" filter="s60" introduced="^4">
+      <unit bldFile="msgfw_plat/muiu_utils_api/group"/>
+   </component>
+  </collection>
+  <collection id="messagingfw" name="Messaging Framework" level="fw">
+   <!-- should break this collection up into smaller related collections -->
+   <component id="send_ui_api" name="Send UI API" class="api" filter="s60" deprecated="^4">
+    <meta rel="Api" href="messagingfw/deprecate/send_ui_api/send_ui_api.metaxml"/>
+    <unit bldFile="messagingfw/deprecate/send_ui_api/group"/>
+   </component>
+   <component id="send_ui_plugin_api" name="Send UI Plug-in API" class="api" filter="s60" deprecated="^4">
+    <meta rel="Api" href="messagingfw/deprecate/send_ui_plugin_api/send_ui_plugin_api.metaxml"/>
+    <unit bldFile="messagingfw/deprecate/send_ui_plugin_api/group"/>
+   </component>
+   <component id="send_ui_datautils_api" name="Send UI Data Utils API" class="api" filter="s60" deprecated="^4">
+    <meta rel="Api" href="messagingfw/deprecate/send_ui_datautils_api/send_ui_datautils_api.metaxml"/>
+    <unit bldFile="messagingfw/deprecate/send_ui_datautils_api/group"/>
+   </component>
+   <component id="alwaysonline" filter="s60" name="Always Online Server" introduced="^2">
+    <unit bldFile="messagingfw/alwaysonline/group"/>
+   </component>
+   <component id="msgcommonutils" filter="s60" name="Messaging Common Utils" introduced="^2">
+    <unit bldFile="messagingfw/msgcommonutils/group"/>
+   </component>
+   <component id="senduiservices" filter="s60" name="Send UI Services" introduced="^2" deprecated="^4">
+    <unit bldFile="messagingfw/deprecate/senduiservices/group"/>
+   </component>
+   <component id="muiuutils" name="Messaging Center UI Utilities" class="api" filter="s60" introduced="^4">
+      <unit bldFile="messagingfw/muiuutils/group"/>
+   </component>
+   <component id="scheduledsendmtm" name="Scheduled Send MTM" introduced="6.0" purpose="optional" class="plugin" filter="s60">
+    <unit bldFile="messagingfw/scheduledsendmtm/group" mrp="messagingfw/scheduledsendmtm/group/messaging_schedulesend.mrp"/>
+   </component>
+   <component id="msgsrvnstore" name="Message Server and Store" purpose="optional" filter="s60">
+    <unit bldFile="messagingfw/msgsrvnstore/group" mrp="messagingfw/msgsrvnstore/group/messaging_framework.mrp"/>
+   </component>
+   <component id="biomsgfw" name="BIO Messaging Framework" introduced="6.0" purpose="optional" filter="s60">
+    <unit bldFile="messagingfw/biomsgfw/group" mrp="messagingfw/biomsgfw/group/messaging_biomsg.mrp"/>
+   </component>
+   <component id="msgconf" name="Messaging Config" introduced="^2" purpose="optional" class="config" filter="s60">
+    <unit bldFile="messagingfw/msgconf/group" mrp="messagingfw/msgconf/group/messaging_config.mrp"/>
+   </component>
+   <component id="watcherfw" name="Watcher Framework" purpose="optional" filter="s60">
+    <unit bldFile="messagingfw/watcherfw/group" mrp="messagingfw/watcherfw/group/messaging_watcher.mrp"/>
+   </component>
+   <component id="msgtest" name="Messaging Test" purpose="development" filter="s60,test">
+    <unit bldFile="messagingfw/msgtest/group" mrp="messagingfw/msgtest/group/messaging_test.mrp"/>
+   </component>
+   <component id="msgtests" name="Messaging Tests" purpose="development" filter="s60,test">
+    <unit mrp="messagingfw/msgtests/group/messaging.mrp" bldFile="messagingfw/msgtests/group"/>
+   </component>
+   <component id="msgtestfw" name="Messaging Test Framework" deprecated="^3" purpose="development" filter="s60,test">
+    <unit mrp="messagingfw/msgtestfw/group/messaging_testframework.mrp" bldFile="messagingfw/msgtestfw/group"/>
+   </component>
+   <component id="msgtestproduct" name="Messaging Test Product" purpose="development" filter="s60,test">
+    <unit mrp="messagingfw/msgtestproduct/group/messaging_testproduct.mrp" bldFile="messagingfw/msgtestproduct/group"/>
+   </component>
+   <component id="sendas" name="Send As" purpose="optional" filter="s60">
+    <unit bldFile="messagingfw/sendas/group" mrp="messagingfw/sendas/group/messaging_sendas2.mrp"/>
+   </component>
+   <component id="msgurlhandler" name="Message URL Handler" introduced="7.0" purpose="optional" filter="s60">
+    <unit bldFile="messagingfw/msgurlhandler/group" mrp="messagingfw/msgurlhandler/group/messaging_urlhandler.mrp"/>
+   </component>
+   <component id="wappushfw" name="WAP Push Framework" introduced="6.1" purpose="optional" filter="s60">
+    <unit bldFile="messagingfw/wappushfw/group" mrp="messagingfw/wappushfw/group/wap-browser_wappush.mrp"/>
+   </component>
+   <component id="suplsmshandler" name="SUPL SMS Handler" introduced="^2" purpose="development" class="plugin" filter="s60">
+    <unit bldFile="messagingfw/suplsmshandler/group" mrp="messagingfw/suplsmshandler/group/lbs_suplsmstrigger.mrp"/>
+   </component>
+   <component id="suplwappushhandler" name="SUPL WAP Push Handler" introduced="^2" purpose="optional" class="plugin" filter="s60">
+    <unit bldFile="messagingfw/suplwappushhandler/group" mrp="messagingfw/suplwappushhandler/group/lbs_suplwappush.mrp"/>
+   </component>
+  </collection>
+  <collection id="messagingmw_info" name="Messaging Middleware Info" level="api">
+   <component id="messagingmw_metadata" name="Messaging Middleware Metadata" class="config" introduced="^2" purpose="development" target="desktop">
+    <unit mrp="messagingmw_info/messagingmw_metadata/messagingmw_metadata.mrp"/>
+   </component>
+  </collection>
+ </package>
+</SystemDefinition>

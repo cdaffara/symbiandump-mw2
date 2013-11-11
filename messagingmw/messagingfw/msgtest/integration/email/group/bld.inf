@@ -1,0 +1,180 @@
+// Copyright (c) 1999-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+#include "../pefromance/group/bld.inf"
+
+PRJ_TESTMMPFILES
+emailsmoketest.mmp
+
+PRJ_TESTEXPORTS
+./script/GPRSPopTestMsg1.txt						/epoc32/wins/c/msgtest/emailsmoke/gprspoptestmsg1.txt                      
+./script/GPRSPopTestMsg2.txt						/epoc32/wins/c/msgtest/emailsmoke/gprspoptestmsg2.txt                      
+./script/GPRSPopTestMsg3.txt						/epoc32/wins/c/msgtest/emailsmoke/gprspoptestmsg3.txt                      
+./script/GPRSPopTestMsg4.txt						/epoc32/wins/c/msgtest/emailsmoke/gprspoptestmsg4.txt                      
+./script/GPRSPopTestMsg5.txt						/epoc32/wins/c/msgtest/emailsmoke/gprspoptestmsg5.txt                      
+./script/GPRS_script.txt							/epoc32/wins/c/msgtest/emailsmoke/gprs_script.txt                          
+./script/PopTestMsg1.txt							/epoc32/wins/c/msgtest/emailsmoke/poptestmsg1.txt                          
+./script/PopTestMsg10.txt							/epoc32/wins/c/msgtest/emailsmoke/poptestmsg10.txt                         
+./script/PopTestMsg11.txt							/epoc32/wins/c/msgtest/emailsmoke/poptestmsg11.txt                         
+./script/PopTestMsg12.txt							/epoc32/wins/c/msgtest/emailsmoke/poptestmsg12.txt                         
+./script/PopTestMsg13.txt							/epoc32/wins/c/msgtest/emailsmoke/poptestmsg13.txt                         
+./script/PopTestMsg2.txt							/epoc32/wins/c/msgtest/emailsmoke/poptestmsg2.txt                          
+./script/PopTestMsg3.txt							/epoc32/wins/c/msgtest/emailsmoke/poptestmsg3.txt                          
+./script/PopTestMsg4.txt							/epoc32/wins/c/msgtest/emailsmoke/poptestmsg4.txt                          
+./script/PopTestMsg5.txt							/epoc32/wins/c/msgtest/emailsmoke/poptestmsg5.txt                          
+./script/PopTestMsg6.txt							/epoc32/wins/c/msgtest/emailsmoke/poptestmsg6.txt                          
+./script/PopTestMsg7.txt							/epoc32/wins/c/msgtest/emailsmoke/poptestmsg7.txt                          
+./script/PopTestMsg8.txt							/epoc32/wins/c/msgtest/emailsmoke/poptestmsg8.txt                          
+./script/PopTestMsg9.txt							/epoc32/wins/c/msgtest/emailsmoke/poptestmsg9.txt                          
+./script/PopTests_ReadMe.txt						/epoc32/wins/c/msgtest/emailsmoke/poptests_readme.txt                      
+./script/PopTests__script1.txt						/epoc32/wins/c/msgtest/emailsmoke/poptests__script1.txt 
+./script/PopTests__script2.txt						/epoc32/wins/c/msgtest/emailsmoke/poptests__script2.txt
+./script/PopTests__script3.txt						/epoc32/wins/c/msgtest/emailsmoke/poptests__script3.txt                    
+./script/rfc822test.txt							/epoc32/wins/c/msgtest/emailsmoke/rfc822test.txt                           
+./script/script-IMAP-flagtests-new.txt				/epoc32/wins/c/msgtest/emailsmoke/script-imap-flagtests-new.txt            
+./script/script-IMAP-flagtests-old.txt				/epoc32/wins/c/msgtest/emailsmoke/script-imap-flagtests-old.txt            
+./script/script-imap.txt							/epoc32/wins/c/msgtest/emailsmoke/script-imap.txt                          
+./script/script.txt								/epoc32/wins/c/msgtest/emailsmoke/script.txt                               
+./script/scriptb.txt								/epoc32/wins/c/msgtest/emailsmoke/scriptb.txt                              
+./script/scriptc.txt								/epoc32/wins/c/msgtest/emailsmoke/scriptc.txt                              
+./script/scriptd.txt								/epoc32/wins/c/msgtest/emailsmoke/scriptd.txt                              
+./script/scripte.txt								/epoc32/wins/c/msgtest/emailsmoke/scripte.txt                              
+./script/script_IMAP_Case1_and_2.txt				/epoc32/wins/c/msgtest/emailsmoke/script_imap_case1_and_2.txt              
+./script/script_IMAP_Case1_and_2_TLS.txt			/epoc32/wins/c/msgtest/emailsmoke/script_imap_case1_and_2_tls.txt          
+./script/script_IMAP_Case3.txt						/epoc32/wins/c/msgtest/emailsmoke/script_imap_case3.txt                    
+./script/script_IMAP_Case3_TLS.txt					/epoc32/wins/c/msgtest/emailsmoke/script_imap_case3_tls.txt                
+./script/script_IMAP_Case4.txt						/epoc32/wins/c/msgtest/emailsmoke/script_imap_case4.txt                    
+./script/script_IMAP_Case4_TLS.txt					/epoc32/wins/c/msgtest/emailsmoke/script_imap_case4_tls.txt                
+./script/script_imap_monitor.txt					/epoc32/wins/c/msgtest/emailsmoke/script_imap_monitor.txt                  
+./script/script_IMAP_SSL.txt						/epoc32/wins/c/msgtest/emailsmoke/script_imap_ssl.txt                      
+./script/script_pop3_Case1_and_2.txt				/epoc32/wins/c/msgtest/emailsmoke/script_pop3_case1_and_2.txt              
+./script/script_pop3_Case1_and_2_TLS.txt			/epoc32/wins/c/msgtest/emailsmoke/script_pop3_case1_and_2_tls.txt          
+./script/script_pop3_Case3.txt						/epoc32/wins/c/msgtest/emailsmoke/script_pop3_case3.txt                    
+./script/script_pop3_Case3_TLS.txt					/epoc32/wins/c/msgtest/emailsmoke/script_pop3_case3_tls.txt                
+./script/script_pop3_Case4.txt						/epoc32/wins/c/msgtest/emailsmoke/script_pop3_case4.txt                    
+./script/script_pop3_Case4_TLS.txt					/epoc32/wins/c/msgtest/emailsmoke/script_pop3_case4_tls.txt                
+./script/script_POP3_SSL.txt						/epoc32/wins/c/msgtest/emailsmoke/script_pop3_ssl.txt                      
+./script/script_pop_monitor.txt					/epoc32/wins/c/msgtest/emailsmoke/script_pop_monitor.txt                   
+./script/script_smtp_auth_CommunicatePro.txt		/epoc32/wins/c/msgtest/emailsmoke/script_smtp_auth_communicatepro.txt      
+./script/script_smtp_auth_MicrosoftMailServer.txt	/epoc32/wins/c/msgtest/emailsmoke/script_smtp_auth_microsoftmailserver.txt 
+./script/script_smtp_monitor.txt					/epoc32/wins/c/msgtest/emailsmoke/script_smtp_monitor.txt                  
+./script/script_SMTP_SSL.txt						/epoc32/wins/c/msgtest/emailsmoke/script_smtp_ssl.txt                      
+./script/TMsg1.txt									/epoc32/wins/c/msgtest/emailsmoke/tmsg1.txt                                
+./script/TMsg2.txt									/epoc32/wins/c/msgtest/emailsmoke/tmsg2.txt                                
+./script/TMsg3.txt									/epoc32/wins/c/msgtest/emailsmoke/tmsg3.txt                                
+./script/TMsg4.txt									/epoc32/wins/c/msgtest/emailsmoke/tmsg4.txt                                
+./script/TMsg5.txt									/epoc32/wins/c/msgtest/emailsmoke/tmsg5.txt                                
+./script/TMsg6.txt									/epoc32/wins/c/msgtest/emailsmoke/tmsg6.txt                                
+./script/TMsg7.txt									/epoc32/wins/c/msgtest/emailsmoke/tmsg7.txt                                
+./script/TMsg8.txt									/epoc32/wins/c/msgtest/emailsmoke/tmsg8.txt                                
+./script/IMAP4_sync_performance.txt				/epoc32/wins/c/msgtest/emailsmoke/imap4_sync_performance.txt
+./script/create-delete.txt							/epoc32/wins/c/msgtest/emailsmoke/create-delete.txt
+./script/script_sync_rate.txt					   	/epoc32/wins/c/msgtest/emailsmoke/script_sync_rate.txt
+./script/imapCharsetTests.txt					/epoc32/wins/c/msgtest/emailsmoke/imapcharsettests.txt
+./script/popCharsetTests.txt					/epoc32/wins/c/msgtest/emailsmoke/popcharsettests.txt
+./reference/attachment_names.txt 					/epoc32/wins/c/msgtest/emailsmoke/reference/attachment_names.txt
+./reference/html_qp_encoding_bodytext.txt				/epoc32/wins/c/msgtest/emailsmoke/reference/html_qp_encoding_bodytext.txt
+./reference/html_qp_encoding_headers.txt				/epoc32/wins/c/msgtest/emailsmoke/reference/html_qp_encoding_headers.txt
+./reference/html_with_attachments_bodytext.txt			/epoc32/wins/c/msgtest/emailsmoke/reference/html_with_attachments_bodytext.txt
+./reference/plain_text_non_mime.txt				/epoc32/wins/c/msgtest/emailsmoke/reference/plain_text_non_mime.txt
+./reference/pop_html_qp_encoding_bodytext.txt			/epoc32/wins/c/msgtest/emailsmoke/reference/pop_html_qp_encoding_bodytext.txt
+./reference/pop_html_qp_encoding_headers.txt			/epoc32/wins/c/msgtest/emailsmoke/reference/pop_html_qp_encoding_headers.txt
+./reference/single_attachment_name.txt				/epoc32/wins/c/msgtest/emailsmoke/reference/single_attachment_name.txt
+./reference/test_plain_bodytext_base64_encoding.txt		/epoc32/wins/c/msgtest/emailsmoke/reference/test_plain_bodytext_base64_encoding.txt
+./reference/test_plain_bodytext_no_encoding.txt			/epoc32/wins/c/msgtest/emailsmoke/reference/test_plain_bodytext_no_encoding.txt
+./reference/test_plain_bodytext_qp_encoding.txt			/epoc32/wins/c/msgtest/emailsmoke/reference/test_plain_bodytext_qp_encoding.txt
+./reference/test_plain_bodytext_with_attach_no_encoding.txt	/epoc32/wins/c/msgtest/emailsmoke/reference/test_plain_bodytext_with_attach_no_encoding.txt
+./reference/tpop_bodytext_with_attachments.txt			/epoc32/wins/c/msgtest/emailsmoke/reference/tpop_bodytext_with_attachments.txt
+
+./script/GPRSPopTestMsg1.txt						/epoc32/winscw/c/msgtest/emailsmoke/gprspoptestmsg1.txt                      
+./script/GPRSPopTestMsg2.txt						/epoc32/winscw/c/msgtest/emailsmoke/gprspoptestmsg2.txt                      
+./script/GPRSPopTestMsg3.txt						/epoc32/winscw/c/msgtest/emailsmoke/gprspoptestmsg3.txt                      
+./script/GPRSPopTestMsg4.txt						/epoc32/winscw/c/msgtest/emailsmoke/gprspoptestmsg4.txt                      
+./script/GPRSPopTestMsg5.txt						/epoc32/winscw/c/msgtest/emailsmoke/gprspoptestmsg5.txt                      
+./script/GPRS_script.txt							/epoc32/winscw/c/msgtest/emailsmoke/gprs_script.txt                          
+./script/PopTestMsg1.txt							/epoc32/winscw/c/msgtest/emailsmoke/poptestmsg1.txt                          
+./script/PopTestMsg10.txt							/epoc32/winscw/c/msgtest/emailsmoke/poptestmsg10.txt                         
+./script/PopTestMsg11.txt							/epoc32/winscw/c/msgtest/emailsmoke/poptestmsg11.txt                         
+./script/PopTestMsg12.txt							/epoc32/winscw/c/msgtest/emailsmoke/poptestmsg12.txt                         
+./script/PopTestMsg13.txt							/epoc32/winscw/c/msgtest/emailsmoke/poptestmsg13.txt                         
+./script/PopTestMsg2.txt							/epoc32/winscw/c/msgtest/emailsmoke/poptestmsg2.txt                          
+./script/PopTestMsg3.txt							/epoc32/winscw/c/msgtest/emailsmoke/poptestmsg3.txt                          
+./script/PopTestMsg4.txt							/epoc32/winscw/c/msgtest/emailsmoke/poptestmsg4.txt                          
+./script/PopTestMsg5.txt							/epoc32/winscw/c/msgtest/emailsmoke/poptestmsg5.txt                          
+./script/PopTestMsg6.txt							/epoc32/winscw/c/msgtest/emailsmoke/poptestmsg6.txt                          
+./script/PopTestMsg7.txt							/epoc32/winscw/c/msgtest/emailsmoke/poptestmsg7.txt                          
+./script/PopTestMsg8.txt							/epoc32/winscw/c/msgtest/emailsmoke/poptestmsg8.txt                          
+./script/PopTestMsg9.txt							/epoc32/winscw/c/msgtest/emailsmoke/poptestmsg9.txt                          
+./script/PopTests_ReadMe.txt						/epoc32/winscw/c/msgtest/emailsmoke/poptests_readme.txt                      
+./script/PopTests__script1.txt						/epoc32/winscw/c/msgtest/emailsmoke/poptests__script1.txt 
+./script/PopTests__script2.txt						/epoc32/winscw/c/msgtest/emailsmoke/poptests__script2.txt
+./script/PopTests__script3.txt						/epoc32/winscw/c/msgtest/emailsmoke/poptests__script3.txt                    
+./script/rfc822test.txt							/epoc32/winscw/c/msgtest/emailsmoke/rfc822test.txt                           
+./script/script-IMAP-flagtests-new.txt				/epoc32/winscw/c/msgtest/emailsmoke/script-imap-flagtests-new.txt            
+./script/script-IMAP-flagtests-old.txt				/epoc32/winscw/c/msgtest/emailsmoke/script-imap-flagtests-old.txt            
+./script/script-imap.txt							/epoc32/winscw/c/msgtest/emailsmoke/script-imap.txt                          
+./script/script.txt								/epoc32/winscw/c/msgtest/emailsmoke/script.txt                               
+./script/scriptb.txt								/epoc32/winscw/c/msgtest/emailsmoke/scriptb.txt                              
+./script/scriptc.txt								/epoc32/winscw/c/msgtest/emailsmoke/scriptc.txt                              
+./script/scriptd.txt								/epoc32/winscw/c/msgtest/emailsmoke/scriptd.txt                              
+./script/scripte.txt								/epoc32/winscw/c/msgtest/emailsmoke/scripte.txt                              
+./script/script_IMAP_Case1_and_2.txt				/epoc32/winscw/c/msgtest/emailsmoke/script_imap_case1_and_2.txt              
+./script/script_IMAP_Case1_and_2_TLS.txt			/epoc32/winscw/c/msgtest/emailsmoke/script_imap_case1_and_2_tls.txt          
+./script/script_IMAP_Case3.txt						/epoc32/winscw/c/msgtest/emailsmoke/script_imap_case3.txt                    
+./script/script_IMAP_Case3_TLS.txt					/epoc32/winscw/c/msgtest/emailsmoke/script_imap_case3_tls.txt                
+./script/script_IMAP_Case4.txt						/epoc32/winscw/c/msgtest/emailsmoke/script_imap_case4.txt                    
+./script/script_IMAP_Case4_TLS.txt					/epoc32/winscw/c/msgtest/emailsmoke/script_imap_case4_tls.txt                
+./script/script_imap_monitor.txt					/epoc32/winscw/c/msgtest/emailsmoke/script_imap_monitor.txt                  
+./script/script_IMAP_SSL.txt						/epoc32/winscw/c/msgtest/emailsmoke/script_imap_ssl.txt                      
+./script/script_pop3_Case1_and_2.txt				/epoc32/winscw/c/msgtest/emailsmoke/script_pop3_case1_and_2.txt              
+./script/script_pop3_Case1_and_2_TLS.txt			/epoc32/winscw/c/msgtest/emailsmoke/script_pop3_case1_and_2_tls.txt          
+./script/script_pop3_Case3.txt						/epoc32/winscw/c/msgtest/emailsmoke/script_pop3_case3.txt                    
+./script/script_pop3_Case3_TLS.txt					/epoc32/winscw/c/msgtest/emailsmoke/script_pop3_case3_tls.txt                
+./script/script_pop3_Case4.txt						/epoc32/winscw/c/msgtest/emailsmoke/script_pop3_case4.txt                    
+./script/script_pop3_Case4_TLS.txt					/epoc32/winscw/c/msgtest/emailsmoke/script_pop3_case4_tls.txt                
+./script/script_POP3_SSL.txt						/epoc32/winscw/c/msgtest/emailsmoke/script_pop3_ssl.txt                      
+./script/script_pop_monitor.txt					/epoc32/winscw/c/msgtest/emailsmoke/script_pop_monitor.txt                   
+./script/script_smtp_auth_CommunicatePro.txt		/epoc32/winscw/c/msgtest/emailsmoke/script_smtp_auth_communicatepro.txt      
+./script/script_smtp_auth_MicrosoftMailServer.txt	/epoc32/winscw/c/msgtest/emailsmoke/script_smtp_auth_microsoftmailserver.txt 
+./script/script_smtp_monitor.txt					/epoc32/winscw/c/msgtest/emailsmoke/script_smtp_monitor.txt                  
+./script/script_SMTP_SSL.txt						/epoc32/winscw/c/msgtest/emailsmoke/script_smtp_ssl.txt                      
+./script/TMsg1.txt									/epoc32/winscw/c/msgtest/emailsmoke/tmsg1.txt                                
+./script/TMsg2.txt									/epoc32/winscw/c/msgtest/emailsmoke/tmsg2.txt                                
+./script/TMsg3.txt									/epoc32/winscw/c/msgtest/emailsmoke/tmsg3.txt                                
+./script/TMsg4.txt									/epoc32/winscw/c/msgtest/emailsmoke/tmsg4.txt                                
+./script/TMsg5.txt									/epoc32/winscw/c/msgtest/emailsmoke/tmsg5.txt                                
+./script/TMsg6.txt									/epoc32/winscw/c/msgtest/emailsmoke/tmsg6.txt                                
+./script/TMsg7.txt									/epoc32/winscw/c/msgtest/emailsmoke/tmsg7.txt                                
+./script/TMsg8.txt									/epoc32/winscw/c/msgtest/emailsmoke/tmsg8.txt                                
+./script/IMAP4_sync_performance.txt				/epoc32/winscw/c/msgtest/emailsmoke/imap4_sync_performance.txt
+./script/create-delete.txt							/epoc32/winscw/c/msgtest/emailsmoke/create-delete.txt
+./script/script_sync_rate.txt					   	/epoc32/winscw/c/msgtest/emailsmoke/script_sync_rate.txt
+./script/imapCharsetTests.txt					/epoc32/winscw/c/msgtest/emailsmoke/imapcharsettests.txt
+./script/popCharsetTests.txt					/epoc32/winscw/c/msgtest/emailsmoke/popcharsettests.txt
+./reference/attachment_names.txt 					/epoc32/winscw/c/msgtest/emailsmoke/reference/attachment_names.txt
+./reference/html_qp_encoding_bodytext.txt				/epoc32/winscw/c/msgtest/emailsmoke/reference/html_qp_encoding_bodytext.txt
+./reference/html_qp_encoding_headers.txt				/epoc32/winscw/c/msgtest/emailsmoke/reference/html_qp_encoding_headers.txt
+./reference/html_with_attachments_bodytext.txt			/epoc32/winscw/c/msgtest/emailsmoke/reference/html_with_attachments_bodytext.txt
+./reference/plain_text_non_mime.txt				/epoc32/winscw/c/msgtest/emailsmoke/reference/plain_text_non_mime.txt
+./reference/pop_html_qp_encoding_bodytext.txt			/epoc32/winscw/c/msgtest/emailsmoke/reference/pop_html_qp_encoding_bodytext.txt
+./reference/pop_html_qp_encoding_headers.txt			/epoc32/winscw/c/msgtest/emailsmoke/reference/pop_html_qp_encoding_headers.txt
+./reference/single_attachment_name.txt				/epoc32/winscw/c/msgtest/emailsmoke/reference/single_attachment_name.txt
+./reference/test_plain_bodytext_base64_encoding.txt		/epoc32/winscw/c/msgtest/emailsmoke/reference/test_plain_bodytext_base64_encoding.txt
+./reference/test_plain_bodytext_no_encoding.txt			/epoc32/winscw/c/msgtest/emailsmoke/reference/test_plain_bodytext_no_encoding.txt
+./reference/test_plain_bodytext_qp_encoding.txt			/epoc32/winscw/c/msgtest/emailsmoke/reference/test_plain_bodytext_qp_encoding.txt
+./reference/test_plain_bodytext_with_attach_no_encoding.txt	/epoc32/winscw/c/msgtest/emailsmoke/reference/test_plain_bodytext_with_attach_no_encoding.txt
+./reference/tpop_bodytext_with_attachments.txt			/epoc32/winscw/c/msgtest/emailsmoke/reference/tpop_bodytext_with_attachments.txt
+
+ 

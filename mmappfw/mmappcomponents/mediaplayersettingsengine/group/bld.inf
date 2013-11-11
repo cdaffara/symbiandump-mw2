@@ -1,0 +1,37 @@
+/*
+* Copyright (c) 2008 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: This file provides the information required for building the
+*    whole of a Media Player Settings Engine.
+*
+*/
+
+// Version : %version: 5.1.1 %
+
+
+
+#include <platform_paths.hrh>
+
+PRJ_PLATFORMS
+DEFAULT
+
+PRJ_EXPORTS
+//
+//  Export the sis and iby files
+//
+../sis/mpsetteng_stub.sis              	/epoc32/data/z/system/install/mpsetteng_stub.sis
+../rom/mpsetteng.iby 		CORE_MW_LAYER_IBY_EXPORT_PATH(mpsetteng.iby)
+
+PRJ_MMPFILES
+../group/MPSettEng.mmp
+

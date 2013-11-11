@@ -1,0 +1,8 @@
+EXPORTS
+	_ZN27CPosReverseGeocodeInterface4NewLER26MPosReverseGeocodeObserver @ 1 NONAME
+	_ZN27CPosReverseGeocodeInterfaceD0Ev @ 2 NONAME
+	_ZN27CPosReverseGeocodeInterfaceD1Ev @ 3 NONAME
+	_ZN27CPosReverseGeocodeInterfaceD2Ev @ 4 NONAME
+	_ZTI27CPosReverseGeocodeInterface @ 5 NONAME
+	_ZTV27CPosReverseGeocodeInterface @ 6 NONAME
+

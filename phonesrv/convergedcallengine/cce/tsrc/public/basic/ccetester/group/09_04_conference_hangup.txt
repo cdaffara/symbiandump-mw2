@@ -1,0 +1,52 @@
+/*****************************************************
+	1. Create conference of 2 calls
+	2. Hangup conference
+******************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 9.4 Conference Call, Hangup
+timeout 15000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test OpenNewCall 1 0 Conf_A@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+test Hold 1 0
+test WaitEvents 1 Hold, 1 LocalHold
+
+test OpenNewCall 2 0 RecipientTwo 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 2 0 SubAddress Bearer
+test WaitEvent 2 Dialling
+test WaitEvent 2 Connecting
+test WaitEvent 2 Connected
+
+// Add calls to conference
+test AddToConference 1 0
+test WaitEvent ConferenceCallAdded 1
+
+test AddToConference 2 0
+//plugin changes call state to match conf state
+test WaitEvents ConferenceCallAdded 2, ConferenceActive, 1 Connected	
+
+// Step 2
+print Step_2
+
+test HangupConference 0
+test WaitEvents ConferenceCallRemoved 1, ConferenceCallRemoved 2, ConferenceIdle, 1 Disconnecting, 1 Idle, 2 Disconnecting, 2 Idle
+
+test ReleaseConference 0
+
+test VerifyTest
+delete test
+[Endtest]

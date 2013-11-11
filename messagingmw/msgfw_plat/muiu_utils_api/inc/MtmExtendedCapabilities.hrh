@@ -1,0 +1,87 @@
+/*
+* Copyright (c) 2007 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  
+*     Defines extended capabilities
+*
+*/
+
+
+
+#ifndef __MTMEXTENDEDCAPABILITIES_HRH__
+#define __MTMEXTENDEDCAPABILITIES_HRH__
+
+#if !defined KMtmUiFunctionPrint
+#include <mtmuidef.hrh>
+#endif // KMtmUiFunctionPrint
+
+//#include <ExtendedMTMIDS.hrh> 
+
+// Capabilties
+#define KUidMsvMtmQueryMessageInfo                  0x10005996 // response true/false
+#define KUidMsvMtmQueryFactorySettings              0x10005997 // response true/false
+#define KUidMsvMtmQueryViewerUidValue               0x10006516 // response viewer UID
+#define KUidMsvMtmCanActOnNewMessagesUidValue       0x10006551 // obsolete
+#define KUidMtmQueryCanCreateNewMsgValue            0x10008b24 // return value only
+#define KUidMsvMtmUiQueryExtendedGetMailProgress    0x10009293 // obsolete
+#define KUidQueryNeedsAccountButCannotCreateValue   0x100096C6 // obsolete
+#define KMtmUiSupportMeetingRequest	                0x102072B9
+#define KMtmUiSupportICal                           0x10207359
+#define KUidMsvMtmQuerySupportValidateSelection     0x10281EF6 // response true/false
+
+
+// Function ids
+// KMtmFirstFreeMtmUiFunctionId declared in <mtmuidef.h>
+#define KMtmUiNewMessageAction                      0x00201000 // KMtmFirstFreeMtmUiFunctionId
+#define KMtmUiFirstFreeDFRDMTMFunctionId            0x00202000 // KMtmFirstFreeMtmUiFunctionId + 0x1000
+#define KMtmUiFirstPlatformMTMFunctionId            0x00203000 // KMtmFirstFreeMtmUiFunctionId + 0x2000
+
+#define KMtmUiFunctionMessageInfo                   0x00203000 // KMtmUiFirstPlatformMTMFunctionId
+#define KMtmUiFunctionRestoreFactorySettings        0x00203001
+#define KMtmUiMceWriteMessageSubmenu                0x00203002
+#define KMtmUiMceWriteMessagePopup                  0x00203003
+#define KMtmUiMceSettingsTitlePane                  0x00203005
+#define KMtmUiFunctionDeleteMessage                 0x00203007
+#define KMtmUiFunctionFetchMMS                      0x00203008
+#define KMtmUiFunctionOpenMessage                   0x00203009
+#define KMtmUiFunctionMoveTo                        0x0020300A
+#define KMtmUiFunctionDeferSending                  0x0020300B
+#define KMtmUiFunctionSend                          0x0020300C
+#define KMtmUiFunctionForward                       0x0020300D
+#define KMtmUiFunctionFetchSyncML                   0x0020300E
+#define KMtmUiFunctionMarkAsRead                    0x0020300F
+#define KMtmUiFunctionMMBox                         0x00203010
+#define KMtmUiFunctionUpload                        0x00203011
+#define KMtmUiFunctionDeliveryStatus                0x00203012
+#define KMtmUiFunctionPreCreateMessage              0x00203014
+
+#define KMtmUiFirstFreePlatformMTMFunctionId        0x00203100 // KMtmFirstFreeMtmUiFunctionId + 0x2100
+
+/**
+* Factory settings parameter
+* Mtm's supporting this RFS feature should implement function id
+* KMtmUiFunctionRestoreFactorySettings and handle parameter EMsvFactorySettingsLevelNormal.
+* EMsvFactorySettingsLevelDeep is never used because RFS impelement this feature
+* by removing whole c:/system/mail directory and then mailinit will be called.
+* See Series_60_Messaging_UI_Utilities_B.doc section "User's Guide" for details.
+*/
+enum TMsvFactorySettingsLevel
+    {
+    EMsvFactorySettingsLevelDeep = 0x0,
+    EMsvFactorySettingsLevelNormal
+    };
+
+
+#endif // __MTMEXTENDEDCAPABILITIES_HRH__
+
+// End of file

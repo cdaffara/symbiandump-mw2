@@ -1,0 +1,41 @@
+/*
+* Copyright (c) 2004 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Constant declaration for Advanced Audio Controller resource file.
+*
+*/
+
+
+
+#ifndef ADVANCEDAUDIORESOURCE_HRH
+#define ADVANCEDAUDIORESOURCE_HRH
+
+// Sampling Rate
+#define EAapSampleRate8000Hz   			8000
+#define EAapSampleRate11025Hz  			11025
+#define EAapSampleRate16000Hz  			16000
+#define EAapSampleRate22050Hz  			22050
+#define EAapSampleRate32000Hz  			32000
+#define EAapSampleRate44100Hz  			44100
+#define EAapSampleRate48000Hz  			48000
+#define EAapSampleRate88200Hz  			88200
+#define EAapSampleRate96000Hz  			96000
+
+// Metadata Support
+#define EAapMetadataSupportFalse		0x0000
+#define EAapMetadataSupportTrue			0x0001
+
+
+#endif		// ADVANCEDAUDIORESOURCE_HRH
+
+// End of File

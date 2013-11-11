@@ -1,0 +1,37 @@
+/***************************************************
+   Precondition: Only PS plugin is available
+     
+   1. Dial emergency call
+   2. Hangup call
+***************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 10.2 No CS plugin, Emergency call with PS plugin
+timeout 15000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test InitializeEmergencyCall 1 0
+
+test DialEmergencyCall 1 EmergencyNumber
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+// Step 2
+print Step_2
+
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+
+test VerifyTest
+delete test
+[Endtest]

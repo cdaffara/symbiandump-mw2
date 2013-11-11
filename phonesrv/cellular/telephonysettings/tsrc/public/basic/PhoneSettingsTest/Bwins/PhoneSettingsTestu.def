@@ -1,0 +1,4 @@
+EXPORTS
+	?SetRequirements@@YAHAAPAVCTestModuleParam@@AAK@Z @ 1 NONAME ; int SetRequirements(class CTestModuleParam * &, unsigned long &)
+	?LibEntryL@@YAPAVCTestModuleBase@@XZ @ 2 NONAME ; class CTestModuleBase * LibEntryL(void)
+

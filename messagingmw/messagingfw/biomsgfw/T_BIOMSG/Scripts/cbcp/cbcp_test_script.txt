@@ -1,0 +1,71 @@
+//	Compact Business Card Parser Test Script
+//	========================================
+
+
+[main]
+bio_test doatstart
+bio_test cbcp1a
+bio_test cbcp1b
+bio_test cbcp2
+bio_test cbcp3
+bio_test cbcp4
+bio_test cbcp5
+bio_test cbcp6
+bio_test doattheend
+
+
+// Startup section.
+[doatstart]
+clean_all_bio_msgs
+
+// Shutdown section.
+[doattheend]
+
+
+// cbcp tests.
+
+[cbcp1a]
+gen_msg_from_file cbcp\cbcp1.txt
+check_used_bif 10005531
+bio_client_parse
+dump_parsed_message
+chk_file_in_msg_dir_with_ext
+
+[cbcp1b]
+gen_msg_from_file cbcp\cbcp1.txt
+check_used_bif 10005531
+bio_client_parse
+bio_client_process -5
+dump_parsed_message
+chk_file_in_msg_dir_with_ext
+
+[cbcp2]
+gen_msg_from_file cbcp\cbcp2.txt
+check_used_bif 10005531
+bio_client_parse
+dump_parsed_message
+chk_file_in_msg_dir_with_ext
+
+[cbcp3]
+gen_msg_from_file cbcp\cbcp3.txt
+check_used_bif 10005531
+bio_client_parse
+dump_parsed_message
+chk_file_in_msg_dir_with_ext
+
+[cbcp4]
+gen_msg_from_file cbcp\cbcp4.txt
+check_used_bif 10005531
+bio_client_parse
+dump_parsed_message
+chk_file_in_msg_dir_with_ext
+
+[cbcp5]
+gen_msg_from_file cbcp\cbcp5.txt
+check_used_bif 10005531
+bio_client_parse -500
+
+[cbcp6]
+gen_msg_from_file cbcp\cbcp6.txt
+check_used_bif 10005531
+bio_client_parse -500

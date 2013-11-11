@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<api id="d8a3451a76f3a2c992751946480e70f9" dataversion="1.0">
+  <name>Publisher API</name>
+  <description>API for publishing own presence information. It supports:
+- creating a document for publishing
+- starting the publication
+- terminating the publication.</description>
+  <type>c++</type>
+  <subsystem>simpleengine</subsystem>
+  <libs>
+    <lib name="simpleengine.lib" />
+  </libs>
+  <release category="domain"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>yes</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

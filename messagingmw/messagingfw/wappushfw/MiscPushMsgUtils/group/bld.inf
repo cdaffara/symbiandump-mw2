@@ -1,0 +1,32 @@
+// Copyright (c) 2003-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRJ_PLATFORMS
+
+PRJ_EXPORTS
+../inc/cmultipartiteratorbase.h 	SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(push/cmultipartiteratorbase.h)
+../inc/CMultipartBinIterator.h 		SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(push/cmultipartbiniterator.h)
+../inc/cmultiparttextiterator.h 	SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(push/cmultiparttextiterator.h)
+../inc/CMultiPartPushMsgEntry.h 	SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(push/cmultipartpushmsgentry.h)
+../inc/CMultiPartPushMsgEntry.inl 	SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(push/cmultipartpushmsgentry.inl)
+../inc/CUnknownPushMsgEntry.h 		SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(push/cunknownpushmsgentry.h)
+../inc/CUnknownPushMsgEntry.inl 	SYMBIAN_MW_LAYER_PLATFORM_EXPORT_PATH(push/cunknownpushmsgentry.inl)
+
+PRJ_MMPFILES
+../group/Miscpushmsgutils.mmp
+
+PRJ_TESTMMPFILES
+
+PRJ_TESTEXPORTS

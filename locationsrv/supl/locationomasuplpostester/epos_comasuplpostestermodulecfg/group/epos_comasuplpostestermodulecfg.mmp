@@ -1,0 +1,84 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file for project epos_comasuplpostestermodulecfg
+*
+*/
+
+#include <platform_paths.hrh>
+
+TARGET          epos_comasuplpostestermodulecfg.dll
+TARGETTYPE      dll
+UID             0x1000008D 0x10281F07
+
+CAPABILITY      Location NetworkServices ReadDeviceData WriteDeviceData CommDD ProtServ
+
+VENDORID        VID_DEFAULT
+
+//TARGETPATH
+DEFFILE         epos_comasuplpostestermodulecfg.def
+
+SOURCEPATH      ../src
+SOURCE          epos_comasuplecomhandler.cpp
+SOURCE          epos_comasuplgetsuplinfocanceltest.cpp
+SOURCE          epos_comasuplgetsuplinfotest.cpp
+SOURCE          epos_comasuplmessagefilereader.cpp
+SOURCE          epos_comasuplmsgfilereadertest.cpp
+SOURCE          epos_comasuplconsolemanager.cpp
+SOURCE          epos_comasuplconsoleview.cpp
+SOURCE          epos_comasuplposhandlercreationtest.cpp
+SOURCE          epos_comasuplpossessioncreationtest.cpp
+SOURCE          epos_comasuplpostestercategory.cpp
+SOURCE          epos_comasuplpostesterlogger.cpp
+SOURCE          epos_comasuplpostestermodulecfg.cpp
+SOURCE          epos_comasuplpostestermodulecfgblocks.cpp
+SOURCE          epos_comasupltesthandler.cpp
+SOURCE          epos_comasupluid_ecom_test.cpp
+SOURCE          epos_comasuplpositionvelocitytest.cpp
+SOURCE          epos_comasuplpositionvelocitymanager.cpp
+SOURCE          epos_comasuplpositioncanceltest.cpp
+SOURCE          epos_comasuplmessageinfo.cpp
+SOURCE          epos_tomasuplmatchdatatypes.cpp
+SOURCE          epos_comasuplcancelinitializetest.cpp
+SOURCE          epos_comasuplpositiontest.cpp
+SOURCE          epos_comasuplgetsuplinfomanager.cpp
+SOURCE          epos_comasuplsessiontest.cpp
+SOURCE          epos_comasuplthreadprocesstest.cpp
+SOURCE          epos_comasuplmultiplesessiontest.cpp
+
+USERINCLUDE     ../inc 
+
+MW_LAYER_SYSTEMINCLUDE
+
+//SYSTEMINCLUDE   /epoc32/include/ecom
+
+
+LIBRARY         euser.lib
+LIBRARY         stiftestinterface.lib
+LIBRARY         eikcoctl.lib
+LIBRARY         ECom.lib
+LIBRARY         EFSRV.LIB
+LIBRARY         charconv.lib
+LIBRARY         eposomasuplposmessageplugin.lib
+LIBRARY         BAFL.lib
+LIBRARY			gsmu.lib
+
+
+LANG            SC
+
+START RESOURCE ../data/postester.rss
+HEADER
+TARGETPATH resource 
+END
+ 
+// End of File

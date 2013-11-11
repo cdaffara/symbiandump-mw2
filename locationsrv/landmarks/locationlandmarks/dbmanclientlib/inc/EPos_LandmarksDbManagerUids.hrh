@@ -1,0 +1,38 @@
+/*
+* Copyright (c) 2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: Defines landmarks database manager UIDs
+*
+*
+*/
+
+
+#ifndef LANDMARKSDBMANAGERUIDS_H
+#define LANDMARKSDBMANAGERUIDS_H
+
+// Landmark Database Manager interface UID
+#define KPosLmDbManagerIfUid    0x101FDF79
+
+// Landmark Database Manager implementation UID
+#define KPosLmDbManagerImplUid  0x101FDF7C
+
+// Landmark Database Manager Base interface UID
+#define KPosLmDbManagerBaseIfUid  0x101FE975
+
+// Local Landmarks Database Management Provider implementaton UID
+#define KPosLmLocalDbManagerImplUid 0x101FE976
+
+
+#endif // LANDMARKSDBMANAGERUIDS_H
+
+// End of File

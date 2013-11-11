@@ -1,0 +1,32 @@
+// Copyright (c) 2000-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRJ_TESTMMPFILES
+
+Clientmtm.mmp		support
+FINDMTM.mmp			support
+brokenfindmtm.mmp	support
+MAILINIT.mmp      	support
+MAILINIT2.MMP      	support
+Mtm1.mmp			support
+MTM2.mmp          	support
+REGMTM1.mmp			support
+REGMTM2.mmp			support
+Servermtm.mmp		support
+Testservermtm.mmp	support
+bulkcommitmtm.mmp
+msvsysprogresstestmtm.mmp
+// build the mtm dat resource (for T_MSGS_SERVER_REGISTRY)
+makefile dat.mk	support

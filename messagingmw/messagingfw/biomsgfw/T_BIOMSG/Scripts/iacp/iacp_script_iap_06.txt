@@ -1,0 +1,51 @@
+[main]
+bio_test doatstart
+bio_test iap_06
+bio_test doattheend
+
+
+// Startup section.
+[doatstart]
+clean_all_bio_msgs
+
+
+// Shutdown section.
+[doattheend]
+
+
+// wapp tests.
+[iap_06]
+gen_msg_from_file iacp\iacp_iap_06.txt
+check_used_bif 1000552f
+bio_client_parse
+bio_client_process
+dump_parsed_message
+//
+// check commdb tables for correct entries
+bio_commdb DialOutIsp iap_06_commdb_dialoutisp_table
+bio_commdb IAP iap_06_commdb_iap_table
+bio_commdb Proxies iap_06_commdb_proxies_table
+
+
+[iap_06_commdb_dialoutisp_table]
+commdb_check text Name "Lemon"
+commdb_check text DefaultTelNum "+447818044580"
+commdb_check bool UseLoginScript "true"
+commdb_check bool EnableSWComp "false"
+
+//Inop:C04F:12:0:205:E511:10.11.12.13; C04F:12:0:205:0:100.101.102.103
+//Isrx:C04F:12:0:205:E501:111.222.333.444
+//Ispo:54321
+
+
+[iap_06_commdb_iap_table]
+commdb_check text Name "Demon"
+commdb_check text IAPServiceType "DialOutISP"
+commdb_check text IAPBearerType "ModemBearer"
+
+
+[iap_06_commdb_proxies_table]
+commdb_check text ProxyServerName "C04F:12:0:205:E501:111.222.333.444"
+commdb_check uint PortNumber 54321
+commdb_check text Exceptions "C04F:12:0:205:E511:10.11.12.13; C04F:12:0:205:0:100.101.102.103"
+commdb_check text ProtocolName "HTTP"

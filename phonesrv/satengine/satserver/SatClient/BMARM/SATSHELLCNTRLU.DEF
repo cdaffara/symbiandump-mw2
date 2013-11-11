@@ -1,0 +1,7 @@
+EXPORTS
+	AddSatUiL__19CSatShellControllerR7TDesC16 @ 1 NONAME R3UNUSED ; CSatShellController::AddSatUiL(TDesC16 &)
+	BringSatUiToForeground__19CSatShellController @ 2 NONAME R3UNUSED ; CSatShellController::BringSatUiToForeground(void)
+	LaunchSatUiL__19CSatShellController @ 3 NONAME R3UNUSED ; CSatShellController::LaunchSatUiL(void)
+	NewL__19CSatShellController @ 4 NONAME R3UNUSED ; CSatShellController::NewL(void)
+	RemoveSatUiL__19CSatShellController @ 5 NONAME R3UNUSED ; CSatShellController::RemoveSatUiL(void)
+

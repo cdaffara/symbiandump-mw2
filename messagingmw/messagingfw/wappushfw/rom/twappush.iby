@@ -1,0 +1,44 @@
+// Copyright (c) 2000-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+#ifndef __TWAPPUSH_IBY__
+#define __TWAPPUSH_IBY__
+
+//Sub project includes
+#include <rta.iby>
+
+// Test  library for  wappush
+
+file=ABI_DIR\BUILD_DIR\dummywapstack.dll	System\Libs\dummywapstack.dll
+
+// Wap push test harness
+
+file=ABI_DIR\BUILD_DIR\twappush.exe	System\WapPushTest\twappush.exe
+file=ABI_DIR\BUILD_DIR\tpushentry.exe	System\WapPushTest\tpushentry.exe
+file=ABI_DIR\BUILD_DIR\tpushmessage.exe	System\WapPushTest\tpushmessage.exe
+file=ABI_DIR\BUILD_DIR\tfailure.exe	System\WapPushTest\tfailure.exe
+file=ABI_DIR\BUILD_DIR\TWapPushScriptBased.exe	System\WapPushTest\TWapPushScriptBased.exe
+
+ECOM_PLUGIN(tpushfilter.dll  ,101f3e6e.rsc)
+ECOM_PLUGIN(tpushapphandlerplugin.dll  ,tpushapphandlerplugin.rsc)
+data=MULTI_LINGUIFY(RSC ZSYSTEM\Data\wappushmtm		System\Data\wappushmtm)
+
+// The ini files for the system
+data=\epoc32\winscw\c\httptest\wapini\wap.ini	httptest\wapini\wap.ini
+
+// Preconfigured XML file
+data=\epoc32\data\Z\ineturilist\testdata\ineturilist_tpushscriptbased.xml	ineturilist\testdata\ineturilist_tpushscriptbased.xml
+
+#endif

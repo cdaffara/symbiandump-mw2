@@ -1,0 +1,62 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:    MMP File
+*
+*/
+
+
+
+
+#include <data_caging_paths.hrh>
+#include <platform_paths.hrh>
+
+TARGET                          rlspresxdm.dll
+UID                             0x1000008d 0x1028190F
+CAPABILITY                      CAP_GENERAL_DLL
+VENDORID                		VID_DEFAULT
+TARGETTYPE                      DLL
+
+SOURCEPATH                      ../src
+
+SOURCE                          presenceactionxdm.cpp
+SOURCE                          presencetransformxdm.cpp
+SOURCE                          cpresencexdm.cpp
+SOURCE                          crlsxdm.cpp
+SOURCE                          prescondidentitymany.cpp
+SOURCE                          prescondidentityone.cpp
+SOURCE                          prescondsphere.cpp
+SOURCE                          prescondvalidity.cpp
+SOURCE                          prescondmisc.cpp
+//SOURCE                          cresourcelistxdm.cpp
+
+USERINCLUDE                     ../inc
+
+// default system include paths for middleware layer modules
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE ../../../inc
+
+LIBRARY                         bafl.lib
+LIBRARY                         euser.lib
+DEBUGLIBRARY                    flogger.lib
+LIBRARY                         xdmengine.lib
+LIBRARY                         charconv.lib
+
+
+#if defined( EABI )
+DEFFILE ../eabi/ 
+#elif defined ( WINSCW )
+deffile ../bwinscw/ 
+#endif
+
+

@@ -1,0 +1,124 @@
+/*******************************************************************
+   1. Try DTMF operations without call  
+   2. Try DTMF after OpenNewCall
+   3. Try DTMF for Queued call
+   4. Try DTMF for Ringing call
+   
+   (Try DTMF for call in Forwarding state)
+*******************************************************************/
+
+[StifSettings]
+CheckHeapBalance= on
+[EndStifSettings]
+
+[Test]
+title 5.6 DTMF, Error
+timeout 10000
+create ccetester test
+test Delay 1000
+
+// Step 1
+print Step_1
+
+test StartDtmfTone -5 3
+test StopDtmfTone -5
+test SendDtmfToneString -5 1234134
+test ContinueStringSending -5 0
+test ContinueStringSending -5 1
+
+// Step 2
+print Step_2
+
+test OpenNewCall 1 0 Recipient@172.23.123.29 2 ECCECallTypePS ECCELineTypePrimary
+
+test StartDtmfTone -5 3
+test StopDtmfTone -5
+test SendDtmfToneString -5 1234134
+test ContinueStringSending -5 0
+test ContinueStringSending -5 1
+
+// Step 3
+print Step_3
+
+test Dial 1 0 SubAddress Bearer
+test WaitEvent 1 Dialling
+test WaitEvent 1 Connecting
+test WaitEvent 1 Connected
+
+// Send plugin command (CS), MT call with CallID 2 is created
+test SendPluginRequest 2 CreateCall 1
+test WaitEvent 0 IncomingCall
+test WaitEvent 2 Queued
+
+// Hangup connected call
+test HangUp 1 0
+test WaitEvent 1 Disconnecting
+test WaitEvent 1 Idle
+test Release 1 0
+
+// Only Queued call is remaining
+test StartDtmfTone -5 3
+test StopDtmfTone -5
+test SendDtmfToneString -5 1234134
+test ContinueStringSending -5 0
+test ContinueStringSending -5 1
+
+test HangUp 2 0
+test WaitEvent 2 Disconnecting
+test WaitEvent 2 Idle
+
+test Release 2 0
+
+// Step 4
+print Step_4
+
+// Send plugin command (PS), MT call with CallID 3 is created
+test SendPluginRequest 2 CreateCall 1
+test WaitEvent 0 IncomingCall
+test WaitEvent 3 Ringing //event 10
+
+test StartDtmfTone -5 3
+test StopDtmfTone -5
+test SendDtmfToneString -5 1234134
+test ContinueStringSending -5 0
+test ContinueStringSending -5 1
+
+test HangUp 3 0
+test WaitEvent 3 Disconnecting
+test WaitEvent 3 Idle
+
+test Release 3 0
+
+// Step 5
+print Step_5
+
+test OpenNewCall 4 0 "plugincmd forwardchoices 0" 2 ECCECallTypePS ECCELineTypePrimary
+test Dial 4 0 SubAddress Bearer
+test WaitEvents 4 Dialling, 4 Connecting, 4 Forwarding, 4 VoipMultipleChoices
+
+// Forwarding state is not set in CCE (it is in connecting state and DTMF is allowed in that state)
+test StartDtmfTone 0 3
+test WaitEvent 0 DtmfManualStart 0 3
+test StopDtmfTone 0
+test WaitEvent 0 DtmfManualStop 0 0
+
+test SendDtmfToneString 0 876
+test WaitEvent DtmfSequenceStart 0 8
+test WaitEvent DtmfSequenceStop 0 8
+test WaitEvent DtmfSequenceStart 0 7
+test WaitEvent DtmfSequenceStop 0 7
+test WaitEvent DtmfSequenceStart 0 6
+test WaitEvent DtmfSequenceStop 0 6
+test WaitEvent DtmfStringSendCompleted 0 0
+
+test ContinueStringSending -1 0
+test ContinueStringSending -1 1
+
+test HangUp 4 0
+test WaitEvent 4 Disconnecting
+test WaitEvent 4 Idle
+test Release 4 0
+
+test VerifyTest
+delete test
+[Endtest] 

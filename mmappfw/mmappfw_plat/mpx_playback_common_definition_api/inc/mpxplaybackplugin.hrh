@@ -1,0 +1,44 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Resource headers for MPX Playback Plugins
+*
+*/
+
+
+#ifndef MPX_PLAYBACK_PLUGIN_HRH
+#define MPX_PLAYBACK_PLUGIN_HRH
+
+#include <mpxplugin.hrh>
+/** Playback plugin interface UID */
+#define KMPXPlaybackPluginInterfaceUid  0x101FFC05
+
+enum TMPXPlaybackPlayerType
+    {
+    EPbUnknown=0x00,
+    EPbLocal=0x01,
+    EPbRemote=0x02
+    };
+
+// DEPRECATED please use enum TMPXPluginPriorities defined in mpxplugin.hrh
+/** Playback Plugin priorities */
+enum TMPXPlaybackPluginPriorities
+    {
+    EMPXPlaybackPluginPriorityLowest = EMPXPluginPriorityLowest,
+    EMPXPlaybackPluginPriorityLow = EMPXPluginPriorityLow,
+    EMPXPlaybackPluginPriorityNormal = EMPXPluginPriorityNormal,
+    EMPXPlaybackPluginPriorityHigh = EMPXPluginPriorityHigh,
+    EMPXPlaybackPluginPriorityHighest = EMPXPluginPriorityHighest
+    };
+
+#endif // MPX_PLAYBACK_PLUGIN_HRH

@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<relnotes name="Message Server and Store">
+  <purpose>
+    Framework for storage, retrieval, editing, sending and receiving of messages such as email or SMS.
+  </purpose>
+
+ <defect number="PDEF145298" title="No message content shown, when opening new mail with POP3 account" revision= "133">
+   	TMsvEntry::SetConnected() was updated wronly.
+  </defect>
+ 
+ <defect number="PDEF142159/EHGO-7V4CS2 " title="A note is displayed after formatting Memory card when "Memory in use" " revision= "132">
+   	Updated the Notification wrt DiskRemove and Disk Insert.
+  </defect>
+
+  <defect number="EMPA-7ZNF42" title="Message store setting to E, is crashing the application after restart" revision= "131">
+   	messaging DB name was passed [1000484b]messaging.db instead of [1000484B]messaging.db to SQL Server
+  </defect>
+
+  <defect number="PDEF143512" title="Constant crash in !MsvServer" revision= "130">
+   	Changes done in MinTime and MaxTime functions.
+  </defect>
+
+  <defect number="DEF141963" title="converter test case is failing" revision= "129">
+   	changed error handling while creating conversion status table.
+  </defect>  
+  
+  <defect number="PDEF142806" title="ELKD-7VRJCY-Memory full note when receive SMS" "revision="128">
+	Handled error condition, while writing data into client buffer.
+  </defect>
+
+  <defect number="DEF142215" title="CHECKED_RETURN checker error in MSF00197 vtb101sf" revision= "127">
+   	Fix for coverity error.
+  </defect>
+
+  <defect number="DEF141877" title="Coverity: SYMBIAN.CLEANUP_STACK checker error" revision="126">
+	Fix for coverity errors.
+  </defect>
+  
+  <defect number="DEF132887" title="T_MSGS_CLIENT3 tests failing in H/W" revision= "125">
+   	Rewritten MoveEntryL() and ChangeEntryL() in indexadapter.
+  </defect>
+
+  <defect number="DEF141569" title="T_MSGS_SERVER.winscw.REL.txt is failing on winscw" revision="124">
+   Removed coverity fix in msvserv.cpp and changed the test code to compare missing folders with error code
+   folder not found rather tha KErrNotFound.
+  </defect>
+  
+  <defect number="DEF139419" title="Adding attachment to an already composed email panics with MSGS:39" revision= "123">
+   	Added code to update visible folder flag corresponding to MoveEntry call in client side call of AddAttachment
+  </defect>
+  
+  <defect number="PDEF141621 " title="Message Memory Automaticlly gets Changed into "Phone Memory" from "Mass  Memory"" revision="122"> Change backup handler code not to throw notification when backup starts. The current media will remain unavailable when the backup is in progress.
+  </defect>
+  
+  <defect number="PDEF141359 " title="test failures on 93 winscw regression " revision="121">
+   fix in test code.
+  </defect>
+  
+  <defect number="DEF141287 " title="Search & sort query fails to search an email with any word in TO and CC Field. " revision="120">
+   msvsearchsortdbwrapper.cpp has been updated to fix this defect.
+  </defect>
+
+  <defect number="DEF140738" title="Few CMsvEntry API (Count(), Operator[]) does not work properly on std entries" revision="119">
+   Fetching childrens from all available drives.
+  </defect>
+
+  <defect number="DEF140608" title="Message Server doesn't support changedrive to a drive not present in drive list" revision="118">
+   Message Server adds the target drive to the drive list if it's not already there in the drive list.
+  </defect>
+
+  <defect number="PDEF140702" title="Messaging does not remove all inbox entries" revision="117">
+   Messaging does not remove all inbox entries
+  </defect>
+  
+  <defect number="DEF139217" title="Coverity Issues" revision="116">
+   Coverity Issues
+  </defect>
+
+  <defect number="DEF136478" title="Creating POP Message fails after message store is moved to MMC card" revision="115">
+   TMsvId was masked with driveId that was dynamically allocated, this caused the problem.. Solution makes sure that current drive is always masked with driveId 1
+  </defect>
+
+  <defect number="DEF138778" title="Possible stray signal in CMsvServer::DoChangeDriveL" revision="114">
+   In case of error, the ChangeDrive() should not do request complete.
+  </defect>
+
+  <defect number="DEF138708" title="Message store is unable to support a large number of messages" revision="113">
+   Swapped out entries from the cache suitably
+  </defect>
+
+  <deliverystep number="1462" name="Splitting mixed header files for Messaging" osproject="SymTB92" revision="112">
+   <preq number="2510" title=" Splitting mixed header files for Messaging">
+    Mixed header files will now contain only published All or published Partner or internal
+   </preq>
+    <milestone project="GT0465" number="3.5"/>
+  </deliverystep>
+
+  <defect number="DEF138014" title="[StrayScanner]CImPlainBodyText::PreviousChunkL theoretical stray event" revision="111">
+   Resolved the possible occurence of panic E32USER-CBase 46
+  </defect>
+
+  <defect number="DEF138009" title="[StrayScanner]CBtSrvMtm::StartCommandL race condition - E32USER-CBase 46 " revision="110">
+   resolved race condition - E32USER-CBase 46 posibility for CBtSrvMtm::StartCommandL.
+  </defect>
+
+  <defect number="PDEF134527" title="CMtmDllRegistry possibly wrongly classified [Modularity] " revision="109">
+   CMtmDllRegistry class tag is promoted to publishedAll.
+  </defect>
+
+  <defect number="DEF137200" title="Adding attachment to an already composed email panics with MSGS:39 " revision="108">
+   Updated the child visible folder id in DB and in cache for each descendents of same entry but skip the first entry
+  </defect>
+  <defect number="DEF136503" title="Few tests are failing 9.6 " revision="107">
+   Updated test code inline with the production code changes.
+  </defect>
+  
+  <defect number="DEF135279" title="Panic while removing the multimedia card." revision="106">
+   Modified CMsvDiskChangeNotifier::RunL() to ensure we do not activate an already active active-object.
+  </defect>
+
+  <defect number="DEF133875" title="System Build: Elfe32 warning in Message server and store M04835 vFuture build ." revision="105">
+   Added EXPORT_C for destructor of class CMsvSearchsortOpOnHeaderBodyin msvseachsortoponheaderbody.cpp. Followed by abld freeze to freeze the new export function.
+  </defect>
+
+  <defect number="DEF130118" title="Create account tests are failing for st-messaging-nonfunc-sqlite-backup." revision="104">
+   Handling Backup/Restore scenario
+  </defect>
+  
+  <defect number="PDEF133424" title="PDEF133424:  improvement for the messaging code .. ." revision="103">
+   Added check for CTrapCleanup , will retun KErrNomemory if allocation fails. 
+  </defect>
+
+  <defect number="PDEF131907" title="Memory card disk space can be filled by receiving SMS messages." revision="102">
+    Drive is checked for thresholdvalue while receiving SMS message .
+  </defect>
+
+  <defect number="DEF130787" title="[Coverity]-DEADCODE,FORWARD_NULL,MISSING_BREAK,REVERSE_INULL,UNINIT,USE_AFTER_FR" revision="101">
+   Added break to switch case in case EQueryIteratorAsc msvdbadapter.cpp 
+  </defect>
+
+  <defect number="PDEF130890" title="!MsvServer::!MsvServer KERN-EXEC:44" revision="100">
+   Messaging server panics with Kern Exec 44 when no IAP selected upon user prompt dialogue.
+  </defect>
+
+  <defect number="DEF130064" title="AccessEntryIndex and CreateEmail fails" revision="99">
+    Media insertion and removal from an active drive is not handled properly.
+  </defect>
+
+  <defect number="PDEF127404" title="Inserted confirmation Japanese text is not shown when partial retrieve is activa" revision="98">
+    Japanese text is converted to 8-bit before it is inserted to the 8-bit buffer 
+  </defect>
+
+  <defect number="DEF128495" title="Create Email operation performance is low .. and fix fails the sanity test.. " revision="097">
+    When an entry is moved, it's new parent's child-list should be updated accordingly.
+  </defect>
+  
+  <defect number="DEF129177" title="SAN: CleanMessageFolder fails with error code -1 in st_sanity_messaging test." revision="096">
+    CleanMessageFolder test step fails with -1 due to programming error in CMsvDBAdapter.
+  </defect>
+
+  <defect number="DEF129124" title="Messaging framework displays unwanted debug output at startup" revision="095">
+    Removal of unnecessary RDebug prints throughout the server code.
+  </defect>
+ 
+  <defect number="DEF128889" title="Messaging smoke test failed on ARMv5 in M04716 v9.6" revision="094">
+    Removed an unnecessary paramater restricting the launch of mailinit.exe
+  </defect>
+ 
+ <defect number="DEF128888" title="SAN: Create and send Email fails in st_sanity_messaging test." revision="093">
+    Issues related to catch up from integ.
+  </defect>
+
+ <defect number="DEF128830" title="[System Builds]:GT,TV errorswarnings due to submission CL1378647 in M04714 v9.6" revision="092">
+    Files v3_MSGSU.DEF and v3_msgsU.def added for submission.
+  </defect>
+
+ <deliverystep number="883" name="Messaging: Extended framework APIs for managing message store across multiple drives" osproject="Diran" revision="091">
+   <preq number="557" title="Improved support in Messaging for removable media">
+    Extended framework APIs for managing message store across multiple drives
+   </preq>
+    <milestone project="GT0465" number="3.1"/>
+  </deliverystep>
+
+ <defect number="DEF128077" title="@prototype tags in messaging" revision="090">
+      Added IM tag message server.
+    </defect>
+
+  <defect number="DEF127435" title="T_MSGS_CLIENT4 fails in UDEB mode" revision="089">
+      Added check for TMsvEntry Id(). Added delay before start of  number of tests that closed the message server.
+    </defect>
+
+ <defect number="DEF127541" title="CommitTransactionL called at a wrong place in msvlocal.cpp" revision="088">
+    Moved commitTransctaionL to instead of CMscLocalDeleteoperation::completed().
+  </defect>
+
+  <defect number="DEF127232" title="Framework unit test T_MSGS_CLOSE fail" revision="087">
+    Added validation check in TestForcedClosingL for KErrNotFound, EMsvServerTerminated, EMsvEntriesCreated.
+  </defect>
+
+  <defect number="DEF126021" title="Framework unit test scripts fail to sort, send, move , delete etc" revision="086">
+    Framework unit test cases fixed to pass in UDEB mode for code coverage.
+  </defect>
+
+  <defect number="DEF125878" title="Create Email operation performance is low when there are many existing messages" revision="085">
+    VisibleFolderFlag setting was done wrongly, so it was imapcted the performance.
+  </defect>
+  
+  <defect number="DEF126422" title="Backup and Restore is not working properly for messaging component" revision="084">
+    Handled Restore functionality.   
+  </defect>
+  
+  <defect number="DEF126849" title="[Coverity] - SYMBIAN.CLEANUP -messaging/framework/" revision="083">
+    Initialized the declared variable, removed the double push into the cleanupstack, removed the dead code, checked the function return valure.   
+  </defect>
+
+  <defect number="DEF126851" title="[Coverity]-UNUSED_VALUE,DEADCODE,PASS_BY_VALUE -messaging/framework/" revision="082">
+    Initialized the declared variable, removed the double push into the cleanupstack, removed the dead code, checked the function return valure.  
+  </defect>
+
+  <defect number="DEF125421" title="Exploratory:Repeated query for zero search result panics with KERN-EXEC 3" revision="081">
+	While performing a search, if resultant array is empty then we leave with KErrNotFound
+  </defect>
+
+  <defect number="DEF126600" title="Testing message a low disk space, but !MsvServer Panic KERN-EXEC 3" revision="080">
+    Instance of free pool variable iFreePoolInstance is created before creating or opening the database(db).
+  </defect>
+
+  <defect number="DEF126161" title="Directory can't be shared between components with different OSD " revision="079">
+    Moved msgerr.rls,msgerr.ra and GTMessaging.iby files from messaging/group to messaging_framework/group
+  </defect>
+
+  <defect number="DEF124227" title="RSendAs.CreateL() will Leave with KErrNotFound even if storage is present" revision="078">
+   Handled Media removal/Insert and backup/restore scenarios
+  </defect>
+  
+  <defect number="DEF126228" title="Exploratory: GetEntry() is failing when related Service entry is not in Cache " revision="077">
+   added condition KMsvRootIndexEntryId for not swap root folder id from cache
+  </defect>
+
+  <defect number="DEF125939" title="[coverity] - CHECKED_RETURN - messaging/framework/server " revision="076">
+   Recoded to avoid the checked return error
+  </defect>
+
+  <defect number="DEF125557" title="Dead code in messaging sub-system" revision="075"> 
+   Removed the class CMsvWait which has function declaration and defination, but not referred. 
+  </defect> 
+  
+  <defect number="PDEF124476" title="leaked handles in msvserver" revision="074">
+   Closed RThread handle to avoid leak
+  </defect>
+
+  <defect number="PDEF125683" title="Message server IPC does not work reliably " revision="073">
+    Writing to client buffer is done first before writing how much data is written, this makes sure that if client buffer is small then CMsvServerSession inform the client that the buffer was small , so client will increase the buffer size and send a request to server again.
+  </defect>
+
+  <defect number="PDEF125297" title="Email: Partial retrieval crashes messaging " revision="072">
+    Using the same UID for storing and restoring msg body text from the store  
+  </defect>
+
+  <defect number="PDEF125292" title="Filename Case Check errors most of them from PREQ1881" revision="071">
+    Changed according to the filename case check policy.
+  </defect>
+
+  <defect number="DEF123780" title="New Search/Sort mechanism unable to handle more then 4608 entries as result" revision="070">
+    Duplication of Resultant Array was happening, which is now removed
+  </defect>
+
+  <defect number="DEF123790" title="Exploratory: Validation missing for new search/sort on unsupported message part" revision="069">
+    Added validation check in CMsvSearchSortQuery::AddSortOptionL.
+  </defect>
+  
+  <defect number="DEF125045" title="[coverity] - UNINIT - messaging/framework/server/src/msvindex.cpp" revision="068">
+    nullEntry is initialized to NULL at the time of declaration
+  </defect>
+
+  <defect number="DEF125043" title="[coverity] - UNINIT - messaging/framework/server/src/msvindex.cpp" revision="067">
+    nullEntry is initialized to NULL at the time of declaration
+  </defect>
+
+  <defect number="DEF125042" title="[coverity] - UNINIT - messaging/framework/server/src/msvindex.cpp" revision="066">
+    nullEntry is initialized to NULL at the time of declaration
+  </defect>
+
+  <defect number="DEF125039" title="[coverity] - USE_AFTER_FREE - messaging/framework/server/src/msvserv.cpp" revision="065">
+    the freed pointer is checked for NULL before using it
+  </defect>
+
+  <defect number="DEF123963" title="EXploratory: Serach/sort operation panics(KERN-EXEC:0) after changing the drive" revision="064">
+    When changing the handle to DB, the hold handle was not being deleted, search was performed on the old handle
+  </defect>
+
+  <defect number="DEF121089" title="Index file versioning is needed in messaging." revision="063">
+    Indexcontext checks but does not delete an older version of message store but throws an error instead.
+  </defect>
+
+  <defect number="DEF124040" title="Coverity-Blr-UNINIT(2)-Remove warnings for variables that are uninitialized" revision="062">
+       initilizing the declared variables.
+   </defect>
+
+ <defect number="DEF124041" title="Coverity-Blr-FORWARD_NULL(3)-NULL was passed to a function that dereferences it." revision="061">
+      Added conditions to check if variables are still NULL before passing them to functions that dereference them.
+  </defect>
+
+ <defect number="DEF123918" title="Coverity-Blr-CHECKED_RETURN(3)-Return values must be checked before using them" revision="060">
+      Added check to test return values.
+  </defect>
+
+ <defect number="DEF123312" title="!MsvServer panics with KERN-EXEC 3 when booting a NAND ROM" revision="059">
+      Before deleting, check for the existence of SearchSortEntry table.
+  </defect> 
+ 
+ <defect number=" DEF123231 " title="Deltacache updation is not done properly for EUpdatedMsg " revision="058">
+    Deltacache updation is not done properly.
+  </defect>
+  <defect number=" INC119719 " title="SPPR_PERF: MsvServer crashes under IPC attack " revision="057">
+    Invalid buffer is handled so that message server does not crash.
+  </defect>
+
+  <deliverystep number="835" name="Messaging: New advanced APIs for searching and sorting for Message store" osproject="Sphinx" revision="056">
+   <preq number="1667" title="Enhanced search capabilities for message store">
+    New advanced APIs for searching and sorting for Message store
+   </preq>
+    <milestone project="GT0358" number="3.2.2"/>
+  </deliverystep>
+
+ <defect number="DEF121754" title="System Build:Messaging component fails during smoketest in M04542 v9.5 and Future " revision="055">
+     Changes made in msvindexadapter to trap the error while using FindEntryL.
+   </defect> 
+
+      <defect number="PDEF121240" title="Msgs are displayed in wrong order when the sorting is done by the subject" revision="054">
+Changed sorting order as msgs are sorted by subject and the latest msgs are displayed first on the list.
+</defect> 
+
+       <defect number="DEF119926" title="SAN: st_sanity_messaging tests are failing at 'clean message folder' test steps " revision="053">
+		 The error -1 was returned by CMsvDbadapter:UpdateOwnerStatusL()method, this is now resolved .
+  </defect>
+
+     <defect number="PDEF120675" title="Messaging app cannot be started due to index file corruption during creation " revision="052">
+  Read Ids from Index file and compared .
+  </defect>
+
+  <defect number="DEF119928" title="msvindexadapter.cpp contains dubious code" revision="051">
+      Attach ELeave to new operator, ensure naming/coding conventions are followed.
+    </defect>
+
+   <defect number="DEF118436" title="Messaging client API provokes F32 to fault client " revision="050">
+	Use  User::LeaveIfError()  for handle the panic. 
+  </defect>	
+
+  <deliverystep number="809" name="Messaging: Migration of Message Server Index entry table To SQLite" osproject="Sphinx" revision="049">
+    <preq number="1189" title="Enhance Message store by moving to a SQL database">
+    Migrated TMSV entry to Sqllite Database
+  </preq>
+    <milestone project="GT0358" number="3.2.2"/>
+  </deliverystep>
+
+ <defect number="PDEF119476" title="Check for index file incorrect in CMsvIndexContext::CreateIndexL" revision="048">
+   Check for long1, long 2 fields corrected
+  </defect>
+
+ <defect number="PDEF119118" title="Messaging Application Unable To Open Because of Corrupted/Missing Data files" revision="047">
+   Added if else block
+  </defect>
+
+  <defect number="DEF118938" title="Messaging component fails during smoketest in M04492 vFuture" revision="046">
+   Multiple changes to framework/server code for the system test failure.
+  </defect>
+
+  <defect number="PDEF118833" title="CMsvEntry::CreateL() asynchronous overloads mistakenly documented as synchronous" revision="045">
+   Used asynchronously keyword, while CMsvEntry::CreateL() called with TRequestStatus.
+  </defect>
+
+  <defect number="PDEF118754" title="Email, DRM: crash when receiving email with drm attachment from Outlook" revision="044">
+  Added shared access for access DRM files.
+  </defect>
+
+  <defect number="DEF118395" title="onb test failures on winscw " revision="043">
+   Multiple changes to framework/server code
+  </defect>
+
+  <defect number="PDEF118706" title="Wrong function referred to in CBaseMtm::AddAddresseeL() description" revision="042">
+   Used ValidateMessage() in place of Validate() method.
+  </defect>
+
+  <defect number="DEF118319" title="RSqlStatement::BindL returns -311 when CMsvDBAdapter::GetChildrenL is called " revision="041">
+   CMsvCacheVisibleFolder::GetChildrenL method  KComma was wrongly appened to the query buffer
+  </defect>
+
+  <defect number="DEF117895" title="Filename case issues cause build failure on Linux with Raptor" revision="040">
+   Changing the syntax of the header file included in framework/server files 
+  </defect>
+
+  <defect number="PDEF116600" title="Cannot switch message memory store from mmc to phone if store is over 10 MB" revision="039">
+	The cluster size is now used to calculate the total space needed to copy mail store from phone memory to MMC OR vice versa. 
+   </defect>
+
+  <defect number="PDEF115917" title="Unclear documentation of function CMsvEntry::CreateL()" revision="038">
+	Rephrased the comments for documentation. 
+   </defect>
+
+  <defect number="INC114556" title="Messaging Application Unable To Open Because of Corrupted/Missing Data files " revision="037">
+   If  Entry details is not found then implemented to add entries 
+   </defect>
+
+  <defect number="PDEF115398" title="RMsvServerSession::GetChildIdsL doesn't handle errors correctly" revision="036">
+	Added a check in RMsvServerSession::GetChildIdsL(), so that it leaves if error occurs 
+  </defect>
+
+  <defect number="PDEF114968" title="HTML Performance terribly slow if a large number of emails are present in the" revision="035">
+    A new Hash has been introduced that will store all the TMsvEntries with key as TMsvId.   
+  </defect>
+  
+  <defect number="INC114104" title="Note is truncated after one image is inserted to MMS twice and remove second one" revision="034">
+    Created file with maxPath and if Condition is added to check the length is not more than the filename.   
+  </defect>
+
+  <deliverystep number="808" name="Messaging: Unicode / Binary encoding for SMS in SendAs" osproject="Sphinx" revision="033">
+    <preq number="1881" title="UNICODE/Binary for SMS SendAs">
+    UNICODE/Binary for SMS SendAs
+  </preq>
+    <milestone project="GT0358" number="3.1"/>
+  </deliverystep>
+
+  <defect number="PDEF114150" title="Enumeral mismatch: anonymous enum vs TMsvEntry::anonymous enum" revision="032">
+    Used a temperary variable to mask the anonymous global enum.   
+  </defect>
+
+   <defect number="DEF113233" title="(Messaging Server) call to GetDesLength() not checked for error return" revision="031">
+    Checked for an error value returned by GetDesLength.   
+  </defect>
+
+  <defect number="DEF112364" title="Wrong conditional statements in TMsvServerStoreManager.cpp" revision="030">
+    Added conditional statements   
+  </defect>
+
+  <defect number="DEF112340" title="No IM tags specified in msvids.h for new uids introduced a part of PREQ 1678" revision="029">
+    Added IM Tags for msvids.h  
+  </defect>
+
+  <defect number="PDEF112580" title="Email accounts: Panic and other problems removing email account if mail is open" revision="028">
+    Added a check on iState to notify that the context has been deleted and is now invalid in CMsvEntry::ChangeL for both synchronous and asynchronous overloads
+  </defect>
+
+  <defect number="PDEF111867" title="Messaging docs incorrectly state that EMsvGeneralError is no longer" revision="027">
+    Edited the documentation for EMsvGeneralError
+  </defect>
+
+  <defect number="PDEF110398" title="Email message with graphics/web links crash the application" revision="026">
+    Handled TBuf Overflow in TMsvServerStoreManager::CreateAttachmentL() using RBuf
+  </defect>
+
+  <deliverystep number="694" name="PREQ775:Messaging:Alignment of CBR and System Model" osproject="Oghma" revision="025">
+    <preq number="775" title="Messaging:Alignment of CBR and System Model">
+    Watcher has been removed from messaging_framework component and moved into messaging_watcher.
+  </preq>
+    <milestone project="GT0342" number="3.5"/>
+  </deliverystep>
+
+  <deliverystep number="602" name="Submit PREQ1307 to MCL" osproject="Oghma" revision="024">
+    <preq number="1307" title="Non-Seamless Network Bearer Mobility for Messaging">
+    Non-Seamless Network Bearer Mobility for Messaging
+  </preq>
+    <milestone project="GT0342" number="3.2.1"/>
+  </deliverystep>
+
+  <defect number="PDEF109725" title="Indexcontext.cpp includes header from email/clientmtm and sms clientmtm" revision="023">
+    Removed unwanted header files from Indexcontext.cpp.
+  </defect>
+
+  <defect number="DEF108002" title="Warnings generated with checksource build  " revision="022">
+    Added condition to differentiate the winscw and armv5 def files for case sensitive 
+  </defect>
+
+  <deliverystep number="601" name="Implemented user prompting while sending/recieving the messages" osproject="Oghma" revision="021">
+    <preq number="1678" title="Messaging User Prompting">
+    Messaging User Prompting
+  </preq>
+    <milestone project="GT0342" number="3.4"/>
+  </deliverystep>
+
+  <defect number="DEF105400" title="Add missing IM tags to Messaging public header files" revision="020">
+    Added IM tag for all given header files.
+  </defect>
+
+  <defect number="DEF107594" title="Extra newline character added when restoring body text to rich text object" revision="019">
+    Fix problem where extra newline character was incorrectly inserted when restoring plain body text as rich text object
+  </defect>
+
+  <defect number="DEF107319" title="Uninitialised variable in MSVSESS.CPP" revision="018">
+    Fix problem where server session could attempt to use uninitialised buffer during reading
+  </defect>
+
+  <defect number="PDEF107250" title="MTMs are only restored from ROM drive." revision="017">
+    Restore MTMs from non ROM drives when rebuilding messaging index
+  </defect>
+
+  <defect number="PDEF107233" title="The new BT message can receive and then disappear rapidly if Quick format the ha" revision="016">
+    Don't rebuild the messaging index if it is locked to format a hard disk
+  </defect>
+
+  <defect number="PDEF106952" title="&quot;Application closed: Messaging&quot; is displayed when changing the memory in use." revision="015">
+    Fix cancel during mesage store copy operation
+  </defect>
+
+  <defect number="DEF105394" title="CMsvPlainBodyText and CImPlainBodyText should have a DoCancel() method" revision="014">
+    Add cancellation routines for plain body text handlers
+  </defect>
+
+  <defect number="PDEF105331" title="Startup of Multiple CMsvServers causes messaging registry to be deleted." revision="013">
+    Registry not deleted while in use
+  </defect>
+
+  <defect number="PDEF105471" title="Watcher plugin thread should have unique name" revision="012">
+    Watcher thread is assigned with unique name each time it gets created
+  </defect>
+
+  <deliverystep number="500" name="Messaging file name changes to support GNU compiler for Linux" osproject="Oghma" revision="011">
+    <preq number="1182" title="GNU Make-based build system">
+    GNU Make-based build system
+  </preq>
+    <milestone project="GT0342" number="3.3"/>
+  </deliverystep>
+
+  <deliverystep number="501" name="RAM improvement" osproject="Oghma" revision="010">
+    <preq number="1432" title="Improve Messaging Subsystem RAM Usage">
+    Improve messaging subsystem RAM usage.
+  </preq>
+    <milestone project="GT0342" number="3.1"/>
+  </deliverystep>
+
+  <defect number="PDEF104080" title="Email attachment with 100 contact cards cant be opened in proper time." revision="009">
+    Prevented the framework server message handling routines from setting the parent of the email as the context entry everytime
+  </defect>
+
+  <defect number="PDEF101920" title="[BLOCKING] SWSV_R16A01_MMS_Application crash when trying to send a DRM protec..." revision="008">
+    Updated @param comments for the effected files.
+  </defect>
+
+  <defect number="PDEF101862" title="Unix server with lots of IMAP folders makes phone unresponsive" revision="007">
+    Stop the idle reclaim process from restarting from where it was when there's an error as it will likely hit the same error again.
+  </defect>
+
+  <defect number="PDEF101465" title="When reclaiming the message server index, Store returns KErrNotReady" revision="006">
+    Now cancels reclaim idler to prevent background reclamation whilst we have uncommitted streams.
+  </defect>
+
+  <cr number="0971" title="Email MTM client utilities to support third-party MTMs" revision="005">
+    Add third party MTM support to email client utilities by defining a standard system progress structure and methods to retrieve it.
+  </cr>
+
+  <ec number="82" title="Messaging MTM documentation" revision="004">
+    FindEntry performance optimisation. Linear search employed by FindEntry has been replaced by a hash map lookup to improve performance.
+  </ec>
+
+  <defect number="PDEF100751" title="Self-signed application causes MsvServer to crash by sending invalid IPC message" revision="003">
+    Added extra checks during run time to prevent server from panicking"
+  </defect>
+
+  <defect number="INC098601" title="Device start up: MSexe.exe: Multiple file accesses to same file" revision="002">
+    Device start up: MSexe.exe: Multiple file accesses to same file
+  </defect>
+
+  <defect number="PDEF099928" title="MsvServer exception in CMsvIndexContext destructor" revision="001">
+    Checks iIndexStore is not NULL before calling Revert in the CMsvIndexContext destructor
+  </defect>
+</relnotes>

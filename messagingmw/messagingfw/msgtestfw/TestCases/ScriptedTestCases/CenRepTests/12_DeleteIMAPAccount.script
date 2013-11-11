@@ -1,0 +1,52 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+LOAD_SUITE MessagingTestServer -SharedData
+
+RUN_TEST_STEP 100 MessagingTestServer BEGIN_TEST_CASE
+
+
+RUN_TEST_STEP 100 MessagingTestServer SETUP_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer EXECUTE_TEST_CASE
+
+RUN_TEST_STEP 100 MessagingTestServer DeleteImapAccounts C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\12_DeleteImapAccount.ini DeleteImapAccounts
+
+RUN_TEST_STEP 100 MessagingTestServer CountImapAccountsInArray C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\12_DeleteImapAccount.ini CountImapAccounts0
+
+RUN_TEST_STEP 100 MessagingTestServer CreateImapAccount C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\12_DeleteImapAccount.ini CreateImapAccount1
+
+RUN_TEST_STEP 100 MessagingTestServer CreateImapAccount C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\12_DeleteImapAccount.ini CreateImapAccount2
+
+RUN_TEST_STEP 100 MessagingTestServer CreateImapAccount C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\12_DeleteImapAccount.ini CreateImapAccount3
+
+RUN_TEST_STEP 100 MessagingTestServer CreateImapAccount C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\12_DeleteImapAccount.ini CreateImapAccount4
+//???? Question can the accounts that are the same in terms of parameters all go in the repository.
+
+RUN_TEST_STEP 100 MessagingTestServer CountImapAccountsInArray C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\12_DeleteImapAccount.ini CountImapAccounts1
+
+RUN_TEST_STEP 100 MessagingTestServer GetImapAccountInArray C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\12_DeleteImapAccount.ini GetAccountId
+
+RUN_TEST_STEP 100 MessagingTestServer DeleteImapAccounts C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\12_DeleteImapAccount.ini DeleteImapAccount
+
+RUN_TEST_STEP 100 MessagingTestServer CountImapAccountsInArray C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\12_DeleteImapAccount.ini CountImapAccounts2
+
+RUN_TEST_STEP 100 MessagingTestServer LoadImapSettings C:\msgtest\TestFrameWork\ScriptedTestCases\CenRepTests\12_DeleteImapAccount.ini LoadImapSettings
+
+
+RUN_TEST_STEP 100 MessagingTestServer CHECK_POSTCONDITIONS
+
+RUN_TEST_STEP 100 MessagingTestServer END_TEST_CASE

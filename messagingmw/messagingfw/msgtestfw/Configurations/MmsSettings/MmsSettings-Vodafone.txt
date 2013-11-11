@@ -1,0 +1,4 @@
+# Vodafone MMS settings
+__type__   = MmsSettings
+
+ServerName = http://mms.vodafone.co.uk/servlets/mms

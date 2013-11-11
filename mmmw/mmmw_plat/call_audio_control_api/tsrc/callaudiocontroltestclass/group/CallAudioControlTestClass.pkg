@@ -1,0 +1,35 @@
+;
+; Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description: Call Audio Control  
+;
+
+;languages
+&EN
+
+;Header
+#{"CallAudioControlTestClass"},(0x10005942),1,0,0
+
+;Localised Vendor name
+%{"CallAudioControlTestClass"}
+
+;Unique Vendor name
+:"Vendor"
+
+;Files to install
+
+"\epoc32\release\armv5\urel\CallAudioControlTestClass.dll" - "c:\Sys\Bin\CallAudioControlTestClass.dll"
+
+;Copying ordinary file (not language dependent) to fixed drive drive.
+"..\..\init\TestFramework.ini"-"c:\Testframework\TestFramework.ini"
+"..\..\conf\CallAudioControlTestClass.cfg"-"c:\Testframework\CallAudioControlTestClass.cfg"

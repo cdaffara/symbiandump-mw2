@@ -1,0 +1,18 @@
+EXPORTS
+	_Z24ImplementationGroupProxyRi @ 1 NONAME
+	_ZN21CFileMultimediaSource4NewLER11MDataSource @ 2 NONAME
+	_ZTI11CFileSource @ 3 NONAME ; #<TI>#
+	_ZTI12CContentFile @ 4 NONAME ; #<TI>#
+	_ZTI12CReadRequest @ 5 NONAME ; #<TI>#
+	_ZTI14CSinkQueueItem @ 6 NONAME ; #<TI>#
+	_ZTI17CReadWriteRequest @ 7 NONAME ; #<TI>#
+	_ZTI21CFileMultimediaSource @ 8 NONAME ; #<TI>#
+	_ZTI8CF32File @ 9 NONAME ; #<TI>#
+	_ZTV11CFileSource @ 10 NONAME ; #<VT>#
+	_ZTV12CContentFile @ 11 NONAME ; #<VT>#
+	_ZTV12CReadRequest @ 12 NONAME ; #<VT>#
+	_ZTV14CSinkQueueItem @ 13 NONAME ; #<VT>#
+	_ZTV17CReadWriteRequest @ 14 NONAME ; #<VT>#
+	_ZTV21CFileMultimediaSource @ 15 NONAME ; #<VT>#
+	_ZTV8CF32File @ 16 NONAME ; #<VT>#
+

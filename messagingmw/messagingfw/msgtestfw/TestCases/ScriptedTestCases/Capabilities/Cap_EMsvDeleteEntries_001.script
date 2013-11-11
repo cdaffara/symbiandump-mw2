@@ -1,0 +1,64 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+PRINT Running  EMsvDeleteEntries_001
+
+
+//********************************
+PRINT Running  EMsvDeleteEntries : Entry is created in a folder (Drafts which is unprotected). 
+PRINT Running  EMsvDeleteEntries : Various combinations of Caps and SID's.
+//********************************
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvDeleteEntries_001_001.script
+	// Create an entry in a folder(draft which is unprotected). The proxy has Read/Write user data. 
+	// The message is created an owned by the proxy server (i.e same SID's).
+	// The message is then deleted.
+	// Should PASS.
+		
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvDeleteEntries_001_002.script
+	// Create an entry in a folder(draft which is unprotected). The proxy has no capabilities.
+	// The message is created and owned by the proxy server (i.e same SID's).
+	// The message is then deleted.
+	// Should PASS.
+
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvDeleteEntries_001_003.script
+	// Create an entry in a folder(draft which is unprotected). The proxy server has read and write user data (hence should pass).
+	// The message is created owned by the test server not the proxy server (i.e they have different SID's).
+	// The message is then deleted.
+	// Should PASS.
+	
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvDeleteEntries_001_004.script
+	// Create an entry in a folder(draft which is unprotected). The proxy has no capabilities.
+	// The message is created and owned by the test server wich has a different SID to the proxy server.
+	// The message is then deleted via the proxy server (which does not own the message).
+	// Should FAIL.
+
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvDeleteEntries_001_005.script
+	// Create an entry in a folder(draft which is unprotected). The proxy has only ECapabilityWriteUserData.
+	// The message is created and owned by the test server wich has a different SID to the proxy server.
+	// The message is then deleted via the proxy server (which does not own the message).
+	// Should FAIL.
+
+
+RUN_SCRIPT  c:\msgtest\TestFramework\ScriptedTestCases\Capabilities\Cap_EMsvDeleteEntries_001_006.script
+	// Create an entry in a folder(draft which is unprotected). The proxy has only ECapabilityReadUserData.
+	// The message is created and owned by the test server wich has a different SID to the proxy server.
+	// The message is then deleted via the proxy server (which does not own the message).
+	// Should FAIL.
+

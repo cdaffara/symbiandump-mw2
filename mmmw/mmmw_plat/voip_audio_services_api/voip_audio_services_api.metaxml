@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api id="a64676b70c8d53ee8ec52d588c43fda4" dataversion="2.0">
+  <name>VoIP Audio Services API</name>
+  <description>API for VoIP applications to capture uplink data and playout downlink data.</description>
+  <type>c++</type>
+  <collection>mmserv</collection>
+  <libs>
+    <lib name="VoIPAudioIntfc.lib"/>
+  </libs>
+  <release category="platform" sinceversion="5.1"/>
+  <attributes>
+    <!-- This indicates wether the api provides separate html documentation -->
+    <!-- or is the additional documentation generated from headers. -->
+    <!-- If you are unsure then the value is "no" -->
+    <htmldocprovided>no</htmldocprovided>
+    <adaptation>no</adaptation>
+  </attributes>
+</api>

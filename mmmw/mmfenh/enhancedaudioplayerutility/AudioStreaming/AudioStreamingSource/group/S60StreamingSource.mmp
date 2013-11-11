@@ -1,0 +1,66 @@
+/*
+* Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project definition file for project S60StreamingSource
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET S60StreamingSource.dll
+
+
+TARGETTYPE	PLUGIN
+
+DEFFILE	     S60StreamingSource.def
+NOSTRICTDEF
+
+UID           	0x10009D8D 0x10207AF2
+
+CAPABILITY  CAP_ECOM_PLUGIN
+VENDORID    VID_DEFAULT
+
+
+TARGETPATH /System/Libs/Plugins
+
+USERINCLUDE     ../inc ../src
+USERINCLUDE 	../../../../../inc
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE	/epoc32/include/ecom
+SYSTEMINCLUDE	/epoc32/include/mmf/common
+SYSTEMINCLUDE	/epoc32/include/mmf/server
+SYSTEMINCLUDE	/epoc32/include/mmf/plugin
+SYSTEMINCLUDE	/epoc32/include/kernel
+
+SOURCEPATH      ../src
+
+SOURCE          S60StreamingSource.cpp
+SOURCE          DataBufferQueueItem.cpp
+SOURCE          ReadRequest.cpp
+
+SOURCEPATH      ../data
+
+
+START RESOURCE	10207AF2.rss
+TARGET S60StreamingSource.rsc
+END
+
+
+LIBRARY		euser.lib 
+LIBRARY     	ecom.lib
+LIBRARY		mmfcontrollerframework.lib
+LIBRARY 	mmfserverbaseclasses.lib
+
+

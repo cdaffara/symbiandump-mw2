@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api id="b7a47dc0a3590edb71ae7d1ab16022a3" dataversion="2.0">
+  <name>call_remote_party_information_api</name>
+  <description>This API provides remote party information of ongoing calls.</description>
+  <type>c++</type>
+  <collection>telutils</collection>
+  <libs>
+    <lib name="telephonyservice.lib"/>
+  </libs>
+  <release category="platform" sinceversion="5.2"/>
+  <attributes>
+    <htmldocprovided>no</htmldocprovided>
+    <adaptation>no</adaptation>
+  </attributes>
+</api>

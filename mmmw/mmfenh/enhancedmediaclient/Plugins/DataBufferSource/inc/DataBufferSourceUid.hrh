@@ -1,0 +1,29 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Definition of the databuffer source uid's
+*
+*/
+
+
+#ifndef DATABUFFERSOURCEUID_HRH
+#define DATABUFFERSOURCEUID_HRH
+
+
+// These are the ECOM Interface UIDs for the streaming source
+
+#define KMmfDataBufferSourceUid                   0x10207B7B
+
+#endif // DATABUFFERSOURCEUID_HRH
+
+// End of file

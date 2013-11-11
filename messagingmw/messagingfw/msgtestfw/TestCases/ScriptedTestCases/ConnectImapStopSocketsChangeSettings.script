@@ -1,0 +1,37 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+RUN_UTILS DeleteFile c:\messaging.db
+LOAD_SUITE MessagingTestServer -SharedData
+
+PREFIX RUN_TEST_STEP 100 MessagingTestServer 
+SetConfiguration		c:\msgtest\TestFramework\ScriptedTestCases\ConnectImapStopSocketsChangeSettings.ini SetConfiguration
+BEGIN_TEST_CASE
+SETUP_TEST_CASE
+InitNtRas			c:\msgtest\TestFramework\ScriptedTestCases\ConnectImapStopSocketsChangeSettings.ini InitNtRas
+CreateSession			c:\msgtest\TestFramework\ScriptedTestCases\ConnectImapStopSocketsChangeSettings.ini CreateSession
+ResetMessageStore		c:\msgtest\TestFramework\ScriptedTestCases\ConnectImapStopSocketsChangeSettings.ini ResetMessageStore
+CreateImap4Service		c:\msgtest\TestFramework\ScriptedTestCases\ConnectImapStopSocketsChangeSettings.ini CreateImap4Service
+CreateRegistry			c:\msgtest\TestFramework\ScriptedTestCases\ConnectImapStopSocketsChangeSettings.ini CreateRegistry
+CreateImap4Mtm			c:\msgtest\TestFramework\ScriptedTestCases\ConnectImapStopSocketsChangeSettings.ini CreateImap4Mtm
+SetImap4ServiceParameters	c:\msgtest\TestFramework\ScriptedTestCases\ConnectImapStopSocketsChangeSettings.ini SetImap4ServiceParameters
+ConnectImap4Server   		c:\msgtest\TestFramework\ScriptedTestCases\ConnectImapStopSocketsChangeSettings.ini ConnectImap4Server
+DoFullImap4Synchronisation	c:\msgtest\TestFramework\ScriptedTestCases\ConnectImapStopSocketsChangeSettings.ini DoFullImap4Synchronisation
+EXECUTE_TEST_CASE
+StopAllSocketConnections	c:\msgtest\TestFramework\ScriptedTestCases\ConnectImapStopSocketsChangeSettings.ini StopAllSocketConnections
+SetImap4ServiceParameters	c:\msgtest\TestFramework\ScriptedTestCases\ConnectImapStopSocketsChangeSettings.ini SetImap4ServiceParameters
+CHECK_POSTCONDITIONS
+END_TEST_CASE

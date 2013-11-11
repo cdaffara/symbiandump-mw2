@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<api id="76c4b9f11dd385c1f6d2171d21fe017a" dataversion="1.0">
+  <name>Service Provider Settings API</name>
+  <description>Pprovides means to create and modify entries to service table, which  contains the top level configuration of converged services.</description>
+  <type>c++</type>
+  <subsystem>convergedcallengine</subsystem>
+  <libs>
+    <lib name="serviceprovidersettings.lib" />
+  </libs>
+  <release category="domain" sinceversion="5.0"/>
+  <attributes>
+     <!-- This indicates wether the api provedes separate html documentation -->
+     <!-- or is the additional documentation generated from headers. -->
+     <!-- If you are unsuere then the value is "no" -->
+     <htmldocprovided>yes</htmldocprovided>
+     <adaptation>no</adaptation>
+  </attributes>
+</api>

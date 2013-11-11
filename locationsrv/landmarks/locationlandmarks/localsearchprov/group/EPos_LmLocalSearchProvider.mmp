@@ -1,0 +1,69 @@
+/*
+* Copyright (c) 2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: Project definition file for localsearchprov
+*
+*
+*/
+
+
+#include <platform_paths.hrh>
+
+TARGET          eposlmlocalsearchprovider.dll
+TARGETTYPE      PLUGIN
+UID             0x10009D8D 0x101fdf86
+
+VENDORID        VID_DEFAULT
+CAPABILITY      CAP_CLIENT_DLL
+
+SOURCEPATH      ../src
+SOURCE          EPos_LmLocalSearchProviderMain.cpp
+SOURCE          EPos_CPosLmLocalSearch.cpp
+SOURCE          EPos_CPosLmLocalSearchIterator.cpp
+SOURCE          EPos_CPosLmLocalSearchHandler.cpp
+SOURCE          EPos_CPosLmLocalAreaSearch.cpp
+SOURCE          EPos_CPosLmLocalTextSearch.cpp
+SOURCE          EPos_CPosLmLocalCategorySearch.cpp
+SOURCE          EPos_CPosLmLocalCatNameSearch.cpp
+SOURCE          EPos_CPosLmLocalNearestSearch.cpp
+SOURCE          EPos_CPosLmLocalCompositeSearch.cpp
+SOURCE          EPos_TPosLmNearestLandmark.cpp
+SOURCE          EPos_CPosLmLocalSearchOperation.cpp
+SOURCE          EPos_TPosLmLocalSortPref.cpp
+SOURCE          EPos_TPosLmProgressHelper.cpp
+SOURCE          EPos_PosLmSqlQueryHelper.cpp
+SOURCE          epos_cposlmnameindexiterator.cpp
+
+USERINCLUDE     ../inc
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   ../../../inc
+
+START RESOURCE  ../data/101fdf86.rss
+TARGET          eposlmlocalsearchprovider.rsc
+END
+
+LIBRARY         euser.lib
+LIBRARY         edbms.lib
+LIBRARY         eposlandmarks.lib
+LIBRARY         eposlmintservices.lib
+LIBRARY         eposlmlocalaccess.lib
+LIBRARY         eposlmsearchlib.lib
+LIBRARY         lbs.lib
+
+EXPORTUNFROZEN
+
+SMPSAFE
+
+// END OF FILE
+

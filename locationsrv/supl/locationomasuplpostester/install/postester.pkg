@@ -1,0 +1,51 @@
+;
+; Copyright (c) 2005-2006 Nokia Corporation and/or its subsidiary(-ies).
+; All rights reserved.
+; This component and the accompanying materials are made available
+; under the terms of "Eclipse Public License v1.0"
+; which accompanies this distribution, and is available
+; at the URL "http://www.eclipse.org/legal/epl-v10.html".
+;
+; Initial Contributors:
+; Nokia Corporation - initial contribution.
+;
+; Contributors:
+;
+; Description:  Package file for project epos_comasuplpostestermodulecfg
+;
+
+;
+; Installation file for starter application 
+;
+; Languages, (English only)
+&EN
+;
+; UID is the app's UID
+#{"PosTester"},(0x061E134D),1,0,0
+
+;Series 60 v3.0
+(0x101f7961), 0, 0, 0, {"Series60ProductID"}
+
+; Localised Vendor name
+%{"Nokia"}
+
+; Unique Vendor name
+:"Nokia"
+
+;
+; Files to install
+;
+"\epoc32\RELEASE\armv5\UREL\epos_comasuplpostestermodulecfg.dll"-"c:\sys\bin\epos_comasuplpostestermodulecfg.dll"
+"\epoc32\RELEASE\armv5\UREL\epos_comasuplpostestermodulecfg.exe"-"c:\sys\bin\epos_comasuplpostestermodulecfg.exe"
+"\Epoc32\data\Z\Resource\postester.rsc"-"c:\resource\postester.rsc"
+
+
+;
+; Default message file
+"\Epoc32\winscw\C\postester\postestermessagefile.txt"-"c:\postester\postestermessagefile.txt"
+"..\data\testframework.ini"-"c:\testframework\testframework.ini"
+
+; Confg files
+"\Epoc32\winscw\c\TestFramework\epos_omasuplpostestercfg.cfg"-"c:\testframework\epos_omasuplpostestercfg.cfg"
+
+; End of File

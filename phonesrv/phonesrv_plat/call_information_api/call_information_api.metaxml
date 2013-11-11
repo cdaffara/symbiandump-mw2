@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<api id="d913c87149d09995267d8f8570f8049c" dataversion="1.0">
+<name>call_information_api</name>
+<description>Provides information about ongoing calls.</description>
+<type>c++</type>
+<subsystem>telutils</subsystem>
+<libs><lib name="telephonyservice.lib"/>
+</libs>
+<release category="domain" sinceversion="5.1"/>
+<attributes>
+<htmldocprovided>no</htmldocprovided>
+<adaptation>no</adaptation>
+</attributes>
+</api>

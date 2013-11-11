@@ -1,0 +1,17 @@
+//MLAP11
+123 lots of messages
+Frm: 01514876655
+Sbject: Los huevos del perro
+size: some size
+iid: some id
+sid: server id
+cc: address to cc
+tt: attachment file
+to: lobel.crnogorac@symbian.com
+date: 1/2/2002
+ldr: inbox
+sender: sender's address
+reply-to: lobel.crnogorac@symbian.com
+idv: validity
+extension: value
+

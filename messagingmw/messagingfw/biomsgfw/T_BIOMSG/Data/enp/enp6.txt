@@ -1,0 +1,16 @@
+//MLAP11
+1 new msg enp6
+from: email@server.com
+subject: Subject enp6
+size: 6 lines
+iuid: 11
+sid: 123
+att: 0
+to: email_to@server.com
+cc: email_cc@server.com
+date: 13/10/2003
+fldr: Inbox
+sender: email_sender@server.com
+reply-to: email_reply_to@server.com
+uidv: 12
+extension: new field

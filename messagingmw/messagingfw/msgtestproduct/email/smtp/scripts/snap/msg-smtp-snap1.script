@@ -1,0 +1,218 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+//! @file
+
+RUN_UTILS DeleteFile c:\messaging.db
+
+LOAD_SUITE	T_MsgCommonServer	-SharedData
+LOAD_SUITE	T_MsgSmtpServer		-SharedData
+
+//!	@SYMTestCaseID				MSG-SMTP-SNAPSupport-0001
+//!	@SYMTestCaseDesc			Positive: Create an SMTP email account to use SNAP (+ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						6977, 6984
+//! @SYMPREQ					1307
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create SMTP account in Central Repository using settings from a configuration file that specifies a SNAP.
+//!								3.	Check for success of step 2.
+//!								4.	Modify the settings in step 2 to specify a different SNAP.
+//!								5.	Check for success of step 4.
+//!								6.	Remove the SNAP specified in step 4 from the email account settings.
+//!								7.	Check for success of step 6.
+//!
+//!	@SYMTestExpectedResults		Steps 2, 4 and 6 to pass.
+//!	@SYMAuthor					Sandip Ahluwalia
+
+LOAD_SUITE	T_MsgCommonServer	-SharedData
+LOAD_SUITE	T_MsgSmtpServer		-SharedData
+
+START_TESTCASE	MSG-SMTP-SNAPSupport-0001
+
+RUN_TEST_STEP	300	T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer		StartUp
+
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0001-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0001-ResetMessageStore
+PRINT Setup Completed ##################################################
+
+RUN_TEST_STEP	300	T_MsgSmtpServer		CreateSmtpAccount				c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0001-CreateSmtpAccount
+RUN_TEST_STEP	300	T_MsgSmtpServer		CheckSmtpSNAPSetting			c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0001-CheckSmtpSNAPSetting0
+RUN_TEST_STEP	300	T_MsgSmtpServer		ModifySmtpSettings				c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0001-SetDifferentSNAP
+RUN_TEST_STEP	300	T_MsgSmtpServer		CheckSmtpSNAPSetting			c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0001-CheckSmtpSNAPSetting1
+RUN_TEST_STEP	300	T_MsgSmtpServer		RemoveSmtpSNAPSetting			c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0001-RemoveSmtpSNAPSetting
+RUN_TEST_STEP	300	T_MsgSmtpServer		CheckSmtpSNAPSetting			c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0001-CheckSmtpSNAPSetting2
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+END_TESTCASE	MSG-SMTP-SNAPSupport-0001
+
+//!	@SYMTestCaseID				MSG-SMTP-SNAPSupport-0002
+//!	@SYMTestCaseDesc			Negative: Check that both a SNAP and an IAP list can't be set for an SMTP email account (-ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						6977, 6984
+//! @SYMPREQ					1307
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create SMTP account in Central Repository using settings from a configuration file that specifies both a SNAP and IAP list.
+//!								3.	Check for failure in step 2.
+//!
+//!	@SYMTestExpectedResults		Step 2 to fail.
+//!	@SYMAuthor					Sandip Ahluwalia
+
+LOAD_SUITE	T_MsgCommonServer	-SharedData
+LOAD_SUITE	T_MsgSmtpServer		-SharedData
+
+START_TESTCASE	MSG-SMTP-SNAPSupport-0002
+
+RUN_TEST_STEP	300	T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer		StartUp
+
+PRINT Setup Begins ##################################################
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas					c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0002-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore			c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0002-ResetMessageStore
+PRINT Setup Completed ###############################################
+
+RUN_TEST_STEP !Error=-5	300	T_MsgSmtpServer	CreateSmtpAccount	c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0002-CreateSmtpAccount
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+END_TESTCASE	MSG-SMTP-SNAPSupport-0002
+
+//!	@SYMTestCaseID				MSG-SMTP-SNAPSupport-0003
+//!	@SYMTestCaseDesc			Negative: Check that a SNAP can't be added if an IAP list already exists for an SMTP email account (-ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						6977, 6984
+//! @SYMPREQ					1307
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create SMTP account in Central Repository using settings from a configuration file that just specifies an IAP list and not a SNAP.
+//!								3.	Load the SMTP IAP preferences set in step 2 and then set a SNAP.
+//!								4.	Check for failure in step 3.
+//!
+//!	@SYMTestExpectedResults		Step 3 to fail.
+//!	@SYMAuthor					Sandip Ahluwalia
+
+LOAD_SUITE	T_MsgCommonServer	-SharedData
+LOAD_SUITE	T_MsgSmtpServer		-SharedData
+
+START_TESTCASE	MSG-SMTP-SNAPSupport-0003
+
+RUN_TEST_STEP	300	T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer		StartUp
+
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0003-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0003-ResetMessageStore
+PRINT Setup Completed ##################################################
+
+RUN_TEST_STEP	300	T_MsgSmtpServer		CreateSmtpAccount			c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0003-CreateSmtpAccount
+RUN_TEST_STEP	300	T_MsgSmtpServer		CheckSmtpSNAPSetting		c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0003-CheckSmtpSNAPSetting
+RUN_TEST_STEP !Error=-5	300	T_MsgSmtpServer		ModifySmtpSettings	c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0003-SetSNAP
+RUN_TEST_STEP	300	T_MsgSmtpServer		CheckSmtpSNAPSetting		c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0003-CheckSmtpSNAPSetting
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+END_TESTCASE	MSG-SMTP-SNAPSupport-0003
+
+//!	@SYMTestCaseID				MSG-SMTP-SNAPSupport-0004
+//!	@SYMTestCaseDesc			Negative: Check that an IAP list can't be added if a SNAP already exists for an SMTP email account (-ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						6977, 6984
+//! @SYMPREQ					1307
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestActions				1.	Reset Message Store and Central Repository to default state.
+//!								2.	Create SMTP account in Central Repository using settings from a configuration file that specifies a SNAP and not an IAP list.
+//!								3.	Load the SMTP IAP preferences set in step 2 and then set an IAP list.
+//!								4.	Check for failure in step 3.
+//!
+//!	@SYMTestExpectedResults		Step 3 to fail.
+//!	@SYMAuthor					Sandip Ahluwalia
+
+LOAD_SUITE	T_MsgCommonServer	-SharedData
+LOAD_SUITE	T_MsgSmtpServer		-SharedData
+
+START_TESTCASE	MSG-SMTP-SNAPSupport-0004
+
+RUN_TEST_STEP	300	T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer		StartUp
+
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0004-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0004-ResetMessageStore
+PRINT Setup Completed ##################################################
+
+RUN_TEST_STEP	300	T_MsgSmtpServer		CreateSmtpAccount			c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0004-CreateSmtpAccount
+RUN_TEST_STEP	300	T_MsgSmtpServer		CheckSmtpSNAPSetting		c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0004-CheckSmtpSNAPSetting
+RUN_TEST_STEP !Error=-5	300	T_MsgSmtpServer	ModifySmtpSettings		c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0004-SetIAPList
+RUN_TEST_STEP	300	T_MsgSmtpServer		CheckSmtpSNAPSetting		c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0004-CheckSmtpSNAPSetting
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+END_TESTCASE	MSG-SMTP-SNAPSupport-0004
+
+//!	@SYMTestCaseID				MSG-SMTP-SNAPConnect-0001
+//!	@SYMTestCaseDesc			Positive: Connect an SMTP email account to server using a specified SNAP (+ve)
+//!	@SYMTestPriority			Critical
+//!	@SYMTestType				CIT
+//! @SYMREQ						6984 ,6977
+//! @SYMPREQ					1307
+//!	@SYMTestStatus				Implemented
+//!	@SYMTestCaseDependencies	Requires CED tool to be run over c:\ced_default_ras_with_snaps.cfg to set CommDB as required when using NTRAS for connection to Email servers.
+//!	@SYMTestActions				1.	Update Comms Database (via CED tool) with some SNAPs to use below when connecting to SMTP server.
+//!								2.	Reset Message Store and Central Repository to default state.
+//!								3.	Create SMTP account in Central Repository using settings from a configuration file that specifies support for bearer mobility and a SNAP.
+//!								4.	Connect to SMTP service using account settings.
+//!								5.	Check for success of step 4.
+//!
+//!	@SYMTestExpectedResults		Step 4 to pass.
+//!	@SYMAuthor					Sandip Ahluwalia
+
+LOAD_SUITE	T_MsgCommonServer	-SharedData
+LOAD_SUITE	T_MsgSmtpServer		-SharedData
+
+START_TESTCASE	MSG-SMTP-SNAPConnect-0001
+
+RUN_TEST_STEP	300	T_MsgCommonServer	StartUp
+RUN_TEST_STEP	300	T_MsgSmtpServer		StartUp
+
+PRINT Setup Begins #####################################################
+RUN_TEST_STEP	300	T_MsgCommonServer	InitNtRas						c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0005-InitNtRas
+RUN_TEST_STEP	300	T_MsgCommonServer	ResetMessageStore				c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0005-ResetMessageStore
+PRINT Setup Completed ##################################################
+RUN_TEST_STEP	300	T_MsgSmtpServer		CreateSmtpAccount				c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0005-CreateSmtpAccount
+RUN_TEST_STEP	300	T_MsgSmtpServer		CheckSmtpSNAPSetting			c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0005-CheckSmtpSNAPSetting0
+PRINT ##################################################################
+RUN_TEST_STEP 	300 T_MsgSmtpServer		CreateSmtpMessageFromEmailFile 	c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0005-CreateSmtpMessageFromEmailFile
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0005-CheckChildrenCountOutbox
+//There isn't a public API to just explicitly connect to a SMTP account so this test case will achieve it using a copy from local.
+RUN_TEST_STEP 	300 T_MsgSmtpServer		SendSmtpMessage 				c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0005-SendSmtpMessage
+RUN_TEST_STEP 	300 T_MsgCommonServer  	CheckChildrenCount 				c:\msgtest\email\smtp\snap\msg-smtp-snap1.ini	0005-CheckChildrenCountSentItems
+PRINT ##################################################################
+
+RUN_TEST_STEP	300	T_MsgCommonServer	ShutDown
+RUN_TEST_STEP	300	T_MsgSmtpServer		ShutDown
+
+END_TESTCASE	MSG-SMTP-SNAPConnect-0001

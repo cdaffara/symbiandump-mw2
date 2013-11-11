@@ -1,0 +1,39 @@
+// Copyright (c) 2002-2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+#ifndef __WAPPUSH_IBY__
+#define __WAPPUSH_IBY__
+
+REM WAP 1.2 Push 
+
+#include <sislwappush.iby>
+#include <miscpushutils.iby>
+#include <wapurilookup.iby>
+
+file=ABI_DIR\BUILD_DIR\wappushutils.dll				System\Libs\wappushutils.dll
+ECOM_PLUGIN(pushapphandler.dll,101f3e5b.rsc)
+ECOM_PLUGIN(pushcontenthandler.dll,101f3e5f.rsc)
+ECOM_PLUGIN(pushsecurity.dll,101f3e57.rsc)
+ECOM_PLUGIN(sl1_0stringdict00.dll, sl1_0stringdict00.rsc)
+
+#ifdef __WATCHER_API_V2__
+ECOM_PLUGIN(pushwatcher.dll, 10009145.rsc)
+#else
+file=ABI_DIR\BUILD_DIR\pushwatcher.dll				System\Libs\watchers\pushwatcher.dll
+#endif	// __WATCHER_API_V2__
+file=ABI_DIR\BUILD_DIR\wappushmtmclientserver.dll		System\Libs\wappushmtmclientserver.dll
+file=ABI_DIR\BUILD_DIR\pushmsgentry.dll				System\Libs\pushmsgentry.dll
+
+#endif

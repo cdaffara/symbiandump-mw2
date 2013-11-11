@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE testExecuteServer SYSTEM "file:///c:/program files/common files/symbian/testExecuteServer.dtd" [ ]>
+<testExecuteServer>
+
+	<name>burtestserver</name>
+	<mmpFile>burtestserver.mmp</mmpFile>
+	<bldInfPath>burtestserver\group\bld.inf</bldInfPath>
+
+	<dependencies>
+		<data>
+			<hostPath>\epoc32\WINSCW\C\msgtest\MachineName.txt</hostPath>
+			<devicePath>c:\msgtest\MachineName.txt</devicePath>
+		</data>
+	</dependencies>
+
+</testExecuteServer>
+

@@ -1,0 +1,3 @@
+EXPORTS
+	?NewL@CTestServerMtm@@SAPAV1@AAVCRegisteredMtmDll@@PAVCMsvServerEntry@@@Z @ 1 NONAME ; public: static class CTestServerMtm * __cdecl CTestServerMtm::NewL(class CRegisteredMtmDll &,class CMsvServerEntry *)
+

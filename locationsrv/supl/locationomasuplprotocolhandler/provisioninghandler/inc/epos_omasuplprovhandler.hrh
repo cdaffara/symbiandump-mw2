@@ -1,0 +1,40 @@
+/*
+* Copyright (c) 2005 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:   Resource header for OMA SUPL Provisioning handler
+*
+*/
+
+
+
+#ifndef OMASUPLPROVHANDLER_HRH
+#define OMASUPLPROVHANDLER_HRH
+
+
+#define __ASSERT_VARIANT_ENABLED( aIsEnabled)  \
+    {                                          \
+        if ( !aIsEnabled )                     \
+            return;                            \
+    }
+    
+    
+static const TUid KSUPLRepositoryUid = { 0x102073D6 };
+static const TUid KSUPLVarRepositoryUid = { 0x102750A0 }; 
+
+static const TInt KFirstArrayIndex = 0;
+static const TInt KArrayGranularity = 10;
+
+_LIT( KSuplAdapter, "epos_omasuplprovhandlerres" );
+_LIT( KApplicationSupl, "ap0004" );
+
+#endif

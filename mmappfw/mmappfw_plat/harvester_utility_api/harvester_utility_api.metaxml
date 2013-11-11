@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<api id="3e43d4491df14f3f15b81e940cb45f67" dataversion="2.0">
+<name>Harvester Utility API</name>
+<description>Provides Utility APIs to the harvester server</description>
+<type>c++</type>
+<collection>mmappcomponents</collection>
+<libs>
+<lib name="mpxharvesterutility.lib"/>
+</libs>
+<release category="platform" sinceversion=""/>
+<attributes>
+<htmldocprovided>no</htmldocprovided>
+<adaptation>no</adaptation>
+</attributes>
+</api>

@@ -1,0 +1,178 @@
+/*
+* Copyright (c) 2006 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  Project file for EnhancedMediaClient Utility
+*
+*  Version     : %version: 10.1.8 %
+*/
+
+
+#include <data_caging_paths.hrh>
+#include <platform_paths.hrh>
+
+TARGET          EnhancedMediaClient.dll
+TARGETTYPE      DLL
+UID             0x1000008D 0x10207B42
+CAPABILITY      CAP_GENERAL_DLL
+VENDORID        VID_DEFAULT
+
+SOURCEPATH      ../src/Components/ControlFactory
+SOURCE          ControlFactory.cpp
+SOURCE          ControlFactoryImpl.cpp
+
+SOURCEPATH      ../src/Components/EventNotifier
+SOURCE          EventNotifier.cpp
+
+SOURCEPATH      ../src/Components/SourceBase
+SOURCE          SourceBase.cpp
+SOURCE          AsyncAO.cpp
+
+SOURCEPATH      ../src/Components/SinkBase
+SOURCE          SinkBase.cpp
+
+SOURCEPATH      ../src/Components/ClientDataBufferSource
+SOURCE          ClientDataBufferSource.cpp
+SOURCE          ClientDataBuffer.cpp
+SOURCE          DataBufferQueueItem.cpp
+SOURCE          BufTypeSupEventAO.cpp
+SOURCE          DRMConfigIntfcImpl.cpp
+SOURCE          ParentChildIntfc.cpp
+
+SOURCEPATH      ../src/Components/CMMFAudioOutputSink
+SOURCE          CMMFAudioOutputSink.cpp
+
+SOURCEPATH      ../src/Components/EventObjects
+SOURCE          EventBase.cpp
+SOURCE          ErrorCode.cpp
+SOURCE          StateChangedEvent.cpp
+SOURCE          DataBufferProcessedEvent.cpp
+
+
+SOURCEPATH      ../src/Components/EffectBase
+SOURCE          EffectControlBase.cpp
+SOURCE          EffectControlBaseImpl.cpp
+
+SOURCEPATH      ../src/Components/VolumeEffect
+SOURCE          VolumeEffectImpl.cpp
+
+SOURCEPATH      ../src/Components/BalanceEffect
+SOURCE          BalanceEffectImpl.cpp
+
+SOURCEPATH      ../src/Components/AudioEffects
+SOURCE          EqualizerEffectImpl.cpp
+SOURCE          ReverbEffectImpl.cpp
+SOURCE          BassBoostEffectImpl.cpp
+SOURCE          LoudnessEffectImpl.cpp
+SOURCE          RoomLevelEffectImpl.cpp
+SOURCE          StereoWideningEffectImpl.cpp
+SOURCE          SourceLocationEffectImpl.cpp
+SOURCE          ListenerLocationEffectImpl.cpp
+SOURCE          SourceDopplerEffectImpl.cpp
+SOURCE          ListenerDopplerEffectImpl.cpp
+SOURCE          SourceOrientationEffectImpl.cpp
+SOURCE          ListenerOrientationEffectImpl.cpp
+SOURCE          DistanceAttenuationEffectImpl.cpp
+
+// Source for Descriptor Source
+SOURCEPATH      ../src/Components/ClientDescriptorSource
+SOURCE          ClientDescriptorSource.cpp
+
+// Source for File Source
+SOURCEPATH      ../src/Components/ClientFileSource
+SOURCE          ClientFileSource.cpp
+
+SOURCEPATH      ../src/Components/StreamControl
+SOURCE          ClientUtility.cpp
+SOURCE          CMCustomCommand.cpp
+SOURCE          ClientStreamControl.cpp
+
+USERINCLUDE     ../inc
+USERINCLUDE     ../src/Components/StreamControl
+USERINCLUDE     ../src/Components/EventNotifier
+USERINCLUDE     ../src/Components/ClientDataBufferSource
+USERINCLUDE     ../src/Components/ClientFileSource
+USERINCLUDE     ../src/Components/ClientDescriptorSource
+USERINCLUDE     ../src/Components/CMMFAudioOutputSink
+USERINCLUDE     ../src/Components/EventObjects
+USERINCLUDE     ../src/Components/SinkBase
+USERINCLUDE     ../src/Components/SourceBase
+USERINCLUDE     ../../Plugins/DataBufferSource/inc
+USERINCLUDE     ../src/Components/EffectBase
+USERINCLUDE     ../src/Components/VolumeEffect
+USERINCLUDE		../src/Components/BalanceEffect
+USERINCLUDE     ../src/Components/AudioEffects
+USERINCLUDE     ../../../../inc
+USERINCLUDE     ../../inc
+USERINCLUDE     ../../Plugins/DescriptorSource/inc
+USERINCLUDE     ../../Plugins/FileSource/inc 
+
+
+MW_LAYER_SYSTEMINCLUDE
+SYSTEMINCLUDE   /epoc32/include/mmf/common
+SYSTEMINCLUDE   /epoc32/include/mmf/server
+
+LIBRARY         euser.lib
+LIBRARY         efsrv.lib
+LIBRARY         mmfcontrollerframework.lib
+LIBRARY         caf.lib
+LIBRARY         mmcommon.lib
+LIBRARY         estor.lib
+LIBRARY         cafutils.lib
+LIBRARY         ecom.lib
+LIBRARY         StreamControlCustomCommands.lib
+LIBRARY         mmfstandardcustomcommands.lib
+
+LIBRARY			AudioEqualizerProxy.lib
+LIBRARY			AudioEqualizerEffect.lib
+
+LIBRARY			EnvironmentalReverbProxy.lib
+LIBRARY			EnvironmentalReverbEffect.lib
+
+LIBRARY			BassBoostProxy.lib
+LIBRARY			BassBoostEffect.lib
+
+LIBRARY			LoudnessProxy.lib
+LIBRARY			LoudnessEffect.lib
+
+LIBRARY			RoomLevelProxy.lib
+LIBRARY			RoomLevelEffect.lib
+
+LIBRARY			StereoWideningProxy.lib
+LIBRARY			StereoWideningEffect.lib
+
+LIBRARY			SourceLocationProxy.lib
+LIBRARY			SourceLocationEffect.lib
+LIBRARY			ListenerLocationProxy.lib
+LIBRARY			ListenerLocationEffect.lib
+
+LIBRARY			SourceDopplerProxy.lib
+LIBRARY			SourceDopplerEffect.lib
+LIBRARY			ListenerDopplerProxy.lib
+LIBRARY			ListenerDopplerEffect.lib
+
+LIBRARY			SourceOrientationProxy.lib
+LIBRARY			SourceOrientationEffect.lib
+LIBRARY			ListenerOrientationProxy.lib
+LIBRARY			ListenerOrientationEffect.lib
+
+LIBRARY			Dopplerbase.lib
+LIBRARY			OrientationBase.lib
+LIBRARY			LocationBase.lib
+LIBRARY 		DistanceAttenuationEffect.lib
+LIBRARY 		DistanceAttenuationProxy.lib
+
+LIBRARY			EffectBase.lib
+
+LIBRARY			mmfdrmpluginserverproxy.lib
+DEFFILE         EnhancedMediaClient.def
+NOSTRICTDEF

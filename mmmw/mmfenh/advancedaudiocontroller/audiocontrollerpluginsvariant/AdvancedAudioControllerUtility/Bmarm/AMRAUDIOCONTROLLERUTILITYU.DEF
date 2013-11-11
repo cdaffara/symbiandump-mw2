@@ -1,0 +1,4 @@
+EXPORTS
+	NewL__26CAMRAudioControllerUtility @ 1 NONAME R3UNUSED ; CAMRAudioControllerUtility::NewL(void)
+	"_._26CAMRAudioControllerUtility" @ 2 NONAME R3UNUSED ; CAMRAudioControllerUtility::~CAMRAudioControllerUtility(void)
+

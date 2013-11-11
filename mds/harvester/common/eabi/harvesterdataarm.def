@@ -1,0 +1,53 @@
+EXPORTS
+	_ZN14CHarvesterData10ClientDataEv @ 1 NONAME
+	_ZN14CHarvesterData10ObjectTypeEv @ 2 NONAME
+	_ZN14CHarvesterData11SetClientIdE4TUid @ 3 NONAME
+	_ZN14CHarvesterData12LocationDataEv @ 4 NONAME
+	_ZN14CHarvesterData12SetErrorCodeEi @ 5 NONAME
+	_ZN14CHarvesterData12SetEventTypeE19THarvesterEventType @ 6 NONAME
+	_ZN14CHarvesterData12SetMdeObjectEP10CMdEObject @ 7 NONAME
+	_ZN14CHarvesterData12TakeSnapshotEv @ 8 NONAME
+	_ZN14CHarvesterData13SetClientDataEP5CBase @ 9 NONAME
+	_ZN14CHarvesterData13SetObjectTypeE20THarvesterObjectType @ 10 NONAME
+	_ZN14CHarvesterData14PluginObserverEv @ 11 NONAME
+	_ZN14CHarvesterData15SetLocationDataEP13TLocationData @ 12 NONAME
+	_ZN14CHarvesterData15SetTakeSnapshotEi @ 13 NONAME
+	_ZN14CHarvesterData17SetPluginObserverER24MHarvesterPluginObserver @ 14 NONAME
+	_ZN14CHarvesterData3UriEv @ 15 NONAME
+	_ZN14CHarvesterData4NewLEPK7HBufC16 @ 16 NONAME
+	_ZN14CHarvesterData5NewLCEPK7HBufC16 @ 17 NONAME
+	_ZN14CHarvesterData6OriginEv @ 18 NONAME
+	_ZN14CHarvesterData8ClientIdEv @ 19 NONAME
+	_ZN14CHarvesterData9ErrorCodeEv @ 20 NONAME
+	_ZN14CHarvesterData9EventTypeEv @ 21 NONAME
+	_ZN14CHarvesterData9MdeObjectEv @ 22 NONAME
+	_ZN14CHarvesterData9SetOriginEN12MdeConstants6Object7TOriginE @ 23 NONAME
+	_ZN16CPlaceholderData10SetMediaIdEj @ 24 NONAME
+	_ZN16CPlaceholderData11SetFileSizeEm @ 25 NONAME
+	_ZN16CPlaceholderData11SetModifiedE5TTime @ 26 NONAME
+	_ZN16CPlaceholderData12PresentStateEv @ 27 NONAME
+	_ZN16CPlaceholderData15SetPresentStateEi @ 28 NONAME
+	_ZN16CPlaceholderData3UriEv @ 29 NONAME
+	_ZN16CPlaceholderData4NewLEv @ 30 NONAME
+	_ZN16CPlaceholderData6SetUriERK7TDesC16 @ 31 NONAME
+	_ZN16CPlaceholderData7MediaIdEv @ 32 NONAME
+	_ZN16CPlaceholderData8FileSizeEv @ 33 NONAME
+	_ZN16CPlaceholderData8ModifiedEv @ 34 NONAME
+	_ZN18CHarvestClientData11SetAlbumIdsERK6RArrayImE @ 35 NONAME
+	_ZN18CHarvestClientData3NewEv @ 36 NONAME
+	_ZN18CHarvestClientData4NewLEv @ 37 NONAME
+	_ZTI14CHarvesterData @ 38 NONAME ABSENT; #<TI>#
+	_ZTI16CPlaceholderData @ 39 NONAME ABSENT; #<TI>#
+	_ZTI18CHarvestClientData @ 40 NONAME ABSENT; #<TI>#
+	_ZTV14CHarvesterData @ 41 NONAME ABSENT; #<VT>#
+	_ZTV16CPlaceholderData @ 42 NONAME ABSENT; #<VT>#
+	_ZTV18CHarvestClientData @ 43 NONAME ABSENT; #<VT>#
+	_ZN14CHarvesterData11AddLocationEv @ 44 NONAME
+	_ZN14CHarvesterData14SetAddLocationEi @ 45 NONAME
+	_ZN14CHarvesterData19HarvesterPluginInfoEv @ 46 NONAME
+	_ZN14CHarvesterData22SetHarvesterPluginInfoEP20CHarvesterPluginInfo @ 47 NONAME
+	_ZN16CPlaceholderData12PreinstalledEv @ 48 NONAME
+	_ZN16CPlaceholderData15SetPreinstalledEi @ 49 NONAME
+	_ZN14CHarvesterData8IsBinaryEv @ 50 NONAME
+	_ZN14CHarvesterData9SetBinaryEi @ 51 NONAME
+

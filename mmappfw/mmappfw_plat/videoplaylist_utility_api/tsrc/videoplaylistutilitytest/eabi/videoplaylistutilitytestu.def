@@ -1,0 +1,5 @@
+EXPORTS
+	_Z9LibEntryLR13CTestModuleIf @ 1 NONAME
+	_ZTI28CVideoPlaylistUtility_Tester @ 2 NONAME ; #<TI>#
+	_ZTV28CVideoPlaylistUtility_Tester @ 3 NONAME ; #<VT>#
+

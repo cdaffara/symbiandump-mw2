@@ -1,0 +1,229 @@
+//
+// Copyright (c) 2009 Nokia Corporation and/or its subsidiary(-ies).
+// All rights reserved.
+// This component and the accompanying materials are made available
+// under the terms of "Eclipse Public License v1.0"
+// which accompanies this distribution, and is available
+// at the URL "http://www.eclipse.org/legal/epl-v10.html".
+//
+// Initial Contributors:
+// Nokia Corporation - initial contribution.
+//
+// Contributors:
+//
+// Description:
+//
+
+LOAD_SUITE 	T_MsgCommonServer 	-SharedData
+LOAD_SUITE 	T_MsgImapServer 	-SharedData
+LOAD_SUITE  	T_MsgSmtpServer 	-SharedData
+LOAD_SUITE	EventLogServer		-SharedData
+
+//! @SYMTestCaseID		MSG-ALL-PERFRM-0001
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	Performance: Calculate the turnaround time of search-sort operation on 10, 50 and 100 entries.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//! 	1.	Connect imap account "test011"
+//! 	2.	Create 10 messages.
+//! 	3.	Create a search-sort query with "To" field as "test001" as recipient address and sort by size in ascending order.
+//! 	4.	Capture and record the time before search-sort operation.
+//! 	5.	Perform search-sort operation.
+//! 	6.	Capture and record the time after search-sort operation.
+//! 	7.	Calculate the time consumed for step 5.
+//! 	8.	Create another 40 messages.
+//! 	9.	Capture and record the time before search-sort operation.
+//! 	10.	Perform search-sort operation.
+//! 	11.	Capture and record the time after search-sort operation.
+//! 	12.	Calculate the time consumed for step 10.
+//! 	13.	Create another 50 messages.
+//! 	14.	Capture and record the time before search-sort operation.
+//! 	15.	Perform search-sort operation.
+//! 	16.	Capture and record the time after search-sort operation.
+//! 	17.	Calculate the time consumed for step 15.
+//! 	18.	Verify all the new entries created are also considered in the result those are satisfying the search-sort criteria.
+//! 	
+//! 	
+//! @SYMTestExpectedResults
+//!	Test should pass with out any error.
+//!	
+//! @SYMAuthor			Pramod Das
+
+START_TESTCASE MSG-ALL-PERFRM-0001
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300 T_MsgImapServer  	StartUp
+RUN_TEST_STEP	300 T_MsgSmtpServer  	StartUp
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	InitNtRas			c:\msgtest\common\search\msg-searchsort-performance.ini	0001-InitNtRas
+RUN_TEST_STEP	300 T_MsgImapServer	DeleteAllMessage		c:\msgtest\common\search\msg-searchsort-performance.ini 0001-DeleteAllMessage
+
+START_REPEAT								c:\msgtest\common\search\msg-searchsort-performance.ini	0001-SectionOne1 RepeatParam
+RUN_TEST_STEP	300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\common\search\msg-searchsort-performance.ini	0001-CreateSmtpMessageFromEmailFile
+END_REPEAT
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort-performance.ini 0001-SearchSortQuery
+RUN_TEST_STEP	300 EventLogServer	Clear				c:\msgtest\common\search\msg-searchsort-performance.ini
+RUN_TEST_STEP	300 EventLogServer 	Start				c:\msgtest\common\search\msg-searchsort-performance.ini 0001-EventLog
+RUN_TEST_STEP	300 T_MsgCommonServer 	RecordCurrentTime		c:\msgtest\common\search\msg-searchsort-performance.ini 0001-RecordCurrentTime1
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort-performance.ini 0001-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	RecordCurrentTime		c:\msgtest\common\search\msg-searchsort-performance.ini 0001-RecordCurrentTime2
+RUN_TEST_STEP	300 EventLogServer 	Stop				c:\msgtest\common\search\msg-searchsort-performance.ini 0001-EventLog
+RUN_TEST_STEP	300 EventLogServer 	GetRecordCount			c:\msgtest\common\search\msg-searchsort-performance.ini 0001-EventLog
+RUN_TEST_STEP	300 EventLogServer 	PrintEventLog			c:\msgtest\common\search\msg-searchsort-performance.ini 0001-EventLog
+
+START_REPEAT								c:\msgtest\common\search\msg-searchsort-performance.ini	0001-SectionOne2 RepeatParam
+RUN_TEST_STEP	300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\common\search\msg-searchsort-performance.ini	0001-CreateSmtpMessageFromEmailFile
+END_REPEAT
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort-performance.ini 0001-SearchSortQuery
+RUN_TEST_STEP	300 EventLogServer	Clear				c:\msgtest\common\search\msg-searchsort-performance.ini
+RUN_TEST_STEP	300 EventLogServer 	Start				c:\msgtest\common\search\msg-searchsort-performance.ini 0001-EventLog
+RUN_TEST_STEP	300 T_MsgCommonServer 	RecordCurrentTime		c:\msgtest\common\search\msg-searchsort-performance.ini 0001-RecordCurrentTime1
+RUN_TEST_STEP	800 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort-performance.ini 0001-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	RecordCurrentTime		c:\msgtest\common\search\msg-searchsort-performance.ini 0001-RecordCurrentTime2
+RUN_TEST_STEP	300 EventLogServer 	Stop				c:\msgtest\common\search\msg-searchsort-performance.ini 0001-EventLog
+RUN_TEST_STEP	300 EventLogServer 	GetRecordCount			c:\msgtest\common\search\msg-searchsort-performance.ini 0001-EventLog
+RUN_TEST_STEP	300 EventLogServer 	PrintEventLog			c:\msgtest\common\search\msg-searchsort-performance.ini 0001-EventLog
+
+START_REPEAT								c:\msgtest\common\search\msg-searchsort-performance.ini	0001-SectionOne3 RepeatParam
+RUN_TEST_STEP	300 T_MsgSmtpServer 	CreateSmtpMessageFromEmailFile	c:\msgtest\common\search\msg-searchsort-performance.ini	0001-CreateSmtpMessageFromEmailFile
+END_REPEAT
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort-performance.ini 0001-SearchSortQuery
+RUN_TEST_STEP	300 EventLogServer	Clear				c:\msgtest\common\search\msg-searchsort-performance.ini
+RUN_TEST_STEP	300 EventLogServer 	Start				c:\msgtest\common\search\msg-searchsort-performance.ini 0001-EventLog
+RUN_TEST_STEP	300 T_MsgCommonServer 	RecordCurrentTime		c:\msgtest\common\search\msg-searchsort-performance.ini 0001-RecordCurrentTime1
+RUN_TEST_STEP	1200 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort-performance.ini 0001-SearchSortQuery
+RUN_TEST_STEP	300 T_MsgCommonServer 	RecordCurrentTime		c:\msgtest\common\search\msg-searchsort-performance.ini 0001-RecordCurrentTime2
+RUN_TEST_STEP	300 EventLogServer 	Stop				c:\msgtest\common\search\msg-searchsort-performance.ini 0001-EventLog
+RUN_TEST_STEP	300 EventLogServer 	GetRecordCount			c:\msgtest\common\search\msg-searchsort-performance.ini 0001-EventLog
+RUN_TEST_STEP	300 EventLogServer 	PrintEventLog			c:\msgtest\common\search\msg-searchsort-performance.ini 0001-EventLog
+
+RUN_TEST_STEP	300 T_MsgSmtpServer	ShutDown
+RUN_TEST_STEP	300 T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-PERFRM-0001
+
+//! @SYMTestCaseID		MSG-ALL-PERFRM-0002
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8589
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	Performance: Check the robustness of search-sort operation on 100 entries for 10 times.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//! 	1.	Create 100 messages.
+//! 	2.	Perform search-sort operation for different search-sort queries with different search-sort option for 10 times.
+//! 	
+//! @SYMTestExpectedResults
+//!	Test should pass with out any error.
+//!	
+//! @SYMAuthor			Pramod Das
+
+START_TESTCASE MSG-ALL-PERFRM-0002
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer  	StartUp
+RUN_TEST_STEP	300 T_MsgImapServer  	StartUp
+
+RUN_TEST_STEP	300 EventLogServer	Clear				c:\msgtest\common\search\msg-searchsort-performance.ini
+RUN_TEST_STEP	300 EventLogServer 	Start				c:\msgtest\common\search\msg-searchsort-performance.ini 0002-EventLog
+RUN_TEST_STEP	300 T_MsgCommonServer 	RecordCurrentTime		c:\msgtest\common\search\msg-searchsort-performance.ini 0002-RecordCurrentTime1
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort-performance.ini 0002-SearchSortQuery1
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort-performance.ini 0002-SearchSortQuery1
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort-performance.ini 0002-SearchSortQuery2
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort-performance.ini 0002-SearchSortQuery2
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort-performance.ini 0002-SearchSortQuery3
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort-performance.ini 0002-SearchSortQuery3
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort-performance.ini 0002-SearchSortQuery4
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort-performance.ini 0002-SearchSortQuery4
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort-performance.ini 0002-SearchSortQuery5
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort-performance.ini 0002-SearchSortQuery5
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort-performance.ini 0002-SearchSortQuery6
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort-performance.ini 0002-SearchSortQuery6
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort-performance.ini 0002-SearchSortQuery7
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort-performance.ini 0002-SearchSortQuery7
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort-performance.ini 0002-SearchSortQuery8
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort-performance.ini 0002-SearchSortQuery8
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort-performance.ini 0002-SearchSortQuery9
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort-performance.ini 0002-SearchSortQuery9
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort-performance.ini 0002-SearchSortQuery10
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort-performance.ini 0002-SearchSortQuery10
+
+RUN_TEST_STEP	300 T_MsgCommonServer 	RecordCurrentTime		c:\msgtest\common\search\msg-searchsort-performance.ini 0002-RecordCurrentTime2
+RUN_TEST_STEP	300 EventLogServer 	Stop				c:\msgtest\common\search\msg-searchsort-performance.ini 0002-EventLog
+RUN_TEST_STEP	300 EventLogServer 	GetRecordCount			c:\msgtest\common\search\msg-searchsort-performance.ini 0002-EventLog
+RUN_TEST_STEP	300 EventLogServer 	PrintEventLog			c:\msgtest\common\search\msg-searchsort-performance.ini 0002-EventLog
+
+RUN_TEST_STEP	300 T_MsgImapServer	ShutDown
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-PERFRM-0002
+
+//! @SYMTestCaseID		MSG-ALL-PERFRM-0003
+//! @SYMTestType		CIT
+//! @SYMREQ			REQ8588, REQ8589, REQ8731
+//! @SYMPREQ			1667
+//! @SYMTestPriority		High
+//! @SYMTestStatus 		Implemented
+//! @SYMTestCaseDependencies
+//! @SYMTestCaseDesc
+//!	Performance: Performance of Search-sort operation using QueryID.
+//! @SYMTestCaseDependencies
+//! @SYMTestActions
+//! 	1.	Create a search-sort query where "TO" field contains "test001" recipient address and sort by Date in ascending order.
+//! 	2.	Capture and record the time before search-sort operation without query ID.
+//! 	3.	Perform Search-Sort operation
+//! 	4.	Capture and record the time after search-sort operation without query ID.
+//! 	5.	Calculate the turnaround time for search-sorting.
+//! 	6.	Retrieve the Query ID of the above search-sort operation
+//! 	7.	Capture and record the time before search-sort operation with Query ID.
+//! 	8.	perform search-sort operation with the above retrieved query ID.
+//! 	9.	Capture and record the time after search-sort operation with Query ID.
+//! 	10.	Calculate the turnaround time for search-sort operation with query ID.
+//! 	11.	Verify that Time value in Action 10 is less than Time value in Action 5.
+//! 	
+//! @SYMTestExpectedResults
+//!	Turnaround time in Action 10 is less than turnaround time in Action 5.
+//! @SYMAuthor			Pramod Das
+
+START_TESTCASE MSG-ALL-PERFRM-0003
+PRINT Setup Begins #####################################################
+
+RUN_TEST_STEP	300 T_MsgCommonServer  	StartUp
+
+RUN_TEST_STEP	300 EventLogServer	Clear				c:\msgtest\common\search\msg-searchsort-performance.ini
+RUN_TEST_STEP	300 EventLogServer 	Start				c:\msgtest\common\search\msg-searchsort-performance.ini 0003-EventLog
+RUN_TEST_STEP	300 T_MsgCommonServer 	CreateSearchSortQuery		c:\msgtest\common\search\msg-searchsort-performance.ini 0003-SearchSortQuery1
+RUN_TEST_STEP	300 T_MsgCommonServer 	RecordCurrentTime		c:\msgtest\common\search\msg-searchsort-performance.ini 0003-RecordCurrentTime1
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortByQueryObject		c:\msgtest\common\search\msg-searchsort-performance.ini 0003-SearchSortQuery1
+RUN_TEST_STEP	300 T_MsgCommonServer 	RecordCurrentTime		c:\msgtest\common\search\msg-searchsort-performance.ini 0003-RecordCurrentTime2
+RUN_TEST_STEP	300 EventLogServer 	Stop				c:\msgtest\common\search\msg-searchsort-performance.ini 0003-EventLog
+RUN_TEST_STEP	300 EventLogServer 	GetRecordCount			c:\msgtest\common\search\msg-searchsort-performance.ini 0003-EventLog
+RUN_TEST_STEP	300 EventLogServer 	PrintEventLog			c:\msgtest\common\search\msg-searchsort-performance.ini 0003-EventLog
+
+RUN_TEST_STEP	300 EventLogServer	Clear				c:\msgtest\common\search\msg-searchsort-performance.ini
+RUN_TEST_STEP	300 EventLogServer 	Start				c:\msgtest\common\search\msg-searchsort-performance.ini 0003-EventLog
+RUN_TEST_STEP	300 T_MsgCommonServer 	RecordCurrentTime		c:\msgtest\common\search\msg-searchsort-performance.ini 0003-RecordCurrentTime1
+RUN_TEST_STEP	300 T_MsgCommonServer 	SearchSortResultByQueryId	c:\msgtest\common\search\msg-searchsort-performance.ini 0003-SearchSortQuery1
+RUN_TEST_STEP	300 T_MsgCommonServer 	RecordCurrentTime		c:\msgtest\common\search\msg-searchsort-performance.ini 0003-RecordCurrentTime2
+RUN_TEST_STEP	300 EventLogServer 	Stop				c:\msgtest\common\search\msg-searchsort-performance.ini 0003-EventLog
+RUN_TEST_STEP	300 EventLogServer 	GetRecordCount			c:\msgtest\common\search\msg-searchsort-performance.ini 0003-EventLog
+RUN_TEST_STEP	300 EventLogServer 	PrintEventLog			c:\msgtest\common\search\msg-searchsort-performance.ini 0003-EventLog
+
+RUN_TEST_STEP	300 T_MsgCommonServer	ShutDown
+PRINT Execute Completed ################################################
+END_TESTCASE MSG-ALL-PERFRM-0003

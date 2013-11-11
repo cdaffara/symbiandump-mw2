@@ -1,0 +1,139 @@
+/*
+* Copyright (c) 2003-2008 Nokia Corporation and/or its subsidiary(-ies). 
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description:  This is project specification file for CbsServer.
+*                This file is used to generate makefile with MAKMAKE utility.
+*
+*/
+
+
+VENDORID        VID_DEFAULT
+
+#include <platform_paths.hrh>
+#include "CbsServerUid.h"
+#include <data_caging_paths.hrh>
+
+TARGET          CbsServer.exe
+
+#if defined( WINSCW )
+TARGETTYPE      exe
+#else
+TARGETTYPE      exexp
+#endif
+
+CAPABILITY      CAP_SERVER
+
+UID             KCbsServerUid2 KCbsServerUid3
+
+EPOCHEAPSIZE    0x1000 0x100000
+
+START RESOURCE  ../Data/CbsServer.rss
+HEADER
+TARGET          cbsserver.rsg
+TARGETPATH      RESOURCE_FILES_DIR
+LANGUAGE_IDS
+END
+
+
+sourcepath      ../Group
+sourcepath      ../ServerInc
+sourcepath      ../ServerSrc
+
+#if defined( EABI )
+deffile ../EABI/ 
+#elif defined( WINS )
+// no .def file used
+#elif defined( WINSCW )
+//no .def file used
+#else
+deffile ../BMARM/ 
+#endif
+
+// Server base
+
+SOURCE          CCbsServer.cpp
+SOURCE          CbsServerPanic.cpp
+SOURCE          CCbsReceiverHelper.cpp
+SOURCE          CCbsScheduler.cpp
+SOURCE          CCbsMessageCleanUpTimer.cpp
+
+// Server side interface
+
+SOURCE          CCbsSession.cpp
+SOURCE          CCbsObject.cpp
+SOURCE          CCbsSettings.cpp
+SOURCE          CCbsTopicList.cpp
+SOURCE          CCbsTopicMessages.cpp
+SOURCE          CCbsTopicCollection.cpp
+SOURCE          CCbsMcnSession.cpp
+
+// Database implementation
+
+SOURCE          CbsStreamHelper.cpp
+SOURCE          CCbsDbImp.cpp
+SOURCE          CCbsDbImpSettings.cpp
+SOURCE          CCbsDbImpTopicList.cpp
+SOURCE          CCbsDbImpTopicMessages.cpp
+SOURCE          CCbsDbImpTopicCollection.cpp
+
+// ETel receiver
+SOURCE          Ccbsrecetel.cpp
+SOURCE          Ccbsrecetelmonitor.cpp
+SOURCE          CCbsRecMessage.cpp
+SOURCE          Ccbsreccollector.cpp
+SOURCE          Ccbsrecdecoder.cpp
+SOURCE          Ccbsrecnetworklistener.cpp
+SOURCE          CCbsSetFilterSettingHandler.cpp
+SOURCE          CCbsRecWcdmaMessage.cpp
+SOURCE          CCbsMessageFactory.cpp
+SOURCE          CCbsMessage.cpp
+
+// Wrapper classes for ETel
+SOURCE          CCbsEtelMessaging.cpp
+
+// Utilities
+SOURCE          CbsUtils.cpp
+SOURCE          CCbsLivecastHandler.cpp
+SOURCE          CCbsShutdownMonitor.cpp
+SOURCE          CCbsBackupMonitor.cpp
+SOURCE          CCbsSatRefresh.cpp
+SOURCE          CCbsDiskSpaceMonitor.cpp
+
+USERINCLUDE     . ../ServerInc 
+USERINCLUDE     ../ServerSrc
+USERINCLUDE     ../ClientInc 
+USERINCLUDE     ../McnClientInc 
+USERINCLUDE     ../loc
+
+APP_LAYER_SYSTEMINCLUDE
+
+LIBRARY     euser.lib 
+LIBRARY     estor.lib
+LIBRARY     efsrv.lib
+LIBRARY     etel.lib            // Core ETel functions
+LIBRARY     etelmm.lib          // Multimode ETel
+LIBRARY     charconv.lib        // Message decoding
+LIBRARY     bafl.lib            // Resource access
+LIBRARY     sysutil.lib         // SysUtil module, FFS critical level check
+LIBRARY     hal.lib
+LIBRARY	    satclient.lib       // for sat refresh
+LIBRARY     flogger.lib
+LIBRARY     centralrepository.lib
+LIBRARY     diskspacereserver.lib
+LIBRARY     FeatMgr.lib         // Feature Manager
+LIBRARY     CustomApi.lib       // SIM Topics usage
+LIBRARY     ViewCli.lib     // View server access
+LIBRARY     aknnotify.lib   // Soft notifications
+
+									
+EPOCSTACKSIZE 0x4000

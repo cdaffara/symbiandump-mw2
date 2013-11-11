@@ -1,0 +1,31 @@
+/*
+* Copyright (c) 2010 Nokia Corporation and/or its subsidiary(-ies).
+* All rights reserved.
+* This component and the accompanying materials are made available
+* under the terms of "Eclipse Public License v1.0"
+* which accompanies this distribution, and is available
+* at the URL "http://www.eclipse.org/legal/epl-v10.html".
+*
+* Initial Contributors:
+* Nokia Corporation - initial contribution.
+*
+* Contributors:
+*
+* Description: Iby file for QTMS
+*
+*/
+
+#ifndef QTMS_IBY
+#define QTMS_IBY
+
+// Use standard macros
+#include <data_caging_paths_for_iby.hrh>
+
+#ifdef FF_TMS
+file=ABI_DIR\BUILD_DIR\qtmsapi.dll     SHARED_LIB_DIR\qtmsapi.dll
+
+//QTMS_Stub
+data=ZSYSTEM/install/qtmsapi_stub.sis  System/Install/qtmsapi_stub.sis
+
+#endif //FF_TMS
+#endif //QTMS_IBY

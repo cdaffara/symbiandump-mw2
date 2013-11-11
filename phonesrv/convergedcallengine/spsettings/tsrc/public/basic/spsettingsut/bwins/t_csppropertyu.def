@@ -1,0 +1,20 @@
+EXPORTS
+	?CreateTestSuiteL@@YAPAVMEUnitTest@@XZ @ 1 NONAME ; class MEUnitTest * CreateTestSuiteL(void)
+	?SetValue@CSPProperty@@QAEHABVTDesC16@@@Z @ 2 NONAME ; int CSPProperty::SetValue(class TDesC16 const &)
+	?GetValue@CSPProperty@@QBEHAAW4TOnOff@@@Z @ 3 NONAME ; int CSPProperty::GetValue(enum TOnOff &) const
+	?SetName@CSPProperty@@QAEHW4TServicePropertyName@@@Z @ 4 NONAME ; int CSPProperty::SetName(enum TServicePropertyName)
+	?NewLC@CSPProperty@@SAPAV1@XZ @ 5 NONAME ; class CSPProperty * CSPProperty::NewLC(void)
+	?NewL@CSPProperty@@SAPAV1@XZ @ 6 NONAME ; class CSPProperty * CSPProperty::NewL(void)
+	?DataType@CSPProperty@@SA?AW4TPropertyDataType@@W4TServicePropertyName@@@Z @ 7 NONAME ; enum TPropertyDataType CSPProperty::DataType(enum TServicePropertyName)
+	?PropertyType@CSPProperty@@SA?AW4TSPItemType@@W4TServicePropertyName@@@Z @ 8 NONAME ; enum TSPItemType CSPProperty::PropertyType(enum TServicePropertyName)
+	?GetDataType@CSPProperty@@QBE?AW4TPropertyDataType@@XZ @ 9 NONAME ; enum TPropertyDataType CSPProperty::GetDataType(void) const
+	??8CSPProperty@@QBEHABV0@@Z @ 10 NONAME ; int CSPProperty::operator==(class CSPProperty const &) const
+	?GetPropertyType@CSPProperty@@QBE?AW4TSPItemType@@XZ @ 11 NONAME ; enum TSPItemType CSPProperty::GetPropertyType(void) const
+	?SetValue@CSPProperty@@QAEHW4TOnOff@@@Z @ 12 NONAME ; int CSPProperty::SetValue(enum TOnOff)
+	?SetValue@CSPProperty@@QAEHH@Z @ 13 NONAME ; int CSPProperty::SetValue(int)
+	?GetValue@CSPProperty@@QBEHAAH@Z @ 14 NONAME ; int CSPProperty::GetValue(int &) const
+	?GetName@CSPProperty@@QBE?AW4TServicePropertyName@@XZ @ 15 NONAME ; enum TServicePropertyName CSPProperty::GetName(void) const
+	?CopyL@CSPProperty@@QAEXABV1@@Z @ 16 NONAME ; void CSPProperty::CopyL(class CSPProperty const &)
+	??1CSPProperty@@UAE@XZ @ 17 NONAME ; CSPProperty::~CSPProperty(void)
+	?GetValue@CSPProperty@@QBEHAAVTDes16@@@Z @ 18 NONAME ; int CSPProperty::GetValue(class TDes16 &) const
+

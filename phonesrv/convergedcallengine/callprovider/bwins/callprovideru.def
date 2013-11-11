@@ -1,0 +1,12 @@
+EXPORTS
+	??1CCCPCallParameters@@UAE@XZ @ 1 NONAME ; CCCPCallParameters::~CCCPCallParameters(void)
+	?CallType@CCCPCallParameters@@QBE?AW4TCCPCallType@1@XZ @ 2 NONAME ABSENT ; enum CCCPCallParameters::TCCPCallType CCCPCallParameters::CallType(void) const
+	?NewL@CCCPCallParameters@@SAPAV1@XZ @ 3 NONAME ; class CCCPCallParameters * CCCPCallParameters::NewL(void)
+	?ServiceId@CCCPCallParameters@@QBEKXZ @ 4 NONAME ; unsigned long CCCPCallParameters::ServiceId(void) const
+	?SetCallType@CCCPCallParameters@@QAEXW4TCCPCallType@1@@Z @ 5 NONAME ABSENT ; void CCCPCallParameters::SetCallType(enum CCCPCallParameters::TCCPCallType)
+	?SetServiceId@CCCPCallParameters@@QAEXK@Z @ 6 NONAME ; void CCCPCallParameters::SetServiceId(unsigned long)
+	??0CCCPCallParameters@@IAE@XZ @ 7 NONAME ; CCCPCallParameters::CCCPCallParameters(void)
+	?ConstructL@CCCPCallParameters@@IAEXXZ @ 8 NONAME ; void CCCPCallParameters::ConstructL(void)
+	?SetCallType@CCCPCallParameters@@QAEXW4TCallType@CCPCall@@@Z @ 9 NONAME ; void CCCPCallParameters::SetCallType(enum CCPCall::TCallType)
+	?CallType@CCCPCallParameters@@QBE?AW4TCallType@CCPCall@@XZ @ 10 NONAME ; enum CCPCall::TCallType CCCPCallParameters::CallType(void) const
+
